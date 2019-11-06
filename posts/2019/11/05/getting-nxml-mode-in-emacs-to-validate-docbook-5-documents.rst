@@ -34,4 +34,6 @@ into the file:
 
 .. listing:: generate-schemas-xml bash
 
+Then I had my Makefile generate the schemas.xml file if it was missing.
+
 It was more complicated that I'd have liked, but it does work.
