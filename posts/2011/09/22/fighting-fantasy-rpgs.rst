@@ -198,7 +198,7 @@ precludes PDF versions of the books.
 .. _`rpg.net`: http://forum.rpg.net/
 .. _`Arion Games`: http://www.arion-games.com/
 .. _`Cubicle 7`: http://www.cubicle7.co.uk/
-.. _kids: /~tkb/blog/gaming/the-kids
+.. _kids: link://slug/the-kids
 
 .. [#many] I don't know if |FF:TIRpG| was easy to find because they
    printed so many of it, or if it was just part of the large print

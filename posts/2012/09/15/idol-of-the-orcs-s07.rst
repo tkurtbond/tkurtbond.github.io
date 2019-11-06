@@ -164,4 +164,4 @@ for :ll:`T.T.`
    good `Labyrinth Lord` adventure that has a significant search for
    keys.
 
-__ /~tkb/blog/gaming/actual-play/the-kids/brigand-crypt/brigand-crypt-part-1.html
+__ link://slug/brigand-crypt-part-1

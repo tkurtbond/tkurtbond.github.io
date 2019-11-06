@@ -137,10 +137,19 @@ TRANSLATIONS_PATTERN = '{path}.{lang}.{ext}'
 #          with a ``/``, otherwise end them with ``/index.html`` — or
 #          else they won’t be highlighted when active.
 
+# NAVIGATION_LINKS = {
+#     DEFAULT_LANG: (
+#         ("/archive.html", "Archive"),
+#         ("/categories/", "Tags"),
+#         ("/rss.xml", "RSS feed"),
+#     ),
+# }
+
 NAVIGATION_LINKS = {
     DEFAULT_LANG: (
-        ("/archive.html", "Archive"),
-        ("/categories/", "Tags"),
+        ("/index.html", "Home"),
+        ("/archive.html", "Archives"),
+        ("/categories/index.html", "Tags"),
         ("/rss.xml", "RSS feed"),
     ),
 }
@@ -153,7 +162,8 @@ NAVIGATION_ALT_LINKS = {
 }
 
 # Name of the theme to use.
-THEME = "bootblog4"
+#THEME = "bootblog4"
+THEME = "bootblog"
 
 # Primary color of your theme. This will be used to customize your theme.
 # Must be a HEX value.
@@ -1345,7 +1355,22 @@ WARN_ABOUT_TAG_METADATA = False
 
 # Put in global_context things you want available on all your templates.
 # It can be anything, data, functions, modules, etc.
-GLOBAL_CONTEXT = {}
+GLOBAL_CONTEXT = {'blog_sidebar': """\
+    <div class="sidebar-module sidebar-module-inset">
+      <h4>About</h4>
+      <p>Lacking Natural Simplicity is one definition of sophisticated.  
+         This blog chronicles my journey through our at times too complicated 
+         and sophisticated world. </p>
+    </div>
+    <div class="sidebar-module">
+      <h4>Links</h4>
+      <ol class="list-unstyled">
+        <li><a href="/pages/about-the-blog/index.html">About the Blog</a></li>
+        <li><a href="/pages/colophon/index.html">Colophon</a></li>
+        <li><a href="/pages/pages/index.html">Pages</a></li>
+      </ol>
+    </div>
+    """}
 
 # Add functions here and they will be called with template
 # GLOBAL_CONTEXT as parameter when the template is about to be
