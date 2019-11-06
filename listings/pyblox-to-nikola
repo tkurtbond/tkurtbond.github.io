@@ -1,0 +1,67 @@
+#! /usr/bin/env python3.7
+
+import os
+import os.path
+import sys
+from datetime import datetime
+
+# datetime.strptime ('2019-11-05 20:32:24', '%Y-%m-%d %H:%M:%S')
+# dt.strftime ('%Y-%m-%d %H:%M:%S UTC-05:00')
+
+entries_prefix = 'entries/'
+notentries_prefix = 'notentries/'
+published_prefix = '#published '
+tags_prefix = '#tags '
+
+files_read = 0
+for filename in sys.stdin:
+    filename = filename.rstrip ()
+    basename = os.path.basename  (filename)
+    dirname = os.path.dirname (filename)
+    if dirname.startswith (entries_prefix):
+        category = dirname[len(entries_prefix):]
+    elif dirname.startswith (notentries_prefix):
+        category = dirname[len(notentries_prefix):]
+    else:
+        category = ''
+    (slug, _) = os.path.splitext (basename)
+    print ('filename: %s\nbasename: %s\ndirname: %s\ncategory: %s\nslug: %s' %
+           (filename, basename, dirname, category, slug))
+    inf = open (filename, 'r')
+    files_read = files_read + 1
+    title = inf.readline ()
+    title = title.rstrip ()
+    published = inf.readline ()
+    published = published.strip ()
+    if published.startswith (published_prefix):
+        published = published[len(published_prefix):]
+    else:
+        raise ('Unknown line should be #published', published)
+    published_date = datetime.strptime (published, '%Y-%m-%d %H:%M:%S')
+    nikola_date = published_date.strftime ('%Y-%m-%d %H:%M:%S UTC-05:00')
+    datepath = published_date.strftime ('%Y/%m/%d')
+    newdir = os.path.join ('/Users/tkb/nikola/newblog/posts', datepath) 
+    os.makedirs (newdir, exist_ok=True)
+    tags = inf.readline ()
+    tags = tags.rstrip ()
+    if tags.startswith (tags_prefix):
+        tags = tags[len(tags_prefix):]
+    else:
+        raise ('Unknown line should be #tags', tags)
+    tags = tags.lower ()
+    outfname = os.path.join (newdir, basename)
+    print ('outfname: %s' % outfname)
+    outf = open (outfname, 'w')
+    outf.write ('.. title: %s\n' % title)
+    outf.write ('.. slug: %s\n' % slug)
+    outf.write ('.. date: %s\n' % nikola_date)
+    outf.write ('.. tags: %s\n' % tags)
+    outf.write ('.. category: %s\n' % category)
+    outf.write ('.. link: \n')
+    outf.write ('.. description: \n')
+    outf.write ('.. type: text\n')
+    outf.write ('\n')
+    for line in inf:
+        outf.write (line)
+    inf.close ()
+print ('\n\nFiles Read: %d' % files_read)

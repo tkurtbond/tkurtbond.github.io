@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity (Posts about computer)</title><link>https://tkurtbond.github.io/</link><description></description><atom:link href="https://tkurtbond.github.io/categories/cat_computer.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2019 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Wed, 06 Nov 2019 19:42:55 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Converting my pyBloxsom blog into a Nikola blog</title><link>https://tkurtbond.github.io/posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;Yesterday I decided to try blogging again.  I started writing a post
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity (Posts about pybloxsom)</title><link>https://tkurtbond.github.io/</link><description></description><atom:link href="https://tkurtbond.github.io/categories/pybloxsom.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2019 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Wed, 06 Nov 2019 19:42:56 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Converting my pyBloxsom blog into a Nikola blog</title><link>https://tkurtbond.github.io/posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;Yesterday I decided to try blogging again.  I started writing a post
 at blogger.com, but that was like wading through a rotting whale
 corpse.  Instead I decided to use &lt;a class="reference external" href="https://help.github.com/en/github/working-with-github-pages/about-github-pages"&gt;GitHub Pages&lt;/a&gt;
 and use the static blog/site generator &lt;a class="reference external" href="https://getnikola.com/"&gt;Nikola&lt;/a&gt; to generate the content.&lt;/p&gt;
@@ -90,84 +90,4 @@ old blog or other pages on my old website.  I did &lt;cite&gt;grep-find&lt;/cite
 multiple times to find all the occurances of my old website's hostname
 (which went through a couple of variations over time), then looked for
 site relative links that started with &lt;code class="docutils literal"&gt;/~tkb&lt;/code&gt;, a tedious but not too
-difficult process.&lt;/p&gt;&lt;/div&gt;</description><category>blog</category><category>conversion</category><category>nikola</category><category>pybloxsom</category><guid>https://tkurtbond.github.io/posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/</guid><pubDate>Wed, 06 Nov 2019 19:10:35 GMT</pubDate></item><item><title>POISE DMS-PLus</title><link>https://tkurtbond.github.io/posts/2014/11/23/poise-dms-plus/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;p&gt;I found a &lt;a class="reference external" href="http://www2.esp-tulsa.com/products.htm#dmsplus"&gt;web page&lt;/a&gt; that lists all the POISE products, now known as the
-Jenzabar PX Administrative Information Systems, including the POISE
-DMS-Plus.&lt;/p&gt;</description><category>dms-plus</category><category>jenzabar px</category><category>poise</category><guid>https://tkurtbond.github.io/posts/2014/11/23/poise-dms-plus/</guid><pubDate>Sun, 23 Nov 2014 06:48:58 GMT</pubDate></item><item><title>Mac OS X go likes gcc 4.2.1 doesn't lke 4.7.2</title><link>https://tkurtbond.github.io/posts/2012/11/13/mac-os-x-go-likes-gcc-4.2.1-doesnt-lke-4.7.2/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;p&gt;I have gcc from MacPorts (“gcc version 4.7.2 (MacPorts gcc47
-4.7.2_2)”) installed on my laptop running Mac OS X 10.6.8, and when
-updated and recompiled go the tests failed in the race detector with a
-message about a MachO segment being missing.  I put /usr/bin/gcc at
-the front of the path, and everything compiled tested fine.&lt;/p&gt;</description><category>gcc</category><category>go language</category><category>mac os x</category><guid>https://tkurtbond.github.io/posts/2012/11/13/mac-os-x-go-likes-gcc-4.2.1-doesnt-lke-4.7.2/</guid><pubDate>Tue, 13 Nov 2012 18:58:24 GMT</pubDate></item><item><title>Defining keys in the C-x 8 prefix keymap</title><link>https://tkurtbond.github.io/posts/2012/10/03/defining-keys-in-the-c-x-8-prefix-keymap/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;Yay!  I finally found it!&lt;/p&gt;
-&lt;p&gt;Suppose you hate typing “C-x 8 RET GREEK SMALL LETTER LAMBDA” to
-insert a lowercase lambda character in emacs (perhaps because you have
-a dull American keyboard and aren't very savvy to input methods).  You
-can add a key definition to the “C-x 8 prefix keymap”, say “gl”, so
-you can type “C-x 8 g l” and insert a lowercase lambda.&lt;/p&gt;
-&lt;p&gt;Here's how you might do it for “λ”, “Λ”, and “§”:&lt;/p&gt;
-&lt;pre class="literal-block"&gt;(load-library "iso-transl.el")
-(iso-transl-define-keys '(("gl" . [?λ])   ; greek lowercase lambda
-                          ("gL" . [?Λ])   ; greek uppercase lambda
-                          ("ps" . [?§]))) ; punctuation SECTION SIGN&lt;/pre&gt;&lt;/div&gt;</description><category>emacs</category><category>emacs lisp</category><category>key translation</category><category>unicode</category><guid>https://tkurtbond.github.io/posts/2012/10/03/defining-keys-in-the-c-x-8-prefix-keymap/</guid><pubDate>Thu, 04 Oct 2012 04:54:40 GMT</pubDate></item><item><title>Why does Cygwin unzip create executables that can't be executed outside Cygwin?</title><link>https://tkurtbond.github.io/posts/2012/07/06/why-does-cygwin-unzip-create-executables-that-cant-be-executed-outside-cygwin/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;p&gt;When I unzip a MS Windows emacs distribution using the Cygwin
-&lt;code class="app docutils literal"&gt;unzip&lt;/code&gt; and try to execute &lt;code class="app docutils literal"&gt;addpm&lt;/code&gt; with the MS Windows
-Explorer &lt;strong&gt;as the same user&lt;/strong&gt;, why do I get an error about not having
-the correct protections to execute the file?&lt;/p&gt;</description><category>cygwin</category><category>ms windows</category><category>unzip</category><guid>https://tkurtbond.github.io/posts/2012/07/06/why-does-cygwin-unzip-create-executables-that-cant-be-executed-outside-cygwin/</guid><pubDate>Sat, 07 Jul 2012 00:43:07 GMT</pubDate></item><item><title>Multics Emacs programmed by secretaries</title><link>https://tkurtbond.github.io/posts/2012/06/15/multics-emacs-programmed-by-secretaries/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;RMS &lt;a class="reference external" href="http://www.gnu.org/gnu/rms-lisp.html"&gt;relates&lt;/a&gt; how programming Multics Emacs was so convenient that secretaries started to learn to use it:&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;… The language that you build your extensions on shouldn't be
-thought of as a programming language in afterthought; it should be
-designed as a programming language. In fact, we discovered that
-the best programming language for that purpose was Lisp.&lt;/p&gt;
-&lt;p&gt;It was Bernie Greenberg, who discovered that it was (5). He wrote
-a version of Emacs in Multics MacLisp, and he wrote his commands
-in MacLisp in a straightforward fashion. The editor itself was
-written entirely in Lisp. Multics Emacs proved to be a great
-success — programming new editing commands was so convenient that
-even the secretaries in his office started learning how to use
-it. They used a manual someone had written which showed how to
-extend Emacs, but didn't say it was a programming. So the
-secretaries, who believed they couldn't do programming, weren't
-scared off. They read the manual, discovered they could do useful
-things and they learned to program.&lt;/p&gt;
-&lt;p&gt;So Bernie saw that an application — a program that does something
-useful for you — which has Lisp inside it and which you could
-extend by rewriting the Lisp programs, is actually a very good way
-for people to learn programming. It gives them a chance to write
-small programs that are useful for them, which in most arenas you
-can't possibly do. They can get encouragement for their own
-practical use — at the stage where it's the hardest — where they
-don't believe they can program, until they get to the point where
-they are programmers.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;!-- Wasn't troff also used by secretaries? --&gt;&lt;/div&gt;</description><category>emacs</category><category>lisp</category><category>programming</category><guid>https://tkurtbond.github.io/posts/2012/06/15/multics-emacs-programmed-by-secretaries/</guid><pubDate>Fri, 15 Jun 2012 14:10:09 GMT</pubDate></item><item><title>NetBSD: pkg_add: Error: package `emacs-24.0.50.20110821' was built with a newer pkg_install version</title><link>https://tkurtbond.github.io/posts/2012/05/17/netbsd-pkgadd-error-package-pkgname-was-built-with-a-newer-pkginstall-version/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;I did a fresh install of NetBSD 5.1.2 and tried to install emacs:&lt;/p&gt;
-&lt;pre class="literal-block"&gt;# pkg_add emacs
-pkg_add: Error: package `emacs-24.0.50.20110821' was built with a newer pkg_install version
-pkg_add: 1 package addition failed&lt;/pre&gt;
-&lt;p&gt;So I installed pkgsrc and did a &lt;code class="docutils literal"&gt;make install&lt;/code&gt; in
-&lt;code class="docutils literal"&gt;/usr/pkgsrc/pkgtools/pkg_install&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;Then I added &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;/usr/pkg/sbin:/usr/pkg/bin&lt;/span&gt;&lt;/code&gt; to the front of my path,
-and tried again.  That seemed to work.&lt;/p&gt;&lt;/div&gt;</description><category>netbsd</category><category>pkgsrc</category><guid>https://tkurtbond.github.io/posts/2012/05/17/netbsd-pkgadd-error-package-pkgname-was-built-with-a-newer-pkginstall-version/</guid><pubDate>Thu, 17 May 2012 22:25:26 GMT</pubDate></item><item><title>sqlite implements table constraints</title><link>https://tkurtbond.github.io/posts/2009/12/17/sqlite-implements-table-constraints/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;It's nice to see SQLite supports table constraints:&lt;/p&gt;
-&lt;pre class="literal-block"&gt;$ sqlite3 test.db
-SQLite version 3.6.19
-Enter ".help" for instructions
-Enter SQL statements terminated with a ";"
-sqlite&amp;gt; create table t1
-   ...&amp;gt; (k int,
-   ...&amp;gt;  s int,
-   ...&amp;gt;  e int,
-   ...&amp;gt;  d int,
-   ...&amp;gt;  constraint se_or_duration check
-   ...&amp;gt;    ((s is not null and e is not null) or d is not null));
-sqlite&amp;gt; insert into t1 values (1, 8, 4, null);
-sqlite&amp;gt; insert into t1 values (2, null, null, 8);
-sqlite&amp;gt; insert into t1 values (3, null, null, null);
-SQL error: constraint failed
-sqlite&amp;gt;&lt;/pre&gt;&lt;/div&gt;</description><category>programming</category><category>sql</category><category>sqlite</category><guid>https://tkurtbond.github.io/posts/2009/12/17/sqlite-implements-table-constraints/</guid><pubDate>Thu, 17 Dec 2009 22:02:04 GMT</pubDate></item><item><title>oo2c on Mac OS X Snow Leopard</title><link>https://tkurtbond.github.io/posts/2009/11/19/oo2c-on-mac-os-x-snow-leopard/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;It looks like I got &lt;a class="reference external" href="http://sourceforge.net/projects/ooc"&gt;oo2c&lt;/a&gt; to build and work under Mac OS X Snow
-Leopard, with some stupid hacks, at least enough for my purposes.  I
-don't claim that this is suitable for production work.&lt;/p&gt;
-&lt;p&gt;Here's the &lt;span class="program"&gt;configure&lt;/span&gt; invocation I used:&lt;/p&gt;
-&lt;pre class="literal-block"&gt;CFLAGS='-no-cpp-precomp -fnested-functions -I/opt/local/include' \
-LDFLAGS='-L/opt/local/lib' \
-    ./configure --prefix=/sw/versions/m64/oo2c/2.1.11 --disable-libs&lt;/pre&gt;
-&lt;p&gt;Here's the &lt;a class="reference external" href="https://tkurtbond.github.io/oo2c-macosx-snow-leopard.patch"&gt;patch&lt;/a&gt;.&lt;/p&gt;&lt;/div&gt;</description><category>mac os x</category><category>oberon</category><guid>https://tkurtbond.github.io/posts/2009/11/19/oo2c-on-mac-os-x-snow-leopard/</guid><pubDate>Thu, 19 Nov 2009 17:18:03 GMT</pubDate></item><item><title>Emacs 23.1 and Wanderlust</title><link>https://tkurtbond.github.io/posts/2009/09/25/emacs-23.1-and-wanderlust/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;To get UTF-8 to work when sending drafted messages  in &lt;a class="reference external" href="http://www.gohome.org/wl/"&gt;Wanderlust&lt;/a&gt; with
-Emacs 23.1 I had to apply this &lt;a class="reference external" href="http://article.gmane.org/gmane.mail.wanderlust.general.japanese/5978"&gt;patch&lt;/a&gt; to FLIM.&lt;/p&gt;
-&lt;p&gt;I also checked out the wl-2_15_6-vtl branch in the wanderlust
-repository and the semi-1_14-vtl branch in the semi repository.
-(See &lt;a class="reference external" href="https://tkurtbond.github.io/posts/2009/09/02/wanderlust-apel-semi-and-flim-development/"&gt;repos&lt;/a&gt; for info about the repositories.)&lt;/p&gt;&lt;/div&gt;</description><category>emacs</category><category>wanderlust</category><guid>https://tkurtbond.github.io/posts/2009/09/25/emacs-23.1-and-wanderlust/</guid><pubDate>Fri, 25 Sep 2009 19:34:41 GMT</pubDate></item></channel></rss>
+difficult process.&lt;/p&gt;&lt;/div&gt;</description><category>blog</category><category>conversion</category><category>nikola</category><category>pybloxsom</category><guid>https://tkurtbond.github.io/posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/</guid><pubDate>Wed, 06 Nov 2019 19:10:35 GMT</pubDate></item></channel></rss>
