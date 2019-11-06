@@ -1,0 +1,107 @@
+.. title: Goblin Gully, Play Session #1
+.. slug: goblin-gully-part-1
+.. date: 2010-08-19 23:00:00 UTC-05:00
+.. tags: gaming,rpg,labyrinth lord,actual-play,dld2
+.. category: gaming/actual-play/the-kids/goblin-gully
+.. link: 
+.. description: 
+.. type: text
+
+
+B.B. and his girlfriend C. came down to the farm to visit before going
+off to Utah for college.  After dinner with the families, B.B. and
+C. and the kids_ rolled up `Labyrinth Lord`_ characters and set out on
+an adventure.
+
+.. admonition:: Spoilers!
+
+   We're playing `Goblin Gully`_, from the blog `A character for every
+   game`_ so if you haven't played that you might want to skip this
+   entry.
+
+T.A., E.A., and M.A. had created characters earlier, but D.B. had to
+create characters before we started.
+
+Attending
+=========
+
+Clockwise round the table:
+
++ T.K.B. — Labyrinth Lord
++ C.DW. — a Thief named Aria
++ B.B. — a Dwarf named Urgo
++ T.A. — a Magic User named Octavian
++ E.A. — an Elf named Trista
++ M.A. — a Cleric named Jude
+
+They trekked through the hills for 4 days (Trista downing a dear when
+their rations were gone), until they finally found the huge tree said
+to be the entrance to the old pit.  Unfortunately, they were unable to
+find the entrance, and as they were looking they were attacked by
+javelins thrown from above, in the tree.  Not able to see their
+assailants in the leafy boughs, they fled.  At a safe distance they
+decided to run back and have the dwarf climb the tree, while the elf,
+thief, and cleric used their missile weapons.  With the goblins
+concentrating on the dwarf climbing towards them, the others were
+finally able to pinpoint the goblins, and managed to kill one of them,
+by the time the heavily wounded dwarf managed to climb up to the
+goblins and miss his first attack.  The dwarf managed to scare the
+remaining goblin into surrendering, and they climbed down out of the
+tree.  The goblin swore he would leave and go back to the deep
+mountains, if they would let him go.  When the dwarf swore he would
+let him go if the goblin told them how to enter the pit, the goblin
+did so.  An argument ensued among the PCs, Octavian in particular not
+wanting to let the goblin go, but Urgo finally did (having sworn) and
+the goblin high-tailed it out of there.  Several of the PCs had been
+injured, but Urgo had taken the worst of the damage while climbing up
+the tree. 
+
+They headed down the narrow dirt tunnel the goblin had shown them,
+concealed behind a cleverly hinged section of a huge root, and the
+tunnel quickly opened up into a stairway cut from stone.  They passed
+through one empty room, where they paused to light Octavian's lantern,
+then down another stair to a much larger room.  At the far side of the
+room they could just make out a demonic face carved on the wall, its
+huge mouth gaping blackly.  As they stared at the demonic face they
+were surprised by 4 goblins springing down from niches high on the
+wall where the stairway entered, behind them.  After a few rounds,
+they were attacked by archers in the dark beyond the demonic mouth,
+too. Soon all the PCs were badly injured, the dwarf at 0 HP, Octavian
+at negative HP, and then Aria was brought to negative HP.  Urgo bound
+Aria's wounds, and fell unconscious himself, bleeding to death, while
+Trista and Jade attacked the two goblins beyond the mouth, Jade
+throwing himself through the gaping mouth.  Jude killed one of the two
+goblin archers, but fell to the other, who finally fled in the face of
+Trista's deadly arrows.  This left Trista the only conscious
+adventurer, with four unconscious companions to care for in this
+deadly dungeon.  
+
+She bound up her comrades' wounds, then searched the dead goblins,
+finding a single vial of thick green liquid.  She gave it to the
+dwarf, Urgo, and when he revived they carried their comrades partway
+back up the winding stairs, out of easy bowshot, and secured them to
+iron spikes, so they wouldn't slip down the steps.  There they each
+guarded one approach.  Urgo fell asleep, but luckily Trista's keen
+elvish senses noticed his snores and woke him, for in the night he
+heard goblins approaching up the stair.  He hurtled himself down the
+stair into the 4 goblins, killing one outright and injuring another
+and setting them and himself tumbling to the bottom of the stairs.
+Dazed and confused by the tumble, they all traded blows in the dark,
+flailing madly and futilely until Urgo finally killed 2 more of them,
+and the last remaining goblin fled back through the mouth before Urgo
+could catch up with him.
+
+Eventually Jude recovered from his wounds enough to wake and pray, and
+then healed Aria.  The companions then fled, carrying the unconscious
+and deeply wounded Octavian with them, headed for town!
+
+Aftermath
+=========
+
+I hope to continue this adventure when B.B. & C. are next in, perhaps
+on fall break.
+
+.. _kids: link://slug/the-kids
+.. _`Goblin Gully`: http://rpgcharacters.files.wordpress.com/2009/08/onepagedungeon-goblin-gully.pdf
+.. _`A character for every game`: http://rpgcharacters.wordpress.com/2009/08/21/friday-map-goblin-gully-a-deadly-one-page-dungeon/
+.. _`Labyrinth Lord`: http://www.goblinoidgames.com/labyrinthlord.html
