@@ -1,1 +1,0 @@
-# tkurtbond.github.io
