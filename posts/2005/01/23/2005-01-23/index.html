@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Goodbye, PM3; Recent Reading | Lacking Natural Simplicity</title>
+<link href="../../../../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../../../../rss.xml">
+<link rel="canonical" href="https://tkurtbond.github.io/posts/2005/01/23/2005-01-23/">
+<!--[if lt IE 9]><script src="../../../../../assets/js/html5.js"></script><![endif]--><meta name="author" content="T. Kurt Bond">
+<link rel="prev" href="../../20/2005-01-20/" title="Recent Reading" type="text/html">
+<link rel="next" href="../../24/2005-01-24/" title="Skeptical about Macro Hygiene?" type="text/html">
+<meta property="og:site_name" content="Lacking Natural Simplicity">
+<meta property="og:title" content="Goodbye, PM3; Recent Reading">
+<meta property="og:url" content="https://tkurtbond.github.io/posts/2005/01/23/2005-01-23/">
+<meta property="og:description" content="Goodbye, PM3
+I have been cleaning some uncessary packages off tkb.mpl.com and in
+the process accidently deleted pm3-forms, a GUI library for the
+Polytechnic Modula 3 implementation (PM3). Unfortunatel">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2005-01-23T00:00:00-05:00">
+<meta property="article:tag" content="modula-3">
+<meta property="article:tag" content="old blog">
+<meta property="article:tag" content="pm3">
+<meta property="article:tag" content="recent reading">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<div class="blog-masthead">
+    <div class="container">
+<!-- This keeps the margins nice -->
+        <nav class="blog-nav" role="navigation"><a href="../../../../../index.html" class="blog-nav-item">Home</a>
+            <a href="../../../../../archive.html" class="blog-nav-item">Archives</a>
+            <a href="../../../../../categories/index.html" class="blog-nav-item">Tags</a>
+            <a href="../../../../../rss.xml" class="blog-nav-item">RSS feed</a>
+
+            
+
+                
+                
+                    
+    <a href="index.rst" class="blog-nav-item blog-nav-item-aside" id="sourcelink">Source</a>
+
+                
+            
+        </nav>
+</div>
+<!-- /.container -->
+</div>
+<!-- End of Menubar -->
+
+<div class="container" id="content" role="main">
+    <div class="body-content">
+        <div class="blog-header">
+            <h1 class="blog-title">
+                <a href="https://tkurtbond.github.io/">
+
+                    <span id="blog-title">Lacking Natural Simplicity</span>
+                </a>
+            </h1>
+            <p class="lead blog-description">Random musings on code and tabletop games.</p>
+            
+        </div>
+        <!--Body content-->
+        <div class="row">
+            <div class="col-sm-8 blog-main">
+                
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h2 class="p-name entry-title blog-post-title" itemprop="headline name"><a href="." class="u-url">Goodbye, PM3; Recent Reading</a></h2>
+
+        <div class="metadata blog-post-meta">
+            <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
+            <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2005-01-23T00:00:00-05:00" itemprop="datePublished" title="2005-01-23 00:00">2005-01-23 00:00</time></a></p>
+            
+        <p class="sourceline"><a href="index.rst" id="sourcelink">Source</a></p>
+
+        </div>
+        
+
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<div class="section" id="goodbye-pm3">
+<h2>Goodbye, PM3</h2>
+<p>I have been cleaning some uncessary packages off <code class="docutils literal">tkb.mpl.com</code> and in
+the process accidently deleted <code class="docutils literal"><span class="pre">pm3-forms</span></code>, a GUI library for the
+Polytechnic Modula 3 implementation (PM3). Unfortunately, CVSup uses
+the forms library, and I use CVSup extensively to keep the FreeBSD
+source code and Ports up to date, so I can keep <code class="docutils literal">tkb.mpl.com</code> up to
+date. Unfortunately, I'd built PM3 back in the XFree86 days and have
+since switched to Xorg and the dependencies in the other PM3 packages
+would have caused rebuilding and reinstalling all the XFree86
+packages. I had no desire to go back there, so I decided to delete all
+the PM3 packages and CVSup and rebuild CVSup from scratch. Upon
+consideration, I decided to use the ezm3 Modula 3 distribution instead
+of PM3 ; the ezm3 distribution is specifically maintined to support
+<code class="program docutils literal">CVSup</code>, and since that's the only thing I'm using Modula 3 for any
+more it makes sense to use the smaller but better maintained ezm3
+instead of the bigger and more featureful but almost unmaintained PM3
+distribution.</p>
+<p>It's really a pity: the PM3 distribution had a lot of neat programs
+included and Modula 3 is very interesting language and was used as the
+building blocks for a lot of very interesting research, but today the
+user base is too small to see much development with the language.
+Personally, I think it has a lot going for it: it's a relatively small
+language with a great number of features that showed up in other
+languages of its kind only later: garbage collection, modules,
+threads, objects, generics, and so on, in a very readable and
+understandable way. In many ways it's a better language than many of
+its successors.</p>
+<p>Unfortunately, for my personal use, it doesn't go quite far enough in
+one way: I've been spoiled by the convenience of higher level
+languages like Dylan, Lisp, Scheme, and Objective Caml; and in another
+way it has gone a little too far: interfacing to C is well defined,
+but is not without some easily overlooked drawbacks. The situation was
+not improved by the minor but pervasive incompatiblities between
+classic Modula 3 on one side (the original DEC distribution, PM3, and
+ezm3) and the enchanced version produced by Critical Mass (CM3). In
+the end, it remains a language that, like Oberon-2 and Ada, I like,
+but not enough to use regularly.</p>
+</div>
+<div class="section" id="recent-reading-harlan">
+<h2>Recent Reading (Harlan)</h2>
+<ul class="simple">
+<li><p><em>Wasteland of Flint</em>, by Thomas Harlan; Tor/Tom Doherty Associates,
+LLC, April 2003.  I devoured Harlan's earlier <em>Oath of Empire</em>, a
+fascinating fantasy set in an alternate Roman Empire, so I was
+overjoyed to find he has started a new series, beginning with this
+book. This time it's science fiction, but again it's alternate
+history, set in the future in a universe where the Aztec empire rules
+Earth and has expanded to the stars. It's a good book that kept me
+interested to the last and looking forward to the next book in the
+series, <em>House of Reeds</em>.</p></li>
+</ul>
+</div>
+</div>
+    </div>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../../../../../categories/modula-3/" rel="tag">modula-3</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/old-blog/" rel="tag">old blog</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/pm3/" rel="tag">pm3</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/recent-reading/" rel="tag">recent reading</a></li>
+        </ul>
+<ul class="pager hidden-print">
+<li class="previous">
+                <a href="../../20/2005-01-20/" rel="prev" title="Recent Reading">Previous post</a>
+            </li>
+            <li class="next">
+                <a href="../../24/2005-01-24/" rel="next" title="Skeptical about Macro Hygiene?">Next post</a>
+            </li>
+        </ul></nav></aside></article>
+</div>
+            <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+                    <div class="sidebar-module sidebar-module-inset">
+      <h4>About</h4>
+      <p>Lacking Natural Simplicity is one definition of sophisticated.  
+         This blog chronicles my journey through our at times too complicated 
+         and sophisticated world. </p>
+    </div>
+    <div class="sidebar-module">
+      <h4>Links</h4>
+      <ol class="list-unstyled">
+<li><a href="../../../../../pages/about-the-blog/index.html">About the Blog</a></li>
+        <li><a href="../../../../../pages/colophon/index.html">Colophon</a></li>
+        <li><a href="../../../../../pages/pages/index.html">Pages</a></li>
+      </ol>
+</div>
+    
+            </div>
+        <!--End of body content-->
+        </div>
+    </div>
+</div>
+
+<footer class="blog-footer" id="footer">
+    Contents © 2019         <a href="mailto:tkurtbond@gmail.com">T. Kurt Bond</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+    
+</footer><script src="../../../../../assets/js/all-nocdn.js"></script><!-- fancy dates --><script>
+    moment.locale("en");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates --><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element) {
+            return element.getElementsByTagName('img')[0].alt;
+    }});
+    </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity (Posts about scheme)</title><link>https://tkurtbond.github.io/</link><description></description><atom:link href="https://tkurtbond.github.io/categories/scheme.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2019 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Wed, 06 Nov 2019 04:05:34 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Chicken 4.1.0 on Cygwin</title><link>https://tkurtbond.github.io/posts/2009/09/03/chicken-410-on-cygwin/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;Weird: after compiling and installing &lt;a class="reference external" href="http://www.call-with-current-continuation.org/"&gt;chicken&lt;/a&gt; with:&lt;/p&gt;
+&lt;!-- class: code --&gt;
+&lt;pre class="literal-block"&gt;make PLATFORM=cygwin PREFIX=/sw/versions/cygwin/chicken/4.1.0
+make PLATFORM=cygwin PREFIX=/sw/versions/cygwin/chicken/4.1.0 install&lt;/pre&gt;
+&lt;p&gt;I had to copy &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;/sw/versions/cygwin/chicken/4.1.0/lib/*.a&lt;/span&gt;&lt;/code&gt; to
+&lt;code class="docutils literal"&gt;/sw/versions/cygwin/checkin/4.1.0/bin&lt;/code&gt; before it could link things
+properly.  (I first noticed this while doing a
+&lt;code class="inlinecode docutils literal"&gt;$ &lt;span class="pre"&gt;chicken-install&lt;/span&gt; ncurses&lt;/code&gt;.)&lt;/p&gt;&lt;/div&gt;</description><category>chicken</category><category>cygwin</category><category>scheme</category><guid>https://tkurtbond.github.io/posts/2009/09/03/chicken-410-on-cygwin/</guid><pubDate>Thu, 03 Sep 2009 20:24:59 GMT</pubDate></item><item><title>Chicken and MinGW</title><link>https://tkurtbond.github.io/posts/2005/12/07/2005-12-07/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;To get Chicken version 2.207 to compile with MinGW I had to change the
+line in configure that read&lt;/p&gt;
+&lt;pre class="literal-block"&gt;mingw_libdir=`mingw32-gcc -print-prog-name=ld | sed 's%/lib/gcc-lib/.*%/lib%'`&lt;/pre&gt;
+&lt;p&gt;with&lt;/p&gt;
+&lt;pre class="literal-block"&gt;mingw_libdir=`mingw32-gcc -print-prog-name=ld | sed 's%/lib/gcc/.*%/lib%'`&lt;/pre&gt;
+&lt;p&gt;and copy &lt;code class="docutils literal"&gt;posixwin.c&lt;/code&gt; over &lt;code class="docutils literal"&gt;posix.c&lt;/code&gt; and &lt;code class="docutils literal"&gt;uposixwin.c&lt;/code&gt; over
+&lt;code class="docutils literal"&gt;uposix.c&lt;/code&gt;.&lt;/p&gt;&lt;/div&gt;</description><category>chicken</category><category>mingw</category><category>old blog</category><category>scheme</category><guid>https://tkurtbond.github.io/posts/2005/12/07/2005-12-07/</guid><pubDate>Wed, 07 Dec 2005 05:00:00 GMT</pubDate></item><item><title>Skeptical about Macro Hygiene?</title><link>https://tkurtbond.github.io/posts/2005/01/24/2005-01-24/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;Eli Barzilay has a couple of interesting &lt;a class="reference external" href="http://groups-beta.google.com/group/comp.lang.scheme/msg/b9328703efaa8219"&gt;USENET&lt;/a&gt; &lt;a class="reference external" href="http://groups-beta.google.com/group/comp.lang.scheme/msg/4301f80b6534a85"&gt;articles&lt;/a&gt; on his
+experience changing from &lt;code class="docutils literal"&gt;defmacro&lt;/code&gt; to &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;syntax-case&lt;/span&gt;&lt;/code&gt;. Unfortunately, I
+didn't understand Shriram Krishnamurthi's &lt;a class="reference external" href="http://groups-beta.google.com/group/comp.lang.scheme/msg/f7f4e2373846759c"&gt;comments on hygiene&lt;/a&gt; at
+all.&lt;/p&gt;
+&lt;div class="section" id="additions-on-tuesday-21-april-2009"&gt;
+&lt;h2&gt;Additions on Tuesday, 21 April 2009&lt;/h2&gt;
+&lt;p&gt;I thought I'd better quote what he said:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;By the way, I've been skeptical about hygiene for the past six or
+seven years.  The hygiene algorithm struck me as such an obviously
+good idea that I simply couldn't understand what the MIT folks meant
+when they said (and I'm paraphrasing, loosely, from papers I haven't
+read in a decade) that the hygiene algorithm doesn't make sense.  Only
+a few years ago did I begin to unravel this, and now I almost entirely
+understand it.  In short, it has taken me nearly a decade to
+understand why someone did not understand something that I understood
+obviously, and it's only because what I understood obviously, I now
+barely understand at all.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;It's really simple to understand how to implement &lt;code class="docutils literal"&gt;defmacro&lt;/code&gt;.  It's
+not simple to understand how to implement &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;syntax-case&lt;/span&gt;&lt;/code&gt;.  Throw in
+modules, as in &lt;a class="reference external" href="http://www.plt-scheme.org/"&gt;PLT Scheme&lt;/a&gt; (and &lt;a class="reference external" href="http://www.r6rs.org/"&gt;R6RS&lt;/a&gt;, apparently), and things are
+even more difficult.  Throw in the oddity of writing &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;syntax-case&lt;/span&gt;&lt;/code&gt;/&lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;syntax-rules&lt;/span&gt;&lt;/code&gt; macros with the pattern matching syntax, and you
+really have to wonder.&lt;/p&gt;
+&lt;p&gt;I really wish somebody would sit down and write detailed survey
+article comparing all the Lisp and Scheme macro systems and
+considering all the interactions with modules and pattern matching.  I
+think it's really needed.  [Do I say this somewhere else, too?]&lt;/p&gt;
+&lt;/div&gt;&lt;/div&gt;</description><category>hygiene</category><category>lisp</category><category>macros</category><category>old blog</category><category>scheme</category><guid>https://tkurtbond.github.io/posts/2005/01/24/2005-01-24/</guid><pubDate>Mon, 24 Jan 2005 05:00:00 GMT</pubDate></item></channel></rss>

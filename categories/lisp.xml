@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity (Posts about lisp)</title><link>https://tkurtbond.github.io/</link><description></description><atom:link href="https://tkurtbond.github.io/categories/lisp.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2019 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Wed, 06 Nov 2019 04:05:32 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Multics Emacs programmed by secretaries</title><link>https://tkurtbond.github.io/posts/2012/06/15/multics-emacs-programmed-by-secretaries/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;RMS &lt;a class="reference external" href="http://www.gnu.org/gnu/rms-lisp.html"&gt;relates&lt;/a&gt; how programming Multics Emacs was so convenient that secretaries started to learn to use it:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;… The language that you build your extensions on shouldn't be
+thought of as a programming language in afterthought; it should be
+designed as a programming language. In fact, we discovered that
+the best programming language for that purpose was Lisp.&lt;/p&gt;
+&lt;p&gt;It was Bernie Greenberg, who discovered that it was (5). He wrote
+a version of Emacs in Multics MacLisp, and he wrote his commands
+in MacLisp in a straightforward fashion. The editor itself was
+written entirely in Lisp. Multics Emacs proved to be a great
+success — programming new editing commands was so convenient that
+even the secretaries in his office started learning how to use
+it. They used a manual someone had written which showed how to
+extend Emacs, but didn't say it was a programming. So the
+secretaries, who believed they couldn't do programming, weren't
+scared off. They read the manual, discovered they could do useful
+things and they learned to program.&lt;/p&gt;
+&lt;p&gt;So Bernie saw that an application — a program that does something
+useful for you — which has Lisp inside it and which you could
+extend by rewriting the Lisp programs, is actually a very good way
+for people to learn programming. It gives them a chance to write
+small programs that are useful for them, which in most arenas you
+can't possibly do. They can get encouragement for their own
+practical use — at the stage where it's the hardest — where they
+don't believe they can program, until they get to the point where
+they are programmers.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;!-- Wasn't troff also used by secretaries? --&gt;&lt;/div&gt;</description><category>emacs</category><category>lisp</category><category>programming</category><guid>https://tkurtbond.github.io/posts/2012/06/15/multics-emacs-programmed-by-secretaries/</guid><pubDate>Fri, 15 Jun 2012 14:10:09 GMT</pubDate></item><item><title>Skeptical about Macro Hygiene?</title><link>https://tkurtbond.github.io/posts/2005/01/24/2005-01-24/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;Eli Barzilay has a couple of interesting &lt;a class="reference external" href="http://groups-beta.google.com/group/comp.lang.scheme/msg/b9328703efaa8219"&gt;USENET&lt;/a&gt; &lt;a class="reference external" href="http://groups-beta.google.com/group/comp.lang.scheme/msg/4301f80b6534a85"&gt;articles&lt;/a&gt; on his
+experience changing from &lt;code class="docutils literal"&gt;defmacro&lt;/code&gt; to &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;syntax-case&lt;/span&gt;&lt;/code&gt;. Unfortunately, I
+didn't understand Shriram Krishnamurthi's &lt;a class="reference external" href="http://groups-beta.google.com/group/comp.lang.scheme/msg/f7f4e2373846759c"&gt;comments on hygiene&lt;/a&gt; at
+all.&lt;/p&gt;
+&lt;div class="section" id="additions-on-tuesday-21-april-2009"&gt;
+&lt;h2&gt;Additions on Tuesday, 21 April 2009&lt;/h2&gt;
+&lt;p&gt;I thought I'd better quote what he said:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;By the way, I've been skeptical about hygiene for the past six or
+seven years.  The hygiene algorithm struck me as such an obviously
+good idea that I simply couldn't understand what the MIT folks meant
+when they said (and I'm paraphrasing, loosely, from papers I haven't
+read in a decade) that the hygiene algorithm doesn't make sense.  Only
+a few years ago did I begin to unravel this, and now I almost entirely
+understand it.  In short, it has taken me nearly a decade to
+understand why someone did not understand something that I understood
+obviously, and it's only because what I understood obviously, I now
+barely understand at all.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;It's really simple to understand how to implement &lt;code class="docutils literal"&gt;defmacro&lt;/code&gt;.  It's
+not simple to understand how to implement &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;syntax-case&lt;/span&gt;&lt;/code&gt;.  Throw in
+modules, as in &lt;a class="reference external" href="http://www.plt-scheme.org/"&gt;PLT Scheme&lt;/a&gt; (and &lt;a class="reference external" href="http://www.r6rs.org/"&gt;R6RS&lt;/a&gt;, apparently), and things are
+even more difficult.  Throw in the oddity of writing &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;syntax-case&lt;/span&gt;&lt;/code&gt;/&lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;syntax-rules&lt;/span&gt;&lt;/code&gt; macros with the pattern matching syntax, and you
+really have to wonder.&lt;/p&gt;
+&lt;p&gt;I really wish somebody would sit down and write detailed survey
+article comparing all the Lisp and Scheme macro systems and
+considering all the interactions with modules and pattern matching.  I
+think it's really needed.  [Do I say this somewhere else, too?]&lt;/p&gt;
+&lt;/div&gt;&lt;/div&gt;</description><category>hygiene</category><category>lisp</category><category>macros</category><category>old blog</category><category>scheme</category><guid>https://tkurtbond.github.io/posts/2005/01/24/2005-01-24/</guid><pubDate>Mon, 24 Jan 2005 05:00:00 GMT</pubDate></item></channel></rss>

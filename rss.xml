@@ -1,34 +1,237 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity</title><link>https://tkurtbond.github.io/</link><description>Random musings on code and tabletop games.</description><atom:link href="https://tkurtbond.github.io/rss.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2019 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Wed, 06 Nov 2019 01:52:59 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Getting nxml-mode in emacs to validate DocBook 5 documents</title><link>https://tkurtbond.github.io/posts/2019/11/05/getting-nxml-mode-in-emacs-to-validate-docbook-5-documents/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;I have occasion to edit and build a DocBook 5 document under both
+<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity</title><link>https://tkurtbond.github.io/</link><description>Random musings on code and tabletop games.</description><atom:link href="https://tkurtbond.github.io/rss.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2019 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Wed, 06 Nov 2019 18:19:47 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Getting nxml-mode in emacs to validate DocBook 5 documents</title><link>https://tkurtbond.github.io/posts/2019/11/05/getting-nxml-mode-in-emacs-to-validate-docbook-5-documents/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;I have occasion to edit and build a DocBook 5 document under both
 macOS Catalina and Fedora 30.&lt;/p&gt;
 &lt;p&gt;On macOS I've used homebrew to install the docbook, docbook-xsl, and
 libxslt (for xsltproc), and fop formulas, and changed my PATH to
 include the directory where brew installed &lt;code class="docutils literal"&gt;xsltproc&lt;/code&gt;. which will then
 use &lt;code class="docutils literal"&gt;/usr/local/etc/xml/catalog&lt;/code&gt; to find files, in which brew installed
 links to the docbook schemas and xsl stylesheets.&lt;/p&gt;
-&lt;p&gt;On Fedora I've used dnf to install the docbook5-schemas,
+&lt;p&gt;On Fedora I've used &lt;code class="docutils literal"&gt;dnf&lt;/code&gt; to install the docbook5-schemas,
 docbook5-style-xsl, and fop packages.&lt;/p&gt;
 &lt;p&gt;The document builds fine on both OSes, but Emacs doesn't validate
 properly against the DocBook RELAX NG schemas, because the &lt;code class="docutils literal"&gt;*.rnc&lt;/code&gt; files
 supplied with Emacs (26.3 on macOS, 26.2 on Fedora) are for DocBook 4.
-However, Emacs will look at a schemas.xml file in the same directory
+However, Emacs will look at a &lt;code class="docutils literal"&gt;schemas.xml&lt;/code&gt; file in the same directory
 as the file you are editing to find the &lt;code class="docutils literal"&gt;*.rnc&lt;/code&gt; files.  Unfortunately,
 of course, they have different locations on macOS with brew and on
 Fedora.&lt;/p&gt;
 &lt;p&gt;So I wrote a script, generate-schemas-xml, in bash using xmlcatalog to
 look up the translation for the URI for the RELAX NG compiled schema
-file and generate the schemas.xml file and substitute the translation
+file and generate the &lt;code class="docutils literal"&gt;schemas.xml&lt;/code&gt; file and substitute the translation
 into the file:&lt;/p&gt;
 &lt;p&gt;&lt;a class="reference external" href="https://tkurtbond.github.io/listings/generate-schemas-xml.html"&gt;generate-schemas-xml&lt;/a&gt;  &lt;a class="reference external" href="https://tkurtbond.github.io/listings/generate-schemas-xml"&gt;(Source)&lt;/a&gt;&lt;/p&gt;
-&lt;pre class="code bash"&gt;&lt;a name="rest_code_ea5e6c73c1334ef098e6c381b6802590-1"&gt;&lt;/a&gt;&lt;span class="ch"&gt;#! /usr/bin/env bash&lt;/span&gt;
-&lt;a name="rest_code_ea5e6c73c1334ef098e6c381b6802590-2"&gt;&lt;/a&gt;
-&lt;a name="rest_code_ea5e6c73c1334ef098e6c381b6802590-3"&gt;&lt;/a&gt;&lt;span class="nv"&gt;schema_location&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;xmlcatalog &lt;span class="s2"&gt;""&lt;/span&gt; &lt;span class="s2"&gt;"http://docbook.org/xml/5.0/rng/docbookxi.rnc"&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;
-&lt;a name="rest_code_ea5e6c73c1334ef098e6c381b6802590-4"&gt;&lt;/a&gt;    grep &lt;span class="s2"&gt;"^file:///"&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; sed &lt;span class="s1"&gt;'s#^file://##'&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;
-&lt;a name="rest_code_ea5e6c73c1334ef098e6c381b6802590-5"&gt;&lt;/a&gt;
-&lt;a name="rest_code_ea5e6c73c1334ef098e6c381b6802590-6"&gt;&lt;/a&gt;cat &amp;gt;schemas.xml &lt;span class="s"&gt;&amp;lt;&amp;lt;EOF&lt;/span&gt;
-&lt;a name="rest_code_ea5e6c73c1334ef098e6c381b6802590-7"&gt;&lt;/a&gt;&lt;span class="s"&gt;&amp;lt;locatingRules xmlns="http://thaiopensource.com/ns/locating-rules/1.0"&amp;gt;&lt;/span&gt;
-&lt;a name="rest_code_ea5e6c73c1334ef098e6c381b6802590-8"&gt;&lt;/a&gt;&lt;span class="s"&gt;&amp;lt;namespace ns="http://docbook.org/ns/docbook" uri="$schema_location"/&amp;gt;&lt;/span&gt;
-&lt;a name="rest_code_ea5e6c73c1334ef098e6c381b6802590-9"&gt;&lt;/a&gt;&lt;span class="s"&gt;&amp;lt;/locatingRules&amp;gt;&lt;/span&gt;
-&lt;a name="rest_code_ea5e6c73c1334ef098e6c381b6802590-10"&gt;&lt;/a&gt;&lt;span class="s"&gt;EOF&lt;/span&gt;
-&lt;/pre&gt;&lt;p&gt;Then I had my Makefile generate the schemas.xml file if it was missing.&lt;/p&gt;
-&lt;p&gt;It was more complicated that I'd have liked, but it does work.&lt;/p&gt;&lt;/div&gt;</description><category>DocBook 5</category><category>Emacs</category><category>Fedora</category><category>macOS</category><guid>https://tkurtbond.github.io/posts/2019/11/05/getting-nxml-mode-in-emacs-to-validate-docbook-5-documents/</guid><pubDate>Wed, 06 Nov 2019 01:32:24 GMT</pubDate></item></channel></rss>
+&lt;pre class="code bash"&gt;&lt;a name="rest_code_b5ae476a3f7d4dcca0d043ffe75451f8-1"&gt;&lt;/a&gt;&lt;span class="ch"&gt;#! /usr/bin/env bash&lt;/span&gt;
+&lt;a name="rest_code_b5ae476a3f7d4dcca0d043ffe75451f8-2"&gt;&lt;/a&gt;
+&lt;a name="rest_code_b5ae476a3f7d4dcca0d043ffe75451f8-3"&gt;&lt;/a&gt;&lt;span class="nv"&gt;schema_location&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;xmlcatalog &lt;span class="s2"&gt;""&lt;/span&gt; &lt;span class="s2"&gt;"http://docbook.org/xml/5.0/rng/docbookxi.rnc"&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;a name="rest_code_b5ae476a3f7d4dcca0d043ffe75451f8-4"&gt;&lt;/a&gt;    grep &lt;span class="s2"&gt;"^file:///"&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; sed &lt;span class="s1"&gt;'s#^file://##'&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;
+&lt;a name="rest_code_b5ae476a3f7d4dcca0d043ffe75451f8-5"&gt;&lt;/a&gt;
+&lt;a name="rest_code_b5ae476a3f7d4dcca0d043ffe75451f8-6"&gt;&lt;/a&gt;cat &amp;gt;schemas.xml &lt;span class="s"&gt;&amp;lt;&amp;lt;EOF&lt;/span&gt;
+&lt;a name="rest_code_b5ae476a3f7d4dcca0d043ffe75451f8-7"&gt;&lt;/a&gt;&lt;span class="s"&gt;&amp;lt;locatingRules xmlns="http://thaiopensource.com/ns/locating-rules/1.0"&amp;gt;&lt;/span&gt;
+&lt;a name="rest_code_b5ae476a3f7d4dcca0d043ffe75451f8-8"&gt;&lt;/a&gt;&lt;span class="s"&gt;&amp;lt;namespace ns="http://docbook.org/ns/docbook" uri="$schema_location"/&amp;gt;&lt;/span&gt;
+&lt;a name="rest_code_b5ae476a3f7d4dcca0d043ffe75451f8-9"&gt;&lt;/a&gt;&lt;span class="s"&gt;&amp;lt;/locatingRules&amp;gt;&lt;/span&gt;
+&lt;a name="rest_code_b5ae476a3f7d4dcca0d043ffe75451f8-10"&gt;&lt;/a&gt;&lt;span class="s"&gt;EOF&lt;/span&gt;
+&lt;/pre&gt;&lt;p&gt;Then I had my Makefile generate the &lt;code class="docutils literal"&gt;schemas.xml&lt;/code&gt; file if it was missing.&lt;/p&gt;
+&lt;p&gt;It was more complicated that I'd have liked, but it does work.&lt;/p&gt;&lt;/div&gt;</description><category>docbook 5</category><category>emacs</category><category>fedora</category><category>macos</category><guid>https://tkurtbond.github.io/posts/2019/11/05/getting-nxml-mode-in-emacs-to-validate-docbook-5-documents/</guid><pubDate>Wed, 06 Nov 2019 01:32:24 GMT</pubDate></item><item><title>Delving Deeper Revisited</title><link>https://tkurtbond.github.io/posts/2015/12/14/delving-deeper-revisited/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;I ran across the current edition of &lt;a class="reference external" href="http://forum.immersiveink.com/viewtopic.php?f=15&amp;amp;t=113"&gt;Delving Deeper&lt;/a&gt; on the web a
+few weeks ago, and it prompted me to reread it in some depth.  (It had
+been some time since I read my copy of the Delving Deeper &lt;a class="reference external" href="https://tkurtbond.github.io/posts/2013/03/21/my-delving-deeper-boxset-came-today/"&gt;box
+set&lt;/a&gt;.)  The current version of the Delving Deeper Reference Rules
+(V4) is available &lt;a class="reference external" href="http://ddo.immersiveink.com/dd.html"&gt;online&lt;/a&gt; in hypertext or for free download as three
+digest-sized booklets.&lt;/p&gt;
+&lt;p&gt;I've decided I like this rule set very much.  It really seems to
+reflect the rules of the original 3 Little Brown Books of Original D&amp;amp;D
+very well, and I can see that there are enough differences from, say,
+the Labyrinth Lord rules that I have been using, to make it a
+different experience.  I'm looking forward to trying it out.&lt;/p&gt;
+&lt;p&gt;It prompted me to sit down and draw out a dungeon level and fill it
+using the method in &lt;cite&gt;Delving Deeper&lt;/cite&gt;, which turned out to be good fun.&lt;/p&gt;&lt;/div&gt;</description><category>0e</category><category>d&amp;d</category><category>delving deeper</category><category>rpg</category><guid>https://tkurtbond.github.io/posts/2015/12/14/delving-deeper-revisited/</guid><pubDate>Mon, 14 Dec 2015 19:09:02 GMT</pubDate></item><item><title>POISE DMS-PLus</title><link>https://tkurtbond.github.io/posts/2014/11/23/poise-dms-plus/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;p&gt;I found a &lt;a class="reference external" href="http://www2.esp-tulsa.com/products.htm#dmsplus"&gt;web page&lt;/a&gt; that lists all the POISE products, now known as the
+Jenzabar PX Administrative Information Systems, including the POISE
+DMS-Plus.&lt;/p&gt;</description><category>dms-plus</category><category>jenzabar px</category><category>poise</category><guid>https://tkurtbond.github.io/posts/2014/11/23/poise-dms-plus/</guid><pubDate>Sun, 23 Nov 2014 06:48:58 GMT</pubDate></item><item><title>Dwimmermount arrived</title><link>https://tkurtbond.github.io/posts/2014/11/22/dwimmermount-arrived/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;p&gt;My physical copy of &lt;a class="reference external" href="https://www.kickstarter.com/projects/autarch/dwimmermount"&gt;Dwimmermount&lt;/a&gt; arrived today.  It's huge.  It looks good.&lt;/p&gt;</description><category>dwimmermount</category><category>rpg</category><guid>https://tkurtbond.github.io/posts/2014/11/22/dwimmermount-arrived/</guid><pubDate>Sun, 23 Nov 2014 01:47:13 GMT</pubDate></item><item><title>“Footsteps of the Fallen” comes to an end</title><link>https://tkurtbond.github.io/posts/2014/11/11/footsteps-of-the-fallen-comes-to-an-end/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;div class="section" id="attending"&gt;
+&lt;h2&gt;Attending&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;p&gt;M.A.H. — the DM&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;C.A.H. — Bulwark, a warforged&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;T.K.B. — Mord, an orc rogue&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;B.McC. — Vex, a changeling wizard/necromancer&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="actual-play"&gt;
+&lt;h2&gt;Actual Play&lt;/h2&gt;
+&lt;p&gt;We played the last session of M.A.H.'s “Footsteps of the Fallen”
+campaign, and were successful in eliminating the Mourning!  In mass
+battle we defeated the army of the Lord of the Blades.  Afterward we
+killed the Lord of the Blades, but the psychic purple creature who
+turned out to be behind it all escaped.  We're left with a bunch of
+psychically active purple glass that can be mined and turned into
+psychically active artifacts.&lt;/p&gt;
+&lt;p&gt;This was probably the 33rd game session we'd played, and we'd been
+playing since the first session on 2013-02-27.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="aftermath"&gt;
+&lt;h2&gt;Aftermath&lt;/h2&gt;
+&lt;p&gt;We got +5500 XP.&lt;/p&gt;
+&lt;/div&gt;&lt;/div&gt;</description><category>4e</category><category>d&amp;d</category><category>eberron</category><category>rpg</category><guid>https://tkurtbond.github.io/posts/2014/11/11/footsteps-of-the-fallen-comes-to-an-end/</guid><pubDate>Tue, 11 Nov 2014 05:00:00 GMT</pubDate></item><item><title>T.A.'s PotSM: The Scarlet Rose</title><link>https://tkurtbond.github.io/posts/2014/11/08/t.a.s-potsm-the-scarlet-rose/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;div class="admonition admonition-spoilers"&gt;
+&lt;p class="admonition-title"&gt;Spoilers!&lt;/p&gt;
+&lt;p&gt;We played “The Scarlet Rose”, an adventure from off the net, so if
+you haven't played that you might want to skip this entry.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="attending"&gt;
+&lt;h2&gt;Attending&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;p&gt;T.A. — GameMaster&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;T.K.B. — Capt. Jack Savage, Rowena Blackwood&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="actual-play"&gt;
+&lt;h2&gt;Actual Play&lt;/h2&gt;
+&lt;p&gt;Heard rumors of Cutthroat Henry Hobbs' treasure; key under Santa
+Domingo's Lion's Gate (St. Leon's church).  Go there.  Try to climb
+down well in church.  Rowena falls, but quietly.  Find box with sand
+casting of key with the number 4 on the handle.  Took it to a
+blacksmith, who recognizes it as a key from a gold collection site
+from mines of Santa Domingo — he warns us that the spirits of natives
+who died in the mines infest them to this day.  11$ to make the key.
+Can't find any way to protect us from the spirits. Bought Lantern and
+Bullseye Lantern and 6 pints of oil for 89$.  Went to mines.  5 main
+passages.  Some men came out of one of the other passages.  Their
+leader is Catfish Carlos Peña, and they say they can't let us get away
+knowing about them.  We fire and kill Peña and others flee.  Number 4
+area opens to our key.  Only thing of interest is the Shipping
+Security Log.  The 13th shipment lists Robyn H Besh (an anagram for
+Henry Hobbs) is in charge.  He must have changed the log and took
+command of the ship to took it to Santiago (destination listed on the
+log).&lt;/p&gt;
+&lt;p&gt;Jack has a one-masted sloop with 4 crew.  On the 3rd day one of the
+crew sees a ship; 2 days later another crew member sees it.  We've
+also been having bad luck.  We reach Santiago.  Lots of taverns to
+investigate.  We find an old man, Smiling Jack, who sells us for 5$
+the information that William Wilks sailed with Besh, boasted of
+Spanish treasure, but lost money and couldn't pay.  Smiling Jack leads
+us to the gambling house wher Wilks, known as Whistling Willy, is
+playing.  He's about to be shot.  Captain Jack Savage walks up to the
+shooter and shoots him first, killing him.  His friends weren't
+happy.  We kill 3 more, and 1 runs.  Question Whistling Willy.
+Cutthroat double-crossed his crew.  Willy had a pine box Besh gave him
+that turned out to have a false-bottomed, with a treasure map.  It
+looks like Besh hid the treasure on the Isle of Pines.  We head
+there.  A day's trek inland.  Come to the location where think
+Hobbs/Besh buried the treasure.  Find large pine with H.H. and an
+arrow pointing down carved on it, but it's surrounded by fire ants!
+Drove the ants out with burning oil.  Takes 3 hours to dig down to 6
+large chests with 5000$ each.  Took us several days to transfer the
+chests to the ship.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="aftermath"&gt;
+&lt;h2&gt;Aftermath&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;+5 XP.&lt;/strong&gt;&lt;/p&gt;
+&lt;/div&gt;&lt;/div&gt;</description><category>potsm</category><category>rpg</category><category>savage worlds</category><guid>https://tkurtbond.github.io/posts/2014/11/08/t.a.s-potsm-the-scarlet-rose/</guid><pubDate>Sat, 08 Nov 2014 05:00:00 GMT</pubDate></item><item><title>Béthorm: The Plane of Tékumel</title><link>https://tkurtbond.github.io/posts/2014/11/06/bthorm-the-plane-of-tkumel/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;p&gt;My physical copy of &lt;cite&gt;Béthorm: The Plane of Tékumel&lt;/cite&gt; arrived in the
+mail today.  It looks good to my quick scan.&lt;/p&gt;</description><category>rpg</category><category>tekumel</category><guid>https://tkurtbond.github.io/posts/2014/11/06/bthorm-the-plane-of-tkumel/</guid><pubDate>Thu, 06 Nov 2014 23:45:36 GMT</pubDate></item><item><title>Converting my old log entries to blog entries</title><link>https://tkurtbond.github.io/posts/2014/11/04/convert-my-old-log-entries-to-blog-entries/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;I converted my old log entries, which originated from my original
+Docbook-based website, and were presently part of my static
+Sphinx-based website, over to my current PyBlosxom blog tonight,
+using the following script:&lt;/p&gt;
+&lt;pre class="code text"&gt;&lt;a name="rest_code_8ff9061334cc4998aea68f8086ee8db6-1"&gt;&lt;/a&gt;#! /usr/bin/env bash
+&lt;a name="rest_code_8ff9061334cc4998aea68f8086ee8db6-2"&gt;&lt;/a&gt;find 200? -type f ! -name \*~ ! -name \*-idx-*.rst |
+&lt;a name="rest_code_8ff9061334cc4998aea68f8086ee8db6-3"&gt;&lt;/a&gt;while read filename
+&lt;a name="rest_code_8ff9061334cc4998aea68f8086ee8db6-4"&gt;&lt;/a&gt;do
+&lt;a name="rest_code_8ff9061334cc4998aea68f8086ee8db6-5"&gt;&lt;/a&gt;    newname="$(echo $filename | sed 's#/#-#g')"
+&lt;a name="rest_code_8ff9061334cc4998aea68f8086ee8db6-6"&gt;&lt;/a&gt;    date="$(basename $newname .rst)"
+&lt;a name="rest_code_8ff9061334cc4998aea68f8086ee8db6-7"&gt;&lt;/a&gt;    (echo $date; echo "#published $date 00:00:00"; echo "#tags Old Blog";
+&lt;a name="rest_code_8ff9061334cc4998aea68f8086ee8db6-8"&gt;&lt;/a&gt;        cat $filename) &amp;gt;/home/tkb/myblog/entries/oldblog/$newname
+&lt;a name="rest_code_8ff9061334cc4998aea68f8086ee8db6-9"&gt;&lt;/a&gt;done
+&lt;/pre&gt;&lt;p&gt;I'll have to go through and fix uses of Sphinx-specific RST
+extensions, and I'll probably add real entry titles as I do so; in the
+meanwhile, if the blog entry title is a date I haven't updated the
+entry.  I think this was pretty good for a ½ hour's work.&lt;/p&gt;&lt;/div&gt;</description><category>old blog</category><guid>https://tkurtbond.github.io/posts/2014/11/04/convert-my-old-log-entries-to-blog-entries/</guid><pubDate>Tue, 04 Nov 2014 05:31:38 GMT</pubDate></item><item><title>T.A.'s PotSM: The Lady's Favor</title><link>https://tkurtbond.github.io/posts/2014/11/01/t.a.s-potsm-the-ladys-favor/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;div class="admonition admonition-spoilers"&gt;
+&lt;p class="admonition-title"&gt;Spoilers!&lt;/p&gt;
+&lt;p&gt;We played “The Lady's Favor”, the adventure from the back of the
+&lt;cite&gt;Pirates of the Spanish Main&lt;/cite&gt; book, so if you haven't played that
+you might want to skip this entry.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="attending"&gt;
+&lt;h2&gt;Attending&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;p&gt;T.A. — GameMaster&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;T.K.B. — Capt. Jack Savage, Rowena Blackwood&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="actual-play"&gt;
+&lt;h2&gt;Actual Play&lt;/h2&gt;
+&lt;p&gt;The PCs rescued Virginia Cotton from rowdy pirates.  (+1 Fame) They
+escorted her to the Royal Crown Tavern.  Her contact, Knox (???), told
+her that her dad Jebidiah was a pirate, to her shock, and that he'd
+buried a pirate treasure then got captured, and is being held captive
+at the house of Baron Pettigrew.  When Virginia tells him that she
+knows nothing of the treasure, he grabs her and tells his two thugs to
+attack.  We manage to down Knox and one of the thugs and the other
+flees.  We take their weapons and leave.&lt;/p&gt;
+&lt;p&gt;We decide to sneak into Pettigrew's mansion.  Virginia suggests we
+have our ship ready to go, so Capt. Jack gives the orders.  We went to
+the mansion after dark and snuck up to the back door.  Sneak into the
+kitchen, dining room, through the hall past a maid, and found a
+sleeping guard.  We tried to knock the guard out and failed, but
+intimidated him and tied him up, got the keys from him, opened the
+door and found Jebidiah.  We untied Jebidiah and snuck out with him.&lt;/p&gt;
+&lt;p&gt;We agreed to split the treasure and headed off in the ship.  Jack
+healed up.  We were trailed by another ship, but managed to give them
+the slip.  We arrived at the island, but had to ride out a storm
+offshore.  Then we took a longboat ashore, and dug up the treasure.
+There were five chests, each containing 500$.  We distributed the
+treasure, one chest each to Jebidiah, Virginia, our crew, Rowena, and
+Capt. Jack.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="aftermath"&gt;
+&lt;h2&gt;Aftermath&lt;/h2&gt;
+&lt;p&gt;+5 XP.&lt;/p&gt;
+&lt;/div&gt;&lt;/div&gt;</description><category>potsm</category><category>rpg</category><category>savage worlds</category><guid>https://tkurtbond.github.io/posts/2014/11/01/t.a.s-potsm-the-ladys-favor/</guid><pubDate>Sat, 01 Nov 2014 22:00:00 GMT</pubDate></item><item><title>AFF1e: Dungeoneer Adventure II: Revenge of the Sorcerer, Part 2</title><link>https://tkurtbond.github.io/posts/2014/11/01/aff1e-dungeoneer-adventure-ii-revenge-of-the-sorcerer-part-2/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;div class="admonition admonition-spoilers"&gt;
+&lt;p class="admonition-title"&gt;Spoilers!&lt;/p&gt;
+&lt;p&gt;We're playing “Dungeoneer Adventure II: Revenge of the Sorcerer”,
+from &lt;cite&gt;Dungeoneer&lt;/cite&gt;, so if you haven't played that you might want to
+skip this entry.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="attending"&gt;
+&lt;h2&gt;Attending&lt;/h2&gt;
+&lt;p&gt;Clockwise, starting with the Director:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;p&gt;T.K.B. — Director&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;T.A. — Grimbold Tornhelm, Alexa Wolfrica (L.B. wasn't here)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;M.A. — Gordo Brondwyn, Aspen Darkfire (E.A. wasn't here)&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="actual-play"&gt;
+&lt;h2&gt;Actual Play&lt;/h2&gt;
+&lt;p&gt;They explored the tunnel the centipede came out of, and took the 5
+tridents in the nest at the end, in want of some better loot.  Headed
+back to the main tunnel and continued on.  They were soon captured by
+the Fish People, who tied them up and marched them off toward a
+wizard!  After a while they came to an open area, held up by pillars,
+and the Fish Men seemed to get very nervous.  A white light appeared
+in the open area, and the Fish Men all screamed and ran off, dropping
+the characters' possessions.&lt;/p&gt;
+&lt;p&gt;The white light gradually resolved into a ghost, who seemed pleasant
+enough, and introduced himself as Sargon.  Eventually the PCs made a
+deal with Sargon to bring him a magic Crystal of Power that the Fish
+Men were keeping in the Temple of Hydana, in return for which Sargon
+would tell them how to defeat Xorton Throg.  They snuck into the
+temple through a secret door Sargon told them about and killed the
+Fish Men priest who was there before he could alert the guards.  They
+took the Crystal and a magic sword that was also on the altar.  They
+searched the room and found a secret door that lead to stairs that
+lead up to a tavern. They found out it was the Mermaid Tavern, and
+then escaped back down into the cellar followed by a bouncer, but
+escaped down the hidden trap door before he reached the cellar, and he
+didn't follow them.  They continued down the stairs to the temple.  They
+returned to Sargon.&lt;/p&gt;
+&lt;p&gt;The Crystal returned Sargon to life and he told them how to find and
+defeat Xorton Throg by getting him to throw a powerful spell at them and
+reverse it onto him by bringing out the crystal.  He also restored the
+magic sword to good condition.  They followed his advice and killed
+Xorton Throg, after killing some skeletons and a skeletal
+tyransaurous. They got 300 GP each loot and 4 swords each from the
+remains of the skeleton army.&lt;/p&gt;
+&lt;p&gt;They returned to Nicodemus and gave the Crystal to him, then slipped
+out of Port Blacksand and back to Salamonis, where the king rewarded
+them with 500 GP each.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="aftermath"&gt;
+&lt;h2&gt;Aftermath&lt;/h2&gt;
+&lt;p&gt;They each got 3 XP.&lt;/p&gt;
+&lt;/div&gt;&lt;/div&gt;</description><category>advanced fighting fantasy</category><category>aff1e</category><category>fighting fantasy</category><category>rpg</category><guid>https://tkurtbond.github.io/posts/2014/11/01/aff1e-dungeoneer-adventure-ii-revenge-of-the-sorcerer-part-2/</guid><pubDate>Sat, 01 Nov 2014 20:00:00 GMT</pubDate></item></channel></rss>

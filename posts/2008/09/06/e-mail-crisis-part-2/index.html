@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>E-mail Crisis, part 2 | Lacking Natural Simplicity</title>
+<link href="../../../../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../../../../rss.xml">
+<link rel="canonical" href="https://tkurtbond.github.io/posts/2008/09/06/e-mail-crisis-part-2/">
+<!--[if lt IE 9]><script src="../../../../../assets/js/html5.js"></script><![endif]--><meta name="author" content="T. Kurt Bond">
+<link rel="prev" href="../../04/open-source-and-long-term-development/" title="Open Source and Long-term Development" type="text/html">
+<link rel="next" href="../more-blog-software-munging/" title="More blog software munging" type="text/html">
+<meta property="og:site_name" content="Lacking Natural Simplicity">
+<meta property="og:title" content="E-mail Crisis, part 2">
+<meta property="og:url" content="https://tkurtbond.github.io/posts/2008/09/06/e-mail-crisis-part-2/">
+<meta property="og:description" content="I'm still having my personal e-mail crisis.
+I said, earlier,
+
+Anyway, I've finally come up with a way to switch back and forth
+between Gnus, Mew, and MH-E while keeping up with my current
+e-mail[…].
+
+">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2008-09-06T02:24:16-05:00">
+<meta property="article:tag" content="computer">
+<meta property="article:tag" content="e-mail">
+<meta property="article:tag" content="emacs">
+<meta property="article:tag" content="tools">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<div class="blog-masthead">
+    <div class="container">
+<!-- This keeps the margins nice -->
+        <nav class="blog-nav" role="navigation"><a href="../../../../../index.html" class="blog-nav-item">Home</a>
+            <a href="../../../../../archive.html" class="blog-nav-item">Archives</a>
+            <a href="../../../../../categories/index.html" class="blog-nav-item">Tags</a>
+            <a href="../../../../../rss.xml" class="blog-nav-item">RSS feed</a>
+
+            
+
+                
+                
+                    
+    <a href="index.rst" class="blog-nav-item blog-nav-item-aside" id="sourcelink">Source</a>
+
+                
+            
+        </nav>
+</div>
+<!-- /.container -->
+</div>
+<!-- End of Menubar -->
+
+<div class="container" id="content" role="main">
+    <div class="body-content">
+        <div class="blog-header">
+            <h1 class="blog-title">
+                <a href="https://tkurtbond.github.io/">
+
+                    <span id="blog-title">Lacking Natural Simplicity</span>
+                </a>
+            </h1>
+            <p class="lead blog-description">Random musings on code and tabletop games.</p>
+            
+        </div>
+        <!--Body content-->
+        <div class="row">
+            <div class="col-sm-8 blog-main">
+                
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h2 class="p-name entry-title blog-post-title" itemprop="headline name"><a href="." class="u-url">E-mail Crisis, part 2</a></h2>
+
+        <div class="metadata blog-post-meta">
+            <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
+            <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2008-09-06T02:24:16-05:00" itemprop="datePublished" title="2008-09-06 02:24">2008-09-06 02:24</time></a></p>
+            
+        <p class="sourceline"><a href="index.rst" id="sourcelink">Source</a></p>
+
+        </div>
+        
+
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<p>I'm still having my personal e-mail crisis.</p>
+<p>I said, <a class="reference external" href="../../../08/05/e-mail-crisis/">earlier</a>,</p>
+<blockquote>
+<p>Anyway, I've finally come up with a way to switch back and forth
+between Gnus, Mew, and MH-E while keeping up with my current
+e-mail[…].</p>
+</blockquote>
+<p>That was a bit premature.  What I should have said was that I'd found
+a way to make sure I didn't lose any e-mail permanently when switching
+back and fourth between e-mail clients.  I'm using <a class="reference external" href="http://www.courier-mta.org/maildrop/">maildrop</a> to copy
+my incoming mail to the normal mail spool file and to a separate
+archive mail file for each day. So, for instance, all the mail I got
+on 2008/09/05 is archived in the mbox-format file
+<code class="docutils literal"><span class="pre">~/Inboxes/2008-09-05.inbox</span></code>.</p>
+<p>I also said, <a class="reference external" href="../../../08/05/e-mail-crisis/">earlier</a></p>
+<blockquote>
+<p><a class="reference external" href="http://www.gohome.org/wl/">Wanderlust</a> seems moribund.</p>
+</blockquote>
+<p>It turns out that Wanderlust only <em>seems</em> moribund, especially to those
+who only speak English.  If you check the mailing lists there's still
+some activity, and if you poke around on the Wanderlust site you can
+<a class="reference external" href="ftp://ftp.jpl.org/wl/snapshots/">find</a> a newer snapshot.  Unfortunately, Wanderlust uses several other
+libraries (<a class="reference external" href="http://www.kanji.zinbun.kyoto-u.ac.jp/~tomo/elisp/APEL/">APEL</a>, <a class="reference external" href="http://www.kanji.zinbun.kyoto-u.ac.jp/~tomo/elisp/FLIM/index.html.ja.iso-2022-jp">FLIM</a>, and <a class="reference external" href="http://www.kanji.zinbun.kyoto-u.ac.jp/~tomo/elisp/SEMI/index.html.ja.iso-2022-jp">SEMI</a>) and these are also hard to find
+much information about if you only speak English.  So I've been
+fiddling around with it, and have figured out enough to get it working
+for me.  (Thank goodness for the <a class="reference external" href="http://www.freebsd.org/">FreeBSD</a> <a class="reference external" href="http://www.freebsd.org/ports/index.html">ports</a> system.)</p>
+<p>Oddly enough, although Wanderlust mostly understands MH-format
+mailboxes, there seems to be no built-in way to get it to read mail
+out of a standard mbox-format spool file and into your inbox.  I guess
+the assumption is that if you're not using IMAP then you've probably
+moved on to using a maildir-format spool file, since they're supposed
+to be more reliable.</p>
+<p>Well, I'm not.  I'm trying to compare Wanderlust, <a class="reference external" href="http://mh-e.sourceforge.net/">MH-E</a>, and <a class="reference external" href="http://www.mew.org/">Mew</a>, and
+MH-E doesn't understand maildir-format mailboxes, so I have to stick
+to mbox-format.  (Ok, I suppose I could mung things so MH-E uses Mew's
+<code class="docutils literal">incm</code> to read the spool file.)</p>
+<p>Moreover, I've got a fairly odd pattern of e-mail folders.  For years
+in <a class="reference external" href="http://www.nongnu.org/viewmail/">VM</a> I've saved my e-mail in in separate folders with names like
+<code class="docutils literal">2008/08/users.bond_tk</code> or <code class="docutils literal">2008/08/list.clisp</code>, with VM
+defaulting the folder names automatically.  I think I've mostly
+figured out how to do this in MH-E, Mew, and Wanderlust, and I've
+mostly figured out how to get the three of them to coexist peacefully,
+so I can really give them a good comparison.  We'll see how it goes.</p>
+<p>Like many Emacs subsystems, the Emacs e-mail clients tend to use modes
+with single-character commands for many things, and most the commands
+are just regular keys, not key combinations.  I've gotten so used to
+this that I find using e-mail clients that require mousing to be
+extremely painful.  Moreover, I've become very accustomed to being
+able to customize my e-mail client extensively using Lisp.</p>
+<p>What it all boils down to is that I'm not happy unless my e-mail
+client is part of Emacs.</p>
+</div>
+    </div>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../../../../../categories/computer/" rel="tag">computer</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/e-mail/" rel="tag">e-mail</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/emacs/" rel="tag">emacs</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/tools/" rel="tag">tools</a></li>
+        </ul>
+<ul class="pager hidden-print">
+<li class="previous">
+                <a href="../../04/open-source-and-long-term-development/" rel="prev" title="Open Source and Long-term Development">Previous post</a>
+            </li>
+            <li class="next">
+                <a href="../more-blog-software-munging/" rel="next" title="More blog software munging">Next post</a>
+            </li>
+        </ul></nav></aside></article>
+</div>
+            <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+                    <div class="sidebar-module sidebar-module-inset">
+      <h4>About</h4>
+      <p>Lacking Natural Simplicity is one definition of sophisticated.  
+         This blog chronicles my journey through our at times too complicated 
+         and sophisticated world. </p>
+    </div>
+    <div class="sidebar-module">
+      <h4>Links</h4>
+      <ol class="list-unstyled">
+<li><a href="../../../../../pages/about-the-blog/index.html">About the Blog</a></li>
+        <li><a href="../../../../../pages/colophon/index.html">Colophon</a></li>
+        <li><a href="../../../../../pages/pages/index.html">Pages</a></li>
+      </ol>
+</div>
+    
+            </div>
+        <!--End of body content-->
+        </div>
+    </div>
+</div>
+
+<footer class="blog-footer" id="footer">
+    Contents © 2019         <a href="mailto:tkurtbond@gmail.com">T. Kurt Bond</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+    
+</footer><script src="../../../../../assets/js/all-nocdn.js"></script><!-- fancy dates --><script>
+    moment.locale("en");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates --><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element) {
+            return element.getElementsByTagName('img')[0].alt;
+    }});
+    </script>
+</body>
+</html>

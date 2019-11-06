@@ -1,34 +1,172 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity (Posts about Emacs)</title><link>https://tkurtbond.github.io/</link><description></description><atom:link href="https://tkurtbond.github.io/categories/emacs.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2019 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Wed, 06 Nov 2019 01:52:59 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Getting nxml-mode in emacs to validate DocBook 5 documents</title><link>https://tkurtbond.github.io/posts/2019/11/05/getting-nxml-mode-in-emacs-to-validate-docbook-5-documents/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;I have occasion to edit and build a DocBook 5 document under both
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity (Posts about emacs)</title><link>https://tkurtbond.github.io/</link><description></description><atom:link href="https://tkurtbond.github.io/categories/emacs.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2019 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Wed, 06 Nov 2019 16:12:05 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Getting nxml-mode in emacs to validate DocBook 5 documents</title><link>https://tkurtbond.github.io/posts/2019/11/05/getting-nxml-mode-in-emacs-to-validate-docbook-5-documents/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;I have occasion to edit and build a DocBook 5 document under both
 macOS Catalina and Fedora 30.&lt;/p&gt;
 &lt;p&gt;On macOS I've used homebrew to install the docbook, docbook-xsl, and
 libxslt (for xsltproc), and fop formulas, and changed my PATH to
 include the directory where brew installed &lt;code class="docutils literal"&gt;xsltproc&lt;/code&gt;. which will then
 use &lt;code class="docutils literal"&gt;/usr/local/etc/xml/catalog&lt;/code&gt; to find files, in which brew installed
 links to the docbook schemas and xsl stylesheets.&lt;/p&gt;
-&lt;p&gt;On Fedora I've used dnf to install the docbook5-schemas,
+&lt;p&gt;On Fedora I've used &lt;code class="docutils literal"&gt;dnf&lt;/code&gt; to install the docbook5-schemas,
 docbook5-style-xsl, and fop packages.&lt;/p&gt;
 &lt;p&gt;The document builds fine on both OSes, but Emacs doesn't validate
 properly against the DocBook RELAX NG schemas, because the &lt;code class="docutils literal"&gt;*.rnc&lt;/code&gt; files
 supplied with Emacs (26.3 on macOS, 26.2 on Fedora) are for DocBook 4.
-However, Emacs will look at a schemas.xml file in the same directory
+However, Emacs will look at a &lt;code class="docutils literal"&gt;schemas.xml&lt;/code&gt; file in the same directory
 as the file you are editing to find the &lt;code class="docutils literal"&gt;*.rnc&lt;/code&gt; files.  Unfortunately,
 of course, they have different locations on macOS with brew and on
 Fedora.&lt;/p&gt;
 &lt;p&gt;So I wrote a script, generate-schemas-xml, in bash using xmlcatalog to
 look up the translation for the URI for the RELAX NG compiled schema
-file and generate the schemas.xml file and substitute the translation
+file and generate the &lt;code class="docutils literal"&gt;schemas.xml&lt;/code&gt; file and substitute the translation
 into the file:&lt;/p&gt;
 &lt;p&gt;&lt;a class="reference external" href="https://tkurtbond.github.io/listings/generate-schemas-xml.html"&gt;generate-schemas-xml&lt;/a&gt;  &lt;a class="reference external" href="https://tkurtbond.github.io/listings/generate-schemas-xml"&gt;(Source)&lt;/a&gt;&lt;/p&gt;
-&lt;pre class="code bash"&gt;&lt;a name="rest_code_ea5e6c73c1334ef098e6c381b6802590-1"&gt;&lt;/a&gt;&lt;span class="ch"&gt;#! /usr/bin/env bash&lt;/span&gt;
-&lt;a name="rest_code_ea5e6c73c1334ef098e6c381b6802590-2"&gt;&lt;/a&gt;
-&lt;a name="rest_code_ea5e6c73c1334ef098e6c381b6802590-3"&gt;&lt;/a&gt;&lt;span class="nv"&gt;schema_location&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;xmlcatalog &lt;span class="s2"&gt;""&lt;/span&gt; &lt;span class="s2"&gt;"http://docbook.org/xml/5.0/rng/docbookxi.rnc"&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;
-&lt;a name="rest_code_ea5e6c73c1334ef098e6c381b6802590-4"&gt;&lt;/a&gt;    grep &lt;span class="s2"&gt;"^file:///"&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; sed &lt;span class="s1"&gt;'s#^file://##'&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;
-&lt;a name="rest_code_ea5e6c73c1334ef098e6c381b6802590-5"&gt;&lt;/a&gt;
-&lt;a name="rest_code_ea5e6c73c1334ef098e6c381b6802590-6"&gt;&lt;/a&gt;cat &amp;gt;schemas.xml &lt;span class="s"&gt;&amp;lt;&amp;lt;EOF&lt;/span&gt;
-&lt;a name="rest_code_ea5e6c73c1334ef098e6c381b6802590-7"&gt;&lt;/a&gt;&lt;span class="s"&gt;&amp;lt;locatingRules xmlns="http://thaiopensource.com/ns/locating-rules/1.0"&amp;gt;&lt;/span&gt;
-&lt;a name="rest_code_ea5e6c73c1334ef098e6c381b6802590-8"&gt;&lt;/a&gt;&lt;span class="s"&gt;&amp;lt;namespace ns="http://docbook.org/ns/docbook" uri="$schema_location"/&amp;gt;&lt;/span&gt;
-&lt;a name="rest_code_ea5e6c73c1334ef098e6c381b6802590-9"&gt;&lt;/a&gt;&lt;span class="s"&gt;&amp;lt;/locatingRules&amp;gt;&lt;/span&gt;
-&lt;a name="rest_code_ea5e6c73c1334ef098e6c381b6802590-10"&gt;&lt;/a&gt;&lt;span class="s"&gt;EOF&lt;/span&gt;
-&lt;/pre&gt;&lt;p&gt;Then I had my Makefile generate the schemas.xml file if it was missing.&lt;/p&gt;
-&lt;p&gt;It was more complicated that I'd have liked, but it does work.&lt;/p&gt;&lt;/div&gt;</description><category>DocBook 5</category><category>Emacs</category><category>Fedora</category><category>macOS</category><guid>https://tkurtbond.github.io/posts/2019/11/05/getting-nxml-mode-in-emacs-to-validate-docbook-5-documents/</guid><pubDate>Wed, 06 Nov 2019 01:32:24 GMT</pubDate></item></channel></rss>
+&lt;pre class="code bash"&gt;&lt;a name="rest_code_b5ae476a3f7d4dcca0d043ffe75451f8-1"&gt;&lt;/a&gt;&lt;span class="ch"&gt;#! /usr/bin/env bash&lt;/span&gt;
+&lt;a name="rest_code_b5ae476a3f7d4dcca0d043ffe75451f8-2"&gt;&lt;/a&gt;
+&lt;a name="rest_code_b5ae476a3f7d4dcca0d043ffe75451f8-3"&gt;&lt;/a&gt;&lt;span class="nv"&gt;schema_location&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;xmlcatalog &lt;span class="s2"&gt;""&lt;/span&gt; &lt;span class="s2"&gt;"http://docbook.org/xml/5.0/rng/docbookxi.rnc"&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;a name="rest_code_b5ae476a3f7d4dcca0d043ffe75451f8-4"&gt;&lt;/a&gt;    grep &lt;span class="s2"&gt;"^file:///"&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; sed &lt;span class="s1"&gt;'s#^file://##'&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;
+&lt;a name="rest_code_b5ae476a3f7d4dcca0d043ffe75451f8-5"&gt;&lt;/a&gt;
+&lt;a name="rest_code_b5ae476a3f7d4dcca0d043ffe75451f8-6"&gt;&lt;/a&gt;cat &amp;gt;schemas.xml &lt;span class="s"&gt;&amp;lt;&amp;lt;EOF&lt;/span&gt;
+&lt;a name="rest_code_b5ae476a3f7d4dcca0d043ffe75451f8-7"&gt;&lt;/a&gt;&lt;span class="s"&gt;&amp;lt;locatingRules xmlns="http://thaiopensource.com/ns/locating-rules/1.0"&amp;gt;&lt;/span&gt;
+&lt;a name="rest_code_b5ae476a3f7d4dcca0d043ffe75451f8-8"&gt;&lt;/a&gt;&lt;span class="s"&gt;&amp;lt;namespace ns="http://docbook.org/ns/docbook" uri="$schema_location"/&amp;gt;&lt;/span&gt;
+&lt;a name="rest_code_b5ae476a3f7d4dcca0d043ffe75451f8-9"&gt;&lt;/a&gt;&lt;span class="s"&gt;&amp;lt;/locatingRules&amp;gt;&lt;/span&gt;
+&lt;a name="rest_code_b5ae476a3f7d4dcca0d043ffe75451f8-10"&gt;&lt;/a&gt;&lt;span class="s"&gt;EOF&lt;/span&gt;
+&lt;/pre&gt;&lt;p&gt;Then I had my Makefile generate the &lt;code class="docutils literal"&gt;schemas.xml&lt;/code&gt; file if it was missing.&lt;/p&gt;
+&lt;p&gt;It was more complicated that I'd have liked, but it does work.&lt;/p&gt;&lt;/div&gt;</description><category>docbook 5</category><category>emacs</category><category>fedora</category><category>macos</category><guid>https://tkurtbond.github.io/posts/2019/11/05/getting-nxml-mode-in-emacs-to-validate-docbook-5-documents/</guid><pubDate>Wed, 06 Nov 2019 01:32:24 GMT</pubDate></item><item><title>Defining keys in the C-x 8 prefix keymap</title><link>https://tkurtbond.github.io/posts/2012/10/03/defining-keys-in-the-c-x-8-prefix-keymap/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;Yay!  I finally found it!&lt;/p&gt;
+&lt;p&gt;Suppose you hate typing “C-x 8 RET GREEK SMALL LETTER LAMBDA” to
+insert a lowercase lambda character in emacs (perhaps because you have
+a dull American keyboard and aren't very savvy to input methods).  You
+can add a key definition to the “C-x 8 prefix keymap”, say “gl”, so
+you can type “C-x 8 g l” and insert a lowercase lambda.&lt;/p&gt;
+&lt;p&gt;Here's how you might do it for “λ”, “Λ”, and “§”:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;(load-library "iso-transl.el")
+(iso-transl-define-keys '(("gl" . [?λ])   ; greek lowercase lambda
+                          ("gL" . [?Λ])   ; greek uppercase lambda
+                          ("ps" . [?§]))) ; punctuation SECTION SIGN&lt;/pre&gt;&lt;/div&gt;</description><category>emacs</category><category>emacs lisp</category><category>key translation</category><category>unicode</category><guid>https://tkurtbond.github.io/posts/2012/10/03/defining-keys-in-the-c-x-8-prefix-keymap/</guid><pubDate>Thu, 04 Oct 2012 04:54:40 GMT</pubDate></item><item><title>Multics Emacs programmed by secretaries</title><link>https://tkurtbond.github.io/posts/2012/06/15/multics-emacs-programmed-by-secretaries/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;RMS &lt;a class="reference external" href="http://www.gnu.org/gnu/rms-lisp.html"&gt;relates&lt;/a&gt; how programming Multics Emacs was so convenient that secretaries started to learn to use it:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;… The language that you build your extensions on shouldn't be
+thought of as a programming language in afterthought; it should be
+designed as a programming language. In fact, we discovered that
+the best programming language for that purpose was Lisp.&lt;/p&gt;
+&lt;p&gt;It was Bernie Greenberg, who discovered that it was (5). He wrote
+a version of Emacs in Multics MacLisp, and he wrote his commands
+in MacLisp in a straightforward fashion. The editor itself was
+written entirely in Lisp. Multics Emacs proved to be a great
+success — programming new editing commands was so convenient that
+even the secretaries in his office started learning how to use
+it. They used a manual someone had written which showed how to
+extend Emacs, but didn't say it was a programming. So the
+secretaries, who believed they couldn't do programming, weren't
+scared off. They read the manual, discovered they could do useful
+things and they learned to program.&lt;/p&gt;
+&lt;p&gt;So Bernie saw that an application — a program that does something
+useful for you — which has Lisp inside it and which you could
+extend by rewriting the Lisp programs, is actually a very good way
+for people to learn programming. It gives them a chance to write
+small programs that are useful for them, which in most arenas you
+can't possibly do. They can get encouragement for their own
+practical use — at the stage where it's the hardest — where they
+don't believe they can program, until they get to the point where
+they are programmers.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;!-- Wasn't troff also used by secretaries? --&gt;&lt;/div&gt;</description><category>emacs</category><category>lisp</category><category>programming</category><guid>https://tkurtbond.github.io/posts/2012/06/15/multics-emacs-programmed-by-secretaries/</guid><pubDate>Fri, 15 Jun 2012 14:10:09 GMT</pubDate></item><item><title>Emacs 23.1 and Wanderlust</title><link>https://tkurtbond.github.io/posts/2009/09/25/emacs-23.1-and-wanderlust/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;To get UTF-8 to work when sending drafted messages  in &lt;a class="reference external" href="http://www.gohome.org/wl/"&gt;Wanderlust&lt;/a&gt; with
+Emacs 23.1 I had to apply this &lt;a class="reference external" href="http://article.gmane.org/gmane.mail.wanderlust.general.japanese/5978"&gt;patch&lt;/a&gt; to FLIM.&lt;/p&gt;
+&lt;p&gt;I also checked out the wl-2_15_6-vtl branch in the wanderlust
+repository and the semi-1_14-vtl branch in the semi repository.
+(See &lt;a class="reference external" href="https://tkurtbond.github.io/posts/2009/09/02/wanderlust-apel-semi-and-flim-development/"&gt;repos&lt;/a&gt; for info about the repositories.)&lt;/p&gt;&lt;/div&gt;</description><category>emacs</category><category>wanderlust</category><guid>https://tkurtbond.github.io/posts/2009/09/25/emacs-23.1-and-wanderlust/</guid><pubDate>Fri, 25 Sep 2009 19:34:41 GMT</pubDate></item><item><title>Case-insenstive filename completion with bash and emacs</title><link>https://tkurtbond.github.io/posts/2009/04/24/case-insenstive-filename-completion-with-bash-and-emacs/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;It's strange, I know, that while I like case sensitive filenames, I
+don't actually want to be bothered matching the case exactly when I'm
+using tab completion.  Fortunately, &lt;span class="program"&gt;emacs&lt;/span&gt; and
+&lt;span class="program"&gt;bash&lt;/span&gt; both accommodate my whims.  For bash, add&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;code&gt;set completion-ignore-case on&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;to your &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;~/.inputrc&lt;/span&gt;&lt;/code&gt; file.  For emacs, add&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;code&gt;(read-file-name-completion-ignore-case t)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;to your emacs initialization files.  Of course, if want to get rid of
+all completion case sensitivity, you need&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;code&gt;(setq completion-ignore-case t)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;too.&lt;/p&gt;&lt;/div&gt;</description><category>bash</category><category>computer</category><category>emacs</category><guid>https://tkurtbond.github.io/posts/2009/04/24/case-insenstive-filename-completion-with-bash-and-emacs/</guid><pubDate>Fri, 24 Apr 2009 18:59:07 GMT</pubDate></item><item><title>Emacs and Cygwin python</title><link>https://tkurtbond.github.io/posts/2008/12/15/emacs-and-cygwin-python/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;If you happen to be using &lt;a class="reference external" href="http://www.gnu.org/software/emacs/windows/ntemacs.html"&gt;Windows Emacs&lt;/a&gt; and &lt;a class="reference external" href="http://www.cygwin.com/"&gt;Cygwin&lt;/a&gt; &lt;a class="reference external" href="http://www.python.org/"&gt;Python&lt;/a&gt; there's
+an annoying interaction where “M-x run-python” hangs.  The easiest way
+to fix it is to mount the directory where you have your emacs
+installation into the Cygwin file name structure.  For instance, I
+have my emacs installation in &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;C:\emacs\emacs-22.2&lt;/span&gt;&lt;/code&gt;, and in a
+cygwin shell I did &lt;code class="docutils literal"&gt;mount &lt;span class="pre"&gt;-b&lt;/span&gt; &lt;span class="pre"&gt;‘C:\emacs'&lt;/span&gt; /emacs&lt;/code&gt;, and now running the
+Cygwin python works.&lt;/p&gt;
+&lt;p&gt;The emacs function &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;run-python&lt;/span&gt;&lt;/code&gt; adds the emacs &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;data-directory&lt;/span&gt;&lt;/code&gt; to
+the &lt;code class="docutils literal"&gt;PYTHONPATH&lt;/code&gt; in the emacs &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;process-environment&lt;/span&gt;&lt;/code&gt; before running
+python; unfortunately, since this is the MS Windows emacs, its
+&lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;data-directory&lt;/span&gt;&lt;/code&gt; starts with a drive letter and a colon.  When the
+Cygwin python initializes &lt;code class="docutils literal"&gt;sys.path&lt;/code&gt; it splits &lt;code class="docutils literal"&gt;PYTHONPATH&lt;/code&gt; at the
+colons, which means &lt;code class="docutils literal"&gt;sys.path&lt;/code&gt; ends up with the drive letter as one
+component (usually interpreted as a relative path) and everything
+after the colon as another component.  It that's a valid Cygwin
+pathname for the Emacs data directory (which is what the above mount
+command did), things work (accidentally).&lt;/p&gt;&lt;/div&gt;</description><category>emacs</category><category>python</category><guid>https://tkurtbond.github.io/posts/2008/12/15/emacs-and-cygwin-python/</guid><pubDate>Mon, 15 Dec 2008 22:07:43 GMT</pubDate></item><item><title>Mousing in Emacs under Screen</title><link>https://tkurtbond.github.io/posts/2008/12/11/mousing-in-emacs-under-screen/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;p&gt;It &lt;a class="reference external" href="http://savannah.gnu.org/bugs/?14930"&gt;turns out&lt;/a&gt; that if you execute the command &lt;cite&gt;xterm-mouse-mode&lt;/cite&gt; (or
+evaluate &lt;cite&gt;(xterm-mouse-mode 1)&lt;/cite&gt; in your initialization file) when
+running &lt;a class="reference external" href="http://www.gnu.org/software/emacs/"&gt;Emacs&lt;/a&gt; under &lt;a class="reference external" href="http://www.gnu.org/software/screen/"&gt;Screen&lt;/a&gt; it allows “non-modified single clicks” to
+work.  Normal mouse functionality is still available by holding the
+Shift key while clicking.  I use the &lt;a class="reference external" href="http://www.chiark.greenend.org.uk/~sgtatham/putty/"&gt;PuTTY&lt;/a&gt; ssh client for remote
+access to various servers, and this works well Emacs in Screen under
+PuTTY, too.&lt;/p&gt;</description><category>computer</category><category>emacs</category><category>screen</category><category>tools</category><guid>https://tkurtbond.github.io/posts/2008/12/11/mousing-in-emacs-under-screen/</guid><pubDate>Thu, 11 Dec 2008 17:46:02 GMT</pubDate></item><item><title>E-mail Crisis, Part 4</title><link>https://tkurtbond.github.io/posts/2008/09/10/e-mail-crisis-part-4/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;Well, it looks like a leader is slowly emerging in my quest for an
+Emacs based mail reader: &lt;a class="reference external" href="http://www.gohome.org/wl/"&gt;Wanderlust&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;It handles MH- and Maildir-format mailboxes, UTF-8 in headers, has
+good facilities for reading and composing MIME messages, and I finally
+got it to work with Lotus Domino/Notes IMAP/SSL, amazingly.&lt;/p&gt;
+&lt;p&gt;Moreover, it looks like I'm probably going to switch to using a
+Maildir-format mailbox, which will work well with my use of &lt;a class="reference external" href="http://www.cis.upenn.edu/~bcpierce/unison/"&gt;Unison&lt;/a&gt;:
+MH-format mailboxes' use of plain numbers for message IDs/filenames
+(which can change a lot) makes things a little more confusing when
+syncing mailboxes with Unison.&lt;/p&gt;
+&lt;p&gt;Moving away from MH-format mailboxes is a bit of a shame, since it
+means that I'll be losing the ability to use the MH command line
+programs for accessing my e-mail.  I've used MH in the past, and have
+always liked the command line access it gives you.  Ah well.  I wish
+mdmh had advanced further.&lt;/p&gt;&lt;/div&gt;</description><category>e-mail</category><category>emacs</category><guid>https://tkurtbond.github.io/posts/2008/09/10/e-mail-crisis-part-4/</guid><pubDate>Wed, 10 Sep 2008 06:05:39 GMT</pubDate></item><item><title>E-mail Crisis, part 2</title><link>https://tkurtbond.github.io/posts/2008/09/06/e-mail-crisis-part-2/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;I'm still having my personal e-mail crisis.&lt;/p&gt;
+&lt;p&gt;I said, &lt;a class="reference external" href="https://tkurtbond.github.io/posts/2008/08/05/e-mail-crisis/"&gt;earlier&lt;/a&gt;,&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Anyway, I've finally come up with a way to switch back and forth
+between Gnus, Mew, and MH-E while keeping up with my current
+e-mail[…].&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;That was a bit premature.  What I should have said was that I'd found
+a way to make sure I didn't lose any e-mail permanently when switching
+back and fourth between e-mail clients.  I'm using &lt;a class="reference external" href="http://www.courier-mta.org/maildrop/"&gt;maildrop&lt;/a&gt; to copy
+my incoming mail to the normal mail spool file and to a separate
+archive mail file for each day. So, for instance, all the mail I got
+on 2008/09/05 is archived in the mbox-format file
+&lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;~/Inboxes/2008-09-05.inbox&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;I also said, &lt;a class="reference external" href="https://tkurtbond.github.io/posts/2008/08/05/e-mail-crisis/"&gt;earlier&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a class="reference external" href="http://www.gohome.org/wl/"&gt;Wanderlust&lt;/a&gt; seems moribund.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;It turns out that Wanderlust only &lt;em&gt;seems&lt;/em&gt; moribund, especially to those
+who only speak English.  If you check the mailing lists there's still
+some activity, and if you poke around on the Wanderlust site you can
+&lt;a class="reference external" href="ftp://ftp.jpl.org/wl/snapshots/"&gt;find&lt;/a&gt; a newer snapshot.  Unfortunately, Wanderlust uses several other
+libraries (&lt;a class="reference external" href="http://www.kanji.zinbun.kyoto-u.ac.jp/~tomo/elisp/APEL/"&gt;APEL&lt;/a&gt;, &lt;a class="reference external" href="http://www.kanji.zinbun.kyoto-u.ac.jp/~tomo/elisp/FLIM/index.html.ja.iso-2022-jp"&gt;FLIM&lt;/a&gt;, and &lt;a class="reference external" href="http://www.kanji.zinbun.kyoto-u.ac.jp/~tomo/elisp/SEMI/index.html.ja.iso-2022-jp"&gt;SEMI&lt;/a&gt;) and these are also hard to find
+much information about if you only speak English.  So I've been
+fiddling around with it, and have figured out enough to get it working
+for me.  (Thank goodness for the &lt;a class="reference external" href="http://www.freebsd.org/"&gt;FreeBSD&lt;/a&gt; &lt;a class="reference external" href="http://www.freebsd.org/ports/index.html"&gt;ports&lt;/a&gt; system.)&lt;/p&gt;
+&lt;p&gt;Oddly enough, although Wanderlust mostly understands MH-format
+mailboxes, there seems to be no built-in way to get it to read mail
+out of a standard mbox-format spool file and into your inbox.  I guess
+the assumption is that if you're not using IMAP then you've probably
+moved on to using a maildir-format spool file, since they're supposed
+to be more reliable.&lt;/p&gt;
+&lt;p&gt;Well, I'm not.  I'm trying to compare Wanderlust, &lt;a class="reference external" href="http://mh-e.sourceforge.net/"&gt;MH-E&lt;/a&gt;, and &lt;a class="reference external" href="http://www.mew.org/"&gt;Mew&lt;/a&gt;, and
+MH-E doesn't understand maildir-format mailboxes, so I have to stick
+to mbox-format.  (Ok, I suppose I could mung things so MH-E uses Mew's
+&lt;code class="docutils literal"&gt;incm&lt;/code&gt; to read the spool file.)&lt;/p&gt;
+&lt;p&gt;Moreover, I've got a fairly odd pattern of e-mail folders.  For years
+in &lt;a class="reference external" href="http://www.nongnu.org/viewmail/"&gt;VM&lt;/a&gt; I've saved my e-mail in in separate folders with names like
+&lt;code class="docutils literal"&gt;2008/08/users.bond_tk&lt;/code&gt; or &lt;code class="docutils literal"&gt;2008/08/list.clisp&lt;/code&gt;, with VM
+defaulting the folder names automatically.  I think I've mostly
+figured out how to do this in MH-E, Mew, and Wanderlust, and I've
+mostly figured out how to get the three of them to coexist peacefully,
+so I can really give them a good comparison.  We'll see how it goes.&lt;/p&gt;
+&lt;p&gt;Like many Emacs subsystems, the Emacs e-mail clients tend to use modes
+with single-character commands for many things, and most the commands
+are just regular keys, not key combinations.  I've gotten so used to
+this that I find using e-mail clients that require mousing to be
+extremely painful.  Moreover, I've become very accustomed to being
+able to customize my e-mail client extensively using Lisp.&lt;/p&gt;
+&lt;p&gt;What it all boils down to is that I'm not happy unless my e-mail
+client is part of Emacs.&lt;/p&gt;&lt;/div&gt;</description><category>computer</category><category>e-mail</category><category>emacs</category><category>tools</category><guid>https://tkurtbond.github.io/posts/2008/09/06/e-mail-crisis-part-2/</guid><pubDate>Sat, 06 Sep 2008 07:24:16 GMT</pubDate></item><item><title>linum.el</title><link>https://tkurtbond.github.io/posts/2008/08/16/linumel/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;p&gt;I found a very useful &lt;a class="reference external" href="http://www.gnu.org/software/emacs/"&gt;Emacs&lt;/a&gt; minor mode today: &lt;a class="reference external" href="http://stud4.tuwien.ac.at/~e0225855/linum/linum.html"&gt;linum.el&lt;/a&gt;, which puts line
+numbers at the beginning of all the lines in a buffer.&lt;/p&gt;</description><category>emacs</category><guid>https://tkurtbond.github.io/posts/2008/08/16/linumel/</guid><pubDate>Sat, 16 Aug 2008 08:33:26 GMT</pubDate></item></channel></rss>

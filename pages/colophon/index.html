@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Colophon | Lacking Natural Simplicity</title>
+<link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
+<link rel="canonical" href="https://tkurtbond.github.io/pages/colophon/">
+<!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="T. Kurt Bond">
+<meta property="og:site_name" content="Lacking Natural Simplicity">
+<meta property="og:title" content="Colophon">
+<meta property="og:url" content="https://tkurtbond.github.io/pages/colophon/">
+<meta property="og:description" content="Colophon
+(Formerly “About TKB's Home Page”.)
+
+The Really Distant Past
+I used to build this collection of pages largely from a single
+SGML/XML document (expressed as several separate files) using Jade ">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2019-11-06T12:02:03-05:00">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<div class="blog-masthead">
+    <div class="container">
+<!-- This keeps the margins nice -->
+        <nav class="blog-nav" role="navigation"><a href="../../index.html" class="blog-nav-item">Home</a>
+            <a href="../../archive.html" class="blog-nav-item">Archives</a>
+            <a href="../../categories/index.html" class="blog-nav-item">Tags</a>
+            <a href="../../rss.xml" class="blog-nav-item">RSS feed</a>
+
+            
+
+                
+                
+                    
+    <a href="index.rst" class="blog-nav-item blog-nav-item-aside" id="sourcelink">Source</a>
+
+                
+            
+        </nav>
+</div>
+<!-- /.container -->
+</div>
+<!-- End of Menubar -->
+
+<div class="container" id="content" role="main">
+    <div class="body-content">
+        <div class="blog-header">
+            <h1 class="blog-title">
+                <a href="https://tkurtbond.github.io/">
+
+                    <span id="blog-title">Lacking Natural Simplicity</span>
+                </a>
+            </h1>
+            <p class="lead blog-description">Random musings on code and tabletop games.</p>
+            
+        </div>
+        <!--Body content-->
+        <div class="row">
+            <div class="col-sm-8 blog-main">
+                
+<article class="post-text storypage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h2 class="p-name entry-title blog-post-title" itemprop="headline name"><a href="." class="u-url">Colophon</a></h2>
+
+        
+
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div class="section" id="id1">
+<span id="colophon"></span><h2>Colophon</h2>
+<p>(Formerly “About TKB's Home Page”.)</p>
+<div class="section" id="the-really-distant-past">
+<h3>The Really Distant Past</h3>
+<p>I used to build this collection of pages largely from a single
+SGML/XML document (expressed as several separate files) using <a class="reference external" href="http://www.jclark.com/jade/">Jade</a> and <a class="reference external" href="http://nwalsh.com/">Norm Walsh</a>'s <a class="reference external" href="http://nwalsh.com/website/">Website DTD</a>
+and his <a class="reference external" href="http://nwalsh.com/website/dsssl/">Website Stylesheet</a>, a
+customization of the DSSSL <a class="reference external" href="http://nwalsh.com/docbook/dsssl/">DocBook Stylesheet</a> for HTML.  There are a few links
+to legacy HTML pages.</p>
+<p>I liked building these pages from XML using DSSSL for a number of
+reasons:</p>
+<ol class="arabic simple">
+<li><p>It ensured that all the internal links are correct.</p></li>
+<li><p>It automatically built navigation tools and a site map.</p></li>
+<li><p>It was a good excuse to use XML &amp; DSSSL.</p></li>
+</ol>
+<p>I used DSSSL long after the DSSSL stylesheets for the Website DTDs
+were no longer maintained because the build process was considerably
+simpler than that of the XML/XSLT replacement.  Unfortunately, the
+setup I was using stopped working properly when I moved from FreeBSD
+4.11 to FreeBSD 6.2, and at the time I didn't have the patience to
+figure out what had gone wrong with the variety of FreeBSD pacakges I
+was using to build the site.</p>
+<p>I had a sort-of blog that was part of the site, which I made by just
+having SGML/XML pages in a log directory.</p>
+</div>
+<div class="section" id="the-distant-past-to-2007-07-31">
+<h3>The Distant Past (??? to 2007-07-31?)</h3>
+<p>Reluctantly I turned to the currently supported Website DTD and XSL
+stylesheets, along with the DocBook DTD and XSL stylesheets they build
+upon, along with an XSL processor, <span class="program">xsltproc</span>.  There had
+been a number of changes to the DTD, which required many changes to my
+website xml files.  Most annoying was that at some point during the
+development of the XSL stylesheets for the Website DTD the
+organization as a single XML document had been abandoned, and replaced
+by a multiple document model that required processing each XML file
+separately and maintaining a separate multiple-document database of
+linking information.  This meant that instead of including my entities
+once in the original master file I had to include them in each and
+every xml file.  This also meant that all the internal links I had
+used previously had to be replaced with interdocument links using
+olink .  Unfortunately, I found that FreeBSD's ports of the Website
+DTD and XSL stylesheets and the DocBook XSL Stylesheets were each a
+revision behind, which caused linking between documents to not work.
+After downloading and installing current copies of these I finally got
+things to work.</p>
+<p>Unfortunately, I found that, at least using <span class="program">xsltproc</span>, the
+new process using XSL was <em>much</em> slower and more resource intensive:
+the old DSSSL-based process took about 2.5 minutes and never exceed 40
+megabytes of resident memory, while the new XSL-based process took 20
+minutes (on a faster machine) and uses 70 or more megabytes of
+resident memory for each file, and during processing the interdocument
+link database reaches over 300 megabytes of resident storage.
+Admittedly, some of this was due to the change in the Website DTD from
+the one document model to the multiple document model, but still it
+seems excessive.</p>
+</div>
+<div class="section" id="the-past-2009-04-17-to-2015">
+<span id="sphinx-built"></span><h3>The Past (2009-04-17 to 2015?)</h3>
+<p>I've since switched the source for my website over to
+<a class="reference external" href="http://docutils.sourceforge.net/rst.html">ReStructuredText</a> (ReST) built using <a class="reference external" href="http://www.sphinx-doc.org/">Sphinx</a> It's much simpler than
+DocBook.  I miss the more structured DocBook approach, and the
+checking of cross-references, but ReST has enough structure to be
+useful, without having an complicated syntax, and the tools used to
+process it are considerably simpler, faster, and more approachable.  I
+just wish ReST had nested interpreted text roles and easier subscripts
+and superscripts.  I actually use Sphinx to build it, as you can see
+at the bottom of each page.  I'm very happy with how simple it is to
+maintain now.</p>
+<p>I also had a <a class="reference external" href="https://pyblosxom.github.io/">pyBloxsom</a> blog, writing the posts in reStructuredText,
+too.</p>
+</div>
+<div class="section" id="the-present-2019-11-06">
+<h3>The Present (2019-11-06)</h3>
+<p>I've switched over to using <a class="reference external" href="https://getnikola.com/">Nikola</a> to generate the site, and am
+hosting it at <a class="reference external" href="https://tkurtbond.github.io">GitHub</a>.  I wrote a script
+to convert my <code class="docutils literal">*.rst</code> files to the format that Nikola uses in a few
+hours and then spent much more time manually fixing broken internal
+links. 😀  Nikola has much more functionality than I'm currently
+using.</p>
+</div>
+</div>
+    </div>
+    
+
+</article>
+</div>
+            <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+                    <div class="sidebar-module sidebar-module-inset">
+      <h4>About</h4>
+      <p>Lacking Natural Simplicity is one definition of sophisticated.  
+         This blog chronicles my journey through our at times too complicated 
+         and sophisticated world. </p>
+    </div>
+    <div class="sidebar-module">
+      <h4>Links</h4>
+      <ol class="list-unstyled">
+<li><a href="../about-the-blog/index.html">About the Blog</a></li>
+        <li><a href="#">Colophon</a></li>
+        <li><a href="../pages/index.html">Pages</a></li>
+      </ol>
+</div>
+    
+            </div>
+        <!--End of body content-->
+        </div>
+    </div>
+</div>
+
+<footer class="blog-footer" id="footer">
+    Contents © 2019         <a href="mailto:tkurtbond@gmail.com">T. Kurt Bond</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+    
+</footer><script src="../../assets/js/all-nocdn.js"></script><!-- fancy dates --><script>
+    moment.locale("en");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates --><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element) {
+            return element.getElementsByTagName('img')[0].alt;
+    }});
+    </script>
+</body>
+</html>

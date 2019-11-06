@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity (Posts about python)</title><link>https://tkurtbond.github.io/</link><description></description><atom:link href="https://tkurtbond.github.io/categories/python.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2019 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Wed, 06 Nov 2019 04:05:40 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Emacs and Cygwin python</title><link>https://tkurtbond.github.io/posts/2008/12/15/emacs-and-cygwin-python/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;If you happen to be using &lt;a class="reference external" href="http://www.gnu.org/software/emacs/windows/ntemacs.html"&gt;Windows Emacs&lt;/a&gt; and &lt;a class="reference external" href="http://www.cygwin.com/"&gt;Cygwin&lt;/a&gt; &lt;a class="reference external" href="http://www.python.org/"&gt;Python&lt;/a&gt; there's
+an annoying interaction where “M-x run-python” hangs.  The easiest way
+to fix it is to mount the directory where you have your emacs
+installation into the Cygwin file name structure.  For instance, I
+have my emacs installation in &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;C:\emacs\emacs-22.2&lt;/span&gt;&lt;/code&gt;, and in a
+cygwin shell I did &lt;code class="docutils literal"&gt;mount &lt;span class="pre"&gt;-b&lt;/span&gt; &lt;span class="pre"&gt;‘C:\emacs'&lt;/span&gt; /emacs&lt;/code&gt;, and now running the
+Cygwin python works.&lt;/p&gt;
+&lt;p&gt;The emacs function &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;run-python&lt;/span&gt;&lt;/code&gt; adds the emacs &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;data-directory&lt;/span&gt;&lt;/code&gt; to
+the &lt;code class="docutils literal"&gt;PYTHONPATH&lt;/code&gt; in the emacs &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;process-environment&lt;/span&gt;&lt;/code&gt; before running
+python; unfortunately, since this is the MS Windows emacs, its
+&lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;data-directory&lt;/span&gt;&lt;/code&gt; starts with a drive letter and a colon.  When the
+Cygwin python initializes &lt;code class="docutils literal"&gt;sys.path&lt;/code&gt; it splits &lt;code class="docutils literal"&gt;PYTHONPATH&lt;/code&gt; at the
+colons, which means &lt;code class="docutils literal"&gt;sys.path&lt;/code&gt; ends up with the drive letter as one
+component (usually interpreted as a relative path) and everything
+after the colon as another component.  It that's a valid Cygwin
+pathname for the Emacs data directory (which is what the above mount
+command did), things work (accidentally).&lt;/p&gt;&lt;/div&gt;</description><category>emacs</category><category>python</category><guid>https://tkurtbond.github.io/posts/2008/12/15/emacs-and-cygwin-python/</guid><pubDate>Mon, 15 Dec 2008 22:07:43 GMT</pubDate></item></channel></rss>

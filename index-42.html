@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="description" content="Random musings on code and tabletop games.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lacking Natural Simplicity (old posts, page 42) | Lacking Natural Simplicity</title>
+<link href="assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="rss.xml">
+<link rel="canonical" href="https://tkurtbond.github.io/index-42.html">
+<link rel="prev" href="index-43.html" type="text/html">
+<link rel="next" href="index-41.html" type="text/html">
+<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]-->
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<div class="blog-masthead">
+    <div class="container">
+<!-- This keeps the margins nice -->
+        <nav class="blog-nav" role="navigation"><a href="index.html" class="blog-nav-item">Home</a>
+            <a href="archive.html" class="blog-nav-item">Archives</a>
+            <a href="categories/index.html" class="blog-nav-item">Tags</a>
+            <a href="rss.xml" class="blog-nav-item">RSS feed</a>
+
+            
+
+                
+                
+                    
+                
+            
+        </nav>
+</div>
+<!-- /.container -->
+</div>
+<!-- End of Menubar -->
+
+<div class="container" id="content" role="main">
+    <div class="body-content">
+        <div class="blog-header">
+            <h1 class="blog-title">
+                <a href="https://tkurtbond.github.io/">
+
+                    <span id="blog-title">Lacking Natural Simplicity</span>
+                </a>
+            </h1>
+            <p class="lead blog-description">Random musings on code and tabletop games.</p>
+            
+        </div>
+        <!--Body content-->
+        <div class="row">
+            <div class="col-sm-8 blog-main">
+                
+
+<div class="postindex">
+    <article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2008/09/14/ancient-history-and-hardware-repurposed-with-netbsd-40/" class="u-url">Ancient History and Ancient Hardware repurposed with NetBSD 4.0, almost</a></h2>
+        <div class="metadata blog-post-meta">
+            <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
+            <p class="dateline"><a href="posts/2008/09/14/ancient-history-and-hardware-repurposed-with-netbsd-40/" rel="bookmark"><time class="published dt-published" datetime="2008-09-14T06:33:38-05:00" title="2008-09-14 06:33">2008-09-14 06:33</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <div>
+<p>For some odd reason I decided to power on my old Gateway 2000 486DX/33
+and do something with it.  It hadn't been on since Wednesday, May
+25th, 2005, if I can believe the BIOS date.  (I was pleasantly
+surprised the settings gotten corrupted.)  Up to the point I turned it
+off it was acting as a mail server backup for my personal system, and
+was running Sendmail, Dovecot, a greylisting milter, and Emacs.  A
+little before that it had actually been one of the MPL DNS servers.</p>
+<p>Anyway, it had Windows 95 on the original 200MB IDE hard drive and
+FreeBSD 4.10 on the 2GB Quantum XP32275S Atlas II.  It came with
+Windows 95 of course when I bought it, but I ran <a class="reference external" href="http://en.wikipedia.org/wiki/Softlanding_Linux_System">SLS Linux</a> on it
+originally, if I remember correctly, because 386BSD wouldn't install,
+and later <a class="reference external" href="http://en.wikipedia.org/wiki/MCC_Interim_Linux">MCC Interim Linux</a>, and eventually <a class="reference external" href="http://www.freebsd.org/">FreeBSD</a>.  When my wife got
+me the SCSI controler and CD-ROM I was so thrilled because now I
+wouldn't get dragging home OS distributions on floppy any more!  Once
+I got the 2GB hard drive I put Windows 95 back on the 200MB drive for
+my wife and for the occastional work-related Windows 95 excursion.  It
+had 16MB originally, but I scrounged 4MB more of RAM for it very late
+on, when it was a DNS server.</p>
+<p>I wanted to get a more recent OS on it, but remembering how FreeBSD
+4.10 was a pretty tight fight there at the end, I decided I'd put
+<a class="reference external" href="http://www.netbsd.org/">NetBSD</a> on it.  (NetBSD documentation says it still should be possible to
+run in 4MB.)   I used NetBSD for a while for my main box at home, but
+I was never satisfied that I'd mastered it as well as FreeBSD, and I
+thought this would be good way to put the old 486 to work.  Luckily I
+was albe to find an 3c509B card to get it on the network, because it
+turned out the 3.5” floppy and the CD-ROM drive were both
+non-functional.  (As I worked with the machine I remembered the floppy
+had been bad when I'd turned it off, but the CD-ROM had been working.)
+I gathered some confirmation information and then started trying to
+figure out how I was going to get NetBSD on it.  Luckily the FreeBSD
+4.10 install was still working and I was able to extract the NetBSD
+dosboot.com bootloader  from base.tgz, copy it and the netbsd-install
+kernel over the network with FreeBSD, mount the
+old 200MB Windows 95/MS-DOS disk under FreeBSD, and copy the files
+over there, then boot into MS-DOS with F8 when Windows 95 started to
+boot, run through the prompting for each line in the config files and
+answering “NO”, and then run <code class="docutils literal">dosboot <span class="pre">netbsd-install</span></code>.</p>
+<p>The installation was successful, but unfortunately the boot process failed.</p>
+<p>As I recall, I've had problems in the past getting boot loaders to
+boot off this drive.  I'll have to revisit it when I have some more
+time.</p>
+<!-- http://www.mavetju.org/mail/view_message.php?list=freebsd-stable&id=456419
+http://intelligent-peripheral.com/manuals/quantum_ucg.pdf
+ http://209.85.165.104/search?q=cache:ksSAYOqDDQAJ:intelligent-peripheral.com/manuals/quantum_ucg.pdf+QUANTUM+XP32275S&hl=en&ct=clnk&cd=10&gl=us&client=firefox-a
+ http://www.netbsd.org/ports/i386/faq.html#dosboot
+
+ 5. step-by-step-confirmation
+
+ http://bsdsupport.org/2007/01/netbsd-pxe-boot-install-without-nfs/ -->
+</div>
+    </div>
+    </article><article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2008/09/13/htop-is-much-clearer-than-top/" class="u-url">htop is much clearer than top</a></h2>
+        <div class="metadata blog-post-meta">
+            <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
+            <p class="dateline"><a href="posts/2008/09/13/htop-is-much-clearer-than-top/" rel="bookmark"><time class="published dt-published" datetime="2008-09-13T14:58:14-05:00" title="2008-09-13 14:58">2008-09-13 14:58</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <p>I ran across <a class="reference external" href="http://htop.sourceforge.net/">htop</a> as I was installing software on my new <a class="reference external" href="http://www.ubuntu.com/">Ubuntu</a> install,
+and am finding it invaluable: much clearer than the standard Linux top.</p>
+    </div>
+    </article><article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2008/09/13/bash-startup-on-ubuntu-8041-ridiculously-slow/" class="u-url">bash startup on Ubuntu 8.04.1 ridiculously slow!</a></h2>
+        <div class="metadata blog-post-meta">
+            <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
+            <p class="dateline"><a href="posts/2008/09/13/bash-startup-on-ubuntu-8041-ridiculously-slow/" rel="bookmark"><time class="published dt-published" datetime="2008-09-13T01:20:23-05:00" title="2008-09-13 01:20">2008-09-13 01:20</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <p>I installed <a class="reference external" href="http://www.ubuntu.com">Ubuntu</a> 8.04.1 on a Pentium II machine with 256MiB and was
+disturbed by how slowly it seemed.  It turns out that it was just that
+<code class="docutils literal">bash</code> was starting incredibly slowly.  Removing the default Ubuntu
+<code class="docutils literal"><span class="pre">~/.bashrc</span></code> fixed it.  It turns out to be something in
+/etc/bash_completion which causes the slowdown, but I haven't figured
+out what yet.</p>
+    </div>
+    </article><article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2008/09/12/chrome/" class="u-url">Chrome</a></h2>
+        <div class="metadata blog-post-meta">
+            <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
+            <p class="dateline"><a href="posts/2008/09/12/chrome/" rel="bookmark"><time class="published dt-published" datetime="2008-09-12T22:53:22-05:00" title="2008-09-12 22:53">2008-09-12 22:53</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <p>On the advice of a coworker I tried out <a class="reference external" href="http://chrome.google.com/">Chrome</a>; after a day
+I think it has almost become my favorite browser.  If only it
+built on the BSDs and Linux, and a noscript equivalent.  I wonder what
+RSS/Atom reader will integrate with it well?</p>
+    </div>
+    </article><article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2008/09/10/e-mail-crisis-part-4/" class="u-url">E-mail Crisis, Part 4</a></h2>
+        <div class="metadata blog-post-meta">
+            <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
+            <p class="dateline"><a href="posts/2008/09/10/e-mail-crisis-part-4/" rel="bookmark"><time class="published dt-published" datetime="2008-09-10T01:05:39-05:00" title="2008-09-10 01:05">2008-09-10 01:05</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <div>
+<p>Well, it looks like a leader is slowly emerging in my quest for an
+Emacs based mail reader: <a class="reference external" href="http://www.gohome.org/wl/">Wanderlust</a></p>
+<p>It handles MH- and Maildir-format mailboxes, UTF-8 in headers, has
+good facilities for reading and composing MIME messages, and I finally
+got it to work with Lotus Domino/Notes IMAP/SSL, amazingly.</p>
+<p>Moreover, it looks like I'm probably going to switch to using a
+Maildir-format mailbox, which will work well with my use of <a class="reference external" href="http://www.cis.upenn.edu/~bcpierce/unison/">Unison</a>:
+MH-format mailboxes' use of plain numbers for message IDs/filenames
+(which can change a lot) makes things a little more confusing when
+syncing mailboxes with Unison.</p>
+<p>Moving away from MH-format mailboxes is a bit of a shame, since it
+means that I'll be losing the ability to use the MH command line
+programs for accessing my e-mail.  I've used MH in the past, and have
+always liked the command line access it gives you.  Ah well.  I wish
+mdmh had advanced further.</p>
+</div>
+    </div>
+    </article><article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2008/09/06/e-mail-crisis-part-3/" class="u-url">E-mail Crisis, part 3</a></h2>
+        <div class="metadata blog-post-meta">
+            <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
+            <p class="dateline"><a href="posts/2008/09/06/e-mail-crisis-part-3/" rel="bookmark"><time class="published dt-published" datetime="2008-09-06T08:40:10-05:00" title="2008-09-06 08:40">2008-09-06 08:40</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <div>
+<p>Things that precipitated the crisis:</p>
+<ul class="simple">
+<li><p>UTF-8 in e-mail.</p></li>
+<li><p>HTML e-mail.</p></li>
+</ul>
+</div>
+    </div>
+    </article><article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2008/09/06/more-blog-software-munging/" class="u-url">More blog software munging</a></h2>
+        <div class="metadata blog-post-meta">
+            <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
+            <p class="dateline"><a href="posts/2008/09/06/more-blog-software-munging/" rel="bookmark"><time class="published dt-published" datetime="2008-09-06T08:31:07-05:00" title="2008-09-06 08:31">2008-09-06 08:31</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <p>I've been munging my blog some more.  Right now it's only running
+under WSGI, and I've turned the tags and the tag cloud back on.  There
+was some odd behavior earlier, so it may still be somewhat broken.</p>
+    </div>
+    </article><article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2008/09/06/e-mail-crisis-part-2/" class="u-url">E-mail Crisis, part 2</a></h2>
+        <div class="metadata blog-post-meta">
+            <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
+            <p class="dateline"><a href="posts/2008/09/06/e-mail-crisis-part-2/" rel="bookmark"><time class="published dt-published" datetime="2008-09-06T02:24:16-05:00" title="2008-09-06 02:24">2008-09-06 02:24</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <div>
+<p>I'm still having my personal e-mail crisis.</p>
+<p>I said, <a class="reference external" href="posts/2008/08/05/e-mail-crisis/">earlier</a>,</p>
+<blockquote>
+<p>Anyway, I've finally come up with a way to switch back and forth
+between Gnus, Mew, and MH-E while keeping up with my current
+e-mail[…].</p>
+</blockquote>
+<p>That was a bit premature.  What I should have said was that I'd found
+a way to make sure I didn't lose any e-mail permanently when switching
+back and fourth between e-mail clients.  I'm using <a class="reference external" href="http://www.courier-mta.org/maildrop/">maildrop</a> to copy
+my incoming mail to the normal mail spool file and to a separate
+archive mail file for each day. So, for instance, all the mail I got
+on 2008/09/05 is archived in the mbox-format file
+<code class="docutils literal"><span class="pre">~/Inboxes/2008-09-05.inbox</span></code>.</p>
+<p>I also said, <a class="reference external" href="posts/2008/08/05/e-mail-crisis/">earlier</a></p>
+<blockquote>
+<p><a class="reference external" href="http://www.gohome.org/wl/">Wanderlust</a> seems moribund.</p>
+</blockquote>
+<p>It turns out that Wanderlust only <em>seems</em> moribund, especially to those
+who only speak English.  If you check the mailing lists there's still
+some activity, and if you poke around on the Wanderlust site you can
+<a class="reference external" href="ftp://ftp.jpl.org/wl/snapshots/">find</a> a newer snapshot.  Unfortunately, Wanderlust uses several other
+libraries (<a class="reference external" href="http://www.kanji.zinbun.kyoto-u.ac.jp/~tomo/elisp/APEL/">APEL</a>, <a class="reference external" href="http://www.kanji.zinbun.kyoto-u.ac.jp/~tomo/elisp/FLIM/index.html.ja.iso-2022-jp">FLIM</a>, and <a class="reference external" href="http://www.kanji.zinbun.kyoto-u.ac.jp/~tomo/elisp/SEMI/index.html.ja.iso-2022-jp">SEMI</a>) and these are also hard to find
+much information about if you only speak English.  So I've been
+fiddling around with it, and have figured out enough to get it working
+for me.  (Thank goodness for the <a class="reference external" href="http://www.freebsd.org/">FreeBSD</a> <a class="reference external" href="http://www.freebsd.org/ports/index.html">ports</a> system.)</p>
+<p>Oddly enough, although Wanderlust mostly understands MH-format
+mailboxes, there seems to be no built-in way to get it to read mail
+out of a standard mbox-format spool file and into your inbox.  I guess
+the assumption is that if you're not using IMAP then you've probably
+moved on to using a maildir-format spool file, since they're supposed
+to be more reliable.</p>
+<p>Well, I'm not.  I'm trying to compare Wanderlust, <a class="reference external" href="http://mh-e.sourceforge.net/">MH-E</a>, and <a class="reference external" href="http://www.mew.org/">Mew</a>, and
+MH-E doesn't understand maildir-format mailboxes, so I have to stick
+to mbox-format.  (Ok, I suppose I could mung things so MH-E uses Mew's
+<code class="docutils literal">incm</code> to read the spool file.)</p>
+<p>Moreover, I've got a fairly odd pattern of e-mail folders.  For years
+in <a class="reference external" href="http://www.nongnu.org/viewmail/">VM</a> I've saved my e-mail in in separate folders with names like
+<code class="docutils literal">2008/08/users.bond_tk</code> or <code class="docutils literal">2008/08/list.clisp</code>, with VM
+defaulting the folder names automatically.  I think I've mostly
+figured out how to do this in MH-E, Mew, and Wanderlust, and I've
+mostly figured out how to get the three of them to coexist peacefully,
+so I can really give them a good comparison.  We'll see how it goes.</p>
+<p>Like many Emacs subsystems, the Emacs e-mail clients tend to use modes
+with single-character commands for many things, and most the commands
+are just regular keys, not key combinations.  I've gotten so used to
+this that I find using e-mail clients that require mousing to be
+extremely painful.  Moreover, I've become very accustomed to being
+able to customize my e-mail client extensively using Lisp.</p>
+<p>What it all boils down to is that I'm not happy unless my e-mail
+client is part of Emacs.</p>
+</div>
+    </div>
+    </article><article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2008/09/04/open-source-and-long-term-development/" class="u-url">Open Source and Long-term Development</a></h2>
+        <div class="metadata blog-post-meta">
+            <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
+            <p class="dateline"><a href="posts/2008/09/04/open-source-and-long-term-development/" rel="bookmark"><time class="published dt-published" datetime="2008-09-04T13:50:34-05:00" title="2008-09-04 13:50">2008-09-04 13:50</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <div>
+<p>On the <a class="reference external" href="http://www.aadl.info/">AADL</a> site, via their <a class="reference external" href="http://la.sei.cmu.edu/aadl/currentsite/tool/index.html">Tool Integrators</a>, <a class="reference external" href="http://la.sei.cmu.edu/aadl/currentsite/tool/toolsets.html">Toolsets</a>,
+<a class="reference external" href="http://la.sei.cmu.edu/aadl/currentsite/tool/topcased.html">TOPCASED</a> pages I ran across an interesting <a class="reference external" href="http://la.sei.cmu.edu/aadlinfosite/LinkedDocuments/d2_1500_topcased.pdf">presentation</a> about
+<a class="reference external" href="http://www.topcased.org/">TOPCASED</a>, which at the beginning basically says that with the
+lifetime of aerospace products running as long as 10 to 30 years no
+company is able to commit to supporting a development tool for such a
+long time at an acceptable cost. (I think this was essentially
+explaining their motivation for developing TOPCASED as an open source
+project, though it's not quite explicitly stated.)</p>
+<p>I find this very interesting, since I've worked on a number of
+projects that, although not in the aerospace arena, have had lifetimes
+vastly exceeding the expectations of anybody involved on the project.
+While some of the original design and development tools are still
+available, some are not, and replacing them, or in some cases just
+using the ones that are still available, can be a complicated
+business.  For small projects, collecting all the tools under CM so as
+to be able rebuild any version of the project with the original tools
+can be prohibitively expensive when commercial software is involved.
+The idea of using open source tools because those will still be
+available in 20 or 30 years and can be supported in a cost-effective
+way seems reasonable, so it's interesting to see that there are a
+number of open source projects of this nature in aerospace, an arena
+known for mission critical systems.</p>
+</div>
+    </div>
+    </article><article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2008/09/04/recent-reading-briggs-and-brust/" class="u-url">Recent Reading: Briggs and Brust</a></h2>
+        <div class="metadata blog-post-meta">
+            <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
+            <p class="dateline"><a href="posts/2008/09/04/recent-reading-briggs-and-brust/" rel="bookmark"><time class="published dt-published" datetime="2008-09-04T00:00:00-05:00" title="2008-09-04 00:00">2008-09-04 00:00</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <ul>
+<li>
+<p><cite>Cry Wolf</cite>, “An Alpha and Omega Novel”, by Patricia Briggs,
+copyright 2008 by Hurog, Inc.; Ace/The Berkley Publishing Group/The
+Penguin Group/Penguin Group (USA) Inc.; Ace mass market edition
+August 2008, 1st printing; ISBN-13: 978-0-441-01615-0.</p>
+<p>This is a spin-off from Brigg's Mercy Thompson series, and judging
+from the “An Alpha and Omega Novel” it's the start of a new series.
+I'll be looking for further volumes.</p>
+</li>
+<li>
+<p><cite>Jhegaala</cite>, by Steven Brust, copyright 2008; Tor/Tom Doherty
+Associates, LLC; First Edition: July 2008, 1st printing; ISBN-13:
+978-0-7653-0147-5; ISBN-10: 0-7653-0147-4.</p>
+<p>Visiting with an old friend is always a treat.  I think I've reread
+the whole “Vlad Taltos” series and all the “Khaavren Romances” and
+<cite>Brokedown Palace</cite> within the last couple of years.  (I ought ought
+check.)  It's interesting to see how varied the “Taltos” novels are,
+despite mostly having one main character, how consistent the voice
+of the “Khaavren Romances” is, and how different from the others
+<cite>Brokedown Palace</cite> is.  If I ever get my library out of boxes I
+really need to reread all his other books.</p>
+<p>The “Vlad Taltos” books are good individually, but even better as a
+whole, much like Kenneth Bulmer's “Dray Prescot” books, which I only
+really began to appreciate once I had the whole run and could read
+them in sequence.</p>
+</li>
+</ul>
+</div>
+    </article>
+</div>
+
+        <nav class="postindexpager"><ul class="pager">
+<li class="previous">
+                <a href="index-43.html" rel="prev">Newer posts</a>
+            </li>
+            <li class="next">
+                <a href="index-41.html" rel="next">Older posts</a>
+            </li>
+        </ul></nav>
+</div>
+            <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+                    <div class="sidebar-module sidebar-module-inset">
+      <h4>About</h4>
+      <p>Lacking Natural Simplicity is one definition of sophisticated.  
+         This blog chronicles my journey through our at times too complicated 
+         and sophisticated world. </p>
+    </div>
+    <div class="sidebar-module">
+      <h4>Links</h4>
+      <ol class="list-unstyled">
+<li><a href="pages/about-the-blog/index.html">About the Blog</a></li>
+        <li><a href="pages/colophon/index.html">Colophon</a></li>
+        <li><a href="pages/pages/index.html">Pages</a></li>
+      </ol>
+</div>
+    
+            </div>
+        <!--End of body content-->
+        </div>
+    </div>
+</div>
+
+<footer class="blog-footer" id="footer">
+    Contents © 2019         <a href="mailto:tkurtbond@gmail.com">T. Kurt Bond</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+    
+</footer><script src="assets/js/all-nocdn.js"></script><!-- fancy dates --><script>
+    moment.locale("en");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates --><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element) {
+            return element.getElementsByTagName('img')[0].alt;
+    }});
+    </script>
+</body>
+</html>

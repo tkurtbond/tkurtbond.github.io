@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ancient History and Ancient Hardware repurposed with NetBSD 4.0, almost | Lacking Natural Simplicity</title>
+<link href="../../../../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../../../../rss.xml">
+<link rel="canonical" href="https://tkurtbond.github.io/posts/2008/09/14/ancient-history-and-hardware-repurposed-with-netbsd-40/">
+<!--[if lt IE 9]><script src="../../../../../assets/js/html5.js"></script><![endif]--><meta name="author" content="T. Kurt Bond">
+<link rel="prev" href="../../13/htop-is-much-clearer-than-top/" title="htop is much clearer than top" type="text/html">
+<link rel="next" href="../../../10/01/s001-rv-2008-10-01/" title="Rushing Valley D&amp;D, Session #1" type="text/html">
+<meta property="og:site_name" content="Lacking Natural Simplicity">
+<meta property="og:title" content="Ancient History and Ancient Hardware repurposed with NetBSD 4.0, almos">
+<meta property="og:url" content="https://tkurtbond.github.io/posts/2008/09/14/ancient-history-and-hardware-repurposed-with-netbsd-40/">
+<meta property="og:description" content="For some odd reason I decided to power on my old Gateway 2000 486DX/33
+and do something with it.  It hadn't been on since Wednesday, May
+25th, 2005, if I can believe the BIOS date.  (I was pleasantly
+">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2008-09-14T06:33:38-05:00">
+<meta property="article:tag" content="computer">
+<meta property="article:tag" content="i486">
+<meta property="article:tag" content="netbsd">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<div class="blog-masthead">
+    <div class="container">
+<!-- This keeps the margins nice -->
+        <nav class="blog-nav" role="navigation"><a href="../../../../../index.html" class="blog-nav-item">Home</a>
+            <a href="../../../../../archive.html" class="blog-nav-item">Archives</a>
+            <a href="../../../../../categories/index.html" class="blog-nav-item">Tags</a>
+            <a href="../../../../../rss.xml" class="blog-nav-item">RSS feed</a>
+
+            
+
+                
+                
+                    
+    <a href="index.rst" class="blog-nav-item blog-nav-item-aside" id="sourcelink">Source</a>
+
+                
+            
+        </nav>
+</div>
+<!-- /.container -->
+</div>
+<!-- End of Menubar -->
+
+<div class="container" id="content" role="main">
+    <div class="body-content">
+        <div class="blog-header">
+            <h1 class="blog-title">
+                <a href="https://tkurtbond.github.io/">
+
+                    <span id="blog-title">Lacking Natural Simplicity</span>
+                </a>
+            </h1>
+            <p class="lead blog-description">Random musings on code and tabletop games.</p>
+            
+        </div>
+        <!--Body content-->
+        <div class="row">
+            <div class="col-sm-8 blog-main">
+                
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h2 class="p-name entry-title blog-post-title" itemprop="headline name"><a href="." class="u-url">Ancient History and Ancient Hardware repurposed with NetBSD 4.0, almost</a></h2>
+
+        <div class="metadata blog-post-meta">
+            <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
+            <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2008-09-14T06:33:38-05:00" itemprop="datePublished" title="2008-09-14 06:33">2008-09-14 06:33</time></a></p>
+            
+        <p class="sourceline"><a href="index.rst" id="sourcelink">Source</a></p>
+
+        </div>
+        
+
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<p>For some odd reason I decided to power on my old Gateway 2000 486DX/33
+and do something with it.  It hadn't been on since Wednesday, May
+25th, 2005, if I can believe the BIOS date.  (I was pleasantly
+surprised the settings gotten corrupted.)  Up to the point I turned it
+off it was acting as a mail server backup for my personal system, and
+was running Sendmail, Dovecot, a greylisting milter, and Emacs.  A
+little before that it had actually been one of the MPL DNS servers.</p>
+<p>Anyway, it had Windows 95 on the original 200MB IDE hard drive and
+FreeBSD 4.10 on the 2GB Quantum XP32275S Atlas II.  It came with
+Windows 95 of course when I bought it, but I ran <a class="reference external" href="http://en.wikipedia.org/wiki/Softlanding_Linux_System">SLS Linux</a> on it
+originally, if I remember correctly, because 386BSD wouldn't install,
+and later <a class="reference external" href="http://en.wikipedia.org/wiki/MCC_Interim_Linux">MCC Interim Linux</a>, and eventually <a class="reference external" href="http://www.freebsd.org/">FreeBSD</a>.  When my wife got
+me the SCSI controler and CD-ROM I was so thrilled because now I
+wouldn't get dragging home OS distributions on floppy any more!  Once
+I got the 2GB hard drive I put Windows 95 back on the 200MB drive for
+my wife and for the occastional work-related Windows 95 excursion.  It
+had 16MB originally, but I scrounged 4MB more of RAM for it very late
+on, when it was a DNS server.</p>
+<p>I wanted to get a more recent OS on it, but remembering how FreeBSD
+4.10 was a pretty tight fight there at the end, I decided I'd put
+<a class="reference external" href="http://www.netbsd.org/">NetBSD</a> on it.  (NetBSD documentation says it still should be possible to
+run in 4MB.)   I used NetBSD for a while for my main box at home, but
+I was never satisfied that I'd mastered it as well as FreeBSD, and I
+thought this would be good way to put the old 486 to work.  Luckily I
+was albe to find an 3c509B card to get it on the network, because it
+turned out the 3.5” floppy and the CD-ROM drive were both
+non-functional.  (As I worked with the machine I remembered the floppy
+had been bad when I'd turned it off, but the CD-ROM had been working.)
+I gathered some confirmation information and then started trying to
+figure out how I was going to get NetBSD on it.  Luckily the FreeBSD
+4.10 install was still working and I was able to extract the NetBSD
+dosboot.com bootloader  from base.tgz, copy it and the netbsd-install
+kernel over the network with FreeBSD, mount the
+old 200MB Windows 95/MS-DOS disk under FreeBSD, and copy the files
+over there, then boot into MS-DOS with F8 when Windows 95 started to
+boot, run through the prompting for each line in the config files and
+answering “NO”, and then run <code class="docutils literal">dosboot <span class="pre">netbsd-install</span></code>.</p>
+<p>The installation was successful, but unfortunately the boot process failed.</p>
+<p>As I recall, I've had problems in the past getting boot loaders to
+boot off this drive.  I'll have to revisit it when I have some more
+time.</p>
+<!-- http://www.mavetju.org/mail/view_message.php?list=freebsd-stable&id=456419
+http://intelligent-peripheral.com/manuals/quantum_ucg.pdf
+ http://209.85.165.104/search?q=cache:ksSAYOqDDQAJ:intelligent-peripheral.com/manuals/quantum_ucg.pdf+QUANTUM+XP32275S&hl=en&ct=clnk&cd=10&gl=us&client=firefox-a
+ http://www.netbsd.org/ports/i386/faq.html#dosboot
+
+ 5. step-by-step-confirmation
+
+ http://bsdsupport.org/2007/01/netbsd-pxe-boot-install-without-nfs/ -->
+</div>
+    </div>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../../../../../categories/computer/" rel="tag">computer</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/i486/" rel="tag">i486</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/netbsd/" rel="tag">netbsd</a></li>
+        </ul>
+<ul class="pager hidden-print">
+<li class="previous">
+                <a href="../../13/htop-is-much-clearer-than-top/" rel="prev" title="htop is much clearer than top">Previous post</a>
+            </li>
+            <li class="next">
+                <a href="../../../10/01/s001-rv-2008-10-01/" rel="next" title="Rushing Valley D&amp;D, Session #1">Next post</a>
+            </li>
+        </ul></nav></aside></article>
+</div>
+            <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+                    <div class="sidebar-module sidebar-module-inset">
+      <h4>About</h4>
+      <p>Lacking Natural Simplicity is one definition of sophisticated.  
+         This blog chronicles my journey through our at times too complicated 
+         and sophisticated world. </p>
+    </div>
+    <div class="sidebar-module">
+      <h4>Links</h4>
+      <ol class="list-unstyled">
+<li><a href="../../../../../pages/about-the-blog/index.html">About the Blog</a></li>
+        <li><a href="../../../../../pages/colophon/index.html">Colophon</a></li>
+        <li><a href="../../../../../pages/pages/index.html">Pages</a></li>
+      </ol>
+</div>
+    
+            </div>
+        <!--End of body content-->
+        </div>
+    </div>
+</div>
+
+<footer class="blog-footer" id="footer">
+    Contents © 2019         <a href="mailto:tkurtbond@gmail.com">T. Kurt Bond</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+    
+</footer><script src="../../../../../assets/js/all-nocdn.js"></script><!-- fancy dates --><script>
+    moment.locale("en");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates --><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element) {
+            return element.getElementsByTagName('img')[0].alt;
+    }});
+    </script>
+</body>
+</html>

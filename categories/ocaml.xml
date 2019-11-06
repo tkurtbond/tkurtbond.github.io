@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity (Posts about ocaml)</title><link>https://tkurtbond.github.io/</link><description></description><atom:link href="https://tkurtbond.github.io/categories/ocaml.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2019 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Wed, 06 Nov 2019 04:05:38 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Recent Reading; OCaml and a Rare FreeBSD binary incompatibility</title><link>https://tkurtbond.github.io/posts/2004/02/05/2004-02-05/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;div class="section" id="recent-reading"&gt;
+&lt;h2&gt;Recent Reading&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;p&gt;&lt;em&gt;Goddess of the Ice Realm&lt;/em&gt;, by David Drake; Tor, 2003.  Adequate
+fantasy; the setting is mildly interesting, though.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;em&gt;Jupiter Myth&lt;/em&gt;, by Lindsey Davis; Mysterious Press, 2003.  Another
+competent Marcus Didius Falco mystery.  Falco, Helena, and entourage
+are still in Britian.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="ocaml-and-a-rare-freebsd-binary-incompatibility"&gt;
+&lt;h2&gt;OCaml and a Rare FreeBSD binary incompatibility&lt;/h2&gt;
+&lt;p&gt;In a rare fit of binary incompatibility between versions of FreeBSD,
+all my OCaml 3.07p2 programs that used the Unix library broke when I
+upgraded to 5.2 because gethostbyaddr_r disappeared:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;$ increment
+Fatal error: cannot load shared library dllunix
+Reason: /sw/versions/ocaml/3.07/lib/ocaml/stublibs/dllunix.so: Undefined symbol "gethostbyaddr_r"&lt;/pre&gt;
+&lt;p&gt;See &lt;a class="reference external" href="http://lists.freebsd.org/pipermail/freebsd-current/2003-December/016677.html"&gt;this e-mail&lt;/a&gt; for more information.&lt;/p&gt;
+&lt;p&gt;Reconfiguring and re-installing ocaml seems to have fixed the problem,
+but once that was done I had to rebuild (almost) all my ocaml programs
+and &lt;a class="reference external" href="http://www.cis.upenn.edu/~bcpierce/unison/"&gt;unison&lt;/a&gt;, the file
+synchronization program that I use.&lt;/p&gt;
+&lt;p&gt;This is notable mainly because of how rarely this sort of thing
+happens to either FreeBSD or OCaml.&lt;/p&gt;
+&lt;p&gt;Looks like some other things have broken, too: &lt;a class="reference external" href="http://www.gimp.org/"&gt;gimp&lt;/a&gt;, for one.&lt;/p&gt;
+&lt;p&gt;I resolved all this by upgrading my ports using &lt;code class="program docutils literal"&gt;portupgrade&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;&lt;/div&gt;</description><category>freebsd</category><category>ocaml</category><category>old blog</category><category>recent reading</category><guid>https://tkurtbond.github.io/posts/2004/02/05/2004-02-05/</guid><pubDate>Thu, 05 Feb 2004 05:00:00 GMT</pubDate></item></channel></rss>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity (Posts about apel)</title><link>https://tkurtbond.github.io/</link><description></description><atom:link href="https://tkurtbond.github.io/categories/apel.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2019 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Wed, 06 Nov 2019 04:05:34 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Wanderlust, APEL, FLIM, and SEMI development</title><link>https://tkurtbond.github.io/posts/2009/09/02/wanderlust-apel-semi-and-flim-development/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;Someone once said something along the lines that to those in the
+Western world who don't speak Japanese there is an alternate
+universe of FOSS &lt;a class="footnote-reference brackets" href="https://tkurtbond.github.io/posts/2009/09/02/wanderlust-apel-semi-and-flim-development/#foss" id="id1"&gt;1&lt;/a&gt; development in Japan &lt;a class="footnote-reference brackets" href="https://tkurtbond.github.io/posts/2009/09/02/wanderlust-apel-semi-and-flim-development/#china" id="id2"&gt;2&lt;/a&gt;, and every so
+often things from that universe just appear in the Western FOSS
+universe as mysterious foreign objects.  Ruby seems to have made a
+solid connection between the universes, but many others less
+approachable.&lt;/p&gt;
+&lt;p&gt;Wanderlust development and the development of the emacs packages that
+it depends on (APEL, FLIM, and SEMI) feel like that to me.  Some of
+them have web pages, but they're usually quite out of date.  It can be
+difficult to their CVS repositories, and even more difficult to find
+the browse-able web interfaces to their CVS repositories.  Every time
+I want to look at the code, I have to figure this all out again, hence
+this post.&lt;/p&gt;
+&lt;p&gt;There was a &lt;a class="reference external" href="http://lists.airs.net/wl-en/archive/200905/msg00099.html"&gt;post&lt;/a&gt; on the Wanderlust English-language mailing list from
+Katsumi Yamaoka &amp;lt;&lt;a class="reference external" href="mailto:yamaoka@jpl.org"&gt;yamaoka@jpl.org&lt;/a&gt;&amp;gt; on Wednesday, 27 May 2009 that gave
+the location of the APEL, FLIM, and SEMI cvs repositories, and
+mentioned that development in the FLIM and SEMI repositories was
+taking place under the flim_1_14 and semi_1_14 branches, respectively.
+The post also said that the place for discussion about APEL is the
+APEL mailing lists:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;div class="line-block"&gt;
+&lt;div class="line"&gt;&lt;a class="reference external" href="mailto:apel-en@m17n.org"&gt;apel-en@m17n.org&lt;/a&gt;&lt;/div&gt;
+&lt;div class="line"&gt;&lt;a class="reference external" href="mailto:apel-ja@m17n.org"&gt;apel-ja@m17n.org&lt;/a&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;To subscribe, send an empty e-mail to &lt;a class="reference external" href="mailto:apel-en-ctl@m17n.org"&gt;apel-en-ctl@m17n.org&lt;/a&gt; and/or
+&lt;a class="reference external" href="mailto:apel-ja-ctl@m17n.org"&gt;apel-ja-ctl@m17n.org&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The place to discuss FLIM and SEMI is the EMACS-MIME mailing
+list:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;div class="line-block"&gt;
+&lt;div class="line"&gt;&lt;a class="reference external" href="mailto:emacs-mime-en@m17n.org"&gt;emacs-mime-en@m17n.org&lt;/a&gt;&lt;/div&gt;
+&lt;div class="line"&gt;&lt;a class="reference external" href="mailto:emacs-mime-ja@m17n.org"&gt;emacs-mime-ja@m17n.org&lt;/a&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;To subscribe, send an e-mail containing “subscribe YOUR NAME” in its
+contents to &lt;a class="reference external" href="mailto:emacs-mime-en-ctl@m17n.org"&gt;emacs-mime-en-ctl@m17n.org&lt;/a&gt; and/or
+&lt;a class="reference external" href="mailto:emacs-mime-ja-ctl@m17n.org"&gt;emacs-mime-ja-ctl@m17n.org&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;So, here are the CVS commands I just used to check the various
+packages out:&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;code&gt;cvs -d :pserver:anonymous@cvs.m17n.org:/cvs/root checkout wanderlust
+cvs -z9 -d :pserver:anonymous@cvs.m17n.org:/cvs/root checkout apel
+cvs -z9 -d :pserver:anonymous@cvs.m17n.org:/cvs/root checkout -r flim-1_14 flim
+cvs -z9 -d :pserver:anonymous@cvs.m17n.org:/cvs/root checkout -r semi-1_14 semi&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Here are the browse-able CVS web interfaces:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class="reference external" href="http://cvs.m17n.org/viewcvs/root/wanderlust/"&gt;http://cvs.m17n.org/viewcvs/root/wanderlust/&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class="reference external" href="http://cvs.m17n.org/viewcvs/root/apel/"&gt;http://cvs.m17n.org/viewcvs/root/apel/&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class="reference external" href="http://cvs.m17n.org/viewcvs/root/flim/"&gt;http://cvs.m17n.org/viewcvs/root/flim/&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class="reference external" href="http://cvs.m17n.org/viewcvs/root/semi/"&gt;http://cvs.m17n.org/viewcvs/root/semi/&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;dl class="footnote brackets"&gt;
+&lt;dt class="label" id="foss"&gt;&lt;span class="brackets"&gt;&lt;a class="fn-backref" href="https://tkurtbond.github.io/posts/2009/09/02/wanderlust-apel-semi-and-flim-development/#id1"&gt;1&lt;/a&gt;&lt;/span&gt;&lt;/dt&gt;
+&lt;dd&gt;&lt;p&gt;&lt;strong&gt;F&lt;/strong&gt;ree or &lt;strong&gt;O&lt;/strong&gt;pen &lt;strong&gt;S&lt;/strong&gt;ource &lt;strong&gt;S&lt;/strong&gt;oftware.&lt;/p&gt;
+&lt;/dd&gt;
+&lt;dt class="label" id="china"&gt;&lt;span class="brackets"&gt;&lt;a class="fn-backref" href="https://tkurtbond.github.io/posts/2009/09/02/wanderlust-apel-semi-and-flim-development/#id2"&gt;2&lt;/a&gt;&lt;/span&gt;&lt;/dt&gt;
+&lt;dd&gt;&lt;p&gt;I wonder if there is a Chinese alternate universe of FOSS,
+too?&lt;/p&gt;
+&lt;/dd&gt;
+&lt;/dl&gt;&lt;/div&gt;</description><category>apel</category><category>e-mail</category><category>flim</category><category>semi</category><category>wanderlust</category><guid>https://tkurtbond.github.io/posts/2009/09/02/wanderlust-apel-semi-and-flim-development/</guid><pubDate>Wed, 02 Sep 2009 14:01:26 GMT</pubDate></item></channel></rss>

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity (Posts about ada)</title><link>https://tkurtbond.github.io/</link><description></description><atom:link href="https://tkurtbond.github.io/categories/ada.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2019 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Wed, 06 Nov 2019 16:48:18 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>GtkAda and Ada; Recent Listening and Viewing</title><link>https://tkurtbond.github.io/posts/2005/06/07/2005-06-07/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;div class="section" id="gtkada-and-ada"&gt;
+&lt;h2&gt;GtkAda and Ada&lt;/h2&gt;
+&lt;p&gt;Using GNAT 3.15p with GtkAda-2.4.0 on Windows XP, when I wanted to
+switch from using &lt;code class="docutils literal"&gt;Gtk.Menu.Popup&lt;/code&gt; to using a user instantiated
+version of &lt;code class="docutils literal"&gt;Gtk.Menu.User_Menu_Popup.Popup&lt;/code&gt; I tried to switch from
+using &lt;code class="docutils literal"&gt;Menu&lt;/code&gt; of type &lt;code class="docutils literal"&gt;Gtk_Menu&lt;/code&gt; for the first parameter to using
+&lt;code class="docutils literal"&gt;Gtk_Menu_Record &lt;span class="pre"&gt;(Menu.all)'Access&lt;/span&gt;&lt;/code&gt; because gnatmake says:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;access to class-wide argument not allowed here
+"Popup" is not a primitive operation of
+"Gtk_Menu_Record"&lt;/pre&gt;
+&lt;p&gt;I suppose that is because when the package is instantiated it's not in
+the same scope as the original declaration of &lt;code class="docutils literal"&gt;Gtk_Menu_Record&lt;/code&gt; so it
+can't be a primitive operation of that type. It's annoying, though.
+Anyway, I never figured out the problem completely before having to
+move on to something else.&lt;/p&gt;
+&lt;p&gt;I never did get &lt;code class="docutils literal"&gt;Gtk.Menu.User_Menu_Popup.Popup&lt;/code&gt; working properly,
+though.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="recent-listening"&gt;
+&lt;h2&gt;Recent Listening&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;p&gt;&lt;em&gt;Blue Blood&lt;/em&gt;, by Edward Conlon; performed by Tom Stechschulte;
+Recorded Books, 2004.  Very interesting memoir of a NYPD cop in the late
+1990s and early 2000s.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="recent-viewing"&gt;
+&lt;h2&gt;Recent Viewing&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class="reference external" href="http://www.imdb.com/title/tt0164984/"&gt;Zatoichi sekisho yaburi&lt;/a&gt;, aka &lt;em&gt;Adventures of a Blind
+Man&lt;/em&gt;, 1964. Directed by Kimiyoshi Yasuda, writing by Shozaburo Asai
+and Kan Shimozawa.Includes another glimpse into Zatoichi's background.
+Good.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;&lt;/div&gt;</description><category>ada</category><category>gtkada</category><category>old blog</category><category>recent listening</category><category>recent viewing</category><guid>https://tkurtbond.github.io/posts/2005/06/07/2005-06-07/</guid><pubDate>Tue, 07 Jun 2005 05:00:00 GMT</pubDate></item><item><title>Recent Reading; Ada and doing things right</title><link>https://tkurtbond.github.io/posts/2004/07/28/2004-07-28/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;div class="section" id="recent-reading"&gt;
+&lt;h2&gt;Recent Reading&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;em&gt;Nebula Winners Twelve&lt;/em&gt;, ed. Gordon R. Dickson, copyright 1978 by
+Science Fiction Writers of America; Harper and Row, 1987.&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;p&gt;&lt;em&gt;A Crowd of Shadows&lt;/em&gt;, by Charles L. Grant. Nebula Winner.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;em&gt;Breath's a Ware That Will Not Keep&lt;/em&gt;, by Thomas F. Monteleone.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;em&gt;Tricentennial&lt;/em&gt;, by Joe Haldeman.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;em&gt;In the Bowl&lt;/em&gt;, by John Varley.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;em&gt;The Academic Viewpoint&lt;/em&gt;, by James Gunn.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;em&gt;The Bicentennial Man&lt;/em&gt;, by Isaac Asimov. Nebula Winner.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;em&gt;Houston, Houston, Do You Read?&lt;/em&gt;, by James Triptree, Jr. Nebula
+Winner.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;These are some of short Nebula winners and runners-up from 1976.  A
+good collection; all the stories are still worth reading.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="ada-and-doing-things-right"&gt;
+&lt;h2&gt;Ada and doing things right&lt;/h2&gt;
+&lt;p&gt;I enjoy reading the newsgroup &lt;a class="reference external" href="news:comp.lang.ada"&gt;comp.lang.ada&lt;/a&gt;,
+because there are number of people there who are doing commercial work
+with very high quality requirements and interesting problems to solve.
+It's nice to listen to folks who really work to get things &lt;em&gt;right&lt;/em&gt;.
+And sometimes it's just a relief to read code that's written with a
+clear syntax.&lt;/p&gt;
+&lt;p&gt;Speaking of Ada 200Y, Martin Dowie has &lt;a class="reference external" href="http://www.martin.dowie.btinternet.co.uk/"&gt;back-port to Ada 95&lt;/a&gt; of some of the new &lt;a class="reference external" href="http://groups.google.com/groups?dq=&amp;amp;hl=en&amp;amp;lr=&amp;amp;ie=UTF-8&amp;amp;threadm=ce8pjj%247an%241%40titan.btinternet.com&amp;amp;prev=/groups%3Fhl%3Den%26lr%3D%26ie%3DUTF-8%26group%3Dcomp.lang.ada"&gt;Ada
+200Y packages&lt;/a&gt;:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;p&gt;AI-248 - &lt;code class="docutils literal"&gt;Ada.Directories.*&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;AI-286 - &lt;code class="docutils literal"&gt;Ada.Assertions&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;AI-296 - &lt;code class="docutils literal"&gt;Ada.Numerics.Generic_&lt;/code&gt;&lt;cite&gt;[Complex|Real]&lt;/cite&gt;&lt;code class="docutils literal"&gt;_Arrays&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;AI-301 - &lt;code class="docutils literal"&gt;Ada.&lt;/code&gt;&lt;cite&gt;(Wide_)&lt;/cite&gt;&lt;code class="docutils literal"&gt;Text_IO.&lt;/code&gt;&lt;cite&gt;(Wide_)&lt;/cite&gt;&lt;code class="docutils literal"&gt;Unbounded_IO&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;AI-302 - &lt;code class="docutils literal"&gt;Ada.Containers.*&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;AI-346 - &lt;code class="docutils literal"&gt;Ada.Numerics.Generic_&lt;/code&gt;&lt;cite&gt;[Complex|Real]&lt;/cite&gt;&lt;code class="docutils literal"&gt;_Arrays.Generic_Roots&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;AI-351 - &lt;code class="docutils literal"&gt;Ada.Calendar.*&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;&lt;/div&gt;</description><category>ada</category><category>old blog</category><category>recent reading</category><guid>https://tkurtbond.github.io/posts/2004/07/28/2004-07-28/</guid><pubDate>Wed, 28 Jul 2004 05:00:00 GMT</pubDate></item><item><title>Ada as a Second Language, Second Edition</title><link>https://tkurtbond.github.io/posts/2003/07/24/2003-07-24/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;p&gt;I'm still working my way slowly through Cohen's &lt;a class="reference external" href="https://tkurtbond.github.io/posts/2003/07/09/2003-07-09/#cohen-ada95"&gt;Ada as a Second
+Language, Second Edition&lt;/a&gt;.
+Ada takes a much more conservative approach to reliability
+than any of the BCPL/C languages (including Java), and in some cases
+more even than the Pascal/Modula/Oberon languages, so there are more
+restrictions on how some things are treated.  Looking carefully at the
+language, I can understand the reasons for the restrictions, but
+abiding by them takes more up-front planning than is promoted by the
+BCPL/C languages.  Is the additional effort worth the extra reliability
+for general purpose applications programming? That's what I hope to
+find out.  It's easy to see, now that I'm back to using a language that
+doesn't include garbage collection as part of the standard, how much
+easier garbage collection makes interface design;
+&lt;a class="reference external" href="http://www.m3.org/"&gt;Modula-3&lt;/a&gt; or Java have a definite advantage here.&lt;/p&gt;</description><category>ada</category><category>old blog</category><guid>https://tkurtbond.github.io/posts/2003/07/24/2003-07-24/</guid><pubDate>Thu, 24 Jul 2003 05:00:00 GMT</pubDate></item><item><title>GtkAda and Recent Reading</title><link>https://tkurtbond.github.io/posts/2003/07/03/2003-07-03/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;div class="section" id="gtkada"&gt;
+&lt;h2&gt;GtkAda&lt;/h2&gt;
+&lt;p&gt;The &lt;a class="reference external" href="http://libre.act-europe.fr/GtkAda/"&gt;GtkAda&lt;/a&gt; folks have
+released a new version of GtkAda for Gtk+-2.2 and it includes an
+easily installed binary release.  It looks to me like the easiest way
+to get started writing cross-platform Gtk+ programs is to install &lt;a class="reference external" href="ftp://ftp.cs.nyu.edu/pub/gnat/3.15p/winnt/gnat-3.15p-nt.exe"&gt;GNAT
+3.15p&lt;/a&gt;
+and &lt;a class="reference external" href="ftp://ftp.cs.nyu.edu/pub/gnat/3.15p/winnt/gnatwin-3.15p.exe"&gt;GNATWIN&lt;/a&gt; then
+install the new &lt;a class="reference external" href="http://libre.act-europe.fr/GtkAda/gtkada-2.2.0.exe"&gt;GtkAda&lt;/a&gt; release.  Reasonably complete
+examples are included in the distribution.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="recent-reading"&gt;
+&lt;h2&gt;Recent Reading&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;p&gt;&lt;cite&gt;The Other Wind&lt;/cite&gt; and &lt;cite&gt;Tales from Earthsea&lt;/cite&gt;, by Ursula K. LeGuin.  I
+was very glad to see that there were still &lt;cite class="series"&gt;Earthsea&lt;/cite&gt; tales that
+LeGuin wanted to tell.  Both of these books are quite good.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class="reference external" href="http://www.epiphyte.net/SF/college-of-magics.html"&gt;A College of Magics&lt;/a&gt; by Caroline Stevermer.  This is a very entertaining
+&lt;a class="reference external" href="http://www.wikipedia.org/wiki/Fictional_country"&gt;Ruritanian&lt;/a&gt;
+fantasy in an alternate world with a touch of magic.  I've enjoyed her
+other works as well: &lt;cite&gt;The Serpent's Egg&lt;/cite&gt;, &lt;cite&gt;When the King Comes Home&lt;/cite&gt;,
+and &lt;cite&gt;Sorcery and Cecelia&lt;/cite&gt; (co-written with Patricia C. Wrede).  I
+haven't read &lt;cite&gt;River Rats&lt;/cite&gt; yet, though.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;cite&gt;The Haunted Monastery, a Chinese Detective Story&lt;/cite&gt;, by Robert van
+Gulik.  An enjoyable &lt;a class="reference external" href="http://www.friesian.com/ross/dee.htm"&gt;Judge Dee&lt;/a&gt; mystery.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;&lt;/div&gt;</description><category>ada</category><category>gtkada</category><category>old blog</category><category>recent reading</category><guid>https://tkurtbond.github.io/posts/2003/07/03/2003-07-03/</guid><pubDate>Thu, 03 Jul 2003 05:00:00 GMT</pubDate></item><item><title>Recent Reading; Computing: Ada</title><link>https://tkurtbond.github.io/posts/2003/06/24/2003-06-24/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;div class="section" id="recent-reading"&gt;
+&lt;h2&gt;Recent Reading&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;p&gt;&lt;cite&gt;Honorable Company&lt;/cite&gt; by Allan Mallinson.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;cite&gt;The Haunted Monastery&lt;/cite&gt; by Robert Hans Van Gulik.  This is one of
+Gulik's &lt;a class="reference external" href="http://www.friesian.com/ross/dee.htm"&gt;Judge Dee&lt;/a&gt;
+mysteries, set in ancient China.  Very good.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;cite&gt;Ada 95: The Craft of Object-Oriented Programming&lt;/cite&gt; by John English,
+&lt;a class="reference external" href="http://www.it.bton.ac.uk/staff/je/adacraft/"&gt;online edition&lt;/a&gt;. A
+good introduction to Ada 95.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="computing-ada"&gt;
+&lt;h2&gt;Computing: Ada&lt;/h2&gt;
+&lt;p&gt;I've been looking at &lt;a class="reference external" href="http://libre.act-europe.fr/GtkAda/"&gt;GtkAda&lt;/a&gt;,
+an Ada binding for Gtk+.  It's pretty complete, and is portable between
+Unix and MS Windows, with a MacOS X version in the works.  An
+&lt;a class="reference external" href="http://lists.act-europe.fr/pipermail/gtkada/2003-May/002223.html"&gt;explanation&lt;/a&gt; of how to create
+the environment for you'll need for using recent versions (Gtk+-2.2.x
+based, from CVS) with recent versions of GCC under MS Windows is
+&lt;a class="reference external" href="http://lists.act-europe.fr/pipermail/gtkada/2003-May/002223.html"&gt;available&lt;/a&gt;.  (Update: a new
+&lt;a class="reference external" href="https://tkurtbond.github.io/posts/2003/log/2003/07/03.html#gtkada-2-2-0"&gt;binary release&lt;/a&gt; makes
+things much simpler.)&lt;/p&gt;
+&lt;/div&gt;&lt;/div&gt;</description><category>ada</category><category>gtkada</category><category>old blog</category><category>recent reading</category><guid>https://tkurtbond.github.io/posts/2003/06/24/2003-06-24/</guid><pubDate>Tue, 24 Jun 2003 05:00:00 GMT</pubDate></item></channel></rss>

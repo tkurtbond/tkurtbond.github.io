@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Skeptical about Macro Hygiene? | Lacking Natural Simplicity</title>
+<link href="../../../../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../../../../rss.xml">
+<link rel="canonical" href="https://tkurtbond.github.io/posts/2005/01/24/2005-01-24/">
+<!--[if lt IE 9]><script src="../../../../../assets/js/html5.js"></script><![endif]--><meta name="author" content="T. Kurt Bond">
+<link rel="prev" href="../../23/2005-01-23/" title="Goodbye, PM3; Recent Reading" type="text/html">
+<link rel="next" href="../../30/2005-01-30/" title="Recent Reading" type="text/html">
+<meta property="og:site_name" content="Lacking Natural Simplicity">
+<meta property="og:title" content="Skeptical about Macro Hygiene?">
+<meta property="og:url" content="https://tkurtbond.github.io/posts/2005/01/24/2005-01-24/">
+<meta property="og:description" content="Eli Barzilay has a couple of interesting USENET articles on his
+experience changing from defmacro to syntax-case. Unfortunately, I
+didn't understand Shriram Krishnamurthi's comments on hygiene at
+all.">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2005-01-24T00:00:00-05:00">
+<meta property="article:tag" content="hygiene">
+<meta property="article:tag" content="lisp">
+<meta property="article:tag" content="macros">
+<meta property="article:tag" content="old blog">
+<meta property="article:tag" content="scheme">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<div class="blog-masthead">
+    <div class="container">
+<!-- This keeps the margins nice -->
+        <nav class="blog-nav" role="navigation"><a href="../../../../../index.html" class="blog-nav-item">Home</a>
+            <a href="../../../../../archive.html" class="blog-nav-item">Archives</a>
+            <a href="../../../../../categories/index.html" class="blog-nav-item">Tags</a>
+            <a href="../../../../../rss.xml" class="blog-nav-item">RSS feed</a>
+
+            
+
+                
+                
+                    
+    <a href="index.rst" class="blog-nav-item blog-nav-item-aside" id="sourcelink">Source</a>
+
+                
+            
+        </nav>
+</div>
+<!-- /.container -->
+</div>
+<!-- End of Menubar -->
+
+<div class="container" id="content" role="main">
+    <div class="body-content">
+        <div class="blog-header">
+            <h1 class="blog-title">
+                <a href="https://tkurtbond.github.io/">
+
+                    <span id="blog-title">Lacking Natural Simplicity</span>
+                </a>
+            </h1>
+            <p class="lead blog-description">Random musings on code and tabletop games.</p>
+            
+        </div>
+        <!--Body content-->
+        <div class="row">
+            <div class="col-sm-8 blog-main">
+                
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h2 class="p-name entry-title blog-post-title" itemprop="headline name"><a href="." class="u-url">Skeptical about Macro Hygiene?</a></h2>
+
+        <div class="metadata blog-post-meta">
+            <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
+            <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2005-01-24T00:00:00-05:00" itemprop="datePublished" title="2005-01-24 00:00">2005-01-24 00:00</time></a></p>
+            
+        <p class="sourceline"><a href="index.rst" id="sourcelink">Source</a></p>
+
+        </div>
+        
+
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<p>Eli Barzilay has a couple of interesting <a class="reference external" href="http://groups-beta.google.com/group/comp.lang.scheme/msg/b9328703efaa8219">USENET</a> <a class="reference external" href="http://groups-beta.google.com/group/comp.lang.scheme/msg/4301f80b6534a85">articles</a> on his
+experience changing from <code class="docutils literal">defmacro</code> to <code class="docutils literal"><span class="pre">syntax-case</span></code>. Unfortunately, I
+didn't understand Shriram Krishnamurthi's <a class="reference external" href="http://groups-beta.google.com/group/comp.lang.scheme/msg/f7f4e2373846759c">comments on hygiene</a> at
+all.</p>
+<div class="section" id="additions-on-tuesday-21-april-2009">
+<h2>Additions on Tuesday, 21 April 2009</h2>
+<p>I thought I'd better quote what he said:</p>
+<blockquote>
+<p>By the way, I've been skeptical about hygiene for the past six or
+seven years.  The hygiene algorithm struck me as such an obviously
+good idea that I simply couldn't understand what the MIT folks meant
+when they said (and I'm paraphrasing, loosely, from papers I haven't
+read in a decade) that the hygiene algorithm doesn't make sense.  Only
+a few years ago did I begin to unravel this, and now I almost entirely
+understand it.  In short, it has taken me nearly a decade to
+understand why someone did not understand something that I understood
+obviously, and it's only because what I understood obviously, I now
+barely understand at all.</p>
+</blockquote>
+<p>It's really simple to understand how to implement <code class="docutils literal">defmacro</code>.  It's
+not simple to understand how to implement <code class="docutils literal"><span class="pre">syntax-case</span></code>.  Throw in
+modules, as in <a class="reference external" href="http://www.plt-scheme.org/">PLT Scheme</a> (and <a class="reference external" href="http://www.r6rs.org/">R6RS</a>, apparently), and things are
+even more difficult.  Throw in the oddity of writing <code class="docutils literal"><span class="pre">syntax-case</span></code>/<code class="docutils literal"><span class="pre">syntax-rules</span></code> macros with the pattern matching syntax, and you
+really have to wonder.</p>
+<p>I really wish somebody would sit down and write detailed survey
+article comparing all the Lisp and Scheme macro systems and
+considering all the interactions with modules and pattern matching.  I
+think it's really needed.  [Do I say this somewhere else, too?]</p>
+</div>
+</div>
+    </div>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../../../../../categories/hygiene/" rel="tag">hygiene</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/lisp/" rel="tag">lisp</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/macros/" rel="tag">macros</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/old-blog/" rel="tag">old blog</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/scheme/" rel="tag">scheme</a></li>
+        </ul>
+<ul class="pager hidden-print">
+<li class="previous">
+                <a href="../../23/2005-01-23/" rel="prev" title="Goodbye, PM3; Recent Reading">Previous post</a>
+            </li>
+            <li class="next">
+                <a href="../../30/2005-01-30/" rel="next" title="Recent Reading">Next post</a>
+            </li>
+        </ul></nav></aside></article>
+</div>
+            <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+                    <div class="sidebar-module sidebar-module-inset">
+      <h4>About</h4>
+      <p>Lacking Natural Simplicity is one definition of sophisticated.  
+         This blog chronicles my journey through our at times too complicated 
+         and sophisticated world. </p>
+    </div>
+    <div class="sidebar-module">
+      <h4>Links</h4>
+      <ol class="list-unstyled">
+<li><a href="../../../../../pages/about-the-blog/index.html">About the Blog</a></li>
+        <li><a href="../../../../../pages/colophon/index.html">Colophon</a></li>
+        <li><a href="../../../../../pages/pages/index.html">Pages</a></li>
+      </ol>
+</div>
+    
+            </div>
+        <!--End of body content-->
+        </div>
+    </div>
+</div>
+
+<footer class="blog-footer" id="footer">
+    Contents © 2019         <a href="mailto:tkurtbond@gmail.com">T. Kurt Bond</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+    
+</footer><script src="../../../../../assets/js/all-nocdn.js"></script><!-- fancy dates --><script>
+    moment.locale("en");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates --><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element) {
+            return element.getElementsByTagName('img')[0].alt;
+    }});
+    </script>
+</body>
+</html>

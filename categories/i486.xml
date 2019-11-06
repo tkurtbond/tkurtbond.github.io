@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity (Posts about i486)</title><link>https://tkurtbond.github.io/</link><description></description><atom:link href="https://tkurtbond.github.io/categories/i486.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2019 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Wed, 06 Nov 2019 04:05:40 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Ancient History and Ancient Hardware repurposed with NetBSD 4.0, almost</title><link>https://tkurtbond.github.io/posts/2008/09/14/ancient-history-and-hardware-repurposed-with-netbsd-40/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;For some odd reason I decided to power on my old Gateway 2000 486DX/33
+and do something with it.  It hadn't been on since Wednesday, May
+25th, 2005, if I can believe the BIOS date.  (I was pleasantly
+surprised the settings gotten corrupted.)  Up to the point I turned it
+off it was acting as a mail server backup for my personal system, and
+was running Sendmail, Dovecot, a greylisting milter, and Emacs.  A
+little before that it had actually been one of the MPL DNS servers.&lt;/p&gt;
+&lt;p&gt;Anyway, it had Windows 95 on the original 200MB IDE hard drive and
+FreeBSD 4.10 on the 2GB Quantum XP32275S Atlas II.  It came with
+Windows 95 of course when I bought it, but I ran &lt;a class="reference external" href="http://en.wikipedia.org/wiki/Softlanding_Linux_System"&gt;SLS Linux&lt;/a&gt; on it
+originally, if I remember correctly, because 386BSD wouldn't install,
+and later &lt;a class="reference external" href="http://en.wikipedia.org/wiki/MCC_Interim_Linux"&gt;MCC Interim Linux&lt;/a&gt;, and eventually &lt;a class="reference external" href="http://www.freebsd.org/"&gt;FreeBSD&lt;/a&gt;.  When my wife got
+me the SCSI controler and CD-ROM I was so thrilled because now I
+wouldn't get dragging home OS distributions on floppy any more!  Once
+I got the 2GB hard drive I put Windows 95 back on the 200MB drive for
+my wife and for the occastional work-related Windows 95 excursion.  It
+had 16MB originally, but I scrounged 4MB more of RAM for it very late
+on, when it was a DNS server.&lt;/p&gt;
+&lt;p&gt;I wanted to get a more recent OS on it, but remembering how FreeBSD
+4.10 was a pretty tight fight there at the end, I decided I'd put
+&lt;a class="reference external" href="http://www.netbsd.org/"&gt;NetBSD&lt;/a&gt; on it.  (NetBSD documentation says it still should be possible to
+run in 4MB.)   I used NetBSD for a while for my main box at home, but
+I was never satisfied that I'd mastered it as well as FreeBSD, and I
+thought this would be good way to put the old 486 to work.  Luckily I
+was albe to find an 3c509B card to get it on the network, because it
+turned out the 3.5” floppy and the CD-ROM drive were both
+non-functional.  (As I worked with the machine I remembered the floppy
+had been bad when I'd turned it off, but the CD-ROM had been working.)
+I gathered some confirmation information and then started trying to
+figure out how I was going to get NetBSD on it.  Luckily the FreeBSD
+4.10 install was still working and I was able to extract the NetBSD
+dosboot.com bootloader  from base.tgz, copy it and the netbsd-install
+kernel over the network with FreeBSD, mount the
+old 200MB Windows 95/MS-DOS disk under FreeBSD, and copy the files
+over there, then boot into MS-DOS with F8 when Windows 95 started to
+boot, run through the prompting for each line in the config files and
+answering “NO”, and then run &lt;code class="docutils literal"&gt;dosboot &lt;span class="pre"&gt;netbsd-install&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;The installation was successful, but unfortunately the boot process failed.&lt;/p&gt;
+&lt;p&gt;As I recall, I've had problems in the past getting boot loaders to
+boot off this drive.  I'll have to revisit it when I have some more
+time.&lt;/p&gt;
+&lt;!-- http://www.mavetju.org/mail/view_message.php?list=freebsd-stable&amp;id=456419
+http://intelligent-peripheral.com/manuals/quantum_ucg.pdf
+ http://209.85.165.104/search?q=cache:ksSAYOqDDQAJ:intelligent-peripheral.com/manuals/quantum_ucg.pdf+QUANTUM+XP32275S&amp;hl=en&amp;ct=clnk&amp;cd=10&amp;gl=us&amp;client=firefox-a
+ http://www.netbsd.org/ports/i386/faq.html#dosboot
+
+ 5. step-by-step-confirmation
+
+ http://bsdsupport.org/2007/01/netbsd-pxe-boot-install-without-nfs/ --&gt;&lt;/div&gt;</description><category>computer</category><category>i486</category><category>netbsd</category><guid>https://tkurtbond.github.io/posts/2008/09/14/ancient-history-and-hardware-repurposed-with-netbsd-40/</guid><pubDate>Sun, 14 Sep 2008 11:33:38 GMT</pubDate></item></channel></rss>
