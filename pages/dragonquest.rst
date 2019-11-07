@@ -38,7 +38,7 @@ Aptitude (MA) and Willpower (WP), amongst which a randomly determined
 number of Characteristic Points are divided.  Furthermore, every `DQ`
 character had a number of other *secondary characteristics*, most of
 which were calculated based on the primary characteristics: Fatigue
-(FT), based on Endurance; Perceptiion, which started at a fixed value;
+(FT), based on Endurance; Perception, which started at a fixed value;
 and Tactical Movement Rate (TMR), which was based on Agility.  A `DQ`
 character might also have some optional characteristics introduced by
 the GM, and one “standard” [#pb]_ optional characteristic is
