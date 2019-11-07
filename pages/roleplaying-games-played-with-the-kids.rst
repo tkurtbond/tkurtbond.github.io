@@ -87,3 +87,17 @@ Tour Guide*, and *Toon Ace Catalog*.  It's another game the kids love.
 
 
 .. _`the kids`: link://category/gaming/actual-play/the-kids
+
+Labyrinth Lord
+==============
+
+`Labyrinth Lord`_ from `Goblinoid Games`_ is a wonderful retroclone of
+B/X D&D, and it's companion `Advanced Edition Companion`_ adds
+compatibility with AD&D, which makes it perfect for running the old
+modules I have.  It plays much like we actually played AD&D back in
+the day, without some of the convolutions.  We had great fun playing
+`Keep on the Borderlands` and a number of other modules.
+
+.. _`Labyrinth Lord`: https://www.drivethrurpg.com/product/64332/Labyrinth-Lord-Revised-Edition?cPath=2033_6311
+.. _`Goblinoid Games`: http://goblinoidgames.com/
+.. _`Advanced Edition Companion`: https://www.drivethrurpg.com/product/78523/Advanced-Edition-Companion-Labyrinth-Lord?cPath=2033_6311
