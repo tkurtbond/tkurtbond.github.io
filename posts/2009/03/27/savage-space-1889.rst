@@ -1,7 +1,7 @@
 .. title: Savage Space 1889
 .. slug: savage-space-1889
 .. date: 2009-03-27 12:12:33 UTC-05:00
-.. tags: rpg,savage worlds,space: 1889
+.. tags: rpg,savage worlds,space 1889
 .. category: gaming
 .. link: 
 .. description: 
