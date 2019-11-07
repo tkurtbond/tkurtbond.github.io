@@ -7,11 +7,9 @@
 .. description: 
 .. type: text
 
-`DragonQuest`
-=============
-
 .. role:: company
 
+          
 `DragonQuest` and I
 -------------------
 
