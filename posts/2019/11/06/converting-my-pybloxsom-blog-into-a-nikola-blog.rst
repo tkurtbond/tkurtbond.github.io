@@ -11,9 +11,21 @@ Yesterday I decided to try blogging again.  I started writing a post
 at blogger.com, but that was like wading through a rotting whale
 corpse.  Instead I decided to use `GitHub Pages
 <https://help.github.com/en/github/working-with-github-pages/about-github-pages>`__
-and use the static blog/site generator Nikola_ to generate the content.
+and use the static blog/site generator Nikola_ to generate the
+content, editing reStructuredText (ReST) files.
 
 .. _Nikola: https://getnikola.com/
+
+I wrote my first post_ and it was good!  Using ReST again was much
+better than editing in a GUI like blogger.com, and having it hosted by
+GitHub Pages was more restful than running a machine hosting a
+website.
+
+.. _post: link://slug/getting-nxml-mode-in-emacs-to-validate-docbook-5-documents
+
+But then I thought off all the posts I had in my old blog, before I
+stopped running machine hosting a website.  They were all written in
+ReST — maybe I could put them up on my new blog?
 
 I took a couple three hours and wrote a shell script to find the old
 pyBloxsom_ files and feed them into a python script that I also wrote.
@@ -29,6 +41,7 @@ Here's the shell script:
 Here's the python script:
 
 .. listing:: pyblox-to-nikola python
+             :number-lines:
 
 There were 810 reStructuredText_ files to process.  Once that was
 done, I had to work through those files multiple times finding all the

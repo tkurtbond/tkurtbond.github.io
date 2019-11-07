@@ -21,7 +21,8 @@ I'm a little surprised to see this at this late date — is there that
 much demand for these PDFs?  Still, I'm pleased to get the updates,
 and glad there's still interest.  I've never tried the Ubiquity_ based
 version, though I‘ve been thinking about buying the `Savage Worlds`_
-versions of those adventures.
+versions of those adventures, but the original system has charms of
+its own.
 
 .. _`Savage Worlds`: https://en.wikipedia.org/wiki/Savage_Worlds
 .. _Ubiquity: https://rpggeek.com/rpgsystem/742/ubiquity-roleplaying-system
