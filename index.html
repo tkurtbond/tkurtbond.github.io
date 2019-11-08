@@ -9,7 +9,7 @@
 <link rel="alternate" type="application/rss+xml" title="RSS" href="rss.xml">
 <link rel="canonical" href="https://tkurtbond.github.io/">
 <link rel="next" href="index-81.html" type="text/html">
-<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/2019/11/07/looping-on-dnf-y-system-upgrade-download-until-it-succeeds/" type="text/html">
+<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/2019/11/08/playing-with-hashlife/" type="text/html">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
@@ -55,7 +55,51 @@
                 
 
 <div class="postindex">
-    <article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2019/11/07/looping-on-dnf-y-system-upgrade-download-until-it-succeeds/" class="u-url">Looping on 'dnf -y system-upgrade download' until it succeeds</a></h2>
+    <article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2019/11/08/playing-with-hashlife/" class="u-url">Playing with Hashlife</a></h2>
+        <div class="metadata blog-post-meta">
+            <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
+            <p class="dateline"><a href="posts/2019/11/08/playing-with-hashlife/" rel="bookmark"><time class="published dt-published" datetime="2019-11-08T09:43:19-05:00" title="2019-11-08 09:43">2019-11-08 09:43</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <div>
+<p>C.P. found <a class="reference external" href="https://github.com/stylewarning">Robert Smith</a>'s <a class="reference external" href="https://github.com/stylewarning/lisp-random/tree/master/hashlife">implementation</a> of Bill Gosper's HASHLIFE
+algorithm and wanted my help with running it.  I cloned the <a class="reference external" href="https://github.com/stylewarning/lisp-random">repo</a> it
+was in and ran <code class="docutils literal">sbcl</code> in the <code class="docutils literal">hashlife</code> directory.  Then I
+entered:</p>
+<pre class="code lisp"><a name="rest_code_870b9c61f60545db8eee015564a896e2-1"></a><span class="p">(</span><span class="nv">asdf:operate</span> <span class="ss">'asdf:load-op</span> <span class="ss">'charmlife</span><span class="p">)</span>
+</pre>
+<p>That result in <code class="docutils literal">Component CHARMLIFE not found</code> error in sbcl.  I
+thought that was odd — it was right there in the current directory.  I
+looked at <code class="docutils literal"><span class="pre">asdf:*central-registry*</span></code>, and the only thing in it was
+the quicklisp directory.  The ASDF <a class="reference external" href="https://common-lisp.net/~mmommer/asdf-howto.shtml#sec11">howto</a> showed an example of setting
+<code class="docutils literal"><span class="pre">asdf:*central-registry*</span></code>:</p>
+<pre class="code lisp"><a name="rest_code_02801ccd1dd94b63a7eabeb7f30c29c1-1"></a><span class="p">(</span><span class="nb">setf</span> <span class="nv">asdf:*central-registry*</span>
+<a name="rest_code_02801ccd1dd94b63a7eabeb7f30c29c1-2"></a>  <span class="c1">;; Default directories, usually just the ``current directory''</span>
+<a name="rest_code_02801ccd1dd94b63a7eabeb7f30c29c1-3"></a>  <span class="o">'</span><span class="p">(</span><span class="vg">*default-pathname-defaults*</span>
+<a name="rest_code_02801ccd1dd94b63a7eabeb7f30c29c1-4"></a>
+<a name="rest_code_02801ccd1dd94b63a7eabeb7f30c29c1-5"></a>    <span class="c1">;; Additional places where ASDF can find</span>
+<a name="rest_code_02801ccd1dd94b63a7eabeb7f30c29c1-6"></a>    <span class="c1">;; system definition files</span>
+<a name="rest_code_02801ccd1dd94b63a7eabeb7f30c29c1-7"></a>    <span class="l l-Other">#p"/home/foo/lisp/systems/"</span>
+<a name="rest_code_02801ccd1dd94b63a7eabeb7f30c29c1-8"></a>    <span class="l l-Other">#p"/usr/share/common-lisp/systems/"</span><span class="p">))</span>
+</pre>
+<p>Noticing that it had the symbol <code class="docutils literal"><span class="pre">*default-pathname-defaults*</span></code> in the
+new value, I guessed that it being missing from mine caused ASDF to
+not find the system in the current directory.  So I added it and tried
+again.  This time ASDF couldn't find <code class="docutils literal"><span class="pre">cl-charms</span></code>.  I guessed and
+used <a class="reference external" href="https://www.quicklisp.org/">Quicklisp</a> to load it.  That worked.  Then I looked at
+<code class="docutils literal">charmlife.lisp</code> and looked at the <code class="docutils literal">main</code> function and figured out
+how to run it and how to interact with the program when it was running.</p>
+<p>Here's what I had to do:</p>
+<pre class="code lisp"><a name="rest_code_b836dd7671044943aea67e124e85a86d-1"></a><span class="p">(</span><span class="nb">setf</span> <span class="nv">asdf:*central-registry*</span>
+<a name="rest_code_b836dd7671044943aea67e124e85a86d-2"></a>      <span class="p">(</span><span class="nb">cons</span> <span class="ss">'*default-pathname-defaults*</span>
+<a name="rest_code_b836dd7671044943aea67e124e85a86d-3"></a>            <span class="nv">asdf:*central-registry*</span><span class="p">))</span>
+<a name="rest_code_b836dd7671044943aea67e124e85a86d-4"></a><span class="p">(</span><span class="nv">ql:quickload</span> <span class="s">"cl-charms"</span><span class="p">)</span>
+<a name="rest_code_b836dd7671044943aea67e124e85a86d-5"></a><span class="p">(</span><span class="nv">asdf:operate</span> <span class="ss">'asdf:load-op</span> <span class="ss">'charmlife</span><span class="p">)</span>
+<a name="rest_code_b836dd7671044943aea67e124e85a86d-6"></a><span class="p">(</span><span class="nv">charmlife:main</span><span class="p">)</span>
+</pre>
+</div>
+    </div>
+    </article><article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2019/11/07/looping-on-dnf-y-system-upgrade-download-until-it-succeeds/" class="u-url">Looping on 'dnf -y system-upgrade download' until it succeeds</a></h2>
         <div class="metadata blog-post-meta">
             <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
             <p class="dateline"><a href="posts/2019/11/07/looping-on-dnf-y-system-upgrade-download-until-it-succeeds/" rel="bookmark"><time class="published dt-published" datetime="2019-11-07T21:16:59-05:00" title="2019-11-07 21:16">2019-11-07 21:16</time></a></p>
@@ -491,15 +535,6 @@ chests to the ship.</p>
 <p><strong>+5 XP.</strong></p>
 </div>
 </div>
-    </div>
-    </article><article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2014/11/06/bthorm-the-plane-of-tkumel/" class="u-url">Béthorm: The Plane of Tékumel</a></h2>
-        <div class="metadata blog-post-meta">
-            <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
-            <p class="dateline"><a href="posts/2014/11/06/bthorm-the-plane-of-tkumel/" rel="bookmark"><time class="published dt-published" datetime="2014-11-06T18:45:36-05:00" title="2014-11-06 18:45">2014-11-06 18:45</time></a></p>
-        </div>
-    </header><div class="e-content entry-content">
-    <p>My physical copy of <cite>Béthorm: The Plane of Tékumel</cite> arrived in the
-mail today.  It looks good to my quick scan.</p>
     </div>
     </article>
 </div>

@@ -1,5 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity (Posts about computer)</title><link>https://tkurtbond.github.io/</link><description></description><atom:link href="https://tkurtbond.github.io/categories/cat_computer.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2019 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Fri, 08 Nov 2019 03:14:29 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Looping on 'dnf -y system-upgrade download' until it succeeds</title><link>https://tkurtbond.github.io/posts/2019/11/07/looping-on-dnf-y-system-upgrade-download-until-it-succeeds/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;Fedora 31 is out, and fool that I am I'm upgrading to it.
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity (Posts about computer)</title><link>https://tkurtbond.github.io/</link><description></description><atom:link href="https://tkurtbond.github.io/categories/cat_computer.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2019 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Fri, 08 Nov 2019 15:10:25 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Playing with Hashlife</title><link>https://tkurtbond.github.io/posts/2019/11/08/playing-with-hashlife/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;C.P. found &lt;a class="reference external" href="https://github.com/stylewarning"&gt;Robert Smith&lt;/a&gt;'s &lt;a class="reference external" href="https://github.com/stylewarning/lisp-random/tree/master/hashlife"&gt;implementation&lt;/a&gt; of Bill Gosper's HASHLIFE
+algorithm and wanted my help with running it.  I cloned the &lt;a class="reference external" href="https://github.com/stylewarning/lisp-random"&gt;repo&lt;/a&gt; it
+was in and ran &lt;code class="docutils literal"&gt;sbcl&lt;/code&gt; in the &lt;code class="docutils literal"&gt;hashlife&lt;/code&gt; directory.  Then I
+entered:&lt;/p&gt;
+&lt;pre class="code lisp"&gt;&lt;a name="rest_code_870b9c61f60545db8eee015564a896e2-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;asdf:operate&lt;/span&gt; &lt;span class="ss"&gt;'asdf:load-op&lt;/span&gt; &lt;span class="ss"&gt;'charmlife&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;p&gt;That result in &lt;code class="docutils literal"&gt;Component CHARMLIFE not found&lt;/code&gt; error in sbcl.  I
+thought that was odd — it was right there in the current directory.  I
+looked at &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;asdf:*central-registry*&lt;/span&gt;&lt;/code&gt;, and the only thing in it was
+the quicklisp directory.  The ASDF &lt;a class="reference external" href="https://common-lisp.net/~mmommer/asdf-howto.shtml#sec11"&gt;howto&lt;/a&gt; showed an example of setting
+&lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;asdf:*central-registry*&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
+&lt;pre class="code lisp"&gt;&lt;a name="rest_code_02801ccd1dd94b63a7eabeb7f30c29c1-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;setf&lt;/span&gt; &lt;span class="nv"&gt;asdf:*central-registry*&lt;/span&gt;
+&lt;a name="rest_code_02801ccd1dd94b63a7eabeb7f30c29c1-2"&gt;&lt;/a&gt;  &lt;span class="c1"&gt;;; Default directories, usually just the ``current directory''&lt;/span&gt;
+&lt;a name="rest_code_02801ccd1dd94b63a7eabeb7f30c29c1-3"&gt;&lt;/a&gt;  &lt;span class="o"&gt;'&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="vg"&gt;*default-pathname-defaults*&lt;/span&gt;
+&lt;a name="rest_code_02801ccd1dd94b63a7eabeb7f30c29c1-4"&gt;&lt;/a&gt;
+&lt;a name="rest_code_02801ccd1dd94b63a7eabeb7f30c29c1-5"&gt;&lt;/a&gt;    &lt;span class="c1"&gt;;; Additional places where ASDF can find&lt;/span&gt;
+&lt;a name="rest_code_02801ccd1dd94b63a7eabeb7f30c29c1-6"&gt;&lt;/a&gt;    &lt;span class="c1"&gt;;; system definition files&lt;/span&gt;
+&lt;a name="rest_code_02801ccd1dd94b63a7eabeb7f30c29c1-7"&gt;&lt;/a&gt;    &lt;span class="l l-Other"&gt;#p"/home/foo/lisp/systems/"&lt;/span&gt;
+&lt;a name="rest_code_02801ccd1dd94b63a7eabeb7f30c29c1-8"&gt;&lt;/a&gt;    &lt;span class="l l-Other"&gt;#p"/usr/share/common-lisp/systems/"&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/pre&gt;&lt;p&gt;Noticing that it had the symbol &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;*default-pathname-defaults*&lt;/span&gt;&lt;/code&gt; in the
+new value, I guessed that it being missing from mine caused ASDF to
+not find the system in the current directory.  So I added it and tried
+again.  This time ASDF couldn't find &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;cl-charms&lt;/span&gt;&lt;/code&gt;.  I guessed and
+used &lt;a class="reference external" href="https://www.quicklisp.org/"&gt;Quicklisp&lt;/a&gt; to load it.  That worked.  Then I looked at
+&lt;code class="docutils literal"&gt;charmlife.lisp&lt;/code&gt; and looked at the &lt;code class="docutils literal"&gt;main&lt;/code&gt; function and figured out
+how to run it and how to interact with the program when it was running.&lt;/p&gt;
+&lt;p&gt;Here's what I had to do:&lt;/p&gt;
+&lt;pre class="code lisp"&gt;&lt;a name="rest_code_b836dd7671044943aea67e124e85a86d-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;setf&lt;/span&gt; &lt;span class="nv"&gt;asdf:*central-registry*&lt;/span&gt;
+&lt;a name="rest_code_b836dd7671044943aea67e124e85a86d-2"&gt;&lt;/a&gt;      &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;cons&lt;/span&gt; &lt;span class="ss"&gt;'*default-pathname-defaults*&lt;/span&gt;
+&lt;a name="rest_code_b836dd7671044943aea67e124e85a86d-3"&gt;&lt;/a&gt;            &lt;span class="nv"&gt;asdf:*central-registry*&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;a name="rest_code_b836dd7671044943aea67e124e85a86d-4"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;ql:quickload&lt;/span&gt; &lt;span class="s"&gt;"cl-charms"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_b836dd7671044943aea67e124e85a86d-5"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;asdf:operate&lt;/span&gt; &lt;span class="ss"&gt;'asdf:load-op&lt;/span&gt; &lt;span class="ss"&gt;'charmlife&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_b836dd7671044943aea67e124e85a86d-6"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;charmlife:main&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</description><category>common lisp</category><category>hashlife</category><category>life</category><guid>https://tkurtbond.github.io/posts/2019/11/08/playing-with-hashlife/</guid><pubDate>Fri, 08 Nov 2019 14:43:19 GMT</pubDate></item><item><title>Looping on 'dnf -y system-upgrade download' until it succeeds</title><link>https://tkurtbond.github.io/posts/2019/11/07/looping-on-dnf-y-system-upgrade-download-until-it-succeeds/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;Fedora 31 is out, and fool that I am I'm upgrading to it.
 Unfortunately, my DSL connection is slow and my DSL modem router is flaky.
 With over 3000 packages to download,&lt;/p&gt;
 &lt;pre class="code bash"&gt;&lt;a name="rest_code_bf673262ca4d4c76952d4900024fbdaa-1"&gt;&lt;/a&gt;dnf -y system-upgrade download --refresh --releasever&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;31&lt;/span&gt;
@@ -274,11 +306,4 @@ sqlite&amp;gt; insert into t1 values (1, 8, 4, null);
 sqlite&amp;gt; insert into t1 values (2, null, null, 8);
 sqlite&amp;gt; insert into t1 values (3, null, null, null);
 SQL error: constraint failed
-sqlite&amp;gt;&lt;/pre&gt;&lt;/div&gt;</description><category>programming</category><category>sql</category><category>sqlite</category><guid>https://tkurtbond.github.io/posts/2009/12/17/sqlite-implements-table-constraints/</guid><pubDate>Thu, 17 Dec 2009 22:02:04 GMT</pubDate></item><item><title>oo2c on Mac OS X Snow Leopard</title><link>https://tkurtbond.github.io/posts/2009/11/19/oo2c-on-mac-os-x-snow-leopard/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;It looks like I got &lt;a class="reference external" href="http://sourceforge.net/projects/ooc"&gt;oo2c&lt;/a&gt; to build and work under Mac OS X Snow
-Leopard, with some stupid hacks, at least enough for my purposes.  I
-don't claim that this is suitable for production work.&lt;/p&gt;
-&lt;p&gt;Here's the &lt;span class="program"&gt;configure&lt;/span&gt; invocation I used:&lt;/p&gt;
-&lt;pre class="literal-block"&gt;CFLAGS='-no-cpp-precomp -fnested-functions -I/opt/local/include' \
-LDFLAGS='-L/opt/local/lib' \
-    ./configure --prefix=/sw/versions/m64/oo2c/2.1.11 --disable-libs&lt;/pre&gt;
-&lt;p&gt;Here's the &lt;a class="reference external" href="https://tkurtbond.github.io/oo2c-macosx-snow-leopard.patch"&gt;patch&lt;/a&gt;.&lt;/p&gt;&lt;/div&gt;</description><category>mac os x</category><category>oberon</category><guid>https://tkurtbond.github.io/posts/2009/11/19/oo2c-on-mac-os-x-snow-leopard/</guid><pubDate>Thu, 19 Nov 2009 17:18:03 GMT</pubDate></item></channel></rss>
+sqlite&amp;gt;&lt;/pre&gt;&lt;/div&gt;</description><category>programming</category><category>sql</category><category>sqlite</category><guid>https://tkurtbond.github.io/posts/2009/12/17/sqlite-implements-table-constraints/</guid><pubDate>Thu, 17 Dec 2009 22:02:04 GMT</pubDate></item></channel></rss>
