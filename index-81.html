@@ -56,7 +56,34 @@
                 
 
 <div class="postindex">
-    <article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2014/11/01/t.a.s-potsm-the-ladys-favor/" class="u-url">T.A.'s PotSM: The Lady's Favor</a></h2>
+    <article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2014/11/04/convert-my-old-log-entries-to-blog-entries/" class="u-url">Converting my old log entries to blog entries</a></h2>
+        <div class="metadata blog-post-meta">
+            <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
+            <p class="dateline"><a href="posts/2014/11/04/convert-my-old-log-entries-to-blog-entries/" rel="bookmark"><time class="published dt-published" datetime="2014-11-04T00:31:38-05:00" title="2014-11-04 00:31">2014-11-04 00:31</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <div>
+<p>I converted my old log entries, which originated from my original
+Docbook-based website, and were presently part of my static
+Sphinx-based website, over to my current PyBlosxom blog tonight,
+using the following script:</p>
+<pre class="code text"><a name="rest_code_8ff9061334cc4998aea68f8086ee8db6-1"></a>#! /usr/bin/env bash
+<a name="rest_code_8ff9061334cc4998aea68f8086ee8db6-2"></a>find 200? -type f ! -name \*~ ! -name \*-idx-*.rst |
+<a name="rest_code_8ff9061334cc4998aea68f8086ee8db6-3"></a>while read filename
+<a name="rest_code_8ff9061334cc4998aea68f8086ee8db6-4"></a>do
+<a name="rest_code_8ff9061334cc4998aea68f8086ee8db6-5"></a>    newname="$(echo $filename | sed 's#/#-#g')"
+<a name="rest_code_8ff9061334cc4998aea68f8086ee8db6-6"></a>    date="$(basename $newname .rst)"
+<a name="rest_code_8ff9061334cc4998aea68f8086ee8db6-7"></a>    (echo $date; echo "#published $date 00:00:00"; echo "#tags Old Blog";
+<a name="rest_code_8ff9061334cc4998aea68f8086ee8db6-8"></a>        cat $filename) &gt;/home/tkb/myblog/entries/oldblog/$newname
+<a name="rest_code_8ff9061334cc4998aea68f8086ee8db6-9"></a>done
+</pre>
+<p>I'll have to go through and fix uses of Sphinx-specific RST
+extensions, and I'll probably add real entry titles as I do so; in the
+meanwhile, if the blog entry title is a date I haven't updated the
+entry.  I think this was pretty good for a ½ hour's work.</p>
+</div>
+    </div>
+    </article><article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2014/11/01/t.a.s-potsm-the-ladys-favor/" class="u-url">T.A.'s PotSM: The Lady's Favor</a></h2>
         <div class="metadata blog-post-meta">
             <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
             <p class="dateline"><a href="posts/2014/11/01/t.a.s-potsm-the-ladys-favor/" rel="bookmark"><time class="published dt-published" datetime="2014-11-01T17:00:00-05:00" title="2014-11-01 17:00">2014-11-01 17:00</time></a></p>

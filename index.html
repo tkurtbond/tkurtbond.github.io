@@ -9,7 +9,7 @@
 <link rel="alternate" type="application/rss+xml" title="RSS" href="rss.xml">
 <link rel="canonical" href="https://tkurtbond.github.io/">
 <link rel="next" href="index-81.html" type="text/html">
-<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/2019/11/07/ulisses-spiele-updates-heliograph-space-1889-pdfs-with-bookmarks-and-document-outlines/" type="text/html">
+<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/2019/11/07/looping-on-dnf-y-system-upgrade-download-until-it-succeeds/" type="text/html">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
@@ -55,7 +55,63 @@
                 
 
 <div class="postindex">
-    <article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2019/11/07/ulisses-spiele-updates-heliograph-space-1889-pdfs-with-bookmarks-and-document-outlines/" class="u-url">Ulisses Spiele updates Heliograph Space 1889 pdfs with bookmarks and document outlines</a></h2>
+    <article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2019/11/07/looping-on-dnf-y-system-upgrade-download-until-it-succeeds/" class="u-url">Looping on 'dnf -y system-upgrade download' until it succeeds</a></h2>
+        <div class="metadata blog-post-meta">
+            <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
+            <p class="dateline"><a href="posts/2019/11/07/looping-on-dnf-y-system-upgrade-download-until-it-succeeds/" rel="bookmark"><time class="published dt-published" datetime="2019-11-07T21:16:59-05:00" title="2019-11-07 21:16">2019-11-07 21:16</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <div>
+<p>Fedora 31 is out, and fool that I am I'm upgrading to it.
+Unfortunately, my DSL connection is slow and my DSL modem router is flaky.
+With over 3000 packages to download,</p>
+<pre class="code bash"><a name="rest_code_bf673262ca4d4c76952d4900024fbdaa-1"></a>dnf -y system-upgrade download --refresh --releasever<span class="o">=</span><span class="m">31</span>
+</pre>
+<p>is bound to die in the middle at least once, if not multiple times,
+and with more than 6 hours estimated for the download to run I can't
+sit watching it and restarting it every time it dies.</p>
+<p>I tried running <code class="docutils literal">dnf</code> as the argument to a while loop, but was
+unable to C-c to interrupt it when I <em>did</em> want to kill it since
+<code class="docutils literal">dnf</code> caught the SIGINT and the loop started the <code class="docutils literal">dnf</code> command
+over again before I could C-c the shell.</p>
+<p>Here's the script I came up with to work around the issue:</p>
+<p><a class="reference external" href="listings/tryfedoraupdate.html">tryfedoraupdate</a>  <a class="reference external" href="listings/tryfedoraupdate">(Source)</a></p>
+<table class="codetable"><tr>
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/2019/11/07/looping-on-dnf-y-system-upgrade-download-until-it-succeeds/#rest_code_29a6ef84a27246289dc2e6c1d287f9b9-1"> 1</a>
+<a href="posts/2019/11/07/looping-on-dnf-y-system-upgrade-download-until-it-succeeds/#rest_code_29a6ef84a27246289dc2e6c1d287f9b9-2"> 2</a>
+<a href="posts/2019/11/07/looping-on-dnf-y-system-upgrade-download-until-it-succeeds/#rest_code_29a6ef84a27246289dc2e6c1d287f9b9-3"> 3</a>
+<a href="posts/2019/11/07/looping-on-dnf-y-system-upgrade-download-until-it-succeeds/#rest_code_29a6ef84a27246289dc2e6c1d287f9b9-4"> 4</a>
+<a href="posts/2019/11/07/looping-on-dnf-y-system-upgrade-download-until-it-succeeds/#rest_code_29a6ef84a27246289dc2e6c1d287f9b9-5"> 5</a>
+<a href="posts/2019/11/07/looping-on-dnf-y-system-upgrade-download-until-it-succeeds/#rest_code_29a6ef84a27246289dc2e6c1d287f9b9-6"> 6</a>
+<a href="posts/2019/11/07/looping-on-dnf-y-system-upgrade-download-until-it-succeeds/#rest_code_29a6ef84a27246289dc2e6c1d287f9b9-7"> 7</a>
+<a href="posts/2019/11/07/looping-on-dnf-y-system-upgrade-download-until-it-succeeds/#rest_code_29a6ef84a27246289dc2e6c1d287f9b9-8"> 8</a>
+<a href="posts/2019/11/07/looping-on-dnf-y-system-upgrade-download-until-it-succeeds/#rest_code_29a6ef84a27246289dc2e6c1d287f9b9-9"> 9</a>
+<a href="posts/2019/11/07/looping-on-dnf-y-system-upgrade-download-until-it-succeeds/#rest_code_29a6ef84a27246289dc2e6c1d287f9b9-10">10</a>
+<a href="posts/2019/11/07/looping-on-dnf-y-system-upgrade-download-until-it-succeeds/#rest_code_29a6ef84a27246289dc2e6c1d287f9b9-11">11</a>
+<a href="posts/2019/11/07/looping-on-dnf-y-system-upgrade-download-until-it-succeeds/#rest_code_29a6ef84a27246289dc2e6c1d287f9b9-12">12</a>
+<a href="posts/2019/11/07/looping-on-dnf-y-system-upgrade-download-until-it-succeeds/#rest_code_29a6ef84a27246289dc2e6c1d287f9b9-13">13</a>
+<a href="posts/2019/11/07/looping-on-dnf-y-system-upgrade-download-until-it-succeeds/#rest_code_29a6ef84a27246289dc2e6c1d287f9b9-14">14</a></pre></div></td>
+<td class="code"><pre class="code bash"><a name="rest_code_29a6ef84a27246289dc2e6c1d287f9b9-1"></a><span class="ch">#! /usr/bin/bash</span>
+<a name="rest_code_29a6ef84a27246289dc2e6c1d287f9b9-2"></a>
+<a name="rest_code_29a6ef84a27246289dc2e6c1d287f9b9-3"></a><span class="k">while</span> ! dnf -y system-upgrade download --refresh --releasever<span class="o">=</span><span class="m">31</span>
+<a name="rest_code_29a6ef84a27246289dc2e6c1d287f9b9-4"></a><span class="k">do</span>
+<a name="rest_code_29a6ef84a27246289dc2e6c1d287f9b9-5"></a>    <span class="nb">read</span> -t <span class="m">30</span> -p <span class="s2">"Continue? (y/n) "</span> reply
+<a name="rest_code_29a6ef84a27246289dc2e6c1d287f9b9-6"></a>    <span class="k">if</span> <span class="o">((</span><span class="nv">$?</span>&gt;128<span class="o">))</span><span class="p">;</span> <span class="k">then</span>
+<a name="rest_code_29a6ef84a27246289dc2e6c1d287f9b9-7"></a>        <span class="nb">echo</span> <span class="s2">"timed out, continuing..."</span>
+<a name="rest_code_29a6ef84a27246289dc2e6c1d287f9b9-8"></a>    <span class="k">elif</span> <span class="o">[[</span> <span class="s2">"</span><span class="nv">$reply</span><span class="s2">"</span> <span class="o">=</span>~ <span class="o">[</span>Nn<span class="o">]</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+<a name="rest_code_29a6ef84a27246289dc2e6c1d287f9b9-9"></a>        <span class="nb">echo</span> <span class="s2">"Exiting..."</span>
+<a name="rest_code_29a6ef84a27246289dc2e6c1d287f9b9-10"></a>        <span class="nb">exit</span>
+<a name="rest_code_29a6ef84a27246289dc2e6c1d287f9b9-11"></a>    <span class="k">else</span>
+<a name="rest_code_29a6ef84a27246289dc2e6c1d287f9b9-12"></a>        <span class="nb">echo</span> <span class="s2">"Continuing..."</span>
+<a name="rest_code_29a6ef84a27246289dc2e6c1d287f9b9-13"></a>    <span class="k">fi</span>
+<a name="rest_code_29a6ef84a27246289dc2e6c1d287f9b9-14"></a><span class="k">done</span>
+</pre></td>
+</tr></table>
+<p>This way I can stop the script easily, but if it dies itself it will
+continue after a timeout.</p>
+</div>
+    </div>
+    </article><article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2019/11/07/ulisses-spiele-updates-heliograph-space-1889-pdfs-with-bookmarks-and-document-outlines/" class="u-url">Ulisses Spiele updates Heliograph Space 1889 pdfs with bookmarks and document outlines</a></h2>
         <div class="metadata blog-post-meta">
             <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
             <p class="dateline"><a href="posts/2019/11/07/ulisses-spiele-updates-heliograph-space-1889-pdfs-with-bookmarks-and-document-outlines/" rel="bookmark"><time class="published dt-published" datetime="2019-11-07T10:10:36-05:00" title="2019-11-07 10:10">2019-11-07 10:10</time></a></p>
@@ -444,33 +500,6 @@ chests to the ship.</p>
     </header><div class="e-content entry-content">
     <p>My physical copy of <cite>Béthorm: The Plane of Tékumel</cite> arrived in the
 mail today.  It looks good to my quick scan.</p>
-    </div>
-    </article><article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2014/11/04/convert-my-old-log-entries-to-blog-entries/" class="u-url">Converting my old log entries to blog entries</a></h2>
-        <div class="metadata blog-post-meta">
-            <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
-            <p class="dateline"><a href="posts/2014/11/04/convert-my-old-log-entries-to-blog-entries/" rel="bookmark"><time class="published dt-published" datetime="2014-11-04T00:31:38-05:00" title="2014-11-04 00:31">2014-11-04 00:31</time></a></p>
-        </div>
-    </header><div class="e-content entry-content">
-    <div>
-<p>I converted my old log entries, which originated from my original
-Docbook-based website, and were presently part of my static
-Sphinx-based website, over to my current PyBlosxom blog tonight,
-using the following script:</p>
-<pre class="code text"><a name="rest_code_8ff9061334cc4998aea68f8086ee8db6-1"></a>#! /usr/bin/env bash
-<a name="rest_code_8ff9061334cc4998aea68f8086ee8db6-2"></a>find 200? -type f ! -name \*~ ! -name \*-idx-*.rst |
-<a name="rest_code_8ff9061334cc4998aea68f8086ee8db6-3"></a>while read filename
-<a name="rest_code_8ff9061334cc4998aea68f8086ee8db6-4"></a>do
-<a name="rest_code_8ff9061334cc4998aea68f8086ee8db6-5"></a>    newname="$(echo $filename | sed 's#/#-#g')"
-<a name="rest_code_8ff9061334cc4998aea68f8086ee8db6-6"></a>    date="$(basename $newname .rst)"
-<a name="rest_code_8ff9061334cc4998aea68f8086ee8db6-7"></a>    (echo $date; echo "#published $date 00:00:00"; echo "#tags Old Blog";
-<a name="rest_code_8ff9061334cc4998aea68f8086ee8db6-8"></a>        cat $filename) &gt;/home/tkb/myblog/entries/oldblog/$newname
-<a name="rest_code_8ff9061334cc4998aea68f8086ee8db6-9"></a>done
-</pre>
-<p>I'll have to go through and fix uses of Sphinx-specific RST
-extensions, and I'll probably add real entry titles as I do so; in the
-meanwhile, if the blog entry title is a date I haven't updated the
-entry.  I think this was pretty good for a ½ hour's work.</p>
-</div>
     </div>
     </article>
 </div>

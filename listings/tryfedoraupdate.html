@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="description" content="listings">
+<meta name="description" content="tryfedoraupdate">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>listings | Lacking Natural Simplicity</title>
+<title>tryfedoraupdate | Lacking Natural Simplicity</title>
 <link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
 <link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
-<link rel="canonical" href="https://tkurtbond.github.io/listings/">
+<link rel="canonical" href="https://tkurtbond.github.io/listings/tryfedoraupdate.html">
 <!--[if lt IE 9]><script src="../assets/js/html5.js"></script><![endif]-->
 </head>
 <body>
@@ -28,6 +28,9 @@
                 
                 
                     
+    <li>
+    <a href="tryfedoraupdate" id="sourcelink">Source</a>
+    </li>
 
                 
             
@@ -57,23 +60,43 @@
 
 <nav class="breadcrumbs"><ul class="breadcrumb">
 <li><a href=".">listings</a></li>
-</ul></nav><ul>
-<li>
-<a href=".~"><i class="glyphicon glyphicon-folder-open"></i> .~</a>
-    </li>
-<li>
-<a href="drive-pyblox-to-nikola.html"><i class="glyphicon glyphicon-file"></i> drive-pyblox-to-nikola</a>
-    </li>
-<li>
-<a href="generate-schemas-xml.html"><i class="glyphicon glyphicon-file"></i> generate-schemas-xml</a>
-    </li>
-<li>
-<a href="pyblox-to-nikola.html"><i class="glyphicon glyphicon-file"></i> pyblox-to-nikola</a>
-    </li>
-<li>
-<a href="tryfedoraupdate.html"><i class="glyphicon glyphicon-file"></i> tryfedoraupdate</a>
-</li>
-</ul>
+                <li>tryfedoraupdate</li>
+</ul></nav><h1>tryfedoraupdate
+        <small><a href="tryfedoraupdate">(Source)</a></small>
+    </h1>
+    <table class="codetable"><tr>
+<td class="linenos"><div class="linenodiv"><pre><a href="#listingstryfedoraupdate-1"> 1</a>
+<a href="#listingstryfedoraupdate-2"> 2</a>
+<a href="#listingstryfedoraupdate-3"> 3</a>
+<a href="#listingstryfedoraupdate-4"> 4</a>
+<a href="#listingstryfedoraupdate-5"> 5</a>
+<a href="#listingstryfedoraupdate-6"> 6</a>
+<a href="#listingstryfedoraupdate-7"> 7</a>
+<a href="#listingstryfedoraupdate-8"> 8</a>
+<a href="#listingstryfedoraupdate-9"> 9</a>
+<a href="#listingstryfedoraupdate-10">10</a>
+<a href="#listingstryfedoraupdate-11">11</a>
+<a href="#listingstryfedoraupdate-12">12</a>
+<a href="#listingstryfedoraupdate-13">13</a>
+<a href="#listingstryfedoraupdate-14">14</a>
+<a href="#listingstryfedoraupdate-15">15</a></pre></div></td>
+<td class="code"><pre class="code literal-block"><a name="listingstryfedoraupdate-1"></a><span class="ch">#! /usr/bin/bash</span>
+<a name="listingstryfedoraupdate-2"></a>
+<a name="listingstryfedoraupdate-3"></a><span class="k">while</span> ! dnf -y system-upgrade download --refresh --releasever<span class="o">=</span><span class="m">31</span>
+<a name="listingstryfedoraupdate-4"></a><span class="k">do</span>
+<a name="listingstryfedoraupdate-5"></a>    <span class="nb">read</span> -t <span class="m">30</span> -p <span class="s2">"Continue? (y/n) "</span> reply
+<a name="listingstryfedoraupdate-6"></a>    <span class="k">if</span> <span class="o">((</span><span class="nv">$?</span>&gt;128<span class="o">))</span><span class="p">;</span> <span class="k">then</span>
+<a name="listingstryfedoraupdate-7"></a>	<span class="nb">echo</span> <span class="s2">"timed out, continuing..."</span>
+<a name="listingstryfedoraupdate-8"></a>    <span class="k">elif</span> <span class="o">[[</span> <span class="s2">"</span><span class="nv">$reply</span><span class="s2">"</span> <span class="o">=</span>~ <span class="o">[</span>Nn<span class="o">]</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+<a name="listingstryfedoraupdate-9"></a>	<span class="nb">echo</span> <span class="s2">"Exiting..."</span>
+<a name="listingstryfedoraupdate-10"></a>	<span class="nb">exit</span>
+<a name="listingstryfedoraupdate-11"></a>    <span class="k">else</span>
+<a name="listingstryfedoraupdate-12"></a>	<span class="nb">echo</span> <span class="s2">"Continuing..."</span>
+<a name="listingstryfedoraupdate-13"></a>    <span class="k">fi</span>
+<a name="listingstryfedoraupdate-14"></a><span class="k">done</span>
+<a name="listingstryfedoraupdate-15"></a>    
+</pre></td>
+</tr></table>
 </div>
             <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
                     <div class="sidebar-module sidebar-module-inset">
