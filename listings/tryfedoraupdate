@@ -1,0 +1,15 @@
+#! /usr/bin/bash
+
+while ! dnf -y system-upgrade download --refresh --releasever=31
+do
+    read -t 30 -p "Continue? (y/n) " reply
+    if (($?>128)); then
+	echo "timed out, continuing..."
+    elif [[ "$reply" =~ [Nn] ]]; then
+	echo "Exiting..."
+	exit
+    else
+	echo "Continuing..."
+    fi
+done
+    
