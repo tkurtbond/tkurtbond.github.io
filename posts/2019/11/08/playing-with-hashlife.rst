@@ -7,9 +7,10 @@
 .. description: 
 .. type: text
 
-C.P. found an implementation_ of Bill Gosper's HASHLIFE algorithm and
-wanted my help with running it.  I cloned the repo_ it was in and
-ran ``sbcl`` in the ``hashlife`` directory.  Then I entered:
+C.P. found `Robert Smith`_'s implementation_ of Bill Gosper's HASHLIFE
+algorithm and wanted my help with running it.  I cloned the repo_ it
+was in and ran ``sbcl`` in the ``hashlife`` directory.  Then I
+entered:
 
 .. code:: lisp
 
@@ -40,7 +41,7 @@ used Quicklisp_ to load it.  That worked.  Then I looked at
 ``charmlife.lisp`` and looked at the ``main`` function and figured out
 how to run it and how to interact with the program when it was running.
 
-
+.. _`Robert Smith`: https://github.com/stylewarning
 .. _implementation: https://github.com/stylewarning/lisp-random/tree/master/hashlife
 .. _repo: https://github.com/stylewarning/lisp-random
 .. _howto: https://common-lisp.net/~mmommer/asdf-howto.shtml#sec11
