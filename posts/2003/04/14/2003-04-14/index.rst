@@ -20,14 +20,16 @@ details: they don't want taverns to switch from one side of the river
 to another, for instance.
 
 When gaming in more detailed worlds, the gamers have to expend more
-effort up front to work within the details: learning how `Tékumel
-<http://www.tekumel.com/>`__ societies work, or the religions of the
-`Lunar Empire <https://glorantha.fandom.com/wiki/Lunar_Empire>`__ of Glorantha, but the additional detail can add depth
-to the roleplaying experience and can provide additional inspiration
-for the game.  How can such detail be best presented to prevent the
-gamer from becoming overloaded and turned away by the detail? Is it
-possible to present things in such a way that there is as little up
-front work for the gamer to start playing in a detailed world as an
-undetailed world, and can the continuing effort of working within the
-details be kept close to the level of effort required to play in an
-undetailed world?
+effort up front to work within the details: learning how Tékumel_
+societies work, or the religions of the `Lunar Empire`_ of Glorantha,
+but the additional detail can add depth to the roleplaying experience
+and can provide additional inspiration for the game.  How can such
+detail be best presented to prevent the gamer from becoming overloaded
+and turned away by the detail? Is it possible to present things in
+such a way that there is as little up front work for the gamer to
+start playing in a detailed world as an undetailed world, and can the
+continuing effort of working within the details be kept close to the
+level of effort required to play in an undetailed world?
+
+.. _Tékumel: http://www.tekumel.com/
+.. _`Lunar Empire`: https://glorantha.fandom.com/wiki/Lunar_Empire
