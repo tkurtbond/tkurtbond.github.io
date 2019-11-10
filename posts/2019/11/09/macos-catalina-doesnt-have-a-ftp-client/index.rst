@@ -16,7 +16,7 @@ how to use active mode in ``LFTP``:
 
     set ftp:passive-mode off
 
-because that machines FTP server only works with active mode.
+because that machine's FTP server only works with active mode.
 
 .. _brew: https://brew.sh/
 .. _LFTP: https://lftp.yar.ru/
