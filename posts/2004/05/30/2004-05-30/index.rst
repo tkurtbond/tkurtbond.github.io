@@ -19,11 +19,12 @@ Recent Reading
   1956 *Astounding*, combined with a number of related short stories
   from the 1960s.  Flint has woven the different stories together well.
 + *The Bloody Red Baron*, by Kim Newman; Avon Books, 1997.  The sequel
-  to `Anno Dracula <../../../log/2004/05/18.html#anno-dracula>`__,
-  this book brings us forward forward from the end of Victoria's reign
-  to the first world war.  Geneviéve is missing from this novel, alas,
-  but Charles Beauregard and Kate Reed return, joined this time by Edgar
-  Allan Poe.  Enjoyable.
+  to `Anno Dracula`__, this book brings us forward forward from the
+  end of Victoria's reign to the first world war.  Geneviéve is
+  missing from this novel, alas, but Charles Beauregard and Kate Reed
+  return, joined this time by Edgar Allan Poe.  Enjoyable.
+
+__ link://slug/2004-05-18
 
 Recent Viewing
 --------------

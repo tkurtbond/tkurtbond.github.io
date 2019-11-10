@@ -1,5 +1,6 @@
 .. title: Common Lisp, SBCL, and CLIM; Recent Reading
-.. slug: 2003-11-22
+.. slug: 2003-11-22-sbcl-author-of-the-century
+   
 .. date: 2003-11-22 00:00:00 UTC-05:00
 .. tags: old blog,recent reading,common lisp,sbcl,clim
 .. category: oldblog
@@ -25,6 +26,8 @@ McCLIM I'll be able to investigate CLIM.
 
 Recent Reading
 --------------
+
+.. _author-of-the-century:
 
 + `J.R.R. Tolkien: Author of the Century`, by Tom Shippey.  I think I
   must have read `The Hobbit` and `The Lord of the Rings` for the first

@@ -1,5 +1,5 @@
 .. title: Recent Reading
-.. slug: 2003-11-09
+.. slug: 2003-11-09-the-road-to-middle-earth
 .. date: 2003-11-09 00:00:00 UTC-05:00
 .. tags: old blog,recent reading
 .. category: oldblog

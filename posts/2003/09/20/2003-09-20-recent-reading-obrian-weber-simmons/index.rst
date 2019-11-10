@@ -1,5 +1,5 @@
 .. title: Recent Reading
-.. slug: 2003-09-20
+.. slug: 2003-09-20-recent-reading-obrian-weber-simmons
 .. date: 2003-09-20 00:00:00 UTC-05:00
 .. tags: old blog,recent reading
 .. category: oldblog
@@ -45,6 +45,8 @@
   Honor Harrington series are well written military science fiction,
   probably the best series of any of the current crop of this currently
   quite popular sub-genre.
+
+.. _illium:
 
 + `Illium`, by Dan Simmons.  This novel, the first of two, is an
   interesting blend of mythology and science fiction, mixing a re-

@@ -16,8 +16,7 @@
   + “One Word Answer”, by Charlaine Harris, copyright 2005.
   + “Biting in Plain Sight”, by MaryJanice Davidson, copyright 2005.
     I've still not read a book by Davidson, just this story and another in
-    the anthology `Cravings <../../../log/2004/12/02.html#cravings-
-    anthology>`__, but they were ok.
+    the anthology Cravings__, but they were ok.
   + “Galahad”, by Angela Knight, copyright 2005 by Julie
     Woodcock.  Not to my taste.
   + “Blood Lust”, by Vickie Taylor, copyright 2005 by Vickie
@@ -39,3 +38,5 @@
   *Vampire Huntress* series, and it's readable, but I'd put it a couple
   of ranks below Hamilton, Harris, Butcher, and Harrison. The first book
   is *Minion*.
+
+__ link://slug/2004-12-02-cravings

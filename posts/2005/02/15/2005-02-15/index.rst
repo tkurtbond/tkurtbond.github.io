@@ -17,20 +17,23 @@ Recent Reading
 + *The Farthest Shore*, by Ursula K. Le Guin, copyright 1972;
   Antheneum, September 1972; Bantam Books, October 1975; 8th printing,
   November 1977.
-+ *Tehanu*, by Ursula K. Le Guin. Atheneum, 1990.  Originally published
-  as *Tehanu: the last book of Earthsea*.  When *Tehanu* was first
-  released there was a lot of controversy amongst those who remembered
-  the first three * Earthsea* books fondly because where the first three
-  were beloved children's/young adult books about (among other things)
-  coming of age and choices, *Tehanu* is about (among other things)
-  child abuse and gender/power relationships. Many felt that Le Guin had
-  used the popularity of the earlier three books as a springboard for a
-  polemic. I recently reread the three earlier books and the fourth in
-  fairly close proximity, and in my considered opinion the fourth book
-  has the same voice as the earlier three: it's definitely an *Earthsea*
-  book.  I was glad to find, `a while ago <../../../log/2003/07/03.html
-  #more-earthsea-tales>`__, that there *were* more *Earthsea* stories to
-  be told after *Tehanu*.
++ *Tehanu*, by Ursula K. Le Guin. Atheneum, 1990.  Originally
+  published as *Tehanu: the last book of Earthsea*.  When *Tehanu* was
+  first released there was a lot of controversy amongst those who
+  remembered the first three * Earthsea* books fondly because where
+  the first three were beloved children's/young adult books about
+  (among other things) coming of age and choices, *Tehanu* is about
+  (among other things) child abuse and gender/power
+  relationships. Many felt that Le Guin had used the popularity of the
+  earlier three books as a springboard for a polemic. I recently
+  reread the three earlier books and the fourth in fairly close
+  proximity, and in my considered opinion the fourth book has the same
+  voice as the earlier three: it's definitely an *Earthsea* book.  I
+  was glad to find, `a while ago`__, that there *were* more *Earthsea*
+  stories to be told after *Tehanu*.
+
+__ link://slug/2003-07-03-gtkada-reading#more-earthsea-tales
+
 + *Earthgrip: Tales from the Trader's World*, by Harry Turtledove,
   copyright 1991; Del Rey, December 1991. “6+” copyright 1987, Analog,
   September 1987; “Nothing in Night-Time”, copyright 1989, Analog, March

@@ -9,6 +9,7 @@
 
 
 + *Olympos*, by Dan Simmons; Eos/HarperCollins Publishers, 2005.  I did
-  not enjoy it as much as `Illium
-  <../../../log/2003/09/20.html#illium>`__, and thought it rather
+  not enjoy it as much as Illium_, and thought it rather
   dragged a bit, but that may simply have been me.
+
+.. _Illium: link://slug/2003-09-20-recent-reading-obrian-weber-simmons#illium

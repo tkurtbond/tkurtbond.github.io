@@ -27,11 +27,13 @@ Computing: Ada
 I've been looking at `GtkAda <http://libre.act-europe.fr/GtkAda/>`__,
 an Ada binding for Gtk+.  It's pretty complete, and is portable between
 Unix and MS Windows, with a MacOS X version in the works.  An
-`explanation <http://lists.act-
-europe.fr/pipermail/gtkada/2003-May/002223.html>`__ of how to create
+explanation__ of how to create
 the environment for you'll need for using recent versions (Gtk+-2.2.x
 based, from CVS) with recent versions of GCC under MS Windows is
-`available <http://lists.act-
-europe.fr/pipermail/gtkada/2003-May/002223.html>`__.  (Update: a new
-`binary release <../../../log/2003/07/03.html#gtkada-2-2-0>`__ makes
+available__.  (Update: a new
+`binary release`__ makes
 things much simpler.)
+
+__ http://lists.act-europe.fr/pipermail/gtkada/2003-May/002223.html
+__ http://lists.act-europe.fr/pipermail/gtkada/2003-May/002223.html
+__ link://slug/2003-07-03-gtkada-reading

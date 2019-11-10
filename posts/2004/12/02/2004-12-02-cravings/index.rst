@@ -1,5 +1,5 @@
 .. title: Recent Reading
-.. slug: 2004-12-02
+.. slug: 2004-12-02-cravings
 .. date: 2004-12-02 00:00:00 UTC-05:00
 .. tags: old blog,recent reading
 .. category: oldblog

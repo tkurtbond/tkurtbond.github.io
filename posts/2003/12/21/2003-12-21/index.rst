@@ -8,14 +8,15 @@
 .. type: text
 
 
-+ `The Element of Fire`, by Martha Wells, Tor, 1993.  After reading `one
-  of Wells' books about Ile-Rein <../../../log/2003/12/15.html#wells-
-  wizard-hunters>`__ I went search for others.  It turns out that Wells
-  has written a number of books about about Ile-Rein at various points
-  during its history.  `The Element of Fire` is set during Ile-Rein's era
-  of muskets and swords, and is a very good mixture of swashbuckling and
-  magic.  I look forward to reading more of Wells' works.
++ `The Element of Fire`, by Martha Wells, Tor, 1993.  After reading
+  `one of Wells' books about Ile-Rein`__ I went search for others.  It
+  turns out that Wells has written a number of books about about
+  Ile-Rein at various points during its history.  `The Element of
+  Fire` is set during Ile-Rein's era of muskets and swords, and is a
+  very good mixture of swashbuckling and magic.  I look forward to
+  reading more of Wells' works.
 
+__ link://slug/2003-12-15#wells-wizard-hunters
 
 
 
