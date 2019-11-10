@@ -11,6 +11,7 @@
 + *The Shadow Sorceress*, by L.E. Modesitt, Jr; Tor/Tom Doherty
   Associates, LLC., June 2001.
 + *A Scholar of Magics*, by Caroline Stevermer; Tor/Tom Doherty
-  Assciates, LLC., 2004.  A delightful sequel to `College of Magics
-  <../../../log/2003/07/03.html#college-of-magics>`__, itself a
-  delightful read.
+  Assciates, LLC., 2004.  A delightful sequel to `College of
+  Magics`__, itself a delightful read.
+
+__ link://slug/2003-07-03-gtkada-reading#college

@@ -16,6 +16,9 @@
   horse, followed by Christian Norse, and the Aztecs still flourish,
   mixed with straightforward adventure and an appealing mixture of
   cultures.
+
+.. wells-wizard-hunters:
+
 + `The Wizard Hunters`, by Martha Wells, HarperCollins, 2003.  Its good
   to see a fantasy that avoids the psuedo-medieval trappings of so much
   fantasy, and even better to find one that uses a setting that is more

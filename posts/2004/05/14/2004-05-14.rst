@@ -65,7 +65,7 @@ well) for a long time.  This was probably an over-reaction, but it did
 prompt me to explore the alternatives, which was all to the good.
 
 Eventually I got a grip and got over my *D&D* dislike.  I've played (and
-enjoyed) *D&D* `since <../../../roleplaying.html#addseconded>`__; many
+enjoyed) *D&D* `since <link://slug/roleplaying-games#dungeons-and-dragons>`__; many
 of the things I disliked about *D&D* have been fixed in the most recent
 versions, in an admirable example of applied RPG engineering, but
 enough remain that I still prefer other games.

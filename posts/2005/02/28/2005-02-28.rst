@@ -12,11 +12,10 @@ Recent Reading
 --------------
 
 + *Blue Magic*, by Jo Clayton; DAW, May 1988; DAW Collecttors No. 743.
-  Good, but not quite as good as the `first
-  <../../../log/2005/02/21.html#drinker-of-souls>`__ in the series.
+  Good, but not quite as good as the first__ in the series.
 + *Two-Bit Heroes*, by Doris Egan; DAW, January 1992; DAW Book
-  Collectors No. 870.  Also good, but not quite as good as the `first
-  <../../../log/2005/02/17.html#gate-of-ivory>`__ in the series.
+  Collectors No. 870.  Also good, but not quite as good as the first__
+  in the series.
 + *The Suns of Scorpio*, by Kenneth Bulmer, as by Alan Burt Akers; DAW
   Books 1973; Futura Publications Limited, 1974.  This is the second of
   the *Dray Prescot* books and deals extensively with his adventures in
@@ -27,6 +26,9 @@ Recent Reading
   time) because schools in our county had been canceled because of the
   snow. The copy that I borrowed that day was the DAW (USA) edition; the
   version I own now, oddly enough, is the British edition.
+
+__ link://slug/2005-02-21-recent-reading-and-viewing#drinker
+__ link://slug/2005-02-17-gate-of-ivory
 
 Recent Viewing
 --------------

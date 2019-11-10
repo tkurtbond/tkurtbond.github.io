@@ -1,5 +1,5 @@
 .. title: Recent Reading and Viewing
-.. slug: 2005-02-21
+.. slug: 2005-02-21-recent-reading-and-viewing
 .. date: 2005-02-21 00:00:00 UTC-05:00
 .. tags: old blog,recent reading,recent viewing
 .. category: oldblog
@@ -78,11 +78,16 @@ Recent Reading
     Bahzell appears as an important supporting character. Good all the
     same.
 
+.. _kothar:
+
 + *Kothar and the Wizard Slayer*, by Gardner F. Fox; Unibook/Modern
   Promotions, 1970.  I picked this up because of Ron Edwards' mention of
   Fox's swords and sorcery books in *Sorcerer and Sword*; I might read
   another of Fox's books if I ran across it, but I wouldn't search them
   out.
+
+.. _drinker:
+
 + *Drinker of Souls*, by Jo Clayton; DAW, 1986; DAW Collectors Book
   No. 668.  Jo Clayton's books always have interesting protagonists in
   hostile surroundings, and always make me appreciate the comparative

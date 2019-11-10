@@ -9,5 +9,4 @@
 
 
 + *Prince of the North* by Harry Turtledove; Baen, 1994.  Adequate
-  sequel to `Werenight <../../../log/2004/02/14.html#werenight-
-  turtledove>`__.
+  sequel to `Werenight <link://slug/2004-02-14>`__.

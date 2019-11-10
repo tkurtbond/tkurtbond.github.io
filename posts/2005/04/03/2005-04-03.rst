@@ -10,11 +10,15 @@
 
 + *Myth and Middle-earth*, by Leslie Ellen Jones; Cold Spring
   Press, 2002.  While not as fascinating as Tom Shippey's `The Road to
-  Middle Earth
-  <../../../log/2003/11/09.html#the-road-to-middle-earth>`__ and
-  `J.R.R. Tolkien: Author of the Century
-  <../../../log/2003/11/22.html#author-of-the-century>`__ it does have
+  Middle Earth`__ and
+  `J.R.R. Tolkien: Author of the Century`__ it does have
   some good bits.
 + *The Waterborn*, by J. Gregory Keyes; Del Rey/Ballantine, 1996. Book
   one of the *Chosen of the Changeling* series. A good story with a very
   interesting animistic world.
+
+__ link://slug/2003-11-09-the-road-to-middle-earth
+__ link://slug/2003-11-22-sbcl-author-of-the-century
+
+..
+  #author-of-the-century

@@ -29,5 +29,4 @@ Recent Reading
   to see a little bit more of how animators and necromancy work in
   Anita's world, along with some of the elements that will become
   romance later in the series.  Very good.  Sometimes, though, I wish she'd
-  return to the world of her `first book <../../../log/2003/08/05.html
-  #hamilton-nightseer>`__.
+  return to the world of her first book `Nightseer <link://slug/2003-08-05>`__.

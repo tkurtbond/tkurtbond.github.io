@@ -1,5 +1,5 @@
 .. title: Recent Reading
-.. slug: 2005-02-17
+.. slug: 2005-02-17-gate-of-ivory
 .. date: 2005-02-17 00:00:00 UTC-05:00
 .. tags: old blog,recent reading
 .. category: oldblog

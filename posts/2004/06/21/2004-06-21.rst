@@ -18,5 +18,5 @@
 + *Confusion*, by Neal Stephenson; HarperCollins, 2004.  This is the
   second volume of Stephenson's Baroque Cycle, and he explains that it's
   actually two intertwined novels published as one.  Like the `earlier
-  <../../../log/2003/11/04.html#quicksilver-stephenson>`__ volume it's
+  <link://slug/2003-11-04>`__ volume it's
   very wordy, but enjoyable if you don't mind big books.

@@ -1,5 +1,5 @@
 .. title: GtkAda and Recent Reading
-.. slug: 2003-07-03
+.. slug: 2003-07-03-gtkada-reading
 .. date: 2003-07-03 00:00:00 UTC-05:00
 .. tags: old blog,recent reading,gtkada,ada
 .. category: oldblog
@@ -26,9 +26,13 @@ examples are included in the distribution.
 Recent Reading
 --------------
 
+.. _more-earthsea-tales:
+
 + `The Other Wind` and `Tales from Earthsea`, by Ursula K. LeGuin.  I
   was very glad to see that there were still :series:`Earthsea` tales that
   LeGuin wanted to tell.  Both of these books are quite good.
+
+.. _college:
 
 + `A College of Magics <http://www.epiphyte.net/SF/college-of-
   magics.html>`__ by Caroline Stevermer.  This is a very entertaining

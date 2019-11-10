@@ -20,8 +20,7 @@ Recent Reading
 Swords & Sorcery Roleplaying
 ----------------------------
 
-I read *Witherwing* because, like Gardener F. Fox's `Kothar
-<../../../log/2005/02/21.html#kothar-wizard-slayers>`__, it was in the
+I read *Witherwing* because, like Gardener F. Fox's Kothar__, it was in the
 reading list of Swords & Sorcery books in the *Sorcerer & Sword*
 supplement for the *Sorcerer* roleplaying game, both which were
 written by Ron Edwards. It was listed as one of the references for the
@@ -100,3 +99,5 @@ possible to see how to do so.
 .. [2] Which is still available from `Tita's House of Games
    <http://www.tekumel.com/tita>`__, by the way, and well worth it for
    the Tékumel aficionado.
+
+__ link://slug/2005-02-21-recent-reading-and-viewing#kothar
