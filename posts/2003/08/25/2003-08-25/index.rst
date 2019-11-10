@@ -37,6 +37,7 @@ Where free software is failing
 
 Daniel Barlow's blog for `Monday, 25 Aug 2003
 <http://ww.telent.net/diary/2003/8/#25.67406>`__ talks about Tom
-Lord's `post <http://lists.fifthvision.net/pipermail/arch-
-users/2003-May/027591.html>`__ that talks about where Free Software is
+Lord's post__ that talks about where Free Software is
 failing to think ahead.
+
+__ https://web.archive.org/web/20030607173459/http://lists.fifthvision.net/pipermail/arch-users/2003-May/027591.html

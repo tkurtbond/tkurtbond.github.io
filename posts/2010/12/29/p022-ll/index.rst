@@ -50,7 +50,7 @@ final climactic battle in the Caves of Chaos included a private army
 of hirelings, 50 or so strong.  They were a heroic sight setting out
 from the Keep for the Caves.
 
-Via `K`:area: to `62`:area:.  Dooley pried out geoms.  James and Alice
+Via `K`:area: to `62`:area:.  Dooley pried out gems.  James and Alice
 each turned some skeletons.  Acolytes from `56`:area: ran to
 `58`:area: and rang the bell, 20 zombies and 20 skeletons came out.
 

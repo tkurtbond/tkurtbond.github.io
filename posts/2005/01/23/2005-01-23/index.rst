@@ -48,7 +48,7 @@ way it has gone a little too far: interfacing to C is well defined,
 but is not without some easily overlooked drawbacks. The situation was
 not improved by the minor but pervasive incompatiblities between
 classic Modula 3 on one side (the original DEC distribution, PM3, and
-ezm3) and the enchanced version produced by Critical Mass (CM3). In
+ezm3) and the enhanced version produced by Critical Mass (CM3). In
 the end, it remains a language that, like Oberon-2 and Ada, I like,
 but not enough to use regularly.
 

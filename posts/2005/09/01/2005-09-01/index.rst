@@ -28,8 +28,9 @@ Templating Not Useful
 ---------------------
 
 I was thinking about templating in web frameworks, and went back to
-reread Avi Bryant's `Where are the templates? <http://www.cincomsmallt
-alk.com/userblogs/avi/blogView?showComments=true&entry=3257728961>`__
+reread Avi Bryant's `Where are the templates?`__
 where he explains why `Seaside <http://seaside.st/>`__ doesn't have a
 default templating system, and I have to agree that templating doesn't
 seem like the best solution.
+
+__ https://web.archive.org/web/20110723010336/http://www.cincomsmalltalk.com/userblogs/avi/blogView?showComments=true&entry=3257728961

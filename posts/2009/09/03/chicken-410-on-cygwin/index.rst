@@ -20,7 +20,7 @@ Weird: after compiling and installing chicken_ with:
    make PLATFORM=cygwin PREFIX=/sw/versions/cygwin/chicken/4.1.0 install
 
 I had to copy ``/sw/versions/cygwin/chicken/4.1.0/lib/*.a`` to
-``/sw/versions/cygwin/checkin/4.1.0/bin`` before it could link things
+``/sw/versions/cygwin/chicken/4.1.0/bin`` before it could link things
 properly.  (I first noticed this while doing a
 :inlinecode:`$ chicken-install ncurses`.)
 

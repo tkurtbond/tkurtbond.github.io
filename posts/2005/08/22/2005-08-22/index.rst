@@ -13,13 +13,13 @@ Monday, 22 August 2005
 emacs, oh wonderful emacs
 -------------------------
 
-While back `Daniel Barlow <http://ww.telent.net/diary/>`__ `explained
-<http://ww.telent.net/diary/2003/1/#14.28515>`__ why emacs is the best
-desktop environment he has used. I agree: emacs is the best desktop
-environment I've used, too. (Forth, Lisp Machine and Smalltalk users
-may be able to say different with reason, but few others.)
+While back `Daniel Barlow <http://ww.telent.net/diary/>`__ explained__
+why emacs is the best desktop environment he has used. I agree: emacs
+is the best desktop environment I've used, too. (Forth, Lisp Machine
+and Smalltalk users may be able to say different with reason, but few
+others.)
 
-
+__ https://ww.telent.net/2003/1/14/_updated_for_elisp_syntax_error_13_01_52_gmt
 
 Lisp is small
 -------------

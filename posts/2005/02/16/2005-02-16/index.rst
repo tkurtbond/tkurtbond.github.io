@@ -16,7 +16,7 @@ Results from a superficial exercise with very limited use or testing:
 #. Use the instructions in `.../nt/INSTALL`.
 #. Compiling release 21.4 with gcc and -no-cygwin completed, but
    produced an emacs.exe that died with an error when run, except when
-   run under gdb, in which case not error was observed.
+   run under gdb, in which case no error was observed.
 #. Compiling release 21.4 with Visual C completed and produced an
    emacs.exe that ran without error.
 #. Compiling a version obtained from `Emacs CVS

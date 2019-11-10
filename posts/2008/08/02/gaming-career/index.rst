@@ -133,9 +133,11 @@ the campaign continued successfully for many more sessions.
 
 I think, however, that later I moved away from `GURPS` because
 making/updating characters was such a pain, even with the assistance
-of Bill Seuer's `GURPS` :program:`MAKECHAR` program.  (Let us just say
+of Bill Seuer's `GURPS` MAKECHAR_ program.  (Let us just say
 that the main villain of the campaign, and evil wizard, ended up a
 1000 point character, and all the PCs were 300 point characters.)
+
+.. _MAKECHAR: http://www.seurer.net/games/utilities/makechar.html
 
 Chaosium: `Call of Cthulhu`, `Elric!`, `Stormbringer`, `Prince
 Valiant`, `Pendragon`, Universal Supplements.
@@ -168,7 +170,7 @@ on travel for work.
 
 RQ found ... earlier than GURPS, later? but only understood much later
 in 90s during my serious RQ buying days after ran long GURPS campaign
-(Call of Cthulhu/Elric helped understand/like Rq?) and bought RQ2.
+(Call of Cthulhu/Elric helped understand/like RQ?) and bought RQ2.
 Early GURPS gaming at college BAMF?
 Compare to dates of Alusia becoming GURPS?
 
@@ -196,7 +198,7 @@ Retro-gaming: interest in early classic `AD&D` modules we missed
 `Caverns of Thracia`, etc.  then 3e/3.5e reprints) which lead to
 buying lots of PDF games including classic `BD&D` module b10 (superb!)
 leading to RC purchases, then other `BD&D` modules and `AD&D` modules,
-pondering running `BD&D` for B20, then buying `Thunder Rift`, mystara
+pondering running `BD&D` for B20, then buying `Thunder Rift`, Mystara
 interest online maps, retro clones to original D&D interest, buy PDFs
 from rpgnow, pondering running `OD&D`, `Swords & Wizardry`, download
 retro modules for `OD&D`, philotomy, other current `OD&D` player/gm
@@ -204,14 +206,20 @@ sites/campaigns/blogs, more JG and understanding which JG were `OD&D`,
 more pondering `BD&D` for B10 and other B/X modules, and finding the
 `OD&D` `Caverns of Thracia`, by Paul Jaquays!
 
-road building costs in JG Ready-Ref sheets!  (PDF just as confusing as
-I remember printouts! Did Ray end up with them?)
+Road building costs in JG Ready-Ref sheets!  (PDF just as confusing as
+I remember printouts! Did Ray end up with them?) [2019-11-10: I ended
+up buying a new copy of the Ready-Ref sheets over the internet several
+years later!]
 
 parallel thread: tactile pleasures: card, bennies, status chips, 
 
 custom poker chips for wounds, shaken
 
 
+
+.. [#basic-dnd] Boy, was I wrong!  After the retro-clones started to
+   appear, especially `Labyrinth Lord`, I bought the Moldvay/Cook
+   `Basic/Expert` rules, and was pleasantly impressed. 
 
 .. [#tnt] We completely missing out on the flexibility of the T&T
    saving roll system — not surprising, since we never saw any of the
@@ -228,6 +236,3 @@ custom poker chips for wounds, shaken
    `3 <http://www.indie-rpgs.com/viewtopic.php?t=7104>`__,
    `4 <http://www.indie-rpgs.com/viewtopic.php?t=7863>`__).
 
-.. [#basic-dnd] Boy, was I wrong!  After the retro-clones started to
-   appear, especially `Labyrinth Lord`, I bought the Moldvay/Cook
-   `Basic/Expert` rules, and was pleasantly impressed. 

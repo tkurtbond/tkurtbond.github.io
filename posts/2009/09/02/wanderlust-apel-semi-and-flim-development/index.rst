@@ -13,7 +13,7 @@ Western world who don't speak Japanese there is an alternate
 universe of FOSS [#foss]_ development in Japan [#china]_, and every so
 often things from that universe just appear in the Western FOSS
 universe as mysterious foreign objects.  Ruby seems to have made a
-solid connection between the universes, but many others less
+solid connection between the universes, but many others are less
 approachable. 
 
 Wanderlust development and the development of the emacs packages that

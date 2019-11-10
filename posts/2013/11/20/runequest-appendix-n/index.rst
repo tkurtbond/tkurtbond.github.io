@@ -15,4 +15,4 @@ See also 1_, 2_.
 .. _1: http://www.blackgate.com/2013/10/04/appendix-n-carrying-on-the-flame/
 .. _2: http://www.blackgate.com/2013/09/17/the-other-appendix-n/
 
-__ http://www.peopletobe.com/runequest-appendix-n/
+__ https://web.archive.org/web/20140812072223/http://www.peopletobe.com/runequest-appendix-n/

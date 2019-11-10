@@ -92,12 +92,13 @@ Turner.  These two books remind me in some ways of <a class="reference external"
     </header><div class="e-content entry-content">
     <div class="section" id="monday-19-may-2003">
 <h2>Monday, 19 May 2003</h2>
-<p>As I mentioned <a class="reference external" href="posts/2003/log/2003/05/08.html#redim-vms-basic">earlier</a>, VMS BASIC doesn't allow you to redimension dynamically
-allocated arrays inside procedures that they have been passed to as
-arguments.  One of the folks at HP saw my <a class="reference external" href="http://groups.google.com/groups?q=tkb+group:comp.os.vms&amp;hl=en&amp;lr=&amp;ie=UTF-8&amp;oe=UTF-8&amp;selm=a3db6b24.0305081211.6f867ad0%40posting.google.com&amp;rnum=1">post</a> about this
-in comp.os.vms and passed it to a VMS BASIC engineer, who confirmed
-that my workaround was reasonable and should work, which was good to
-know, although I had tested it and it seemed to work fine.</p>
+<p>As I mentioned <a class="reference external" href="posts/2003/05/08/2003-05-08-vms-code-from-the-past/">earlier</a>, VMS BASIC doesn't
+allow you to redimension dynamically allocated arrays inside
+procedures that they have been passed to as arguments.  One of the
+folks at HP saw my <a class="reference external" href="http://groups.google.com/groups?q=tkb+group:comp.os.vms&amp;hl=en&amp;lr=&amp;ie=UTF-8&amp;oe=UTF-8&amp;selm=a3db6b24.0305081211.6f867ad0%40posting.google.com&amp;rnum=1">post</a> about this in comp.os.vms and passed it to a
+VMS BASIC engineer, who confirmed that my workaround was reasonable
+and should work, which was good to know, although I had tested it and
+it seemed to work fine.</p>
 </div>
     </div>
     </article><article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2003/05/10/2003-05-10/" class="u-url">Diceless Roleplaying Games</a></h2>
@@ -153,16 +154,16 @@ of example actions and their difficulty levels.</p>
 </div>
 </div>
     </div>
-    </article><article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2003/05/08/2003-05-08/" class="u-url">VMS Code from the Past</a></h2>
+    </article><article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2003/05/08/2003-05-08-vms-code-from-the-past/" class="u-url">VMS Code from the Past</a></h2>
         <div class="metadata blog-post-meta">
             <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
-            <p class="dateline"><a href="posts/2003/05/08/2003-05-08/" rel="bookmark"><time class="published dt-published" datetime="2003-05-08T00:00:00-05:00" title="2003-05-08 00:00">2003-05-08 00:00</time></a></p>
+            <p class="dateline"><a href="posts/2003/05/08/2003-05-08-vms-code-from-the-past/" rel="bookmark"><time class="published dt-published" datetime="2003-05-08T00:00:00-05:00" title="2003-05-08 00:00">2003-05-08 00:00</time></a></p>
         </div>
     </header><div class="e-content entry-content">
     <div>
 <p>Listening to: Hawkwind, <a class="reference external" href="http://www.freedb.org/freedb_search_fmt.php?cat=rock&amp;id=d50ba50e">Chronicle of the Black Sword</a>.</p>
-<p>I've been reading a lot of VMS BASIC <a class="footnote-reference brackets" href="posts/2003/05/08/2003-05-08/#id3" id="id1">1</a> source code from the early
-1990s <a class="footnote-reference brackets" href="posts/2003/05/08/2003-05-08/#id4" id="id2">2</a> recently, and the one lesson it has taught me is that
+<p>I've been reading a lot of VMS BASIC <a class="footnote-reference brackets" href="posts/2003/05/08/2003-05-08-vms-code-from-the-past/#id3" id="id1">1</a> source code from the early
+1990s <a class="footnote-reference brackets" href="posts/2003/05/08/2003-05-08-vms-code-from-the-past/#id4" id="id2">2</a> recently, and the one lesson it has taught me is that
 refactoring source code is vital for maintainability.  Much of this
 source code originated in one program that was copied and edited
 whenever a new program was needed, so each new program generally ended
@@ -196,12 +197,12 @@ now.</p>
 <p>There were a number of things in this system that I think were well
 done, though, so it hasn't been all pain looking at it again.</p>
 <dl class="footnote brackets">
-<dt class="label" id="id3"><span class="brackets"><a class="fn-backref" href="posts/2003/05/08/2003-05-08/#id1">1</a></span></dt>
+<dt class="label" id="id3"><span class="brackets"><a class="fn-backref" href="posts/2003/05/08/2003-05-08-vms-code-from-the-past/#id1">1</a></span></dt>
 <dd>
 <p>I'm working with it on an Alpha so I can't call it VAX BASIC
 anymore.</p>
 </dd>
-<dt class="label" id="id4"><span class="brackets"><a class="fn-backref" href="posts/2003/05/08/2003-05-08/#id2">2</a></span></dt>
+<dt class="label" id="id4"><span class="brackets"><a class="fn-backref" href="posts/2003/05/08/2003-05-08-vms-code-from-the-past/#id2">2</a></span></dt>
 <dd>
 <p>The original version of this system ran on PDP-11 running RSTS/E.
 I've been involved in two major conversions of systems running on
@@ -244,51 +245,51 @@ and is probably bad style.  However, are there any <em>practical</em>
 reasons why this wouldn't work safely?  Are there any
 conditions under which this hack would fail to work?</p>
 <p>Here is an example program:</p>
-<pre class="code text"><a name="rest_code_f170327c463e4bba98900a9179a675e4-1"></a>program redim
-<a name="rest_code_f170327c463e4bba98900a9179a675e4-2"></a>    option type = explicit, constant type = integer, &amp;
-<a name="rest_code_f170327c463e4bba98900a9179a675e4-3"></a>        size = integer long, size = real double
-<a name="rest_code_f170327c463e4bba98900a9179a675e4-4"></a>
-<a name="rest_code_f170327c463e4bba98900a9179a675e4-5"></a>    external sub redim_in_sub (string dim())
-<a name="rest_code_f170327c463e4bba98900a9179a675e4-6"></a>    external long function my_redim (string dim(), long)
-<a name="rest_code_f170327c463e4bba98900a9179a675e4-7"></a>
-<a name="rest_code_f170327c463e4bba98900a9179a675e4-8"></a>    declare long i, r
-<a name="rest_code_f170327c463e4bba98900a9179a675e4-9"></a>
-<a name="rest_code_f170327c463e4bba98900a9179a675e4-10"></a>    i = 10
-<a name="rest_code_f170327c463e4bba98900a9179a675e4-11"></a>    dim string vs(i) ! has to be a variable to make it an executable dim.
-<a name="rest_code_f170327c463e4bba98900a9179a675e4-12"></a>
-<a name="rest_code_f170327c463e4bba98900a9179a675e4-13"></a>    r = my_redim (vs(), 30)
-<a name="rest_code_f170327c463e4bba98900a9179a675e4-14"></a>    print "ubound(vs):"; ubound(vs)
-<a name="rest_code_f170327c463e4bba98900a9179a675e4-15"></a>    for i = lbound(vs) to ubound(vs) \ vs(i) = "vs 30-" + num1$(i) \ next i
-<a name="rest_code_f170327c463e4bba98900a9179a675e4-16"></a>    gosub print_vs
-<a name="rest_code_f170327c463e4bba98900a9179a675e4-17"></a>
-<a name="rest_code_f170327c463e4bba98900a9179a675e4-18"></a>    call redim_in_sub (vs())
-<a name="rest_code_f170327c463e4bba98900a9179a675e4-19"></a>    print "ubound(vs):"; ubound(vs)
-<a name="rest_code_f170327c463e4bba98900a9179a675e4-20"></a>    gosub print_Vs
-<a name="rest_code_f170327c463e4bba98900a9179a675e4-21"></a>
-<a name="rest_code_f170327c463e4bba98900a9179a675e4-22"></a>    exit program
-<a name="rest_code_f170327c463e4bba98900a9179a675e4-23"></a>
-<a name="rest_code_f170327c463e4bba98900a9179a675e4-24"></a>print_vs:
-<a name="rest_code_f170327c463e4bba98900a9179a675e4-25"></a>    for i = lbound(vs) to ubound(vs) \ print i; ": "; vs(i) \ next i
-<a name="rest_code_f170327c463e4bba98900a9179a675e4-26"></a>    return ! from print_vs
-<a name="rest_code_f170327c463e4bba98900a9179a675e4-27"></a>
-<a name="rest_code_f170327c463e4bba98900a9179a675e4-28"></a>end program ! redim
-<a name="rest_code_f170327c463e4bba98900a9179a675e4-29"></a>
-<a name="rest_code_f170327c463e4bba98900a9179a675e4-30"></a>function long my_redim (long s by value, long n)
-<a name="rest_code_f170327c463e4bba98900a9179a675e4-31"></a>    option type = explicit, constant type = integer, &amp;
-<a name="rest_code_f170327c463e4bba98900a9179a675e4-32"></a>        size = integer long, size = real double
-<a name="rest_code_f170327c463e4bba98900a9179a675e4-33"></a>    declare long r
-<a name="rest_code_f170327c463e4bba98900a9179a675e4-34"></a>    external long function dbasic$rt_dim (long by value, long by value)
-<a name="rest_code_f170327c463e4bba98900a9179a675e4-35"></a>    r = dbasic$rt_dim (s, n)
-<a name="rest_code_f170327c463e4bba98900a9179a675e4-36"></a>end function r ! my_redim
-<a name="rest_code_f170327c463e4bba98900a9179a675e4-37"></a>
-<a name="rest_code_f170327c463e4bba98900a9179a675e4-38"></a>sub redim_in_sub (string s())
-<a name="rest_code_f170327c463e4bba98900a9179a675e4-39"></a>    option type = explicit, constant type = integer, &amp;
-<a name="rest_code_f170327c463e4bba98900a9179a675e4-40"></a>        size = integer long, size = real double
-<a name="rest_code_f170327c463e4bba98900a9179a675e4-41"></a>    external sub set_strings (string dim(), string)
-<a name="rest_code_f170327c463e4bba98900a9179a675e4-42"></a>    declare long i
-<a name="rest_code_f170327c463e4bba98900a9179a675e4-43"></a>    call my_redim (s(), 40)
-<a name="rest_code_f170327c463e4bba98900a9179a675e4-44"></a>    for i = 0 to 40 \ s(i) = "redim in sub " + num1$(i) \ next i
-<a name="rest_code_f170327c463e4bba98900a9179a675e4-45"></a>end sub ! redim_in_sub
+<pre class="code text"><a name="rest_code_d1f9b4dc44c34850b2896b0388efa0d3-1"></a>program redim
+<a name="rest_code_d1f9b4dc44c34850b2896b0388efa0d3-2"></a>    option type = explicit, constant type = integer, &amp;
+<a name="rest_code_d1f9b4dc44c34850b2896b0388efa0d3-3"></a>        size = integer long, size = real double
+<a name="rest_code_d1f9b4dc44c34850b2896b0388efa0d3-4"></a>
+<a name="rest_code_d1f9b4dc44c34850b2896b0388efa0d3-5"></a>    external sub redim_in_sub (string dim())
+<a name="rest_code_d1f9b4dc44c34850b2896b0388efa0d3-6"></a>    external long function my_redim (string dim(), long)
+<a name="rest_code_d1f9b4dc44c34850b2896b0388efa0d3-7"></a>
+<a name="rest_code_d1f9b4dc44c34850b2896b0388efa0d3-8"></a>    declare long i, r
+<a name="rest_code_d1f9b4dc44c34850b2896b0388efa0d3-9"></a>
+<a name="rest_code_d1f9b4dc44c34850b2896b0388efa0d3-10"></a>    i = 10
+<a name="rest_code_d1f9b4dc44c34850b2896b0388efa0d3-11"></a>    dim string vs(i) ! has to be a variable to make it an executable dim.
+<a name="rest_code_d1f9b4dc44c34850b2896b0388efa0d3-12"></a>
+<a name="rest_code_d1f9b4dc44c34850b2896b0388efa0d3-13"></a>    r = my_redim (vs(), 30)
+<a name="rest_code_d1f9b4dc44c34850b2896b0388efa0d3-14"></a>    print "ubound(vs):"; ubound(vs)
+<a name="rest_code_d1f9b4dc44c34850b2896b0388efa0d3-15"></a>    for i = lbound(vs) to ubound(vs) \ vs(i) = "vs 30-" + num1$(i) \ next i
+<a name="rest_code_d1f9b4dc44c34850b2896b0388efa0d3-16"></a>    gosub print_vs
+<a name="rest_code_d1f9b4dc44c34850b2896b0388efa0d3-17"></a>
+<a name="rest_code_d1f9b4dc44c34850b2896b0388efa0d3-18"></a>    call redim_in_sub (vs())
+<a name="rest_code_d1f9b4dc44c34850b2896b0388efa0d3-19"></a>    print "ubound(vs):"; ubound(vs)
+<a name="rest_code_d1f9b4dc44c34850b2896b0388efa0d3-20"></a>    gosub print_Vs
+<a name="rest_code_d1f9b4dc44c34850b2896b0388efa0d3-21"></a>
+<a name="rest_code_d1f9b4dc44c34850b2896b0388efa0d3-22"></a>    exit program
+<a name="rest_code_d1f9b4dc44c34850b2896b0388efa0d3-23"></a>
+<a name="rest_code_d1f9b4dc44c34850b2896b0388efa0d3-24"></a>print_vs:
+<a name="rest_code_d1f9b4dc44c34850b2896b0388efa0d3-25"></a>    for i = lbound(vs) to ubound(vs) \ print i; ": "; vs(i) \ next i
+<a name="rest_code_d1f9b4dc44c34850b2896b0388efa0d3-26"></a>    return ! from print_vs
+<a name="rest_code_d1f9b4dc44c34850b2896b0388efa0d3-27"></a>
+<a name="rest_code_d1f9b4dc44c34850b2896b0388efa0d3-28"></a>end program ! redim
+<a name="rest_code_d1f9b4dc44c34850b2896b0388efa0d3-29"></a>
+<a name="rest_code_d1f9b4dc44c34850b2896b0388efa0d3-30"></a>function long my_redim (long s by value, long n)
+<a name="rest_code_d1f9b4dc44c34850b2896b0388efa0d3-31"></a>    option type = explicit, constant type = integer, &amp;
+<a name="rest_code_d1f9b4dc44c34850b2896b0388efa0d3-32"></a>        size = integer long, size = real double
+<a name="rest_code_d1f9b4dc44c34850b2896b0388efa0d3-33"></a>    declare long r
+<a name="rest_code_d1f9b4dc44c34850b2896b0388efa0d3-34"></a>    external long function dbasic$rt_dim (long by value, long by value)
+<a name="rest_code_d1f9b4dc44c34850b2896b0388efa0d3-35"></a>    r = dbasic$rt_dim (s, n)
+<a name="rest_code_d1f9b4dc44c34850b2896b0388efa0d3-36"></a>end function r ! my_redim
+<a name="rest_code_d1f9b4dc44c34850b2896b0388efa0d3-37"></a>
+<a name="rest_code_d1f9b4dc44c34850b2896b0388efa0d3-38"></a>sub redim_in_sub (string s())
+<a name="rest_code_d1f9b4dc44c34850b2896b0388efa0d3-39"></a>    option type = explicit, constant type = integer, &amp;
+<a name="rest_code_d1f9b4dc44c34850b2896b0388efa0d3-40"></a>        size = integer long, size = real double
+<a name="rest_code_d1f9b4dc44c34850b2896b0388efa0d3-41"></a>    external sub set_strings (string dim(), string)
+<a name="rest_code_d1f9b4dc44c34850b2896b0388efa0d3-42"></a>    declare long i
+<a name="rest_code_d1f9b4dc44c34850b2896b0388efa0d3-43"></a>    call my_redim (s(), 40)
+<a name="rest_code_d1f9b4dc44c34850b2896b0388efa0d3-44"></a>    for i = 0 to 40 \ s(i) = "redim in sub " + num1$(i) \ next i
+<a name="rest_code_d1f9b4dc44c34850b2896b0388efa0d3-45"></a>end sub ! redim_in_sub
 </pre>
 <p>(Interestingly, a slightly different approach was necessary using VAX
 BASIC V3.5 under VMS V5.5-2: using BY VALUE in function

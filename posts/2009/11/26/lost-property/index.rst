@@ -53,7 +53,7 @@ Actual Play
 
 An unsanctioned thief, Jeck Lightfinger, had fled with his ill-gotten
 gains into **The Widow's Hold**, a local haunted house.  The
-characters were charged with finding Jeck and 
+characters were charged with finding Jeck.
 
 They entered the ill-omened house and soon found the entrance to the
 tunnels below.  They were soon ambushed by ghouls (in this scenario a

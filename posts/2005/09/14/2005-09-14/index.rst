@@ -14,8 +14,7 @@ Slow Times at Gold Rush Games
 -----------------------------
 
 I ran across a reference to a post from 2004 explaining `Gold Rush
-Games <http://www.goldrushgames.com/>`__ current `current plans
-<http://www.goldrushgames.com/forums/index.php?act=ST&f=2&t=384>`__.
+Games <http://www.goldrushgames.com/>`__ `current plans`_.
 It's a pity the roleplaying games industry is such a difficult place
 to make a living.
 
@@ -33,3 +32,5 @@ The most recent `summary
 <http://groups.yahoo.com/group/Kregen/message/16632>`__ of the
 situation with the Savanti Books edition of the Dray is dismal but not
 surprising.
+
+.. _`current plans`: https://web.archive.org/web/20040803005822/http://www.goldrushgames.com/forums/index.php?act=ST&f=2&t=384
