@@ -3,26 +3,22 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Converting my emacs-lisp repository to GIT and putting it online | Lacking Natural Simplicity</title>
+<title>Failing at Ada Again | Lacking Natural Simplicity</title>
 <link href="../../../../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
 <link rel="alternate" type="application/rss+xml" title="RSS" href="../../../../../rss.xml">
-<link rel="canonical" href="https://tkurtbond.github.io/posts/2019/11/10/converting-my-emacs-lisp-repository-to-git-and-putting-it-online/">
+<link rel="canonical" href="https://tkurtbond.github.io/posts/2019/11/10/failing-at-ada-again/">
 <!--[if lt IE 9]><script src="../../../../../assets/js/html5.js"></script><![endif]--><meta name="author" content="T. Kurt Bond">
-<link rel="prev" href="../fixing-more-broken-links-in-this-blog/" title="Fixing more broken links in this blog" type="text/html">
-<link rel="next" href="../failing-at-ada-again/" title="Failing at Ada Again" type="text/html">
+<link rel="prev" href="../converting-my-emacs-lisp-repository-to-git-and-putting-it-online/" title="Converting my emacs-lisp repository to GIT and putting it online" type="text/html">
 <meta property="og:site_name" content="Lacking Natural Simplicity">
-<meta property="og:title" content="Converting my emacs-lisp repository to GIT and putting it online">
-<meta property="og:url" content="https://tkurtbond.github.io/posts/2019/11/10/converting-my-emacs-lisp-repository-to-git-and-putting-it-online/">
-<meta property="og:description" content="I've had a mercurial repository for my Emacs Lisp initialization
-files since Thursday, Oct 29, 2009, but had actually used it very
-little.  Recently I had occasion to untangle my initialization files
+<meta property="og:title" content="Failing at Ada Again">
+<meta property="og:url" content="https://tkurtbond.github.io/posts/2019/11/10/failing-at-ada-again/">
+<meta property="og:description" content="Back on May 20th, 2019 I ordered a copy of John Barnes Programming in
+Ada and spent some time reading it and working with Ada.  I get
+interested again in Ada periodically.  In theory, I ought to like
 ">
 <meta property="og:type" content="article">
-<meta property="article:published_time" content="2019-11-10T14:09:17-05:00">
-<meta property="article:tag" content="conversion">
-<meta property="article:tag" content="emacs lisp">
-<meta property="article:tag" content="git">
-<meta property="article:tag" content="mercurial">
+<meta property="article:published_time" content="2019-11-10T16:24:35-05:00">
+<meta property="article:tag" content="ada">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
@@ -68,11 +64,11 @@ little.  Recently I had occasion to untangle my initialization files
         <div class="row">
             <div class="col-sm-8 blog-main">
                 
-<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h2 class="p-name entry-title blog-post-title" itemprop="headline name"><a href="." class="u-url">Converting my emacs-lisp repository to GIT and putting it online</a></h2>
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h2 class="p-name entry-title blog-post-title" itemprop="headline name"><a href="." class="u-url">Failing at Ada Again</a></h2>
 
         <div class="metadata blog-post-meta">
             <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
-            <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2019-11-10T14:09:17-05:00" itemprop="datePublished" title="2019-11-10 14:09">2019-11-10 14:09</time></a></p>
+            <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2019-11-10T16:24:35-05:00" itemprop="datePublished" title="2019-11-10 16:24">2019-11-10 16:24</time></a></p>
             
         <p class="sourceline"><a href="index.rst" id="sourcelink">Source</a></p>
 
@@ -81,30 +77,39 @@ little.  Recently I had occasion to untangle my initialization files
 
     </header><div class="e-content entry-content" itemprop="articleBody text">
     <div>
-<p>I've had a <a class="reference external" href="https://www.mercurial-scm.org/">mercurial</a> repository for my Emacs Lisp initialization
-files since Thursday, Oct 29, 2009, but had actually used it very
-little.  Recently I had occasion to untangle my initialization files
-somewhat — they had over 12,000 lines of code when I started, and I've
-reduced that to 6,137 lines and switched over to using <a class="reference external" href="https://elpa.gnu.org/">Elpa</a> packages
-for as much stuff as I can.</p>
-<p>I decided I'd put it in one of the online repositories, and since I'm
-already using <a class="reference external" href="https://github.com/tkurtbond">github.com</a> for my blog I decided to put it <a class="reference external" href="https://github.com/tkurtbond/emacs-lisp">there</a>.
-But that meant converting it to <a class="reference external" href="https://git-scm.com/">GIT</a>.  I used the directions <a class="reference external" href="https://git-scm.com/book/en/v2/Git-and-Other-Systems-Migrating-to-Git#_mercurial">here</a>
-using <a class="reference external" href="https://github.com/frej/fast-export">fast-export</a> which seemed to work fine.</p>
+<p>Back on May 20th, 2019 I ordered a copy of John Barnes <a class="reference external" href="https://www.amazon.com/gp/product/110742481X/">Programming in
+Ada</a> and spent some time reading it and working with Ada.  I get
+interested again in Ada periodically.  In theory, I ought to like
+programming in Ada — it's the last remaining widely used member of the
+Pascal language family, which I like.  There is a distribution of the
+<a class="reference external" href="https://www.adacore.com/download">GNAT Community Edition</a> for macOS which bundles the <a class="reference external" href="https://en.wikipedia.org/wiki/GNAT">GNAT</a> Ada
+compiler and some useful libraries.  But I could never get
+comfortable.</p>
+<ul class="simple">
+<li><p>GNAT Community Edition for maccOS doesn't include GtkAda, so I
+couldn't easily write GUI programs.</p></li>
+<li><p>Getting programming libraries was back to the old download and
+install it from scratch yourself method.  I find it much easier to
+use systems like Chicken Scheme's <a class="reference external" href="http://wiki.call-cc.org/chicken-projects/egg-index-5.html">Eggs Unlimited</a> to find and
+install software, or <a class="reference external" href="https://ocaml.org/">OCaml</a>'s <a class="reference external" href="https://opam.ocaml.org/">opam</a>.</p></li>
+<li><p><a class="reference external" href="https://brew.sh">Brew</a>, a package manager for macOS doesn't include GNAT and
+GtkAda. The case is better in <a class="reference external" href="https://www.macports.org/">MacPorts</a> and much better on Fedora
+but there are fewer packaged Ada libraries in general, but not good
+on Ubuntu.</p></li>
+<li><p>The lack of a garbage collector is annoying.</p></li>
+<li><p>And especially irritating to me, I tried using  the Ada mode on GNU <a class="reference external" href="https://elpa.gnu.org/">Elpa</a>
+and it didn't indent Ada code properly.</p></li>
+</ul>
+<p>I think in my current programming environment using Ada is still a
+difficult task.</p>
 </div>
     </div>
     <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
-<li><a class="tag p-category" href="../../../../../categories/conversion/" rel="tag">conversion</a></li>
-            <li><a class="tag p-category" href="../../../../../categories/emacs-lisp/" rel="tag">emacs lisp</a></li>
-            <li><a class="tag p-category" href="../../../../../categories/git/" rel="tag">git</a></li>
-            <li><a class="tag p-category" href="../../../../../categories/mercurial/" rel="tag">mercurial</a></li>
+<li><a class="tag p-category" href="../../../../../categories/ada/" rel="tag">ada</a></li>
         </ul>
 <ul class="pager hidden-print">
 <li class="previous">
-                <a href="../fixing-more-broken-links-in-this-blog/" rel="prev" title="Fixing more broken links in this blog">Previous post</a>
-            </li>
-            <li class="next">
-                <a href="../failing-at-ada-again/" rel="next" title="Failing at Ada Again">Next post</a>
+                <a href="../converting-my-emacs-lisp-repository-to-git-and-putting-it-online/" rel="prev" title="Converting my emacs-lisp repository to GIT and putting it online">Previous post</a>
             </li>
         </ul></nav></aside></article>
 </div>

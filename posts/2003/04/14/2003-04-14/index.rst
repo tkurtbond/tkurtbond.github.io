@@ -22,8 +22,7 @@ to another, for instance.
 When gaming in more detailed worlds, the gamers have to expend more
 effort up front to work within the details: learning how `Tékumel
 <http://www.tekumel.com/>`__ societies work, or the religions of the
-`Lunar Empire <http://www.glorantha.com/library/history/hle-
-0wane.html>`__ of Glorantha, but the additional detail can add depth
+`Lunar Empire <https://glorantha.fandom.com/wiki/Lunar_Empire>`__ of Glorantha, but the additional detail can add depth
 to the roleplaying experience and can provide additional inspiration
 for the game.  How can such detail be best presented to prevent the
 gamer from becoming overloaded and turned away by the detail? Is it
