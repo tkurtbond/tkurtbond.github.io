@@ -9,7 +9,7 @@
 
 Ack!  macOS Catalina doesn't have an FTP client!  Yes, I know it is
 terribly insecure, but I only use it inside our firewall to access one
-legacy computer system.  I was glad brew_ had ``LFTP``, and I figured out
+legacy computer system.  I was glad brew_ had LFTP_, and I figured out
 how to use active mode in ``LFTP``:
 
 .. code:: bash
@@ -19,3 +19,4 @@ how to use active mode in ``LFTP``:
 because that machines FTP server only works with active mode.
 
 .. _brew: https://brew.sh/
+.. _LFTP: https://lftp.yar.ru/
