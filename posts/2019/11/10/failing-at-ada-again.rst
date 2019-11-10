@@ -16,7 +16,7 @@ Pascal language family, which I like.  There is a distribution of the
 compiler and some useful libraries.  But I could never get
 comfortable.
 
-+ GNAT Community Edition for maccOS doesn't include GtkAda, so I
++ GNAT Community Edition for macOS doesn't include GtkAda, so I
   couldn't easily write GUI programs.
 
 + Getting programming libraries was back to the old download and
@@ -30,6 +30,8 @@ comfortable.
   on Ubuntu.
 
 + The lack of a garbage collector is annoying.
+
++ The type system is strict and not very flexible.
 
 + And especially irritating to me, I tried using  the Ada mode on GNU Elpa_ 
   and it didn't indent Ada code properly.
