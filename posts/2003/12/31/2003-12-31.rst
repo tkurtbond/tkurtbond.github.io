@@ -20,3 +20,9 @@ good for introducing roleplaying games to new players.  It's a pity it
 was unsuccessful commercially and will never be reprinted, but it's
 hard to know what to blame for that failure.  Was it a failure of
 marketing? Limited distribution? Limited interest?
+
+[2019-11-10: What do I know?  It turns out a new edition was
+kickstarted_ in 2016, though they were still fulfilling things in
+2019.]
+
+.. _kickstarted: https://www.kickstarter.com/projects/1861515217/prince-valiant-storytelling-game-by-greg-stafford/description

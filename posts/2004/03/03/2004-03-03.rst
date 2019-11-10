@@ -1,4 +1,4 @@
-.. title: Dave Sim's Ultimately Disappointing `Cerebus`
+.. title: Dave Sim's Ultimately Disappointing Cerebus
 .. slug: 2004-03-03
 .. date: 2004-03-03 00:00:00 UTC-05:00
 .. tags: old blog,cerebus,dave sim

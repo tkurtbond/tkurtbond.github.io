@@ -10,10 +10,8 @@
 
 Mark Arsenault, president of Gold Rush Games, had some unhappy
 observations on the health of the RPG industry in his post `Changes in
-the Air: A GRG Update for our Fans
-<http://www.goldrushgames.com/forums/index.php?act=ST&f=2&t=384>`__ on
-the Gold Rush Games forums on May 5th.  One item in particular was the
-small sales size:
+the Air: A GRG Update for our Fans`__ on the Gold Rush Games forums on
+May 5th.  One item in particular was the small sales size:
 
     [T]he general consensus is that sales are down across the board (with
     new product sales in the 200-800 unit range; very low compared to just
@@ -28,3 +26,5 @@ large rulebook supported by an ongoing stream of extensive support
 materials.  Others have suggested that part of the problem is the
 `supplement treadmill <http://www.indie-
 rpgs.com/viewtopic.php?t=10986&highlight=treadmill>`__.
+
+__ https://web.archive.org/web/20040803005822/http://www.goldrushgames.com/forums/index.php?act=ST&f=2&t=384

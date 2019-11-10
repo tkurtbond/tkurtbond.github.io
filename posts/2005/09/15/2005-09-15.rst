@@ -1,4 +1,4 @@
-.. title: New Orleans vs `Dhalgren`
+.. title: New Orleans vs Dhalgren
 .. slug: 2005-09-15
 .. date: 2005-09-15 00:00:00 UTC-05:00
 .. tags: old blog,science fiction

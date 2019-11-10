@@ -55,6 +55,7 @@ le.com/group/rec.arts.sf.written/msg/4778a2e82173f391>`__:
     It was possible to make a living selling 60,000 paperbacks a year, but
     if you sell less than 10,000, you'd better have a McJob.
 
-In February 2005 Tobias Buckell `summarized
-<http://www.tobiasbuckell.com/archives/001423.html>`__ his survey of
+In February 2005 Tobias Buckell summarized_ his survey of
 genre advances.
+
+.. _summarized: https://web.archive.org/web/20050211040808/https://tobiasbuckell.com/archives/001423.html

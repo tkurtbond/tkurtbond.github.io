@@ -1,4 +1,4 @@
-.. title: `The Commodore`
+.. title: The Commodore
 .. slug: 2004-09-15
 .. date: 2004-09-15 00:00:00 UTC-05:00
 .. tags: old blog,patrick o'brian,quote

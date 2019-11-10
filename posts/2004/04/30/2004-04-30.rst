@@ -15,7 +15,7 @@ the publishing arm of `Games Workshop
 were launching a new imprint, `Black Industries
 <http://www.blackindustries.com/>`__, to publish roleplaying games,
 and that Black Industries, working with `Green Ronin
-<http://www.greenronin.com/>`__ (`(press release)
+<http://www.greenronin.com/>`__ `(press release)
 <http://www.greenronin.com/press_releases/?id=games_workshop>`__,
 would publish a new edition of Warhammer Fantasy Roleplay.  Early fear
 and trepidation on the part of some fans was quickly dispelled in a
