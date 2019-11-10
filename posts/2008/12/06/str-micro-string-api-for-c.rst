@@ -15,4 +15,8 @@ which has adequate simple string handling, but lacks advanced string
 handling and has only very painful facilities for dynamically
 allocating complex data structures and working with them.
 
+[2019-11-09: I was writing a program to get e-mails from VMS Mail
+using the callable interface, then parse the body of the email into a
+form that could be further processed by POISE DMS programs.]
+
 .. _µstr: http://www.and.org/ustr/
