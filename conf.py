@@ -25,7 +25,7 @@ SITE_URL = "https://tkurtbond.github.io/"
 # If not set, defaults to SITE_URL
 # BASE_URL = "https://tkurtbond.github.io/"
 BLOG_EMAIL = "tkurtbond@gmail.com"
-BLOG_DESCRIPTION = "Random musings on code and tabletop games."  # (translatable)
+BLOG_DESCRIPTION = "Random musings on books, code, and tabletop games."  # (translatable)
 
 # Nikola is multilingual!
 #
