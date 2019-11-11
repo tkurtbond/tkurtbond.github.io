@@ -25,9 +25,9 @@ comfortable.
   install software, or OCaml_'s opam_.
 
 + Brew_, a package manager for macOS doesn't include GNAT and
-  GtkAda. The case is better in MacPorts_ and much better on Fedora
-  but there are fewer packaged Ada libraries in general, but not good
-  on Ubuntu.
+  GtkAda. The case is better in MacPorts_ and much better on Fedora,
+  but not good on Ubuntu.  I think there are are fewer packaged Ada
+  libraries across the open source Unixes in general.
 
 + The lack of a garbage collector is annoying.
 
