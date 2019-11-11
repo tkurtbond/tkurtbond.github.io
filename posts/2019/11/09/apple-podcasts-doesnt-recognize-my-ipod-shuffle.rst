@@ -59,7 +59,7 @@ right click on a podcast, to open the download directory for that
 podcast, which makes it easy to copy the files to the Clip Sport.  Of
 course, they end up on the Clip Sport alphabetically by filename, and
 some podcasts have really weird names — I'd swear some of them were
-UUID_'s.  There is a gpodder option to rename the files to the title
+UUID_\ s.  There is a gpodder option to rename the files to the title
 of the episode, which is good when episodes include the episode number
 in the title.
 
