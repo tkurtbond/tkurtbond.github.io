@@ -9,7 +9,7 @@
 
 Back on May 20th, 2019 I ordered a copy of John Barnes `Programming in
 Ada`_ and spent some time reading it and working with Ada.  I get
-interested again in Ada periodically.  In theory, I ought to like
+interested again in Ada periodically_.  In theory, I ought to like
 programming in Ada — it's the last remaining widely used member of the
 Pascal language family, which I like.  There is a distribution of the
 `GNAT Community Edition`_ for macOS which bundles the GNAT_ Ada
@@ -40,6 +40,7 @@ I think in my current programming environment using Ada is still a
 difficult task.
 
 .. _`Programming in Ada`: https://www.amazon.com/gp/product/110742481X/
+.. _periodically: link://slug/2003-07-24-ada-cohen
 .. _`GNAT Community Edition`: https://www.adacore.com/download
 .. _GNAT: https://en.wikipedia.org/wiki/GNAT
 .. _`Eggs Unlimited`: http://wiki.call-cc.org/chicken-projects/egg-index-5.html

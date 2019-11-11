@@ -1,5 +1,5 @@
 .. title: Ada as a Second Language, Second Edition
-.. slug: 2003-07-24
+.. slug: 2003-07-24-ada-cohen
 .. date: 2003-07-24 00:00:00 UTC-05:00
 .. tags: old blog,ada
 .. category: oldblog
