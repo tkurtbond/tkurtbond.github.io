@@ -24,7 +24,7 @@ comfortable.
   use systems like Chicken Scheme's `Eggs Unlimited`_ to find and
   install software, or OCaml_'s opam_.
 
-+ Brew_, a package manager for macOS doesn't include GNAT and
++ Brew_, a package manager for macOS, doesn't include GNAT and
   GtkAda. The case is better in MacPorts_ and much better on Fedora,
   but not good on Ubuntu.  I think there are are fewer packaged Ada
   libraries across the open source Unixes in general.
