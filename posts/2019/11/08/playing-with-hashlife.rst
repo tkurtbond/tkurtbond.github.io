@@ -16,7 +16,7 @@ entered:
 
     (asdf:operate 'asdf:load-op 'charmlife)
     
-That result in ``Component CHARMLIFE not found`` error in sbcl.  I
+That resulted in a ``Component CHARMLIFE not found`` error in sbcl.  I
 thought that was odd — it was right there in the current directory.  I
 looked at ``asdf:*central-registry*``, and the only thing in it was
 the quicklisp directory.  The ASDF howto_ showed an example of setting
