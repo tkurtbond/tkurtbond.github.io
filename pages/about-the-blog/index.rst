@@ -10,11 +10,11 @@
 What I write about
 ------------------
 
-Random musings about computers, tabletop role-playing games, and
+Random musings about books, computers, tabletop role-playing games, and
 miscellaneous bits.
 
-What I use to write 
--------------------
+Tools I use to write 
+--------------------
 
 All the text is written using Emacs_ in reStructuredText_ and
 formatted by Docutils_.  The blog software used to be PyBloxsom_, but
