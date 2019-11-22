@@ -7,9 +7,9 @@
 .. description: 
 .. type: text
 
-Back on May 20th, 2019 I ordered a copy of John Barnes `Programming in
-Ada`_ and spent some time reading it and working with Ada.  I get
-interested again in Ada periodically_.  In theory, I ought to like
+Back on May 20th, 2019 I ordered a copy of `Programming in Ada`_ by
+John Barnes and spent some time reading it and working with Ada.  I
+get interested again in Ada periodically_.  In theory, I ought to like
 programming in Ada — it's the last remaining widely used member of the
 Pascal language family, which I like.  There is a distribution of the
 `GNAT Community Edition`_ for macOS which bundles the GNAT_ Ada
