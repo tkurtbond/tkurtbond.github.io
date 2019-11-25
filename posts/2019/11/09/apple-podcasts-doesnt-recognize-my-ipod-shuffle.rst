@@ -44,7 +44,10 @@ podcasts. So the “listened to” status and the time into each podcast
 you've reached is not something the podcatcher application can help
 you track.  And the Clip Sport itself doesn't keep track of where you
 were in a particular podcast, though it does remember which one you
-were listening to.
+were listening to, and where in the podcast you had reached.  It's
+really easy to mess up with the forward button and move on to the next
+podcast and when you use the reverse button to move back the Clip
+Sport has forgotten where in the podcast you were.  Sigh.
 
 Oh well.  I guess I'll have to give the Clip Sport another try.
 Luckily I had exported my podcast feed from iTunes before I converted
