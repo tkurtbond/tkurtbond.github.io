@@ -51,7 +51,7 @@ Sport has forgotten where in the podcast you were.  Sigh.
 
 Oh well.  I guess I'll have to give the Clip Sport another try.
 Luckily I had exported my podcast feed from iTunes before I converted
-to macOS Catalina — I had 122 podcast subscription.  I installed
+to macOS Catalina — I had 122 podcast subscriptions.  I installed
 gpodder_ on my macOS laptop to manage the podcasts. (I was glad a
 version of it as a macOS application was available.) It told me that
 several of my subscriptions didn't have valid feeds any more, or
