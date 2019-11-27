@@ -8,8 +8,8 @@
 <link href="assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
 <link rel="alternate" type="application/rss+xml" title="RSS" href="rss.xml">
 <link rel="canonical" href="https://tkurtbond.github.io/">
-<link rel="next" href="index-81.html" type="text/html">
-<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/2019/11/10/failing-at-ada-again/" type="text/html">
+<link rel="next" href="index-82.html" type="text/html">
+<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/2019/11/27/i-often-read-webcomics-backwards/" type="text/html">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
@@ -55,7 +55,19 @@
                 
 
 <div class="postindex">
-    <article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2019/11/10/failing-at-ada-again/" class="u-url">Failing at Ada Again</a></h2>
+    <article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2019/11/27/i-often-read-webcomics-backwards/" class="u-url">I often read webcomics backwards</a></h2>
+        <div class="metadata blog-post-meta">
+            <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
+            <p class="dateline"><a href="posts/2019/11/27/i-often-read-webcomics-backwards/" rel="bookmark"><time class="published dt-published" datetime="2019-11-27T14:27:33-05:00" title="2019-11-27 14:27">2019-11-27 14:27</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <p>I often go a month or two between reading the webcomics I regularly
+follow.  When I got back and read them, I usually start with the
+current comic and just click the “Prev” button to go back, so I end up
+reading significant portions of the story backwards.  Eventually it
+all makes sense anyway.</p>
+    </div>
+    </article><article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2019/11/10/failing-at-ada-again/" class="u-url">Failing at Ada Again</a></h2>
         <div class="metadata blog-post-meta">
             <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
             <p class="dateline"><a href="posts/2019/11/10/failing-at-ada-again/" rel="bookmark"><time class="published dt-published" datetime="2019-11-10T16:24:35-05:00" title="2019-11-10 16:24">2019-11-10 16:24</time></a></p>
@@ -502,55 +514,12 @@ site relative links that started with <code class="docutils literal">/~tkb</code
 difficult process.</p>
 </div>
     </div>
-    </article><article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2019/11/05/getting-nxml-mode-in-emacs-to-validate-docbook-5-documents/" class="u-url">Getting nxml-mode in emacs to validate DocBook 5 documents</a></h2>
-        <div class="metadata blog-post-meta">
-            <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
-            <p class="dateline"><a href="posts/2019/11/05/getting-nxml-mode-in-emacs-to-validate-docbook-5-documents/" rel="bookmark"><time class="published dt-published" datetime="2019-11-05T20:32:24-05:00" title="2019-11-05 20:32">2019-11-05 20:32</time></a></p>
-        </div>
-    </header><div class="e-content entry-content">
-    <div>
-<p>I have occasion to edit and build a DocBook 5 document under both
-macOS Catalina and Fedora 30.</p>
-<p>On macOS I've used homebrew to install the docbook, docbook-xsl, and
-libxslt (for xsltproc), and fop formulas, and changed my PATH to
-include the directory where brew installed <code class="docutils literal">xsltproc</code>. which will then
-use <code class="docutils literal">/usr/local/etc/xml/catalog</code> to find files, in which brew installed
-links to the docbook schemas and xsl stylesheets.</p>
-<p>On Fedora I've used <code class="docutils literal">dnf</code> to install the docbook5-schemas,
-docbook5-style-xsl, and fop packages.</p>
-<p>The document builds fine on both OSes, but Emacs doesn't validate
-properly against the DocBook RELAX NG schemas, because the <code class="docutils literal">*.rnc</code> files
-supplied with Emacs (26.3 on macOS, 26.2 on Fedora) are for DocBook 4.
-However, Emacs will look at a <code class="docutils literal">schemas.xml</code> file in the same directory
-as the file you are editing to find the <code class="docutils literal">*.rnc</code> files.  Unfortunately,
-of course, they have different locations on macOS with brew and on
-Fedora.</p>
-<p>So I wrote a script, generate-schemas-xml, in bash using xmlcatalog to
-look up the translation for the URI for the RELAX NG compiled schema
-file and generate the <code class="docutils literal">schemas.xml</code> file and substitute the translation
-into the file:</p>
-<p><a class="reference external" href="listings/generate-schemas-xml.html">generate-schemas-xml</a>  <a class="reference external" href="listings/generate-schemas-xml">(Source)</a></p>
-<pre class="code bash"><a name="rest_code_b5ae476a3f7d4dcca0d043ffe75451f8-1"></a><span class="ch">#! /usr/bin/env bash</span>
-<a name="rest_code_b5ae476a3f7d4dcca0d043ffe75451f8-2"></a>
-<a name="rest_code_b5ae476a3f7d4dcca0d043ffe75451f8-3"></a><span class="nv">schema_location</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span>xmlcatalog <span class="s2">""</span> <span class="s2">"http://docbook.org/xml/5.0/rng/docbookxi.rnc"</span> <span class="p">|</span>
-<a name="rest_code_b5ae476a3f7d4dcca0d043ffe75451f8-4"></a>    grep <span class="s2">"^file:///"</span> <span class="p">|</span> sed <span class="s1">'s#^file://##'</span><span class="k">)</span><span class="s2">"</span>
-<a name="rest_code_b5ae476a3f7d4dcca0d043ffe75451f8-5"></a>
-<a name="rest_code_b5ae476a3f7d4dcca0d043ffe75451f8-6"></a>cat &gt;schemas.xml <span class="s">&lt;&lt;EOF</span>
-<a name="rest_code_b5ae476a3f7d4dcca0d043ffe75451f8-7"></a><span class="s">&lt;locatingRules xmlns="http://thaiopensource.com/ns/locating-rules/1.0"&gt;</span>
-<a name="rest_code_b5ae476a3f7d4dcca0d043ffe75451f8-8"></a><span class="s">&lt;namespace ns="http://docbook.org/ns/docbook" uri="$schema_location"/&gt;</span>
-<a name="rest_code_b5ae476a3f7d4dcca0d043ffe75451f8-9"></a><span class="s">&lt;/locatingRules&gt;</span>
-<a name="rest_code_b5ae476a3f7d4dcca0d043ffe75451f8-10"></a><span class="s">EOF</span>
-</pre>
-<p>Then I had my Makefile generate the <code class="docutils literal">schemas.xml</code> file if it was missing.</p>
-<p>It was more complicated that I'd have liked, but it does work.</p>
-</div>
-    </div>
     </article>
 </div>
 
         <nav class="postindexpager"><ul class="pager">
 <li class="next">
-                <a href="index-81.html" rel="next">Older posts</a>
+                <a href="index-82.html" rel="next">Older posts</a>
             </li>
         </ul></nav>
 </div>
