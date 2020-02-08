@@ -41,7 +41,7 @@ differences.   Actually, now that I think about it, I might just use
 `Swords & Wizardry Complete`. 
 
 .. [#minmax] Something about `D&D` 3E and 3.5E brings out the
-   min-maxer in me as a player, and prompt me to try to build NPCs
+   min-maxer in me as a player, and prompts me to try to build NPCs
    like I'd build PCs and creatures using the official rules, with
    feats and skills, etc., but those rules end up annoying me through
    their fiddly but ultimately restrictive nature.  It is worse than
