@@ -137,7 +137,7 @@
 <a name="listingspyblox-to-nikola-3"></a><span class="kn">import</span> <span class="nn">os</span>
 <a name="listingspyblox-to-nikola-4"></a><span class="kn">import</span> <span class="nn">os.path</span>
 <a name="listingspyblox-to-nikola-5"></a><span class="kn">import</span> <span class="nn">sys</span>
-<a name="listingspyblox-to-nikola-6"></a><span class="kn">from</span> <span class="nn">datetime</span> <span class="k">import</span> <span class="n">datetime</span>
+<a name="listingspyblox-to-nikola-6"></a><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
 <a name="listingspyblox-to-nikola-7"></a>
 <a name="listingspyblox-to-nikola-8"></a><span class="c1"># datetime.strptime ('2019-11-05 20:32:24', '%Y-%m-%d %H:%M:%S')</span>
 <a name="listingspyblox-to-nikola-9"></a><span class="c1"># dt.strftime ('%Y-%m-%d %H:%M:%S UTC-05:00')</span>
@@ -159,7 +159,7 @@
 <a name="listingspyblox-to-nikola-25"></a>    <span class="k">else</span><span class="p">:</span>
 <a name="listingspyblox-to-nikola-26"></a>        <span class="n">category</span> <span class="o">=</span> <span class="s1">''</span>
 <a name="listingspyblox-to-nikola-27"></a>    <span class="p">(</span><span class="n">slug</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span> <span class="p">(</span><span class="n">basename</span><span class="p">)</span>
-<a name="listingspyblox-to-nikola-28"></a>    <span class="nb">print</span> <span class="p">(</span><span class="s1">'filename: </span><span class="si">%s</span><span class="se">\n</span><span class="s1">basename: </span><span class="si">%s</span><span class="se">\n</span><span class="s1">dirname: </span><span class="si">%s</span><span class="se">\n</span><span class="s1">category: </span><span class="si">%s</span><span class="se">\n</span><span class="s1">slug: </span><span class="si">%s</span><span class="s1">'</span> <span class="o">%</span>
+<a name="listingspyblox-to-nikola-28"></a>    <span class="k">print</span> <span class="p">(</span><span class="s1">'filename: </span><span class="si">%s</span><span class="se">\n</span><span class="s1">basename: </span><span class="si">%s</span><span class="se">\n</span><span class="s1">dirname: </span><span class="si">%s</span><span class="se">\n</span><span class="s1">category: </span><span class="si">%s</span><span class="se">\n</span><span class="s1">slug: </span><span class="si">%s</span><span class="s1">'</span> <span class="o">%</span>
 <a name="listingspyblox-to-nikola-29"></a>           <span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">basename</span><span class="p">,</span> <span class="n">dirname</span><span class="p">,</span> <span class="n">category</span><span class="p">,</span> <span class="n">slug</span><span class="p">))</span>
 <a name="listingspyblox-to-nikola-30"></a>    <span class="n">inf</span> <span class="o">=</span> <span class="nb">open</span> <span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">)</span>
 <a name="listingspyblox-to-nikola-31"></a>    <span class="n">files_read</span> <span class="o">=</span> <span class="n">files_read</span> <span class="o">+</span> <span class="mi">1</span>
@@ -175,7 +175,7 @@
 <a name="listingspyblox-to-nikola-41"></a>    <span class="n">nikola_date</span> <span class="o">=</span> <span class="n">published_date</span><span class="o">.</span><span class="n">strftime</span> <span class="p">(</span><span class="s1">'%Y-%m-</span><span class="si">%d</span><span class="s1"> %H:%M:%S UTC-05:00'</span><span class="p">)</span>
 <a name="listingspyblox-to-nikola-42"></a>    <span class="n">datepath</span> <span class="o">=</span> <span class="n">published_date</span><span class="o">.</span><span class="n">strftime</span> <span class="p">(</span><span class="s1">'%Y/%m/</span><span class="si">%d</span><span class="s1">'</span><span class="p">)</span>
 <a name="listingspyblox-to-nikola-43"></a>    <span class="n">newdir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span> <span class="p">(</span><span class="s1">'/Users/tkb/nikola/newblog/posts'</span><span class="p">,</span> <span class="n">datepath</span><span class="p">)</span> 
-<a name="listingspyblox-to-nikola-44"></a>    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span> <span class="p">(</span><span class="n">newdir</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a name="listingspyblox-to-nikola-44"></a>    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span> <span class="p">(</span><span class="n">newdir</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 <a name="listingspyblox-to-nikola-45"></a>    <span class="n">tags</span> <span class="o">=</span> <span class="n">inf</span><span class="o">.</span><span class="n">readline</span> <span class="p">()</span>
 <a name="listingspyblox-to-nikola-46"></a>    <span class="n">tags</span> <span class="o">=</span> <span class="n">tags</span><span class="o">.</span><span class="n">rstrip</span> <span class="p">()</span>
 <a name="listingspyblox-to-nikola-47"></a>    <span class="k">if</span> <span class="n">tags</span><span class="o">.</span><span class="n">startswith</span> <span class="p">(</span><span class="n">tags_prefix</span><span class="p">):</span>
@@ -184,7 +184,7 @@
 <a name="listingspyblox-to-nikola-50"></a>        <span class="k">raise</span> <span class="p">(</span><span class="s1">'Unknown line should be #tags'</span><span class="p">,</span> <span class="n">tags</span><span class="p">)</span>
 <a name="listingspyblox-to-nikola-51"></a>    <span class="n">tags</span> <span class="o">=</span> <span class="n">tags</span><span class="o">.</span><span class="n">lower</span> <span class="p">()</span>
 <a name="listingspyblox-to-nikola-52"></a>    <span class="n">outfname</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span> <span class="p">(</span><span class="n">newdir</span><span class="p">,</span> <span class="n">basename</span><span class="p">)</span>
-<a name="listingspyblox-to-nikola-53"></a>    <span class="nb">print</span> <span class="p">(</span><span class="s1">'outfname: </span><span class="si">%s</span><span class="s1">'</span> <span class="o">%</span> <span class="n">outfname</span><span class="p">)</span>
+<a name="listingspyblox-to-nikola-53"></a>    <span class="k">print</span> <span class="p">(</span><span class="s1">'outfname: </span><span class="si">%s</span><span class="s1">'</span> <span class="o">%</span> <span class="n">outfname</span><span class="p">)</span>
 <a name="listingspyblox-to-nikola-54"></a>    <span class="n">outf</span> <span class="o">=</span> <span class="nb">open</span> <span class="p">(</span><span class="n">outfname</span><span class="p">,</span> <span class="s1">'w'</span><span class="p">)</span>
 <a name="listingspyblox-to-nikola-55"></a>    <span class="n">outf</span><span class="o">.</span><span class="n">write</span> <span class="p">(</span><span class="s1">'.. title: </span><span class="si">%s</span><span class="se">\n</span><span class="s1">'</span> <span class="o">%</span> <span class="n">title</span><span class="p">)</span>
 <a name="listingspyblox-to-nikola-56"></a>    <span class="n">outf</span><span class="o">.</span><span class="n">write</span> <span class="p">(</span><span class="s1">'.. slug: </span><span class="si">%s</span><span class="se">\n</span><span class="s1">'</span> <span class="o">%</span> <span class="n">slug</span><span class="p">)</span>
@@ -198,7 +198,7 @@
 <a name="listingspyblox-to-nikola-64"></a>    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">inf</span><span class="p">:</span>
 <a name="listingspyblox-to-nikola-65"></a>        <span class="n">outf</span><span class="o">.</span><span class="n">write</span> <span class="p">(</span><span class="n">line</span><span class="p">)</span>
 <a name="listingspyblox-to-nikola-66"></a>    <span class="n">inf</span><span class="o">.</span><span class="n">close</span> <span class="p">()</span>
-<a name="listingspyblox-to-nikola-67"></a><span class="nb">print</span> <span class="p">(</span><span class="s1">'</span><span class="se">\n\n</span><span class="s1">Files Read: </span><span class="si">%d</span><span class="s1">'</span> <span class="o">%</span> <span class="n">files_read</span><span class="p">)</span>
+<a name="listingspyblox-to-nikola-67"></a><span class="k">print</span> <span class="p">(</span><span class="s1">'</span><span class="se">\n\n</span><span class="s1">Files Read: </span><span class="si">%d</span><span class="s1">'</span> <span class="o">%</span> <span class="n">files_read</span><span class="p">)</span>
 </pre></td>
 </tr></table>
 </div>
@@ -225,7 +225,7 @@
 </div>
 
 <footer class="blog-footer" id="footer">
-    Contents © 2019         <a href="mailto:tkurtbond@gmail.com">T. Kurt Bond</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+    Contents © 2020         <a href="mailto:tkurtbond@gmail.com">T. Kurt Bond</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
     
 </footer><script src="../assets/js/all-nocdn.js"></script><!-- fancy dates --><script>
     moment.locale("en");

@@ -56,7 +56,187 @@
                 
 
 <div class="postindex">
-    <article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2019/11/05/getting-nxml-mode-in-emacs-to-validate-docbook-5-documents/" class="u-url">Getting nxml-mode in emacs to validate DocBook 5 documents</a></h2>
+    <article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/" class="u-url">Converting my pyBloxsom blog into a Nikola blog</a></h2>
+        <div class="metadata blog-post-meta">
+            <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
+            <p class="dateline"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/" rel="bookmark"><time class="published dt-published" datetime="2019-11-06T14:10:35-05:00" title="2019-11-06 14:10">2019-11-06 14:10</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <div>
+<p>Yesterday I decided to try blogging again.  I started writing a post
+at blogger.com, but that was like wading through a rotting whale
+corpse.  Instead I decided to use <a class="reference external" href="https://help.github.com/en/github/working-with-github-pages/about-github-pages">GitHub Pages</a>
+and use the static blog/site generator <a class="reference external" href="https://getnikola.com/">Nikola</a> to generate the
+content, editing reStructuredText (ReST) files.</p>
+<p>I wrote my first <a class="reference external" href="posts/2019/11/05/getting-nxml-mode-in-emacs-to-validate-docbook-5-documents/">post</a> and it was good!  Using ReST again was much
+better than editing in a GUI like blogger.com, and having it hosted by
+GitHub Pages was more restful than running a machine hosting a
+website.</p>
+<p>But then I thought off all the posts I had in my old blog, before I
+stopped running machine hosting a website.  They were all written in
+ReST — maybe I could put them up on my new blog?</p>
+<p>I took a couple three hours and wrote a shell script to find the old
+<a class="reference external" href="https://pyblosxom.github.io/">pyBloxsom</a> files and feed them into a python script that I also wrote.
+Along the way I made sure the files all had <code class="docutils literal">#published</code> and
+<code class="docutils literal">#tags</code> lines, in that order, immediately following the title line.</p>
+<p>Here's the shell script:</p>
+<p><a class="reference external" href="listings/drive-pyblox-to-nikola.html">drive-pyblox-to-nikola</a>  <a class="reference external" href="listings/drive-pyblox-to-nikola">(Source)</a></p>
+<pre class="code bash"><a name="rest_code_dfaca502e889479e81ee85f96100fc77-1"></a><span class="ch">#! /usr/bin/env bash</span>
+<a name="rest_code_dfaca502e889479e81ee85f96100fc77-2"></a>
+<a name="rest_code_dfaca502e889479e81ee85f96100fc77-3"></a><span class="o">(</span><span class="nb">cd</span> ~/myblog <span class="o">&amp;&amp;</span>
+<a name="rest_code_dfaca502e889479e81ee85f96100fc77-4"></a>     find notentries/ entries/ -type f -name <span class="se">\*</span>.rst <span class="p">|</span>
+<a name="rest_code_dfaca502e889479e81ee85f96100fc77-5"></a>         ~/comp/tkbtools/Scripts/pyblox-to-nikola<span class="o">)</span>
+</pre>
+<p>Here's the python script:</p>
+<p><a class="reference external" href="listings/pyblox-to-nikola.html">pyblox-to-nikola</a>  <a class="reference external" href="listings/pyblox-to-nikola">(Source)</a></p>
+<table class="codetable"><tr>
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-1"> 1</a>
+<a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-2"> 2</a>
+<a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-3"> 3</a>
+<a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-4"> 4</a>
+<a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-5"> 5</a>
+<a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-6"> 6</a>
+<a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-7"> 7</a>
+<a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-8"> 8</a>
+<a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-9"> 9</a>
+<a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-10">10</a>
+<a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-11">11</a>
+<a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-12">12</a>
+<a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-13">13</a>
+<a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-14">14</a>
+<a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-15">15</a>
+<a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-16">16</a>
+<a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-17">17</a>
+<a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-18">18</a>
+<a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-19">19</a>
+<a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-20">20</a>
+<a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-21">21</a>
+<a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-22">22</a>
+<a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-23">23</a>
+<a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-24">24</a>
+<a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-25">25</a>
+<a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-26">26</a>
+<a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-27">27</a>
+<a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-28">28</a>
+<a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-29">29</a>
+<a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-30">30</a>
+<a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-31">31</a>
+<a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-32">32</a>
+<a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-33">33</a>
+<a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-34">34</a>
+<a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-35">35</a>
+<a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-36">36</a>
+<a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-37">37</a>
+<a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-38">38</a>
+<a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-39">39</a>
+<a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-40">40</a>
+<a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-41">41</a>
+<a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-42">42</a>
+<a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-43">43</a>
+<a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-44">44</a>
+<a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-45">45</a>
+<a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-46">46</a>
+<a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-47">47</a>
+<a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-48">48</a>
+<a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-49">49</a>
+<a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-50">50</a>
+<a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-51">51</a>
+<a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-52">52</a>
+<a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-53">53</a>
+<a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-54">54</a>
+<a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-55">55</a>
+<a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-56">56</a>
+<a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-57">57</a>
+<a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-58">58</a>
+<a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-59">59</a>
+<a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-60">60</a>
+<a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-61">61</a>
+<a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-62">62</a>
+<a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-63">63</a>
+<a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-64">64</a>
+<a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-65">65</a>
+<a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-66">66</a>
+<a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-67">67</a></pre></div></td>
+<td class="code"><pre class="code python"><a name="rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-1"></a><span class="ch">#! /usr/bin/env python3.7</span>
+<a name="rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-2"></a>
+<a name="rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-3"></a><span class="kn">import</span> <span class="nn">os</span>
+<a name="rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-4"></a><span class="kn">import</span> <span class="nn">os.path</span>
+<a name="rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-5"></a><span class="kn">import</span> <span class="nn">sys</span>
+<a name="rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-6"></a><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<a name="rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-7"></a>
+<a name="rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-8"></a><span class="c1"># datetime.strptime ('2019-11-05 20:32:24', '%Y-%m-%d %H:%M:%S')</span>
+<a name="rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-9"></a><span class="c1"># dt.strftime ('%Y-%m-%d %H:%M:%S UTC-05:00')</span>
+<a name="rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-10"></a>
+<a name="rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-11"></a><span class="n">entries_prefix</span> <span class="o">=</span> <span class="s1">'entries/'</span>
+<a name="rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-12"></a><span class="n">notentries_prefix</span> <span class="o">=</span> <span class="s1">'notentries/'</span>
+<a name="rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-13"></a><span class="n">published_prefix</span> <span class="o">=</span> <span class="s1">'#published '</span>
+<a name="rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-14"></a><span class="n">tags_prefix</span> <span class="o">=</span> <span class="s1">'#tags '</span>
+<a name="rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-15"></a>
+<a name="rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-16"></a><span class="n">files_read</span> <span class="o">=</span> <span class="mi">0</span>
+<a name="rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-17"></a><span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdin</span><span class="p">:</span>
+<a name="rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-18"></a>    <span class="n">filename</span> <span class="o">=</span> <span class="n">filename</span><span class="o">.</span><span class="n">rstrip</span> <span class="p">()</span>
+<a name="rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-19"></a>    <span class="n">basename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span>  <span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+<a name="rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-20"></a>    <span class="n">dirname</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span> <span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+<a name="rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-21"></a>    <span class="k">if</span> <span class="n">dirname</span><span class="o">.</span><span class="n">startswith</span> <span class="p">(</span><span class="n">entries_prefix</span><span class="p">):</span>
+<a name="rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-22"></a>        <span class="n">category</span> <span class="o">=</span> <span class="n">dirname</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">entries_prefix</span><span class="p">):]</span>
+<a name="rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-23"></a>    <span class="k">elif</span> <span class="n">dirname</span><span class="o">.</span><span class="n">startswith</span> <span class="p">(</span><span class="n">notentries_prefix</span><span class="p">):</span>
+<a name="rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-24"></a>        <span class="n">category</span> <span class="o">=</span> <span class="n">dirname</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">notentries_prefix</span><span class="p">):]</span>
+<a name="rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-25"></a>    <span class="k">else</span><span class="p">:</span>
+<a name="rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-26"></a>        <span class="n">category</span> <span class="o">=</span> <span class="s1">''</span>
+<a name="rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-27"></a>    <span class="p">(</span><span class="n">slug</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span> <span class="p">(</span><span class="n">basename</span><span class="p">)</span>
+<a name="rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-28"></a>    <span class="k">print</span> <span class="p">(</span><span class="s1">'filename: </span><span class="si">%s</span><span class="se">\n</span><span class="s1">basename: </span><span class="si">%s</span><span class="se">\n</span><span class="s1">dirname: </span><span class="si">%s</span><span class="se">\n</span><span class="s1">category: </span><span class="si">%s</span><span class="se">\n</span><span class="s1">slug: </span><span class="si">%s</span><span class="s1">'</span> <span class="o">%</span>
+<a name="rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-29"></a>           <span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">basename</span><span class="p">,</span> <span class="n">dirname</span><span class="p">,</span> <span class="n">category</span><span class="p">,</span> <span class="n">slug</span><span class="p">))</span>
+<a name="rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-30"></a>    <span class="n">inf</span> <span class="o">=</span> <span class="nb">open</span> <span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">)</span>
+<a name="rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-31"></a>    <span class="n">files_read</span> <span class="o">=</span> <span class="n">files_read</span> <span class="o">+</span> <span class="mi">1</span>
+<a name="rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-32"></a>    <span class="n">title</span> <span class="o">=</span> <span class="n">inf</span><span class="o">.</span><span class="n">readline</span> <span class="p">()</span>
+<a name="rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-33"></a>    <span class="n">title</span> <span class="o">=</span> <span class="n">title</span><span class="o">.</span><span class="n">rstrip</span> <span class="p">()</span>
+<a name="rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-34"></a>    <span class="n">published</span> <span class="o">=</span> <span class="n">inf</span><span class="o">.</span><span class="n">readline</span> <span class="p">()</span>
+<a name="rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-35"></a>    <span class="n">published</span> <span class="o">=</span> <span class="n">published</span><span class="o">.</span><span class="n">strip</span> <span class="p">()</span>
+<a name="rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-36"></a>    <span class="k">if</span> <span class="n">published</span><span class="o">.</span><span class="n">startswith</span> <span class="p">(</span><span class="n">published_prefix</span><span class="p">):</span>
+<a name="rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-37"></a>        <span class="n">published</span> <span class="o">=</span> <span class="n">published</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">published_prefix</span><span class="p">):]</span>
+<a name="rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-38"></a>    <span class="k">else</span><span class="p">:</span>
+<a name="rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-39"></a>        <span class="k">raise</span> <span class="p">(</span><span class="s1">'Unknown line should be #published'</span><span class="p">,</span> <span class="n">published</span><span class="p">)</span>
+<a name="rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-40"></a>    <span class="n">published_date</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span> <span class="p">(</span><span class="n">published</span><span class="p">,</span> <span class="s1">'%Y-%m-</span><span class="si">%d</span><span class="s1"> %H:%M:%S'</span><span class="p">)</span>
+<a name="rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-41"></a>    <span class="n">nikola_date</span> <span class="o">=</span> <span class="n">published_date</span><span class="o">.</span><span class="n">strftime</span> <span class="p">(</span><span class="s1">'%Y-%m-</span><span class="si">%d</span><span class="s1"> %H:%M:%S UTC-05:00'</span><span class="p">)</span>
+<a name="rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-42"></a>    <span class="n">datepath</span> <span class="o">=</span> <span class="n">published_date</span><span class="o">.</span><span class="n">strftime</span> <span class="p">(</span><span class="s1">'%Y/%m/</span><span class="si">%d</span><span class="s1">'</span><span class="p">)</span>
+<a name="rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-43"></a>    <span class="n">newdir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span> <span class="p">(</span><span class="s1">'/Users/tkb/nikola/newblog/posts'</span><span class="p">,</span> <span class="n">datepath</span><span class="p">)</span>
+<a name="rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-44"></a>    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span> <span class="p">(</span><span class="n">newdir</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<a name="rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-45"></a>    <span class="n">tags</span> <span class="o">=</span> <span class="n">inf</span><span class="o">.</span><span class="n">readline</span> <span class="p">()</span>
+<a name="rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-46"></a>    <span class="n">tags</span> <span class="o">=</span> <span class="n">tags</span><span class="o">.</span><span class="n">rstrip</span> <span class="p">()</span>
+<a name="rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-47"></a>    <span class="k">if</span> <span class="n">tags</span><span class="o">.</span><span class="n">startswith</span> <span class="p">(</span><span class="n">tags_prefix</span><span class="p">):</span>
+<a name="rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-48"></a>        <span class="n">tags</span> <span class="o">=</span> <span class="n">tags</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">tags_prefix</span><span class="p">):]</span>
+<a name="rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-49"></a>    <span class="k">else</span><span class="p">:</span>
+<a name="rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-50"></a>        <span class="k">raise</span> <span class="p">(</span><span class="s1">'Unknown line should be #tags'</span><span class="p">,</span> <span class="n">tags</span><span class="p">)</span>
+<a name="rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-51"></a>    <span class="n">tags</span> <span class="o">=</span> <span class="n">tags</span><span class="o">.</span><span class="n">lower</span> <span class="p">()</span>
+<a name="rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-52"></a>    <span class="n">outfname</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span> <span class="p">(</span><span class="n">newdir</span><span class="p">,</span> <span class="n">basename</span><span class="p">)</span>
+<a name="rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-53"></a>    <span class="k">print</span> <span class="p">(</span><span class="s1">'outfname: </span><span class="si">%s</span><span class="s1">'</span> <span class="o">%</span> <span class="n">outfname</span><span class="p">)</span>
+<a name="rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-54"></a>    <span class="n">outf</span> <span class="o">=</span> <span class="nb">open</span> <span class="p">(</span><span class="n">outfname</span><span class="p">,</span> <span class="s1">'w'</span><span class="p">)</span>
+<a name="rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-55"></a>    <span class="n">outf</span><span class="o">.</span><span class="n">write</span> <span class="p">(</span><span class="s1">'.. title: </span><span class="si">%s</span><span class="se">\n</span><span class="s1">'</span> <span class="o">%</span> <span class="n">title</span><span class="p">)</span>
+<a name="rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-56"></a>    <span class="n">outf</span><span class="o">.</span><span class="n">write</span> <span class="p">(</span><span class="s1">'.. slug: </span><span class="si">%s</span><span class="se">\n</span><span class="s1">'</span> <span class="o">%</span> <span class="n">slug</span><span class="p">)</span>
+<a name="rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-57"></a>    <span class="n">outf</span><span class="o">.</span><span class="n">write</span> <span class="p">(</span><span class="s1">'.. date: </span><span class="si">%s</span><span class="se">\n</span><span class="s1">'</span> <span class="o">%</span> <span class="n">nikola_date</span><span class="p">)</span>
+<a name="rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-58"></a>    <span class="n">outf</span><span class="o">.</span><span class="n">write</span> <span class="p">(</span><span class="s1">'.. tags: </span><span class="si">%s</span><span class="se">\n</span><span class="s1">'</span> <span class="o">%</span> <span class="n">tags</span><span class="p">)</span>
+<a name="rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-59"></a>    <span class="n">outf</span><span class="o">.</span><span class="n">write</span> <span class="p">(</span><span class="s1">'.. category: </span><span class="si">%s</span><span class="se">\n</span><span class="s1">'</span> <span class="o">%</span> <span class="n">category</span><span class="p">)</span>
+<a name="rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-60"></a>    <span class="n">outf</span><span class="o">.</span><span class="n">write</span> <span class="p">(</span><span class="s1">'.. link: </span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
+<a name="rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-61"></a>    <span class="n">outf</span><span class="o">.</span><span class="n">write</span> <span class="p">(</span><span class="s1">'.. description: </span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
+<a name="rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-62"></a>    <span class="n">outf</span><span class="o">.</span><span class="n">write</span> <span class="p">(</span><span class="s1">'.. type: text</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
+<a name="rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-63"></a>    <span class="n">outf</span><span class="o">.</span><span class="n">write</span> <span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
+<a name="rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-64"></a>    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">inf</span><span class="p">:</span>
+<a name="rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-65"></a>        <span class="n">outf</span><span class="o">.</span><span class="n">write</span> <span class="p">(</span><span class="n">line</span><span class="p">)</span>
+<a name="rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-66"></a>    <span class="n">inf</span><span class="o">.</span><span class="n">close</span> <span class="p">()</span>
+<a name="rest_code_6523d5fbe0d14ce78c8b5daa05a8da0e-67"></a><span class="k">print</span> <span class="p">(</span><span class="s1">'</span><span class="se">\n\n</span><span class="s1">Files Read: </span><span class="si">%d</span><span class="s1">'</span> <span class="o">%</span> <span class="n">files_read</span><span class="p">)</span>
+</pre></td>
+</tr></table>
+<p>There were 810 <a class="reference external" href="http://docutils.sourceforge.net/rst.html">reStructuredText</a> files to process.  Once that was
+done, I had to work through those files multiple times finding all the
+broken internal links, since many of them were absolute links to my
+old blog or other pages on my old website.  I did <cite>grep-find</cite> in Emacs
+multiple times to find all the occurances of my old website's hostname
+(which went through a couple of variations over time), then looked for
+site relative links that started with <code class="docutils literal">/~tkb</code>, a tedious but not too
+difficult process.</p>
+</div>
+    </div>
+    </article><article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2019/11/05/getting-nxml-mode-in-emacs-to-validate-docbook-5-documents/" class="u-url">Getting nxml-mode in emacs to validate DocBook 5 documents</a></h2>
         <div class="metadata blog-post-meta">
             <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
             <p class="dateline"><a href="posts/2019/11/05/getting-nxml-mode-in-emacs-to-validate-docbook-5-documents/" rel="bookmark"><time class="published dt-published" datetime="2019-11-05T20:32:24-05:00" title="2019-11-05 20:32">2019-11-05 20:32</time></a></p>
@@ -134,7 +314,7 @@ into the file:</p>
 </div>
 
 <footer class="blog-footer" id="footer">
-    Contents © 2019         <a href="mailto:tkurtbond@gmail.com">T. Kurt Bond</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+    Contents © 2020         <a href="mailto:tkurtbond@gmail.com">T. Kurt Bond</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
     
 </footer><script src="assets/js/all-nocdn.js"></script><!-- fancy dates --><script>
     moment.locale("en");
