@@ -31,7 +31,7 @@ __ http://www.arion-games.com/aff.html
 
 It looks like |AFF2e| has been adjusted to make play more consistent,
 balanced, and suitable for long-term play.  Starting attributes are
-point-by instead of random, and the values for SKILL, STAMINA, and LUCK have
+point-buy instead of random, and the values for SKILL, STAMINA, and LUCK have
 lower ranges — 4–7, 8–16, and 4–7 vs. the original 7–12, 14–24, and
 7–12.  There's been some addition of detail — random Armor rolls — and
 some other tweaking — weapon damages are higher.
