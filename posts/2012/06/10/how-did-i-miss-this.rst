@@ -8,6 +8,6 @@
 .. type: text
 
 
-How did I miss this__?
+How did I miss this__?  RQ stats for everybody's favorite barbarian aardvark!
 
 __ http://grognardia.blogspot.com/2010/10/snowed-under.html
