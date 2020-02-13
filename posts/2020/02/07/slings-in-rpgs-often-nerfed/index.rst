@@ -87,12 +87,12 @@ __ https://en.wikipedia.org/wiki/The_Fantasy_Trip
 
 In `Big Eyes Small Mouth (BESM)`__ 2nd Edition Revised, slings are not
 listed, but a long bow does 5 damage, a longsword does 10 damage, and
-a dagger does 5 damage. in BESM 3rd Edition, an average person has an
+a dagger does 5 damage.  In BESM 3rd Edition, an average person has an
 Attack Combat Value (ACV) of 4 and a Damage Multiplier of 5.  Each weapon has
 a Level, which is multiplied by the Damage Multiplier and added to the
 ACV for the final damage.  Slings are Level 1 (1 × 5 + 4 = 9), as are
 daggers.  Longbows are Level 3 (3 × 5 + 1 = 16), as are longswords.
-Definitely nerfed.
+Definitely nerfed.  (It is the same in `BESM 4E`.)
 
 __ https://en.wikipedia.org/wiki/Big_Eyes,_Small_Mouth
 
