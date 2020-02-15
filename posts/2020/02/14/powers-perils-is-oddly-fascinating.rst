@@ -22,7 +22,7 @@ PDF of the `Perilous Lands` setting information.
 
 __ http://powersandperils.org/books.htm
 
-The rules are extensively hyperlinked, both in the table on contents
+The rules are extensively hyperlinked, both in the table of contents
 and in cross-references, which should make using such a complicated
 system easier.
 
