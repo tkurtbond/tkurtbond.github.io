@@ -27,9 +27,9 @@ I liked `BESM 3E`'s switch to roll over, which is continued in `BESM
 4E`. There are 25 race templates and 25 class templates, up from `BESM
 3E`'s 20 each, and 20 Humanoid Companions templates that can easily be
 converted into race or class templates. `BESM 4E` introduces *edges*
-and *obstacles*, which add 1 or 2 dice to a roll, keeping the 2 best
-(for edges) or 2 worst (for obstacles), similar to `D&D 5E`'s
-advantage and disadvantage.
+and *obstacles*, which add 1 (for minor) or 2 (for major) dice to a
+roll, keeping the 2 best (for edges) or 2 worst (for obstacles),
+similar to `D&D 5E`'s advantage and disadvantage.
 
 The way Standard and Custom Variables and Restrictions in `BESM 3E`
 worked has changed and been renamed.  They are now Enhancements and
@@ -86,15 +86,20 @@ need one.
 Just like `BESM 3E`, `BESM 4E` has lots of colors.  Lots and lots of
 colors.  (I can see no reason for one column of text on each page to
 have a background color.)  I recognize most of the art from earlier
-editions.
+editions.  I liked it then and still like it.
 
 There is a simple character sheet, in color and black-and-white
-versions in the PDF of the core rulebook.
+versions in the PDF of the core rulebook, or for download__ from the
+Dyskami `BESM RPG`__ page.
 
-Each of the `Dramatis Personae` PDFs give 16 example characters, with
+__ http://dyskami.ca/downloads/BESM4_character_sheets.pdf
+__ http://dyskami.ca/besm.html
+
+Each of the `Dramatis Personae` PDFs give 15 example characters, with
 backgrounds, personalities, discussion of their Attributes and
 Defects, three Adventure Hooks, and a personal quote.  These are
 useful in seeing how the various Attributes work.  The backgrounds are
 tied into the Anime Multiverse from the core book.
 
-
+All in all, I think it looks good.  If the things are in `BESM Extras`
+that I hope are there, I can definitely see switching from `BESM 2ER`.
