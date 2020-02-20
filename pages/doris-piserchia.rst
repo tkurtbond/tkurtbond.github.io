@@ -51,8 +51,11 @@ Rider` and `A Billion Days of Earth`.  `The Spinner` and `The Fluger`
 both use the idea of alien creature/being that goes on a rampage and
 must be hunted down.
 
-The `Encyclopedia of Science Fiction` by John Clute and Peter Nicholls
-includes an interesting entry on Doris Piserchia.
+The `Encyclopedia of Science Fiction`__ by John Clute and Peter Nicholls
+includes an interesting entry__ on Doris Piserchia.
+
+__ http://www.sf-encyclopedia.com/
+__ http://www.sf-encyclopedia.com/entry/piserchia_doris
 
 There are a number of much better pages on Doris Piserchia on the web
 these days.  Here's `one
