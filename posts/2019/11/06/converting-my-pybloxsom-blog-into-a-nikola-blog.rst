@@ -23,7 +23,7 @@ website.
 
 .. _post: link://slug/getting-nxml-mode-in-emacs-to-validate-docbook-5-documents
 
-But then I thought off all the posts I had in my old blog, before I
+But then I thought of all the posts I had in my old blog, before I
 stopped running machine hosting a website.  They were all written in
 ReST — maybe I could put them up on my new blog?
 

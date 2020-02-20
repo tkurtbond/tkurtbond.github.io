@@ -107,11 +107,11 @@ too.
 The Present (2019-11-06)
 ------------------------
 
-I've switched over to using Nikola_ to generate the site, and am
-hosting it at `GitHub <https://tkurtbond.github.io>`__.  I wrote a script
-to convert my ``*.rst`` files to the format that Nikola uses in a few
-hours and then spent much more time manually fixing broken internal
-links. 😀  Nikola has much more functionality than I'm currently
-using. 
+I've :doc:`switched <converting-my-pybloxsom-blog-into-a-nikola-blog>`
+over to using Nikola_ to generate the site, and am hosting it at
+`GitHub <https://tkurtbond.github.io>`__.  I wrote a script to convert
+my ``*.rst`` files to the format that Nikola uses in a few hours and
+then spent much more time manually fixing broken internal links. 😀
+Nikola has much more functionality than I'm currently using.
 
 .. _Nikola: https://getnikola.com/
