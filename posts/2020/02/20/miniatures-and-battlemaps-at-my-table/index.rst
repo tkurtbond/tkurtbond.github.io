@@ -171,8 +171,8 @@ Of course, when running `AD&D` or `B/X D&D`_ or retroclones there of
 (like `Goblinoid Games`_'s `Labyrinth Lord` (L1_, L2_), it's `AD&D`
 inspired `Advanced Edition Companion`_, or the book that squashes them
 together: `Advanced Labyrinth Lord`_, or like `Necrotic Gnome`_'s `Old
-School Essentials`_) it's all theater of the mind: no miniatures, no
-battle map.
+School Essentials`_, or `Swords & Wizardry`_) it's all theater of the
+mind: no miniatures, no battle map.
 
 .. _`B/X D&D`: https://en.wikipedia.org/wiki/Dungeons_%26_Dragons_Basic_Set#1981_revision
 .. _`Goblinoid Games`: http://goblinoidgames.com/
@@ -183,6 +183,7 @@ battle map.
 .. _`Advanced Labyrinth Lord`: https://www.drivethrurpg.com/product/259983/Advanced-Labyrinth-Lord-Dragon-Cover?cPath=2033_6311
 .. _`Necrotic Gnome`: https://necroticgnome.com/
 .. _`Old School Essentials`: https://necroticgnome.com/collections/old-school-essentials
+.. _`Swords & Wizardry`: https://froggodgames.com/product/swords-wizardry-complete-rulebook/
 
 .. [#tiamat]
    The program that I used was a desktop application rather
