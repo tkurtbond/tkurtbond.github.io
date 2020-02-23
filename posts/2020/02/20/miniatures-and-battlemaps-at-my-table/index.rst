@@ -101,7 +101,7 @@ __ http://www.rpgobjects.com/index.php?c=tiamat
 
 A lot of the early paper miniatures that I used were tri-fold and were
 cut out, folded, and glued (or taped) together.  They usually had
-front sides in color and back sides in black and white.
+front sides in color and a back side in black and white.
 Unfortunately, these take up almost as much room as lead or plastic
 miniatures, though were much lighter to carry.  I stored them in cheap
 plastic food containers, which let me easily see what was inside them.
@@ -124,7 +124,7 @@ trifold paper miniatures.)
 
 .. _`Zen DIY Paper Miniatures Page`: http://zenseeker.net/PaperMiniatures/DIY.htm
 
-Since these paper miniatures are flat when not inserted into a stand I
+Since these paper miniatures are flat when not inserted into stands I
 currently organize my paper miniatures into separate small manila
 envelopes for each type of creature, labeled with the creature type on
 the outside.  Occasionally I use small ziplock bags, especially for
@@ -135,9 +135,9 @@ the figure is drawn within a rectangle and you can cut them out with
 long straight cuts and cross cuts.  There is another style of paper
 miniatures drawn in a manner so that you cut out the irregular outline
 of the figure itself with many small or curving cuts.  These are much
-harder, and are more difficult to store, but are very impressive to
-look at.  (You can see some examples in the Monsters_ collection at
-`One Monk Miniatures`_)  That's too much work for me!
+harder to cut out, and are more difficult to store, but are *very*
+impressive to look at.  (You can see some examples in the Monsters_
+collection at `One Monk Miniatures`_) That's too much work for me!
 
 .. _Monsters: http://onemonk.com/monsters.html
 .. _`One Monk Miniatures`: http://onemonk.com/
