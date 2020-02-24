@@ -2,7 +2,7 @@
 .. slug: failing-at-ada-again
 .. date: 2019-11-10 16:24:35 UTC-05:00
 .. tags: ada
-.. category: computing
+.. category: computer
 .. link: 
 .. description: 
 .. type: text
