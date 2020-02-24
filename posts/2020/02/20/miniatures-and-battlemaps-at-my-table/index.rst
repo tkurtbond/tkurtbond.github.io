@@ -167,6 +167,15 @@ battle map.  Some times for opponents that take up more than one
 square I'll fold over or cut up a 3×5 or 4×6 card and use that,
 writing an arrow to indicate which way is the front.
 
+I've never used Melee_ and Wizard_ style counters, which lie flat on
+the table, but I got in on `The Fantasy Trip Legacy Edition`_
+kickstarter_ and am intending to try them out sometime.
+
+.. _Melee: https://thefantasytrip.game/products/core-games/melee/
+.. _Wizard: https://thefantasytrip.game/products/core-games/wizard/
+.. _`The Fantasy Trip Legacy Edition`: https://thefantasytrip.game/products/core-games/the-fantasy-trip-legacy-edition/
+.. _kickstarter: https://www.kickstarter.com/projects/sjgames/the-fantasy-trip-old-school-roleplaying
+
 Of course, when running `AD&D` or `B/X D&D`_ or retroclones there of
 (like `Goblinoid Games`_'s `Labyrinth Lord` (L1_, L2_), it's `AD&D`
 inspired `Advanced Edition Companion`_, or the book that squashes them
