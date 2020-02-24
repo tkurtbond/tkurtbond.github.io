@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity (Posts about ntfs)</title><link>https://tkurtbond.github.io/</link><description></description><atom:link href="https://tkurtbond.github.io/categories/ntfs.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2020 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Mon, 24 Feb 2020 23:53:08 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Foreign File Systems on macOS: Fail!</title><link>https://tkurtbond.github.io/posts/2020/02/24/foreign-file-systems-on-macos-fail/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;Back sometime in March 2018 I installed &lt;a class="reference external" href="https://www.tuxera.com/"&gt;Tuxera&lt;/a&gt; &lt;a class="reference external" href="https://www.tuxera.com/products/tuxera-ntfs-for-mac/"&gt;NTFS for Mac&lt;/a&gt;.  It was
+the first NTFS for Mac that I found.  I used it casually for a while
+and it seemed ok.&lt;/p&gt;
+&lt;p&gt;Sometime later, probably in October 2019, I decided I needed to move
+110 GB of files off my Macbook Pro laptop's internal drive and onto a
+external drive.  I also wanted to access this drive from Linux, and
+thought I'd just use a NTFS-formatted drive so it would be readable
+there.&lt;/p&gt;
+&lt;p&gt;I copied the files over using rsync and there seemed to be no
+problems, until I (in a fit of paranoia) ran the Unix cmp command on
+all the files on the original disk and the matching files on the
+NTFS-formatted drive.  There were lots of differences. Uh oh.&lt;/p&gt;
+&lt;p&gt;I didn't see anything on the Internet complaining about this.&lt;/p&gt;
+&lt;p&gt;So, sometime in October 2019 in I installed &lt;a class="reference external" href="https://www.paragon-drivers.com/"&gt;Paragon Software&lt;/a&gt;
+&lt;a class="reference external" href="https://www.paragon-drivers.com/en/extfsmac/"&gt;extFS for Mac&lt;/a&gt;. (I see now that they have a &lt;a class="reference external" href="https://www.paragon-drivers.com/en/ntfsmac/"&gt;NTFS for Mac&lt;/a&gt;; I
+haven't tried it.)&lt;/p&gt;
+&lt;p&gt;I wanted to try the same thing and see if it worked more reliably with
+extFS.  I originally wrote short shell scripts for this, for
+consistency, so I could just change the volume name and run them
+again.  Again there were lots of differences.  Uh oh.&lt;/p&gt;
+&lt;p&gt;Again, I didn't see anything on the Internet complaining about this.&lt;/p&gt;
+&lt;p&gt;All I was doing was running &lt;code class="docutils literal"&gt;rsync &lt;span class="pre"&gt;-avz&lt;/span&gt;&lt;/code&gt; with the appropriate
+directories; it should have worked.&lt;/p&gt;
+&lt;p&gt;I formatted the drive to Mac OS Extended (Journaled) and recopied the
+files, and this time they all compared ok.&lt;/p&gt;
+&lt;p&gt;I decided to just use &lt;a class="reference external" href="https://www.cis.upenn.edu/~bcpierce/unison/"&gt;Unison&lt;/a&gt; to sync the files to a couple of my
+computers for backup and local use instead of connecting the external
+drive to each computer in turn.  This is working ok for me.&lt;/p&gt;
+&lt;p&gt;Maybe this was user error on my part, but it happened consistently
+with both of these file systems.&lt;/p&gt;&lt;/div&gt;</description><category>extfs</category><category>macos</category><category>ntfs</category><category>paragon</category><category>tuxera</category><guid>https://tkurtbond.github.io/posts/2020/02/24/foreign-file-systems-on-macos-fail/</guid><pubDate>Mon, 24 Feb 2020 22:40:34 GMT</pubDate></item></channel></rss>

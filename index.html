@@ -9,7 +9,7 @@
 <link rel="alternate" type="application/rss+xml" title="RSS" href="rss.xml">
 <link rel="canonical" href="https://tkurtbond.github.io/">
 <link rel="next" href="index-83.html" type="text/html">
-<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/2020/02/24/shannon-appelclines-brief-history-of-roleplaying/" type="text/html">
+<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/2020/02/24/foreign-file-systems-on-macos-fail/" type="text/html">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
@@ -55,7 +55,46 @@
                 
 
 <div class="postindex">
-    <article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2020/02/24/shannon-appelclines-brief-history-of-roleplaying/" class="u-url">Shannon Appelcline's Brief History of Roleplaying</a></h2>
+    <article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2020/02/24/foreign-file-systems-on-macos-fail/" class="u-url">Foreign File Systems on macOS: Fail!</a></h2>
+        <div class="metadata blog-post-meta">
+            <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
+            <p class="dateline"><a href="posts/2020/02/24/foreign-file-systems-on-macos-fail/" rel="bookmark"><time class="published dt-published" datetime="2020-02-24T17:40:34-05:00" title="2020-02-24 17:40">2020-02-24 17:40</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <div>
+<p>Back sometime in March 2018 I installed <a class="reference external" href="https://www.tuxera.com/">Tuxera</a> <a class="reference external" href="https://www.tuxera.com/products/tuxera-ntfs-for-mac/">NTFS for Mac</a>.  It was
+the first NTFS for Mac that I found.  I used it casually for a while
+and it seemed ok.</p>
+<p>Sometime later, probably in October 2019, I decided I needed to move
+110 GB of files off my Macbook Pro laptop's internal drive and onto a
+external drive.  I also wanted to access this drive from Linux, and
+thought I'd just use a NTFS-formatted drive so it would be readable
+there.</p>
+<p>I copied the files over using rsync and there seemed to be no
+problems, until I (in a fit of paranoia) ran the Unix cmp command on
+all the files on the original disk and the matching files on the
+NTFS-formatted drive.  There were lots of differences. Uh oh.</p>
+<p>I didn't see anything on the Internet complaining about this.</p>
+<p>So, sometime in October 2019 in I installed <a class="reference external" href="https://www.paragon-drivers.com/">Paragon Software</a>
+<a class="reference external" href="https://www.paragon-drivers.com/en/extfsmac/">extFS for Mac</a>. (I see now that they have a <a class="reference external" href="https://www.paragon-drivers.com/en/ntfsmac/">NTFS for Mac</a>; I
+haven't tried it.)</p>
+<p>I wanted to try the same thing and see if it worked more reliably with
+extFS.  I originally wrote short shell scripts for this, for
+consistency, so I could just change the volume name and run them
+again.  Again there were lots of differences.  Uh oh.</p>
+<p>Again, I didn't see anything on the Internet complaining about this.</p>
+<p>All I was doing was running <code class="docutils literal">rsync <span class="pre">-avz</span></code> with the appropriate
+directories; it should have worked.</p>
+<p>I formatted the drive to Mac OS Extended (Journaled) and recopied the
+files, and this time they all compared ok.</p>
+<p>I decided to just use <a class="reference external" href="https://www.cis.upenn.edu/~bcpierce/unison/">Unison</a> to sync the files to a couple of my
+computers for backup and local use instead of connecting the external
+drive to each computer in turn.  This is working ok for me.</p>
+<p>Maybe this was user error on my part, but it happened consistently
+with both of these file systems.</p>
+</div>
+    </div>
+    </article><article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2020/02/24/shannon-appelclines-brief-history-of-roleplaying/" class="u-url">Shannon Appelcline's Brief History of Roleplaying</a></h2>
         <div class="metadata blog-post-meta">
             <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
             <p class="dateline"><a href="posts/2020/02/24/shannon-appelclines-brief-history-of-roleplaying/" rel="bookmark"><time class="published dt-published" datetime="2020-02-24T14:55:34-05:00" title="2020-02-24 14:55">2020-02-24 14:55</time></a></p>
@@ -495,134 +534,6 @@ useful in seeing how the various Attributes work.  The backgrounds are
 tied into the Anime Multiverse from the core book.</p>
 <p>All in all, I think it looks good.  If the things are in <cite>BESM Extras</cite>
 that I hope are there, I can definitely see switching from <cite>BESM 2ER</cite>.</p>
-</div>
-    </div>
-    </article><article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2020/02/07/slings-in-rpgs-often-nerfed/" class="u-url">Slings in RPGs: Often Nerfed</a></h2>
-        <div class="metadata blog-post-meta">
-            <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
-            <p class="dateline"><a href="posts/2020/02/07/slings-in-rpgs-often-nerfed/" rel="bookmark"><time class="published dt-published" datetime="2020-02-07T14:40:23-05:00" title="2020-02-07 14:40">2020-02-07 14:40</time></a></p>
-        </div>
-    </header><div class="e-content entry-content">
-    <div>
-<p>In response to reading <a class="reference external" href="https://www.dailymail.co.uk/sciencetech/article-4541318/Roman-sling-bullets-deadly-44-Magnum.html?fbclid=IwAR2IZhVYW4-4_BcuQDOq2yGXwwurzBd3HNSo1BzN7XUwZLKHF4XZ54yy0VU">this</a> article, headlined “Roman sling bullets
-used against Scottish tribes 2,000 years ago were as deadly as a .44
-Magnum”, I was thinking about slings in RPGs.</p>
-<p>I've often thought that sling bullets are woefully nerfed in many
-RPGs, especially D&amp;D.  In D&amp;D 5E, for instance, they're only 1d4,
-while a short bow is 1d6 and a long bow is 1d8. For comparison,
-daggers are 1d4 and longswords are 1d8.  In OD&amp;D using Greyhawk's
-“Damage Done by Weapon Type” table sling <em>stones</em> are 1d4, and the
-same in B/X D&amp;D's optional “Variable Weapon Damage” table.  AD&amp;D has
-sling <em>bullets</em> as 1d4+1 and sling <em>stones</em> as 1d4.  D&amp;D 3.5E has them
-as 1d4.  So the D&amp;D editions pretty consistently have it as
-1d4. Definitely nerfed.  Except in 3-book OD&amp;D and B/X D&amp;D without the
-“Variable Weapon Damage” table, where all weapons did 1d6 damage.</p>
-<p>In <a class="reference external" href="https://en.wikipedia.org/wiki/Savage_Worlds">Savage Worlds</a> slings are Str+d4, while a bow is 2d6.  For
-comparison, a dagger is Str+d4 and a long sword is Str+d8.  Nerfed.</p>
-<p>In <a class="reference external" href="https://en.wikipedia.org/wiki/RuneQuest">RuneQuest</a> 2E they are 1d8, similar to a Composite bow at 1d8+1
-and broadsword at 1d8.  In Elric! (a member of the <a class="reference external" href="https://en.wikipedia.org/wiki/Stormbringer_(role-playing_game)">Stormbringer</a> line
-of games, appearing between 4th Edition and 5th Edition, but the rules
-were substantially equivalent to Stormbringer 5E; It is relative of
-RuneQuest mechanically, part of the <a class="reference external" href="https://en.wikipedia.org/wiki/Basic_Role-Playing">Basic Roleplaying (BRP)</a> family
-of games) a sling is 1d8+1, similar to a Desert Recurve Bow at 1d8+2,
-and a broadsword at 1d8+1.  So in the BRP games they are not nerfed.
-In DragonQuest their Damage Modifier is +1, while a dagger is +0, a
-long bow is +4 and a broadsword is +4.  Nerfed.</p>
-<p>In <a class="reference external" href="https://en.wikipedia.org/wiki/Talislanta">Talislanta</a> 4E a sling's Damage Rating is 4, as is a dagger, while a
-long bow and broadsword are 8.  Nerfed.</p>
-<p>In <a class="reference external" href="https://en.wikipedia.org/wiki/Hero_System">Hero</a> 5E, sling damage is 1d6+1, same as a medium bow or a light
-long bow, while a medium long bow is 1 ½ d6 (that's 1 and ½ d6)
-and a heavy long bow is 2d6.  A dagger is 1d6-1 and a broadsword is
-1d6+1.  Note that strong enough characters add damage to this based on
-how strong they are. Not nerfed.</p>
-<p>In <a class="reference external" href="https://en.wikipedia.org/wiki/GURPS#Prior_RPG_history">GURPS</a> 4E, damage is based on your strength, and the only dice used is
-d6.  We'll use an average Strength 10 character as an example.  Their
-Thrust damage is 1d-2 and their Swing damage is 1d. An opponent's
-Damage Resistance (DR) is subtracted from the rolled damage and any
-damage left is multiplied by a modifier for each type of damage.
-Piercing damage has a ×1 modifier, cutting has a ×1.5 modifier, and
-impaling has a ×2 modifier.</p>
-<p>So, sling damage is swing piercing, and the damage for that for our
-average character is 1d.  A longbow is thrust+2 impaling. and the
-damage for that is 1d, and whatever makes it past DR is doubled.  A
-regular bow is thrust+1 impaling, and the damage for that is 1d+1
-(minus DR) ×2.  A dagger is thrust-1 impaling, so that is 1d-3 (minus
-DR) ×2.  A thrusting broadsword is swing+1 cutting (1d+1 (minus DR)
-×1.5) or thrust+2 impaling (1d+2 (minus DR) ×2).  I <em>think</em> that's
-nerfed a little.</p>
-<p>(I'd like to note that when actually playing GURPS I think this is
-simpler to do at the table than it sounds like. The damage values for
-each attack is figured out at character creation :-)</p>
-<p>In <a class="reference external" href="https://en.wikipedia.org/wiki/The_Fantasy_Trip">The Fantasy Trip</a>, which like GURPS only uses d6, slings do
-1d-2, small bows do 1d-1, longbows do 1d+2, daggers do 1d-1, and
-broadswords do 2d.  A little bit nerfed.</p>
-<p>In <a class="reference external" href="https://en.wikipedia.org/wiki/Big_Eyes,_Small_Mouth">Big Eyes Small Mouth (BESM)</a> 2nd Edition Revised, slings are not
-listed, but a long bow does 5 damage, a longsword does 10 damage, and
-a dagger does 5 damage.  In BESM 3rd Edition, an average person has an
-Attack Combat Value (ACV) of 4 and a Damage Multiplier of 5.  Each weapon has
-a Level, which is multiplied by the Damage Multiplier and added to the
-ACV for the final damage.  Slings are Level 1 (1 × 5 + 4 = 9), as are
-daggers.  Longbows are Level 3 (3 × 5 + 1 = 16), as are longswords.
-Definitely nerfed.  (It is the same in <cite>BESM 4E</cite>.)</p>
-<p>In <a class="reference external" href="https://en.wikipedia.org/wiki/H%C3%A2rnMaster">HarnMaster</a>, weapon impact (damage) for Melee weapons has three
-Aspects, Blunt (B), Edge (E), and Point (P).  A dagger's impact is B
-1, E 2, P 5, while a broadsword is B 3, E 5, and P 3.  A Missile
-weapon's impact depends on the type of missile weapon and the range:
-short, medium, long, and extreme.  Slings are Short 4, Medium 3, Long
-2, and Extreme 2.  Shortbows are Short 6, Medium 5, Long 4, Extreme 3.
-Longbows are Short 8, Medium 8, Long 6, Extreme 5.  Nerfed.  I'll note
-that these weapon or missile impacts are added to a Strike Impact is
-decided by a table indexed by how well the attacker did on opposed
-rolls of attack skill against the defender's skill in Block,
-Counterstrike, Dodge, or if the defender ignored the attack. For Melee
-attacks this can result in the defender having blocked the attack,
-either the attacker or the defender fumbling or stumbling, the
-defender gaining a Tactical Advantage (a free action), or either or
-both having made a Strike, which generates from 1 to 4 d6s.  For
-Missle attacks this can result in a Miss (with a chance to hit an
-adjacent combatant, a Wild (a fumble roll), a Block, or a Strike,
-which generates from 1 to 3 d6s.  The Armor Protection value is
-subtracked and the result is the total Effective Impact, which is then
-referenced on the Injury Table to determine where the on the body the
-injury is and how serious it is.  There are no Hit Points like D&amp;D or
-Wounds like Savage Worlds.  Instead the character accumulates injuries
-like “1 Minor Slash Left Upper Arm, 1 injury level”.  The total injury
-level determines the difficulty of the character staying conscious and
-penalty to any skill roll.  Some of the injuries may immediately kill
-the injured character.</p>
-<p>There is a good thread by Robert S. Conley (<a class="reference external" href="http://batintheattic.blogspot.com/">1</a>, <a class="reference external" href="http://www.batintheattic.com/index.php">2</a>, <a class="reference external" href="https://rpggeek.com/rpgdesigner/22847/robert-conley">3</a>) on <a class="reference external" href="https://www.rpgpub.com/threads/the-one-where-i-sing-the-praises-of-harnmaster.2363/">RPG PUB</a>
-that talks some more about HarnMaster combat.</p>
-<p>In West End Games' <a class="reference external" href="https://en.wikipedia.org/wiki/D6_Fantasy">D6 Fantasy</a>, attributes are measured in d6s and 2D
-is an average human.  Bow and sling damage and melee damage as d6s
-added to a number of d6s determined by your Strength Damage, which is
-determined by your Physique attribute or Lifting skill (both measured
-in d6s), drop any adds, divided by 2.  So our average human's Strength
-Damage is 1D.  Then longbows add +2D+2, shortbows add +1D+2, and
-slings add +1D.  For comparison, daggers add +1D and broad/long swords
-ad +2D+2.  So, nerfed, although it is hard to make precise
-distinctions at this level of resolution.</p>
-<p><a class="reference external" href="https://en.wikipedia.org/wiki/Tunnels_%26_Trolls">Tunnels &amp; Trolls</a> only uses d6s and weapons are measured in “Dice +
-Adds”, that is the number of d6s to roll and the number of points to
-add to the dice total.  The common sling is 2d.  A very light self bow
-is 2d, a light self bow is 3d, a medium self bow is 4d, a heavy self
-bow is 5d, and a extra-heavy self bow is 6d.  These all have
-increasing Strength Required to use the weapon.  For comparison, a
-Dirk is 2D+1 and a broadsword is 3d+4.  Nerfed.</p>
-<p>In <a class="reference external" href="https://en.wikipedia.org/wiki/Dragon_Warriors">Dragon Warriors</a> weapon damage has two parts: an armor
-penetration die (measured in dice: d4, d6, d8, etc.) and damage
-points.  The armor penetration die is rolled against the Armour Factor
-of the defender's armour: a Gambeson has an Armour Factor of 2 while
-Plate has an Armor Factor of 5, and the attacker has to roll <em>higher</em>
-than the Armour Factor to inflict damage.</p>
-<p>A sling has Damage (d6, 3 points) while a Bow has Damage (d6, 4
-points).  For comparison, a dagger has Damage (d4, 3 points) and a
-sword has Damage (d8, 4 points).  Slightly nerfed.</p>
-<p>When I GM games that I think nerf slings, like D&amp;D, I often use a
-house rule that sling bullets are higher damage than sling stones, and
-more similar to the damage of a short bow, 1d6, for example.  I may
-have been underestimating them and should consider them closer to a
-long bow, 1d8, as Chaosium's <a class="reference external" href="https://en.wikipedia.org/wiki/Basic_Role-Playing">Basic Roleplaying (BRP)</a> variants
-(RuneQuest, Elric) do.</p>
 </div>
     </div>
     </article>
