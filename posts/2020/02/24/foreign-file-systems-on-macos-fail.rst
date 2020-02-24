@@ -42,7 +42,7 @@ again.  Again there were lots of differences.  Uh oh.
 
 Again, I didn't see anything on the Internet complaining about this.
 
-All I was doing was running ```rsync -avz``` with the appropriate
+All I was doing was running ``rsync -avz`` with the appropriate
 directories; it should have worked.
 
 I formatted the drive to Mac OS Extended (Journaled) and recopied the
