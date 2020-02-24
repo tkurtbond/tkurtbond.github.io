@@ -14,6 +14,9 @@ putting the links here for later reference.
 * `Jonathon Tweet`_
 * `J. Rrients`_ (and the Arduin `Critical Hit Table`_)
 * `Ryk E. Spoor`_
+* `Arduin Grimoire cover to cover <http://jrients.blogspot.com/search/label/cover%20to%20cover>`_
+* Grognardia_'s `Arduin Musings <http://grognardia.blogspot.com/2008/06/arduin-musings.html>`_
+* An rpg.net_ thread: `The Arduin Trilogy <https://forum.rpg.net/index.php?threads/lets-read-the-arduin-trilogy.446116/>`_
 
 And of course `Emperors Choice
 <http://empcho.bizhosting.com/index.html>`_ still sells some Arduin material.
@@ -23,3 +26,5 @@ And of course `Emperors Choice
 .. _`J. Rrients`: http://jrients.blogspot.com/search/label/cover%20to%20cover
 .. _`Critical Hit Table`: http://jrients.blogspot.com/2007/08/great-random-charts-from-rpg-history.html
 .. _`Ryk E. Spoor`: http://grandcentralarena.com/under-the-influence-the-arduin-grimoires/
+.. _Grognardia: http://grognardia.blogspot.com/
+.. _rpg.net: https://www.rpg.net/
