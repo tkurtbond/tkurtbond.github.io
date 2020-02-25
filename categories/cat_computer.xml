@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity (Posts about computer)</title><link>https://tkurtbond.github.io/</link><description></description><atom:link href="https://tkurtbond.github.io/categories/cat_computer.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2020 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Mon, 24 Feb 2020 23:53:08 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Foreign File Systems on macOS: Fail!</title><link>https://tkurtbond.github.io/posts/2020/02/24/foreign-file-systems-on-macos-fail/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;Back sometime in March 2018 I installed &lt;a class="reference external" href="https://www.tuxera.com/"&gt;Tuxera&lt;/a&gt; &lt;a class="reference external" href="https://www.tuxera.com/products/tuxera-ntfs-for-mac/"&gt;NTFS for Mac&lt;/a&gt;.  It was
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity (Posts about computer)</title><link>https://tkurtbond.github.io/</link><description></description><atom:link href="https://tkurtbond.github.io/categories/cat_computer.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2020 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Tue, 25 Feb 2020 19:19:34 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Foreign File Systems on macOS: Fail!</title><link>https://tkurtbond.github.io/posts/2020/02/24/foreign-file-systems-on-macos-fail/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;Back sometime in March 2018 I installed &lt;a class="reference external" href="https://www.tuxera.com/"&gt;Tuxera&lt;/a&gt; &lt;a class="reference external" href="https://www.tuxera.com/products/tuxera-ntfs-for-mac/"&gt;NTFS for Mac&lt;/a&gt;.  It was
 the first NTFS for Mac that I found.  I used it casually for a while
 and it seemed ok.&lt;/p&gt;
 &lt;p&gt;Sometime later, probably in October 2019, I decided I needed to move
@@ -308,10 +308,38 @@ old blog or other pages on my old website.  I did &lt;cite&gt;grep-find&lt;/cite
 multiple times to find all the occurances of my old website's hostname
 (which went through a couple of variations over time), then looked for
 site relative links that started with &lt;code class="docutils literal"&gt;/~tkb&lt;/code&gt;, a tedious but not too
-difficult process.&lt;/p&gt;&lt;/div&gt;</description><category>blog</category><category>conversion</category><category>nikola</category><category>pybloxsom</category><guid>https://tkurtbond.github.io/posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/</guid><pubDate>Wed, 06 Nov 2019 19:10:35 GMT</pubDate></item><item><title>POISE DMS-PLus</title><link>https://tkurtbond.github.io/posts/2014/11/23/poise-dms-plus/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;p&gt;I found a &lt;a class="reference external" href="http://www2.esp-tulsa.com/products.htm#dmsplus"&gt;web page&lt;/a&gt; that lists all the POISE products, now known as the
+difficult process.&lt;/p&gt;&lt;/div&gt;</description><category>blog</category><category>conversion</category><category>nikola</category><category>pybloxsom</category><guid>https://tkurtbond.github.io/posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/</guid><pubDate>Wed, 06 Nov 2019 19:10:35 GMT</pubDate></item><item><title>Getting nxml-mode in emacs to validate DocBook 5 documents</title><link>https://tkurtbond.github.io/posts/2019/11/05/getting-nxml-mode-in-emacs-to-validate-docbook-5-documents/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;I have occasion to edit and build a DocBook 5 document under both
+macOS Catalina and Fedora 30.&lt;/p&gt;
+&lt;p&gt;On macOS I've used homebrew to install the docbook, docbook-xsl, and
+libxslt (for xsltproc), and fop formulas, and changed my PATH to
+include the directory where brew installed &lt;code class="docutils literal"&gt;xsltproc&lt;/code&gt;. which will then
+use &lt;code class="docutils literal"&gt;/usr/local/etc/xml/catalog&lt;/code&gt; to find files, in which brew installed
+links to the docbook schemas and xsl stylesheets.&lt;/p&gt;
+&lt;p&gt;On Fedora I've used &lt;code class="docutils literal"&gt;dnf&lt;/code&gt; to install the docbook5-schemas,
+docbook5-style-xsl, and fop packages.&lt;/p&gt;
+&lt;p&gt;The document builds fine on both OSes, but Emacs doesn't validate
+properly against the DocBook RELAX NG schemas, because the &lt;code class="docutils literal"&gt;*.rnc&lt;/code&gt; files
+supplied with Emacs (26.3 on macOS, 26.2 on Fedora) are for DocBook 4.
+However, Emacs will look at a &lt;code class="docutils literal"&gt;schemas.xml&lt;/code&gt; file in the same directory
+as the file you are editing to find the &lt;code class="docutils literal"&gt;*.rnc&lt;/code&gt; files.  Unfortunately,
+of course, they have different locations on macOS with brew and on
+Fedora.&lt;/p&gt;
+&lt;p&gt;So I wrote a script, generate-schemas-xml, in bash using xmlcatalog to
+look up the translation for the URI for the RELAX NG compiled schema
+file and generate the &lt;code class="docutils literal"&gt;schemas.xml&lt;/code&gt; file and substitute the translation
+into the file:&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://tkurtbond.github.io/listings/generate-schemas-xml.html"&gt;generate-schemas-xml&lt;/a&gt;  &lt;a class="reference external" href="https://tkurtbond.github.io/listings/generate-schemas-xml"&gt;(Source)&lt;/a&gt;&lt;/p&gt;
+&lt;pre class="code bash"&gt;&lt;a name="rest_code_2471a86bcfcb4702bfcd245907ec6c05-1"&gt;&lt;/a&gt;&lt;span class="ch"&gt;#! /usr/bin/env bash&lt;/span&gt;
+&lt;a name="rest_code_2471a86bcfcb4702bfcd245907ec6c05-2"&gt;&lt;/a&gt;
+&lt;a name="rest_code_2471a86bcfcb4702bfcd245907ec6c05-3"&gt;&lt;/a&gt;&lt;span class="nv"&gt;schema_location&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;xmlcatalog &lt;span class="s2"&gt;""&lt;/span&gt; &lt;span class="s2"&gt;"http://docbook.org/xml/5.0/rng/docbookxi.rnc"&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;a name="rest_code_2471a86bcfcb4702bfcd245907ec6c05-4"&gt;&lt;/a&gt;    grep &lt;span class="s2"&gt;"^file:///"&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; sed &lt;span class="s1"&gt;'s#^file://##'&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;
+&lt;a name="rest_code_2471a86bcfcb4702bfcd245907ec6c05-5"&gt;&lt;/a&gt;
+&lt;a name="rest_code_2471a86bcfcb4702bfcd245907ec6c05-6"&gt;&lt;/a&gt;cat &amp;gt;schemas.xml &lt;span class="s"&gt;&amp;lt;&amp;lt;EOF&lt;/span&gt;
+&lt;a name="rest_code_2471a86bcfcb4702bfcd245907ec6c05-7"&gt;&lt;/a&gt;&lt;span class="s"&gt;&amp;lt;locatingRules xmlns="http://thaiopensource.com/ns/locating-rules/1.0"&amp;gt;&lt;/span&gt;
+&lt;a name="rest_code_2471a86bcfcb4702bfcd245907ec6c05-8"&gt;&lt;/a&gt;&lt;span class="s"&gt;&amp;lt;namespace ns="http://docbook.org/ns/docbook" uri="$schema_location"/&amp;gt;&lt;/span&gt;
+&lt;a name="rest_code_2471a86bcfcb4702bfcd245907ec6c05-9"&gt;&lt;/a&gt;&lt;span class="s"&gt;&amp;lt;/locatingRules&amp;gt;&lt;/span&gt;
+&lt;a name="rest_code_2471a86bcfcb4702bfcd245907ec6c05-10"&gt;&lt;/a&gt;&lt;span class="s"&gt;EOF&lt;/span&gt;
+&lt;/pre&gt;&lt;p&gt;Then I had my Makefile generate the &lt;code class="docutils literal"&gt;schemas.xml&lt;/code&gt; file if it was missing.&lt;/p&gt;
+&lt;p&gt;It was more complicated that I'd have liked, but it does work.&lt;/p&gt;&lt;/div&gt;</description><category>docbook 5</category><category>emacs</category><category>fedora</category><category>macos</category><guid>https://tkurtbond.github.io/posts/2019/11/05/getting-nxml-mode-in-emacs-to-validate-docbook-5-documents/</guid><pubDate>Wed, 06 Nov 2019 01:32:24 GMT</pubDate></item><item><title>POISE DMS-PLus</title><link>https://tkurtbond.github.io/posts/2014/11/23/poise-dms-plus/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;p&gt;I found a &lt;a class="reference external" href="http://www2.esp-tulsa.com/products.htm#dmsplus"&gt;web page&lt;/a&gt; that lists all the POISE products, now known as the
 Jenzabar PX Administrative Information Systems, including the POISE
-DMS-Plus.&lt;/p&gt;</description><category>dms-plus</category><category>jenzabar px</category><category>poise</category><guid>https://tkurtbond.github.io/posts/2014/11/23/poise-dms-plus/</guid><pubDate>Sun, 23 Nov 2014 06:48:58 GMT</pubDate></item><item><title>Mac OS X go likes gcc 4.2.1 doesn't lke 4.7.2</title><link>https://tkurtbond.github.io/posts/2012/11/13/mac-os-x-go-likes-gcc-4.2.1-doesnt-lke-4.7.2/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;p&gt;I have gcc from MacPorts (“gcc version 4.7.2 (MacPorts gcc47
-4.7.2_2)”) installed on my laptop running Mac OS X 10.6.8, and when
-updated and recompiled go the tests failed in the race detector with a
-message about a MachO segment being missing.  I put /usr/bin/gcc at
-the front of the path, and everything compiled tested fine.&lt;/p&gt;</description><category>gcc</category><category>go language</category><category>mac os x</category><guid>https://tkurtbond.github.io/posts/2012/11/13/mac-os-x-go-likes-gcc-4.2.1-doesnt-lke-4.7.2/</guid><pubDate>Tue, 13 Nov 2012 18:58:24 GMT</pubDate></item></channel></rss>
+DMS-Plus.&lt;/p&gt;</description><category>dms-plus</category><category>jenzabar px</category><category>poise</category><guid>https://tkurtbond.github.io/posts/2014/11/23/poise-dms-plus/</guid><pubDate>Sun, 23 Nov 2014 06:48:58 GMT</pubDate></item></channel></rss>

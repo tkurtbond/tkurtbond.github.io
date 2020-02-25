@@ -2,7 +2,7 @@
 .. slug: getting-nxml-mode-in-emacs-to-validate-docbook-5-documents
 .. date: 2019-11-05 20:32:24 UTC-05:00
 .. tags: docbook 5,emacs,fedora,macos
-.. category: computers
+.. category: computer
 .. link: 
 .. description: 
 .. type: text
