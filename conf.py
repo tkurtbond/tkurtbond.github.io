@@ -1358,7 +1358,8 @@ WARN_ABOUT_TAG_METADATA = False
 GLOBAL_CONTEXT = {'blog_sidebar': """\
     <div class="sidebar-module sidebar-module-inset">
       <h4>About</h4>
-      <p>Lacking Natural Simplicity is one definition of sophisticated.  
+      <p>Lacking Natural Simplicity is one, not particularly flattering, 
+         definition of sophisticated.  
          This blog chronicles my journey through our at times too complicated 
          and sophisticated world. </p>
     </div>
