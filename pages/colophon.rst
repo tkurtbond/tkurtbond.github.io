@@ -25,8 +25,11 @@ SGML/XML document (expressed as several separate files) using `Jade
 <http://nwalsh.com/>`__'s `Website DTD <http://nwalsh.com/website/>`__
 and his `Website Stylesheet <http://nwalsh.com/website/dsssl/>`__, a
 customization of the DSSSL `DocBook Stylesheet
-<http://nwalsh.com/docbook/dsssl/>`__ for HTML.  There were a few
-links to legacy HTML pages.
+<http://nwalsh.com/docbook/dsssl/>`__ for HTML.  (Alas, the specific
+links above have vanished from the Web, not to be resurrected by `The
+Internet Archive`_) There were a few links to legacy HTML pages.
+
+.. _`The Internet Archive`: http://archive.org
 
 I liked building these pages from XML using DSSSL for a number of
 reasons:
