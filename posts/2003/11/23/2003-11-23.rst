@@ -47,8 +47,8 @@ backend than :program:`LaTeX`.  [4]_
 As for those documents where XML markup is too much of a pain (say,
 things that should be easy to read as plain text, where the verbosity
 of XML tags overwhelms the text), I've found that the
-`reStructuredText <http://docutils.sourceforge.net/rst.html>`__ (part
-of the `Docutils <http://docutils.sourceforge.net/>`__ project) fits
+`reStructuredText <http://docutils.sourceforge.io/rst.html>`__ (part
+of the `Docutils <http://docutils.sourceforge.io/>`__ project) fits
 the bill nicely.  Every since `Steffan O'Sullivan
 <http://www.panix.com/~sos/>`__ produced the `Fudge
 <http://www.panix.com/~sos/fudge.html>`__ RPG in plain text format
