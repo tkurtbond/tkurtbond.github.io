@@ -28,4 +28,4 @@ multi-genre system.
 
 .. _OpenQuest: http://d101games.co.uk/books/openquest/
 .. _Chaosium: http://www.chaosium.com/
-.. _`Basic Roleplaying`: http://catalog.chaosium.com/index.php?cPath=37&osCsid=kckvssik52qklsf40tg1u5dh30
+.. _`Basic Roleplaying`: https://www.chaosium.com/basic-roleplaying/
