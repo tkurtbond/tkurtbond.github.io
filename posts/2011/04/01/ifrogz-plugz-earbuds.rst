@@ -16,4 +16,4 @@ always loosing), and they do a reasonable job of cutting down outside
 noise. 
 
 .. _ifrogz: http://ifrogz.com/
-.. _Plugz: http://ifrogz.com/product/EPPlugz
+.. _Plugz: https://web.archive.org/web/20120124010324/http://ifrogz.com/product/EPPlugz
