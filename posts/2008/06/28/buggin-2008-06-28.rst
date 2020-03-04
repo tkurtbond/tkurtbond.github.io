@@ -65,7 +65,7 @@ __ http://www.pigames.net/store/product_info.php?cPath=43_50_53&products_id=127
    *Buggin'* and the other 1PGs_ from Deep7_ and its partners.
 
 .. _Deep7: http://www.deep7.com
-.. _1PGs: http://www.deep7.com/product.php?cat=1pg
+.. _1PGs: http://deep7.com/?cat=4
 .. _kids: link://category/gaming/actual-play/the-kids
 
 .. [#original-buggin] In the very first *Buggin'* game I ran
