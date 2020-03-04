@@ -85,8 +85,13 @@ remembering, the *players* certainly would also. For some time I had
 been writing quick summaries in my notes after we'd played a session,
 so I took those and wrote up a campaign history and bugged the players
 for comments. Eventually it turned into a good-sized pamphlet. Later I
-converted it (using `unroff
-<http://www.informatik.uni-bremen.de/~net/unroff/>`__) to HTML.
+converted it (using unroff_, an application written in `Elk Scheme`_)
+to HTML.  (If you are interesting in `Elk Scheme`, check out the new
+maintainer_.)
+
+.. _unroff: http://www-rn.informatik.uni-bremen.de/software/unroff/
+.. _`Elk Scheme`: http://www-rn.informatik.uni-bremen.de/software/elk/
+.. _maintainer: http://sam.zoy.org/elk/
 
 What is Steampunk?
 ------------------
