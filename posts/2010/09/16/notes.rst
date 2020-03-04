@@ -49,7 +49,7 @@ Notes for the WVHTCF 50 Fathoms Campaign
 .. _`50 Fathoms`: http://www.peginc.com/games.html
 .. _`Pinnacle Entertainment Games`: http://www.peginc.com/
 .. _`Savage Worlds`: http://www.peginc.com/games.html
-.. _`plot point`: http://www.peginc.com/plotpoints.html
+.. _`plot point`: http://www.peginc.com/plot-points
 
 
 .. Local Variables:

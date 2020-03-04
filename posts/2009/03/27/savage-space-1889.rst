@@ -18,6 +18,6 @@ setting entitled *Space 1889: Red Sands*!
 
 .. _announced: http://www.peginc.com/Art/Articles/Space1889/Space1889.html
 
-.. _plot point: http://www.peginc.com/plotpoints.html
+.. _plot point: http://www.peginc.com/plot-points
 
 .. _Savage Worlds: 

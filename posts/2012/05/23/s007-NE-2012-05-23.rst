@@ -36,7 +36,7 @@ Or, Anvil Looses His Grip!
 .. _`Necessary Evil`: http://www.peginc.com/games/necessary-evil/
 .. _`Pinnacle Entertainment Games`: http://www.peginc.com/
 .. _`Savage Worlds`: http://www.peginc.com/games/savage-worlds/
-.. _`plot point`: http://www.peginc.com/plotpoints.html
+.. _`plot point`: http://www.peginc.com/plot-points
 
 
 .. 
