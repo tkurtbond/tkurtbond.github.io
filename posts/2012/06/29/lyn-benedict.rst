@@ -14,5 +14,8 @@
   ISBN 978-9-441-01711-9.
 
   The first :series:`Shadows Inquiries` novel, followed by `Ghosts and
-  Echoes`, `Gods and Monsters`, and `Lies & Omens`. Lyn Benedict is an
-  alias for `Lane Robins <http://www.lanerobins.com/>`_.
+  Echoes`, `Gods and Monsters`, and `Lies & Omens`. `Lyn Benedict`__ is an
+  alias for `Lane Robins`__.
+
+  __ https://www.amazon.com/Lyn-Benedict/e/B003R7Y9UA
+  __ https://www.goodreads.com/author/show/546979.Lane_Robins?
