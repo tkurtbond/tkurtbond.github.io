@@ -8,7 +8,8 @@
 .. type: text
 
 
-An interesting article_ on Traveller_, linked here for later reference.
+An interesting article_ (or at the `Internet Archive`_) on Traveller_,
+linked here for later reference.
 
 Christopher Kubasik's `Traveller Out of the Box`_ and the rpg.net
 thread (R1_) that talks about it, and the `Citizens of the Imperium`
@@ -19,6 +20,7 @@ And Robert Conley's `Classic Traveller Character Generator`_.
 And another article at Tor.com_.
 
 .. _article: http://www.irosf.com/q/zine/article/10119
+.. _`Internet Archive`: https://web.archive.org/web/20170222035638/http://www.irosf.com/q/zine/article/10119
 .. _Traveller: https://en.wikipedia.org/wiki/Traveller_(role-playing_game)
 .. _`Traveller Out of the Box`: https://talestoastound.wordpress.com/tag/traveller-out-of-the-box/
 .. _R1: https://forum.rpg.net/index.php?threads/traveller-out-of-the-box-only-using-books-1-3.769219/
