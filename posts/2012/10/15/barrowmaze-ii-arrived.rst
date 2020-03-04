@@ -15,4 +15,4 @@ and so are the dice.
 Disclosure: I was one of the Indiegogo__ backers for `Barrowmaze II`.
 
 __ http://www.barrowmaze.com/
-__ http://www.indiegogo.com/Barrowmaze
+__ https://www.indiegogo.com/projects/barrowmaze-ii/
