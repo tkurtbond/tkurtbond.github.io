@@ -46,9 +46,9 @@ Notes for the WVHTCF 50 Fathoms Campaign
    https://en.wikipedia.org/wiki/Savage_Worlds#History
 .. _`Pirates of the Spanish Main`:
    http://www.studio2publishing.com/shop/advanced_search_result.php?keywords=pirates+of+the+spanish+main&osCsid=f91402e43b527ecec13e40a3c1be3c57
-.. _`50 Fathoms`: http://www.peginc.com/games.html
+.. _`50 Fathoms`: http://www.peginc.com/product-category/50fathoms/
 .. _`Pinnacle Entertainment Games`: http://www.peginc.com/
-.. _`Savage Worlds`: http://www.peginc.com/games.html
+.. _`Savage Worlds`: http://www.peginc.com/product-category/savage-worlds/
 .. _`plot point`: http://www.peginc.com/plot-points
 
 ..
