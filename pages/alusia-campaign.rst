@@ -24,12 +24,14 @@ for this campaign.
 .. _`GURPS`: https://en.wikipedia.org/wiki/GURPS
 
 A few years ago, while writing a new adventure for the campaign, I got
-`ambitious <notes#why>`__ and from my notes wrote a 55 page (5.5 by
+ambitious_ and from my notes wrote a 55 page (5.5 by
 8.5 inches booklet size) campaign history.  Some time ago (1995/11/9)
 I created a hypertext version (using Unroff_; see Notes_ for more
 details about the that tool) and added (1996/1/21) the last two
 adventures (although in very rough form) and created an on-line
 permuted index.  (These are not available any more, alas.)
+
+.. _ambitious: link://slug/notes#why
 
 .. _Unroff: http://www-rn.informatik.uni-bremen.de/software/unroff/
 .. _Notes: link://slug/notes#why-write-a-campaign-history

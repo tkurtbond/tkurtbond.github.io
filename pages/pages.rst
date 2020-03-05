@@ -11,7 +11,7 @@ Static Pages on this Site
 =========================
 
 * `About the blog <link://slug/about-the-blog>`__
-* `Alusia <link://slug/alusia-campaign>`__
+* `Alusia Campaign <link://slug/alusia-campaign>`__
 * `Books, 2006–2007 <link://slug/books-2006-2007>`__
 * `Colophon <link://slug/colophon>`__
 * `Doris Piserchia <link://slug/doris-piserchia>`__
