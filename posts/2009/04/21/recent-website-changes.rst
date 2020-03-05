@@ -21,7 +21,7 @@ easier I'm much more likely to actually do so.
 
 .. _changed: link://slug/colophon#sphinx-built
 .. _website: http://consp.org/~tkb
-.. _Sphinx: http://sphinx.pocoo.org/
+.. _Sphinx: https://www.sphinx-doc.org/
 
 ..
    I left the consp.org address in for the wayback machine.

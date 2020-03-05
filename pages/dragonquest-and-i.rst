@@ -1,5 +1,5 @@
-.. title: DragonQuest
-.. slug: dragonquest
+.. title: DragonQuest and I
+.. slug: dragonquest-and-i
 .. date: 2019-11-06 10:01:00 UTC-05:00
 .. tags: 
 .. category: 
