@@ -27,7 +27,8 @@ tables.  It is the sort of text that one has to read completely
 through before being able to understand it, since some things were
 used before they were defined.  Despite that, when you do read it
 through a few times it was readily comprehensible.  (An index would
-have made it much, much easier.)
+have made it much, much easier, as would have a contents with actual
+pagenumbers!)
 
 A Description of `DragonQuest`
 ------------------------------
