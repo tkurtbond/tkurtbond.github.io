@@ -10,7 +10,7 @@
 
 We played part 1 of an adventure that returned to the setting of a
 campaign I ran in the 
-`Frontiers of Alusia <link://slug/alusia>`__ from 1985 to 1994.
+`Frontiers of Alusia <link://slug/alusia-campaign>`__ from 1985 to 1994.
 
 I had one of the original players, N.A.B., and my daughter and my
 niece and nephews for players.  It was fun to see N.A.B.'s face when

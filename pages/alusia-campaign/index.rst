@@ -1,5 +1,5 @@
-.. title: Alusia
-.. slug: alusia
+.. title: Alusia Campaign
+.. slug: alusia-campaign
 .. date: 2019-11-06 10:11:54 UTC-05:00
 .. tags: rpg,dragonquest,gurps,alusia
 .. category: gaming
@@ -16,19 +16,25 @@ first expect.
 .. _SPI: https://en.wikipedia.org/wiki/Simulations_Publications,_Inc.
 __ https://en.wikipedia.org/wiki/Frontiers_of_Alusia
 
-This was originally (of course) using the 
-:doc:`DragonQuest <dragonquest>` rules from SPI, but when I started playing
-`GURPS`_ I eventually changed to using it for this campaign.
+This was originally (of course) using the DragonQuest_ rules from SPI,
+but when I started playing `GURPS`_ I eventually changed to using it
+for this campaign.
 
+.. _DragonQuest: link://slug/dragonquest-and-i
 .. _`GURPS`: https://en.wikipedia.org/wiki/GURPS
 
 A few years ago, while writing a new adventure for the campaign, I got
-`ambitious <notes#why>`__ and from my notes wrote a 55 page (5.5
-by 8.5 inches booklet size) campaign history.  Some time ago
-(1995/11/9) I created a hypertext version (using `Unroff
-<http://www.informatik.uni-bremen.de/~net/unroff/>`__) and added
-(1996/1/21) the last two adventures (although in very rough form) and
-created an on-line permuted index.  (These are not available any more, alas.)
+ambitious_ and from my notes wrote a 55 page (5.5 by
+8.5 inches booklet size) campaign history.  Some time ago (1995/11/9)
+I created a hypertext version (using Unroff_; see Notes_ for more
+details about the that tool) and added (1996/1/21) the last two
+adventures (although in very rough form) and created an on-line
+permuted index.  (These are not available any more, alas.)
+
+.. _ambitious: link://slug/notes#why
+
+.. _Unroff: http://www-rn.informatik.uni-bremen.de/software/unroff/
+.. _Notes: link://slug/notes#why-write-a-campaign-history
 
 Later, in December 2007, I finally finished a new
 `DocBook-based <http://www.docbook.org/whatis>`__ version (which was

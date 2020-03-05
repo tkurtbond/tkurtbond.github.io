@@ -32,5 +32,6 @@ In one of the comments on that article, `Brand Robins <http://www.randomencounte
     counting game."
 
 In an entry on his blog, Brand Robins talks about `medium
-length/detail contests <http://randomencounters.blogspot.com/2005/09
-/random-game-crap.html>`__ in *HeroQuest*.
+length/detail contests`__ in *HeroQuest*.
+
+__ http://randomencounters.blogspot.com/2005/09/random-game-crap.html

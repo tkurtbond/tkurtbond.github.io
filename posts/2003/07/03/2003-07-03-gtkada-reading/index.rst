@@ -34,13 +34,14 @@ Recent Reading
 
 .. _college:
 
-+ `A College of Magics <http://www.epiphyte.net/SF/college-of-
-  magics.html>`__ by Caroline Stevermer.  This is a very entertaining
++ `A College of Magics`__ by Caroline Stevermer.  This is a very entertaining
   `Ruritanian <http://www.wikipedia.org/wiki/Fictional_country>`__
   fantasy in an alternate world with a touch of magic.  I've enjoyed her
   other works as well: `The Serpent's Egg`, `When the King Comes Home`,
   and `Sorcery and Cecelia` (co-written with Patricia C. Wrede).  I
   haven't read `River Rats` yet, though.
+
+  __ http://www.epiphyte.net/SF/college-of-magics.html
 
 + `The Haunted Monastery, a Chinese Detective Story`, by Robert van
   Gulik.  An enjoyable `Judge Dee

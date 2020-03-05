@@ -51,7 +51,7 @@ minimalist blog.  So, give it a look-see.
 
 .. _blog: https://tkurtbond.github.io
 .. _pybloxsom: http://pybloxsom.sourceforge.net
-.. _reStructuredText: http://docutils.sourceforge.net/rst.html
+.. _reStructuredText: https://docutils.sourceforge.io/rst.html
 .. _plaintext: link://slug/plain-text-markup
 
 .. [#simple] I hate most WYSIWYG software, and am hoping that using

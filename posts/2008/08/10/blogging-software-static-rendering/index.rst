@@ -23,6 +23,6 @@ all.
 .. _pyBlosxom: http://pyblosxom.sourceforge.net/
 .. _awb: http://jared.henley.id.au/software/awb/
 .. _AsciiDoc: http://www.methods.co.nz/asciidoc/
-.. _reStructuredText: http://docutils.sourceforge.net/rst.html
+.. _reStructuredText: https://docutils.sourceforge.io/rst.html
 .. _docutils: http://docutils.sourceforge.net/
 .. _DocBook: link://slug/docbook

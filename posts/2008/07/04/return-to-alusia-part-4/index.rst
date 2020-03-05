@@ -274,7 +274,7 @@ GM judgement.
    a map and 4 pages of terse descriptions that accompanied
    it.
 
-.. _`The Frontiers of Alusia`: link://slug/dragonquest#frontiers-of-alusia-adventure-map
+.. _`The Frontiers of Alusia`: link://slug/dragonquest-and-i#frontiers-of-alusia-adventure-map
 
 .. [#real-cardboard] These are *real* cardboard, heavy and stiff and
    about one sixteenth inch thick.

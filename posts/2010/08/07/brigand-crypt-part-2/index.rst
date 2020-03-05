@@ -90,4 +90,4 @@ although they did close the crypt doors on the way out.
 .. _kids: link://slug/the-kids
 .. _`DLD2 — Fabled Curse of the Brigand Crypt`: http://www.lulu.com/product/file-download/fabled-curse-of-the-brigand-crypt/4503745
 .. _`Prime Requisite Games`: http://primerequisitegames.blogspot.com/
-.. _`part 1`: brigand-crypt-part-1.html
+.. _`part 1`: link://slug/brigand-crypt-part-1

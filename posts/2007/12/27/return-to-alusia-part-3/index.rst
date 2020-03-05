@@ -10,7 +10,7 @@
 
 We played part 3 of an adventure that returned to the setting of a
 campaign I ran in the `Frontiers of Alusia
-<link://slug/alusia>`__ from 1985 to 1994.
+<link://slug/alusia-campaign>`__ from 1985 to 1994.
 
 N.A.B. wasn't able to attend this time, either, but the kids and I had
 fun.

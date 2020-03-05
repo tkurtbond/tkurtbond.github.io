@@ -20,12 +20,15 @@
 
 This session lasted from 1:30 pm to 4:11 pm.
 
-I think this is session where the class options from the `Advanced Edition
-Companion` (1_, 2_) became available and some of the
-characters switched to new classes.
+I think this is session where the class options from the `Advanced
+Edition Companion` (See (free no art version) 1_, (priced version) 2_)
+became available and some of the characters switched to new classes.
+(For `Labyrinth Lord`, see (free no art version) 3_, (priced version) 4_.)
 
-.. _1: http://www.goblinoidgames.com/docs/GBD1002_no_art.zip
-.. _2: http://www.goblinoidgames.com/labyrinthlord.html
+.. _1: http://goblinoidgames.com/wp-content/uploads/2017/03/GBD1002_no_art.zip
+.. _2: https://www.drivethrurpg.com/product/78523/Advanced-Edition-Companion-Labyrinth-Lord
+.. _3: http://goblinoidgames.com/wp-content/uploads/2017/03/GBD1001_no_art.zip
+.. _4: https://www.drivethrurpg.com/product/64332/Labyrinth-Lord-Revised-Edition
 
 Attending
 =========

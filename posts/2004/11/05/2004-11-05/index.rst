@@ -20,11 +20,11 @@
   novel in itself, it starts in the middle of things and leaves you
   wanting to know more about the many things alluded to in passing. As
   far as I can tell it was a standalone novel. Was it his only
-  novel?William H. Stoddard has a good `review
-  <http://www.troynovant.com/Stoddard/Franson/Shadow-of-the-
-  Ship.html>`__ of the book from the libertarian viewpoint. Update
+  novel?William H. Stoddard has a good review__ of the book from the libertarian viewpoint. Update
   (2008-01-27): looking closer at the `Troynovant
   <http://www.troynovant.com/>`__ web site I see that it is a collection
   of interesting essays on many topics, including books and movies as
   well as other subjects, with a Libertarian viewpoint, apparently run
   by Robert Wilfred Franson, the author of *The Shadow of the Ship*.
+
+  __ http://www.troynovant.com/Stoddard/Franson/Shadow-of-the-Ship.html

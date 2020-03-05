@@ -8,8 +8,12 @@
 .. type: text
 
 
-My copy of `RuneQuest 6`__ by Nash, Whitaker, & Friends at `The Design
-Mechanism`__ arrived today. 
+My copy of `RuneQuest 6` by Nash, Whitaker, & Friends at `The Design
+Mechanism`__ arrived today. (2020-03-04 Update: This RPG is now known
+as `Mythras`.)
+
+__ http://www.thedesignmechanism.com/
+
 
 It is a nice big paperback book.  I've had time to scan it quickly and
 incompletely.  I like the cover, with its nod to the Chaosium
@@ -22,9 +26,6 @@ complexity, and OpenQuest_ the variant for folks wanting less
 complexity, and Chaosium_\ 's `Basic Roleplaying`_ for folks wanting a
 multi-genre system.
 
-__ http://www.thedesignmechanism.com/runequest.php
-__ http://www.thedesignmechanism.com/
-
 .. _OpenQuest: http://d101games.co.uk/books/openquest/
 .. _Chaosium: http://www.chaosium.com/
-.. _`Basic Roleplaying`: http://catalog.chaosium.com/index.php?cPath=37&osCsid=kckvssik52qklsf40tg1u5dh30
+.. _`Basic Roleplaying`: https://www.chaosium.com/basic-roleplaying/

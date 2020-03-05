@@ -8,9 +8,10 @@
 .. type: text
 
 
-From `Howling Tower: Complexity and Option Fatigue « Kobold Quarterly`__, by `Steve Winter`_ (ex-TSR, ex-WotC):
+From `Howling Tower: Complexity and Option Fatigue « Kobold
+Quarterly`__, by `Steve Winter`_ (ex-TSR, ex-WotC):
 
-__ http://www.koboldquarterly.com/k/front-page11985.php
+__ https://web.archive.org/web/20120504101948/http://www.koboldquarterly.com/k/front-page11985.php
 
    In the late 1980s, TSR studied the sales appeal of AD&D compared to
    “Basic” D&D (Basic/Expert, B/X, or BECMI, as it’s now known). The

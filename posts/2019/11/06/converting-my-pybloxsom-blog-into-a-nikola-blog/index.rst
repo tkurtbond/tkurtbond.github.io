@@ -52,4 +52,4 @@ multiple times to find all the occurances of my old website's hostname
 site relative links that started with ``/~tkb``, a tedious but not too
 difficult process.
 
-.. _reStructuredText: http://docutils.sourceforge.net/rst.html
+.. _reStructuredText: http://docutils.sourceforge.io/rst.html

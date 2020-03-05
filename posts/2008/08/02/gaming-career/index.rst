@@ -106,7 +106,8 @@ My leaning to greater detail and verisimilitude lead me in time to
     Where did I buy RQ?
 
 I bought `RuneQuest`, 3rd edition (`RQ3`, the Deluxe Boxed Set) and
-`Griffin Island` (also a boxed set) in stores, somewhere.  Like
+`Griffin Island` (also a boxed set) in stores, somewhere.  (I think
+this must have been near the time they were released.)  Like
 `DragonQuest`, I found them fascinating.  Unlike `DQ` I never got my
 group to successfully play `RQ`.  `RQ3` and `Griffin Island` were a
 glimpse into a style of culture-based gaming that I had never
@@ -144,7 +145,8 @@ Valiant`, `Pendragon`, Universal Supplements.
 
 I ran a short `Elric` campaign after my `Frontiers of Alusia`
 campaign.  This worked better for my players than `RQ3`, as it used
-simpler implementation of Chaosium's house system, `BRP`.
+simpler implementation of Chaosium's house system, `BRP`.  Despite
+the brevity of this campaign I have fond memories of `Elric`.
 
 Part II: Hiatus
 ===============
@@ -163,16 +165,16 @@ my gaming group.
 Most of my buying WFRP was during my hiatus?
 
 I really only came to understand `RuneQuest` during my hiatus from
-gaming, in the 90s, when I started seriously to track down the RQ3
+gaming, in the 90s, when I started seriously to track down the `RQ3`
 material I'd never know about, including the post RQ3 fanzines.  I
-even found a copy of RQ2 in a game store in Austin, Texas, while there
+even found a copy of `RQ2` in a game store in Austin, Texas, while there
 on travel for work.  
 
-RQ found ... earlier than GURPS, later? but only understood much later
-in 90s during my serious RQ buying days after ran long GURPS campaign
-(Call of Cthulhu/Elric helped understand/like RQ?) and bought RQ2.
+`RQ` found … earlier than `GURPS`, later? but only understood much later
+in 90s during my serious `RQ` buying days after I ran a long `GURPS` campaign
+(`Call of Cthulhu`/`Elric` helped understand/like RQ?) and bought `RQ2`.
 Early GURPS gaming at college BAMF?
-Compare to dates of Alusia becoming GURPS?
+Compare to dates of Alusia becoming `GURPS`?
 
 Tékumel.  Call of Cthulhu. Jorune.
 
@@ -196,7 +198,7 @@ After my hiatus from gaming, I was looking for simpler games.
 Retro-gaming: interest in early classic `AD&D` modules we missed
 (which lead to `Wilderlands` and `Tegel Manor` then `Badabaskor`,
 `Caverns of Thracia`, etc.  then 3e/3.5e reprints) which lead to
-buying lots of PDF games including classic `BD&D` module b10 (superb!)
+buying lots of PDF games including classic `BD&D` module B10 (superb!)
 leading to RC purchases, then other `BD&D` modules and `AD&D` modules,
 pondering running `BD&D` for B20, then buying `Thunder Rift`, Mystara
 interest online maps, retro clones to original D&D interest, buy PDFs

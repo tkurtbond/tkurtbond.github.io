@@ -16,7 +16,7 @@ are Not.  Best of Luck.”  By Todd Downing, copyright 2003 by Deep7.
 This is one of the Deep7_ 1PG_ line of games, and `the kids`_ love it.
 
 .. _Deep7: http://www.deep7.com
-.. _1PG: http://www.deep7.com/product.php?cat=1pg
+.. _1PG: http://deep7.com/?cat=4
 
 BESM, aka Big Eyes, Small Mouth
 ===============================

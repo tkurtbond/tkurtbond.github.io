@@ -189,7 +189,7 @@ WFRP
 DragonQuest
 ...........
 
-`DragonQuest <dragonquest.html>`_, originally published by SPI.
+`DragonQuest <link://slug/dragonquest-and-i>`_, originally published by SPI.
 
 Space: 1889
 ...........
@@ -525,8 +525,10 @@ I used to run a Swiki for my local gaming group to use for discussions
 and records, and a mailing list that was mostly used for scheduling
 games.
 
-I have written down some `incoherent thoughts on various matters <rpg-
-debates.html>`_ pertaining to roleplaying games.
+I have written down some `incoherent thoughts on various matters`__
+pertaining to roleplaying games.
+
+__ rpg-debates.html
 
 
 

@@ -78,6 +78,6 @@ DocBook_, of course.
 
 
 .. _AsciiDoc: http://www.methods.co.nz/asciidoc/
-.. _reStructuredText: http://docutils.sourceforge.net/rst.html
+.. _reStructuredText: https://docutils.sourceforge.io/rst.html
 .. _docutils: http://docutils.sourceforge.net/
 .. _DocBook: link://slug/docbook

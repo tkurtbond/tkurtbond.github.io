@@ -10,7 +10,7 @@ o.. slug: return-to-alusia-part-5
 
 We played part 5 of an adventure that returned to the setting of a
 campaign I ran in the `Frontiers of Alusia
-<link://slug/alusia>`__ from 1985 to 1994.
+<link://slug/alusia-campaign>`__ from 1985 to 1994.
 
 I haven't found my notes for this session yet, but we did finally
 finish the adventure, with much loot.

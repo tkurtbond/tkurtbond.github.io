@@ -33,7 +33,7 @@ Notes for the WVHTCF Necessary Evil Campaign
 .. _`Necessary Evil`: http://www.peginc.com/games/necessary-evil/
 .. _`Pinnacle Entertainment Games`: http://www.peginc.com/
 .. _`Savage Worlds`: http://www.peginc.com/games/savage-worlds/
-.. _`plot point`: http://www.peginc.com/plotpoints.html
+.. _`plot point`: http://www.peginc.com/plot-points
 
 
 .. 
@@ -106,12 +106,14 @@ for free.)
 
 
 .. _`Savage Worlds Explorer's Edition`:
-   http://www.studio2publishing.com/shop/advanced_search_result.php?keywords=s2p10010
+   https://en.wikipedia.org/wiki/Savage_Worlds#History
 .. _`Necessary Evil`: http://www.peginc.com/games/necessary-evil/
 .. _`Pinnacle Entertainment Games`: http://www.peginc.com/
 .. .. _`Savage Worlds`: http://www.peginc.com/games/savage-worlds/
-.. _`plot point`: http://www.peginc.com/plotpoints.html
+.. _`plot point`: http://www.peginc.com/plot-points
 
+..
+   SWEX used to be at http://www.studio2publishing.com/shop/advanced_search_result.php?keywords=s2p10010
 
 .. Local Variables:
 .. time-stamp-format: "%:y-%02m-%02d %02H:%02M:%02S"

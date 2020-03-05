@@ -1,5 +1,5 @@
-.. title: DragonQuest
-.. slug: dragonquest
+.. title: DragonQuest and I
+.. slug: dragonquest-and-i
 .. date: 2019-11-06 10:01:00 UTC-05:00
 .. tags: 
 .. category: 
@@ -10,9 +10,6 @@
 .. role:: company
 
           
-`DragonQuest` and I
--------------------
-
 `DragonQuest`_ (`DQ`) was the second roleplaying game I played
 seriously.  In junior high school I borrowed it from an acquaintance
 of my older brother and devoured it.  When I finally found a copy of
@@ -27,7 +24,8 @@ tables.  It is the sort of text that one has to read completely
 through before being able to understand it, since some things were
 used before they were defined.  Despite that, when you do read it
 through a few times it was readily comprehensible.  (An index would
-have made it much, much easier.)
+have made it much, much easier, as would have a contents with actual
+pagenumbers!)
 
 A Description of `DragonQuest`
 ------------------------------
@@ -291,7 +289,7 @@ via their acquisition of Wizards of the Coast, which had acquired TSR.
    I used this through most of my `Frontiers of Alusia` campaign__,
    and probably had it before then.
 
-__ link://slug/alusia
+__ link://slug/alusia-campaign
 
 .. _frontiers-of-alusia-adventure-map:
 
@@ -320,7 +318,7 @@ __ link://slug/alusia
    I ran a long campaign__ with `The Frontiers of Alusia`, originally
    with `DragonQuest` and later with `GURPS`.
 
-__ link://slug/alusia
+__ link://slug/alusia-campaign
 
 .. _dqpo: 
 

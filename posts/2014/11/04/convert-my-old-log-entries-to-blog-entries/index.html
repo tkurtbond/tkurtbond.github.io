@@ -82,15 +82,15 @@ using the">
 Docbook-based website, and were presently part of my static
 Sphinx-based website, over to my current PyBlosxom blog tonight,
 using the following script:</p>
-<pre class="code text"><a name="rest_code_8ff9061334cc4998aea68f8086ee8db6-1"></a>#! /usr/bin/env bash
-<a name="rest_code_8ff9061334cc4998aea68f8086ee8db6-2"></a>find 200? -type f ! -name \*~ ! -name \*-idx-*.rst |
-<a name="rest_code_8ff9061334cc4998aea68f8086ee8db6-3"></a>while read filename
-<a name="rest_code_8ff9061334cc4998aea68f8086ee8db6-4"></a>do
-<a name="rest_code_8ff9061334cc4998aea68f8086ee8db6-5"></a>    newname="$(echo $filename | sed 's#/#-#g')"
-<a name="rest_code_8ff9061334cc4998aea68f8086ee8db6-6"></a>    date="$(basename $newname .rst)"
-<a name="rest_code_8ff9061334cc4998aea68f8086ee8db6-7"></a>    (echo $date; echo "#published $date 00:00:00"; echo "#tags Old Blog";
-<a name="rest_code_8ff9061334cc4998aea68f8086ee8db6-8"></a>        cat $filename) &gt;/home/tkb/myblog/entries/oldblog/$newname
-<a name="rest_code_8ff9061334cc4998aea68f8086ee8db6-9"></a>done
+<pre class="code text"><a name="rest_code_0dc51a556f9c4213bfb167aef08da892-1"></a>#! /usr/bin/env bash
+<a name="rest_code_0dc51a556f9c4213bfb167aef08da892-2"></a>find 200? -type f ! -name \*~ ! -name \*-idx-*.rst |
+<a name="rest_code_0dc51a556f9c4213bfb167aef08da892-3"></a>while read filename
+<a name="rest_code_0dc51a556f9c4213bfb167aef08da892-4"></a>do
+<a name="rest_code_0dc51a556f9c4213bfb167aef08da892-5"></a>    newname="$(echo $filename | sed 's#/#-#g')"
+<a name="rest_code_0dc51a556f9c4213bfb167aef08da892-6"></a>    date="$(basename $newname .rst)"
+<a name="rest_code_0dc51a556f9c4213bfb167aef08da892-7"></a>    (echo $date; echo "#published $date 00:00:00"; echo "#tags Old Blog";
+<a name="rest_code_0dc51a556f9c4213bfb167aef08da892-8"></a>        cat $filename) &gt;/home/tkb/myblog/entries/oldblog/$newname
+<a name="rest_code_0dc51a556f9c4213bfb167aef08da892-9"></a>done
 </pre>
 <p>I'll have to go through and fix uses of Sphinx-specific RST
 extensions, and I'll probably add real entry titles as I do so; in the

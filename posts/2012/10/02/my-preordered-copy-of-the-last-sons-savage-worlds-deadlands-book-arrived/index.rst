@@ -18,7 +18,7 @@ And everything that `Studio 2`_ ships is always very well packaged.
 This book was sealed in a bubble-wrap envelope, surrounded by loose
 foam peanuts, all in a box of extra-thick cardboard.
 
-.. _`print copy`: http://www.studio2publishing.com/shop/product_info.php?cPath=25_75_128&products_id=3596
+.. _`print copy`: https://studio2publishing.com/products/the-last-sons-deadlands-savage-worlds
 .. _`Pinnacle Entertainment Group`: http://www.peginc.com/
 .. _`The Last Sons`: http://www.peginc.com/shop/deadlands-reloaded-the-last-sons/
 .. _`Savage Worlds`: http://www.peginc.com/games/savage-worlds/
