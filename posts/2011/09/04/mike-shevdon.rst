@@ -1,5 +1,5 @@
 .. title: Recent Reading: Mike Shevdon
-.. slug: mike-shevdon
+.. slug: mike-shevdon-the-road-to-bedlam
 .. date: 2011-09-04 00:00:00 UTC-05:00
 .. tags: recent reading,paranormal,thriller,urban fantasy
 .. category: books/read/2011/09
@@ -15,7 +15,7 @@
 
   The sequel to `Sixty-one Nails`__.
 
-__ link://slug/mike-shevdon
+__ link://slug/mike-shevdon-61-nails
 .. _`Mike Shevdon`: http://www.shevdon.com/
 
   

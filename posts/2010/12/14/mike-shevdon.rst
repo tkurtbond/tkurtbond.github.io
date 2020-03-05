@@ -1,5 +1,5 @@
 .. title: Recent Reading: Mike Shevdon
-.. slug: mike-shevdon
+.. slug: mike-shevdon-61-nails
 .. date: 2010-12-14 00:00:00 UTC-05:00
 .. tags: recent reading,urban fantasy
 .. category: books/read/2010/12
