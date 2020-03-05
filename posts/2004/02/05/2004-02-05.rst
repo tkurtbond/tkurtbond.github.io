@@ -33,8 +33,9 @@ upgraded to 5.2 because gethostbyaddr_r disappeared:
     Reason: /sw/versions/ocaml/3.07/lib/ocaml/stublibs/dllunix.so: Undefined symbol "gethostbyaddr_r"
 
 
-See `this e-mail <http://lists.freebsd.org/pipermail/freebsd-
-current/2003-December/016677.html>`__ for more information.
+See `this e-mail`__ for more information.
+
+__ http://lists.freebsd.org/pipermail/freebsd-current/2003-December/016677.html
 
 Reconfiguring and re-installing ocaml seems to have fixed the problem,
 but once that was done I had to rebuild (almost) all my ocaml programs

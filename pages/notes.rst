@@ -62,13 +62,14 @@ SPI
 SPI was the company that published (among other things) the
 `DragonQuest` role-playing game. Apparently it was eventually taken
 over by TSR and dissolved, alas. (Greg Costikyan's `analysis of the
-death of wargames <http://web.archive.org/web/20011004080850/www.cross
-over.com/costik/spisins.html>`__ (or you can find the "A Farewell to
+death of wargames`__ (or you can find the "A Farewell to
 Hexes" link from his `SPI Compendium
 <http://www.costik.com/spicom/index.html>`__) contains the clearest
 explanation of what happened to SPI that I have found.)  DQ was the
 first roleplaying game I played after starting with AD&D, and was a
 breath of clean air: short, clear, simple, and reasonably flexible.
+
+__ http://web.archive.org/web/20011004080850/www.crossover.com/costik/spisins.html
 
 .. _why:
 
@@ -76,7 +77,7 @@ Why Write a Campaign History?
 -----------------------------
 
 Why did I write the `Frontiers of Alusia` `campaign history
-<link://slug/alusia>`__? Since we only got together to play once or
+<link://slug/alusia-campaign>`__? Since we only got together to play once or
 twice every couple of years in the last years of the campaign, I had
 trouble remembering when certain events had happened and what
 non-player characters the characters had met and when they had met,

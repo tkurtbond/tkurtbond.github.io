@@ -98,7 +98,7 @@ subscripts and superscripts.  I actually used Sphinx to build the
 website, as you could see at the bottom of each page of this version.
 I was very happy with how simple it was to maintain.
 
-.. _ReStructuredText: http://docutils.sourceforge.net/rst.html
+.. _ReStructuredText: http://docutils.sourceforge.io/rst.html
 .. _Sphinx: http://www.sphinx-doc.org/
 
 I also had a pyBloxsom_ blog, writing the posts in reStructuredText,

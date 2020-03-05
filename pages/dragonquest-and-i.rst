@@ -10,9 +10,6 @@
 .. role:: company
 
           
-`DragonQuest` and I
--------------------
-
 `DragonQuest`_ (`DQ`) was the second roleplaying game I played
 seriously.  In junior high school I borrowed it from an acquaintance
 of my older brother and devoured it.  When I finally found a copy of
@@ -292,7 +289,7 @@ via their acquisition of Wizards of the Coast, which had acquired TSR.
    I used this through most of my `Frontiers of Alusia` campaign__,
    and probably had it before then.
 
-__ link://slug/alusia
+__ link://slug/alusia-campaign
 
 .. _frontiers-of-alusia-adventure-map:
 
@@ -321,7 +318,7 @@ __ link://slug/alusia
    I ran a long campaign__ with `The Frontiers of Alusia`, originally
    with `DragonQuest` and later with `GURPS`.
 
-__ link://slug/alusia
+__ link://slug/alusia-campaign
 
 .. _dqpo: 
 

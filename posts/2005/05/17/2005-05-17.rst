@@ -14,8 +14,9 @@ Computer Musing
 ---------------
 
 Another `Gambit-C Scheme <http://www.iro.umontreal.ca/~gambit/>`__
-`Beta <http://mailman.iro.umontreal.ca/pipermail/gambit-
-list/2005-May/000233.html>`__ came out a little while ago.
+Beta__ came out a little while ago.
+
+__ http://mailman.iro.umontreal.ca/pipermail/gambit-list/2005-May/000233.html
 
 Interesting Lisp `books
 <http://home.comcast.net/~bc19191/blog/040520.html>`__ from Bill

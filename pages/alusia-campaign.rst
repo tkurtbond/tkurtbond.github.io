@@ -1,5 +1,5 @@
-.. title: Alusia
-.. slug: alusia
+.. title: Alusia Campaign
+.. slug: alusia-campaign
 .. date: 2019-11-06 10:11:54 UTC-05:00
 .. tags: rpg,dragonquest,gurps,alusia
 .. category: gaming
@@ -16,10 +16,11 @@ first expect.
 .. _SPI: https://en.wikipedia.org/wiki/Simulations_Publications,_Inc.
 __ https://en.wikipedia.org/wiki/Frontiers_of_Alusia
 
-This was originally (of course) using the 
-:doc:`DragonQuest <dragonquest>` rules from SPI, but when I started playing
-`GURPS`_ I eventually changed to using it for this campaign.
+This was originally (of course) using the DragonQuest_ rules from SPI,
+but when I started playing `GURPS`_ I eventually changed to using it
+for this campaign.
 
+.. _DragonQuest: link://slug/dragonquest-and-i
 .. _`GURPS`: https://en.wikipedia.org/wiki/GURPS
 
 A few years ago, while writing a new adventure for the campaign, I got
