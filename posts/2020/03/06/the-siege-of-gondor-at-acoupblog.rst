@@ -10,10 +10,10 @@
 There is a very interesting six-part series of articles (I_, II_,
 III_, IV_, V_, VI_) at `A Collection of Unmitigated Pedantry`_ that
 analyzes the Siege of Gondor in the Peter Jackson film and in the
-Tolkien book.  As is not surprising, the sequence in the Peter Jackson
-film makes compromises with the story to better suit film, while the
-sequence in the book is better grounded in the reality of historical
-sieges. 
+Tolkien book, including logistics, operations, and cavalry mechanics.
+As is not surprising, the sequence in the Peter Jackson film makes
+compromises with the story to better suit film, while the sequence in
+the book is better grounded in the reality of historical battles.
 
 .. _I: https://acoup.blog/2019/05/10/collections-the-siege-of-gondor/
 .. _II: https://acoup.blog/2019/05/17/collections-the-siege-of-gondor-part-ii-these-beacons-are-liiiiiiit/
