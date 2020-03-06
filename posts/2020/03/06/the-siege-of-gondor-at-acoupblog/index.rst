@@ -16,7 +16,7 @@ surprising, the sequence in the Peter Jackson film makes compromises
 with the story to better suit film, while the sequence in the book is
 better grounded in the reality of historical battles.
 
-There is also a review of the Gondor Heavy Infantry kit_, which
+There is also a review of the Gondor Heavy Infantry Kit_, which
 depends on the discussion of armor in the Lannister_ Infantry Kit
 review.
 
@@ -27,4 +27,5 @@ review.
 .. _V: https://acoup.blog/2019/06/07/collections-the-siege-of-gondor-part-v-just-flailing-about-flails/
 .. _VI: https://acoup.blog/2019/06/14/collections-the-siege-of-gondor-part-vi-black-sails-and-gleaming-banners/
 .. _`A Collection of Unmitigated Pedantry`: https://acoup.blog/
-.. _kit: https://acoup.blog/2020/01/10/collections-gondor-heavy-infantry-kit-review/
+.. _Kit: https://acoup.blog/2020/01/10/collections-gondor-heavy-infantry-kit-review/
+.. _Lannister: https://acoup.blog/2019/05/12/new-acquisitions-lannister-infantry-kit-review/
