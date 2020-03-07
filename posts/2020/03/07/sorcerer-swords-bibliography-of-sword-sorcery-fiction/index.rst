@@ -170,7 +170,8 @@ stories or books):
 
 * `M. John Harrison`_ — `The Pastel City` ✓ and `Viriconium Nights` ✓
   (TKB adds: the whole Viriconium series was republished in one
-  volume, Viriconium_, though the last two books are somewhat weird.)
+  volume, Viriconium_ ✓, and although the last two books are somewhat
+  weird the first two are definitely Swords & Sorcery)
 
   .. _`M. John Harrison`: https://en.wikipedia.org/wiki/M._John_Harrison
   .. _Viriconium: https://www.amazon.com/gp/product/0553383159/
