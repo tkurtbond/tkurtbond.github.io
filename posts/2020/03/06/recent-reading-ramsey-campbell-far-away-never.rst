@@ -20,9 +20,9 @@ Sword & Sorcery books it discussed.  Here is the first one I finished:
   Hub of the Garden” had a flavor of its own, and “The Ways of Chaos”
   made me want to read `Ghor, Kin-Slayer: The Saga of Genseric's
   Fifth-Born Son` (1_, 2_).  Robert E. Howard left an unfinished story
-  and many decades after his death other 16 top fantasy authors
-  completed it by writing sections in turn, each starting where the
-  previous author had left off.
+  and many decades after his death 16 top fantasy authors completed it
+  by writing sections in turn, each starting where the previous author
+  had left off.
 
 
 .. _`Flame and Crimson`: link://slug/recent-reading-flame-and-crimson
