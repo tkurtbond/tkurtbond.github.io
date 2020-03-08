@@ -93,6 +93,9 @@ breaks it down into several eras:
 
 * Betrayal: somewhere in the late 70s and beyond
 
+  (This is Edwards' name for the era; these authors are ones he
+  considered as still writing good Swords & Sorcery.)
+
   + `Jessica Amanda Salmonson`_ — `Tomoe Gozen` ✓, `The Golden
     Naginata` ✓, `Thousandshrine Warrior` ✓ (TG_); (editor) `Heroic
     Visions`, vols. 1–2; `Amazons`, vols. 1–2
