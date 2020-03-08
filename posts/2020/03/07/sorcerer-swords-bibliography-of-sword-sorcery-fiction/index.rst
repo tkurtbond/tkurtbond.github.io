@@ -1,4 +1,4 @@
-.. title: Sorcerer & Sword's bibliography of Sword & Sorcery fiction
+.. title: Sorcerer & Sword's bibliography of Swords & Sorcery fiction
 .. slug: sorcerer-swords-bibliography-of-sword-sorcery-fiction
 .. date: 2020-03-07 00:10:06 UTC-05:00
 .. tags: fiction,swords & sorcery,sorcerer & sword,rpg,heroic fantasy
