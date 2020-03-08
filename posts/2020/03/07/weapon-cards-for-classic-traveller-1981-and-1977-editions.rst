@@ -9,7 +9,7 @@
 
 Chris Kubasik of `Tales to Astound`_ has two sets of Weapon Cards for
 Classic Traveller (for the 1981_ and 1977_ editions) that simplifies
-Classic Traveller combat by consolidating the the information needed
+Classic Traveller combat by consolidating the information needed
 for each weapon.
 
 There is also a page_ with a PDF of pre-generated characters and a
