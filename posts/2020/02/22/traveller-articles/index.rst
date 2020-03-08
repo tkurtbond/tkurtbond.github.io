@@ -1,21 +1,21 @@
-.. title: Traveller
-.. slug: traveller
+.. title: Traveller Articles
+.. slug: traveller-articles
 .. date: 2020-02-22 21:56:04 UTC-05:00
-.. tags: rpg,traveller
+.. tags: rpg,traveller,classic traveller
 .. category: gaming
 .. link: 
 .. description: 
 .. type: text
 
 
-An interesting article_ (or at the `Internet Archive`_) on Traveller_,
-linked here for later reference.
+There is an interesting article_ (or at the `Internet Archive`_) on
+Traveller_, linked here for later reference.
 
-Christopher Kubasik's `Traveller Out of the Box`_ and the rpg.net
-thread (R1_) that talks about it, and the `Citizens of the Imperium`
-thread (C1_), and a Classic Traveller thread (P1_).
+Christopher Kubasik's `Traveller Out of the Box`_ series and the
+rpg.net thread (R1_) that talks about it, and the `Citizens of the
+Imperium` thread (C1_), and a Classic Traveller thread (P1_).
 
-And Robert Conley's `Classic Traveller Character Generator`_.
+And there is Robert Conley's `Classic Traveller Character Generator`_.
 
 And another article at Tor.com_.
 
