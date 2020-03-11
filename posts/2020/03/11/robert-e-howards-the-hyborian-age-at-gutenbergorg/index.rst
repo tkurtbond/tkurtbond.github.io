@@ -1,8 +1,8 @@
 .. title: Robert E. Howard's The Hyborian Age at Gutenberg.org
 .. slug: robert-e-howards-the-hyborian-age-at-gutenbergorg
 .. date: 2020-03-11 17:28:58 UTC-04:00
-.. tags: fiction,robert e. howard,hyborian age,
-.. category: 
+.. tags: fiction,robert e. howard,hyborian age
+.. category: books
 .. link: 
 .. description: 
 .. type: text
