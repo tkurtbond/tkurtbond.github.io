@@ -48,8 +48,9 @@ available in several HTML pages, a single HTML page, and a PDF file
 output.) (These too are not available any more.)
 
 Finally, in November 2019 I converted the document to DocBook 5.  The
-results are available as a `HTML file </partyhist.html>`_ and a `PDF
-File </partyhist.pdf>`_.
+results are available as a `HTML file </partyhist/whole.html>`_,
+`chunked HTML files </partyhist/index.html>`_, and a `PDF
+File </partyhist/partyhist.pdf>`_.
 
 After the fact, one of the players, N.A.B., named the adventuring
 party “The Sons of the Vale”, after the Vale of Morin, the valley
