@@ -2,7 +2,7 @@
 .. slug: john-d-rateliffs-brief-history-of-tolkien-rpgs
 .. date: 2020-03-11 13:25:29 UTC-04:00
 .. tags: rpg,j.r.r. tolkien,d&d,john d. rateliff,tolkien rpgs
-.. category: 
+.. category: gaming
 .. link: 
 .. description: 
 .. type: text
