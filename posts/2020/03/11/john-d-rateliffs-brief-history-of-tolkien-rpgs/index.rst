@@ -8,7 +8,9 @@
 .. type: text
 
 The Internet provides: `John D. Rateliff's`_ “Brief History of Tolkien
-RPGS” (`Part 1`_, `Part 2`_, `Part 3`_), linked here for reference.
+RPGS” (Video_, Commentary_ on the video, and the essay in four parts:
+`Part 1`_, `Part 2`_, `Part 3`_, `Part 4`_), linked here for
+reference.
 
 Part 1 ends with:
 
@@ -28,6 +30,9 @@ Part 1 ends with:
 I'd never heard of this origin for pig-faced orcs!
 
 .. _`John D. Rateliff's`:
+.. _Video: http://www.youtube.com/watch?v=VnzZhCDU_Ew
+.. _Commentary: http://sacnoths.blogspot.com/2012/07/brief-sad-history-revisited.html
 .. _`Part 1`: http://sacnoths.blogspot.com/2008/11/brief-history-of-tolkien-rpgs.html
 .. _`Part 2`: http://sacnoths.blogspot.com/2008/11/brief-history-of-tolkien-rpgs-part-two.html
 .. _`Part 3`: http://sacnoths.blogspot.com/2008/11/brief-history-of-tolkien-rpgs-part.html
+.. _`Part 4`: http://sacnoths.blogspot.com/2008/11/brief-history-of-tolkien-rpgs-part-four.html

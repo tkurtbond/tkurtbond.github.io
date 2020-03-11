@@ -56,7 +56,46 @@
                 
 
 <div class="postindex">
-    <article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2020/02/24/shannon-appelclines-brief-history-of-roleplaying/" class="u-url">Shannon Appelcline's Brief History of Roleplaying</a></h2>
+    <article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2020/02/24/foreign-file-systems-on-macos-fail/" class="u-url">Foreign File Systems on macOS: Fail!</a></h2>
+        <div class="metadata blog-post-meta">
+            <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
+            <p class="dateline"><a href="posts/2020/02/24/foreign-file-systems-on-macos-fail/" rel="bookmark"><time class="published dt-published" datetime="2020-02-24T17:40:34-05:00" title="2020-02-24 17:40">2020-02-24 17:40</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <div>
+<p>Back sometime in March 2018 I installed <a class="reference external" href="https://www.tuxera.com/">Tuxera</a> <a class="reference external" href="https://www.tuxera.com/products/tuxera-ntfs-for-mac/">NTFS for Mac</a>.  It was
+the first NTFS for Mac that I found.  I used it casually for a while
+and it seemed ok.</p>
+<p>Sometime later, probably in October 2019, I decided I needed to move
+110 GB of files off my Macbook Pro laptop's internal drive and onto a
+external drive.  I also wanted to access this drive from Linux, and
+thought I'd just use a NTFS-formatted drive so it would be readable
+there.</p>
+<p>I copied the files over using rsync and there seemed to be no
+problems, until I (in a fit of paranoia) ran the Unix cmp command on
+all the files on the original disk and the matching files on the
+NTFS-formatted drive.  There were lots of differences. Uh oh.</p>
+<p>I didn't see anything on the Internet complaining about this.</p>
+<p>So, sometime in October 2019 in I installed <a class="reference external" href="https://www.paragon-drivers.com/">Paragon Software</a>
+<a class="reference external" href="https://www.paragon-drivers.com/en/extfsmac/">extFS for Mac</a>. (I see now that they have a <a class="reference external" href="https://www.paragon-drivers.com/en/ntfsmac/">NTFS for Mac</a>; I
+haven't tried it.)</p>
+<p>I wanted to try the same thing and see if it worked more reliably with
+extFS.  I originally wrote short shell scripts for this, for
+consistency, so I could just change the volume name and run them
+again.  Again there were lots of differences.  Uh oh.</p>
+<p>Again, I didn't see anything on the Internet complaining about this.</p>
+<p>All I was doing was running <code class="docutils literal">rsync <span class="pre">-avz</span></code> with the appropriate
+directories; it should have worked.</p>
+<p>I formatted the drive to Mac OS Extended (Journaled) and recopied the
+files, and this time they all compared ok.</p>
+<p>I decided to just use <a class="reference external" href="https://www.cis.upenn.edu/~bcpierce/unison/">Unison</a> to sync the files to a couple of my
+computers for backup and local use instead of connecting the external
+drive to each computer in turn.  This is working ok for me.</p>
+<p>Maybe this was user error on my part, but it happened consistently
+with both of these file systems.</p>
+</div>
+    </div>
+    </article><article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2020/02/24/shannon-appelclines-brief-history-of-roleplaying/" class="u-url">Shannon Appelcline's Brief History of Roleplaying</a></h2>
         <div class="metadata blog-post-meta">
             <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
             <p class="dateline"><a href="posts/2020/02/24/shannon-appelclines-brief-history-of-roleplaying/" rel="bookmark"><time class="published dt-published" datetime="2020-02-24T14:55:34-05:00" title="2020-02-24 14:55">2020-02-24 14:55</time></a></p>
