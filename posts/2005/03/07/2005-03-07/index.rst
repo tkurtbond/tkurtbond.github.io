@@ -9,7 +9,7 @@
 
 
 + *The Sorcerer's Skull*, by David Mason, copyright 1970; Lancer
-  Books.  I liked this one, another from Swords & Sorcery's reading list,
+  Books.  I liked this one, another from `Sorcery & Sword`\ 's reading list,
   better than the Kothar__ book I read.
 
 __ link://slug/2005-02-21-recent-reading-and-viewing#kothar

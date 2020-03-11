@@ -1,7 +1,7 @@
 .. title: Recent Reading: Flame and Crimson
 .. slug: recent-reading-flame-and-crimson
 .. date: 2020-03-01 20:22:37 UTC-05:00
-.. tags: recent reading,swords & sorcery,fantasy
+.. tags: recent reading,sword & sorcery,fantasy
 .. category: books/read/2020/03
 .. link: 
 .. description: 

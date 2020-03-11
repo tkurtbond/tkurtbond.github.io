@@ -82,7 +82,7 @@ Recent Reading
 
 + *Kothar and the Wizard Slayer*, by Gardner F. Fox; Unibook/Modern
   Promotions, 1970.  I picked this up because of Ron Edwards' mention of
-  Fox's swords and sorcery books in *Sorcerer and Sword*; I might read
+  Fox's Sword & Sorcery books in *Sorcerer and Sword*; I might read
   another of Fox's books if I ran across it, but I wouldn't search them
   out.
 

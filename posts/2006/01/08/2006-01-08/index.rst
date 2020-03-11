@@ -15,6 +15,6 @@
   explorer and leader of the Central Asiatic Expeditions of 1922 to
   1930.
 + `East of Midnight`, by Tanith Lee, copyright 1977; St. Martin's
-  Press, 1978.  An early swords and sorcery Lee.
+  Press, 1978.  An early Sword & Sorcery novel by Lee.
 + `Subterranean`, by James Rollins, copyright 1999 by Jim Czajkowski;
   Avon Books, Inc, June 1999.

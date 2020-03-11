@@ -17,7 +17,7 @@
   “Atlantean Genesis” by Patrice Louinet, included in the book, argues
   on p. 288 that with the three Kull tales that were published during
   Howard's life, Howard had invented a new literary subgenre: “Heroic
-  Fantasy”, “Epic Fantasy”, or “Swords and Sorcery” by modernizing
+  Fantasy”, “Epic Fantasy”, or “Sword & Sorcery” by modernizing
   fantasy through eliminating “…the chivalrous aspects, the flowery language,
   and stilted personalities, writing violent tales in a realistic
   style…” and that seems reasonable.
