@@ -1,7 +1,7 @@
-.. title: Sorcerer & Sword's bibliography of Swords & Sorcery fiction
+.. title: Sorcerer & Sword's bibliography of Sword & Sorcery fiction
 .. slug: sorcerer-swords-bibliography-of-sword-sorcery-fiction
 .. date: 2020-03-07 00:10:06 UTC-05:00
-.. tags: fiction,swords & sorcery,sorcerer & sword,rpg,heroic fantasy
+.. tags: fiction,sword & sorcery,sorcerer & sword,rpg,heroic fantasy
 .. category: books
 .. link: 
 .. description: 
@@ -94,7 +94,7 @@ breaks it down into several eras:
 * Betrayal: somewhere in the late 70s and beyond
 
   (This is Edwards' name for the era; these authors are ones he
-  considered as still writing good Swords & Sorcery.)
+  considered as still writing good Sword & Sorcery.)
 
   + `Jessica Amanda Salmonson`_ — `Tomoe Gozen` ✓, `The Golden
     Naginata` ✓, `Thousandshrine Warrior` ✓ (TG_); (editor) `Heroic
@@ -174,7 +174,7 @@ stories or books):
 * `M. John Harrison`_ — `The Pastel City` ✓ and `Viriconium Nights` ✓
   (TKB adds: the whole Viriconium series was republished in one
   volume, Viriconium_ ✓, and although the last two books are somewhat
-  weird the first two are definitely Swords & Sorcery)
+  weird the first two are definitely Sword & Sorcery)
 
   .. _`M. John Harrison`: https://en.wikipedia.org/wiki/M._John_Harrison
   .. _Viriconium: https://www.amazon.com/gp/product/0553383159/

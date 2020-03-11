@@ -1,7 +1,7 @@
 .. title: Recent Reading: Ramsey Campbell - Far Away & Never
 .. slug: recent-reading-ramsey-campbell-far-away-never
 .. date: 2020-03-06 22:31:38 UTC-05:00
-.. tags: ramsey campbell,swords & sorcery,fantasy
+.. tags: ramsey campbell,sword & sorcery,fantasy
 .. category: books
 .. link: 
 .. description: 

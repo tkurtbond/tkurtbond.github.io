@@ -10,7 +10,7 @@
 
 + *Bloodstone*, by Karl Edward Wagner; Warner Books, March 1975.  I
   reread Karl Edward Wagner's *Kane* books every so often.  They are
-  wonderful examples of swords and sorcery fiction, filled with blood,
+  wonderful examples of Sword & Sorcery fiction, filled with blood,
   sweat, strange magic, intrigue, foul rituals, and things from outside
   space.  *Bloodstone* is probably my least favorite of the *Kane*
   novels, but it's still very good.

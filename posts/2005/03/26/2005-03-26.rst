@@ -1,7 +1,7 @@
 .. title: Recent Viewing and Reading
 .. slug: 2005-03-26
 .. date: 2005-03-26 00:00:00 UTC-05:00
-.. tags: old blog,recent viewing,recent reading
+.. tags: old blog,recent viewing,recent reading,sword & sorcery
 .. category: oldblog
 .. link: 
 .. description: 
@@ -45,5 +45,5 @@ Recent Reading
   1984; Ace, March 1984. The third (and last) *Tomoe Gozen* book.  The
   *Tomoe Gozen* books were recommended in the *Sorcerer & Sword* RPG
   supplement's reading list and are definitely worth reading for those
-  interested in fantasy inspired by Japan or Swords & Sorcery fiction
+  interested in fantasy inspired by Japan or Sword & Sorcery fiction
   in general.

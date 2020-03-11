@@ -17,17 +17,17 @@ Recent Reading
   or that happens to them. Enjoyable in an abstract way, for someone
   interested in Swords & Sorcery fiction.
 
-Swords & Sorcery Roleplaying
+Sword & Sorcery Roleplaying
 ----------------------------
 
 I read *Witherwing* because, like Gardener F. Fox's Kothar__, it was in the
-reading list of Swords & Sorcery books in the *Sorcerer & Sword*
+reading list of Sword & Sorcery books in the *Sorcerer & Sword*
 supplement for the *Sorcerer* roleplaying game, both which were
 written by Ron Edwards. It was listed as one of the references for the
 “Mutant-Future” example setting. *Sorcerer & Sword* (as is typical
-of *Sorcerer* and its supplments) approaches Swords & Sorcery very
+of *Sorcerer* and its supplments) approaches Sword & Sorcery very
 differently from most roleplaying games: it concentrates on the
-original Swords & Sorcery authors (for instance, it considers only
+original Sword & Sorcery authors (for instance, it considers only
 those *Conan* stories actually written by Robert E. Howard, which by
 now is probably the smaller part of the *Conan* series), includes RPG
 mechanics only for things that can't be handled by concepts from other
@@ -40,7 +40,7 @@ there are examples of starting with a minimal setting and creating the
 details during play.
 
 In any case, I thoroughly recommend *Sorcerer & Sword* for anyone who
-is playing grim, intense, Swords & Sorcery-based roleplaying games.
+is playing grim, intense, Sword & Sorcery-based roleplaying games.
 
 And as source material for “Mutant-Future” games, *Witherwing* is
 full of ideas.

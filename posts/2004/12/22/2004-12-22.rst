@@ -10,7 +10,7 @@
 
 + *Raven Swordsmistress of Chaos*, by Richard Kirk, copyright 1978;
   Ace Fantasy/The Berkley Publishing Group, 1987.  A fair example of the
-  later generation Swords and Sorcery fiction.
+  later generation Sword & Sorcery fiction.
 + *A Wizard of Earthsea*, by Ursula K. Le Guin, text copyright 1968;
   illustrated by Ruth Robbins, illustrations copyright 1968; originally
   published by Parnassus Press, 1968; Bantam Books, Inc, August 1975,
