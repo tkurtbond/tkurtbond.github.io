@@ -9,7 +9,10 @@
 
 
 
-From the `AD&D Dungeon Masters Guide`, by Gary Gygax.
+From the `AD&D Dungeon Masters Guide`__ (1979), by `Gary Gygax`__.
+
+__ https://en.wikipedia.org/wiki/Dungeon_Master%27s_Guide
+__ https://en.wikipedia.org/wiki/Gary_Gygax
 
 APPENDIX N: INSPIRATIONAL AND EDUCATIONAL READING
 =================================================
