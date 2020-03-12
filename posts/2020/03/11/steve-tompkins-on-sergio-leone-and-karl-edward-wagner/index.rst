@@ -7,11 +7,12 @@
 .. description: 
 .. type: text
   
-Over at `The Best of the CIMMERIAN`_ Steve Tompkins had a series of
+Over at `The Best of the CIMMERIAN`_ `Steve Tompkins`_ had a series of
 articles in 2008 about Sergio Leone and Karl Edward Wagner: `Part 1`_,
 `Part 2`_, and `Part 3`_.
 
 .. _`The Best of the CIMMERIAN`: http://www.leogrin.com/CimmerianBlog/
+.. _`Steve Tompkins`: https://dmrbooks.com/test-blog/2019/3/23/steve-tompkins-ten-years-gone
 .. _`Part 1`: http://leogrin.com/CimmerianBlog/something-to-do-with-deathlessness-part-one-violence-reigns/
 .. _`Part 2`: http://leogrin.com/CimmerianBlog/something-to-do-with-deathlessness-part-two-eyes-we-dare-not-meet-in-dreams/
 .. _`Part 3`: http://leogrin.com/CimmerianBlog/something-to-do-with-deathlessness-part-three-splintered-shards-of-times-reflection/
