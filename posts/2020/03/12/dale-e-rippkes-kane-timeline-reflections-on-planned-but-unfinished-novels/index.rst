@@ -13,7 +13,7 @@ timeline, `Lord of Chaos`_, of Kane's adventures.
 .. _`The Darkstorm Files`: http://thedarkstormfiles.blogspot.com/
 .. _`Lord of Chaos`: http://thedarkstormfiles.blogspot.com/2011/12/lord-of-chaos.html
 
-He also has a interesting article, `Reflections of a Midnight Sun`_ on
+He also has a interesting article, `Reflections of a Midnight Sun`_, on
 the planned but unfinished Kane novels.
 
 .. _`Reflections of a Midnight Sun`: http://thedarkstormfiles.blogspot.com/2011/12/reflections-of-midnight-sun-by-dale.html
