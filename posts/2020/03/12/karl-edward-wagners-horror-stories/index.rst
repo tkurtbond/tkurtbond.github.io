@@ -11,14 +11,15 @@ I primarily know `Karl Edward Wagner`_\ 's work from his “heroic
 fantasy” [#hf]_ novels and stories of Kane_ which I picked up in
 paperback in the mid 1980s, but he was equally talented as a writer
 and editor of horror.  I *have* read his British Fantasy Award-winning
-story “Sticks” and it had a considerable effect on me, but I don't
+story `Sticks`_ and it had a considerable effect on me, but I don't
 remember every reading any of his other horror stories.  The ISFDB_
 has what seems a very complete page_ listing his writings.
 
-.. _ISFDB: http://www.isfdb.org/
-.. _page: http://www.isfdb.org/cgi-bin/ea.cgi?153
 .. _`Karl Edward Wagner`: https://en.wikipedia.org/wiki/Karl_Edward_Wagner
 .. _Kane: https://en.wikipedia.org/wiki/Karl_Edward_Wagner#Kane,_the_Mystic_Swordsman
+.. _`Sticks`: https://web.archive.org/web/20110708122112/http://www.thecimmerian.com/the-terror-of-the-absurd-karl-edward-wagners-sticks/
+.. _ISFDB: http://www.isfdb.org/
+.. _page: http://www.isfdb.org/cgi-bin/ea.cgi?153
 
 I aim to fix that.  I've now got copies of the `Centipede Press`_
 collections `Where the Summer Ends`_ (2012) and `Walk on the Wild
