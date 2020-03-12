@@ -3,26 +3,26 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Steve Tompkins on Sergio Leone and Karl Edward Wagner | Lacking Natural Simplicity</title>
+<title>pandoc-discuss post: Can the .RS/.RE macros in ms output be replaced with .QS/.QE? | Lacking Natural Simplicity</title>
 <link href="../../../../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
 <link rel="alternate" type="application/rss+xml" title="RSS" href="../../../../../rss.xml">
-<link rel="canonical" href="https://tkurtbond.github.io/posts/2020/03/11/steve-tompkins-on-sergio-leone-and-karl-edward-wagner/">
+<link rel="canonical" href="https://tkurtbond.github.io/posts/2020/03/11/pandoc-discuss-post-can-the-rsre-macros-in-ms-output-be-replaced-with-qsqe/">
 <!--[if lt IE 9]><script src="../../../../../assets/js/html5.js"></script><![endif]--><meta name="author" content="T. Kurt Bond">
-<link rel="prev" href="../robert-e-howards-the-hyborian-age-at-gutenbergorg/" title="Robert E. Howard's The Hyborian Age at Gutenberg.org" type="text/html">
-<link rel="next" href="../pandoc-discuss-post-can-the-rsre-macros-in-ms-output-be-replaced-with-qsqe/" title="pandoc-discuss post: Can the .RS/.RE macros in ms output be replaced with .QS/.QE?" type="text/html">
+<link rel="prev" href="../steve-tompkins-on-sergio-leone-and-karl-edward-wagner/" title="Steve Tompkins on Sergio Leone and Karl Edward Wagner" type="text/html">
 <meta property="og:site_name" content="Lacking Natural Simplicity">
-<meta property="og:title" content="Steve Tompkins on Sergio Leone and Karl Edward Wagner">
-<meta property="og:url" content="https://tkurtbond.github.io/posts/2020/03/11/steve-tompkins-on-sergio-leone-and-karl-edward-wagner/">
-<meta property="og:description" content="Over at The Best of the CIMMERIAN Steve Tompkins had a series of
-articles in 2008 about Sergio Leone and Karl Edward Wagner: Part 1,
-Part 2, and Part 3.">
+<meta property="og:title" content="pandoc-discuss post: Can the .RS/.RE macros in ms output be replaced w">
+<meta property="og:url" content="https://tkurtbond.github.io/posts/2020/03/11/pandoc-discuss-post-can-the-rsre-macros-in-ms-output-be-replaced-with-qsqe/">
+<meta property="og:description" content="On March 9, 2020 I made a post on the pandoc-discuss mailing list
+that explains some changes to pandoc to better handle block quotes in
+ms output, and a workaround for it until the version with change">
 <meta property="og:type" content="article">
-<meta property="article:published_time" content="2020-03-11T18:37:40-04:00">
-<meta property="article:tag" content="fiction">
-<meta property="article:tag" content="karl edward wagner">
-<meta property="article:tag" content="movies">
-<meta property="article:tag" content="sergio leone">
-<meta property="article:tag" content="sword &amp; sorcery">
+<meta property="article:published_time" content="2020-03-11T20:35:47-04:00">
+<meta property="article:tag" content=".QS/.QE">
+<meta property="article:tag" content=".RS/.RE">
+<meta property="article:tag" content="block quotes">
+<meta property="article:tag" content="groff">
+<meta property="article:tag" content="ms macros">
+<meta property="article:tag" content="pandoc">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
@@ -68,11 +68,11 @@ Part 2, and Part 3.">
         <div class="row">
             <div class="col-sm-8 blog-main">
                 
-<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h2 class="p-name entry-title blog-post-title" itemprop="headline name"><a href="." class="u-url">Steve Tompkins on Sergio Leone and Karl Edward Wagner</a></h2>
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h2 class="p-name entry-title blog-post-title" itemprop="headline name"><a href="." class="u-url">pandoc-discuss post: Can the .RS/.RE macros in ms output be replaced with .QS/.QE?</a></h2>
 
         <div class="metadata blog-post-meta">
             <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
-            <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2020-03-11T18:37:40-04:00" itemprop="datePublished" title="2020-03-11 18:37">2020-03-11 18:37</time></a></p>
+            <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2020-03-11T20:35:47-04:00" itemprop="datePublished" title="2020-03-11 20:35">2020-03-11 20:35</time></a></p>
             
         <p class="sourceline"><a href="index.rst" id="sourcelink">Source</a></p>
 
@@ -80,23 +80,22 @@ Part 2, and Part 3.">
         
 
     </header><div class="e-content entry-content" itemprop="articleBody text">
-    <p>Over at <a class="reference external" href="http://www.leogrin.com/CimmerianBlog/">The Best of the CIMMERIAN</a> <a class="reference external" href="https://dmrbooks.com/test-blog/2019/3/23/steve-tompkins-ten-years-gone">Steve Tompkins</a> had a series of
-articles in 2008 about Sergio Leone and Karl Edward Wagner: <a class="reference external" href="http://leogrin.com/CimmerianBlog/something-to-do-with-deathlessness-part-one-violence-reigns/">Part 1</a>,
-<a class="reference external" href="http://leogrin.com/CimmerianBlog/something-to-do-with-deathlessness-part-two-eyes-we-dare-not-meet-in-dreams/">Part 2</a>, and <a class="reference external" href="http://leogrin.com/CimmerianBlog/something-to-do-with-deathlessness-part-three-splintered-shards-of-times-reflection/">Part 3</a>.</p>
+    <p>On March 9, 2020 I made a <a class="reference external" href="https://groups.google.com/forum/#!topic/pandoc-discuss/zulmB6uujgc">post</a> on the pandoc-discuss mailing list
+that explains some changes to pandoc to better handle block quotes in
+ms output, and a workaround for it until the version with changes
+comes out, but I forgot to mention it here.</p>
     </div>
     <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
-<li><a class="tag p-category" href="../../../../../categories/fiction/" rel="tag">fiction</a></li>
-            <li><a class="tag p-category" href="../../../../../categories/karl-edward-wagner/" rel="tag">karl edward wagner</a></li>
-            <li><a class="tag p-category" href="../../../../../categories/movies/" rel="tag">movies</a></li>
-            <li><a class="tag p-category" href="../../../../../categories/sergio-leone/" rel="tag">sergio leone</a></li>
-            <li><a class="tag p-category" href="../../../../../categories/sword-sorcery/" rel="tag">sword &amp; sorcery</a></li>
+<li><a class="tag p-category" href="../../../../../categories/qsqe/" rel="tag">.QS/.QE</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/rsre/" rel="tag">.RS/.RE</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/block-quotes/" rel="tag">block quotes</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/groff/" rel="tag">groff</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/ms-macros/" rel="tag">ms macros</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/pandoc/" rel="tag">pandoc</a></li>
         </ul>
 <ul class="pager hidden-print">
 <li class="previous">
-                <a href="../robert-e-howards-the-hyborian-age-at-gutenbergorg/" rel="prev" title="Robert E. Howard's The Hyborian Age at Gutenberg.org">Previous post</a>
-            </li>
-            <li class="next">
-                <a href="../pandoc-discuss-post-can-the-rsre-macros-in-ms-output-be-replaced-with-qsqe/" rel="next" title="pandoc-discuss post: Can the .RS/.RE macros in ms output be replaced with .QS/.QE?">Next post</a>
+                <a href="../steve-tompkins-on-sergio-leone-and-karl-edward-wagner/" rel="prev" title="Steve Tompkins on Sergio Leone and Karl Edward Wagner">Previous post</a>
             </li>
         </ul></nav></aside></article>
 </div>
