@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity (Posts about mmk)</title><link>https://tkurtbond.github.io/</link><description></description><atom:link href="https://tkurtbond.github.io/categories/mmk.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2020 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Thu, 05 Mar 2020 23:07:20 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>VMS Code from the Past</title><link>https://tkurtbond.github.io/posts/2003/05/08/2003-05-08-vms-code-from-the-past/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;Listening to: Hawkwind, &lt;a class="reference external" href="http://www.freedb.org/freedb_search_fmt.php?cat=rock&amp;amp;id=d50ba50e"&gt;Chronicle of the Black Sword&lt;/a&gt;.&lt;/p&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity (Posts about mmk)</title><link>https://tkurtbond.github.io/</link><description></description><atom:link href="https://tkurtbond.github.io/categories/mmk.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2020 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Thu, 12 Mar 2020 00:17:30 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>VMS Code from the Past</title><link>https://tkurtbond.github.io/posts/2003/05/08/2003-05-08-vms-code-from-the-past/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;Listening to: Hawkwind, &lt;a class="reference external" href="http://www.freedb.org/freedb_search_fmt.php?cat=rock&amp;amp;id=d50ba50e"&gt;Chronicle of the Black Sword&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;I've been reading a lot of VMS BASIC &lt;a class="footnote-reference brackets" href="https://tkurtbond.github.io/posts/2003/05/08/2003-05-08-vms-code-from-the-past/#id3" id="id1"&gt;1&lt;/a&gt; source code from the early
 1990s &lt;a class="footnote-reference brackets" href="https://tkurtbond.github.io/posts/2003/05/08/2003-05-08-vms-code-from-the-past/#id4" id="id2"&gt;2&lt;/a&gt; recently, and the one lesson it has taught me is that
 refactoring source code is vital for maintainability.  Much of this
@@ -81,51 +81,51 @@ and is probably bad style.  However, are there any &lt;em&gt;practical&lt;/em&gt
 reasons why this wouldn't work safely?  Are there any
 conditions under which this hack would fail to work?&lt;/p&gt;
 &lt;p&gt;Here is an example program:&lt;/p&gt;
-&lt;pre class="code text"&gt;&lt;a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-1"&gt;&lt;/a&gt;program redim
-&lt;a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-2"&gt;&lt;/a&gt;    option type = explicit, constant type = integer, &amp;amp;
-&lt;a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-3"&gt;&lt;/a&gt;        size = integer long, size = real double
-&lt;a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-4"&gt;&lt;/a&gt;
-&lt;a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-5"&gt;&lt;/a&gt;    external sub redim_in_sub (string dim())
-&lt;a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-6"&gt;&lt;/a&gt;    external long function my_redim (string dim(), long)
-&lt;a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-7"&gt;&lt;/a&gt;
-&lt;a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-8"&gt;&lt;/a&gt;    declare long i, r
-&lt;a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-9"&gt;&lt;/a&gt;
-&lt;a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-10"&gt;&lt;/a&gt;    i = 10
-&lt;a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-11"&gt;&lt;/a&gt;    dim string vs(i) ! has to be a variable to make it an executable dim.
-&lt;a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-12"&gt;&lt;/a&gt;
-&lt;a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-13"&gt;&lt;/a&gt;    r = my_redim (vs(), 30)
-&lt;a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-14"&gt;&lt;/a&gt;    print "ubound(vs):"; ubound(vs)
-&lt;a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-15"&gt;&lt;/a&gt;    for i = lbound(vs) to ubound(vs) \ vs(i) = "vs 30-" + num1$(i) \ next i
-&lt;a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-16"&gt;&lt;/a&gt;    gosub print_vs
-&lt;a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-17"&gt;&lt;/a&gt;
-&lt;a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-18"&gt;&lt;/a&gt;    call redim_in_sub (vs())
-&lt;a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-19"&gt;&lt;/a&gt;    print "ubound(vs):"; ubound(vs)
-&lt;a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-20"&gt;&lt;/a&gt;    gosub print_Vs
-&lt;a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-21"&gt;&lt;/a&gt;
-&lt;a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-22"&gt;&lt;/a&gt;    exit program
-&lt;a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-23"&gt;&lt;/a&gt;
-&lt;a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-24"&gt;&lt;/a&gt;print_vs:
-&lt;a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-25"&gt;&lt;/a&gt;    for i = lbound(vs) to ubound(vs) \ print i; ": "; vs(i) \ next i
-&lt;a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-26"&gt;&lt;/a&gt;    return ! from print_vs
-&lt;a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-27"&gt;&lt;/a&gt;
-&lt;a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-28"&gt;&lt;/a&gt;end program ! redim
-&lt;a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-29"&gt;&lt;/a&gt;
-&lt;a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-30"&gt;&lt;/a&gt;function long my_redim (long s by value, long n)
-&lt;a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-31"&gt;&lt;/a&gt;    option type = explicit, constant type = integer, &amp;amp;
-&lt;a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-32"&gt;&lt;/a&gt;        size = integer long, size = real double
-&lt;a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-33"&gt;&lt;/a&gt;    declare long r
-&lt;a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-34"&gt;&lt;/a&gt;    external long function dbasic$rt_dim (long by value, long by value)
-&lt;a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-35"&gt;&lt;/a&gt;    r = dbasic$rt_dim (s, n)
-&lt;a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-36"&gt;&lt;/a&gt;end function r ! my_redim
-&lt;a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-37"&gt;&lt;/a&gt;
-&lt;a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-38"&gt;&lt;/a&gt;sub redim_in_sub (string s())
-&lt;a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-39"&gt;&lt;/a&gt;    option type = explicit, constant type = integer, &amp;amp;
-&lt;a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-40"&gt;&lt;/a&gt;        size = integer long, size = real double
-&lt;a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-41"&gt;&lt;/a&gt;    external sub set_strings (string dim(), string)
-&lt;a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-42"&gt;&lt;/a&gt;    declare long i
-&lt;a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-43"&gt;&lt;/a&gt;    call my_redim (s(), 40)
-&lt;a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-44"&gt;&lt;/a&gt;    for i = 0 to 40 \ s(i) = "redim in sub " + num1$(i) \ next i
-&lt;a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-45"&gt;&lt;/a&gt;end sub ! redim_in_sub
+&lt;pre class="code text"&gt;&lt;a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-1"&gt;&lt;/a&gt;program redim
+&lt;a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-2"&gt;&lt;/a&gt;    option type = explicit, constant type = integer, &amp;amp;
+&lt;a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-3"&gt;&lt;/a&gt;        size = integer long, size = real double
+&lt;a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-4"&gt;&lt;/a&gt;
+&lt;a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-5"&gt;&lt;/a&gt;    external sub redim_in_sub (string dim())
+&lt;a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-6"&gt;&lt;/a&gt;    external long function my_redim (string dim(), long)
+&lt;a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-7"&gt;&lt;/a&gt;
+&lt;a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-8"&gt;&lt;/a&gt;    declare long i, r
+&lt;a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-9"&gt;&lt;/a&gt;
+&lt;a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-10"&gt;&lt;/a&gt;    i = 10
+&lt;a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-11"&gt;&lt;/a&gt;    dim string vs(i) ! has to be a variable to make it an executable dim.
+&lt;a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-12"&gt;&lt;/a&gt;
+&lt;a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-13"&gt;&lt;/a&gt;    r = my_redim (vs(), 30)
+&lt;a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-14"&gt;&lt;/a&gt;    print "ubound(vs):"; ubound(vs)
+&lt;a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-15"&gt;&lt;/a&gt;    for i = lbound(vs) to ubound(vs) \ vs(i) = "vs 30-" + num1$(i) \ next i
+&lt;a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-16"&gt;&lt;/a&gt;    gosub print_vs
+&lt;a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-17"&gt;&lt;/a&gt;
+&lt;a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-18"&gt;&lt;/a&gt;    call redim_in_sub (vs())
+&lt;a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-19"&gt;&lt;/a&gt;    print "ubound(vs):"; ubound(vs)
+&lt;a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-20"&gt;&lt;/a&gt;    gosub print_Vs
+&lt;a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-21"&gt;&lt;/a&gt;
+&lt;a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-22"&gt;&lt;/a&gt;    exit program
+&lt;a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-23"&gt;&lt;/a&gt;
+&lt;a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-24"&gt;&lt;/a&gt;print_vs:
+&lt;a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-25"&gt;&lt;/a&gt;    for i = lbound(vs) to ubound(vs) \ print i; ": "; vs(i) \ next i
+&lt;a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-26"&gt;&lt;/a&gt;    return ! from print_vs
+&lt;a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-27"&gt;&lt;/a&gt;
+&lt;a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-28"&gt;&lt;/a&gt;end program ! redim
+&lt;a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-29"&gt;&lt;/a&gt;
+&lt;a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-30"&gt;&lt;/a&gt;function long my_redim (long s by value, long n)
+&lt;a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-31"&gt;&lt;/a&gt;    option type = explicit, constant type = integer, &amp;amp;
+&lt;a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-32"&gt;&lt;/a&gt;        size = integer long, size = real double
+&lt;a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-33"&gt;&lt;/a&gt;    declare long r
+&lt;a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-34"&gt;&lt;/a&gt;    external long function dbasic$rt_dim (long by value, long by value)
+&lt;a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-35"&gt;&lt;/a&gt;    r = dbasic$rt_dim (s, n)
+&lt;a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-36"&gt;&lt;/a&gt;end function r ! my_redim
+&lt;a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-37"&gt;&lt;/a&gt;
+&lt;a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-38"&gt;&lt;/a&gt;sub redim_in_sub (string s())
+&lt;a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-39"&gt;&lt;/a&gt;    option type = explicit, constant type = integer, &amp;amp;
+&lt;a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-40"&gt;&lt;/a&gt;        size = integer long, size = real double
+&lt;a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-41"&gt;&lt;/a&gt;    external sub set_strings (string dim(), string)
+&lt;a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-42"&gt;&lt;/a&gt;    declare long i
+&lt;a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-43"&gt;&lt;/a&gt;    call my_redim (s(), 40)
+&lt;a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-44"&gt;&lt;/a&gt;    for i = 0 to 40 \ s(i) = "redim in sub " + num1$(i) \ next i
+&lt;a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-45"&gt;&lt;/a&gt;end sub ! redim_in_sub
 &lt;/pre&gt;&lt;p&gt;(Interestingly, a slightly different approach was necessary using VAX
 BASIC V3.5 under VMS V5.5-2: using BY VALUE in function
 definition statements is not allowed by this version of VAX BASIC,

@@ -6,7 +6,7 @@
 .. link: 
 .. description: 
 .. type: text
-  
+
 Over at `The Best of the CIMMERIAN`_ `Steve Tompkins`_ had a series of
 articles in 2008 about Sergio Leone and Karl Edward Wagner: `Part 1`_,
 `Part 2`_, and `Part 3`_.

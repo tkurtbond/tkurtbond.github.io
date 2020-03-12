@@ -245,51 +245,51 @@ and is probably bad style.  However, are there any <em>practical</em>
 reasons why this wouldn't work safely?  Are there any
 conditions under which this hack would fail to work?</p>
 <p>Here is an example program:</p>
-<pre class="code text"><a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-1"></a>program redim
-<a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-2"></a>    option type = explicit, constant type = integer, &amp;
-<a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-3"></a>        size = integer long, size = real double
-<a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-4"></a>
-<a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-5"></a>    external sub redim_in_sub (string dim())
-<a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-6"></a>    external long function my_redim (string dim(), long)
-<a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-7"></a>
-<a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-8"></a>    declare long i, r
-<a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-9"></a>
-<a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-10"></a>    i = 10
-<a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-11"></a>    dim string vs(i) ! has to be a variable to make it an executable dim.
-<a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-12"></a>
-<a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-13"></a>    r = my_redim (vs(), 30)
-<a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-14"></a>    print "ubound(vs):"; ubound(vs)
-<a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-15"></a>    for i = lbound(vs) to ubound(vs) \ vs(i) = "vs 30-" + num1$(i) \ next i
-<a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-16"></a>    gosub print_vs
-<a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-17"></a>
-<a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-18"></a>    call redim_in_sub (vs())
-<a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-19"></a>    print "ubound(vs):"; ubound(vs)
-<a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-20"></a>    gosub print_Vs
-<a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-21"></a>
-<a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-22"></a>    exit program
-<a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-23"></a>
-<a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-24"></a>print_vs:
-<a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-25"></a>    for i = lbound(vs) to ubound(vs) \ print i; ": "; vs(i) \ next i
-<a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-26"></a>    return ! from print_vs
-<a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-27"></a>
-<a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-28"></a>end program ! redim
-<a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-29"></a>
-<a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-30"></a>function long my_redim (long s by value, long n)
-<a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-31"></a>    option type = explicit, constant type = integer, &amp;
-<a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-32"></a>        size = integer long, size = real double
-<a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-33"></a>    declare long r
-<a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-34"></a>    external long function dbasic$rt_dim (long by value, long by value)
-<a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-35"></a>    r = dbasic$rt_dim (s, n)
-<a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-36"></a>end function r ! my_redim
-<a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-37"></a>
-<a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-38"></a>sub redim_in_sub (string s())
-<a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-39"></a>    option type = explicit, constant type = integer, &amp;
-<a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-40"></a>        size = integer long, size = real double
-<a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-41"></a>    external sub set_strings (string dim(), string)
-<a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-42"></a>    declare long i
-<a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-43"></a>    call my_redim (s(), 40)
-<a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-44"></a>    for i = 0 to 40 \ s(i) = "redim in sub " + num1$(i) \ next i
-<a name="rest_code_6e4187c59bed4008a840c86f9f3b67c3-45"></a>end sub ! redim_in_sub
+<pre class="code text"><a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-1"></a>program redim
+<a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-2"></a>    option type = explicit, constant type = integer, &amp;
+<a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-3"></a>        size = integer long, size = real double
+<a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-4"></a>
+<a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-5"></a>    external sub redim_in_sub (string dim())
+<a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-6"></a>    external long function my_redim (string dim(), long)
+<a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-7"></a>
+<a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-8"></a>    declare long i, r
+<a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-9"></a>
+<a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-10"></a>    i = 10
+<a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-11"></a>    dim string vs(i) ! has to be a variable to make it an executable dim.
+<a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-12"></a>
+<a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-13"></a>    r = my_redim (vs(), 30)
+<a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-14"></a>    print "ubound(vs):"; ubound(vs)
+<a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-15"></a>    for i = lbound(vs) to ubound(vs) \ vs(i) = "vs 30-" + num1$(i) \ next i
+<a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-16"></a>    gosub print_vs
+<a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-17"></a>
+<a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-18"></a>    call redim_in_sub (vs())
+<a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-19"></a>    print "ubound(vs):"; ubound(vs)
+<a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-20"></a>    gosub print_Vs
+<a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-21"></a>
+<a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-22"></a>    exit program
+<a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-23"></a>
+<a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-24"></a>print_vs:
+<a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-25"></a>    for i = lbound(vs) to ubound(vs) \ print i; ": "; vs(i) \ next i
+<a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-26"></a>    return ! from print_vs
+<a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-27"></a>
+<a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-28"></a>end program ! redim
+<a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-29"></a>
+<a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-30"></a>function long my_redim (long s by value, long n)
+<a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-31"></a>    option type = explicit, constant type = integer, &amp;
+<a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-32"></a>        size = integer long, size = real double
+<a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-33"></a>    declare long r
+<a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-34"></a>    external long function dbasic$rt_dim (long by value, long by value)
+<a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-35"></a>    r = dbasic$rt_dim (s, n)
+<a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-36"></a>end function r ! my_redim
+<a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-37"></a>
+<a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-38"></a>sub redim_in_sub (string s())
+<a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-39"></a>    option type = explicit, constant type = integer, &amp;
+<a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-40"></a>        size = integer long, size = real double
+<a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-41"></a>    external sub set_strings (string dim(), string)
+<a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-42"></a>    declare long i
+<a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-43"></a>    call my_redim (s(), 40)
+<a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-44"></a>    for i = 0 to 40 \ s(i) = "redim in sub " + num1$(i) \ next i
+<a name="rest_code_71f62fb6ffad4e5abd98bfab31320052-45"></a>end sub ! redim_in_sub
 </pre>
 <p>(Interestingly, a slightly different approach was necessary using VAX
 BASIC V3.5 under VMS V5.5-2: using BY VALUE in function
