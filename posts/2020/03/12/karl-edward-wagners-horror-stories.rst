@@ -1,7 +1,7 @@
 .. title: Karl Edward Wagner's Horror Stories
 .. slug: karl-edward-wagners-horror-stories
 .. date: 2020-03-12 15:35:02 UTC-04:00
-.. tags: fiction,horror,karl edward wagner,kane,heroic fantasy,sword & sorcery
+.. tags: fiction,horror,karl edward wagner,kane,heroic fantasy,sword & sorcery,dark fantasy,epic fantasy
 .. category: books
 .. link: 
 .. description: 
@@ -29,4 +29,8 @@ Side`_ (2012) and I'll be reading them soon.
 .. _`Where the Summer Ends`: http://www.isfdb.org/cgi-bin/pl.cgi?372768
 .. _`Walk on the Wild Side`: http://www.isfdb.org/cgi-bin/pl.cgi?372769
 
-.. [#hf]  A term he vastly preferred to “Sword & Sorcery”.
+.. [#hf] A term he vastly preferred to “Sword & Sorcery”.  Or maybe he
+   preferred_ (note 1 at the bottom of the post) “epic fantasy” or
+   “dark fantasy”.
+
+.. _preferred: https://thesilverkey.blogspot.com/2019/10/remembering-karl-edward-wagner-1945-1994.html
