@@ -16,7 +16,7 @@ timeline, `Lord of Chaos`_, of Kane's adventures.
 He also has two interesting articles on the planned but unfinished
 Kane novels, `Reflections of a Midnight Sun`_ and `Phantasmal Tomes`_,
 and another interesting article on the Kane/Elric crossover,
-`Rethinking The Gothic Touch`_, a world gazetteer of Kane, `The Age of
+`Rethinking The Gothic Touch`_, and a world gazetteer of Kane, `The Age of
 Shattered Empires`_.
 
 .. _`Reflections of a Midnight Sun`: http://thedarkstormfiles.blogspot.com/2011/12/reflections-of-midnight-sun-by-dale.html
