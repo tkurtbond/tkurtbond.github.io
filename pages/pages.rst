@@ -10,12 +10,13 @@
 Static Pages on this Site
 =========================
 
-* `About the blog <link://slug/about-the-blog>`__
-* `Alusia Campaign <link://slug/alusia-campaign>`__
-* `Books, 2006–2007 <link://slug/books-2006-2007>`__
-* `Colophon <link://slug/colophon>`__
-* `Doris Piserchia <link://slug/doris-piserchia>`__
-* `DragonQuest <link://slug/dragonquest-and-i>`__
-* `Notes <link://slug/notes>`__
-* `RPGs played with the kids <link://slug/roleplaying-games-played-with-the-kids>`__
-* `RPG Vocabulary <link://slug/rpg-vocabulary>`__
+* `About the blog <link://slug/about-the-blog>`_
+* `Alusia Campaign <link://slug/alusia-campaign>`_
+* `Books, 2006–2007 <link://slug/books-2006-2007>`_
+* `Colophon <link://slug/colophon>`_
+* `D&D Dungeon Masters Guide, Appendix N <link://slug/dnd-dmg-appendix-n>`_
+* `Doris Piserchia <link://slug/doris-piserchia>`_
+* `DragonQuest <link://slug/dragonquest-and-i>`_
+* `Notes <link://slug/notes>`_
+* `RPGs played with the kids <link://slug/roleplaying-games-played-with-the-kids>`_
+* `RPG Vocabulary <link://slug/rpg-vocabulary>`_
