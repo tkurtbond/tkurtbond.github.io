@@ -23,3 +23,17 @@ Shattered Empires`_.
 .. _`Phantasmal Tomes`: http://thedarkstormfiles.blogspot.com/2011/12/phantasmal-tomes-by-dale-e.html
 .. _`Rethinking The Gothic Touch`: http://thedarkstormfiles.blogspot.com/2011/12/rethinking-gothic-touch.html
 .. _`The Age of Shattered Empires`: http://thedarkstormfiles.blogspot.com/2015/12/the-age-of-shattered-empires.html
+
+There is a map_ of Kane's world (pinterest tells me that site is
+banned because it “leads to spam”) which I gather was drawn after
+Dale E. Rippke's original, which I can find no trace of on the
+Internet.
+
+.. _map: http://1.bp.blogspot.com/-ID-4IjCaXow/U8x0X2HHe7I/AAAAAAAAByI/85ODFbkJSBg/s1600/Kane-Map.jpg
+
+And I stumbled over `From The Sorcerer's Skull`\ ‘s post `Gaming
+Kane`_ which gives some information about Kane in `Dragon Magazine`
+#26 (June 1979) as a D&D character.
+
+.. _`From The Sorcerer's Skull`: http://sorcerersskull.blogspot.com/
+.. _`Gaming Kane`: http://sorcerersskull.blogspot.com/2010/02/gaming-kane.html
