@@ -13,7 +13,9 @@ timeline, `Lord of Chaos`_, of Kane's adventures.
 .. _`The Darkstorm Files`: http://thedarkstormfiles.blogspot.com/
 .. _`Lord of Chaos`: http://thedarkstormfiles.blogspot.com/2011/12/lord-of-chaos.html
 
-He also has a interesting article, `Reflections of a Midnight Sun`_, on
-the planned but unfinished Kane novels.
+He also has two interesting articles on the planned but unfinished
+Kane novels, `Reflections of a Midnight Sun`_ and `Phantasmal Tomes`_, and another interesting article on the Kane/Elric crossover, `Rethinking The Gothic Touch`_.
 
 .. _`Reflections of a Midnight Sun`: http://thedarkstormfiles.blogspot.com/2011/12/reflections-of-midnight-sun-by-dale.html
+.. _`Phantasmal Tomes`: http://thedarkstormfiles.blogspot.com/2011/12/phantasmal-tomes-by-dale-e.html
+.. _`Rethinking The Gothic Touch`: http://thedarkstormfiles.blogspot.com/2011/12/rethinking-gothic-touch.html
