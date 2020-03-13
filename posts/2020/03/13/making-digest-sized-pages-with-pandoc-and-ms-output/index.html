@@ -101,9 +101,9 @@ options to the PDF engine that <span class="app">pandoc</span> is using.  In the
 <span class="app">ms</span> output the thing to do is pass the argument
 <code class="docutils literal"><span class="pre">--pdf-engine-opt=-P-p8.5i,5.5i</span></code> <a class="footnote-reference brackets" href="#recursively" id="id2">2</a>, like below.</p>
 <p><a class="reference external" href="../../../../../listings/GNUmakefile.pandoc-digest-pdf-engine-opt.html">GNUmakefile.pandoc-digest-pdf-engine-opt</a>  <a class="reference external" href="../../../../../listings/GNUmakefile.pandoc-digest-pdf-engine-opt">(Source)</a></p>
-<pre class="code make"><a name="rest_code_7f7abac03bdb48ca85803fd5c5b123a9-1"></a><span class="nf">%.digest.ms.pdf </span><span class="o">:</span> %.<span class="n">rst</span>
-<a name="rest_code_7f7abac03bdb48ca85803fd5c5b123a9-2"></a>        pandoc -s -r rst -w ms --template<span class="o">=</span>digest2 <span class="k">$(</span>VARIABLES<span class="k">)</span> <span class="se">\</span>
-<a name="rest_code_7f7abac03bdb48ca85803fd5c5b123a9-3"></a>                --output<span class="o">=</span><span class="nv">$@</span> --pdf-engine-opt<span class="o">=</span>-P-p8.5i,5.5i $&lt;
+<pre class="code make"><a name="rest_code_e4b30e745dc1436986cc2a992754adb0-1"></a><span class="nf">%.digest.ms.pdf </span><span class="o">:</span> %.<span class="n">rst</span>
+<a name="rest_code_e4b30e745dc1436986cc2a992754adb0-2"></a>        pandoc -s -r rst -w ms --template<span class="o">=</span>digest2 <span class="k">$(</span>VARIABLES<span class="k">)</span> <span class="se">\</span>
+<a name="rest_code_e4b30e745dc1436986cc2a992754adb0-3"></a>                --output<span class="o">=</span><span class="nv">$@</span> --pdf-engine-opt<span class="o">=</span>-P-p8.5i,5.5i $&lt;
 </pre>
 <p>Unfortunately when I originally had this need for digest pages I
 hadn't realized that the <code class="docutils literal"><span class="pre">--pdf-engine-opt=</span></code> option existed.</p>
@@ -113,21 +113,27 @@ hadn't realized that the <code class="docutils literal"><span class="pre">--pdf-
 command with the added <code class="docutils literal"><span class="pre">-P-p8.5i,5.5i</span></code> argument.  Here's what I put
 in my <span class="file">GNUmakefile</span>:</p>
 <p><a class="reference external" href="../../../../../listings/GNUmakefile.pandoc-digest-save-ms.html">GNUmakefile.pandoc-digest-save-ms</a>  <a class="reference external" href="../../../../../listings/GNUmakefile.pandoc-digest-save-ms">(Source)</a></p>
-<pre class="code make"><a name="rest_code_c69627617e9f43a48cbd5a44d306bb03-1"></a><span class="nf">%.digest.ms.pdf </span><span class="o">:</span> %.<span class="n">rst</span>
-<a name="rest_code_c69627617e9f43a48cbd5a44d306bb03-2"></a>        pandoc -s -r rst -w ms -s --template<span class="o">=</span>digest2 <span class="k">$(</span>VARIABLES<span class="k">)</span> <span class="se">\</span>
-<a name="rest_code_c69627617e9f43a48cbd5a44d306bb03-3"></a>               --output<span class="o">=</span><span class="nv">$*</span>.ms $&lt;
-<a name="rest_code_c69627617e9f43a48cbd5a44d306bb03-4"></a>        pdfroff -ms -mpdfmark -e -t -k -KUTF-8 --no-toc-relocation <span class="se">\</span>
-<a name="rest_code_c69627617e9f43a48cbd5a44d306bb03-5"></a>                -P-p8.5i,5.5i <span class="nv">$*</span>.ms &gt; <span class="nv">$@</span>
+<pre class="code make"><a name="rest_code_4f01399705854661adea60683beaa21c-1"></a><span class="nf">%.digest.ms.pdf </span><span class="o">:</span> %.<span class="n">rst</span>
+<a name="rest_code_4f01399705854661adea60683beaa21c-2"></a>        pandoc -s -r rst -w ms -s --template<span class="o">=</span>digest2 <span class="k">$(</span>VARIABLES<span class="k">)</span> <span class="se">\</span>
+<a name="rest_code_4f01399705854661adea60683beaa21c-3"></a>               --output<span class="o">=</span><span class="nv">$*</span>.ms $&lt;
+<a name="rest_code_4f01399705854661adea60683beaa21c-4"></a>        pdfroff -ms -mpdfmark -e -t -k -KUTF-8 --no-toc-relocation <span class="se">\</span>
+<a name="rest_code_4f01399705854661adea60683beaa21c-5"></a>                -P-p8.5i,5.5i <span class="nv">$*</span>.ms &gt; <span class="nv">$@</span>
 </pre>
 <p>Or, if you don't care about having the <span class="app">ms</span> output for debugging,
 you could do it as a pipeline:</p>
 <p><a class="reference external" href="../../../../../listings/GNUmakefile.pandoc-digest-pipeline.html">GNUmakefile.pandoc-digest-pipeline</a>  <a class="reference external" href="../../../../../listings/GNUmakefile.pandoc-digest-pipeline">(Source)</a></p>
-<pre class="code make"><a name="rest_code_2a009e7f8d104dc89ec29e32c0c5b0a1-1"></a><span class="nf">%.digest.ms.pdf </span><span class="o">:</span> %.<span class="n">rst</span>
-<a name="rest_code_2a009e7f8d104dc89ec29e32c0c5b0a1-2"></a>        pandoc -s -r rst -w ms -s --template<span class="o">=</span>digest2 <span class="k">$(</span>VARIABLES<span class="k">)</span> <span class="se">\</span>
-<a name="rest_code_2a009e7f8d104dc89ec29e32c0c5b0a1-3"></a>               --output<span class="o">=</span>- $&lt; <span class="p">|</span> <span class="se">\</span>
-<a name="rest_code_2a009e7f8d104dc89ec29e32c0c5b0a1-4"></a>        pdfroff -ms -mpdfmark -e -t -k -KUTF-8 --no-toc-relocation <span class="se">\</span>
-<a name="rest_code_2a009e7f8d104dc89ec29e32c0c5b0a1-5"></a>                -P-p8.5i,5.5i - &gt;<span class="nv">$@</span>
+<pre class="code make"><a name="rest_code_1cad50889e014aedac238e0ffc576925-1"></a><span class="nf">%.digest.ms.pdf </span><span class="o">:</span> %.<span class="n">rst</span>
+<a name="rest_code_1cad50889e014aedac238e0ffc576925-2"></a>        pandoc -s -r rst -w ms -s --template<span class="o">=</span>digest2 <span class="k">$(</span>VARIABLES<span class="k">)</span> <span class="se">\</span>
+<a name="rest_code_1cad50889e014aedac238e0ffc576925-3"></a>               --output<span class="o">=</span>- $&lt; <span class="p">|</span> <span class="se">\</span>
+<a name="rest_code_1cad50889e014aedac238e0ffc576925-4"></a>        pdfroff -ms -mpdfmark -e -t -k -KUTF-8 --no-toc-relocation <span class="se">\</span>
+<a name="rest_code_1cad50889e014aedac238e0ffc576925-5"></a>                -P-p8.5i,5.5i - &gt;<span class="nv">$@</span>
 </pre>
+<p>There are still some instances where this technique of having
+<span class="app">pandoc</span> output the <span class="app">ms</span> source directly and pass it through
+<span class="app">pdfroff</span> yourself.  For instance, if you have to do some
+massaging of the <span class="app">ms</span> source, like changing <code class="docutils literal"><span class="pre">.RS/.RE</span></code> to
+<code class="docutils literal"><span class="pre">.QS/.QE</span></code> to get around the problem with block quotes in <span class="app">ms</span>
+output in the current <span class="app">pandoc</span> release, discussed <a class="reference external" href="../../11/pandoc-discuss-post-can-the-rsre-macros-in-ms-output-be-replaced-with-qsqe/">here</a>.</p>
 <dl class="footnote brackets">
 <dt class="label" id="heirloomtroff"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
 <dd>

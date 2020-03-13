@@ -81,10 +81,19 @@ ms output, and a workaround for it until the version with change">
         
 
     </header><div class="e-content entry-content" itemprop="articleBody text">
-    <p>On March 9, 2020 I made a <a class="reference external" href="https://groups.google.com/forum/#!topic/pandoc-discuss/zulmB6uujgc">post</a> on the pandoc-discuss mailing list
+    <div>
+<p>On March 9, 2020 I made a <a class="reference external" href="https://groups.google.com/forum/#!topic/pandoc-discuss/zulmB6uujgc">post</a> on the pandoc-discuss mailing list
 that explains some changes to pandoc to better handle block quotes in
 ms output, and a workaround for it until the version with changes
 comes out, but I forgot to mention it here.</p>
+<p>In short, use a pipeline like this:</p>
+<p><a class="reference external" href="../../../../../listings/GNUmakefile.change-RS-RE-to-QS-QE.html">GNUmakefile.change-RS-RE-to-QS-QE</a>  <a class="reference external" href="../../../../../listings/GNUmakefile.change-RS-RE-to-QS-QE">(Source)</a></p>
+<pre class="code make"><a name="rest_code_0931f8211bed42ad950fe961f509fb36-1"></a><span class="nf">%.qs.ms.pdf </span><span class="o">:</span> %.<span class="n">rst</span>
+<a name="rest_code_0931f8211bed42ad950fe961f509fb36-2"></a>        pandoc --verbose -r rst -w ms <span class="k">$(</span>PANDOCOPTS<span class="k">)</span> <span class="se">\</span>
+<a name="rest_code_0931f8211bed42ad950fe961f509fb36-3"></a>                --output<span class="o">=</span>- $&lt; <span class="p">|</span> gsed -e <span class="s1">'s/^\.RS$$/.QS/'</span> -e <span class="s1">'s/^\.RE$$/.QE/'</span> <span class="p">|</span> <span class="se">\</span>
+<a name="rest_code_0931f8211bed42ad950fe961f509fb36-4"></a>        pdfroff -ms -mpdfmark -e -t -k -KUTF-8 -i --no-toc-relocation &gt;<span class="nv">$@</span>
+</pre>
+</div>
     </div>
     <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
 <li><a class="tag p-category" href="../../../../../categories/qsqe/" rel="tag">.QS/.QE</a></li>

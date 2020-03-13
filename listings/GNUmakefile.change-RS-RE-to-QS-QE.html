@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="description" content="listings">
+<meta name="description" content="GNUmakefile.change-RS-RE-to-QS-QE">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>listings | Lacking Natural Simplicity</title>
+<title>GNUmakefile.change-RS-RE-to-QS-QE | Lacking Natural Simplicity</title>
 <link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
 <link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
-<link rel="canonical" href="https://tkurtbond.github.io/listings/">
+<link rel="canonical" href="https://tkurtbond.github.io/listings/GNUmakefile.change-RS-RE-to-QS-QE.html">
 <!--[if lt IE 9]><script src="../assets/js/html5.js"></script><![endif]-->
 </head>
 <body>
@@ -28,6 +28,9 @@
                 
                 
                     
+    <li>
+    <a href="GNUmakefile.change-RS-RE-to-QS-QE" id="sourcelink">Source</a>
+    </li>
 
                 
             
@@ -57,35 +60,21 @@
 
 <nav class="breadcrumbs"><ul class="breadcrumb">
 <li><a href=".">listings</a></li>
-</ul></nav><ul>
-<li>
-<a href=".~"><i class="glyphicon glyphicon-folder-open"></i> .~</a>
-    </li>
-<li>
-<a href="drive-pyblox-to-nikola.html"><i class="glyphicon glyphicon-file"></i> drive-pyblox-to-nikola</a>
-    </li>
-<li>
-<a href="generate-schemas-xml.html"><i class="glyphicon glyphicon-file"></i> generate-schemas-xml</a>
-    </li>
-<li>
-<a href="GNUmakefile.change-RS-RE-to-QS-QE.html"><i class="glyphicon glyphicon-file"></i> GNUmakefile.change-RS-RE-to-QS-QE</a>
-    </li>
-<li>
-<a href="GNUmakefile.pandoc-digest-pdf-engine-opt.html"><i class="glyphicon glyphicon-file"></i> GNUmakefile.pandoc-digest-pdf-engine-opt</a>
-    </li>
-<li>
-<a href="GNUmakefile.pandoc-digest-pipeline.html"><i class="glyphicon glyphicon-file"></i> GNUmakefile.pandoc-digest-pipeline</a>
-    </li>
-<li>
-<a href="GNUmakefile.pandoc-digest-save-ms.html"><i class="glyphicon glyphicon-file"></i> GNUmakefile.pandoc-digest-save-ms</a>
-    </li>
-<li>
-<a href="pyblox-to-nikola.html"><i class="glyphicon glyphicon-file"></i> pyblox-to-nikola</a>
-    </li>
-<li>
-<a href="tryfedoraupdate.html"><i class="glyphicon glyphicon-file"></i> tryfedoraupdate</a>
-</li>
-</ul>
+                <li>GNUmakefile.change-RS-RE-to-QS-QE</li>
+</ul></nav><h1>GNUmakefile.change-RS-RE-to-QS-QE
+        <small><a href="GNUmakefile.change-RS-RE-to-QS-QE">(Source)</a></small>
+    </h1>
+    <table class="codetable"><tr>
+<td class="linenos"><div class="linenodiv"><pre><a href="#listingsgnumakefilechange-rs-re-to-qs-qe-1">1</a>
+<a href="#listingsgnumakefilechange-rs-re-to-qs-qe-2">2</a>
+<a href="#listingsgnumakefilechange-rs-re-to-qs-qe-3">3</a>
+<a href="#listingsgnumakefilechange-rs-re-to-qs-qe-4">4</a></pre></div></td>
+<td class="code"><pre class="code literal-block"><a name="listingsgnumakefilechange-rs-re-to-qs-qe-1"></a><span class="c">%.qs.ms.pdf : %.rst</span>
+<a name="listingsgnumakefilechange-rs-re-to-qs-qe-2"></a><span class="n">	pandoc </span><span class="s">--verbose -r rst -w ms $(PANDOCOPTS) \</span><span class="p"></span>
+<a name="listingsgnumakefilechange-rs-re-to-qs-qe-3"></a>		<span class="o">--</span><span class="n">output</span><span class="p">=</span><span class="o">-</span> $<span class="o">&lt;</span> <span class="o">|</span> <span class="n">gsed</span> <span class="o">-</span><span class="n">e</span> <span class="s">'s/^\.RS$$/.QS/'</span> <span class="o">-</span><span class="n">e</span> <span class="s">'s/^\.RE$$/.QE/'</span> <span class="o">|</span> <span class="o">\</span>
+<a name="listingsgnumakefilechange-rs-re-to-qs-qe-4"></a><span class="n">	pdfroff </span><span class="s">-ms -mpdfmark -e -t -k -KUTF-8 -i --no-toc-relocation &gt;$@</span><span class="p"></span>
+</pre></td>
+</tr></table>
 </div>
             <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
                     <div class="sidebar-module sidebar-module-inset">

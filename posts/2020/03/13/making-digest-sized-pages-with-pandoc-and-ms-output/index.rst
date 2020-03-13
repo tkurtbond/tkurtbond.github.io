@@ -47,6 +47,12 @@ you could do it as a pipeline:
 
 .. listing:: GNUmakefile.pandoc-digest-pipeline make
 
+There are still some instances where this technique of having
+:app:`pandoc` output the :app:`ms` source directly and pass it through
+:app:`pdfroff` yourself.  For instance, if you have to do some
+massaging of the :app:`ms` source, like changing ``.RS/.RE`` to
+``.QS/.QE`` to get around the problem with block quotes in :app:`ms`
+output in the current :app:`pandoc` release, discussed here_.
 
 .. [#heirloomtroff] Heirloom Troff (originally at H1_, but now *I
    think* more up to date at H2_ and H3_) has the ``.mediasize`` and
@@ -63,3 +69,4 @@ you could do it as a pipeline:
 .. _H1: http://heirloom.sourceforge.net/doctools.html
 .. _H2: http://n-t-roff.github.io/heirloom/doctools.html
 .. _H3: https://github.com/n-t-roff/heirloom-doctools
+.. _here: link://slug/pandoc-discuss-post-can-the-rsre-macros-in-ms-output-be-replaced-with-qsqe
