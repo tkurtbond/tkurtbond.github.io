@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="description" content="listings">
+<meta name="description" content="GNUmakefile.pandoc-digest-save-ms">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>listings | Lacking Natural Simplicity</title>
+<title>GNUmakefile.pandoc-digest-save-ms | Lacking Natural Simplicity</title>
 <link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
 <link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
-<link rel="canonical" href="https://tkurtbond.github.io/listings/">
+<link rel="canonical" href="https://tkurtbond.github.io/listings/GNUmakefile.pandoc-digest-save-ms.html">
 <!--[if lt IE 9]><script src="../assets/js/html5.js"></script><![endif]-->
 </head>
 <body>
@@ -28,6 +28,9 @@
                 
                 
                     
+    <li>
+    <a href="GNUmakefile.pandoc-digest-save-ms" id="sourcelink">Source</a>
+    </li>
 
                 
             
@@ -57,29 +60,23 @@
 
 <nav class="breadcrumbs"><ul class="breadcrumb">
 <li><a href=".">listings</a></li>
-</ul></nav><ul>
-<li>
-<a href=".~"><i class="glyphicon glyphicon-folder-open"></i> .~</a>
-    </li>
-<li>
-<a href="drive-pyblox-to-nikola.html"><i class="glyphicon glyphicon-file"></i> drive-pyblox-to-nikola</a>
-    </li>
-<li>
-<a href="generate-schemas-xml.html"><i class="glyphicon glyphicon-file"></i> generate-schemas-xml</a>
-    </li>
-<li>
-<a href="GNUmakefile.pandoc-digest-pipeline.html"><i class="glyphicon glyphicon-file"></i> GNUmakefile.pandoc-digest-pipeline</a>
-    </li>
-<li>
-<a href="GNUmakefile.pandoc-digest-save-ms.html"><i class="glyphicon glyphicon-file"></i> GNUmakefile.pandoc-digest-save-ms</a>
-    </li>
-<li>
-<a href="pyblox-to-nikola.html"><i class="glyphicon glyphicon-file"></i> pyblox-to-nikola</a>
-    </li>
-<li>
-<a href="tryfedoraupdate.html"><i class="glyphicon glyphicon-file"></i> tryfedoraupdate</a>
-</li>
-</ul>
+                <li>GNUmakefile.pandoc-digest-save-ms</li>
+</ul></nav><h1>GNUmakefile.pandoc-digest-save-ms
+        <small><a href="GNUmakefile.pandoc-digest-save-ms">(Source)</a></small>
+    </h1>
+    <table class="codetable"><tr>
+<td class="linenos"><div class="linenodiv"><pre><a href="#listingsgnumakefilepandoc-digest-save-ms-1">1</a>
+<a href="#listingsgnumakefilepandoc-digest-save-ms-2">2</a>
+<a href="#listingsgnumakefilepandoc-digest-save-ms-3">3</a>
+<a href="#listingsgnumakefilepandoc-digest-save-ms-4">4</a>
+<a href="#listingsgnumakefilepandoc-digest-save-ms-5">5</a></pre></div></td>
+<td class="code"><pre class="code literal-block"><a name="listingsgnumakefilepandoc-digest-save-ms-1"></a><span class="c">%.digest.ms.pdf : %.rst</span>
+<a name="listingsgnumakefilepandoc-digest-save-ms-2"></a><span class="n">	pandoc </span><span class="s">-s -r rst -w ms -s --template=digest2 $(VARIABLES) \</span><span class="p"></span>
+<a name="listingsgnumakefilepandoc-digest-save-ms-3"></a>               <span class="o">--</span><span class="n">output</span><span class="p">=</span>$<span class="o">*</span><span class="p">.</span><span class="n">ms</span> $<span class="o">&lt;</span>
+<a name="listingsgnumakefilepandoc-digest-save-ms-4"></a><span class="n">	pdfroff </span><span class="s">-ms -mpdfmark -e -t -k -KUTF-8 --no-toc-relocation \</span><span class="p"></span>
+<a name="listingsgnumakefilepandoc-digest-save-ms-5"></a>		<span class="o">-</span><span class="n">P</span><span class="o">-</span><span class="n">p8</span><span class="p">.</span>5<span class="nb">i</span><span class="p">,</span><span class="mi">5</span><span class="p">.</span>5<span class="nb">i</span> $<span class="o">*</span><span class="p">.</span><span class="n">ms</span> <span class="o">&gt;</span> $<span class="p">@</span>
+</pre></td>
+</tr></table>
 </div>
             <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
                     <div class="sidebar-module sidebar-module-inset">
