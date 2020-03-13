@@ -1,0 +1,4 @@
+%.qs.ms.pdf : %.rst
+	pandoc --verbose -r rst -w ms $(PANDOCOPTS) \
+		--output=- $< | gsed -e 's/^\.RS$$/.QS/' -e 's/^\.RE$$/.QE/' | \
+	pdfroff -ms -mpdfmark -e -t -k -KUTF-8 -i --no-toc-relocation >$@

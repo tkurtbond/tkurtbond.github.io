@@ -12,4 +12,8 @@ that explains some changes to pandoc to better handle block quotes in
 ms output, and a workaround for it until the version with changes
 comes out, but I forgot to mention it here.
 
+In short, use a pipeline like this:
+
+.. listing:: GNUmakefile.change-RS-RE-to-QS-QE make
+
 .. _post: https://groups.google.com/forum/#!topic/pandoc-discuss/zulmB6uujgc
