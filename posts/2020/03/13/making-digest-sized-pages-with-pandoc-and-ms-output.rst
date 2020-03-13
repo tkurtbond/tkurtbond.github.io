@@ -1,7 +1,7 @@
 .. title: Making digest-sized pages with pandoc and ms output
 .. slug: making-digest-sized-pages-with-pandoc-and-ms-output
 .. date: 2020-03-13 14:01:10 UTC-04:00
-.. tags: computer,pandoc,make,ms macros,pdfroff
+.. tags: computer,pandoc,make,ms macros,pdfroff,text processing,groff
 .. category: computer
 .. link: 
 .. description: 
@@ -11,16 +11,34 @@
 .. role:: file
 .. role:: command
 
-I use pandoc_ to produce digest-sized pages in PDF documents
-from ReStructuredText_.  I have a :app:`ms` output template,
+.. note::
+
+   After I wrote this post, I made a last minute check of the options
+   to :app:`pandoc` and found that the ``--pdf-engine-opt=`` option
+   does exactly what I want.  How embarrassing.  So I changed this
+   post, showing both the easy way and the hard way to do it.
+
+I use pandoc_ to produce digest-sized pages (5½×8½ inches) in PDF
+documents from ReStructuredText_.  I have a :app:`ms` output template,
 :file:`digest2.ms` in :file:`~/pandoc/templates` that sets the page
-width and page height correctly.  Unfortunately there isn't an way to
-set the paper size in the template.  To do that you have to pass
-the -P option to :app:`pdfroff`, which passes its argument to the
-post-processor.  :app:`pandoc` doesn't have a way to pass options to
-:app:`pdfroff`.  So I used ``pandoc --verbose`` and found the
-:app:`pdfroff` invocation :app:`pandoc` uses.  Here's what I put in my
-:file:`GNUmakefile`:
+width and page height correctly.  Unfortunately, there is no way to
+set the papersize properly in the template. [#heirloomtroff]_
+
+Luckily, :app:`pandoc` has the ``--pdf-engine-opt=`` option to pass
+options to the PDF engine that :app:`pandoc` is using.  In the case of
+:app:`ms` output the thing to do is pass the argument
+``--pdf-engine-opt=-P-p8.5i,5.5i`` [#recursively]_, like below.
+
+.. listing:: GNUmakefile.pandoc-digest-pdf-engine-opt make
+
+Unfortunately when I originally had this need for digest pages I
+hadn't realized that the ``--pdf-engine-opt=`` option existed.
+
+So I used ``pandoc --verbose`` and found the :app:`pdfroff` invocation
+:app:`pandoc` uses, and made my :app:`pandoc` invocation output
+:app:`ms` instead of PDF, then passed it through a :app:`pdfroff`
+command with the added ``-P-p8.5i,5.5i`` argument.  Here's what I put
+in my :file:`GNUmakefile`:
 
 .. listing:: GNUmakefile.pandoc-digest-save-ms make
 
@@ -29,5 +47,19 @@ you could do it as a pipeline:
 
 .. listing:: GNUmakefile.pandoc-digest-pipeline make
 
+
+.. [#heirloomtroff] Heirloom Troff (originally at H1_, but now *I
+   think* more up to date at H2_ and H3_) has the ``.mediasize`` and
+   ``.papersize`` commands for that.
+
+.. [#recursively] Amusingly, :app:`pandoc` passes the
+   ``--pdf-engine-opt=-P-p8.5i,5.5i`` argument to :app:`pdfroff`,
+   which passes the ``-P-p8.5i,5.5i`` part to :app:`groff`, which
+   passes the ``-p8.5i,5.5i`` part to the (final) post processor — I'm
+   not sure if *that* is :app:`grops` or :app:`gropdf`.
+
 .. _pandoc: https://pandoc.org/
 .. _ReStructuredText: https://en.wikipedia.org/wiki/ReStructuredText
+.. _H1: http://heirloom.sourceforge.net/doctools.html
+.. _H2: http://n-t-roff.github.io/heirloom/doctools.html
+.. _H3: https://github.com/n-t-roff/heirloom-doctools

@@ -1,0 +1,3 @@
+%.digest.ms.pdf : %.rst
+	pandoc -s -r rst -w ms --template=digest2 $(VARIABLES) \
+		--output=$@ --pdf-engine-opt=-P-p8.5i,5.5i $< 
