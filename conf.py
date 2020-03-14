@@ -163,7 +163,10 @@ NAVIGATION_ALT_LINKS = {
 
 # Name of the theme to use.
 #THEME = "bootblog4"
-THEME = "bootblog"
+#THEME = "bootblog" # this is the one i've been using; nice sidebar
+#THEME = "oldfashioned"
+#THEME = "bootstrap4"
+THEME="bootblog-jinja"
 
 # Primary color of your theme. This will be used to customize your theme.
 # Must be a HEX value.
