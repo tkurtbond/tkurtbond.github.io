@@ -25,9 +25,10 @@ width and page height correctly.  Unfortunately, there is no way to
 set the papersize properly in the template. [#heirloomtroff]_
 
 Luckily, :app:`pandoc` has the ``--pdf-engine-opt=`` option to pass
-options to the PDF engine that :app:`pandoc` is using.  In the case of
-:app:`ms` output the thing to do is pass the argument
-``--pdf-engine-opt=-P-p8.5i,5.5i`` [#recursively]_, like below.
+options to the PDF engine that :app:`pandoc` is using, in this case
+:app:`pdfroff`.  In the case of :app:`ms` output the thing to do is
+pass the argument ``--pdf-engine-opt=-P-p8.5i,5.5i`` [#recursively]_,
+like below.
 
 .. listing:: GNUmakefile.pandoc-digest-pdf-engine-opt make
 
