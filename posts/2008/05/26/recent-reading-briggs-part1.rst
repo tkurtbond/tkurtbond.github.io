@@ -15,7 +15,9 @@
   A light but enjoyable fantasy/mystery/romance.
 
 * `Steal the Dragon`, by Patricia Briggs, copyright 1995 by Hurog,
-   Inc; Ace Books/The Berkley Publishing Group/The Pengiun Group;
-   November 1995; ISBN 978-0-441-00273-3.
+  Inc; Ace Books/The Berkley Publishing Group/The Pengiun Group;
+  November 1995; ISBN 978-0-441-00273-3.
 
-.. Note:: This is a :doc:`<timewarp <new-blog-first-post>` post.
+.. Note::
+
+   This is a :doc:`timewarp <new-blog-first-post>` post.
