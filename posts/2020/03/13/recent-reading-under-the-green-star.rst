@@ -24,5 +24,5 @@ with this Lin Carter volume.
 .. _`Sword & Planet`: https://en.wikipedia.org/wiki/Sword_and_planet
 .. _`Edgar Rice Burroughs`: https://en.wikipedia.org/wiki/Edgar_Rice_Burroughs
 .. _`John Carter of Mars`: https://en.wikipedia.org/wiki/John_Carter_of_Mars
-.. _`Flame & Crimson`: link://slug/
+.. _`Flame & Crimson`: link://slug/recent-reading-flame-and-crimson
 .. _`Sword & Sorcery`: https://en.wikipedia.org/wiki/Sword_and_sorcery
