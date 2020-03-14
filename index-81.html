@@ -28,9 +28,6 @@
             
 
                 
-                
-                    
-                
             
         </nav>
 </div>
@@ -53,8 +50,6 @@
         <!--Body content-->
         <div class="row">
             <div class="col-sm-8 blog-main">
-                
-
 <div class="postindex">
     <article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2015/12/14/delving-deeper-revisited/" class="u-url">Delving Deeper Revisited</a></h2>
         <div class="metadata blog-post-meta">
@@ -214,15 +209,15 @@ mail today.  It looks good to my quick scan.</p>
 Docbook-based website, and were presently part of my static
 Sphinx-based website, over to my current PyBlosxom blog tonight,
 using the following script:</p>
-<pre class="code text"><a name="rest_code_b5226eee5dbd4e3a823ca728d99c59cb-1"></a>#! /usr/bin/env bash
-<a name="rest_code_b5226eee5dbd4e3a823ca728d99c59cb-2"></a>find 200? -type f ! -name \*~ ! -name \*-idx-*.rst |
-<a name="rest_code_b5226eee5dbd4e3a823ca728d99c59cb-3"></a>while read filename
-<a name="rest_code_b5226eee5dbd4e3a823ca728d99c59cb-4"></a>do
-<a name="rest_code_b5226eee5dbd4e3a823ca728d99c59cb-5"></a>    newname="$(echo $filename | sed 's#/#-#g')"
-<a name="rest_code_b5226eee5dbd4e3a823ca728d99c59cb-6"></a>    date="$(basename $newname .rst)"
-<a name="rest_code_b5226eee5dbd4e3a823ca728d99c59cb-7"></a>    (echo $date; echo "#published $date 00:00:00"; echo "#tags Old Blog";
-<a name="rest_code_b5226eee5dbd4e3a823ca728d99c59cb-8"></a>        cat $filename) &gt;/home/tkb/myblog/entries/oldblog/$newname
-<a name="rest_code_b5226eee5dbd4e3a823ca728d99c59cb-9"></a>done
+<pre class="code text"><a name="rest_code_3fb86864a9ca4abd80cef228089ead22-1"></a>#! /usr/bin/env bash
+<a name="rest_code_3fb86864a9ca4abd80cef228089ead22-2"></a>find 200? -type f ! -name \*~ ! -name \*-idx-*.rst |
+<a name="rest_code_3fb86864a9ca4abd80cef228089ead22-3"></a>while read filename
+<a name="rest_code_3fb86864a9ca4abd80cef228089ead22-4"></a>do
+<a name="rest_code_3fb86864a9ca4abd80cef228089ead22-5"></a>    newname="$(echo $filename | sed 's#/#-#g')"
+<a name="rest_code_3fb86864a9ca4abd80cef228089ead22-6"></a>    date="$(basename $newname .rst)"
+<a name="rest_code_3fb86864a9ca4abd80cef228089ead22-7"></a>    (echo $date; echo "#published $date 00:00:00"; echo "#tags Old Blog";
+<a name="rest_code_3fb86864a9ca4abd80cef228089ead22-8"></a>        cat $filename) &gt;/home/tkb/myblog/entries/oldblog/$newname
+<a name="rest_code_3fb86864a9ca4abd80cef228089ead22-9"></a>done
 </pre>
 <p>I'll have to go through and fix uses of Sphinx-specific RST
 extensions, and I'll probably add real entry titles as I do so; in the
@@ -399,7 +394,6 @@ playing right outside the temple.</p>
     </div>
     </article>
 </div>
-
         <nav class="postindexpager"><ul class="pager">
 <li class="previous">
                 <a href="index-82.html" rel="prev">Newer posts</a>

@@ -111,36 +111,12 @@ td.label {
     background-color: inherit;
 }
 
-.footnote-reference.brackets:before { content: "["; }
-.footnote-reference.brackets:after { content: "]"; }
-/* .dt.label > span.brackets:before { content: "["; } */
-/* .dt.label > span.brackets:after { content: "]"; } */
-.fn-backref:before { content: "["; }
-.fn-backref:after { content: "]"; }
-
-dt.label {
-    float: left;
-    /* width: 10%; */
-    clear: left;
-    margin-right: 5px;
-    /* display:inline; */
-    /* padding:.2em .6em .3em; */
-    /* font-size:75%; */
-    /* font-weight:700; */
-    /* line-height:1; */
-    /* color:#fff; */
-    text-align:left; */
-    /* white-space:nowrap; */
-    /* vertical-align:baseline; */
-    /* border-radius:.25em; */
+.footnote-reference {
+    /* Issue 290 */
+    vertical-align: super;
+    font-size: xx-small;
 }
 
-dd {
-  float: left;
-  width: 90%;
-}
-
-dl.field-list > dd { margin-left: 5ex; }
 
 .caption {
     /* Issue 292 */
@@ -321,48 +297,6 @@ article.post-micro {
         display: none;
     }
 }
-
-/* TKB's additions */
-.app {
-    font-style: italic;
-    font-weight: bold;
-}
-
-.command {
-    font-family: "Courier New","Lucida Console",Monospace;
-    font-weight: bold;
-}
-
-.file {
-    font-family: "Courier New","Lucida Console",Monospace;
-}
-
-div.note {
-    /*    margin: 2em; */
-    margin-bottom: 1ex;
-    border: solid;
-    padding: 1em;
-}
-
-p.admonition-title {
-    font-weight: bold;
-    font-family: sans-serif;
-}
-
-ul {
-/*    margin: 0; */
-    padding-left: 1em;
-}
-
-dl {
-    padding-left: 0;
-}
-
-ol {
-    padding-left: 1em;
-}
-
-/** TKB stops here!  ***/
 
 .blog-nav-item-aside {
     font-style: italic;
@@ -547,4 +481,123 @@ h6, .h6 {
 .blog-footer p:last-child {
   margin-bottom: 0;
 }
+
+/* tkb messing about below. */
+.app {
+    font-style: italic;
+    font-weight: bold;
+}
+
+.command {
+    font-family: "Courier New","Lucida Console",Monospace;
+    font-weight: bold;
+}
+
+.file {
+    font-family: "Courier New","Lucida Console",Monospace;
+}
+
+div.note {
+    border: solid;
+}
+
+div.admonition { 
+    border: solid;
+    padding: 0.5em;
+}
+p.admonition-title {
+    font-weight: bold;
+    font-family: sans-serif;
+}
+
+ul {
+    padding-left: 1em;
+}
+
+dl.footnote > dt.label {
+    padding-left: 0;
+    float: left;
+    clear: left;
+    text-align: left;
+    font-size: 100%;
+    vertical-align: baseline;
+}
+
+dt {
+    padding-left: 0;
+}
+
+dd {
+    padding-left: 2em;
+    margin-left: 0;
+}
+
+ol {
+    padding-left: 1em;
+}
+
+ol.loweralpha {
+    list-style-type: lower-alpha;
+}
+
+ol.upperalpha {
+    list-style-type: upper-alpha;
+}
+
+ol.lowerroman {
+    list-style-type: lower-roman;
+}
+
+ol.upperroman {
+    list-style-type: upper-roman;
+}
+
+hr {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 0;
+    border-top: 1px solid black;
+}
+
+.footnote-reference.brackets:before { content: "["; }
+.footnote-reference.brackets:after { content: "]"; }
+.fn-backref:before { content: "["; }
+.fn-backref:after { content: "]"; }
+
+/*
+.fn-backref {
+    font-size: 100%;
+    vertical-align: baseline;
+}
+*/
+
+.footnote-reference {
+    font-size: 100%;
+    vertical-align: baseline;
+}
+
+body {
+    font-size: 20px;
+    line-height: 1.42857143;
+    color: #333;
+    background-color: #fff;
+}
+
+.blog-main {
+    font-size: 20px;
+    line-height: 1.5;
+}
+
+div.sidebar-module-inset > h4 {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+div.sidebar-module > h4 {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+/* tkb messing about above. */
+
 
