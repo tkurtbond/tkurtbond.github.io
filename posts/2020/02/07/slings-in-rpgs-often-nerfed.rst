@@ -1,7 +1,7 @@
 .. title: Slings in RPGs: Often Nerfed
 .. slug: slings-in-rpgs-often-nerfed
 .. date: 2020-02-07 14:40:23 UTC-05:00
-.. tags: rpg,d&d,runequest,dragonquest,talislanta,slings
+.. tags: rpg,d&d,runequest,dragonquest,talislanta,slings,gurps,savage worlds,hero system,the fantasy trip,tft,big eyes small mouth,besm,harnmaster,d6 fantasy,open d6,tunnels & trolls,tnt,dragon warriors,brp,basic roleplaying,elric,stormbringer,traveller,classic traveller,cepheus engine,sword of cepheus,nerfed
 .. category: gaming
 .. link: 
 .. description: 
@@ -174,6 +174,26 @@ house rule that sling bullets are higher damage than sling stones, and
 more similar to the damage of a short bow, 1d6, for example.  I may
 have been underestimating them and should consider them closer to a
 long bow, 1d8, as Chaosium's `Basic Roleplaying (BRP)`_ variants
-(RuneQuest, Elric) do.
+(RuneQuest, Elric, Stormbringer) do.
 
 .. _`Basic Roleplaying (BRP)`: https://en.wikipedia.org/wiki/Basic_Role-Playing
+
+2020-03-14 Addendum
+===================
+
+`Classic Traveller`_\ 's `Supplement 04 Citizens of the
+Imperium` (1979) has a section on bow weapons, on p. 16!  A sling does
+2D wounds and a long bow does 2D wounds also.  For comparison, from
+`Book 01 Characters & Combat` (1981) on p. 47 on the “Range Table” (?)
+dagger, blade, cutlass, and sword all do 2D wounds.  Not nerfed.
+
+.. _`Classic Traveller`: https://wiki.travellerrpg.com/Classic_Traveller
+
+`Cepheus Engine` (C1_, C2_) doesn't have slings, but a bow is 2D6.
+`Sword of Cepheus`_, the fantasy variant, has sling as 2D, short bow
+as 2D, long bow as 3D, dagger as 2D, and sword as 3D.  Maybe a little
+nerfed.
+
+.. _C1: https://www.drivethrurpg.com/product/237247/Cepheus-Engine-RPG
+.. _C2: https://www.paulelliottbooks.com/what-is-cepheus-engine.html
+.. _`Sword of Cepheus`: https://www.drivethrurpg.com/product/304840/The-Sword-of-Cepheus
