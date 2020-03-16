@@ -39,7 +39,8 @@ convenient to use than my printout in binders.
    5`) but never found the chance to play them.  But my interest in
    Classic Traveller grew once I found it being talked about in
    Internet forums and blogs.  I bought a copy of the original rules
-   and several other LBBs, and some of the farfuture.net CD-ROMs.
+   and many other LBBs, and some of the farfuture.net reprints and
+   CD-ROMs.
 
 Anyway, yesterday afternoon I went over to my friend's house with my
 `Starter Traveller` box and some other Classic Traveller materials for
@@ -143,6 +144,7 @@ erratum in `Starter Traveller` this way.
 .. _`Starter Traveller`: https://www.drivethrurpg.com/product/80190/CTSTStarter-Traveller
 .. _`Drivethrurpg.com`: https://www.drivethrurpg.com/
 .. _`farfuture.net`: https://www.farfuture.net/
+.. _`second-system effect`: https://en.wikipedia.org/wiki/Second-system_effect
 
 .. [#megatraveller] I remembered that `Megatraveller` had a different
    method for character advancement/experience, so I looked that up
@@ -181,3 +183,7 @@ erratum in `Starter Traveller` this way.
    experience points in skill based games like `Hero System` or
    `GURPS`.
 
+   Finally, my quick look through the `Megatraveller` `Players'
+   Manual` gave me the impression that `Megatraveller` is just much
+   more complicated that Classic Traveller in every way, a typical
+   `second-system effect`_.
