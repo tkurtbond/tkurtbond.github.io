@@ -35,11 +35,11 @@ convenient to use than my printout in binders.
    improvise an adventure on the spot.  So we didn't get far, alas.
 
    I bought several new editions of Traveller over the years
-   (`Megatraveller`, `Traveller: The New Era`, `Traveller 4`) but never
-   found the chance to play them.  But my interest in Classic Traveller
-   grew once I found it being talked about in Internet forums and blogs.
-   I bought a copy of the original rules and several other LBBs, and some
-   of the farfuture.net CD-ROMs.  
+   (`Megatraveller`, `Traveller: The New Era`, `Traveller 4, Traveller
+   5`) but never found the chance to play them.  But my interest in
+   Classic Traveller grew once I found it being talked about in
+   Internet forums and blogs.  I bought a copy of the original rules
+   and several other LBBs, and some of the farfuture.net CD-ROMs.
 
 Anyway, yesterday afternoon I went over to my friend's house with my
 `Starter Traveller` box and some other Classic Traveller materials for
@@ -119,7 +119,12 @@ checklist on p. 9 of `Charts and Tables` (that I can't find in the
 Trader-based adventure at the table.  The hardback `The Traveller
 Book` is sturdy and easy to use at the table, but not as convenient as
 `Starter Traveller`\ ‘s split into `Core Rules` and `Charts and
-Tables`.
+Tables`.  The `Core Rules` booklet had helpful page references to
+`Charts and Tables` for each of the major sections, and these were
+usually a 2-page spread with all (or nearly all) of the tables for the
+subject being discussed.  Despite the charming nature of the LBBs, I
+think having the separate `Charts and Tables` book from `Starter
+Traveller` is so convenient that we'll continue using it at the table.  
 
 I found it useful to have multiple versions of Traveller available
 while reading `Starter Traveller` to cross-check things: I found an
