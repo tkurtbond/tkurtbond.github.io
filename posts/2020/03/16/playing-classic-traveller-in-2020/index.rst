@@ -1,7 +1,7 @@
 .. title: Playing Classic Traveller in 2020
 .. slug: playing-classic-traveller-in-2020
 .. date: 2020-03-16 10:11:52 UTC-04:00
-.. tags: rpg,classic traveller,starter traveller,d&d,my gaming history
+.. tags: rpg,classic traveller,starter traveller,d&d,my gaming history,gurps,hero system,b
 .. category: gaming
 .. link: 
 .. description: 
@@ -39,7 +39,8 @@ convenient to use than my printout in binders.
    5`) but never found the chance to play them.  But my interest in
    Classic Traveller grew once I found it being talked about in
    Internet forums and blogs.  I bought a copy of the original rules
-   and several other LBBs, and some of the farfuture.net CD-ROMs.
+   and many other LBBs, and some of the farfuture.net reprints and
+   CD-ROMs.
 
 Anyway, yesterday afternoon I went over to my friend's house with my
 `Starter Traveller` box and some other Classic Traveller materials for
@@ -85,7 +86,14 @@ price once you were at your destination.  (A second roll on the
 At some point we looked at experience and character development in
 Classic Traveller.  As far as we can tell, that section is missing
 from `Starter Traveller`, though it is in the 1981 LBBs and `The
-Traveller Book`.  Is it in the 1977 LBBs?  I'll have to check.
+Traveller Book`.  (Is it in the 1977 LBBs?  I'll have to
+check. [#megatraveller]_) Anyway, basically you do a 4 year
+self-improvement program, and if you succeed in staying the program
+(Roll your Determination, and you need an 8+ on 2D6), the program
+improves a couple of skills temporarily by 1 level of expertise.  You
+can then do another 4 year program to make those gains permanent.
+(There are similar but slightly different procedures for improving
+physical attributes, weapons skills, and education.)
 
 Anyway, we had a lot of fun.  Next time we get together we're going to
 design a starship or two and try space combat!
@@ -136,3 +144,46 @@ erratum in `Starter Traveller` this way.
 .. _`Starter Traveller`: https://www.drivethrurpg.com/product/80190/CTSTStarter-Traveller
 .. _`Drivethrurpg.com`: https://www.drivethrurpg.com/
 .. _`farfuture.net`: https://www.farfuture.net/
+.. _`second-system effect`: https://en.wikipedia.org/wiki/Second-system_effect
+
+.. [#megatraveller] I remembered that `Megatraveller` had a different
+   method for character advancement/experience, so I looked that up
+   when I got home.
+
+   You can learn a new skill by experience, observing and trying that
+   skill and gaining 1 Adventure Tally (AT) per session if the referee
+   it played a significant part in the session.  Once you've acquired
+   enough ATs, you need to roll a 15 or more on 2D6 with a Dice
+   Modifier (DM) from Intelligence (if it is high enough) and the
+   number of ATs you've accumulated.  Use the same procedure to
+   improve a skill.  There is a similar procedure for improving
+   characteristics.  (This is similar to getting skill “Ticks” in
+   RuneQuest or other `Basic Roleplaying`-based systems.)
+
+   You could also learn a skill by formal training. **(1)** You have
+   to roll 7+ on 2D6 (having an applicable skill gives you a DM; the
+   skill depends on what kind of training you're seeking) to find the
+   training.  **(2)** You have to roll 7+ on 2D6 (with a DM from your
+   Determination characteristic) to stay determined to complete the
+   training.  Finally, **(3)** You have to roll to see if you were
+   successful by rolling 11+ on 2D6 (with DMs from the skill you are
+   training if you already have it, or other related skills you
+   already know, and your instructors Instruction skill).  The
+   training takes on average 200 hours, and costs approximately Cr10
+   per hour.  There is a similar procedure for improving
+   characteristics, except for Social Standing, which can only be
+   improved by actually acquiring money and spending it.
+
+   Amusingly `Megatraveller`, in contrast to Classic Traveller's
+   relative lack of character improvement, points out that increasing
+   skills and characteristics by accumulating ATs encourages
+   characters' participation, keeps them interested in the game, and
+   makes them aware of the benefits they can achieve in a session.
+   I'll note that this is just like leveling in `D&D` or getting
+   experience points in skill based games like `Hero System` or
+   `GURPS`.
+
+   Finally, my quick look through the `Megatraveller` `Players'
+   Manual` gave me the impression that `Megatraveller` is just much
+   more complicated that Classic Traveller in every way, a typical
+   `second-system effect`_.
