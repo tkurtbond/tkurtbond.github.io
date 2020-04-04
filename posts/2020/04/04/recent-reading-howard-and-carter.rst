@@ -13,8 +13,8 @@
 
 I enjoyed reading these again; it has been many years since I have
 read them.  The racism of the stories set in America is what you'd
-expect from a person of Howard's era, but the other elements of the
-stories make the book worth reading.
+expect from a person of Howard's era, but understanding that, the
+other elements of the stories make the book worth reading.
 
 * `By the Light of the Green Star`, by Lin Carter, copyright 1974; DAW
   Books Number 110.
