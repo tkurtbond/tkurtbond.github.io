@@ -14,9 +14,8 @@ Static Pages on this Site
 * `Alusia Campaign <link://slug/alusia-campaign>`_
 * `Books, 2006–2007 <link://slug/books-2006-2007>`_
 * `Colophon <link://slug/colophon>`_
-* `D&D Dungeon Masters Guide, Appendix N <link://slug/dnd-dmg-appendix-n>`_
 * `Doris Piserchia <link://slug/doris-piserchia>`_
-* `DragonQuest <link://slug/dragonquest-and-i>`_
 * `Notes <link://slug/notes>`_
+* `Roleplaying Games <link://slug/roleplaying-games>`_
 * `RPGs played with the kids <link://slug/roleplaying-games-played-with-the-kids>`_
 * `RPG Vocabulary <link://slug/rpg-vocabulary>`_
