@@ -204,7 +204,7 @@ Big Eyes, Small Mouth
 .....................
 
 `BESM <http://www.guardiansorder.on.ca/>`_ (`Big Eyes, Small
-Mouth`) from Guardians of Order, an anime RPG, is a good game even
+Mouth`) from `Guardians of Order`_, an anime RPG, is a good game even
 for those who aren't really anime fans. [1]_ The second edition is
 especially good, giving you a lite, flexible system that works
 reasonably well from normal humans to over-the-top superheros, as
@@ -237,23 +237,23 @@ more fuzzy. Overall it works pretty well, and is much simpler than
 `Big Eyes, Small Mouth, 3rd edition <http://www.white-
 wolf.com/besm/>`_ was published by the `White Wolf <http://www.white-
 wolf.com/>`_ division `Arthaus <http://www.white-
-wolf.com/arthaus/index.php>`_ division after `Guardians of Order
-<http://www.guardiansorder.com>`_ ceased operations, and I got my
-copies on 2007/01/30. On a brief but reasonably complete scan it looks
-like a good further development of `BESM` 2nd edition, gaining the
-benefits of the various Tri-Stat implementations while becoming only a
-little more complex, with options to reduce the complexity to about
-that of 2nd edition or perhaps even a little less. It is compatible in
-philosophy and spirit to the earlier editions, but characters are not
-directly compatible. It made me want to play it when I read it, which
-is always a good test. Except for that fact that it is already (at the
-end of 2007; at least it is still available in PDF) out of print I
-can't see why I'd want to use Hero or GURPS instead of BESM third
-edition unless there was already an exceedingly well-written
-supplement for a particular setting, genre, or campaign that I
-particularly wanted to use. There were some minor errata in the first
-printing, and the author (and former proprietor of Guardians of Order)
-Mark C. Mackinnon made the `corrections
+wolf.com/arthaus/index.php>`_ division after `Guardians of Order`_
+ceased operations, and I got my copies on 2007/01/30. On a brief but
+reasonably complete scan it looks like a good further development of
+`BESM` 2nd edition, gaining the benefits of the various Tri-Stat
+implementations while becoming only a little more complex, with
+options to reduce the complexity to about that of 2nd edition or
+perhaps even a little less. It is compatible in philosophy and spirit
+to the earlier editions, but characters are not directly
+compatible. It made me want to play it when I read it, which is always
+a good test. Except for that fact that it is already (at the end of
+2007; at least it is still available in PDF) out of print I can't see
+why I'd want to use Hero or GURPS instead of BESM third edition unless
+there was already an exceedingly well-written supplement for a
+particular setting, genre, or campaign that I particularly wanted to
+use. There were some minor errata in the first printing, and the
+author (and former proprietor of `Guardians of Order`_) Mark C. Mackinnon
+made the `corrections
 <http://guardiansorder.livejournal.com/19955.html>`_ available.
 
 Story Engine
@@ -298,17 +298,17 @@ Tékumel
 
 Professor M.A.R. Barker's complex science-fantasy world, `Tékumel
 <http://www.tekumel.com/>`_, while heavily influenced by non-European
-cultures, is its own unique setting. On February 23, 2001 `Guardians of
-Order <http://www.guardiansorder.on.ca/>`_
-`announced <http://web.archive.org/web/20010303235049/http://www.guardiansorder.on.ca/022301.html>`_
-that they'd be publishing a new Tékumel game, `Tékumel: Empire
-of the Petal Throne`. As will surprise no fan of Tékumel, it's
-turned out to be a complicated project, and it has been delayed
-several times. The good news is that both Guardians of Order and the
-Tékumel experts who are writing the game are committed to a quality
-product `Guardians of Order <http://www.guardiansorder.com/>`_ finally
-released its `Tékumel: Empire of the Petal Throne` roleplaying game
-in late February of 2005, and it is *good*.
+cultures, is its own unique setting. On February 23, 2001 `Guardians
+of Order`_ `announced
+<http://web.archive.org/web/20010303235049/http://www.guardiansorder.on.ca/022301.html>`_
+that they'd be publishing a new Tékumel game, `Tékumel: Empire of the
+Petal Throne`. As will surprise no fan of Tékumel, it's turned out to
+be a complicated project, and it has been delayed several times. The
+good news is that both `Guardians of Order` and the Tékumel experts who
+are writing the game are committed to a quality product `Guardians of
+Order`_ finally released its
+`Tékumel: Empire of the Petal Throne` roleplaying game in late
+February of 2005, and it is *good*.
 
 The Dying Earth
 ...............
@@ -350,14 +350,13 @@ A fifth edition was published by `Morrigan Press <http://en.wikipedia.org/wiki/M
 Nobilis
 .......
 
-`Nobilis` is R. Sean Borgstrom's roleplaying game of Sovereign
-Powers, the personfications of aspects of reality, such as Pain, Love,
-Nights, or Books. Orignally published by Pharos Press and later in an
-expanded second edition by `Hogshead
+`Nobilis` is R. Sean Borgstrom's roleplaying game of Sovereign Powers,
+the personfications of aspects of reality, such as Pain, Love, Nights,
+or Books. Orignally published by Pharos Press and later in an expanded
+second edition by `Hogshead
 <http://www.hogshead.demon.co.uk/Nobilis_index.htm>`_, the second
-edition is now now published by `Guardians of Order
-<http://www.guardiansorder.com/>`_, which hopes to publish additional
-supplements for it in the future.
+edition is now now published by `Guardians of Order`_, which hopes to
+publish additional supplements for it in the future.
 
 Savage Worlds
 .............
@@ -684,3 +683,5 @@ occasion.
    Story Engine.
 
 .. [3] Not to be confused with the popular board game `Heroquest`.
+
+.. _`Guardians of Order`: http://www.guardiansorder.com
