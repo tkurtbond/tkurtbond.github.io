@@ -18,5 +18,6 @@ Static Pages on this Site
 * `Doris Piserchia <link://slug/doris-piserchia>`_
 * `DragonQuest <link://slug/dragonquest-and-i>`_
 * `Notes <link://slug/notes>`_
+* `Roleplaying Games <link://slug/roleplaying-games>`_
 * `RPGs played with the kids <link://slug/roleplaying-games-played-with-the-kids>`_
 * `RPG Vocabulary <link://slug/rpg-vocabulary>`_

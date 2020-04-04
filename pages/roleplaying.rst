@@ -10,9 +10,6 @@
 .. role:: series(title-reference)
 
 
-Roleplaying Games
-=================
-
 Roleplaying Games have been described as “Let's Pretend with
 Rules” or “Improvisational Radio Theater”.
 
@@ -24,10 +21,10 @@ changed, and the group I'm currently playing with has a couple of good
 GMs.
 
 
-Sub-pages
----------
+..
+   Sub-pages
+   ---------
 
-.. 
    dnd-dmg-appendix-n
    dragonquest
    elric-gaming
