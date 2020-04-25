@@ -19,7 +19,7 @@ approachable.
 Wanderlust development and the development of the emacs packages that
 it depends on (APEL, FLIM, and SEMI) feel like that to me.  Some of
 them have web pages, but they're usually quite out of date.  It can be
-difficult to their CVS repositories, and even more difficult to find
+difficult find to their CVS repositories, and even more difficult to find
 the browse-able web interfaces to their CVS repositories.  Every time
 I want to look at the code, I have to figure this all out again, hence
 this post.
@@ -51,9 +51,7 @@ emacs-mime-ja-ctl@m17n.org\ .
 So, here are the CVS commands I just used to check the various
 packages out:
 
-.. class:: code
-
-::
+.. code:: bash
 
     cvs -d :pserver:anonymous@cvs.m17n.org:/cvs/root checkout wanderlust
     cvs -z9 -d :pserver:anonymous@cvs.m17n.org:/cvs/root checkout apel

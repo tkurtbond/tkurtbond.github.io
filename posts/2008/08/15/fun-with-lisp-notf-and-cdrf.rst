@@ -7,18 +7,13 @@
 .. description: 
 .. type: text
 
-
-.. role:: inlinecode(literal)
-
 I actually use these in Emacs Lisp, for which you'd need a
-:inlinecode:`(require 'cl))`, but the ``define-modify-macro`` is
+:code:`(require 'cl))`, but the ``define-modify-macro`` is
 originally from Common Lisp.
 
 These are trivial, but useful.
 
-.. class:: code
-
-::
+.. code:: common-lisp
 
   (define-modify-macro notf (&rest args) not)
   (setq x nil)
