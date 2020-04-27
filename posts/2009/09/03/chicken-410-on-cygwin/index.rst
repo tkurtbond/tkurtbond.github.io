@@ -8,13 +8,9 @@
 .. type: text
 
 
-.. role:: inlinecode(literal)
-
 Weird: after compiling and installing chicken_ with:
 
-.. class: code
-
-::
+.. code:: bash
 
    make PLATFORM=cygwin PREFIX=/sw/versions/cygwin/chicken/4.1.0
    make PLATFORM=cygwin PREFIX=/sw/versions/cygwin/chicken/4.1.0 install
@@ -22,6 +18,6 @@ Weird: after compiling and installing chicken_ with:
 I had to copy ``/sw/versions/cygwin/chicken/4.1.0/lib/*.a`` to
 ``/sw/versions/cygwin/chicken/4.1.0/bin`` before it could link things
 properly.  (I first noticed this while doing a
-:inlinecode:`$ chicken-install ncurses`.)
+:code:`$ chicken-install ncurses`.)
 
 .. _chicken: http://www.call-with-current-continuation.org/

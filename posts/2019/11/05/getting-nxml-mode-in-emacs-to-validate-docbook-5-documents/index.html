@@ -99,16 +99,16 @@ look up the translation for the URI for the RELAX NG compiled schema
 file and generate the <code class="docutils literal">schemas.xml</code> file and substitute the translation
 into the file:</p>
 <p><a class="reference external" href="../../../../../listings/generate-schemas-xml.html">generate-schemas-xml</a>  <a class="reference external" href="../../../../../listings/generate-schemas-xml">(Source)</a></p>
-<pre class="code bash"><a name="rest_code_65b64a608f334af0b57e76b0226120db-1"></a><span class="ch">#! /usr/bin/env bash</span>
-<a name="rest_code_65b64a608f334af0b57e76b0226120db-2"></a>
-<a name="rest_code_65b64a608f334af0b57e76b0226120db-3"></a><span class="nv">schema_location</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span>xmlcatalog <span class="s2">""</span> <span class="s2">"http://docbook.org/xml/5.0/rng/docbookxi.rnc"</span> <span class="p">|</span>
-<a name="rest_code_65b64a608f334af0b57e76b0226120db-4"></a>    grep <span class="s2">"^file:///"</span> <span class="p">|</span> sed <span class="s1">'s#^file://##'</span><span class="k">)</span><span class="s2">"</span>
-<a name="rest_code_65b64a608f334af0b57e76b0226120db-5"></a>
-<a name="rest_code_65b64a608f334af0b57e76b0226120db-6"></a>cat &gt;schemas.xml <span class="s">&lt;&lt;EOF</span>
-<a name="rest_code_65b64a608f334af0b57e76b0226120db-7"></a><span class="s">&lt;locatingRules xmlns="http://thaiopensource.com/ns/locating-rules/1.0"&gt;</span>
-<a name="rest_code_65b64a608f334af0b57e76b0226120db-8"></a><span class="s">&lt;namespace ns="http://docbook.org/ns/docbook" uri="$schema_location"/&gt;</span>
-<a name="rest_code_65b64a608f334af0b57e76b0226120db-9"></a><span class="s">&lt;/locatingRules&gt;</span>
-<a name="rest_code_65b64a608f334af0b57e76b0226120db-10"></a><span class="s">EOF</span>
+<pre class="code bash"><a name="rest_code_49258b6d72da4265bcb5319d51ddc5f8-1"></a><span class="ch">#! /usr/bin/env bash</span>
+<a name="rest_code_49258b6d72da4265bcb5319d51ddc5f8-2"></a>
+<a name="rest_code_49258b6d72da4265bcb5319d51ddc5f8-3"></a><span class="nv">schema_location</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span>xmlcatalog <span class="s2">""</span> <span class="s2">"http://docbook.org/xml/5.0/rng/docbookxi.rnc"</span> <span class="p">|</span>
+<a name="rest_code_49258b6d72da4265bcb5319d51ddc5f8-4"></a>    grep <span class="s2">"^file:///"</span> <span class="p">|</span> sed <span class="s1">'s#^file://##'</span><span class="k">)</span><span class="s2">"</span>
+<a name="rest_code_49258b6d72da4265bcb5319d51ddc5f8-5"></a>
+<a name="rest_code_49258b6d72da4265bcb5319d51ddc5f8-6"></a>cat &gt;schemas.xml <span class="s">&lt;&lt;EOF</span>
+<a name="rest_code_49258b6d72da4265bcb5319d51ddc5f8-7"></a><span class="s">&lt;locatingRules xmlns="http://thaiopensource.com/ns/locating-rules/1.0"&gt;</span>
+<a name="rest_code_49258b6d72da4265bcb5319d51ddc5f8-8"></a><span class="s">&lt;namespace ns="http://docbook.org/ns/docbook" uri="$schema_location"/&gt;</span>
+<a name="rest_code_49258b6d72da4265bcb5319d51ddc5f8-9"></a><span class="s">&lt;/locatingRules&gt;</span>
+<a name="rest_code_49258b6d72da4265bcb5319d51ddc5f8-10"></a><span class="s">EOF</span>
 </pre>
 <p>Then I had my Makefile generate the <code class="docutils literal">schemas.xml</code> file if it was missing.</p>
 <p>It was more complicated that I'd have liked, but it does work.</p>

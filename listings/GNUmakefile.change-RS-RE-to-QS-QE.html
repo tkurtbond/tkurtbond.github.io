@@ -63,9 +63,9 @@
 <a href="#listingsgnumakefilechange-rs-re-to-qs-qe-3">3</a>
 <a href="#listingsgnumakefilechange-rs-re-to-qs-qe-4">4</a></pre></div></td>
 <td class="code"><pre class="code literal-block"><a name="listingsgnumakefilechange-rs-re-to-qs-qe-1"></a><span class="c">%.qs.ms.pdf : %.rst</span>
-<a name="listingsgnumakefilechange-rs-re-to-qs-qe-2"></a>	<span class="n">pandoc</span> <span class="s">--verbose</span> <span class="s">-r</span> <span class="s">rst</span> <span class="s">-w</span> <span class="s">ms</span> <span class="s">$(PANDOCOPTS)</span> <span class="s">\</span>
+<a name="listingsgnumakefilechange-rs-re-to-qs-qe-2"></a><span class="n">	pandoc </span><span class="s">--verbose -r rst -w ms $(PANDOCOPTS) \</span><span class="p"></span>
 <a name="listingsgnumakefilechange-rs-re-to-qs-qe-3"></a>		<span class="o">--</span><span class="n">output</span><span class="p">=</span><span class="o">-</span> $<span class="o">&lt;</span> <span class="o">|</span> <span class="n">gsed</span> <span class="o">-</span><span class="n">e</span> <span class="s">'s/^\.RS$$/.QS/'</span> <span class="o">-</span><span class="n">e</span> <span class="s">'s/^\.RE$$/.QE/'</span> <span class="o">|</span> <span class="o">\</span>
-<a name="listingsgnumakefilechange-rs-re-to-qs-qe-4"></a>	<span class="n">pdfroff</span> <span class="s">-ms</span> <span class="s">-mpdfmark</span> <span class="s">-e</span> <span class="s">-t</span> <span class="s">-k</span> <span class="s">-KUTF-8</span> <span class="s">-i</span> <span class="s">--no-toc-relocation</span> <span class="s">&gt;$@</span>
+<a name="listingsgnumakefilechange-rs-re-to-qs-qe-4"></a><span class="n">	pdfroff </span><span class="s">-ms -mpdfmark -e -t -k -KUTF-8 -i --no-toc-relocation &gt;$@</span><span class="p"></span>
 </pre></td>
 </tr></table>
 </div>

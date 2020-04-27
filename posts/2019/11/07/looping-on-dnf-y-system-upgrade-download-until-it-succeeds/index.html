@@ -80,7 +80,7 @@ dnf -y system-upgrade download">
 <p>Fedora 31 is out, and fool that I am I'm upgrading to it.
 Unfortunately, my DSL connection is slow and my DSL modem router is flaky.
 With over 3000 packages to download,</p>
-<pre class="code bash"><a name="rest_code_4489f9dc37d94dc19b45e78d0cfc0084-1"></a>dnf -y system-upgrade download --refresh --releasever<span class="o">=</span><span class="m">31</span>
+<pre class="code bash"><a name="rest_code_8cb8374248e441899934c46dbd20eb04-1"></a>dnf -y system-upgrade download --refresh --releasever<span class="o">=</span><span class="m">31</span>
 </pre>
 <p>is bound to die in the middle at least once, if not multiple times,
 and with more than 6 hours estimated for the download to run I can't
@@ -92,34 +92,34 @@ over again before I could C-c the shell.</p>
 <p>Here's the script I came up with to work around the issue:</p>
 <p><a class="reference external" href="../../../../../listings/tryfedoraupdate.html">tryfedoraupdate</a>  <a class="reference external" href="../../../../../listings/tryfedoraupdate">(Source)</a></p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_492cf654acb642909343e719e734002b-1"> 1</a>
-<a href="#rest_code_492cf654acb642909343e719e734002b-2"> 2</a>
-<a href="#rest_code_492cf654acb642909343e719e734002b-3"> 3</a>
-<a href="#rest_code_492cf654acb642909343e719e734002b-4"> 4</a>
-<a href="#rest_code_492cf654acb642909343e719e734002b-5"> 5</a>
-<a href="#rest_code_492cf654acb642909343e719e734002b-6"> 6</a>
-<a href="#rest_code_492cf654acb642909343e719e734002b-7"> 7</a>
-<a href="#rest_code_492cf654acb642909343e719e734002b-8"> 8</a>
-<a href="#rest_code_492cf654acb642909343e719e734002b-9"> 9</a>
-<a href="#rest_code_492cf654acb642909343e719e734002b-10">10</a>
-<a href="#rest_code_492cf654acb642909343e719e734002b-11">11</a>
-<a href="#rest_code_492cf654acb642909343e719e734002b-12">12</a>
-<a href="#rest_code_492cf654acb642909343e719e734002b-13">13</a>
-<a href="#rest_code_492cf654acb642909343e719e734002b-14">14</a></pre></div></td>
-<td class="code"><pre class="code bash"><a name="rest_code_492cf654acb642909343e719e734002b-1"></a><span class="ch">#! /usr/bin/bash</span>
-<a name="rest_code_492cf654acb642909343e719e734002b-2"></a>
-<a name="rest_code_492cf654acb642909343e719e734002b-3"></a><span class="k">while</span> ! dnf -y system-upgrade download --refresh --releasever<span class="o">=</span><span class="m">31</span>
-<a name="rest_code_492cf654acb642909343e719e734002b-4"></a><span class="k">do</span>
-<a name="rest_code_492cf654acb642909343e719e734002b-5"></a>    <span class="nb">read</span> -t <span class="m">30</span> -p <span class="s2">"Continue? (y/n) "</span> reply
-<a name="rest_code_492cf654acb642909343e719e734002b-6"></a>    <span class="k">if</span> <span class="o">((</span><span class="nv">$?</span>&gt;128<span class="o">))</span><span class="p">;</span> <span class="k">then</span>
-<a name="rest_code_492cf654acb642909343e719e734002b-7"></a>        <span class="nb">echo</span> <span class="s2">"timed out, continuing..."</span>
-<a name="rest_code_492cf654acb642909343e719e734002b-8"></a>    <span class="k">elif</span> <span class="o">[[</span> <span class="s2">"</span><span class="nv">$reply</span><span class="s2">"</span> <span class="o">=</span>~ <span class="o">[</span>Nn<span class="o">]</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
-<a name="rest_code_492cf654acb642909343e719e734002b-9"></a>        <span class="nb">echo</span> <span class="s2">"Exiting..."</span>
-<a name="rest_code_492cf654acb642909343e719e734002b-10"></a>        <span class="nb">exit</span>
-<a name="rest_code_492cf654acb642909343e719e734002b-11"></a>    <span class="k">else</span>
-<a name="rest_code_492cf654acb642909343e719e734002b-12"></a>        <span class="nb">echo</span> <span class="s2">"Continuing..."</span>
-<a name="rest_code_492cf654acb642909343e719e734002b-13"></a>    <span class="k">fi</span>
-<a name="rest_code_492cf654acb642909343e719e734002b-14"></a><span class="k">done</span>
+<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_1e74f34e414d4d87a341a15d68c9e15f-1"> 1</a>
+<a href="#rest_code_1e74f34e414d4d87a341a15d68c9e15f-2"> 2</a>
+<a href="#rest_code_1e74f34e414d4d87a341a15d68c9e15f-3"> 3</a>
+<a href="#rest_code_1e74f34e414d4d87a341a15d68c9e15f-4"> 4</a>
+<a href="#rest_code_1e74f34e414d4d87a341a15d68c9e15f-5"> 5</a>
+<a href="#rest_code_1e74f34e414d4d87a341a15d68c9e15f-6"> 6</a>
+<a href="#rest_code_1e74f34e414d4d87a341a15d68c9e15f-7"> 7</a>
+<a href="#rest_code_1e74f34e414d4d87a341a15d68c9e15f-8"> 8</a>
+<a href="#rest_code_1e74f34e414d4d87a341a15d68c9e15f-9"> 9</a>
+<a href="#rest_code_1e74f34e414d4d87a341a15d68c9e15f-10">10</a>
+<a href="#rest_code_1e74f34e414d4d87a341a15d68c9e15f-11">11</a>
+<a href="#rest_code_1e74f34e414d4d87a341a15d68c9e15f-12">12</a>
+<a href="#rest_code_1e74f34e414d4d87a341a15d68c9e15f-13">13</a>
+<a href="#rest_code_1e74f34e414d4d87a341a15d68c9e15f-14">14</a></pre></div></td>
+<td class="code"><pre class="code bash"><a name="rest_code_1e74f34e414d4d87a341a15d68c9e15f-1"></a><span class="ch">#! /usr/bin/bash</span>
+<a name="rest_code_1e74f34e414d4d87a341a15d68c9e15f-2"></a>
+<a name="rest_code_1e74f34e414d4d87a341a15d68c9e15f-3"></a><span class="k">while</span> ! dnf -y system-upgrade download --refresh --releasever<span class="o">=</span><span class="m">31</span>
+<a name="rest_code_1e74f34e414d4d87a341a15d68c9e15f-4"></a><span class="k">do</span>
+<a name="rest_code_1e74f34e414d4d87a341a15d68c9e15f-5"></a>    <span class="nb">read</span> -t <span class="m">30</span> -p <span class="s2">"Continue? (y/n) "</span> reply
+<a name="rest_code_1e74f34e414d4d87a341a15d68c9e15f-6"></a>    <span class="k">if</span> <span class="o">((</span><span class="nv">$?</span>&gt;128<span class="o">))</span><span class="p">;</span> <span class="k">then</span>
+<a name="rest_code_1e74f34e414d4d87a341a15d68c9e15f-7"></a>        <span class="nb">echo</span> <span class="s2">"timed out, continuing..."</span>
+<a name="rest_code_1e74f34e414d4d87a341a15d68c9e15f-8"></a>    <span class="k">elif</span> <span class="o">[[</span> <span class="s2">"</span><span class="nv">$reply</span><span class="s2">"</span> <span class="o">=</span>~ <span class="o">[</span>Nn<span class="o">]</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+<a name="rest_code_1e74f34e414d4d87a341a15d68c9e15f-9"></a>        <span class="nb">echo</span> <span class="s2">"Exiting..."</span>
+<a name="rest_code_1e74f34e414d4d87a341a15d68c9e15f-10"></a>        <span class="nb">exit</span>
+<a name="rest_code_1e74f34e414d4d87a341a15d68c9e15f-11"></a>    <span class="k">else</span>
+<a name="rest_code_1e74f34e414d4d87a341a15d68c9e15f-12"></a>        <span class="nb">echo</span> <span class="s2">"Continuing..."</span>
+<a name="rest_code_1e74f34e414d4d87a341a15d68c9e15f-13"></a>    <span class="k">fi</span>
+<a name="rest_code_1e74f34e414d4d87a341a15d68c9e15f-14"></a><span class="k">done</span>
 </pre></td>
 </tr></table>
 <p>This way I can stop the script easily, but if it dies itself it will

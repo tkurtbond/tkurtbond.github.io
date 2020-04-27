@@ -14,9 +14,7 @@ values of local variables into that code.  The function
 ``eval-after-load`` makes you quote the expression and doesn't 
 allow passing values into the expression.  How about this?
 
-.. class:: code
-
-::
+.. code:: emacs-lisp
 
   (require 'cl)
   (defmacro* eval-after-load* (file varlist &rest body)
@@ -39,9 +37,7 @@ allow passing values into the expression.  How about this?
 
 Here's a contrived example which demonstrates when things happen.
 
-.. class:: code
-
-::
+.. code:: emacs-lisp
 
   (let ((f (make-temp-file "tkb-madness" nil ".el"))
 	(x 1))
@@ -65,9 +61,7 @@ Here's a contrived example which demonstrates when things happen.
 
 You should see something like:
 
-.. class:: code
-
-::
+.. code::
 
   Wrote /tmp/tkb-madness88647vuE.el
   This happens before the eval-after-load*(y or n) 

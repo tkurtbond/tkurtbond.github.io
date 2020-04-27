@@ -96,149 +96,149 @@ Along the way I made sure the files all had <code class="docutils literal">#publ
 <code class="docutils literal">#tags</code> lines, in that order, immediately following the title line.</p>
 <p>Here's the shell script:</p>
 <p><a class="reference external" href="../../../../../listings/drive-pyblox-to-nikola.html">drive-pyblox-to-nikola</a>  <a class="reference external" href="../../../../../listings/drive-pyblox-to-nikola">(Source)</a></p>
-<pre class="code bash"><a name="rest_code_a6baba67f4234179b69385ea65518b9c-1"></a><span class="ch">#! /usr/bin/env bash</span>
-<a name="rest_code_a6baba67f4234179b69385ea65518b9c-2"></a>
-<a name="rest_code_a6baba67f4234179b69385ea65518b9c-3"></a><span class="o">(</span><span class="nb">cd</span> ~/myblog <span class="o">&amp;&amp;</span>
-<a name="rest_code_a6baba67f4234179b69385ea65518b9c-4"></a>     find notentries/ entries/ -type f -name <span class="se">\*</span>.rst <span class="p">|</span>
-<a name="rest_code_a6baba67f4234179b69385ea65518b9c-5"></a>         ~/comp/tkbtools/Scripts/pyblox-to-nikola<span class="o">)</span>
+<pre class="code bash"><a name="rest_code_15258a83c24a430089e531dc6dd4242d-1"></a><span class="ch">#! /usr/bin/env bash</span>
+<a name="rest_code_15258a83c24a430089e531dc6dd4242d-2"></a>
+<a name="rest_code_15258a83c24a430089e531dc6dd4242d-3"></a><span class="o">(</span><span class="nb">cd</span> ~/myblog <span class="o">&amp;&amp;</span>
+<a name="rest_code_15258a83c24a430089e531dc6dd4242d-4"></a>     find notentries/ entries/ -type f -name <span class="se">\*</span>.rst <span class="p">|</span>
+<a name="rest_code_15258a83c24a430089e531dc6dd4242d-5"></a>         ~/comp/tkbtools/Scripts/pyblox-to-nikola<span class="o">)</span>
 </pre>
 <p>Here's the python script:</p>
 <p><a class="reference external" href="../../../../../listings/pyblox-to-nikola.html">pyblox-to-nikola</a>  <a class="reference external" href="../../../../../listings/pyblox-to-nikola">(Source)</a></p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_ba4fba941f80431a848a6bffaf9c914c-1"> 1</a>
-<a href="#rest_code_ba4fba941f80431a848a6bffaf9c914c-2"> 2</a>
-<a href="#rest_code_ba4fba941f80431a848a6bffaf9c914c-3"> 3</a>
-<a href="#rest_code_ba4fba941f80431a848a6bffaf9c914c-4"> 4</a>
-<a href="#rest_code_ba4fba941f80431a848a6bffaf9c914c-5"> 5</a>
-<a href="#rest_code_ba4fba941f80431a848a6bffaf9c914c-6"> 6</a>
-<a href="#rest_code_ba4fba941f80431a848a6bffaf9c914c-7"> 7</a>
-<a href="#rest_code_ba4fba941f80431a848a6bffaf9c914c-8"> 8</a>
-<a href="#rest_code_ba4fba941f80431a848a6bffaf9c914c-9"> 9</a>
-<a href="#rest_code_ba4fba941f80431a848a6bffaf9c914c-10">10</a>
-<a href="#rest_code_ba4fba941f80431a848a6bffaf9c914c-11">11</a>
-<a href="#rest_code_ba4fba941f80431a848a6bffaf9c914c-12">12</a>
-<a href="#rest_code_ba4fba941f80431a848a6bffaf9c914c-13">13</a>
-<a href="#rest_code_ba4fba941f80431a848a6bffaf9c914c-14">14</a>
-<a href="#rest_code_ba4fba941f80431a848a6bffaf9c914c-15">15</a>
-<a href="#rest_code_ba4fba941f80431a848a6bffaf9c914c-16">16</a>
-<a href="#rest_code_ba4fba941f80431a848a6bffaf9c914c-17">17</a>
-<a href="#rest_code_ba4fba941f80431a848a6bffaf9c914c-18">18</a>
-<a href="#rest_code_ba4fba941f80431a848a6bffaf9c914c-19">19</a>
-<a href="#rest_code_ba4fba941f80431a848a6bffaf9c914c-20">20</a>
-<a href="#rest_code_ba4fba941f80431a848a6bffaf9c914c-21">21</a>
-<a href="#rest_code_ba4fba941f80431a848a6bffaf9c914c-22">22</a>
-<a href="#rest_code_ba4fba941f80431a848a6bffaf9c914c-23">23</a>
-<a href="#rest_code_ba4fba941f80431a848a6bffaf9c914c-24">24</a>
-<a href="#rest_code_ba4fba941f80431a848a6bffaf9c914c-25">25</a>
-<a href="#rest_code_ba4fba941f80431a848a6bffaf9c914c-26">26</a>
-<a href="#rest_code_ba4fba941f80431a848a6bffaf9c914c-27">27</a>
-<a href="#rest_code_ba4fba941f80431a848a6bffaf9c914c-28">28</a>
-<a href="#rest_code_ba4fba941f80431a848a6bffaf9c914c-29">29</a>
-<a href="#rest_code_ba4fba941f80431a848a6bffaf9c914c-30">30</a>
-<a href="#rest_code_ba4fba941f80431a848a6bffaf9c914c-31">31</a>
-<a href="#rest_code_ba4fba941f80431a848a6bffaf9c914c-32">32</a>
-<a href="#rest_code_ba4fba941f80431a848a6bffaf9c914c-33">33</a>
-<a href="#rest_code_ba4fba941f80431a848a6bffaf9c914c-34">34</a>
-<a href="#rest_code_ba4fba941f80431a848a6bffaf9c914c-35">35</a>
-<a href="#rest_code_ba4fba941f80431a848a6bffaf9c914c-36">36</a>
-<a href="#rest_code_ba4fba941f80431a848a6bffaf9c914c-37">37</a>
-<a href="#rest_code_ba4fba941f80431a848a6bffaf9c914c-38">38</a>
-<a href="#rest_code_ba4fba941f80431a848a6bffaf9c914c-39">39</a>
-<a href="#rest_code_ba4fba941f80431a848a6bffaf9c914c-40">40</a>
-<a href="#rest_code_ba4fba941f80431a848a6bffaf9c914c-41">41</a>
-<a href="#rest_code_ba4fba941f80431a848a6bffaf9c914c-42">42</a>
-<a href="#rest_code_ba4fba941f80431a848a6bffaf9c914c-43">43</a>
-<a href="#rest_code_ba4fba941f80431a848a6bffaf9c914c-44">44</a>
-<a href="#rest_code_ba4fba941f80431a848a6bffaf9c914c-45">45</a>
-<a href="#rest_code_ba4fba941f80431a848a6bffaf9c914c-46">46</a>
-<a href="#rest_code_ba4fba941f80431a848a6bffaf9c914c-47">47</a>
-<a href="#rest_code_ba4fba941f80431a848a6bffaf9c914c-48">48</a>
-<a href="#rest_code_ba4fba941f80431a848a6bffaf9c914c-49">49</a>
-<a href="#rest_code_ba4fba941f80431a848a6bffaf9c914c-50">50</a>
-<a href="#rest_code_ba4fba941f80431a848a6bffaf9c914c-51">51</a>
-<a href="#rest_code_ba4fba941f80431a848a6bffaf9c914c-52">52</a>
-<a href="#rest_code_ba4fba941f80431a848a6bffaf9c914c-53">53</a>
-<a href="#rest_code_ba4fba941f80431a848a6bffaf9c914c-54">54</a>
-<a href="#rest_code_ba4fba941f80431a848a6bffaf9c914c-55">55</a>
-<a href="#rest_code_ba4fba941f80431a848a6bffaf9c914c-56">56</a>
-<a href="#rest_code_ba4fba941f80431a848a6bffaf9c914c-57">57</a>
-<a href="#rest_code_ba4fba941f80431a848a6bffaf9c914c-58">58</a>
-<a href="#rest_code_ba4fba941f80431a848a6bffaf9c914c-59">59</a>
-<a href="#rest_code_ba4fba941f80431a848a6bffaf9c914c-60">60</a>
-<a href="#rest_code_ba4fba941f80431a848a6bffaf9c914c-61">61</a>
-<a href="#rest_code_ba4fba941f80431a848a6bffaf9c914c-62">62</a>
-<a href="#rest_code_ba4fba941f80431a848a6bffaf9c914c-63">63</a>
-<a href="#rest_code_ba4fba941f80431a848a6bffaf9c914c-64">64</a>
-<a href="#rest_code_ba4fba941f80431a848a6bffaf9c914c-65">65</a>
-<a href="#rest_code_ba4fba941f80431a848a6bffaf9c914c-66">66</a>
-<a href="#rest_code_ba4fba941f80431a848a6bffaf9c914c-67">67</a></pre></div></td>
-<td class="code"><pre class="code python"><a name="rest_code_ba4fba941f80431a848a6bffaf9c914c-1"></a><span class="ch">#! /usr/bin/env python3.7</span>
-<a name="rest_code_ba4fba941f80431a848a6bffaf9c914c-2"></a>
-<a name="rest_code_ba4fba941f80431a848a6bffaf9c914c-3"></a><span class="kn">import</span> <span class="nn">os</span>
-<a name="rest_code_ba4fba941f80431a848a6bffaf9c914c-4"></a><span class="kn">import</span> <span class="nn">os.path</span>
-<a name="rest_code_ba4fba941f80431a848a6bffaf9c914c-5"></a><span class="kn">import</span> <span class="nn">sys</span>
-<a name="rest_code_ba4fba941f80431a848a6bffaf9c914c-6"></a><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
-<a name="rest_code_ba4fba941f80431a848a6bffaf9c914c-7"></a>
-<a name="rest_code_ba4fba941f80431a848a6bffaf9c914c-8"></a><span class="c1"># datetime.strptime ('2019-11-05 20:32:24', '%Y-%m-%d %H:%M:%S')</span>
-<a name="rest_code_ba4fba941f80431a848a6bffaf9c914c-9"></a><span class="c1"># dt.strftime ('%Y-%m-%d %H:%M:%S UTC-05:00')</span>
-<a name="rest_code_ba4fba941f80431a848a6bffaf9c914c-10"></a>
-<a name="rest_code_ba4fba941f80431a848a6bffaf9c914c-11"></a><span class="n">entries_prefix</span> <span class="o">=</span> <span class="s1">'entries/'</span>
-<a name="rest_code_ba4fba941f80431a848a6bffaf9c914c-12"></a><span class="n">notentries_prefix</span> <span class="o">=</span> <span class="s1">'notentries/'</span>
-<a name="rest_code_ba4fba941f80431a848a6bffaf9c914c-13"></a><span class="n">published_prefix</span> <span class="o">=</span> <span class="s1">'#published '</span>
-<a name="rest_code_ba4fba941f80431a848a6bffaf9c914c-14"></a><span class="n">tags_prefix</span> <span class="o">=</span> <span class="s1">'#tags '</span>
-<a name="rest_code_ba4fba941f80431a848a6bffaf9c914c-15"></a>
-<a name="rest_code_ba4fba941f80431a848a6bffaf9c914c-16"></a><span class="n">files_read</span> <span class="o">=</span> <span class="mi">0</span>
-<a name="rest_code_ba4fba941f80431a848a6bffaf9c914c-17"></a><span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdin</span><span class="p">:</span>
-<a name="rest_code_ba4fba941f80431a848a6bffaf9c914c-18"></a>    <span class="n">filename</span> <span class="o">=</span> <span class="n">filename</span><span class="o">.</span><span class="n">rstrip</span> <span class="p">()</span>
-<a name="rest_code_ba4fba941f80431a848a6bffaf9c914c-19"></a>    <span class="n">basename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span>  <span class="p">(</span><span class="n">filename</span><span class="p">)</span>
-<a name="rest_code_ba4fba941f80431a848a6bffaf9c914c-20"></a>    <span class="n">dirname</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span> <span class="p">(</span><span class="n">filename</span><span class="p">)</span>
-<a name="rest_code_ba4fba941f80431a848a6bffaf9c914c-21"></a>    <span class="k">if</span> <span class="n">dirname</span><span class="o">.</span><span class="n">startswith</span> <span class="p">(</span><span class="n">entries_prefix</span><span class="p">):</span>
-<a name="rest_code_ba4fba941f80431a848a6bffaf9c914c-22"></a>        <span class="n">category</span> <span class="o">=</span> <span class="n">dirname</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">entries_prefix</span><span class="p">):]</span>
-<a name="rest_code_ba4fba941f80431a848a6bffaf9c914c-23"></a>    <span class="k">elif</span> <span class="n">dirname</span><span class="o">.</span><span class="n">startswith</span> <span class="p">(</span><span class="n">notentries_prefix</span><span class="p">):</span>
-<a name="rest_code_ba4fba941f80431a848a6bffaf9c914c-24"></a>        <span class="n">category</span> <span class="o">=</span> <span class="n">dirname</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">notentries_prefix</span><span class="p">):]</span>
-<a name="rest_code_ba4fba941f80431a848a6bffaf9c914c-25"></a>    <span class="k">else</span><span class="p">:</span>
-<a name="rest_code_ba4fba941f80431a848a6bffaf9c914c-26"></a>        <span class="n">category</span> <span class="o">=</span> <span class="s1">''</span>
-<a name="rest_code_ba4fba941f80431a848a6bffaf9c914c-27"></a>    <span class="p">(</span><span class="n">slug</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span> <span class="p">(</span><span class="n">basename</span><span class="p">)</span>
-<a name="rest_code_ba4fba941f80431a848a6bffaf9c914c-28"></a>    <span class="nb">print</span> <span class="p">(</span><span class="s1">'filename: </span><span class="si">%s</span><span class="se">\n</span><span class="s1">basename: </span><span class="si">%s</span><span class="se">\n</span><span class="s1">dirname: </span><span class="si">%s</span><span class="se">\n</span><span class="s1">category: </span><span class="si">%s</span><span class="se">\n</span><span class="s1">slug: </span><span class="si">%s</span><span class="s1">'</span> <span class="o">%</span>
-<a name="rest_code_ba4fba941f80431a848a6bffaf9c914c-29"></a>           <span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">basename</span><span class="p">,</span> <span class="n">dirname</span><span class="p">,</span> <span class="n">category</span><span class="p">,</span> <span class="n">slug</span><span class="p">))</span>
-<a name="rest_code_ba4fba941f80431a848a6bffaf9c914c-30"></a>    <span class="n">inf</span> <span class="o">=</span> <span class="nb">open</span> <span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">)</span>
-<a name="rest_code_ba4fba941f80431a848a6bffaf9c914c-31"></a>    <span class="n">files_read</span> <span class="o">=</span> <span class="n">files_read</span> <span class="o">+</span> <span class="mi">1</span>
-<a name="rest_code_ba4fba941f80431a848a6bffaf9c914c-32"></a>    <span class="n">title</span> <span class="o">=</span> <span class="n">inf</span><span class="o">.</span><span class="n">readline</span> <span class="p">()</span>
-<a name="rest_code_ba4fba941f80431a848a6bffaf9c914c-33"></a>    <span class="n">title</span> <span class="o">=</span> <span class="n">title</span><span class="o">.</span><span class="n">rstrip</span> <span class="p">()</span>
-<a name="rest_code_ba4fba941f80431a848a6bffaf9c914c-34"></a>    <span class="n">published</span> <span class="o">=</span> <span class="n">inf</span><span class="o">.</span><span class="n">readline</span> <span class="p">()</span>
-<a name="rest_code_ba4fba941f80431a848a6bffaf9c914c-35"></a>    <span class="n">published</span> <span class="o">=</span> <span class="n">published</span><span class="o">.</span><span class="n">strip</span> <span class="p">()</span>
-<a name="rest_code_ba4fba941f80431a848a6bffaf9c914c-36"></a>    <span class="k">if</span> <span class="n">published</span><span class="o">.</span><span class="n">startswith</span> <span class="p">(</span><span class="n">published_prefix</span><span class="p">):</span>
-<a name="rest_code_ba4fba941f80431a848a6bffaf9c914c-37"></a>        <span class="n">published</span> <span class="o">=</span> <span class="n">published</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">published_prefix</span><span class="p">):]</span>
-<a name="rest_code_ba4fba941f80431a848a6bffaf9c914c-38"></a>    <span class="k">else</span><span class="p">:</span>
-<a name="rest_code_ba4fba941f80431a848a6bffaf9c914c-39"></a>        <span class="k">raise</span> <span class="p">(</span><span class="s1">'Unknown line should be #published'</span><span class="p">,</span> <span class="n">published</span><span class="p">)</span>
-<a name="rest_code_ba4fba941f80431a848a6bffaf9c914c-40"></a>    <span class="n">published_date</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span> <span class="p">(</span><span class="n">published</span><span class="p">,</span> <span class="s1">'%Y-%m-</span><span class="si">%d</span><span class="s1"> %H:%M:%S'</span><span class="p">)</span>
-<a name="rest_code_ba4fba941f80431a848a6bffaf9c914c-41"></a>    <span class="n">nikola_date</span> <span class="o">=</span> <span class="n">published_date</span><span class="o">.</span><span class="n">strftime</span> <span class="p">(</span><span class="s1">'%Y-%m-</span><span class="si">%d</span><span class="s1"> %H:%M:%S UTC-05:00'</span><span class="p">)</span>
-<a name="rest_code_ba4fba941f80431a848a6bffaf9c914c-42"></a>    <span class="n">datepath</span> <span class="o">=</span> <span class="n">published_date</span><span class="o">.</span><span class="n">strftime</span> <span class="p">(</span><span class="s1">'%Y/%m/</span><span class="si">%d</span><span class="s1">'</span><span class="p">)</span>
-<a name="rest_code_ba4fba941f80431a848a6bffaf9c914c-43"></a>    <span class="n">newdir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span> <span class="p">(</span><span class="s1">'/Users/tkb/nikola/newblog/posts'</span><span class="p">,</span> <span class="n">datepath</span><span class="p">)</span>
-<a name="rest_code_ba4fba941f80431a848a6bffaf9c914c-44"></a>    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span> <span class="p">(</span><span class="n">newdir</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<a name="rest_code_ba4fba941f80431a848a6bffaf9c914c-45"></a>    <span class="n">tags</span> <span class="o">=</span> <span class="n">inf</span><span class="o">.</span><span class="n">readline</span> <span class="p">()</span>
-<a name="rest_code_ba4fba941f80431a848a6bffaf9c914c-46"></a>    <span class="n">tags</span> <span class="o">=</span> <span class="n">tags</span><span class="o">.</span><span class="n">rstrip</span> <span class="p">()</span>
-<a name="rest_code_ba4fba941f80431a848a6bffaf9c914c-47"></a>    <span class="k">if</span> <span class="n">tags</span><span class="o">.</span><span class="n">startswith</span> <span class="p">(</span><span class="n">tags_prefix</span><span class="p">):</span>
-<a name="rest_code_ba4fba941f80431a848a6bffaf9c914c-48"></a>        <span class="n">tags</span> <span class="o">=</span> <span class="n">tags</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">tags_prefix</span><span class="p">):]</span>
-<a name="rest_code_ba4fba941f80431a848a6bffaf9c914c-49"></a>    <span class="k">else</span><span class="p">:</span>
-<a name="rest_code_ba4fba941f80431a848a6bffaf9c914c-50"></a>        <span class="k">raise</span> <span class="p">(</span><span class="s1">'Unknown line should be #tags'</span><span class="p">,</span> <span class="n">tags</span><span class="p">)</span>
-<a name="rest_code_ba4fba941f80431a848a6bffaf9c914c-51"></a>    <span class="n">tags</span> <span class="o">=</span> <span class="n">tags</span><span class="o">.</span><span class="n">lower</span> <span class="p">()</span>
-<a name="rest_code_ba4fba941f80431a848a6bffaf9c914c-52"></a>    <span class="n">outfname</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span> <span class="p">(</span><span class="n">newdir</span><span class="p">,</span> <span class="n">basename</span><span class="p">)</span>
-<a name="rest_code_ba4fba941f80431a848a6bffaf9c914c-53"></a>    <span class="nb">print</span> <span class="p">(</span><span class="s1">'outfname: </span><span class="si">%s</span><span class="s1">'</span> <span class="o">%</span> <span class="n">outfname</span><span class="p">)</span>
-<a name="rest_code_ba4fba941f80431a848a6bffaf9c914c-54"></a>    <span class="n">outf</span> <span class="o">=</span> <span class="nb">open</span> <span class="p">(</span><span class="n">outfname</span><span class="p">,</span> <span class="s1">'w'</span><span class="p">)</span>
-<a name="rest_code_ba4fba941f80431a848a6bffaf9c914c-55"></a>    <span class="n">outf</span><span class="o">.</span><span class="n">write</span> <span class="p">(</span><span class="s1">'.. title: </span><span class="si">%s</span><span class="se">\n</span><span class="s1">'</span> <span class="o">%</span> <span class="n">title</span><span class="p">)</span>
-<a name="rest_code_ba4fba941f80431a848a6bffaf9c914c-56"></a>    <span class="n">outf</span><span class="o">.</span><span class="n">write</span> <span class="p">(</span><span class="s1">'.. slug: </span><span class="si">%s</span><span class="se">\n</span><span class="s1">'</span> <span class="o">%</span> <span class="n">slug</span><span class="p">)</span>
-<a name="rest_code_ba4fba941f80431a848a6bffaf9c914c-57"></a>    <span class="n">outf</span><span class="o">.</span><span class="n">write</span> <span class="p">(</span><span class="s1">'.. date: </span><span class="si">%s</span><span class="se">\n</span><span class="s1">'</span> <span class="o">%</span> <span class="n">nikola_date</span><span class="p">)</span>
-<a name="rest_code_ba4fba941f80431a848a6bffaf9c914c-58"></a>    <span class="n">outf</span><span class="o">.</span><span class="n">write</span> <span class="p">(</span><span class="s1">'.. tags: </span><span class="si">%s</span><span class="se">\n</span><span class="s1">'</span> <span class="o">%</span> <span class="n">tags</span><span class="p">)</span>
-<a name="rest_code_ba4fba941f80431a848a6bffaf9c914c-59"></a>    <span class="n">outf</span><span class="o">.</span><span class="n">write</span> <span class="p">(</span><span class="s1">'.. category: </span><span class="si">%s</span><span class="se">\n</span><span class="s1">'</span> <span class="o">%</span> <span class="n">category</span><span class="p">)</span>
-<a name="rest_code_ba4fba941f80431a848a6bffaf9c914c-60"></a>    <span class="n">outf</span><span class="o">.</span><span class="n">write</span> <span class="p">(</span><span class="s1">'.. link: </span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
-<a name="rest_code_ba4fba941f80431a848a6bffaf9c914c-61"></a>    <span class="n">outf</span><span class="o">.</span><span class="n">write</span> <span class="p">(</span><span class="s1">'.. description: </span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
-<a name="rest_code_ba4fba941f80431a848a6bffaf9c914c-62"></a>    <span class="n">outf</span><span class="o">.</span><span class="n">write</span> <span class="p">(</span><span class="s1">'.. type: text</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
-<a name="rest_code_ba4fba941f80431a848a6bffaf9c914c-63"></a>    <span class="n">outf</span><span class="o">.</span><span class="n">write</span> <span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
-<a name="rest_code_ba4fba941f80431a848a6bffaf9c914c-64"></a>    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">inf</span><span class="p">:</span>
-<a name="rest_code_ba4fba941f80431a848a6bffaf9c914c-65"></a>        <span class="n">outf</span><span class="o">.</span><span class="n">write</span> <span class="p">(</span><span class="n">line</span><span class="p">)</span>
-<a name="rest_code_ba4fba941f80431a848a6bffaf9c914c-66"></a>    <span class="n">inf</span><span class="o">.</span><span class="n">close</span> <span class="p">()</span>
-<a name="rest_code_ba4fba941f80431a848a6bffaf9c914c-67"></a><span class="nb">print</span> <span class="p">(</span><span class="s1">'</span><span class="se">\n\n</span><span class="s1">Files Read: </span><span class="si">%d</span><span class="s1">'</span> <span class="o">%</span> <span class="n">files_read</span><span class="p">)</span>
+<td class="linenos"><div class="linenodiv"><pre><a href="#rest_code_cae494c15800479dad1ba9e9b6b3a9ad-1"> 1</a>
+<a href="#rest_code_cae494c15800479dad1ba9e9b6b3a9ad-2"> 2</a>
+<a href="#rest_code_cae494c15800479dad1ba9e9b6b3a9ad-3"> 3</a>
+<a href="#rest_code_cae494c15800479dad1ba9e9b6b3a9ad-4"> 4</a>
+<a href="#rest_code_cae494c15800479dad1ba9e9b6b3a9ad-5"> 5</a>
+<a href="#rest_code_cae494c15800479dad1ba9e9b6b3a9ad-6"> 6</a>
+<a href="#rest_code_cae494c15800479dad1ba9e9b6b3a9ad-7"> 7</a>
+<a href="#rest_code_cae494c15800479dad1ba9e9b6b3a9ad-8"> 8</a>
+<a href="#rest_code_cae494c15800479dad1ba9e9b6b3a9ad-9"> 9</a>
+<a href="#rest_code_cae494c15800479dad1ba9e9b6b3a9ad-10">10</a>
+<a href="#rest_code_cae494c15800479dad1ba9e9b6b3a9ad-11">11</a>
+<a href="#rest_code_cae494c15800479dad1ba9e9b6b3a9ad-12">12</a>
+<a href="#rest_code_cae494c15800479dad1ba9e9b6b3a9ad-13">13</a>
+<a href="#rest_code_cae494c15800479dad1ba9e9b6b3a9ad-14">14</a>
+<a href="#rest_code_cae494c15800479dad1ba9e9b6b3a9ad-15">15</a>
+<a href="#rest_code_cae494c15800479dad1ba9e9b6b3a9ad-16">16</a>
+<a href="#rest_code_cae494c15800479dad1ba9e9b6b3a9ad-17">17</a>
+<a href="#rest_code_cae494c15800479dad1ba9e9b6b3a9ad-18">18</a>
+<a href="#rest_code_cae494c15800479dad1ba9e9b6b3a9ad-19">19</a>
+<a href="#rest_code_cae494c15800479dad1ba9e9b6b3a9ad-20">20</a>
+<a href="#rest_code_cae494c15800479dad1ba9e9b6b3a9ad-21">21</a>
+<a href="#rest_code_cae494c15800479dad1ba9e9b6b3a9ad-22">22</a>
+<a href="#rest_code_cae494c15800479dad1ba9e9b6b3a9ad-23">23</a>
+<a href="#rest_code_cae494c15800479dad1ba9e9b6b3a9ad-24">24</a>
+<a href="#rest_code_cae494c15800479dad1ba9e9b6b3a9ad-25">25</a>
+<a href="#rest_code_cae494c15800479dad1ba9e9b6b3a9ad-26">26</a>
+<a href="#rest_code_cae494c15800479dad1ba9e9b6b3a9ad-27">27</a>
+<a href="#rest_code_cae494c15800479dad1ba9e9b6b3a9ad-28">28</a>
+<a href="#rest_code_cae494c15800479dad1ba9e9b6b3a9ad-29">29</a>
+<a href="#rest_code_cae494c15800479dad1ba9e9b6b3a9ad-30">30</a>
+<a href="#rest_code_cae494c15800479dad1ba9e9b6b3a9ad-31">31</a>
+<a href="#rest_code_cae494c15800479dad1ba9e9b6b3a9ad-32">32</a>
+<a href="#rest_code_cae494c15800479dad1ba9e9b6b3a9ad-33">33</a>
+<a href="#rest_code_cae494c15800479dad1ba9e9b6b3a9ad-34">34</a>
+<a href="#rest_code_cae494c15800479dad1ba9e9b6b3a9ad-35">35</a>
+<a href="#rest_code_cae494c15800479dad1ba9e9b6b3a9ad-36">36</a>
+<a href="#rest_code_cae494c15800479dad1ba9e9b6b3a9ad-37">37</a>
+<a href="#rest_code_cae494c15800479dad1ba9e9b6b3a9ad-38">38</a>
+<a href="#rest_code_cae494c15800479dad1ba9e9b6b3a9ad-39">39</a>
+<a href="#rest_code_cae494c15800479dad1ba9e9b6b3a9ad-40">40</a>
+<a href="#rest_code_cae494c15800479dad1ba9e9b6b3a9ad-41">41</a>
+<a href="#rest_code_cae494c15800479dad1ba9e9b6b3a9ad-42">42</a>
+<a href="#rest_code_cae494c15800479dad1ba9e9b6b3a9ad-43">43</a>
+<a href="#rest_code_cae494c15800479dad1ba9e9b6b3a9ad-44">44</a>
+<a href="#rest_code_cae494c15800479dad1ba9e9b6b3a9ad-45">45</a>
+<a href="#rest_code_cae494c15800479dad1ba9e9b6b3a9ad-46">46</a>
+<a href="#rest_code_cae494c15800479dad1ba9e9b6b3a9ad-47">47</a>
+<a href="#rest_code_cae494c15800479dad1ba9e9b6b3a9ad-48">48</a>
+<a href="#rest_code_cae494c15800479dad1ba9e9b6b3a9ad-49">49</a>
+<a href="#rest_code_cae494c15800479dad1ba9e9b6b3a9ad-50">50</a>
+<a href="#rest_code_cae494c15800479dad1ba9e9b6b3a9ad-51">51</a>
+<a href="#rest_code_cae494c15800479dad1ba9e9b6b3a9ad-52">52</a>
+<a href="#rest_code_cae494c15800479dad1ba9e9b6b3a9ad-53">53</a>
+<a href="#rest_code_cae494c15800479dad1ba9e9b6b3a9ad-54">54</a>
+<a href="#rest_code_cae494c15800479dad1ba9e9b6b3a9ad-55">55</a>
+<a href="#rest_code_cae494c15800479dad1ba9e9b6b3a9ad-56">56</a>
+<a href="#rest_code_cae494c15800479dad1ba9e9b6b3a9ad-57">57</a>
+<a href="#rest_code_cae494c15800479dad1ba9e9b6b3a9ad-58">58</a>
+<a href="#rest_code_cae494c15800479dad1ba9e9b6b3a9ad-59">59</a>
+<a href="#rest_code_cae494c15800479dad1ba9e9b6b3a9ad-60">60</a>
+<a href="#rest_code_cae494c15800479dad1ba9e9b6b3a9ad-61">61</a>
+<a href="#rest_code_cae494c15800479dad1ba9e9b6b3a9ad-62">62</a>
+<a href="#rest_code_cae494c15800479dad1ba9e9b6b3a9ad-63">63</a>
+<a href="#rest_code_cae494c15800479dad1ba9e9b6b3a9ad-64">64</a>
+<a href="#rest_code_cae494c15800479dad1ba9e9b6b3a9ad-65">65</a>
+<a href="#rest_code_cae494c15800479dad1ba9e9b6b3a9ad-66">66</a>
+<a href="#rest_code_cae494c15800479dad1ba9e9b6b3a9ad-67">67</a></pre></div></td>
+<td class="code"><pre class="code python"><a name="rest_code_cae494c15800479dad1ba9e9b6b3a9ad-1"></a><span class="ch">#! /usr/bin/env python3.7</span>
+<a name="rest_code_cae494c15800479dad1ba9e9b6b3a9ad-2"></a>
+<a name="rest_code_cae494c15800479dad1ba9e9b6b3a9ad-3"></a><span class="kn">import</span> <span class="nn">os</span>
+<a name="rest_code_cae494c15800479dad1ba9e9b6b3a9ad-4"></a><span class="kn">import</span> <span class="nn">os.path</span>
+<a name="rest_code_cae494c15800479dad1ba9e9b6b3a9ad-5"></a><span class="kn">import</span> <span class="nn">sys</span>
+<a name="rest_code_cae494c15800479dad1ba9e9b6b3a9ad-6"></a><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<a name="rest_code_cae494c15800479dad1ba9e9b6b3a9ad-7"></a>
+<a name="rest_code_cae494c15800479dad1ba9e9b6b3a9ad-8"></a><span class="c1"># datetime.strptime ('2019-11-05 20:32:24', '%Y-%m-%d %H:%M:%S')</span>
+<a name="rest_code_cae494c15800479dad1ba9e9b6b3a9ad-9"></a><span class="c1"># dt.strftime ('%Y-%m-%d %H:%M:%S UTC-05:00')</span>
+<a name="rest_code_cae494c15800479dad1ba9e9b6b3a9ad-10"></a>
+<a name="rest_code_cae494c15800479dad1ba9e9b6b3a9ad-11"></a><span class="n">entries_prefix</span> <span class="o">=</span> <span class="s1">'entries/'</span>
+<a name="rest_code_cae494c15800479dad1ba9e9b6b3a9ad-12"></a><span class="n">notentries_prefix</span> <span class="o">=</span> <span class="s1">'notentries/'</span>
+<a name="rest_code_cae494c15800479dad1ba9e9b6b3a9ad-13"></a><span class="n">published_prefix</span> <span class="o">=</span> <span class="s1">'#published '</span>
+<a name="rest_code_cae494c15800479dad1ba9e9b6b3a9ad-14"></a><span class="n">tags_prefix</span> <span class="o">=</span> <span class="s1">'#tags '</span>
+<a name="rest_code_cae494c15800479dad1ba9e9b6b3a9ad-15"></a>
+<a name="rest_code_cae494c15800479dad1ba9e9b6b3a9ad-16"></a><span class="n">files_read</span> <span class="o">=</span> <span class="mi">0</span>
+<a name="rest_code_cae494c15800479dad1ba9e9b6b3a9ad-17"></a><span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdin</span><span class="p">:</span>
+<a name="rest_code_cae494c15800479dad1ba9e9b6b3a9ad-18"></a>    <span class="n">filename</span> <span class="o">=</span> <span class="n">filename</span><span class="o">.</span><span class="n">rstrip</span> <span class="p">()</span>
+<a name="rest_code_cae494c15800479dad1ba9e9b6b3a9ad-19"></a>    <span class="n">basename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span>  <span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+<a name="rest_code_cae494c15800479dad1ba9e9b6b3a9ad-20"></a>    <span class="n">dirname</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span> <span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+<a name="rest_code_cae494c15800479dad1ba9e9b6b3a9ad-21"></a>    <span class="k">if</span> <span class="n">dirname</span><span class="o">.</span><span class="n">startswith</span> <span class="p">(</span><span class="n">entries_prefix</span><span class="p">):</span>
+<a name="rest_code_cae494c15800479dad1ba9e9b6b3a9ad-22"></a>        <span class="n">category</span> <span class="o">=</span> <span class="n">dirname</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">entries_prefix</span><span class="p">):]</span>
+<a name="rest_code_cae494c15800479dad1ba9e9b6b3a9ad-23"></a>    <span class="k">elif</span> <span class="n">dirname</span><span class="o">.</span><span class="n">startswith</span> <span class="p">(</span><span class="n">notentries_prefix</span><span class="p">):</span>
+<a name="rest_code_cae494c15800479dad1ba9e9b6b3a9ad-24"></a>        <span class="n">category</span> <span class="o">=</span> <span class="n">dirname</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">notentries_prefix</span><span class="p">):]</span>
+<a name="rest_code_cae494c15800479dad1ba9e9b6b3a9ad-25"></a>    <span class="k">else</span><span class="p">:</span>
+<a name="rest_code_cae494c15800479dad1ba9e9b6b3a9ad-26"></a>        <span class="n">category</span> <span class="o">=</span> <span class="s1">''</span>
+<a name="rest_code_cae494c15800479dad1ba9e9b6b3a9ad-27"></a>    <span class="p">(</span><span class="n">slug</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span> <span class="p">(</span><span class="n">basename</span><span class="p">)</span>
+<a name="rest_code_cae494c15800479dad1ba9e9b6b3a9ad-28"></a>    <span class="nb">print</span> <span class="p">(</span><span class="s1">'filename: </span><span class="si">%s</span><span class="se">\n</span><span class="s1">basename: </span><span class="si">%s</span><span class="se">\n</span><span class="s1">dirname: </span><span class="si">%s</span><span class="se">\n</span><span class="s1">category: </span><span class="si">%s</span><span class="se">\n</span><span class="s1">slug: </span><span class="si">%s</span><span class="s1">'</span> <span class="o">%</span>
+<a name="rest_code_cae494c15800479dad1ba9e9b6b3a9ad-29"></a>           <span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">basename</span><span class="p">,</span> <span class="n">dirname</span><span class="p">,</span> <span class="n">category</span><span class="p">,</span> <span class="n">slug</span><span class="p">))</span>
+<a name="rest_code_cae494c15800479dad1ba9e9b6b3a9ad-30"></a>    <span class="n">inf</span> <span class="o">=</span> <span class="nb">open</span> <span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">)</span>
+<a name="rest_code_cae494c15800479dad1ba9e9b6b3a9ad-31"></a>    <span class="n">files_read</span> <span class="o">=</span> <span class="n">files_read</span> <span class="o">+</span> <span class="mi">1</span>
+<a name="rest_code_cae494c15800479dad1ba9e9b6b3a9ad-32"></a>    <span class="n">title</span> <span class="o">=</span> <span class="n">inf</span><span class="o">.</span><span class="n">readline</span> <span class="p">()</span>
+<a name="rest_code_cae494c15800479dad1ba9e9b6b3a9ad-33"></a>    <span class="n">title</span> <span class="o">=</span> <span class="n">title</span><span class="o">.</span><span class="n">rstrip</span> <span class="p">()</span>
+<a name="rest_code_cae494c15800479dad1ba9e9b6b3a9ad-34"></a>    <span class="n">published</span> <span class="o">=</span> <span class="n">inf</span><span class="o">.</span><span class="n">readline</span> <span class="p">()</span>
+<a name="rest_code_cae494c15800479dad1ba9e9b6b3a9ad-35"></a>    <span class="n">published</span> <span class="o">=</span> <span class="n">published</span><span class="o">.</span><span class="n">strip</span> <span class="p">()</span>
+<a name="rest_code_cae494c15800479dad1ba9e9b6b3a9ad-36"></a>    <span class="k">if</span> <span class="n">published</span><span class="o">.</span><span class="n">startswith</span> <span class="p">(</span><span class="n">published_prefix</span><span class="p">):</span>
+<a name="rest_code_cae494c15800479dad1ba9e9b6b3a9ad-37"></a>        <span class="n">published</span> <span class="o">=</span> <span class="n">published</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">published_prefix</span><span class="p">):]</span>
+<a name="rest_code_cae494c15800479dad1ba9e9b6b3a9ad-38"></a>    <span class="k">else</span><span class="p">:</span>
+<a name="rest_code_cae494c15800479dad1ba9e9b6b3a9ad-39"></a>        <span class="k">raise</span> <span class="p">(</span><span class="s1">'Unknown line should be #published'</span><span class="p">,</span> <span class="n">published</span><span class="p">)</span>
+<a name="rest_code_cae494c15800479dad1ba9e9b6b3a9ad-40"></a>    <span class="n">published_date</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span> <span class="p">(</span><span class="n">published</span><span class="p">,</span> <span class="s1">'%Y-%m-</span><span class="si">%d</span><span class="s1"> %H:%M:%S'</span><span class="p">)</span>
+<a name="rest_code_cae494c15800479dad1ba9e9b6b3a9ad-41"></a>    <span class="n">nikola_date</span> <span class="o">=</span> <span class="n">published_date</span><span class="o">.</span><span class="n">strftime</span> <span class="p">(</span><span class="s1">'%Y-%m-</span><span class="si">%d</span><span class="s1"> %H:%M:%S UTC-05:00'</span><span class="p">)</span>
+<a name="rest_code_cae494c15800479dad1ba9e9b6b3a9ad-42"></a>    <span class="n">datepath</span> <span class="o">=</span> <span class="n">published_date</span><span class="o">.</span><span class="n">strftime</span> <span class="p">(</span><span class="s1">'%Y/%m/</span><span class="si">%d</span><span class="s1">'</span><span class="p">)</span>
+<a name="rest_code_cae494c15800479dad1ba9e9b6b3a9ad-43"></a>    <span class="n">newdir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span> <span class="p">(</span><span class="s1">'/Users/tkb/nikola/newblog/posts'</span><span class="p">,</span> <span class="n">datepath</span><span class="p">)</span>
+<a name="rest_code_cae494c15800479dad1ba9e9b6b3a9ad-44"></a>    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span> <span class="p">(</span><span class="n">newdir</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a name="rest_code_cae494c15800479dad1ba9e9b6b3a9ad-45"></a>    <span class="n">tags</span> <span class="o">=</span> <span class="n">inf</span><span class="o">.</span><span class="n">readline</span> <span class="p">()</span>
+<a name="rest_code_cae494c15800479dad1ba9e9b6b3a9ad-46"></a>    <span class="n">tags</span> <span class="o">=</span> <span class="n">tags</span><span class="o">.</span><span class="n">rstrip</span> <span class="p">()</span>
+<a name="rest_code_cae494c15800479dad1ba9e9b6b3a9ad-47"></a>    <span class="k">if</span> <span class="n">tags</span><span class="o">.</span><span class="n">startswith</span> <span class="p">(</span><span class="n">tags_prefix</span><span class="p">):</span>
+<a name="rest_code_cae494c15800479dad1ba9e9b6b3a9ad-48"></a>        <span class="n">tags</span> <span class="o">=</span> <span class="n">tags</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">tags_prefix</span><span class="p">):]</span>
+<a name="rest_code_cae494c15800479dad1ba9e9b6b3a9ad-49"></a>    <span class="k">else</span><span class="p">:</span>
+<a name="rest_code_cae494c15800479dad1ba9e9b6b3a9ad-50"></a>        <span class="k">raise</span> <span class="p">(</span><span class="s1">'Unknown line should be #tags'</span><span class="p">,</span> <span class="n">tags</span><span class="p">)</span>
+<a name="rest_code_cae494c15800479dad1ba9e9b6b3a9ad-51"></a>    <span class="n">tags</span> <span class="o">=</span> <span class="n">tags</span><span class="o">.</span><span class="n">lower</span> <span class="p">()</span>
+<a name="rest_code_cae494c15800479dad1ba9e9b6b3a9ad-52"></a>    <span class="n">outfname</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span> <span class="p">(</span><span class="n">newdir</span><span class="p">,</span> <span class="n">basename</span><span class="p">)</span>
+<a name="rest_code_cae494c15800479dad1ba9e9b6b3a9ad-53"></a>    <span class="nb">print</span> <span class="p">(</span><span class="s1">'outfname: </span><span class="si">%s</span><span class="s1">'</span> <span class="o">%</span> <span class="n">outfname</span><span class="p">)</span>
+<a name="rest_code_cae494c15800479dad1ba9e9b6b3a9ad-54"></a>    <span class="n">outf</span> <span class="o">=</span> <span class="nb">open</span> <span class="p">(</span><span class="n">outfname</span><span class="p">,</span> <span class="s1">'w'</span><span class="p">)</span>
+<a name="rest_code_cae494c15800479dad1ba9e9b6b3a9ad-55"></a>    <span class="n">outf</span><span class="o">.</span><span class="n">write</span> <span class="p">(</span><span class="s1">'.. title: </span><span class="si">%s</span><span class="se">\n</span><span class="s1">'</span> <span class="o">%</span> <span class="n">title</span><span class="p">)</span>
+<a name="rest_code_cae494c15800479dad1ba9e9b6b3a9ad-56"></a>    <span class="n">outf</span><span class="o">.</span><span class="n">write</span> <span class="p">(</span><span class="s1">'.. slug: </span><span class="si">%s</span><span class="se">\n</span><span class="s1">'</span> <span class="o">%</span> <span class="n">slug</span><span class="p">)</span>
+<a name="rest_code_cae494c15800479dad1ba9e9b6b3a9ad-57"></a>    <span class="n">outf</span><span class="o">.</span><span class="n">write</span> <span class="p">(</span><span class="s1">'.. date: </span><span class="si">%s</span><span class="se">\n</span><span class="s1">'</span> <span class="o">%</span> <span class="n">nikola_date</span><span class="p">)</span>
+<a name="rest_code_cae494c15800479dad1ba9e9b6b3a9ad-58"></a>    <span class="n">outf</span><span class="o">.</span><span class="n">write</span> <span class="p">(</span><span class="s1">'.. tags: </span><span class="si">%s</span><span class="se">\n</span><span class="s1">'</span> <span class="o">%</span> <span class="n">tags</span><span class="p">)</span>
+<a name="rest_code_cae494c15800479dad1ba9e9b6b3a9ad-59"></a>    <span class="n">outf</span><span class="o">.</span><span class="n">write</span> <span class="p">(</span><span class="s1">'.. category: </span><span class="si">%s</span><span class="se">\n</span><span class="s1">'</span> <span class="o">%</span> <span class="n">category</span><span class="p">)</span>
+<a name="rest_code_cae494c15800479dad1ba9e9b6b3a9ad-60"></a>    <span class="n">outf</span><span class="o">.</span><span class="n">write</span> <span class="p">(</span><span class="s1">'.. link: </span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
+<a name="rest_code_cae494c15800479dad1ba9e9b6b3a9ad-61"></a>    <span class="n">outf</span><span class="o">.</span><span class="n">write</span> <span class="p">(</span><span class="s1">'.. description: </span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
+<a name="rest_code_cae494c15800479dad1ba9e9b6b3a9ad-62"></a>    <span class="n">outf</span><span class="o">.</span><span class="n">write</span> <span class="p">(</span><span class="s1">'.. type: text</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
+<a name="rest_code_cae494c15800479dad1ba9e9b6b3a9ad-63"></a>    <span class="n">outf</span><span class="o">.</span><span class="n">write</span> <span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
+<a name="rest_code_cae494c15800479dad1ba9e9b6b3a9ad-64"></a>    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">inf</span><span class="p">:</span>
+<a name="rest_code_cae494c15800479dad1ba9e9b6b3a9ad-65"></a>        <span class="n">outf</span><span class="o">.</span><span class="n">write</span> <span class="p">(</span><span class="n">line</span><span class="p">)</span>
+<a name="rest_code_cae494c15800479dad1ba9e9b6b3a9ad-66"></a>    <span class="n">inf</span><span class="o">.</span><span class="n">close</span> <span class="p">()</span>
+<a name="rest_code_cae494c15800479dad1ba9e9b6b3a9ad-67"></a><span class="nb">print</span> <span class="p">(</span><span class="s1">'</span><span class="se">\n\n</span><span class="s1">Files Read: </span><span class="si">%d</span><span class="s1">'</span> <span class="o">%</span> <span class="n">files_read</span><span class="p">)</span>
 </pre></td>
 </tr></table>
 <p>There were 810 <a class="reference external" href="http://docutils.sourceforge.io/rst.html">reStructuredText</a> files to process.  Once that was

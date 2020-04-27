@@ -237,15 +237,15 @@ mail today.  It looks good to my quick scan.</p>
 Docbook-based website, and were presently part of my static
 Sphinx-based website, over to my current PyBlosxom blog tonight,
 using the following script:</p>
-<pre class="code text"><a name="rest_code_5bdf16c8b27e4199b02436b4d5c925a6-1"></a>#! /usr/bin/env bash
-<a name="rest_code_5bdf16c8b27e4199b02436b4d5c925a6-2"></a>find 200? -type f ! -name \*~ ! -name \*-idx-*.rst |
-<a name="rest_code_5bdf16c8b27e4199b02436b4d5c925a6-3"></a>while read filename
-<a name="rest_code_5bdf16c8b27e4199b02436b4d5c925a6-4"></a>do
-<a name="rest_code_5bdf16c8b27e4199b02436b4d5c925a6-5"></a>    newname="$(echo $filename | sed 's#/#-#g')"
-<a name="rest_code_5bdf16c8b27e4199b02436b4d5c925a6-6"></a>    date="$(basename $newname .rst)"
-<a name="rest_code_5bdf16c8b27e4199b02436b4d5c925a6-7"></a>    (echo $date; echo "#published $date 00:00:00"; echo "#tags Old Blog";
-<a name="rest_code_5bdf16c8b27e4199b02436b4d5c925a6-8"></a>        cat $filename) &gt;/home/tkb/myblog/entries/oldblog/$newname
-<a name="rest_code_5bdf16c8b27e4199b02436b4d5c925a6-9"></a>done
+<pre class="code text"><a name="rest_code_3fb86864a9ca4abd80cef228089ead22-1"></a>#! /usr/bin/env bash
+<a name="rest_code_3fb86864a9ca4abd80cef228089ead22-2"></a>find 200? -type f ! -name \*~ ! -name \*-idx-*.rst |
+<a name="rest_code_3fb86864a9ca4abd80cef228089ead22-3"></a>while read filename
+<a name="rest_code_3fb86864a9ca4abd80cef228089ead22-4"></a>do
+<a name="rest_code_3fb86864a9ca4abd80cef228089ead22-5"></a>    newname="$(echo $filename | sed 's#/#-#g')"
+<a name="rest_code_3fb86864a9ca4abd80cef228089ead22-6"></a>    date="$(basename $newname .rst)"
+<a name="rest_code_3fb86864a9ca4abd80cef228089ead22-7"></a>    (echo $date; echo "#published $date 00:00:00"; echo "#tags Old Blog";
+<a name="rest_code_3fb86864a9ca4abd80cef228089ead22-8"></a>        cat $filename) &gt;/home/tkb/myblog/entries/oldblog/$newname
+<a name="rest_code_3fb86864a9ca4abd80cef228089ead22-9"></a>done
 </pre>
 <p>I'll have to go through and fix uses of Sphinx-specific RST
 extensions, and I'll probably add real entry titles as I do so; in the

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="description" content="tryfedoraupdate~">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>tryfedoraupdate~ | Lacking Natural Simplicity</title>
+<link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
+<link rel="canonical" href="https://tkurtbond.github.io/listings/.~/tryfedoraupdate~.html">
+<!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]-->
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<div class="blog-masthead">
+    <div class="container">
+<!-- This keeps the margins nice -->
+        <nav class="blog-nav" role="navigation"><a href="../../index.html" class="blog-nav-item">Home</a>
+            <a href="../../archive.html" class="blog-nav-item">Archives</a>
+            <a href="../../categories/index.html" class="blog-nav-item">Tags</a>
+            <a href="../../rss.xml" class="blog-nav-item">RSS feed</a>
+
+            
+
+    <li>
+    <a href="tryfedoraupdate~" id="sourcelink">Source</a>
+    </li>
+                
+            
+        </nav>
+</div>
+<!-- /.container -->
+</div>
+<!-- End of Menubar -->
+
+<div class="container" id="content" role="main">
+    <div class="body-content">
+        <div class="blog-header">
+            <h1 class="blog-title">
+                <a href="https://tkurtbond.github.io/">
+
+                    <span id="blog-title">Lacking Natural Simplicity</span>
+                </a>
+            </h1>
+            <p class="lead blog-description">Random musings on books, code, and tabletop games.</p>
+            
+        </div>
+        <!--Body content-->
+        <div class="row">
+            <div class="col-sm-8 blog-main">
+<nav class="breadcrumbs"><ul class="breadcrumb">
+<li><a href="../">listings</a></li>
+                <li><a href=".">.~</a></li>
+                <li>tryfedoraupdate~</li>
+</ul></nav><h1>tryfedoraupdate~
+        <small><a href="tryfedoraupdate~">(Source)</a></small>
+    </h1>
+    <table class="codetable"><tr>
+<td class="linenos"><div class="linenodiv"><pre><a href="#listingstryfedoraupdate-1"> 1</a>
+<a href="#listingstryfedoraupdate-2"> 2</a>
+<a href="#listingstryfedoraupdate-3"> 3</a>
+<a href="#listingstryfedoraupdate-4"> 4</a>
+<a href="#listingstryfedoraupdate-5"> 5</a>
+<a href="#listingstryfedoraupdate-6"> 6</a>
+<a href="#listingstryfedoraupdate-7"> 7</a>
+<a href="#listingstryfedoraupdate-8"> 8</a>
+<a href="#listingstryfedoraupdate-9"> 9</a>
+<a href="#listingstryfedoraupdate-10">10</a>
+<a href="#listingstryfedoraupdate-11">11</a>
+<a href="#listingstryfedoraupdate-12">12</a>
+<a href="#listingstryfedoraupdate-13">13</a>
+<a href="#listingstryfedoraupdate-14">14</a>
+<a href="#listingstryfedoraupdate-15">15</a>
+<a href="#listingstryfedoraupdate-16">16</a>
+<a href="#listingstryfedoraupdate-17">17</a>
+<a href="#listingstryfedoraupdate-18">18</a>
+<a href="#listingstryfedoraupdate-19">19</a></pre></div></td>
+<td class="code"><pre class="code literal-block"><a name="listingstryfedoraupdate-1"></a><span class="ch">#! /usr/bin/bash</span>
+<a name="listingstryfedoraupdate-2"></a><span class="c1"># I tried running "dnf -y system-upgrade download --refresh --releasever=31"</span>
+<a name="listingstryfedoraupdate-3"></a><span class="c1"># as the TEST-COMMANDS in a while loop, but was unable to C-c to interrupt</span>
+<a name="listingstryfedoraupdate-4"></a><span class="c1"># it since dnf caught the SIGINT and the loop started the dnf command over</span>
+<a name="listingstryfedoraupdate-5"></a><span class="c1"># again before I could C-c the shell.  This way there is a prompt and an</span>
+<a name="listingstryfedoraupdate-6"></a><span class="c1"># option to quit, before it times out and continues.</span>
+<a name="listingstryfedoraupdate-7"></a><span class="k">while</span> ! dnf -y system-upgrade download --refresh --releasever<span class="o">=</span><span class="m">31</span>
+<a name="listingstryfedoraupdate-8"></a><span class="k">do</span>
+<a name="listingstryfedoraupdate-9"></a>    <span class="nb">read</span> -t <span class="m">30</span> -p <span class="s2">"Continue? (y/n) "</span> reply
+<a name="listingstryfedoraupdate-10"></a>    <span class="k">if</span> <span class="o">((</span><span class="nv">$?</span>&gt;128<span class="o">))</span><span class="p">;</span> <span class="k">then</span>
+<a name="listingstryfedoraupdate-11"></a>	<span class="nb">echo</span> <span class="s2">"timed out, continuing..."</span>
+<a name="listingstryfedoraupdate-12"></a>    <span class="k">elif</span> <span class="o">[[</span> <span class="s2">"</span><span class="nv">$reply</span><span class="s2">"</span> <span class="o">=</span>~ <span class="o">[</span>Nn<span class="o">]</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+<a name="listingstryfedoraupdate-13"></a>	<span class="nb">echo</span> <span class="s2">"Exiting..."</span>
+<a name="listingstryfedoraupdate-14"></a>	<span class="nb">exit</span>
+<a name="listingstryfedoraupdate-15"></a>    <span class="k">else</span>
+<a name="listingstryfedoraupdate-16"></a>	<span class="nb">echo</span> <span class="s2">"Continuing..."</span>
+<a name="listingstryfedoraupdate-17"></a>    <span class="k">fi</span>
+<a name="listingstryfedoraupdate-18"></a><span class="k">done</span>
+<a name="listingstryfedoraupdate-19"></a>    
+</pre></td>
+</tr></table>
+</div>
+            <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+                    <div class="sidebar-module sidebar-module-inset">
+      <h4>About</h4>
+      <p>Lacking Natural Simplicity is one, not particularly flattering, 
+         definition of sophisticated.  
+         This blog chronicles my journey through our at times too complicated 
+         and sophisticated world. </p>
+    </div>
+    <div class="sidebar-module">
+      <h4>Links</h4>
+      <ol class="list-unstyled">
+<li><a href="../../pages/about-the-blog/index.html">About the Blog</a></li>
+        <li><a href="../../pages/colophon/index.html">Colophon</a></li>
+        <li><a href="../../pages/pages/index.html">Pages</a></li>
+      </ol>
+</div>
+    
+            </div>
+        <!--End of body content-->
+        </div>
+    </div>
+</div>
+
+<footer class="blog-footer" id="footer">
+    Contents © 2020         <a href="mailto:tkurtbond@gmail.com">T. Kurt Bond</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+    
+</footer><script src="../../assets/js/all-nocdn.js"></script><!-- fancy dates --><script>
+    moment.locale("en");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates --><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element) {
+            return element.getElementsByTagName('img')[0].alt;
+    }});
+    </script>
+</body>
+</html>

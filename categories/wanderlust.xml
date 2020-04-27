@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity (Posts about wanderlust)</title><link>https://tkurtbond.github.io/</link><description></description><atom:link href="https://tkurtbond.github.io/categories/wanderlust.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2020 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Sat, 04 Apr 2020 16:46:28 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Emacs 23.1 and Wanderlust</title><link>https://tkurtbond.github.io/posts/2009/09/25/emacs-23.1-and-wanderlust/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;To get UTF-8 to work when sending drafted messages  in &lt;a class="reference external" href="http://www.gohome.org/wl/"&gt;Wanderlust&lt;/a&gt; with
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity (Posts about wanderlust)</title><link>https://tkurtbond.github.io/</link><description></description><atom:link href="https://tkurtbond.github.io/categories/wanderlust.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2020 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Sat, 25 Apr 2020 05:10:20 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Emacs 23.1 and Wanderlust</title><link>https://tkurtbond.github.io/posts/2009/09/25/emacs-23.1-and-wanderlust/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;To get UTF-8 to work when sending drafted messages  in &lt;a class="reference external" href="http://www.gohome.org/wl/"&gt;Wanderlust&lt;/a&gt; with
 Emacs 23.1 I had to apply this &lt;a class="reference external" href="http://article.gmane.org/gmane.mail.wanderlust.general.japanese/5978"&gt;patch&lt;/a&gt; to FLIM.&lt;/p&gt;
 &lt;p&gt;I also checked out the wl-2_15_6-vtl branch in the wanderlust
 repository and the semi-1_14-vtl branch in the semi repository.
@@ -13,7 +13,7 @@ approachable.&lt;/p&gt;
 &lt;p&gt;Wanderlust development and the development of the emacs packages that
 it depends on (APEL, FLIM, and SEMI) feel like that to me.  Some of
 them have web pages, but they're usually quite out of date.  It can be
-difficult to their CVS repositories, and even more difficult to find
+difficult find to their CVS repositories, and even more difficult to find
 the browse-able web interfaces to their CVS repositories.  Every time
 I want to look at the code, I have to figure this all out again, hence
 this post.&lt;/p&gt;
@@ -45,11 +45,11 @@ contents to &lt;a class="reference external" href="mailto:emacs-mime-en-ctl@m17n
 &lt;a class="reference external" href="mailto:emacs-mime-ja-ctl@m17n.org"&gt;emacs-mime-ja-ctl@m17n.org&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;So, here are the CVS commands I just used to check the various
 packages out:&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;&lt;code&gt;cvs -d :pserver:anonymous@cvs.m17n.org:/cvs/root checkout wanderlust
-cvs -z9 -d :pserver:anonymous@cvs.m17n.org:/cvs/root checkout apel
-cvs -z9 -d :pserver:anonymous@cvs.m17n.org:/cvs/root checkout -r flim-1_14 flim
-cvs -z9 -d :pserver:anonymous@cvs.m17n.org:/cvs/root checkout -r semi-1_14 semi&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Here are the browse-able CVS web interfaces:&lt;/p&gt;
+&lt;pre class="code bash"&gt;&lt;a name="rest_code_8cf0446a21c146678afe7d5170c48979-1"&gt;&lt;/a&gt;cvs -d :pserver:anonymous@cvs.m17n.org:/cvs/root checkout wanderlust
+&lt;a name="rest_code_8cf0446a21c146678afe7d5170c48979-2"&gt;&lt;/a&gt;cvs -z9 -d :pserver:anonymous@cvs.m17n.org:/cvs/root checkout apel
+&lt;a name="rest_code_8cf0446a21c146678afe7d5170c48979-3"&gt;&lt;/a&gt;cvs -z9 -d :pserver:anonymous@cvs.m17n.org:/cvs/root checkout -r flim-1_14 flim
+&lt;a name="rest_code_8cf0446a21c146678afe7d5170c48979-4"&gt;&lt;/a&gt;cvs -z9 -d :pserver:anonymous@cvs.m17n.org:/cvs/root checkout -r semi-1_14 semi
+&lt;/pre&gt;&lt;p&gt;Here are the browse-able CVS web interfaces:&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;&lt;p&gt;&lt;a class="reference external" href="http://cvs.m17n.org/viewcvs/root/wanderlust/"&gt;http://cvs.m17n.org/viewcvs/root/wanderlust/&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;&lt;a class="reference external" href="http://cvs.m17n.org/viewcvs/root/apel/"&gt;http://cvs.m17n.org/viewcvs/root/apel/&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;

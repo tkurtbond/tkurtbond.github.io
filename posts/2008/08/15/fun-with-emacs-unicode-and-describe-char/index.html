@@ -79,33 +79,34 @@ proper unicode lookup data!
     <div>
 <p>Ever use the emacs command <code class="docutils literal"><span class="pre">describe-char</span></code>?  It's even more fun with
 proper unicode lookup data!</p>
-<pre class="code literal-block"><code>;; First, we'll bind it to a key.
-(global-set-key "\C-cD" #'describe-char)
-
-;; Now we'll download it if necessary.
-(let ((udf-url "http://www.unicode.org/Public/UNIDATA/UnicodeData.txt")
-      (udf-dest "~/tmp/UnicodeData.txt"))
-  (if (file-readable-p udf-dest)
-      ;; Let describe-char know it exists.
-      (setq describe-char-unicodedata-file udf-dest)
-    ;; It doesn't exist, and we need to download it!
-    (when (y-or-n-p (format "You need to download %s ! Do it? " udf-url))
-      ;; Really weird: wget -O 'file' complains that file doesn't exist.
-      (let* ((cmd (format "cd ~/tmp/ &amp;&amp; wget -O %s --progress=dot '%s'"
-                          udf-dest udf-url))
-             (buf (get-buffer-create (format " *wget '%s'*" udf-url)))
-             (proc (start-process-shell-command "wget-unicode-Data"
-                                                buf cmd)))
-        (display-buffer buf)
-        (set-process-sentinel
-         proc
-         `(lambda (proc event)
-            (unless (string-match "^finished" event)
-              (error "unexpected status '%s' getting '%s'" ,udf-url event))
-            (setq describe-char-unicodedata-file ,udf-dest)
-            (message "Try describe-char now! ☣☥☸▧◉✘✽☮⅙▧⚅☑☢☹☺♠♥♦♣♨♻⚔")))
-        (message "Downloading... check describe-char later")
-        nil))))</code></pre>
+<pre class="code emacs-lisp"><a name="rest_code_38fd8bf255c4468faf4334c3e504c32e-1"></a><span class="c1">;; First, we'll bind it to a key.</span>
+<a name="rest_code_38fd8bf255c4468faf4334c3e504c32e-2"></a><span class="p">(</span><span class="nv">global-set-key</span> <span class="s">"\C-cD"</span> <span class="nf">#'</span><span class="nv">describe-char</span><span class="p">)</span>
+<a name="rest_code_38fd8bf255c4468faf4334c3e504c32e-3"></a>
+<a name="rest_code_38fd8bf255c4468faf4334c3e504c32e-4"></a><span class="c1">;; Now we'll download it if necessary.</span>
+<a name="rest_code_38fd8bf255c4468faf4334c3e504c32e-5"></a><span class="p">(</span><span class="k">let</span> <span class="p">((</span><span class="nv">udf-url</span> <span class="s">"http://www.unicode.org/Public/UNIDATA/UnicodeData.txt"</span><span class="p">)</span>
+<a name="rest_code_38fd8bf255c4468faf4334c3e504c32e-6"></a>      <span class="p">(</span><span class="nv">udf-dest</span> <span class="s">"~/tmp/UnicodeData.txt"</span><span class="p">))</span>
+<a name="rest_code_38fd8bf255c4468faf4334c3e504c32e-7"></a>  <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nf">file-readable-p</span> <span class="nv">udf-dest</span><span class="p">)</span>
+<a name="rest_code_38fd8bf255c4468faf4334c3e504c32e-8"></a>      <span class="c1">;; Let describe-char know it exists.</span>
+<a name="rest_code_38fd8bf255c4468faf4334c3e504c32e-9"></a>      <span class="p">(</span><span class="k">setq</span> <span class="nv">describe-char-unicodedata-file</span> <span class="nv">udf-dest</span><span class="p">)</span>
+<a name="rest_code_38fd8bf255c4468faf4334c3e504c32e-10"></a>    <span class="c1">;; It doesn't exist, and we need to download it!</span>
+<a name="rest_code_38fd8bf255c4468faf4334c3e504c32e-11"></a>    <span class="p">(</span><span class="nb">when</span> <span class="p">(</span><span class="nv">y-or-n-p</span> <span class="p">(</span><span class="nf">format</span> <span class="s">"You need to download %s ! Do it? "</span> <span class="nv">udf-url</span><span class="p">))</span>
+<a name="rest_code_38fd8bf255c4468faf4334c3e504c32e-12"></a>      <span class="c1">;; Really weird: wget -O 'file' complains that file doesn't exist.</span>
+<a name="rest_code_38fd8bf255c4468faf4334c3e504c32e-13"></a>      <span class="p">(</span><span class="k">let*</span> <span class="p">((</span><span class="nv">cmd</span> <span class="p">(</span><span class="nf">format</span> <span class="s">"cd ~/tmp/ &amp;&amp; wget -O %s --progress=dot '%s'"</span>
+<a name="rest_code_38fd8bf255c4468faf4334c3e504c32e-14"></a>                          <span class="nv">udf-dest</span> <span class="nv">udf-url</span><span class="p">))</span>
+<a name="rest_code_38fd8bf255c4468faf4334c3e504c32e-15"></a>             <span class="p">(</span><span class="nv">buf</span> <span class="p">(</span><span class="nf">get-buffer-create</span> <span class="p">(</span><span class="nf">format</span> <span class="s">" *wget '%s'*"</span> <span class="nv">udf-url</span><span class="p">)))</span>
+<a name="rest_code_38fd8bf255c4468faf4334c3e504c32e-16"></a>             <span class="p">(</span><span class="nv">proc</span> <span class="p">(</span><span class="nv">start-process-shell-command</span> <span class="s">"wget-unicode-Data"</span>
+<a name="rest_code_38fd8bf255c4468faf4334c3e504c32e-17"></a>                                                <span class="nv">buf</span> <span class="nv">cmd</span><span class="p">)))</span>
+<a name="rest_code_38fd8bf255c4468faf4334c3e504c32e-18"></a>        <span class="p">(</span><span class="nv">display-buffer</span> <span class="nv">buf</span><span class="p">)</span>
+<a name="rest_code_38fd8bf255c4468faf4334c3e504c32e-19"></a>        <span class="p">(</span><span class="nf">set-process-sentinel</span>
+<a name="rest_code_38fd8bf255c4468faf4334c3e504c32e-20"></a>         <span class="nv">proc</span>
+<a name="rest_code_38fd8bf255c4468faf4334c3e504c32e-21"></a>         <span class="o">`</span><span class="p">(</span><span class="nb">lambda</span> <span class="p">(</span><span class="nv">proc</span> <span class="nv">event</span><span class="p">)</span>
+<a name="rest_code_38fd8bf255c4468faf4334c3e504c32e-22"></a>            <span class="p">(</span><span class="nb">unless</span> <span class="p">(</span><span class="nf">string-match</span> <span class="s">"^finished"</span> <span class="nv">event</span><span class="p">)</span>
+<a name="rest_code_38fd8bf255c4468faf4334c3e504c32e-23"></a>              <span class="p">(</span><span class="ne">error</span> <span class="s">"unexpected status '%s' getting '%s'"</span> <span class="o">,</span><span class="nv">udf-url</span> <span class="nv">event</span><span class="p">))</span>
+<a name="rest_code_38fd8bf255c4468faf4334c3e504c32e-24"></a>            <span class="p">(</span><span class="k">setq</span> <span class="nv">describe-char-unicodedata-file</span> <span class="o">,</span><span class="nv">udf-dest</span><span class="p">)</span>
+<a name="rest_code_38fd8bf255c4468faf4334c3e504c32e-25"></a>            <span class="p">(</span><span class="nf">message</span> <span class="s">"Try describe-char now! ☣☥☸▧◉✘✽☮⅙▧⚅☑☢☹☺♠♥♦♣♨♻⚔"</span><span class="p">)))</span>
+<a name="rest_code_38fd8bf255c4468faf4334c3e504c32e-26"></a>        <span class="p">(</span><span class="nf">message</span> <span class="s">"Downloading... check describe-char later"</span><span class="p">)</span>
+<a name="rest_code_38fd8bf255c4468faf4334c3e504c32e-27"></a>        <span class="no">nil</span><span class="p">))))</span>
+</pre>
 <p>Once this is run and it tells you to try <code class="docutils literal"><span class="pre">describe-char</span></code> you can
 position your cursor over one of the Unicode characters in the message
 (“C-h e” to display the “<em>Messages</em>” buffer) and press “C-cD” and look

@@ -15,26 +15,20 @@ don't actually want to be bothered matching the case exactly when I'm
 using tab completion.  Fortunately, :program:`emacs` and
 :program:`bash` both accommodate my whims.  For bash, add
 
-.. class:: code
-
-::
+.. code:: bash
 
     set completion-ignore-case on
 
 to your ``~/.inputrc`` file.  For emacs, add
 
-.. class:: code
-
-::
+.. code:: emacs-lisp
 
    (read-file-name-completion-ignore-case t)
 
 to your emacs initialization files.  Of course, if want to get rid of
 all completion case sensitivity, you need
 
-.. class:: code
-
-::
+.. code:: emacs-lisp
 
     (setq completion-ignore-case t)
 

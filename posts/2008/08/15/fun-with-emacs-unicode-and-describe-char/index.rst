@@ -11,9 +11,7 @@
 Ever use the emacs command ``describe-char``?  It's even more fun with
 proper unicode lookup data!
 
-.. class:: code
-
-::
+.. code:: emacs-lisp
 
   ;; First, we'll bind it to a key.
   (global-set-key "\C-cD" #'describe-char)

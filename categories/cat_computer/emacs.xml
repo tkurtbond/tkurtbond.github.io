@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity (Posts about emacs)</title><link>https://tkurtbond.github.io/</link><description></description><atom:link href="https://tkurtbond.github.io/categories/cat_computer/emacs.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2020 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Sat, 04 Apr 2020 16:46:28 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Defining keys in the C-x 8 prefix keymap</title><link>https://tkurtbond.github.io/posts/2012/10/03/defining-keys-in-the-c-x-8-prefix-keymap/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;Yay!  I finally found it!&lt;/p&gt;
+<?xml-stylesheet type="text/xsl" href="../../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity (Posts about emacs)</title><link>https://tkurtbond.github.io/</link><description></description><atom:link href="https://tkurtbond.github.io/categories/cat_computer/emacs.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2020 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Sat, 25 Apr 2020 05:10:20 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Defining keys in the C-x 8 prefix keymap</title><link>https://tkurtbond.github.io/posts/2012/10/03/defining-keys-in-the-c-x-8-prefix-keymap/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;Yay!  I finally found it!&lt;/p&gt;
 &lt;p&gt;Suppose you hate typing “C-x 8 RET GREEK SMALL LETTER LAMBDA” to
 insert a lowercase lambda character in emacs (perhaps because you have
 a dull American keyboard and aren't very savvy to input methods).  You
@@ -50,7 +50,7 @@ approachable.&lt;/p&gt;
 &lt;p&gt;Wanderlust development and the development of the emacs packages that
 it depends on (APEL, FLIM, and SEMI) feel like that to me.  Some of
 them have web pages, but they're usually quite out of date.  It can be
-difficult to their CVS repositories, and even more difficult to find
+difficult find to their CVS repositories, and even more difficult to find
 the browse-able web interfaces to their CVS repositories.  Every time
 I want to look at the code, I have to figure this all out again, hence
 this post.&lt;/p&gt;
@@ -82,11 +82,11 @@ contents to &lt;a class="reference external" href="mailto:emacs-mime-en-ctl@m17n
 &lt;a class="reference external" href="mailto:emacs-mime-ja-ctl@m17n.org"&gt;emacs-mime-ja-ctl@m17n.org&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;So, here are the CVS commands I just used to check the various
 packages out:&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;&lt;code&gt;cvs -d :pserver:anonymous@cvs.m17n.org:/cvs/root checkout wanderlust
-cvs -z9 -d :pserver:anonymous@cvs.m17n.org:/cvs/root checkout apel
-cvs -z9 -d :pserver:anonymous@cvs.m17n.org:/cvs/root checkout -r flim-1_14 flim
-cvs -z9 -d :pserver:anonymous@cvs.m17n.org:/cvs/root checkout -r semi-1_14 semi&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Here are the browse-able CVS web interfaces:&lt;/p&gt;
+&lt;pre class="code bash"&gt;&lt;a name="rest_code_8cf0446a21c146678afe7d5170c48979-1"&gt;&lt;/a&gt;cvs -d :pserver:anonymous@cvs.m17n.org:/cvs/root checkout wanderlust
+&lt;a name="rest_code_8cf0446a21c146678afe7d5170c48979-2"&gt;&lt;/a&gt;cvs -z9 -d :pserver:anonymous@cvs.m17n.org:/cvs/root checkout apel
+&lt;a name="rest_code_8cf0446a21c146678afe7d5170c48979-3"&gt;&lt;/a&gt;cvs -z9 -d :pserver:anonymous@cvs.m17n.org:/cvs/root checkout -r flim-1_14 flim
+&lt;a name="rest_code_8cf0446a21c146678afe7d5170c48979-4"&gt;&lt;/a&gt;cvs -z9 -d :pserver:anonymous@cvs.m17n.org:/cvs/root checkout -r semi-1_14 semi
+&lt;/pre&gt;&lt;p&gt;Here are the browse-able CVS web interfaces:&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;&lt;p&gt;&lt;a class="reference external" href="http://cvs.m17n.org/viewcvs/root/wanderlust/"&gt;http://cvs.m17n.org/viewcvs/root/wanderlust/&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;&lt;a class="reference external" href="http://cvs.m17n.org/viewcvs/root/apel/"&gt;http://cvs.m17n.org/viewcvs/root/apel/&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
@@ -129,86 +129,86 @@ after emacs loads a particular emacs-lisp file, but you want to pass
 values of local variables into that code.  The function
 &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;eval-after-load&lt;/span&gt;&lt;/code&gt; makes you quote the expression and doesn't
 allow passing values into the expression.  How about this?&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;&lt;code&gt;(require 'cl)
-(defmacro* eval-after-load* (file varlist &amp;amp;rest body)
-  "Like `eval-after-load', but bind variables according to VARLIST in
-the current environment of the `eval-after-load' expression, not the
-environment when BODY is evaluated.  This allows easy passing of values
-into BODY.
-Each element of VARLIST is a symbol (which is bound to the current value
-of that symbol) or a list (SYMBOL VALUEFORM) (which binds SYMBOL to the
-value of VALUEFORM in the environment of the `eval-after-load' expression."
-  `(eval-after-load ,file
-     '(let ,(loop for v in varlist
-                  collect (if (symbolp v)
-                              `(,v ,(eval v))
-                            `(,(car v) ,(eval (cadr v))))
-                  into new-varlist
-                  finally return new-varlist) ,@body)))
-(put 'eval-after-load* 'lisp-indent-function
-     (1+ (get 'eval-after-load 'lisp-indent-function)))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Here's a contrived example which demonstrates when things happen.&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;&lt;code&gt;(let ((f (make-temp-file "tkb-madness" nil ".el"))
-      (x 1))
-  (unwind-protect
-      (progn
-        (save-excursion
-          (let ((buf (find-file f)))
-            (insert (format "(y-or-n-p \"In the file '%s'! \")" f))
-            (save-buffer)
-            (kill-buffer buf)))
-        (y-or-n-p "This happens before the eval-after-load*")
-        (eval-after-load* f
-            (x
-             (y (y-or-n-p "This happens when the eval-after-load* is executed?"))
-             (z 2))
-          (y-or-n-p (format "x: %d y: %S z: %d" x y z))
-          (y-or-n-p "This happends during the delayed expressions"))
-        (y-or-n-p "This happens after the eval-after-load* expression")
-        (load f))
-    (when (file-exists-p f) (delete-file f))))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;You should see something like:&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;&lt;code&gt;Wrote /tmp/tkb-madness88647vuE.el
-This happens before the eval-after-load*(y or n)
-This happens when the eval-after-load* is executed?(y or n)
-This happens after the eval-after-load* expression(y or n)
-Loading /tmp/tkb-madness88647vuE.el (source)...
-In the file '/tmp/tkb-madness88647vuE.el'! (y or n)
-x: 1 y: t z: 2(y or n)
-This happends during the delayed expressions(y or n)
-Loading /tmp/tkb-madness88647vuE.el (source)...done&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;(&lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;y-or-n-p&lt;/span&gt;&lt;/code&gt; is used instead of &lt;code class="docutils literal"&gt;message&lt;/code&gt; so you see each message when it
+&lt;pre class="code emacs-lisp"&gt;&lt;a name="rest_code_a3645f40dc6840f084024a5145e5a66e-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;require&lt;/span&gt; &lt;span class="ss"&gt;'cl&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_a3645f40dc6840f084024a5145e5a66e-2"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;defmacro*&lt;/span&gt; &lt;span class="nv"&gt;eval-after-load*&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;file&lt;/span&gt; &lt;span class="nv"&gt;varlist&lt;/span&gt; &lt;span class="kp"&gt;&amp;amp;rest&lt;/span&gt; &lt;span class="nv"&gt;body&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_a3645f40dc6840f084024a5145e5a66e-3"&gt;&lt;/a&gt;  &lt;span class="s"&gt;"Like &lt;/span&gt;&lt;span class="ss"&gt;`eval-after-load'&lt;/span&gt;&lt;span class="s"&gt;, but bind variables according to VARLIST in&lt;/span&gt;
+&lt;a name="rest_code_a3645f40dc6840f084024a5145e5a66e-4"&gt;&lt;/a&gt;&lt;span class="s"&gt;the current environment of the &lt;/span&gt;&lt;span class="ss"&gt;`eval-after-load'&lt;/span&gt;&lt;span class="s"&gt; expression, not the&lt;/span&gt;
+&lt;a name="rest_code_a3645f40dc6840f084024a5145e5a66e-5"&gt;&lt;/a&gt;&lt;span class="s"&gt;environment when BODY is evaluated.  This allows easy passing of values&lt;/span&gt;
+&lt;a name="rest_code_a3645f40dc6840f084024a5145e5a66e-6"&gt;&lt;/a&gt;&lt;span class="s"&gt;into BODY.&lt;/span&gt;
+&lt;a name="rest_code_a3645f40dc6840f084024a5145e5a66e-7"&gt;&lt;/a&gt;&lt;span class="s"&gt;Each element of VARLIST is a symbol (which is bound to the current value&lt;/span&gt;
+&lt;a name="rest_code_a3645f40dc6840f084024a5145e5a66e-8"&gt;&lt;/a&gt;&lt;span class="s"&gt;of that symbol) or a list (SYMBOL VALUEFORM) (which binds SYMBOL to the&lt;/span&gt;
+&lt;a name="rest_code_a3645f40dc6840f084024a5145e5a66e-9"&gt;&lt;/a&gt;&lt;span class="s"&gt;value of VALUEFORM in the environment of the &lt;/span&gt;&lt;span class="ss"&gt;`eval-after-load'&lt;/span&gt;&lt;span class="s"&gt; expression."&lt;/span&gt;
+&lt;a name="rest_code_a3645f40dc6840f084024a5145e5a66e-10"&gt;&lt;/a&gt;  &lt;span class="o"&gt;`&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;eval-after-load&lt;/span&gt; &lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="nv"&gt;file&lt;/span&gt;
+&lt;a name="rest_code_a3645f40dc6840f084024a5145e5a66e-11"&gt;&lt;/a&gt;     &lt;span class="o"&gt;'&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;let&lt;/span&gt; &lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;loop&lt;/span&gt; &lt;span class="nv"&gt;for&lt;/span&gt; &lt;span class="nv"&gt;v&lt;/span&gt; &lt;span class="nv"&gt;in&lt;/span&gt; &lt;span class="nv"&gt;varlist&lt;/span&gt;
+&lt;a name="rest_code_a3645f40dc6840f084024a5145e5a66e-12"&gt;&lt;/a&gt;                  &lt;span class="nv"&gt;collect&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;symbolp&lt;/span&gt; &lt;span class="nv"&gt;v&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_a3645f40dc6840f084024a5145e5a66e-13"&gt;&lt;/a&gt;                              &lt;span class="o"&gt;`&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="nv"&gt;v&lt;/span&gt; &lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;eval&lt;/span&gt; &lt;span class="nv"&gt;v&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;a name="rest_code_a3645f40dc6840f084024a5145e5a66e-14"&gt;&lt;/a&gt;                            &lt;span class="o"&gt;`&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;car&lt;/span&gt; &lt;span class="nv"&gt;v&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;eval&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;cadr&lt;/span&gt; &lt;span class="nv"&gt;v&lt;/span&gt;&lt;span class="p"&gt;))))&lt;/span&gt;
+&lt;a name="rest_code_a3645f40dc6840f084024a5145e5a66e-15"&gt;&lt;/a&gt;                  &lt;span class="nv"&gt;into&lt;/span&gt; &lt;span class="nv"&gt;new-varlist&lt;/span&gt;
+&lt;a name="rest_code_a3645f40dc6840f084024a5145e5a66e-16"&gt;&lt;/a&gt;                  &lt;span class="nv"&gt;finally&lt;/span&gt; &lt;span class="nb"&gt;return&lt;/span&gt; &lt;span class="nv"&gt;new-varlist&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;,@&lt;/span&gt;&lt;span class="nv"&gt;body&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+&lt;a name="rest_code_a3645f40dc6840f084024a5145e5a66e-17"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;put&lt;/span&gt; &lt;span class="ss"&gt;'eval-after-load*&lt;/span&gt; &lt;span class="ss"&gt;'lisp-indent-function&lt;/span&gt;
+&lt;a name="rest_code_a3645f40dc6840f084024a5145e5a66e-18"&gt;&lt;/a&gt;     &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;1+&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;get&lt;/span&gt; &lt;span class="ss"&gt;'eval-after-load&lt;/span&gt; &lt;span class="ss"&gt;'lisp-indent-function&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+&lt;/pre&gt;&lt;p&gt;Here's a contrived example which demonstrates when things happen.&lt;/p&gt;
+&lt;pre class="code emacs-lisp"&gt;&lt;a name="rest_code_770c751f4594489883f3a859aa85b0ad-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;let&lt;/span&gt; &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nv"&gt;f&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;make-temp-file&lt;/span&gt; &lt;span class="s"&gt;"tkb-madness"&lt;/span&gt; &lt;span class="no"&gt;nil&lt;/span&gt; &lt;span class="s"&gt;".el"&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;a name="rest_code_770c751f4594489883f3a859aa85b0ad-2"&gt;&lt;/a&gt;      &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;x&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;a name="rest_code_770c751f4594489883f3a859aa85b0ad-3"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;unwind-protect&lt;/span&gt;
+&lt;a name="rest_code_770c751f4594489883f3a859aa85b0ad-4"&gt;&lt;/a&gt;      &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;progn&lt;/span&gt;
+&lt;a name="rest_code_770c751f4594489883f3a859aa85b0ad-5"&gt;&lt;/a&gt;        &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;save-excursion&lt;/span&gt;
+&lt;a name="rest_code_770c751f4594489883f3a859aa85b0ad-6"&gt;&lt;/a&gt;          &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;let&lt;/span&gt; &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nv"&gt;buf&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;find-file&lt;/span&gt; &lt;span class="nv"&gt;f&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+&lt;a name="rest_code_770c751f4594489883f3a859aa85b0ad-7"&gt;&lt;/a&gt;            &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;insert&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;format&lt;/span&gt; &lt;span class="s"&gt;"(y-or-n-p \"In the file '%s'! \")"&lt;/span&gt; &lt;span class="nv"&gt;f&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;a name="rest_code_770c751f4594489883f3a859aa85b0ad-8"&gt;&lt;/a&gt;            &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;save-buffer&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_770c751f4594489883f3a859aa85b0ad-9"&gt;&lt;/a&gt;            &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;kill-buffer&lt;/span&gt; &lt;span class="nv"&gt;buf&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+&lt;a name="rest_code_770c751f4594489883f3a859aa85b0ad-10"&gt;&lt;/a&gt;        &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;y-or-n-p&lt;/span&gt; &lt;span class="s"&gt;"This happens before the eval-after-load*"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_770c751f4594489883f3a859aa85b0ad-11"&gt;&lt;/a&gt;        &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;eval-after-load*&lt;/span&gt; &lt;span class="nv"&gt;f&lt;/span&gt;
+&lt;a name="rest_code_770c751f4594489883f3a859aa85b0ad-12"&gt;&lt;/a&gt;            &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;x&lt;/span&gt;
+&lt;a name="rest_code_770c751f4594489883f3a859aa85b0ad-13"&gt;&lt;/a&gt;             &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;y&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;y-or-n-p&lt;/span&gt; &lt;span class="s"&gt;"This happens when the eval-after-load* is executed?"&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;a name="rest_code_770c751f4594489883f3a859aa85b0ad-14"&gt;&lt;/a&gt;             &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;z&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;a name="rest_code_770c751f4594489883f3a859aa85b0ad-15"&gt;&lt;/a&gt;          &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;y-or-n-p&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;format&lt;/span&gt; &lt;span class="s"&gt;"x: %d y: %S z: %d"&lt;/span&gt; &lt;span class="nv"&gt;x&lt;/span&gt; &lt;span class="nv"&gt;y&lt;/span&gt; &lt;span class="nv"&gt;z&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;a name="rest_code_770c751f4594489883f3a859aa85b0ad-16"&gt;&lt;/a&gt;          &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;y-or-n-p&lt;/span&gt; &lt;span class="s"&gt;"This happends during the delayed expressions"&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;a name="rest_code_770c751f4594489883f3a859aa85b0ad-17"&gt;&lt;/a&gt;        &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;y-or-n-p&lt;/span&gt; &lt;span class="s"&gt;"This happens after the eval-after-load* expression"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_770c751f4594489883f3a859aa85b0ad-18"&gt;&lt;/a&gt;        &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;load&lt;/span&gt; &lt;span class="nv"&gt;f&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;a name="rest_code_770c751f4594489883f3a859aa85b0ad-19"&gt;&lt;/a&gt;    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;when&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;file-exists-p&lt;/span&gt; &lt;span class="nv"&gt;f&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;delete-file&lt;/span&gt; &lt;span class="nv"&gt;f&lt;/span&gt;&lt;span class="p"&gt;))))&lt;/span&gt;
+&lt;/pre&gt;&lt;p&gt;You should see something like:&lt;/p&gt;
+&lt;pre class="code text"&gt;&lt;a name="rest_code_db49ca6a811043e896daebc1d5a8c80b-1"&gt;&lt;/a&gt;Wrote /tmp/tkb-madness88647vuE.el
+&lt;a name="rest_code_db49ca6a811043e896daebc1d5a8c80b-2"&gt;&lt;/a&gt;This happens before the eval-after-load*(y or n)
+&lt;a name="rest_code_db49ca6a811043e896daebc1d5a8c80b-3"&gt;&lt;/a&gt;This happens when the eval-after-load* is executed?(y or n)
+&lt;a name="rest_code_db49ca6a811043e896daebc1d5a8c80b-4"&gt;&lt;/a&gt;This happens after the eval-after-load* expression(y or n)
+&lt;a name="rest_code_db49ca6a811043e896daebc1d5a8c80b-5"&gt;&lt;/a&gt;Loading /tmp/tkb-madness88647vuE.el (source)...
+&lt;a name="rest_code_db49ca6a811043e896daebc1d5a8c80b-6"&gt;&lt;/a&gt;In the file '/tmp/tkb-madness88647vuE.el'! (y or n)
+&lt;a name="rest_code_db49ca6a811043e896daebc1d5a8c80b-7"&gt;&lt;/a&gt;x: 1 y: t z: 2(y or n)
+&lt;a name="rest_code_db49ca6a811043e896daebc1d5a8c80b-8"&gt;&lt;/a&gt;This happends during the delayed expressions(y or n)
+&lt;a name="rest_code_db49ca6a811043e896daebc1d5a8c80b-9"&gt;&lt;/a&gt;Loading /tmp/tkb-madness88647vuE.el (source)...done
+&lt;/pre&gt;&lt;p&gt;(&lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;y-or-n-p&lt;/span&gt;&lt;/code&gt; is used instead of &lt;code class="docutils literal"&gt;message&lt;/code&gt; so you see each message when it
 happens.)&lt;/p&gt;
 &lt;p&gt;Does the &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;eval-after-load*&lt;/span&gt;&lt;/code&gt; macro make sense?&lt;/p&gt;&lt;/div&gt;</description><category>emacs</category><guid>https://tkurtbond.github.io/posts/2008/08/15/fun-with-emacs-eval-after-load/</guid><pubDate>Fri, 15 Aug 2008 23:54:39 GMT</pubDate></item><item><title>Fun With Emacs: Unicode and #'describe-char</title><link>https://tkurtbond.github.io/posts/2008/08/15/fun-with-emacs-unicode-and-describe-char/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;Ever use the emacs command &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;describe-char&lt;/span&gt;&lt;/code&gt;?  It's even more fun with
 proper unicode lookup data!&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;&lt;code&gt;;; First, we'll bind it to a key.
-(global-set-key "\C-cD" #'describe-char)
-
-;; Now we'll download it if necessary.
-(let ((udf-url "http://www.unicode.org/Public/UNIDATA/UnicodeData.txt")
-      (udf-dest "~/tmp/UnicodeData.txt"))
-  (if (file-readable-p udf-dest)
-      ;; Let describe-char know it exists.
-      (setq describe-char-unicodedata-file udf-dest)
-    ;; It doesn't exist, and we need to download it!
-    (when (y-or-n-p (format "You need to download %s ! Do it? " udf-url))
-      ;; Really weird: wget -O 'file' complains that file doesn't exist.
-      (let* ((cmd (format "cd ~/tmp/ &amp;amp;&amp;amp; wget -O %s --progress=dot '%s'"
-                          udf-dest udf-url))
-             (buf (get-buffer-create (format " *wget '%s'*" udf-url)))
-             (proc (start-process-shell-command "wget-unicode-Data"
-                                                buf cmd)))
-        (display-buffer buf)
-        (set-process-sentinel
-         proc
-         `(lambda (proc event)
-            (unless (string-match "^finished" event)
-              (error "unexpected status '%s' getting '%s'" ,udf-url event))
-            (setq describe-char-unicodedata-file ,udf-dest)
-            (message "Try describe-char now! ☣☥☸▧◉✘✽☮⅙▧⚅☑☢☹☺♠♥♦♣♨♻⚔")))
-        (message "Downloading... check describe-char later")
-        nil))))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Once this is run and it tells you to try &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;describe-char&lt;/span&gt;&lt;/code&gt; you can
+&lt;pre class="code emacs-lisp"&gt;&lt;a name="rest_code_38fd8bf255c4468faf4334c3e504c32e-1"&gt;&lt;/a&gt;&lt;span class="c1"&gt;;; First, we'll bind it to a key.&lt;/span&gt;
+&lt;a name="rest_code_38fd8bf255c4468faf4334c3e504c32e-2"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;global-set-key&lt;/span&gt; &lt;span class="s"&gt;"\C-cD"&lt;/span&gt; &lt;span class="nf"&gt;#'&lt;/span&gt;&lt;span class="nv"&gt;describe-char&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_38fd8bf255c4468faf4334c3e504c32e-3"&gt;&lt;/a&gt;
+&lt;a name="rest_code_38fd8bf255c4468faf4334c3e504c32e-4"&gt;&lt;/a&gt;&lt;span class="c1"&gt;;; Now we'll download it if necessary.&lt;/span&gt;
+&lt;a name="rest_code_38fd8bf255c4468faf4334c3e504c32e-5"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;let&lt;/span&gt; &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nv"&gt;udf-url&lt;/span&gt; &lt;span class="s"&gt;"http://www.unicode.org/Public/UNIDATA/UnicodeData.txt"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_38fd8bf255c4468faf4334c3e504c32e-6"&gt;&lt;/a&gt;      &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;udf-dest&lt;/span&gt; &lt;span class="s"&gt;"~/tmp/UnicodeData.txt"&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;a name="rest_code_38fd8bf255c4468faf4334c3e504c32e-7"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;file-readable-p&lt;/span&gt; &lt;span class="nv"&gt;udf-dest&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_38fd8bf255c4468faf4334c3e504c32e-8"&gt;&lt;/a&gt;      &lt;span class="c1"&gt;;; Let describe-char know it exists.&lt;/span&gt;
+&lt;a name="rest_code_38fd8bf255c4468faf4334c3e504c32e-9"&gt;&lt;/a&gt;      &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;setq&lt;/span&gt; &lt;span class="nv"&gt;describe-char-unicodedata-file&lt;/span&gt; &lt;span class="nv"&gt;udf-dest&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_38fd8bf255c4468faf4334c3e504c32e-10"&gt;&lt;/a&gt;    &lt;span class="c1"&gt;;; It doesn't exist, and we need to download it!&lt;/span&gt;
+&lt;a name="rest_code_38fd8bf255c4468faf4334c3e504c32e-11"&gt;&lt;/a&gt;    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;when&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;y-or-n-p&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;format&lt;/span&gt; &lt;span class="s"&gt;"You need to download %s ! Do it? "&lt;/span&gt; &lt;span class="nv"&gt;udf-url&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;a name="rest_code_38fd8bf255c4468faf4334c3e504c32e-12"&gt;&lt;/a&gt;      &lt;span class="c1"&gt;;; Really weird: wget -O 'file' complains that file doesn't exist.&lt;/span&gt;
+&lt;a name="rest_code_38fd8bf255c4468faf4334c3e504c32e-13"&gt;&lt;/a&gt;      &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;let*&lt;/span&gt; &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nv"&gt;cmd&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;format&lt;/span&gt; &lt;span class="s"&gt;"cd ~/tmp/ &amp;amp;&amp;amp; wget -O %s --progress=dot '%s'"&lt;/span&gt;
+&lt;a name="rest_code_38fd8bf255c4468faf4334c3e504c32e-14"&gt;&lt;/a&gt;                          &lt;span class="nv"&gt;udf-dest&lt;/span&gt; &lt;span class="nv"&gt;udf-url&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;a name="rest_code_38fd8bf255c4468faf4334c3e504c32e-15"&gt;&lt;/a&gt;             &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;buf&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;get-buffer-create&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;format&lt;/span&gt; &lt;span class="s"&gt;" *wget '%s'*"&lt;/span&gt; &lt;span class="nv"&gt;udf-url&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+&lt;a name="rest_code_38fd8bf255c4468faf4334c3e504c32e-16"&gt;&lt;/a&gt;             &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;proc&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;start-process-shell-command&lt;/span&gt; &lt;span class="s"&gt;"wget-unicode-Data"&lt;/span&gt;
+&lt;a name="rest_code_38fd8bf255c4468faf4334c3e504c32e-17"&gt;&lt;/a&gt;                                                &lt;span class="nv"&gt;buf&lt;/span&gt; &lt;span class="nv"&gt;cmd&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+&lt;a name="rest_code_38fd8bf255c4468faf4334c3e504c32e-18"&gt;&lt;/a&gt;        &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;display-buffer&lt;/span&gt; &lt;span class="nv"&gt;buf&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_38fd8bf255c4468faf4334c3e504c32e-19"&gt;&lt;/a&gt;        &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;set-process-sentinel&lt;/span&gt;
+&lt;a name="rest_code_38fd8bf255c4468faf4334c3e504c32e-20"&gt;&lt;/a&gt;         &lt;span class="nv"&gt;proc&lt;/span&gt;
+&lt;a name="rest_code_38fd8bf255c4468faf4334c3e504c32e-21"&gt;&lt;/a&gt;         &lt;span class="o"&gt;`&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;lambda&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;proc&lt;/span&gt; &lt;span class="nv"&gt;event&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_38fd8bf255c4468faf4334c3e504c32e-22"&gt;&lt;/a&gt;            &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;unless&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;string-match&lt;/span&gt; &lt;span class="s"&gt;"^finished"&lt;/span&gt; &lt;span class="nv"&gt;event&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_38fd8bf255c4468faf4334c3e504c32e-23"&gt;&lt;/a&gt;              &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="ne"&gt;error&lt;/span&gt; &lt;span class="s"&gt;"unexpected status '%s' getting '%s'"&lt;/span&gt; &lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="nv"&gt;udf-url&lt;/span&gt; &lt;span class="nv"&gt;event&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;a name="rest_code_38fd8bf255c4468faf4334c3e504c32e-24"&gt;&lt;/a&gt;            &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;setq&lt;/span&gt; &lt;span class="nv"&gt;describe-char-unicodedata-file&lt;/span&gt; &lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="nv"&gt;udf-dest&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_38fd8bf255c4468faf4334c3e504c32e-25"&gt;&lt;/a&gt;            &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;message&lt;/span&gt; &lt;span class="s"&gt;"Try describe-char now! ☣☥☸▧◉✘✽☮⅙▧⚅☑☢☹☺♠♥♦♣♨♻⚔"&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+&lt;a name="rest_code_38fd8bf255c4468faf4334c3e504c32e-26"&gt;&lt;/a&gt;        &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;message&lt;/span&gt; &lt;span class="s"&gt;"Downloading... check describe-char later"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_38fd8bf255c4468faf4334c3e504c32e-27"&gt;&lt;/a&gt;        &lt;span class="no"&gt;nil&lt;/span&gt;&lt;span class="p"&gt;))))&lt;/span&gt;
+&lt;/pre&gt;&lt;p&gt;Once this is run and it tells you to try &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;describe-char&lt;/span&gt;&lt;/code&gt; you can
 position your cursor over one of the Unicode characters in the message
 (“C-h e” to display the “&lt;em&gt;Messages&lt;/em&gt;” buffer) and press “C-cD” and look
 for the “Name:” line.  You'll see something like this:&lt;/p&gt;
