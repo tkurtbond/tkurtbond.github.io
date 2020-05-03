@@ -1,5 +1,231 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity</title><link>https://tkurtbond.github.io/</link><description>Random musings on books, code, and tabletop games.</description><atom:link href="https://tkurtbond.github.io/rss.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2020 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Mon, 27 Apr 2020 11:50:56 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Binding a symbol defined with DEFCONSTANT with LET is not portable in Common Lisp</title><link>https://tkurtbond.github.io/posts/2020/04/24/binding-a-symbol-defined-with-defconstant-with-let-is-not-portable-in-common-lisp/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;a class="reference external" href="http://www.sbcl.org/"&gt;SBCL&lt;/a&gt; and &lt;a class="reference external" href="https://ccl.clozure.com/"&gt;CCL&lt;/a&gt; and &lt;a class="reference external" href="https://clisp.sourceforge.io/"&gt;CLISP&lt;/a&gt; think binding a symbol defined with &lt;code class="docutils literal"&gt;defconstant&lt;/code&gt;
+<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity</title><link>https://tkurtbond.github.io/</link><description>Random musings on books, code, and tabletop games.</description><atom:link href="https://tkurtbond.github.io/rss.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2020 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Sun, 03 May 2020 06:37:55 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Customizing pandoc ms output with a lua filter</title><link>https://tkurtbond.github.io/posts/2020/05/03/customizing-pandoc-ms-output-with-a-lua-filter/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;This article started as a &lt;a class="reference external" href="https://groups.google.com/d/msg/pandoc-discuss/UJgyLbxTNxo/MZDVFts-BAAJ"&gt;message&lt;/a&gt; I sent to the the &lt;a class="reference external" href="https://groups.google.com/forum/#!forum/pandoc-discuss"&gt;pandoc-discuss&lt;/a&gt;
+Google Group.  This version has more links and has been slightly
+reworded.&lt;/p&gt;
+&lt;p&gt;I work with &lt;a class="reference external" href="https://docutils.sourceforge.io/rst.html"&gt;ReStructuredText&lt;/a&gt; documents a lot and often use &lt;a class="reference external" href="https://pandoc.org/"&gt;pandoc&lt;/a&gt; to
+format them, especially to PDF by way of &lt;span class="app"&gt;pandoc&lt;/span&gt;'s &lt;code class="docutils literal"&gt;ms&lt;/code&gt;
+output format, which uses &lt;span class="app"&gt;groff&lt;/span&gt; with the &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;-ms&lt;/span&gt;&lt;/code&gt; macros to produce the
+PDF output.  Using &lt;code class="docutils literal"&gt;ms&lt;/code&gt; output is fast, &lt;span class="app"&gt;groff&lt;/span&gt; is usually available
+on the operating systems I use, and if you &lt;em&gt;do&lt;/em&gt; have to install &lt;span class="app"&gt;groff&lt;/span&gt;
+it is easy to do and much, much smaller than any &lt;span class="app"&gt;TeX&lt;/span&gt; distributions.&lt;/p&gt;
+&lt;p&gt;However, it would be a nice to be able to customize the &lt;code class="docutils literal"&gt;ms&lt;/code&gt; output
+more for specific input, like if you are using technical writing and
+are pining for something like the various inline roles of &lt;a class="reference external" href="https://tdg.docbook.org/tdg/5.1/ch02.html#s.inline"&gt;DocBook&lt;/a&gt;, or
+wanted poems to be typeset more stylishly that the &lt;code class="docutils literal"&gt;ms&lt;/code&gt; output does.&lt;/p&gt;
+&lt;p&gt;You should probably be a little familiar with the &lt;a class="reference external" href="https://pandoc.org/MANUAL.html"&gt;Pandoc User
+Manual&lt;/a&gt; and have the documentation for &lt;a class="reference external" href="https://pandoc.org/lua-filters.html"&gt;Lua Filter&lt;/a&gt;'s available for
+reference while reading this article.  And having a reading
+familiarity with &lt;a class="reference external" href="https://www.gnu.org/software/groff/"&gt;groff&lt;/a&gt; and its &lt;a class="reference external" href="https://www.gnu.org/software/groff/manual/"&gt;manual&lt;/a&gt; and specifically the &lt;a class="reference external" href="https://www.gnu.org/software/groff/manual/html_node/ms.html#ms"&gt;-ms
+macros&lt;/a&gt; will be useful too.&lt;/p&gt;
+&lt;p&gt;Starting with an &lt;a class="reference external" href="https://dave.autonoma.ca/blog/2020/04/28/typesetting-markdown-part-8/"&gt;article&lt;/a&gt; from Dave Jarvis that had an example &lt;a class="reference external" href="https://pandoc.org/lua-filters.html"&gt;Lua
+filter&lt;/a&gt; for customizing the &lt;span class="app"&gt;ConTeXt&lt;/span&gt; output and a little help
+from the pandoc-discuss mailing list I came up with this example &lt;a class="reference external" href="https://pandoc.org/lua-filters.html"&gt;Lua
+Filter&lt;/a&gt; that formats program names and poems specially.&lt;/p&gt;
+&lt;p&gt;This filter wraps spans with a class, such as from interpreted text
+roles defined in the source ReST (like &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;:program:`pandoc`&lt;/span&gt;&lt;/code&gt;) in calls
+to user defined &lt;span class="app"&gt;groff&lt;/span&gt; strings &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;\*[start&amp;lt;class&amp;gt;]&lt;/span&gt;&lt;/code&gt; and
+&lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;\*[stop&amp;lt;class&amp;gt;]&lt;/span&gt;&lt;/code&gt;.  (I've specified the string definitions for
+&lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;\*[startprogram]&lt;/span&gt;&lt;/code&gt; and &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;\*[stopprogram]&lt;/span&gt;&lt;/code&gt; in the source ReST as a
+raw block for &lt;code class="docutils literal"&gt;ms&lt;/code&gt; output but they could be in a customized &lt;code class="docutils literal"&gt;ms&lt;/code&gt;
+pandoc template, too.)  These strings can include &lt;span class="app"&gt;groff&lt;/span&gt; escapes to
+change the font and the glyph color and then change back to the
+previous font and glyph color.  In this example I made PDF output for
+the interpreted text role &lt;code class="docutils literal"&gt;program&lt;/code&gt; come out in a constant width
+font and in red.&lt;/p&gt;
+&lt;p&gt;It also wraps divs with classes with calls to user defined &lt;span class="app"&gt;groff&lt;/span&gt;
+macros &lt;code class="docutils literal"&gt;.start&amp;lt;class&amp;gt;&lt;/code&gt; and &lt;code class="docutils literal"&gt;.stop&amp;lt;class&amp;gt;&lt;/code&gt; (also included in the
+source ReST in the raw block for ms output).&lt;/p&gt;
+&lt;p&gt;For divs with the poem class, it converts any contained LineBlock
+elements into a list of Plain elements containing its contents,
+avoiding the ms output for the LineBlock starting with &lt;code class="docutils literal"&gt;.LP&lt;/code&gt;, which
+would cancel the &lt;code class="docutils literal"&gt;.DS&lt;/code&gt; (display start) macro I want to use in the
+.startpoem macro definition.  The &lt;code class="docutils literal"&gt;.LP&lt;/code&gt; would also reset the font family
+in use to the default, another reason to avoid it. &lt;a class="footnote-reference brackets" href="https://tkurtbond.github.io/posts/2020/05/03/customizing-pandoc-ms-output-with-a-lua-filter/#lp" id="id1"&gt;1&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The filter also converts the empty element that occurs in the line block
+as a result of a blank line in the line block input into a RawBlock
+that creates a blank line in the ms output, to show the division into
+stanzas of the poem.&lt;/p&gt;
+&lt;p&gt;Interestingly, the first Str elements in the each line in the content
+of the line block preserved the leading spaces from the input as
+Unicode NO-BREAK SPACE characters, preserving indentation of lines in
+the line block.  Unfortunately, the width of those spaces alone is not
+enough create a visually distinct indentation, so this filter changes
+those Str elements into a RawInline that outputs a &lt;span class="app"&gt;groff&lt;/span&gt; horizfontal
+movement whose width is based on the number of leading NO-BREAK SPACE
+characters, and follow this with a new Str element that has the
+leading NO-BREAK SPACE characters removed.&lt;/p&gt;
+&lt;p&gt;Here is the Lua filter:&lt;/p&gt;
+&lt;pre class="code lua"&gt;&lt;a name="rest_code_b60bae2a9c074e6d84d8a2f58227dd0d-1"&gt;&lt;/a&gt;&lt;span class="n"&gt;onig&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;require&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"rex_onig"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;-- Need a regex package that understands UTF8.&lt;/span&gt;
+&lt;a name="rest_code_b60bae2a9c074e6d84d8a2f58227dd0d-2"&gt;&lt;/a&gt;&lt;span class="c1"&gt;-- text in LineBreak preserves leading spaces as Unicode NO-BREAK SPACE&lt;/span&gt;
+&lt;a name="rest_code_b60bae2a9c074e6d84d8a2f58227dd0d-3"&gt;&lt;/a&gt;&lt;span class="n"&gt;leading_nobreakspace_rx&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;onig&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;new&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"^(&lt;/span&gt;&lt;span class="se"&gt;\u{a0}&lt;/span&gt;&lt;span class="s2"&gt;+)(.*)$"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kc"&gt;nil&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"UTF8"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_b60bae2a9c074e6d84d8a2f58227dd0d-4"&gt;&lt;/a&gt;
+&lt;a name="rest_code_b60bae2a9c074e6d84d8a2f58227dd0d-5"&gt;&lt;/a&gt;&lt;span class="kr"&gt;function&lt;/span&gt; &lt;span class="nf"&gt;Div&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;element&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_b60bae2a9c074e6d84d8a2f58227dd0d-6"&gt;&lt;/a&gt;  &lt;span class="kd"&gt;local&lt;/span&gt; &lt;span class="n"&gt;annotation&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;element&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;classes&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;find_if&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;matches&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_b60bae2a9c074e6d84d8a2f58227dd0d-7"&gt;&lt;/a&gt;  &lt;span class="kd"&gt;local&lt;/span&gt; &lt;span class="n"&gt;numPara&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+&lt;a name="rest_code_b60bae2a9c074e6d84d8a2f58227dd0d-8"&gt;&lt;/a&gt;   &lt;span class="kr"&gt;if&lt;/span&gt; &lt;span class="n"&gt;annotation&lt;/span&gt; &lt;span class="kr"&gt;then&lt;/span&gt;
+&lt;a name="rest_code_b60bae2a9c074e6d84d8a2f58227dd0d-9"&gt;&lt;/a&gt;     &lt;span class="n"&gt;annotation&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;annotation&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;gsub&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="s2"&gt;"[^%w]*"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;""&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_b60bae2a9c074e6d84d8a2f58227dd0d-10"&gt;&lt;/a&gt;     &lt;span class="kr"&gt;if&lt;/span&gt; &lt;span class="n"&gt;annotation&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s2"&gt;"poem"&lt;/span&gt; &lt;span class="kr"&gt;then&lt;/span&gt;
+&lt;a name="rest_code_b60bae2a9c074e6d84d8a2f58227dd0d-11"&gt;&lt;/a&gt;        &lt;span class="n"&gt;element&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pandoc&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;walk_block&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
+&lt;a name="rest_code_b60bae2a9c074e6d84d8a2f58227dd0d-12"&gt;&lt;/a&gt;           &lt;span class="n"&gt;element&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;a name="rest_code_b60bae2a9c074e6d84d8a2f58227dd0d-13"&gt;&lt;/a&gt;              &lt;span class="c1"&gt;-- Replace LineBlock element with a list of Plain elements&lt;/span&gt;
+&lt;a name="rest_code_b60bae2a9c074e6d84d8a2f58227dd0d-14"&gt;&lt;/a&gt;              &lt;span class="c1"&gt;-- containing the LineBlock's subelements.&lt;/span&gt;
+&lt;a name="rest_code_b60bae2a9c074e6d84d8a2f58227dd0d-15"&gt;&lt;/a&gt;              &lt;span class="n"&gt;LineBlock&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kr"&gt;function&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;el&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_b60bae2a9c074e6d84d8a2f58227dd0d-16"&gt;&lt;/a&gt;                 &lt;span class="kd"&gt;local&lt;/span&gt; &lt;span class="n"&gt;l&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{}&lt;/span&gt;
+&lt;a name="rest_code_b60bae2a9c074e6d84d8a2f58227dd0d-17"&gt;&lt;/a&gt;                 &lt;span class="kr"&gt;for&lt;/span&gt; &lt;span class="n"&gt;_&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;subel&lt;/span&gt; &lt;span class="kr"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;ipairs&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;el&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;content&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="kr"&gt;do&lt;/span&gt;
+&lt;a name="rest_code_b60bae2a9c074e6d84d8a2f58227dd0d-18"&gt;&lt;/a&gt;                    &lt;span class="kr"&gt;if&lt;/span&gt; &lt;span class="o"&gt;#&lt;/span&gt;&lt;span class="n"&gt;subel&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="kr"&gt;then&lt;/span&gt;
+&lt;a name="rest_code_b60bae2a9c074e6d84d8a2f58227dd0d-19"&gt;&lt;/a&gt;                       &lt;span class="c1"&gt;-- If subel is an empty table, output a raw empty line&lt;/span&gt;
+&lt;a name="rest_code_b60bae2a9c074e6d84d8a2f58227dd0d-20"&gt;&lt;/a&gt;                       &lt;span class="nb"&gt;table.insert&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;l&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;pandoc&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;RawBlock&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"ms"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="se"&gt;\n\n&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;a name="rest_code_b60bae2a9c074e6d84d8a2f58227dd0d-21"&gt;&lt;/a&gt;                    &lt;span class="kr"&gt;else&lt;/span&gt;
+&lt;a name="rest_code_b60bae2a9c074e6d84d8a2f58227dd0d-22"&gt;&lt;/a&gt;                       &lt;span class="c1"&gt;-- Check for leading NO-BREAK SPACE charaters&lt;/span&gt;
+&lt;a name="rest_code_b60bae2a9c074e6d84d8a2f58227dd0d-23"&gt;&lt;/a&gt;                       &lt;span class="kd"&gt;local&lt;/span&gt; &lt;span class="n"&gt;m1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;m2&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;onig&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;match&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;subel&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;].&lt;/span&gt;&lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;a name="rest_code_b60bae2a9c074e6d84d8a2f58227dd0d-24"&gt;&lt;/a&gt;                                                  &lt;span class="n"&gt;leading_nobreakspace_rx&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_b60bae2a9c074e6d84d8a2f58227dd0d-25"&gt;&lt;/a&gt;                       &lt;span class="kr"&gt;if&lt;/span&gt; &lt;span class="n"&gt;m1&lt;/span&gt; &lt;span class="kr"&gt;then&lt;/span&gt;
+&lt;a name="rest_code_b60bae2a9c074e6d84d8a2f58227dd0d-26"&gt;&lt;/a&gt;                          &lt;span class="c1"&gt;-- Replace the NO-BREAK SPACE characters with a raw&lt;/span&gt;
+&lt;a name="rest_code_b60bae2a9c074e6d84d8a2f58227dd0d-27"&gt;&lt;/a&gt;                          &lt;span class="c1"&gt;-- groff horizontal movement, because the&lt;/span&gt;
+&lt;a name="rest_code_b60bae2a9c074e6d84d8a2f58227dd0d-28"&gt;&lt;/a&gt;                          &lt;span class="c1"&gt;-- NO-BREAK SPACE characters are too narrow.&lt;/span&gt;
+&lt;a name="rest_code_b60bae2a9c074e6d84d8a2f58227dd0d-29"&gt;&lt;/a&gt;                          &lt;span class="nb"&gt;table.insert&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;subel&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;pandoc&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;RawInline&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"ms"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;string.format&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="se"&gt;\\&lt;/span&gt;&lt;span class="s2"&gt;h'%dn'"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;utf8.len&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;m1&lt;/span&gt;&lt;span class="p"&gt;))))&lt;/span&gt;
+&lt;a name="rest_code_b60bae2a9c074e6d84d8a2f58227dd0d-30"&gt;&lt;/a&gt;                          &lt;span class="c1"&gt;-- Modify what was used to be the first item to just&lt;/span&gt;
+&lt;a name="rest_code_b60bae2a9c074e6d84d8a2f58227dd0d-31"&gt;&lt;/a&gt;                          &lt;span class="c1"&gt;-- include the trailing characters of the match.&lt;/span&gt;
+&lt;a name="rest_code_b60bae2a9c074e6d84d8a2f58227dd0d-32"&gt;&lt;/a&gt;                          &lt;span class="n"&gt;subel&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pandoc&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Str&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;m2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_b60bae2a9c074e6d84d8a2f58227dd0d-33"&gt;&lt;/a&gt;                          &lt;span class="nb"&gt;table.insert&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;l&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;pandoc&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Plain&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;subel&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;a name="rest_code_b60bae2a9c074e6d84d8a2f58227dd0d-34"&gt;&lt;/a&gt;                       &lt;span class="kr"&gt;else&lt;/span&gt;
+&lt;a name="rest_code_b60bae2a9c074e6d84d8a2f58227dd0d-35"&gt;&lt;/a&gt;                          &lt;span class="c1"&gt;-- Just put the subel in Plain element.&lt;/span&gt;
+&lt;a name="rest_code_b60bae2a9c074e6d84d8a2f58227dd0d-36"&gt;&lt;/a&gt;                          &lt;span class="nb"&gt;table.insert&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;l&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pandoc&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Plain&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;subel&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+&lt;a name="rest_code_b60bae2a9c074e6d84d8a2f58227dd0d-37"&gt;&lt;/a&gt;                       &lt;span class="kr"&gt;end&lt;/span&gt;
+&lt;a name="rest_code_b60bae2a9c074e6d84d8a2f58227dd0d-38"&gt;&lt;/a&gt;                    &lt;span class="kr"&gt;end&lt;/span&gt;
+&lt;a name="rest_code_b60bae2a9c074e6d84d8a2f58227dd0d-39"&gt;&lt;/a&gt;                 &lt;span class="kr"&gt;end&lt;/span&gt;
+&lt;a name="rest_code_b60bae2a9c074e6d84d8a2f58227dd0d-40"&gt;&lt;/a&gt;                 &lt;span class="kr"&gt;return&lt;/span&gt; &lt;span class="n"&gt;l&lt;/span&gt;
+&lt;a name="rest_code_b60bae2a9c074e6d84d8a2f58227dd0d-41"&gt;&lt;/a&gt;        &lt;span class="kr"&gt;end&lt;/span&gt; &lt;span class="p"&gt;})&lt;/span&gt;
+&lt;a name="rest_code_b60bae2a9c074e6d84d8a2f58227dd0d-42"&gt;&lt;/a&gt;     &lt;span class="kr"&gt;end&lt;/span&gt;
+&lt;a name="rest_code_b60bae2a9c074e6d84d8a2f58227dd0d-43"&gt;&lt;/a&gt;     &lt;span class="kr"&gt;return&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;a name="rest_code_b60bae2a9c074e6d84d8a2f58227dd0d-44"&gt;&lt;/a&gt;        &lt;span class="n"&gt;ms&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="s2"&gt;".start"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;annotation&lt;/span&gt; &lt;span class="p"&gt;),&lt;/span&gt;
+&lt;a name="rest_code_b60bae2a9c074e6d84d8a2f58227dd0d-45"&gt;&lt;/a&gt;        &lt;span class="n"&gt;element&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;a name="rest_code_b60bae2a9c074e6d84d8a2f58227dd0d-46"&gt;&lt;/a&gt;        &lt;span class="n"&gt;ms&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="s2"&gt;".stop"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;annotation&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_b60bae2a9c074e6d84d8a2f58227dd0d-47"&gt;&lt;/a&gt;     &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;a name="rest_code_b60bae2a9c074e6d84d8a2f58227dd0d-48"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;end&lt;/span&gt;
+&lt;a name="rest_code_b60bae2a9c074e6d84d8a2f58227dd0d-49"&gt;&lt;/a&gt;&lt;span class="kr"&gt;end&lt;/span&gt;
+&lt;a name="rest_code_b60bae2a9c074e6d84d8a2f58227dd0d-50"&gt;&lt;/a&gt;
+&lt;a name="rest_code_b60bae2a9c074e6d84d8a2f58227dd0d-51"&gt;&lt;/a&gt;&lt;span class="kr"&gt;function&lt;/span&gt; &lt;span class="nf"&gt;Span&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;element&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_b60bae2a9c074e6d84d8a2f58227dd0d-52"&gt;&lt;/a&gt;  &lt;span class="kd"&gt;local&lt;/span&gt; &lt;span class="n"&gt;annotation&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;element&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;classes&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;find_if&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;matches&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_b60bae2a9c074e6d84d8a2f58227dd0d-53"&gt;&lt;/a&gt;
+&lt;a name="rest_code_b60bae2a9c074e6d84d8a2f58227dd0d-54"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;if&lt;/span&gt; &lt;span class="n"&gt;annotation&lt;/span&gt; &lt;span class="kr"&gt;then&lt;/span&gt;
+&lt;a name="rest_code_b60bae2a9c074e6d84d8a2f58227dd0d-55"&gt;&lt;/a&gt;     &lt;span class="n"&gt;annotation&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;annotation&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;gsub&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"[^%w]*"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;""&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_b60bae2a9c074e6d84d8a2f58227dd0d-56"&gt;&lt;/a&gt;
+&lt;a name="rest_code_b60bae2a9c074e6d84d8a2f58227dd0d-57"&gt;&lt;/a&gt;     &lt;span class="kr"&gt;return&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;a name="rest_code_b60bae2a9c074e6d84d8a2f58227dd0d-58"&gt;&lt;/a&gt;        &lt;span class="n"&gt;ms_inline&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="se"&gt;\\&lt;/span&gt;&lt;span class="s2"&gt;*[start"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;annotation&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"]"&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+&lt;a name="rest_code_b60bae2a9c074e6d84d8a2f58227dd0d-59"&gt;&lt;/a&gt;        &lt;span class="n"&gt;element&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;a name="rest_code_b60bae2a9c074e6d84d8a2f58227dd0d-60"&gt;&lt;/a&gt;        &lt;span class="n"&gt;ms_inline&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="se"&gt;\\&lt;/span&gt;&lt;span class="s2"&gt;*[stop"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;annotation&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"]"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_b60bae2a9c074e6d84d8a2f58227dd0d-61"&gt;&lt;/a&gt;     &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;a name="rest_code_b60bae2a9c074e6d84d8a2f58227dd0d-62"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;end&lt;/span&gt;
+&lt;a name="rest_code_b60bae2a9c074e6d84d8a2f58227dd0d-63"&gt;&lt;/a&gt;&lt;span class="kr"&gt;end&lt;/span&gt;
+&lt;a name="rest_code_b60bae2a9c074e6d84d8a2f58227dd0d-64"&gt;&lt;/a&gt;
+&lt;a name="rest_code_b60bae2a9c074e6d84d8a2f58227dd0d-65"&gt;&lt;/a&gt;&lt;span class="kr"&gt;function&lt;/span&gt; &lt;span class="nf"&gt;matches&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;s&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_b60bae2a9c074e6d84d8a2f58227dd0d-66"&gt;&lt;/a&gt; &lt;span class="kr"&gt;return&lt;/span&gt; &lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;match&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="s2"&gt;"^%a+"&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_b60bae2a9c074e6d84d8a2f58227dd0d-67"&gt;&lt;/a&gt;&lt;span class="kr"&gt;end&lt;/span&gt;
+&lt;a name="rest_code_b60bae2a9c074e6d84d8a2f58227dd0d-68"&gt;&lt;/a&gt;
+&lt;a name="rest_code_b60bae2a9c074e6d84d8a2f58227dd0d-69"&gt;&lt;/a&gt;&lt;span class="kr"&gt;function&lt;/span&gt; &lt;span class="nf"&gt;ms&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;macro&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;annotation&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_b60bae2a9c074e6d84d8a2f58227dd0d-70"&gt;&lt;/a&gt; &lt;span class="kr"&gt;return&lt;/span&gt; &lt;span class="n"&gt;pandoc&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;RawBlock&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="s2"&gt;"ms"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;macro&lt;/span&gt; &lt;span class="o"&gt;..&lt;/span&gt; &lt;span class="n"&gt;annotation&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_b60bae2a9c074e6d84d8a2f58227dd0d-71"&gt;&lt;/a&gt;&lt;span class="kr"&gt;end&lt;/span&gt;
+&lt;a name="rest_code_b60bae2a9c074e6d84d8a2f58227dd0d-72"&gt;&lt;/a&gt;
+&lt;a name="rest_code_b60bae2a9c074e6d84d8a2f58227dd0d-73"&gt;&lt;/a&gt;&lt;span class="kr"&gt;function&lt;/span&gt; &lt;span class="nf"&gt;ms_inline&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;macro&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;annotation&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;stop&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_b60bae2a9c074e6d84d8a2f58227dd0d-74"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;return&lt;/span&gt; &lt;span class="n"&gt;pandoc&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;RawInline&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"ms"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;macro&lt;/span&gt; &lt;span class="o"&gt;..&lt;/span&gt; &lt;span class="n"&gt;annotation&lt;/span&gt; &lt;span class="o"&gt;..&lt;/span&gt; &lt;span class="n"&gt;stop&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_b60bae2a9c074e6d84d8a2f58227dd0d-75"&gt;&lt;/a&gt;&lt;span class="kr"&gt;end&lt;/span&gt;
+&lt;/pre&gt;&lt;p&gt;Here is the ReST source of the document:&lt;/p&gt;
+&lt;pre class="code ReST"&gt;&lt;a name="rest_code_c9ff9d99fbad45fbb44f39a48dc6d9a7-1"&gt;&lt;/a&gt;Lua Filters For Massaging &lt;span class="s"&gt;``ms``&lt;/span&gt; Output
+&lt;a name="rest_code_c9ff9d99fbad45fbb44f39a48dc6d9a7-2"&gt;&lt;/a&gt;@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+&lt;a name="rest_code_c9ff9d99fbad45fbb44f39a48dc6d9a7-3"&gt;&lt;/a&gt;
+&lt;a name="rest_code_c9ff9d99fbad45fbb44f39a48dc6d9a7-4"&gt;&lt;/a&gt;&lt;span class="p"&gt;..&lt;/span&gt; &lt;span class="ow"&gt;raw&lt;/span&gt;&lt;span class="p"&gt;::&lt;/span&gt; ms
+&lt;a name="rest_code_c9ff9d99fbad45fbb44f39a48dc6d9a7-5"&gt;&lt;/a&gt;
+&lt;a name="rest_code_c9ff9d99fbad45fbb44f39a48dc6d9a7-6"&gt;&lt;/a&gt;   .ds startprogram \\f[CW]\\m[red]
+&lt;a name="rest_code_c9ff9d99fbad45fbb44f39a48dc6d9a7-7"&gt;&lt;/a&gt;   .ds stopprogram \\m[]\\fP
+&lt;a name="rest_code_c9ff9d99fbad45fbb44f39a48dc6d9a7-8"&gt;&lt;/a&gt;   .de startpoem
+&lt;a name="rest_code_c9ff9d99fbad45fbb44f39a48dc6d9a7-9"&gt;&lt;/a&gt;   .ds OLDFAM \\*[FAM]
+&lt;a name="rest_code_c9ff9d99fbad45fbb44f39a48dc6d9a7-10"&gt;&lt;/a&gt;   .ds FAM BM
+&lt;a name="rest_code_c9ff9d99fbad45fbb44f39a48dc6d9a7-11"&gt;&lt;/a&gt;   .DS I 3
+&lt;a name="rest_code_c9ff9d99fbad45fbb44f39a48dc6d9a7-12"&gt;&lt;/a&gt;&lt;span class="cp"&gt;   ..&lt;/span&gt;
+&lt;a name="rest_code_c9ff9d99fbad45fbb44f39a48dc6d9a7-13"&gt;&lt;/a&gt;&lt;span class="cp"&gt;   .de stoppoem&lt;/span&gt;
+&lt;a name="rest_code_c9ff9d99fbad45fbb44f39a48dc6d9a7-14"&gt;&lt;/a&gt;&lt;span class="cp"&gt;   .DE&lt;/span&gt;
+&lt;a name="rest_code_c9ff9d99fbad45fbb44f39a48dc6d9a7-15"&gt;&lt;/a&gt;&lt;span class="cp"&gt;   .ds FAM \\*[OLDFAM]&lt;/span&gt;
+&lt;a name="rest_code_c9ff9d99fbad45fbb44f39a48dc6d9a7-16"&gt;&lt;/a&gt;&lt;span class="cp"&gt;   ..&lt;/span&gt;
+&lt;a name="rest_code_c9ff9d99fbad45fbb44f39a48dc6d9a7-17"&gt;&lt;/a&gt;
+&lt;a name="rest_code_c9ff9d99fbad45fbb44f39a48dc6d9a7-18"&gt;&lt;/a&gt;&lt;span class="p"&gt;..&lt;/span&gt; &lt;span class="ow"&gt;role&lt;/span&gt;&lt;span class="p"&gt;::&lt;/span&gt; program
+&lt;a name="rest_code_c9ff9d99fbad45fbb44f39a48dc6d9a7-19"&gt;&lt;/a&gt;
+&lt;a name="rest_code_c9ff9d99fbad45fbb44f39a48dc6d9a7-20"&gt;&lt;/a&gt;This is a sentence.  This sentence talks about &lt;span class="na"&gt;:program:&lt;/span&gt;&lt;span class="nv"&gt;`pandoc`&lt;/span&gt;.
+&lt;a name="rest_code_c9ff9d99fbad45fbb44f39a48dc6d9a7-21"&gt;&lt;/a&gt;This is
+&lt;a name="rest_code_c9ff9d99fbad45fbb44f39a48dc6d9a7-22"&gt;&lt;/a&gt;another sentence.
+&lt;a name="rest_code_c9ff9d99fbad45fbb44f39a48dc6d9a7-23"&gt;&lt;/a&gt;
+&lt;a name="rest_code_c9ff9d99fbad45fbb44f39a48dc6d9a7-24"&gt;&lt;/a&gt;&lt;span class="p"&gt;..&lt;/span&gt; &lt;span class="ow"&gt;class&lt;/span&gt;&lt;span class="p"&gt;::&lt;/span&gt; poem
+&lt;a name="rest_code_c9ff9d99fbad45fbb44f39a48dc6d9a7-25"&gt;&lt;/a&gt;
+&lt;a name="rest_code_c9ff9d99fbad45fbb44f39a48dc6d9a7-26"&gt;&lt;/a&gt;   &lt;span class="o"&gt;|&lt;/span&gt; Some say the world will end in fire,
+&lt;a name="rest_code_c9ff9d99fbad45fbb44f39a48dc6d9a7-27"&gt;&lt;/a&gt;   &lt;span class="o"&gt;|&lt;/span&gt;    Some say in ice.
+&lt;a name="rest_code_c9ff9d99fbad45fbb44f39a48dc6d9a7-28"&gt;&lt;/a&gt;   &lt;span class="o"&gt;|&lt;/span&gt; From what I've tasted of desire
+&lt;a name="rest_code_c9ff9d99fbad45fbb44f39a48dc6d9a7-29"&gt;&lt;/a&gt;   &lt;span class="o"&gt;|&lt;/span&gt;    I hold with those who favor fire.
+&lt;a name="rest_code_c9ff9d99fbad45fbb44f39a48dc6d9a7-30"&gt;&lt;/a&gt;   &lt;span class="o"&gt;|&lt;/span&gt; But if it had to perish twice,
+&lt;a name="rest_code_c9ff9d99fbad45fbb44f39a48dc6d9a7-31"&gt;&lt;/a&gt;   &lt;span class="o"&gt;|&lt;/span&gt;    I think I know enough of hate
+&lt;a name="rest_code_c9ff9d99fbad45fbb44f39a48dc6d9a7-32"&gt;&lt;/a&gt;   &lt;span class="o"&gt;|&lt;/span&gt;    To say that for destruction ice
+&lt;a name="rest_code_c9ff9d99fbad45fbb44f39a48dc6d9a7-33"&gt;&lt;/a&gt;   &lt;span class="o"&gt;|&lt;/span&gt;    Is also great,
+&lt;a name="rest_code_c9ff9d99fbad45fbb44f39a48dc6d9a7-34"&gt;&lt;/a&gt;   &lt;span class="o"&gt;|&lt;/span&gt; And would suffice.
+&lt;a name="rest_code_c9ff9d99fbad45fbb44f39a48dc6d9a7-35"&gt;&lt;/a&gt;   |
+&lt;a name="rest_code_c9ff9d99fbad45fbb44f39a48dc6d9a7-36"&gt;&lt;/a&gt;   &lt;span class="o"&gt;|&lt;/span&gt; And another line,
+&lt;a name="rest_code_c9ff9d99fbad45fbb44f39a48dc6d9a7-37"&gt;&lt;/a&gt;   &lt;span class="o"&gt;|&lt;/span&gt;    And an indented line.
+&lt;a name="rest_code_c9ff9d99fbad45fbb44f39a48dc6d9a7-38"&gt;&lt;/a&gt;
+&lt;a name="rest_code_c9ff9d99fbad45fbb44f39a48dc6d9a7-39"&gt;&lt;/a&gt;This is a final sentence.
+&lt;/pre&gt;&lt;p&gt;And here is the ms output:&lt;/p&gt;
+&lt;pre class="code groff"&gt;&lt;a name="rest_code_b652c2b03a8148e3b237f6d45c05f486-1"&gt;&lt;/a&gt;.&lt;span class="k"&gt;SH&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;
+&lt;a name="rest_code_b652c2b03a8148e3b237f6d45c05f486-2"&gt;&lt;/a&gt;Lua Filters For Massaging &lt;span class="se"&gt;\f[CB]ms\f[B]&lt;/span&gt; Output
+&lt;a name="rest_code_b652c2b03a8148e3b237f6d45c05f486-3"&gt;&lt;/a&gt;.&lt;span class="k"&gt;pdfhref&lt;/span&gt; &lt;span class="s"&gt;O&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt; &lt;span class="s2"&gt;"Lua Filters For Massaging ms Output"&lt;/span&gt;
+&lt;a name="rest_code_b652c2b03a8148e3b237f6d45c05f486-4"&gt;&lt;/a&gt;.&lt;span class="k"&gt;pdfhref&lt;/span&gt; &lt;span class="s"&gt;M&lt;/span&gt; &lt;span class="s2"&gt;"lua-filters-for-massaging-ms-output"&lt;/span&gt;
+&lt;a name="rest_code_b652c2b03a8148e3b237f6d45c05f486-5"&gt;&lt;/a&gt;.&lt;span class="k"&gt;ds&lt;/span&gt; &lt;span class="s"&gt;startprogram&lt;/span&gt; &lt;span class="se"&gt;\\&lt;/span&gt;&lt;span class="s"&gt;f[CW]\\m[red]&lt;/span&gt;
+&lt;a name="rest_code_b652c2b03a8148e3b237f6d45c05f486-6"&gt;&lt;/a&gt;.&lt;span class="k"&gt;ds&lt;/span&gt; &lt;span class="s"&gt;stopprogram&lt;/span&gt; &lt;span class="se"&gt;\\&lt;/span&gt;&lt;span class="s"&gt;m[]\\fP&lt;/span&gt;
+&lt;a name="rest_code_b652c2b03a8148e3b237f6d45c05f486-7"&gt;&lt;/a&gt;.&lt;span class="k"&gt;de&lt;/span&gt; &lt;span class="s"&gt;startpoem&lt;/span&gt;
+&lt;a name="rest_code_b652c2b03a8148e3b237f6d45c05f486-8"&gt;&lt;/a&gt;.&lt;span class="k"&gt;ds&lt;/span&gt; &lt;span class="s"&gt;OLDFAM&lt;/span&gt; &lt;span class="se"&gt;\\&lt;/span&gt;&lt;span class="s"&gt;*[FAM]&lt;/span&gt;
+&lt;a name="rest_code_b652c2b03a8148e3b237f6d45c05f486-9"&gt;&lt;/a&gt;.&lt;span class="k"&gt;ds&lt;/span&gt; &lt;span class="s"&gt;FAM&lt;/span&gt; &lt;span class="s"&gt;BM&lt;/span&gt;
+&lt;a name="rest_code_b652c2b03a8148e3b237f6d45c05f486-10"&gt;&lt;/a&gt;.&lt;span class="k"&gt;DS&lt;/span&gt; &lt;span class="s"&gt;I&lt;/span&gt; &lt;span class="m"&gt;3&lt;/span&gt;
+&lt;a name="rest_code_b652c2b03a8148e3b237f6d45c05f486-11"&gt;&lt;/a&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="s"&gt;.&lt;/span&gt;
+&lt;a name="rest_code_b652c2b03a8148e3b237f6d45c05f486-12"&gt;&lt;/a&gt;.&lt;span class="k"&gt;de&lt;/span&gt; &lt;span class="s"&gt;stoppoem&lt;/span&gt;
+&lt;a name="rest_code_b652c2b03a8148e3b237f6d45c05f486-13"&gt;&lt;/a&gt;.&lt;span class="k"&gt;DE&lt;/span&gt;
+&lt;a name="rest_code_b652c2b03a8148e3b237f6d45c05f486-14"&gt;&lt;/a&gt;.&lt;span class="k"&gt;ds&lt;/span&gt; &lt;span class="s"&gt;FAM&lt;/span&gt; &lt;span class="se"&gt;\\&lt;/span&gt;&lt;span class="s"&gt;*[OLDFAM]&lt;/span&gt;
+&lt;a name="rest_code_b652c2b03a8148e3b237f6d45c05f486-15"&gt;&lt;/a&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="s"&gt;.&lt;/span&gt;
+&lt;a name="rest_code_b652c2b03a8148e3b237f6d45c05f486-16"&gt;&lt;/a&gt;.&lt;span class="k"&gt;LP&lt;/span&gt;
+&lt;a name="rest_code_b652c2b03a8148e3b237f6d45c05f486-17"&gt;&lt;/a&gt;This is a sentence.
+&lt;a name="rest_code_b652c2b03a8148e3b237f6d45c05f486-18"&gt;&lt;/a&gt;This sentence talks about &lt;span class="se"&gt;\*[startprogram]pandoc\*[stopprogram]&lt;/span&gt;.
+&lt;a name="rest_code_b652c2b03a8148e3b237f6d45c05f486-19"&gt;&lt;/a&gt;This is
+&lt;a name="rest_code_b652c2b03a8148e3b237f6d45c05f486-20"&gt;&lt;/a&gt;another sentence.
+&lt;a name="rest_code_b652c2b03a8148e3b237f6d45c05f486-21"&gt;&lt;/a&gt;.&lt;span class="k"&gt;startpoem&lt;/span&gt;
+&lt;a name="rest_code_b652c2b03a8148e3b237f6d45c05f486-22"&gt;&lt;/a&gt;Some say the world will end in fire,
+&lt;a name="rest_code_b652c2b03a8148e3b237f6d45c05f486-23"&gt;&lt;/a&gt;&lt;span class="se"&gt;\h&lt;/span&gt;'3n'Some say in ice.
+&lt;a name="rest_code_b652c2b03a8148e3b237f6d45c05f486-24"&gt;&lt;/a&gt;From what I&lt;span class="se"&gt;\[&lt;/span&gt;aq]ve tasted of desire
+&lt;a name="rest_code_b652c2b03a8148e3b237f6d45c05f486-25"&gt;&lt;/a&gt;&lt;span class="se"&gt;\h&lt;/span&gt;'3n'I hold with those who favor fire.
+&lt;a name="rest_code_b652c2b03a8148e3b237f6d45c05f486-26"&gt;&lt;/a&gt;But if it had to perish twice,
+&lt;a name="rest_code_b652c2b03a8148e3b237f6d45c05f486-27"&gt;&lt;/a&gt;&lt;span class="se"&gt;\h&lt;/span&gt;'3n'I think I know enough of hate
+&lt;a name="rest_code_b652c2b03a8148e3b237f6d45c05f486-28"&gt;&lt;/a&gt;&lt;span class="se"&gt;\h&lt;/span&gt;'3n'To say that for destruction ice
+&lt;a name="rest_code_b652c2b03a8148e3b237f6d45c05f486-29"&gt;&lt;/a&gt;&lt;span class="se"&gt;\h&lt;/span&gt;'3n'Is also great,
+&lt;a name="rest_code_b652c2b03a8148e3b237f6d45c05f486-30"&gt;&lt;/a&gt;And would suffice.
+&lt;a name="rest_code_b652c2b03a8148e3b237f6d45c05f486-31"&gt;&lt;/a&gt;
+&lt;a name="rest_code_b652c2b03a8148e3b237f6d45c05f486-32"&gt;&lt;/a&gt;And another line,
+&lt;a name="rest_code_b652c2b03a8148e3b237f6d45c05f486-33"&gt;&lt;/a&gt;&lt;span class="se"&gt;\h&lt;/span&gt;'3n'And an indented line.
+&lt;a name="rest_code_b652c2b03a8148e3b237f6d45c05f486-34"&gt;&lt;/a&gt;.&lt;span class="k"&gt;stoppoem&lt;/span&gt;
+&lt;a name="rest_code_b652c2b03a8148e3b237f6d45c05f486-35"&gt;&lt;/a&gt;.&lt;span class="k"&gt;LP&lt;/span&gt;
+&lt;a name="rest_code_b652c2b03a8148e3b237f6d45c05f486-36"&gt;&lt;/a&gt;This is a final sentence.
+&lt;/pre&gt;&lt;p&gt;The command to produce the ms output is:&lt;/p&gt;
+&lt;pre class="code text"&gt;&lt;a name="rest_code_ddadf337aef84b6586e27e1d09688f8e-1"&gt;&lt;/a&gt;pandoc -f rst -t ms --lua-filter classify-rst-ms.lua --wrap=preserve poem-plus.rst
+&lt;/pre&gt;&lt;p&gt;and the command to produce a PDF is:&lt;/p&gt;
+&lt;pre class="code bash"&gt;&lt;a name="rest_code_f062f0fad1b44bb697dfbee252e53684-1"&gt;&lt;/a&gt;pandoc -f rst -t ms --lua-filter classify-rst-ms.lua --wrap&lt;span class="o"&gt;=&lt;/span&gt;preserve poem-plus.rst --output&lt;span class="o"&gt;=&lt;/span&gt;poem-plus-rst-ms.pdf
+&lt;/pre&gt;&lt;p&gt;&lt;a class="reference external" href="https://tkurtbond.github.io/poem-plus-rst-ms.pdf"&gt;Here&lt;/a&gt; is the output PDF.&lt;/p&gt;
+&lt;p&gt;Being able to rewrite the tree and insert RawBlocks and RawInlines is
+really powerful when it comes to customizing output for particular
+output formats.&lt;/p&gt;
+&lt;p&gt;I hope this example is useful for others like me just learning to use
+Lua filters.&lt;/p&gt;
+&lt;dl class="footnote brackets"&gt;
+&lt;dt class="label" id="lp"&gt;&lt;span class="brackets"&gt;&lt;a class="fn-backref" href="https://tkurtbond.github.io/posts/2020/05/03/customizing-pandoc-ms-output-with-a-lua-filter/#id1"&gt;1&lt;/a&gt;&lt;/span&gt;&lt;/dt&gt;
+&lt;dd&gt;&lt;p&gt;The &lt;code class="docutils literal"&gt;.LP&lt;/code&gt; macro in the &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;-ms&lt;/span&gt;&lt;/code&gt; macros resets a lot of
+things back to the default when it is used, so if you want the custom
+&lt;span class="app"&gt;groff&lt;/span&gt; setting from your user defined macros to continue from the
+start to the end you can't allow the use of &lt;code class="docutils literal"&gt;.LP&lt;/code&gt; between the
+&lt;code class="docutils literal"&gt;.start&amp;lt;class&amp;gt;&lt;/code&gt; and &lt;code class="docutils literal"&gt;.stop&amp;lt;class&amp;gt;&lt;/code&gt; macros.&lt;/p&gt;
+&lt;/dd&gt;
+&lt;/dl&gt;&lt;/div&gt;</description><category>groff ms macros</category><category>lua filters</category><category>pandoc</category><category>pandoc-discuss</category><category>pdf</category><category>restructuredtext</category><guid>https://tkurtbond.github.io/posts/2020/05/03/customizing-pandoc-ms-output-with-a-lua-filter/</guid><pubDate>Sun, 03 May 2020 05:01:53 GMT</pubDate></item><item><title>Binding a symbol defined with DEFCONSTANT with LET is not portable in Common Lisp</title><link>https://tkurtbond.github.io/posts/2020/04/24/binding-a-symbol-defined-with-defconstant-with-let-is-not-portable-in-common-lisp/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;a class="reference external" href="http://www.sbcl.org/"&gt;SBCL&lt;/a&gt; and &lt;a class="reference external" href="https://ccl.clozure.com/"&gt;CCL&lt;/a&gt; and &lt;a class="reference external" href="https://clisp.sourceforge.io/"&gt;CLISP&lt;/a&gt; think binding a symbol defined with &lt;code class="docutils literal"&gt;defconstant&lt;/code&gt;
 is an error, so if you do&lt;/p&gt;
 &lt;pre class="code common-lisp"&gt;&lt;a name="rest_code_3c0ac046cc934a26af4f0b3b0417ba45-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;defconstant&lt;/span&gt; &lt;span class="nv"&gt;foo&lt;/span&gt; &lt;span class="s"&gt;"foo"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;a name="rest_code_3c0ac046cc934a26af4f0b3b0417ba45-2"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;let&lt;/span&gt; &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nv"&gt;foo&lt;/span&gt; &lt;span class="s"&gt;"bar"&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="nv"&gt;foo&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -400,20 +626,4 @@ which passes the &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;-P
 passes the &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;-p8.5i,5.5i&lt;/span&gt;&lt;/code&gt; part to the (final) post processor — I'm
 not sure if &lt;em&gt;that&lt;/em&gt; is &lt;span class="app"&gt;grops&lt;/span&gt; or &lt;span class="app"&gt;gropdf&lt;/span&gt;.&lt;/p&gt;
 &lt;/dd&gt;
-&lt;/dl&gt;&lt;/div&gt;</description><category>computer</category><category>groff</category><category>make</category><category>ms macros</category><category>pandoc</category><category>pdfroff</category><category>text processing</category><guid>https://tkurtbond.github.io/posts/2020/03/13/making-digest-sized-pages-with-pandoc-and-ms-output/</guid><pubDate>Fri, 13 Mar 2020 18:01:10 GMT</pubDate></item><item><title>Karl Edward Wagner's Horror Stories</title><link>https://tkurtbond.github.io/posts/2020/03/12/karl-edward-wagners-horror-stories/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;I primarily know &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Karl_Edward_Wagner"&gt;Karl Edward Wagner&lt;/a&gt;'s work from his “heroic
-fantasy” &lt;a class="footnote-reference brackets" href="https://tkurtbond.github.io/posts/2020/03/12/karl-edward-wagners-horror-stories/#hf" id="id1"&gt;1&lt;/a&gt; novels and stories of &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Karl_Edward_Wagner#Kane,_the_Mystic_Swordsman"&gt;Kane&lt;/a&gt; which I picked up in
-paperback in the mid 1980s, but he was equally talented as a writer
-and editor of horror.  I &lt;em&gt;have&lt;/em&gt; read his British Fantasy Award-winning
-story &lt;a class="reference external" href="https://web.archive.org/web/20110708122112/http://www.thecimmerian.com/the-terror-of-the-absurd-karl-edward-wagners-sticks/"&gt;Sticks&lt;/a&gt; and it had a considerable effect on me, but I don't
-remember every reading any of his other horror stories.  The &lt;a class="reference external" href="http://www.isfdb.org/"&gt;ISFDB&lt;/a&gt;
-has what seems a very complete &lt;a class="reference external" href="http://www.isfdb.org/cgi-bin/ea.cgi?153"&gt;page&lt;/a&gt; listing his writings.&lt;/p&gt;
-&lt;p&gt;I aim to fix that.  I've now got copies of the &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Centipede_Press"&gt;Centipede Press&lt;/a&gt;
-collections &lt;a class="reference external" href="http://www.isfdb.org/cgi-bin/pl.cgi?372768"&gt;Where the Summer Ends&lt;/a&gt; (2012) and &lt;a class="reference external" href="http://www.isfdb.org/cgi-bin/pl.cgi?372769"&gt;Walk on the Wild
-Side&lt;/a&gt; (2012) and I'll be reading them soon.&lt;/p&gt;
-&lt;dl class="footnote brackets"&gt;
-&lt;dt class="label" id="hf"&gt;&lt;span class="brackets"&gt;&lt;a class="fn-backref" href="https://tkurtbond.github.io/posts/2020/03/12/karl-edward-wagners-horror-stories/#id1"&gt;1&lt;/a&gt;&lt;/span&gt;&lt;/dt&gt;
-&lt;dd&gt;&lt;p&gt;A term he vastly preferred to “Sword &amp;amp; Sorcery”.  Or maybe he
-&lt;a class="reference external" href="https://thesilverkey.blogspot.com/2019/10/remembering-karl-edward-wagner-1945-1994.html"&gt;preferred&lt;/a&gt; (note 1 at the bottom of the post) “epic fantasy” or
-“dark fantasy”.&lt;/p&gt;
-&lt;/dd&gt;
-&lt;/dl&gt;&lt;/div&gt;</description><category>dark fantasy</category><category>epic fantasy</category><category>fiction</category><category>heroic fantasy</category><category>horror</category><category>kane</category><category>karl edward wagner</category><category>sword &amp; sorcery</category><guid>https://tkurtbond.github.io/posts/2020/03/12/karl-edward-wagners-horror-stories/</guid><pubDate>Thu, 12 Mar 2020 19:35:02 GMT</pubDate></item></channel></rss>
+&lt;/dl&gt;&lt;/div&gt;</description><category>computer</category><category>groff</category><category>make</category><category>ms macros</category><category>pandoc</category><category>pdfroff</category><category>text processing</category><guid>https://tkurtbond.github.io/posts/2020/03/13/making-digest-sized-pages-with-pandoc-and-ms-output/</guid><pubDate>Fri, 13 Mar 2020 18:01:10 GMT</pubDate></item></channel></rss>
