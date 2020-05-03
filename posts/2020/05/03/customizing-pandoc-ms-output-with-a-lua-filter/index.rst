@@ -1,4 +1,4 @@
-.. title: Customizing pandoc ms output with a lua filter
+.. title: Customizing pandoc ms output with a Lua filter
 .. slug: customizing-pandoc-ms-output-with-a-lua-filter
 .. date: 2020-05-03 01:01:53 UTC-04:00
 .. tags: pandoc,lua filters,groff ms macros,restructuredtext,pandoc-discuss,pdf
@@ -37,12 +37,13 @@ You should probably be a little familiar with the `Pandoc User
 Manual`_ and have the documentation for `Lua Filter`_\'s available for
 reference while reading this article.  And having a reading
 familiarity with groff_ and its manual_ and specifically the `-ms
-macros`_ will be useful too.
+macros`_ will be useful too.  And maybe Lua_ as well.
 
 .. _`Pandoc User Manual`: https://pandoc.org/MANUAL.html
 .. _groff: https://www.gnu.org/software/groff/
 .. _manual: https://www.gnu.org/software/groff/manual/
 .. _`-ms macros`: https://www.gnu.org/software/groff/manual/html_node/ms.html#ms
+.. _Lua: https://www.lua.org/
 
 Starting with an article_ from Dave Jarvis that had an example `Lua
 filter`_ for customizing the :app:`ConTeXt` output and a little help
