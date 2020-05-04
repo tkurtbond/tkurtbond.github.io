@@ -51,7 +51,87 @@
         <div class="row">
             <div class="col-sm-8 blog-main">
 <div class="postindex">
-    <article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2020/03/12/karl-edward-wagners-horror-stories/" class="u-url">Karl Edward Wagner's Horror Stories</a></h2>
+    <article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2020/03/13/making-digest-sized-pages-with-pandoc-and-ms-output/" class="u-url">Making digest-sized pages with pandoc and ms output</a></h2>
+        <div class="metadata blog-post-meta">
+            <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
+            <p class="dateline"><a href="posts/2020/03/13/making-digest-sized-pages-with-pandoc-and-ms-output/" rel="bookmark"><time class="published dt-published" datetime="2020-03-13T14:01:10-04:00" title="2020-03-13 14:01">2020-03-13 14:01</time></a></p>
+                <p class="commentline">            <a href="posts/2020/03/13/making-digest-sized-pages-with-pandoc-and-ms-output/#disqus_thread" data-disqus-identifier="cache/posts/2020/03/13/making-digest-sized-pages-with-pandoc-and-ms-output.html">Comments</a>
+
+
+        </p>
+</div>
+    </header><div class="e-content entry-content">
+    <div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>After I wrote this post, I made a last minute check of the options
+to <span class="app">pandoc</span> and found that the <code class="docutils literal"><span class="pre">--pdf-engine-opt=</span></code> option
+does exactly what I want.  How embarrassing.  So I changed this
+post, showing both the easy way and the hard way to do it.</p>
+</div>
+<p>I use <a class="reference external" href="https://pandoc.org/">pandoc</a> to produce digest-sized pages (5½×8½ inches) in PDF
+documents from <a class="reference external" href="https://en.wikipedia.org/wiki/ReStructuredText">ReStructuredText</a>.  I have a <span class="app">ms</span> output template,
+<span class="file">digest2.ms</span> in <span class="file">~/pandoc/templates</span> that sets the page
+width and page height correctly.  Unfortunately, there is no way to
+set the papersize properly in the template. <a class="footnote-reference brackets" href="posts/2020/03/13/making-digest-sized-pages-with-pandoc-and-ms-output/#heirloomtroff" id="id1">1</a></p>
+<p>Luckily, <span class="app">pandoc</span> has the <code class="docutils literal"><span class="pre">--pdf-engine-opt=</span></code> option to pass
+options to the PDF engine that <span class="app">pandoc</span> is using, in this case
+<span class="app">pdfroff</span>.  In the case of <span class="app">ms</span> output the thing to do is
+pass the argument <code class="docutils literal"><span class="pre">--pdf-engine-opt=-P-p8.5i,5.5i</span></code> <a class="footnote-reference brackets" href="posts/2020/03/13/making-digest-sized-pages-with-pandoc-and-ms-output/#recursively" id="id2">2</a>,
+like below.</p>
+<p><a class="reference external" href="listings/GNUmakefile.pandoc-digest-pdf-engine-opt.html">GNUmakefile.pandoc-digest-pdf-engine-opt</a>  <a class="reference external" href="listings/GNUmakefile.pandoc-digest-pdf-engine-opt">(Source)</a></p>
+<pre class="code make"><a name="rest_code_5a65b95088cf441a969e67aec685c364-1"></a><span class="nf">%.digest.ms.pdf </span><span class="o">:</span> %.<span class="n">rst</span>
+<a name="rest_code_5a65b95088cf441a969e67aec685c364-2"></a>        pandoc -s -r rst -w ms --template<span class="o">=</span>digest2 <span class="k">$(</span>VARIABLES<span class="k">)</span> <span class="se">\</span>
+<a name="rest_code_5a65b95088cf441a969e67aec685c364-3"></a>                --output<span class="o">=</span><span class="nv">$@</span> --pdf-engine-opt<span class="o">=</span>-P-p8.5i,5.5i $&lt;
+</pre>
+<p>Unfortunately when I originally had this need for digest pages I
+hadn't realized that the <code class="docutils literal"><span class="pre">--pdf-engine-opt=</span></code> option existed.</p>
+<p>So I used <code class="docutils literal">pandoc <span class="pre">--verbose</span></code> and found the <span class="app">pdfroff</span> invocation
+<span class="app">pandoc</span> uses, and made my <span class="app">pandoc</span> invocation output
+<span class="app">ms</span> instead of PDF, then passed it through a <span class="app">pdfroff</span>
+command with the added <code class="docutils literal"><span class="pre">-P-p8.5i,5.5i</span></code> argument.  Here's what I put
+in my <span class="file">GNUmakefile</span>:</p>
+<p><a class="reference external" href="listings/GNUmakefile.pandoc-digest-save-ms.html">GNUmakefile.pandoc-digest-save-ms</a>  <a class="reference external" href="listings/GNUmakefile.pandoc-digest-save-ms">(Source)</a></p>
+<pre class="code make"><a name="rest_code_d5dd0856f39440da89e5b4d09932f3bc-1"></a><span class="nf">%.digest.ms.pdf </span><span class="o">:</span> %.<span class="n">rst</span>
+<a name="rest_code_d5dd0856f39440da89e5b4d09932f3bc-2"></a>        pandoc -s -r rst -w ms -s --template<span class="o">=</span>digest2 <span class="k">$(</span>VARIABLES<span class="k">)</span> <span class="se">\</span>
+<a name="rest_code_d5dd0856f39440da89e5b4d09932f3bc-3"></a>               --output<span class="o">=</span><span class="nv">$*</span>.ms $&lt;
+<a name="rest_code_d5dd0856f39440da89e5b4d09932f3bc-4"></a>        pdfroff -ms -mpdfmark -e -t -k -KUTF-8 --no-toc-relocation <span class="se">\</span>
+<a name="rest_code_d5dd0856f39440da89e5b4d09932f3bc-5"></a>                -P-p8.5i,5.5i <span class="nv">$*</span>.ms &gt; <span class="nv">$@</span>
+</pre>
+<p>Or, if you don't care about having the <span class="app">ms</span> output for debugging,
+you could do it as a pipeline:</p>
+<p><a class="reference external" href="listings/GNUmakefile.pandoc-digest-pipeline.html">GNUmakefile.pandoc-digest-pipeline</a>  <a class="reference external" href="listings/GNUmakefile.pandoc-digest-pipeline">(Source)</a></p>
+<pre class="code make"><a name="rest_code_f39314aab2a64179b2106446ce792930-1"></a><span class="nf">%.digest.ms.pdf </span><span class="o">:</span> %.<span class="n">rst</span>
+<a name="rest_code_f39314aab2a64179b2106446ce792930-2"></a>        pandoc -s -r rst -w ms -s --template<span class="o">=</span>digest2 <span class="k">$(</span>VARIABLES<span class="k">)</span> <span class="se">\</span>
+<a name="rest_code_f39314aab2a64179b2106446ce792930-3"></a>               --output<span class="o">=</span>- $&lt; <span class="p">|</span> <span class="se">\</span>
+<a name="rest_code_f39314aab2a64179b2106446ce792930-4"></a>        pdfroff -ms -mpdfmark -e -t -k -KUTF-8 --no-toc-relocation <span class="se">\</span>
+<a name="rest_code_f39314aab2a64179b2106446ce792930-5"></a>                -P-p8.5i,5.5i - &gt;<span class="nv">$@</span>
+</pre>
+<p>There are still some instances where this technique of having
+<span class="app">pandoc</span> output the <span class="app">ms</span> source directly and pass it through
+<span class="app">pdfroff</span> yourself.  For instance, if you have to do some
+massaging of the <span class="app">ms</span> source, like changing <code class="docutils literal"><span class="pre">.RS/.RE</span></code> to
+<code class="docutils literal"><span class="pre">.QS/.QE</span></code> to get around the problem with block quotes in <span class="app">ms</span>
+output in the current <span class="app">pandoc</span> release, discussed <a class="reference external" href="posts/2020/03/11/pandoc-discuss-post-can-the-rsre-macros-in-ms-output-be-replaced-with-qsqe/">here</a>.</p>
+<dl class="footnote brackets">
+<dt class="label" id="heirloomtroff"><span class="brackets"><a class="fn-backref" href="posts/2020/03/13/making-digest-sized-pages-with-pandoc-and-ms-output/#id1">1</a></span></dt>
+<dd>
+<p>Heirloom Troff (originally at <a class="reference external" href="http://heirloom.sourceforge.net/doctools.html">H1</a>, but now <em>I
+think</em> more up to date at <a class="reference external" href="http://n-t-roff.github.io/heirloom/doctools.html">H2</a> and <a class="reference external" href="https://github.com/n-t-roff/heirloom-doctools">H3</a>) has the <code class="docutils literal">.mediasize</code> and
+<code class="docutils literal">.papersize</code> commands for that.</p>
+</dd>
+<dt class="label" id="recursively"><span class="brackets"><a class="fn-backref" href="posts/2020/03/13/making-digest-sized-pages-with-pandoc-and-ms-output/#id2">2</a></span></dt>
+<dd>
+<p>Amusingly, <span class="app">pandoc</span> passes the
+<code class="docutils literal"><span class="pre">--pdf-engine-opt=-P-p8.5i,5.5i</span></code> argument to <span class="app">pdfroff</span>,
+which passes the <code class="docutils literal"><span class="pre">-P-p8.5i,5.5i</span></code> part to <span class="app">groff</span>, which
+passes the <code class="docutils literal"><span class="pre">-p8.5i,5.5i</span></code> part to the (final) post processor — I'm
+not sure if <em>that</em> is <span class="app">grops</span> or <span class="app">gropdf</span>.</p>
+</dd>
+</dl>
+</div>
+    </div>
+    </article><article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2020/03/12/karl-edward-wagners-horror-stories/" class="u-url">Karl Edward Wagner's Horror Stories</a></h2>
         <div class="metadata blog-post-meta">
             <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
             <p class="dateline"><a href="posts/2020/03/12/karl-edward-wagners-horror-stories/" rel="bookmark"><time class="published dt-published" datetime="2020-03-12T15:35:02-04:00" title="2020-03-12 15:35">2020-03-12 15:35</time></a></p>
