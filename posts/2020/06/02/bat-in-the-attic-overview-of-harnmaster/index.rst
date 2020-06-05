@@ -1,7 +1,7 @@
 .. title: Bat in the Attic overview of Harnmaster
 .. slug: bat-in-the-attic-overview-of-harnmaster
 .. date: 2020-06-02 20:02:23 UTC-04:00
-.. tags: harnmaster,bat in the attic
+.. tags: rpg,harnmaster,bat in the attic
 .. category: gaming
 .. link: 
 .. description: 
