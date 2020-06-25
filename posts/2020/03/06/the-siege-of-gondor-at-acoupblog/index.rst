@@ -23,6 +23,9 @@ review.
 
 And, there is a three part series (1_, 2_, 3_) on War Elephants.
 
+His `Blog Overview`_ gives a good description of what he's doing on
+his blog and his credentials as a professional military historian.
+
 .. _I: https://acoup.blog/2019/05/10/collections-the-siege-of-gondor/
 .. _II: https://acoup.blog/2019/05/17/collections-the-siege-of-gondor-part-ii-these-beacons-are-liiiiiiit/
 .. _III: https://acoup.blog/2019/05/24/collections-the-siege-of-gondor-part-iii-having-fun-storming-the-city/
@@ -36,3 +39,4 @@ And, there is a three part series (1_, 2_, 3_) on War Elephants.
 .. _1: https://acoup.blog/2019/07/26/collections-war-elephants-part-i-battle-pachyderms/
 .. _2: https://acoup.blog/2019/08/02/collections-war-elephants-part-ii-elephants-against-wolves/
 .. _3: https://acoup.blog/2019/08/09/collections-war-elephants-part-iii-elephant-memories/
+.. _`Blog Overview`: https://acoup.blog/2019/05/03/blog-overview-a-collection-of-unmitigated-pedantry/
