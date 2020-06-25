@@ -15,7 +15,9 @@ looking for the different flavors that different RPG systems give the
 games you play with them.  `D&D` has a very specific flavor.  `Elric!`
 has a very specific but different flavor.  Some of that flavor comes
 from the systems and some of that flavor comes from the setting.  But
-the `D&D` systems flavor seems to overpower the setting flavor.
+the `D&D` systems flavor seems to overpower the setting flavor.  (You
+could say that the “implied setting elements” from the `D&D` core
+rules have heavily flavor any `D&D` setting.)
 
 The `Dungeon Fantasy RPG` is `GURPS` specialized for powerful
 characters plundering dungeons, and because of that it adopts some
