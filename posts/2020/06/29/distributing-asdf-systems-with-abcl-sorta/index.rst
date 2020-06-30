@@ -10,14 +10,16 @@
 .. role:: file
 
 The Reddit thread `How do you compile a runnable, deployable JAR with
-ABCL?`__ doesn't offer a solution, unfortunately. [1]_ But it leads
-to an ABCL TRAC ticket (T1_) which leads to another (T2_) which leads
-some documentation on package ABCL for distribution (D1_) which talks
-about how the `abcl-aio.jar`_ target is used to package
-:file:`abcl.jar` and :file:`abcl-contrib.jar` for distribution, then
-describes a way it might be done in the section `Current Hack`_.
+ABCL?`__ doesn't offer a solution, unfortunately. [1]_ But it leads to
+an `Armed Bear Common Lisp (ABCL)`__ TRAC ticket (T1_) which leads to
+another (T2_) which leads some documentation on package ABCL for
+distribution (D1_) which talks about how the `abcl-aio.jar`_ target is
+used to package :file:`abcl.jar` and :file:`abcl-contrib.jar` for
+distribution, then describes a way it might be done in the section
+`Current Hack`_.
 
 __ https://www.reddit.com/r/lisp/comments/2u7m4k/how_do_you_compile_a_runnable_deployable_jar_with/
+__ https://abcl.org/
 .. _T1: https://abcl.org/trac/ticket/383
 .. _T2: https://abcl.org/trac/ticket/442
 .. _D1: https://github.com/armedbear/abcl/blob/master/doc/packaging-abcl.org

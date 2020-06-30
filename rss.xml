@@ -1,11 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity</title><link>https://tkurtbond.github.io/</link><description>Random musings on books, code, and tabletop games.</description><atom:link href="https://tkurtbond.github.io/rss.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2020 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Mon, 29 Jun 2020 20:50:37 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Distributing ASDF systems with ABCL, sorta</title><link>https://tkurtbond.github.io/posts/2020/06/29/distributing-asdf-systems-with-abcl-sorta/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;The Reddit thread &lt;a class="reference external" href="https://www.reddit.com/r/lisp/comments/2u7m4k/how_do_you_compile_a_runnable_deployable_jar_with/"&gt;How do you compile a runnable, deployable JAR with
-ABCL?&lt;/a&gt; doesn't offer a solution, unfortunately. &lt;a class="footnote-reference brackets" href="https://tkurtbond.github.io/posts/2020/06/29/distributing-asdf-systems-with-abcl-sorta/#id3" id="id1"&gt;1&lt;/a&gt; But it leads
-to an ABCL TRAC ticket (&lt;a class="reference external" href="https://abcl.org/trac/ticket/383"&gt;T1&lt;/a&gt;) which leads to another (&lt;a class="reference external" href="https://abcl.org/trac/ticket/442"&gt;T2&lt;/a&gt;) which leads
-some documentation on package ABCL for distribution (&lt;a class="reference external" href="https://github.com/armedbear/abcl/blob/master/doc/packaging-abcl.org"&gt;D1&lt;/a&gt;) which talks
-about how the &lt;a class="reference external" href="https://github.com/armedbear/abcl/blob/master/doc/packaging-abcl.org#abcl-aio"&gt;abcl-aio.jar&lt;/a&gt; target is used to package
-&lt;span class="file"&gt;abcl.jar&lt;/span&gt; and &lt;span class="file"&gt;abcl-contrib.jar&lt;/span&gt; for distribution, then
-describes a way it might be done in the section &lt;a class="reference external" href="https://github.com/armedbear/abcl/blob/master/doc/packaging-abcl.org#current-hack"&gt;Current Hack&lt;/a&gt;.&lt;/p&gt;
+<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity</title><link>https://tkurtbond.github.io/</link><description>Random musings on books, code, and tabletop games.</description><atom:link href="https://tkurtbond.github.io/rss.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2020 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Tue, 30 Jun 2020 01:34:40 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>GURPS: Generic, Universal, RolePlaying, System</title><link>https://tkurtbond.github.io/posts/2020/06/29/gurps-generic-universal-roleplaying-system/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;cite&gt;GURPS&lt;/cite&gt; (&lt;a class="reference external" href="https://en.wikipedia.org/wiki/GURPS"&gt;G1&lt;/a&gt;, &lt;a class="reference external" href="http://www.sjgames.com/gurps/"&gt;G2&lt;/a&gt;) from &lt;a class="reference external" href="http://www.sjgames.com/"&gt;Steve Jackson Games&lt;/a&gt; is a &lt;strong&gt;Generic Universal
+RolePlaying System&lt;/strong&gt;. The meaning of the separate words, paraphrased
+from the introductions of the &lt;cite&gt;GURPS&lt;/cite&gt;, 3rd Edition, and &lt;cite&gt;GURPS&lt;/cite&gt; 4th
+Edition, breaks down the meaning as follows:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Generic&lt;/strong&gt; — Scaling from quick, fast-moving games with simple
+rules to games with lots of detail.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Universal&lt;/strong&gt; — a set of rules that's comprehensive enough to let
+you use with any background/setting and potentially to combine characters
+from different backgrounds/settings and have them be compatible.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;RolePlaying&lt;/strong&gt; — designed to encourage true roleplaying&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;System&lt;/strong&gt; — designed as a unified whole rather than starting out as
+a set of simple rules and modified in an ad-hoc manner.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The Wikipedia article &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Generic_role-playing_game_system"&gt;Generic role-playing game system&lt;/a&gt;'s idea of
+a generic &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Role-playing_game_system"&gt;RPG&lt;/a&gt; seems to combine the &lt;cite&gt;GURPS&lt;/cite&gt; notions of “Generic” and
+“Universal”.  Or maybe it means by “Generic” what &lt;cite&gt;GURPS&lt;/cite&gt; means by
+“Universal”.&lt;/p&gt;&lt;/div&gt;</description><category>definitions</category><category>gurps</category><category>rpg</category><guid>https://tkurtbond.github.io/posts/2020/06/29/gurps-generic-universal-roleplaying-system/</guid><pubDate>Tue, 30 Jun 2020 00:58:58 GMT</pubDate></item><item><title>Distributing ASDF systems with ABCL, sorta</title><link>https://tkurtbond.github.io/posts/2020/06/29/distributing-asdf-systems-with-abcl-sorta/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;The Reddit thread &lt;a class="reference external" href="https://www.reddit.com/r/lisp/comments/2u7m4k/how_do_you_compile_a_runnable_deployable_jar_with/"&gt;How do you compile a runnable, deployable JAR with
+ABCL?&lt;/a&gt; doesn't offer a solution, unfortunately. &lt;a class="footnote-reference brackets" href="https://tkurtbond.github.io/posts/2020/06/29/distributing-asdf-systems-with-abcl-sorta/#id4" id="id1"&gt;1&lt;/a&gt; But it leads to
+an &lt;a class="reference external" href="https://abcl.org/"&gt;Armed Bear Common Lisp (ABCL)&lt;/a&gt; TRAC ticket (&lt;a class="reference external" href="https://abcl.org/trac/ticket/383"&gt;T1&lt;/a&gt;) which leads to
+another (&lt;a class="reference external" href="https://abcl.org/trac/ticket/442"&gt;T2&lt;/a&gt;) which leads some documentation on package ABCL for
+distribution (&lt;a class="reference external" href="https://github.com/armedbear/abcl/blob/master/doc/packaging-abcl.org"&gt;D1&lt;/a&gt;) which talks about how the &lt;a class="reference external" href="https://github.com/armedbear/abcl/blob/master/doc/packaging-abcl.org#abcl-aio"&gt;abcl-aio.jar&lt;/a&gt; target is
+used to package &lt;span class="file"&gt;abcl.jar&lt;/span&gt; and &lt;span class="file"&gt;abcl-contrib.jar&lt;/span&gt; for
+distribution, then describes a way it might be done in the section
+&lt;a class="reference external" href="https://github.com/armedbear/abcl/blob/master/doc/packaging-abcl.org#current-hack"&gt;Current Hack&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Basically, it says:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;Current hack&lt;/strong&gt;&lt;/p&gt;
@@ -21,7 +39,7 @@ contents.&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/blockquote&gt;
 &lt;dl class="footnote brackets"&gt;
-&lt;dt class="label" id="id3"&gt;&lt;span class="brackets"&gt;&lt;a class="fn-backref" href="https://tkurtbond.github.io/posts/2020/06/29/distributing-asdf-systems-with-abcl-sorta/#id1"&gt;1&lt;/a&gt;&lt;/span&gt;&lt;/dt&gt;
+&lt;dt class="label" id="id4"&gt;&lt;span class="brackets"&gt;&lt;a class="fn-backref" href="https://tkurtbond.github.io/posts/2020/06/29/distributing-asdf-systems-with-abcl-sorta/#id1"&gt;1&lt;/a&gt;&lt;/span&gt;&lt;/dt&gt;
 &lt;dd&gt;&lt;p&gt;Though it does talking about distributing an ABCL application
 as a servlet and WAR file.&lt;/p&gt;
 &lt;/dd&gt;
@@ -332,98 +350,4 @@ who is new to me.&lt;/p&gt;
 Smith, Inc., copyright 1967 by Conde Nast Publications, Inc.;
 Berkley Publishing Corp., 1978.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Well, it was no &lt;cite&gt;Conan&lt;/cite&gt;, but it was entertaining!&lt;/p&gt;&lt;/div&gt;</description><category>lin carter</category><category>norvell w. page</category><category>sword &amp; planet</category><category>sword &amp; sorcery</category><guid>https://tkurtbond.github.io/posts/2020/03/22/recent-reading-carter-and-page/</guid><pubDate>Sun, 22 Mar 2020 23:34:49 GMT</pubDate></item><item><title>The "Typical Activities" checklist from The Traveller Book and Starter Traveller</title><link>https://tkurtbond.github.io/posts/2020/03/17/the-typical-activities-checklist-from-the-traveller-book-and-starter-traveller/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;I've been looking at Cepheus Engine and I've noticed that there is
-nothing like the “Typical Activities” checklist that first appeared in
-&lt;cite&gt;The Traveller Book&lt;/cite&gt;, but which I first encountered in play recently
-with &lt;cite&gt;Starter Traveller&lt;/cite&gt;.  It made a definite impression on me — with
-this one could improvise a trading session from start to end.  I'm not
-sure yet whether Cepheus Engine supports the completely improvised
-Traveller adventure &lt;a class="reference external" href="https://talestoastound.wordpress.com/2016/05/31/traveller-out-of-the-box-the-casual-and-improvisatory-nature-of-early-traveller-play/"&gt;talked about&lt;/a&gt; on the &lt;a class="reference external" href="https://talestoastound.wordpress.com/"&gt;Tales to Astound&lt;/a&gt; blog,
-but using this with Cepheus Engine would certainly make it easier.&lt;/p&gt;
-&lt;hr class="docutils"&gt;
-&lt;div class="section" id="typical-activities"&gt;
-&lt;h2&gt;Typical Activities&lt;/h2&gt;
-&lt;ol class="upperroman simple"&gt;
-&lt;li&gt;&lt;p&gt;Arrive in star system.&lt;/p&gt;
-&lt;ol class="upperalpha simple"&gt;
-&lt;li&gt;&lt;p&gt;Scan area for potential danger, problems, and other data.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Set course insystem.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Possible ship encounter.&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Local gas giant.&lt;/p&gt;
-&lt;ol class="upperalpha simple"&gt;
-&lt;li&gt;&lt;p&gt;Achieve orbit.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Refuel.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Set course to major world or outsystem.&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Local major world.&lt;/p&gt;
-&lt;ol class="upperalpha simple"&gt;
-&lt;li&gt;&lt;p&gt;Achieve orbit.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Proceed to orbital starport (unstreamlined ships) or surface
-starport (streamlined ships).&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Arrival onplanet.&lt;/p&gt;
-&lt;ol class="arabic simple"&gt;
-&lt;li&gt;&lt;p&gt;Unload high passengers.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Unload mail.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Unload middle passengers.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Unload cargo.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Unload low passengers.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Conclude low lottery.&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Refit and maintenance.&lt;/p&gt;
-&lt;ol class="arabic simple"&gt;
-&lt;li&gt;&lt;p&gt;Refuel from starport.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Renew ship life support.&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Commodity activity.&lt;/p&gt;
-&lt;ol class="arabic simple"&gt;
-&lt;li&gt;&lt;p&gt;Sell speculative cargo.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Buy speculative cargo.&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Ship business.&lt;/p&gt;
-&lt;ol class="arabic simple"&gt;
-&lt;li&gt;&lt;p&gt;Pay berthing costs.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Pay bank payment.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Pay maintenance fund.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Pay crew salaries.&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Miscellaneous activity.&lt;/p&gt;
-&lt;ol class="arabic simple"&gt;
-&lt;li&gt;&lt;p&gt;Patron encounters.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Planetary exploration.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Local areas of interest.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Hire new crew members.&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Prepare for departure.&lt;/p&gt;
-&lt;ol class="arabic simple"&gt;
-&lt;li&gt;&lt;p&gt;Load cargo.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Load low passengers.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Load middle passengers.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Load high passengers.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Load mail.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Collect income for all aspects of current trip.&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Departure.&lt;/p&gt;
-&lt;ol class="upperalpha simple"&gt;
-&lt;li&gt;&lt;p&gt;Lift-off.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Achieve orbit.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Set course outsystem.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Possible ship encounter.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Jump.&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;Note: This list is primarily of interest to merchants. Not all events
-on this list are explained in this chapter on travelling. Other
-relevant chapters include Worlds, Encounters, and Trade and Commerce.&lt;/p&gt;
-&lt;/div&gt;&lt;/div&gt;</description><category>cepheus engine</category><category>rpg</category><category>starter traveller</category><category>the traveller book</category><category>traveller</category><guid>https://tkurtbond.github.io/posts/2020/03/17/the-typical-activities-checklist-from-the-traveller-book-and-starter-traveller/</guid><pubDate>Tue, 17 Mar 2020 19:23:13 GMT</pubDate></item></channel></rss>
+&lt;p&gt;Well, it was no &lt;cite&gt;Conan&lt;/cite&gt;, but it was entertaining!&lt;/p&gt;&lt;/div&gt;</description><category>lin carter</category><category>norvell w. page</category><category>sword &amp; planet</category><category>sword &amp; sorcery</category><guid>https://tkurtbond.github.io/posts/2020/03/22/recent-reading-carter-and-page/</guid><pubDate>Sun, 22 Mar 2020 23:34:49 GMT</pubDate></item></channel></rss>
