@@ -1,7 +1,7 @@
 .. title: Making digest-sized pages with pandoc and ms output
 .. slug: making-digest-sized-pages-with-pandoc-and-ms-output
 .. date: 2020-03-13 14:01:10 UTC-04:00
-.. tags: computer,pandoc,make,ms macros,pdfroff,text processing,groff
+.. tags: computer,pandoc,make,ms macros,pdfroff,text processing,groff,digest
 .. category: computer
 .. link: 
 .. description: 
