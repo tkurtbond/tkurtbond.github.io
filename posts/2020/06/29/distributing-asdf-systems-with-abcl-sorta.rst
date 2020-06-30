@@ -10,7 +10,7 @@
 .. role:: file
 
 The Reddit thread `How do you compile a runnable, deployable JAR with
-ABCL?`__ doesn't offer a solution, unfortunately.  But it leads
+ABCL?`__ doesn't offer a solution, unfortunately. [1]_ But it leads
 to an ABCL TRAC ticket (T1_) which leads to another (T2_) which leads
 some documentation on package ABCL for distribution (D1_) which talks
 about how the `abcl-aio.jar`_ target is used to package
@@ -38,3 +38,7 @@ Basically, it says:
        directory.
     3. Recreating the single archive from the file-system
        contents.
+
+
+.. [1] Though it does talking about distributing an ABCL application
+       as a servlet and WAR file. 
