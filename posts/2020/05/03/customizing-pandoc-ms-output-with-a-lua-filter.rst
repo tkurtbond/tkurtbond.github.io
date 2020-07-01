@@ -8,6 +8,7 @@
 .. type: text
 
 .. role:: app
+.. role:: file          
 
 This article started as a message_ I sent to the the pandoc-discuss_
 Google Group.  This version has more links and has been slightly
@@ -91,7 +92,7 @@ movement whose width is based on the number of leading NO-BREAK SPACE
 characters, and follow this with a new Str element that has the
 leading NO-BREAK SPACE characters removed.
 
-Here is the Lua filter:
+Here is the Lua filter, :file:`classify-rst-ms.lua`:
 
 .. code:: lua
 
@@ -171,7 +172,7 @@ Here is the Lua filter:
      return pandoc.RawInline ("ms", macro .. annotation .. stop)
    end
 
-Here is the ReST source of the document:
+Here is the ReST source of the document, :file:`poem-plus.rst`:
 
 .. code:: ReST
 
