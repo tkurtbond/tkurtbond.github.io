@@ -7,9 +7,12 @@
 .. description: 
 .. type: text
 
-I created a .epub file using pandoc_.  Then I converted the .epub to
-.mobi via the `Calibre epub software`__.  Then I tried copying the
-.mobi to the Documents folder on the Kindle via USB (which several
+.. role:: file
+
+I created a :file:`.epub` file using pandoc_.  Then I converted the
+:file:`.epub` to .mobi via the `Calibre epub
+software`__. [#alternative]_ Then I tried copying the :file:`.mobi` to
+the :file:`Documents` folder on the Kindle via USB (which several
 places online say is the way to do it) but that didn’t show up when I
 looked (and searched) my library.
 
@@ -24,7 +27,7 @@ So I had to mail it to my Kindle.
 - Check that the “Approved
   Personal Document E-mail List” contains your e-mail address, or add a
   new one.  
-- Then attach the .mobi file to the e-mail and send it.
+- Then attach the :file:`.mobi` file to the e-mail and send it.
 - After a little while you’ll get a “Verify your Kindle document” from Amazon
   with a link to click to verify it.  Click it.
 - After a little while you can go
@@ -35,5 +38,19 @@ So I had to mail it to my Kindle.
 
 Weeeee!
 
+.. [#alternative]
+   I could have used KindleGen_, a command line tool from Amazon,
+   instead.  You can download it yourself from that page for Windows,
+   macOS, and Linux.  If you use a macOS computer you can use Homebrew_ to
+   install it:
+
+   .. code:: bash
+
+      brew install kindlegen
+
+   I haven't actually used KindleGen, though.
+
 .. _pandoc: https://pandoc.org/epub
 __ https://calibre-ebook.com/
+.. _KindleGen: https://www.amazon.com/gp/feature.html?ie=UTF8&docId=1000765211
+.. _Homebrew: https://brew.sh/
