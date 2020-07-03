@@ -1,5 +1,119 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity</title><link>https://tkurtbond.github.io/</link><description>Random musings on books, code, and tabletop games.</description><atom:link href="https://tkurtbond.github.io/rss.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2020 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Fri, 03 Jul 2020 01:03:09 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Getting .MOBI files on my Kindle Paperwhite</title><link>https://tkurtbond.github.io/posts/2020/07/01/getting-mobi-files-on-my-kindle-paperwhite/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;I created a &lt;span class="file"&gt;.epub&lt;/span&gt; file using &lt;a class="reference external" href="https://pandoc.org/epub"&gt;pandoc&lt;/a&gt;.  Then I converted the
+<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity</title><link>https://tkurtbond.github.io/</link><description>Random musings on books, code, and tabletop games.</description><atom:link href="https://tkurtbond.github.io/rss.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2020 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Fri, 03 Jul 2020 19:31:01 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Arrow Macros in Emacs Lisp</title><link>https://tkurtbond.github.io/posts/2020/07/03/arrow-macros-in-emacs-lisp/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;Are you familiar with arrow macros?  (They have nothing to do with
+&lt;a class="reference external" href="https://en.wikibooks.org/wiki/Haskell/Understanding_arrows"&gt;arrows in Haskell&lt;/a&gt;.) They started out in &lt;a class="reference external" href="https://clojure.org/"&gt;Clojure&lt;/a&gt;, I think, and have
+been ported to &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Common_Lisp"&gt;Common Lisp&lt;/a&gt; and probably other Lisps, though I didn't
+find one for &lt;a class="reference external" href="https://www.gnu.org/software/emacs/manual/html_node/elisp/"&gt;Emacs Lisp&lt;/a&gt;.  I think the &lt;a class="reference external" href="https://github.com/Harleqin/arrows"&gt;arrows&lt;/a&gt; package is the most up
+to date in &lt;a class="reference external" href="https://www.quicklisp.org/"&gt;Quicklisp&lt;/a&gt; for &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Common_Lisp"&gt;Common Lisp&lt;/a&gt;, but I found the &lt;a class="reference external" href="https://github.com/nightfly19/cl-arrows"&gt;cl-arrows&lt;/a&gt;
+package first so that's the one I converted to &lt;a class="reference external" href="https://www.gnu.org/software/emacs/manual/html_node/elisp/"&gt;Emacs Lisp&lt;/a&gt; today.&lt;/p&gt;
+&lt;p&gt;There were two slightly tricky parts to the port&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;p&gt;I needed to use lexical binding for the source file&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class="reference external" href="https://github.com/nightfly19/cl-arrows"&gt;cl-arrows&lt;/a&gt;'s test suite used fractions, but &lt;a class="reference external" href="https://www.gnu.org/software/emacs/manual/html_node/elisp/"&gt;Emacs Lisp&lt;/a&gt; doesn't
+have them.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Anyway, I think they're very useful.  If you have a value and
+you want it to be processed by several functions in a chain you
+can use an arrow macro instead of using lots of nested function
+calls. For instance,&lt;/p&gt;
+&lt;pre class="code emacs-lisp"&gt;&lt;a name="rest_code_fafb00456527441db47a005cc800aae0-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;replace-regexp-in-string&lt;/span&gt; &lt;span class="s"&gt;"-+$"&lt;/span&gt; &lt;span class="s"&gt;""&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;replace-regexp-in-string&lt;/span&gt; &lt;span class="s"&gt;"^-+"&lt;/span&gt; &lt;span class="s"&gt;""&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;replace-regexp-in-string&lt;/span&gt; &lt;span class="s"&gt;"^-+"&lt;/span&gt; &lt;span class="s"&gt;""&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;replace-regexp-in-string&lt;/span&gt; &lt;span class="s"&gt;"\\.+"&lt;/span&gt; &lt;span class="s"&gt;"."&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;replace-regexp-in-string&lt;/span&gt; &lt;span class="s"&gt;"\\.-"&lt;/span&gt; &lt;span class="s"&gt;"."&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;replace-regexp-in-string&lt;/span&gt; &lt;span class="s"&gt;"-\\."&lt;/span&gt; &lt;span class="s"&gt;"."&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;replace-regexp-in-string&lt;/span&gt; &lt;span class="s"&gt;"-+"&lt;/span&gt; &lt;span class="s"&gt;"-"&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;replace-regexp-in-string&lt;/span&gt; &lt;span class="s"&gt;"[^-.a-z0-9]+"&lt;/span&gt; &lt;span class="s"&gt;"-"&lt;/span&gt; &lt;span class="nf"&gt;string&lt;/span&gt;&lt;span class="p"&gt;))))))))&lt;/span&gt;
+&lt;/pre&gt;&lt;p&gt;is annoying and hard to read on one line.  If you split it into multiple lines&lt;/p&gt;
+&lt;pre class="code emacs-lisp"&gt;&lt;a name="rest_code_e6c2635e25834b95b990cd9414abf6b6-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;replace-regexp-in-string&lt;/span&gt;
+&lt;a name="rest_code_e6c2635e25834b95b990cd9414abf6b6-2"&gt;&lt;/a&gt; &lt;span class="s"&gt;"-+$"&lt;/span&gt; &lt;span class="s"&gt;""&lt;/span&gt;
+&lt;a name="rest_code_e6c2635e25834b95b990cd9414abf6b6-3"&gt;&lt;/a&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;replace-regexp-in-string&lt;/span&gt;
+&lt;a name="rest_code_e6c2635e25834b95b990cd9414abf6b6-4"&gt;&lt;/a&gt;  &lt;span class="s"&gt;"^-+"&lt;/span&gt; &lt;span class="s"&gt;""&lt;/span&gt;
+&lt;a name="rest_code_e6c2635e25834b95b990cd9414abf6b6-5"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;replace-regexp-in-string&lt;/span&gt;
+&lt;a name="rest_code_e6c2635e25834b95b990cd9414abf6b6-6"&gt;&lt;/a&gt;   &lt;span class="s"&gt;"^-+"&lt;/span&gt; &lt;span class="s"&gt;""&lt;/span&gt;
+&lt;a name="rest_code_e6c2635e25834b95b990cd9414abf6b6-7"&gt;&lt;/a&gt;   &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;replace-regexp-in-string&lt;/span&gt;
+&lt;a name="rest_code_e6c2635e25834b95b990cd9414abf6b6-8"&gt;&lt;/a&gt;    &lt;span class="s"&gt;"\\.+"&lt;/span&gt; &lt;span class="s"&gt;"."&lt;/span&gt;
+&lt;a name="rest_code_e6c2635e25834b95b990cd9414abf6b6-9"&gt;&lt;/a&gt;    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;replace-regexp-in-string&lt;/span&gt;
+&lt;a name="rest_code_e6c2635e25834b95b990cd9414abf6b6-10"&gt;&lt;/a&gt;     &lt;span class="s"&gt;"\\.-"&lt;/span&gt; &lt;span class="s"&gt;"."&lt;/span&gt;
+&lt;a name="rest_code_e6c2635e25834b95b990cd9414abf6b6-11"&gt;&lt;/a&gt;     &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;replace-regexp-in-string&lt;/span&gt;
+&lt;a name="rest_code_e6c2635e25834b95b990cd9414abf6b6-12"&gt;&lt;/a&gt;      &lt;span class="s"&gt;"-\\."&lt;/span&gt; &lt;span class="s"&gt;"."&lt;/span&gt;
+&lt;a name="rest_code_e6c2635e25834b95b990cd9414abf6b6-13"&gt;&lt;/a&gt;      &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;replace-regexp-in-string&lt;/span&gt;
+&lt;a name="rest_code_e6c2635e25834b95b990cd9414abf6b6-14"&gt;&lt;/a&gt;       &lt;span class="s"&gt;"-+"&lt;/span&gt; &lt;span class="s"&gt;"-"&lt;/span&gt;
+&lt;a name="rest_code_e6c2635e25834b95b990cd9414abf6b6-15"&gt;&lt;/a&gt;       &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;replace-regexp-in-string&lt;/span&gt; &lt;span class="s"&gt;"[^-.a-z0-9]+"&lt;/span&gt; &lt;span class="s"&gt;"-"&lt;/span&gt;
+&lt;a name="rest_code_e6c2635e25834b95b990cd9414abf6b6-16"&gt;&lt;/a&gt;&lt;span class="nf"&gt;string&lt;/span&gt;&lt;span class="p"&gt;))))))))&lt;/span&gt;
+&lt;/pre&gt;&lt;p&gt;that's also pretty horrible.  To read it you have to skip to the end,
+figure out that function call, then skip back to the next function
+call, and so forth, until you get back to the last function call,
+reading it from inside out.  It looks much better if you use the
+&lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;-&amp;gt;&amp;gt;&lt;/span&gt;&lt;/code&gt; arrow macro, which substitutes the value you are passing along
+as the last argument to the functions you are calling:&lt;/p&gt;
+&lt;pre class="code emacs-lisp"&gt;&lt;a name="rest_code_9a019eca84c44c72a257aa3b71165e34-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;-&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="nf"&gt;string&lt;/span&gt;
+&lt;a name="rest_code_9a019eca84c44c72a257aa3b71165e34-2"&gt;&lt;/a&gt;     &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;replace-regexp-in-string&lt;/span&gt; &lt;span class="s"&gt;"[^-.a-z0-9]+"&lt;/span&gt; &lt;span class="s"&gt;"-"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_9a019eca84c44c72a257aa3b71165e34-3"&gt;&lt;/a&gt;     &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;replace-regexp-in-string&lt;/span&gt; &lt;span class="s"&gt;"-+"&lt;/span&gt; &lt;span class="s"&gt;"-"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_9a019eca84c44c72a257aa3b71165e34-4"&gt;&lt;/a&gt;     &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;replace-regexp-in-string&lt;/span&gt; &lt;span class="s"&gt;"-\\."&lt;/span&gt; &lt;span class="s"&gt;"."&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_9a019eca84c44c72a257aa3b71165e34-5"&gt;&lt;/a&gt;     &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;replace-regexp-in-string&lt;/span&gt; &lt;span class="s"&gt;"\\.-"&lt;/span&gt; &lt;span class="s"&gt;"."&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_9a019eca84c44c72a257aa3b71165e34-6"&gt;&lt;/a&gt;     &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;replace-regexp-in-string&lt;/span&gt; &lt;span class="s"&gt;"\\.+"&lt;/span&gt; &lt;span class="s"&gt;"."&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_9a019eca84c44c72a257aa3b71165e34-7"&gt;&lt;/a&gt;     &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;replace-regexp-in-string&lt;/span&gt; &lt;span class="s"&gt;"^-+"&lt;/span&gt; &lt;span class="s"&gt;""&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_9a019eca84c44c72a257aa3b71165e34-8"&gt;&lt;/a&gt;     &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;replace-regexp-in-string&lt;/span&gt; &lt;span class="s"&gt;"-+$"&lt;/span&gt; &lt;span class="s"&gt;""&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/pre&gt;&lt;p&gt;I also think it is more understandable than the highly nested calls,
+since you can follow along in from start to finish, rather than from
+inside out: you've got the value, you pass it to the first function,
+then to the second, and so forth.&lt;/p&gt;
+&lt;p&gt;There are also macros to insert the value at the front of the argument
+list (&lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;-&amp;gt;&lt;/span&gt;&lt;/code&gt;) and to insert the value where a &lt;code class="docutils literal"&gt;&amp;lt;&amp;gt;&lt;/code&gt; symbol is found
+(&lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;-&amp;lt;&amp;gt;&lt;/span&gt;&lt;/code&gt;).&lt;/p&gt;
+&lt;p&gt;I wrote some &lt;a class="reference external" href="https://www.gnu.org/software/emacs/manual/html_node/elisp/"&gt;Emacs Lisp&lt;/a&gt; code with the last expression above today, and
+I think it makes a good example of why they are useful.&lt;/p&gt;
+&lt;p&gt;Here's the use case that inspired me to port them to &lt;a class="reference external" href="https://www.gnu.org/software/emacs/manual/html_node/elisp/"&gt;Emacs
+Lisp&lt;/a&gt;.  When I save things from the internet I often want to
+create a directory to save them in based on the filename or
+some text on a web page or something, but usually there are
+spaces or special characters in that text, so I have to
+sanitize the text to make it a safe and simple filename.  So I
+need to replace all special characters with dashes.  But I
+don't want dashes repeated multiple times, just a single dash,
+and I don't want dashes followed or preceded by periods, only
+the period.&lt;/p&gt;
+&lt;p&gt;Here' s some code to do that:&lt;/p&gt;
+&lt;pre class="code emacs-lisp"&gt;&lt;a name="rest_code_5430c43866894d53a7f5849fbd0c8fc8-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;defun&lt;/span&gt; &lt;span class="nv"&gt;tkb-sanitize-for-filename&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;string&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_5430c43866894d53a7f5849fbd0c8fc8-2"&gt;&lt;/a&gt;  &lt;span class="s"&gt;"Clean up characters in STRING that aren't good for&lt;/span&gt;
+&lt;a name="rest_code_5430c43866894d53a7f5849fbd0c8fc8-3"&gt;&lt;/a&gt;&lt;span class="s"&gt;filenames."&lt;/span&gt;
+&lt;a name="rest_code_5430c43866894d53a7f5849fbd0c8fc8-4"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;-&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="nf"&gt;string&lt;/span&gt;
+&lt;a name="rest_code_5430c43866894d53a7f5849fbd0c8fc8-5"&gt;&lt;/a&gt;       &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;replace-regexp-in-string&lt;/span&gt; &lt;span class="s"&gt;"[^-.a-z0-9]+"&lt;/span&gt; &lt;span class="s"&gt;"-"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_5430c43866894d53a7f5849fbd0c8fc8-6"&gt;&lt;/a&gt;       &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;replace-regexp-in-string&lt;/span&gt; &lt;span class="s"&gt;"-+"&lt;/span&gt; &lt;span class="s"&gt;"-"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_5430c43866894d53a7f5849fbd0c8fc8-7"&gt;&lt;/a&gt;       &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;replace-regexp-in-string&lt;/span&gt; &lt;span class="s"&gt;"-\\."&lt;/span&gt; &lt;span class="s"&gt;"."&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_5430c43866894d53a7f5849fbd0c8fc8-8"&gt;&lt;/a&gt;       &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;replace-regexp-in-string&lt;/span&gt; &lt;span class="s"&gt;"\\.-"&lt;/span&gt; &lt;span class="s"&gt;"."&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_5430c43866894d53a7f5849fbd0c8fc8-9"&gt;&lt;/a&gt;       &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;replace-regexp-in-string&lt;/span&gt; &lt;span class="s"&gt;"\\.+"&lt;/span&gt; &lt;span class="s"&gt;"."&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_5430c43866894d53a7f5849fbd0c8fc8-10"&gt;&lt;/a&gt;       &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;replace-regexp-in-string&lt;/span&gt; &lt;span class="s"&gt;"^-+"&lt;/span&gt; &lt;span class="s"&gt;""&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_5430c43866894d53a7f5849fbd0c8fc8-11"&gt;&lt;/a&gt;       &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;replace-regexp-in-string&lt;/span&gt; &lt;span class="s"&gt;"-+$"&lt;/span&gt; &lt;span class="s"&gt;""&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+&lt;a name="rest_code_5430c43866894d53a7f5849fbd0c8fc8-12"&gt;&lt;/a&gt;
+&lt;a name="rest_code_5430c43866894d53a7f5849fbd0c8fc8-13"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;defun&lt;/span&gt; &lt;span class="nv"&gt;tkb-sanitize-kill-for-filename&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;string&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_5430c43866894d53a7f5849fbd0c8fc8-14"&gt;&lt;/a&gt;  &lt;span class="s"&gt;"Clean up characters that aren't good for filenames in the&lt;/span&gt;
+&lt;a name="rest_code_5430c43866894d53a7f5849fbd0c8fc8-15"&gt;&lt;/a&gt;&lt;span class="s"&gt;top of the kill&lt;/span&gt;
+&lt;a name="rest_code_5430c43866894d53a7f5849fbd0c8fc8-16"&gt;&lt;/a&gt;&lt;span class="s"&gt;ring and put the result on the top of the kill ring."&lt;/span&gt;
+&lt;a name="rest_code_5430c43866894d53a7f5849fbd0c8fc8-17"&gt;&lt;/a&gt;  &lt;span class="c1"&gt;;; gets the kill or the system clipboard if it is new.&lt;/span&gt;
+&lt;a name="rest_code_5430c43866894d53a7f5849fbd0c8fc8-18"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;interactive&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;list&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;current-kill&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="no"&gt;t&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+&lt;a name="rest_code_5430c43866894d53a7f5849fbd0c8fc8-19"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;let&lt;/span&gt; &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nv"&gt;new-string&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;tkb-sanitize-for-filename&lt;/span&gt; &lt;span class="nf"&gt;string&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+&lt;a name="rest_code_5430c43866894d53a7f5849fbd0c8fc8-20"&gt;&lt;/a&gt;    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;message&lt;/span&gt; &lt;span class="s"&gt;"Old string: %s\nNew String: %s"&lt;/span&gt; &lt;span class="nf"&gt;string&lt;/span&gt; &lt;span class="nv"&gt;new-string&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_5430c43866894d53a7f5849fbd0c8fc8-21"&gt;&lt;/a&gt;    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;kill-new&lt;/span&gt; &lt;span class="nv"&gt;new-string&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+&lt;a name="rest_code_5430c43866894d53a7f5849fbd0c8fc8-22"&gt;&lt;/a&gt;
+&lt;a name="rest_code_5430c43866894d53a7f5849fbd0c8fc8-23"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;global-set-key&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;kbd&lt;/span&gt; &lt;span class="s"&gt;"C-c k S"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="ss"&gt;'tkb-sanitize-kill-for-filename&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;p&gt;Note that the function &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;tkb-sanitize-kill-for-filename&lt;/span&gt;&lt;/code&gt; that I use
+interactively gets uses &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;(current-kill&lt;/span&gt; 0 t)&lt;/code&gt; because it either
+returns the top of the kill ring, or if the system clipboard is newer
+it puts that on top of the kill ring and returns it.  (The docstring
+of &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;current-kill&lt;/span&gt;&lt;/code&gt; makes that a little difficult to figure out.)&lt;/p&gt;
+&lt;p&gt;So if I have the name of a product as
+&lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;"***Flashy####Product%%%%Name!!!!"&lt;/span&gt;&lt;/code&gt; I copy that to the clipboard
+with &lt;code class="key docutils literal"&gt;&lt;span class="pre"&gt;⌘-C&lt;/span&gt;&lt;/code&gt;, switch to emacs, do &lt;code class="key docutils literal"&gt;&lt;span class="pre"&gt;C-c&lt;/span&gt; k S&lt;/code&gt;, switch back to
+whatever program is saving the file, and use the generated,
+sanitized name &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;Flashy-Product-Name&lt;/span&gt;&lt;/code&gt; with &lt;code class="key docutils literal"&gt;&lt;span class="pre"&gt;⌘-V&lt;/span&gt;&lt;/code&gt;.  Nifty!&lt;/p&gt;
+&lt;p&gt;(And if you've ever wondered what the &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Unicode"&gt;Unicode&lt;/a&gt; character for the Mac
+keyboard &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Command_key"&gt;Command key&lt;/a&gt; (⌘) is, it is the PLACE OF INTEREST SIGN, and you
+can enter it by C-x 8 RETURN PLACE OF INTEREST SIGN.  The symbol they
+use for for the key labeled alt and &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Option_key"&gt;option&lt;/a&gt; (⌥) is the Unicode OPTION
+KEY, and the symbol they use for the &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Shift_key"&gt;Shift Key&lt;/a&gt; (⇧) is UPWARDS WHITE ARROW.
+I'm surprised they don't have a special symbol for &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Control_key"&gt;Control&lt;/a&gt;, but it
+looks like they just use the plain ASCII ^, known in Unicode as
+CIRCUMFLEX ACCENT.)&lt;/p&gt;
+&lt;p&gt;Anyway, &lt;a class="reference external" href="https://tkurtbond.github.io/arrows-for-emacs.zip"&gt;here&lt;/a&gt;'s a &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Info-ZIP"&gt;ZIP&lt;/a&gt; file with the Emacs Lisp source for the arrow
+macros so you can use them if you've been convinced of their
+usefulness by this post.  It also has some minimal documentation in
+the &lt;span class="file"&gt;README.md&lt;/span&gt; that came from the &lt;span class="file"&gt;README.md&lt;/span&gt; from
+&lt;a class="reference external" href="https://github.com/nightfly19/cl-arrows"&gt;cl-arrows&lt;/a&gt;, which seems to repeat the information from the
+docstrings for the macros.&lt;/p&gt;&lt;/div&gt;</description><category>arrow macros</category><category>clojure</category><category>common lisp</category><category>emacs</category><category>emacs lisp</category><category>unicode</category><guid>https://tkurtbond.github.io/posts/2020/07/03/arrow-macros-in-emacs-lisp/</guid><pubDate>Fri, 03 Jul 2020 18:11:16 GMT</pubDate></item><item><title>Getting .MOBI files on my Kindle Paperwhite</title><link>https://tkurtbond.github.io/posts/2020/07/01/getting-mobi-files-on-my-kindle-paperwhite/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;I created a &lt;span class="file"&gt;.epub&lt;/span&gt; file using &lt;a class="reference external" href="https://pandoc.org/epub"&gt;pandoc&lt;/a&gt;.  Then I converted the
 &lt;span class="file"&gt;.epub&lt;/span&gt; to &lt;span class="file"&gt;.mobi&lt;/span&gt; via the &lt;a class="reference external" href="https://calibre-ebook.com/"&gt;Calibre epub
 software&lt;/a&gt;. &lt;a class="footnote-reference brackets" href="https://tkurtbond.github.io/posts/2020/07/01/getting-mobi-files-on-my-kindle-paperwhite/#alternative" id="id1"&gt;1&lt;/a&gt; Then I tried copying the &lt;span class="file"&gt;.mobi&lt;/span&gt; to
 the &lt;span class="file"&gt;Documents&lt;/span&gt; folder on the Kindle via USB (which several
@@ -345,26 +459,4 @@ is an error, so if you do&lt;/p&gt;
 &lt;pre class="code common-lisp"&gt;&lt;a name="rest_code_e11c81000bd04c11b01c366e7f6562da-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;defun&lt;/span&gt; &lt;span class="nv"&gt;x&lt;/span&gt; &lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;let&lt;/span&gt; &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nv"&gt;foo&lt;/span&gt; &lt;span class="s"&gt;"bar"&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="nv"&gt;foo&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 &lt;/pre&gt;&lt;p&gt;in SBCL and CCL you get an error when the function is compiled.
 In SBCL the function is defined, but always gives an error when run.
-In CCL the function does not get defined.&lt;/p&gt;&lt;/div&gt;</description><category>abcl</category><category>ccl</category><category>clisp</category><category>common lisp</category><category>ecl</category><category>sbcl</category><guid>https://tkurtbond.github.io/posts/2020/04/24/binding-a-symbol-defined-with-defconstant-with-let-is-not-portable-in-common-lisp/</guid><pubDate>Sat, 25 Apr 2020 03:46:39 GMT</pubDate></item><item><title>Recent Reading: Howard and Carter</title><link>https://tkurtbond.github.io/posts/2020/04/04/recent-reading-howard-and-carter/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;ul class="simple"&gt;
-&lt;li&gt;&lt;p&gt;&lt;cite&gt;Cthulhu: The Mythos and Kindred Horrors&lt;/cite&gt;, by Robert E. Howard,
-copyright 1987 by Ala Key Kuykendall and Alla Ray Morris; Baen
-Publishing Enterprises; ISBN 0-671-65641-4.&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;I enjoyed reading these again; it has been many years since I have
-read them.  The racism of the stories set in America is what you'd
-expect from a person of Howard's era, but understanding that, the
-other elements of the stories make the book worth reading.&lt;/p&gt;
-&lt;ul class="simple"&gt;
-&lt;li&gt;&lt;p&gt;&lt;cite&gt;By the Light of the Green Star&lt;/cite&gt;, by Lin Carter, copyright 1974; DAW
-Books Number 110.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;cite&gt;As the Green Star Rises&lt;/cite&gt;, by Lin Carter, copyright 1975; DAW Books;
-ISBN 0-87997-811-2.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;cite&gt;In the Green Star's Glow&lt;/cite&gt;, by Lin Carter, copyright 1976; DAW
-Books.&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;It is interesting to note that these were popular enough at the time
-to go into multiple printings, judging from my copies, all of which
-are later printings except for the second book, &lt;cite&gt;When the Green Star
-Calls&lt;/cite&gt;. The &lt;a class="reference external" href="https://www.amazon.com/gp/bookseries/B00CJDD9ZY/ref=dp_st_0879970626"&gt;Amazon&lt;/a&gt; reviews of the books in the series are positive as
-well.&lt;/p&gt;
-&lt;p&gt;They are definitely fast, fun, pulpy adventures.&lt;/p&gt;&lt;/div&gt;</description><category>horror</category><category>lin carter</category><category>robert e. howard</category><category>sword &amp; planet</category><guid>https://tkurtbond.github.io/posts/2020/04/04/recent-reading-howard-and-carter/</guid><pubDate>Sat, 04 Apr 2020 17:11:22 GMT</pubDate></item></channel></rss>
+In CCL the function does not get defined.&lt;/p&gt;&lt;/div&gt;</description><category>abcl</category><category>ccl</category><category>clisp</category><category>common lisp</category><category>ecl</category><category>sbcl</category><guid>https://tkurtbond.github.io/posts/2020/04/24/binding-a-symbol-defined-with-defconstant-with-let-is-not-portable-in-common-lisp/</guid><pubDate>Sat, 25 Apr 2020 03:46:39 GMT</pubDate></item></channel></rss>

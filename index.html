@@ -9,7 +9,7 @@
 <link rel="alternate" type="application/rss+xml" title="RSS" href="rss.xml">
 <link rel="canonical" href="https://tkurtbond.github.io/">
 <link rel="next" href="index-86.html" type="text/html">
-<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/2020/07/01/getting-mobi-files-on-my-kindle-paperwhite/" type="text/html">
+<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/2020/07/03/arrow-macros-in-emacs-lisp/" type="text/html">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
@@ -50,7 +50,147 @@
         <div class="row">
             <div class="col-sm-8 blog-main">
 <div class="postindex">
-    <article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2020/07/01/getting-mobi-files-on-my-kindle-paperwhite/" class="u-url">Getting .MOBI files on my Kindle Paperwhite</a></h2>
+    <article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2020/07/03/arrow-macros-in-emacs-lisp/" class="u-url">Arrow Macros in Emacs Lisp</a></h2>
+        <div class="metadata blog-post-meta">
+            <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
+            <p class="dateline"><a href="posts/2020/07/03/arrow-macros-in-emacs-lisp/" rel="bookmark"><time class="published dt-published" datetime="2020-07-03T14:11:16-04:00" title="2020-07-03 14:11">2020-07-03 14:11</time></a></p>
+                <p class="commentline">            <a href="posts/2020/07/03/arrow-macros-in-emacs-lisp/#disqus_thread" data-disqus-identifier="cache/posts/2020/07/03/arrow-macros-in-emacs-lisp.html">Comments</a>
+
+
+        </p>
+</div>
+    </header><div class="e-content entry-content">
+    <div>
+<p>Are you familiar with arrow macros?  (They have nothing to do with
+<a class="reference external" href="https://en.wikibooks.org/wiki/Haskell/Understanding_arrows">arrows in Haskell</a>.) They started out in <a class="reference external" href="https://clojure.org/">Clojure</a>, I think, and have
+been ported to <a class="reference external" href="https://en.wikipedia.org/wiki/Common_Lisp">Common Lisp</a> and probably other Lisps, though I didn't
+find one for <a class="reference external" href="https://www.gnu.org/software/emacs/manual/html_node/elisp/">Emacs Lisp</a>.  I think the <a class="reference external" href="https://github.com/Harleqin/arrows">arrows</a> package is the most up
+to date in <a class="reference external" href="https://www.quicklisp.org/">Quicklisp</a> for <a class="reference external" href="https://en.wikipedia.org/wiki/Common_Lisp">Common Lisp</a>, but I found the <a class="reference external" href="https://github.com/nightfly19/cl-arrows">cl-arrows</a>
+package first so that's the one I converted to <a class="reference external" href="https://www.gnu.org/software/emacs/manual/html_node/elisp/">Emacs Lisp</a> today.</p>
+<p>There were two slightly tricky parts to the port</p>
+<ul class="simple">
+<li><p>I needed to use lexical binding for the source file</p></li>
+<li><p><a class="reference external" href="https://github.com/nightfly19/cl-arrows">cl-arrows</a>'s test suite used fractions, but <a class="reference external" href="https://www.gnu.org/software/emacs/manual/html_node/elisp/">Emacs Lisp</a> doesn't
+have them.</p></li>
+</ul>
+<p>Anyway, I think they're very useful.  If you have a value and
+you want it to be processed by several functions in a chain you
+can use an arrow macro instead of using lots of nested function
+calls. For instance,</p>
+<pre class="code emacs-lisp"><a name="rest_code_fafb00456527441db47a005cc800aae0-1"></a><span class="p">(</span><span class="nv">replace-regexp-in-string</span> <span class="s">"-+$"</span> <span class="s">""</span> <span class="p">(</span><span class="nv">replace-regexp-in-string</span> <span class="s">"^-+"</span> <span class="s">""</span> <span class="p">(</span><span class="nv">replace-regexp-in-string</span> <span class="s">"^-+"</span> <span class="s">""</span> <span class="p">(</span><span class="nv">replace-regexp-in-string</span> <span class="s">"\\.+"</span> <span class="s">"."</span> <span class="p">(</span><span class="nv">replace-regexp-in-string</span> <span class="s">"\\.-"</span> <span class="s">"."</span> <span class="p">(</span><span class="nv">replace-regexp-in-string</span> <span class="s">"-\\."</span> <span class="s">"."</span> <span class="p">(</span><span class="nv">replace-regexp-in-string</span> <span class="s">"-+"</span> <span class="s">"-"</span> <span class="p">(</span><span class="nv">replace-regexp-in-string</span> <span class="s">"[^-.a-z0-9]+"</span> <span class="s">"-"</span> <span class="nf">string</span><span class="p">))))))))</span>
+</pre>
+<p>is annoying and hard to read on one line.  If you split it into multiple lines</p>
+<pre class="code emacs-lisp"><a name="rest_code_e6c2635e25834b95b990cd9414abf6b6-1"></a><span class="p">(</span><span class="nv">replace-regexp-in-string</span>
+<a name="rest_code_e6c2635e25834b95b990cd9414abf6b6-2"></a> <span class="s">"-+$"</span> <span class="s">""</span>
+<a name="rest_code_e6c2635e25834b95b990cd9414abf6b6-3"></a> <span class="p">(</span><span class="nv">replace-regexp-in-string</span>
+<a name="rest_code_e6c2635e25834b95b990cd9414abf6b6-4"></a>  <span class="s">"^-+"</span> <span class="s">""</span>
+<a name="rest_code_e6c2635e25834b95b990cd9414abf6b6-5"></a>  <span class="p">(</span><span class="nv">replace-regexp-in-string</span>
+<a name="rest_code_e6c2635e25834b95b990cd9414abf6b6-6"></a>   <span class="s">"^-+"</span> <span class="s">""</span>
+<a name="rest_code_e6c2635e25834b95b990cd9414abf6b6-7"></a>   <span class="p">(</span><span class="nv">replace-regexp-in-string</span>
+<a name="rest_code_e6c2635e25834b95b990cd9414abf6b6-8"></a>    <span class="s">"\\.+"</span> <span class="s">"."</span>
+<a name="rest_code_e6c2635e25834b95b990cd9414abf6b6-9"></a>    <span class="p">(</span><span class="nv">replace-regexp-in-string</span>
+<a name="rest_code_e6c2635e25834b95b990cd9414abf6b6-10"></a>     <span class="s">"\\.-"</span> <span class="s">"."</span>
+<a name="rest_code_e6c2635e25834b95b990cd9414abf6b6-11"></a>     <span class="p">(</span><span class="nv">replace-regexp-in-string</span>
+<a name="rest_code_e6c2635e25834b95b990cd9414abf6b6-12"></a>      <span class="s">"-\\."</span> <span class="s">"."</span>
+<a name="rest_code_e6c2635e25834b95b990cd9414abf6b6-13"></a>      <span class="p">(</span><span class="nv">replace-regexp-in-string</span>
+<a name="rest_code_e6c2635e25834b95b990cd9414abf6b6-14"></a>       <span class="s">"-+"</span> <span class="s">"-"</span>
+<a name="rest_code_e6c2635e25834b95b990cd9414abf6b6-15"></a>       <span class="p">(</span><span class="nv">replace-regexp-in-string</span> <span class="s">"[^-.a-z0-9]+"</span> <span class="s">"-"</span>
+<a name="rest_code_e6c2635e25834b95b990cd9414abf6b6-16"></a><span class="nf">string</span><span class="p">))))))))</span>
+</pre>
+<p>that's also pretty horrible.  To read it you have to skip to the end,
+figure out that function call, then skip back to the next function
+call, and so forth, until you get back to the last function call,
+reading it from inside out.  It looks much better if you use the
+<code class="docutils literal"><span class="pre">-&gt;&gt;</span></code> arrow macro, which substitutes the value you are passing along
+as the last argument to the functions you are calling:</p>
+<pre class="code emacs-lisp"><a name="rest_code_9a019eca84c44c72a257aa3b71165e34-1"></a><span class="p">(</span><span class="nv">-&gt;&gt;</span> <span class="nf">string</span>
+<a name="rest_code_9a019eca84c44c72a257aa3b71165e34-2"></a>     <span class="p">(</span><span class="nv">replace-regexp-in-string</span> <span class="s">"[^-.a-z0-9]+"</span> <span class="s">"-"</span><span class="p">)</span>
+<a name="rest_code_9a019eca84c44c72a257aa3b71165e34-3"></a>     <span class="p">(</span><span class="nv">replace-regexp-in-string</span> <span class="s">"-+"</span> <span class="s">"-"</span><span class="p">)</span>
+<a name="rest_code_9a019eca84c44c72a257aa3b71165e34-4"></a>     <span class="p">(</span><span class="nv">replace-regexp-in-string</span> <span class="s">"-\\."</span> <span class="s">"."</span><span class="p">)</span>
+<a name="rest_code_9a019eca84c44c72a257aa3b71165e34-5"></a>     <span class="p">(</span><span class="nv">replace-regexp-in-string</span> <span class="s">"\\.-"</span> <span class="s">"."</span><span class="p">)</span>
+<a name="rest_code_9a019eca84c44c72a257aa3b71165e34-6"></a>     <span class="p">(</span><span class="nv">replace-regexp-in-string</span> <span class="s">"\\.+"</span> <span class="s">"."</span><span class="p">)</span>
+<a name="rest_code_9a019eca84c44c72a257aa3b71165e34-7"></a>     <span class="p">(</span><span class="nv">replace-regexp-in-string</span> <span class="s">"^-+"</span> <span class="s">""</span><span class="p">)</span>
+<a name="rest_code_9a019eca84c44c72a257aa3b71165e34-8"></a>     <span class="p">(</span><span class="nv">replace-regexp-in-string</span> <span class="s">"-+$"</span> <span class="s">""</span><span class="p">))</span>
+</pre>
+<p>I also think it is more understandable than the highly nested calls,
+since you can follow along in from start to finish, rather than from
+inside out: you've got the value, you pass it to the first function,
+then to the second, and so forth.</p>
+<p>There are also macros to insert the value at the front of the argument
+list (<code class="docutils literal"><span class="pre">-&gt;</span></code>) and to insert the value where a <code class="docutils literal">&lt;&gt;</code> symbol is found
+(<code class="docutils literal"><span class="pre">-&lt;&gt;</span></code>).</p>
+<p>I wrote some <a class="reference external" href="https://www.gnu.org/software/emacs/manual/html_node/elisp/">Emacs Lisp</a> code with the last expression above today, and
+I think it makes a good example of why they are useful.</p>
+<p>Here's the use case that inspired me to port them to <a class="reference external" href="https://www.gnu.org/software/emacs/manual/html_node/elisp/">Emacs
+Lisp</a>.  When I save things from the internet I often want to
+create a directory to save them in based on the filename or
+some text on a web page or something, but usually there are
+spaces or special characters in that text, so I have to
+sanitize the text to make it a safe and simple filename.  So I
+need to replace all special characters with dashes.  But I
+don't want dashes repeated multiple times, just a single dash,
+and I don't want dashes followed or preceded by periods, only
+the period.</p>
+<p>Here' s some code to do that:</p>
+<pre class="code emacs-lisp"><a name="rest_code_5430c43866894d53a7f5849fbd0c8fc8-1"></a><span class="p">(</span><span class="nb">defun</span> <span class="nv">tkb-sanitize-for-filename</span> <span class="p">(</span><span class="nf">string</span><span class="p">)</span>
+<a name="rest_code_5430c43866894d53a7f5849fbd0c8fc8-2"></a>  <span class="s">"Clean up characters in STRING that aren't good for</span>
+<a name="rest_code_5430c43866894d53a7f5849fbd0c8fc8-3"></a><span class="s">filenames."</span>
+<a name="rest_code_5430c43866894d53a7f5849fbd0c8fc8-4"></a>  <span class="p">(</span><span class="nv">-&gt;&gt;</span> <span class="nf">string</span>
+<a name="rest_code_5430c43866894d53a7f5849fbd0c8fc8-5"></a>       <span class="p">(</span><span class="nv">replace-regexp-in-string</span> <span class="s">"[^-.a-z0-9]+"</span> <span class="s">"-"</span><span class="p">)</span>
+<a name="rest_code_5430c43866894d53a7f5849fbd0c8fc8-6"></a>       <span class="p">(</span><span class="nv">replace-regexp-in-string</span> <span class="s">"-+"</span> <span class="s">"-"</span><span class="p">)</span>
+<a name="rest_code_5430c43866894d53a7f5849fbd0c8fc8-7"></a>       <span class="p">(</span><span class="nv">replace-regexp-in-string</span> <span class="s">"-\\."</span> <span class="s">"."</span><span class="p">)</span>
+<a name="rest_code_5430c43866894d53a7f5849fbd0c8fc8-8"></a>       <span class="p">(</span><span class="nv">replace-regexp-in-string</span> <span class="s">"\\.-"</span> <span class="s">"."</span><span class="p">)</span>
+<a name="rest_code_5430c43866894d53a7f5849fbd0c8fc8-9"></a>       <span class="p">(</span><span class="nv">replace-regexp-in-string</span> <span class="s">"\\.+"</span> <span class="s">"."</span><span class="p">)</span>
+<a name="rest_code_5430c43866894d53a7f5849fbd0c8fc8-10"></a>       <span class="p">(</span><span class="nv">replace-regexp-in-string</span> <span class="s">"^-+"</span> <span class="s">""</span><span class="p">)</span>
+<a name="rest_code_5430c43866894d53a7f5849fbd0c8fc8-11"></a>       <span class="p">(</span><span class="nv">replace-regexp-in-string</span> <span class="s">"-+$"</span> <span class="s">""</span><span class="p">)))</span>
+<a name="rest_code_5430c43866894d53a7f5849fbd0c8fc8-12"></a>
+<a name="rest_code_5430c43866894d53a7f5849fbd0c8fc8-13"></a><span class="p">(</span><span class="nb">defun</span> <span class="nv">tkb-sanitize-kill-for-filename</span> <span class="p">(</span><span class="nf">string</span><span class="p">)</span>
+<a name="rest_code_5430c43866894d53a7f5849fbd0c8fc8-14"></a>  <span class="s">"Clean up characters that aren't good for filenames in the</span>
+<a name="rest_code_5430c43866894d53a7f5849fbd0c8fc8-15"></a><span class="s">top of the kill</span>
+<a name="rest_code_5430c43866894d53a7f5849fbd0c8fc8-16"></a><span class="s">ring and put the result on the top of the kill ring."</span>
+<a name="rest_code_5430c43866894d53a7f5849fbd0c8fc8-17"></a>  <span class="c1">;; gets the kill or the system clipboard if it is new.</span>
+<a name="rest_code_5430c43866894d53a7f5849fbd0c8fc8-18"></a>  <span class="p">(</span><span class="k">interactive</span> <span class="p">(</span><span class="nf">list</span> <span class="p">(</span><span class="nv">current-kill</span> <span class="mi">0</span> <span class="no">t</span><span class="p">)))</span>
+<a name="rest_code_5430c43866894d53a7f5849fbd0c8fc8-19"></a>  <span class="p">(</span><span class="k">let</span> <span class="p">((</span><span class="nv">new-string</span> <span class="p">(</span><span class="nv">tkb-sanitize-for-filename</span> <span class="nf">string</span><span class="p">)))</span>
+<a name="rest_code_5430c43866894d53a7f5849fbd0c8fc8-20"></a>    <span class="p">(</span><span class="nf">message</span> <span class="s">"Old string: %s\nNew String: %s"</span> <span class="nf">string</span> <span class="nv">new-string</span><span class="p">)</span>
+<a name="rest_code_5430c43866894d53a7f5849fbd0c8fc8-21"></a>    <span class="p">(</span><span class="nv">kill-new</span> <span class="nv">new-string</span><span class="p">)))</span>
+<a name="rest_code_5430c43866894d53a7f5849fbd0c8fc8-22"></a>
+<a name="rest_code_5430c43866894d53a7f5849fbd0c8fc8-23"></a><span class="p">(</span><span class="nv">global-set-key</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">"C-c k S"</span><span class="p">)</span> <span class="ss">'tkb-sanitize-kill-for-filename</span><span class="p">)</span>
+</pre>
+<p>Note that the function <code class="docutils literal"><span class="pre">tkb-sanitize-kill-for-filename</span></code> that I use
+interactively gets uses <code class="docutils literal"><span class="pre">(current-kill</span> 0 t)</code> because it either
+returns the top of the kill ring, or if the system clipboard is newer
+it puts that on top of the kill ring and returns it.  (The docstring
+of <code class="docutils literal"><span class="pre">current-kill</span></code> makes that a little difficult to figure out.)</p>
+<p>So if I have the name of a product as
+<code class="docutils literal"><span class="pre">"***Flashy####Product%%%%Name!!!!"</span></code> I copy that to the clipboard
+with <code class="key docutils literal"><span class="pre">⌘-C</span></code>, switch to emacs, do <code class="key docutils literal"><span class="pre">C-c</span> k S</code>, switch back to
+whatever program is saving the file, and use the generated,
+sanitized name <code class="docutils literal"><span class="pre">Flashy-Product-Name</span></code> with <code class="key docutils literal"><span class="pre">⌘-V</span></code>.  Nifty!</p>
+<p>(And if you've ever wondered what the <a class="reference external" href="https://en.wikipedia.org/wiki/Unicode">Unicode</a> character for the Mac
+keyboard <a class="reference external" href="https://en.wikipedia.org/wiki/Command_key">Command key</a> (⌘) is, it is the PLACE OF INTEREST SIGN, and you
+can enter it by C-x 8 RETURN PLACE OF INTEREST SIGN.  The symbol they
+use for for the key labeled alt and <a class="reference external" href="https://en.wikipedia.org/wiki/Option_key">option</a> (⌥) is the Unicode OPTION
+KEY, and the symbol they use for the <a class="reference external" href="https://en.wikipedia.org/wiki/Shift_key">Shift Key</a> (⇧) is UPWARDS WHITE ARROW.
+I'm surprised they don't have a special symbol for <a class="reference external" href="https://en.wikipedia.org/wiki/Control_key">Control</a>, but it
+looks like they just use the plain ASCII ^, known in Unicode as
+CIRCUMFLEX ACCENT.)</p>
+<p>Anyway, <a class="reference external" href="arrows-for-emacs.zip">here</a>'s a <a class="reference external" href="https://en.wikipedia.org/wiki/Info-ZIP">ZIP</a> file with the Emacs Lisp source for the arrow
+macros so you can use them if you've been convinced of their
+usefulness by this post.  It also has some minimal documentation in
+the <span class="file">README.md</span> that came from the <span class="file">README.md</span> from
+<a class="reference external" href="https://github.com/nightfly19/cl-arrows">cl-arrows</a>, which seems to repeat the information from the
+docstrings for the macros.</p>
+</div>
+    <nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="categories/arrow-macros/" rel="tag">arrow macros</a></li>
+            <li><a class="tag p-category" href="categories/clojure/" rel="tag">clojure</a></li>
+            <li><a class="tag p-category" href="categories/common-lisp/" rel="tag">common lisp</a></li>
+            <li><a class="tag p-category" href="categories/emacs/" rel="tag">emacs</a></li>
+            <li><a class="tag p-category" href="categories/emacs-lisp/" rel="tag">emacs lisp</a></li>
+            <li><a class="tag p-category" href="categories/unicode/" rel="tag">unicode</a></li>
+        </ul></nav>
+</div>
+    </article><article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2020/07/01/getting-mobi-files-on-my-kindle-paperwhite/" class="u-url">Getting .MOBI files on my Kindle Paperwhite</a></h2>
         <div class="metadata blog-post-meta">
             <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
             <p class="dateline"><a href="posts/2020/07/01/getting-mobi-files-on-my-kindle-paperwhite/" rel="bookmark"><time class="published dt-published" datetime="2020-07-01T21:08:20-04:00" title="2020-07-01 21:08">2020-07-01 21:08</time></a></p>
@@ -578,48 +718,6 @@ In CCL the function does not get defined.</p>
             <li><a class="tag p-category" href="categories/common-lisp/" rel="tag">common lisp</a></li>
             <li><a class="tag p-category" href="categories/ecl/" rel="tag">ecl</a></li>
             <li><a class="tag p-category" href="categories/sbcl/" rel="tag">sbcl</a></li>
-        </ul></nav>
-</div>
-    </article><article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2020/04/04/recent-reading-howard-and-carter/" class="u-url">Recent Reading: Howard and Carter</a></h2>
-        <div class="metadata blog-post-meta">
-            <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
-            <p class="dateline"><a href="posts/2020/04/04/recent-reading-howard-and-carter/" rel="bookmark"><time class="published dt-published" datetime="2020-04-04T13:11:22-04:00" title="2020-04-04 13:11">2020-04-04 13:11</time></a></p>
-                <p class="commentline">            <a href="posts/2020/04/04/recent-reading-howard-and-carter/#disqus_thread" data-disqus-identifier="cache/posts/2020/04/04/recent-reading-howard-and-carter.html">Comments</a>
-
-
-        </p>
-</div>
-    </header><div class="e-content entry-content">
-    <div>
-<ul class="simple">
-<li><p><cite>Cthulhu: The Mythos and Kindred Horrors</cite>, by Robert E. Howard,
-copyright 1987 by Ala Key Kuykendall and Alla Ray Morris; Baen
-Publishing Enterprises; ISBN 0-671-65641-4.</p></li>
-</ul>
-<p>I enjoyed reading these again; it has been many years since I have
-read them.  The racism of the stories set in America is what you'd
-expect from a person of Howard's era, but understanding that, the
-other elements of the stories make the book worth reading.</p>
-<ul class="simple">
-<li><p><cite>By the Light of the Green Star</cite>, by Lin Carter, copyright 1974; DAW
-Books Number 110.</p></li>
-<li><p><cite>As the Green Star Rises</cite>, by Lin Carter, copyright 1975; DAW Books;
-ISBN 0-87997-811-2.</p></li>
-<li><p><cite>In the Green Star's Glow</cite>, by Lin Carter, copyright 1976; DAW
-Books.</p></li>
-</ul>
-<p>It is interesting to note that these were popular enough at the time
-to go into multiple printings, judging from my copies, all of which
-are later printings except for the second book, <cite>When the Green Star
-Calls</cite>. The <a class="reference external" href="https://www.amazon.com/gp/bookseries/B00CJDD9ZY/ref=dp_st_0879970626">Amazon</a> reviews of the books in the series are positive as
-well.</p>
-<p>They are definitely fast, fun, pulpy adventures.</p>
-</div>
-    <nav><ul itemprop="keywords" class="tags">
-<li><a class="tag p-category" href="categories/horror/" rel="tag">horror</a></li>
-            <li><a class="tag p-category" href="categories/lin-carter/" rel="tag">lin carter</a></li>
-            <li><a class="tag p-category" href="categories/robert-e-howard/" rel="tag">robert e. howard</a></li>
-            <li><a class="tag p-category" href="categories/sword-planet/" rel="tag">sword &amp; planet</a></li>
         </ul></nav>
 </div>
     </article>
