@@ -1,22 +1,25 @@
 .. title: Arrow Macros in Emacs Lisp
 .. slug: arrow-macros-in-emacs-lisp
 .. date: 2020-07-03 14:11:16 UTC-04:00
-.. tags: arrow macros,emacs lisp,emacs
+.. tags: arrow macros,emacs lisp,emacs,clojure,common lisp,unicode
 .. category: computer/emacs
 .. link: 
 .. description: 
 .. type: text
 
 .. role:: file
+.. role:: key(literal)
 
 Are you familiar with arrow macros?  (They have nothing to do with
-`arrows in Haskell`__.) They started out in clojure, I think, and have
-been ported to Common Lisp and probably other Lisps, though I didn't
-find one for Emacs Lisp.  I think the arrows_ package is the most up
-to date in Quicklisp_ for Common LIsp, but I found the cl-arrows_
+`arrows in Haskell`__.) They started out in Clojure_, I think, and have
+been ported to `Common Lisp`_ and probably other Lisps, though I didn't
+find one for `Emacs Lisp`_.  I think the arrows_ package is the most up
+to date in Quicklisp_ for `Common Lisp`_, but I found the cl-arrows_
 package first so that's the one I converted to `Emacs Lisp`_ today.
 
 __ https://en.wikibooks.org/wiki/Haskell/Understanding_arrows
+.. _Clojure: https://clojure.org/
+.. _Common Lisp: https://en.wikipedia.org/wiki/Common_Lisp
 .. _arrows: https://github.com/Harleqin/arrows
 .. _cl-arrows: https://github.com/nightfly19/cl-arrows
 .. _Quicklisp: https://www.quicklisp.org/
@@ -25,7 +28,8 @@ __ https://en.wikibooks.org/wiki/Haskell/Understanding_arrows
 There were two slightly tricky parts to the port
 
 - I needed to use lexical binding for the source file
-- cl-arrows_\'s test suite used fractions, but Emacs Lisp doesn't have them.
+- cl-arrows_\'s test suite used fractions, but `Emacs Lisp`_ doesn't
+  have them.
 
 Anyway, I think they're very useful.  If you have a value and
 you want it to be processed by several functions in a chain you
@@ -82,14 +86,14 @@ inside out: you've got the value, you pass it to the first function,
 then to the second, and so forth.
 
 There are also macros to insert the value at the front of the argument
-list (``->``) and to insert the value where a ``<>`` symbol gis found
+list (``->``) and to insert the value where a ``<>`` symbol is found
 (``-<>``).
 
-I wrote some Emacs Lisp code with the last expression above today, and
+I wrote some `Emacs Lisp`_ code with the last expression above today, and
 I think it makes a good example of why they are useful.
 
-Here's the use case that inspired me to port them to Emacs
-Lisp.  When I save things from the internet I often want to
+Here's the use case that inspired me to port them to `Emacs
+Lisp`_.  When I save things from the internet I often want to
 create a directory to save them in based on the filename or
 some text on a web page or something, but usually there are
 spaces or special characters in that text, so I have to
@@ -135,11 +139,11 @@ of ``current-kill`` makes that a little difficult to figure out.)
 
 So if I have the name of a product as
 ``"***Flashy####Product%%%%Name!!!!"`` I copy that to the clipboard
-with ⌘-C, switch to emacs, do ``C-c k S``, switch back to
+with :key:`⌘-C`, switch to emacs, do :key:`C-c k S`, switch back to
 whatever program is saving the file, and use the generated,
-sanitized name ``Flashy-Product-Name`` with ⌘-V.  Nifty!  
+sanitized name ``Flashy-Product-Name`` with :key:`⌘-V`.  Nifty!  
 
-(And if you've ever wondered what the Unicode character for the Mac
+(And if you've ever wondered what the Unicode_ character for the Mac
 keyboard `Command key`__ (⌘) is, it is the PLACE OF INTEREST SIGN, and you
 can enter it by C-x 8 RETURN PLACE OF INTEREST SIGN.  The symbol they
 use for for the key labeled alt and option__ (⌥) is the Unicode OPTION
@@ -147,6 +151,8 @@ KEY, and the symbol they use for the `Shift Key`__ (⇧) is UPWARDS WHITE ARROW.
 I'm surprised they don't have a special symbol for Control__, but it
 looks like they just use the plain ASCII ^, known in Unicode as
 CIRCUMFLEX ACCENT.)
+
+.. _Unicode: https://en.wikipedia.org/wiki/Unicode
 
 __ https://en.wikipedia.org/wiki/Command_key
 __ https://en.wikipedia.org/wiki/Option_key
