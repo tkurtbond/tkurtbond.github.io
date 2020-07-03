@@ -10,7 +10,7 @@
 .. role:: file
 
 I created a :file:`.epub` file using pandoc_.  Then I converted the
-:file:`.epub` to .mobi via the `Calibre epub
+:file:`.epub` to :file:`.mobi` via the `Calibre epub
 software`__. [#alternative]_ Then I tried copying the :file:`.mobi` to
 the :file:`Documents` folder on the Kindle via USB (which several
 places online say is the way to do it) but that didn’t show up when I
