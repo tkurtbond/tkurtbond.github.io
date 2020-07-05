@@ -58,8 +58,7 @@ is annoying and hard to read on one line.  If you split it into multiple lines
          "-\\." "."
          (replace-regexp-in-string
           "-+" "-"
-          (replace-regexp-in-string "[^-.a-z0-9]+" "-"
-   string))))))))
+          (replace-regexp-in-string "[^-.a-z0-9]+" "-" string))))))))
 
 that's also pretty horrible.  To read it you have to skip to the end,
 figure out that function call, then skip back to the next function
