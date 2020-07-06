@@ -62,7 +62,7 @@ I want to write (:file:`missing-ampersand.rst`):
    fine because to make it a **roff** command the first character on the
    line has to be a period.
 
-where the included ReStructuredText file (:file:`ma.rst`) is
+where the included ReStructuredText_ file (:file:`ma.rst`) is
 
 .. code:: restructuredtext
 
@@ -188,10 +188,12 @@ In the first code block you see a lot of HTML spans that look like this:
 
    <span id="cb1-3"><a href="#cb1-3"></a>…</span>
 
-I displayed the HTML file in my browser (Google Chrome), selected the
-text, and pasted it into the Gmail message composition window in the
-message body area (except for the header text, which I put in the
-Subject line text entry box instead) and it looked fine, so I sent it.
+They appear to be anchors so you can link to a particular line in the
+code block.  When I displayed the HTML file in my browser (Google
+Chrome), selected the text, and pasted it into the Gmail message
+composition window in the message body area (except for the header
+text, which I put in the Subject line text entry box instead) and it
+looked fine, so I sent it.
 
 But when I got a reply from someone who uses a `mail user agent`_
 that displays the ``text/plain`` alternative that Gmail automatically
