@@ -166,6 +166,8 @@ NAVIGATION_ALT_LINKS = {
 #THEME = "bootblog" # this is the one i've been using; nice sidebar
 #THEME = "oldfashioned"
 #THEME = "bootstrap4"
+# This is the theme I modified to have tags at the bottom on the index page
+# and my links and such on the right sidebar
 THEME = "bootblog-jinja"
 
 # Primary color of your theme. This will be used to customize your theme.
