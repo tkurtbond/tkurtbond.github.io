@@ -57,30 +57,59 @@
 </ul></nav><h1>generate-schemas-xml
         <small><a href="generate-schemas-xml">(Source)</a></small>
     </h1>
-    <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="#listingsgenerate-schemas-xml-1"> 1</a>
-<a href="#listingsgenerate-schemas-xml-2"> 2</a>
-<a href="#listingsgenerate-schemas-xml-3"> 3</a>
-<a href="#listingsgenerate-schemas-xml-4"> 4</a>
-<a href="#listingsgenerate-schemas-xml-5"> 5</a>
-<a href="#listingsgenerate-schemas-xml-6"> 6</a>
-<a href="#listingsgenerate-schemas-xml-7"> 7</a>
-<a href="#listingsgenerate-schemas-xml-8"> 8</a>
-<a href="#listingsgenerate-schemas-xml-9"> 9</a>
-<a href="#listingsgenerate-schemas-xml-10">10</a></pre></div></td>
-<td class="code"><pre class="code literal-block"><a name="listingsgenerate-schemas-xml-1"></a><span class="ch">#! /usr/bin/env bash</span>
-<a name="listingsgenerate-schemas-xml-2"></a>
-<a name="listingsgenerate-schemas-xml-3"></a><span class="nv">schema_location</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span>xmlcatalog <span class="s2">""</span> <span class="s2">"http://docbook.org/xml/5.0/rng/docbookxi.rnc"</span> <span class="p">|</span>
-<a name="listingsgenerate-schemas-xml-4"></a>    grep <span class="s2">"^file:///"</span> <span class="p">|</span> sed <span class="s1">'s#^file://##'</span><span class="k">)</span><span class="s2">"</span>
-<a name="listingsgenerate-schemas-xml-5"></a>
-<a name="listingsgenerate-schemas-xml-6"></a>cat &gt;schemas.xml <span class="s">&lt;&lt;EOF</span>
-<a name="listingsgenerate-schemas-xml-7"></a><span class="s">&lt;locatingRules xmlns="http://thaiopensource.com/ns/locating-rules/1.0"&gt;</span>
-<a name="listingsgenerate-schemas-xml-8"></a><span class="s">&lt;namespace ns="http://docbook.org/ns/docbook" uri="$schema_location"/&gt;</span>
-<a name="listingsgenerate-schemas-xml-9"></a><span class="s">&lt;/locatingRules&gt;</span>
-<a name="listingsgenerate-schemas-xml-10"></a><span class="s">EOF</span>
-</pre></td>
-</tr></table>
-</div>
+    <div class="code"><table class="codetable">
+<tr>
+<td class="linenos linenodiv"><a href="#listingsgenerate-schemas-xml-1"><code data-line-number=" 1"></code></a></td>
+<td class="code"><code><a name="listingsgenerate-schemas-xml-1"></a><span class="ch">#! /usr/bin/env bash</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsgenerate-schemas-xml-2"><code data-line-number=" 2"></code></a></td>
+<td class="code"><code><a name="listingsgenerate-schemas-xml-2"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsgenerate-schemas-xml-3"><code data-line-number=" 3"></code></a></td>
+<td class="code"><code><a name="listingsgenerate-schemas-xml-3"></a><span class="nv">schema_location</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span>xmlcatalog <span class="s2">""</span> <span class="s2">"http://docbook.org/xml/5.0/rng/docbookxi.rnc"</span> <span class="p">|</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsgenerate-schemas-xml-4"><code data-line-number=" 4"></code></a></td>
+<td class="code"><code><a name="listingsgenerate-schemas-xml-4"></a>    grep <span class="s2">"^file:///"</span> <span class="p">|</span> sed <span class="s1">'s#^file://##'</span><span class="k">)</span><span class="s2">"</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsgenerate-schemas-xml-5"><code data-line-number=" 5"></code></a></td>
+<td class="code"><code><a name="listingsgenerate-schemas-xml-5"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsgenerate-schemas-xml-6"><code data-line-number=" 6"></code></a></td>
+<td class="code"><code><a name="listingsgenerate-schemas-xml-6"></a>cat &gt;schemas.xml <span class="s">&lt;&lt;EOF</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsgenerate-schemas-xml-7"><code data-line-number=" 7"></code></a></td>
+<td class="code"><code><a name="listingsgenerate-schemas-xml-7"></a><span class="s">&lt;locatingRules xmlns="http://thaiopensource.com/ns/locating-rules/1.0"&gt;</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsgenerate-schemas-xml-8"><code data-line-number=" 8"></code></a></td>
+<td class="code"><code><a name="listingsgenerate-schemas-xml-8"></a><span class="s">&lt;namespace ns="http://docbook.org/ns/docbook" uri="$schema_location"/&gt;</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsgenerate-schemas-xml-9"><code data-line-number=" 9"></code></a></td>
+<td class="code"><code><a name="listingsgenerate-schemas-xml-9"></a><span class="s">&lt;/locatingRules&gt;</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsgenerate-schemas-xml-10"><code data-line-number="10"></code></a></td>
+<td class="code"><code><a name="listingsgenerate-schemas-xml-10"></a><span class="s">EOF</span>
+</code></td>
+</tr>
+</table></div>
+            </div>
             <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
                     <div class="sidebar-module sidebar-module-inset">
       <h4>About</h4>

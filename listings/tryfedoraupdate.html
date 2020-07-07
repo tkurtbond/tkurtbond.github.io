@@ -57,40 +57,84 @@
 </ul></nav><h1>tryfedoraupdate
         <small><a href="tryfedoraupdate">(Source)</a></small>
     </h1>
-    <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="#listingstryfedoraupdate-1"> 1</a>
-<a href="#listingstryfedoraupdate-2"> 2</a>
-<a href="#listingstryfedoraupdate-3"> 3</a>
-<a href="#listingstryfedoraupdate-4"> 4</a>
-<a href="#listingstryfedoraupdate-5"> 5</a>
-<a href="#listingstryfedoraupdate-6"> 6</a>
-<a href="#listingstryfedoraupdate-7"> 7</a>
-<a href="#listingstryfedoraupdate-8"> 8</a>
-<a href="#listingstryfedoraupdate-9"> 9</a>
-<a href="#listingstryfedoraupdate-10">10</a>
-<a href="#listingstryfedoraupdate-11">11</a>
-<a href="#listingstryfedoraupdate-12">12</a>
-<a href="#listingstryfedoraupdate-13">13</a>
-<a href="#listingstryfedoraupdate-14">14</a>
-<a href="#listingstryfedoraupdate-15">15</a></pre></div></td>
-<td class="code"><pre class="code literal-block"><a name="listingstryfedoraupdate-1"></a><span class="ch">#! /usr/bin/bash</span>
-<a name="listingstryfedoraupdate-2"></a>
-<a name="listingstryfedoraupdate-3"></a><span class="k">while</span> ! dnf -y system-upgrade download --refresh --releasever<span class="o">=</span><span class="m">31</span>
-<a name="listingstryfedoraupdate-4"></a><span class="k">do</span>
-<a name="listingstryfedoraupdate-5"></a>    <span class="nb">read</span> -t <span class="m">30</span> -p <span class="s2">"Continue? (y/n) "</span> reply
-<a name="listingstryfedoraupdate-6"></a>    <span class="k">if</span> <span class="o">((</span><span class="nv">$?</span>&gt;128<span class="o">))</span><span class="p">;</span> <span class="k">then</span>
-<a name="listingstryfedoraupdate-7"></a>	<span class="nb">echo</span> <span class="s2">"timed out, continuing..."</span>
-<a name="listingstryfedoraupdate-8"></a>    <span class="k">elif</span> <span class="o">[[</span> <span class="s2">"</span><span class="nv">$reply</span><span class="s2">"</span> <span class="o">=</span>~ <span class="o">[</span>Nn<span class="o">]</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
-<a name="listingstryfedoraupdate-9"></a>	<span class="nb">echo</span> <span class="s2">"Exiting..."</span>
-<a name="listingstryfedoraupdate-10"></a>	<span class="nb">exit</span>
-<a name="listingstryfedoraupdate-11"></a>    <span class="k">else</span>
-<a name="listingstryfedoraupdate-12"></a>	<span class="nb">echo</span> <span class="s2">"Continuing..."</span>
-<a name="listingstryfedoraupdate-13"></a>    <span class="k">fi</span>
-<a name="listingstryfedoraupdate-14"></a><span class="k">done</span>
-<a name="listingstryfedoraupdate-15"></a>    
-</pre></td>
-</tr></table>
-</div>
+    <div class="code"><table class="codetable">
+<tr>
+<td class="linenos linenodiv"><a href="#listingstryfedoraupdate-1"><code data-line-number=" 1"></code></a></td>
+<td class="code"><code><a name="listingstryfedoraupdate-1"></a><span class="ch">#! /usr/bin/bash</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingstryfedoraupdate-2"><code data-line-number=" 2"></code></a></td>
+<td class="code"><code><a name="listingstryfedoraupdate-2"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingstryfedoraupdate-3"><code data-line-number=" 3"></code></a></td>
+<td class="code"><code><a name="listingstryfedoraupdate-3"></a><span class="k">while</span> ! dnf -y system-upgrade download --refresh --releasever<span class="o">=</span><span class="m">31</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingstryfedoraupdate-4"><code data-line-number=" 4"></code></a></td>
+<td class="code"><code><a name="listingstryfedoraupdate-4"></a><span class="k">do</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingstryfedoraupdate-5"><code data-line-number=" 5"></code></a></td>
+<td class="code"><code><a name="listingstryfedoraupdate-5"></a>    <span class="nb">read</span> -t <span class="m">30</span> -p <span class="s2">"Continue? (y/n) "</span> reply
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingstryfedoraupdate-6"><code data-line-number=" 6"></code></a></td>
+<td class="code"><code><a name="listingstryfedoraupdate-6"></a>    <span class="k">if</span> <span class="o">((</span><span class="nv">$?</span>&gt;128<span class="o">))</span><span class="p">;</span> <span class="k">then</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingstryfedoraupdate-7"><code data-line-number=" 7"></code></a></td>
+<td class="code"><code><a name="listingstryfedoraupdate-7"></a>	<span class="nb">echo</span> <span class="s2">"timed out, continuing..."</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingstryfedoraupdate-8"><code data-line-number=" 8"></code></a></td>
+<td class="code"><code><a name="listingstryfedoraupdate-8"></a>    <span class="k">elif</span> <span class="o">[[</span> <span class="s2">"</span><span class="nv">$reply</span><span class="s2">"</span> <span class="o">=</span>~ <span class="o">[</span>Nn<span class="o">]</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingstryfedoraupdate-9"><code data-line-number=" 9"></code></a></td>
+<td class="code"><code><a name="listingstryfedoraupdate-9"></a>	<span class="nb">echo</span> <span class="s2">"Exiting..."</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingstryfedoraupdate-10"><code data-line-number="10"></code></a></td>
+<td class="code"><code><a name="listingstryfedoraupdate-10"></a>	<span class="nb">exit</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingstryfedoraupdate-11"><code data-line-number="11"></code></a></td>
+<td class="code"><code><a name="listingstryfedoraupdate-11"></a>    <span class="k">else</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingstryfedoraupdate-12"><code data-line-number="12"></code></a></td>
+<td class="code"><code><a name="listingstryfedoraupdate-12"></a>	<span class="nb">echo</span> <span class="s2">"Continuing..."</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingstryfedoraupdate-13"><code data-line-number="13"></code></a></td>
+<td class="code"><code><a name="listingstryfedoraupdate-13"></a>    <span class="k">fi</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingstryfedoraupdate-14"><code data-line-number="14"></code></a></td>
+<td class="code"><code><a name="listingstryfedoraupdate-14"></a><span class="k">done</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingstryfedoraupdate-15"><code data-line-number="15"></code></a></td>
+<td class="code"><code><a name="listingstryfedoraupdate-15"></a>    
+</code></td>
+</tr>
+</table></div>
+            </div>
             <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
                     <div class="sidebar-module sidebar-module-inset">
       <h4>About</h4>
