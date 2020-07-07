@@ -7,7 +7,7 @@
 .. description: 
 .. type: text
 
-Last edited: 2020-07-07 14:20:44 EDT
+Last edited: 2020-07-07 15:32:45 EDT
 
 One of the things that I like about `Savage Worlds Adventure
 Edition`__ (SWADE) is that it fixed spears so that you can use them
@@ -22,6 +22,7 @@ SWD        Spear   Str+d6       Parry +1, Reach 1, 2 hands
 SWADE      Spear   Str+d6       Reach 1. Parry +1 if used two-handed
 =========  ======  ===========  ====================================
 
+This allows the historical “Spear and Shield” combat style.
 See Lindybeige_ for why this matters.
 
 .. _Lindybeige: https://www.youtube.com/watch?v=3XuhoFszfe8
