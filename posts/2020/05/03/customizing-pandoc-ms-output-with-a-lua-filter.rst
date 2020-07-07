@@ -259,19 +259,19 @@ And here is the ms output:
 
 The command to produce the ms output is:
 
-.. code::
+.. code:: bash
 
-   pandoc -f rst -t ms --lua-filter classify-rst-ms.lua --wrap=preserve poem-plus.rst
+   pandoc -f rst -t ms --lua-filter classify-rst-ms.lua --wrap=preserve poem-plus.rst --output=poem-plus-rst.ms
 
 and the command to produce a PDF is:
 
 .. code:: bash
 
-   pandoc -f rst -t ms --lua-filter classify-rst-ms.lua --wrap=preserve poem-plus.rst --output=poem-plus-rst-ms.pdf
+   pandoc -f rst -t ms --lua-filter classify-rst-ms.lua --wrap=preserve poem-plus.rst --output=poem-plus-rst.ms.pdf
 
 Here_ is the output PDF.
 
-.. _Here: /poem-plus-rst-ms.pdf
+.. _Here: /poem-plus-rst.ms.pdf
 
 Being able to rewrite the tree and insert RawBlocks and RawInlines is
 really powerful when it comes to customizing output for particular
