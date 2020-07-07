@@ -7,7 +7,7 @@
 .. description: 
 .. type: text
 
-Last edited: 2020-07-07 15:36:59 EDT
+Last edited: 2020-07-07 15:50:25 EDT
 
 One of the things that I like about `Savage Worlds Adventure
 Edition`__ (SWADE) is that it fixed spears so that you can use them
@@ -29,7 +29,8 @@ See Lindybeige_ for why this matters.
 
 Maybe something similar should have been done with Staff as well,
 changing it so it can be used one-handed but losing the “Parry +1” in
-that case.
+that case.  Maybe not, since a staff depends on strength for more of
+its damage than the mostly piercing spear.
 
 __ https://www.peginc.com/store/savage-worlds-adventure-edition-core-rules-pdf-swade/
 
