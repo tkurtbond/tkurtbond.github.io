@@ -1,14 +1,17 @@
 .. title: My Gaming Career
 .. slug: gaming-career
 .. date: 2008-08-02 11:42:50 UTC-05:00
-.. tags: rpg,gaming,d&d,gurps
+.. tags: unfinished,rpg,gaming,d&d,gurps,retro-clones,ad&d,moldvay/cook/marsh d&d,t&t,tunnels & trolls,gamma world,dragonquest,the enchanted wood,powers & perils,rolemaster,traveller,frontiers of alusia,spi,gurps,runequest,rq3,griffin island,elric!,brp,wfrp,rq2,call of cthulhu,tekumel,jorune,savage worlds,fudge,besm,wilderlands,tegel manor,badabaskor,caverns of thracia,d&d 3.5e,thunder rift,swords & wizardry,od&d,philotomy,judges guild,jg,b10,ready-ref sheets,road building
 .. category: gaming
 .. link: 
 .. description: 
 .. type: text
 
-
 .. role:: program(literal)
+
+*Last edited: 2020-07-08 05:47:14 EDT*
+
+This post is unfinished, alas.
 
 Part I: Origins
 ===============
@@ -109,8 +112,9 @@ I bought `RuneQuest`, 3rd edition (`RQ3`, the Deluxe Boxed Set) and
 `Griffin Island` (also a boxed set) in stores, somewhere.  (I think
 this must have been near the time they were released.)  Like
 `DragonQuest`, I found them fascinating.  Unlike `DQ` I never got my
-group to successfully play `RQ`.  `RQ3` and `Griffin Island` were a
-glimpse into a style of culture-based gaming that I had never
+group to successfully play `RQ`.  The players found `RQ3` character
+generation to be too complicated, alas.  `RQ3` and `Griffin Island`
+were a glimpse into a style of culture-based gaming that I had never
 encountered in my `AD&D` experience, but were complicated enough that
 my players hated character generation, and we never got much beyond
 that.  I never saw *any* of the Glorantha materials until much, much
@@ -219,9 +223,11 @@ custom poker chips for wounds, shaken
 
 
 
-.. [#basic-dnd] Boy, was I wrong!  After the retro-clones started to
+.. [#basic-dnd] Boy, was I wrong!  After the `retro-clones`_ started to
    appear, especially `Labyrinth Lord`, I bought the Moldvay/Cook
-   `Basic/Expert` rules, and was pleasantly impressed. 
+   `Basic/Expert` rules, and was pleasantly impressed.
+
+   .. _retro-clones: link://slug/rpg-vocabulary#retro-clone
 
 .. [#tnt] We completely missing out on the flexibility of the T&T
    saving roll system — not surprising, since we never saw any of the
@@ -237,4 +243,11 @@ custom poker chips for wounds, shaken
    `2 <http://www.indie-rpgs.com/viewtopic.php?t=6355>`__,
    `3 <http://www.indie-rpgs.com/viewtopic.php?t=7104>`__,
    `4 <http://www.indie-rpgs.com/viewtopic.php?t=7863>`__).
+
+..
+   Local Variables:
+   time-stamp-format: "%04y-%02m-%02d %02H:%02M:%02S %Z"
+   time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
+   time-stamp-end: "\\*\\\\?\n"
+   End:
 

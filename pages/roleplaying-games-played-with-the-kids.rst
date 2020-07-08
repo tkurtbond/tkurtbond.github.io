@@ -91,7 +91,7 @@ Tour Guide*, and *Toon Ace Catalog*.  It's another game the kids love.
 Labyrinth Lord
 ==============
 
-`Labyrinth Lord`_ from `Goblinoid Games`_ is a wonderful retroclone of
+`Labyrinth Lord`_ from `Goblinoid Games`_ is a wonderful retro-clone of
 B/X D&D, and it's companion `Advanced Edition Companion`_ adds
 compatibility with AD&D, which makes it perfect for running the old
 modules I have.  It plays much like we actually played AD&D back in

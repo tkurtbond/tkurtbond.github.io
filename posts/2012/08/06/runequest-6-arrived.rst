@@ -1,7 +1,7 @@
 .. title: RuneQuest 6 Arrived
 .. slug: runequest-6-arrived
 .. date: 2012-08-06 23:31:18 UTC-05:00
-.. tags: runequest,rpg
+.. tags: runequest,rpg,rq6,the design mechanism
 .. category: gaming
 .. link: 
 .. description: 
@@ -13,7 +13,6 @@ Mechanism`__ arrived today. (2020-03-04 Update: This RPG is now known
 as `Mythras`.)
 
 __ http://www.thedesignmechanism.com/
-
 
 It is a nice big paperback book.  I've had time to scan it quickly and
 incompletely.  I like the cover, with its nod to the Chaosium

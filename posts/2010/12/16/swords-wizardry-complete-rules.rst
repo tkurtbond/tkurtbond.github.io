@@ -8,14 +8,19 @@
 .. type: text
 
 
-I bought a copy of the PDF and paperback [#paperback]_ of `Swords & Wizardry:
-Complete Rules`__ [#rulesbook-vs-rules]_ from `Frog God Games`__ this evening, and after a
-quick scan of the PDF my initial reaction is positive: it does look
-like what I'd hoped it would be: a much better organized restatement
-of the seven original `D&D` booklets, and I think it is likely to
-become one of my favorite versions of `D&D`.  Matthew Finch of
-`Mythemere Games`__ and Frog God Games have done what looks like a
-fine job.
+I bought a copy of the PDF and paperback [#paperback]_ of `Swords &
+Wizardry: Complete Rules`__ [#rulesbook-vs-rules]_ from `Frog God
+Games`__ this evening, and after a quick scan of the PDF my initial
+reaction is positive: it does look like what I'd hoped it would be: a
+much better organized restatement of the seven original `D&D`
+booklets, and I think it is likely to become one of my favorite
+versions of `D&D`.  Matthew Finch of `Mythemere Games`__ and Frog God
+Games have done what looks like a fine job.
+
+`Swords & Wizardry: Complete Rules` is a `retro-clone`_ of original
+`D&D`.
+
+.. _retro-clone: link://slug/rpg-vocabulary#retro-clone
 
 And the text is OGL Open Game Content; to quote from the OGL section
 at the back of the book:
@@ -27,8 +32,8 @@ at the back of the book:
     work (font, layout, style of artwork, etc.) are reserved as Product
     Identity.
 
-__ http://www.talesofthefroggod.com/index.php/products/swords-and-wizardry-complete-rulebook
-__ http://www.talesofthefroggod.com/index.php/products/swords-and-wizardry-complete-rulebook
+__ https://www.froggodgames.com/product/swords-wizardry-complete-rulebook/
+__ http://www.talesofthefroggod.com/
 __ http://www.swordsandwizardry.com/
 
 
@@ -43,7 +48,7 @@ __ http://www.therpgsite.com/
 __ http://www.therpgsite.com/showpost.php?p=425965&postcount=30
 
 
-I'm going to have to site down and read this in detail very soon.
+I'm going to have to sit down and read this in detail very soon.
 
 .. [#paperback] I'd have liked to have gotten one of the hardback
    copies, but those sold out long before I'd realized they'd been

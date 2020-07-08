@@ -1,14 +1,14 @@
 .. title: RuneQuest Appendix N
 .. slug: runequest-appendix-n
 .. date: 2013-11-20 08:36:10 UTC-05:00
-.. tags: rpg,rq,runequest
+.. tags: rpg,rq2,runequest
 .. category: gaming
 .. link: 
 .. description: 
 .. type: text
 
 
-`RuneQuest` had an `Appendix N`__, even earlier than the DMG.
+`RuneQuest` second edition had an `Appendix N`__, even earlier than the DMG.
 
 See also 1_, 2_.
 

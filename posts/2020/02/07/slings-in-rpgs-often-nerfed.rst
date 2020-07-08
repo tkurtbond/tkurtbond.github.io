@@ -1,7 +1,7 @@
 .. title: Slings in RPGs: Often Nerfed
 .. slug: slings-in-rpgs-often-nerfed
 .. date: 2020-02-07 14:40:23 UTC-05:00
-.. tags: rpg,d&d,runequest,dragonquest,talislanta,slings,gurps,savage worlds,hero system,the fantasy trip,tft,big eyes small mouth,besm,harnmaster,d6 fantasy,open d6,tunnels & trolls,tnt,dragon warriors,brp,basic roleplaying,elric,stormbringer,traveller,classic traveller,cepheus engine,sword of cepheus,nerfed
+.. tags: rpg,d&d,runequest,dragonquest,talislanta,slings,gurps,savage worlds,hero system,the fantasy trip,tft,big eyes small mouth,besm,harnmaster,d6 fantasy,open d6,tunnels & trolls,tnt,dragon warriors,brp,basic roleplaying,elric!,stormbringer,traveller,classic traveller,cepheus engine,sword of cepheus,nerfed
 .. category: gaming
 .. link: 
 .. description: 

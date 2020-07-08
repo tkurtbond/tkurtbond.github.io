@@ -1,7 +1,7 @@
 .. title: 4E D&D admits what game it's always been?
 .. slug: 4e-dnd-admits-what-game-its-always-been
 .. date: 2008-10-06 18:30:11 UTC-05:00
-.. tags: gaming,d&d
+.. tags: gaming,d&d,retro-clone, d&d 4e,b/x d&d,holmes d&d,mentzer d&d,rules cyclopedia,ad&d 2e,d&d 3e,d&d 3.5e
 .. category: gaming
 .. link: 
 .. description: 
@@ -91,7 +91,9 @@ Rules Cyclopedia D&D
 I heard a lot of folks extolling the virtues of the one-book RC D&D,
 so I searched around a found a reasonably priced copy.  Well worth the
 money.  This is without a doubt the most complete-in-one-book version
-of D&D, at least until the retro-clones.
+of D&D, at least until the `retro-clones`_.
+
+.. _retro-clones: link://slug/rpg-vocabulary#retro-clone
 
 Advanced D&D, 2E
 ================
