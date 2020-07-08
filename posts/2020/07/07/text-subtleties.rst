@@ -11,7 +11,7 @@
 .. role:: file
 .. role:: command
 
-Last edited: 2020-07-07 20:03:16 EDT
+*Last edited: 2020-07-08 04:51:20 EDT*
 
 I just noticed that when wget_ tells you the filename of file it just
 saved, if your ``LANG=C`` then it surrounds it with apostrophes ('), but
@@ -48,6 +48,6 @@ __ https://n-t-roff.github.io/heirloom/doctools.html
 ..
    Local Variables:
    time-stamp-format: "%04y-%02m-%02d %02H:%02M:%02S %Z"
-   time-stamp-start: "Last edited:[ \t]+\\\\?"
-   time-stamp-end: "\\\\?\n"
+   time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
+   time-stamp-end: "\\*\\\\?\n"
    End:
