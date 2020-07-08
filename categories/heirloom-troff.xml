@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity (Posts about heirloom troff)</title><link>https://tkurtbond.github.io/</link><description></description><atom:link href="https://tkurtbond.github.io/categories/heirloom-troff.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2020 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Wed, 08 Jul 2020 00:10:40 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Text Subtleties</title><link>https://tkurtbond.github.io/posts/2020/07/07/text-subtleties/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;Last edited: 2020-07-07 20:03:16 EDT&lt;/p&gt;
+&lt;p&gt;I just noticed that when &lt;a class="reference external" href="https://www.gnu.org/software/wget/"&gt;wget&lt;/a&gt; tells you the filename of file it just
+saved, if your &lt;code class="docutils literal"&gt;LANG=C&lt;/code&gt; then it surrounds it with apostrophes ('), but
+if your &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;LANG=en_US.UTF-8&lt;/span&gt;&lt;/code&gt; then it surrounds it with &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Unicode"&gt;Unicode&lt;/a&gt; LEFT SINGLE
+QUOTATION MARK (‘)and RIGHT SINGLE QUOTATION MARK (’).  I appreciate
+little subtleties like that.&lt;/p&gt;
+&lt;p&gt;I use Unicode characters in most of the writing I do.  For &lt;a class="reference external" href="https://en.wikipedia.org/wiki/LaTeX"&gt;LaTeX&lt;/a&gt;,
+which I rarely use these days, I use &lt;a class="reference external" href="https://en.wikipedia.org/wiki/XeTeX"&gt;XeTeX&lt;/a&gt;, which understands UTF-8
+natively.  &lt;a class="reference external" href="https://en.wikipedia.org/wiki/ConTeXt"&gt;ConTeXt&lt;/a&gt;, which I do use regularly, also understands UTF-8
+natively.  For &lt;a class="reference external" href="https://www.gnu.org/software/groff/"&gt;groff&lt;/a&gt; I use the &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;-k&lt;/span&gt;&lt;/code&gt; switch, which preprocesses the
+text with &lt;span class="command"&gt;preconv&lt;/span&gt; (which is part of &lt;a class="reference external" href="https://www.gnu.org/software/groff/"&gt;groff&lt;/a&gt;), converting the
+UTF-8 characters into &lt;a class="reference external" href="https://www.gnu.org/software/groff/"&gt;groff&lt;/a&gt; character escapes, since &lt;a class="reference external" href="https://www.gnu.org/software/groff/"&gt;groff&lt;/a&gt; &lt;em&gt;doesn't&lt;/em&gt;
+understand UTF-8 natively.  Of course, if it is &lt;a class="reference external" href="https://docutils.sourceforge.io/rst.html"&gt;ReStructuredText&lt;/a&gt; that
+I'm working with then &lt;a class="reference external" href="https://pandoc.org/"&gt;pandoc&lt;/a&gt; can be configured to use any one of
+&lt;a class="reference external" href="https://en.wikipedia.org/wiki/LaTeX"&gt;LaTeX&lt;/a&gt;, &lt;a class="reference external" href="https://en.wikipedia.org/wiki/ConTeXt"&gt;ConTeXt&lt;/a&gt;, and &lt;a class="reference external" href="https://www.gnu.org/software/groff/"&gt;groff&lt;/a&gt; for creating PDF output, and since
+&lt;span class="command"&gt;rst2html.py&lt;/span&gt; just produces &lt;a class="reference external" href="https://en.wikipedia.org/wiki/LaTeX"&gt;LaTeX&lt;/a&gt; that includes any
+character you put in your source you can just use &lt;span class="command"&gt;xelatex&lt;/span&gt;
+as part of your commands to turn it into PDF.  And sometimes, when I'm
+feeling whimsical, I use &lt;span class="app"&gt;Heirloom Troff&lt;/span&gt;, from the &lt;a class="reference external" href="https://n-t-roff.github.io/heirloom/doctools.html"&gt;Heirloom
+Documentation Tools&lt;/a&gt;, which understands UTF-8 natively.&lt;/p&gt;
+&lt;!-- Local Variables:
+time-stamp-format: "%04y-%02m-%02d %02H:%02M:%02S %Z"
+time-stamp-start: "Last edited:[ \t]+\\\\?"
+time-stamp-end: "\\\\?\n"
+End: --&gt;&lt;/div&gt;</description><category>context</category><category>groff</category><category>heirloom troff</category><category>text</category><category>unicode</category><category>utf-8</category><category>xelatex</category><guid>https://tkurtbond.github.io/posts/2020/07/07/text-subtleties/</guid><pubDate>Tue, 07 Jul 2020 23:05:13 GMT</pubDate></item></channel></rss>
