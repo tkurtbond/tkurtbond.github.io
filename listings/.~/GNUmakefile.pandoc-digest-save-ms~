@@ -1,5 +1,0 @@
-%.digest.ms.pdf : %.rst
-	pandoc -s -r rst -w ms -s --template=digest2 $(VARIABLES) \
-               --output=$*.ms $<
-	pdfroff -ms -mpdfmark -e -t -k -KUTF-8 --no-toc-relocation \
-		-P-p8.5i,5.5i $*.ms | ps2pdf - $@
