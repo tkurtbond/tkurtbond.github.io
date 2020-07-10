@@ -7,7 +7,7 @@
 .. description: 
 .. type: text
 
-*Last edited: 2020-07-10 18:09:07 EDT*
+*Last edited: 2020-07-10 18:51:12 EDT*
 
 - `Auran Empire Primer`__ for the `Adventurer, Conqueror, King
   System`__ (ACKS) published by `Autarch LLC`__, ©2016.
@@ -59,9 +59,16 @@ countries described that are not on the map.
 
 I liked that the nationality/ethnicity entries included descriptions
 of the typical appearance, including skin color, hair color, body
-shape, average height, face shape, and so forth.
+shape, average height, face shape, and so forth, and that there is a
+fair variety of each.
 
 [More later?]
+
+.. [#not-race-based] As far as I can tell, slavery is not based on
+   race — anybody can end up a slave, except in the Auran Empire
+   itself where slavery is illegal.  The Auran Empire, however, has
+   indentured servitude, which the other nations regard as the same
+   thing as as slavery.
 
 __ https://www.drivethrurpg.com/product/197374/Auran-Empire-Primer?manufacturers_id=4277
 __ https://www.drivethrurpg.com/product/99123/Adventurer-Conqueror-King-System?manufacturers_id=4277
