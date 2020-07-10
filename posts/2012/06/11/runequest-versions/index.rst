@@ -1,7 +1,7 @@
 .. title: RuneQuest Versions
 .. slug: runequest-versions
 .. date: 2012-06-11 21:41:57 UTC-05:00
-.. tags: rpg,runequest,history
+.. tags: rpg,runequest,history,rq1,rq2,rq3,rqiv,rq:aig,rqii,rqi,rqiii,chaosium,mongoose,mrq,mrq2,rq6,the design mechanism,legend,basic roleplaying,brp,heroquest
 .. category: gaming
 .. link: 
 .. description: 
@@ -18,7 +18,7 @@ I can never remember the publication dates of the various versions of
   RQII, RQ2.  Was set in the world of Glorantha.  
 
 * `RuneQuest`, third edition (1984), Avalon Hill.  AKA RuneQuest III,
-  RQII, RQ3.  Used Fantasy Europe as the example setting, but also had
+  RQ3.  Used Fantasy Europe as the example setting, but also had
   a lot of Glorantha publications.
 
   Originally published as a box set, it was republished as a paperback

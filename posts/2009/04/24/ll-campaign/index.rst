@@ -15,7 +15,7 @@ it when Wizards of the Coast took all their PDFs off the market,
 saying they were “saving the RPG industry from pirates.”  **Jerks.**
 These days I pretty much have to have a PDF of a game I'm going to
 run, so, instead of *RC D&D*, we're playing `Labyrinth Lord`_, a
-retro-clone of *Basic/Expert D&D*.  This has some advantages over RC
+`retro-clone`_ of *Basic/Expert D&D*.  This has some advantages over RC
 anyway: there is a free PDF, it's actually in print through Lulu_, and
 several adventures have been published for it recently.  I'd
 considered using `Swords & Wizardry`_
@@ -46,3 +46,4 @@ about this already, but if so I've lost it.  Sigh.]
 .. _Lulu: http://www.lulu.com
 .. _`Swords & Wizardry`: http://www.swordsandwizardry.com/
 .. _`Labyrinth Lord`: http://www.goblinoidgames.com/labyrinthlord.htm
+.. _retro-clone: link://slug/rpg-vocabulary#retro-clone

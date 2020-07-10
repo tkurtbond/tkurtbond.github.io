@@ -1,5 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity</title><link>https://tkurtbond.github.io/</link><description>Random musings on books, code, and tabletop games.</description><atom:link href="https://tkurtbond.github.io/rss.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2020 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Wed, 08 Jul 2020 00:10:42 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Text Subtleties</title><link>https://tkurtbond.github.io/posts/2020/07/07/text-subtleties/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;Last edited: 2020-07-07 20:03:16 EDT&lt;/p&gt;
+<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity</title><link>https://tkurtbond.github.io/</link><description>Random musings on books, code, and tabletop games.</description><atom:link href="https://tkurtbond.github.io/rss.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2020 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Fri, 10 Jul 2020 22:51:25 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Need to specify a file in a GNUmakefile that starts with ~?</title><link>https://tkurtbond.github.io/posts/2020/07/08/need-to-specify-a-file-in-a-gnumakefile-that-starts-with/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;em&gt;Last edited: 2020-07-10 18:47:10 EDT&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Like on macOS Catalina where you can't have directories outside your
+home directory any more, so need to refer to the directory you
+manually installed some software to?  You can't just include the raw
+&lt;span class="file"&gt;~/where/ever&lt;/span&gt; in that PATH in the GNUmakefile because the
+&lt;code&gt;~&lt;/code&gt; prefix won't be translated into the user's home directory.
+That substitution is done by the shell when a command is executed, but
+the shells expect that tilde to have been expanded in the command that
+sets the path.  It doesn't do “Tilde Expansion” on each part of the
+PATH when it goes looking things up in the path.  So, you have to get
+that expansion done manually if you set it in a GNUmakefile.&lt;/p&gt;
+&lt;p&gt;Anyway, This ugly hack works:&lt;/p&gt;
+&lt;pre class="code makefile"&gt;&lt;a name="rest_code_40ea46673e094e2ca1e69c6ecdf9c82b-1"&gt;&lt;/a&gt;&lt;span class="k"&gt;export &lt;/span&gt;&lt;span class="nv"&gt;PATH&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="k"&gt;$(&lt;/span&gt;shell &lt;span class="nb"&gt;eval&lt;/span&gt; &lt;span class="nv"&gt;dir&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'~/sw/versions/heirloom-doctools/git/ucb'&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;a name="rest_code_40ea46673e094e2ca1e69c6ecdf9c82b-2"&gt;&lt;/a&gt;                 &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="nv"&gt;$$&lt;/span&gt;dir&lt;span class="o"&gt;)&lt;/span&gt;:&lt;span class="k"&gt;$(&lt;/span&gt;PATH&lt;span class="k"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_40ea46673e094e2ca1e69c6ecdf9c82b-3"&gt;&lt;/a&gt;&lt;span class="k"&gt;export &lt;/span&gt;&lt;span class="nv"&gt;TROFFFONTS&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="k"&gt;$(&lt;/span&gt;shell &lt;span class="nb"&gt;eval&lt;/span&gt; &lt;span class="nv"&gt;dir&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'~/Library/Fonts'&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;a name="rest_code_40ea46673e094e2ca1e69c6ecdf9c82b-4"&gt;&lt;/a&gt;        &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="nv"&gt;$$&lt;/span&gt;dir&lt;span class="o"&gt;)&lt;/span&gt;:/Library/Fonts
+&lt;a name="rest_code_40ea46673e094e2ca1e69c6ecdf9c82b-5"&gt;&lt;/a&gt;
+&lt;a name="rest_code_40ea46673e094e2ca1e69c6ecdf9c82b-6"&gt;&lt;/a&gt;&lt;span class="nf"&gt;all&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+&lt;a name="rest_code_40ea46673e094e2ca1e69c6ecdf9c82b-7"&gt;&lt;/a&gt;        @echo &lt;span class="nv"&gt;PATH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;PATH&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;
+&lt;a name="rest_code_40ea46673e094e2ca1e69c6ecdf9c82b-8"&gt;&lt;/a&gt;        @echo
+&lt;a name="rest_code_40ea46673e094e2ca1e69c6ecdf9c82b-9"&gt;&lt;/a&gt;        @echo &lt;span class="nv"&gt;TROFFFONTS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;TROFFFONTS&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;
+&lt;a name="rest_code_40ea46673e094e2ca1e69c6ecdf9c82b-10"&gt;&lt;/a&gt;        @echo
+&lt;a name="rest_code_40ea46673e094e2ca1e69c6ecdf9c82b-11"&gt;&lt;/a&gt;        @echo -n &lt;span class="s1"&gt;'"type troff" returns '&lt;/span&gt;
+&lt;a name="rest_code_40ea46673e094e2ca1e69c6ecdf9c82b-12"&gt;&lt;/a&gt;        @type troff
+&lt;/pre&gt;&lt;p&gt;Put this in a file somewhere and invoke &lt;span class="app"&gt;GNU make&lt;/span&gt; on it and it prints:&lt;/p&gt;
+&lt;pre class="code text"&gt;&lt;a name="rest_code_11c0f69d27634506abf4629c6b2464d3-1"&gt;&lt;/a&gt;PATH=/Users/tkb/sw/versions/heirloom-doctools/git/ucb:/Users/tkb/local/rndbin:/Users/tkb/.cargo/bin:/Users/tkb/.nimble/bin:/usr/local/opt/libxslt/bin:/usr/local/opt/libxml2/bin:/Users/tkb/sw/versions/mew/git/bin:/Users/tkb/sw/versions/groff-git/bin:/Users/tkb/sw/versions/chibi-scheme/git/bin:/usr/local/opt/tcl-tk/bin:/usr/local/opt/expat/bin:/Users/tkb/.opam/default/bin:/usr/local/opt/texinfo/bin:/usr/local/opt/gnu-sed/libexec/gnubin:/usr/local/opt/findutils/libexec/gnubin:/usr/local/opt/curl/bin:/usr/local/opt/coreutils/libexec/gnubin:/Users/tkb/.local/bin:/Users/tkb/context-osx-64/tex/texmf-osx-64/bin:/Applications/Emacs.app/Contents/MacOS/bin:/Users/tkb/local/unix/bin:/Users/tkb/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:/opt/X11/bin:/Users/tkb/local/unix/rndbin:/Applications/Racket v7.5/bin:/Users/tkb/go/bin:/Applications/Emacs.app/Contents/MacOS/bin-x86_64-10_14:/Applications/Emacs.app/Contents/MacOS/libexec-x86_64-10_14
+&lt;a name="rest_code_11c0f69d27634506abf4629c6b2464d3-2"&gt;&lt;/a&gt;
+&lt;a name="rest_code_11c0f69d27634506abf4629c6b2464d3-3"&gt;&lt;/a&gt;TROFFFONTS=/Users/tkb/Library/Fonts:/Library/Fonts
+&lt;a name="rest_code_11c0f69d27634506abf4629c6b2464d3-4"&gt;&lt;/a&gt;
+&lt;a name="rest_code_11c0f69d27634506abf4629c6b2464d3-5"&gt;&lt;/a&gt;"type troff" returns troff is /Users/tkb/sw/versions/heirloom-doctools/git/ucb/troff
+&lt;/pre&gt;&lt;p&gt;(Yes, my path may be a little excessive.)&lt;/p&gt;
+&lt;p&gt;Unfortunately I haven't figured out how to do this with the &lt;span class="app"&gt;BSD make&lt;/span&gt;s.&lt;/p&gt;
+&lt;!-- Local Variables:
+time-stamp-format: "%04y-%02m-%02d %02H:%02M:%02S %Z"
+time-stamp-start: "Last edited:[ \t]+\\\\?"
+time-stamp-end: "\\*\\\\?\n"
+End: --&gt;&lt;/div&gt;</description><category>gnu make</category><category>macos catalina</category><guid>https://tkurtbond.github.io/posts/2020/07/08/need-to-specify-a-file-in-a-gnumakefile-that-starts-with/</guid><pubDate>Wed, 08 Jul 2020 10:09:38 GMT</pubDate></item><item><title>Recent RPG Reading: Auran Empire Primer</title><link>https://tkurtbond.github.io/posts/2020/07/07/recent-rpg-reading-auran-empire-primer/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;em&gt;Last edited: 2020-07-10 18:51:12 EDT&lt;/em&gt;&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class="reference external" href="https://www.drivethrurpg.com/product/197374/Auran-Empire-Primer?manufacturers_id=4277"&gt;Auran Empire Primer&lt;/a&gt; for the &lt;a class="reference external" href="https://www.drivethrurpg.com/product/99123/Adventurer-Conqueror-King-System?manufacturers_id=4277"&gt;Adventurer, Conqueror, King
+System&lt;/a&gt; (ACKS) published by &lt;a class="reference external" href="http://www.autarch.co/"&gt;Autarch LLC&lt;/a&gt;, ©2016.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This short (23 page counting covers) introduction to the Auran Empire
+and the areas around it includes:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;p&gt;1 page cover.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;1 page title page.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;1 page credits page.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;An 1 page overview with short sections on purpose, culture,
+religion, cosmology, monsters, magic, and ancient artifacts.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;A 1⅓ page description of the various lands of the area under discussion
+(which includes the lands surrounding the Auran Empire).&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;A ⅔ page timeline covering over 4000 years.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;A 2 page map of the area.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;A ⅔ page legend of map symbols.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;A 3⅔ page section on Customs, covering Laws and Governance, Coins and
+Money, Fashion and Dress, Slavery and Indenture &lt;a class="footnote-reference brackets" href="https://tkurtbond.github.io/posts/2020/07/07/recent-rpg-reading-auran-empire-primer/#not-race-based" id="id1"&gt;1&lt;/a&gt;,
+Travel and Vehicles, Engineering and Construction, Knowledge and
+Learning, Weapons and Warfare, Religion and Myth, Clergy and
+Churches, and a table of Gods and Goddesses listing their names,
+titles, spheres of influence, holy symbols, sacred animals.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;An 8 page section on People, giving basic descriptions of the
+various nationalities and/or ethnicities: Celdorean, Dwarven, Elven
+(Argollëan), Jutlandic, Kemeshi, Krysean, Kushtu, Nicean, Opelenean,
+Rornish, Shebatean, Somirean, Skysos, Thrassian, Tirenean, and
+Zaharan.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;A 1½ page table of languages, with their real-world
+inspiration.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Finally, a 1 page back cover.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I thought this was a very good overview of a campaign setting.&lt;/p&gt;
+&lt;p&gt;I wish that the map had shown less of the north of the map where the
+barbarians lived and more of the south, where there are several
+countries described that are not on the map.&lt;/p&gt;
+&lt;p&gt;I liked that the nationality/ethnicity entries included descriptions
+of the typical appearance, including skin color, hair color, body
+shape, average height, face shape, and so forth, and that there is a
+fair variety of each.&lt;/p&gt;
+&lt;p&gt;[More later?]&lt;/p&gt;
+&lt;dl class="footnote brackets"&gt;
+&lt;dt class="label" id="not-race-based"&gt;&lt;span class="brackets"&gt;&lt;a class="fn-backref" href="https://tkurtbond.github.io/posts/2020/07/07/recent-rpg-reading-auran-empire-primer/#id1"&gt;1&lt;/a&gt;&lt;/span&gt;&lt;/dt&gt;
+&lt;dd&gt;&lt;p&gt;As far as I can tell, slavery is not based on
+race — anybody can end up a slave, except in the Auran Empire
+itself where slavery is illegal.  The Auran Empire, however, has
+indentured servitude, which the other nations regard as the same
+thing as as slavery.&lt;/p&gt;
+&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;!-- Local Variables:
+time-stamp-format: "%04y-%02m-%02d %02H:%02M:%02S %Z"
+time-stamp-start: "Last edited:[ \t]+\\\\?"
+time-stamp-end: "\\*\\\\?\n"
+End: --&gt;&lt;/div&gt;</description><category>acks</category><category>auran empire</category><category>autarch</category><category>rpg</category><guid>https://tkurtbond.github.io/posts/2020/07/07/recent-rpg-reading-auran-empire-primer/</guid><pubDate>Wed, 08 Jul 2020 01:54:52 GMT</pubDate></item><item><title>Text Subtleties</title><link>https://tkurtbond.github.io/posts/2020/07/07/text-subtleties/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;em&gt;Last edited: 2020-07-08 04:51:20 EDT&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;I just noticed that when &lt;a class="reference external" href="https://www.gnu.org/software/wget/"&gt;wget&lt;/a&gt; tells you the filename of file it just
 saved, if your &lt;code class="docutils literal"&gt;LANG=C&lt;/code&gt; then it surrounds it with apostrophes ('), but
 if your &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;LANG=en_US.UTF-8&lt;/span&gt;&lt;/code&gt; then it surrounds it with &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Unicode"&gt;Unicode&lt;/a&gt; LEFT SINGLE
@@ -21,9 +112,9 @@ feeling whimsical, I use &lt;span class="app"&gt;Heirloom Troff&lt;/span&gt;, fr
 Documentation Tools&lt;/a&gt;, which understands UTF-8 natively.&lt;/p&gt;
 &lt;!-- Local Variables:
 time-stamp-format: "%04y-%02m-%02d %02H:%02M:%02S %Z"
-time-stamp-start: "Last edited:[ \t]+\\\\?"
-time-stamp-end: "\\\\?\n"
-End: --&gt;&lt;/div&gt;</description><category>context</category><category>groff</category><category>heirloom troff</category><category>text</category><category>unicode</category><category>utf-8</category><category>xelatex</category><guid>https://tkurtbond.github.io/posts/2020/07/07/text-subtleties/</guid><pubDate>Tue, 07 Jul 2020 23:05:13 GMT</pubDate></item><item><title>Savage Worlds Adventure Edition Fixes Spears</title><link>https://tkurtbond.github.io/posts/2020/07/07/savage-worlds-adventure-edition-fixes-spears/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;Last edited: 2020-07-07 15:50:25 EDT&lt;/p&gt;
+time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
+time-stamp-end: "\\*\\\\?\n"
+End: --&gt;&lt;/div&gt;</description><category>context</category><category>groff</category><category>heirloom troff</category><category>text</category><category>unicode</category><category>utf-8</category><category>xelatex</category><guid>https://tkurtbond.github.io/posts/2020/07/07/text-subtleties/</guid><pubDate>Tue, 07 Jul 2020 23:05:13 GMT</pubDate></item><item><title>Savage Worlds Adventure Edition Fixes Spears</title><link>https://tkurtbond.github.io/posts/2020/07/07/savage-worlds-adventure-edition-fixes-spears/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;Last edited: 2020-07-07 20:16:14 EDT&lt;/p&gt;
 &lt;p&gt;One of the things that I like about &lt;a class="reference external" href="https://www.peginc.com/store/savage-worlds-adventure-edition-core-rules-pdf-swade/"&gt;Savage Worlds Adventure
 Edition&lt;/a&gt; (SWADE) is that it fixed spears so that you can use them
 one-handed, but only get bonus to parry if you use both hands.  In
@@ -64,7 +155,7 @@ that case.  Maybe not, since a staff depends on strength for more of
 its damage than the mostly piercing spear.&lt;/p&gt;
 &lt;!-- Local Variables:
 time-stamp-format: "%04y-%02m-%02d %02H:%02M:%02S %Z"
-time-stamp-start: "Last edited:[     ]+\\\\?"
+time-stamp-start: "Last edited:[ \t]+\\\\?"
 time-stamp-end: "\\\\?\n"
 End: --&gt;&lt;/div&gt;</description><category>rpg</category><category>savage worlds</category><category>savage worlds adventure edition</category><category>savage worlds deluxe edition</category><category>spear</category><guid>https://tkurtbond.github.io/posts/2020/07/07/savage-worlds-adventure-edition-fixes-spears/</guid><pubDate>Tue, 07 Jul 2020 17:59:55 GMT</pubDate></item><item><title>Line number anchors in pandoc's HTML output for codeblocks with highlighting mess up Gmail text/plain multipart alternative</title><link>https://tkurtbond.github.io/posts/2020/07/05/line-number-anchors-in-pandocs-html-output-for-codeblocks-with-highlighting-mess-up-gmail-textplain-multipart-alternative/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;I’ve found that if I write something in &lt;a class="reference external" href="https://docutils.sourceforge.io/rst.html"&gt;ReStructuredText&lt;/a&gt;, create HTML
 from it and embed a stylesheet with the proper css in the
@@ -524,27 +615,4 @@ contents.&lt;/p&gt;&lt;/li&gt;
 &lt;dd&gt;&lt;p&gt;Though it does talking about distributing an ABCL application
 as a servlet and WAR file.&lt;/p&gt;
 &lt;/dd&gt;
-&lt;/dl&gt;&lt;/div&gt;</description><category>abcl</category><category>asdf</category><category>common lisp</category><guid>https://tkurtbond.github.io/posts/2020/06/29/distributing-asdf-systems-with-abcl-sorta/</guid><pubDate>Mon, 29 Jun 2020 20:30:21 GMT</pubDate></item><item><title>Smalltalk History</title><link>https://tkurtbond.github.io/posts/2020/06/05/smalltalk-history/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;p&gt;I ran across a couple of interesting articles about Smalltalk History,
-which I'm linking here for posterity: &lt;a class="reference external" href="https://gbracha.blogspot.com/2020/05/bits-of-history-words-of-advice.html"&gt;Bits of History, Words of
-Advice&lt;/a&gt;
-and &lt;a class="reference external" href="http://www.wirfs-brock.com/allen/posts/914"&gt;The Rise and Fall of Commercial Smalltalk&lt;/a&gt;.&lt;/p&gt;</description><category>smalltalk</category><guid>https://tkurtbond.github.io/posts/2020/06/05/smalltalk-history/</guid><pubDate>Fri, 05 Jun 2020 19:11:27 GMT</pubDate></item><item><title>GURPS vs. D&amp;D vs. Dungeon Fantasy RPG</title><link>https://tkurtbond.github.io/posts/2020/06/03/gurps-vs-dd-vs-dungeon-fantasy-rpg/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;After I played &lt;cite&gt;D&amp;amp;D&lt;/cite&gt; for a while at the beginning of my RPG career I
-found out that I was interested in other games.  &lt;cite&gt;T&amp;amp;T&lt;/cite&gt;, then
-&lt;cite&gt;DragonQuest&lt;/cite&gt;, &lt;cite&gt;RuneQuest&lt;/cite&gt;, &lt;cite&gt;GURPS&lt;/cite&gt;, and &lt;cite&gt;Elric!&lt;/cite&gt; and many more since
-then.  Eventually one of the things I figured out was that I was
-looking for the different flavors that different RPG systems give the
-games you play with them.  &lt;cite&gt;D&amp;amp;D&lt;/cite&gt; has a very specific flavor.  &lt;cite&gt;Elric!&lt;/cite&gt;
-has a very specific but different flavor.  Some of that flavor comes
-from the systems and some of that flavor comes from the setting.  But
-the &lt;cite&gt;D&amp;amp;D&lt;/cite&gt; systems flavor seems to overpower the setting flavor.  (You
-could say that the “implied setting elements” from the &lt;cite&gt;D&amp;amp;D&lt;/cite&gt; core
-rules have heavily flavor any &lt;cite&gt;D&amp;amp;D&lt;/cite&gt; setting.)&lt;/p&gt;
-&lt;p&gt;The &lt;cite&gt;Dungeon Fantasy RPG&lt;/cite&gt; is &lt;cite&gt;GURPS&lt;/cite&gt; specialized for powerful
-characters plundering dungeons, and because of that it adopts some
-(but not all) of the cliches from &lt;cite&gt;D&amp;amp;D&lt;/cite&gt; (druids, monks, clerics, etc),
-and puts its own spin on them.  But one of the things I liked about
-&lt;cite&gt;GURPS&lt;/cite&gt; was that it &lt;em&gt;didn't&lt;/em&gt; have the same set of cliches as &lt;cite&gt;D&amp;amp;D&lt;/cite&gt;.
-Oh well.&lt;/p&gt;
-&lt;p&gt;Despite looking for the different flavors that systems imbue, I still
-like generic RPGs like &lt;cite&gt;GURPS&lt;/cite&gt; and &lt;cite&gt;Savage Worlds&lt;/cite&gt; and &lt;cite&gt;Basic
-Roleplaying&lt;/cite&gt;.  I like the flavor that those systems give, and I like
-seeing how that interacts with the flavor of the setting.&lt;/p&gt;&lt;/div&gt;</description><category>dnd</category><category>dungeon fantasy rpg</category><category>gurps</category><category>rpg</category><guid>https://tkurtbond.github.io/posts/2020/06/03/gurps-vs-dd-vs-dungeon-fantasy-rpg/</guid><pubDate>Wed, 03 Jun 2020 17:40:27 GMT</pubDate></item></channel></rss>
+&lt;/dl&gt;&lt;/div&gt;</description><category>abcl</category><category>asdf</category><category>common lisp</category><guid>https://tkurtbond.github.io/posts/2020/06/29/distributing-asdf-systems-with-abcl-sorta/</guid><pubDate>Mon, 29 Jun 2020 20:30:21 GMT</pubDate></item></channel></rss>
