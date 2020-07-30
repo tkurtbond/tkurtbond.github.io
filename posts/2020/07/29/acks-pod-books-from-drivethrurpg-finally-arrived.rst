@@ -35,7 +35,7 @@ I had already received_, a couple weeks ago, one book from that order:
 
 * `Auran Empire Primer`
 
-.. _received: slug://recent-rpg-reading-auran-empire-primer
+.. _received: link://slug/recent-rpg-reading-auran-empire-primer
 
 I got these because I'm planing on running some ACKS_ adventures,
 possibly leading up to the ACKS_ version of Dwimmermount_.  I got a
