@@ -31,7 +31,7 @@ The books I got were:
 * `Secrets of the Nethercity`
 * `The Sinister Stone of Sakkara`
 
-I had already received_, a couple weeks ago, one book from that order: 
+I had already received_, some weeks ago, one book from that order: 
 
 * `Auran Empire Primer`
 
