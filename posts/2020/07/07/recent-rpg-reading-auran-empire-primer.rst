@@ -7,7 +7,7 @@
 .. description: 
 .. type: text
 
-*Last edited: 2020-07-10 18:51:12 EDT*
+*Last edited: 2020-07-31 23:27:05 EDT*
 
 - `Auran Empire Primer`__ for the `Adventurer, Conqueror, King
   System`__ (ACKS) published by `Autarch LLC`__, ©2016.
@@ -62,7 +62,10 @@ of the typical appearance, including skin color, hair color, body
 shape, average height, face shape, and so forth, and that there is a
 fair variety of each.
 
-[More later?]
+I liked that the culture section gives the real-world cultures that
+inspired the game world cultures.  For example, “The dominant Imperial
+culture [of the Auran Empire] is closely akin to the Late Roman Empire
+and Early Byzantine Empire.”
 
 .. [#not-race-based] As far as I can tell, slavery is not based on
    race — anybody can end up a slave, except in the Auran Empire
