@@ -11,8 +11,6 @@
 .. role:: file
 .. role:: command
 
-*Last edited: 2020-07-10 18:47:10 EDT*
-
 Like on macOS Catalina where you can't have directories outside your
 home directory any more, so need to refer to the directory you
 manually installed some software to?  You can't just include the raw
@@ -55,10 +53,13 @@ Put this in a file somewhere and invoke :app:`GNU make` on it and it prints:
 
 Unfortunately I haven't figured out how to do this with the :app:`BSD make`\s.
 
+*Last edited: 2020-08-03 16:03:19 EDT*
+
 ..
    Local Variables:
    time-stamp-format: "%04y-%02m-%02d %02H:%02M:%02S %Z"
    time-stamp-start: "Last edited:[ \t]+\\\\?"
    time-stamp-end: "\\*\\\\?\n"
+   time-stamp-line-limit: -20
    End:
 

@@ -1,24 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity (Posts about computer)</title><link>https://tkurtbond.github.io/</link><description></description><atom:link href="https://tkurtbond.github.io/categories/cat_computer.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2020 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Mon, 03 Aug 2020 18:50:17 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Compiling s7 scheme on macOS</title><link>https://tkurtbond.github.io/posts/2020/08/03/compiling-s7-scheme-on-macos/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;!-- *Last edited: 2020-08-03 14:49:53 EDT* --&gt;
-&lt;p&gt;To compile &lt;a class="reference external" href="https://ccrma.stanford.edu/software/snd/snd/s7.html"&gt;s7 scheme&lt;/a&gt; with a standalone &lt;a class="reference external" href="https://tkurtbond.github.io/pages/computer-vocabulary/#REPL"&gt;REPL&lt;/a&gt;, s7's home page says to
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity (Posts about computer)</title><link>https://tkurtbond.github.io/</link><description></description><atom:link href="https://tkurtbond.github.io/categories/cat_computer.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2020 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Mon, 03 Aug 2020 20:04:46 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Compiling s7 scheme on macOS</title><link>https://tkurtbond.github.io/posts/2020/08/03/compiling-s7-scheme-on-macos/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;To compile &lt;a class="reference external" href="https://ccrma.stanford.edu/software/snd/snd/s7.html"&gt;s7 scheme&lt;/a&gt; with a standalone &lt;a class="reference external" href="https://tkurtbond.github.io/pages/computer-vocabulary/#REPL"&gt;REPL&lt;/a&gt;, s7's home page says to
 add the empty file &lt;span class="file"&gt;mus-config.h&lt;/span&gt; to the source directory, then
 (in Linux):&lt;/p&gt;
-&lt;pre class="code bash"&gt;&lt;a name="rest_code_a607734eac80485193d8ba33b6741145-1"&gt;&lt;/a&gt;gcc s7.c -o repl -DWITH_MAIN -I. -O2 -g -ldl -lm -Wl,-export-dynamic
+&lt;pre class="code bash"&gt;&lt;a name="rest_code_9b2a6250550d4e51b91bd19a9526078b-1"&gt;&lt;/a&gt;gcc s7.c -o repl -DWITH_MAIN -I. -O2 -g -ldl -lm -Wl,-export-dynamic
 &lt;/pre&gt;&lt;p&gt;It turns out that on macOS, whose &lt;span class="command"&gt;ld&lt;/span&gt; (from clang) doesn't
 understand &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;-export-dynamic&lt;/span&gt;&lt;/code&gt;, you have to do&lt;/p&gt;
-&lt;pre class="code bash"&gt;&lt;a name="rest_code_1e92afc022d447acb1bf21b2f97f70e4-1"&gt;&lt;/a&gt;gcc s7.c -o repl -DWITH_MAIN -I. -O2 -g -ldl -lm -Wl,-dynamic
+&lt;pre class="code bash"&gt;&lt;a name="rest_code_304486410e684a75acf277424daa9c10-1"&gt;&lt;/a&gt;gcc s7.c -o repl -DWITH_MAIN -I. -O2 -g -ldl -lm -Wl,-dynamic
 &lt;/pre&gt;&lt;p&gt;Then you need to do&lt;/p&gt;
-&lt;pre class="code bash"&gt;&lt;a name="rest_code_68dc2afcb1c24d3da06ff1d1b5a3754f-1"&gt;&lt;/a&gt;./repl libc.scm
+&lt;pre class="code bash"&gt;&lt;a name="rest_code_d8513336925f4a618f7a73d799a82a25-1"&gt;&lt;/a&gt;./repl libc.scm
 &lt;/pre&gt;&lt;p&gt;which seems to generate &lt;span class="file"&gt;libc_s7.c&lt;/span&gt; and compile it into
 &lt;span class="file"&gt;libc_s.so&lt;/span&gt;.   Then you can run the &lt;a class="reference external" href="https://tkurtbond.github.io/pages/computer-vocabulary/#REPL"&gt;REPL&lt;/a&gt;:&lt;/p&gt;
-&lt;pre class="code bash"&gt;&lt;a name="rest_code_c400b5a0420141fe99ee53a8efda3a9a-1"&gt;&lt;/a&gt;./repl
+&lt;pre class="code bash"&gt;&lt;a name="rest_code_ff654cc054a84540b2fb75e4f1cb8218-1"&gt;&lt;/a&gt;./repl
 &lt;/pre&gt;&lt;p&gt;which, from looking at &lt;span class="file"&gt;s7.c&lt;/span&gt;, loads &lt;span class="file"&gt;repl.scm&lt;/span&gt;.
 Unfortunately, I don't understand the repl commands, except for
 &lt;code class="docutils literal"&gt;pwd&lt;/code&gt; and &lt;code class="docutils literal"&gt;cd&lt;/code&gt;.  Oh, and &lt;code class="docutils literal"&gt;(exit)&lt;/code&gt; exits the repl.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Last edited: 2020-08-03 16:03:57 EDT&lt;/em&gt;&lt;/p&gt;
 &lt;!-- Local Variables:
 time-stamp-format: "%04y-%02m-%02d %02H:%02M:%02S %Z"
 time-stamp-start: "Last edited:[ \t]+\\\\?"
 time-stamp-end: "\\*\\\\?\n"
+time-stamp-line-limit: -20
 End: --&gt;&lt;/div&gt;</description><category>ld</category><category>macsOS</category><category>s7</category><category>scheme</category><guid>https://tkurtbond.github.io/posts/2020/08/03/compiling-s7-scheme-on-macos/</guid><pubDate>Mon, 03 Aug 2020 18:17:15 GMT</pubDate></item><item><title>Paragraph Justification in groff and TeX</title><link>https://tkurtbond.github.io/posts/2020/07/31/paragraph-justification-in-groff-and-tex/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;p&gt;An interesting message thread developed on the groff &lt;a class="reference external" href="https://lists.gnu.org/archive/html/groff/"&gt;mailing list&lt;/a&gt;
 about various features of &lt;span class="app"&gt;Groff&lt;/span&gt; and &lt;span class="app"&gt;Heirloom Troff&lt;/span&gt;, with
 a mention of &lt;span class="app"&gt;neatroff&lt;/span&gt;.  In particular, Steve Izma's post (&lt;a class="reference external" href="https://lists.gnu.org/archive/html/groff/2020-07/msg00092.html"&gt;P1&lt;/a&gt;)
@@ -31,8 +32,7 @@ Line-Breaking Algorithm (&lt;a class="reference external" href="http://www.eprg.
 writing this post I ran across another paper, “Global multiple
 objective line breaking” by Alex Holkner (&lt;a class="reference external" href="https://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.585.8487"&gt;GMOLB1&lt;/a&gt;, &lt;a class="reference external" href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.585.8487&amp;amp;rep=rep1&amp;amp;type=pdf"&gt;GMOLB2&lt;/a&gt;) that explores
 another line breaking algorithm and references some of the other
-papers on the subject.&lt;/p&gt;</description><category>groff</category><category>heirloom troff</category><category>knuth-plass line-breaking algorithm</category><category>neatroff</category><category>tex</category><guid>https://tkurtbond.github.io/posts/2020/07/31/paragraph-justification-in-groff-and-tex/</guid><pubDate>Sat, 01 Aug 2020 02:42:15 GMT</pubDate></item><item><title>Need to specify a file in a GNUmakefile that starts with ~?</title><link>https://tkurtbond.github.io/posts/2020/07/08/need-to-specify-a-file-in-a-gnumakefile-that-starts-with/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;em&gt;Last edited: 2020-07-10 18:47:10 EDT&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;Like on macOS Catalina where you can't have directories outside your
+papers on the subject.&lt;/p&gt;</description><category>groff</category><category>heirloom troff</category><category>knuth-plass line-breaking algorithm</category><category>neatroff</category><category>tex</category><guid>https://tkurtbond.github.io/posts/2020/07/31/paragraph-justification-in-groff-and-tex/</guid><pubDate>Sat, 01 Aug 2020 02:42:15 GMT</pubDate></item><item><title>Need to specify a file in a GNUmakefile that starts with ~?</title><link>https://tkurtbond.github.io/posts/2020/07/08/need-to-specify-a-file-in-a-gnumakefile-that-starts-with/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;Like on macOS Catalina where you can't have directories outside your
 home directory any more, so need to refer to the directory you
 manually installed some software to?  You can't just include the raw
 &lt;span class="file"&gt;~/where/ever&lt;/span&gt; in that PATH in the GNUmakefile because the
@@ -43,32 +43,33 @@ sets the path.  It doesn't do “Tilde Expansion” on each part of the
 PATH when it goes looking things up in the path.  So, you have to get
 that expansion done manually if you set it in a GNUmakefile.&lt;/p&gt;
 &lt;p&gt;Anyway, This ugly hack works:&lt;/p&gt;
-&lt;pre class="code makefile"&gt;&lt;a name="rest_code_baa9a1d905ee4dfcaee7bf182725c166-1"&gt;&lt;/a&gt;&lt;span class="k"&gt;export &lt;/span&gt;&lt;span class="nv"&gt;PATH&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="k"&gt;$(&lt;/span&gt;shell &lt;span class="nb"&gt;eval&lt;/span&gt; &lt;span class="nv"&gt;dir&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'~/sw/versions/heirloom-doctools/git/ucb'&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
-&lt;a name="rest_code_baa9a1d905ee4dfcaee7bf182725c166-2"&gt;&lt;/a&gt;                 &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="nv"&gt;$$&lt;/span&gt;dir&lt;span class="o"&gt;)&lt;/span&gt;:&lt;span class="k"&gt;$(&lt;/span&gt;PATH&lt;span class="k"&gt;)&lt;/span&gt;
-&lt;a name="rest_code_baa9a1d905ee4dfcaee7bf182725c166-3"&gt;&lt;/a&gt;&lt;span class="k"&gt;export &lt;/span&gt;&lt;span class="nv"&gt;TROFFFONTS&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="k"&gt;$(&lt;/span&gt;shell &lt;span class="nb"&gt;eval&lt;/span&gt; &lt;span class="nv"&gt;dir&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'~/Library/Fonts'&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
-&lt;a name="rest_code_baa9a1d905ee4dfcaee7bf182725c166-4"&gt;&lt;/a&gt;        &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="nv"&gt;$$&lt;/span&gt;dir&lt;span class="o"&gt;)&lt;/span&gt;:/Library/Fonts
-&lt;a name="rest_code_baa9a1d905ee4dfcaee7bf182725c166-5"&gt;&lt;/a&gt;
-&lt;a name="rest_code_baa9a1d905ee4dfcaee7bf182725c166-6"&gt;&lt;/a&gt;&lt;span class="nf"&gt;all&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
-&lt;a name="rest_code_baa9a1d905ee4dfcaee7bf182725c166-7"&gt;&lt;/a&gt;        @echo &lt;span class="nv"&gt;PATH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;PATH&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;
-&lt;a name="rest_code_baa9a1d905ee4dfcaee7bf182725c166-8"&gt;&lt;/a&gt;        @echo
-&lt;a name="rest_code_baa9a1d905ee4dfcaee7bf182725c166-9"&gt;&lt;/a&gt;        @echo &lt;span class="nv"&gt;TROFFFONTS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;TROFFFONTS&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;
-&lt;a name="rest_code_baa9a1d905ee4dfcaee7bf182725c166-10"&gt;&lt;/a&gt;        @echo
-&lt;a name="rest_code_baa9a1d905ee4dfcaee7bf182725c166-11"&gt;&lt;/a&gt;        @echo -n &lt;span class="s1"&gt;'"type troff" returns '&lt;/span&gt;
-&lt;a name="rest_code_baa9a1d905ee4dfcaee7bf182725c166-12"&gt;&lt;/a&gt;        @type troff
+&lt;pre class="code makefile"&gt;&lt;a name="rest_code_e00cb8947da445d9a71463f3123a024d-1"&gt;&lt;/a&gt;&lt;span class="k"&gt;export &lt;/span&gt;&lt;span class="nv"&gt;PATH&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="k"&gt;$(&lt;/span&gt;shell &lt;span class="nb"&gt;eval&lt;/span&gt; &lt;span class="nv"&gt;dir&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'~/sw/versions/heirloom-doctools/git/ucb'&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;a name="rest_code_e00cb8947da445d9a71463f3123a024d-2"&gt;&lt;/a&gt;                 &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="nv"&gt;$$&lt;/span&gt;dir&lt;span class="o"&gt;)&lt;/span&gt;:&lt;span class="k"&gt;$(&lt;/span&gt;PATH&lt;span class="k"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_e00cb8947da445d9a71463f3123a024d-3"&gt;&lt;/a&gt;&lt;span class="k"&gt;export &lt;/span&gt;&lt;span class="nv"&gt;TROFFFONTS&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="k"&gt;$(&lt;/span&gt;shell &lt;span class="nb"&gt;eval&lt;/span&gt; &lt;span class="nv"&gt;dir&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'~/Library/Fonts'&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;a name="rest_code_e00cb8947da445d9a71463f3123a024d-4"&gt;&lt;/a&gt;        &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="nv"&gt;$$&lt;/span&gt;dir&lt;span class="o"&gt;)&lt;/span&gt;:/Library/Fonts
+&lt;a name="rest_code_e00cb8947da445d9a71463f3123a024d-5"&gt;&lt;/a&gt;
+&lt;a name="rest_code_e00cb8947da445d9a71463f3123a024d-6"&gt;&lt;/a&gt;&lt;span class="nf"&gt;all&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+&lt;a name="rest_code_e00cb8947da445d9a71463f3123a024d-7"&gt;&lt;/a&gt;        @echo &lt;span class="nv"&gt;PATH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;PATH&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;
+&lt;a name="rest_code_e00cb8947da445d9a71463f3123a024d-8"&gt;&lt;/a&gt;        @echo
+&lt;a name="rest_code_e00cb8947da445d9a71463f3123a024d-9"&gt;&lt;/a&gt;        @echo &lt;span class="nv"&gt;TROFFFONTS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;TROFFFONTS&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;
+&lt;a name="rest_code_e00cb8947da445d9a71463f3123a024d-10"&gt;&lt;/a&gt;        @echo
+&lt;a name="rest_code_e00cb8947da445d9a71463f3123a024d-11"&gt;&lt;/a&gt;        @echo -n &lt;span class="s1"&gt;'"type troff" returns '&lt;/span&gt;
+&lt;a name="rest_code_e00cb8947da445d9a71463f3123a024d-12"&gt;&lt;/a&gt;        @type troff
 &lt;/pre&gt;&lt;p&gt;Put this in a file somewhere and invoke &lt;span class="app"&gt;GNU make&lt;/span&gt; on it and it prints:&lt;/p&gt;
-&lt;pre class="code text"&gt;&lt;a name="rest_code_cb83aadd558b4eb68f89956e69c13e7a-1"&gt;&lt;/a&gt;PATH=/Users/tkb/sw/versions/heirloom-doctools/git/ucb:/Users/tkb/local/rndbin:/Users/tkb/.cargo/bin:/Users/tkb/.nimble/bin:/usr/local/opt/libxslt/bin:/usr/local/opt/libxml2/bin:/Users/tkb/sw/versions/mew/git/bin:/Users/tkb/sw/versions/groff-git/bin:/Users/tkb/sw/versions/chibi-scheme/git/bin:/usr/local/opt/tcl-tk/bin:/usr/local/opt/expat/bin:/Users/tkb/.opam/default/bin:/usr/local/opt/texinfo/bin:/usr/local/opt/gnu-sed/libexec/gnubin:/usr/local/opt/findutils/libexec/gnubin:/usr/local/opt/curl/bin:/usr/local/opt/coreutils/libexec/gnubin:/Users/tkb/.local/bin:/Users/tkb/context-osx-64/tex/texmf-osx-64/bin:/Applications/Emacs.app/Contents/MacOS/bin:/Users/tkb/local/unix/bin:/Users/tkb/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:/opt/X11/bin:/Users/tkb/local/unix/rndbin:/Applications/Racket v7.5/bin:/Users/tkb/go/bin:/Applications/Emacs.app/Contents/MacOS/bin-x86_64-10_14:/Applications/Emacs.app/Contents/MacOS/libexec-x86_64-10_14
-&lt;a name="rest_code_cb83aadd558b4eb68f89956e69c13e7a-2"&gt;&lt;/a&gt;
-&lt;a name="rest_code_cb83aadd558b4eb68f89956e69c13e7a-3"&gt;&lt;/a&gt;TROFFFONTS=/Users/tkb/Library/Fonts:/Library/Fonts
-&lt;a name="rest_code_cb83aadd558b4eb68f89956e69c13e7a-4"&gt;&lt;/a&gt;
-&lt;a name="rest_code_cb83aadd558b4eb68f89956e69c13e7a-5"&gt;&lt;/a&gt;"type troff" returns troff is /Users/tkb/sw/versions/heirloom-doctools/git/ucb/troff
+&lt;pre class="code text"&gt;&lt;a name="rest_code_463f12220e524c1395203f50747f1004-1"&gt;&lt;/a&gt;PATH=/Users/tkb/sw/versions/heirloom-doctools/git/ucb:/Users/tkb/local/rndbin:/Users/tkb/.cargo/bin:/Users/tkb/.nimble/bin:/usr/local/opt/libxslt/bin:/usr/local/opt/libxml2/bin:/Users/tkb/sw/versions/mew/git/bin:/Users/tkb/sw/versions/groff-git/bin:/Users/tkb/sw/versions/chibi-scheme/git/bin:/usr/local/opt/tcl-tk/bin:/usr/local/opt/expat/bin:/Users/tkb/.opam/default/bin:/usr/local/opt/texinfo/bin:/usr/local/opt/gnu-sed/libexec/gnubin:/usr/local/opt/findutils/libexec/gnubin:/usr/local/opt/curl/bin:/usr/local/opt/coreutils/libexec/gnubin:/Users/tkb/.local/bin:/Users/tkb/context-osx-64/tex/texmf-osx-64/bin:/Applications/Emacs.app/Contents/MacOS/bin:/Users/tkb/local/unix/bin:/Users/tkb/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:/opt/X11/bin:/Users/tkb/local/unix/rndbin:/Applications/Racket v7.5/bin:/Users/tkb/go/bin:/Applications/Emacs.app/Contents/MacOS/bin-x86_64-10_14:/Applications/Emacs.app/Contents/MacOS/libexec-x86_64-10_14
+&lt;a name="rest_code_463f12220e524c1395203f50747f1004-2"&gt;&lt;/a&gt;
+&lt;a name="rest_code_463f12220e524c1395203f50747f1004-3"&gt;&lt;/a&gt;TROFFFONTS=/Users/tkb/Library/Fonts:/Library/Fonts
+&lt;a name="rest_code_463f12220e524c1395203f50747f1004-4"&gt;&lt;/a&gt;
+&lt;a name="rest_code_463f12220e524c1395203f50747f1004-5"&gt;&lt;/a&gt;"type troff" returns troff is /Users/tkb/sw/versions/heirloom-doctools/git/ucb/troff
 &lt;/pre&gt;&lt;p&gt;(Yes, my path may be a little excessive.)&lt;/p&gt;
 &lt;p&gt;Unfortunately I haven't figured out how to do this with the &lt;span class="app"&gt;BSD make&lt;/span&gt;s.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Last edited: 2020-08-03 16:03:19 EDT&lt;/em&gt;&lt;/p&gt;
 &lt;!-- Local Variables:
 time-stamp-format: "%04y-%02m-%02d %02H:%02M:%02S %Z"
 time-stamp-start: "Last edited:[ \t]+\\\\?"
 time-stamp-end: "\\*\\\\?\n"
-End: --&gt;&lt;/div&gt;</description><category>gnu make</category><category>macos catalina</category><guid>https://tkurtbond.github.io/posts/2020/07/08/need-to-specify-a-file-in-a-gnumakefile-that-starts-with/</guid><pubDate>Wed, 08 Jul 2020 10:09:38 GMT</pubDate></item><item><title>Text Subtleties</title><link>https://tkurtbond.github.io/posts/2020/07/07/text-subtleties/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;em&gt;Last edited: 2020-07-08 04:51:20 EDT&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;I just noticed that when &lt;a class="reference external" href="https://www.gnu.org/software/wget/"&gt;wget&lt;/a&gt; tells you the filename of file it just
+time-stamp-line-limit: -20
+End: --&gt;&lt;/div&gt;</description><category>gnu make</category><category>macos catalina</category><guid>https://tkurtbond.github.io/posts/2020/07/08/need-to-specify-a-file-in-a-gnumakefile-that-starts-with/</guid><pubDate>Wed, 08 Jul 2020 10:09:38 GMT</pubDate></item><item><title>Text Subtleties</title><link>https://tkurtbond.github.io/posts/2020/07/07/text-subtleties/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;I just noticed that when &lt;a class="reference external" href="https://www.gnu.org/software/wget/"&gt;wget&lt;/a&gt; tells you the filename of file it just
 saved, if your &lt;code class="docutils literal"&gt;LANG=C&lt;/code&gt; then it surrounds it with apostrophes ('), but
 if your &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;LANG=en_US.UTF-8&lt;/span&gt;&lt;/code&gt; then it surrounds it with &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Unicode"&gt;Unicode&lt;/a&gt; LEFT SINGLE
 QUOTATION MARK (‘)and RIGHT SINGLE QUOTATION MARK (’).  I appreciate
@@ -87,10 +88,12 @@ character you put in your source you can just use &lt;span class="command"&gt;xe
 as part of your commands to turn it into PDF.  And sometimes, when I'm
 feeling whimsical, I use &lt;span class="app"&gt;Heirloom Troff&lt;/span&gt;, from the &lt;a class="reference external" href="https://n-t-roff.github.io/heirloom/doctools.html"&gt;Heirloom
 Documentation Tools&lt;/a&gt;, which understands UTF-8 natively.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Last edited: 2020-08-03 16:02:52 EDT&lt;/em&gt;&lt;/p&gt;
 &lt;!-- Local Variables:
 time-stamp-format: "%04y-%02m-%02d %02H:%02M:%02S %Z"
 time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
 time-stamp-end: "\\*\\\\?\n"
+time-stamp-line-limit: -20
 End: --&gt;&lt;/div&gt;</description><category>context</category><category>groff</category><category>heirloom troff</category><category>text</category><category>unicode</category><category>utf-8</category><category>xelatex</category><guid>https://tkurtbond.github.io/posts/2020/07/07/text-subtleties/</guid><pubDate>Tue, 07 Jul 2020 23:05:13 GMT</pubDate></item><item><title>Line number anchors in pandoc's HTML output for codeblocks with highlighting mess up Gmail text/plain multipart alternative</title><link>https://tkurtbond.github.io/posts/2020/07/05/line-number-anchors-in-pandocs-html-output-for-codeblocks-with-highlighting-mess-up-gmail-textplain-multipart-alternative/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;I’ve found that if I write something in &lt;a class="reference external" href="https://docutils.sourceforge.io/rst.html"&gt;ReStructuredText&lt;/a&gt;, create HTML
 from it and embed a stylesheet with the proper css in the
 &lt;code class="file docutils literal"&gt;.html&lt;/code&gt; file using &lt;a class="reference external" href="https://pandoc.org/"&gt;pandoc&lt;/a&gt;’s &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;--include-in-header&lt;/span&gt;&lt;/code&gt; option that

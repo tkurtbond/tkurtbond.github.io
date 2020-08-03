@@ -1,8 +1,8 @@
 .. title: Colophon
 .. slug: colophon
 .. date: 2019-11-06 12:02:03 UTC-05:00
-.. tags: 
-.. category: 
+.. tags: website dtd,dsssl,docbook,xml,sgml,xsl
+.. category: blog
 .. link: 
 .. description: 
 .. type: text
@@ -56,14 +56,14 @@ Reluctantly I turned to the currently supported Website DTD and XSL
 stylesheets, along with the DocBook DTD and XSL stylesheets they build
 upon, along with an XSL processor, :program:`xsltproc`.  There had
 been a number of changes to the DTD, which required many changes to my
-website xml files.  Most annoying was that at some point during the
+website XML files.  Most annoying was that at some point during the
 development of the XSL stylesheets for the Website DTD the
 organization as a single XML document had been abandoned, and replaced
 by a multiple document model that required processing each XML file
 separately and maintaining a separate multiple-document database of
 linking information.  This meant that instead of including my entities
 once in the original master file I had to include them in each and
-every xml file.  This also meant that all the internal links I had
+every XML file.  This also meant that all the internal links I had
 used previously had to be replaced with interdocument links using
 olink .  Unfortunately, I found that FreeBSD's ports of the Website
 DTD and XSL stylesheets and the DocBook XSL Stylesheets were each a
@@ -71,16 +71,16 @@ revision behind, which caused linking between documents to not work.
 After downloading and installing current copies of these I finally got
 things to work.
 
-Unfortunately, I found that, at least using :program:`xsltproc`, the
+Alas, I found that, at least using :program:`xsltproc`, the
 new process using XSL was *much* slower and more resource intensive:
 the old DSSSL-based process took about 2.5 minutes and never exceed 40
 megabytes of resident memory, while the new XSL-based process took 20
-minutes (on a faster machine) and uses 70 or more megabytes of
+minutes (on a faster machine) and used 70 or more megabytes of
 resident memory for each file, and during processing the interdocument
 link database reaches over 300 megabytes of resident storage.
 Admittedly, some of this was due to the change in the Website DTD from
 the one document model to the multiple document model, but still it
-seems excessive.
+seemed excessive.
 
 .. _sphinx-built:
 
@@ -106,18 +106,34 @@ too, with a link to the blog on the front page of my website.
 
 .. _pyBloxsom: https://pyblosxom.github.io/
 
+Eventually, the computer that I used to host my web site and blog went
+away, and I didn't have a web site and blog for several years.
+
 
 The Present (2019-11-06 onward)
 --------------------------------
 
 I've :doc:`switched <converting-my-pybloxsom-blog-into-a-nikola-blog>`
-over to using Nikola_ to generate the site and blog, and am hosting it
-at `GitHub <https://tkurtbond.github.io>`__.  I wrote a script to
-convert my pybloxsom blog ``*.rst`` files to the format that Nikola
-uses in a few hours and then spent much more time manually fixing
-broken internal links. 😀  I converted some of the web pages from my
-website over to static pages on the new Nikola-built blog.
+over to using Nikola_ to generate the site and blog, and hosted it at
+`GitHub <https://tkurtbond.github.io>`__.  I wrote a script to convert
+my pybloxsom blog ``*.rst`` files to the format that Nikola uses,
+which took a couple hours though the script ended up fairly short, and
+then spent much more time manually fixing broken internal links. 😀 I
+converted some of the web pages from my website over to static pages
+on the new Nikola-built blog.
 
-Nikola has much more functionality than I'm currently using.
+Nikola has much more functionality than I'm currently using, but it
+has some nice clean themes and they are simple enough that I can make
+simple changes to them.  I'm enjoying blogging again.
 
 .. _Nikola: https://getnikola.com/
+
+*Last edited: 2020-08-03 15:57:13 EDT*
+
+..
+   Local Variables:
+   time-stamp-format: "%04y-%02m-%02d %02H:%02M:%02S %Z"
+   time-stamp-start: "Last edited:[ \t]+\\\\?"
+   time-stamp-end: "\\*\\\\?\n"
+   time-stamp-line-limit: -20
+   End:

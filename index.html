@@ -61,30 +61,31 @@
 </div>
     </header><div class="e-content entry-content">
     <div>
-<!-- *Last edited: 2020-08-03 14:49:53 EDT* -->
 <p>To compile <a class="reference external" href="https://ccrma.stanford.edu/software/snd/snd/s7.html">s7 scheme</a> with a standalone <a class="reference external" href="pages/computer-vocabulary/#REPL">REPL</a>, s7's home page says to
 add the empty file <span class="file">mus-config.h</span> to the source directory, then
 (in Linux):</p>
-<pre class="code bash"><a name="rest_code_a607734eac80485193d8ba33b6741145-1"></a>gcc s7.c -o repl -DWITH_MAIN -I. -O2 -g -ldl -lm -Wl,-export-dynamic
+<pre class="code bash"><a name="rest_code_9b2a6250550d4e51b91bd19a9526078b-1"></a>gcc s7.c -o repl -DWITH_MAIN -I. -O2 -g -ldl -lm -Wl,-export-dynamic
 </pre>
 <p>It turns out that on macOS, whose <span class="command">ld</span> (from clang) doesn't
 understand <code class="docutils literal"><span class="pre">-export-dynamic</span></code>, you have to do</p>
-<pre class="code bash"><a name="rest_code_1e92afc022d447acb1bf21b2f97f70e4-1"></a>gcc s7.c -o repl -DWITH_MAIN -I. -O2 -g -ldl -lm -Wl,-dynamic
+<pre class="code bash"><a name="rest_code_304486410e684a75acf277424daa9c10-1"></a>gcc s7.c -o repl -DWITH_MAIN -I. -O2 -g -ldl -lm -Wl,-dynamic
 </pre>
 <p>Then you need to do</p>
-<pre class="code bash"><a name="rest_code_68dc2afcb1c24d3da06ff1d1b5a3754f-1"></a>./repl libc.scm
+<pre class="code bash"><a name="rest_code_d8513336925f4a618f7a73d799a82a25-1"></a>./repl libc.scm
 </pre>
 <p>which seems to generate <span class="file">libc_s7.c</span> and compile it into
 <span class="file">libc_s.so</span>.   Then you can run the <a class="reference external" href="pages/computer-vocabulary/#REPL">REPL</a>:</p>
-<pre class="code bash"><a name="rest_code_c400b5a0420141fe99ee53a8efda3a9a-1"></a>./repl
+<pre class="code bash"><a name="rest_code_ff654cc054a84540b2fb75e4f1cb8218-1"></a>./repl
 </pre>
 <p>which, from looking at <span class="file">s7.c</span>, loads <span class="file">repl.scm</span>.
 Unfortunately, I don't understand the repl commands, except for
 <code class="docutils literal">pwd</code> and <code class="docutils literal">cd</code>.  Oh, and <code class="docutils literal">(exit)</code> exits the repl.</p>
+<p><em>Last edited: 2020-08-03 16:03:57 EDT</em></p>
 <!-- Local Variables:
 time-stamp-format: "%04y-%02m-%02d %02H:%02M:%02S %Z"
 time-stamp-start: "Last edited:[ \t]+\\\\?"
 time-stamp-end: "\\*\\\\?\n"
+time-stamp-line-limit: -20
 End: -->
 </div>
     <nav><ul itemprop="keywords" class="tags">
@@ -265,7 +266,6 @@ to figure out a <a class="reference external" href="http://rpgvirtualtabletop.wi
 </div>
     </header><div class="e-content entry-content">
     <div>
-<p><em>Last edited: 2020-07-10 18:47:10 EDT</em></p>
 <p>Like on macOS Catalina where you can't have directories outside your
 home directory any more, so need to refer to the directory you
 manually installed some software to?  You can't just include the raw
@@ -277,32 +277,34 @@ sets the path.  It doesn't do “Tilde Expansion” on each part of the
 PATH when it goes looking things up in the path.  So, you have to get
 that expansion done manually if you set it in a GNUmakefile.</p>
 <p>Anyway, This ugly hack works:</p>
-<pre class="code makefile"><a name="rest_code_baa9a1d905ee4dfcaee7bf182725c166-1"></a><span class="k">export </span><span class="nv">PATH</span> <span class="o">:=</span> <span class="k">$(</span>shell <span class="nb">eval</span> <span class="nv">dir</span><span class="o">=</span><span class="s1">'~/sw/versions/heirloom-doctools/git/ucb'</span><span class="p">;</span><span class="se">\</span>
-<a name="rest_code_baa9a1d905ee4dfcaee7bf182725c166-2"></a>                 <span class="nb">echo</span> <span class="nv">$$</span>dir<span class="o">)</span>:<span class="k">$(</span>PATH<span class="k">)</span>
-<a name="rest_code_baa9a1d905ee4dfcaee7bf182725c166-3"></a><span class="k">export </span><span class="nv">TROFFFONTS</span> <span class="o">:=</span> <span class="k">$(</span>shell <span class="nb">eval</span> <span class="nv">dir</span><span class="o">=</span><span class="s1">'~/Library/Fonts'</span><span class="p">;</span><span class="se">\</span>
-<a name="rest_code_baa9a1d905ee4dfcaee7bf182725c166-4"></a>        <span class="nb">echo</span> <span class="nv">$$</span>dir<span class="o">)</span>:/Library/Fonts
-<a name="rest_code_baa9a1d905ee4dfcaee7bf182725c166-5"></a>
-<a name="rest_code_baa9a1d905ee4dfcaee7bf182725c166-6"></a><span class="nf">all</span><span class="o">:</span>
-<a name="rest_code_baa9a1d905ee4dfcaee7bf182725c166-7"></a>        @echo <span class="nv">PATH</span><span class="o">=</span><span class="si">${</span><span class="nv">PATH</span><span class="si">}</span>
-<a name="rest_code_baa9a1d905ee4dfcaee7bf182725c166-8"></a>        @echo
-<a name="rest_code_baa9a1d905ee4dfcaee7bf182725c166-9"></a>        @echo <span class="nv">TROFFFONTS</span><span class="o">=</span><span class="si">${</span><span class="nv">TROFFFONTS</span><span class="si">}</span>
-<a name="rest_code_baa9a1d905ee4dfcaee7bf182725c166-10"></a>        @echo
-<a name="rest_code_baa9a1d905ee4dfcaee7bf182725c166-11"></a>        @echo -n <span class="s1">'"type troff" returns '</span>
-<a name="rest_code_baa9a1d905ee4dfcaee7bf182725c166-12"></a>        @type troff
+<pre class="code makefile"><a name="rest_code_e00cb8947da445d9a71463f3123a024d-1"></a><span class="k">export </span><span class="nv">PATH</span> <span class="o">:=</span> <span class="k">$(</span>shell <span class="nb">eval</span> <span class="nv">dir</span><span class="o">=</span><span class="s1">'~/sw/versions/heirloom-doctools/git/ucb'</span><span class="p">;</span><span class="se">\</span>
+<a name="rest_code_e00cb8947da445d9a71463f3123a024d-2"></a>                 <span class="nb">echo</span> <span class="nv">$$</span>dir<span class="o">)</span>:<span class="k">$(</span>PATH<span class="k">)</span>
+<a name="rest_code_e00cb8947da445d9a71463f3123a024d-3"></a><span class="k">export </span><span class="nv">TROFFFONTS</span> <span class="o">:=</span> <span class="k">$(</span>shell <span class="nb">eval</span> <span class="nv">dir</span><span class="o">=</span><span class="s1">'~/Library/Fonts'</span><span class="p">;</span><span class="se">\</span>
+<a name="rest_code_e00cb8947da445d9a71463f3123a024d-4"></a>        <span class="nb">echo</span> <span class="nv">$$</span>dir<span class="o">)</span>:/Library/Fonts
+<a name="rest_code_e00cb8947da445d9a71463f3123a024d-5"></a>
+<a name="rest_code_e00cb8947da445d9a71463f3123a024d-6"></a><span class="nf">all</span><span class="o">:</span>
+<a name="rest_code_e00cb8947da445d9a71463f3123a024d-7"></a>        @echo <span class="nv">PATH</span><span class="o">=</span><span class="si">${</span><span class="nv">PATH</span><span class="si">}</span>
+<a name="rest_code_e00cb8947da445d9a71463f3123a024d-8"></a>        @echo
+<a name="rest_code_e00cb8947da445d9a71463f3123a024d-9"></a>        @echo <span class="nv">TROFFFONTS</span><span class="o">=</span><span class="si">${</span><span class="nv">TROFFFONTS</span><span class="si">}</span>
+<a name="rest_code_e00cb8947da445d9a71463f3123a024d-10"></a>        @echo
+<a name="rest_code_e00cb8947da445d9a71463f3123a024d-11"></a>        @echo -n <span class="s1">'"type troff" returns '</span>
+<a name="rest_code_e00cb8947da445d9a71463f3123a024d-12"></a>        @type troff
 </pre>
 <p>Put this in a file somewhere and invoke <span class="app">GNU make</span> on it and it prints:</p>
-<pre class="code text"><a name="rest_code_cb83aadd558b4eb68f89956e69c13e7a-1"></a>PATH=/Users/tkb/sw/versions/heirloom-doctools/git/ucb:/Users/tkb/local/rndbin:/Users/tkb/.cargo/bin:/Users/tkb/.nimble/bin:/usr/local/opt/libxslt/bin:/usr/local/opt/libxml2/bin:/Users/tkb/sw/versions/mew/git/bin:/Users/tkb/sw/versions/groff-git/bin:/Users/tkb/sw/versions/chibi-scheme/git/bin:/usr/local/opt/tcl-tk/bin:/usr/local/opt/expat/bin:/Users/tkb/.opam/default/bin:/usr/local/opt/texinfo/bin:/usr/local/opt/gnu-sed/libexec/gnubin:/usr/local/opt/findutils/libexec/gnubin:/usr/local/opt/curl/bin:/usr/local/opt/coreutils/libexec/gnubin:/Users/tkb/.local/bin:/Users/tkb/context-osx-64/tex/texmf-osx-64/bin:/Applications/Emacs.app/Contents/MacOS/bin:/Users/tkb/local/unix/bin:/Users/tkb/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:/opt/X11/bin:/Users/tkb/local/unix/rndbin:/Applications/Racket v7.5/bin:/Users/tkb/go/bin:/Applications/Emacs.app/Contents/MacOS/bin-x86_64-10_14:/Applications/Emacs.app/Contents/MacOS/libexec-x86_64-10_14
-<a name="rest_code_cb83aadd558b4eb68f89956e69c13e7a-2"></a>
-<a name="rest_code_cb83aadd558b4eb68f89956e69c13e7a-3"></a>TROFFFONTS=/Users/tkb/Library/Fonts:/Library/Fonts
-<a name="rest_code_cb83aadd558b4eb68f89956e69c13e7a-4"></a>
-<a name="rest_code_cb83aadd558b4eb68f89956e69c13e7a-5"></a>"type troff" returns troff is /Users/tkb/sw/versions/heirloom-doctools/git/ucb/troff
+<pre class="code text"><a name="rest_code_463f12220e524c1395203f50747f1004-1"></a>PATH=/Users/tkb/sw/versions/heirloom-doctools/git/ucb:/Users/tkb/local/rndbin:/Users/tkb/.cargo/bin:/Users/tkb/.nimble/bin:/usr/local/opt/libxslt/bin:/usr/local/opt/libxml2/bin:/Users/tkb/sw/versions/mew/git/bin:/Users/tkb/sw/versions/groff-git/bin:/Users/tkb/sw/versions/chibi-scheme/git/bin:/usr/local/opt/tcl-tk/bin:/usr/local/opt/expat/bin:/Users/tkb/.opam/default/bin:/usr/local/opt/texinfo/bin:/usr/local/opt/gnu-sed/libexec/gnubin:/usr/local/opt/findutils/libexec/gnubin:/usr/local/opt/curl/bin:/usr/local/opt/coreutils/libexec/gnubin:/Users/tkb/.local/bin:/Users/tkb/context-osx-64/tex/texmf-osx-64/bin:/Applications/Emacs.app/Contents/MacOS/bin:/Users/tkb/local/unix/bin:/Users/tkb/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:/opt/X11/bin:/Users/tkb/local/unix/rndbin:/Applications/Racket v7.5/bin:/Users/tkb/go/bin:/Applications/Emacs.app/Contents/MacOS/bin-x86_64-10_14:/Applications/Emacs.app/Contents/MacOS/libexec-x86_64-10_14
+<a name="rest_code_463f12220e524c1395203f50747f1004-2"></a>
+<a name="rest_code_463f12220e524c1395203f50747f1004-3"></a>TROFFFONTS=/Users/tkb/Library/Fonts:/Library/Fonts
+<a name="rest_code_463f12220e524c1395203f50747f1004-4"></a>
+<a name="rest_code_463f12220e524c1395203f50747f1004-5"></a>"type troff" returns troff is /Users/tkb/sw/versions/heirloom-doctools/git/ucb/troff
 </pre>
 <p>(Yes, my path may be a little excessive.)</p>
 <p>Unfortunately I haven't figured out how to do this with the <span class="app">BSD make</span>s.</p>
+<p><em>Last edited: 2020-08-03 16:03:19 EDT</em></p>
 <!-- Local Variables:
 time-stamp-format: "%04y-%02m-%02d %02H:%02M:%02S %Z"
 time-stamp-start: "Last edited:[ \t]+\\\\?"
 time-stamp-end: "\\*\\\\?\n"
+time-stamp-line-limit: -20
 End: -->
 </div>
     <nav><ul itemprop="keywords" class="tags">
@@ -321,7 +323,6 @@ End: -->
 </div>
     </header><div class="e-content entry-content">
     <div>
-<p><em>Last edited: 2020-07-31 23:27:05 EDT</em></p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.drivethrurpg.com/product/197374/Auran-Empire-Primer?manufacturers_id=4277">Auran Empire Primer</a> for the <a class="reference external" href="https://www.drivethrurpg.com/product/99123/Adventurer-Conqueror-King-System?manufacturers_id=4277">Adventurer, Conqueror, King
 System</a> (ACKS) published by <a class="reference external" href="http://www.autarch.co/">Autarch LLC</a>, ©2016.</p></li>
@@ -376,10 +377,12 @@ indentured servitude, which the other nations regard as the same
 thing as as slavery.</p>
 </dd>
 </dl>
+<p><em>Last edited: 2020-08-03 16:02:24 EDT</em></p>
 <!-- Local Variables:
 time-stamp-format: "%04y-%02m-%02d %02H:%02M:%02S %Z"
 time-stamp-start: "Last edited:[ \t]+\\\\?"
 time-stamp-end: "\\*\\\\?\n"
+time-stamp-line-limit: -20
 End: -->
 </div>
     <nav><ul itemprop="keywords" class="tags">
@@ -400,7 +403,6 @@ End: -->
 </div>
     </header><div class="e-content entry-content">
     <div>
-<p><em>Last edited: 2020-07-08 04:51:20 EDT</em></p>
 <p>I just noticed that when <a class="reference external" href="https://www.gnu.org/software/wget/">wget</a> tells you the filename of file it just
 saved, if your <code class="docutils literal">LANG=C</code> then it surrounds it with apostrophes ('), but
 if your <code class="docutils literal"><span class="pre">LANG=en_US.UTF-8</span></code> then it surrounds it with <a class="reference external" href="https://en.wikipedia.org/wiki/Unicode">Unicode</a> LEFT SINGLE
@@ -420,10 +422,12 @@ character you put in your source you can just use <span class="command">xelatex<
 as part of your commands to turn it into PDF.  And sometimes, when I'm
 feeling whimsical, I use <span class="app">Heirloom Troff</span>, from the <a class="reference external" href="https://n-t-roff.github.io/heirloom/doctools.html">Heirloom
 Documentation Tools</a>, which understands UTF-8 natively.</p>
+<p><em>Last edited: 2020-08-03 16:02:52 EDT</em></p>
 <!-- Local Variables:
 time-stamp-format: "%04y-%02m-%02d %02H:%02M:%02S %Z"
 time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
 time-stamp-end: "\\*\\\\?\n"
+time-stamp-line-limit: -20
 End: -->
 </div>
     <nav><ul itemprop="keywords" class="tags">
@@ -447,7 +451,6 @@ End: -->
 </div>
     </header><div class="e-content entry-content">
     <div>
-<p>Last edited: 2020-07-07 20:16:14 EDT</p>
 <p>One of the things that I like about <a class="reference external" href="https://www.peginc.com/store/savage-worlds-adventure-edition-core-rules-pdf-swade/">Savage Worlds Adventure
 Edition</a> (SWADE) is that it fixed spears so that you can use them
 one-handed, but only get bonus to parry if you use both hands.  In
@@ -487,10 +490,12 @@ See <a class="reference external" href="https://www.youtube.com/watch?v=3XuhoFsz
 changing it so it can be used one-handed but losing the “Parry +1” in
 that case.  Maybe not, since a staff depends on strength for more of
 its damage than the mostly piercing spear.</p>
+<p>Last edited: 2020-07-07 20:16:14 EDT</p>
 <!-- Local Variables:
 time-stamp-format: "%04y-%02m-%02d %02H:%02M:%02S %Z"
 time-stamp-start: "Last edited:[ \t]+\\\\?"
 time-stamp-end: "\\\\?\n"
+time-stamp-line-limit: -20
 End: -->
 </div>
     <nav><ul itemprop="keywords" class="tags">

@@ -7,8 +7,6 @@
 .. description: 
 .. type: text
 
-*Last edited: 2020-07-31 23:27:05 EDT*
-
 - `Auran Empire Primer`__ for the `Adventurer, Conqueror, King
   System`__ (ACKS) published by `Autarch LLC`__, ©2016.
 
@@ -77,9 +75,12 @@ __ https://www.drivethrurpg.com/product/197374/Auran-Empire-Primer?manufacturers
 __ https://www.drivethrurpg.com/product/99123/Adventurer-Conqueror-King-System?manufacturers_id=4277
 __ http://www.autarch.co/
 
+*Last edited: 2020-08-03 16:02:24 EDT*
+
 ..
    Local Variables:
    time-stamp-format: "%04y-%02m-%02d %02H:%02M:%02S %Z"
    time-stamp-start: "Last edited:[ \t]+\\\\?"
    time-stamp-end: "\\*\\\\?\n"
+   time-stamp-line-limit: -20
    End:

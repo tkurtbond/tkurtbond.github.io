@@ -7,9 +7,7 @@
 .. description: 
 .. type: text
 
-.. role:: program(literal)
-
-*Last edited: 2020-07-08 05:47:14 EDT*
+.. role:: program
 
 This post is unfinished, alas.
 
@@ -244,10 +242,12 @@ custom poker chips for wounds, shaken
    `3 <http://www.indie-rpgs.com/viewtopic.php?t=7104>`__,
    `4 <http://www.indie-rpgs.com/viewtopic.php?t=7863>`__).
 
+*Last edited: 2020-08-03 16:01:42 EDT*
+
 ..
    Local Variables:
    time-stamp-format: "%04y-%02m-%02d %02H:%02M:%02S %Z"
    time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
    time-stamp-end: "\\*\\\\?\n"
+   time-stamp-line-limit: -20
    End:
-

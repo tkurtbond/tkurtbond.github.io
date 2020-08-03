@@ -77,30 +77,31 @@ gcc s7.c -o repl -DWITH_MAIN -I. -O2 -g -ldl -lm -Wl,-expo">
         
     </header><div class="e-content entry-content" itemprop="articleBody text">
     <div>
-<!-- *Last edited: 2020-08-03 14:49:53 EDT* -->
 <p>To compile <a class="reference external" href="https://ccrma.stanford.edu/software/snd/snd/s7.html">s7 scheme</a> with a standalone <a class="reference external" href="../../../../../pages/computer-vocabulary/#REPL">REPL</a>, s7's home page says to
 add the empty file <span class="file">mus-config.h</span> to the source directory, then
 (in Linux):</p>
-<pre class="code bash"><a name="rest_code_a607734eac80485193d8ba33b6741145-1"></a>gcc s7.c -o repl -DWITH_MAIN -I. -O2 -g -ldl -lm -Wl,-export-dynamic
+<pre class="code bash"><a name="rest_code_9b2a6250550d4e51b91bd19a9526078b-1"></a>gcc s7.c -o repl -DWITH_MAIN -I. -O2 -g -ldl -lm -Wl,-export-dynamic
 </pre>
 <p>It turns out that on macOS, whose <span class="command">ld</span> (from clang) doesn't
 understand <code class="docutils literal"><span class="pre">-export-dynamic</span></code>, you have to do</p>
-<pre class="code bash"><a name="rest_code_1e92afc022d447acb1bf21b2f97f70e4-1"></a>gcc s7.c -o repl -DWITH_MAIN -I. -O2 -g -ldl -lm -Wl,-dynamic
+<pre class="code bash"><a name="rest_code_304486410e684a75acf277424daa9c10-1"></a>gcc s7.c -o repl -DWITH_MAIN -I. -O2 -g -ldl -lm -Wl,-dynamic
 </pre>
 <p>Then you need to do</p>
-<pre class="code bash"><a name="rest_code_68dc2afcb1c24d3da06ff1d1b5a3754f-1"></a>./repl libc.scm
+<pre class="code bash"><a name="rest_code_d8513336925f4a618f7a73d799a82a25-1"></a>./repl libc.scm
 </pre>
 <p>which seems to generate <span class="file">libc_s7.c</span> and compile it into
 <span class="file">libc_s.so</span>.   Then you can run the <a class="reference external" href="../../../../../pages/computer-vocabulary/#REPL">REPL</a>:</p>
-<pre class="code bash"><a name="rest_code_c400b5a0420141fe99ee53a8efda3a9a-1"></a>./repl
+<pre class="code bash"><a name="rest_code_ff654cc054a84540b2fb75e4f1cb8218-1"></a>./repl
 </pre>
 <p>which, from looking at <span class="file">s7.c</span>, loads <span class="file">repl.scm</span>.
 Unfortunately, I don't understand the repl commands, except for
 <code class="docutils literal">pwd</code> and <code class="docutils literal">cd</code>.  Oh, and <code class="docutils literal">(exit)</code> exits the repl.</p>
+<p><em>Last edited: 2020-08-03 16:03:57 EDT</em></p>
 <!-- Local Variables:
 time-stamp-format: "%04y-%02m-%02d %02H:%02M:%02S %Z"
 time-stamp-start: "Last edited:[ \t]+\\\\?"
 time-stamp-end: "\\*\\\\?\n"
+time-stamp-line-limit: -20
 End: -->
 </div>
     </div>

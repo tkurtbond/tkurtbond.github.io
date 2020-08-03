@@ -7,14 +7,11 @@
 .. description: 
 .. type: text
 
-
-
 Rushing Valley D&D, Session #4
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 Thursday, 12 March 2009
 ~~~~~~~~~~~~~~~~~~~~~~~
-:version: 2010-02-08 00:15:00
-
+:version: 2020-08-03 16:00:14
 
 .. role:: comment
 .. role:: company
@@ -322,11 +319,9 @@ roleplaying bonus.
 
 Droston obviously needs to work on his anger issues.
 
-
-
-
 .. Local Variables:
 .. time-stamp-format: "%:y-%02m-%02d %02H:%02M:%02S"
 .. time-stamp-start: ":version:[ 	]+\\\\?"
 .. time-stamp-end: "\\\\?\n"
+.. time-stamp-line-limit: -20
 .. End: 
