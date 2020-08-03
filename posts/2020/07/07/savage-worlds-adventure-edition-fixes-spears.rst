@@ -7,8 +7,6 @@
 .. description: 
 .. type: text
 
-Last edited: 2020-07-07 20:16:14 EDT
-
 One of the things that I like about `Savage Worlds Adventure
 Edition`__ (SWADE) is that it fixed spears so that you can use them
 one-handed, but only get bonus to parry if you use both hands.  In
@@ -34,11 +32,14 @@ its damage than the mostly piercing spear.
 
 __ https://www.peginc.com/store/savage-worlds-adventure-edition-core-rules-pdf-swade/
 
+Last edited: 2020-07-07 20:16:14 EDT
+
 ..
    Local Variables:
    time-stamp-format: "%04y-%02m-%02d %02H:%02M:%02S %Z"
    time-stamp-start: "Last edited:[ \t]+\\\\?"
    time-stamp-end: "\\\\?\n"
+   time-stamp-line-limit: -20
    End:
 
 

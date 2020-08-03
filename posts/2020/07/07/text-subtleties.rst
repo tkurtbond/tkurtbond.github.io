@@ -11,8 +11,6 @@
 .. role:: file
 .. role:: command
 
-*Last edited: 2020-07-08 04:51:20 EDT*
-
 I just noticed that when wget_ tells you the filename of file it just
 saved, if your ``LANG=C`` then it surrounds it with apostrophes ('), but
 if your ``LANG=en_US.UTF-8`` then it surrounds it with Unicode_ LEFT SINGLE
@@ -45,9 +43,12 @@ Documentation Tools`__, which understands UTF-8 natively.
 .. _pandoc: https://pandoc.org/
 __ https://n-t-roff.github.io/heirloom/doctools.html
 
+*Last edited: 2020-08-03 16:02:52 EDT*
+
 ..
    Local Variables:
    time-stamp-format: "%04y-%02m-%02d %02H:%02M:%02S %Z"
    time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
    time-stamp-end: "\\*\\\\?\n"
+   time-stamp-line-limit: -20
    End:

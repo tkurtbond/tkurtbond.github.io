@@ -11,9 +11,6 @@
 .. role:: file
 .. role:: command
 
-.. 
-   *Last edited: 2020-08-03 14:49:53 EDT*
-
 To compile `s7 scheme`_ with a standalone REPL_, s7's home page says to
 add the empty file :file:`mus-config.h` to the source directory, then
 (in Linux):
@@ -49,10 +46,13 @@ Unfortunately, I don't understand the repl commands, except for
 .. _s7 scheme: https://ccrma.stanford.edu/software/snd/snd/s7.html
 .. _REPL: link://slug/computer-vocabulary#REPL
 
+*Last edited: 2020-08-03 16:03:57 EDT*
+
 ..
    Local Variables:
    time-stamp-format: "%04y-%02m-%02d %02H:%02M:%02S %Z"
    time-stamp-start: "Last edited:[ \t]+\\\\?"
    time-stamp-end: "\\*\\\\?\n"
+   time-stamp-line-limit: -20
    End:
 
