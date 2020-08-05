@@ -19,9 +19,9 @@ file and sometimes the resulting output files.  I process these files
 with pandoc_, of course.  If it is going to the mailing list I format
 it to HTML with a fancy style and cut and paste it from Chrome into
 gmail.  If it is going to be an issue report on GitHub I format it
-into ``.gfm`` (Github Flavored Markdown: GFM_) file because that’s
+into :file:`.gfm` (Github Flavored Markdown: GFM_) file because that’s
 what you write GitHub issues in and also format it into HTML to check
-that the ``.gfm`` is formed properly.  Typically when I’m writing the
+that the :file:`.gfm` is formed properly.  Typically when I’m writing the
 issue reST_ file I don’t use language names on code blocks for the
 syntax highlighting because that doesn’t seem to come out right in
 GFM.
