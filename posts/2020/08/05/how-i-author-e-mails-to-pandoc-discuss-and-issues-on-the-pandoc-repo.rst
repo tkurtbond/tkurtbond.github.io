@@ -104,7 +104,7 @@ Here is the e-mail reST_ source:
 
    lines for every class ``rolename`` in a span.  Would this be possible?
 
-Here is the ``GNUmakefile`` for it:
+Here is the :file:`GNUmakefile` for it:
 
 .. code:: makefile
 
@@ -252,7 +252,7 @@ The generated GFM_ is
 
        Mac OS X, Version 10.15.6, Build 19G73
 
-Here is the ``GNUmakefile`` for it:
+Here is the :file:`GNUmakefile` for it:
 
 .. code:: makefile
           
