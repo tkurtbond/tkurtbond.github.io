@@ -84,18 +84,19 @@ If yo'>
     <div>
 <p><a class="reference external" href="http://www.sbcl.org/">SBCL</a> and <a class="reference external" href="https://ccl.clozure.com/">CCL</a> and <a class="reference external" href="https://clisp.sourceforge.io/">CLISP</a> think binding a symbol defined with <code class="docutils literal">defconstant</code>
 is an error, so if you do</p>
-<pre class="code common-lisp"><a name="rest_code_15cceb98903f4b0ebb597968c238ae28-1"></a><span class="p">(</span><span class="nb">defconstant</span> <span class="nv">foo</span> <span class="s">"foo"</span><span class="p">)</span>
-<a name="rest_code_15cceb98903f4b0ebb597968c238ae28-2"></a><span class="p">(</span><span class="k">let</span> <span class="p">((</span><span class="nv">foo</span> <span class="s">"bar"</span><span class="p">))</span> <span class="nv">foo</span><span class="p">)</span>
+<pre class="code common-lisp"><a name="rest_code_d3813a4c43ca4e7ea0c0fdf154b5a509-1"></a><span class="p">(</span><span class="nb">defconstant</span> <span class="nv">foo</span> <span class="s">"foo"</span><span class="p">)</span>
+<a name="rest_code_d3813a4c43ca4e7ea0c0fdf154b5a509-2"></a><span class="p">(</span><span class="k">let</span> <span class="p">((</span><span class="nv">foo</span> <span class="s">"bar"</span><span class="p">))</span> <span class="nv">foo</span><span class="p">)</span>
 </pre>
 <p>you get an error.  But in <a class="reference external" href="https://abcl.org/">ABCL</a> and <a class="reference external" href="https://common-lisp.net/project/ecl/">ECL</a> you don’t.</p>
 <p>If you try</p>
-<pre class="code common-lisp"><a name="rest_code_3177d1bb213f461c91b485a91eda3c80-1"></a><span class="p">(</span><span class="nb">defun</span> <span class="nv">x</span> <span class="p">()</span> <span class="p">(</span><span class="k">let</span> <span class="p">((</span><span class="nv">foo</span> <span class="s">"bar"</span><span class="p">))</span> <span class="nv">foo</span><span class="p">))</span>
+<pre class="code common-lisp"><a name="rest_code_8166890ab4df49698133e637edb86e88-1"></a><span class="p">(</span><span class="nb">defun</span> <span class="nv">x</span> <span class="p">()</span> <span class="p">(</span><span class="k">let</span> <span class="p">((</span><span class="nv">foo</span> <span class="s">"bar"</span><span class="p">))</span> <span class="nv">foo</span><span class="p">))</span>
 </pre>
 <p>in SBCL and CCL you get an error when the function is compiled.
 In SBCL the function is defined, but always gives an error when run.
 In CCL the function does not get defined.</p>
 </div>
     </div>
+    <script>var pfHeaderImgUrl = '';var pfHeaderTagline = '';var pfdisableClickToDel = 0;var pfHideImages = 0;var pfImageDisplayStyle = 'right';var pfDisablePDF = 0;var pfDisableEmail = 0;var pfDisablePrint = 0;var pfCustomCSS = '';var pfBtVersion='2';(function(){var js,pf;pf=document.createElement('script');pf.type='text/javascript';pf.src='//cdn.printfriendly.com/printfriendly.js';document.getElementsByTagName('head')[0].appendChild(pf)})();</script><a href="https://www.printfriendly.com" style="color:#6D9F00;text-decoration:none;" class="printfriendly" onclick="window.print();return false;" title="Printer Friendly and PDF"><img style="border:none;-webkit-box-shadow:none;box-shadow:none;" src="//cdn.printfriendly.com/buttons/printfriendly-pdf-button.png" alt="Print Friendly and PDF"></a>    
     <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
 <li><a class="tag p-category" href="../../../../../categories/abcl/" rel="tag">abcl</a></li>
             <li><a class="tag p-category" href="../../../../../categories/ccl/" rel="tag">ccl</a></li>

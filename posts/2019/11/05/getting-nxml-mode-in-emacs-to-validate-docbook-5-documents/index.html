@@ -99,21 +99,22 @@ look up the translation for the URI for the RELAX NG compiled schema
 file and generate the <code class="docutils literal">schemas.xml</code> file and substitute the translation
 into the file:</p>
 <p><a class="reference external" href="../../../../../listings/generate-schemas-xml.html">generate-schemas-xml</a>  <a class="reference external" href="../../../../../listings/generate-schemas-xml">(Source)</a></p>
-<pre class="code bash"><a name="rest_code_17b1b8e5285b44aaaf6fd43feafb4737-1"></a><span class="ch">#! /usr/bin/env bash</span>
-<a name="rest_code_17b1b8e5285b44aaaf6fd43feafb4737-2"></a>
-<a name="rest_code_17b1b8e5285b44aaaf6fd43feafb4737-3"></a><span class="nv">schema_location</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span>xmlcatalog <span class="s2">""</span> <span class="s2">"http://docbook.org/xml/5.0/rng/docbookxi.rnc"</span> <span class="p">|</span>
-<a name="rest_code_17b1b8e5285b44aaaf6fd43feafb4737-4"></a>    grep <span class="s2">"^file:///"</span> <span class="p">|</span> sed <span class="s1">'s#^file://##'</span><span class="k">)</span><span class="s2">"</span>
-<a name="rest_code_17b1b8e5285b44aaaf6fd43feafb4737-5"></a>
-<a name="rest_code_17b1b8e5285b44aaaf6fd43feafb4737-6"></a>cat &gt;schemas.xml <span class="s">&lt;&lt;EOF</span>
-<a name="rest_code_17b1b8e5285b44aaaf6fd43feafb4737-7"></a><span class="s">&lt;locatingRules xmlns="http://thaiopensource.com/ns/locating-rules/1.0"&gt;</span>
-<a name="rest_code_17b1b8e5285b44aaaf6fd43feafb4737-8"></a><span class="s">&lt;namespace ns="http://docbook.org/ns/docbook" uri="$schema_location"/&gt;</span>
-<a name="rest_code_17b1b8e5285b44aaaf6fd43feafb4737-9"></a><span class="s">&lt;/locatingRules&gt;</span>
-<a name="rest_code_17b1b8e5285b44aaaf6fd43feafb4737-10"></a><span class="s">EOF</span>
+<pre class="code bash"><a name="rest_code_9dce0a344d254cb1a93f24814307dce5-1"></a><span class="ch">#! /usr/bin/env bash</span>
+<a name="rest_code_9dce0a344d254cb1a93f24814307dce5-2"></a>
+<a name="rest_code_9dce0a344d254cb1a93f24814307dce5-3"></a><span class="nv">schema_location</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span>xmlcatalog <span class="s2">""</span> <span class="s2">"http://docbook.org/xml/5.0/rng/docbookxi.rnc"</span> <span class="p">|</span>
+<a name="rest_code_9dce0a344d254cb1a93f24814307dce5-4"></a>    grep <span class="s2">"^file:///"</span> <span class="p">|</span> sed <span class="s1">'s#^file://##'</span><span class="k">)</span><span class="s2">"</span>
+<a name="rest_code_9dce0a344d254cb1a93f24814307dce5-5"></a>
+<a name="rest_code_9dce0a344d254cb1a93f24814307dce5-6"></a>cat &gt;schemas.xml <span class="s">&lt;&lt;EOF</span>
+<a name="rest_code_9dce0a344d254cb1a93f24814307dce5-7"></a><span class="s">&lt;locatingRules xmlns="http://thaiopensource.com/ns/locating-rules/1.0"&gt;</span>
+<a name="rest_code_9dce0a344d254cb1a93f24814307dce5-8"></a><span class="s">&lt;namespace ns="http://docbook.org/ns/docbook" uri="$schema_location"/&gt;</span>
+<a name="rest_code_9dce0a344d254cb1a93f24814307dce5-9"></a><span class="s">&lt;/locatingRules&gt;</span>
+<a name="rest_code_9dce0a344d254cb1a93f24814307dce5-10"></a><span class="s">EOF</span>
 </pre>
 <p>Then I had my Makefile generate the <code class="docutils literal">schemas.xml</code> file if it was missing.</p>
 <p>It was more complicated that I'd have liked, but it does work.</p>
 </div>
     </div>
+    <script>var pfHeaderImgUrl = '';var pfHeaderTagline = '';var pfdisableClickToDel = 0;var pfHideImages = 0;var pfImageDisplayStyle = 'right';var pfDisablePDF = 0;var pfDisableEmail = 0;var pfDisablePrint = 0;var pfCustomCSS = '';var pfBtVersion='2';(function(){var js,pf;pf=document.createElement('script');pf.type='text/javascript';pf.src='//cdn.printfriendly.com/printfriendly.js';document.getElementsByTagName('head')[0].appendChild(pf)})();</script><a href="https://www.printfriendly.com" style="color:#6D9F00;text-decoration:none;" class="printfriendly" onclick="window.print();return false;" title="Printer Friendly and PDF"><img style="border:none;-webkit-box-shadow:none;box-shadow:none;" src="//cdn.printfriendly.com/buttons/printfriendly-pdf-button.png" alt="Print Friendly and PDF"></a>    
     <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
 <li><a class="tag p-category" href="../../../../../categories/docbook-5/" rel="tag">docbook 5</a></li>
             <li><a class="tag p-category" href="../../../../../categories/emacs/" rel="tag">emacs</a></li>

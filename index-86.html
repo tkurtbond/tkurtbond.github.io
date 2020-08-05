@@ -219,166 +219,166 @@ movement whose width is based on the number of leading NO-BREAK SPACE
 characters, and follow this with a new Str element that has the
 leading NO-BREAK SPACE characters removed.</p>
 <p>Here is the Lua filter, <span class="file">classify-rst-ms.lua</span>:</p>
-<pre class="code lua"><a name="rest_code_438b33e8ecf84e67855a035d2b4d6580-1"></a><span class="n">onig</span> <span class="o">=</span> <span class="nb">require</span> <span class="p">(</span><span class="s2">"rex_onig"</span><span class="p">)</span> <span class="c1">-- Need a regex package that understands UTF8.</span>
-<a name="rest_code_438b33e8ecf84e67855a035d2b4d6580-2"></a><span class="c1">-- text in LineBreak preserves leading spaces as Unicode NO-BREAK SPACE</span>
-<a name="rest_code_438b33e8ecf84e67855a035d2b4d6580-3"></a><span class="n">leading_nobreakspace_rx</span> <span class="o">=</span> <span class="n">onig</span><span class="p">.</span><span class="n">new</span> <span class="p">(</span><span class="s2">"^(</span><span class="se">\u{a0}</span><span class="s2">+)(.*)$"</span><span class="p">,</span> <span class="kc">nil</span><span class="p">,</span> <span class="s2">"UTF8"</span><span class="p">)</span>
-<a name="rest_code_438b33e8ecf84e67855a035d2b4d6580-4"></a>
-<a name="rest_code_438b33e8ecf84e67855a035d2b4d6580-5"></a><span class="kr">function</span> <span class="nf">Div</span><span class="p">(</span> <span class="n">element</span> <span class="p">)</span>
-<a name="rest_code_438b33e8ecf84e67855a035d2b4d6580-6"></a>  <span class="kd">local</span> <span class="n">annotation</span> <span class="o">=</span> <span class="n">element</span><span class="p">.</span><span class="n">classes</span><span class="p">:</span><span class="n">find_if</span><span class="p">(</span> <span class="n">matches</span> <span class="p">)</span>
-<a name="rest_code_438b33e8ecf84e67855a035d2b4d6580-7"></a>  <span class="kd">local</span> <span class="n">numPara</span> <span class="o">=</span> <span class="mi">0</span>
-<a name="rest_code_438b33e8ecf84e67855a035d2b4d6580-8"></a>   <span class="kr">if</span> <span class="n">annotation</span> <span class="kr">then</span>
-<a name="rest_code_438b33e8ecf84e67855a035d2b4d6580-9"></a>     <span class="n">annotation</span> <span class="o">=</span> <span class="n">annotation</span><span class="p">:</span><span class="n">gsub</span><span class="p">(</span> <span class="s2">"[^%w]*"</span><span class="p">,</span> <span class="s2">""</span> <span class="p">)</span>
-<a name="rest_code_438b33e8ecf84e67855a035d2b4d6580-10"></a>     <span class="kr">if</span> <span class="n">annotation</span> <span class="o">==</span> <span class="s2">"poem"</span> <span class="kr">then</span>
-<a name="rest_code_438b33e8ecf84e67855a035d2b4d6580-11"></a>        <span class="n">element</span> <span class="o">=</span> <span class="n">pandoc</span><span class="p">.</span><span class="n">walk_block</span> <span class="p">(</span>
-<a name="rest_code_438b33e8ecf84e67855a035d2b4d6580-12"></a>           <span class="n">element</span><span class="p">,</span> <span class="p">{</span>
-<a name="rest_code_438b33e8ecf84e67855a035d2b4d6580-13"></a>              <span class="c1">-- Replace LineBlock element with a list of Plain elements</span>
-<a name="rest_code_438b33e8ecf84e67855a035d2b4d6580-14"></a>              <span class="c1">-- containing the LineBlock's subelements.</span>
-<a name="rest_code_438b33e8ecf84e67855a035d2b4d6580-15"></a>              <span class="n">LineBlock</span> <span class="o">=</span> <span class="kr">function</span> <span class="p">(</span><span class="n">el</span><span class="p">)</span>
-<a name="rest_code_438b33e8ecf84e67855a035d2b4d6580-16"></a>                 <span class="kd">local</span> <span class="n">l</span> <span class="o">=</span> <span class="p">{}</span>
-<a name="rest_code_438b33e8ecf84e67855a035d2b4d6580-17"></a>                 <span class="kr">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">subel</span> <span class="kr">in</span> <span class="nb">ipairs</span> <span class="p">(</span><span class="n">el</span><span class="p">.</span><span class="n">content</span><span class="p">)</span> <span class="kr">do</span>
-<a name="rest_code_438b33e8ecf84e67855a035d2b4d6580-18"></a>                    <span class="kr">if</span> <span class="o">#</span><span class="n">subel</span> <span class="o">==</span> <span class="mi">0</span> <span class="kr">then</span>
-<a name="rest_code_438b33e8ecf84e67855a035d2b4d6580-19"></a>                       <span class="c1">-- If subel is an empty table, output a raw empty line</span>
-<a name="rest_code_438b33e8ecf84e67855a035d2b4d6580-20"></a>                       <span class="nb">table.insert</span> <span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">pandoc</span><span class="p">.</span><span class="n">RawBlock</span> <span class="p">(</span><span class="s2">"ms"</span><span class="p">,</span> <span class="s2">"</span><span class="se">\n\n</span><span class="s2">"</span><span class="p">))</span>
-<a name="rest_code_438b33e8ecf84e67855a035d2b4d6580-21"></a>                    <span class="kr">else</span>
-<a name="rest_code_438b33e8ecf84e67855a035d2b4d6580-22"></a>                       <span class="c1">-- Check for leading NO-BREAK SPACE charaters</span>
-<a name="rest_code_438b33e8ecf84e67855a035d2b4d6580-23"></a>                       <span class="kd">local</span> <span class="n">m1</span><span class="p">,</span> <span class="n">m2</span> <span class="o">=</span> <span class="n">onig</span><span class="p">.</span><span class="n">match</span> <span class="p">(</span><span class="n">subel</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">text</span><span class="p">,</span>
-<a name="rest_code_438b33e8ecf84e67855a035d2b4d6580-24"></a>                                                  <span class="n">leading_nobreakspace_rx</span><span class="p">)</span>
-<a name="rest_code_438b33e8ecf84e67855a035d2b4d6580-25"></a>                       <span class="kr">if</span> <span class="n">m1</span> <span class="kr">then</span>
-<a name="rest_code_438b33e8ecf84e67855a035d2b4d6580-26"></a>                          <span class="c1">-- Replace the NO-BREAK SPACE characters with a raw</span>
-<a name="rest_code_438b33e8ecf84e67855a035d2b4d6580-27"></a>                          <span class="c1">-- groff horizontal movement, because the</span>
-<a name="rest_code_438b33e8ecf84e67855a035d2b4d6580-28"></a>                          <span class="c1">-- NO-BREAK SPACE characters are too narrow.</span>
-<a name="rest_code_438b33e8ecf84e67855a035d2b4d6580-29"></a>                          <span class="nb">table.insert</span> <span class="p">(</span><span class="n">subel</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">pandoc</span><span class="p">.</span><span class="n">RawInline</span> <span class="p">(</span><span class="s2">"ms"</span><span class="p">,</span> <span class="nb">string.format</span> <span class="p">(</span><span class="s2">"</span><span class="se">\\</span><span class="s2">h'%dn'"</span><span class="p">,</span> <span class="nb">utf8.len</span> <span class="p">(</span><span class="n">m1</span><span class="p">))))</span>
-<a name="rest_code_438b33e8ecf84e67855a035d2b4d6580-30"></a>                          <span class="c1">-- Modify what was used to be the first item to just</span>
-<a name="rest_code_438b33e8ecf84e67855a035d2b4d6580-31"></a>                          <span class="c1">-- include the trailing characters of the match.</span>
-<a name="rest_code_438b33e8ecf84e67855a035d2b4d6580-32"></a>                          <span class="n">subel</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">pandoc</span><span class="p">.</span><span class="n">Str</span> <span class="p">(</span><span class="n">m2</span><span class="p">)</span>
-<a name="rest_code_438b33e8ecf84e67855a035d2b4d6580-33"></a>                          <span class="nb">table.insert</span> <span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">pandoc</span><span class="p">.</span><span class="n">Plain</span> <span class="p">(</span><span class="n">subel</span><span class="p">))</span>
-<a name="rest_code_438b33e8ecf84e67855a035d2b4d6580-34"></a>                       <span class="kr">else</span>
-<a name="rest_code_438b33e8ecf84e67855a035d2b4d6580-35"></a>                          <span class="c1">-- Just put the subel in Plain element.</span>
-<a name="rest_code_438b33e8ecf84e67855a035d2b4d6580-36"></a>                          <span class="nb">table.insert</span> <span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="p">(</span><span class="n">pandoc</span><span class="p">.</span><span class="n">Plain</span> <span class="p">(</span><span class="n">subel</span><span class="p">)))</span>
-<a name="rest_code_438b33e8ecf84e67855a035d2b4d6580-37"></a>                       <span class="kr">end</span>
-<a name="rest_code_438b33e8ecf84e67855a035d2b4d6580-38"></a>                    <span class="kr">end</span>
-<a name="rest_code_438b33e8ecf84e67855a035d2b4d6580-39"></a>                 <span class="kr">end</span>
-<a name="rest_code_438b33e8ecf84e67855a035d2b4d6580-40"></a>                 <span class="kr">return</span> <span class="n">l</span>
-<a name="rest_code_438b33e8ecf84e67855a035d2b4d6580-41"></a>        <span class="kr">end</span> <span class="p">})</span>
-<a name="rest_code_438b33e8ecf84e67855a035d2b4d6580-42"></a>     <span class="kr">end</span>
-<a name="rest_code_438b33e8ecf84e67855a035d2b4d6580-43"></a>     <span class="kr">return</span> <span class="p">{</span>
-<a name="rest_code_438b33e8ecf84e67855a035d2b4d6580-44"></a>        <span class="n">ms</span><span class="p">(</span> <span class="s2">".start"</span><span class="p">,</span> <span class="n">annotation</span> <span class="p">),</span>
-<a name="rest_code_438b33e8ecf84e67855a035d2b4d6580-45"></a>        <span class="n">element</span><span class="p">,</span>
-<a name="rest_code_438b33e8ecf84e67855a035d2b4d6580-46"></a>        <span class="n">ms</span><span class="p">(</span> <span class="s2">".stop"</span><span class="p">,</span> <span class="n">annotation</span> <span class="p">)</span>
-<a name="rest_code_438b33e8ecf84e67855a035d2b4d6580-47"></a>     <span class="p">}</span>
-<a name="rest_code_438b33e8ecf84e67855a035d2b4d6580-48"></a>  <span class="kr">end</span>
-<a name="rest_code_438b33e8ecf84e67855a035d2b4d6580-49"></a><span class="kr">end</span>
-<a name="rest_code_438b33e8ecf84e67855a035d2b4d6580-50"></a>
-<a name="rest_code_438b33e8ecf84e67855a035d2b4d6580-51"></a><span class="kr">function</span> <span class="nf">Span</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
-<a name="rest_code_438b33e8ecf84e67855a035d2b4d6580-52"></a>  <span class="kd">local</span> <span class="n">annotation</span> <span class="o">=</span> <span class="n">element</span><span class="p">.</span><span class="n">classes</span><span class="p">:</span><span class="n">find_if</span><span class="p">(</span><span class="n">matches</span><span class="p">)</span>
-<a name="rest_code_438b33e8ecf84e67855a035d2b4d6580-53"></a>
-<a name="rest_code_438b33e8ecf84e67855a035d2b4d6580-54"></a>  <span class="kr">if</span> <span class="n">annotation</span> <span class="kr">then</span>
-<a name="rest_code_438b33e8ecf84e67855a035d2b4d6580-55"></a>     <span class="n">annotation</span> <span class="o">=</span> <span class="n">annotation</span><span class="p">:</span><span class="n">gsub</span><span class="p">(</span><span class="s2">"[^%w]*"</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span>
-<a name="rest_code_438b33e8ecf84e67855a035d2b4d6580-56"></a>
-<a name="rest_code_438b33e8ecf84e67855a035d2b4d6580-57"></a>     <span class="kr">return</span> <span class="p">{</span>
-<a name="rest_code_438b33e8ecf84e67855a035d2b4d6580-58"></a>        <span class="n">ms_inline</span><span class="p">(</span><span class="s2">"</span><span class="se">\\</span><span class="s2">*[start"</span><span class="p">,</span> <span class="n">annotation</span><span class="p">,</span> <span class="s2">"]"</span><span class="p">),</span>
-<a name="rest_code_438b33e8ecf84e67855a035d2b4d6580-59"></a>        <span class="n">element</span><span class="p">,</span>
-<a name="rest_code_438b33e8ecf84e67855a035d2b4d6580-60"></a>        <span class="n">ms_inline</span><span class="p">(</span><span class="s2">"</span><span class="se">\\</span><span class="s2">*[stop"</span><span class="p">,</span> <span class="n">annotation</span><span class="p">,</span> <span class="s2">"]"</span><span class="p">)</span>
-<a name="rest_code_438b33e8ecf84e67855a035d2b4d6580-61"></a>     <span class="p">}</span>
-<a name="rest_code_438b33e8ecf84e67855a035d2b4d6580-62"></a>  <span class="kr">end</span>
-<a name="rest_code_438b33e8ecf84e67855a035d2b4d6580-63"></a><span class="kr">end</span>
-<a name="rest_code_438b33e8ecf84e67855a035d2b4d6580-64"></a>
-<a name="rest_code_438b33e8ecf84e67855a035d2b4d6580-65"></a><span class="kr">function</span> <span class="nf">matches</span><span class="p">(</span> <span class="n">s</span> <span class="p">)</span>
-<a name="rest_code_438b33e8ecf84e67855a035d2b4d6580-66"></a> <span class="kr">return</span> <span class="n">s</span><span class="p">:</span><span class="n">match</span><span class="p">(</span> <span class="s2">"^%a+"</span> <span class="p">)</span>
-<a name="rest_code_438b33e8ecf84e67855a035d2b4d6580-67"></a><span class="kr">end</span>
-<a name="rest_code_438b33e8ecf84e67855a035d2b4d6580-68"></a>
-<a name="rest_code_438b33e8ecf84e67855a035d2b4d6580-69"></a><span class="kr">function</span> <span class="nf">ms</span><span class="p">(</span> <span class="n">macro</span><span class="p">,</span> <span class="n">annotation</span> <span class="p">)</span>
-<a name="rest_code_438b33e8ecf84e67855a035d2b4d6580-70"></a> <span class="kr">return</span> <span class="n">pandoc</span><span class="p">.</span><span class="n">RawBlock</span><span class="p">(</span> <span class="s2">"ms"</span><span class="p">,</span> <span class="n">macro</span> <span class="o">..</span> <span class="n">annotation</span> <span class="p">)</span>
-<a name="rest_code_438b33e8ecf84e67855a035d2b4d6580-71"></a><span class="kr">end</span>
-<a name="rest_code_438b33e8ecf84e67855a035d2b4d6580-72"></a>
-<a name="rest_code_438b33e8ecf84e67855a035d2b4d6580-73"></a><span class="kr">function</span> <span class="nf">ms_inline</span> <span class="p">(</span><span class="n">macro</span><span class="p">,</span> <span class="n">annotation</span><span class="p">,</span> <span class="n">stop</span><span class="p">)</span>
-<a name="rest_code_438b33e8ecf84e67855a035d2b4d6580-74"></a>  <span class="kr">return</span> <span class="n">pandoc</span><span class="p">.</span><span class="n">RawInline</span> <span class="p">(</span><span class="s2">"ms"</span><span class="p">,</span> <span class="n">macro</span> <span class="o">..</span> <span class="n">annotation</span> <span class="o">..</span> <span class="n">stop</span><span class="p">)</span>
-<a name="rest_code_438b33e8ecf84e67855a035d2b4d6580-75"></a><span class="kr">end</span>
+<pre class="code lua"><a name="rest_code_1f23409d8e6b4939a6b1bf2bd0515f0f-1"></a><span class="n">onig</span> <span class="o">=</span> <span class="nb">require</span> <span class="p">(</span><span class="s2">"rex_onig"</span><span class="p">)</span> <span class="c1">-- Need a regex package that understands UTF8.</span>
+<a name="rest_code_1f23409d8e6b4939a6b1bf2bd0515f0f-2"></a><span class="c1">-- text in LineBreak preserves leading spaces as Unicode NO-BREAK SPACE</span>
+<a name="rest_code_1f23409d8e6b4939a6b1bf2bd0515f0f-3"></a><span class="n">leading_nobreakspace_rx</span> <span class="o">=</span> <span class="n">onig</span><span class="p">.</span><span class="n">new</span> <span class="p">(</span><span class="s2">"^(</span><span class="se">\u{a0}</span><span class="s2">+)(.*)$"</span><span class="p">,</span> <span class="kc">nil</span><span class="p">,</span> <span class="s2">"UTF8"</span><span class="p">)</span>
+<a name="rest_code_1f23409d8e6b4939a6b1bf2bd0515f0f-4"></a>
+<a name="rest_code_1f23409d8e6b4939a6b1bf2bd0515f0f-5"></a><span class="kr">function</span> <span class="nf">Div</span><span class="p">(</span> <span class="n">element</span> <span class="p">)</span>
+<a name="rest_code_1f23409d8e6b4939a6b1bf2bd0515f0f-6"></a>  <span class="kd">local</span> <span class="n">annotation</span> <span class="o">=</span> <span class="n">element</span><span class="p">.</span><span class="n">classes</span><span class="p">:</span><span class="n">find_if</span><span class="p">(</span> <span class="n">matches</span> <span class="p">)</span>
+<a name="rest_code_1f23409d8e6b4939a6b1bf2bd0515f0f-7"></a>  <span class="kd">local</span> <span class="n">numPara</span> <span class="o">=</span> <span class="mi">0</span>
+<a name="rest_code_1f23409d8e6b4939a6b1bf2bd0515f0f-8"></a>   <span class="kr">if</span> <span class="n">annotation</span> <span class="kr">then</span>
+<a name="rest_code_1f23409d8e6b4939a6b1bf2bd0515f0f-9"></a>     <span class="n">annotation</span> <span class="o">=</span> <span class="n">annotation</span><span class="p">:</span><span class="n">gsub</span><span class="p">(</span> <span class="s2">"[^%w]*"</span><span class="p">,</span> <span class="s2">""</span> <span class="p">)</span>
+<a name="rest_code_1f23409d8e6b4939a6b1bf2bd0515f0f-10"></a>     <span class="kr">if</span> <span class="n">annotation</span> <span class="o">==</span> <span class="s2">"poem"</span> <span class="kr">then</span>
+<a name="rest_code_1f23409d8e6b4939a6b1bf2bd0515f0f-11"></a>        <span class="n">element</span> <span class="o">=</span> <span class="n">pandoc</span><span class="p">.</span><span class="n">walk_block</span> <span class="p">(</span>
+<a name="rest_code_1f23409d8e6b4939a6b1bf2bd0515f0f-12"></a>           <span class="n">element</span><span class="p">,</span> <span class="p">{</span>
+<a name="rest_code_1f23409d8e6b4939a6b1bf2bd0515f0f-13"></a>              <span class="c1">-- Replace LineBlock element with a list of Plain elements</span>
+<a name="rest_code_1f23409d8e6b4939a6b1bf2bd0515f0f-14"></a>              <span class="c1">-- containing the LineBlock's subelements.</span>
+<a name="rest_code_1f23409d8e6b4939a6b1bf2bd0515f0f-15"></a>              <span class="n">LineBlock</span> <span class="o">=</span> <span class="kr">function</span> <span class="p">(</span><span class="n">el</span><span class="p">)</span>
+<a name="rest_code_1f23409d8e6b4939a6b1bf2bd0515f0f-16"></a>                 <span class="kd">local</span> <span class="n">l</span> <span class="o">=</span> <span class="p">{}</span>
+<a name="rest_code_1f23409d8e6b4939a6b1bf2bd0515f0f-17"></a>                 <span class="kr">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">subel</span> <span class="kr">in</span> <span class="nb">ipairs</span> <span class="p">(</span><span class="n">el</span><span class="p">.</span><span class="n">content</span><span class="p">)</span> <span class="kr">do</span>
+<a name="rest_code_1f23409d8e6b4939a6b1bf2bd0515f0f-18"></a>                    <span class="kr">if</span> <span class="o">#</span><span class="n">subel</span> <span class="o">==</span> <span class="mi">0</span> <span class="kr">then</span>
+<a name="rest_code_1f23409d8e6b4939a6b1bf2bd0515f0f-19"></a>                       <span class="c1">-- If subel is an empty table, output a raw empty line</span>
+<a name="rest_code_1f23409d8e6b4939a6b1bf2bd0515f0f-20"></a>                       <span class="nb">table.insert</span> <span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">pandoc</span><span class="p">.</span><span class="n">RawBlock</span> <span class="p">(</span><span class="s2">"ms"</span><span class="p">,</span> <span class="s2">"</span><span class="se">\n\n</span><span class="s2">"</span><span class="p">))</span>
+<a name="rest_code_1f23409d8e6b4939a6b1bf2bd0515f0f-21"></a>                    <span class="kr">else</span>
+<a name="rest_code_1f23409d8e6b4939a6b1bf2bd0515f0f-22"></a>                       <span class="c1">-- Check for leading NO-BREAK SPACE charaters</span>
+<a name="rest_code_1f23409d8e6b4939a6b1bf2bd0515f0f-23"></a>                       <span class="kd">local</span> <span class="n">m1</span><span class="p">,</span> <span class="n">m2</span> <span class="o">=</span> <span class="n">onig</span><span class="p">.</span><span class="n">match</span> <span class="p">(</span><span class="n">subel</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">text</span><span class="p">,</span>
+<a name="rest_code_1f23409d8e6b4939a6b1bf2bd0515f0f-24"></a>                                                  <span class="n">leading_nobreakspace_rx</span><span class="p">)</span>
+<a name="rest_code_1f23409d8e6b4939a6b1bf2bd0515f0f-25"></a>                       <span class="kr">if</span> <span class="n">m1</span> <span class="kr">then</span>
+<a name="rest_code_1f23409d8e6b4939a6b1bf2bd0515f0f-26"></a>                          <span class="c1">-- Replace the NO-BREAK SPACE characters with a raw</span>
+<a name="rest_code_1f23409d8e6b4939a6b1bf2bd0515f0f-27"></a>                          <span class="c1">-- groff horizontal movement, because the</span>
+<a name="rest_code_1f23409d8e6b4939a6b1bf2bd0515f0f-28"></a>                          <span class="c1">-- NO-BREAK SPACE characters are too narrow.</span>
+<a name="rest_code_1f23409d8e6b4939a6b1bf2bd0515f0f-29"></a>                          <span class="nb">table.insert</span> <span class="p">(</span><span class="n">subel</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">pandoc</span><span class="p">.</span><span class="n">RawInline</span> <span class="p">(</span><span class="s2">"ms"</span><span class="p">,</span> <span class="nb">string.format</span> <span class="p">(</span><span class="s2">"</span><span class="se">\\</span><span class="s2">h'%dn'"</span><span class="p">,</span> <span class="nb">utf8.len</span> <span class="p">(</span><span class="n">m1</span><span class="p">))))</span>
+<a name="rest_code_1f23409d8e6b4939a6b1bf2bd0515f0f-30"></a>                          <span class="c1">-- Modify what was used to be the first item to just</span>
+<a name="rest_code_1f23409d8e6b4939a6b1bf2bd0515f0f-31"></a>                          <span class="c1">-- include the trailing characters of the match.</span>
+<a name="rest_code_1f23409d8e6b4939a6b1bf2bd0515f0f-32"></a>                          <span class="n">subel</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">pandoc</span><span class="p">.</span><span class="n">Str</span> <span class="p">(</span><span class="n">m2</span><span class="p">)</span>
+<a name="rest_code_1f23409d8e6b4939a6b1bf2bd0515f0f-33"></a>                          <span class="nb">table.insert</span> <span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">pandoc</span><span class="p">.</span><span class="n">Plain</span> <span class="p">(</span><span class="n">subel</span><span class="p">))</span>
+<a name="rest_code_1f23409d8e6b4939a6b1bf2bd0515f0f-34"></a>                       <span class="kr">else</span>
+<a name="rest_code_1f23409d8e6b4939a6b1bf2bd0515f0f-35"></a>                          <span class="c1">-- Just put the subel in Plain element.</span>
+<a name="rest_code_1f23409d8e6b4939a6b1bf2bd0515f0f-36"></a>                          <span class="nb">table.insert</span> <span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="p">(</span><span class="n">pandoc</span><span class="p">.</span><span class="n">Plain</span> <span class="p">(</span><span class="n">subel</span><span class="p">)))</span>
+<a name="rest_code_1f23409d8e6b4939a6b1bf2bd0515f0f-37"></a>                       <span class="kr">end</span>
+<a name="rest_code_1f23409d8e6b4939a6b1bf2bd0515f0f-38"></a>                    <span class="kr">end</span>
+<a name="rest_code_1f23409d8e6b4939a6b1bf2bd0515f0f-39"></a>                 <span class="kr">end</span>
+<a name="rest_code_1f23409d8e6b4939a6b1bf2bd0515f0f-40"></a>                 <span class="kr">return</span> <span class="n">l</span>
+<a name="rest_code_1f23409d8e6b4939a6b1bf2bd0515f0f-41"></a>        <span class="kr">end</span> <span class="p">})</span>
+<a name="rest_code_1f23409d8e6b4939a6b1bf2bd0515f0f-42"></a>     <span class="kr">end</span>
+<a name="rest_code_1f23409d8e6b4939a6b1bf2bd0515f0f-43"></a>     <span class="kr">return</span> <span class="p">{</span>
+<a name="rest_code_1f23409d8e6b4939a6b1bf2bd0515f0f-44"></a>        <span class="n">ms</span><span class="p">(</span> <span class="s2">".start"</span><span class="p">,</span> <span class="n">annotation</span> <span class="p">),</span>
+<a name="rest_code_1f23409d8e6b4939a6b1bf2bd0515f0f-45"></a>        <span class="n">element</span><span class="p">,</span>
+<a name="rest_code_1f23409d8e6b4939a6b1bf2bd0515f0f-46"></a>        <span class="n">ms</span><span class="p">(</span> <span class="s2">".stop"</span><span class="p">,</span> <span class="n">annotation</span> <span class="p">)</span>
+<a name="rest_code_1f23409d8e6b4939a6b1bf2bd0515f0f-47"></a>     <span class="p">}</span>
+<a name="rest_code_1f23409d8e6b4939a6b1bf2bd0515f0f-48"></a>  <span class="kr">end</span>
+<a name="rest_code_1f23409d8e6b4939a6b1bf2bd0515f0f-49"></a><span class="kr">end</span>
+<a name="rest_code_1f23409d8e6b4939a6b1bf2bd0515f0f-50"></a>
+<a name="rest_code_1f23409d8e6b4939a6b1bf2bd0515f0f-51"></a><span class="kr">function</span> <span class="nf">Span</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
+<a name="rest_code_1f23409d8e6b4939a6b1bf2bd0515f0f-52"></a>  <span class="kd">local</span> <span class="n">annotation</span> <span class="o">=</span> <span class="n">element</span><span class="p">.</span><span class="n">classes</span><span class="p">:</span><span class="n">find_if</span><span class="p">(</span><span class="n">matches</span><span class="p">)</span>
+<a name="rest_code_1f23409d8e6b4939a6b1bf2bd0515f0f-53"></a>
+<a name="rest_code_1f23409d8e6b4939a6b1bf2bd0515f0f-54"></a>  <span class="kr">if</span> <span class="n">annotation</span> <span class="kr">then</span>
+<a name="rest_code_1f23409d8e6b4939a6b1bf2bd0515f0f-55"></a>     <span class="n">annotation</span> <span class="o">=</span> <span class="n">annotation</span><span class="p">:</span><span class="n">gsub</span><span class="p">(</span><span class="s2">"[^%w]*"</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span>
+<a name="rest_code_1f23409d8e6b4939a6b1bf2bd0515f0f-56"></a>
+<a name="rest_code_1f23409d8e6b4939a6b1bf2bd0515f0f-57"></a>     <span class="kr">return</span> <span class="p">{</span>
+<a name="rest_code_1f23409d8e6b4939a6b1bf2bd0515f0f-58"></a>        <span class="n">ms_inline</span><span class="p">(</span><span class="s2">"</span><span class="se">\\</span><span class="s2">*[start"</span><span class="p">,</span> <span class="n">annotation</span><span class="p">,</span> <span class="s2">"]"</span><span class="p">),</span>
+<a name="rest_code_1f23409d8e6b4939a6b1bf2bd0515f0f-59"></a>        <span class="n">element</span><span class="p">,</span>
+<a name="rest_code_1f23409d8e6b4939a6b1bf2bd0515f0f-60"></a>        <span class="n">ms_inline</span><span class="p">(</span><span class="s2">"</span><span class="se">\\</span><span class="s2">*[stop"</span><span class="p">,</span> <span class="n">annotation</span><span class="p">,</span> <span class="s2">"]"</span><span class="p">)</span>
+<a name="rest_code_1f23409d8e6b4939a6b1bf2bd0515f0f-61"></a>     <span class="p">}</span>
+<a name="rest_code_1f23409d8e6b4939a6b1bf2bd0515f0f-62"></a>  <span class="kr">end</span>
+<a name="rest_code_1f23409d8e6b4939a6b1bf2bd0515f0f-63"></a><span class="kr">end</span>
+<a name="rest_code_1f23409d8e6b4939a6b1bf2bd0515f0f-64"></a>
+<a name="rest_code_1f23409d8e6b4939a6b1bf2bd0515f0f-65"></a><span class="kr">function</span> <span class="nf">matches</span><span class="p">(</span> <span class="n">s</span> <span class="p">)</span>
+<a name="rest_code_1f23409d8e6b4939a6b1bf2bd0515f0f-66"></a> <span class="kr">return</span> <span class="n">s</span><span class="p">:</span><span class="n">match</span><span class="p">(</span> <span class="s2">"^%a+"</span> <span class="p">)</span>
+<a name="rest_code_1f23409d8e6b4939a6b1bf2bd0515f0f-67"></a><span class="kr">end</span>
+<a name="rest_code_1f23409d8e6b4939a6b1bf2bd0515f0f-68"></a>
+<a name="rest_code_1f23409d8e6b4939a6b1bf2bd0515f0f-69"></a><span class="kr">function</span> <span class="nf">ms</span><span class="p">(</span> <span class="n">macro</span><span class="p">,</span> <span class="n">annotation</span> <span class="p">)</span>
+<a name="rest_code_1f23409d8e6b4939a6b1bf2bd0515f0f-70"></a> <span class="kr">return</span> <span class="n">pandoc</span><span class="p">.</span><span class="n">RawBlock</span><span class="p">(</span> <span class="s2">"ms"</span><span class="p">,</span> <span class="n">macro</span> <span class="o">..</span> <span class="n">annotation</span> <span class="p">)</span>
+<a name="rest_code_1f23409d8e6b4939a6b1bf2bd0515f0f-71"></a><span class="kr">end</span>
+<a name="rest_code_1f23409d8e6b4939a6b1bf2bd0515f0f-72"></a>
+<a name="rest_code_1f23409d8e6b4939a6b1bf2bd0515f0f-73"></a><span class="kr">function</span> <span class="nf">ms_inline</span> <span class="p">(</span><span class="n">macro</span><span class="p">,</span> <span class="n">annotation</span><span class="p">,</span> <span class="n">stop</span><span class="p">)</span>
+<a name="rest_code_1f23409d8e6b4939a6b1bf2bd0515f0f-74"></a>  <span class="kr">return</span> <span class="n">pandoc</span><span class="p">.</span><span class="n">RawInline</span> <span class="p">(</span><span class="s2">"ms"</span><span class="p">,</span> <span class="n">macro</span> <span class="o">..</span> <span class="n">annotation</span> <span class="o">..</span> <span class="n">stop</span><span class="p">)</span>
+<a name="rest_code_1f23409d8e6b4939a6b1bf2bd0515f0f-75"></a><span class="kr">end</span>
 </pre>
 <p>Here is the ReST source of the document, <span class="file">poem-plus.rst</span>:</p>
-<pre class="code ReST"><a name="rest_code_3780161b423845b591ff649341e8f88f-1"></a>Lua Filters For Massaging <span class="s">``ms``</span> Output
-<a name="rest_code_3780161b423845b591ff649341e8f88f-2"></a>@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-<a name="rest_code_3780161b423845b591ff649341e8f88f-3"></a>
-<a name="rest_code_3780161b423845b591ff649341e8f88f-4"></a><span class="p">..</span> <span class="ow">raw</span><span class="p">::</span> ms
-<a name="rest_code_3780161b423845b591ff649341e8f88f-5"></a>
-<a name="rest_code_3780161b423845b591ff649341e8f88f-6"></a>   .ds startprogram \\f[CW]\\m[red]
-<a name="rest_code_3780161b423845b591ff649341e8f88f-7"></a>   .ds stopprogram \\m[]\\fP
-<a name="rest_code_3780161b423845b591ff649341e8f88f-8"></a>   .de startpoem
-<a name="rest_code_3780161b423845b591ff649341e8f88f-9"></a>   .ds OLDFAM \\*[FAM]
-<a name="rest_code_3780161b423845b591ff649341e8f88f-10"></a>   .ds FAM BM
-<a name="rest_code_3780161b423845b591ff649341e8f88f-11"></a>   .DS I 3
-<a name="rest_code_3780161b423845b591ff649341e8f88f-12"></a><span class="cp">   ..</span>
-<a name="rest_code_3780161b423845b591ff649341e8f88f-13"></a><span class="cp">   .de stoppoem</span>
-<a name="rest_code_3780161b423845b591ff649341e8f88f-14"></a><span class="cp">   .DE</span>
-<a name="rest_code_3780161b423845b591ff649341e8f88f-15"></a><span class="cp">   .ds FAM \\*[OLDFAM]</span>
-<a name="rest_code_3780161b423845b591ff649341e8f88f-16"></a><span class="cp">   ..</span>
-<a name="rest_code_3780161b423845b591ff649341e8f88f-17"></a>
-<a name="rest_code_3780161b423845b591ff649341e8f88f-18"></a><span class="p">..</span> <span class="ow">role</span><span class="p">::</span> program
-<a name="rest_code_3780161b423845b591ff649341e8f88f-19"></a>
-<a name="rest_code_3780161b423845b591ff649341e8f88f-20"></a>This is a sentence.  This sentence talks about <span class="na">:program:</span><span class="nv">`pandoc`</span>.
-<a name="rest_code_3780161b423845b591ff649341e8f88f-21"></a>This is
-<a name="rest_code_3780161b423845b591ff649341e8f88f-22"></a>another sentence.
-<a name="rest_code_3780161b423845b591ff649341e8f88f-23"></a>
-<a name="rest_code_3780161b423845b591ff649341e8f88f-24"></a><span class="p">..</span> <span class="ow">class</span><span class="p">::</span> poem
-<a name="rest_code_3780161b423845b591ff649341e8f88f-25"></a>
-<a name="rest_code_3780161b423845b591ff649341e8f88f-26"></a>   <span class="o">|</span> Some say the world will end in fire,
-<a name="rest_code_3780161b423845b591ff649341e8f88f-27"></a>   <span class="o">|</span>    Some say in ice.
-<a name="rest_code_3780161b423845b591ff649341e8f88f-28"></a>   <span class="o">|</span> From what I've tasted of desire
-<a name="rest_code_3780161b423845b591ff649341e8f88f-29"></a>   <span class="o">|</span>    I hold with those who favor fire.
-<a name="rest_code_3780161b423845b591ff649341e8f88f-30"></a>   <span class="o">|</span> But if it had to perish twice,
-<a name="rest_code_3780161b423845b591ff649341e8f88f-31"></a>   <span class="o">|</span>    I think I know enough of hate
-<a name="rest_code_3780161b423845b591ff649341e8f88f-32"></a>   <span class="o">|</span>    To say that for destruction ice
-<a name="rest_code_3780161b423845b591ff649341e8f88f-33"></a>   <span class="o">|</span>    Is also great,
-<a name="rest_code_3780161b423845b591ff649341e8f88f-34"></a>   <span class="o">|</span> And would suffice.
-<a name="rest_code_3780161b423845b591ff649341e8f88f-35"></a>   |
-<a name="rest_code_3780161b423845b591ff649341e8f88f-36"></a>   <span class="o">|</span> And another line,
-<a name="rest_code_3780161b423845b591ff649341e8f88f-37"></a>   <span class="o">|</span>    And an indented line.
-<a name="rest_code_3780161b423845b591ff649341e8f88f-38"></a>
-<a name="rest_code_3780161b423845b591ff649341e8f88f-39"></a>This is a final sentence.
+<pre class="code ReST"><a name="rest_code_826ad06979514a6988a2d2d89ca1dbf3-1"></a>Lua Filters For Massaging <span class="s">``ms``</span> Output
+<a name="rest_code_826ad06979514a6988a2d2d89ca1dbf3-2"></a>@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+<a name="rest_code_826ad06979514a6988a2d2d89ca1dbf3-3"></a>
+<a name="rest_code_826ad06979514a6988a2d2d89ca1dbf3-4"></a><span class="p">..</span> <span class="ow">raw</span><span class="p">::</span> ms
+<a name="rest_code_826ad06979514a6988a2d2d89ca1dbf3-5"></a>
+<a name="rest_code_826ad06979514a6988a2d2d89ca1dbf3-6"></a>   .ds startprogram \\f[CW]\\m[red]
+<a name="rest_code_826ad06979514a6988a2d2d89ca1dbf3-7"></a>   .ds stopprogram \\m[]\\fP
+<a name="rest_code_826ad06979514a6988a2d2d89ca1dbf3-8"></a>   .de startpoem
+<a name="rest_code_826ad06979514a6988a2d2d89ca1dbf3-9"></a>   .ds OLDFAM \\*[FAM]
+<a name="rest_code_826ad06979514a6988a2d2d89ca1dbf3-10"></a>   .ds FAM BM
+<a name="rest_code_826ad06979514a6988a2d2d89ca1dbf3-11"></a>   .DS I 3
+<a name="rest_code_826ad06979514a6988a2d2d89ca1dbf3-12"></a><span class="cp">   ..</span>
+<a name="rest_code_826ad06979514a6988a2d2d89ca1dbf3-13"></a><span class="cp">   .de stoppoem</span>
+<a name="rest_code_826ad06979514a6988a2d2d89ca1dbf3-14"></a><span class="cp">   .DE</span>
+<a name="rest_code_826ad06979514a6988a2d2d89ca1dbf3-15"></a><span class="cp">   .ds FAM \\*[OLDFAM]</span>
+<a name="rest_code_826ad06979514a6988a2d2d89ca1dbf3-16"></a><span class="cp">   ..</span>
+<a name="rest_code_826ad06979514a6988a2d2d89ca1dbf3-17"></a>
+<a name="rest_code_826ad06979514a6988a2d2d89ca1dbf3-18"></a><span class="p">..</span> <span class="ow">role</span><span class="p">::</span> program
+<a name="rest_code_826ad06979514a6988a2d2d89ca1dbf3-19"></a>
+<a name="rest_code_826ad06979514a6988a2d2d89ca1dbf3-20"></a>This is a sentence.  This sentence talks about <span class="na">:program:</span><span class="nv">`pandoc`</span>.
+<a name="rest_code_826ad06979514a6988a2d2d89ca1dbf3-21"></a>This is
+<a name="rest_code_826ad06979514a6988a2d2d89ca1dbf3-22"></a>another sentence.
+<a name="rest_code_826ad06979514a6988a2d2d89ca1dbf3-23"></a>
+<a name="rest_code_826ad06979514a6988a2d2d89ca1dbf3-24"></a><span class="p">..</span> <span class="ow">class</span><span class="p">::</span> poem
+<a name="rest_code_826ad06979514a6988a2d2d89ca1dbf3-25"></a>
+<a name="rest_code_826ad06979514a6988a2d2d89ca1dbf3-26"></a>   <span class="o">|</span> Some say the world will end in fire,
+<a name="rest_code_826ad06979514a6988a2d2d89ca1dbf3-27"></a>   <span class="o">|</span>    Some say in ice.
+<a name="rest_code_826ad06979514a6988a2d2d89ca1dbf3-28"></a>   <span class="o">|</span> From what I've tasted of desire
+<a name="rest_code_826ad06979514a6988a2d2d89ca1dbf3-29"></a>   <span class="o">|</span>    I hold with those who favor fire.
+<a name="rest_code_826ad06979514a6988a2d2d89ca1dbf3-30"></a>   <span class="o">|</span> But if it had to perish twice,
+<a name="rest_code_826ad06979514a6988a2d2d89ca1dbf3-31"></a>   <span class="o">|</span>    I think I know enough of hate
+<a name="rest_code_826ad06979514a6988a2d2d89ca1dbf3-32"></a>   <span class="o">|</span>    To say that for destruction ice
+<a name="rest_code_826ad06979514a6988a2d2d89ca1dbf3-33"></a>   <span class="o">|</span>    Is also great,
+<a name="rest_code_826ad06979514a6988a2d2d89ca1dbf3-34"></a>   <span class="o">|</span> And would suffice.
+<a name="rest_code_826ad06979514a6988a2d2d89ca1dbf3-35"></a>   |
+<a name="rest_code_826ad06979514a6988a2d2d89ca1dbf3-36"></a>   <span class="o">|</span> And another line,
+<a name="rest_code_826ad06979514a6988a2d2d89ca1dbf3-37"></a>   <span class="o">|</span>    And an indented line.
+<a name="rest_code_826ad06979514a6988a2d2d89ca1dbf3-38"></a>
+<a name="rest_code_826ad06979514a6988a2d2d89ca1dbf3-39"></a>This is a final sentence.
 </pre>
 <p>And here is the ms output:</p>
-<pre class="code groff"><a name="rest_code_fab1128f22704adfb88197f9313da721-1"></a>.<span class="k">SH</span> <span class="m">1</span>
-<a name="rest_code_fab1128f22704adfb88197f9313da721-2"></a>Lua Filters For Massaging <span class="se">\f[CB]ms\f[B]</span> Output
-<a name="rest_code_fab1128f22704adfb88197f9313da721-3"></a>.<span class="k">pdfhref</span> <span class="s">O</span> <span class="m">1</span> <span class="s2">"Lua Filters For Massaging ms Output"</span>
-<a name="rest_code_fab1128f22704adfb88197f9313da721-4"></a>.<span class="k">pdfhref</span> <span class="s">M</span> <span class="s2">"lua-filters-for-massaging-ms-output"</span>
-<a name="rest_code_fab1128f22704adfb88197f9313da721-5"></a>.<span class="k">ds</span> <span class="s">startprogram</span> <span class="se">\\</span><span class="s">f[CW]\\m[red]</span>
-<a name="rest_code_fab1128f22704adfb88197f9313da721-6"></a>.<span class="k">ds</span> <span class="s">stopprogram</span> <span class="se">\\</span><span class="s">m[]\\fP</span>
-<a name="rest_code_fab1128f22704adfb88197f9313da721-7"></a>.<span class="k">de</span> <span class="s">startpoem</span>
-<a name="rest_code_fab1128f22704adfb88197f9313da721-8"></a>.<span class="k">ds</span> <span class="s">OLDFAM</span> <span class="se">\\</span><span class="s">*[FAM]</span>
-<a name="rest_code_fab1128f22704adfb88197f9313da721-9"></a>.<span class="k">ds</span> <span class="s">FAM</span> <span class="s">BM</span>
-<a name="rest_code_fab1128f22704adfb88197f9313da721-10"></a>.<span class="k">DS</span> <span class="s">I</span> <span class="m">3</span>
-<a name="rest_code_fab1128f22704adfb88197f9313da721-11"></a><span class="p">.</span><span class="s">.</span>
-<a name="rest_code_fab1128f22704adfb88197f9313da721-12"></a>.<span class="k">de</span> <span class="s">stoppoem</span>
-<a name="rest_code_fab1128f22704adfb88197f9313da721-13"></a>.<span class="k">DE</span>
-<a name="rest_code_fab1128f22704adfb88197f9313da721-14"></a>.<span class="k">ds</span> <span class="s">FAM</span> <span class="se">\\</span><span class="s">*[OLDFAM]</span>
-<a name="rest_code_fab1128f22704adfb88197f9313da721-15"></a><span class="p">.</span><span class="s">.</span>
-<a name="rest_code_fab1128f22704adfb88197f9313da721-16"></a>.<span class="k">LP</span>
-<a name="rest_code_fab1128f22704adfb88197f9313da721-17"></a>This is a sentence.
-<a name="rest_code_fab1128f22704adfb88197f9313da721-18"></a>This sentence talks about <span class="se">\*[startprogram]pandoc\*[stopprogram]</span>.
-<a name="rest_code_fab1128f22704adfb88197f9313da721-19"></a>This is
-<a name="rest_code_fab1128f22704adfb88197f9313da721-20"></a>another sentence.
-<a name="rest_code_fab1128f22704adfb88197f9313da721-21"></a>.<span class="k">startpoem</span>
-<a name="rest_code_fab1128f22704adfb88197f9313da721-22"></a>Some say the world will end in fire,
-<a name="rest_code_fab1128f22704adfb88197f9313da721-23"></a><span class="se">\h</span>'3n'Some say in ice.
-<a name="rest_code_fab1128f22704adfb88197f9313da721-24"></a>From what I<span class="se">\[</span>aq]ve tasted of desire
-<a name="rest_code_fab1128f22704adfb88197f9313da721-25"></a><span class="se">\h</span>'3n'I hold with those who favor fire.
-<a name="rest_code_fab1128f22704adfb88197f9313da721-26"></a>But if it had to perish twice,
-<a name="rest_code_fab1128f22704adfb88197f9313da721-27"></a><span class="se">\h</span>'3n'I think I know enough of hate
-<a name="rest_code_fab1128f22704adfb88197f9313da721-28"></a><span class="se">\h</span>'3n'To say that for destruction ice
-<a name="rest_code_fab1128f22704adfb88197f9313da721-29"></a><span class="se">\h</span>'3n'Is also great,
-<a name="rest_code_fab1128f22704adfb88197f9313da721-30"></a>And would suffice.
-<a name="rest_code_fab1128f22704adfb88197f9313da721-31"></a>
-<a name="rest_code_fab1128f22704adfb88197f9313da721-32"></a>And another line,
-<a name="rest_code_fab1128f22704adfb88197f9313da721-33"></a><span class="se">\h</span>'3n'And an indented line.
-<a name="rest_code_fab1128f22704adfb88197f9313da721-34"></a>.<span class="k">stoppoem</span>
-<a name="rest_code_fab1128f22704adfb88197f9313da721-35"></a>.<span class="k">LP</span>
-<a name="rest_code_fab1128f22704adfb88197f9313da721-36"></a>This is a final sentence.
+<pre class="code groff"><a name="rest_code_6f70bf3f5811483f90f3ad29bcdcee6a-1"></a>.<span class="k">SH</span> <span class="m">1</span>
+<a name="rest_code_6f70bf3f5811483f90f3ad29bcdcee6a-2"></a>Lua Filters For Massaging <span class="se">\f[CB]ms\f[B]</span> Output
+<a name="rest_code_6f70bf3f5811483f90f3ad29bcdcee6a-3"></a>.<span class="k">pdfhref</span> <span class="s">O</span> <span class="m">1</span> <span class="s2">"Lua Filters For Massaging ms Output"</span>
+<a name="rest_code_6f70bf3f5811483f90f3ad29bcdcee6a-4"></a>.<span class="k">pdfhref</span> <span class="s">M</span> <span class="s2">"lua-filters-for-massaging-ms-output"</span>
+<a name="rest_code_6f70bf3f5811483f90f3ad29bcdcee6a-5"></a>.<span class="k">ds</span> <span class="s">startprogram</span> <span class="se">\\</span><span class="s">f[CW]\\m[red]</span>
+<a name="rest_code_6f70bf3f5811483f90f3ad29bcdcee6a-6"></a>.<span class="k">ds</span> <span class="s">stopprogram</span> <span class="se">\\</span><span class="s">m[]\\fP</span>
+<a name="rest_code_6f70bf3f5811483f90f3ad29bcdcee6a-7"></a>.<span class="k">de</span> <span class="s">startpoem</span>
+<a name="rest_code_6f70bf3f5811483f90f3ad29bcdcee6a-8"></a>.<span class="k">ds</span> <span class="s">OLDFAM</span> <span class="se">\\</span><span class="s">*[FAM]</span>
+<a name="rest_code_6f70bf3f5811483f90f3ad29bcdcee6a-9"></a>.<span class="k">ds</span> <span class="s">FAM</span> <span class="s">BM</span>
+<a name="rest_code_6f70bf3f5811483f90f3ad29bcdcee6a-10"></a>.<span class="k">DS</span> <span class="s">I</span> <span class="m">3</span>
+<a name="rest_code_6f70bf3f5811483f90f3ad29bcdcee6a-11"></a><span class="p">.</span><span class="s">.</span>
+<a name="rest_code_6f70bf3f5811483f90f3ad29bcdcee6a-12"></a>.<span class="k">de</span> <span class="s">stoppoem</span>
+<a name="rest_code_6f70bf3f5811483f90f3ad29bcdcee6a-13"></a>.<span class="k">DE</span>
+<a name="rest_code_6f70bf3f5811483f90f3ad29bcdcee6a-14"></a>.<span class="k">ds</span> <span class="s">FAM</span> <span class="se">\\</span><span class="s">*[OLDFAM]</span>
+<a name="rest_code_6f70bf3f5811483f90f3ad29bcdcee6a-15"></a><span class="p">.</span><span class="s">.</span>
+<a name="rest_code_6f70bf3f5811483f90f3ad29bcdcee6a-16"></a>.<span class="k">LP</span>
+<a name="rest_code_6f70bf3f5811483f90f3ad29bcdcee6a-17"></a>This is a sentence.
+<a name="rest_code_6f70bf3f5811483f90f3ad29bcdcee6a-18"></a>This sentence talks about <span class="se">\*[startprogram]pandoc\*[stopprogram]</span>.
+<a name="rest_code_6f70bf3f5811483f90f3ad29bcdcee6a-19"></a>This is
+<a name="rest_code_6f70bf3f5811483f90f3ad29bcdcee6a-20"></a>another sentence.
+<a name="rest_code_6f70bf3f5811483f90f3ad29bcdcee6a-21"></a>.<span class="k">startpoem</span>
+<a name="rest_code_6f70bf3f5811483f90f3ad29bcdcee6a-22"></a>Some say the world will end in fire,
+<a name="rest_code_6f70bf3f5811483f90f3ad29bcdcee6a-23"></a><span class="se">\h</span>'3n'Some say in ice.
+<a name="rest_code_6f70bf3f5811483f90f3ad29bcdcee6a-24"></a>From what I<span class="se">\[</span>aq]ve tasted of desire
+<a name="rest_code_6f70bf3f5811483f90f3ad29bcdcee6a-25"></a><span class="se">\h</span>'3n'I hold with those who favor fire.
+<a name="rest_code_6f70bf3f5811483f90f3ad29bcdcee6a-26"></a>But if it had to perish twice,
+<a name="rest_code_6f70bf3f5811483f90f3ad29bcdcee6a-27"></a><span class="se">\h</span>'3n'I think I know enough of hate
+<a name="rest_code_6f70bf3f5811483f90f3ad29bcdcee6a-28"></a><span class="se">\h</span>'3n'To say that for destruction ice
+<a name="rest_code_6f70bf3f5811483f90f3ad29bcdcee6a-29"></a><span class="se">\h</span>'3n'Is also great,
+<a name="rest_code_6f70bf3f5811483f90f3ad29bcdcee6a-30"></a>And would suffice.
+<a name="rest_code_6f70bf3f5811483f90f3ad29bcdcee6a-31"></a>
+<a name="rest_code_6f70bf3f5811483f90f3ad29bcdcee6a-32"></a>And another line,
+<a name="rest_code_6f70bf3f5811483f90f3ad29bcdcee6a-33"></a><span class="se">\h</span>'3n'And an indented line.
+<a name="rest_code_6f70bf3f5811483f90f3ad29bcdcee6a-34"></a>.<span class="k">stoppoem</span>
+<a name="rest_code_6f70bf3f5811483f90f3ad29bcdcee6a-35"></a>.<span class="k">LP</span>
+<a name="rest_code_6f70bf3f5811483f90f3ad29bcdcee6a-36"></a>This is a final sentence.
 </pre>
 <p>The command to produce the ms output is:</p>
-<pre class="code bash"><a name="rest_code_140fb6bf000a4429a0ad9ef5d01b0121-1"></a>pandoc -f rst -t ms --lua-filter classify-rst-ms.lua --wrap<span class="o">=</span>preserve poem-plus.rst --output<span class="o">=</span>poem-plus-rst.ms
+<pre class="code bash"><a name="rest_code_78ce0d9d5941452aa771a7b8ac2d2697-1"></a>pandoc -f rst -t ms --lua-filter classify-rst-ms.lua --wrap<span class="o">=</span>preserve poem-plus.rst --output<span class="o">=</span>poem-plus-rst.ms
 </pre>
 <p>and the command to produce a PDF is:</p>
-<pre class="code bash"><a name="rest_code_441866ffb83b4700b03e1676ea7a8f37-1"></a>pandoc -f rst -t ms --lua-filter classify-rst-ms.lua --wrap<span class="o">=</span>preserve poem-plus.rst --output<span class="o">=</span>poem-plus-rst.ms.pdf
+<pre class="code bash"><a name="rest_code_1ede1e88c0ad40d881c0c5a288d09607-1"></a>pandoc -f rst -t ms --lua-filter classify-rst-ms.lua --wrap<span class="o">=</span>preserve poem-plus.rst --output<span class="o">=</span>poem-plus-rst.ms.pdf
 </pre>
 <p><a class="reference external" href="poem-plus-rst.ms.pdf">Here</a> is the output PDF.</p>
 <p>Being able to rewrite the tree and insert RawBlocks and RawInlines is
@@ -419,12 +419,12 @@ start to the end you can't allow the use of <code class="docutils literal">.LP</
     <div>
 <p><a class="reference external" href="http://www.sbcl.org/">SBCL</a> and <a class="reference external" href="https://ccl.clozure.com/">CCL</a> and <a class="reference external" href="https://clisp.sourceforge.io/">CLISP</a> think binding a symbol defined with <code class="docutils literal">defconstant</code>
 is an error, so if you do</p>
-<pre class="code common-lisp"><a name="rest_code_15cceb98903f4b0ebb597968c238ae28-1"></a><span class="p">(</span><span class="nb">defconstant</span> <span class="nv">foo</span> <span class="s">"foo"</span><span class="p">)</span>
-<a name="rest_code_15cceb98903f4b0ebb597968c238ae28-2"></a><span class="p">(</span><span class="k">let</span> <span class="p">((</span><span class="nv">foo</span> <span class="s">"bar"</span><span class="p">))</span> <span class="nv">foo</span><span class="p">)</span>
+<pre class="code common-lisp"><a name="rest_code_d3813a4c43ca4e7ea0c0fdf154b5a509-1"></a><span class="p">(</span><span class="nb">defconstant</span> <span class="nv">foo</span> <span class="s">"foo"</span><span class="p">)</span>
+<a name="rest_code_d3813a4c43ca4e7ea0c0fdf154b5a509-2"></a><span class="p">(</span><span class="k">let</span> <span class="p">((</span><span class="nv">foo</span> <span class="s">"bar"</span><span class="p">))</span> <span class="nv">foo</span><span class="p">)</span>
 </pre>
 <p>you get an error.  But in <a class="reference external" href="https://abcl.org/">ABCL</a> and <a class="reference external" href="https://common-lisp.net/project/ecl/">ECL</a> you don’t.</p>
 <p>If you try</p>
-<pre class="code common-lisp"><a name="rest_code_3177d1bb213f461c91b485a91eda3c80-1"></a><span class="p">(</span><span class="nb">defun</span> <span class="nv">x</span> <span class="p">()</span> <span class="p">(</span><span class="k">let</span> <span class="p">((</span><span class="nv">foo</span> <span class="s">"bar"</span><span class="p">))</span> <span class="nv">foo</span><span class="p">))</span>
+<pre class="code common-lisp"><a name="rest_code_8166890ab4df49698133e637edb86e88-1"></a><span class="p">(</span><span class="nb">defun</span> <span class="nv">x</span> <span class="p">()</span> <span class="p">(</span><span class="k">let</span> <span class="p">((</span><span class="nv">foo</span> <span class="s">"bar"</span><span class="p">))</span> <span class="nv">foo</span><span class="p">))</span>
 </pre>
 <p>in SBCL and CCL you get an error when the function is compiled.
 In SBCL the function is defined, but always gives an error when run.

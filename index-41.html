@@ -358,30 +358,30 @@ numbers at the beginning of all the lines in a buffer.</p>
 <code>(require 'cl))</code>, but the <code class="docutils literal"><span class="pre">define-modify-macro</span></code> is
 originally from Common Lisp.</p>
 <p>These are trivial, but useful.</p>
-<pre class="code common-lisp"><a name="rest_code_c629d57a96a64f25a4c034de50766511-1"></a><span class="p">(</span><span class="nb">define-modify-macro</span> <span class="nv">notf</span> <span class="p">(</span><span class="k">&amp;rest</span> <span class="nv">args</span><span class="p">)</span> <span class="nb">not</span><span class="p">)</span>
-<a name="rest_code_c629d57a96a64f25a4c034de50766511-2"></a><span class="p">(</span><span class="k">setq</span> <span class="nv">x</span> <span class="no">nil</span><span class="p">)</span>
-<a name="rest_code_c629d57a96a64f25a4c034de50766511-3"></a><span class="p">(</span><span class="nv">notf</span> <span class="nv">x</span><span class="p">)</span>
-<a name="rest_code_c629d57a96a64f25a4c034de50766511-4"></a><span class="nv">x</span> <span class="c1">;;=&gt; t</span>
-<a name="rest_code_c629d57a96a64f25a4c034de50766511-5"></a><span class="p">(</span><span class="nv">notf</span> <span class="nv">x</span><span class="p">)</span>
-<a name="rest_code_c629d57a96a64f25a4c034de50766511-6"></a><span class="nv">x</span> <span class="c1">;;=&gt; nil</span>
-<a name="rest_code_c629d57a96a64f25a4c034de50766511-7"></a><span class="p">(</span><span class="k">setq</span> <span class="nv">x</span> <span class="err">‘</span><span class="p">(</span><span class="nv">a</span> <span class="p">(</span><span class="nv">b</span> <span class="p">(</span><span class="nv">c</span> <span class="no">t</span><span class="p">))))</span>
-<a name="rest_code_c629d57a96a64f25a4c034de50766511-8"></a><span class="p">(</span><span class="nv">notf</span> <span class="p">(</span><span class="nb">car</span> <span class="p">(</span><span class="nb">cdr</span> <span class="p">(</span><span class="nb">cadadr</span> <span class="nv">x</span><span class="p">))))</span>
-<a name="rest_code_c629d57a96a64f25a4c034de50766511-9"></a><span class="nv">x</span> <span class="c1">;;=&gt; (a (b (c nil)))</span>
-<a name="rest_code_c629d57a96a64f25a4c034de50766511-10"></a><span class="p">(</span><span class="nv">notf</span> <span class="p">(</span><span class="nb">car</span> <span class="p">(</span><span class="nb">cdr</span> <span class="p">(</span><span class="nb">cadadr</span> <span class="nv">x</span><span class="p">))))</span>
-<a name="rest_code_c629d57a96a64f25a4c034de50766511-11"></a><span class="nv">x</span> <span class="c1">;;=&gt; (a (b (c t)))</span>
-<a name="rest_code_c629d57a96a64f25a4c034de50766511-12"></a><span class="p">(</span><span class="k">setq</span> <span class="nv">x</span> <span class="nv">[1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="no">t</span> <span class="nv">5]</span><span class="p">)</span>
-<a name="rest_code_c629d57a96a64f25a4c034de50766511-13"></a><span class="p">(</span><span class="nv">notf</span> <span class="p">(</span><span class="nb">aref</span> <span class="nv">x</span> <span class="mi">3</span><span class="p">))</span>
-<a name="rest_code_c629d57a96a64f25a4c034de50766511-14"></a><span class="nv">x</span> <span class="c1">;;=&gt; [1 2 3 nil 5]</span>
-<a name="rest_code_c629d57a96a64f25a4c034de50766511-15"></a><span class="p">(</span><span class="nv">notf</span> <span class="p">(</span><span class="nb">aref</span> <span class="nv">x</span> <span class="mi">3</span><span class="p">))</span>
-<a name="rest_code_c629d57a96a64f25a4c034de50766511-16"></a><span class="nv">x</span> <span class="c1">;;=&gt; [1 2 3 t 5]</span>
-<a name="rest_code_c629d57a96a64f25a4c034de50766511-17"></a>
-<a name="rest_code_c629d57a96a64f25a4c034de50766511-18"></a><span class="p">(</span><span class="nb">define-modify-macro</span> <span class="nv">cdrf</span> <span class="p">(</span><span class="k">&amp;rest</span> <span class="nv">args</span><span class="p">)</span> <span class="nb">cdr</span><span class="p">)</span>
-<a name="rest_code_c629d57a96a64f25a4c034de50766511-19"></a><span class="p">(</span><span class="k">setq</span> <span class="nv">x</span> <span class="err">‘</span><span class="p">(</span><span class="ss">:a</span> <span class="ss">:b</span> <span class="ss">:c</span> <span class="ss">:d</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">))</span>
-<a name="rest_code_c629d57a96a64f25a4c034de50766511-20"></a><span class="p">(</span><span class="nb">defun</span> <span class="nv">frob</span> <span class="p">(</span><span class="kt">keyword</span><span class="p">)</span> <span class="err">‘</span><span class="nv">nothing-now</span><span class="p">)</span>
-<a name="rest_code_c629d57a96a64f25a4c034de50766511-21"></a><span class="p">(</span><span class="nv">while</span> <span class="p">(</span><span class="nb">member</span> <span class="p">(</span><span class="nb">car</span> <span class="nv">x</span><span class="p">)</span> <span class="err">‘</span><span class="p">(</span><span class="ss">:a</span> <span class="ss">:b</span> <span class="ss">:c</span> <span class="ss">:d</span><span class="p">))</span>
-<a name="rest_code_c629d57a96a64f25a4c034de50766511-22"></a>  <span class="p">(</span><span class="nv">frob</span> <span class="p">(</span><span class="nb">car</span> <span class="nv">x</span><span class="p">))</span>
-<a name="rest_code_c629d57a96a64f25a4c034de50766511-23"></a>  <span class="p">(</span><span class="nv">cdrf</span> <span class="nv">x</span><span class="p">))</span>
-<a name="rest_code_c629d57a96a64f25a4c034de50766511-24"></a><span class="nv">x</span> <span class="c1">;;=&gt; (1 2 3)</span>
+<pre class="code common-lisp"><a name="rest_code_89dd744bfbe947d78d0e1184cace1c6f-1"></a><span class="p">(</span><span class="nb">define-modify-macro</span> <span class="nv">notf</span> <span class="p">(</span><span class="k">&amp;rest</span> <span class="nv">args</span><span class="p">)</span> <span class="nb">not</span><span class="p">)</span>
+<a name="rest_code_89dd744bfbe947d78d0e1184cace1c6f-2"></a><span class="p">(</span><span class="k">setq</span> <span class="nv">x</span> <span class="no">nil</span><span class="p">)</span>
+<a name="rest_code_89dd744bfbe947d78d0e1184cace1c6f-3"></a><span class="p">(</span><span class="nv">notf</span> <span class="nv">x</span><span class="p">)</span>
+<a name="rest_code_89dd744bfbe947d78d0e1184cace1c6f-4"></a><span class="nv">x</span> <span class="c1">;;=&gt; t</span>
+<a name="rest_code_89dd744bfbe947d78d0e1184cace1c6f-5"></a><span class="p">(</span><span class="nv">notf</span> <span class="nv">x</span><span class="p">)</span>
+<a name="rest_code_89dd744bfbe947d78d0e1184cace1c6f-6"></a><span class="nv">x</span> <span class="c1">;;=&gt; nil</span>
+<a name="rest_code_89dd744bfbe947d78d0e1184cace1c6f-7"></a><span class="p">(</span><span class="k">setq</span> <span class="nv">x</span> <span class="err">‘</span><span class="p">(</span><span class="nv">a</span> <span class="p">(</span><span class="nv">b</span> <span class="p">(</span><span class="nv">c</span> <span class="no">t</span><span class="p">))))</span>
+<a name="rest_code_89dd744bfbe947d78d0e1184cace1c6f-8"></a><span class="p">(</span><span class="nv">notf</span> <span class="p">(</span><span class="nb">car</span> <span class="p">(</span><span class="nb">cdr</span> <span class="p">(</span><span class="nb">cadadr</span> <span class="nv">x</span><span class="p">))))</span>
+<a name="rest_code_89dd744bfbe947d78d0e1184cace1c6f-9"></a><span class="nv">x</span> <span class="c1">;;=&gt; (a (b (c nil)))</span>
+<a name="rest_code_89dd744bfbe947d78d0e1184cace1c6f-10"></a><span class="p">(</span><span class="nv">notf</span> <span class="p">(</span><span class="nb">car</span> <span class="p">(</span><span class="nb">cdr</span> <span class="p">(</span><span class="nb">cadadr</span> <span class="nv">x</span><span class="p">))))</span>
+<a name="rest_code_89dd744bfbe947d78d0e1184cace1c6f-11"></a><span class="nv">x</span> <span class="c1">;;=&gt; (a (b (c t)))</span>
+<a name="rest_code_89dd744bfbe947d78d0e1184cace1c6f-12"></a><span class="p">(</span><span class="k">setq</span> <span class="nv">x</span> <span class="nv">[1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="no">t</span> <span class="nv">5]</span><span class="p">)</span>
+<a name="rest_code_89dd744bfbe947d78d0e1184cace1c6f-13"></a><span class="p">(</span><span class="nv">notf</span> <span class="p">(</span><span class="nb">aref</span> <span class="nv">x</span> <span class="mi">3</span><span class="p">))</span>
+<a name="rest_code_89dd744bfbe947d78d0e1184cace1c6f-14"></a><span class="nv">x</span> <span class="c1">;;=&gt; [1 2 3 nil 5]</span>
+<a name="rest_code_89dd744bfbe947d78d0e1184cace1c6f-15"></a><span class="p">(</span><span class="nv">notf</span> <span class="p">(</span><span class="nb">aref</span> <span class="nv">x</span> <span class="mi">3</span><span class="p">))</span>
+<a name="rest_code_89dd744bfbe947d78d0e1184cace1c6f-16"></a><span class="nv">x</span> <span class="c1">;;=&gt; [1 2 3 t 5]</span>
+<a name="rest_code_89dd744bfbe947d78d0e1184cace1c6f-17"></a>
+<a name="rest_code_89dd744bfbe947d78d0e1184cace1c6f-18"></a><span class="p">(</span><span class="nb">define-modify-macro</span> <span class="nv">cdrf</span> <span class="p">(</span><span class="k">&amp;rest</span> <span class="nv">args</span><span class="p">)</span> <span class="nb">cdr</span><span class="p">)</span>
+<a name="rest_code_89dd744bfbe947d78d0e1184cace1c6f-19"></a><span class="p">(</span><span class="k">setq</span> <span class="nv">x</span> <span class="err">‘</span><span class="p">(</span><span class="ss">:a</span> <span class="ss">:b</span> <span class="ss">:c</span> <span class="ss">:d</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">))</span>
+<a name="rest_code_89dd744bfbe947d78d0e1184cace1c6f-20"></a><span class="p">(</span><span class="nb">defun</span> <span class="nv">frob</span> <span class="p">(</span><span class="kt">keyword</span><span class="p">)</span> <span class="err">‘</span><span class="nv">nothing-now</span><span class="p">)</span>
+<a name="rest_code_89dd744bfbe947d78d0e1184cace1c6f-21"></a><span class="p">(</span><span class="nv">while</span> <span class="p">(</span><span class="nb">member</span> <span class="p">(</span><span class="nb">car</span> <span class="nv">x</span><span class="p">)</span> <span class="err">‘</span><span class="p">(</span><span class="ss">:a</span> <span class="ss">:b</span> <span class="ss">:c</span> <span class="ss">:d</span><span class="p">))</span>
+<a name="rest_code_89dd744bfbe947d78d0e1184cace1c6f-22"></a>  <span class="p">(</span><span class="nv">frob</span> <span class="p">(</span><span class="nb">car</span> <span class="nv">x</span><span class="p">))</span>
+<a name="rest_code_89dd744bfbe947d78d0e1184cace1c6f-23"></a>  <span class="p">(</span><span class="nv">cdrf</span> <span class="nv">x</span><span class="p">))</span>
+<a name="rest_code_89dd744bfbe947d78d0e1184cace1c6f-24"></a><span class="nv">x</span> <span class="c1">;;=&gt; (1 2 3)</span>
 </pre>
 </div>
     <nav><ul itemprop="keywords" class="tags">
@@ -405,56 +405,56 @@ after emacs loads a particular emacs-lisp file, but you want to pass
 values of local variables into that code.  The function
 <code class="docutils literal"><span class="pre">eval-after-load</span></code> makes you quote the expression and doesn't
 allow passing values into the expression.  How about this?</p>
-<pre class="code emacs-lisp"><a name="rest_code_02d51e1dc23b459cade2b3db53e9cf9f-1"></a><span class="p">(</span><span class="nb">require</span> <span class="ss">'cl</span><span class="p">)</span>
-<a name="rest_code_02d51e1dc23b459cade2b3db53e9cf9f-2"></a><span class="p">(</span><span class="nv">defmacro*</span> <span class="nv">eval-after-load*</span> <span class="p">(</span><span class="nv">file</span> <span class="nv">varlist</span> <span class="kp">&amp;rest</span> <span class="nv">body</span><span class="p">)</span>
-<a name="rest_code_02d51e1dc23b459cade2b3db53e9cf9f-3"></a>  <span class="s">"Like </span><span class="ss">`eval-after-load'</span><span class="s">, but bind variables according to VARLIST in</span>
-<a name="rest_code_02d51e1dc23b459cade2b3db53e9cf9f-4"></a><span class="s">the current environment of the </span><span class="ss">`eval-after-load'</span><span class="s"> expression, not the</span>
-<a name="rest_code_02d51e1dc23b459cade2b3db53e9cf9f-5"></a><span class="s">environment when BODY is evaluated.  This allows easy passing of values</span>
-<a name="rest_code_02d51e1dc23b459cade2b3db53e9cf9f-6"></a><span class="s">into BODY.</span>
-<a name="rest_code_02d51e1dc23b459cade2b3db53e9cf9f-7"></a><span class="s">Each element of VARLIST is a symbol (which is bound to the current value</span>
-<a name="rest_code_02d51e1dc23b459cade2b3db53e9cf9f-8"></a><span class="s">of that symbol) or a list (SYMBOL VALUEFORM) (which binds SYMBOL to the</span>
-<a name="rest_code_02d51e1dc23b459cade2b3db53e9cf9f-9"></a><span class="s">value of VALUEFORM in the environment of the </span><span class="ss">`eval-after-load'</span><span class="s"> expression."</span>
-<a name="rest_code_02d51e1dc23b459cade2b3db53e9cf9f-10"></a>  <span class="o">`</span><span class="p">(</span><span class="nv">eval-after-load</span> <span class="o">,</span><span class="nv">file</span>
-<a name="rest_code_02d51e1dc23b459cade2b3db53e9cf9f-11"></a>     <span class="o">'</span><span class="p">(</span><span class="k">let</span> <span class="o">,</span><span class="p">(</span><span class="nb">loop</span> <span class="nv">for</span> <span class="nv">v</span> <span class="nv">in</span> <span class="nv">varlist</span>
-<a name="rest_code_02d51e1dc23b459cade2b3db53e9cf9f-12"></a>                  <span class="nv">collect</span> <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nf">symbolp</span> <span class="nv">v</span><span class="p">)</span>
-<a name="rest_code_02d51e1dc23b459cade2b3db53e9cf9f-13"></a>                              <span class="o">`</span><span class="p">(</span><span class="o">,</span><span class="nv">v</span> <span class="o">,</span><span class="p">(</span><span class="nf">eval</span> <span class="nv">v</span><span class="p">))</span>
-<a name="rest_code_02d51e1dc23b459cade2b3db53e9cf9f-14"></a>                            <span class="o">`</span><span class="p">(</span><span class="o">,</span><span class="p">(</span><span class="nf">car</span> <span class="nv">v</span><span class="p">)</span> <span class="o">,</span><span class="p">(</span><span class="nf">eval</span> <span class="p">(</span><span class="nv">cadr</span> <span class="nv">v</span><span class="p">))))</span>
-<a name="rest_code_02d51e1dc23b459cade2b3db53e9cf9f-15"></a>                  <span class="nv">into</span> <span class="nv">new-varlist</span>
-<a name="rest_code_02d51e1dc23b459cade2b3db53e9cf9f-16"></a>                  <span class="nv">finally</span> <span class="nb">return</span> <span class="nv">new-varlist</span><span class="p">)</span> <span class="o">,@</span><span class="nv">body</span><span class="p">)))</span>
-<a name="rest_code_02d51e1dc23b459cade2b3db53e9cf9f-17"></a><span class="p">(</span><span class="nf">put</span> <span class="ss">'eval-after-load*</span> <span class="ss">'lisp-indent-function</span>
-<a name="rest_code_02d51e1dc23b459cade2b3db53e9cf9f-18"></a>     <span class="p">(</span><span class="nf">1+</span> <span class="p">(</span><span class="nf">get</span> <span class="ss">'eval-after-load</span> <span class="ss">'lisp-indent-function</span><span class="p">)))</span>
+<pre class="code emacs-lisp"><a name="rest_code_ff336174ce0f45d793adde29f61964f3-1"></a><span class="p">(</span><span class="nb">require</span> <span class="ss">'cl</span><span class="p">)</span>
+<a name="rest_code_ff336174ce0f45d793adde29f61964f3-2"></a><span class="p">(</span><span class="nv">defmacro*</span> <span class="nv">eval-after-load*</span> <span class="p">(</span><span class="nv">file</span> <span class="nv">varlist</span> <span class="kp">&amp;rest</span> <span class="nv">body</span><span class="p">)</span>
+<a name="rest_code_ff336174ce0f45d793adde29f61964f3-3"></a>  <span class="s">"Like </span><span class="ss">`eval-after-load'</span><span class="s">, but bind variables according to VARLIST in</span>
+<a name="rest_code_ff336174ce0f45d793adde29f61964f3-4"></a><span class="s">the current environment of the </span><span class="ss">`eval-after-load'</span><span class="s"> expression, not the</span>
+<a name="rest_code_ff336174ce0f45d793adde29f61964f3-5"></a><span class="s">environment when BODY is evaluated.  This allows easy passing of values</span>
+<a name="rest_code_ff336174ce0f45d793adde29f61964f3-6"></a><span class="s">into BODY.</span>
+<a name="rest_code_ff336174ce0f45d793adde29f61964f3-7"></a><span class="s">Each element of VARLIST is a symbol (which is bound to the current value</span>
+<a name="rest_code_ff336174ce0f45d793adde29f61964f3-8"></a><span class="s">of that symbol) or a list (SYMBOL VALUEFORM) (which binds SYMBOL to the</span>
+<a name="rest_code_ff336174ce0f45d793adde29f61964f3-9"></a><span class="s">value of VALUEFORM in the environment of the </span><span class="ss">`eval-after-load'</span><span class="s"> expression."</span>
+<a name="rest_code_ff336174ce0f45d793adde29f61964f3-10"></a>  <span class="o">`</span><span class="p">(</span><span class="nv">eval-after-load</span> <span class="o">,</span><span class="nv">file</span>
+<a name="rest_code_ff336174ce0f45d793adde29f61964f3-11"></a>     <span class="o">'</span><span class="p">(</span><span class="k">let</span> <span class="o">,</span><span class="p">(</span><span class="nb">loop</span> <span class="nv">for</span> <span class="nv">v</span> <span class="nv">in</span> <span class="nv">varlist</span>
+<a name="rest_code_ff336174ce0f45d793adde29f61964f3-12"></a>                  <span class="nv">collect</span> <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nf">symbolp</span> <span class="nv">v</span><span class="p">)</span>
+<a name="rest_code_ff336174ce0f45d793adde29f61964f3-13"></a>                              <span class="o">`</span><span class="p">(</span><span class="o">,</span><span class="nv">v</span> <span class="o">,</span><span class="p">(</span><span class="nf">eval</span> <span class="nv">v</span><span class="p">))</span>
+<a name="rest_code_ff336174ce0f45d793adde29f61964f3-14"></a>                            <span class="o">`</span><span class="p">(</span><span class="o">,</span><span class="p">(</span><span class="nf">car</span> <span class="nv">v</span><span class="p">)</span> <span class="o">,</span><span class="p">(</span><span class="nf">eval</span> <span class="p">(</span><span class="nv">cadr</span> <span class="nv">v</span><span class="p">))))</span>
+<a name="rest_code_ff336174ce0f45d793adde29f61964f3-15"></a>                  <span class="nv">into</span> <span class="nv">new-varlist</span>
+<a name="rest_code_ff336174ce0f45d793adde29f61964f3-16"></a>                  <span class="nv">finally</span> <span class="nb">return</span> <span class="nv">new-varlist</span><span class="p">)</span> <span class="o">,@</span><span class="nv">body</span><span class="p">)))</span>
+<a name="rest_code_ff336174ce0f45d793adde29f61964f3-17"></a><span class="p">(</span><span class="nf">put</span> <span class="ss">'eval-after-load*</span> <span class="ss">'lisp-indent-function</span>
+<a name="rest_code_ff336174ce0f45d793adde29f61964f3-18"></a>     <span class="p">(</span><span class="nf">1+</span> <span class="p">(</span><span class="nf">get</span> <span class="ss">'eval-after-load</span> <span class="ss">'lisp-indent-function</span><span class="p">)))</span>
 </pre>
 <p>Here's a contrived example which demonstrates when things happen.</p>
-<pre class="code emacs-lisp"><a name="rest_code_b7b875fe74524b689ce4ce3141ea2333-1"></a><span class="p">(</span><span class="k">let</span> <span class="p">((</span><span class="nv">f</span> <span class="p">(</span><span class="nv">make-temp-file</span> <span class="s">"tkb-madness"</span> <span class="no">nil</span> <span class="s">".el"</span><span class="p">))</span>
-<a name="rest_code_b7b875fe74524b689ce4ce3141ea2333-2"></a>      <span class="p">(</span><span class="nv">x</span> <span class="mi">1</span><span class="p">))</span>
-<a name="rest_code_b7b875fe74524b689ce4ce3141ea2333-3"></a>  <span class="p">(</span><span class="k">unwind-protect</span>
-<a name="rest_code_b7b875fe74524b689ce4ce3141ea2333-4"></a>      <span class="p">(</span><span class="k">progn</span>
-<a name="rest_code_b7b875fe74524b689ce4ce3141ea2333-5"></a>        <span class="p">(</span><span class="k">save-excursion</span>
-<a name="rest_code_b7b875fe74524b689ce4ce3141ea2333-6"></a>          <span class="p">(</span><span class="k">let</span> <span class="p">((</span><span class="nv">buf</span> <span class="p">(</span><span class="nv">find-file</span> <span class="nv">f</span><span class="p">)))</span>
-<a name="rest_code_b7b875fe74524b689ce4ce3141ea2333-7"></a>            <span class="p">(</span><span class="nf">insert</span> <span class="p">(</span><span class="nf">format</span> <span class="s">"(y-or-n-p \"In the file '%s'! \")"</span> <span class="nv">f</span><span class="p">))</span>
-<a name="rest_code_b7b875fe74524b689ce4ce3141ea2333-8"></a>            <span class="p">(</span><span class="nv">save-buffer</span><span class="p">)</span>
-<a name="rest_code_b7b875fe74524b689ce4ce3141ea2333-9"></a>            <span class="p">(</span><span class="nf">kill-buffer</span> <span class="nv">buf</span><span class="p">)))</span>
-<a name="rest_code_b7b875fe74524b689ce4ce3141ea2333-10"></a>        <span class="p">(</span><span class="nv">y-or-n-p</span> <span class="s">"This happens before the eval-after-load*"</span><span class="p">)</span>
-<a name="rest_code_b7b875fe74524b689ce4ce3141ea2333-11"></a>        <span class="p">(</span><span class="nv">eval-after-load*</span> <span class="nv">f</span>
-<a name="rest_code_b7b875fe74524b689ce4ce3141ea2333-12"></a>            <span class="p">(</span><span class="nv">x</span>
-<a name="rest_code_b7b875fe74524b689ce4ce3141ea2333-13"></a>             <span class="p">(</span><span class="nv">y</span> <span class="p">(</span><span class="nv">y-or-n-p</span> <span class="s">"This happens when the eval-after-load* is executed?"</span><span class="p">))</span>
-<a name="rest_code_b7b875fe74524b689ce4ce3141ea2333-14"></a>             <span class="p">(</span><span class="nv">z</span> <span class="mi">2</span><span class="p">))</span>
-<a name="rest_code_b7b875fe74524b689ce4ce3141ea2333-15"></a>          <span class="p">(</span><span class="nv">y-or-n-p</span> <span class="p">(</span><span class="nf">format</span> <span class="s">"x: %d y: %S z: %d"</span> <span class="nv">x</span> <span class="nv">y</span> <span class="nv">z</span><span class="p">))</span>
-<a name="rest_code_b7b875fe74524b689ce4ce3141ea2333-16"></a>          <span class="p">(</span><span class="nv">y-or-n-p</span> <span class="s">"This happends during the delayed expressions"</span><span class="p">))</span>
-<a name="rest_code_b7b875fe74524b689ce4ce3141ea2333-17"></a>        <span class="p">(</span><span class="nv">y-or-n-p</span> <span class="s">"This happens after the eval-after-load* expression"</span><span class="p">)</span>
-<a name="rest_code_b7b875fe74524b689ce4ce3141ea2333-18"></a>        <span class="p">(</span><span class="nf">load</span> <span class="nv">f</span><span class="p">))</span>
-<a name="rest_code_b7b875fe74524b689ce4ce3141ea2333-19"></a>    <span class="p">(</span><span class="nb">when</span> <span class="p">(</span><span class="nf">file-exists-p</span> <span class="nv">f</span><span class="p">)</span> <span class="p">(</span><span class="nf">delete-file</span> <span class="nv">f</span><span class="p">))))</span>
+<pre class="code emacs-lisp"><a name="rest_code_ff95cebea191400d98a05bab8f42c135-1"></a><span class="p">(</span><span class="k">let</span> <span class="p">((</span><span class="nv">f</span> <span class="p">(</span><span class="nv">make-temp-file</span> <span class="s">"tkb-madness"</span> <span class="no">nil</span> <span class="s">".el"</span><span class="p">))</span>
+<a name="rest_code_ff95cebea191400d98a05bab8f42c135-2"></a>      <span class="p">(</span><span class="nv">x</span> <span class="mi">1</span><span class="p">))</span>
+<a name="rest_code_ff95cebea191400d98a05bab8f42c135-3"></a>  <span class="p">(</span><span class="k">unwind-protect</span>
+<a name="rest_code_ff95cebea191400d98a05bab8f42c135-4"></a>      <span class="p">(</span><span class="k">progn</span>
+<a name="rest_code_ff95cebea191400d98a05bab8f42c135-5"></a>        <span class="p">(</span><span class="k">save-excursion</span>
+<a name="rest_code_ff95cebea191400d98a05bab8f42c135-6"></a>          <span class="p">(</span><span class="k">let</span> <span class="p">((</span><span class="nv">buf</span> <span class="p">(</span><span class="nv">find-file</span> <span class="nv">f</span><span class="p">)))</span>
+<a name="rest_code_ff95cebea191400d98a05bab8f42c135-7"></a>            <span class="p">(</span><span class="nf">insert</span> <span class="p">(</span><span class="nf">format</span> <span class="s">"(y-or-n-p \"In the file '%s'! \")"</span> <span class="nv">f</span><span class="p">))</span>
+<a name="rest_code_ff95cebea191400d98a05bab8f42c135-8"></a>            <span class="p">(</span><span class="nv">save-buffer</span><span class="p">)</span>
+<a name="rest_code_ff95cebea191400d98a05bab8f42c135-9"></a>            <span class="p">(</span><span class="nf">kill-buffer</span> <span class="nv">buf</span><span class="p">)))</span>
+<a name="rest_code_ff95cebea191400d98a05bab8f42c135-10"></a>        <span class="p">(</span><span class="nv">y-or-n-p</span> <span class="s">"This happens before the eval-after-load*"</span><span class="p">)</span>
+<a name="rest_code_ff95cebea191400d98a05bab8f42c135-11"></a>        <span class="p">(</span><span class="nv">eval-after-load*</span> <span class="nv">f</span>
+<a name="rest_code_ff95cebea191400d98a05bab8f42c135-12"></a>            <span class="p">(</span><span class="nv">x</span>
+<a name="rest_code_ff95cebea191400d98a05bab8f42c135-13"></a>             <span class="p">(</span><span class="nv">y</span> <span class="p">(</span><span class="nv">y-or-n-p</span> <span class="s">"This happens when the eval-after-load* is executed?"</span><span class="p">))</span>
+<a name="rest_code_ff95cebea191400d98a05bab8f42c135-14"></a>             <span class="p">(</span><span class="nv">z</span> <span class="mi">2</span><span class="p">))</span>
+<a name="rest_code_ff95cebea191400d98a05bab8f42c135-15"></a>          <span class="p">(</span><span class="nv">y-or-n-p</span> <span class="p">(</span><span class="nf">format</span> <span class="s">"x: %d y: %S z: %d"</span> <span class="nv">x</span> <span class="nv">y</span> <span class="nv">z</span><span class="p">))</span>
+<a name="rest_code_ff95cebea191400d98a05bab8f42c135-16"></a>          <span class="p">(</span><span class="nv">y-or-n-p</span> <span class="s">"This happends during the delayed expressions"</span><span class="p">))</span>
+<a name="rest_code_ff95cebea191400d98a05bab8f42c135-17"></a>        <span class="p">(</span><span class="nv">y-or-n-p</span> <span class="s">"This happens after the eval-after-load* expression"</span><span class="p">)</span>
+<a name="rest_code_ff95cebea191400d98a05bab8f42c135-18"></a>        <span class="p">(</span><span class="nf">load</span> <span class="nv">f</span><span class="p">))</span>
+<a name="rest_code_ff95cebea191400d98a05bab8f42c135-19"></a>    <span class="p">(</span><span class="nb">when</span> <span class="p">(</span><span class="nf">file-exists-p</span> <span class="nv">f</span><span class="p">)</span> <span class="p">(</span><span class="nf">delete-file</span> <span class="nv">f</span><span class="p">))))</span>
 </pre>
 <p>You should see something like:</p>
-<pre class="code text"><a name="rest_code_8f90c98d412e4fe893c76cab4ac88d4a-1"></a>Wrote /tmp/tkb-madness88647vuE.el
-<a name="rest_code_8f90c98d412e4fe893c76cab4ac88d4a-2"></a>This happens before the eval-after-load*(y or n)
-<a name="rest_code_8f90c98d412e4fe893c76cab4ac88d4a-3"></a>This happens when the eval-after-load* is executed?(y or n)
-<a name="rest_code_8f90c98d412e4fe893c76cab4ac88d4a-4"></a>This happens after the eval-after-load* expression(y or n)
-<a name="rest_code_8f90c98d412e4fe893c76cab4ac88d4a-5"></a>Loading /tmp/tkb-madness88647vuE.el (source)...
-<a name="rest_code_8f90c98d412e4fe893c76cab4ac88d4a-6"></a>In the file '/tmp/tkb-madness88647vuE.el'! (y or n)
-<a name="rest_code_8f90c98d412e4fe893c76cab4ac88d4a-7"></a>x: 1 y: t z: 2(y or n)
-<a name="rest_code_8f90c98d412e4fe893c76cab4ac88d4a-8"></a>This happends during the delayed expressions(y or n)
-<a name="rest_code_8f90c98d412e4fe893c76cab4ac88d4a-9"></a>Loading /tmp/tkb-madness88647vuE.el (source)...done
+<pre class="code text"><a name="rest_code_3e642ca95d874718b285282d20953e20-1"></a>Wrote /tmp/tkb-madness88647vuE.el
+<a name="rest_code_3e642ca95d874718b285282d20953e20-2"></a>This happens before the eval-after-load*(y or n)
+<a name="rest_code_3e642ca95d874718b285282d20953e20-3"></a>This happens when the eval-after-load* is executed?(y or n)
+<a name="rest_code_3e642ca95d874718b285282d20953e20-4"></a>This happens after the eval-after-load* expression(y or n)
+<a name="rest_code_3e642ca95d874718b285282d20953e20-5"></a>Loading /tmp/tkb-madness88647vuE.el (source)...
+<a name="rest_code_3e642ca95d874718b285282d20953e20-6"></a>In the file '/tmp/tkb-madness88647vuE.el'! (y or n)
+<a name="rest_code_3e642ca95d874718b285282d20953e20-7"></a>x: 1 y: t z: 2(y or n)
+<a name="rest_code_3e642ca95d874718b285282d20953e20-8"></a>This happends during the delayed expressions(y or n)
+<a name="rest_code_3e642ca95d874718b285282d20953e20-9"></a>Loading /tmp/tkb-madness88647vuE.el (source)...done
 </pre>
 <p>(<code class="docutils literal"><span class="pre">y-or-n-p</span></code> is used instead of <code class="docutils literal">message</code> so you see each message when it
 happens.)</p>
@@ -477,33 +477,33 @@ happens.)</p>
     <div>
 <p>Ever use the emacs command <code class="docutils literal"><span class="pre">describe-char</span></code>?  It's even more fun with
 proper unicode lookup data!</p>
-<pre class="code emacs-lisp"><a name="rest_code_fb8f7c69d0e2425184206f85cb570093-1"></a><span class="c1">;; First, we'll bind it to a key.</span>
-<a name="rest_code_fb8f7c69d0e2425184206f85cb570093-2"></a><span class="p">(</span><span class="nv">global-set-key</span> <span class="s">"\C-cD"</span> <span class="nf">#'</span><span class="nv">describe-char</span><span class="p">)</span>
-<a name="rest_code_fb8f7c69d0e2425184206f85cb570093-3"></a>
-<a name="rest_code_fb8f7c69d0e2425184206f85cb570093-4"></a><span class="c1">;; Now we'll download it if necessary.</span>
-<a name="rest_code_fb8f7c69d0e2425184206f85cb570093-5"></a><span class="p">(</span><span class="k">let</span> <span class="p">((</span><span class="nv">udf-url</span> <span class="s">"http://www.unicode.org/Public/UNIDATA/UnicodeData.txt"</span><span class="p">)</span>
-<a name="rest_code_fb8f7c69d0e2425184206f85cb570093-6"></a>      <span class="p">(</span><span class="nv">udf-dest</span> <span class="s">"~/tmp/UnicodeData.txt"</span><span class="p">))</span>
-<a name="rest_code_fb8f7c69d0e2425184206f85cb570093-7"></a>  <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nf">file-readable-p</span> <span class="nv">udf-dest</span><span class="p">)</span>
-<a name="rest_code_fb8f7c69d0e2425184206f85cb570093-8"></a>      <span class="c1">;; Let describe-char know it exists.</span>
-<a name="rest_code_fb8f7c69d0e2425184206f85cb570093-9"></a>      <span class="p">(</span><span class="k">setq</span> <span class="nv">describe-char-unicodedata-file</span> <span class="nv">udf-dest</span><span class="p">)</span>
-<a name="rest_code_fb8f7c69d0e2425184206f85cb570093-10"></a>    <span class="c1">;; It doesn't exist, and we need to download it!</span>
-<a name="rest_code_fb8f7c69d0e2425184206f85cb570093-11"></a>    <span class="p">(</span><span class="nb">when</span> <span class="p">(</span><span class="nv">y-or-n-p</span> <span class="p">(</span><span class="nf">format</span> <span class="s">"You need to download %s ! Do it? "</span> <span class="nv">udf-url</span><span class="p">))</span>
-<a name="rest_code_fb8f7c69d0e2425184206f85cb570093-12"></a>      <span class="c1">;; Really weird: wget -O 'file' complains that file doesn't exist.</span>
-<a name="rest_code_fb8f7c69d0e2425184206f85cb570093-13"></a>      <span class="p">(</span><span class="k">let*</span> <span class="p">((</span><span class="nv">cmd</span> <span class="p">(</span><span class="nf">format</span> <span class="s">"cd ~/tmp/ &amp;&amp; wget -O %s --progress=dot '%s'"</span>
-<a name="rest_code_fb8f7c69d0e2425184206f85cb570093-14"></a>                          <span class="nv">udf-dest</span> <span class="nv">udf-url</span><span class="p">))</span>
-<a name="rest_code_fb8f7c69d0e2425184206f85cb570093-15"></a>             <span class="p">(</span><span class="nv">buf</span> <span class="p">(</span><span class="nf">get-buffer-create</span> <span class="p">(</span><span class="nf">format</span> <span class="s">" *wget '%s'*"</span> <span class="nv">udf-url</span><span class="p">)))</span>
-<a name="rest_code_fb8f7c69d0e2425184206f85cb570093-16"></a>             <span class="p">(</span><span class="nv">proc</span> <span class="p">(</span><span class="nv">start-process-shell-command</span> <span class="s">"wget-unicode-Data"</span>
-<a name="rest_code_fb8f7c69d0e2425184206f85cb570093-17"></a>                                                <span class="nv">buf</span> <span class="nv">cmd</span><span class="p">)))</span>
-<a name="rest_code_fb8f7c69d0e2425184206f85cb570093-18"></a>        <span class="p">(</span><span class="nv">display-buffer</span> <span class="nv">buf</span><span class="p">)</span>
-<a name="rest_code_fb8f7c69d0e2425184206f85cb570093-19"></a>        <span class="p">(</span><span class="nf">set-process-sentinel</span>
-<a name="rest_code_fb8f7c69d0e2425184206f85cb570093-20"></a>         <span class="nv">proc</span>
-<a name="rest_code_fb8f7c69d0e2425184206f85cb570093-21"></a>         <span class="o">`</span><span class="p">(</span><span class="nb">lambda</span> <span class="p">(</span><span class="nv">proc</span> <span class="nv">event</span><span class="p">)</span>
-<a name="rest_code_fb8f7c69d0e2425184206f85cb570093-22"></a>            <span class="p">(</span><span class="nb">unless</span> <span class="p">(</span><span class="nf">string-match</span> <span class="s">"^finished"</span> <span class="nv">event</span><span class="p">)</span>
-<a name="rest_code_fb8f7c69d0e2425184206f85cb570093-23"></a>              <span class="p">(</span><span class="ne">error</span> <span class="s">"unexpected status '%s' getting '%s'"</span> <span class="o">,</span><span class="nv">udf-url</span> <span class="nv">event</span><span class="p">))</span>
-<a name="rest_code_fb8f7c69d0e2425184206f85cb570093-24"></a>            <span class="p">(</span><span class="k">setq</span> <span class="nv">describe-char-unicodedata-file</span> <span class="o">,</span><span class="nv">udf-dest</span><span class="p">)</span>
-<a name="rest_code_fb8f7c69d0e2425184206f85cb570093-25"></a>            <span class="p">(</span><span class="nf">message</span> <span class="s">"Try describe-char now! ☣☥☸▧◉✘✽☮⅙▧⚅☑☢☹☺♠♥♦♣♨♻⚔"</span><span class="p">)))</span>
-<a name="rest_code_fb8f7c69d0e2425184206f85cb570093-26"></a>        <span class="p">(</span><span class="nf">message</span> <span class="s">"Downloading... check describe-char later"</span><span class="p">)</span>
-<a name="rest_code_fb8f7c69d0e2425184206f85cb570093-27"></a>        <span class="no">nil</span><span class="p">))))</span>
+<pre class="code emacs-lisp"><a name="rest_code_1942c01a995649bb94b608b74d7a7c49-1"></a><span class="c1">;; First, we'll bind it to a key.</span>
+<a name="rest_code_1942c01a995649bb94b608b74d7a7c49-2"></a><span class="p">(</span><span class="nv">global-set-key</span> <span class="s">"\C-cD"</span> <span class="nf">#'</span><span class="nv">describe-char</span><span class="p">)</span>
+<a name="rest_code_1942c01a995649bb94b608b74d7a7c49-3"></a>
+<a name="rest_code_1942c01a995649bb94b608b74d7a7c49-4"></a><span class="c1">;; Now we'll download it if necessary.</span>
+<a name="rest_code_1942c01a995649bb94b608b74d7a7c49-5"></a><span class="p">(</span><span class="k">let</span> <span class="p">((</span><span class="nv">udf-url</span> <span class="s">"http://www.unicode.org/Public/UNIDATA/UnicodeData.txt"</span><span class="p">)</span>
+<a name="rest_code_1942c01a995649bb94b608b74d7a7c49-6"></a>      <span class="p">(</span><span class="nv">udf-dest</span> <span class="s">"~/tmp/UnicodeData.txt"</span><span class="p">))</span>
+<a name="rest_code_1942c01a995649bb94b608b74d7a7c49-7"></a>  <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nf">file-readable-p</span> <span class="nv">udf-dest</span><span class="p">)</span>
+<a name="rest_code_1942c01a995649bb94b608b74d7a7c49-8"></a>      <span class="c1">;; Let describe-char know it exists.</span>
+<a name="rest_code_1942c01a995649bb94b608b74d7a7c49-9"></a>      <span class="p">(</span><span class="k">setq</span> <span class="nv">describe-char-unicodedata-file</span> <span class="nv">udf-dest</span><span class="p">)</span>
+<a name="rest_code_1942c01a995649bb94b608b74d7a7c49-10"></a>    <span class="c1">;; It doesn't exist, and we need to download it!</span>
+<a name="rest_code_1942c01a995649bb94b608b74d7a7c49-11"></a>    <span class="p">(</span><span class="nb">when</span> <span class="p">(</span><span class="nv">y-or-n-p</span> <span class="p">(</span><span class="nf">format</span> <span class="s">"You need to download %s ! Do it? "</span> <span class="nv">udf-url</span><span class="p">))</span>
+<a name="rest_code_1942c01a995649bb94b608b74d7a7c49-12"></a>      <span class="c1">;; Really weird: wget -O 'file' complains that file doesn't exist.</span>
+<a name="rest_code_1942c01a995649bb94b608b74d7a7c49-13"></a>      <span class="p">(</span><span class="k">let*</span> <span class="p">((</span><span class="nv">cmd</span> <span class="p">(</span><span class="nf">format</span> <span class="s">"cd ~/tmp/ &amp;&amp; wget -O %s --progress=dot '%s'"</span>
+<a name="rest_code_1942c01a995649bb94b608b74d7a7c49-14"></a>                          <span class="nv">udf-dest</span> <span class="nv">udf-url</span><span class="p">))</span>
+<a name="rest_code_1942c01a995649bb94b608b74d7a7c49-15"></a>             <span class="p">(</span><span class="nv">buf</span> <span class="p">(</span><span class="nf">get-buffer-create</span> <span class="p">(</span><span class="nf">format</span> <span class="s">" *wget '%s'*"</span> <span class="nv">udf-url</span><span class="p">)))</span>
+<a name="rest_code_1942c01a995649bb94b608b74d7a7c49-16"></a>             <span class="p">(</span><span class="nv">proc</span> <span class="p">(</span><span class="nv">start-process-shell-command</span> <span class="s">"wget-unicode-Data"</span>
+<a name="rest_code_1942c01a995649bb94b608b74d7a7c49-17"></a>                                                <span class="nv">buf</span> <span class="nv">cmd</span><span class="p">)))</span>
+<a name="rest_code_1942c01a995649bb94b608b74d7a7c49-18"></a>        <span class="p">(</span><span class="nv">display-buffer</span> <span class="nv">buf</span><span class="p">)</span>
+<a name="rest_code_1942c01a995649bb94b608b74d7a7c49-19"></a>        <span class="p">(</span><span class="nf">set-process-sentinel</span>
+<a name="rest_code_1942c01a995649bb94b608b74d7a7c49-20"></a>         <span class="nv">proc</span>
+<a name="rest_code_1942c01a995649bb94b608b74d7a7c49-21"></a>         <span class="o">`</span><span class="p">(</span><span class="nb">lambda</span> <span class="p">(</span><span class="nv">proc</span> <span class="nv">event</span><span class="p">)</span>
+<a name="rest_code_1942c01a995649bb94b608b74d7a7c49-22"></a>            <span class="p">(</span><span class="nb">unless</span> <span class="p">(</span><span class="nf">string-match</span> <span class="s">"^finished"</span> <span class="nv">event</span><span class="p">)</span>
+<a name="rest_code_1942c01a995649bb94b608b74d7a7c49-23"></a>              <span class="p">(</span><span class="ne">error</span> <span class="s">"unexpected status '%s' getting '%s'"</span> <span class="o">,</span><span class="nv">udf-url</span> <span class="nv">event</span><span class="p">))</span>
+<a name="rest_code_1942c01a995649bb94b608b74d7a7c49-24"></a>            <span class="p">(</span><span class="k">setq</span> <span class="nv">describe-char-unicodedata-file</span> <span class="o">,</span><span class="nv">udf-dest</span><span class="p">)</span>
+<a name="rest_code_1942c01a995649bb94b608b74d7a7c49-25"></a>            <span class="p">(</span><span class="nf">message</span> <span class="s">"Try describe-char now! ☣☥☸▧◉✘✽☮⅙▧⚅☑☢☹☺♠♥♦♣♨♻⚔"</span><span class="p">)))</span>
+<a name="rest_code_1942c01a995649bb94b608b74d7a7c49-26"></a>        <span class="p">(</span><span class="nf">message</span> <span class="s">"Downloading... check describe-char later"</span><span class="p">)</span>
+<a name="rest_code_1942c01a995649bb94b608b74d7a7c49-27"></a>        <span class="no">nil</span><span class="p">))))</span>
 </pre>
 <p>Once this is run and it tells you to try <code class="docutils literal"><span class="pre">describe-char</span></code> you can
 position your cursor over one of the Unicode characters in the message

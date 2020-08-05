@@ -82,21 +82,21 @@ entered:
 algorithm and wanted my help with running it.  I cloned the <a class="reference external" href="https://github.com/stylewarning/lisp-random">repo</a> it
 was in and ran <code class="docutils literal">sbcl</code> in the <code class="docutils literal">hashlife</code> directory.  Then I
 entered:</p>
-<pre class="code lisp"><a name="rest_code_6d5522fd19204ee3ab90540b4c92ad1f-1"></a><span class="p">(</span><span class="nv">asdf:operate</span> <span class="ss">'asdf:load-op</span> <span class="ss">'charmlife</span><span class="p">)</span>
+<pre class="code lisp"><a name="rest_code_ad9d0a416e554b9581b886fcdca8c45a-1"></a><span class="p">(</span><span class="nv">asdf:operate</span> <span class="ss">'asdf:load-op</span> <span class="ss">'charmlife</span><span class="p">)</span>
 </pre>
 <p>That resulted in a <code class="docutils literal">Component CHARMLIFE not found</code> error in sbcl.  I
 thought that was odd — it was right there in the current directory.  I
 looked at <code class="docutils literal"><span class="pre">asdf:*central-registry*</span></code>, and the only thing in it was
 the quicklisp directory.  The ASDF <a class="reference external" href="https://common-lisp.net/~mmommer/asdf-howto.shtml#sec11">howto</a> showed an example of setting
 <code class="docutils literal"><span class="pre">asdf:*central-registry*</span></code>:</p>
-<pre class="code lisp"><a name="rest_code_4bae844ae5d541e9a6b477bddf5b1084-1"></a><span class="p">(</span><span class="nb">setf</span> <span class="nv">asdf:*central-registry*</span>
-<a name="rest_code_4bae844ae5d541e9a6b477bddf5b1084-2"></a>  <span class="c1">;; Default directories, usually just the ``current directory''</span>
-<a name="rest_code_4bae844ae5d541e9a6b477bddf5b1084-3"></a>  <span class="o">'</span><span class="p">(</span><span class="vg">*default-pathname-defaults*</span>
-<a name="rest_code_4bae844ae5d541e9a6b477bddf5b1084-4"></a>
-<a name="rest_code_4bae844ae5d541e9a6b477bddf5b1084-5"></a>    <span class="c1">;; Additional places where ASDF can find</span>
-<a name="rest_code_4bae844ae5d541e9a6b477bddf5b1084-6"></a>    <span class="c1">;; system definition files</span>
-<a name="rest_code_4bae844ae5d541e9a6b477bddf5b1084-7"></a>    <span class="l l-Other">#p"/home/foo/lisp/systems/"</span>
-<a name="rest_code_4bae844ae5d541e9a6b477bddf5b1084-8"></a>    <span class="l l-Other">#p"/usr/share/common-lisp/systems/"</span><span class="p">))</span>
+<pre class="code lisp"><a name="rest_code_cb1b0d21742a4632b51d1707090ec8e0-1"></a><span class="p">(</span><span class="nb">setf</span> <span class="nv">asdf:*central-registry*</span>
+<a name="rest_code_cb1b0d21742a4632b51d1707090ec8e0-2"></a>  <span class="c1">;; Default directories, usually just the ``current directory''</span>
+<a name="rest_code_cb1b0d21742a4632b51d1707090ec8e0-3"></a>  <span class="o">'</span><span class="p">(</span><span class="vg">*default-pathname-defaults*</span>
+<a name="rest_code_cb1b0d21742a4632b51d1707090ec8e0-4"></a>
+<a name="rest_code_cb1b0d21742a4632b51d1707090ec8e0-5"></a>    <span class="c1">;; Additional places where ASDF can find</span>
+<a name="rest_code_cb1b0d21742a4632b51d1707090ec8e0-6"></a>    <span class="c1">;; system definition files</span>
+<a name="rest_code_cb1b0d21742a4632b51d1707090ec8e0-7"></a>    <span class="l l-Other">#p"/home/foo/lisp/systems/"</span>
+<a name="rest_code_cb1b0d21742a4632b51d1707090ec8e0-8"></a>    <span class="l l-Other">#p"/usr/share/common-lisp/systems/"</span><span class="p">))</span>
 </pre>
 <p>Noticing that it had the symbol <code class="docutils literal"><span class="pre">*default-pathname-defaults*</span></code> in the
 new value, I guessed that it being missing from mine caused ASDF to
@@ -106,15 +106,16 @@ used <a class="reference external" href="https://www.quicklisp.org/">Quicklisp</
 <code class="docutils literal">charmlife.lisp</code> and looked at the <code class="docutils literal">main</code> function and figured out
 how to run it and how to interact with the program when it was running.</p>
 <p>Here's what I had to do:</p>
-<pre class="code lisp"><a name="rest_code_e0ffc484c62246dc826f1dd0b2709c3d-1"></a><span class="p">(</span><span class="nb">setf</span> <span class="nv">asdf:*central-registry*</span>
-<a name="rest_code_e0ffc484c62246dc826f1dd0b2709c3d-2"></a>      <span class="p">(</span><span class="nb">cons</span> <span class="ss">'*default-pathname-defaults*</span>
-<a name="rest_code_e0ffc484c62246dc826f1dd0b2709c3d-3"></a>            <span class="nv">asdf:*central-registry*</span><span class="p">))</span>
-<a name="rest_code_e0ffc484c62246dc826f1dd0b2709c3d-4"></a><span class="p">(</span><span class="nv">ql:quickload</span> <span class="s">"cl-charms"</span><span class="p">)</span>
-<a name="rest_code_e0ffc484c62246dc826f1dd0b2709c3d-5"></a><span class="p">(</span><span class="nv">asdf:operate</span> <span class="ss">'asdf:load-op</span> <span class="ss">'charmlife</span><span class="p">)</span>
-<a name="rest_code_e0ffc484c62246dc826f1dd0b2709c3d-6"></a><span class="p">(</span><span class="nv">charmlife:main</span><span class="p">)</span>
+<pre class="code lisp"><a name="rest_code_47aa350436f34ac793607de8f97c0f92-1"></a><span class="p">(</span><span class="nb">setf</span> <span class="nv">asdf:*central-registry*</span>
+<a name="rest_code_47aa350436f34ac793607de8f97c0f92-2"></a>      <span class="p">(</span><span class="nb">cons</span> <span class="ss">'*default-pathname-defaults*</span>
+<a name="rest_code_47aa350436f34ac793607de8f97c0f92-3"></a>            <span class="nv">asdf:*central-registry*</span><span class="p">))</span>
+<a name="rest_code_47aa350436f34ac793607de8f97c0f92-4"></a><span class="p">(</span><span class="nv">ql:quickload</span> <span class="s">"cl-charms"</span><span class="p">)</span>
+<a name="rest_code_47aa350436f34ac793607de8f97c0f92-5"></a><span class="p">(</span><span class="nv">asdf:operate</span> <span class="ss">'asdf:load-op</span> <span class="ss">'charmlife</span><span class="p">)</span>
+<a name="rest_code_47aa350436f34ac793607de8f97c0f92-6"></a><span class="p">(</span><span class="nv">charmlife:main</span><span class="p">)</span>
 </pre>
 </div>
     </div>
+    <script>var pfHeaderImgUrl = '';var pfHeaderTagline = '';var pfdisableClickToDel = 0;var pfHideImages = 0;var pfImageDisplayStyle = 'right';var pfDisablePDF = 0;var pfDisableEmail = 0;var pfDisablePrint = 0;var pfCustomCSS = '';var pfBtVersion='2';(function(){var js,pf;pf=document.createElement('script');pf.type='text/javascript';pf.src='//cdn.printfriendly.com/printfriendly.js';document.getElementsByTagName('head')[0].appendChild(pf)})();</script><a href="https://www.printfriendly.com" style="color:#6D9F00;text-decoration:none;" class="printfriendly" onclick="window.print();return false;" title="Printer Friendly and PDF"><img style="border:none;-webkit-box-shadow:none;box-shadow:none;" src="//cdn.printfriendly.com/buttons/printfriendly-pdf-button.png" alt="Print Friendly and PDF"></a>    
     <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
 <li><a class="tag p-category" href="../../../../../categories/common-lisp/" rel="tag">common lisp</a></li>
             <li><a class="tag p-category" href="../../../../../categories/hashlife/" rel="tag">hashlife</a></li>

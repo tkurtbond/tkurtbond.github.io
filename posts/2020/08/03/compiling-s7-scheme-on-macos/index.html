@@ -9,6 +9,7 @@
 <link rel="canonical" href="https://tkurtbond.github.io/posts/2020/08/03/compiling-s7-scheme-on-macos/">
 <!--[if lt IE 9]><script src="../../../../../assets/js/html5.js"></script><![endif]--><meta name="author" content="T. Kurt Bond">
 <link rel="prev" href="../../../07/31/paragraph-justification-in-groff-and-tex/" title="Paragraph Justification in groff and TeX" type="text/html">
+<link rel="next" href="../../05/how-i-author-e-mails-to-pandoc-discuss-and-issues-on-the-pandoc-repo/" title="How I author e-mails to pandoc-discuss and issues on the pandoc repo" type="text/html">
 <meta property="og:site_name" content="Lacking Natural Simplicity">
 <meta property="og:title" content="Compiling s7 scheme on macOS">
 <meta property="og:url" content="https://tkurtbond.github.io/posts/2020/08/03/compiling-s7-scheme-on-macos/">
@@ -80,18 +81,18 @@ gcc s7.c -o repl -DWITH_MAIN -I. -O2 -g -ldl -lm -Wl,-expo">
 <p>To compile <a class="reference external" href="https://ccrma.stanford.edu/software/snd/snd/s7.html">s7 scheme</a> with a standalone <a class="reference external" href="../../../../../pages/computer-vocabulary/#REPL">REPL</a>, s7's home page says to
 add the empty file <span class="file">mus-config.h</span> to the source directory, then
 (in Linux):</p>
-<pre class="code bash"><a name="rest_code_9b2a6250550d4e51b91bd19a9526078b-1"></a>gcc s7.c -o repl -DWITH_MAIN -I. -O2 -g -ldl -lm -Wl,-export-dynamic
+<pre class="code bash"><a name="rest_code_0bc7bf4d83764259b5eebfaa56b3b88e-1"></a>gcc s7.c -o repl -DWITH_MAIN -I. -O2 -g -ldl -lm -Wl,-export-dynamic
 </pre>
 <p>It turns out that on macOS, whose <span class="command">ld</span> (from clang) doesn't
 understand <code class="docutils literal"><span class="pre">-export-dynamic</span></code>, you have to do</p>
-<pre class="code bash"><a name="rest_code_304486410e684a75acf277424daa9c10-1"></a>gcc s7.c -o repl -DWITH_MAIN -I. -O2 -g -ldl -lm -Wl,-dynamic
+<pre class="code bash"><a name="rest_code_43ff847155104f93a41d74081e0f78df-1"></a>gcc s7.c -o repl -DWITH_MAIN -I. -O2 -g -ldl -lm -Wl,-dynamic
 </pre>
 <p>Then you need to do</p>
-<pre class="code bash"><a name="rest_code_d8513336925f4a618f7a73d799a82a25-1"></a>./repl libc.scm
+<pre class="code bash"><a name="rest_code_313190b073be4503b38a3149880d0edd-1"></a>./repl libc.scm
 </pre>
 <p>which seems to generate <span class="file">libc_s7.c</span> and compile it into
 <span class="file">libc_s.so</span>.   Then you can run the <a class="reference external" href="../../../../../pages/computer-vocabulary/#REPL">REPL</a>:</p>
-<pre class="code bash"><a name="rest_code_ff654cc054a84540b2fb75e4f1cb8218-1"></a>./repl
+<pre class="code bash"><a name="rest_code_cf934e0c19134f58a86aaedc78e95d29-1"></a>./repl
 </pre>
 <p>which, from looking at <span class="file">s7.c</span>, loads <span class="file">repl.scm</span>.
 Unfortunately, I don't understand the repl commands, except for
@@ -105,6 +106,7 @@ time-stamp-line-limit: -20
 End: -->
 </div>
     </div>
+    <script>var pfHeaderImgUrl = '';var pfHeaderTagline = '';var pfdisableClickToDel = 0;var pfHideImages = 0;var pfImageDisplayStyle = 'right';var pfDisablePDF = 0;var pfDisableEmail = 0;var pfDisablePrint = 0;var pfCustomCSS = '';var pfBtVersion='2';(function(){var js,pf;pf=document.createElement('script');pf.type='text/javascript';pf.src='//cdn.printfriendly.com/printfriendly.js';document.getElementsByTagName('head')[0].appendChild(pf)})();</script><a href="https://www.printfriendly.com" style="color:#6D9F00;text-decoration:none;" class="printfriendly" onclick="window.print();return false;" title="Printer Friendly and PDF"><img style="border:none;-webkit-box-shadow:none;box-shadow:none;" src="//cdn.printfriendly.com/buttons/printfriendly-pdf-button.png" alt="Print Friendly and PDF"></a>    
     <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
 <li><a class="tag p-category" href="../../../../../categories/ld/" rel="tag">ld</a></li>
             <li><a class="tag p-category" href="../../../../../categories/macsos/" rel="tag">macsOS</a></li>
@@ -114,6 +116,9 @@ End: -->
 <ul class="pager hidden-print">
 <li class="previous">
                 <a href="../../../07/31/paragraph-justification-in-groff-and-tex/" rel="prev" title="Paragraph Justification in groff and TeX">Previous post</a>
+            </li>
+            <li class="next">
+                <a href="../../05/how-i-author-e-mails-to-pandoc-discuss-and-issues-on-the-pandoc-repo/" rel="next" title="How I author e-mails to pandoc-discuss and issues on the pandoc repo">Next post</a>
             </li>
         </ul></nav></aside><section class="comments hidden-print"><h2>Comments</h2>
                         <div id="disqus_thread"></div>

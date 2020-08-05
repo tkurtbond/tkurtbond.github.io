@@ -79,15 +79,15 @@ using the">
 Docbook-based website, and were presently part of my static
 Sphinx-based website, over to my current PyBlosxom blog tonight,
 using the following script:</p>
-<pre class="code text"><a name="rest_code_8af0c185694640429ed16b76d1a77818-1"></a>#! /usr/bin/env bash
-<a name="rest_code_8af0c185694640429ed16b76d1a77818-2"></a>find 200? -type f ! -name \*~ ! -name \*-idx-*.rst |
-<a name="rest_code_8af0c185694640429ed16b76d1a77818-3"></a>while read filename
-<a name="rest_code_8af0c185694640429ed16b76d1a77818-4"></a>do
-<a name="rest_code_8af0c185694640429ed16b76d1a77818-5"></a>    newname="$(echo $filename | sed 's#/#-#g')"
-<a name="rest_code_8af0c185694640429ed16b76d1a77818-6"></a>    date="$(basename $newname .rst)"
-<a name="rest_code_8af0c185694640429ed16b76d1a77818-7"></a>    (echo $date; echo "#published $date 00:00:00"; echo "#tags Old Blog";
-<a name="rest_code_8af0c185694640429ed16b76d1a77818-8"></a>        cat $filename) &gt;/home/tkb/myblog/entries/oldblog/$newname
-<a name="rest_code_8af0c185694640429ed16b76d1a77818-9"></a>done
+<pre class="code text"><a name="rest_code_b1d6260c63e24aba9192a5ac692d4c39-1"></a>#! /usr/bin/env bash
+<a name="rest_code_b1d6260c63e24aba9192a5ac692d4c39-2"></a>find 200? -type f ! -name \*~ ! -name \*-idx-*.rst |
+<a name="rest_code_b1d6260c63e24aba9192a5ac692d4c39-3"></a>while read filename
+<a name="rest_code_b1d6260c63e24aba9192a5ac692d4c39-4"></a>do
+<a name="rest_code_b1d6260c63e24aba9192a5ac692d4c39-5"></a>    newname="$(echo $filename | sed 's#/#-#g')"
+<a name="rest_code_b1d6260c63e24aba9192a5ac692d4c39-6"></a>    date="$(basename $newname .rst)"
+<a name="rest_code_b1d6260c63e24aba9192a5ac692d4c39-7"></a>    (echo $date; echo "#published $date 00:00:00"; echo "#tags Old Blog";
+<a name="rest_code_b1d6260c63e24aba9192a5ac692d4c39-8"></a>        cat $filename) &gt;/home/tkb/myblog/entries/oldblog/$newname
+<a name="rest_code_b1d6260c63e24aba9192a5ac692d4c39-9"></a>done
 </pre>
 <p>I'll have to go through and fix uses of Sphinx-specific RST
 extensions, and I'll probably add real entry titles as I do so; in the
@@ -95,6 +95,7 @@ meanwhile, if the blog entry title is a date I haven't updated the
 entry.  I think this was pretty good for a ½ hour's work.</p>
 </div>
     </div>
+    <script>var pfHeaderImgUrl = '';var pfHeaderTagline = '';var pfdisableClickToDel = 0;var pfHideImages = 0;var pfImageDisplayStyle = 'right';var pfDisablePDF = 0;var pfDisableEmail = 0;var pfDisablePrint = 0;var pfCustomCSS = '';var pfBtVersion='2';(function(){var js,pf;pf=document.createElement('script');pf.type='text/javascript';pf.src='//cdn.printfriendly.com/printfriendly.js';document.getElementsByTagName('head')[0].appendChild(pf)})();</script><a href="https://www.printfriendly.com" style="color:#6D9F00;text-decoration:none;" class="printfriendly" onclick="window.print();return false;" title="Printer Friendly and PDF"><img style="border:none;-webkit-box-shadow:none;box-shadow:none;" src="//cdn.printfriendly.com/buttons/printfriendly-pdf-button.png" alt="Print Friendly and PDF"></a>    
     <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
 <li><a class="tag p-category" href="../../../../../categories/old-blog/" rel="tag">old blog</a></li>
         </ul>
