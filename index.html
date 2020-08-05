@@ -70,98 +70,98 @@ file and sometimes the resulting output files.  I process these files
 with <a class="reference external" href="https://pandoc.org">pandoc</a>, of course.  If it is going to the mailing list I format
 it to HTML with a fancy style and cut and paste it from Chrome into
 gmail.  If it is going to be an issue report on GitHub I format it
-into <code class="docutils literal">.gfm</code> (Github Flavored Markdown: <a class="reference external" href="https://github.github.com/gfm/">GFM</a>) file because that’s
+into <span class="file">.gfm</span> (Github Flavored Markdown: <a class="reference external" href="https://github.github.com/gfm/">GFM</a>) file because that’s
 what you write GitHub issues in and also format it into HTML to check
-that the <code class="docutils literal">.gfm</code> is formed properly.  Typically when I’m writing the
+that the <span class="file">.gfm</span> is formed properly.  Typically when I’m writing the
 issue <a class="reference external" href="https://docutils.sourceforge.io/rst.html">reST</a> file I don’t use language names on code blocks for the
 syntax highlighting because that doesn’t seem to come out right in
 GFM.</p>
 <p>For example, here is a <a class="reference external" href="https://groups.google.com/d/msg/pandoc-discuss/U44h5Uo7qgQ/xDBRWwERBAAJ">post</a>, “RST to RST Conversion Loses Interpreted
 Text Roles”, to <a class="reference external" href="https://groups.google.com/forum/#!forum/pandoc-discuss">pandoc-discuss</a>.</p>
 <p>Here is the problem <a class="reference external" href="https://docutils.sourceforge.io/rst.html">reST</a> source:</p>
-<pre class="code ReST"><a name="rest_code_e28529eacb4c4e9caac0a45272013418-1"></a>RST to RST Conversion Looses Interpreted Text Roles
-<a name="rest_code_e28529eacb4c4e9caac0a45272013418-2"></a>@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-<a name="rest_code_e28529eacb4c4e9caac0a45272013418-3"></a>
-<a name="rest_code_e28529eacb4c4e9caac0a45272013418-4"></a><span class="p">..</span> <span class="ow">role</span><span class="p">::</span> app
-<a name="rest_code_e28529eacb4c4e9caac0a45272013418-5"></a>
-<a name="rest_code_e28529eacb4c4e9caac0a45272013418-6"></a><span class="na">:app:</span><span class="nv">`GNU Emacs`</span> is an app.  So is <span class="na">:app:</span><span class="nv">`Eclipse`</span>.
+<pre class="code ReST"><a name="rest_code_46340bc465fe4432a5056f9398b03572-1"></a>RST to RST Conversion Looses Interpreted Text Roles
+<a name="rest_code_46340bc465fe4432a5056f9398b03572-2"></a>@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+<a name="rest_code_46340bc465fe4432a5056f9398b03572-3"></a>
+<a name="rest_code_46340bc465fe4432a5056f9398b03572-4"></a><span class="p">..</span> <span class="ow">role</span><span class="p">::</span> app
+<a name="rest_code_46340bc465fe4432a5056f9398b03572-5"></a>
+<a name="rest_code_46340bc465fe4432a5056f9398b03572-6"></a><span class="na">:app:</span><span class="nv">`GNU Emacs`</span> is an app.  So is <span class="na">:app:</span><span class="nv">`Eclipse`</span>.
 </pre>
 <p>Here is the e-mail <a class="reference external" href="https://docutils.sourceforge.io/rst.html">reST</a> source:</p>
-<pre class="code ReST"><a name="rest_code_deda1c5080714885a9ac82282fab20c2-1"></a>RST to RST Conversion Loses Interpreted Text Roles
-<a name="rest_code_deda1c5080714885a9ac82282fab20c2-2"></a>@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-<a name="rest_code_deda1c5080714885a9ac82282fab20c2-3"></a>
-<a name="rest_code_deda1c5080714885a9ac82282fab20c2-4"></a><span class="p">..</span> <span class="ow">role</span><span class="p">::</span> file(literal)
-<a name="rest_code_deda1c5080714885a9ac82282fab20c2-5"></a><span class="p">..</span> <span class="ow">role</span><span class="p">::</span> app
-<a name="rest_code_deda1c5080714885a9ac82282fab20c2-6"></a>
-<a name="rest_code_deda1c5080714885a9ac82282fab20c2-7"></a>It turns out that when you use <span class="na">:app:</span><span class="nv">`pandoc`</span> to convert from <span class="s">``rst``</span>
-<a name="rest_code_deda1c5080714885a9ac82282fab20c2-8"></a>to <span class="s">``rst``</span> the process loses interpreted text roles.
-<a name="rest_code_deda1c5080714885a9ac82282fab20c2-9"></a>
-<a name="rest_code_deda1c5080714885a9ac82282fab20c2-10"></a>My <span class="na">:app:</span><span class="nv">`pandoc`</span> version is:
-<a name="rest_code_deda1c5080714885a9ac82282fab20c2-11"></a>
-<a name="rest_code_deda1c5080714885a9ac82282fab20c2-12"></a><span class="p">..</span> <span class="ow">include</span><span class="p">::</span> pandoc.version
-<a name="rest_code_deda1c5080714885a9ac82282fab20c2-13"></a>   <span class="nc">:code:</span>
-<a name="rest_code_deda1c5080714885a9ac82282fab20c2-14"></a>
-<a name="rest_code_deda1c5080714885a9ac82282fab20c2-15"></a>My OS information is:
-<a name="rest_code_deda1c5080714885a9ac82282fab20c2-16"></a>
-<a name="rest_code_deda1c5080714885a9ac82282fab20c2-17"></a><span class="p">..</span> <span class="ow">include</span><span class="p">::</span> os.version
-<a name="rest_code_deda1c5080714885a9ac82282fab20c2-18"></a>   <span class="nc">:code:</span>
-<a name="rest_code_deda1c5080714885a9ac82282fab20c2-19"></a>
-<a name="rest_code_deda1c5080714885a9ac82282fab20c2-20"></a>I generated the outputs to check with the following commands:
-<a name="rest_code_deda1c5080714885a9ac82282fab20c2-21"></a>
-<a name="rest_code_deda1c5080714885a9ac82282fab20c2-22"></a><span class="p">..</span> <span class="ow">code</span><span class="p">::</span>
-<a name="rest_code_deda1c5080714885a9ac82282fab20c2-23"></a>
-<a name="rest_code_deda1c5080714885a9ac82282fab20c2-24"></a>   pandoc -r rst -w rst -o r2rclitr-out.rst r2rclitr-in.rst
-<a name="rest_code_deda1c5080714885a9ac82282fab20c2-25"></a>   pandoc -r rst -w native --output=r2rclitr-in.native r2rclitr-in.rst
-<a name="rest_code_deda1c5080714885a9ac82282fab20c2-26"></a>
-<a name="rest_code_deda1c5080714885a9ac82282fab20c2-27"></a>So, for the ReStructuredText input (file <span class="na">:file:</span><span class="nv">`r2rclitr-in.rst`</span>):
-<a name="rest_code_deda1c5080714885a9ac82282fab20c2-28"></a>
-<a name="rest_code_deda1c5080714885a9ac82282fab20c2-29"></a><span class="p">..</span> <span class="ow">include</span><span class="p">::</span> r2rclitr-in.rst
-<a name="rest_code_deda1c5080714885a9ac82282fab20c2-30"></a>   <span class="nc">:code:</span>
-<a name="rest_code_deda1c5080714885a9ac82282fab20c2-31"></a>
-<a name="rest_code_deda1c5080714885a9ac82282fab20c2-32"></a>the resulting <span class="s">``rst``</span> output (<span class="na">:file:</span><span class="nv">`r2rclitr-out.rst`</span>) is generated:
-<a name="rest_code_deda1c5080714885a9ac82282fab20c2-33"></a>
-<a name="rest_code_deda1c5080714885a9ac82282fab20c2-34"></a><span class="p">..</span> <span class="ow">include</span><span class="p">::</span> r2rclitr-out.rst
-<a name="rest_code_deda1c5080714885a9ac82282fab20c2-35"></a>   <span class="nc">:code:</span>
-<a name="rest_code_deda1c5080714885a9ac82282fab20c2-36"></a>
-<a name="rest_code_deda1c5080714885a9ac82282fab20c2-37"></a>And the <span class="s">``native``</span> output (<span class="na">:file:</span><span class="nv">`r2rclitr-in.native`</span>) generated:
-<a name="rest_code_deda1c5080714885a9ac82282fab20c2-38"></a>
-<a name="rest_code_deda1c5080714885a9ac82282fab20c2-39"></a><span class="p">..</span> <span class="ow">include</span><span class="p">::</span> r2rclitr-in.native
-<a name="rest_code_deda1c5080714885a9ac82282fab20c2-40"></a>   <span class="nc">:code:</span>
-<a name="rest_code_deda1c5080714885a9ac82282fab20c2-41"></a>
-<a name="rest_code_deda1c5080714885a9ac82282fab20c2-42"></a>has <span class="s">``Span``</span> elements with classes, so it should be possible to turn
-<a name="rest_code_deda1c5080714885a9ac82282fab20c2-43"></a>those back into interpreted text roles in <span class="s">``rst``</span> output.  I suppose
-<a name="rest_code_deda1c5080714885a9ac82282fab20c2-44"></a>you'd have to write out at the beginning of the RST output file a list
-<a name="rest_code_deda1c5080714885a9ac82282fab20c2-45"></a>of
-<a name="rest_code_deda1c5080714885a9ac82282fab20c2-46"></a>
-<a name="rest_code_deda1c5080714885a9ac82282fab20c2-47"></a><span class="p">..</span> <span class="ow">code</span><span class="p">::</span>
-<a name="rest_code_deda1c5080714885a9ac82282fab20c2-48"></a>
-<a name="rest_code_deda1c5080714885a9ac82282fab20c2-49"></a><span class="p">   ..</span> <span class="ow">role</span><span class="p">::</span> rolename
-<a name="rest_code_deda1c5080714885a9ac82282fab20c2-50"></a>
-<a name="rest_code_deda1c5080714885a9ac82282fab20c2-51"></a>lines for every class <span class="s">``rolename``</span> in a span.  Would this be possible?
+<pre class="code ReST"><a name="rest_code_b9ef880609fe4df69519646d6c247f71-1"></a>RST to RST Conversion Loses Interpreted Text Roles
+<a name="rest_code_b9ef880609fe4df69519646d6c247f71-2"></a>@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+<a name="rest_code_b9ef880609fe4df69519646d6c247f71-3"></a>
+<a name="rest_code_b9ef880609fe4df69519646d6c247f71-4"></a><span class="p">..</span> <span class="ow">role</span><span class="p">::</span> file(literal)
+<a name="rest_code_b9ef880609fe4df69519646d6c247f71-5"></a><span class="p">..</span> <span class="ow">role</span><span class="p">::</span> app
+<a name="rest_code_b9ef880609fe4df69519646d6c247f71-6"></a>
+<a name="rest_code_b9ef880609fe4df69519646d6c247f71-7"></a>It turns out that when you use <span class="na">:app:</span><span class="nv">`pandoc`</span> to convert from <span class="s">``rst``</span>
+<a name="rest_code_b9ef880609fe4df69519646d6c247f71-8"></a>to <span class="s">``rst``</span> the process loses interpreted text roles.
+<a name="rest_code_b9ef880609fe4df69519646d6c247f71-9"></a>
+<a name="rest_code_b9ef880609fe4df69519646d6c247f71-10"></a>My <span class="na">:app:</span><span class="nv">`pandoc`</span> version is:
+<a name="rest_code_b9ef880609fe4df69519646d6c247f71-11"></a>
+<a name="rest_code_b9ef880609fe4df69519646d6c247f71-12"></a><span class="p">..</span> <span class="ow">include</span><span class="p">::</span> pandoc.version
+<a name="rest_code_b9ef880609fe4df69519646d6c247f71-13"></a>   <span class="nc">:code:</span>
+<a name="rest_code_b9ef880609fe4df69519646d6c247f71-14"></a>
+<a name="rest_code_b9ef880609fe4df69519646d6c247f71-15"></a>My OS information is:
+<a name="rest_code_b9ef880609fe4df69519646d6c247f71-16"></a>
+<a name="rest_code_b9ef880609fe4df69519646d6c247f71-17"></a><span class="p">..</span> <span class="ow">include</span><span class="p">::</span> os.version
+<a name="rest_code_b9ef880609fe4df69519646d6c247f71-18"></a>   <span class="nc">:code:</span>
+<a name="rest_code_b9ef880609fe4df69519646d6c247f71-19"></a>
+<a name="rest_code_b9ef880609fe4df69519646d6c247f71-20"></a>I generated the outputs to check with the following commands:
+<a name="rest_code_b9ef880609fe4df69519646d6c247f71-21"></a>
+<a name="rest_code_b9ef880609fe4df69519646d6c247f71-22"></a><span class="p">..</span> <span class="ow">code</span><span class="p">::</span>
+<a name="rest_code_b9ef880609fe4df69519646d6c247f71-23"></a>
+<a name="rest_code_b9ef880609fe4df69519646d6c247f71-24"></a>   pandoc -r rst -w rst -o r2rclitr-out.rst r2rclitr-in.rst
+<a name="rest_code_b9ef880609fe4df69519646d6c247f71-25"></a>   pandoc -r rst -w native --output=r2rclitr-in.native r2rclitr-in.rst
+<a name="rest_code_b9ef880609fe4df69519646d6c247f71-26"></a>
+<a name="rest_code_b9ef880609fe4df69519646d6c247f71-27"></a>So, for the ReStructuredText input (file <span class="na">:file:</span><span class="nv">`r2rclitr-in.rst`</span>):
+<a name="rest_code_b9ef880609fe4df69519646d6c247f71-28"></a>
+<a name="rest_code_b9ef880609fe4df69519646d6c247f71-29"></a><span class="p">..</span> <span class="ow">include</span><span class="p">::</span> r2rclitr-in.rst
+<a name="rest_code_b9ef880609fe4df69519646d6c247f71-30"></a>   <span class="nc">:code:</span>
+<a name="rest_code_b9ef880609fe4df69519646d6c247f71-31"></a>
+<a name="rest_code_b9ef880609fe4df69519646d6c247f71-32"></a>the resulting <span class="s">``rst``</span> output (<span class="na">:file:</span><span class="nv">`r2rclitr-out.rst`</span>) is generated:
+<a name="rest_code_b9ef880609fe4df69519646d6c247f71-33"></a>
+<a name="rest_code_b9ef880609fe4df69519646d6c247f71-34"></a><span class="p">..</span> <span class="ow">include</span><span class="p">::</span> r2rclitr-out.rst
+<a name="rest_code_b9ef880609fe4df69519646d6c247f71-35"></a>   <span class="nc">:code:</span>
+<a name="rest_code_b9ef880609fe4df69519646d6c247f71-36"></a>
+<a name="rest_code_b9ef880609fe4df69519646d6c247f71-37"></a>And the <span class="s">``native``</span> output (<span class="na">:file:</span><span class="nv">`r2rclitr-in.native`</span>) generated:
+<a name="rest_code_b9ef880609fe4df69519646d6c247f71-38"></a>
+<a name="rest_code_b9ef880609fe4df69519646d6c247f71-39"></a><span class="p">..</span> <span class="ow">include</span><span class="p">::</span> r2rclitr-in.native
+<a name="rest_code_b9ef880609fe4df69519646d6c247f71-40"></a>   <span class="nc">:code:</span>
+<a name="rest_code_b9ef880609fe4df69519646d6c247f71-41"></a>
+<a name="rest_code_b9ef880609fe4df69519646d6c247f71-42"></a>has <span class="s">``Span``</span> elements with classes, so it should be possible to turn
+<a name="rest_code_b9ef880609fe4df69519646d6c247f71-43"></a>those back into interpreted text roles in <span class="s">``rst``</span> output.  I suppose
+<a name="rest_code_b9ef880609fe4df69519646d6c247f71-44"></a>you'd have to write out at the beginning of the RST output file a list
+<a name="rest_code_b9ef880609fe4df69519646d6c247f71-45"></a>of
+<a name="rest_code_b9ef880609fe4df69519646d6c247f71-46"></a>
+<a name="rest_code_b9ef880609fe4df69519646d6c247f71-47"></a><span class="p">..</span> <span class="ow">code</span><span class="p">::</span>
+<a name="rest_code_b9ef880609fe4df69519646d6c247f71-48"></a>
+<a name="rest_code_b9ef880609fe4df69519646d6c247f71-49"></a><span class="p">   ..</span> <span class="ow">role</span><span class="p">::</span> rolename
+<a name="rest_code_b9ef880609fe4df69519646d6c247f71-50"></a>
+<a name="rest_code_b9ef880609fe4df69519646d6c247f71-51"></a>lines for every class <span class="s">``rolename``</span> in a span.  Would this be possible?
 </pre>
-<p>Here is the <code class="docutils literal">GNUmakefile</code> for it:</p>
-<pre class="code makefile"><a name="rest_code_850d67a9ecaa4ba7b2f632b5719cd567-1"></a><span class="nf">all</span><span class="o">:</span> <span class="n">r</span>2<span class="n">rclitr</span>-<span class="n">email</span>.<span class="n">html</span>
-<a name="rest_code_850d67a9ecaa4ba7b2f632b5719cd567-2"></a>
-<a name="rest_code_850d67a9ecaa4ba7b2f632b5719cd567-3"></a><span class="nf">r2rclitr-email.html</span><span class="o">:</span> <span class="n">pandoc</span>.<span class="n">version</span> <span class="n">os</span>.<span class="n">version</span> <span class="n">pandoc</span>.<span class="n">style</span> \
-<a name="rest_code_850d67a9ecaa4ba7b2f632b5719cd567-4"></a>        <span class="n">r</span>2<span class="n">rclitr</span>-<span class="n">in</span>.<span class="n">rst</span> <span class="n">r</span>2<span class="n">rclitr</span>-<span class="n">out</span>.<span class="n">rst</span>  <span class="n">r</span>2<span class="n">rclitr</span>-<span class="n">in</span>.<span class="n">native</span>
-<a name="rest_code_850d67a9ecaa4ba7b2f632b5719cd567-5"></a>
-<a name="rest_code_850d67a9ecaa4ba7b2f632b5719cd567-6"></a><span class="nf">pandoc.version</span><span class="o">:</span> <span class="k">$(</span><span class="nv">shell</span> <span class="nv">type</span> <span class="nv">-p</span> <span class="nv">pandoc</span><span class="k">)</span>
-<a name="rest_code_850d67a9ecaa4ba7b2f632b5719cd567-7"></a>        pandoc --version <span class="p">|</span> head -2 &gt;<span class="nv">$@</span>
-<a name="rest_code_850d67a9ecaa4ba7b2f632b5719cd567-8"></a><span class="nf">os.version</span><span class="o">:</span>
-<a name="rest_code_850d67a9ecaa4ba7b2f632b5719cd567-9"></a>        osinfo &gt;<span class="nv">$@</span>
-<a name="rest_code_850d67a9ecaa4ba7b2f632b5719cd567-10"></a>
-<a name="rest_code_850d67a9ecaa4ba7b2f632b5719cd567-11"></a><span class="c"># ReST input</span>
-<a name="rest_code_850d67a9ecaa4ba7b2f632b5719cd567-12"></a><span class="nf">%-out.rst</span><span class="o">:</span> %-<span class="n">in</span>.<span class="n">rst</span>
-<a name="rest_code_850d67a9ecaa4ba7b2f632b5719cd567-13"></a>        pandoc -r rst -w rst -o <span class="nv">$@</span> $&lt;
-<a name="rest_code_850d67a9ecaa4ba7b2f632b5719cd567-14"></a><span class="nf">%.html </span><span class="o">:</span> %.<span class="n">rst</span>
-<a name="rest_code_850d67a9ecaa4ba7b2f632b5719cd567-15"></a>        pandoc -r rst -w html --include-in-header<span class="o">=</span>pandoc.style --output<span class="o">=</span><span class="nv">$@</span> $&lt;
-<a name="rest_code_850d67a9ecaa4ba7b2f632b5719cd567-16"></a><span class="nf">%.native </span><span class="o">:</span> %.<span class="n">rst</span>
-<a name="rest_code_850d67a9ecaa4ba7b2f632b5719cd567-17"></a>        pandoc -r rst -w native --output<span class="o">=</span><span class="nv">$@</span> $&lt;
-<a name="rest_code_850d67a9ecaa4ba7b2f632b5719cd567-18"></a>
-<a name="rest_code_850d67a9ecaa4ba7b2f632b5719cd567-19"></a><span class="nf">.PHONY</span><span class="o">:</span> <span class="n">clean</span>
-<a name="rest_code_850d67a9ecaa4ba7b2f632b5719cd567-20"></a>
-<a name="rest_code_850d67a9ecaa4ba7b2f632b5719cd567-21"></a><span class="nf">clean</span><span class="o">:</span>
-<a name="rest_code_850d67a9ecaa4ba7b2f632b5719cd567-22"></a>        -rm *.pdf *.html *.ms *.ctx *.ltx *.native os.version *-out.rst
+<p>Here is the <span class="file">GNUmakefile</span> for it:</p>
+<pre class="code makefile"><a name="rest_code_0102dd84d70b445f9daa0e57fde4ab53-1"></a><span class="nf">all</span><span class="o">:</span> <span class="n">r</span>2<span class="n">rclitr</span>-<span class="n">email</span>.<span class="n">html</span>
+<a name="rest_code_0102dd84d70b445f9daa0e57fde4ab53-2"></a>
+<a name="rest_code_0102dd84d70b445f9daa0e57fde4ab53-3"></a><span class="nf">r2rclitr-email.html</span><span class="o">:</span> <span class="n">pandoc</span>.<span class="n">version</span> <span class="n">os</span>.<span class="n">version</span> <span class="n">pandoc</span>.<span class="n">style</span> \
+<a name="rest_code_0102dd84d70b445f9daa0e57fde4ab53-4"></a>        <span class="n">r</span>2<span class="n">rclitr</span>-<span class="n">in</span>.<span class="n">rst</span> <span class="n">r</span>2<span class="n">rclitr</span>-<span class="n">out</span>.<span class="n">rst</span>  <span class="n">r</span>2<span class="n">rclitr</span>-<span class="n">in</span>.<span class="n">native</span>
+<a name="rest_code_0102dd84d70b445f9daa0e57fde4ab53-5"></a>
+<a name="rest_code_0102dd84d70b445f9daa0e57fde4ab53-6"></a><span class="nf">pandoc.version</span><span class="o">:</span> <span class="k">$(</span><span class="nv">shell</span> <span class="nv">type</span> <span class="nv">-p</span> <span class="nv">pandoc</span><span class="k">)</span>
+<a name="rest_code_0102dd84d70b445f9daa0e57fde4ab53-7"></a>        pandoc --version <span class="p">|</span> head -2 &gt;<span class="nv">$@</span>
+<a name="rest_code_0102dd84d70b445f9daa0e57fde4ab53-8"></a><span class="nf">os.version</span><span class="o">:</span>
+<a name="rest_code_0102dd84d70b445f9daa0e57fde4ab53-9"></a>        osinfo &gt;<span class="nv">$@</span>
+<a name="rest_code_0102dd84d70b445f9daa0e57fde4ab53-10"></a>
+<a name="rest_code_0102dd84d70b445f9daa0e57fde4ab53-11"></a><span class="c"># ReST input</span>
+<a name="rest_code_0102dd84d70b445f9daa0e57fde4ab53-12"></a><span class="nf">%-out.rst</span><span class="o">:</span> %-<span class="n">in</span>.<span class="n">rst</span>
+<a name="rest_code_0102dd84d70b445f9daa0e57fde4ab53-13"></a>        pandoc -r rst -w rst -o <span class="nv">$@</span> $&lt;
+<a name="rest_code_0102dd84d70b445f9daa0e57fde4ab53-14"></a><span class="nf">%.html </span><span class="o">:</span> %.<span class="n">rst</span>
+<a name="rest_code_0102dd84d70b445f9daa0e57fde4ab53-15"></a>        pandoc -r rst -w html --include-in-header<span class="o">=</span>pandoc.style --output<span class="o">=</span><span class="nv">$@</span> $&lt;
+<a name="rest_code_0102dd84d70b445f9daa0e57fde4ab53-16"></a><span class="nf">%.native </span><span class="o">:</span> %.<span class="n">rst</span>
+<a name="rest_code_0102dd84d70b445f9daa0e57fde4ab53-17"></a>        pandoc -r rst -w native --output<span class="o">=</span><span class="nv">$@</span> $&lt;
+<a name="rest_code_0102dd84d70b445f9daa0e57fde4ab53-18"></a>
+<a name="rest_code_0102dd84d70b445f9daa0e57fde4ab53-19"></a><span class="nf">.PHONY</span><span class="o">:</span> <span class="n">clean</span>
+<a name="rest_code_0102dd84d70b445f9daa0e57fde4ab53-20"></a>
+<a name="rest_code_0102dd84d70b445f9daa0e57fde4ab53-21"></a><span class="nf">clean</span><span class="o">:</span>
+<a name="rest_code_0102dd84d70b445f9daa0e57fde4ab53-22"></a>        -rm *.pdf *.html *.ms *.ctx *.ltx *.native os.version *-out.rst
 </pre>
 <p>When I'm doing an issue the result is a <a class="reference external" href="https://github.github.com/gfm/">GFM</a> file that I can cut and
 paste into the editor used for issues on GitHub, which expects <a class="reference external" href="https://github.github.com/gfm/">GFM</a>.
@@ -170,146 +170,146 @@ I write it in <a class="reference external" href="https://docutils.sourceforge.i
 <p>Here's an example <a class="reference external" href="https://github.com/jgm/pandoc/issues/6592">issue</a>, "Reference Not Found Error #6592" on the
 pandoc <a class="reference external" href="https://github.com/jgm/pandoc">repository</a>.</p>
 <p>The problem <a class="reference external" href="https://docutils.sourceforge.io/rst.html">reST</a> file <span class="file">rnf.rst</span> is</p>
-<pre class="code ReST"><a name="rest_code_568d7000aa2843a09b1b645ab6d3da36-1"></a>​﻿   <span class="gs">**Option:**</span> Arachnaurs' webs are made with a neurotoxin_ that can
-<a name="rest_code_568d7000aa2843a09b1b645ab6d3da36-2"></a>​   quickly paralyze their prey!  When wrapped in a web, make a Vigor
-<a name="rest_code_568d7000aa2843a09b1b645ab6d3da36-3"></a>​   roll or quickly lose consciousness.
-<a name="rest_code_568d7000aa2843a09b1b645ab6d3da36-4"></a>
-<a name="rest_code_568d7000aa2843a09b1b645ab6d3da36-5"></a><span class="p">   ..</span> <span class="nt">_neurotoxin:</span> https://www.sciencenews.org/article/spiders-poisonous-webs-neuro-toxins-genes
+<pre class="code ReST"><a name="rest_code_62eaf8369e7e4d63bb1c0224aa4e9176-1"></a>​﻿   <span class="gs">**Option:**</span> Arachnaurs' webs are made with a neurotoxin_ that can
+<a name="rest_code_62eaf8369e7e4d63bb1c0224aa4e9176-2"></a>​   quickly paralyze their prey!  When wrapped in a web, make a Vigor
+<a name="rest_code_62eaf8369e7e4d63bb1c0224aa4e9176-3"></a>​   roll or quickly lose consciousness.
+<a name="rest_code_62eaf8369e7e4d63bb1c0224aa4e9176-4"></a>
+<a name="rest_code_62eaf8369e7e4d63bb1c0224aa4e9176-5"></a><span class="p">   ..</span> <span class="nt">_neurotoxin:</span> https://www.sciencenews.org/article/spiders-poisonous-webs-neuro-toxins-genes
 </pre>
 <p>(The contents of the actual file are all indented 3 spaces, but I had
 to prefix all the lines in the code block in this source with the
 Unicode <a class="reference external" href="https://en.wikipedia.org/wiki/Zero-width_space">ZERO WIDTH SPACE</a> so the indentation would show.)</p>
 <p>The issue <a class="reference external" href="https://docutils.sourceforge.io/rst.html">reST</a> file <span class="file">rnf-issue.rst</span> is</p>
-<pre class="code ReST"><a name="rest_code_32acc15df13b443c9e54e8358f5f5074-1"></a>Reference Not Found Error
-<a name="rest_code_32acc15df13b443c9e54e8358f5f5074-2"></a>@@@@@@@@@@@@@@@@@@@@@@@@@
-<a name="rest_code_32acc15df13b443c9e54e8358f5f5074-3"></a>
-<a name="rest_code_32acc15df13b443c9e54e8358f5f5074-4"></a>When I process the following reST file (notice it the whole file is
-<a name="rest_code_32acc15df13b443c9e54e8358f5f5074-5"></a>indented 3 spaces)
-<a name="rest_code_32acc15df13b443c9e54e8358f5f5074-6"></a>
-<a name="rest_code_32acc15df13b443c9e54e8358f5f5074-7"></a><span class="p">..</span> <span class="ow">include</span><span class="p">::</span> rnf.rst
-<a name="rest_code_32acc15df13b443c9e54e8358f5f5074-8"></a>   <span class="nc">:code:</span>
-<a name="rest_code_32acc15df13b443c9e54e8358f5f5074-9"></a>
-<a name="rest_code_32acc15df13b443c9e54e8358f5f5074-10"></a>into <span class="s">``ms``</span> or PDF via <span class="s">``ms``</span> output with the command
-<a name="rest_code_32acc15df13b443c9e54e8358f5f5074-11"></a>
-<a name="rest_code_32acc15df13b443c9e54e8358f5f5074-12"></a><span class="p">..</span> <span class="ow">code</span><span class="p">::</span>
-<a name="rest_code_32acc15df13b443c9e54e8358f5f5074-13"></a>
-<a name="rest_code_32acc15df13b443c9e54e8358f5f5074-14"></a>   pandoc -s -r rst -w ms -o rnf.ms.pdf rnf.rst
-<a name="rest_code_32acc15df13b443c9e54e8358f5f5074-15"></a>
-<a name="rest_code_32acc15df13b443c9e54e8358f5f5074-16"></a>
-<a name="rest_code_32acc15df13b443c9e54e8358f5f5074-17"></a>I get the errors
-<a name="rest_code_32acc15df13b443c9e54e8358f5f5074-18"></a>
-<a name="rest_code_32acc15df13b443c9e54e8358f5f5074-19"></a><span class="p">..</span> <span class="ow">code</span><span class="p">::</span>
-<a name="rest_code_32acc15df13b443c9e54e8358f5f5074-20"></a>
-<a name="rest_code_32acc15df13b443c9e54e8358f5f5074-21"></a>   [WARNING] Reference not found for 'neurotoxin' at chunk line 1 column 57
-<a name="rest_code_32acc15df13b443c9e54e8358f5f5074-22"></a>   &lt;standard input&gt;:70: macro error: pdfhref has no destination
-<a name="rest_code_32acc15df13b443c9e54e8358f5f5074-23"></a>
-<a name="rest_code_32acc15df13b443c9e54e8358f5f5074-24"></a>and the resulting output PDF file and <span class="s">``.ms``</span> file indeed do not
-<a name="rest_code_32acc15df13b443c9e54e8358f5f5074-25"></a>have the link.
-<a name="rest_code_32acc15df13b443c9e54e8358f5f5074-26"></a>
-<a name="rest_code_32acc15df13b443c9e54e8358f5f5074-27"></a>Here's the <span class="s">``.ms``</span> file that was generated:
-<a name="rest_code_32acc15df13b443c9e54e8358f5f5074-28"></a>
-<a name="rest_code_32acc15df13b443c9e54e8358f5f5074-29"></a><span class="p">..</span> <span class="ow">include</span><span class="p">::</span> rnf.ms
-<a name="rest_code_32acc15df13b443c9e54e8358f5f5074-30"></a>   <span class="nc">:code:</span>
-<a name="rest_code_32acc15df13b443c9e54e8358f5f5074-31"></a>
-<a name="rest_code_32acc15df13b443c9e54e8358f5f5074-32"></a>I'm using the following version of Pandoc:
-<a name="rest_code_32acc15df13b443c9e54e8358f5f5074-33"></a>
-<a name="rest_code_32acc15df13b443c9e54e8358f5f5074-34"></a><span class="p">..</span> <span class="ow">include</span><span class="p">::</span> pandoc.version
-<a name="rest_code_32acc15df13b443c9e54e8358f5f5074-35"></a>   <span class="nc">:code:</span>
-<a name="rest_code_32acc15df13b443c9e54e8358f5f5074-36"></a>
-<a name="rest_code_32acc15df13b443c9e54e8358f5f5074-37"></a>My OS information is:
-<a name="rest_code_32acc15df13b443c9e54e8358f5f5074-38"></a>
-<a name="rest_code_32acc15df13b443c9e54e8358f5f5074-39"></a><span class="p">..</span> <span class="ow">include</span><span class="p">::</span> os.version
-<a name="rest_code_32acc15df13b443c9e54e8358f5f5074-40"></a>   <span class="nc">:code:</span>
+<pre class="code ReST"><a name="rest_code_5a66ef48b62e4186948f9e11943f0133-1"></a>Reference Not Found Error
+<a name="rest_code_5a66ef48b62e4186948f9e11943f0133-2"></a>@@@@@@@@@@@@@@@@@@@@@@@@@
+<a name="rest_code_5a66ef48b62e4186948f9e11943f0133-3"></a>
+<a name="rest_code_5a66ef48b62e4186948f9e11943f0133-4"></a>When I process the following reST file (notice it the whole file is
+<a name="rest_code_5a66ef48b62e4186948f9e11943f0133-5"></a>indented 3 spaces)
+<a name="rest_code_5a66ef48b62e4186948f9e11943f0133-6"></a>
+<a name="rest_code_5a66ef48b62e4186948f9e11943f0133-7"></a><span class="p">..</span> <span class="ow">include</span><span class="p">::</span> rnf.rst
+<a name="rest_code_5a66ef48b62e4186948f9e11943f0133-8"></a>   <span class="nc">:code:</span>
+<a name="rest_code_5a66ef48b62e4186948f9e11943f0133-9"></a>
+<a name="rest_code_5a66ef48b62e4186948f9e11943f0133-10"></a>into <span class="s">``ms``</span> or PDF via <span class="s">``ms``</span> output with the command
+<a name="rest_code_5a66ef48b62e4186948f9e11943f0133-11"></a>
+<a name="rest_code_5a66ef48b62e4186948f9e11943f0133-12"></a><span class="p">..</span> <span class="ow">code</span><span class="p">::</span>
+<a name="rest_code_5a66ef48b62e4186948f9e11943f0133-13"></a>
+<a name="rest_code_5a66ef48b62e4186948f9e11943f0133-14"></a>   pandoc -s -r rst -w ms -o rnf.ms.pdf rnf.rst
+<a name="rest_code_5a66ef48b62e4186948f9e11943f0133-15"></a>
+<a name="rest_code_5a66ef48b62e4186948f9e11943f0133-16"></a>
+<a name="rest_code_5a66ef48b62e4186948f9e11943f0133-17"></a>I get the errors
+<a name="rest_code_5a66ef48b62e4186948f9e11943f0133-18"></a>
+<a name="rest_code_5a66ef48b62e4186948f9e11943f0133-19"></a><span class="p">..</span> <span class="ow">code</span><span class="p">::</span>
+<a name="rest_code_5a66ef48b62e4186948f9e11943f0133-20"></a>
+<a name="rest_code_5a66ef48b62e4186948f9e11943f0133-21"></a>   [WARNING] Reference not found for 'neurotoxin' at chunk line 1 column 57
+<a name="rest_code_5a66ef48b62e4186948f9e11943f0133-22"></a>   &lt;standard input&gt;:70: macro error: pdfhref has no destination
+<a name="rest_code_5a66ef48b62e4186948f9e11943f0133-23"></a>
+<a name="rest_code_5a66ef48b62e4186948f9e11943f0133-24"></a>and the resulting output PDF file and <span class="s">``.ms``</span> file indeed do not
+<a name="rest_code_5a66ef48b62e4186948f9e11943f0133-25"></a>have the link.
+<a name="rest_code_5a66ef48b62e4186948f9e11943f0133-26"></a>
+<a name="rest_code_5a66ef48b62e4186948f9e11943f0133-27"></a>Here's the <span class="s">``.ms``</span> file that was generated:
+<a name="rest_code_5a66ef48b62e4186948f9e11943f0133-28"></a>
+<a name="rest_code_5a66ef48b62e4186948f9e11943f0133-29"></a><span class="p">..</span> <span class="ow">include</span><span class="p">::</span> rnf.ms
+<a name="rest_code_5a66ef48b62e4186948f9e11943f0133-30"></a>   <span class="nc">:code:</span>
+<a name="rest_code_5a66ef48b62e4186948f9e11943f0133-31"></a>
+<a name="rest_code_5a66ef48b62e4186948f9e11943f0133-32"></a>I'm using the following version of Pandoc:
+<a name="rest_code_5a66ef48b62e4186948f9e11943f0133-33"></a>
+<a name="rest_code_5a66ef48b62e4186948f9e11943f0133-34"></a><span class="p">..</span> <span class="ow">include</span><span class="p">::</span> pandoc.version
+<a name="rest_code_5a66ef48b62e4186948f9e11943f0133-35"></a>   <span class="nc">:code:</span>
+<a name="rest_code_5a66ef48b62e4186948f9e11943f0133-36"></a>
+<a name="rest_code_5a66ef48b62e4186948f9e11943f0133-37"></a>My OS information is:
+<a name="rest_code_5a66ef48b62e4186948f9e11943f0133-38"></a>
+<a name="rest_code_5a66ef48b62e4186948f9e11943f0133-39"></a><span class="p">..</span> <span class="ow">include</span><span class="p">::</span> os.version
+<a name="rest_code_5a66ef48b62e4186948f9e11943f0133-40"></a>   <span class="nc">:code:</span>
 </pre>
 <p>The generated <a class="reference external" href="https://github.github.com/gfm/">GFM</a> is</p>
-<pre class="code text"><a name="rest_code_57bd51d6e172486c8337673b2adaa0e7-1"></a>Reference Not Found Error
-<a name="rest_code_57bd51d6e172486c8337673b2adaa0e7-2"></a>=========================
-<a name="rest_code_57bd51d6e172486c8337673b2adaa0e7-3"></a>
-<a name="rest_code_57bd51d6e172486c8337673b2adaa0e7-4"></a>When I process the following reST file (notice it the whole file is
-<a name="rest_code_57bd51d6e172486c8337673b2adaa0e7-5"></a>indented 3 spaces)
-<a name="rest_code_57bd51d6e172486c8337673b2adaa0e7-6"></a>
-<a name="rest_code_57bd51d6e172486c8337673b2adaa0e7-7"></a>       **Option:** Arachnaurs' webs are made with a neurotoxin_ that can
-<a name="rest_code_57bd51d6e172486c8337673b2adaa0e7-8"></a>       quickly paralyze their prey!  When wrapped in a web, make a Vigor
-<a name="rest_code_57bd51d6e172486c8337673b2adaa0e7-9"></a>       roll or quickly lose consciousness.
-<a name="rest_code_57bd51d6e172486c8337673b2adaa0e7-10"></a>
-<a name="rest_code_57bd51d6e172486c8337673b2adaa0e7-11"></a>       .. _neurotoxin: https://www.sciencenews.org/article/spiders-poisonous-webs-neuro-toxins-genes
-<a name="rest_code_57bd51d6e172486c8337673b2adaa0e7-12"></a>
-<a name="rest_code_57bd51d6e172486c8337673b2adaa0e7-13"></a>into `ms` or PDF via `ms` output with the command
-<a name="rest_code_57bd51d6e172486c8337673b2adaa0e7-14"></a>
-<a name="rest_code_57bd51d6e172486c8337673b2adaa0e7-15"></a>    pandoc -s -r rst -w ms -o rnf.ms.pdf rnf.rst
-<a name="rest_code_57bd51d6e172486c8337673b2adaa0e7-16"></a>
-<a name="rest_code_57bd51d6e172486c8337673b2adaa0e7-17"></a>I get the errors
-<a name="rest_code_57bd51d6e172486c8337673b2adaa0e7-18"></a>
-<a name="rest_code_57bd51d6e172486c8337673b2adaa0e7-19"></a>    [WARNING] Reference not found for 'neurotoxin' at chunk line 1 column 57
-<a name="rest_code_57bd51d6e172486c8337673b2adaa0e7-20"></a>    &lt;standard input&gt;:70: macro error: pdfhref has no destination
-<a name="rest_code_57bd51d6e172486c8337673b2adaa0e7-21"></a>
-<a name="rest_code_57bd51d6e172486c8337673b2adaa0e7-22"></a>and the resulting output PDF file and `.ms` file indeed do not have the
-<a name="rest_code_57bd51d6e172486c8337673b2adaa0e7-23"></a>link.
-<a name="rest_code_57bd51d6e172486c8337673b2adaa0e7-24"></a>
-<a name="rest_code_57bd51d6e172486c8337673b2adaa0e7-25"></a>Here's the `.ms` file that was generated:
-<a name="rest_code_57bd51d6e172486c8337673b2adaa0e7-26"></a>
-<a name="rest_code_57bd51d6e172486c8337673b2adaa0e7-27"></a>    .QS
-<a name="rest_code_57bd51d6e172486c8337673b2adaa0e7-28"></a>    .LP
-<a name="rest_code_57bd51d6e172486c8337673b2adaa0e7-29"></a>    \f[B]Option:\f[R] Arachnaurs\[aq] webs are made with a \c
-<a name="rest_code_57bd51d6e172486c8337673b2adaa0e7-30"></a>    .pdfhref W -D "" -A "\c" \
-<a name="rest_code_57bd51d6e172486c8337673b2adaa0e7-31"></a>     -- "neurotoxin"
-<a name="rest_code_57bd51d6e172486c8337673b2adaa0e7-32"></a>    \&amp; that can quickly paralyze their prey! When wrapped in a web, make a
-<a name="rest_code_57bd51d6e172486c8337673b2adaa0e7-33"></a>    Vigor roll or quickly lose consciousness.
-<a name="rest_code_57bd51d6e172486c8337673b2adaa0e7-34"></a>    .QE
-<a name="rest_code_57bd51d6e172486c8337673b2adaa0e7-35"></a>
-<a name="rest_code_57bd51d6e172486c8337673b2adaa0e7-36"></a>I'm using the following version of Pandoc:
-<a name="rest_code_57bd51d6e172486c8337673b2adaa0e7-37"></a>
-<a name="rest_code_57bd51d6e172486c8337673b2adaa0e7-38"></a>    pandoc 2.10.1
-<a name="rest_code_57bd51d6e172486c8337673b2adaa0e7-39"></a>    Compiled with pandoc-types 1.21, texmath 0.12.0.2, skylighting 0.8.5
-<a name="rest_code_57bd51d6e172486c8337673b2adaa0e7-40"></a>
-<a name="rest_code_57bd51d6e172486c8337673b2adaa0e7-41"></a>My OS information is:
-<a name="rest_code_57bd51d6e172486c8337673b2adaa0e7-42"></a>
-<a name="rest_code_57bd51d6e172486c8337673b2adaa0e7-43"></a>    Mac OS X, Version 10.15.6, Build 19G73
+<pre class="code text"><a name="rest_code_9a3e9fd5469f4e8b84541839a2209bc2-1"></a>Reference Not Found Error
+<a name="rest_code_9a3e9fd5469f4e8b84541839a2209bc2-2"></a>=========================
+<a name="rest_code_9a3e9fd5469f4e8b84541839a2209bc2-3"></a>
+<a name="rest_code_9a3e9fd5469f4e8b84541839a2209bc2-4"></a>When I process the following reST file (notice it the whole file is
+<a name="rest_code_9a3e9fd5469f4e8b84541839a2209bc2-5"></a>indented 3 spaces)
+<a name="rest_code_9a3e9fd5469f4e8b84541839a2209bc2-6"></a>
+<a name="rest_code_9a3e9fd5469f4e8b84541839a2209bc2-7"></a>       **Option:** Arachnaurs' webs are made with a neurotoxin_ that can
+<a name="rest_code_9a3e9fd5469f4e8b84541839a2209bc2-8"></a>       quickly paralyze their prey!  When wrapped in a web, make a Vigor
+<a name="rest_code_9a3e9fd5469f4e8b84541839a2209bc2-9"></a>       roll or quickly lose consciousness.
+<a name="rest_code_9a3e9fd5469f4e8b84541839a2209bc2-10"></a>
+<a name="rest_code_9a3e9fd5469f4e8b84541839a2209bc2-11"></a>       .. _neurotoxin: https://www.sciencenews.org/article/spiders-poisonous-webs-neuro-toxins-genes
+<a name="rest_code_9a3e9fd5469f4e8b84541839a2209bc2-12"></a>
+<a name="rest_code_9a3e9fd5469f4e8b84541839a2209bc2-13"></a>into `ms` or PDF via `ms` output with the command
+<a name="rest_code_9a3e9fd5469f4e8b84541839a2209bc2-14"></a>
+<a name="rest_code_9a3e9fd5469f4e8b84541839a2209bc2-15"></a>    pandoc -s -r rst -w ms -o rnf.ms.pdf rnf.rst
+<a name="rest_code_9a3e9fd5469f4e8b84541839a2209bc2-16"></a>
+<a name="rest_code_9a3e9fd5469f4e8b84541839a2209bc2-17"></a>I get the errors
+<a name="rest_code_9a3e9fd5469f4e8b84541839a2209bc2-18"></a>
+<a name="rest_code_9a3e9fd5469f4e8b84541839a2209bc2-19"></a>    [WARNING] Reference not found for 'neurotoxin' at chunk line 1 column 57
+<a name="rest_code_9a3e9fd5469f4e8b84541839a2209bc2-20"></a>    &lt;standard input&gt;:70: macro error: pdfhref has no destination
+<a name="rest_code_9a3e9fd5469f4e8b84541839a2209bc2-21"></a>
+<a name="rest_code_9a3e9fd5469f4e8b84541839a2209bc2-22"></a>and the resulting output PDF file and `.ms` file indeed do not have the
+<a name="rest_code_9a3e9fd5469f4e8b84541839a2209bc2-23"></a>link.
+<a name="rest_code_9a3e9fd5469f4e8b84541839a2209bc2-24"></a>
+<a name="rest_code_9a3e9fd5469f4e8b84541839a2209bc2-25"></a>Here's the `.ms` file that was generated:
+<a name="rest_code_9a3e9fd5469f4e8b84541839a2209bc2-26"></a>
+<a name="rest_code_9a3e9fd5469f4e8b84541839a2209bc2-27"></a>    .QS
+<a name="rest_code_9a3e9fd5469f4e8b84541839a2209bc2-28"></a>    .LP
+<a name="rest_code_9a3e9fd5469f4e8b84541839a2209bc2-29"></a>    \f[B]Option:\f[R] Arachnaurs\[aq] webs are made with a \c
+<a name="rest_code_9a3e9fd5469f4e8b84541839a2209bc2-30"></a>    .pdfhref W -D "" -A "\c" \
+<a name="rest_code_9a3e9fd5469f4e8b84541839a2209bc2-31"></a>     -- "neurotoxin"
+<a name="rest_code_9a3e9fd5469f4e8b84541839a2209bc2-32"></a>    \&amp; that can quickly paralyze their prey! When wrapped in a web, make a
+<a name="rest_code_9a3e9fd5469f4e8b84541839a2209bc2-33"></a>    Vigor roll or quickly lose consciousness.
+<a name="rest_code_9a3e9fd5469f4e8b84541839a2209bc2-34"></a>    .QE
+<a name="rest_code_9a3e9fd5469f4e8b84541839a2209bc2-35"></a>
+<a name="rest_code_9a3e9fd5469f4e8b84541839a2209bc2-36"></a>I'm using the following version of Pandoc:
+<a name="rest_code_9a3e9fd5469f4e8b84541839a2209bc2-37"></a>
+<a name="rest_code_9a3e9fd5469f4e8b84541839a2209bc2-38"></a>    pandoc 2.10.1
+<a name="rest_code_9a3e9fd5469f4e8b84541839a2209bc2-39"></a>    Compiled with pandoc-types 1.21, texmath 0.12.0.2, skylighting 0.8.5
+<a name="rest_code_9a3e9fd5469f4e8b84541839a2209bc2-40"></a>
+<a name="rest_code_9a3e9fd5469f4e8b84541839a2209bc2-41"></a>My OS information is:
+<a name="rest_code_9a3e9fd5469f4e8b84541839a2209bc2-42"></a>
+<a name="rest_code_9a3e9fd5469f4e8b84541839a2209bc2-43"></a>    Mac OS X, Version 10.15.6, Build 19G73
 </pre>
-<p>Here is the <code class="docutils literal">GNUmakefile</code> for it:</p>
-<pre class="code makefile"><a name="rest_code_0236595d9e39454cb4e4efcbebaf0761-1"></a><span class="nf">all</span><span class="o">:</span> <span class="n">rnf</span>-<span class="n">issue</span>.<span class="n">gfm</span> <span class="n">rnf</span>-<span class="n">issue</span>.<span class="n">html</span> <span class="n">rnf</span>-<span class="n">issue</span>.<span class="n">gfm</span>.<span class="n">html</span> <span class="n">rnf</span>.<span class="n">ms</span>.<span class="n">pdf</span> <span class="n">rnf</span>.<span class="n">ms</span>
-<a name="rest_code_0236595d9e39454cb4e4efcbebaf0761-2"></a>
-<a name="rest_code_0236595d9e39454cb4e4efcbebaf0761-3"></a><span class="nf">rnf-issue.html rnf-issue.gfm rnf-issue.gfm.html</span><span class="o">:</span> <span class="n">rnf</span>.<span class="n">rst</span> \
-<a name="rest_code_0236595d9e39454cb4e4efcbebaf0761-4"></a>        <span class="n">pandoc</span>.<span class="n">version</span> <span class="n">os</span>.<span class="n">version</span>
-<a name="rest_code_0236595d9e39454cb4e4efcbebaf0761-5"></a>
-<a name="rest_code_0236595d9e39454cb4e4efcbebaf0761-6"></a><span class="nf">.PRECIOUS</span><span class="o">:</span> <span class="n">rnf</span>-<span class="n">issue</span>.<span class="n">gfm</span>
-<a name="rest_code_0236595d9e39454cb4e4efcbebaf0761-7"></a>
-<a name="rest_code_0236595d9e39454cb4e4efcbebaf0761-8"></a>
-<a name="rest_code_0236595d9e39454cb4e4efcbebaf0761-9"></a><span class="nf">pandoc.version</span><span class="o">:</span> <span class="k">$(</span><span class="nv">shell</span> <span class="nv">type</span> <span class="nv">-p</span> <span class="nv">pandoc</span><span class="k">)</span>
-<a name="rest_code_0236595d9e39454cb4e4efcbebaf0761-10"></a>        pandoc --version <span class="p">|</span> head -2 &gt;<span class="nv">$@</span>
-<a name="rest_code_0236595d9e39454cb4e4efcbebaf0761-11"></a><span class="nf">os.version</span><span class="o">:</span>
-<a name="rest_code_0236595d9e39454cb4e4efcbebaf0761-12"></a>        osinfo &gt;<span class="nv">$@</span>
-<a name="rest_code_0236595d9e39454cb4e4efcbebaf0761-13"></a>
-<a name="rest_code_0236595d9e39454cb4e4efcbebaf0761-14"></a><span class="nf">%.ms </span><span class="o">:</span> %.<span class="n">rst</span>
-<a name="rest_code_0236595d9e39454cb4e4efcbebaf0761-15"></a>        pandoc -r rst -w ms -o <span class="nv">$@</span> $&lt;
-<a name="rest_code_0236595d9e39454cb4e4efcbebaf0761-16"></a>
-<a name="rest_code_0236595d9e39454cb4e4efcbebaf0761-17"></a><span class="nf">%.ms.pdf </span><span class="o">:</span> %.<span class="n">rst</span>
-<a name="rest_code_0236595d9e39454cb4e4efcbebaf0761-18"></a>        pandoc -s -r rst -w ms -o <span class="nv">$@</span> $&lt;
-<a name="rest_code_0236595d9e39454cb4e4efcbebaf0761-19"></a>
-<a name="rest_code_0236595d9e39454cb4e4efcbebaf0761-20"></a><span class="nf">%.html </span><span class="o">:</span> %.<span class="n">rst</span>
-<a name="rest_code_0236595d9e39454cb4e4efcbebaf0761-21"></a>        pandoc -s -r rst -w html -H fancy.style --output<span class="o">=</span><span class="nv">$@</span> $&lt;
-<a name="rest_code_0236595d9e39454cb4e4efcbebaf0761-22"></a>
-<a name="rest_code_0236595d9e39454cb4e4efcbebaf0761-23"></a><span class="nf">%-pandoc.html </span><span class="o">:</span> %.<span class="n">rst</span>
-<a name="rest_code_0236595d9e39454cb4e4efcbebaf0761-24"></a>        pandoc -r rst -w html --output<span class="o">=</span><span class="nv">$@</span> $&lt;
-<a name="rest_code_0236595d9e39454cb4e4efcbebaf0761-25"></a>
-<a name="rest_code_0236595d9e39454cb4e4efcbebaf0761-26"></a><span class="nf">%-docutils.html</span><span class="o">:</span> %.<span class="n">rst</span>
-<a name="rest_code_0236595d9e39454cb4e4efcbebaf0761-27"></a>        rst2html.py $&lt; <span class="p">|</span> sed <span class="s1">'1,/^&lt;div class="document"&gt;/d'</span> <span class="p">|</span> sed -e <span class="s1">'1,2d'</span> -e <span class="s1">'\%&lt;/div&gt;%,$$d'</span> &gt;<span class="nv">$@</span>
-<a name="rest_code_0236595d9e39454cb4e4efcbebaf0761-28"></a>
-<a name="rest_code_0236595d9e39454cb4e4efcbebaf0761-29"></a><span class="nf">%.gfm </span><span class="o">:</span> %.<span class="n">rst</span>
-<a name="rest_code_0236595d9e39454cb4e4efcbebaf0761-30"></a>        pandoc -r rst -w gfm -o <span class="nv">$@</span> $&lt;
-<a name="rest_code_0236595d9e39454cb4e4efcbebaf0761-31"></a>
-<a name="rest_code_0236595d9e39454cb4e4efcbebaf0761-32"></a><span class="nf">%.gfm.html </span><span class="o">:</span> %.<span class="n">gfm</span>
-<a name="rest_code_0236595d9e39454cb4e4efcbebaf0761-33"></a>        pandoc -s -r gfm -w html -H fancy.style -o <span class="nv">$@</span> $&lt;
-<a name="rest_code_0236595d9e39454cb4e4efcbebaf0761-34"></a>
-<a name="rest_code_0236595d9e39454cb4e4efcbebaf0761-35"></a><span class="nf">.PHONY</span><span class="o">:</span> <span class="n">clean</span>
-<a name="rest_code_0236595d9e39454cb4e4efcbebaf0761-36"></a>
-<a name="rest_code_0236595d9e39454cb4e4efcbebaf0761-37"></a><span class="nf">clean</span><span class="o">:</span>
-<a name="rest_code_0236595d9e39454cb4e4efcbebaf0761-38"></a>        -rm *.html *.native os.version pandoc.version docutils.version *.gfm
-<a name="rest_code_0236595d9e39454cb4e4efcbebaf0761-39"></a>
-<a name="rest_code_0236595d9e39454cb4e4efcbebaf0761-40"></a><span class="nf">.depend</span><span class="o">:</span> <span class="n">rnf</span>-<span class="n">issue</span>.<span class="n">rst</span>
-<a name="rest_code_0236595d9e39454cb4e4efcbebaf0761-41"></a>        rst-depends rnf-issue.rst &gt;<span class="nv">$@</span>
-<a name="rest_code_0236595d9e39454cb4e4efcbebaf0761-42"></a>
-<a name="rest_code_0236595d9e39454cb4e4efcbebaf0761-43"></a><span class="cp">include .depend</span>
+<p>Here is the <span class="file">GNUmakefile</span> for it:</p>
+<pre class="code makefile"><a name="rest_code_3a5c67a458534d7c84275773676d14eb-1"></a><span class="nf">all</span><span class="o">:</span> <span class="n">rnf</span>-<span class="n">issue</span>.<span class="n">gfm</span> <span class="n">rnf</span>-<span class="n">issue</span>.<span class="n">html</span> <span class="n">rnf</span>-<span class="n">issue</span>.<span class="n">gfm</span>.<span class="n">html</span> <span class="n">rnf</span>.<span class="n">ms</span>.<span class="n">pdf</span> <span class="n">rnf</span>.<span class="n">ms</span>
+<a name="rest_code_3a5c67a458534d7c84275773676d14eb-2"></a>
+<a name="rest_code_3a5c67a458534d7c84275773676d14eb-3"></a><span class="nf">rnf-issue.html rnf-issue.gfm rnf-issue.gfm.html</span><span class="o">:</span> <span class="n">rnf</span>.<span class="n">rst</span> \
+<a name="rest_code_3a5c67a458534d7c84275773676d14eb-4"></a>        <span class="n">pandoc</span>.<span class="n">version</span> <span class="n">os</span>.<span class="n">version</span>
+<a name="rest_code_3a5c67a458534d7c84275773676d14eb-5"></a>
+<a name="rest_code_3a5c67a458534d7c84275773676d14eb-6"></a><span class="nf">.PRECIOUS</span><span class="o">:</span> <span class="n">rnf</span>-<span class="n">issue</span>.<span class="n">gfm</span>
+<a name="rest_code_3a5c67a458534d7c84275773676d14eb-7"></a>
+<a name="rest_code_3a5c67a458534d7c84275773676d14eb-8"></a>
+<a name="rest_code_3a5c67a458534d7c84275773676d14eb-9"></a><span class="nf">pandoc.version</span><span class="o">:</span> <span class="k">$(</span><span class="nv">shell</span> <span class="nv">type</span> <span class="nv">-p</span> <span class="nv">pandoc</span><span class="k">)</span>
+<a name="rest_code_3a5c67a458534d7c84275773676d14eb-10"></a>        pandoc --version <span class="p">|</span> head -2 &gt;<span class="nv">$@</span>
+<a name="rest_code_3a5c67a458534d7c84275773676d14eb-11"></a><span class="nf">os.version</span><span class="o">:</span>
+<a name="rest_code_3a5c67a458534d7c84275773676d14eb-12"></a>        osinfo &gt;<span class="nv">$@</span>
+<a name="rest_code_3a5c67a458534d7c84275773676d14eb-13"></a>
+<a name="rest_code_3a5c67a458534d7c84275773676d14eb-14"></a><span class="nf">%.ms </span><span class="o">:</span> %.<span class="n">rst</span>
+<a name="rest_code_3a5c67a458534d7c84275773676d14eb-15"></a>        pandoc -r rst -w ms -o <span class="nv">$@</span> $&lt;
+<a name="rest_code_3a5c67a458534d7c84275773676d14eb-16"></a>
+<a name="rest_code_3a5c67a458534d7c84275773676d14eb-17"></a><span class="nf">%.ms.pdf </span><span class="o">:</span> %.<span class="n">rst</span>
+<a name="rest_code_3a5c67a458534d7c84275773676d14eb-18"></a>        pandoc -s -r rst -w ms -o <span class="nv">$@</span> $&lt;
+<a name="rest_code_3a5c67a458534d7c84275773676d14eb-19"></a>
+<a name="rest_code_3a5c67a458534d7c84275773676d14eb-20"></a><span class="nf">%.html </span><span class="o">:</span> %.<span class="n">rst</span>
+<a name="rest_code_3a5c67a458534d7c84275773676d14eb-21"></a>        pandoc -s -r rst -w html -H fancy.style --output<span class="o">=</span><span class="nv">$@</span> $&lt;
+<a name="rest_code_3a5c67a458534d7c84275773676d14eb-22"></a>
+<a name="rest_code_3a5c67a458534d7c84275773676d14eb-23"></a><span class="nf">%-pandoc.html </span><span class="o">:</span> %.<span class="n">rst</span>
+<a name="rest_code_3a5c67a458534d7c84275773676d14eb-24"></a>        pandoc -r rst -w html --output<span class="o">=</span><span class="nv">$@</span> $&lt;
+<a name="rest_code_3a5c67a458534d7c84275773676d14eb-25"></a>
+<a name="rest_code_3a5c67a458534d7c84275773676d14eb-26"></a><span class="nf">%-docutils.html</span><span class="o">:</span> %.<span class="n">rst</span>
+<a name="rest_code_3a5c67a458534d7c84275773676d14eb-27"></a>        rst2html.py $&lt; <span class="p">|</span> sed <span class="s1">'1,/^&lt;div class="document"&gt;/d'</span> <span class="p">|</span> sed -e <span class="s1">'1,2d'</span> -e <span class="s1">'\%&lt;/div&gt;%,$$d'</span> &gt;<span class="nv">$@</span>
+<a name="rest_code_3a5c67a458534d7c84275773676d14eb-28"></a>
+<a name="rest_code_3a5c67a458534d7c84275773676d14eb-29"></a><span class="nf">%.gfm </span><span class="o">:</span> %.<span class="n">rst</span>
+<a name="rest_code_3a5c67a458534d7c84275773676d14eb-30"></a>        pandoc -r rst -w gfm -o <span class="nv">$@</span> $&lt;
+<a name="rest_code_3a5c67a458534d7c84275773676d14eb-31"></a>
+<a name="rest_code_3a5c67a458534d7c84275773676d14eb-32"></a><span class="nf">%.gfm.html </span><span class="o">:</span> %.<span class="n">gfm</span>
+<a name="rest_code_3a5c67a458534d7c84275773676d14eb-33"></a>        pandoc -s -r gfm -w html -H fancy.style -o <span class="nv">$@</span> $&lt;
+<a name="rest_code_3a5c67a458534d7c84275773676d14eb-34"></a>
+<a name="rest_code_3a5c67a458534d7c84275773676d14eb-35"></a><span class="nf">.PHONY</span><span class="o">:</span> <span class="n">clean</span>
+<a name="rest_code_3a5c67a458534d7c84275773676d14eb-36"></a>
+<a name="rest_code_3a5c67a458534d7c84275773676d14eb-37"></a><span class="nf">clean</span><span class="o">:</span>
+<a name="rest_code_3a5c67a458534d7c84275773676d14eb-38"></a>        -rm *.html *.native os.version pandoc.version docutils.version *.gfm
+<a name="rest_code_3a5c67a458534d7c84275773676d14eb-39"></a>
+<a name="rest_code_3a5c67a458534d7c84275773676d14eb-40"></a><span class="nf">.depend</span><span class="o">:</span> <span class="n">rnf</span>-<span class="n">issue</span>.<span class="n">rst</span>
+<a name="rest_code_3a5c67a458534d7c84275773676d14eb-41"></a>        rst-depends rnf-issue.rst &gt;<span class="nv">$@</span>
+<a name="rest_code_3a5c67a458534d7c84275773676d14eb-42"></a>
+<a name="rest_code_3a5c67a458534d7c84275773676d14eb-43"></a><span class="cp">include .depend</span>
 </pre>
 <p>This may seem complex, but in practice I use templates to start out
 all the files and by building it all with <span class="program">make</span> and <a class="reference external" href="https://pandoc.org">pandoc</a>
