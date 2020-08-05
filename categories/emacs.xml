@@ -1,5 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity (Posts about emacs)</title><link>https://tkurtbond.github.io/</link><description></description><atom:link href="https://tkurtbond.github.io/categories/emacs.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2020 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Wed, 05 Aug 2020 15:06:04 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Arrow Macros in Emacs Lisp</title><link>https://tkurtbond.github.io/posts/2020/07/03/arrow-macros-in-emacs-lisp/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;Are you familiar with arrow macros?  (They have nothing to do with
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity (Posts about emacs)</title><link>https://tkurtbond.github.io/</link><description></description><atom:link href="https://tkurtbond.github.io/categories/emacs.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2020 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Wed, 05 Aug 2020 21:03:47 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Having Emacs time-stamps at the end of files</title><link>https://tkurtbond.github.io/posts/2020/08/05/having-emacs-time-stamps-at-the-end-of-files/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;Do you ever use &lt;span class="app"&gt;Emacs&lt;/span&gt; time stamp functionality (type &lt;span class="key"&gt;C-h
+f time-stamp&lt;/span&gt; in &lt;span class="app"&gt;Emacs&lt;/span&gt; to learn about that) to insert the
+current date time stamp into your file when you save it?  I use this
+frequently in documents I write, for my blog or standalone.  For the
+longest time I thought you had to have the time stamp at the beginning
+of the file.  But I wanted it at the end of blog posts because it’s
+really an afterthought to most readers.  (Sometimes I go back and edit
+posts some time after first posting them — perhaps they were
+incomplete, or they had errors that needed correcting, etc.)  It turns
+out that you can do that — if you set the variable
+&lt;code&gt;time-stamp-line-limit&lt;/code&gt; to a negative number it will look
+backwards from the end of the file for the timestamp.  I often set the
+time stamp variables in a &lt;code class="docutils literal"&gt;Local Variables:&lt;/code&gt; comment at the end of
+the file.&lt;/p&gt;
+&lt;p&gt;Here's the &lt;a class="reference external" href="https://docutils.sourceforge.io/rst.html"&gt;reST&lt;/a&gt; fragment I insert into my blog posts that uses
+&lt;code&gt;time-stamp&lt;/code&gt;:&lt;/p&gt;
+&lt;pre class="code ReST"&gt;&lt;a name="rest_code_408c14f371b74d7c87a3f4d83e7ce0ba-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;..&lt;/span&gt; &lt;span class="ow"&gt;role&lt;/span&gt;&lt;span class="p"&gt;::&lt;/span&gt; app
+&lt;a name="rest_code_408c14f371b74d7c87a3f4d83e7ce0ba-2"&gt;&lt;/a&gt;&lt;span class="p"&gt;..&lt;/span&gt; &lt;span class="ow"&gt;role&lt;/span&gt;&lt;span class="p"&gt;::&lt;/span&gt; file
+&lt;a name="rest_code_408c14f371b74d7c87a3f4d83e7ce0ba-3"&gt;&lt;/a&gt;&lt;span class="p"&gt;..&lt;/span&gt; &lt;span class="ow"&gt;role&lt;/span&gt;&lt;span class="p"&gt;::&lt;/span&gt; command
+&lt;a name="rest_code_408c14f371b74d7c87a3f4d83e7ce0ba-4"&gt;&lt;/a&gt;&lt;span class="p"&gt;..&lt;/span&gt; &lt;span class="ow"&gt;role&lt;/span&gt;&lt;span class="p"&gt;::&lt;/span&gt; key
+&lt;a name="rest_code_408c14f371b74d7c87a3f4d83e7ce0ba-5"&gt;&lt;/a&gt;
+&lt;a name="rest_code_408c14f371b74d7c87a3f4d83e7ce0ba-6"&gt;&lt;/a&gt;&lt;span class="cp"&gt;.. *Last edited: 2020-08-05 17:03:37 EDT*&lt;/span&gt;
+&lt;a name="rest_code_408c14f371b74d7c87a3f4d83e7ce0ba-7"&gt;&lt;/a&gt;
+&lt;a name="rest_code_408c14f371b74d7c87a3f4d83e7ce0ba-8"&gt;&lt;/a&gt;&lt;span class="cp"&gt;..&lt;/span&gt;
+&lt;a name="rest_code_408c14f371b74d7c87a3f4d83e7ce0ba-9"&gt;&lt;/a&gt;&lt;span class="cp"&gt;   Local Variables:&lt;/span&gt;
+&lt;a name="rest_code_408c14f371b74d7c87a3f4d83e7ce0ba-10"&gt;&lt;/a&gt;&lt;span class="cp"&gt;   time-stamp-format: "%04y-%02m-%02d %02H:%02M:%02S %Z"&lt;/span&gt;
+&lt;a name="rest_code_408c14f371b74d7c87a3f4d83e7ce0ba-11"&gt;&lt;/a&gt;&lt;span class="cp"&gt;   time-stamp-start: "Last edited:[ \t]+\\\\?"&lt;/span&gt;
+&lt;a name="rest_code_408c14f371b74d7c87a3f4d83e7ce0ba-12"&gt;&lt;/a&gt;&lt;span class="cp"&gt;   time-stamp-end: "\\*\\\\?\n"&lt;/span&gt;
+&lt;a name="rest_code_408c14f371b74d7c87a3f4d83e7ce0ba-13"&gt;&lt;/a&gt;&lt;span class="cp"&gt;   time-stamp-line-limit: -20&lt;/span&gt;
+&lt;a name="rest_code_408c14f371b74d7c87a3f4d83e7ce0ba-14"&gt;&lt;/a&gt;&lt;span class="cp"&gt;   End:&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</description><category>emacs</category><category>time-stamp</category><guid>https://tkurtbond.github.io/posts/2020/08/05/having-emacs-time-stamps-at-the-end-of-files/</guid><pubDate>Wed, 05 Aug 2020 20:34:22 GMT</pubDate></item><item><title>Arrow Macros in Emacs Lisp</title><link>https://tkurtbond.github.io/posts/2020/07/03/arrow-macros-in-emacs-lisp/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;Are you familiar with arrow macros?  (They have nothing to do with
 &lt;a class="reference external" href="https://en.wikibooks.org/wiki/Haskell/Understanding_arrows"&gt;arrows in Haskell&lt;/a&gt;.) They started out in &lt;a class="reference external" href="https://clojure.org/"&gt;Clojure&lt;/a&gt;, I think, and have
 been ported to &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Common_Lisp"&gt;Common Lisp&lt;/a&gt; and probably other Lisps, though I didn't
 find one for &lt;a class="reference external" href="https://www.gnu.org/software/emacs/manual/html_node/elisp/"&gt;Emacs Lisp&lt;/a&gt;.  I think the &lt;a class="reference external" href="https://github.com/Harleqin/arrows"&gt;arrows&lt;/a&gt; package is the most up
@@ -231,54 +261,4 @@ syncing mailboxes with Unison.&lt;/p&gt;
 means that I'll be losing the ability to use the MH command line
 programs for accessing my e-mail.  I've used MH in the past, and have
 always liked the command line access it gives you.  Ah well.  I wish
-mdmh had advanced further.&lt;/p&gt;&lt;/div&gt;</description><category>e-mail</category><category>emacs</category><guid>https://tkurtbond.github.io/posts/2008/09/10/e-mail-crisis-part-4/</guid><pubDate>Wed, 10 Sep 2008 06:05:39 GMT</pubDate></item><item><title>E-mail Crisis, part 2</title><link>https://tkurtbond.github.io/posts/2008/09/06/e-mail-crisis-part-2/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;I'm still having my personal e-mail crisis.&lt;/p&gt;
-&lt;p&gt;I said, &lt;a class="reference external" href="https://tkurtbond.github.io/posts/2008/08/05/e-mail-crisis/"&gt;earlier&lt;/a&gt;,&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Anyway, I've finally come up with a way to switch back and forth
-between Gnus, Mew, and MH-E while keeping up with my current
-e-mail[…].&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;That was a bit premature.  What I should have said was that I'd found
-a way to make sure I didn't lose any e-mail permanently when switching
-back and fourth between e-mail clients.  I'm using &lt;a class="reference external" href="http://www.courier-mta.org/maildrop/"&gt;maildrop&lt;/a&gt; to copy
-my incoming mail to the normal mail spool file and to a separate
-archive mail file for each day. So, for instance, all the mail I got
-on 2008/09/05 is archived in the mbox-format file
-&lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;~/Inboxes/2008-09-05.inbox&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;I also said, &lt;a class="reference external" href="https://tkurtbond.github.io/posts/2008/08/05/e-mail-crisis/"&gt;earlier&lt;/a&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;a class="reference external" href="http://www.gohome.org/wl/"&gt;Wanderlust&lt;/a&gt; seems moribund.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;It turns out that Wanderlust only &lt;em&gt;seems&lt;/em&gt; moribund, especially to those
-who only speak English.  If you check the mailing lists there's still
-some activity, and if you poke around on the Wanderlust site you can
-&lt;a class="reference external" href="ftp://ftp.jpl.org/wl/snapshots/"&gt;find&lt;/a&gt; a newer snapshot.  Unfortunately, Wanderlust uses several other
-libraries (&lt;a class="reference external" href="http://www.kanji.zinbun.kyoto-u.ac.jp/~tomo/elisp/APEL/"&gt;APEL&lt;/a&gt;, &lt;a class="reference external" href="http://www.kanji.zinbun.kyoto-u.ac.jp/~tomo/elisp/FLIM/index.html.ja.iso-2022-jp"&gt;FLIM&lt;/a&gt;, and &lt;a class="reference external" href="http://www.kanji.zinbun.kyoto-u.ac.jp/~tomo/elisp/SEMI/index.html.ja.iso-2022-jp"&gt;SEMI&lt;/a&gt;) and these are also hard to find
-much information about if you only speak English.  So I've been
-fiddling around with it, and have figured out enough to get it working
-for me.  (Thank goodness for the &lt;a class="reference external" href="http://www.freebsd.org/"&gt;FreeBSD&lt;/a&gt; &lt;a class="reference external" href="http://www.freebsd.org/ports/index.html"&gt;ports&lt;/a&gt; system.)&lt;/p&gt;
-&lt;p&gt;Oddly enough, although Wanderlust mostly understands MH-format
-mailboxes, there seems to be no built-in way to get it to read mail
-out of a standard mbox-format spool file and into your inbox.  I guess
-the assumption is that if you're not using IMAP then you've probably
-moved on to using a maildir-format spool file, since they're supposed
-to be more reliable.&lt;/p&gt;
-&lt;p&gt;Well, I'm not.  I'm trying to compare Wanderlust, &lt;a class="reference external" href="http://mh-e.sourceforge.net/"&gt;MH-E&lt;/a&gt;, and &lt;a class="reference external" href="http://www.mew.org/"&gt;Mew&lt;/a&gt;, and
-MH-E doesn't understand maildir-format mailboxes, so I have to stick
-to mbox-format.  (Ok, I suppose I could mung things so MH-E uses Mew's
-&lt;code class="docutils literal"&gt;incm&lt;/code&gt; to read the spool file.)&lt;/p&gt;
-&lt;p&gt;Moreover, I've got a fairly odd pattern of e-mail folders.  For years
-in &lt;a class="reference external" href="http://www.nongnu.org/viewmail/"&gt;VM&lt;/a&gt; I've saved my e-mail in in separate folders with names like
-&lt;code class="docutils literal"&gt;2008/08/users.bond_tk&lt;/code&gt; or &lt;code class="docutils literal"&gt;2008/08/list.clisp&lt;/code&gt;, with VM
-defaulting the folder names automatically.  I think I've mostly
-figured out how to do this in MH-E, Mew, and Wanderlust, and I've
-mostly figured out how to get the three of them to coexist peacefully,
-so I can really give them a good comparison.  We'll see how it goes.&lt;/p&gt;
-&lt;p&gt;Like many Emacs subsystems, the Emacs e-mail clients tend to use modes
-with single-character commands for many things, and most the commands
-are just regular keys, not key combinations.  I've gotten so used to
-this that I find using e-mail clients that require mousing to be
-extremely painful.  Moreover, I've become very accustomed to being
-able to customize my e-mail client extensively using Lisp.&lt;/p&gt;
-&lt;p&gt;What it all boils down to is that I'm not happy unless my e-mail
-client is part of Emacs.&lt;/p&gt;&lt;/div&gt;</description><category>computer</category><category>e-mail</category><category>emacs</category><category>tools</category><guid>https://tkurtbond.github.io/posts/2008/09/06/e-mail-crisis-part-2/</guid><pubDate>Sat, 06 Sep 2008 07:24:16 GMT</pubDate></item></channel></rss>
+mdmh had advanced further.&lt;/p&gt;&lt;/div&gt;</description><category>e-mail</category><category>emacs</category><guid>https://tkurtbond.github.io/posts/2008/09/10/e-mail-crisis-part-4/</guid><pubDate>Wed, 10 Sep 2008 06:05:39 GMT</pubDate></item></channel></rss>

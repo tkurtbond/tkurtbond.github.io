@@ -9,7 +9,7 @@
 <link rel="alternate" type="application/rss+xml" title="RSS" href="rss.xml">
 <link rel="canonical" href="https://tkurtbond.github.io/">
 <link rel="next" href="index-87.html" type="text/html">
-<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/2020/08/05/how-i-author-e-mails-to-pandoc-discuss-and-issues-on-the-pandoc-repo/" type="text/html">
+<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/2020/08/05/having-emacs-time-stamps-at-the-end-of-files/" type="text/html">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
@@ -50,7 +50,55 @@
         <div class="row">
             <div class="col-sm-8 blog-main">
 <div class="postindex">
-    <article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2020/08/05/how-i-author-e-mails-to-pandoc-discuss-and-issues-on-the-pandoc-repo/" class="u-url">How I author e-mails to pandoc-discuss and issues on the pandoc repo</a></h2>
+    <article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2020/08/05/having-emacs-time-stamps-at-the-end-of-files/" class="u-url">Having Emacs time-stamps at the end of files</a></h2>
+        <div class="metadata blog-post-meta">
+            <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
+            <p class="dateline"><a href="posts/2020/08/05/having-emacs-time-stamps-at-the-end-of-files/" rel="bookmark"><time class="published dt-published" datetime="2020-08-05T16:34:22-04:00" title="2020-08-05 16:34">2020-08-05 16:34</time></a></p>
+                <p class="commentline">            <a href="posts/2020/08/05/having-emacs-time-stamps-at-the-end-of-files/#disqus_thread" data-disqus-identifier="cache/posts/2020/08/05/having-emacs-time-stamps-at-the-end-of-files.html">Comments</a>
+
+
+        </p>
+</div>
+    </header><div class="e-content entry-content">
+    <div>
+<p>Do you ever use <span class="app">Emacs</span> time stamp functionality (type <span class="key">C-h
+f time-stamp</span> in <span class="app">Emacs</span> to learn about that) to insert the
+current date time stamp into your file when you save it?  I use this
+frequently in documents I write, for my blog or standalone.  For the
+longest time I thought you had to have the time stamp at the beginning
+of the file.  But I wanted it at the end of blog posts because it’s
+really an afterthought to most readers.  (Sometimes I go back and edit
+posts some time after first posting them — perhaps they were
+incomplete, or they had errors that needed correcting, etc.)  It turns
+out that you can do that — if you set the variable
+<code>time-stamp-line-limit</code> to a negative number it will look
+backwards from the end of the file for the timestamp.  I often set the
+time stamp variables in a <code class="docutils literal">Local Variables:</code> comment at the end of
+the file.</p>
+<p>Here's the <a class="reference external" href="https://docutils.sourceforge.io/rst.html">reST</a> fragment I insert into my blog posts that uses
+<code>time-stamp</code>:</p>
+<pre class="code ReST"><a name="rest_code_408c14f371b74d7c87a3f4d83e7ce0ba-1"></a><span class="p">..</span> <span class="ow">role</span><span class="p">::</span> app
+<a name="rest_code_408c14f371b74d7c87a3f4d83e7ce0ba-2"></a><span class="p">..</span> <span class="ow">role</span><span class="p">::</span> file
+<a name="rest_code_408c14f371b74d7c87a3f4d83e7ce0ba-3"></a><span class="p">..</span> <span class="ow">role</span><span class="p">::</span> command
+<a name="rest_code_408c14f371b74d7c87a3f4d83e7ce0ba-4"></a><span class="p">..</span> <span class="ow">role</span><span class="p">::</span> key
+<a name="rest_code_408c14f371b74d7c87a3f4d83e7ce0ba-5"></a>
+<a name="rest_code_408c14f371b74d7c87a3f4d83e7ce0ba-6"></a><span class="cp">.. *Last edited: 2020-08-05 17:03:37 EDT*</span>
+<a name="rest_code_408c14f371b74d7c87a3f4d83e7ce0ba-7"></a>
+<a name="rest_code_408c14f371b74d7c87a3f4d83e7ce0ba-8"></a><span class="cp">..</span>
+<a name="rest_code_408c14f371b74d7c87a3f4d83e7ce0ba-9"></a><span class="cp">   Local Variables:</span>
+<a name="rest_code_408c14f371b74d7c87a3f4d83e7ce0ba-10"></a><span class="cp">   time-stamp-format: "%04y-%02m-%02d %02H:%02M:%02S %Z"</span>
+<a name="rest_code_408c14f371b74d7c87a3f4d83e7ce0ba-11"></a><span class="cp">   time-stamp-start: "Last edited:[ \t]+\\\\?"</span>
+<a name="rest_code_408c14f371b74d7c87a3f4d83e7ce0ba-12"></a><span class="cp">   time-stamp-end: "\\*\\\\?\n"</span>
+<a name="rest_code_408c14f371b74d7c87a3f4d83e7ce0ba-13"></a><span class="cp">   time-stamp-line-limit: -20</span>
+<a name="rest_code_408c14f371b74d7c87a3f4d83e7ce0ba-14"></a><span class="cp">   End:</span>
+</pre>
+</div>
+    <nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="categories/emacs/" rel="tag">emacs</a></li>
+            <li><a class="tag p-category" href="categories/time-stamp/" rel="tag">time-stamp</a></li>
+        </ul></nav>
+</div>
+    </article><article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2020/08/05/how-i-author-e-mails-to-pandoc-discuss-and-issues-on-the-pandoc-repo/" class="u-url">How I author e-mails to pandoc-discuss and issues on the pandoc repo</a></h2>
         <div class="metadata blog-post-meta">
             <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
             <p class="dateline"><a href="posts/2020/08/05/how-i-author-e-mails-to-pandoc-discuss-and-issues-on-the-pandoc-repo/" rel="bookmark"><time class="published dt-published" datetime="2020-08-05T14:40:53-04:00" title="2020-08-05 14:40">2020-08-05 14:40</time></a></p>
@@ -780,289 +828,6 @@ End: -->
             <li><a class="tag p-category" href="categories/savage-worlds-adventure-edition/" rel="tag">savage worlds adventure edition</a></li>
             <li><a class="tag p-category" href="categories/savage-worlds-deluxe-edition/" rel="tag">savage worlds deluxe edition</a></li>
             <li><a class="tag p-category" href="categories/spear/" rel="tag">spear</a></li>
-        </ul></nav>
-</div>
-    </article><article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2020/07/05/line-number-anchors-in-pandocs-html-output-for-codeblocks-with-highlighting-mess-up-gmail-textplain-multipart-alternative/" class="u-url">Line number anchors in pandoc's HTML output for codeblocks with highlighting mess up Gmail text/plain multipart alternative</a></h2>
-        <div class="metadata blog-post-meta">
-            <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
-            <p class="dateline"><a href="posts/2020/07/05/line-number-anchors-in-pandocs-html-output-for-codeblocks-with-highlighting-mess-up-gmail-textplain-multipart-alternative/" rel="bookmark"><time class="published dt-published" datetime="2020-07-05T18:48:44-04:00" title="2020-07-05 18:48">2020-07-05 18:48</time></a></p>
-                <p class="commentline">            <a href="posts/2020/07/05/line-number-anchors-in-pandocs-html-output-for-codeblocks-with-highlighting-mess-up-gmail-textplain-multipart-alternative/#disqus_thread" data-disqus-identifier="cache/posts/2020/07/05/line-number-anchors-in-pandocs-html-output-for-codeblocks-with-highlighting-mess-up-gmail-textplain-multipart-alternative.html">Comments</a>
-
-
-        </p>
-</div>
-    </header><div class="e-content entry-content">
-    <div>
-<p>I’ve found that if I write something in <a class="reference external" href="https://docutils.sourceforge.io/rst.html">ReStructuredText</a>, create HTML
-from it and embed a stylesheet with the proper css in the
-<code class="file docutils literal">.html</code> file using <a class="reference external" href="https://pandoc.org/">pandoc</a>’s <code class="docutils literal"><span class="pre">--include-in-header</span></code> option that
-I can cut and paste from the web page displayed in my browser from
-that HTML directly into gmail, and things like code blocks and literal
-text will have the nice surrounded by a box, light gray background
-formatting that carries over to <a class="reference external" href="https://www.google.com/gmail/">Gmail</a>.  That's nice because Gmail's
-native formatting is a … minimalist user experience.</p>
-<p>However, I've found that if I use the <code class="docutils literal">.. include::</code> directive with
-the <code class="docutils literal">:code:</code> option (which basically makes it a code block) and
-specify a language for highlighting with an argument to the <code class="docutils literal">:code:</code>
-option that the text/html part in the resulting multipart/alternative
-e-mail displays fine in Gmail (and probably other <a class="reference external" href="https://en.wikipedia.org/wiki/Email_client">mail user agent</a>s
-that display the HTML part; <a class="reference external" href="http://www.mew.org/en/">Mew</a> in Emacs works too), but the
-<code class="docutils literal">text/plain</code> part is messed up, with weird HTML-like tags in the
-plain text. <a class="footnote-reference brackets" href="posts/2020/07/05/line-number-anchors-in-pandocs-html-output-for-codeblocks-with-highlighting-mess-up-gmail-textplain-multipart-alternative/#plain-code-directive" id="id1">1</a></p>
-<p>For instance, suppose I have the following RST source for the message
-I want to write (<code class="file docutils literal"><span class="pre">missing-ampersand.rst</span></code>):</p>
-<pre class="code restructuredtext"><a name="rest_code_4a0a1c8420f942fcbb61477372767749-1"></a><span class="nc">:title:</span> Missing Ampersand in Code Blocks in <span class="s">``-ms``</span> Output
-<a name="rest_code_4a0a1c8420f942fcbb61477372767749-2"></a>
-<a name="rest_code_4a0a1c8420f942fcbb61477372767749-3"></a>Here's some ReStructuredText input that has a code block in it:
-<a name="rest_code_4a0a1c8420f942fcbb61477372767749-4"></a>
-<a name="rest_code_4a0a1c8420f942fcbb61477372767749-5"></a><span class="p">..</span> <span class="ow">include</span><span class="p">::</span> ma.rst
-<a name="rest_code_4a0a1c8420f942fcbb61477372767749-6"></a>   <span class="nc">:code:</span> restructuredtext
-<a name="rest_code_4a0a1c8420f942fcbb61477372767749-7"></a>
-<a name="rest_code_4a0a1c8420f942fcbb61477372767749-8"></a>Here's the <span class="s">``-ms``</span> output from it:
-<a name="rest_code_4a0a1c8420f942fcbb61477372767749-9"></a>
-<a name="rest_code_4a0a1c8420f942fcbb61477372767749-10"></a><span class="p">..</span> <span class="ow">include</span><span class="p">::</span> ma-rst.ms
-<a name="rest_code_4a0a1c8420f942fcbb61477372767749-11"></a>   <span class="nc">:code:</span> nroff
-<a name="rest_code_4a0a1c8420f942fcbb61477372767749-12"></a>
-<a name="rest_code_4a0a1c8420f942fcbb61477372767749-13"></a>See the first line that starts with <span class="s">``.. container::``</span>?  That line
-<a name="rest_code_4a0a1c8420f942fcbb61477372767749-14"></a>should start with <span class="s">``\&amp;``</span> so it isn't interpreted as an <span class="gs">**roff**</span>
-<a name="rest_code_4a0a1c8420f942fcbb61477372767749-15"></a>command.  As it is, when you build the PDF output from output that
-<a name="rest_code_4a0a1c8420f942fcbb61477372767749-16"></a>line disappears entirely with no warning to the user.  (The default
-<a name="rest_code_4a0a1c8420f942fcbb61477372767749-17"></a>for <span class="gs">**roff**</span> processors like <span class="gs">**groff**</span> is to ignore unknown commands.)
-<a name="rest_code_4a0a1c8420f942fcbb61477372767749-18"></a>
-<a name="rest_code_4a0a1c8420f942fcbb61477372767749-19"></a>See the second line that starts with <span class="s">``.. container::``</span>?  That line
-<a name="rest_code_4a0a1c8420f942fcbb61477372767749-20"></a><span class="gs">**does**</span> start with <span class="s">``\&amp;``</span>.  It makes it through fine.  The other
-<a name="rest_code_4a0a1c8420f942fcbb61477372767749-21"></a>lines whose first non-whitespace character is <span class="s">``.``</span> make it through
-<a name="rest_code_4a0a1c8420f942fcbb61477372767749-22"></a>fine because to make it a <span class="gs">**roff**</span> command the first character on the
-<a name="rest_code_4a0a1c8420f942fcbb61477372767749-23"></a>line has to be a period.
-</pre>
-<p>where the included <a class="reference external" href="https://docutils.sourceforge.io/rst.html">ReStructuredText</a> file (<code class="file docutils literal">ma.rst</code>) is</p>
-<pre class="code restructuredtext"><a name="rest_code_aa90f180500c4b198399da0e1c597099-1"></a>Missing Ampersand in Code Block -ms output
-<a name="rest_code_aa90f180500c4b198399da0e1c597099-2"></a>@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-<a name="rest_code_aa90f180500c4b198399da0e1c597099-3"></a>
-<a name="rest_code_aa90f180500c4b198399da0e1c597099-4"></a>Here's a code block containing ReStructuredText:
-<a name="rest_code_aa90f180500c4b198399da0e1c597099-5"></a>
-<a name="rest_code_aa90f180500c4b198399da0e1c597099-6"></a><span class="p">..</span> <span class="ow">code</span><span class="p">::</span>
-<a name="rest_code_aa90f180500c4b198399da0e1c597099-7"></a>
-<a name="rest_code_aa90f180500c4b198399da0e1c597099-8"></a><span class="p">   ..</span> <span class="ow">container</span><span class="p">::</span> for-format ms
-<a name="rest_code_aa90f180500c4b198399da0e1c597099-9"></a>
-<a name="rest_code_aa90f180500c4b198399da0e1c597099-10"></a><span class="p">      ..</span> <span class="ow">figure</span><span class="p">::</span> davesmapper-2017-04-10-caves-4-numbered.eps
-<a name="rest_code_aa90f180500c4b198399da0e1c597099-11"></a>         <span class="nc">:alt:</span> Map of Bandit's Cave
-<a name="rest_code_aa90f180500c4b198399da0e1c597099-12"></a>
-<a name="rest_code_aa90f180500c4b198399da0e1c597099-13"></a>      Map of Bandit's Cave
-<a name="rest_code_aa90f180500c4b198399da0e1c597099-14"></a>
-<a name="rest_code_aa90f180500c4b198399da0e1c597099-15"></a><span class="p">   ..</span> <span class="ow">container</span><span class="p">::</span> for-format html latex context epub
-<a name="rest_code_aa90f180500c4b198399da0e1c597099-16"></a>
-<a name="rest_code_aa90f180500c4b198399da0e1c597099-17"></a><span class="p">      ..</span> <span class="ow">figure</span><span class="p">::</span> davesmapper-2017-04-10-caves-4-numbered.png
-<a name="rest_code_aa90f180500c4b198399da0e1c597099-18"></a>         <span class="nc">:alt:</span> Map of Bandit's Cave
-<a name="rest_code_aa90f180500c4b198399da0e1c597099-19"></a>
-<a name="rest_code_aa90f180500c4b198399da0e1c597099-20"></a>         Map of Bandit's Cave
-<a name="rest_code_aa90f180500c4b198399da0e1c597099-21"></a>
-<a name="rest_code_aa90f180500c4b198399da0e1c597099-22"></a>How's that look?
-</pre>
-<p>and the included roff source file (<code class="file docutils literal"><span class="pre">ms-rst.ms</span></code>) is</p>
-<pre class="code groff"><a name="rest_code_3fa45aa43cd24430b6144ba5c67ddc4a-1"></a>.<span class="k">SH</span> <span class="m">1</span>
-<a name="rest_code_3fa45aa43cd24430b6144ba5c67ddc4a-2"></a>Missing Ampersand in Code Block -ms output
-<a name="rest_code_3fa45aa43cd24430b6144ba5c67ddc4a-3"></a>.<span class="k">pdfhref</span> <span class="s">O</span> <span class="m">1</span> <span class="s2">"Missing Ampersand in Code Block -ms output"</span>
-<a name="rest_code_3fa45aa43cd24430b6144ba5c67ddc4a-4"></a>.<span class="k">pdfhref</span> <span class="s">M</span> <span class="s2">"missing-ampersand-in-code-block--ms-output"</span>
-<a name="rest_code_3fa45aa43cd24430b6144ba5c67ddc4a-5"></a>.<span class="k">LP</span>
-<a name="rest_code_3fa45aa43cd24430b6144ba5c67ddc4a-6"></a>Here<span class="se">\[</span>aq]s a code block containing ReStructuredText:
-<a name="rest_code_3fa45aa43cd24430b6144ba5c67ddc4a-7"></a>.<span class="k">IP</span>
-<a name="rest_code_3fa45aa43cd24430b6144ba5c67ddc4a-8"></a>.<span class="k">nf</span>
-<a name="rest_code_3fa45aa43cd24430b6144ba5c67ddc4a-9"></a><span class="se">\f[C]</span>
-<a name="rest_code_3fa45aa43cd24430b6144ba5c67ddc4a-10"></a><span class="p">.</span><span class="s">.</span> <span class="s">container::</span> <span class="s">for-format</span> <span class="s">ms</span>
-<a name="rest_code_3fa45aa43cd24430b6144ba5c67ddc4a-11"></a>
-<a name="rest_code_3fa45aa43cd24430b6144ba5c67ddc4a-12"></a>   .. figure:: davesmapper-2017-04-10-caves-4-numbered.eps
-<a name="rest_code_3fa45aa43cd24430b6144ba5c67ddc4a-13"></a>      :alt: Map of Bandit<span class="se">\[</span>aq]s Cave
-<a name="rest_code_3fa45aa43cd24430b6144ba5c67ddc4a-14"></a>
-<a name="rest_code_3fa45aa43cd24430b6144ba5c67ddc4a-15"></a>   Map of Bandit<span class="se">\[</span>aq]s Cave
-<a name="rest_code_3fa45aa43cd24430b6144ba5c67ddc4a-16"></a>
-<a name="rest_code_3fa45aa43cd24430b6144ba5c67ddc4a-17"></a><span class="se">\&amp;</span>.. container:: for-format html latex context epub
-<a name="rest_code_3fa45aa43cd24430b6144ba5c67ddc4a-18"></a>
-<a name="rest_code_3fa45aa43cd24430b6144ba5c67ddc4a-19"></a>   .. figure:: davesmapper-2017-04-10-caves-4-numbered.png
-<a name="rest_code_3fa45aa43cd24430b6144ba5c67ddc4a-20"></a>      :alt: Map of Bandit<span class="se">\[</span>aq]s Cave
-<a name="rest_code_3fa45aa43cd24430b6144ba5c67ddc4a-21"></a>
-<a name="rest_code_3fa45aa43cd24430b6144ba5c67ddc4a-22"></a>      Map of Bandit<span class="se">\[</span>aq]s Cave
-<a name="rest_code_3fa45aa43cd24430b6144ba5c67ddc4a-23"></a><span class="se">\f[]</span>
-<a name="rest_code_3fa45aa43cd24430b6144ba5c67ddc4a-24"></a>.<span class="k">fi</span>
-<a name="rest_code_3fa45aa43cd24430b6144ba5c67ddc4a-25"></a>.<span class="k">LP</span>
-<a name="rest_code_3fa45aa43cd24430b6144ba5c67ddc4a-26"></a>How<span class="se">\[</span>aq]s that look?
-</pre>
-<p>Then the resulting HTML output for the first code block <a class="footnote-reference brackets" href="posts/2020/07/05/line-number-anchors-in-pandocs-html-output-for-codeblocks-with-highlighting-mess-up-gmail-textplain-multipart-alternative/#toolong" id="id2">2</a> is:</p>
-<pre class="code html"><a name="rest_code_92640cc167b04381be52d8a764296a52-1"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"sourceCode"</span> <span class="na">id</span><span class="o">=</span><span class="s">"cb1"</span><span class="p">&gt;&lt;</span><span class="nt">pre</span> <span class="na">class</span><span class="o">=</span><span class="s">"sourceCode restructuredtext"</span><span class="p">&gt;&lt;</span><span class="nt">code</span> <span class="na">class</span><span class="o">=</span><span class="s">"sourceCode rest"</span><span class="p">&gt;&lt;</span><span class="nt">span</span> <span class="na">id</span><span class="o">=</span><span class="s">"cb1-1"</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"#cb1-1"</span><span class="p">&gt;&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>Missing Ampersand in Code Block -ms output<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
-<a name="rest_code_92640cc167b04381be52d8a764296a52-2"></a><span class="p">&lt;</span><span class="nt">span</span> <span class="na">id</span><span class="o">=</span><span class="s">"cb1-2"</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"#cb1-2"</span><span class="p">&gt;&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
-<a name="rest_code_92640cc167b04381be52d8a764296a52-3"></a><span class="p">&lt;</span><span class="nt">span</span> <span class="na">id</span><span class="o">=</span><span class="s">"cb1-3"</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"#cb1-3"</span><span class="p">&gt;&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
-<a name="rest_code_92640cc167b04381be52d8a764296a52-4"></a><span class="p">&lt;</span><span class="nt">span</span> <span class="na">id</span><span class="o">=</span><span class="s">"cb1-4"</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"#cb1-4"</span><span class="p">&gt;&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>Here<span class="ni">&amp;#39;</span>s a code block containing ReStructuredText:<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
-<a name="rest_code_92640cc167b04381be52d8a764296a52-5"></a><span class="p">&lt;</span><span class="nt">span</span> <span class="na">id</span><span class="o">=</span><span class="s">"cb1-5"</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"#cb1-5"</span><span class="p">&gt;&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
-<a name="rest_code_92640cc167b04381be52d8a764296a52-6"></a><span class="p">&lt;</span><span class="nt">span</span> <span class="na">id</span><span class="o">=</span><span class="s">"cb1-6"</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"#cb1-6"</span><span class="p">&gt;&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">"dt"</span><span class="p">&gt;</span>.. code::<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
-<a name="rest_code_92640cc167b04381be52d8a764296a52-7"></a><span class="p">&lt;</span><span class="nt">span</span> <span class="na">id</span><span class="o">=</span><span class="s">"cb1-7"</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"#cb1-7"</span><span class="p">&gt;&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
-<a name="rest_code_92640cc167b04381be52d8a764296a52-8"></a><span class="p">&lt;</span><span class="nt">span</span> <span class="na">id</span><span class="o">=</span><span class="s">"cb1-8"</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"#cb1-8"</span><span class="p">&gt;&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">"dt"</span><span class="p">&gt;</span>   .. container:: for-format ms<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
-<a name="rest_code_92640cc167b04381be52d8a764296a52-9"></a><span class="p">&lt;</span><span class="nt">span</span> <span class="na">id</span><span class="o">=</span><span class="s">"cb1-9"</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"#cb1-9"</span><span class="p">&gt;&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
-<a name="rest_code_92640cc167b04381be52d8a764296a52-10"></a><span class="p">&lt;</span><span class="nt">span</span> <span class="na">id</span><span class="o">=</span><span class="s">"cb1-10"</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"#cb1-10"</span><span class="p">&gt;&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">"dt"</span><span class="p">&gt;</span>      .. figure:: davesmapper-2017-04-10-caves-4-numbered.eps<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
-<a name="rest_code_92640cc167b04381be52d8a764296a52-11"></a><span class="p">&lt;</span><span class="nt">span</span> <span class="na">id</span><span class="o">=</span><span class="s">"cb1-11"</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"#cb1-11"</span><span class="p">&gt;&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">"dt"</span><span class="p">&gt;</span>         :alt: Map of Bandit<span class="ni">&amp;#39;</span>s Cave<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
-<a name="rest_code_92640cc167b04381be52d8a764296a52-12"></a><span class="p">&lt;</span><span class="nt">span</span> <span class="na">id</span><span class="o">=</span><span class="s">"cb1-12"</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"#cb1-12"</span><span class="p">&gt;&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
-<a name="rest_code_92640cc167b04381be52d8a764296a52-13"></a><span class="p">&lt;</span><span class="nt">span</span> <span class="na">id</span><span class="o">=</span><span class="s">"cb1-13"</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"#cb1-13"</span><span class="p">&gt;&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">"dt"</span><span class="p">&gt;</span>      Map of Bandit<span class="ni">&amp;#39;</span>s Cave<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
-<a name="rest_code_92640cc167b04381be52d8a764296a52-14"></a><span class="p">&lt;</span><span class="nt">span</span> <span class="na">id</span><span class="o">=</span><span class="s">"cb1-14"</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"#cb1-14"</span><span class="p">&gt;&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
-<a name="rest_code_92640cc167b04381be52d8a764296a52-15"></a><span class="p">&lt;</span><span class="nt">span</span> <span class="na">id</span><span class="o">=</span><span class="s">"cb1-15"</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"#cb1-15"</span><span class="p">&gt;&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">"dt"</span><span class="p">&gt;</span>   .. container:: for-format html latex context epub<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
-<a name="rest_code_92640cc167b04381be52d8a764296a52-16"></a><span class="p">&lt;</span><span class="nt">span</span> <span class="na">id</span><span class="o">=</span><span class="s">"cb1-16"</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"#cb1-16"</span><span class="p">&gt;&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
-<a name="rest_code_92640cc167b04381be52d8a764296a52-17"></a><span class="p">&lt;</span><span class="nt">span</span> <span class="na">id</span><span class="o">=</span><span class="s">"cb1-17"</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"#cb1-17"</span><span class="p">&gt;&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">"dt"</span><span class="p">&gt;</span>      .. figure:: davesmapper-2017-04-10-caves-4-numbered.png<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
-<a name="rest_code_92640cc167b04381be52d8a764296a52-18"></a><span class="p">&lt;</span><span class="nt">span</span> <span class="na">id</span><span class="o">=</span><span class="s">"cb1-18"</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"#cb1-18"</span><span class="p">&gt;&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">"dt"</span><span class="p">&gt;</span>         :alt: Map of Bandit<span class="ni">&amp;#39;</span>s Cave<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
-<a name="rest_code_92640cc167b04381be52d8a764296a52-19"></a><span class="p">&lt;</span><span class="nt">span</span> <span class="na">id</span><span class="o">=</span><span class="s">"cb1-19"</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"#cb1-19"</span><span class="p">&gt;&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
-<a name="rest_code_92640cc167b04381be52d8a764296a52-20"></a><span class="p">&lt;</span><span class="nt">span</span> <span class="na">id</span><span class="o">=</span><span class="s">"cb1-20"</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"#cb1-20"</span><span class="p">&gt;&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">"dt"</span><span class="p">&gt;</span>         Map of Bandit<span class="ni">&amp;#39;</span>s Cave<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
-<a name="rest_code_92640cc167b04381be52d8a764296a52-21"></a><span class="p">&lt;</span><span class="nt">span</span> <span class="na">id</span><span class="o">=</span><span class="s">"cb1-21"</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"#cb1-21"</span><span class="p">&gt;&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
-<a name="rest_code_92640cc167b04381be52d8a764296a52-22"></a><span class="p">&lt;</span><span class="nt">span</span> <span class="na">id</span><span class="o">=</span><span class="s">"cb1-22"</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"#cb1-22"</span><span class="p">&gt;&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>How<span class="ni">&amp;#39;</span>s that look?<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
-<a name="rest_code_92640cc167b04381be52d8a764296a52-23"></a><span class="p">&lt;</span><span class="nt">span</span> <span class="na">id</span><span class="o">=</span><span class="s">"cb1-23"</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"#cb1-23"</span><span class="p">&gt;&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;&lt;/</span><span class="nt">code</span><span class="p">&gt;&lt;/</span><span class="nt">pre</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-</pre>
-<p>And the HTML output for the second code block is:</p>
-<pre class="code html"><a name="rest_code_aed849a5de1849978dea88264c0609ac-1"></a><span class="p">&lt;</span><span class="nt">pre</span> <span class="na">class</span><span class="o">=</span><span class="s">"nroff"</span><span class="p">&gt;&lt;</span><span class="nt">code</span><span class="p">&gt;</span>.SH 1
-<a name="rest_code_aed849a5de1849978dea88264c0609ac-2"></a>Missing Ampersand in Code Block -ms output
-<a name="rest_code_aed849a5de1849978dea88264c0609ac-3"></a>.pdfhref O 1 <span class="ni">&amp;quot;</span>Missing Ampersand in Code Block -ms output<span class="ni">&amp;quot;</span>
-<a name="rest_code_aed849a5de1849978dea88264c0609ac-4"></a>.pdfhref M <span class="ni">&amp;quot;</span>missing-ampersand-in-code-block--ms-output<span class="ni">&amp;quot;</span>
-<a name="rest_code_aed849a5de1849978dea88264c0609ac-5"></a>.LP
-<a name="rest_code_aed849a5de1849978dea88264c0609ac-6"></a>Here\[aq]s a code block containing ReStructuredText:
-<a name="rest_code_aed849a5de1849978dea88264c0609ac-7"></a>.IP
-<a name="rest_code_aed849a5de1849978dea88264c0609ac-8"></a>.nf
-<a name="rest_code_aed849a5de1849978dea88264c0609ac-9"></a>\f[C]
-<a name="rest_code_aed849a5de1849978dea88264c0609ac-10"></a>.. container:: for-format ms
-<a name="rest_code_aed849a5de1849978dea88264c0609ac-11"></a>
-<a name="rest_code_aed849a5de1849978dea88264c0609ac-12"></a>   .. figure:: davesmapper-2017-04-10-caves-4-numbered.eps
-<a name="rest_code_aed849a5de1849978dea88264c0609ac-13"></a>      :alt: Map of Bandit\[aq]s Cave
-<a name="rest_code_aed849a5de1849978dea88264c0609ac-14"></a>
-<a name="rest_code_aed849a5de1849978dea88264c0609ac-15"></a>   Map of Bandit\[aq]s Cave
-<a name="rest_code_aed849a5de1849978dea88264c0609ac-16"></a>
-<a name="rest_code_aed849a5de1849978dea88264c0609ac-17"></a>\<span class="ni">&amp;amp;</span>.. container:: for-format html latex context epub
-<a name="rest_code_aed849a5de1849978dea88264c0609ac-18"></a>
-<a name="rest_code_aed849a5de1849978dea88264c0609ac-19"></a>   .. figure:: davesmapper-2017-04-10-caves-4-numbered.png
-<a name="rest_code_aed849a5de1849978dea88264c0609ac-20"></a>      :alt: Map of Bandit\[aq]s Cave
-<a name="rest_code_aed849a5de1849978dea88264c0609ac-21"></a>
-<a name="rest_code_aed849a5de1849978dea88264c0609ac-22"></a>      Map of Bandit\[aq]s Cave
-<a name="rest_code_aed849a5de1849978dea88264c0609ac-23"></a>\f[]
-<a name="rest_code_aed849a5de1849978dea88264c0609ac-24"></a>.fi
-<a name="rest_code_aed849a5de1849978dea88264c0609ac-25"></a>.LP
-<a name="rest_code_aed849a5de1849978dea88264c0609ac-26"></a>How\[aq]s that look?
-<a name="rest_code_aed849a5de1849978dea88264c0609ac-27"></a>
-<a name="rest_code_aed849a5de1849978dea88264c0609ac-28"></a><span class="p">&lt;/</span><span class="nt">code</span><span class="p">&gt;&lt;/</span><span class="nt">pre</span><span class="p">&gt;</span>
-</pre>
-<p>In the first code block you see a lot of HTML spans that look like this:</p>
-<pre class="code html"><a name="rest_code_f471f8f6eea844ab812e0a13398aa91c-1"></a><span class="p">&lt;</span><span class="nt">span</span> <span class="na">id</span><span class="o">=</span><span class="s">"cb1-3"</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"#cb1-3"</span><span class="p">&gt;&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>…<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
-</pre>
-<p>They appear to be anchors so you can link to a particular line in the
-code block.  When I displayed the HTML file in my browser (Google
-Chrome), selected the text, and pasted it into the Gmail message
-composition window in the message body area (except for the header
-text, which I put in the Subject line text entry box instead) and it
-looked fine, so I sent it.</p>
-<p>But when I got a reply from someone who uses a <a class="reference external" href="https://en.wikipedia.org/wiki/Email_client">mail user agent</a>
-that displays the <code class="docutils literal">text/plain</code> alternative that Gmail automatically
-creates the supposedly plain text was this:</p>
-<pre class="code text"><a name="rest_code_da7beb91c9ba41329bba9290f0a373de-1"></a>--000000000000360d1105a9a4da6e
-<a name="rest_code_da7beb91c9ba41329bba9290f0a373de-2"></a>Content-Type: text/plain; charset="UTF-8"
-<a name="rest_code_da7beb91c9ba41329bba9290f0a373de-3"></a>
-<a name="rest_code_da7beb91c9ba41329bba9290f0a373de-4"></a>Here's some ReStructuredText input that has a code block in it:
-<a name="rest_code_da7beb91c9ba41329bba9290f0a373de-5"></a>
-<a name="rest_code_da7beb91c9ba41329bba9290f0a373de-6"></a> &lt;#cb1-1&gt;Missing Ampersand in Code Block -ms output
-<a name="rest_code_da7beb91c9ba41329bba9290f0a373de-7"></a>&lt;#cb1-2&gt;@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ &lt;#cb1-3&gt;
-<a name="rest_code_da7beb91c9ba41329bba9290f0a373de-8"></a>&lt;#cb1-4&gt;Here's a code block containing ReStructuredText: &lt;#cb1-5&gt;
-<a name="rest_code_da7beb91c9ba41329bba9290f0a373de-9"></a>&lt;#cb1-6&gt;.. code:: &lt;#cb1-7&gt; &lt;#cb1-8&gt;   .. container:: for-format ms
-<a name="rest_code_da7beb91c9ba41329bba9290f0a373de-10"></a>&lt;#cb1-9&gt; &lt;#cb1-10&gt;      .. figure::
-<a name="rest_code_da7beb91c9ba41329bba9290f0a373de-11"></a>davesmapper-2017-04-10-caves-4-numbered.eps &lt;#cb1-11&gt;         :alt:
-<a name="rest_code_da7beb91c9ba41329bba9290f0a373de-12"></a>Map of Bandit's Cave &lt;#cb1-12&gt; &lt;#cb1-13&gt;      Map of Bandit's Cave
-<a name="rest_code_da7beb91c9ba41329bba9290f0a373de-13"></a>&lt;#cb1-14&gt; &lt;#cb1-15&gt;   .. container:: for-format html latex context
-<a name="rest_code_da7beb91c9ba41329bba9290f0a373de-14"></a>epub &lt;#cb1-16&gt; &lt;#cb1-17&gt;      .. figure::
-<a name="rest_code_da7beb91c9ba41329bba9290f0a373de-15"></a>davesmapper-2017-04-10-caves-4-numbered.png &lt;#cb1-18&gt;         :alt:
-<a name="rest_code_da7beb91c9ba41329bba9290f0a373de-16"></a>Map of Bandit's Cave &lt;#cb1-19&gt; &lt;#cb1-20&gt;         Map of Bandit's Cave
-<a name="rest_code_da7beb91c9ba41329bba9290f0a373de-17"></a>&lt;#cb1-21&gt; &lt;#cb1-22&gt;How's that look? &lt;#cb1-23&gt;
-<a name="rest_code_da7beb91c9ba41329bba9290f0a373de-18"></a>
-<a name="rest_code_da7beb91c9ba41329bba9290f0a373de-19"></a>Here's the -ms output from it:
-<a name="rest_code_da7beb91c9ba41329bba9290f0a373de-20"></a>
-<a name="rest_code_da7beb91c9ba41329bba9290f0a373de-21"></a>.SH 1
-<a name="rest_code_da7beb91c9ba41329bba9290f0a373de-22"></a>Missing Ampersand in Code Block -ms output
-<a name="rest_code_da7beb91c9ba41329bba9290f0a373de-23"></a>.pdfhref O 1 "Missing Ampersand in Code Block -ms output"
-<a name="rest_code_da7beb91c9ba41329bba9290f0a373de-24"></a>.pdfhref M "missing-ampersand-in-code-block--ms-output"
-<a name="rest_code_da7beb91c9ba41329bba9290f0a373de-25"></a>.LP
-<a name="rest_code_da7beb91c9ba41329bba9290f0a373de-26"></a>Here\[aq]s a code block containing ReStructuredText:
-<a name="rest_code_da7beb91c9ba41329bba9290f0a373de-27"></a>.IP
-<a name="rest_code_da7beb91c9ba41329bba9290f0a373de-28"></a>.nf
-<a name="rest_code_da7beb91c9ba41329bba9290f0a373de-29"></a>\f[C]
-<a name="rest_code_da7beb91c9ba41329bba9290f0a373de-30"></a>.. container:: for-format ms
-<a name="rest_code_da7beb91c9ba41329bba9290f0a373de-31"></a>
-<a name="rest_code_da7beb91c9ba41329bba9290f0a373de-32"></a>   .. figure:: davesmapper-2017-04-10-caves-4-numbered.eps
-<a name="rest_code_da7beb91c9ba41329bba9290f0a373de-33"></a>      :alt: Map of Bandit\[aq]s Cave
-<a name="rest_code_da7beb91c9ba41329bba9290f0a373de-34"></a>
-<a name="rest_code_da7beb91c9ba41329bba9290f0a373de-35"></a>   Map of Bandit\[aq]s Cave
-<a name="rest_code_da7beb91c9ba41329bba9290f0a373de-36"></a>
-<a name="rest_code_da7beb91c9ba41329bba9290f0a373de-37"></a>\&amp;.. container:: for-format html latex context epub
-<a name="rest_code_da7beb91c9ba41329bba9290f0a373de-38"></a>
-<a name="rest_code_da7beb91c9ba41329bba9290f0a373de-39"></a>   .. figure:: davesmapper-2017-04-10-caves-4-numbered.png
-<a name="rest_code_da7beb91c9ba41329bba9290f0a373de-40"></a>      :alt: Map of Bandit\[aq]s Cave
-<a name="rest_code_da7beb91c9ba41329bba9290f0a373de-41"></a>
-<a name="rest_code_da7beb91c9ba41329bba9290f0a373de-42"></a>      Map of Bandit\[aq]s Cave
-<a name="rest_code_da7beb91c9ba41329bba9290f0a373de-43"></a>\f[]
-<a name="rest_code_da7beb91c9ba41329bba9290f0a373de-44"></a>.fi
-<a name="rest_code_da7beb91c9ba41329bba9290f0a373de-45"></a>.LP
-<a name="rest_code_da7beb91c9ba41329bba9290f0a373de-46"></a>How\[aq]s that look?
-<a name="rest_code_da7beb91c9ba41329bba9290f0a373de-47"></a>
-<a name="rest_code_da7beb91c9ba41329bba9290f0a373de-48"></a>
-<a name="rest_code_da7beb91c9ba41329bba9290f0a373de-49"></a>See the first line that starts with .. container::? That line should start
-<a name="rest_code_da7beb91c9ba41329bba9290f0a373de-50"></a>with \&amp; so it isn't interpreted as an *roff* command. As it is, when you
-<a name="rest_code_da7beb91c9ba41329bba9290f0a373de-51"></a>build the PDF output from output that line disappears entirely with no
-<a name="rest_code_da7beb91c9ba41329bba9290f0a373de-52"></a>warning to the user. (The default for *roff* processors like *groff* is to
-<a name="rest_code_da7beb91c9ba41329bba9290f0a373de-53"></a>ignore unknown commands.)
-<a name="rest_code_da7beb91c9ba41329bba9290f0a373de-54"></a>
-<a name="rest_code_da7beb91c9ba41329bba9290f0a373de-55"></a>See the second line that starts with .. container::? That line *does* start
-<a name="rest_code_da7beb91c9ba41329bba9290f0a373de-56"></a>with \&amp;. It makes it through fine. The other lines whose first
-<a name="rest_code_da7beb91c9ba41329bba9290f0a373de-57"></a>non-whitespace character is . make it through fine because to make it a
-<a name="rest_code_da7beb91c9ba41329bba9290f0a373de-58"></a>*roff* command the first character on the line has to be a period.
-<a name="rest_code_da7beb91c9ba41329bba9290f0a373de-59"></a>
-<a name="rest_code_da7beb91c9ba41329bba9290f0a373de-60"></a>--
-<a name="rest_code_da7beb91c9ba41329bba9290f0a373de-61"></a>T. Kurt Bond, tkurtbond@gmail.com
-<a name="rest_code_da7beb91c9ba41329bba9290f0a373de-62"></a>
-<a name="rest_code_da7beb91c9ba41329bba9290f0a373de-63"></a>--000000000000360d1105a9a4da6e
-</pre>
-<p>See the weird psuedo-HTML tags like <code class="docutils literal"><span class="pre">&lt;#cb1-3&gt;</span></code> in the “plain” text
-that seems to have resulted from <code class="docutils literal">&lt;span <span class="pre">id="cb1-3"&gt;&lt;a</span>
-<span class="pre">href="#cb1-3"&gt;&lt;/a&gt;…&lt;/span&gt;</span></code>?  The person who replied to my message
-used the <code class="docutils literal">text/plain</code>, and that included all those weird
-<code class="docutils literal"><span class="pre">&lt;#cbX-Y&gt;</span></code> tags in the plain text reply, which, although they didn't
-remark on the oddity, is how I came to know about the problem.</p>
-<p>So, one thing to notice is that it was the first code block that was
-messed up, and not the second.  It turns out that I specified a
-(correct) language for syntax highlighting in the first code block,
-<code class="docutils literal">restructuredtext</code>, and supplied an incorrect language for syntax
-highlighting in the second block, <code class="docutils literal">nroff</code> <a class="footnote-reference brackets" href="posts/2020/07/05/line-number-anchors-in-pandocs-html-output-for-codeblocks-with-highlighting-mess-up-gmail-textplain-multipart-alternative/#pygments-groff" id="id3">3</a>, which
-should have been simply <code class="docutils literal">roff</code>.  And it turns out that if I don't
-specify a language for the highlighting I don't get the <code class="docutils literal">&lt;span
-<span class="pre">id="cb1-3"&gt;&lt;a</span> <span class="pre">href="#cb1-3"&gt;&lt;/a&gt;&lt;/span&gt;</span></code> type output, just a plain
-&lt;code&gt; block in a plain &lt;pre&gt; block.</p>
-<p>Weird.</p>
-<p>(I suppose I could have made this entry shorter and easier to
-understand by writing new shorter examples directly using
-<code class="docutils literal">.. code::</code> directly, but I'm writing about an e-mail that I
-actually sent, not a hypothetical e-mail.)</p>
-<dl class="footnote brackets">
-<dt class="label" id="plain-code-directive"><span class="brackets"><a class="fn-backref" href="posts/2020/07/05/line-number-anchors-in-pandocs-html-output-for-codeblocks-with-highlighting-mess-up-gmail-textplain-multipart-alternative/#id1">1</a></span></dt>
-<dd>
-<p>I've checked and this weirdness happens with plain <code class="docutils literal">.. code::</code>
-directives as well.</p>
-</dd>
-<dt class="label" id="toolong"><span class="brackets"><a class="fn-backref" href="posts/2020/07/05/line-number-anchors-in-pandocs-html-output-for-codeblocks-with-highlighting-mess-up-gmail-textplain-multipart-alternative/#id2">2</a></span></dt>
-<dd>
-<p>I'm not quoting the whole file because the CSS portion of the
-HTML makes it much too long to quote here.</p>
-</dd>
-<dt class="label" id="pygments-groff"><span class="brackets"><a class="fn-backref" href="posts/2020/07/05/line-number-anchors-in-pandocs-html-output-for-codeblocks-with-highlighting-mess-up-gmail-textplain-multipart-alternative/#id3">3</a></span></dt>
-<dd>
-<p>Annoyingly, <a class="reference external" href="https://pygments.org/languages/">pygments</a>, which I'm using to write this post for my
-blog, calls that <code class="docutils literal">groff</code> instead of <code class="docutils literal">roff</code>, so if I want to turn
-this into a e-mail via the route described here, I'll have to
-change the source file for this.</p>
-</dd>
-</dl>
-</div>
-    <nav><ul itemprop="keywords" class="tags">
-<li><a class="tag p-category" href="categories/gmail/" rel="tag">gmail</a></li>
-            <li><a class="tag p-category" href="categories/html/" rel="tag">html</a></li>
-            <li><a class="tag p-category" href="categories/pandoc/" rel="tag">pandoc</a></li>
-            <li><a class="tag p-category" href="categories/rst/" rel="tag">rst</a></li>
         </ul></nav>
 </div>
     </article>
