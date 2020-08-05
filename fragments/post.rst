@@ -1,8 +1,9 @@
 .. role:: app
 .. role:: file
 .. role:: command
+.. role:: key
 
-*Last edited: 2020-08-03 15:57:42 EDT*
+.. *Last edited: 2020-08-05 16:39:04 EDT*
 
 ..
    Local Variables:
