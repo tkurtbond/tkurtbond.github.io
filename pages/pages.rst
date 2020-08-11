@@ -11,6 +11,7 @@ Static Pages on this Site
 =========================
 
 * `About the blog <link://slug/about-the-blog>`_
+* `Adventure, Conqueror, King System (ACKS) SRD <link://slug/adventurer-conqueror-king-system-srd-in-html>`_ in HTML.
 * `Alusia Campaign <link://slug/alusia-campaign>`_
 * `Books, 2006–2007 <link://slug/books-2006-2007>`_
 * `Colophon <link://slug/colophon>`_
