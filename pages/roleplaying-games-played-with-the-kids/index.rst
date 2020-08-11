@@ -1,11 +1,16 @@
 .. title: Roleplaying Games Played with the Kids
 .. slug: roleplaying-games-played-with-the-kids
 .. date: 2019-11-06 08:36:40 UTC-05:00
-.. tags: rpg
+.. tags: rpg,the kids,buggin,besm,d&d,fudge,bunnies and burrows,savage worlds,toon,labyrinth lord,mini six,star wars d6,breachworld rpg
 .. category: gaming
 .. link: 
 .. description: 
 .. type: text
+
+
+I call them the kids but they've grown up a lot since I started
+playing RPGs with them.  Most of them are adults or near adults now.
+
 
 Buggin'
 =======
@@ -23,10 +28,10 @@ BESM, aka Big Eyes, Small Mouth
 
 Guardians of Order published *Big Eyes, Small Mouth* in 1st, 2nd, and
 2nd Revised editions; White Wolf's Arthaus imprint later published the
-3rd edition when GoO fell upon hard times.  2ER was my favorite
-edition.  Complete in one book and simpler than GURPS, it is good for
-a broad spectrum of games.  Character creation can be deep, but play
-is very simple.
+3rd edition when GoO fell upon hard times, and `Dyskami Publishing`_
+published a 4th Edition later.  2ER was my favorite edition.  Complete
+in one book and simpler than GURPS, it is good for a broad spectrum of
+games.  Character creation can be deep, but play is very simple.
 
 
 D&D
@@ -91,13 +96,40 @@ Tour Guide*, and *Toon Ace Catalog*.  It's another game the kids love.
 Labyrinth Lord
 ==============
 
-`Labyrinth Lord`_ from `Goblinoid Games`_ is a wonderful retro-clone of
-B/X D&D, and it's companion `Advanced Edition Companion`_ adds
+`Labyrinth Lord`_ from `Goblinoid Games`_ is a wonderful retro-clone
+of B/X D&D, and it's companion `Advanced Edition Companion`_ adds
 compatibility with AD&D, which makes it perfect for running the old
 modules I have.  It plays much like we actually played AD&D back in
 the day, without some of the convolutions.  We had great fun playing
-`Keep on the Borderlands` and a number of other modules.
+`Keep on the Borderlands` and a number of other modules, and one of
+the kids, T.A., ran the module `Idol of the Orcs`_ for us_!
 
+.. _us: https://tkurtbond.github.io/posts/2012/04/08/idol-of-the-orcs-s01/
+.. _Idol of the Orcs: https://www.drivethrurpg.com/product/63033/Idol-of-the-Orcs
+
+Mini Six
+========
+
+I ran several `Mini Six`_ (from `Antipaladin Games`_) Star Wars games
+with the kids, and really liked the simple nature of the system.  I
+also ran and liked the `Breachworld RPG`_ which uses a slightly
+customized `Mini Six`_ rules set.  I also liked its setting, a post
+apocalypse caused by too much teleportation, which created Breaches to
+other worlds, which then invaded the Earth.  There are several other
+games which use the `Mini Six`_ rules set.
+
+.. _Antipaladin Games: http://www.antipaladingames.com/p/mini-six.html
+
+D6 Star Wars
+============
+
+One of the kids, T.A., was very interested in the Star Wars `Mini
+Six`_ game I ran, and that led to him running the original D6 `Star
+Wars` roleplaying game several times.
+
+.. _`Dyskami Publishing`: http://dyskami.ca/
 .. _`Labyrinth Lord`: https://www.drivethrurpg.com/product/64332/Labyrinth-Lord-Revised-Edition?cPath=2033_6311
 .. _`Goblinoid Games`: http://goblinoidgames.com/
 .. _`Advanced Edition Companion`: https://www.drivethrurpg.com/product/78523/Advanced-Edition-Companion-Labyrinth-Lord?cPath=2033_6311
+.. _Mini Six: https://www.drivethrurpg.com/product_info.php?products_id=144558&
+.. _Breachworld RPG: https://www.drivethrurpg.com/browse/pub/3447/Jason-Richards-Publishing/subcategory/20371/Breachworld-RPG
