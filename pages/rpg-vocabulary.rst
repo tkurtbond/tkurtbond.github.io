@@ -62,3 +62,20 @@ Neo-clone
 
 .. _Dan Proctor: http://goblinoidgames.blogspot.com/
 .. _discussion: http://goblinoidgames.blogspot.com/2013/02/three-fold-guide-to-neo-retro-revised.html
+
+
+.. _Megadungeon:
+
+Megadungeon
+    “A megadungeon is both a campaign structure and a sort of
+    exceptionally large and complex dungeon that a party may explore
+    as part of a campaign using that structure.”  (M1_, M2_, M3_, M4_)
+    DMDavid has some interesting articles on them: DMD1_, DMD2_, and DMD3_.
+
+.. _M1: https://rpgmuseum.fandom.com/wiki/Megadungeon
+.. _M2: https://www.dndbeyond.com/posts/374-what-the-heck-is-a-megadungeon
+.. _M3: https://1d4chan.org/wiki/Megadungeon
+.. _M4: https://dungeonsdragons.fandom.com/wiki/Megadungeon
+.. _DMD1: https://dmdavid.com/tag/when-megadungeons-ruled-dungeons-dragons/
+.. _DMD2: https://dmdavid.com/tag/why-dungeons-dragons-players-stopped-exploring-megadungeons/
+.. _DMD3: https://dmdavid.com/tag/megadungeons-in-print-and-on-the-web/
