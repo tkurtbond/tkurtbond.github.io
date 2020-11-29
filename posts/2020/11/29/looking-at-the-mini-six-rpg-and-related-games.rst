@@ -175,7 +175,9 @@ pickup games.
      MiraiCorp).
 
    † marks games I find particularly interesting, either for the
-   setting or for how a game adapts `Mini Six`.
+   setting or for how a game adapts `Mini Six`.‡
+
+   ‡ Footnotes in footnotes are **such** fun! |smile|
 
 __ https://www.drivethrurpg.com/product/123949/The-Mighty-Six
 __ https://www.drivethrurpg.com/product/110331/Heavens-Shadow
@@ -184,6 +186,10 @@ __ https://www.drivethrurpg.com/product/157066/Twilight-Fall
 __ https://www.drivethrurpg.com/product/289545/Mutagen-RPG-Beta-Playtest
 __ https://www.drivethrurpg.com/product/215176/Exilium-Core-Rules
 __ https://www.drivethrurpg.com/product/233731/Summerland-Second-Edition
+
+.. |smile| image:: /images/smiley-small.png
+   :alt: (:-)
+   :height: 2ex
 
 ..
    Local Variables:

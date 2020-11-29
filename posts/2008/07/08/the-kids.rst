@@ -79,7 +79,7 @@ others.
 
 .. |smile| image:: /images/smiley-small.png
    :alt: (:-)
-   :height: 0.75em
+   :height: 2ex
 
 .. This one is just the local version of the one above, for testing.
 .. file:///c:/home/tkb/comp/xsl-website/me/graphics/icons/smiley-small.png

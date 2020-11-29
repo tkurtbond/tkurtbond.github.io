@@ -118,5 +118,5 @@ getting grim fast.
 
 .. |smile| image:: /images/smiley-small.png
    :alt: (:-)
-   :height: 0.75em
+   :height: 2ex
 
