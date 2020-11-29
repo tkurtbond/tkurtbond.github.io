@@ -1,7 +1,7 @@
 .. title: The "Typical Activities" checklist from The Traveller Book and Starter Traveller
 .. slug: the-typical-activities-checklist-from-the-traveller-book-and-starter-traveller
 .. date: 2020-03-17 15:23:13 UTC-04:00
-.. tags: rpg,traveller,cepheus engine,the traveller book,starter traveller
+.. tags: rpg,traveller,cepheus engine,the traveller book,starter traveller,checklist
 .. category: gaming
 .. link: 
 .. description: 
