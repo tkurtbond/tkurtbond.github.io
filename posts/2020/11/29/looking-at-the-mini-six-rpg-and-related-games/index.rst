@@ -7,7 +7,7 @@
 .. description: 
 .. type: text
 
-I'm looking at the Mini Six RPG because I’m planing on running a
+I'm looking at the `Mini Six` RPG because I’m planing on running a
 couple of one shots while my regular online D&D game is on hiatus
 between campaigns.  I’m going to run a Star Wars one shot and a
 `Breachworld RPG`_ (post apocalypse with rifts into space and time
@@ -210,8 +210,14 @@ pickup games.
    :alt: (:-)
    :height: 2ex
 
+*Last edited: 2020-11-29 15:54:28 EST*
+
 ..
    Local Variables:
    compile-command: "pandoc -r rst -w html  --output=mini-six-described.html mini-six-described.rst && op mini-six-described.html"
+   time-stamp-format: "%04y-%02m-%02d %02H:%02M:%02S %Z"
+   time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
+   time-stamp-end: "\\*\\\\?\n"
+   time-stamp-line-limit: -20
    End: 
 
