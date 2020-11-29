@@ -7,7 +7,7 @@
 .. description: 
 .. type: text
 
-I'm looking at the Mini Six RPG because I’m planing on running a
+I'm looking at the `Mini Six` RPG because I’m planing on running a
 couple of one shots while my regular online D&D game is on hiatus
 between campaigns.  I’m going to run a Star Wars one shot and a
 `Breachworld RPG`_ (post apocalypse with rifts into space and time
