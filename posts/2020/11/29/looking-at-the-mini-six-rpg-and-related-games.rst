@@ -1,7 +1,7 @@
 .. title: Looking at the Mini Six RPG and related games
 .. slug: looking-at-the-mini-six-rpg-and-related-games
 .. date: 2020-11-29 02:14:48 UTC-05:00
-.. tags: mini six, opend6, one shots
+.. tags: mini six, opend6, one shots, rpg
 .. category: gaming
 .. link: 
 .. description: 
@@ -111,7 +111,7 @@ I like it for many reasons:
   rating of their associated Attribute, so you can always use a
   skill, except for a very few skills.
 • Attributes and Skills are used by rolling them against set target
-  numbers or opposing 
+  numbers or opposing die rolls.
 • The rules for multiple actions in a round are particularly easy to
   use, suitable for games where the characters are competent.
 • Since the rules are short and the game mechanics relatively light it
