@@ -107,14 +107,24 @@ I like it for many reasons:
   Fantasy games, including a simple Magic/Power system.
 • Attributes, Skills, and Damage are rated by the number of D6s one
   rolls to use them, which makes using them easy.
+• Attributes and Skills are connected.  Skills default to the dice
+  rating of their associated Attribute, so you can always use a
+  skill, except for a very few skills.
+• Attributes and Skills are used by rolling them against set target
+  numbers or opposing 
 • The rules for multiple actions in a round are particularly easy to
   use, suitable for games where the characters are competent.
 • Since the rules are short and the game mechanics relatively light it
   is easy to customize.
 • It can be easily customized for a particular game or genre.
 • Since the rules (but not the settings) are Open Content you can
-  easily base a new game on it and sell it.  There are several `Mini
-  Six`-based games on DriveThruRPG.com.\ [#games]_
+  easily base a new game on it and release it for free or sell it.
+  There are several `Mini Six`-based games on DriveThruRPG.com.\
+  [#games]_
+• There is a royalty-free `Mini Six Trademark License`__ that allows you to
+  indicate that products you make are compatible with `Mini Six`.\ [#adventures]_
+
+__ http://www.antipaladingames.com/p/license.html
 
 I think that several of those reason make it idea for one shots and
 pickup games.
@@ -179,13 +189,22 @@ pickup games.
 
    ‡ Footnotes in footnotes are **such** fun! |smile|
 
-__ https://www.drivethrurpg.com/product/123949/The-Mighty-Six
-__ https://www.drivethrurpg.com/product/110331/Heavens-Shadow
-.. _Breachworld RPG: https://www.drivethrurpg.com/product/141188/Breachworld-RPG
-__ https://www.drivethrurpg.com/product/157066/Twilight-Fall
-__ https://www.drivethrurpg.com/product/289545/Mutagen-RPG-Beta-Playtest
-__ https://www.drivethrurpg.com/product/215176/Exilium-Core-Rules
-__ https://www.drivethrurpg.com/product/233731/Summerland-Second-Edition
+   __ https://www.drivethrurpg.com/product/123949/The-Mighty-Six
+   __ https://www.drivethrurpg.com/product/110331/Heavens-Shadow
+   .. _Breachworld RPG: https://www.drivethrurpg.com/product/141188/Breachworld-RPG
+   __ https://www.drivethrurpg.com/product/157066/Twilight-Fall
+   __ https://www.drivethrurpg.com/product/289545/Mutagen-RPG-Beta-Playtest
+   __ https://www.drivethrurpg.com/product/215176/Exilium-Core-Rules
+   __ https://www.drivethrurpg.com/product/233731/Summerland-Second-Edition
+   
+
+.. [#adventures] Some `Mini Six` compatible adventures are:
+
+   • `The Monkey's Key <https://www.drivethrurpg.com/product/98873/The-Monkeys-Key-Mini-Six>`__
+   • `Dysphiron: The Escape <https://www.drivethrurpg.com/product/101861/Dysphiron-The-Escape-Mini-Six>`_
+   • `Journey to the Forge <https://www.drivethrurpg.com/product/102022/Journey-to-the-Forge>`_
+
+   I wish there were more.
 
 .. |smile| image:: /images/smiley-small.png
    :alt: (:-)
