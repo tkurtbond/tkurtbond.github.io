@@ -210,8 +210,14 @@ pickup games.
    :alt: (:-)
    :height: 2ex
 
+*Last edited: 2020-11-29 15:54:28 EST*
+
 ..
    Local Variables:
    compile-command: "pandoc -r rst -w html  --output=mini-six-described.html mini-six-described.rst && op mini-six-described.html"
+   time-stamp-format: "%04y-%02m-%02d %02H:%02M:%02S %Z"
+   time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
+   time-stamp-end: "\\*\\\\?\n"
+   time-stamp-line-limit: -20
    End: 
 
