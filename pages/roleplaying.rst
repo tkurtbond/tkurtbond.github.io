@@ -21,8 +21,8 @@ changed, and the group I'm currently playing with has a couple of good
 GMs.
 
 
-Sub-pages
----------
+Associated Pages or Posts
+-------------------------
 
 * `D&D Dungeon Masters Guide, Appendix N <link://slug/dnd-dmg-appendix-n>`_
 * `DragonQuest <link://slug/dragonquest-and-i>`_

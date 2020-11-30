@@ -1,13 +1,14 @@
 .. title: D&D Dungeon Masters Guide, Appendix N: Inspirational and Educational Reading
 .. slug: dnd-dmg-appendix-n
-.. date: 2019-11-06 08:26:19 UTC-05:00
-.. tags: d&d,dungeon masters guide,gary gygax,fiction
+.. date: 2020-11-30 01:53:01 UTC-05:00
+.. tags: d&d,dungeon masters guide,gary gygax,fiction,appendix n,runequest
 .. category: 
 .. link: 
 .. description: 
 .. type: text
 
-
+(This was originally on my site as a static page, but those don't get
+added the tags page, so I moved it here as a post.)
 
 From the `AD&D Dungeon Masters Guide`__ (1979), by `Gary Gygax`__.
 
@@ -75,3 +76,9 @@ above authors, as well as many not listed, certainly helped to shape
 the form of the game.  For this reason, and for the hours of reading
 enjoyment, I heartily recommend the works of these fine authors to
 you.
+
+-----
+
+RuneQuest 2E also had an `Appendix N`_.
+
+.. _Appendix N: link://slug/runequest-appendix-n
