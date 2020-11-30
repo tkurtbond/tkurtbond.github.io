@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity (Posts about oldblog)</title><link>https://tkurtbond.github.io/</link><description></description><atom:link href="https://tkurtbond.github.io/categories/cat_oldblog.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2020 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Wed, 05 Aug 2020 15:05:56 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Converting my old log entries to blog entries</title><link>https://tkurtbond.github.io/posts/2014/11/04/convert-my-old-log-entries-to-blog-entries/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;I converted my old log entries, which originated from my original
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity (Posts about oldblog)</title><link>https://tkurtbond.github.io/</link><description></description><atom:link href="https://tkurtbond.github.io/categories/cat_oldblog.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2020 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Mon, 30 Nov 2020 19:07:36 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Converting my old log entries to blog entries</title><link>https://tkurtbond.github.io/posts/2014/11/04/convert-my-old-log-entries-to-blog-entries/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;I converted my old log entries, which originated from my original
 Docbook-based website, and were presently part of my static
 Sphinx-based website, over to my current PyBlosxom blog tonight,
 using the following script:&lt;/p&gt;
-&lt;pre class="code text"&gt;&lt;a name="rest_code_b1d6260c63e24aba9192a5ac692d4c39-1"&gt;&lt;/a&gt;#! /usr/bin/env bash
-&lt;a name="rest_code_b1d6260c63e24aba9192a5ac692d4c39-2"&gt;&lt;/a&gt;find 200? -type f ! -name \*~ ! -name \*-idx-*.rst |
-&lt;a name="rest_code_b1d6260c63e24aba9192a5ac692d4c39-3"&gt;&lt;/a&gt;while read filename
-&lt;a name="rest_code_b1d6260c63e24aba9192a5ac692d4c39-4"&gt;&lt;/a&gt;do
-&lt;a name="rest_code_b1d6260c63e24aba9192a5ac692d4c39-5"&gt;&lt;/a&gt;    newname="$(echo $filename | sed 's#/#-#g')"
-&lt;a name="rest_code_b1d6260c63e24aba9192a5ac692d4c39-6"&gt;&lt;/a&gt;    date="$(basename $newname .rst)"
-&lt;a name="rest_code_b1d6260c63e24aba9192a5ac692d4c39-7"&gt;&lt;/a&gt;    (echo $date; echo "#published $date 00:00:00"; echo "#tags Old Blog";
-&lt;a name="rest_code_b1d6260c63e24aba9192a5ac692d4c39-8"&gt;&lt;/a&gt;        cat $filename) &amp;gt;/home/tkb/myblog/entries/oldblog/$newname
-&lt;a name="rest_code_b1d6260c63e24aba9192a5ac692d4c39-9"&gt;&lt;/a&gt;done
+&lt;pre class="code text"&gt;&lt;a name="rest_code_de2e0b4b02c640979b6e7ad5cf430647-1"&gt;&lt;/a&gt;#! /usr/bin/env bash
+&lt;a name="rest_code_de2e0b4b02c640979b6e7ad5cf430647-2"&gt;&lt;/a&gt;find 200? -type f ! -name \*~ ! -name \*-idx-*.rst |
+&lt;a name="rest_code_de2e0b4b02c640979b6e7ad5cf430647-3"&gt;&lt;/a&gt;while read filename
+&lt;a name="rest_code_de2e0b4b02c640979b6e7ad5cf430647-4"&gt;&lt;/a&gt;do
+&lt;a name="rest_code_de2e0b4b02c640979b6e7ad5cf430647-5"&gt;&lt;/a&gt;    newname="$(echo $filename | sed 's#/#-#g')"
+&lt;a name="rest_code_de2e0b4b02c640979b6e7ad5cf430647-6"&gt;&lt;/a&gt;    date="$(basename $newname .rst)"
+&lt;a name="rest_code_de2e0b4b02c640979b6e7ad5cf430647-7"&gt;&lt;/a&gt;    (echo $date; echo "#published $date 00:00:00"; echo "#tags Old Blog";
+&lt;a name="rest_code_de2e0b4b02c640979b6e7ad5cf430647-8"&gt;&lt;/a&gt;        cat $filename) &amp;gt;/home/tkb/myblog/entries/oldblog/$newname
+&lt;a name="rest_code_de2e0b4b02c640979b6e7ad5cf430647-9"&gt;&lt;/a&gt;done
 &lt;/pre&gt;&lt;p&gt;I'll have to go through and fix uses of Sphinx-specific RST
 extensions, and I'll probably add real entry titles as I do so; in the
 meanwhile, if the blog entry title is a date I haven't updated the
