@@ -79,6 +79,6 @@ you.
 
 -----
 
-RuneQuest 2E also had an `Appendix N`_.
+RuneQuest 2E also had an `Appendix N`_, apparently earlier.
 
 .. _Appendix N: link://slug/runequest-appendix-n
