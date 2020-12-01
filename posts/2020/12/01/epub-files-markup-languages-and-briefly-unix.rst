@@ -351,6 +351,26 @@ really must end this email!
 **P.P.P.S.** Sorry, no deeply nested parenthetical expressions this
 time!
 
+-----
+
+Here's an addendum with two Apple :app:`Messenger` messages to P.,
+reflecting on converting this from an HTML email into a blog post:
+
+The HTML dialect Google uses in its MIME emails is very odd.  It
+doesn’t use ``<p>`` elements, using instead ``<div>`` elements.
+Unfortunately, :app:`pandoc` converts those into containers, and nests
+them according to the nesting of the ``<div>`` elements.  To fix this
+I hand edited the HTML to remove the outer ``<div>`` elements and
+convert the remaining ones into <p>s.  Also, for some reason when I
+ran the documents through HTML tidy it converted the unicode
+characters into incorrect HTML character entities.  I see now that it
+has a ``-utf8`` switch, which I’ll have to remember for the next time
+I do this.  (There will inevitably be a next time.)
+
+OMG, now I have have to put that in the blog post!  How many `saving
+throws`_ am I going to fail today anyway?
+
+
 .. _WYSIWYG: https://en.wikipedia.org/wiki/WYSIWYG
 .. _XML: https://en.wikipedia.org/wiki/XML
 .. _Perl: https://www.perl.org/
@@ -362,3 +382,15 @@ time!
 .. _GNU: https://en.wikipedia.org/wiki/GNU
 .. _Heirloom Documentation Tools: http://n-t-roff.github.io/heirloom/doctools.html
 .. _NetBSD: http://netbsd.org/
+.. _Saving Throws: https://en.wikipedia.org/wiki/Saving_throw
+
+
+*Last edited: 2020-12-01 17:03:43 EST*
+
+..
+   Local Variables:
+   time-stamp-format: "%04y-%02m-%02d %02H:%02M:%02S %Z"
+   time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
+   time-stamp-end: "\\*\\\\?\n"
+   time-stamp-line-limit: -20
+   End:
