@@ -51,7 +51,52 @@
         <div class="row">
             <div class="col-sm-8 blog-main">
 <div class="postindex">
-    <article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2020/07/31/paragraph-justification-in-groff-and-tex/" class="u-url">Paragraph Justification in groff and TeX</a></h2>
+    <article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2020/08/03/compiling-s7-scheme-on-macos/" class="u-url">Compiling s7 scheme on macOS</a></h2>
+        <div class="metadata blog-post-meta">
+            <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
+            <p class="dateline"><a href="posts/2020/08/03/compiling-s7-scheme-on-macos/" rel="bookmark"><time class="published dt-published" datetime="2020-08-03T14:17:15-04:00" title="2020-08-03 14:17">2020-08-03 14:17</time></a></p>
+                <p class="commentline">            <a href="posts/2020/08/03/compiling-s7-scheme-on-macos/#disqus_thread" data-disqus-identifier="cache/posts/2020/08/03/compiling-s7-scheme-on-macos.html">Comments</a>
+
+
+        </p>
+</div>
+    </header><div class="e-content entry-content">
+    <div>
+<p>To compile <a class="reference external" href="https://ccrma.stanford.edu/software/snd/snd/s7.html">s7 scheme</a> with a standalone <a class="reference external" href="pages/computer-vocabulary/#REPL">REPL</a>, s7's home page says to
+add the empty file <span class="file">mus-config.h</span> to the source directory, then
+(in Linux):</p>
+<pre class="code bash"><a name="rest_code_faca3756ba70487da704627fa1afdcc4-1"></a>gcc s7.c -o repl -DWITH_MAIN -I. -O2 -g -ldl -lm -Wl,-export-dynamic
+</pre>
+<p>It turns out that on macOS, whose <span class="command">ld</span> (from clang) doesn't
+understand <code class="docutils literal"><span class="pre">-export-dynamic</span></code>, you have to do</p>
+<pre class="code bash"><a name="rest_code_9f44ec775cae4f87b64137a09d220c1c-1"></a>gcc s7.c -o repl -DWITH_MAIN -I. -O2 -g -ldl -lm -Wl,-dynamic
+</pre>
+<p>Then you need to do</p>
+<pre class="code bash"><a name="rest_code_476ea9b03b6c4faca81ba4e46b4b5b5b-1"></a>./repl libc.scm
+</pre>
+<p>which seems to generate <span class="file">libc_s7.c</span> and compile it into
+<span class="file">libc_s.so</span>.   Then you can run the <a class="reference external" href="pages/computer-vocabulary/#REPL">REPL</a>:</p>
+<pre class="code bash"><a name="rest_code_e0688398b8f342468dec8fa6046bdf56-1"></a>./repl
+</pre>
+<p>which, from looking at <span class="file">s7.c</span>, loads <span class="file">repl.scm</span>.
+Unfortunately, I don't understand the repl commands, except for
+<code class="docutils literal">pwd</code> and <code class="docutils literal">cd</code>.  Oh, and <code class="docutils literal">(exit)</code> exits the repl.</p>
+<p><em>Last edited: 2020-08-03 16:03:57 EDT</em></p>
+<!-- Local Variables:
+time-stamp-format: "%04y-%02m-%02d %02H:%02M:%02S %Z"
+time-stamp-start: "Last edited:[ \t]+\\\\?"
+time-stamp-end: "\\*\\\\?\n"
+time-stamp-line-limit: -20
+End: -->
+</div>
+    <nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="categories/ld/" rel="tag">ld</a></li>
+            <li><a class="tag p-category" href="categories/macsos/" rel="tag">macsOS</a></li>
+            <li><a class="tag p-category" href="categories/s7/" rel="tag">s7</a></li>
+            <li><a class="tag p-category" href="categories/scheme/" rel="tag">scheme</a></li>
+        </ul></nav>
+</div>
+    </article><article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2020/07/31/paragraph-justification-in-groff-and-tex/" class="u-url">Paragraph Justification in groff and TeX</a></h2>
         <div class="metadata blog-post-meta">
             <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
             <p class="dateline"><a href="posts/2020/07/31/paragraph-justification-in-groff-and-tex/" rel="bookmark"><time class="published dt-published" datetime="2020-07-31T22:42:15-04:00" title="2020-07-31 22:42">2020-07-31 22:42</time></a></p>
