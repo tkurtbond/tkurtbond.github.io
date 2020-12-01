@@ -1,7 +1,7 @@
 .. title: Recent Reading; S&S RPGing; Tékumel RPGing
 .. slug: 2005-03-05
 .. date: 2005-03-05 00:00:00 UTC-05:00
-.. tags: old blog,recent reading,tekumel,swords & sorcery,fiction
+.. tags: old blog,recent reading,tekumel,sword & sorcery,fiction
 .. category: oldblog
 .. link: 
 .. description: 
@@ -101,3 +101,14 @@ possible to see how to do so.
    the Tékumel aficionado.
 
 __ link://slug/2005-02-21-recent-reading-and-viewing#kothar
+
+.. *Last edited: 2020-11-30 20:18:18 EST*
+
+..
+   Local Variables:
+   time-stamp-format: "%04y-%02m-%02d %02H:%02M:%02S %Z"
+   time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
+   time-stamp-end: "\\*\\\\?\n"
+   time-stamp-line-limit: -20
+   End:
+ 
