@@ -1,5 +1,5 @@
-.. title: Advanced Fighting Fantasy Renaissance and Troika!
-.. slug: advanced-fighting-fantasy-renaissance
+.. title: Advanced Fighting Fantasy Renaissance and Troika! and Warlock!
+.. slug: advanced-fighting-fantasy-renaissance-and-troika-and-warlock
 .. date: 2020-12-01 00:56:37 UTC-05:00
 .. tags: rpg,aff,aff2e,troika!,warlock!
 .. category: gaming
