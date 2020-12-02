@@ -171,7 +171,7 @@ pickup games.
      supernatural forest),
    • † `Breachworld RPG`_ (a global catastrophe made rips in space and
      time through which unwanted monsters, aliens, and otherworldly
-     environments continue to pour),
+     environments continue to pour) [#breachworld-adventure]_,
    • † `Heaven's Shadow`__ (a game of faith and assassination of the
      evil Nephilim in the service of God, set in the modern world),
    • `The Mighty Six`__ (superheros),
@@ -210,7 +210,11 @@ pickup games.
    :alt: (:-)
    :height: 2ex
 
-*Last edited: 2020-11-29 15:54:28 EST*
+.. [#breachworld-adventure] There is an adventure for Breachworld on
+   DriveThruRPG: `Breachworld Adventure Folio #1 - The Big Score
+   <https://www.drivethrurpg.com/product/175297/Breachworld-Adventure-Folio-1--The-Big-Score?term=breachworld++adventure>`_.
+
+*Last edited: 2020-12-02 01:31:53 EST*
 
 ..
    Local Variables:
