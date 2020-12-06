@@ -21,12 +21,15 @@ changed, and the group I'm currently playing with has a couple of good
 GMs.
 
 
-Associated Pages or Posts
--------------------------
+Associated Pages or Posts or Files
+----------------------------------
 
 * `D&D Dungeon Masters Guide, Appendix N <link://slug/dnd-dmg-appendix-n>`_
 * `DragonQuest <link://slug/dragonquest-and-i>`_
 * `Gaming in the World of Elric <link://slug/gaming-in-the-world-of-elric>`_
+* `Breachworld Combat Aids`__
+
+__ /breachworld-combat-aids-gen.html
 
 ..
    dragonquest
