@@ -2,7 +2,7 @@
 .. slug: cobol-and-fortran
 .. date: 2020-12-10 11:06:20 UTC-05:00
 .. tags: cobol,fortran,ratfor
-.. category: 
+.. category: computer/languages
 .. link: 
 .. description: 
 .. type: text

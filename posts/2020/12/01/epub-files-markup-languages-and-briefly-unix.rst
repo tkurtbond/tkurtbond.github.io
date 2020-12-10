@@ -2,7 +2,7 @@
 .. slug: epub-files-markup-languages-and-briefly-unix
 .. date: 2020-12-01 15:56:13 UTC-05:00
 .. tags: epub,markup languages,lightweight markup languages,unix,troff,latex,context,tex
-.. category: computing
+.. category: computer/markup-languages
 .. link: 
 .. description: 
 .. type: text
@@ -373,7 +373,7 @@ throws`_ am I going to fail today anyway?
 .. _Saving Throws: https://en.wikipedia.org/wiki/Saving_throw
 
 
-*Last edited: 2020-12-10 12:09:05 EST*
+*Last edited: 2020-12-10 12:18:24 EST*
 
 ..
    Local Variables:
