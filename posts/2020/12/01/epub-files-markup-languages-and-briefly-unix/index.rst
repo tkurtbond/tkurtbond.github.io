@@ -2,7 +2,7 @@
 .. slug: epub-files-markup-languages-and-briefly-unix
 .. date: 2020-12-01 15:56:13 UTC-05:00
 .. tags: epub,markup languages,lightweight markup languages,unix,troff,latex,context,tex
-.. category: computing
+.. category: computer/markup-languages
 .. link: 
 .. description: 
 .. type: text
@@ -88,18 +88,6 @@ for :app:`Pandoc`.  Then I generated the EPUB output. Then I figured out how
 to convert that over to MOBI, one of the formats that the Kindle can
 use.\ [6]_ Then I mailed it to my Kindle's email, and it looked
 reasonably good!\ [7]_
-
-I've attached it to this email, in case you want to try it out on your
-Kindle! Oddly, though it shows up fine in “Content and Devices” on
-Amazon under the “Docs” filter setting, and it shows up on my actual
-Kindle device, it doesn't show up in the Kindle app on my Macintosh
-Laptop. But neither do the other MOBI files I've emailed to my Kindle's
-address. And when I explicitly try to deliver it to the Kindle app on my
-Macintosh from the Amazon “Content and Devices” page, the Kindle app and
-the Cloud Reader destinations in the “Device Selected” drop down are
-grayed out. ☹ If you don't have an actual Kindle device you may not be
-able to read the MOBI. So I've also attached the EPUB versions, which
-the Books app on my Macintosh opens just fine.
 
 I hope you've enjoyed this twisty maze of passages, all different!
 
@@ -385,7 +373,7 @@ throws`_ am I going to fail today anyway?
 .. _Saving Throws: https://en.wikipedia.org/wiki/Saving_throw
 
 
-*Last edited: 2020-12-01 17:03:43 EST*
+*Last edited: 2020-12-10 12:18:24 EST*
 
 ..
    Local Variables:
