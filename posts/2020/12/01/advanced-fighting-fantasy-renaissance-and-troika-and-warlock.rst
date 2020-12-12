@@ -8,14 +8,15 @@
 .. type: text
 
 With the release of `Advanced Fighting Fantasy`, second edition, by
-Arion Games (website__, DriveThruRPG__) in 2011 it seemed a renaissance
-for Advanced Fighting Fantasy had arrived.  This has been born out by
-Arion Games release one or more books for AFF2E `every year since then
-except 2015`__, and by their release of bunches more small products in
-PDF since then.  And most of their larger `AFF2E products`__ are
-available in POD at DriveThruRPG now, as well as in PDF.  They also
-have a science fiction game that uses the AFF2E rules, `Stellar
-Adventures`__, which is good and has several supplements.
+Arion Games (website__, DriveThruRPG__) in 2011 it seemed a
+renaissance for Advanced Fighting Fantasy had arrived.  This has been
+born out by Arion Games releasing one or more books for AFF2E `every
+year since then except 2015`__, and by their release of bunches more
+small products in PDF since then.  And most (if not all) of their
+larger `AFF2E products`__ are available in POD at DriveThruRPG now, as
+well as in PDF.  They also have a science fiction game that uses the
+AFF2E rules, `Stellar Adventures`__, which is good and has several
+supplements.
 
 __ http://arion-games.com/
 __ https://www.drivethrurpg.com/browse/pub/667/Arion-Games
@@ -72,7 +73,7 @@ the all-in-one Skill of AFF in favor of starting the equivalent of
 AFF's Special Skills at higher values.  It also drops the 2d6 rolls
 for d20s, and damage appears to by a simple dice roll, rather than
 AFF's 1d6+mod indexing a different table for each type of weapon,
-which could have its advantages…  It also has a `Warhammer Fantasy
+which could have its advantages…  It also has `Warhammer Fantasy
 Roleplay` style careers.  I haven't read much of it, but I'm
 definitely going to. It has several supplements too.
 
@@ -84,3 +85,12 @@ __ https://www.drivethrurpg.com/product/246936/Esoterica?manufacturers_id=2503
 
 All in all, I think the AFF renaissance is growing!
 
+*Last edited: 2020-12-12 15:25:57 EST*
+
+..
+   Local Variables:
+   time-stamp-format: "%04y-%02m-%02d %02H:%02M:%02S %Z"
+   time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
+   time-stamp-end: "\\*\\\\?\n"
+   time-stamp-line-limit: -20
+   End:
