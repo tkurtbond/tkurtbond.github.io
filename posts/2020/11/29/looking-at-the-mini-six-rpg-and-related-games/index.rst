@@ -12,22 +12,22 @@ couple of one shots while my regular online D&D game is on hiatus
 between campaigns.  I’m going to run a Star Wars one shot and a
 `Breachworld RPG`_ (post apocalypse with rifts into space and time
 with invaders pouring through) one shot, probably using the light
-Virtual Table Top `Owlbear Rodeo`__ with Discord__ for voice and text
+Virtual Table Top `Owlbear Rodeo`_ with Discord_ for voice and text
 chat and dice rolling using a dice bot and maybe image sharing, with
 character sheets as Google Doc documents.
 
-__ https://www.owlbear.rodeo/
-__ https://discord.com/
+.. _Owlbear Rodeo: https://www.owlbear.rodeo/
+.. _Discord: https://discord.com/
 
 `Mini Six` Described
 @@@@@@@@@@@@@@@@@@@@
 
-`Mini Six: Bare Bones Edition` was published in 2010 by `AntiPaladin
-Games`__.  It is available as a PDF for free or POD at a small price
-at DriveThruRPG__.
+`Mini Six: Bare Bones Edition`_ was published in 2010 by `AntiPaladin
+Games`_.  It is available as a PDF for free or POD at a small price
+at DriveThruRPG.
 
-__ http://www.antipaladingames.com/
-__ https://www.drivethrurpg.com/product/144558/Mini-Six-Bare-Bones-Edition?term=mini+six
+.. _AntiPaladin Games: http://www.antipaladingames.com/
+.. _`Mini Six: Bare Bones Edition`: https://www.drivethrurpg.com/product/144558/Mini-Six-Bare-Bones-Edition
 
 Organization and Breakdown
 ==========================
@@ -161,24 +161,24 @@ pickup games.
 
 .. [#games] Some published games based on `Mini Six` are:
 
-   • † `Exilium Core Rules`__ (a game of science fiction adventure and
+   • † `Exilium Core Rules`_ (a game of science fiction adventure and
      intrigue set against a backdrop of post-human loss and
      redemption; the description at DriveThruRPG says it is based on
      OpenD6, which is true, but the credit page of the book
      specifically mentions `Mini Six`),
-   • † `Summerland Second Edition`__ (a game about desolation and
+   • † `Summerland Second Edition`_ (a game about desolation and
      redemption in a post-apocalyptic world destroyed by a vast
      supernatural forest),
    • † `Breachworld RPG`_ (a global catastrophe made rips in space and
      time through which unwanted monsters, aliens, and otherworldly
      environments continue to pour) [#breachworld-adventure]_,
-   • † `Heaven's Shadow`__ (a game of faith and assassination of the
+   • † `Heaven's Shadow`_ (a game of faith and assassination of the
      evil Nephilim in the service of God, set in the modern world),
-   • `The Mighty Six`__ (superheros),
-   • `Twilight Fall`__ (a post apocalypse world created by the arrival
+   • `The Mighty Six`_ (superheros),
+   • `Twilight Fall`_ (a post apocalypse world created by the arrival
      on Earth of billions of alien refuges from space and other
      dimensions), and
-   • `Mutagen RPG (Beta/Playtest)`__ (MiraiCorp's Project Mutagen
+   • `Mutagen RPG (Beta/Playtest)`_ (MiraiCorp's Project Mutagen
      unleashes mutant uplifted animals on the world who escaped their
      abused lives as test subjects and who want to be left alone, or
      help other mutants or the persecuted, or take the flight to
@@ -189,13 +189,13 @@ pickup games.
 
    ‡ Footnotes in footnotes are **such** fun! |smile|
 
-   __ https://www.drivethrurpg.com/product/123949/The-Mighty-Six
-   __ https://www.drivethrurpg.com/product/110331/Heavens-Shadow
+   .. _The Mighty Six: https://www.drivethrurpg.com/product/123949/The-Mighty-Six
+   .. _Heaven's Shadow: https://www.drivethrurpg.com/product/110331/Heavens-Shadow
    .. _Breachworld RPG: https://www.drivethrurpg.com/product/141188/Breachworld-RPG
-   __ https://www.drivethrurpg.com/product/157066/Twilight-Fall
-   __ https://www.drivethrurpg.com/product/289545/Mutagen-RPG-Beta-Playtest
-   __ https://www.drivethrurpg.com/product/215176/Exilium-Core-Rules
-   __ https://www.drivethrurpg.com/product/233731/Summerland-Second-Edition
+   .. _Twilight Fall: https://www.drivethrurpg.com/product/157066/Twilight-Fall
+   .. _Mutagen RPG (Beta/Playtest): https://www.drivethrurpg.com/product/289545/Mutagen-RPG-Beta-Playtest
+   .. _Exilium Core Rules: https://www.drivethrurpg.com/product/215176/Exilium-Core-Rules
+   .. _Summerland Second Edition: https://www.drivethrurpg.com/product/233731/Summerland-Second-Edition
    
 
 .. [#adventures] Some `Mini Six` compatible adventures are:
@@ -212,9 +212,9 @@ pickup games.
 
 .. [#breachworld-adventure] There is an adventure for Breachworld on
    DriveThruRPG: `Breachworld Adventure Folio #1 - The Big Score
-   <https://www.drivethrurpg.com/product/175297/Breachworld-Adventure-Folio-1--The-Big-Score?term=breachworld++adventure>`_.
+   <https://www.drivethrurpg.com/product/175297/Breachworld-Adventure-Folio-1--The-Big-Score>`_.
 
-*Last edited: 2020-12-02 01:31:53 EST*
+*Last edited: 2020-12-18 11:26:28 EST*
 
 ..
    Local Variables:
