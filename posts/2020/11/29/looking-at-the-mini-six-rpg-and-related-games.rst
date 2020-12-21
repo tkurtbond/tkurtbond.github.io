@@ -58,7 +58,7 @@ each section.  It has 38 pages, counting the front and back covers.
 #.  Making the Game Your Own — **1 page**
 #.  Campaigning the TV Way and Converting Between Mini Six &
     Traditional OpenD6 — **1 page**
-#.  Sample Settings — **10 pages** total
+#.  Sample Settings — **12 pages** total
 
     a. The “Perdition” setting (inspired by series `Firefly` and the
        movie `Serenity`; 9 archetypes, 1 vehicle) — **2 pages**
@@ -214,7 +214,7 @@ pickup games.
    DriveThruRPG: `Breachworld Adventure Folio #1 - The Big Score
    <https://www.drivethrurpg.com/product/175297/Breachworld-Adventure-Folio-1--The-Big-Score>`_.
 
-*Last edited: 2020-12-18 11:26:28 EST*
+*Last edited: 2020-12-21 14:13:22 EST*
 
 ..
    Local Variables:
