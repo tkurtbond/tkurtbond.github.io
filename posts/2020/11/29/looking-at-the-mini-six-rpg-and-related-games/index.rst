@@ -26,6 +26,8 @@ character sheets as Google Doc documents.
 Games`_.  It is available as a PDF for free or POD at a small price
 at DriveThruRPG.
 
+It is a descendant of the 
+
 .. _AntiPaladin Games: http://www.antipaladingames.com/
 .. _`Mini Six: Bare Bones Edition`: https://www.drivethrurpg.com/product/144558/Mini-Six-Bare-Bones-Edition
 
@@ -73,8 +75,8 @@ each section.  It has 38 pages, counting the front and back covers.
        burns, Fog Hat, and Police Detectives; 4 archetypes, 1 vehicle)
        — **2 pages**
     #. The “Imperium in Revolt” setting (inspired by `Star Wars`,
-       harking back to the D6 system's origins in the `Star Wars: The
-       Roleplaying Game`__ of 1987; 11 archetypes, 7 vehicles) —
+       harking back to the D6 system's origins in the `Star Wars\: The
+       Roleplaying Game`_ of 1987; 11 archetypes, 7 vehicles) —
        **4 pages**
 
 #.  Character Sheet — **1 page**
@@ -84,7 +86,7 @@ each section.  It has 38 pages, counting the front and back covers.
 #.  Open Game License Version 1.0a — **1 page**
 #.  Back Cover (color) — **1 page**
 
-__ https://en.wikipedia.org/wiki/Star_Wars:_The_Roleplaying_Game
+.. _Star Wars\: The Roleplaying Game: https://en.wikipedia.org/wiki/Star_Wars:_The_Roleplaying_Game
 
 It really packs a lot into a small package, although it is generally
 light on detail.
@@ -109,20 +111,21 @@ I like it for many reasons:
   rolls to use them, which makes using them easy.
 • Attributes and Skills are connected.  Skills default to the dice
   rating of their associated Attribute, so you can always use a
-  skill, except for a very few skills.
+  skill, except for a very few exceptions.
 • Attributes and Skills are used by rolling them against set target
   numbers or opposing die rolls.
 • The rules for multiple actions in a round are particularly easy to
   use, suitable for games where the characters are competent.
 • Since the rules are short and the game mechanics relatively light it
-  is easy to customize.
-• It can be easily customized for a particular game or genre.
+  is easy to customize a particular game or genre.
 • Since the rules (but not the settings) are Open Content you can
   easily base a new game on it and release it for free or sell it.
   There are several `Mini Six`-based games on DriveThruRPG.com.\
   [#games]_
-• There is a royalty-free `Mini Six Trademark License`__ that allows you to
-  indicate that products you make are compatible with `Mini Six`.\ [#adventures]_
+• There is a royalty-free `Mini Six Trademark License`__ that allows
+  you to indicate that products you make are compatible with `Mini
+  Six`, and you can sell those products.  There are a few `Mini Six`
+  adventures\ [#adventures]_ for sale on DriveThruRPG.com.
 
 __ http://www.antipaladingames.com/p/license.html
 
@@ -147,7 +150,7 @@ pickup games.
    | **Complications:** Large debt (=ship)
    | **Gear:** tool kit, flight suit (+2), 2 blaster pistols (5D), macro binoculars, body armor (+6)
    | **Hero Points:** 1
-   | **WL:** S:1–3 □ W:4–8 □ SW:4–8 □ I:9–12 □ MW:13–16 □
+   | **WL:** S:1–3 □ W:4–8 □ SW:4–8 □ I:9–12 □ MW:13–15 □
 
 .. [#metacurrency]  I use metacurrency to mean something like
    a renewable resource that a player can spend to do something they
@@ -214,7 +217,7 @@ pickup games.
    DriveThruRPG: `Breachworld Adventure Folio #1 - The Big Score
    <https://www.drivethrurpg.com/product/175297/Breachworld-Adventure-Folio-1--The-Big-Score>`_.
 
-*Last edited: 2020-12-21 14:13:22 EST*
+*Last edited: 2020-12-28 11:21:46 EST*
 
 ..
    Local Variables:
