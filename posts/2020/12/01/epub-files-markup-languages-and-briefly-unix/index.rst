@@ -316,7 +316,7 @@ really must end this email!
 
    † The DocBook version of the document was derived from the ``troff -ms``
    source mentioned previously, though by the time the
-   conversion happened vaguely recall I no longer had access to a working
+   conversion happened I vaguely recall I no longer had access to a working
    :app:`unroff`, I think because of bitrot_. NetBSD_ has an :app:`unroff`
    `package <https://pkgsrc.se/textproc/unroff>`__ in its pkgsrc
    collection of program, and I could install it now on my NetBSD
@@ -334,7 +334,7 @@ really must end this email!
    seven (though it's not the seventh footnote, as it is actually the
    eighth!) and should really finish this email now.
 
-**P.P.S.** *Omitted for irrelevance**.
+**P.P.S.** *Omitted for irrelevance*.
 
 **P.P.P.S.** Sorry, no deeply nested parenthetical expressions this
 time!
@@ -373,7 +373,7 @@ throws`_ am I going to fail today anyway?
 .. _Saving Throws: https://en.wikipedia.org/wiki/Saving_throw
 
 
-*Last edited: 2020-12-10 12:18:24 EST*
+*Last edited: 2020-12-28 11:11:54 EST*
 
 ..
    Local Variables:
