@@ -1,7 +1,7 @@
 .. title: My Gaming Career
 .. slug: gaming-career
 .. date: 2008-08-02 11:42:50 UTC-05:00
-.. tags: unfinished,rpg,gaming,d&d,gurps,retro-clones,ad&d,moldvay/cook/marsh d&d,t&t,tunnels & trolls,gamma world,dragonquest,the enchanted wood,powers & perils,rolemaster,traveller,frontiers of alusia,spi,gurps,runequest,rq3,griffin island,elric!,brp,wfrp,rq2,call of cthulhu,tekumel,jorune,savage worlds,fudge,besm,wilderlands,tegel manor,badabaskor,caverns of thracia,d&d 3.5e,thunder rift,swords & wizardry,od&d,philotomy,judges guild,jg,b10,ready-ref sheets,road building
+.. tags: unfinished,rpg,gaming,d&d,gurps,retro-clone,ad&d,moldvay/cook/marsh d&d,t&t,tunnels & trolls,gamma world,dragonquest,the enchanted wood,powers & perils,rolemaster,traveller,frontiers of alusia,spi,gurps,runequest,rq3,griffin island,elric!,brp,wfrp,rq2,call of cthulhu,tekumel,jorune,savage worlds,fudge,besm,wilderlands,tegel manor,badabaskor,caverns of thracia,d&d 3.5e,thunder rift,swords & wizardry,od&d,philotomy,judges guild,jg,b10,ready-ref sheets,road building
 .. category: gaming
 .. link: 
 .. description: 
@@ -242,7 +242,7 @@ custom poker chips for wounds, shaken
    `3 <http://www.indie-rpgs.com/viewtopic.php?t=7104>`__,
    `4 <http://www.indie-rpgs.com/viewtopic.php?t=7863>`__).
 
-*Last edited: 2020-08-03 16:01:42 EDT*
+*Last edited: 2021-04-21 15:52:44 EDT*
 
 ..
    Local Variables:

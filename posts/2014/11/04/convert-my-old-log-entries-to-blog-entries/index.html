@@ -79,15 +79,15 @@ using the">
 Docbook-based website, and were presently part of my static
 Sphinx-based website, over to my current PyBlosxom blog tonight,
 using the following script:</p>
-<pre class="code text"><a name="rest_code_de2e0b4b02c640979b6e7ad5cf430647-1"></a>#! /usr/bin/env bash
-<a name="rest_code_de2e0b4b02c640979b6e7ad5cf430647-2"></a>find 200? -type f ! -name \*~ ! -name \*-idx-*.rst |
-<a name="rest_code_de2e0b4b02c640979b6e7ad5cf430647-3"></a>while read filename
-<a name="rest_code_de2e0b4b02c640979b6e7ad5cf430647-4"></a>do
-<a name="rest_code_de2e0b4b02c640979b6e7ad5cf430647-5"></a>    newname="$(echo $filename | sed 's#/#-#g')"
-<a name="rest_code_de2e0b4b02c640979b6e7ad5cf430647-6"></a>    date="$(basename $newname .rst)"
-<a name="rest_code_de2e0b4b02c640979b6e7ad5cf430647-7"></a>    (echo $date; echo "#published $date 00:00:00"; echo "#tags Old Blog";
-<a name="rest_code_de2e0b4b02c640979b6e7ad5cf430647-8"></a>        cat $filename) &gt;/home/tkb/myblog/entries/oldblog/$newname
-<a name="rest_code_de2e0b4b02c640979b6e7ad5cf430647-9"></a>done
+<pre class="code text"><a name="rest_code_73cb1503562642d1940bb9ce8ace4e06-1"></a>#! /usr/bin/env bash
+<a name="rest_code_73cb1503562642d1940bb9ce8ace4e06-2"></a>find 200? -type f ! -name \*~ ! -name \*-idx-*.rst |
+<a name="rest_code_73cb1503562642d1940bb9ce8ace4e06-3"></a>while read filename
+<a name="rest_code_73cb1503562642d1940bb9ce8ace4e06-4"></a>do
+<a name="rest_code_73cb1503562642d1940bb9ce8ace4e06-5"></a>    newname="$(echo $filename | sed 's#/#-#g')"
+<a name="rest_code_73cb1503562642d1940bb9ce8ace4e06-6"></a>    date="$(basename $newname .rst)"
+<a name="rest_code_73cb1503562642d1940bb9ce8ace4e06-7"></a>    (echo $date; echo "#published $date 00:00:00"; echo "#tags Old Blog";
+<a name="rest_code_73cb1503562642d1940bb9ce8ace4e06-8"></a>        cat $filename) &gt;/home/tkb/myblog/entries/oldblog/$newname
+<a name="rest_code_73cb1503562642d1940bb9ce8ace4e06-9"></a>done
 </pre>
 <p>I'll have to go through and fix uses of Sphinx-specific RST
 extensions, and I'll probably add real entry titles as I do so; in the
@@ -152,7 +152,7 @@ entry.  I think this was pretty good for a ½ hour's work.</p>
 </div>
 
 <footer class="blog-footer" id="footer">
-    Contents © 2020         <a href="mailto:tkurtbond@gmail.com">T. Kurt Bond</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+    Contents © 2021         <a href="mailto:tkurtbond@gmail.com">T. Kurt Bond</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
     
 </footer><script src="../../../../../assets/js/all-nocdn.js"></script><!-- fancy dates --><script>
     moment.locale("en");

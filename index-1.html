@@ -105,8 +105,7 @@ Turner.  These two books remind me in some ways of <a class="reference external"
         </p>
 </div>
     </header><div class="e-content entry-content">
-    <div class="section" id="monday-19-may-2003">
-<h2>Monday, 19 May 2003</h2>
+    <section id="monday-19-may-2003"><h2>Monday, 19 May 2003</h2>
 <p>As I mentioned <a class="reference external" href="posts/2003/05/08/2003-05-08-vms-code-from-the-past/">earlier</a>, VMS BASIC doesn't
 allow you to redimension dynamically allocated arrays inside
 procedures that they have been passed to as arguments.  One of the
@@ -114,8 +113,7 @@ folks at HP saw my <a class="reference external" href="http://groups.google.com/
 VMS BASIC engineer, who confirmed that my workaround was reasonable
 and should work, which was good to know, although I had tested it and
 it seemed to work fine.</p>
-</div>
-    <nav><ul itemprop="keywords" class="tags">
+</section><nav><ul itemprop="keywords" class="tags">
 <li><a class="tag p-category" href="categories/old-blog/" rel="tag">old blog</a></li>
         </ul></nav>
 </div>
@@ -131,8 +129,7 @@ it seemed to work fine.</p>
     </header><div class="e-content entry-content">
     <div>
 <p>These descriptions were part of or inspired by a <a class="reference external" href="http://groups.google.com/groups?hl=en&amp;lr=&amp;ie=UTF-8&amp;oe=UTF-8&amp;threadm=a3db6b24.0305092050.2fc139b1%40posting.google.com&amp;rnum=1&amp;prev=/groups%3Fq%3Dgroup:rec.games.frp.advocacy%2Bauthor:Kurt%2Bauthor:Bond%26hl%3Den%26lr%3D%26ie%3DUTF-8%26oe%3DUTF-8%26selm%3Da3db6b24.0305092050.2fc139b1%2540posting.google.com%26rnum%3D1">discussion</a> on <a class="reference external" href="news:rec.games.frp.advocacy">rec.games.frp.advocacy</a></p>
-<div class="section" id="epiphany">
-<h2>Epiphany</h2>
+<section id="epiphany"><h2>Epiphany</h2>
 <p>I don't think Epiphany's ranged combat is equivalent to Rock-Paper-
 Scissors, though.  In R/P/S each side chooses randomly between three
 choices and there is no intrinsic reason to choose one or the other.
@@ -157,9 +154,7 @@ Defense, which makes it even more like unlike R/P/S.</p>
 both indicate the what each side is doing by holding out fingers, but
 the choices behind and effects of those choices are very different, so
 this apparent similarity of finger- pointing is actually misleading.)</p>
-</div>
-<div class="section" id="nobilis">
-<h2>Nobilis</h2>
+</section><section id="nobilis"><h2>Nobilis</h2>
 <p>Nobilis is a bit more crunchy than most diceless games.  All Characters
 have four Attributes--Aspect, Domain, Realm, and Spirit-- which are
 rated from zero to five and describe the character's level of ability
@@ -173,7 +168,7 @@ that have a difficulty greater than the appropriate attribute require
 spending miracle points to succeed.  There are tables that indicate the
 level of power each level of difficulty provides, and there are lists
 of example actions and their difficulty levels.</p>
-</div>
+</section>
 </div>
     <nav><ul itemprop="keywords" class="tags">
 <li><a class="tag p-category" href="categories/epiphany/" rel="tag">epiphany</a></li>
@@ -243,8 +238,7 @@ VMS, with extensive homegrown applications written in VMS BASIC and
 using the POISE SPL API.</p>
 </dd>
 </dl>
-<div class="section" id="id5">
-<h2>2014-11-03</h2>
+<section id="id5"><h2>2014-11-03</h2>
 <p>Here's the text of my post to comp.os.vms:</p>
 <blockquote>
 <p>The BASIC for OpenVMS Reference Manual says, in the fifth item of the
@@ -277,58 +271,58 @@ and is probably bad style.  However, are there any <em>practical</em>
 reasons why this wouldn't work safely?  Are there any
 conditions under which this hack would fail to work?</p>
 <p>Here is an example program:</p>
-<pre class="code text"><a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-1"></a>program redim
-<a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-2"></a>    option type = explicit, constant type = integer, &amp;
-<a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-3"></a>        size = integer long, size = real double
-<a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-4"></a>
-<a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-5"></a>    external sub redim_in_sub (string dim())
-<a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-6"></a>    external long function my_redim (string dim(), long)
-<a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-7"></a>
-<a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-8"></a>    declare long i, r
-<a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-9"></a>
-<a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-10"></a>    i = 10
-<a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-11"></a>    dim string vs(i) ! has to be a variable to make it an executable dim.
-<a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-12"></a>
-<a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-13"></a>    r = my_redim (vs(), 30)
-<a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-14"></a>    print "ubound(vs):"; ubound(vs)
-<a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-15"></a>    for i = lbound(vs) to ubound(vs) \ vs(i) = "vs 30-" + num1$(i) \ next i
-<a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-16"></a>    gosub print_vs
-<a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-17"></a>
-<a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-18"></a>    call redim_in_sub (vs())
-<a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-19"></a>    print "ubound(vs):"; ubound(vs)
-<a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-20"></a>    gosub print_Vs
-<a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-21"></a>
-<a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-22"></a>    exit program
-<a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-23"></a>
-<a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-24"></a>print_vs:
-<a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-25"></a>    for i = lbound(vs) to ubound(vs) \ print i; ": "; vs(i) \ next i
-<a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-26"></a>    return ! from print_vs
-<a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-27"></a>
-<a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-28"></a>end program ! redim
-<a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-29"></a>
-<a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-30"></a>function long my_redim (long s by value, long n)
-<a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-31"></a>    option type = explicit, constant type = integer, &amp;
-<a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-32"></a>        size = integer long, size = real double
-<a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-33"></a>    declare long r
-<a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-34"></a>    external long function dbasic$rt_dim (long by value, long by value)
-<a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-35"></a>    r = dbasic$rt_dim (s, n)
-<a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-36"></a>end function r ! my_redim
-<a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-37"></a>
-<a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-38"></a>sub redim_in_sub (string s())
-<a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-39"></a>    option type = explicit, constant type = integer, &amp;
-<a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-40"></a>        size = integer long, size = real double
-<a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-41"></a>    external sub set_strings (string dim(), string)
-<a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-42"></a>    declare long i
-<a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-43"></a>    call my_redim (s(), 40)
-<a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-44"></a>    for i = 0 to 40 \ s(i) = "redim in sub " + num1$(i) \ next i
-<a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-45"></a>end sub ! redim_in_sub
+<pre class="code text"><a name="rest_code_b6fb157abb2b4e0e956fddb020bcaefe-1"></a>program redim
+<a name="rest_code_b6fb157abb2b4e0e956fddb020bcaefe-2"></a>    option type = explicit, constant type = integer, &amp;
+<a name="rest_code_b6fb157abb2b4e0e956fddb020bcaefe-3"></a>        size = integer long, size = real double
+<a name="rest_code_b6fb157abb2b4e0e956fddb020bcaefe-4"></a>
+<a name="rest_code_b6fb157abb2b4e0e956fddb020bcaefe-5"></a>    external sub redim_in_sub (string dim())
+<a name="rest_code_b6fb157abb2b4e0e956fddb020bcaefe-6"></a>    external long function my_redim (string dim(), long)
+<a name="rest_code_b6fb157abb2b4e0e956fddb020bcaefe-7"></a>
+<a name="rest_code_b6fb157abb2b4e0e956fddb020bcaefe-8"></a>    declare long i, r
+<a name="rest_code_b6fb157abb2b4e0e956fddb020bcaefe-9"></a>
+<a name="rest_code_b6fb157abb2b4e0e956fddb020bcaefe-10"></a>    i = 10
+<a name="rest_code_b6fb157abb2b4e0e956fddb020bcaefe-11"></a>    dim string vs(i) ! has to be a variable to make it an executable dim.
+<a name="rest_code_b6fb157abb2b4e0e956fddb020bcaefe-12"></a>
+<a name="rest_code_b6fb157abb2b4e0e956fddb020bcaefe-13"></a>    r = my_redim (vs(), 30)
+<a name="rest_code_b6fb157abb2b4e0e956fddb020bcaefe-14"></a>    print "ubound(vs):"; ubound(vs)
+<a name="rest_code_b6fb157abb2b4e0e956fddb020bcaefe-15"></a>    for i = lbound(vs) to ubound(vs) \ vs(i) = "vs 30-" + num1$(i) \ next i
+<a name="rest_code_b6fb157abb2b4e0e956fddb020bcaefe-16"></a>    gosub print_vs
+<a name="rest_code_b6fb157abb2b4e0e956fddb020bcaefe-17"></a>
+<a name="rest_code_b6fb157abb2b4e0e956fddb020bcaefe-18"></a>    call redim_in_sub (vs())
+<a name="rest_code_b6fb157abb2b4e0e956fddb020bcaefe-19"></a>    print "ubound(vs):"; ubound(vs)
+<a name="rest_code_b6fb157abb2b4e0e956fddb020bcaefe-20"></a>    gosub print_Vs
+<a name="rest_code_b6fb157abb2b4e0e956fddb020bcaefe-21"></a>
+<a name="rest_code_b6fb157abb2b4e0e956fddb020bcaefe-22"></a>    exit program
+<a name="rest_code_b6fb157abb2b4e0e956fddb020bcaefe-23"></a>
+<a name="rest_code_b6fb157abb2b4e0e956fddb020bcaefe-24"></a>print_vs:
+<a name="rest_code_b6fb157abb2b4e0e956fddb020bcaefe-25"></a>    for i = lbound(vs) to ubound(vs) \ print i; ": "; vs(i) \ next i
+<a name="rest_code_b6fb157abb2b4e0e956fddb020bcaefe-26"></a>    return ! from print_vs
+<a name="rest_code_b6fb157abb2b4e0e956fddb020bcaefe-27"></a>
+<a name="rest_code_b6fb157abb2b4e0e956fddb020bcaefe-28"></a>end program ! redim
+<a name="rest_code_b6fb157abb2b4e0e956fddb020bcaefe-29"></a>
+<a name="rest_code_b6fb157abb2b4e0e956fddb020bcaefe-30"></a>function long my_redim (long s by value, long n)
+<a name="rest_code_b6fb157abb2b4e0e956fddb020bcaefe-31"></a>    option type = explicit, constant type = integer, &amp;
+<a name="rest_code_b6fb157abb2b4e0e956fddb020bcaefe-32"></a>        size = integer long, size = real double
+<a name="rest_code_b6fb157abb2b4e0e956fddb020bcaefe-33"></a>    declare long r
+<a name="rest_code_b6fb157abb2b4e0e956fddb020bcaefe-34"></a>    external long function dbasic$rt_dim (long by value, long by value)
+<a name="rest_code_b6fb157abb2b4e0e956fddb020bcaefe-35"></a>    r = dbasic$rt_dim (s, n)
+<a name="rest_code_b6fb157abb2b4e0e956fddb020bcaefe-36"></a>end function r ! my_redim
+<a name="rest_code_b6fb157abb2b4e0e956fddb020bcaefe-37"></a>
+<a name="rest_code_b6fb157abb2b4e0e956fddb020bcaefe-38"></a>sub redim_in_sub (string s())
+<a name="rest_code_b6fb157abb2b4e0e956fddb020bcaefe-39"></a>    option type = explicit, constant type = integer, &amp;
+<a name="rest_code_b6fb157abb2b4e0e956fddb020bcaefe-40"></a>        size = integer long, size = real double
+<a name="rest_code_b6fb157abb2b4e0e956fddb020bcaefe-41"></a>    external sub set_strings (string dim(), string)
+<a name="rest_code_b6fb157abb2b4e0e956fddb020bcaefe-42"></a>    declare long i
+<a name="rest_code_b6fb157abb2b4e0e956fddb020bcaefe-43"></a>    call my_redim (s(), 40)
+<a name="rest_code_b6fb157abb2b4e0e956fddb020bcaefe-44"></a>    for i = 0 to 40 \ s(i) = "redim in sub " + num1$(i) \ next i
+<a name="rest_code_b6fb157abb2b4e0e956fddb020bcaefe-45"></a>end sub ! redim_in_sub
 </pre>
 <p>(Interestingly, a slightly different approach was necessary using VAX
 BASIC V3.5 under VMS V5.5-2: using BY VALUE in function
 definition statements is not allowed by this version of VAX BASIC,
 and BAS$RT_DIM had to be used instead of DBASIC$RT_DIM, of course.)</p>
 </blockquote>
-</div>
+</section>
 </div>
     <nav><ul itemprop="keywords" class="tags">
 <li><a class="tag p-category" href="categories/basic/" rel="tag">basic</a></li>
@@ -446,16 +440,12 @@ example characters, and the farm from the adventure “The Herbmaster's
 Plea”, which starts on page 94 of <em>GURPS Bunnies &amp; Burrows</em> and uses
 the farm map from page 97.  My notes are <em>very</em> sketchy, not even
 including who played.</p>
-<div class="section" id="attending">
-<h2>Attending</h2>
+<section id="attending"><h2>Attending</h2>
 <ul class="simple">
 <li><p>T.K.B. — GM</p></li>
 <li><p>B.B. — a bunny</p></li>
 <li><p>T.A. — maybe; watching us play?</p></li>
-</ul>
-</div>
-<div class="section" id="actual-play">
-<h2>Actual Play</h2>
+</ul></section><section id="actual-play"><h2>Actual Play</h2>
 <p>A mother is wailing about her missing kit.</p>
 <p>My original notes, transcribed:</p>
 <blockquote>
@@ -481,7 +471,7 @@ what actually happened during the session.</p>
 <p class="admonition-title">Note</p>
 <p>This is a <a class="reference external" href="posts/2008/07/07/new-blog-first-post/">timewarp</a> entry.</p>
 </div>
-</div>
+</section>
 </div>
     <nav><ul itemprop="keywords" class="tags">
 <li><a class="tag p-category" href="categories/bunnies-burrows/" rel="tag">bunnies &amp; burrows</a></li>
@@ -506,8 +496,7 @@ what actually happened during the session.</p>
 <p class="admonition-title">Spoilers!</p>
 <p><em>GURPS Bunnies &amp; Burrows</em>, “The Herbmaster's Plea”, p. 94.</p>
 </div>
-<div class="section" id="attending">
-<h2>Attending</h2>
+<section id="attending"><h2>Attending</h2>
 <p>I'm guessing at who attended (although I know B.B. was definitely
 there) based on player names printed on the character sheets, but they
 may or may not have played in this session.  I think they did, because
@@ -518,10 +507,7 @@ fled.” in my original notes.</p>
 <li><p>B.B. — Chamomile, a bunny</p></li>
 <li><p>C.B. — Nimble, a bunny</p></li>
 <li><p>P.B. —</p></li>
-</ul>
-</div>
-<div class="section" id="actual-play">
-<h2>Actual Play</h2>
+</ul></section><section id="actual-play"><h2>Actual Play</h2>
 <p>I ran the first example adventure from <em>GURPS Bunnies &amp; Burrows</em>, “The
 Herbmaster's Plea”, p. 94, for my nephew B.B. using
 <a class="reference external" href="http://www.fudgerpg.com/">Fudge</a>. <a class="footnote-reference brackets" href="posts/2001/01/27/bnb-fudge-bunnies-n-burrows-session-1/#bunnies-sos" id="id1">1</a> He successfully rescued Rosin.  Ended up in
@@ -542,8 +528,7 @@ various of the <a class="reference external" href="categories/cat_gaming/actual-
 <em>GURPS Bunnies &amp; Burrows</em> <a class="reference external" href="http://www.panix.com/~sos/rpg/bunny.html">uses</a> for playing <em>Bunnies &amp; Burrows</em>
 since creating <em>Fudge</em>.</p>
 </dd>
-</dl>
-</div>
+</dl></section>
 </div>
     <nav><ul itemprop="keywords" class="tags">
 <li><a class="tag p-category" href="categories/actual-play/" rel="tag">actual-play</a></li>
@@ -588,7 +573,7 @@ since creating <em>Fudge</em>.</p>
 </div>
 
 <footer class="blog-footer" id="footer">
-    Contents © 2020         <a href="mailto:tkurtbond@gmail.com">T. Kurt Bond</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+    Contents © 2021         <a href="mailto:tkurtbond@gmail.com">T. Kurt Bond</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
     
 </footer><script src="assets/js/all-nocdn.js"></script><!-- fancy dates --><script>
     moment.locale("en");

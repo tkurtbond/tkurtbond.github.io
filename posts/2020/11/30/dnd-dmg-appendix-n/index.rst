@@ -44,7 +44,7 @@ from which grow the fruits of exciting campaigns.  Good reading!
 * Bellairs, John.  THE FACE IN THE FROST
 * Brackett, Leigh.
 * Brown, Fredric.
-* Burroughs, Edgar Rice. “Pellucidar” Serries; Mars Series; Venus Series
+* Burroughs, Edgar Rice. “Pellucidar” Series; Mars Series; Venus Series
 * Carter, Lin: “World's End” Series
 * de Camp, L. Sprague. LEST DARKNESS FALL; FALLIBLE FIEND; et al.
 * de Camp & Prat.  “Harold Shea” Series; CARNELIAN CUBE
