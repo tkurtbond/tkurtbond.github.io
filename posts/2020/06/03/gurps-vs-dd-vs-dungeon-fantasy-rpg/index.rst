@@ -1,7 +1,7 @@
 .. title: GURPS vs. D&D vs. Dungeon Fantasy RPG
 .. slug: gurps-vs-dd-vs-dungeon-fantasy-rpg
 .. date: 2020-06-03 13:40:27 UTC-04:00
-.. tags: rpg,gurps,dnd,dungeon fantasy rpg
+.. tags: rpg,gurps,d&d,dungeon fantasy rpg
 .. category: gaming
 .. link: 
 .. description: 
