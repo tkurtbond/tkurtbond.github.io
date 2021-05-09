@@ -134,3 +134,12 @@ will let you download it.
 .. _spreadsheet: /mini-six-wild-die-target-number-odds.ods
 .. _PDF: /mini-six-wild-die-target-number-odds.pdf
 .. _ReStructuredText: https://docutils.sourceforge.io/rst.html
+
+
+Perhaps more immediately understandable is this screenshot of the the
+results in graph mode:
+
+.. image:: /images/mini-six-odds-of-hitting-a-target-number.png
+
+(Right-clicking the image might give you the option to open the image
+in a new tab, where you'll see it at full size.)
