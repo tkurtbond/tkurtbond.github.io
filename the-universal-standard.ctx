@@ -1,0 +1,139 @@
+\setupinteraction[state=start]
+\placebookmarks[section,subsection,subsection][section,subsection]
+\setupinteractionscreen[option=bookmark]
+\ifnum0=1
+\setuppapersize[letter]
+\setuplayout[
+  backspace=0.75in,
+  width=7in,
+  topspace=0.625in,
+  top=0in,
+  topdistance=0in,
+  header=0in,
+  headerdistance=0in,
+  bottom=0.25in,
+  bottomdistance=0.125in,
+  footer=0.25in,
+  footerdistance=0.25in,
+  height=9.875in]
+\else
+\definepapersize[digest][height=8.5in,width=5.5in]
+\setuppapersize     [digest][digest]
+\setuplayout[
+  backspace=0.5in,
+  width=4.5in,
+  topspace=0.5in,
+  top=0in,
+  topdistance=0in,
+  header=0in,
+  headerdistance=0in,
+  bottom=0.25in,
+  bottomdistance=0.125in,
+  footer=0.25in,
+  footerdistance=0.25in,
+  height=7.75in]
+\fi
+%\setupalign[line]
+\setuppagenumbering[none]%location={footer,middle}]
+\setupindenting[no]
+\setupalign[hz,hanging]
+\setuphead[section][style=\bfb,after={},before={\blank[medium]},number=no]
+\setuphead[subsection][style=\bfa,after={},number=no]
+
+\definefontfamily[mainface][rm][Optima]
+\definefontfamily[mainface][mm][Optima]
+\definefontfamily[mainface][ss][Optima]
+\definefontfamily[mainface][tt][TeX Gyre Cursor][features=none]
+\setupbodyfont[mainface,10pt]
+
+\definecolor[back-3][r=.8,g=.8,b=.8]
+
+\starttext
+
+\startalignment[center]
+  {\tfa\bf The Universal Standard}
+\stopalignment
+\blank[halfline]
+\bgroup
+\setupTABLE[background=color,frame=off,framecolor=white]
+%\setupTABLE[frame=off,offset=0.25pt]
+\setupTABLE[column][1][width=3em]
+\setupTABLE[column][2][
+  width=4em,
+  alignmentcharacter={.},
+  aligncharacter=yes,
+  align=middle,
+  alignmentmode=2]
+\setupTABLE[row][odd][backgroundcolor=back-3]
+\setupTABLE[row][1][topframe=on,bottomframe=on,framecolor=black,rulethickness=0.75pt]
+\setupTABLE[row][-1][bottomframe=on,framecolor=black,rulethickness=0.75pt]
+\bTABLE
+\bTR\bTD {\bf Die Code}\eTD\bTD {\bf Average Roll} \eTD\bTD {\bf Description} \eTD\eTR
+\bTR\bTD 1D   \eTD\bTD 3.5  \eTD\bTD Below Human average for an attribute.\eTD\eTR
+\bTR\bTD 2D   \eTD\bTD 7.0  \eTD\bTD Human average for an attribute and many skills.\eTD\eTR
+\bTR\bTD 3D   \eTD\bTD 10.5 \eTD\bTD Average level of training for a Human.\eTD\eTR
+\bTR\bTD 4D   \eTD\bTD 14.0 \eTD\bTD Professional level of training for a Human.\eTD\eTR
+\bTR\bTD 5D   \eTD\bTD 17.5 \eTD\bTD Above average expertise.\eTD\eTR
+\bTR\bTD 6D   \eTD\bTD 21.0 \eTD\bTD Considered about the best in a city or 
+                                     geographic area. 1 in 100,000 people will 
+                                     have training to this skill level.\eTD\eTR
+\bTR\bTD 7D   \eTD\bTD 24.5 \eTD\bTD Among the best on the continent. About 1 in
+                                     10,000,000 people will have training to 
+                                     this skill level.\eTD\eTR
+\bTR\bTD 8D   \eTD\bTD 28.0 \eTD\bTD Among the best on a planet. About 1 in 
+                                     100,000,000 people will have training to 
+                                     this skill level.\eTD\eTR
+\bTR\bTD 9D   \eTD\bTD 31.5 \eTD\bTD One of the best of several systems in the 
+                                     immediate area. About 1 in a billion 
+                                     people have a skill at this level.\eTD\eTR
+\bTR\bTD 10D  \eTD\bTD 35.0 \eTD\bTD One of the best in a sector.\eTD\eTR
+\bTR\bTD 11D  \eTD\bTD 38.5 \eTD\bTD \eTD\eTR
+\bTR\bTD 12D  \eTD\bTD 42.0 \eTD\bTD One of the best in a region.\eTD\eTR
+\bTR\bTD 13D  \eTD\bTD 45.5 \eTD\bTD \eTD\eTR
+\bTR\bTD 14D+ \eTD\bTD 49.0 \eTD\bTD Among the best in the galaxy.\eTD\eTR
+\eTABLE
+\blank[halfline]
+{\bf Note:} The wild die adds 0.7 to the average result.
+\egroup
+%\blank[line]
+\pagebreak
+\startalignment[center]
+  {\tfa\bf Standard Difficulties}
+\blank[halfline]
+\bgroup
+\setupTABLE[background=color,frame=off,framecolor=white]
+\setupTABLE[column][1]
+\setupTABLE[column][2][align=middle]
+\setupTABLE[row][odd][backgroundcolor=back-3]
+\setupTABLE[row][1][topframe=on,bottomframe=on,framecolor=black,rulethickness=0.75pt]
+\setupTABLE[row][-1][bottomframe=on,framecolor=black,rulethickness=0.75pt]
+\bTABLE
+\bTR\bTD {\bf Difficulty} \eTD\bTD {\bf Target \#} \eTD\bTD {\bf Description} \eTD\eTR
+\bTR\bTD Very Easy        \eTD\bTD 2–5             \eTD\bTD Nearly everyone can do it. These checks should
+                                                            only be made if a success is critical to the
+                                                            scenario at hand.\eTD\eTR
+\bTR\bTD Easy             \eTD\bTD 6–10            \eTD\bTD Player characters will seldom have trouble with
+                                                            these tasks, but an untrained individual may find
+                                                            them challenging.\eTD\eTR  
+\bTR\bTD Moderate         \eTD\bTD 11–15           \eTD\bTD Average characters have a reasonable chance of
+                                                            failing at this level. Consistent success often
+                                                            requires training in the skill or a high level of
+                                                            natural ability.\eTD\eTR
+\bTR\bTD Difficult        \eTD\bTD 16–20           \eTD\bTD Tasks at this level are truly challenging. To succeed,
+                                                            a character needs to be well skilled or very
+                                                            lucky.\eTD\eTR
+\bTR\bTD Very Difficult   \eTD\bTD 21–30           \eTD\bTD Challenges of this level fall into the domain of
+                                                            masters in the skill being used; few others will
+                                                            succeed at them.\eTD\eTR
+\bTR\bTD Heroic           \eTD\bTD 31+             \eTD\bTD These challenges are almost impossible. Only the
+                                                            very lucky or true masters can consistently
+                                                            succeed at them.\eTD\eTR
+\eTABLE
+\egroup
+\stopalignment
+
+\stoptext
+
+% Local Variables:
+% compile-command: "context the-universal-standard.ctx && op the-universal-standard.pdf"
+% End:

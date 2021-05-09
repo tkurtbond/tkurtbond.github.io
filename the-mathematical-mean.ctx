@@ -1,0 +1,519 @@
+\definemode[explain][yes]
+\definemode[digest][yes]
+\setupinteraction[state=start,color=darkblue]
+\placebookmarks[section,subsection,subsection][section,subsection]
+\setupinteractionscreen[option=bookmark]
+
+\setuppapersize[letter]
+\setuplayout[
+  backspace=0.75in,
+  width=7in,
+  topspace=0.625in,
+  top=0in,
+  topdistance=0in,
+  header=0in,
+  headerdistance=0in,
+  bottom=0.25in,
+  bottomdistance=0.125in,
+  footer=0.25in,
+  footerdistance=0.25in,
+  height=9.875in]
+
+\startmode[digest]
+\definepapersize[digest][height=8.5in,width=5.5in]
+\setuppapersize     [digest][digest]
+\setuplayout[
+  backspace=0.5in,
+  width=4.5in,
+  topspace=0.5in,
+  top=0in,
+  topdistance=0in,
+  header=0in,
+  headerdistance=0in,
+  bottom=0.25in,
+  bottomdistance=0.125in,
+  footer=0.25in,
+  footerdistance=0.25in,
+  height=7.75in]
+\stopmode
+
+%\setupalign[line]
+\setuppagenumbering[location={footer,middle}]
+\setupwhitespace[medium]
+\setupindenting[no]
+\setupalign[hz,hanging]
+\setuphead[section][style=\bfb,after={},before={\blank[medium]},number=no]
+\setuphead[subsection][style=\bfa,after={},number=no]
+
+\definefontfamily[mainface][rm][Optima]
+\definefontfamily[mainface][mm][Optima]
+\definefontfamily[mainface][ss][Optima]
+\definefontfamily[mainface][tt][TeX Gyre Cursor][features=none]
+\setupbodyfont[mainface,10pt]
+
+\useURL[mean][http://opend6project.org/?page_id=53][][The Mathematical Mean]
+
+\definecolor[back][r=.8,g=.8,b=.8]
+
+\def\TableBackgroundColour{%
+  \ifnum\currentxtablerow>2
+    \ifodd\currentxtablerow
+      back%
+    \fi
+  \fi
+}
+\setupxtable[
+  frame=off,
+  split=yes,
+  header=repeat,
+  option={stretch},
+  background=color,
+  backgroundcolor=\TableBackgroundColour,
+]
+
+\starttext
+\startalignment[center]
+  {\tfa\bf \goto{The Mathematical Mean}[url(http://opend6project.org/?page_id=53)]}
+\stopalignment
+\blank
+
+\startnotmode[digest]
+\startcolumns[n=2]
+\stopnotmode
+
+From \goto{The OpenD6 Project}[url(http://opend6project.org/)],
+Introduction, \goto{The Mathematical
+  Mean}[url(http://opend6project.org/?page_id=53)].
+
+\startmode[explain]
+
+In the standard rules, traits are rated by whole and partial increments
+of six-sided dice. A whole die increment is written as “1D”, where the
+integer denotes a number of dice to be rolled and totaled. Partial die
+increments are written as “1D+1”, where the primary identity denotes a
+number of dice to be rolled and totaled, and the secondary identity
+denotes an absolute value to be added to the sum total.
+
+Conflict resolution in OpenD6 is based on a standardized difficulty
+scale that is adjusted for the mathematical mean of a given trait score.
+
+On this difficulty scale, a “Moderate” difficulty is defined as a number
+approximating the mean roll of a trait score totaling between 3D and 4D,
+so that the sum total of a trait roll will equal or exceed the
+difficulty on approximately 50\letterpercent{} of a given set of
+iterations. Difficulties are then derived mathematically in multiples of
+3.5, where the corresponding descriptive value is derived in multiples
+of 5. Each die code corresponds to a difficulty computed using a fixed
+value equal to 3.5x the whole die increment, and adding the partial die
+increments (pips) to the sum total.
+
+The purpose of defining a “Moderate” difficulty with this range of
+values is to approximate a 50\letterpercent{} success ratio for the most
+common trait totals assigned to protagonists and antagonists within the
+system, as well as to provide an increasing success ratio to higher
+trait totals. The 50\letterpercent{} success ratio can be adjusted along
+a sliding scale to correspond to higher trait totals.
+
+The purpose of providing descriptive values for each numerical value
+allows difficulties to be evaluated quickly relative to a baseline trait
+score of 3D.
+\stopmode
+
+
+\startplacetable[location=none]
+\startxtable
+\startxtablehead
+\startxrow[topframe=on,bottomframe=off,framecolor=black,rulethickness=1pt]
+\startxcell[nx=4,align=center] {\bf Standardized Difficulty Table}
+
+ \stopxcell
+\stopxrow
+\startxrow[topframe=off,bottomframe=off,framecolor=black,rulethickness=0.25pt]
+\startxcell {\bf Description}
+
+ \stopxcell
+\startxcell {\bf Difficulty}
+
+ \stopxcell
+\startxcell {\bf Die Code}
+
+ \stopxcell
+\startxcell {\bf Mean Result}
+
+ \stopxcell
+\stopxrow
+\stopxtablehead
+\startxtablebody[body]
+\startxrow[topframe=on,framecolor=black,rulethickness=1pt]
+\startxcell Very Easy
+
+ \stopxcell
+
+\startxcell 1
+
+ \stopxcell
+\startxcell 1
+
+ \stopxcell
+\startxcell 1
+
+ \stopxcell
+\stopxrow
+\startxrow
+\startxcell  \stopxcell
+\startxcell 2
+
+ \stopxcell
+\startxcell 2
+
+ \stopxcell
+\startxcell 2
+
+ \stopxcell
+\stopxrow
+\startxrow
+\startxcell  \stopxcell
+\startxcell 3
+
+ \stopxcell
+\startxcell  \stopxcell
+\startxcell  \stopxcell
+\stopxrow
+\startxrow
+\startxcell  \stopxcell
+\startxcell 4
+
+ \stopxcell
+\startxcell 1D
+
+ \stopxcell
+\startxcell 3.5
+
+ \stopxcell
+\stopxrow
+\startxrow
+\startxcell  \stopxcell
+\startxcell 5
+
+ \stopxcell
+\startxcell 1D+1
+
+ \stopxcell
+\startxcell 4.5
+
+ \stopxcell
+\stopxrow
+\startxrow
+\startxcell Easy
+
+ \stopxcell
+\startxcell 6
+
+ \stopxcell
+\startxcell 1D+2
+
+ \stopxcell
+\startxcell 5.5
+
+ \stopxcell
+\stopxrow
+\startxrow
+\startxcell  \stopxcell
+\startxcell 7
+
+ \stopxcell
+\startxcell 2D
+
+ \stopxcell
+\startxcell 7
+
+ \stopxcell
+\stopxrow
+\startxrow
+\startxcell  \stopxcell
+\startxcell 8
+
+ \stopxcell
+\startxcell 2D+1
+
+ \stopxcell
+\startxcell 8
+
+ \stopxcell
+\stopxrow
+\startxrow
+\startxcell  \stopxcell
+\startxcell 9
+
+ \stopxcell
+\startxcell 2D+2
+
+ \stopxcell
+\startxcell 9
+
+ \stopxcell
+\stopxrow
+\startxrow
+\startxcell  \stopxcell
+\startxcell 10
+
+ \stopxcell
+\startxcell  \stopxcell
+\startxcell  \stopxcell
+\stopxrow
+\startxrow
+\startxcell Moderate
+
+ \stopxcell
+\startxcell 11
+
+ \stopxcell
+\startxcell 3D
+
+ \stopxcell
+\startxcell 10.5
+
+ \stopxcell
+\stopxrow
+\startxrow
+\startxcell  \stopxcell
+\startxcell 12
+
+ \stopxcell
+\startxcell 3D+1
+
+ \stopxcell
+\startxcell 11.5
+
+ \stopxcell
+\stopxrow
+\startxrow
+\startxcell  \stopxcell
+\startxcell 13
+
+ \stopxcell
+\startxcell 3D+2
+
+ \stopxcell
+\startxcell 12.5
+
+ \stopxcell
+\stopxrow
+\startxrow
+\startxcell  \stopxcell
+\startxcell 14
+
+ \stopxcell
+\startxcell 4D
+
+ \stopxcell
+\startxcell 14
+
+ \stopxcell
+\stopxrow
+\startxrow
+\startxcell  \stopxcell
+\startxcell 15
+
+ \stopxcell
+\startxcell 4D+1
+
+ \stopxcell
+\startxcell 15
+
+ \stopxcell
+\stopxrow
+\startxrow
+\startxcell Difficult
+
+ \stopxcell
+\startxcell 16
+
+ \stopxcell
+\startxcell 4D+2
+
+ \stopxcell
+\startxcell 16
+
+ \stopxcell
+\stopxrow
+\startxrow
+\startxcell  \stopxcell
+\startxcell 17
+
+ \stopxcell
+\startxcell  \stopxcell
+\startxcell  \stopxcell
+\stopxrow
+\startxrow
+\startxcell  \stopxcell
+\startxcell 18
+
+ \stopxcell
+\startxcell 5D
+
+ \stopxcell
+\startxcell 17.5
+
+ \stopxcell
+\stopxrow
+\startxrow
+\startxcell  \stopxcell
+\startxcell 19
+
+ \stopxcell
+\startxcell 5D+1
+
+ \stopxcell
+\startxcell 18.5
+
+ \stopxcell
+\stopxrow
+\startxrow
+\startxcell  \stopxcell
+\startxcell 20
+
+ \stopxcell
+\startxcell 5D+2
+
+ \stopxcell
+\startxcell 19.5
+
+ \stopxcell
+\stopxrow
+\startxrow
+\startxcell Very Difficult
+
+ \stopxcell
+\startxcell 21
+
+ \stopxcell
+\startxcell 6D
+
+ \stopxcell
+\startxcell 21
+
+ \stopxcell
+\stopxrow
+\startxrow
+\startxcell  \stopxcell
+\startxcell 22
+
+ \stopxcell
+\startxcell 6D+1
+
+ \stopxcell
+\startxcell 22
+
+ \stopxcell
+\stopxrow
+\startxrow
+\startxcell  \stopxcell
+\startxcell 23
+
+ \stopxcell
+\startxcell 6D+2
+
+ \stopxcell
+\startxcell 23
+
+ \stopxcell
+\stopxrow
+\startxrow
+\startxcell  \stopxcell
+\startxcell 24
+
+ \stopxcell
+\startxcell  \stopxcell
+\startxcell  \stopxcell
+\stopxrow
+\startxrow
+\startxcell  \stopxcell
+\startxcell 25
+
+ \stopxcell
+\startxcell 7D
+
+ \stopxcell
+\startxcell 24
+
+ \stopxcell
+\stopxrow
+\startxrow
+\startxcell Heroic
+
+ \stopxcell
+\startxcell 26
+
+ \stopxcell
+\startxcell 7D+1
+
+ \stopxcell
+\startxcell 25.5
+
+ \stopxcell
+\stopxrow
+\startxrow
+\startxcell  \stopxcell
+\startxcell 27
+
+ \stopxcell
+\startxcell 7D+2
+
+ \stopxcell
+\startxcell 26.5
+
+ \stopxcell
+\stopxrow
+\startxrow
+\startxcell  \stopxcell
+\startxcell 28
+
+ \stopxcell
+\startxcell 8D
+
+ \stopxcell
+\startxcell 28
+
+ \stopxcell
+\stopxrow
+\startxrow
+\startxcell  \stopxcell
+\startxcell 29
+
+ \stopxcell
+\startxcell 8D+1
+
+ \stopxcell
+\startxcell 29
+
+ \stopxcell
+\stopxrow
+\stopxtablebody
+\startxtablefoot[foot]
+\startxrow[bottomframe=on,framecolor=black,rulethickness=1pt]
+\startxcell  \stopxcell
+\startxcell 30
+
+ \stopxcell
+\startxcell 8D+2
+
+ \stopxcell
+\startxcell 30
+
+ \stopxcell
+\stopxrow
+\stopxtablefoot
+\stopxtable
+\stopplacetable
+
+
+\startnotmode[digest]
+\stopcolumns
+\stopnotmode
+
+\stoptext
+
+% Local Variables:
+% compile-command: "context the-mathematical-mean.ctx && op the-mathematical-mean.pdf"
+% End:

@@ -1,0 +1,1291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mini Six Odds of Hitting a Target Number | Lacking Natural Simplicity</title>
+<link href="../../../../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../../../../rss.xml">
+<link rel="canonical" href="https://tkurtbond.github.io/posts/2021/05/08/mini-six-odds-of-hitting-a-target-number/">
+<!--[if lt IE 9]><script src="../../../../../assets/js/html5.js"></script><![endif]--><meta name="author" content="T. Kurt Bond">
+<link rel="prev" href="../../../../2020/12/11/mime-and-gmail-vs-other-mailers/" title="MIME and Gmail vs other mailers" type="text/html">
+<link rel="next" href="../../09/d6-system-the-universal-standard-and-standard-difficulties/" title="D6 System: The Universal Standard and Standard Difficulties" type="text/html">
+<meta property="og:site_name" content="Lacking Natural Simplicity">
+<meta property="og:title" content="Mini Six Odds of Hitting a Target Number">
+<meta property="og:url" content="https://tkurtbond.github.io/posts/2021/05/08/mini-six-odds-of-hitting-a-target-number/">
+<meta property="og:description" content="I couldn't find anywhere on the net showing the percentage chance of
+hitting a target number using the Mini Six Wild Die, which just
+explodes on a 6, unlike the OpenD6 Wild Die, which explodes on a 6,">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2021-05-08T22:49:20-04:00">
+<meta property="article:tag" content="dice">
+<meta property="article:tag" content="mini six">
+<meta property="article:tag" content="rpg">
+<meta property="article:tag" content="wild die">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<div class="blog-masthead">
+    <div class="container">
+<!-- This keeps the margins nice -->
+        <nav class="blog-nav" role="navigation"><a href="../../../../../index.html" class="blog-nav-item">Home</a>
+            <a href="../../../../../archive.html" class="blog-nav-item">Archives</a>
+            <a href="../../../../../categories/index.html" class="blog-nav-item">Tags</a>
+            <a href="../../../../../rss.xml" class="blog-nav-item">RSS feed</a>
+
+            
+
+    <a href="index.rst" class="blog-nav-item blog-nav-item-aside" id="sourcelink">Source</a>
+                
+            
+        </nav>
+</div>
+<!-- /.container -->
+</div>
+<!-- End of Menubar -->
+
+<div class="container" id="content" role="main">
+    <div class="body-content">
+        <div class="blog-header">
+            <h1 class="blog-title">
+                <a href="https://tkurtbond.github.io/">
+
+                    <span id="blog-title">Lacking Natural Simplicity</span>
+                </a>
+            </h1>
+            <p class="lead blog-description">Random musings on books, code, and tabletop games.</p>
+            
+        </div>
+        <!--Body content-->
+        <div class="row">
+            <div class="col-sm-8 blog-main">
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h2 class="p-name entry-title blog-post-title" itemprop="headline name"><a href="." class="u-url">Mini Six Odds of Hitting a Target Number</a></h2>
+
+        <div class="metadata blog-post-meta">
+            <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
+            <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2021-05-08T22:49:20-04:00" itemprop="datePublished" title="2021-05-08 22:49">2021-05-08 22:49</time></a></p>
+                <p class="commentline">            <a href="#disqus_thread" data-disqus-identifier="cache/posts/2021/05/08/mini-six-odds-of-hitting-a-target-number.html">Comments</a>
+
+
+                    </p>
+<p class="sourceline"><a href="index.rst" id="sourcelink">Source</a></p>
+
+        </div>
+        
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<p>I couldn't find anywhere on the net showing the percentage chance of
+hitting a target number using the Mini Six Wild Die, which just
+explodes on a 6, unlike the OpenD6 Wild Die, which explodes on a 6,
+but if a 1 is rolled on the initial roll it instead either removes the
+highest die rolled or causes a complication, depending on what the GM
+wants.</p>
+<p>I much prefer the Mini Six Wild Die.</p>
+<p>So I went off to <a class="reference external" href="https://anydice.com/program/2212d">Anydice.com</a> and came up with the following code:</p>
+<pre class="code text"><a name="rest_code_93d65829f8c24a97aaf62245e085569b-1"></a>output [explode d6] named "1M"
+<a name="rest_code_93d65829f8c24a97aaf62245e085569b-2"></a>loop N over {1..11} {
+<a name="rest_code_93d65829f8c24a97aaf62245e085569b-3"></a>  X: N+1
+<a name="rest_code_93d65829f8c24a97aaf62245e085569b-4"></a>  output [explode d6] + Nd6 named "[X]M"
+<a name="rest_code_93d65829f8c24a97aaf62245e085569b-5"></a>}
+</pre>
+<p>Remember to click “At Least” to get the right results!</p>
+<p>Then I transcribed the results into a spreadsheet.</p>
+<p>The blank spots in the 1D column are because you can’t roll a 6 or a
+12 on 1D with the Mini Six Wild Die.  I'm not sure why the result for
+18 isn't blank...</p>
+<p>The multiple 100s from 6D onwards are, except for the first, not
+actually 100s, but instead 99.x where x is small enough it rounds up
+to 100.00 with two digits of precision.</p>
+<p>I got the data from from Anydice.com; if there are errors, it's
+probably a typo on my part while transcribing the data.</p>
+<p>Here's the Open Office <a class="reference external" href="../../../../../mini-six-wild-die-target-number-odds.ods">spreadsheet</a>, and here's the <a class="reference external" href="../../../../../mini-six-wild-die-target-number-odds.pdf">PDF</a>.  You can
+always look at the <a class="reference external" href="https://docutils.sourceforge.io/rst.html">ReStructuredText</a> source of this page - there
+should be link named "Source" at the beginning of this post if you are
+visiting the article page (not the index page for the whole blog) what
+will let you download it.</p>
+<div class="smalltable boxedtable docutils container">
+<table class="colwidths-auto">
+<caption>Mini Six Odds of Hitting a Target Number</caption>
+<thead><tr>
+<th class="head"><p></p></th>
+<th class="head"><p>1D</p></th>
+<th class="head"><p>2D</p></th>
+<th class="head"><p>3D</p></th>
+<th class="head"><p>4D</p></th>
+<th class="head"><p>5D</p></th>
+<th class="head"><p>6D</p></th>
+<th class="head"><p>7D</p></th>
+<th class="head"><p>8D</p></th>
+<th class="head"><p>9D</p></th>
+<th class="head"><p>10D</p></th>
+<th class="head"><p>11D</p></th>
+<th class="head"><p>12D</p></th>
+</tr></thead>
+<tbody>
+<tr>
+<td><p><strong>1</strong></p></td>
+<td><p>100.00</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p><strong>2</strong></p></td>
+<td><p>83.33</p></td>
+<td><p>100.00</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p><strong>3</strong></p></td>
+<td><p>66.67</p></td>
+<td><p>97.22</p></td>
+<td><p>100.00</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p><strong>4</strong></p></td>
+<td><p>50.00</p></td>
+<td><p>91.67</p></td>
+<td><p>99.54</p></td>
+<td><p>100.00</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p><strong>5</strong></p></td>
+<td><p>33.33</p></td>
+<td><p>83.33</p></td>
+<td><p>98.15</p></td>
+<td><p>99.92</p></td>
+<td><p>100.00</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p><strong>6</strong></p></td>
+<td></td>
+<td><p>72.22</p></td>
+<td><p>95.37</p></td>
+<td><p>99.61</p></td>
+<td><p>99.99</p></td>
+<td><p>100.00</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p><strong>7</strong></p></td>
+<td><p>16.67</p></td>
+<td><p>58.33</p></td>
+<td><p>90.47</p></td>
+<td><p>98.84</p></td>
+<td><p>99.92</p></td>
+<td><p>100.00</p></td>
+<td><p>100.00</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p><strong>8</strong></p></td>
+<td><p>13.89</p></td>
+<td><p>44.44</p></td>
+<td><p>83.80</p></td>
+<td><p>97.30</p></td>
+<td><p>99.73</p></td>
+<td><p>99.98</p></td>
+<td><p>100.00</p></td>
+<td><p>100.00</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p><strong>9</strong></p></td>
+<td><p>11.11</p></td>
+<td><p>32.87</p></td>
+<td><p>74.54</p></td>
+<td><p>94.60</p></td>
+<td><p>99.28</p></td>
+<td><p>99.94</p></td>
+<td><p>100.00</p></td>
+<td><p>100.00</p></td>
+<td><p>100.00</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p><strong>10</strong></p></td>
+<td><p>8.33</p></td>
+<td><p>23.61</p></td>
+<td><p>63.81</p></td>
+<td><p>90.35</p></td>
+<td><p>98.39</p></td>
+<td><p>99.82</p></td>
+<td><p>99.99</p></td>
+<td><p>100.00</p></td>
+<td><p>100.00</p></td>
+<td><p>100.00</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p><strong>11</strong></p></td>
+<td><p>5.56</p></td>
+<td><p>16.67</p></td>
+<td><p>52.47</p></td>
+<td><p>84.40</p></td>
+<td><p>96.77</p></td>
+<td><p>99.55</p></td>
+<td><p>99.96</p></td>
+<td><p>100.00</p></td>
+<td><p>100.00</p></td>
+<td><p>100.00</p></td>
+<td><p>100.00</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p><strong>12</strong></p></td>
+<td></td>
+<td><p>12.04</p></td>
+<td><p>41.36</p></td>
+<td><p>76.79</p></td>
+<td><p>94.19</p></td>
+<td><p>99.01</p></td>
+<td><p>99.88</p></td>
+<td><p>99.99</p></td>
+<td><p>100.00</p></td>
+<td><p>100.00</p></td>
+<td><p>100.00</p></td>
+<td><p>100.00</p></td>
+</tr>
+<tr>
+<td><p><strong>13</strong></p></td>
+<td><p>2.78</p></td>
+<td><p>9.72</p></td>
+<td><p>31.33</p></td>
+<td><p>67.79</p></td>
+<td><p>90.38</p></td>
+<td><p>98.04</p></td>
+<td><p>99.72</p></td>
+<td><p>99.97</p></td>
+<td><p>100.00</p></td>
+<td><p>100.00</p></td>
+<td><p>100.00</p></td>
+<td><p>100.00</p></td>
+</tr>
+<tr>
+<td><p><strong>14</strong></p></td>
+<td><p>2.31</p></td>
+<td><p>7.41</p></td>
+<td><p>23.23</p></td>
+<td><p>57.88</p></td>
+<td><p>85.20</p></td>
+<td><p>96.45</p></td>
+<td><p>99.39</p></td>
+<td><p>99.92</p></td>
+<td><p>99.99</p></td>
+<td><p>100.00</p></td>
+<td><p>100.00</p></td>
+<td><p>100.00</p></td>
+</tr>
+<tr>
+<td><p><strong>15</strong></p></td>
+<td><p>1.85</p></td>
+<td><p>5.48</p></td>
+<td><p>17.05</p></td>
+<td><p>47.79</p></td>
+<td><p>78.64</p></td>
+<td><p>94.03</p></td>
+<td><p>98.80</p></td>
+<td><p>99.82</p></td>
+<td><p>99.98</p></td>
+<td><p>100.00</p></td>
+<td><p>100.00</p></td>
+<td><p>100.00</p></td>
+</tr>
+<tr>
+<td><p><strong>16</strong></p></td>
+<td><p>1.39</p></td>
+<td><p>3.94</p></td>
+<td><p>12.49</p></td>
+<td><p>38.21</p></td>
+<td><p>70.83</p></td>
+<td><p>90.59</p></td>
+<td><p>97.82</p></td>
+<td><p>99.62</p></td>
+<td><p>99.95</p></td>
+<td><p>100.00</p></td>
+<td><p>100.00</p></td>
+<td><p>100.00</p></td>
+</tr>
+<tr>
+<td><p><strong>17</strong></p></td>
+<td><p>0.93</p></td>
+<td><p>2.78</p></td>
+<td><p>9.21</p></td>
+<td><p>29.65</p></td>
+<td><p>62.14</p></td>
+<td><p>86.00</p></td>
+<td><p>96.28</p></td>
+<td><p>99.26</p></td>
+<td><p>99.89</p></td>
+<td><p>99.99</p></td>
+<td><p>100.00</p></td>
+<td><p>100.00</p></td>
+</tr>
+<tr>
+<td><p><strong>18</strong></p></td>
+<td><p>0.46</p></td>
+<td><p>1.16</p></td>
+<td><p>6.89</p></td>
+<td><p>22.44</p></td>
+<td><p>53.02</p></td>
+<td><p>80.23</p></td>
+<td><p>94.02</p></td>
+<td><p>98.65</p></td>
+<td><p>99.77</p></td>
+<td><p>99.97</p></td>
+<td><p>100.00</p></td>
+<td><p>100.00</p></td>
+</tr>
+<tr>
+<td><p><strong>19</strong></p></td>
+<td></td>
+<td><p>0.77</p></td>
+<td><p>5.22</p></td>
+<td><p>16.70</p></td>
+<td><p>43.96</p></td>
+<td><p>73.37</p></td>
+<td><p>90.89</p></td>
+<td><p>97.67</p></td>
+<td><p>99.54</p></td>
+<td><p>99.93</p></td>
+<td><p>99.99</p></td>
+<td><p>100.00</p></td>
+</tr>
+<tr>
+<td><p><strong>20</strong></p></td>
+<td></td>
+<td><p>0.46</p></td>
+<td><p>3.87</p></td>
+<td><p>12.35</p></td>
+<td><p>35.45</p></td>
+<td><p>65.63</p></td>
+<td><p>86.78</p></td>
+<td><p>96.20</p></td>
+<td><p>99.16</p></td>
+<td><p>99.85</p></td>
+<td><p>99.98</p></td>
+<td><p>100.00</p></td>
+</tr>
+<tr>
+<td><p><strong>21</strong></p></td>
+<td></td>
+<td><p>0.23</p></td>
+<td><p>2.83</p></td>
+<td><p>9.12</p></td>
+<td><p>27.86</p></td>
+<td><p>57.34</p></td>
+<td><p>81.64</p></td>
+<td><p>94.10</p></td>
+<td><p>98.54</p></td>
+<td><p>99.71</p></td>
+<td><p>99.96</p></td>
+<td><p>99.99</p></td>
+</tr>
+<tr>
+<td><p><strong>22</strong></p></td>
+<td></td>
+<td><p>0.08</p></td>
+<td><p>2.04</p></td>
+<td><p>6.75</p></td>
+<td><p>21.41</p></td>
+<td><p>48.88</p></td>
+<td><p>75.53</p></td>
+<td><p>91.24</p></td>
+<td><p>97.58</p></td>
+<td><p>99.47</p></td>
+<td><p>99.91</p></td>
+<td><p>99.99</p></td>
+</tr>
+<tr>
+<td><p><strong>23</strong></p></td>
+<td></td>
+<td></td>
+<td><p>1.47</p></td>
+<td><p>5.01</p></td>
+<td><p>16.17</p></td>
+<td><p>40.64</p></td>
+<td><p>68.57</p></td>
+<td><p>87.52</p></td>
+<td><p>96.19</p></td>
+<td><p>99.08</p></td>
+<td><p>99.82</p></td>
+<td><p>99.97</p></td>
+</tr>
+<tr>
+<td><p><strong>24</strong></p></td>
+<td></td>
+<td></td>
+<td><p>1.04</p></td>
+<td><p>3.72</p></td>
+<td><p>12.06</p></td>
+<td><p>32.98</p></td>
+<td><p>61.01</p></td>
+<td><p>82.91</p></td>
+<td><p>94.23</p></td>
+<td><p>98.46</p></td>
+<td><p>99.67</p></td>
+<td><p>99.94</p></td>
+</tr>
+<tr>
+<td><p><strong>25</strong></p></td>
+<td></td>
+<td></td>
+<td><p>0.72</p></td>
+<td><p>2.75</p></td>
+<td><p>8.94</p></td>
+<td><p>26.15</p></td>
+<td><p>53.14</p></td>
+<td><p>77.41</p></td>
+<td><p>91.61</p></td>
+<td><p>97.54</p></td>
+<td><p>99.42</p></td>
+<td><p>99.89</p></td>
+</tr>
+<tr>
+<td><p><strong>26</strong></p></td>
+<td></td>
+<td></td>
+<td><p>0.45</p></td>
+<td><p>2.00</p></td>
+<td><p>6.62</p></td>
+<td><p>20.31</p></td>
+<td><p>45.27</p></td>
+<td><p>71.11</p></td>
+<td><p>88.23</p></td>
+<td><p>96.22</p></td>
+<td><p>99.02</p></td>
+<td><p>99.79</p></td>
+</tr>
+<tr>
+<td><p><strong>27</strong></p></td>
+<td></td>
+<td></td>
+<td><p>0.26</p></td>
+<td><p>1.43</p></td>
+<td><p>4.89</p></td>
+<td><p>15.51</p></td>
+<td><p>37.72</p></td>
+<td><p>64.19</p></td>
+<td><p>84.05</p></td>
+<td><p>94.40</p></td>
+<td><p>98.41</p></td>
+<td><p>99.63</p></td>
+</tr>
+<tr>
+<td><p><strong>28</strong></p></td>
+<td></td>
+<td></td>
+<td><p>0.13</p></td>
+<td><p>1.00</p></td>
+<td><p>3.61</p></td>
+<td><p>11.68</p></td>
+<td><p>30.74</p></td>
+<td><p>56.87</p></td>
+<td><p>79.06</p></td>
+<td><p>91.98</p></td>
+<td><p>97.53</p></td>
+<td><p>99.38</p></td>
+</tr>
+<tr>
+<td><p><strong>29</strong></p></td>
+<td></td>
+<td></td>
+<td><p>0.05</p></td>
+<td><p>0.68</p></td>
+<td><p>2.65</p></td>
+<td><p>8.71</p></td>
+<td><p>24.55</p></td>
+<td><p>49.41</p></td>
+<td><p>73.34</p></td>
+<td><p>88.89</p></td>
+<td><p>96.28</p></td>
+<td><p>98.98</p></td>
+</tr>
+<tr>
+<td><p><strong>30</strong></p></td>
+<td></td>
+<td></td>
+<td><p>0.01</p></td>
+<td><p>0.44</p></td>
+<td><p>1.93</p></td>
+<td><p>6.46</p></td>
+<td><p>19.22</p></td>
+<td><p>42.07</p></td>
+<td><p>66.98</p></td>
+<td><p>85.09</p></td>
+<td><p>94.58</p></td>
+<td><p>98.39</p></td>
+</tr>
+<tr>
+<td><p><strong>31</strong></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>0.27</p></td>
+<td><p>1.38</p></td>
+<td><p>4.77</p></td>
+<td><p>14.81</p></td>
+<td><p>35.11</p></td>
+<td><p>60.18</p></td>
+<td><p>80.55</p></td>
+<td><p>92.35</p></td>
+<td><p>97.54</p></td>
+</tr>
+<tr>
+<td><p><strong>32</strong></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>0.15</p></td>
+<td><p>0.97</p></td>
+<td><p>3.51</p></td>
+<td><p>11.24</p></td>
+<td><p>28.72</p></td>
+<td><p>53.13</p></td>
+<td><p>75.31</p></td>
+<td><p>89.52</p></td>
+<td><p>96.36</p></td>
+</tr>
+<tr>
+<td><p><strong>33</strong></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>0.08</p></td>
+<td><p>0.66</p></td>
+<td><p>2.57</p></td>
+<td><p>8.44</p></td>
+<td><p>23.05</p></td>
+<td><p>46.06</p></td>
+<td><p>69.46</p></td>
+<td><p>86.04</p></td>
+<td><p>94.78</p></td>
+</tr>
+<tr>
+<td><p><strong>34</strong></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>0.03</p></td>
+<td><p>0.44</p></td>
+<td><p>1.87</p></td>
+<td><p>6.29</p></td>
+<td><p>18.17</p></td>
+<td><p>39.20</p></td>
+<td><p>63.13</p></td>
+<td><p>81.88</p></td>
+<td><p>92.72</p></td>
+</tr>
+<tr>
+<td><p><strong>35</strong></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>0.01</p></td>
+<td><p>0.27</p></td>
+<td><p>1.34</p></td>
+<td><p>4.65</p></td>
+<td><p>14.09</p></td>
+<td><p>32.75</p></td>
+<td><p>56.48</p></td>
+<td><p>77.07</p></td>
+<td><p>90.11</p></td>
+</tr>
+<tr>
+<td><p><strong>36</strong></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>0.16</p></td>
+<td><p>0.94</p></td>
+<td><p>3.42</p></td>
+<td><p>10.78</p></td>
+<td><p>26.87</p></td>
+<td><p>49.72</p></td>
+<td><p>71.67</p></td>
+<td><p>86.91</p></td>
+</tr>
+<tr>
+<td><p><strong>37</strong></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>0.09</p></td>
+<td><p>0.65</p></td>
+<td><p>2.50</p></td>
+<td><p>8.14</p></td>
+<td><p>21.65</p></td>
+<td><p>43.03</p></td>
+<td><p>66.77</p></td>
+<td><p>83.09</p></td>
+</tr>
+<tr>
+<td><p><strong>38</strong></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>0.05</p></td>
+<td><p>0.43</p></td>
+<td><p>1.81</p></td>
+<td><p>6.09</p></td>
+<td><p>17.16</p></td>
+<td><p>36.61</p></td>
+<td><p>59.52</p></td>
+<td><p>78.66</p></td>
+</tr>
+<tr>
+<td><p><strong>39</strong></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>0.02</p></td>
+<td><p>0.28</p></td>
+<td><p>1.30</p></td>
+<td><p>4.52</p></td>
+<td><p>13.39</p></td>
+<td><p>30.62</p></td>
+<td><p>53.07</p></td>
+<td><p>73.66</p></td>
+</tr>
+<tr>
+<td><p><strong>40</strong></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>0.01</p></td>
+<td><p>0.17</p></td>
+<td><p>0.92</p></td>
+<td><p>3.33</p></td>
+<td><p>10.30</p></td>
+<td><p>25.17</p></td>
+<td><p>46.60</p></td>
+<td><p>68.16</p></td>
+</tr>
+<tr>
+<td><p><strong>41</strong></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>0.10</p></td>
+<td><p>0.63</p></td>
+<td><p>2.43</p></td>
+<td><p>7.82</p></td>
+<td><p>20.35</p></td>
+<td><p>40.27</p></td>
+<td><p>62.28</p></td>
+</tr>
+<tr>
+<td><p><strong>42</strong></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>0.05</p></td>
+<td><p>0.43</p></td>
+<td><p>1.76</p></td>
+<td><p>5.88</p></td>
+<td><p>16.20</p></td>
+<td><p>34.25</p></td>
+<td><p>56.15</p></td>
+</tr>
+<tr>
+<td><p><strong>43</strong></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>0.03</p></td>
+<td><p>0.28</p></td>
+<td><p>1.26</p></td>
+<td><p>4.38</p></td>
+<td><p>12.70</p></td>
+<td><p>28.66</p></td>
+<td><p>49.91</p></td>
+</tr>
+<tr>
+<td><p><strong>44</strong></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>0.01</p></td>
+<td><p>0.18</p></td>
+<td><p>0.89</p></td>
+<td><p>3.23</p></td>
+<td><p>9.82</p></td>
+<td><p>23.61</p></td>
+<td><p>43.73</p></td>
+</tr>
+<tr>
+<td><p><strong>45</strong></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>0.01</p></td>
+<td><p>0.11</p></td>
+<td><p>0.62</p></td>
+<td><p>2.37</p></td>
+<td><p>7.50</p></td>
+<td><p>19.14</p></td>
+<td><p>37.74</p></td>
+</tr>
+<tr>
+<td><p><strong>46</strong></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>0.06</p></td>
+<td><p>0.42</p></td>
+<td><p>1.72</p></td>
+<td><p>5.66</p></td>
+<td><p>15.29</p></td>
+<td><p>32.09</p></td>
+</tr>
+<tr>
+<td><p><strong>47</strong></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>0.03</p></td>
+<td><p>0.28</p></td>
+<td><p>1.23</p></td>
+<td><p>4.23</p></td>
+<td><p>12.04</p></td>
+<td><p>26.87</p></td>
+</tr>
+<tr>
+<td><p><strong>48</strong></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>0.02</p></td>
+<td><p>0.18</p></td>
+<td><p>0.88</p></td>
+<td><p>3.14</p></td>
+<td><p>9.35</p></td>
+<td><p>22.16</p></td>
+</tr>
+<tr>
+<td><p><strong>49</strong></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>0.01</p></td>
+<td><p>0.11</p></td>
+<td><p>0.61</p></td>
+<td><p>2.30</p></td>
+<td><p>7.18</p></td>
+<td><p>18.02</p></td>
+</tr>
+<tr>
+<td><p><strong>50</strong></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>0.07</p></td>
+<td><p>0.42</p></td>
+<td><p>1.67</p></td>
+<td><p>5.44</p></td>
+<td><p>14.43</p></td>
+</tr>
+<tr>
+<td><p><strong>51</strong></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>0.04</p></td>
+<td><p>0.28</p></td>
+<td><p>1.20</p></td>
+<td><p>4.08</p></td>
+<td><p>11.41</p></td>
+</tr>
+<tr>
+<td><p><strong>52</strong></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>0.02</p></td>
+<td><p>0.18</p></td>
+<td><p>0.86</p></td>
+<td><p>3.03</p></td>
+<td><p>8.90</p></td>
+</tr>
+<tr>
+<td><p><strong>53</strong></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>0.01</p></td>
+<td><p>0.12</p></td>
+<td><p>0.60</p></td>
+<td><p>2.23</p></td>
+<td><p>6.85</p></td>
+</tr>
+<tr>
+<td><p><strong>54</strong></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>0.07</p></td>
+<td><p>0.41</p></td>
+<td><p>1.63</p></td>
+<td><p>5.22</p></td>
+</tr>
+<tr>
+<td><p><strong>55</strong></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>0.04</p></td>
+<td><p>0.28</p></td>
+<td><p>1.18</p></td>
+<td><p>3.93</p></td>
+</tr>
+<tr>
+<td><p><strong>56</strong></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>0.02</p></td>
+<td><p>0.19</p></td>
+<td><p>0.84</p></td>
+<td><p>2.93</p></td>
+</tr>
+<tr>
+<td><p><strong>57</strong></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>0.01</p></td>
+<td><p>0.12</p></td>
+<td><p>0.59</p></td>
+<td><p>2.17</p></td>
+</tr>
+<tr>
+<td><p><strong>58</strong></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>0.01</p></td>
+<td><p>0.08</p></td>
+<td><p>0.41</p></td>
+<td><p>1.58</p></td>
+</tr>
+<tr>
+<td><p><strong>59</strong></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>0.05</p></td>
+<td><p>0.28</p></td>
+<td><p>1.15</p></td>
+</tr>
+<tr>
+<td><p><strong>60</strong></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>0.03</p></td>
+<td><p>0.19</p></td>
+<td><p>0.82</p></td>
+</tr>
+<tr>
+<td><p><strong>61</strong></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>0.02</p></td>
+<td><p>0.12</p></td>
+<td><p>0.58</p></td>
+</tr>
+<tr>
+<td><p><strong>62</strong></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>0.02</p></td>
+<td><p>0.08</p></td>
+<td><p>0.40</p></td>
+</tr>
+<tr>
+<td><p><strong>63</strong></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>0.05</p></td>
+<td><p>0.28</p></td>
+</tr>
+<tr>
+<td><p><strong>64</strong></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>0.03</p></td>
+<td><p>0.19</p></td>
+</tr>
+<tr>
+<td><p><strong>65</strong></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>0.02</p></td>
+<td><p>0.12</p></td>
+</tr>
+<tr>
+<td><p><strong>66</strong></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>0.01</p></td>
+<td><p>0.08</p></td>
+</tr>
+<tr>
+<td><p><strong>67</strong></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>0.01</p></td>
+<td><p>0.05</p></td>
+</tr>
+<tr>
+<td><p><strong>68</strong></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>0.03</p></td>
+</tr>
+<tr>
+<td><p><strong>69</strong></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>0.02</p></td>
+</tr>
+<tr>
+<td><p><strong>70</strong></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>0.01</p></td>
+</tr>
+<tr>
+<td><p><strong>71</strong></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>0.01</p></td>
+</tr>
+<tr>
+<td><p><strong>72</strong></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Here's the Open Office <a class="reference external" href="../../../../../mini-six-wild-die-target-number-odds.ods">spreadsheet</a>, and here's the <a class="reference external" href="../../../../../mini-six-wild-die-target-number-odds.pdf">PDF</a>.  You can
+always look at the <a class="reference external" href="https://docutils.sourceforge.io/rst.html">ReStructuredText</a> source of this page - there
+should be link named "Source" at the beginning of this post if you are
+visiting the article page (not the index page for the whole blog) what
+will let you download it.</p>
+</div>
+    </div>
+    <script>var pfHeaderImgUrl = '';var pfHeaderTagline = '';var pfdisableClickToDel = 0;var pfHideImages = 0;var pfImageDisplayStyle = 'right';var pfDisablePDF = 0;var pfDisableEmail = 0;var pfDisablePrint = 0;var pfCustomCSS = '';var pfBtVersion='2';(function(){var js,pf;pf=document.createElement('script');pf.type='text/javascript';pf.src='//cdn.printfriendly.com/printfriendly.js';document.getElementsByTagName('head')[0].appendChild(pf)})();</script><a href="https://www.printfriendly.com" style="color:#6D9F00;text-decoration:none;" class="printfriendly" onclick="window.print();return false;" title="Printer Friendly and PDF"><img style="border:none;-webkit-box-shadow:none;box-shadow:none;" src="//cdn.printfriendly.com/buttons/printfriendly-pdf-button.png" alt="Print Friendly and PDF"></a>    
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../../../../../categories/dice/" rel="tag">dice</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/mini-six/" rel="tag">mini six</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/rpg/" rel="tag">rpg</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/wild-die/" rel="tag">wild die</a></li>
+        </ul>
+<ul class="pager hidden-print">
+<li class="previous">
+                <a href="../../../../2020/12/11/mime-and-gmail-vs-other-mailers/" rel="prev" title="MIME and Gmail vs other mailers">Previous post</a>
+            </li>
+            <li class="next">
+                <a href="../../09/d6-system-the-universal-standard-and-standard-difficulties/" rel="next" title="D6 System: The Universal Standard and Standard Difficulties">Next post</a>
+            </li>
+        </ul></nav></aside><section class="comments hidden-print"><h2>Comments</h2>
+                        <div id="disqus_thread"></div>
+        <script>
+        var disqus_shortname ="lacking-natural-simplicity",
+            disqus_url="https://tkurtbond.github.io/posts/2021/05/08/mini-six-odds-of-hitting-a-target-number/",
+        disqus_title="Mini Six Odds of Hitting a Target Number",
+        disqus_identifier="cache/posts/2021/05/08/mini-six-odds-of-hitting-a-target-number.html",
+        disqus_config = function () {
+            this.language = "en";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.async = true;
+            dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script><noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+    <a href="https://disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+        </section></article><script>var disqus_shortname="lacking-natural-simplicity";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
+</div>
+            <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+                    <div class="sidebar-module sidebar-module-inset">
+      <h4>About</h4>
+      <p>Lacking Natural Simplicity is one, not particularly flattering, 
+         definition of sophisticated.  
+         This blog chronicles my journey through our at times too complicated 
+         and sophisticated world. </p>
+    </div>
+    <div class="sidebar-module">
+      <h4>Links</h4>
+      <ol class="list-unstyled">
+<li><a href="../../../../../pages/about-the-blog/index.html">About the Blog</a></li>
+        <li><a href="../../../../../pages/colophon/index.html">Colophon</a></li>
+        <li><a href="../../../../../pages/pages/index.html">Pages</a></li>
+      </ol>
+</div>
+    
+            </div>
+        <!--End of body content-->
+        </div>
+    </div>
+</div>
+
+<footer class="blog-footer" id="footer">
+    Contents © 2021         <a href="mailto:tkurtbond@gmail.com">T. Kurt Bond</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+    
+</footer><script src="../../../../../assets/js/all-nocdn.js"></script><!-- fancy dates --><script>
+    moment.locale("en");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates --><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element) {
+            return element.getElementsByTagName('img')[0].alt;
+    }});
+    </script>
+</body>
+</html>
