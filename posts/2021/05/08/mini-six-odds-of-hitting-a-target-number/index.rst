@@ -43,16 +43,6 @@ to 100.00 with two digits of precision.
 I got the data from from Anydice.com; if there are errors, it's
 probably a typo on my part while transcribing the data.
 
-Here's the Open Office spreadsheet_, and here's the PDF_.  You can
-always look at the ReStructuredText_ source of this page - there
-should be link named "Source" at the beginning of this post if you are
-visiting the article page (not the index page for the whole blog) what
-will let you download it.
-
-.. _spreadsheet: /mini-six-wild-die-target-number-odds.ods
-.. _PDF: /mini-six-wild-die-target-number-odds.pdf
-.. _ReStructuredText: https://docutils.sourceforge.io/rst.html
-
 .. container:: smalltable boxedtable
 
    .. table:: Mini Six Odds of Hitting a Target Number
