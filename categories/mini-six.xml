@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity (Posts about mini six)</title><link>https://tkurtbond.github.io/</link><description></description><atom:link href="https://tkurtbond.github.io/categories/mini-six.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2021 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Sun, 09 May 2021 07:11:14 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>OpenD6: The Mathematical Mean</title><link>https://tkurtbond.github.io/posts/2021/05/09/opend6-the-mathematical-mean/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;Another concept that I've found useful for preparing for &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Star_Wars:_The_Roleplaying_Game"&gt;Star Wars:
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity (Posts about mini six)</title><link>https://tkurtbond.github.io/</link><description></description><atom:link href="https://tkurtbond.github.io/categories/mini-six.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2021 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Mon, 10 May 2021 17:09:49 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>OpenD6: The Mathematical Mean</title><link>https://tkurtbond.github.io/posts/2021/05/09/opend6-the-mathematical-mean/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;Another concept that I've found useful for preparing for &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Star_Wars:_The_Roleplaying_Game"&gt;Star Wars:
 The Roleplaying Game&lt;/a&gt;, &lt;a class="reference external" href="http://opend6project.org/"&gt;OpenD6&lt;/a&gt; or
 &lt;em&gt;Mini Six&lt;/em&gt; (&lt;a class="reference external" href="https://www.drivethrurpg.com/product/144558/Mini-Six-Bare-Bones-Edition"&gt;MS1&lt;/a&gt;, &lt;a class="reference external" href="http://www.antipaladingames.com/p/mini-six.html"&gt;MS2&lt;/a&gt;) games is “The Mathematical Mean”, which I
 first saw at &lt;a class="reference external" href="http://opend6project.org/?page_id=53"&gt;The OpenD6 Project&lt;/a&gt;.  I'll quote it here for reference.&lt;/p&gt;
@@ -347,38 +347,44 @@ highest die rolled or causes a complication, depending on what the GM
 wants.&lt;/p&gt;
 &lt;p&gt;I much prefer the Mini Six Wild Die.&lt;/p&gt;
 &lt;p&gt;So I went off to &lt;a class="reference external" href="https://anydice.com/program/2212d"&gt;Anydice.com&lt;/a&gt; and came up with the following code:&lt;/p&gt;
-&lt;pre class="code text"&gt;&lt;a name="rest_code_cb39cb26b91b4fb99f3582184152eaea-1"&gt;&lt;/a&gt;output [explode d6] named "1M"
-&lt;a name="rest_code_cb39cb26b91b4fb99f3582184152eaea-2"&gt;&lt;/a&gt;loop N over {1..11} {
-&lt;a name="rest_code_cb39cb26b91b4fb99f3582184152eaea-3"&gt;&lt;/a&gt;  X: N+1
-&lt;a name="rest_code_cb39cb26b91b4fb99f3582184152eaea-4"&gt;&lt;/a&gt;  output [explode d6] + Nd6 named "[X]M"
-&lt;a name="rest_code_cb39cb26b91b4fb99f3582184152eaea-5"&gt;&lt;/a&gt;}
+&lt;pre class="code text"&gt;&lt;a name="rest_code_69a1e53623234127914d3bd091e25de8-1"&gt;&lt;/a&gt;output [explode d6] named "1M"
+&lt;a name="rest_code_69a1e53623234127914d3bd091e25de8-2"&gt;&lt;/a&gt;loop N over {1..11} {
+&lt;a name="rest_code_69a1e53623234127914d3bd091e25de8-3"&gt;&lt;/a&gt;  X: N+1
+&lt;a name="rest_code_69a1e53623234127914d3bd091e25de8-4"&gt;&lt;/a&gt;  output [explode d6] + Nd6 named "[X]M"
+&lt;a name="rest_code_69a1e53623234127914d3bd091e25de8-5"&gt;&lt;/a&gt;}
 &lt;/pre&gt;&lt;p&gt;Remember to click “At Least” to get the right results!&lt;/p&gt;
-&lt;p&gt;Then I transcribed the results into a spreadsheet.&lt;/p&gt;
-&lt;p&gt;The blank spots in the 1D column are because you can’t roll a 6 or a
-12 on 1D with the Mini Six Wild Die.  I'm not sure why the result for
-18 isn't blank...&lt;/p&gt;
-&lt;p&gt;The multiple 100s from 6D onwards are, except for the first, not
-actually 100s, but instead 99.x where x is small enough it rounds up
-to 100.00 with two digits of precision.&lt;/p&gt;
-&lt;p&gt;I got the data from from Anydice.com; if there are errors, it's
-probably a typo on my part while transcribing the data.&lt;/p&gt;
+&lt;p&gt;(I later found the “Export”, so I've updated the spreadsheet using
+that data.)&lt;/p&gt;
+&lt;p&gt;The Mini Six Wild Die explodes on a 6; unlike the OpenD6 Wild Die a 1
+is &lt;strong&gt;NOT&lt;/strong&gt; special.&lt;/p&gt;
+&lt;p&gt;The blank cells at Target Numbers 6 and 12 are because you can’t roll
+a 6 or a 12, since those explode again.  Not sure why 18 isn’t blank.&lt;/p&gt;
+&lt;p&gt;The multiple 100s from 6D onward are, after the first, not actually
+100s, but 99.x where x is small enough it rounds up to 100.00 when
+shown with two digits of precision.&lt;/p&gt;
+&lt;p&gt;The 0.00s that appear from 6D onwards are not 0.00, but numbers so
+small that they appear as 0.00 when expressed with two digits of
+precision.&lt;/p&gt;
+&lt;p&gt;11D and 12D actually extend down several more rows, but to fit
+everything on one page and since they only show up as 0.00 I’ve
+omitted that data.  (It &lt;em&gt;is&lt;/em&gt; in the raw data from Anydice, below.)&lt;/p&gt;
 &lt;div class="smalltable boxedtable docutils container"&gt;
 &lt;table class="colwidths-auto"&gt;
 &lt;caption&gt;Mini Six Odds of Hitting a Target Number&lt;/caption&gt;
 &lt;thead&gt;
 &lt;tr&gt;&lt;th class="head"&gt;&lt;p&gt;&lt;/p&gt;&lt;/th&gt;
-&lt;th class="head"&gt;&lt;p&gt;1D&lt;/p&gt;&lt;/th&gt;
-&lt;th class="head"&gt;&lt;p&gt;2D&lt;/p&gt;&lt;/th&gt;
-&lt;th class="head"&gt;&lt;p&gt;3D&lt;/p&gt;&lt;/th&gt;
-&lt;th class="head"&gt;&lt;p&gt;4D&lt;/p&gt;&lt;/th&gt;
-&lt;th class="head"&gt;&lt;p&gt;5D&lt;/p&gt;&lt;/th&gt;
-&lt;th class="head"&gt;&lt;p&gt;6D&lt;/p&gt;&lt;/th&gt;
-&lt;th class="head"&gt;&lt;p&gt;7D&lt;/p&gt;&lt;/th&gt;
-&lt;th class="head"&gt;&lt;p&gt;8D&lt;/p&gt;&lt;/th&gt;
-&lt;th class="head"&gt;&lt;p&gt;9D&lt;/p&gt;&lt;/th&gt;
-&lt;th class="head"&gt;&lt;p&gt;10D&lt;/p&gt;&lt;/th&gt;
-&lt;th class="head"&gt;&lt;p&gt;11D&lt;/p&gt;&lt;/th&gt;
-&lt;th class="head"&gt;&lt;p&gt;12D&lt;/p&gt;&lt;/th&gt;
+&lt;th class="head"&gt;&lt;p&gt;&lt;strong&gt;1D&lt;/strong&gt;&lt;/p&gt;&lt;/th&gt;
+&lt;th class="head"&gt;&lt;p&gt;&lt;strong&gt;2D&lt;/strong&gt;&lt;/p&gt;&lt;/th&gt;
+&lt;th class="head"&gt;&lt;p&gt;&lt;strong&gt;3D&lt;/strong&gt;&lt;/p&gt;&lt;/th&gt;
+&lt;th class="head"&gt;&lt;p&gt;&lt;strong&gt;4D&lt;/strong&gt;&lt;/p&gt;&lt;/th&gt;
+&lt;th class="head"&gt;&lt;p&gt;&lt;strong&gt;5D&lt;/strong&gt;&lt;/p&gt;&lt;/th&gt;
+&lt;th class="head"&gt;&lt;p&gt;&lt;strong&gt;6D&lt;/strong&gt;&lt;/p&gt;&lt;/th&gt;
+&lt;th class="head"&gt;&lt;p&gt;&lt;strong&gt;7D&lt;/strong&gt;&lt;/p&gt;&lt;/th&gt;
+&lt;th class="head"&gt;&lt;p&gt;&lt;strong&gt;8D&lt;/strong&gt;&lt;/p&gt;&lt;/th&gt;
+&lt;th class="head"&gt;&lt;p&gt;&lt;strong&gt;9D&lt;/strong&gt;&lt;/p&gt;&lt;/th&gt;
+&lt;th class="head"&gt;&lt;p&gt;&lt;strong&gt;10D&lt;/strong&gt;&lt;/p&gt;&lt;/th&gt;
+&lt;th class="head"&gt;&lt;p&gt;&lt;strong&gt;11D&lt;/strong&gt;&lt;/p&gt;&lt;/th&gt;
+&lt;th class="head"&gt;&lt;p&gt;&lt;strong&gt;12D&lt;/strong&gt;&lt;/p&gt;&lt;/th&gt;
 &lt;/tr&gt;
 &lt;/thead&gt;
 &lt;tbody&gt;
@@ -469,7 +475,7 @@ probably a typo on my part while transcribing the data.&lt;/p&gt;
 &lt;tr&gt;&lt;td&gt;&lt;p&gt;&lt;strong&gt;7&lt;/strong&gt;&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;16.67&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;58.33&lt;/p&gt;&lt;/td&gt;
-&lt;td&gt;&lt;p&gt;90.47&lt;/p&gt;&lt;/td&gt;
+&lt;td&gt;&lt;p&gt;90.74&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;98.84&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;99.92&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;100.00&lt;/p&gt;&lt;/td&gt;
@@ -513,7 +519,7 @@ probably a typo on my part while transcribing the data.&lt;/p&gt;
 &lt;td&gt;&lt;p&gt;23.61&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;63.81&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;90.35&lt;/p&gt;&lt;/td&gt;
-&lt;td&gt;&lt;p&gt;98.39&lt;/p&gt;&lt;/td&gt;
+&lt;td&gt;&lt;p&gt;98.38&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;99.82&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;99.99&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;100.00&lt;/p&gt;&lt;/td&gt;
@@ -622,7 +628,7 @@ probably a typo on my part while transcribing the data.&lt;/p&gt;
 &lt;/tr&gt;
 &lt;tr&gt;&lt;td&gt;&lt;p&gt;&lt;strong&gt;18&lt;/strong&gt;&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;0.46&lt;/p&gt;&lt;/td&gt;
-&lt;td&gt;&lt;p&gt;1.16&lt;/p&gt;&lt;/td&gt;
+&lt;td&gt;&lt;p&gt;2.01&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;6.89&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;22.44&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;53.02&lt;/p&gt;&lt;/td&gt;
@@ -636,7 +642,7 @@ probably a typo on my part while transcribing the data.&lt;/p&gt;
 &lt;/tr&gt;
 &lt;tr&gt;&lt;td&gt;&lt;p&gt;&lt;strong&gt;19&lt;/strong&gt;&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;p&gt;0.77&lt;/p&gt;&lt;/td&gt;
+&lt;td&gt;&lt;p&gt;1.62&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;5.22&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;16.70&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;43.96&lt;/p&gt;&lt;/td&gt;
@@ -650,7 +656,7 @@ probably a typo on my part while transcribing the data.&lt;/p&gt;
 &lt;/tr&gt;
 &lt;tr&gt;&lt;td&gt;&lt;p&gt;&lt;strong&gt;20&lt;/strong&gt;&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;p&gt;0.46&lt;/p&gt;&lt;/td&gt;
+&lt;td&gt;&lt;p&gt;1.16&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;3.87&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;12.35&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;35.45&lt;/p&gt;&lt;/td&gt;
@@ -664,7 +670,7 @@ probably a typo on my part while transcribing the data.&lt;/p&gt;
 &lt;/tr&gt;
 &lt;tr&gt;&lt;td&gt;&lt;p&gt;&lt;strong&gt;21&lt;/strong&gt;&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;p&gt;0.23&lt;/p&gt;&lt;/td&gt;
+&lt;td&gt;&lt;p&gt;0.77&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;2.83&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;9.12&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;27.86&lt;/p&gt;&lt;/td&gt;
@@ -678,7 +684,7 @@ probably a typo on my part while transcribing the data.&lt;/p&gt;
 &lt;/tr&gt;
 &lt;tr&gt;&lt;td&gt;&lt;p&gt;&lt;strong&gt;22&lt;/strong&gt;&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;p&gt;0.08&lt;/p&gt;&lt;/td&gt;
+&lt;td&gt;&lt;p&gt;0.46&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;2.04&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;6.75&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;21.41&lt;/p&gt;&lt;/td&gt;
@@ -692,7 +698,7 @@ probably a typo on my part while transcribing the data.&lt;/p&gt;
 &lt;/tr&gt;
 &lt;tr&gt;&lt;td&gt;&lt;p&gt;&lt;strong&gt;23&lt;/strong&gt;&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;p&gt;0.23&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;1.47&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;5.01&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;16.17&lt;/p&gt;&lt;/td&gt;
@@ -706,7 +712,7 @@ probably a typo on my part while transcribing the data.&lt;/p&gt;
 &lt;/tr&gt;
 &lt;tr&gt;&lt;td&gt;&lt;p&gt;&lt;strong&gt;24&lt;/strong&gt;&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;p&gt;0.08&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;1.04&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;3.72&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;12.06&lt;/p&gt;&lt;/td&gt;
@@ -876,7 +882,7 @@ probably a typo on my part while transcribing the data.&lt;/p&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;p&gt;0.00&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;0.16&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;0.94&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;3.42&lt;/p&gt;&lt;/td&gt;
@@ -897,7 +903,7 @@ probably a typo on my part while transcribing the data.&lt;/p&gt;
 &lt;td&gt;&lt;p&gt;8.14&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;21.65&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;43.03&lt;/p&gt;&lt;/td&gt;
-&lt;td&gt;&lt;p&gt;66.77&lt;/p&gt;&lt;/td&gt;
+&lt;td&gt;&lt;p&gt;65.77&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;83.09&lt;/p&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;&lt;td&gt;&lt;p&gt;&lt;strong&gt;38&lt;/strong&gt;&lt;/p&gt;&lt;/td&gt;
@@ -947,7 +953,7 @@ probably a typo on my part while transcribing the data.&lt;/p&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;p&gt;0.00&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;0.10&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;0.63&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;2.43&lt;/p&gt;&lt;/td&gt;
@@ -961,7 +967,7 @@ probably a typo on my part while transcribing the data.&lt;/p&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;p&gt;0.00&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;0.05&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;0.43&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;1.76&lt;/p&gt;&lt;/td&gt;
@@ -1018,7 +1024,7 @@ probably a typo on my part while transcribing the data.&lt;/p&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;p&gt;0.00&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;0.06&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;0.42&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;1.72&lt;/p&gt;&lt;/td&gt;
@@ -1032,7 +1038,7 @@ probably a typo on my part while transcribing the data.&lt;/p&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;p&gt;0.00&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;0.03&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;0.28&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;1.23&lt;/p&gt;&lt;/td&gt;
@@ -1046,7 +1052,7 @@ probably a typo on my part while transcribing the data.&lt;/p&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;p&gt;0.00&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;0.02&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;0.18&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;0.88&lt;/p&gt;&lt;/td&gt;
@@ -1075,7 +1081,7 @@ probably a typo on my part while transcribing the data.&lt;/p&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;p&gt;0.00&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;0.07&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;0.42&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;1.67&lt;/p&gt;&lt;/td&gt;
@@ -1089,7 +1095,7 @@ probably a typo on my part while transcribing the data.&lt;/p&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;p&gt;0.00&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;0.04&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;0.28&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;1.20&lt;/p&gt;&lt;/td&gt;
@@ -1103,7 +1109,7 @@ probably a typo on my part while transcribing the data.&lt;/p&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;p&gt;0.00&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;0.02&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;0.18&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;0.86&lt;/p&gt;&lt;/td&gt;
@@ -1117,7 +1123,7 @@ probably a typo on my part while transcribing the data.&lt;/p&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;p&gt;0.00&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;0.01&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;0.12&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;0.60&lt;/p&gt;&lt;/td&gt;
@@ -1131,8 +1137,8 @@ probably a typo on my part while transcribing the data.&lt;/p&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;p&gt;0.00&lt;/p&gt;&lt;/td&gt;
+&lt;td&gt;&lt;p&gt;0.00&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;0.07&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;0.41&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;1.63&lt;/p&gt;&lt;/td&gt;
@@ -1146,7 +1152,7 @@ probably a typo on my part while transcribing the data.&lt;/p&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;p&gt;0.00&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;0.04&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;0.28&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;1.18&lt;/p&gt;&lt;/td&gt;
@@ -1160,7 +1166,7 @@ probably a typo on my part while transcribing the data.&lt;/p&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;p&gt;0.00&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;0.02&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;0.19&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;0.84&lt;/p&gt;&lt;/td&gt;
@@ -1174,7 +1180,7 @@ probably a typo on my part while transcribing the data.&lt;/p&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;p&gt;0.00&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;0.01&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;0.12&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;0.59&lt;/p&gt;&lt;/td&gt;
@@ -1188,7 +1194,7 @@ probably a typo on my part while transcribing the data.&lt;/p&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;p&gt;0.00&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;0.01&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;0.08&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;0.41&lt;/p&gt;&lt;/td&gt;
@@ -1202,8 +1208,8 @@ probably a typo on my part while transcribing the data.&lt;/p&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;p&gt;0.00&lt;/p&gt;&lt;/td&gt;
+&lt;td&gt;&lt;p&gt;0.00&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;0.05&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;0.28&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;1.15&lt;/p&gt;&lt;/td&gt;
@@ -1216,8 +1222,8 @@ probably a typo on my part while transcribing the data.&lt;/p&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;p&gt;0.00&lt;/p&gt;&lt;/td&gt;
+&lt;td&gt;&lt;p&gt;0.00&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;0.03&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;0.19&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;0.82&lt;/p&gt;&lt;/td&gt;
@@ -1231,7 +1237,7 @@ probably a typo on my part while transcribing the data.&lt;/p&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;p&gt;0.00&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;0.02&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;0.12&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;0.58&lt;/p&gt;&lt;/td&gt;
@@ -1245,8 +1251,8 @@ probably a typo on my part while transcribing the data.&lt;/p&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;p&gt;0.02&lt;/p&gt;&lt;/td&gt;
+&lt;td&gt;&lt;p&gt;0.00&lt;/p&gt;&lt;/td&gt;
+&lt;td&gt;&lt;p&gt;0.01&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;0.08&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;0.40&lt;/p&gt;&lt;/td&gt;
 &lt;/tr&gt;
@@ -1259,8 +1265,8 @@ probably a typo on my part while transcribing the data.&lt;/p&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;p&gt;0.00&lt;/p&gt;&lt;/td&gt;
+&lt;td&gt;&lt;p&gt;0.00&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;0.05&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;0.28&lt;/p&gt;&lt;/td&gt;
 &lt;/tr&gt;
@@ -1273,8 +1279,8 @@ probably a typo on my part while transcribing the data.&lt;/p&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;p&gt;0.00&lt;/p&gt;&lt;/td&gt;
+&lt;td&gt;&lt;p&gt;0.00&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;0.03&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;0.19&lt;/p&gt;&lt;/td&gt;
 &lt;/tr&gt;
@@ -1287,8 +1293,8 @@ probably a typo on my part while transcribing the data.&lt;/p&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;p&gt;0.00&lt;/p&gt;&lt;/td&gt;
+&lt;td&gt;&lt;p&gt;0.00&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;0.02&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;0.12&lt;/p&gt;&lt;/td&gt;
 &lt;/tr&gt;
@@ -1301,8 +1307,8 @@ probably a typo on my part while transcribing the data.&lt;/p&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;p&gt;0.00&lt;/p&gt;&lt;/td&gt;
+&lt;td&gt;&lt;p&gt;0.00&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;0.01&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;0.08&lt;/p&gt;&lt;/td&gt;
 &lt;/tr&gt;
@@ -1316,7 +1322,7 @@ probably a typo on my part while transcribing the data.&lt;/p&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;p&gt;0.00&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;0.01&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;0.05&lt;/p&gt;&lt;/td&gt;
 &lt;/tr&gt;
@@ -1330,8 +1336,8 @@ probably a typo on my part while transcribing the data.&lt;/p&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;p&gt;0.00&lt;/p&gt;&lt;/td&gt;
+&lt;td&gt;&lt;p&gt;0.00&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;0.03&lt;/p&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;&lt;td&gt;&lt;p&gt;&lt;strong&gt;69&lt;/strong&gt;&lt;/p&gt;&lt;/td&gt;
@@ -1344,8 +1350,8 @@ probably a typo on my part while transcribing the data.&lt;/p&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;p&gt;0.00&lt;/p&gt;&lt;/td&gt;
+&lt;td&gt;&lt;p&gt;0.00&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;0.02&lt;/p&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;&lt;td&gt;&lt;p&gt;&lt;strong&gt;70&lt;/strong&gt;&lt;/p&gt;&lt;/td&gt;
@@ -1358,8 +1364,8 @@ probably a typo on my part while transcribing the data.&lt;/p&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;p&gt;0.00&lt;/p&gt;&lt;/td&gt;
+&lt;td&gt;&lt;p&gt;0.00&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;0.01&lt;/p&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;&lt;td&gt;&lt;p&gt;&lt;strong&gt;71&lt;/strong&gt;&lt;/p&gt;&lt;/td&gt;
@@ -1372,8 +1378,8 @@ probably a typo on my part while transcribing the data.&lt;/p&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;p&gt;0.00&lt;/p&gt;&lt;/td&gt;
+&lt;td&gt;&lt;p&gt;0.00&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p&gt;0.01&lt;/p&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;&lt;td&gt;&lt;p&gt;&lt;strong&gt;72&lt;/strong&gt;&lt;/p&gt;&lt;/td&gt;
@@ -1386,23 +1392,31 @@ probably a typo on my part while transcribing the data.&lt;/p&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;p&gt;0.00&lt;/p&gt;&lt;/td&gt;
+&lt;td&gt;&lt;p&gt;0.00&lt;/p&gt;&lt;/td&gt;
+&lt;td&gt;&lt;p&gt;0.00&lt;/p&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;/div&gt;
-&lt;p&gt;Here's the Open Office &lt;a class="reference external" href="https://tkurtbond.github.io/mini-six-wild-die-target-number-odds.ods"&gt;spreadsheet&lt;/a&gt;, and here's the &lt;a class="reference external" href="https://tkurtbond.github.io/mini-six-wild-die-target-number-odds.pdf"&gt;PDF&lt;/a&gt;.  You can
-always look at the &lt;a class="reference external" href="https://docutils.sourceforge.io/rst.html"&gt;ReStructuredText&lt;/a&gt; source of this page - there
-should be link named "Source" at the beginning of this post if you are
-visiting the article page (not the index page for the whole blog) what
-will let you download it.&lt;/p&gt;
+&lt;p&gt;Here's the Open Office &lt;a class="reference external" href="https://tkurtbond.github.io/mini-six-odds-of-hitting-a-target-number.ods"&gt;spreadsheet&lt;/a&gt;, here's the &lt;a class="reference external" href="https://tkurtbond.github.io/mini-six-odds-of-hitting-a-target-number.pdf"&gt;PDF&lt;/a&gt;, and here's the
+&lt;a class="reference external" href="https://tkurtbond.github.io/mini-six-odds-of-hitting-a-target-number.csv"&gt;raw data&lt;/a&gt; from Anydice in &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Comma-separated_values"&gt;CSV&lt;/a&gt; format.  You can always look at the
+&lt;a class="reference external" href="https://docutils.sourceforge.io/rst.html"&gt;ReStructuredText&lt;/a&gt; source of this page if you want the table in
+&lt;a class="reference external" href="https://docutils.sourceforge.io/rst.html"&gt;ReStructuredText&lt;/a&gt; format — there should be link named "Source" at the
+beginning of this post if you are visiting the article page (not the
+index page for the whole blog) what will let you download it.&lt;/p&gt;
 &lt;p&gt;Perhaps more immediately understandable is this screenshot of the the
 results in graph mode:&lt;/p&gt;
 &lt;img alt="/images/mini-six-odds-of-hitting-a-target-number.png" src="https://tkurtbond.github.io/images/mini-six-odds-of-hitting-a-target-number.png"&gt;
 &lt;p&gt;(Right-clicking the image might give you the option to open the image
-in a new tab, where you'll see it at full size.)&lt;/p&gt;&lt;/div&gt;</description><category>dice</category><category>mini six</category><category>rpg</category><category>wild die</category><guid>https://tkurtbond.github.io/posts/2021/05/08/mini-six-odds-of-hitting-a-target-number/</guid><pubDate>Sun, 09 May 2021 02:49:20 GMT</pubDate></item><item><title>Looking at the Mini Six RPG and related games</title><link>https://tkurtbond.github.io/posts/2020/11/29/looking-at-the-mini-six-rpg-and-related-games/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;I'm looking at the &lt;cite&gt;Mini Six&lt;/cite&gt; RPG because I’m planing on running a
+in a new tab, where you'll see it at full size.)&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Last edited: 2021-05-10 13:09:39 EDT&lt;/em&gt;&lt;/p&gt;
+&lt;!-- Local Variables:
+time-stamp-format: "%04y-%02m-%02d %02H:%02M:%02S %Z"
+time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
+time-stamp-end: "\\*\\\\?\n"
+time-stamp-line-limit: -20
+End: --&gt;&lt;/div&gt;</description><category>dice</category><category>mini six</category><category>odds</category><category>rpg</category><category>wild die</category><guid>https://tkurtbond.github.io/posts/2021/05/08/mini-six-odds-of-hitting-a-target-number/</guid><pubDate>Sun, 09 May 2021 02:49:20 GMT</pubDate></item><item><title>Looking at the Mini Six RPG and related games</title><link>https://tkurtbond.github.io/posts/2020/11/29/looking-at-the-mini-six-rpg-and-related-games/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;I'm looking at the &lt;cite&gt;Mini Six&lt;/cite&gt; RPG because I’m planing on running a
 couple of one shots while my regular online D&amp;amp;D game is on hiatus
 between campaigns.  I’m going to run a Star Wars one shot and a
 &lt;a class="reference external" href="https://www.drivethrurpg.com/product/141188/Breachworld-RPG"&gt;Breachworld RPG&lt;/a&gt; (post apocalypse with rifts into space and time
