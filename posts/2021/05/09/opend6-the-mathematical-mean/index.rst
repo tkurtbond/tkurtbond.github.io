@@ -1,7 +1,7 @@
 .. title: OpenD6: The Mathematical Mean
 .. slug: opend6-the-mathematical-mean
 .. date: 2021-05-09 01:57:29 UTC-04:00
-.. tags: opend6,mini six,rpg
+.. tags: opend6,mini six,rpg,star wars d6
 .. category: gaming
 .. link: 
 .. description: 
@@ -94,11 +94,11 @@ score of 3D.
 
 Here is a PDF_ with a nicely formatted version of these tables (5½×8½
 inches, suitable for adding to a booklet, or printing two up on on
-8½x11 in Letter paper) , and the ConTeXt_ source_.  You can always
-look at the ReStructuredText_ source of this page - there
-should be link named "Source" at the beginning of this post if you are
-visiting the article page (not the index page for the whole blog) what
-will let you download it.
+8½x11 inch Letter paper) , and the ConTeXt_ source_.  You can always
+look at the ReStructuredText_ source of this page if you want the
+table in ReStructuredText_ format - there should be link named "Source"
+at the beginning of this post if you are visiting the article page
+(not the index page for the whole blog) what will let you download it.
 
 .. _PDF: /the-mathematical-mean.pdf
 .. _ConTeXt: https://en.wikipedia.org/wiki/ConTeXt
