@@ -104,3 +104,15 @@ at the beginning of this post if you are visiting the article page
 .. _ConTeXt: https://en.wikipedia.org/wiki/ConTeXt
 .. _source: /the-mathematical-mean.ctx
 .. _ReStructuredText: https://docutils.sourceforge.io/rst.html
+
+By the way, does anybody know where this originates?
+
+*Last edited: 2021-05-10 18:56:44 EDT*
+
+..
+   Local Variables:
+   time-stamp-format: "%04y-%02m-%02d %02H:%02M:%02S %Z"
+   time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
+   time-stamp-end: "\\*\\\\?\n"
+   time-stamp-line-limit: -20
+   End:
