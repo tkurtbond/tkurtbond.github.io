@@ -96,7 +96,7 @@ __ https://en.wikipedia.org/wiki/Star_Wars:_The_Roleplaying_Game
 
 Here is a PDF_ with a nicely formatted version of these tables (5½×8½
 inches, suitable for adding to a booklet, or printing two up on on
-8½x11 in Letter paper) , and the ConTeXt_ source_.  You can always
+8½x11 inch Letter paper) , and the ConTeXt_ source_.  You can always
 look at the ReStructuredText_ source of this page - there
 should be link named "Source" at the beginning of this post if you are
 visiting the article page (not the index page for the whole blog) what

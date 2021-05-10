@@ -1,18 +1,25 @@
 .. title: Star Wars D6 1st Edition Odds of Hitting a Target Number
 .. slug: star-wars-d6-1st-edition-odds-of-hitting-a-target-number
 .. date: 2021-05-10 11:58:00 UTC-04:00
-.. tags: star wars d6 1e,dice,odds,rpg
+.. tags: star wars d6 1e,dice,odds,rpg,mini six,opend6
 .. category: gaming
 .. link: 
 .. description: 
 .. type: text
 
 
-After posting_ about odds in Mini Six of hitting a Target Number, I
-thought I should do the same `Star Wars: the Roleplaying Game`, 
-1\ :sup:`st` Edition, the
-original Star Wars roleplaying game.  It does **NOT** use the Wild
-Die; that was introduced in the 2\ :sup:`nd` Edition.
+After posting_ about the odds in :title:`Mini Six` (MS1_, MS2_) of
+hitting a Target Number, I thought I should do the same for `Star
+Wars: the Roleplaying Game`__, 1\ :sup:`st` Edition, the original Star
+Wars roleplaying game, from `West End Games`_.  It does **NOT** use
+the Wild Die; that was introduced in the 2\ :sup:`nd` Edition and is
+also used in OpenD6_.
+
+__ https://en.wikipedia.org/wiki/Star_Wars:_The_Roleplaying_Game
+.. _MS1: https://www.drivethrurpg.com/product/144558/Mini-Six-Bare-Bones-Edition
+.. _MS2: http://www.antipaladingames.com/p/mini-six.html
+.. _West End Games: https://en.wikipedia.org/wiki/West_End_Games
+.. _OpenD6: http://opend6project.org/
 
 The `Anydice.com`_ code is very simple:
 
@@ -26,7 +33,7 @@ The `Anydice.com`_ code is very simple:
 
 Remember to click “At Least” to get the right results!
 
-Star Wars D6 1st Edition does **NOT** use the Wild Die!
+Star Wars D6 1\ :sup:`st` Edition does **NOT** use the Wild Die!
 
 The multiple 100s from 6D onward are, after the first, not actually
 100s, but 99.x where x is small enough it rounds up to 100.00 when
@@ -144,3 +151,13 @@ results in graph mode:
 
 (Right-clicking the image might give you the option to open the image
 in a new tab, where you'll see it at full size.)
+
+*Last edited: 2021-05-10 14:46:56 EDT*
+
+..
+   Local Variables:
+   time-stamp-format: "%04y-%02m-%02d %02H:%02M:%02S %Z"
+   time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
+   time-stamp-end: "\\*\\\\?\n"
+   time-stamp-line-limit: -20
+   End:
