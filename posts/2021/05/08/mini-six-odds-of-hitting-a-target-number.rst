@@ -30,6 +30,8 @@ So I went off to `Anydice.com`_ and came up with the following code:
 
 Remember to click “At Least” to get the right results!
 
+(Anydice defaults to only exploding twice, BTW.)
+
 (I later found the “Export”, so I've updated the spreadsheet using
 that data.)
 
@@ -155,7 +157,7 @@ results in graph mode:
 (Right-clicking the image might give you the option to open the image
 in a new tab, where you'll see it at full size.)
 
-*Last edited: 2021-05-10 13:09:39 EDT*
+*Last edited: 2021-05-10 13:43:33 EDT*
 
 ..
    Local Variables:
