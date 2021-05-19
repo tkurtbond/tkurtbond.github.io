@@ -1,0 +1,139 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?xml-stylesheet href="https://tkurtbond.github.io/assets/xml/atom.xsl" type="text/xsl media="all"?>
+<feed xml:lang="en" xmlns="http://www.w3.org/2005/Atom">
+  <title>Lacking Natural Simplicity (Posts about programming)</title>
+  <id>https://tkurtbond.github.io/categories/programming.atom</id>
+  <updated>2021-05-19T20:55:02Z</updated>
+  <author>
+    <name>T. Kurt Bond</name>
+  </author>
+  <link rel="self" type="application/atom+xml" href="https://tkurtbond.github.io/categories/programming.atom"/>
+  <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/categories/programming/"/>
+  <generator uri="https://getnikola.com/">Nikola</generator>
+  <entry>
+    <title>Multics Emacs programmed by secretaries</title>
+    <id>https://tkurtbond.github.io/posts/2012/06/15/multics-emacs-programmed-by-secretaries/</id>
+    <updated>2012-06-15T09:10:09-05:00</updated>
+    <published>2012-06-15T09:10:09-05:00</published>
+    <author>
+      <name>T. Kurt Bond</name>
+    </author>
+    <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/posts/2012/06/15/multics-emacs-programmed-by-secretaries/"/>
+    <summary type="html">&lt;div&gt;&lt;p&gt;RMS &lt;a class="reference external" href="http://www.gnu.org/gnu/rms-lisp.html"&gt;relates&lt;/a&gt; how programming Multics Emacs was so convenient that secretaries started to learn to use it:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;… The language that you build your extensions on shouldn't be
+thought of as a programming language in afterthought; it should be
+designed as a programming language. In fact, we discovered that
+the best programming language for that purpose was Lisp.&lt;/p&gt;
+&lt;p&gt;It was Bernie Greenberg, who discovered that it was (5). He wrote
+a version of Emacs in Multics MacLisp, and he wrote his commands
+in MacLisp in a straightforward fashion. The editor itself was
+written entirely in Lisp. Multics Emacs proved to be a great
+success — programming new editing commands was so convenient that
+even the secretaries in his office started learning how to use
+it. They used a manual someone had written which showed how to
+extend Emacs, but didn't say it was a programming. So the
+secretaries, who believed they couldn't do programming, weren't
+scared off. They read the manual, discovered they could do useful
+things and they learned to program.&lt;/p&gt;
+&lt;p&gt;So Bernie saw that an application — a program that does something
+useful for you — which has Lisp inside it and which you could
+extend by rewriting the Lisp programs, is actually a very good way
+for people to learn programming. It gives them a chance to write
+small programs that are useful for them, which in most arenas you
+can't possibly do. They can get encouragement for their own
+practical use — at the stage where it's the hardest — where they
+don't believe they can program, until they get to the point where
+they are programmers.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;!-- Wasn't troff also used by secretaries? --&gt;&lt;/div&gt;</summary>
+    <category term="emacs" label="emacs"/>
+    <category term="lisp" label="lisp"/>
+    <category term="programming" label="programming"/>
+  </entry>
+  <entry>
+    <title>sqlite implements table constraints</title>
+    <id>https://tkurtbond.github.io/posts/2009/12/17/sqlite-implements-table-constraints/</id>
+    <updated>2009-12-17T17:02:04-05:00</updated>
+    <published>2009-12-17T17:02:04-05:00</published>
+    <author>
+      <name>T. Kurt Bond</name>
+    </author>
+    <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/posts/2009/12/17/sqlite-implements-table-constraints/"/>
+    <summary type="html">&lt;div&gt;&lt;p&gt;It's nice to see SQLite supports table constraints:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;$ sqlite3 test.db
+SQLite version 3.6.19
+Enter ".help" for instructions
+Enter SQL statements terminated with a ";"
+sqlite&amp;gt; create table t1
+   ...&amp;gt; (k int,
+   ...&amp;gt;  s int,
+   ...&amp;gt;  e int,
+   ...&amp;gt;  d int,
+   ...&amp;gt;  constraint se_or_duration check
+   ...&amp;gt;    ((s is not null and e is not null) or d is not null));
+sqlite&amp;gt; insert into t1 values (1, 8, 4, null);
+sqlite&amp;gt; insert into t1 values (2, null, null, 8);
+sqlite&amp;gt; insert into t1 values (3, null, null, null);
+SQL error: constraint failed
+sqlite&amp;gt;&lt;/pre&gt;&lt;/div&gt;</summary>
+    <category term="programming" label="programming"/>
+    <category term="sql" label="sql"/>
+    <category term="sqlite" label="sqlite"/>
+  </entry>
+  <entry>
+    <title>I want a Dis-Integrated-Development-Environment</title>
+    <id>https://tkurtbond.github.io/posts/2008/10/22/i-want-a-dis-integrated-development-environment/</id>
+    <updated>2008-10-22T14:20:54-05:00</updated>
+    <published>2008-10-22T14:20:54-05:00</published>
+    <author>
+      <name>T. Kurt Bond</name>
+    </author>
+    <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/posts/2008/10/22/i-want-a-dis-integrated-development-environment/"/>
+    <summary type="html">&lt;div&gt;&lt;p&gt;C.P. said: “I want a &lt;em&gt;dis&lt;/em&gt;-integrated development envronment, not an
+integrated development environment.”  I agree.&lt;/p&gt;
+&lt;p&gt;Microsoft's IDEs have always been about you adapting your working
+style to their rigid idea of how that work should be done using their
+monolithic tools.  Eclipse promises to let you add whatever
+functionality you want to Eclipse, as long as you use their API (and
+tools) and are willing to write a million lines of code.&lt;/p&gt;
+&lt;p&gt;That's not what I want.&lt;/p&gt;
+&lt;p&gt;I want to use the tools I find suitable to the job, and stitch them
+together easily.  I want tools that work together, not get pasted
+together.&lt;/p&gt;
+&lt;!--  --&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Lucid's compiler suite with their IPC&lt;/p&gt;
+&lt;p&gt;I like emacs, but I have no problem with acme.&lt;/p&gt;
+&lt;/blockquote&gt;&lt;/div&gt;</summary>
+    <category term="programming" label="programming"/>
+    <category term="software" label="software"/>
+  </entry>
+  <entry>
+    <title>Factor 0.90</title>
+    <id>https://tkurtbond.github.io/posts/2007/08/25/factor-0.90/</id>
+    <updated>2007-08-25T10:08:33-05:00</updated>
+    <published>2007-08-25T10:08:33-05:00</published>
+    <author>
+      <name>T. Kurt Bond</name>
+    </author>
+    <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/posts/2007/08/25/factor-0.90/"/>
+    <summary type="html">&lt;div&gt;&lt;p&gt;It's been a while since I've looked at &lt;a class="reference external" href="http://factorcode.org/"&gt;Factor&lt;/a&gt;, and things are looking good.&lt;/p&gt;
+&lt;p&gt;When using emacs with Factor under Microsoft Windows, remember to make
+sure before you start Factor that &lt;code class="docutils literal"&gt;emacsclient&lt;/code&gt; is in your path, and
+then do:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;"editors.emacs" require&lt;/pre&gt;
+&lt;p&gt;to tell Factor your going to use emacs.  After that, make sure that
+you've started the server in emacs with &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;server-start&lt;/span&gt;&lt;/code&gt; and try
+something like:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;\ . edit&lt;/pre&gt;
+&lt;p&gt;to see the definition of the &lt;code class="docutils literal"&gt;.&lt;/code&gt; word.&lt;/p&gt;
+&lt;div class="admonition note"&gt;
+&lt;p class="admonition-title"&gt;Note&lt;/p&gt;
+&lt;p&gt;This is a &lt;a class="reference external" href="https://tkurtbond.github.io/posts/2008/07/07/new-blog-first-post/"&gt;timewarp&lt;/a&gt; post.&lt;/p&gt;
+&lt;/div&gt;&lt;/div&gt;</summary>
+    <category term="factor" label="factor"/>
+    <category term="programming" label="programming"/>
+    <category term="timewarp" label="timewarp"/>
+  </entry>
+</feed>

@@ -1,0 +1,329 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?xml-stylesheet href="https://tkurtbond.github.io/assets/xml/atom.xsl" type="text/xsl media="all"?>
+<feed xml:lang="en" xmlns="http://www.w3.org/2005/Atom">
+  <title>Lacking Natural Simplicity (Posts about computer)</title>
+  <id>https://tkurtbond.github.io/categories/computer.atom</id>
+  <updated>2021-05-19T20:55:18Z</updated>
+  <author>
+    <name>T. Kurt Bond</name>
+  </author>
+  <link rel="self" type="application/atom+xml" href="https://tkurtbond.github.io/categories/computer.atom"/>
+  <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/categories/computer/"/>
+  <generator uri="https://getnikola.com/">Nikola</generator>
+  <entry>
+    <title>Making digest-sized pages with pandoc and ms output</title>
+    <id>https://tkurtbond.github.io/posts/2020/03/13/making-digest-sized-pages-with-pandoc-and-ms-output/</id>
+    <updated>2020-03-13T14:01:10-04:00</updated>
+    <published>2020-03-13T14:01:10-04:00</published>
+    <author>
+      <name>T. Kurt Bond</name>
+    </author>
+    <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/posts/2020/03/13/making-digest-sized-pages-with-pandoc-and-ms-output/"/>
+    <summary type="html">&lt;div&gt;&lt;div class="admonition note"&gt;
+&lt;p class="admonition-title"&gt;Note&lt;/p&gt;
+&lt;p&gt;After I wrote this post, I made a last minute check of the options
+to &lt;span class="app"&gt;pandoc&lt;/span&gt; and found that the &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;--pdf-engine-opt=&lt;/span&gt;&lt;/code&gt; option
+does exactly what I want.  How embarrassing.  So I changed this
+post, showing both the easy way and the hard way to do it.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;I use &lt;a class="reference external" href="https://pandoc.org/"&gt;pandoc&lt;/a&gt; to produce digest-sized pages (5½×8½ inches) in PDF
+documents from &lt;a class="reference external" href="https://en.wikipedia.org/wiki/ReStructuredText"&gt;ReStructuredText&lt;/a&gt;.  I have a &lt;span class="app"&gt;ms&lt;/span&gt; output template,
+&lt;span class="file"&gt;digest2.ms&lt;/span&gt; in &lt;span class="file"&gt;~/pandoc/templates&lt;/span&gt; that sets the page
+width and page height correctly.  Unfortunately, there is no way to
+set the papersize properly in the template. &lt;a class="footnote-reference brackets" href="https://tkurtbond.github.io/posts/2020/03/13/making-digest-sized-pages-with-pandoc-and-ms-output/#heirloomtroff" id="id1"&gt;1&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Luckily, &lt;span class="app"&gt;pandoc&lt;/span&gt; has the &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;--pdf-engine-opt=&lt;/span&gt;&lt;/code&gt; option to pass
+options to the PDF engine that &lt;span class="app"&gt;pandoc&lt;/span&gt; is using, in this case
+&lt;span class="app"&gt;pdfroff&lt;/span&gt;.  In the case of &lt;span class="app"&gt;ms&lt;/span&gt; output the thing to do is
+pass the argument &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;--pdf-engine-opt=-P-p8.5i,5.5i&lt;/span&gt;&lt;/code&gt; &lt;a class="footnote-reference brackets" href="https://tkurtbond.github.io/posts/2020/03/13/making-digest-sized-pages-with-pandoc-and-ms-output/#recursively" id="id2"&gt;2&lt;/a&gt;,
+like below.&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://tkurtbond.github.io/listings/GNUmakefile.pandoc-digest-pdf-engine-opt.html"&gt;GNUmakefile.pandoc-digest-pdf-engine-opt&lt;/a&gt;  &lt;a class="reference external" href="https://tkurtbond.github.io/listings/GNUmakefile.pandoc-digest-pdf-engine-opt"&gt;(Source)&lt;/a&gt;&lt;/p&gt;
+&lt;pre class="code make"&gt;&lt;a name="rest_code_8d76b135b72d43cca40c91681803edac-1"&gt;&lt;/a&gt;&lt;span class="nf"&gt;%.digest.ms.pdf &lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; %.&lt;span class="n"&gt;rst&lt;/span&gt;
+&lt;a name="rest_code_8d76b135b72d43cca40c91681803edac-2"&gt;&lt;/a&gt;        pandoc -s -r rst -w ms --template&lt;span class="o"&gt;=&lt;/span&gt;digest2 &lt;span class="k"&gt;$(&lt;/span&gt;VARIABLES&lt;span class="k"&gt;)&lt;/span&gt; &lt;span class="se"&gt;\&lt;/span&gt;
+&lt;a name="rest_code_8d76b135b72d43cca40c91681803edac-3"&gt;&lt;/a&gt;                --output&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$@&lt;/span&gt; --pdf-engine-opt&lt;span class="o"&gt;=&lt;/span&gt;-P-p8.5i,5.5i $&amp;lt;
+&lt;/pre&gt;&lt;p&gt;Unfortunately when I originally had this need for digest pages I
+hadn't realized that the &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;--pdf-engine-opt=&lt;/span&gt;&lt;/code&gt; option existed.&lt;/p&gt;
+&lt;p&gt;So I used &lt;code class="docutils literal"&gt;pandoc &lt;span class="pre"&gt;--verbose&lt;/span&gt;&lt;/code&gt; and found the &lt;span class="app"&gt;pdfroff&lt;/span&gt; invocation
+&lt;span class="app"&gt;pandoc&lt;/span&gt; uses, and made my &lt;span class="app"&gt;pandoc&lt;/span&gt; invocation output
+&lt;span class="app"&gt;ms&lt;/span&gt; instead of PDF, then passed it through a &lt;span class="app"&gt;pdfroff&lt;/span&gt;
+command with the added &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;-P-p8.5i,5.5i&lt;/span&gt;&lt;/code&gt; argument.  Here's what I put
+in my &lt;span class="file"&gt;GNUmakefile&lt;/span&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://tkurtbond.github.io/listings/GNUmakefile.pandoc-digest-save-ms.html"&gt;GNUmakefile.pandoc-digest-save-ms&lt;/a&gt;  &lt;a class="reference external" href="https://tkurtbond.github.io/listings/GNUmakefile.pandoc-digest-save-ms"&gt;(Source)&lt;/a&gt;&lt;/p&gt;
+&lt;pre class="code make"&gt;&lt;a name="rest_code_84d2232ac0bf4cd197a58a6512998407-1"&gt;&lt;/a&gt;&lt;span class="nf"&gt;%.digest.ms.pdf &lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; %.&lt;span class="n"&gt;rst&lt;/span&gt;
+&lt;a name="rest_code_84d2232ac0bf4cd197a58a6512998407-2"&gt;&lt;/a&gt;        pandoc -s -r rst -w ms -s --template&lt;span class="o"&gt;=&lt;/span&gt;digest2 &lt;span class="k"&gt;$(&lt;/span&gt;VARIABLES&lt;span class="k"&gt;)&lt;/span&gt; &lt;span class="se"&gt;\&lt;/span&gt;
+&lt;a name="rest_code_84d2232ac0bf4cd197a58a6512998407-3"&gt;&lt;/a&gt;               --output&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$*&lt;/span&gt;.ms $&amp;lt;
+&lt;a name="rest_code_84d2232ac0bf4cd197a58a6512998407-4"&gt;&lt;/a&gt;        pdfroff -ms -mpdfmark -e -t -k -KUTF-8 --no-toc-relocation &lt;span class="se"&gt;\&lt;/span&gt;
+&lt;a name="rest_code_84d2232ac0bf4cd197a58a6512998407-5"&gt;&lt;/a&gt;                -P-p8.5i,5.5i &lt;span class="nv"&gt;$*&lt;/span&gt;.ms &amp;gt; &lt;span class="nv"&gt;$@&lt;/span&gt;
+&lt;/pre&gt;&lt;p&gt;Or, if you don't care about having the &lt;span class="app"&gt;ms&lt;/span&gt; output for debugging,
+you could do it as a pipeline:&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://tkurtbond.github.io/listings/GNUmakefile.pandoc-digest-pipeline.html"&gt;GNUmakefile.pandoc-digest-pipeline&lt;/a&gt;  &lt;a class="reference external" href="https://tkurtbond.github.io/listings/GNUmakefile.pandoc-digest-pipeline"&gt;(Source)&lt;/a&gt;&lt;/p&gt;
+&lt;pre class="code make"&gt;&lt;a name="rest_code_d7ca5558c86943e6b8c7a6745e77c726-1"&gt;&lt;/a&gt;&lt;span class="nf"&gt;%.digest.ms.pdf &lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; %.&lt;span class="n"&gt;rst&lt;/span&gt;
+&lt;a name="rest_code_d7ca5558c86943e6b8c7a6745e77c726-2"&gt;&lt;/a&gt;        pandoc -s -r rst -w ms -s --template&lt;span class="o"&gt;=&lt;/span&gt;digest2 &lt;span class="k"&gt;$(&lt;/span&gt;VARIABLES&lt;span class="k"&gt;)&lt;/span&gt; &lt;span class="se"&gt;\&lt;/span&gt;
+&lt;a name="rest_code_d7ca5558c86943e6b8c7a6745e77c726-3"&gt;&lt;/a&gt;               --output&lt;span class="o"&gt;=&lt;/span&gt;- $&amp;lt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="se"&gt;\&lt;/span&gt;
+&lt;a name="rest_code_d7ca5558c86943e6b8c7a6745e77c726-4"&gt;&lt;/a&gt;        pdfroff -ms -mpdfmark -e -t -k -KUTF-8 --no-toc-relocation &lt;span class="se"&gt;\&lt;/span&gt;
+&lt;a name="rest_code_d7ca5558c86943e6b8c7a6745e77c726-5"&gt;&lt;/a&gt;                -P-p8.5i,5.5i - &amp;gt;&lt;span class="nv"&gt;$@&lt;/span&gt;
+&lt;/pre&gt;&lt;p&gt;There are still some instances where this technique of having
+&lt;span class="app"&gt;pandoc&lt;/span&gt; output the &lt;span class="app"&gt;ms&lt;/span&gt; source directly and pass it through
+&lt;span class="app"&gt;pdfroff&lt;/span&gt; yourself.  For instance, if you have to do some
+massaging of the &lt;span class="app"&gt;ms&lt;/span&gt; source, like changing &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;.RS/.RE&lt;/span&gt;&lt;/code&gt; to
+&lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;.QS/.QE&lt;/span&gt;&lt;/code&gt; to get around the problem with block quotes in &lt;span class="app"&gt;ms&lt;/span&gt;
+output in the current &lt;span class="app"&gt;pandoc&lt;/span&gt; release, discussed &lt;a class="reference external" href="https://tkurtbond.github.io/posts/2020/03/11/pandoc-discuss-post-can-the-rsre-macros-in-ms-output-be-replaced-with-qsqe/"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;dl class="footnote brackets"&gt;
+&lt;dt class="label" id="heirloomtroff"&gt;&lt;span class="brackets"&gt;&lt;a class="fn-backref" href="https://tkurtbond.github.io/posts/2020/03/13/making-digest-sized-pages-with-pandoc-and-ms-output/#id1"&gt;1&lt;/a&gt;&lt;/span&gt;&lt;/dt&gt;
+&lt;dd&gt;&lt;p&gt;Heirloom Troff (originally at &lt;a class="reference external" href="http://heirloom.sourceforge.net/doctools.html"&gt;H1&lt;/a&gt;, but now &lt;em&gt;I
+think&lt;/em&gt; more up to date at &lt;a class="reference external" href="http://n-t-roff.github.io/heirloom/doctools.html"&gt;H2&lt;/a&gt; and &lt;a class="reference external" href="https://github.com/n-t-roff/heirloom-doctools"&gt;H3&lt;/a&gt;) has the &lt;code class="docutils literal"&gt;.mediasize&lt;/code&gt; and
+&lt;code class="docutils literal"&gt;.papersize&lt;/code&gt; commands for that.&lt;/p&gt;
+&lt;/dd&gt;
+&lt;dt class="label" id="recursively"&gt;&lt;span class="brackets"&gt;&lt;a class="fn-backref" href="https://tkurtbond.github.io/posts/2020/03/13/making-digest-sized-pages-with-pandoc-and-ms-output/#id2"&gt;2&lt;/a&gt;&lt;/span&gt;&lt;/dt&gt;
+&lt;dd&gt;&lt;p&gt;Amusingly, &lt;span class="app"&gt;pandoc&lt;/span&gt; passes the
+&lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;--pdf-engine-opt=-P-p8.5i,5.5i&lt;/span&gt;&lt;/code&gt; argument to &lt;span class="app"&gt;pdfroff&lt;/span&gt;,
+which passes the &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;-P-p8.5i,5.5i&lt;/span&gt;&lt;/code&gt; part to &lt;span class="app"&gt;groff&lt;/span&gt;, which
+passes the &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;-p8.5i,5.5i&lt;/span&gt;&lt;/code&gt; part to the (final) post processor — I'm
+not sure if &lt;em&gt;that&lt;/em&gt; is &lt;span class="app"&gt;grops&lt;/span&gt; or &lt;span class="app"&gt;gropdf&lt;/span&gt;.&lt;/p&gt;
+&lt;/dd&gt;
+&lt;/dl&gt;&lt;/div&gt;</summary>
+    <category term="computer" label="computer"/>
+    <category term="digest" label="digest"/>
+    <category term="groff" label="groff"/>
+    <category term="make" label="make"/>
+    <category term="ms-macros" label="ms macros"/>
+    <category term="pandoc" label="pandoc"/>
+    <category term="pdfroff" label="pdfroff"/>
+    <category term="text-processing" label="text processing"/>
+  </entry>
+  <entry>
+    <title>Video Chatting with P.B. and L.B</title>
+    <id>https://tkurtbond.github.io/posts/2012/09/17/video-chatting-with-paul-and-lily/</id>
+    <updated>2012-09-17T21:07:43-05:00</updated>
+    <published>2012-09-17T21:07:43-05:00</published>
+    <author>
+      <name>T. Kurt Bond</name>
+    </author>
+    <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/posts/2012/09/17/video-chatting-with-paul-and-lily/"/>
+    <summary type="html">&lt;p&gt;I worked through setting up Google+ on my computer this evening with
+P.B., and then got worked through setting it up on L.B.'s phone, and
+got to video chat with her a good bit.  It really made my day.&lt;/p&gt;</summary>
+    <category term="computer" label="computer"/>
+    <category term="google" label="google"/>
+    <category term="hangouts" label="hangouts"/>
+  </entry>
+  <entry>
+    <title>PDF-XChange Viewer</title>
+    <id>https://tkurtbond.github.io/posts/2009/04/28/pdf-xchange-viewer/</id>
+    <updated>2009-04-28T11:12:45-05:00</updated>
+    <published>2009-04-28T11:12:45-05:00</published>
+    <author>
+      <name>T. Kurt Bond</name>
+    </author>
+    <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/posts/2009/04/28/pdf-xchange-viewer/"/>
+    <summary type="html">&lt;div&gt;&lt;p&gt;I like to stick to Free/Libre (as in freedom) and Open Source Software
+as much as I can, but I haven't found a open source program that lets
+me add text on existing PDF documents yet, so I use a commercial but
+free (as in costs nothing for personal use) program
+&lt;a class="reference external" href="http://www.docu-track.com/home/prod_user/PDF-XChange_Tools/pdfx_viewer"&gt;PDF-XChange Viewer&lt;/a&gt;, which can be downloaded &lt;a class="reference external" href="http://www.docu-track.com/downloads/users/"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Unlike most of the other commercial but free programs that allow you
+to add text to existing documents, PDF-XChange Viewer doesn't add any
+nagware watermarking to the document to indicate that it was produced
+with the free version, so you can use it fill out forms in PDF
+documents that don't have electric form fields, which is very useful on
+long forms.&lt;/p&gt;
+&lt;p&gt;It's not perfect — I've had trouble with it on a few PDFs that seemed
+to have pathological defects — but overall it works well.&lt;/p&gt;
+&lt;p&gt;I'd still rather have a Free/Libre or Open Source program, though.&lt;/p&gt;&lt;/div&gt;</summary>
+    <category term="computer" label="computer"/>
+    <category term="pdf" label="pdf"/>
+    <category term="tools" label="tools"/>
+  </entry>
+  <entry>
+    <title>Case-insenstive filename completion with bash and emacs</title>
+    <id>https://tkurtbond.github.io/posts/2009/04/24/case-insenstive-filename-completion-with-bash-and-emacs/</id>
+    <updated>2009-04-24T13:59:07-05:00</updated>
+    <published>2009-04-24T13:59:07-05:00</published>
+    <author>
+      <name>T. Kurt Bond</name>
+    </author>
+    <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/posts/2009/04/24/case-insenstive-filename-completion-with-bash-and-emacs/"/>
+    <summary type="html">&lt;div&gt;&lt;p&gt;It's strange, I know, that while I like case sensitive filenames, I
+don't actually want to be bothered matching the case exactly when I'm
+using tab completion.  Fortunately, &lt;span class="program"&gt;emacs&lt;/span&gt; and
+&lt;span class="program"&gt;bash&lt;/span&gt; both accommodate my whims.  For bash, add&lt;/p&gt;
+&lt;pre class="code bash"&gt;&lt;a name="rest_code_72ba77b4d9974ae38b09ba4dd0410832-1"&gt;&lt;/a&gt;&lt;span class="nb"&gt;set&lt;/span&gt; completion-ignore-case on
+&lt;/pre&gt;&lt;p&gt;to your &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;~/.inputrc&lt;/span&gt;&lt;/code&gt; file.  For emacs, add&lt;/p&gt;
+&lt;pre class="code emacs-lisp"&gt;&lt;a name="rest_code_72220a4f231342d591b8a1aadc5e4629-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;read-file-name-completion-ignore-case&lt;/span&gt; &lt;span class="no"&gt;t&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;p&gt;to your emacs initialization files.  Of course, if want to get rid of
+all completion case sensitivity, you need&lt;/p&gt;
+&lt;pre class="code emacs-lisp"&gt;&lt;a name="rest_code_46483600b85c4aee991e1a36ab4b7ad1-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;setq&lt;/span&gt; &lt;span class="nv"&gt;completion-ignore-case&lt;/span&gt; &lt;span class="no"&gt;t&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;p&gt;too.&lt;/p&gt;&lt;/div&gt;</summary>
+    <category term="bash" label="bash"/>
+    <category term="computer" label="computer"/>
+    <category term="emacs" label="emacs"/>
+  </entry>
+  <entry>
+    <title>Updating NetBSD pkgsrc: swig checks for mcs</title>
+    <id>https://tkurtbond.github.io/posts/2009/01/06/updating-netbsd-pkgsrc-swig-checks-for-mcs/</id>
+    <updated>2009-01-06T14:42:20-05:00</updated>
+    <published>2009-01-06T14:42:20-05:00</published>
+    <author>
+      <name>T. Kurt Bond</name>
+    </author>
+    <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/posts/2009/01/06/updating-netbsd-pkgsrc-swig-checks-for-mcs/"/>
+    <summary type="html">&lt;p&gt;It turns out that if you are upgrading your pkgsrc packages in a
+&lt;a class="reference external" href="http://diwp.blogspot.com/2006/09/manage-your-packages-in-sandbox-with.html"&gt;sandbox&lt;/a&gt; you really need to make sure that the home directory of the
+user you are using exists in the sandbox, if you use any packages that
+have a file:&lt;cite&gt;configure&lt;/cite&gt; script that checks for &lt;cite&gt;mcs&lt;/cite&gt;, since mono hangs
+if it can't use the home directory.  Ugh.&lt;/p&gt;</summary>
+    <category term="c" label="c#"/>
+    <category term="computer" label="computer"/>
+    <category term="mcs" label="mcs"/>
+    <category term="mono" label="mono"/>
+    <category term="netbsd" label="netbsd"/>
+    <category term="os" label="os"/>
+    <category term="swig" label="swig"/>
+  </entry>
+  <entry>
+    <title>Mousing in Emacs under Screen</title>
+    <id>https://tkurtbond.github.io/posts/2008/12/11/mousing-in-emacs-under-screen/</id>
+    <updated>2008-12-11T12:46:02-05:00</updated>
+    <published>2008-12-11T12:46:02-05:00</published>
+    <author>
+      <name>T. Kurt Bond</name>
+    </author>
+    <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/posts/2008/12/11/mousing-in-emacs-under-screen/"/>
+    <summary type="html">&lt;p&gt;It &lt;a class="reference external" href="http://savannah.gnu.org/bugs/?14930"&gt;turns out&lt;/a&gt; that if you execute the command &lt;cite&gt;xterm-mouse-mode&lt;/cite&gt; (or
+evaluate &lt;cite&gt;(xterm-mouse-mode 1)&lt;/cite&gt; in your initialization file) when
+running &lt;a class="reference external" href="http://www.gnu.org/software/emacs/"&gt;Emacs&lt;/a&gt; under &lt;a class="reference external" href="http://www.gnu.org/software/screen/"&gt;Screen&lt;/a&gt; it allows “non-modified single clicks” to
+work.  Normal mouse functionality is still available by holding the
+Shift key while clicking.  I use the &lt;a class="reference external" href="http://www.chiark.greenend.org.uk/~sgtatham/putty/"&gt;PuTTY&lt;/a&gt; ssh client for remote
+access to various servers, and this works well Emacs in Screen under
+PuTTY, too.&lt;/p&gt;</summary>
+    <category term="computer" label="computer"/>
+    <category term="emacs" label="emacs"/>
+    <category term="screen" label="screen"/>
+    <category term="tools" label="tools"/>
+  </entry>
+  <entry>
+    <title>µstr - Micro String API - for C</title>
+    <id>https://tkurtbond.github.io/posts/2008/12/06/str-micro-string-api-for-c/</id>
+    <updated>2008-12-06T07:52:04-05:00</updated>
+    <published>2008-12-06T07:52:04-05:00</published>
+    <author>
+      <name>T. Kurt Bond</name>
+    </author>
+    <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/posts/2008/12/06/str-micro-string-api-for-c/"/>
+    <summary type="html">&lt;div&gt;&lt;p&gt;I was very pleased to discover large parts of &lt;a class="reference external" href="http://www.and.org/ustr/"&gt;µstr&lt;/a&gt; compile and seem
+to work under VMS v5.5-2 with GCC 2.7.1, which is almost the only
+compiler available to me on that machine.  The other is VAX BASIC,
+which has adequate simple string handling, but lacks advanced string
+handling and has only very painful facilities for dynamically
+allocating complex data structures and working with them.&lt;/p&gt;
+&lt;p&gt;[2019-11-09: I was writing a program to get e-mails from VMS Mail
+using the callable interface, then parse the body of the email into a
+form that could be further processed by POISE DMS programs.]&lt;/p&gt;&lt;/div&gt;</summary>
+    <category term="computer" label="computer"/>
+  </entry>
+  <entry>
+    <title>2GB Windows XP Hibernation Problem</title>
+    <id>https://tkurtbond.github.io/posts/2008/12/03/2gb-windows-xp-hibernation-problem/</id>
+    <updated>2008-12-03T15:44:22-05:00</updated>
+    <published>2008-12-03T15:44:22-05:00</published>
+    <author>
+      <name>T. Kurt Bond</name>
+    </author>
+    <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/posts/2008/12/03/2gb-windows-xp-hibernation-problem/"/>
+    <summary type="html">&lt;div&gt;&lt;p&gt;&lt;a class="reference external" href="http://www.codinghorror.com/blog/archives/000555.html"&gt;Coding Horror&lt;/a&gt; points out the hotfix for the:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;⚠ Windows - System Error
+Insufficient system resources exist to complete the API.&lt;/pre&gt;
+&lt;p&gt;error when trying to suspend a Windows XP machine with 2 gibibytes.
+The hotfix is hosted by &lt;a class="reference external" href="http://www.u-g-h.com/2006/03/14/insufficient-system-resources-exist-to-complete-the-api-solived/"&gt;Owen Cutajar&lt;/a&gt; and is from &lt;a class="reference external" href="http://support.microsoft.com/?kbid=909095"&gt;Microsoft
+KB909095&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Update: 2008-12-11: Unfortunately, it doesn't always work.  Even after
+applying the hotfix, one of my laptops still won't hibernate.&lt;/p&gt;&lt;/div&gt;</summary>
+    <category term="computer" label="computer"/>
+    <category term="ms-windows" label="ms windows"/>
+  </entry>
+  <entry>
+    <title>Cygwin setup crashes updating bash</title>
+    <id>https://tkurtbond.github.io/posts/2008/11/26/cygwin-setup-crashes-updating-bash/</id>
+    <updated>2008-11-26T15:57:51-05:00</updated>
+    <published>2008-11-26T15:57:51-05:00</published>
+    <author>
+      <name>T. Kurt Bond</name>
+    </author>
+    <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/posts/2008/11/26/cygwin-setup-crashes-updating-bash/"/>
+    <summary type="html">&lt;div&gt;&lt;p&gt;Thanks to the wonders of Google and &lt;a class="reference external" href="http://rubenlaguna.com/wp/2007/11/05/cygwin-setupexe-crashes-whem-upgrading-packages/"&gt;Ruben&lt;/a&gt; I finally found the answer:
+remove (you'll want to make a backup copy before you remove it,
+though) &lt;code class="docutils literal"&gt;/etc/setup/bash.lst.gz&lt;/code&gt; which apparently had become
+corrupted.&lt;/p&gt;
+&lt;p&gt;According to a comment on that post, running &lt;code class="docutils literal"&gt;gunzip &lt;span class="pre"&gt;-t&lt;/span&gt;&lt;/code&gt; on all
+files in &lt;code class="docutils literal"&gt;/etc/setup&lt;/code&gt; will tell you which setup files have been
+corrupted.&lt;/p&gt;&lt;/div&gt;</summary>
+    <category term="bash" label="bash"/>
+    <category term="computer" label="computer"/>
+    <category term="corrupted" label="corrupted"/>
+    <category term="cygwin" label="cygwin"/>
+    <category term="setupexe" label="setup.exe"/>
+    <category term="tools" label="tools"/>
+    <category term="upgrade" label="upgrade"/>
+  </entry>
+  <entry>
+    <title>Ancient History and Ancient Hardware repurposed with NetBSD 4.0, almost</title>
+    <id>https://tkurtbond.github.io/posts/2008/09/14/ancient-history-and-hardware-repurposed-with-netbsd-40/</id>
+    <updated>2008-09-14T06:33:38-05:00</updated>
+    <published>2008-09-14T06:33:38-05:00</published>
+    <author>
+      <name>T. Kurt Bond</name>
+    </author>
+    <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/posts/2008/09/14/ancient-history-and-hardware-repurposed-with-netbsd-40/"/>
+    <summary type="html">&lt;div&gt;&lt;p&gt;For some odd reason I decided to power on my old Gateway 2000 486DX/33
+and do something with it.  It hadn't been on since Wednesday, May
+25th, 2005, if I can believe the BIOS date.  (I was pleasantly
+surprised the settings hadn't gotten corrupted.)  Up to the point I turned it
+off it was acting as a mail server backup for my personal system, and
+was running Sendmail, Dovecot, a greylisting milter, and Emacs.  A
+little before that it had actually been one of the MPL DNS servers.&lt;/p&gt;
+&lt;p&gt;Anyway, it had Windows 95 on the original 200MB IDE hard drive and
+FreeBSD 4.10 on the 2GB Quantum XP32275S Atlas II.  It came with
+Windows 95 of course when I bought it, but I ran &lt;a class="reference external" href="http://en.wikipedia.org/wiki/Softlanding_Linux_System"&gt;SLS Linux&lt;/a&gt; on it
+originally, if I remember correctly, because 386BSD wouldn't install,
+and later &lt;a class="reference external" href="http://en.wikipedia.org/wiki/MCC_Interim_Linux"&gt;MCC Interim Linux&lt;/a&gt;, and eventually &lt;a class="reference external" href="http://www.freebsd.org/"&gt;FreeBSD&lt;/a&gt;.  When my wife got
+me the SCSI controler and CD-ROM I was so thrilled because now I
+wouldn't get dragging home OS distributions on floppy any more!  Once
+I got the 2GB hard drive I put Windows 95 back on the 200MB drive for
+my wife and for the occastional work-related Windows 95 excursion.  It
+had 16MB originally, but I scrounged 4MB more of RAM for it very late
+on, when it was a DNS server.&lt;/p&gt;
+&lt;p&gt;I wanted to get a more recent OS on it, but remembering how FreeBSD
+4.10 was a pretty tight fight there at the end, I decided I'd put
+&lt;a class="reference external" href="http://www.netbsd.org/"&gt;NetBSD&lt;/a&gt; on it.  (NetBSD documentation says it still should be possible to
+run in 4MB.)   I used NetBSD for a while for my main box at home, but
+I was never satisfied that I'd mastered it as well as FreeBSD, and I
+thought this would be good way to put the old 486 to work.  Luckily I
+was albe to find an 3c509B card to get it on the network, because it
+turned out the 3.5” floppy and the CD-ROM drive were both
+non-functional.  (As I worked with the machine I remembered the floppy
+had been bad when I'd turned it off, but the CD-ROM had been working.)
+I gathered some confirmation information and then started trying to
+figure out how I was going to get NetBSD on it.  Luckily the FreeBSD
+4.10 install was still working and I was able to extract the NetBSD
+dosboot.com bootloader  from base.tgz, copy it and the netbsd-install
+kernel over the network with FreeBSD, mount the
+old 200MB Windows 95/MS-DOS disk under FreeBSD, and copy the files
+over there, then boot into MS-DOS with F8 when Windows 95 started to
+boot, run through the prompting for each line in the config files and
+answering “NO”, and then run &lt;code class="docutils literal"&gt;dosboot &lt;span class="pre"&gt;netbsd-install&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;The installation was successful, but unfortunately the boot process failed.&lt;/p&gt;
+&lt;p&gt;As I recall, I've had problems in the past getting boot loaders to
+boot off this drive.  I'll have to revisit it when I have some more
+time.&lt;/p&gt;
+&lt;!-- http://www.mavetju.org/mail/view_message.php?list=freebsd-stable&amp;id=456419
+http://intelligent-peripheral.com/manuals/quantum_ucg.pdf
+ http://209.85.165.104/search?q=cache:ksSAYOqDDQAJ:intelligent-peripheral.com/manuals/quantum_ucg.pdf+QUANTUM+XP32275S&amp;hl=en&amp;ct=clnk&amp;cd=10&amp;gl=us&amp;client=firefox-a
+ http://www.netbsd.org/ports/i386/faq.html#dosboot
+
+ 5. step-by-step-confirmation
+
+ http://bsdsupport.org/2007/01/netbsd-pxe-boot-install-without-nfs/ --&gt;&lt;/div&gt;</summary>
+    <category term="computer" label="computer"/>
+    <category term="i486" label="i486"/>
+    <category term="netbsd" label="netbsd"/>
+  </entry>
+</feed>

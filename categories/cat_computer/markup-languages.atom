@@ -1,0 +1,346 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?xml-stylesheet href="https://tkurtbond.github.io/assets/xml/atom.xsl" type="text/xsl media="all"?>
+<feed xml:lang="en" xmlns="http://www.w3.org/2005/Atom">
+  <title>Lacking Natural Simplicity (Posts about markup-languages)</title>
+  <id>https://tkurtbond.github.io/categories/cat_computer/markup-languages.atom</id>
+  <updated>2021-05-19T20:55:03Z</updated>
+  <author>
+    <name>T. Kurt Bond</name>
+  </author>
+  <link rel="self" type="application/atom+xml" href="https://tkurtbond.github.io/categories/cat_computer/markup-languages.atom"/>
+  <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/categories/cat_computer/markup-languages/"/>
+  <generator uri="https://getnikola.com/">Nikola</generator>
+  <entry>
+    <title>EPUB files, Markup Languages, and briefly Unix</title>
+    <id>https://tkurtbond.github.io/posts/2020/12/01/epub-files-markup-languages-and-briefly-unix/</id>
+    <updated>2020-12-01T15:56:13-05:00</updated>
+    <published>2020-12-01T15:56:13-05:00</published>
+    <author>
+      <name>T. Kurt Bond</name>
+    </author>
+    <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/posts/2020/12/01/epub-files-markup-languages-and-briefly-unix/"/>
+    <summary type="html">&lt;div&gt;&lt;p&gt;What follows is a lightly edited version (for clarity and relevance)
+of the postscripts from an email that I recently wrote, transferred
+here for posterity and the general good.&lt;/p&gt;
+&lt;hr class="docutils"&gt;
+&lt;p&gt;&lt;strong&gt;Danger! Danger Will Robinson! Danger!&lt;/strong&gt; The postscripts and
+footnotes are much longer than the main body of the reply!  And the
+footnotes are longer than the text of the postscripts!&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;P.S&lt;/strong&gt;. H., P. (and H. M., if you are interested, though I
+admit this combines some of my more geeky interests and thus may be of
+less interest to all of you, or for Howard and Paul, for that matter):&lt;/p&gt;
+&lt;p&gt;I actually figured out how to make ebooks (to a limited degree)
+because I wanted to try an ebook I made of an RPG adventure I wrote
+for a currently on hiatus&lt;a class="footnote-reference brackets" href="https://tkurtbond.github.io/posts/2020/12/01/epub-files-markup-languages-and-briefly-unix/#id9" id="id1"&gt;0&lt;/a&gt; fantasy &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Savage_Worlds"&gt;Savage Worlds&lt;/a&gt; roleplaying game
+campaign for my daughter &lt;a class="reference external" href="https://www.facebook.com/lily.bond.31"&gt;Lily&lt;/a&gt; and my &lt;a class="reference external" href="https://www.facebook.com/eva.atha.7"&gt;niece&lt;/a&gt; and nephews (&lt;a class="reference external" href="https://www.facebook.com/mason.atha.7"&gt;N1&lt;/a&gt;). I originally wrote the
+adventure&lt;a class="footnote-reference brackets" href="https://tkurtbond.github.io/posts/2020/12/01/epub-files-markup-languages-and-briefly-unix/#id10" id="id2"&gt;1&lt;/a&gt; in three typesetting systems which use &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Markup_language"&gt;markup
+languages&lt;/a&gt;, &lt;a class="reference external" href="https://en.wikipedia.org/wiki/LaTeX"&gt;LaTeX&lt;/a&gt;, &lt;a class="reference external" href="https://en.wikipedia.org/wiki/ConTeXt"&gt;ConTeXt&lt;/a&gt;, and &lt;a class="reference external" href="https://troff.org/"&gt;troff&lt;/a&gt;&lt;a class="footnote-reference brackets" href="https://tkurtbond.github.io/posts/2020/12/01/epub-files-markup-languages-and-briefly-unix/#id11" id="id3"&gt;2&lt;/a&gt; (which I usually use in its guise as
+&lt;a class="reference external" href="https://en.wikipedia.org/wiki/GNU"&gt;GNU&lt;/a&gt; &lt;a class="reference external" href="https://www.gnu.org/software/groff/"&gt;groff&lt;/a&gt;, but this time I
+used &lt;span class="app"&gt;Heirloom troff&lt;/span&gt;, part of the &lt;a class="reference external" href="http://n-t-roff.github.io/heirloom/doctools.html"&gt;Heirloom Documentation
+Tools&lt;/a&gt;, for its easy access to modern fonts) to compare the markup
+languages and their PDF output to decide which one I prefered to
+use. Later I converted it to &lt;a class="reference external" href="https://docutils.sourceforge.io/rst.html"&gt;ReStructuredText&lt;/a&gt;, a lightweight markup
+language&lt;a class="footnote-reference brackets" href="https://tkurtbond.github.io/posts/2020/12/01/epub-files-markup-languages-and-briefly-unix/#id12" id="id4"&gt;3&lt;/a&gt; that I use, to compare it to the other markup
+languages.&lt;/p&gt;
+&lt;p&gt;I have used ReStructuredText on and off for many years, but the main
+drawbacks to it was that (1) the output produced by its original
+&lt;a class="reference external" href="https://docutils.sourceforge.io/"&gt;docutils&lt;/a&gt; implementation was
+excessively stark and difficult to customize to have a nicer
+appearance, and (2) its workflow was somewhat difficult,&lt;a class="footnote-reference brackets" href="https://tkurtbond.github.io/posts/2020/12/01/epub-files-markup-languages-and-briefly-unix/#id13" id="id5"&gt;4&lt;/a&gt; Some
+time ago I discovered &lt;a class="reference external" href="https://pandoc.org/"&gt;Pandoc&lt;/a&gt;, a “universal
+document converter” which can read many input sources, including
+ReStructuredText, and produce output in many output formats, including
+PDF (via &lt;span class="app"&gt;LaTeX&lt;/span&gt;, &lt;span class="app"&gt;ConTeXt&lt;/span&gt;, or &lt;span class="app"&gt;troff&lt;/span&gt;; in ways easier
+to customize the appearance of) and HTML, and, as it turns and
+importantly to this story, EPUB, the most common format for ebooks! I
+started using &lt;span class="app"&gt;Pandoc&lt;/span&gt; because it made it easier to generate PDF from
+ReStructuredText with one command (since &lt;span class="app"&gt;Pandoc&lt;/span&gt; runs all the
+intermediate steps and cleans up any temporary files needed). It
+turned out that the abilities to read multiple input formats and to
+more easily customize the output was important to me as well.&lt;/p&gt;
+&lt;p&gt;So, having converted the adventure over to ReStructuredTexT for
+comparison&lt;a class="footnote-reference brackets" href="https://tkurtbond.github.io/posts/2020/12/01/epub-files-markup-languages-and-briefly-unix/#id14" id="id6"&gt;5&lt;/a&gt; and at first using PDF through &lt;span class="app"&gt;Pandoc&lt;/span&gt;'s
+&lt;code class="docutils literal"&gt;troff &lt;span class="pre"&gt;-ms&lt;/span&gt;&lt;/code&gt; output, I soon decided to take a look at &lt;span class="app"&gt;Pandoc&lt;/span&gt;'s other
+output formats. I started with &lt;span class="app"&gt;LaTeX&lt;/span&gt; and &lt;span class="app"&gt;ConTeXt&lt;/span&gt;, and decided that the
+PDF output via &lt;span class="app"&gt;LaTeX&lt;/span&gt; was not of much interest to me, but the PDF
+output via &lt;span class="app"&gt;ConTeXt&lt;/span&gt; offered greater control over the appearance of the
+final PDF output and the opportunity of adding via writing Lua filters
+some features to the resulting documents that lightweight markup
+languages normally don't offer, such as indexes and cross references
+that are both hyperlinks and include page numbers and section names in
+the PDF output, which are features that I didn't need in the adventure
+document, but which I expect to need in future documents.&lt;/p&gt;
+&lt;p&gt;But back to the important point, &lt;span class="app"&gt;Pandoc&lt;/span&gt; can produce EBUB output for
+ebooks!  Since I already had the adventure in ReStructuredText, and
+&lt;span class="app"&gt;Pandoc&lt;/span&gt; produces EPUB, and I have an ebook reader, a Kindle, it just
+makes sense to figure out how to get it onto my Kindle! First I used
+&lt;span class="app"&gt;Pandoc&lt;/span&gt; to generate the EPUB. That required figuring out how to
+generate a reasonably attractive cover. Then wrote a small config file
+for &lt;span class="app"&gt;Pandoc&lt;/span&gt;.  Then I generated the EPUB output. Then I figured out how
+to convert that over to MOBI, one of the formats that the Kindle can
+use.&lt;a class="footnote-reference brackets" href="https://tkurtbond.github.io/posts/2020/12/01/epub-files-markup-languages-and-briefly-unix/#id15" id="id7"&gt;6&lt;/a&gt; Then I mailed it to my Kindle's email, and it looked
+reasonably good!&lt;a class="footnote-reference brackets" href="https://tkurtbond.github.io/posts/2020/12/01/epub-files-markup-languages-and-briefly-unix/#id16" id="id8"&gt;7&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;I hope you've enjoyed this twisty maze of passages, all different!&lt;/p&gt;
+&lt;p&gt;And with a &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Zork"&gt;Zork&lt;/a&gt; reference I
+really must end this email!&lt;/p&gt;
+&lt;dl class="footnote brackets"&gt;
+&lt;dt class="label" id="id9"&gt;&lt;span class="brackets"&gt;&lt;a class="fn-backref" href="https://tkurtbond.github.io/posts/2020/12/01/epub-files-markup-languages-and-briefly-unix/#id1"&gt;0&lt;/a&gt;&lt;/span&gt;&lt;/dt&gt;
+&lt;dd&gt;&lt;p&gt;Pandemics are no fun!&lt;/p&gt;
+&lt;p&gt;I originally thought I'd get through this email without footnotes, but
+&lt;a class="reference external" href="https://www.worldwidewords.org/qa/qa-nee1.htm"&gt;needs must when the devil
+drives&lt;/a&gt;. I rather
+enjoy footnotes in email messages, but it's not as convenient in gmail
+as it used to be in Emacs. And since it offered the opportunity for a
+Shakespeare reference of sorts, I'm quite pleased, in general.&lt;/p&gt;
+&lt;/dd&gt;
+&lt;dt class="label" id="id10"&gt;&lt;span class="brackets"&gt;&lt;a class="fn-backref" href="https://tkurtbond.github.io/posts/2020/12/01/epub-files-markup-languages-and-briefly-unix/#id2"&gt;1&lt;/a&gt;&lt;/span&gt;&lt;/dt&gt;
+&lt;dd&gt;&lt;p&gt;As it turns out, I actually wrote &lt;strong&gt;seven&lt;/strong&gt; Savage Worlds
+adventures in &lt;span class="app"&gt;troff&lt;/span&gt;, and then converted them all to
+&lt;span class="app"&gt;LaTeX&lt;/span&gt; and &lt;span class="app"&gt;ConTeXt&lt;/span&gt; for comparison later. I actually
+wrote the first &lt;strong&gt;three&lt;/strong&gt; adventures using &lt;a class="reference external" href="https://www.libreoffice.org/"&gt;LibreOffice&lt;/a&gt;, a conventional office suite with
+a word processor, something I normally dislike but was giving
+another chance. I decided after three adventures that I wasn't
+going to do another in &lt;span class="app"&gt;LibreOffice&lt;/span&gt;, and started looking for
+alternatives, hence comparing markup languages. I tend to like
+markup languages better than &lt;a class="reference external" href="https://en.wikipedia.org/wiki/WYSIWYG"&gt;WYSIWYG&lt;/a&gt; editors; this may just be the
+programmer in me liking the idea of languages over WYSIWYG, but
+there did turn out to be significant advantages to switching to a
+markup language in the end. The primary one was that I could put
+character and creature descriptions in external files and reference
+them in the main file, rather than cut and paste them from one
+document to another, which meant I could just change the external
+file and it would automatically be included in the updated document
+next time I generated output from it. With a WYSIWYG tool I'd have
+had to go back and cut and paste the changed material in every
+document every time I changed it, which would be immensely tedious
+and horribly error prone and all too common.&lt;/p&gt;
+&lt;/dd&gt;
+&lt;dt class="label" id="id11"&gt;&lt;span class="brackets"&gt;&lt;a class="fn-backref" href="https://tkurtbond.github.io/posts/2020/12/01/epub-files-markup-languages-and-briefly-unix/#id3"&gt;2&lt;/a&gt;&lt;/span&gt;&lt;/dt&gt;
+&lt;dd&gt;&lt;p&gt;This footnote is about &lt;span class="app"&gt;LaTeX&lt;/span&gt;, &lt;span class="app"&gt;ConTeXt&lt;/span&gt;, and
+&lt;span class="app"&gt;troff&lt;/span&gt;, and peripherally about &lt;a class="reference external" href="https://en.wikipedia.org/wiki/TeX"&gt;TeX&lt;/a&gt;, the progenitor of
+&lt;span class="app"&gt;LaTeX&lt;/span&gt; and &lt;span class="app"&gt;ConTeXt&lt;/span&gt;. &lt;span class="app"&gt;Troff&lt;/span&gt; was one of the
+earliest computer typesetting systems, invented in 1973 as a scheme
+at the computer science portion of Bell Labs to get a PDP-11 so
+they could have an &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Time-sharing"&gt;time-sharing&lt;/a&gt; operating system,
+like the earlier &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Multics"&gt;Multics&lt;/a&gt; that ran on much more
+expensive hardware and that the researchers had worked on
+previously and looked back fondly after Bell Labs pulled out of
+that research. Bell Labs wouldn't just pay for a computer for the
+researchers to play with, so they proposed developing a computer
+typesetting system for the secretaries to use, largely for patent
+submission, something Bell Labs did a lot of. Their scheme
+succeeded and as a result they invented Unix and &lt;span class="app"&gt;troff&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;So, Unix was invented &lt;strong&gt;explicitly&lt;/strong&gt; to run &lt;span class="app"&gt;troff&lt;/span&gt;!&lt;/p&gt;
+&lt;p&gt;&lt;span class="app"&gt;TeX&lt;/span&gt;, by contrast, was not invented until 1978, &lt;span class="app"&gt;LaTeX&lt;/span&gt; in
+1985, and &lt;cite&gt;ConTeXt&lt;/cite&gt; not until 1990! (I wish I'd found out about the
+latter earlier!)  &lt;span class="app"&gt;TeX&lt;/span&gt; was invented because of &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Donald_Knuth"&gt;Donald
+Knuth&lt;/a&gt;'s desire to produce gloriously typeset books with
+mathematics for his multi-volume work &lt;a class="reference external" href="https://en.wikipedia.org/wiki/The_Art_of_Computer_Programming"&gt;The Art of Computer
+Programming&lt;/a&gt;.
+He finished &lt;span class="app"&gt;TeX&lt;/span&gt; long ago, but is still working on those
+books.&lt;/p&gt;
+&lt;p&gt;All of these typesetting systems have what are called markup
+languages, where the text of the document is interspersed with
+commands distinguished in some way from the regular text. For
+instance, the command &lt;code class="docutils literal"&gt;\begin{document}&lt;/code&gt; from &lt;span class="app"&gt;LaTeX&lt;/span&gt; is
+typical of &lt;span class="app"&gt;TeX&lt;/span&gt;, &lt;span class="app"&gt;LaTeX&lt;/span&gt;, and &lt;span class="app"&gt;ConTeXt&lt;/span&gt;, all of
+which are related. &lt;span class="app"&gt;Troff&lt;/span&gt; uses backslash commands in the
+middle of text and and commands on separate lines starting with
+periods but historically those commands have been limited to names
+of two characters, though this was relaxed in the later
+&lt;span class="app"&gt;troff&lt;/span&gt; implementation &lt;span class="app"&gt;groff&lt;/span&gt;, and in the &lt;span class="app"&gt;Heirloom
+troff&lt;/span&gt; implementation
+which extended the second &lt;span class="app"&gt;troff&lt;/span&gt; implementation,
+&lt;span class="app"&gt;ditroff&lt;/span&gt;, with similar features as gnu groff, but easier
+access to modern fonts.&lt;/p&gt;
+&lt;p&gt;I am particularly impressed by &lt;span class="app"&gt;troff&lt;/span&gt;'s ability to
+correctly typeset documents that I wrote 30 years ago and that
+others have written even earlier. It has never failed me in this
+task.† This has often been a problem for me with documents from
+WYSIWYG systems on the contrary, even when those documents were
+more recently created, including one significant one
+from 2004. (&lt;a class="reference external" href="https://en.wikipedia.org/wiki/StarOffice"&gt;Star Office&lt;/a&gt;, I'm looking at
+you!‡). &lt;span class="app"&gt;LaTeX&lt;/span&gt; is reasonably backward compatible, though it
+did go through some big changes earlier it is now mostly stable. I
+did experience some compatibility problems, minor with my documents
+and major with complicated documents written by others.
+&lt;span class="app"&gt;ConTeXt&lt;/span&gt; is generally stable, but it is developing rapidly so
+has more changes, though the developers are good about backward
+compatibility. The increasing sophistication of &lt;span class="app"&gt;ConTeXt&lt;/span&gt;,
+which along its development has subsumed both &lt;span class="app"&gt;TeX&lt;/span&gt; and
+&lt;a class="reference external" href="https://en.wikipedia.org/wiki/MetaPost"&gt;MetaPost&lt;/a&gt; and combined and extended them with the Lua scripting
+language (mentioned again below), producing something that is even
+more flexible and impressive than &lt;span class="app"&gt;TeX&lt;/span&gt; and &lt;span class="app"&gt;LaTeX&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Another thing I like about markup languages is the fact that they
+are &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Plain_text"&gt;plain text&lt;/a&gt;‖, and can be manipulated with any program you
+want. Before the emergence of &lt;a class="reference external" href="https://en.wikipedia.org/wiki/XML"&gt;XML&lt;/a&gt;-based WYSIWYG document formats
+in &lt;span class="app"&gt;Microsoft Word&lt;/span&gt;§ and &lt;span class="app"&gt;Star Office&lt;/span&gt; this was
+practically impossible. Even now the complexity of the ZIP file and
+XML markup renders this much much more unpleasant to deal
+with. Kicking dead whales down the beach indeed! Being able to use
+any tool at all on a document is considerably more useful than
+being limited to the poor extensions languages of &lt;span class="app"&gt;Microsoft
+Word&lt;/span&gt; and &lt;span class="app"&gt;LibreOffice&lt;/span&gt;, and usually much simpler.&lt;/p&gt;
+&lt;p&gt;† I &lt;strong&gt;have&lt;/strong&gt; had to change a few external programs I've written to
+help in the build process. &lt;a class="reference external" href="https://www.perl.org/"&gt;Perl&lt;/a&gt; was a problem here. (I tried to resist
+the footnote within the footnote, but again, need must when the devil
+drives.)&lt;/p&gt;
+&lt;p&gt;‡ Sure, the current &lt;span class="app"&gt;LibreOffice&lt;/span&gt; will open the file, but the
+formatting is significantly messed up.  Earlier versions, if I
+remember correctly, did not open the file correctly.&lt;/p&gt;
+&lt;p&gt;§ I have never written a document in &lt;span class="app"&gt;Microsoft Word&lt;/span&gt; for my
+personal use, though unfortunately I have used it often at work.&lt;/p&gt;
+&lt;p&gt;‖ I have delightedly taken to using Unicode characters in my plain text
+documents, as the ReStructuredText source of this document shows.&lt;/p&gt;
+&lt;/dd&gt;
+&lt;dt class="label" id="id12"&gt;&lt;span class="brackets"&gt;&lt;a class="fn-backref" href="https://tkurtbond.github.io/posts/2020/12/01/epub-files-markup-languages-and-briefly-unix/#id4"&gt;3&lt;/a&gt;&lt;/span&gt;&lt;/dt&gt;
+&lt;dd&gt;&lt;p&gt;Lightweight markup languages, in contrast with &lt;span class="app"&gt;TeX&lt;/span&gt;,
+&lt;span class="app"&gt;LaTeX&lt;/span&gt;, &lt;span class="app"&gt;ConTeXt&lt;/span&gt;, and &lt;span class="app"&gt;troff&lt;/span&gt;, are usually things
+that start with the conventions like indicating *italics* by
+surrounding phrases in plain text email messages and &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Usenet"&gt;USENET&lt;/a&gt; posts
+around them in the olden days. Most of them avoid the use of lots
+of keywords and backslashes, of the sort &lt;span class="app"&gt;TeX&lt;/span&gt;, &lt;span class="app"&gt;LaTeX&lt;/span&gt;,
+&lt;span class="app"&gt;ConTeXt&lt;/span&gt;, and to a partial extent &lt;span class="app"&gt;troff&lt;/span&gt; use. Instead,
+they largely try to use the non-alphanumeric characters on a
+standard keyboard to indicate how the text should be typeset, and
+without using long command names. The lack of these long command
+names (or short ones in &lt;span class="app"&gt;troff&lt;/span&gt;'s case) and the relatively
+unobtrusive nature of the non-alphanumeric characters makes
+documents easier to read. This is why they are called “lightweight”
+markup languages. &lt;a class="reference external" href="http://Lightweight_markup_language"&gt;Wikipedia&lt;/a&gt; has a good article that
+explains and compares them. Another advantage of most lightweight
+markup languages is that since they don't generally use command
+names, native speakers of languages other than English don't have
+to learn English command names, a significant matter.&lt;/p&gt;
+&lt;p&gt;I happen to prefer ReStructuredText, but Markdown is another very
+popular lightweight markup language that I sometimes use.&lt;/p&gt;
+&lt;p&gt;Another advantage to lightweight markup languages such as
+ReStructuredText and Markdown is that they often have programs allowing
+multiple kinds of output from them (PDF and HTML are typical) and since
+lightweight markup languages make no pretensions to being programming
+languages, which the markup languages of the original typesetting
+systems do (since that was how they allowed customization and
+extension), writing the programs to output multiple output types for
+lightweight markup languages is simpler than than writing programs to
+parse the heavy markup languages, which is the common approach that
+people take to get HTML from &lt;span class="app"&gt;LaTeX&lt;/span&gt;, for instance. The fact that heavy
+markup languages are usually &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Turing_completeness"&gt;Turing
+complete&lt;/a&gt; and so
+can be extensively (and definitely are in practice) extended and often
+have programmable syntax makes processing them with other tools
+difficult and usually require much hand conversion. It is my impression
+that while &lt;span class="app"&gt;LaTeX&lt;/span&gt; to HTML translators like
+&lt;a class="reference external" href="https://tug.org/tex4ht/"&gt;TeXht&lt;/a&gt; and
+&lt;a class="reference external" href="http://hevea.inria.fr/"&gt;HEVEA&lt;/a&gt; are very good for documents that only
+use the standard features of &lt;span class="app"&gt;LaTeX&lt;/span&gt; they can't deal easily with heavily
+programmed documents, since that would require more semantic
+understanding of the original &lt;span class="app"&gt;LaTeX&lt;/span&gt; source.&lt;/p&gt;
+&lt;p&gt;One interesting attempt in this direction for &lt;span class="app"&gt;troff&lt;/span&gt; was the &lt;a class="reference external" href="http://www-rn.informatik.uni-bremen.de/software/unroff/"&gt;unroff&lt;/a&gt;
+program, written in &lt;a class="reference external" href="http://sam.zoy.org/elk/"&gt;Elk Scheme&lt;/a&gt;. It
+took the approach of implementing a complete &lt;span class="app"&gt;troff&lt;/span&gt; parser and
+proving Scheme as an extension language so you could completely
+customize the output.  It provided a complete implementation for
+the &lt;code class="docutils literal"&gt;troff &lt;span class="pre"&gt;-ms&lt;/span&gt;&lt;/code&gt; macros, and I was easily able to extend those to
+handle cross references and indexes that I had extended that &lt;span class="app"&gt;troff&lt;/span&gt;
+document's build process to provide, in 170 lines of Scheme.&lt;/p&gt;
+&lt;/dd&gt;
+&lt;dt class="label" id="id13"&gt;&lt;span class="brackets"&gt;&lt;a class="fn-backref" href="https://tkurtbond.github.io/posts/2020/12/01/epub-files-markup-languages-and-briefly-unix/#id5"&gt;4&lt;/a&gt;&lt;/span&gt;&lt;/dt&gt;
+&lt;dd&gt;&lt;p&gt;In particular, there was no standard name for the commands used
+to generate various kinds of output; on some operating systems it
+was rst2latex, and on others it was rst2latex.py. Also, the
+&lt;span class="app"&gt;docutils&lt;/span&gt; toolchain for producing PDF output generated
+intermediate &lt;span class="app"&gt;LaTeX&lt;/span&gt; files which necessitated processing with
+further tools, which usually necessitated writing a &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Makefile"&gt;Makefile&lt;/a&gt; so I didn't have to
+retype multiple commands whenever I regenerated the output
+document. For a simple document that was considerable hassle and
+overhead, even when worth it for a more complicated
+document. (Makefiles are well worth it for complicated documents
+with complicated build processes, of course.  I have lots of those.)&lt;/p&gt;
+&lt;/dd&gt;
+&lt;dt class="label" id="id14"&gt;&lt;span class="brackets"&gt;&lt;a class="fn-backref" href="https://tkurtbond.github.io/posts/2020/12/01/epub-files-markup-languages-and-briefly-unix/#id6"&gt;5&lt;/a&gt;&lt;/span&gt;&lt;/dt&gt;
+&lt;dd&gt;&lt;p&gt;As a result of the comparison, I decided that I greatly
+prefered ReStructuredText and &lt;span class="app"&gt;pandoc&lt;/span&gt; for the tool to process
+it. &lt;span class="app"&gt;Pandoc&lt;/span&gt;'s ability to customize its output using
+&lt;a class="reference external" href="https://pandoc.org/lua-filters.html"&gt;filters&lt;/a&gt; written in the
+programming language &lt;a class="reference external" href="https://www.lua.org/"&gt;Lua&lt;/a&gt; was
+particularly appealing, as was the ability to customize its default
+templates for generating output using the &lt;code class="docutils literal"&gt;troff &lt;span class="pre"&gt;-ms&lt;/span&gt;&lt;/code&gt; macros and
+&lt;span class="app"&gt;ConTeXt&lt;/span&gt;. I see a use for both of those, since the -ms output
+is easier to customize for things that the base -ms provides, but
+the &lt;span class="app"&gt;ConTeXt&lt;/span&gt; output offers greater control over the final
+appearance, though often at the cost of greater effort. For
+instance, I have a moderately long document† that is currently in
+&lt;a class="reference external" href="https://docbook.org/"&gt;DocBook&lt;/a&gt; 5.0 XML format, and I now find
+it tedious to edit and the open source tool for generating PDF from
+it has serious flaws. (I'm resisting another footnote in a
+footnote. Be impressed that I succeeded!) I can see how I can
+convert it to ReStructuredText (or Markdown, for that matter) and
+use &lt;span class="app"&gt;Pandoc&lt;/span&gt;'s &lt;span class="app"&gt;ConTeXt&lt;/span&gt; output to produce a nicer, more
+attractive PDF. Now I just need the time to write the lua filter
+and do the conversion. (&lt;span class="app"&gt;Pandoc&lt;/span&gt; will convert it from DocBook, but
+will lose the indexing information, which I would have to do all
+over again, a task with more work than I want to contemplate at the
+moment.)&lt;/p&gt;
+&lt;p&gt;I still find uses for &lt;span class="app"&gt;troff&lt;/span&gt; and &lt;span class="app"&gt;ConTeXt&lt;/span&gt;. In
+particular, if I have to use complicated tables in a document I
+find that the either &lt;span class="app"&gt;troff&lt;/span&gt; or &lt;span class="app"&gt;ConTeXt&lt;/span&gt; works
+better. (Simple tables for either are OK from ReStructuredText
+output, but complicated ones…!)&lt;/p&gt;
+&lt;p&gt;† The DocBook version of the document was derived from the &lt;code class="docutils literal"&gt;troff &lt;span class="pre"&gt;-ms&lt;/span&gt;&lt;/code&gt;
+source mentioned previously, though by the time the
+conversion happened I vaguely recall I no longer had access to a working
+&lt;span class="app"&gt;unroff&lt;/span&gt;, I think because of &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Software_rot"&gt;bitrot&lt;/a&gt;. &lt;a class="reference external" href="http://netbsd.org/"&gt;NetBSD&lt;/a&gt; has an &lt;span class="app"&gt;unroff&lt;/span&gt;
+&lt;a class="reference external" href="https://pkgsrc.se/textproc/unroff"&gt;package&lt;/a&gt; in its pkgsrc
+collection of program, and I could install it now on my NetBSD
+machine, but when I tried to process the document &lt;span class="app"&gt;unroff&lt;/span&gt; exited
+complaining about a syntax error in one of its Scheme files. So bitrot
+seems to prevail.&lt;/p&gt;
+&lt;/dd&gt;
+&lt;dt class="label" id="id15"&gt;&lt;span class="brackets"&gt;&lt;a class="fn-backref" href="https://tkurtbond.github.io/posts/2020/12/01/epub-files-markup-languages-and-briefly-unix/#id7"&gt;6&lt;/a&gt;&lt;/span&gt;&lt;/dt&gt;
+&lt;dd&gt;&lt;p&gt;Using an open source command line utility provided with
+&lt;a class="reference external" href="https://calibre-ebook.com/"&gt;Calibre&lt;/a&gt; ebook reader, of course!&lt;/p&gt;
+&lt;/dd&gt;
+&lt;dt class="label" id="id16"&gt;&lt;span class="brackets"&gt;&lt;a class="fn-backref" href="https://tkurtbond.github.io/posts/2020/12/01/epub-files-markup-languages-and-briefly-unix/#id8"&gt;7&lt;/a&gt;&lt;/span&gt;&lt;/dt&gt;
+&lt;dd&gt;&lt;p&gt;There are some oddities in the current build with the conversion to
+mobi complaining about fonts not being found in the right places and
+being deleted from the result, but I don't know enough about ebooks to
+debug it at this time. Besides, I've hit the auspicious footnote number
+seven (though it's not the seventh footnote, as it is actually the
+eighth!) and should really finish this email now.&lt;/p&gt;
+&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;p&gt;&lt;strong&gt;P.P.S.&lt;/strong&gt; &lt;em&gt;Omitted for irrelevance&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;P.P.P.S.&lt;/strong&gt; Sorry, no deeply nested parenthetical expressions this
+time!&lt;/p&gt;
+&lt;hr class="docutils"&gt;
+&lt;p&gt;Here's an addendum with two Apple &lt;span class="app"&gt;Messenger&lt;/span&gt; messages to P.,
+reflecting on converting this from an HTML email into a blog post:&lt;/p&gt;
+&lt;p&gt;The HTML dialect Google uses in its MIME emails is very odd.  It
+doesn’t use &lt;code class="docutils literal"&gt;&amp;lt;p&amp;gt;&lt;/code&gt; elements, using instead &lt;code class="docutils literal"&gt;&amp;lt;div&amp;gt;&lt;/code&gt; elements.
+Unfortunately, &lt;span class="app"&gt;pandoc&lt;/span&gt; converts those into containers, and nests
+them according to the nesting of the &lt;code class="docutils literal"&gt;&amp;lt;div&amp;gt;&lt;/code&gt; elements.  To fix this
+I hand edited the HTML to remove the outer &lt;code class="docutils literal"&gt;&amp;lt;div&amp;gt;&lt;/code&gt; elements and
+convert the remaining ones into &amp;lt;p&amp;gt;s.  Also, for some reason when I
+ran the documents through HTML tidy it converted the unicode
+characters into incorrect HTML character entities.  I see now that it
+has a &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;-utf8&lt;/span&gt;&lt;/code&gt; switch, which I’ll have to remember for the next time
+I do this.  (There will inevitably be a next time.)&lt;/p&gt;
+&lt;p&gt;OMG, now I have have to put that in the blog post!  How many &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Saving_throw"&gt;saving
+throws&lt;/a&gt; am I going to fail today anyway?&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Last edited: 2020-12-28 11:11:54 EST&lt;/em&gt;&lt;/p&gt;
+&lt;!-- Local Variables:
+time-stamp-format: "%04y-%02m-%02d %02H:%02M:%02S %Z"
+time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
+time-stamp-end: "\\*\\\\?\n"
+time-stamp-line-limit: -20
+End: --&gt;&lt;/div&gt;</summary>
+    <category term="context" label="context"/>
+    <category term="epub" label="epub"/>
+    <category term="latex" label="latex"/>
+    <category term="lightweight-markup-languages" label="lightweight markup languages"/>
+    <category term="markup-languages" label="markup languages"/>
+    <category term="tex" label="tex"/>
+    <category term="troff" label="troff"/>
+    <category term="unix" label="unix"/>
+  </entry>
+</feed>

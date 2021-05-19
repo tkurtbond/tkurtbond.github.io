@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?xml-stylesheet href="https://tkurtbond.github.io/assets/xml/atom.xsl" type="text/xsl media="all"?>
+<feed xml:lang="en" xmlns="http://www.w3.org/2005/Atom">
+  <title>Lacking Natural Simplicity (Posts about freebsd)</title>
+  <id>https://tkurtbond.github.io/categories/freebsd.atom</id>
+  <updated>2021-05-19T20:55:19Z</updated>
+  <author>
+    <name>T. Kurt Bond</name>
+  </author>
+  <link rel="self" type="application/atom+xml" href="https://tkurtbond.github.io/categories/freebsd.atom"/>
+  <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/categories/freebsd/"/>
+  <generator uri="https://getnikola.com/">Nikola</generator>
+  <entry>
+    <title>FreeBSD and darcs</title>
+    <id>https://tkurtbond.github.io/posts/2005/05/24/2005-05-24/</id>
+    <updated>2005-05-24T00:00:00-05:00</updated>
+    <published>2005-05-24T00:00:00-05:00</published>
+    <author>
+      <name>T. Kurt Bond</name>
+    </author>
+    <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/posts/2005/05/24/2005-05-24/"/>
+    <summary type="html">&lt;p&gt;The &lt;a class="reference external" href="http://abridgegame.org/darcs/"&gt;darcs&lt;/a&gt; &lt;a class="reference external" href="http://www.freebsd.org/cgi/ports.cgi?query=darcs&amp;amp;stype=all"&gt;port&lt;/a&gt; on
+&lt;a class="reference external" href="http://www.freebsd.org/"&gt;FreeBSD&lt;/a&gt; has been marked as BROKEN for
+a while; here's the &lt;a class="reference external" href="http://lists.freebsd.org/pipermail/freebsd-ports/2005-April/022449.html"&gt;explanation&lt;/a&gt;. Basically, darcs 1.0.2 used some
+&lt;a class="reference external" href="http://www.haskell.org/ghc/"&gt;ghc&lt;/a&gt; internal APIs that changed with
+ghc 6.4. I was able to compile darcs 1.0.2 ok though, since my machine
+still has 6.2.2 installed because the ghc 6.4_1 port wouldn't compile.&lt;/p&gt;</summary>
+    <category term="darcs" label="darcs"/>
+    <category term="freebsd" label="freebsd"/>
+    <category term="old-blog" label="old blog"/>
+  </entry>
+  <entry>
+    <title>Recent Reading; OCaml and a Rare FreeBSD binary incompatibility</title>
+    <id>https://tkurtbond.github.io/posts/2004/02/05/2004-02-05/</id>
+    <updated>2004-02-05T00:00:00-05:00</updated>
+    <published>2004-02-05T00:00:00-05:00</published>
+    <author>
+      <name>T. Kurt Bond</name>
+    </author>
+    <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/posts/2004/02/05/2004-02-05/"/>
+    <summary type="html">&lt;div&gt;&lt;div class="section" id="recent-reading"&gt;
+&lt;h2&gt;Recent Reading&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;p&gt;&lt;em&gt;Goddess of the Ice Realm&lt;/em&gt;, by David Drake; Tor, 2003.  Adequate
+fantasy; the setting is mildly interesting, though.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;em&gt;Jupiter Myth&lt;/em&gt;, by Lindsey Davis; Mysterious Press, 2003.  Another
+competent Marcus Didius Falco mystery.  Falco, Helena, and entourage
+are still in Britian.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="ocaml-and-a-rare-freebsd-binary-incompatibility"&gt;
+&lt;h2&gt;OCaml and a Rare FreeBSD binary incompatibility&lt;/h2&gt;
+&lt;p&gt;In a rare fit of binary incompatibility between versions of FreeBSD,
+all my OCaml 3.07p2 programs that used the Unix library broke when I
+upgraded to 5.2 because gethostbyaddr_r disappeared:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;$ increment
+Fatal error: cannot load shared library dllunix
+Reason: /sw/versions/ocaml/3.07/lib/ocaml/stublibs/dllunix.so: Undefined symbol "gethostbyaddr_r"&lt;/pre&gt;
+&lt;p&gt;See &lt;a class="reference external" href="http://lists.freebsd.org/pipermail/freebsd-current/2003-December/016677.html"&gt;this e-mail&lt;/a&gt; for more information.&lt;/p&gt;
+&lt;p&gt;Reconfiguring and re-installing ocaml seems to have fixed the problem,
+but once that was done I had to rebuild (almost) all my ocaml programs
+and &lt;a class="reference external" href="http://www.cis.upenn.edu/~bcpierce/unison/"&gt;unison&lt;/a&gt;, the file
+synchronization program that I use.&lt;/p&gt;
+&lt;p&gt;This is notable mainly because of how rarely this sort of thing
+happens to either FreeBSD or OCaml.&lt;/p&gt;
+&lt;p&gt;Looks like some other things have broken, too: &lt;a class="reference external" href="http://www.gimp.org/"&gt;gimp&lt;/a&gt;, for one.&lt;/p&gt;
+&lt;p&gt;I resolved all this by upgrading my ports using &lt;code class="program docutils literal"&gt;portupgrade&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;&lt;/div&gt;</summary>
+    <category term="freebsd" label="freebsd"/>
+    <category term="ocaml" label="ocaml"/>
+    <category term="old-blog" label="old blog"/>
+    <category term="recent-reading" label="recent reading"/>
+  </entry>
+</feed>

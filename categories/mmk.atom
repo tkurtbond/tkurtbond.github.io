@@ -1,0 +1,162 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?xml-stylesheet href="https://tkurtbond.github.io/assets/xml/atom.xsl" type="text/xsl media="all"?>
+<feed xml:lang="en" xmlns="http://www.w3.org/2005/Atom">
+  <title>Lacking Natural Simplicity (Posts about mmk)</title>
+  <id>https://tkurtbond.github.io/categories/mmk.atom</id>
+  <updated>2021-05-19T20:55:14Z</updated>
+  <author>
+    <name>T. Kurt Bond</name>
+  </author>
+  <link rel="self" type="application/atom+xml" href="https://tkurtbond.github.io/categories/mmk.atom"/>
+  <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/categories/mmk/"/>
+  <generator uri="https://getnikola.com/">Nikola</generator>
+  <entry>
+    <title>VMS Code from the Past</title>
+    <id>https://tkurtbond.github.io/posts/2003/05/08/2003-05-08-vms-code-from-the-past/</id>
+    <updated>2003-05-08T00:00:00-05:00</updated>
+    <published>2003-05-08T00:00:00-05:00</published>
+    <author>
+      <name>T. Kurt Bond</name>
+    </author>
+    <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/posts/2003/05/08/2003-05-08-vms-code-from-the-past/"/>
+    <summary type="html">&lt;div&gt;&lt;p&gt;Listening to: Hawkwind, &lt;a class="reference external" href="http://www.freedb.org/freedb_search_fmt.php?cat=rock&amp;amp;id=d50ba50e"&gt;Chronicle of the Black Sword&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I've been reading a lot of VMS BASIC &lt;a class="footnote-reference brackets" href="https://tkurtbond.github.io/posts/2003/05/08/2003-05-08-vms-code-from-the-past/#id3" id="id1"&gt;1&lt;/a&gt; source code from the early
+1990s &lt;a class="footnote-reference brackets" href="https://tkurtbond.github.io/posts/2003/05/08/2003-05-08-vms-code-from-the-past/#id4" id="id2"&gt;2&lt;/a&gt; recently, and the one lesson it has taught me is that
+refactoring source code is vital for maintainability.  Much of this
+source code originated in one program that was copied and edited
+whenever a new program was needed, so each new program generally ended
+up with a lot of rag-tag odds-and-ends code from the original program
+that was not actually needed for the functionality of the new program.
+Unfortunately, when one is trying to change some existing
+functionality one has to look at each and every program &lt;em&gt;and figure
+out if that functionality is actually implemented and used in that
+program&lt;/em&gt;, and to do this you have to mentally trace the execution of
+the code! The moral? When you copy code, delete everything you don't
+actually use! Refactor, refactor, refactor!&lt;/p&gt;
+&lt;p&gt;And why didn't we use &lt;code class="docutils literal"&gt;%INCLUDE&lt;/code&gt; more? There are hundress of lines of
+external function declarations that are used time and again in several
+programs; we should have put them in a couple of include files.&lt;/p&gt;
+&lt;p&gt;I really wish VMS Basic allowed &lt;a class="reference external" href="http://groups.google.com/groups?q=tkb+group:comp.os.vms&amp;amp;hl=en&amp;amp;lr=&amp;amp;ie=UTF-8&amp;amp;oe=UTF-8&amp;amp;selm=a3db6b24.0305081211.6f867ad0%40posting.google.com&amp;amp;rnum=1"&gt;redimensioning array formal
+parameters&lt;/a&gt;, but I understand why it's not allowed.  (Perhaps
+there should have been a specific descriptor for arrays that can be
+redimensioned?)&lt;/p&gt;
+&lt;p&gt;I was shocked to rediscover that there was no way of reliably building
+the system from the source code.  MMS was too expensive for us at the
+time and if &lt;a class="reference external" href="http://www.madgoat.com/mmk.html"&gt;MMK&lt;/a&gt; existed we
+didn't know about it.  We used a bunch of ad-hoc DCL command
+procecudures to compile whatever program we were working on (most of
+them were all in one source file, and linked against one library of
+utility routines) and these were never collected.  So, you couldn't
+easily tell if the current set of executables was actually built from
+up-to-date source.  Since I've been doing the odd bit of maintenance on
+this system every six months or so I finally broke down and created
+&lt;code class="docutils literal"&gt;DESCRIP.MMS&lt;/code&gt; files for use with MMK, and I'm much easier in my mind
+now.&lt;/p&gt;
+&lt;p&gt;There were a number of things in this system that I think were well
+done, though, so it hasn't been all pain looking at it again.&lt;/p&gt;
+&lt;dl class="footnote brackets"&gt;
+&lt;dt class="label" id="id3"&gt;&lt;span class="brackets"&gt;&lt;a class="fn-backref" href="https://tkurtbond.github.io/posts/2003/05/08/2003-05-08-vms-code-from-the-past/#id1"&gt;1&lt;/a&gt;&lt;/span&gt;&lt;/dt&gt;
+&lt;dd&gt;&lt;p&gt;I'm working with it on an Alpha so I can't call it VAX BASIC
+anymore.&lt;/p&gt;
+&lt;/dd&gt;
+&lt;dt class="label" id="id4"&gt;&lt;span class="brackets"&gt;&lt;a class="fn-backref" href="https://tkurtbond.github.io/posts/2003/05/08/2003-05-08-vms-code-from-the-past/#id2"&gt;2&lt;/a&gt;&lt;/span&gt;&lt;/dt&gt;
+&lt;dd&gt;&lt;p&gt;The original version of this system ran on PDP-11 running RSTS/E.
+I've been involved in two major conversions of systems running on
+PDP-11 RSTS/E to VAX/VMS, both using the POISE DMS-Plus on both RSTS/E and
+VMS, with extensive homegrown applications written in VMS BASIC and
+using the POISE SPL API.&lt;/p&gt;
+&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;div class="section" id="id5"&gt;
+&lt;h2&gt;2014-11-03&lt;/h2&gt;
+&lt;p&gt;Here's the text of my post to comp.os.vms:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The BASIC for OpenVMS Reference Manual says, in the fifth item of the
+Remarks section:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The executable DIM statement cannot be used to dimension virtual arrays,
+arrays received as formal parameters, or arrays declared in COMMON, MAP,
+or nonexecutable DIM statements.&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="http://h71000.www7.hp.com/doc/73final/cobol/bas_ref_013.htm#noisn"&gt;http://h71000.www7.hp.com/doc/73final/cobol/bas_ref_013.htm#noisn&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The "no formal parameters" rule is inconvienent.  It means that you
+can't pass an array to a function, redimension it, fill it with values,
+and then use LBOUND and UBOUND in the caller to find out its new size.&lt;/p&gt;
+&lt;p&gt;Presumably it is illegal because there is no way at compile time to
+know if the function will be called with a dynamic array created with
+the executable DIM statement or a static array created with a
+non-executable DIM statement.&lt;/p&gt;
+&lt;p&gt;However, the programmer &lt;em&gt;can&lt;/em&gt; know, so it ought to be safe to
+redimension the array directly when the programmer knows it was
+created by an executable DIM statement.&lt;/p&gt;
+&lt;p&gt;Using Alpha BASIC V1.4-000 under OpenVMS V7.2 and looking at the
+listing of some code with some executable dimension statements
+compiled with /LIST/MACHINE revealed the existance of DBASIC$RT_DIM
+and after a little experimentation lead to a program that used
+DBASIC$RT_DIM directly to redimension dynamically dimensioned arrays
+in functions, included below.&lt;/p&gt;
+&lt;p&gt;DBASIC$RT_DIM is not documented for users (probably by design) and
+could &lt;em&gt;theoretically&lt;/em&gt; lead to flying monkeys and access violations,
+and is probably bad style.  However, are there any &lt;em&gt;practical&lt;/em&gt;
+reasons why this wouldn't work safely?  Are there any
+conditions under which this hack would fail to work?&lt;/p&gt;
+&lt;p&gt;Here is an example program:&lt;/p&gt;
+&lt;pre class="code text"&gt;&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-1"&gt;&lt;/a&gt;program redim
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-2"&gt;&lt;/a&gt;    option type = explicit, constant type = integer, &amp;amp;
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-3"&gt;&lt;/a&gt;        size = integer long, size = real double
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-4"&gt;&lt;/a&gt;
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-5"&gt;&lt;/a&gt;    external sub redim_in_sub (string dim())
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-6"&gt;&lt;/a&gt;    external long function my_redim (string dim(), long)
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-7"&gt;&lt;/a&gt;
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-8"&gt;&lt;/a&gt;    declare long i, r
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-9"&gt;&lt;/a&gt;
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-10"&gt;&lt;/a&gt;    i = 10
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-11"&gt;&lt;/a&gt;    dim string vs(i) ! has to be a variable to make it an executable dim.
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-12"&gt;&lt;/a&gt;
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-13"&gt;&lt;/a&gt;    r = my_redim (vs(), 30)
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-14"&gt;&lt;/a&gt;    print "ubound(vs):"; ubound(vs)
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-15"&gt;&lt;/a&gt;    for i = lbound(vs) to ubound(vs) \ vs(i) = "vs 30-" + num1$(i) \ next i
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-16"&gt;&lt;/a&gt;    gosub print_vs
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-17"&gt;&lt;/a&gt;
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-18"&gt;&lt;/a&gt;    call redim_in_sub (vs())
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-19"&gt;&lt;/a&gt;    print "ubound(vs):"; ubound(vs)
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-20"&gt;&lt;/a&gt;    gosub print_Vs
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-21"&gt;&lt;/a&gt;
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-22"&gt;&lt;/a&gt;    exit program
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-23"&gt;&lt;/a&gt;
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-24"&gt;&lt;/a&gt;print_vs:
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-25"&gt;&lt;/a&gt;    for i = lbound(vs) to ubound(vs) \ print i; ": "; vs(i) \ next i
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-26"&gt;&lt;/a&gt;    return ! from print_vs
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-27"&gt;&lt;/a&gt;
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-28"&gt;&lt;/a&gt;end program ! redim
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-29"&gt;&lt;/a&gt;
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-30"&gt;&lt;/a&gt;function long my_redim (long s by value, long n)
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-31"&gt;&lt;/a&gt;    option type = explicit, constant type = integer, &amp;amp;
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-32"&gt;&lt;/a&gt;        size = integer long, size = real double
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-33"&gt;&lt;/a&gt;    declare long r
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-34"&gt;&lt;/a&gt;    external long function dbasic$rt_dim (long by value, long by value)
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-35"&gt;&lt;/a&gt;    r = dbasic$rt_dim (s, n)
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-36"&gt;&lt;/a&gt;end function r ! my_redim
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-37"&gt;&lt;/a&gt;
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-38"&gt;&lt;/a&gt;sub redim_in_sub (string s())
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-39"&gt;&lt;/a&gt;    option type = explicit, constant type = integer, &amp;amp;
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-40"&gt;&lt;/a&gt;        size = integer long, size = real double
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-41"&gt;&lt;/a&gt;    external sub set_strings (string dim(), string)
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-42"&gt;&lt;/a&gt;    declare long i
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-43"&gt;&lt;/a&gt;    call my_redim (s(), 40)
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-44"&gt;&lt;/a&gt;    for i = 0 to 40 \ s(i) = "redim in sub " + num1$(i) \ next i
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-45"&gt;&lt;/a&gt;end sub ! redim_in_sub
+&lt;/pre&gt;&lt;p&gt;(Interestingly, a slightly different approach was necessary using VAX
+BASIC V3.5 under VMS V5.5-2: using BY VALUE in function
+definition statements is not allowed by this version of VAX BASIC,
+and BAS$RT_DIM had to be used instead of DBASIC$RT_DIM, of course.)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/div&gt;&lt;/div&gt;</summary>
+    <category term="basic" label="basic"/>
+    <category term="dms-plus" label="dms-plus"/>
+    <category term="mmk" label="mmk"/>
+    <category term="old-blog" label="old blog"/>
+    <category term="poise" label="poise"/>
+    <category term="vms" label="vms"/>
+  </entry>
+</feed>

@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?xml-stylesheet href="https://tkurtbond.github.io/assets/xml/atom.xsl" type="text/xsl media="all"?>
+<feed xml:lang="en" xmlns="http://www.w3.org/2005/Atom">
+  <title>Lacking Natural Simplicity (Posts about time-stamp)</title>
+  <id>https://tkurtbond.github.io/categories/time-stamp.atom</id>
+  <updated>2021-05-19T20:55:15Z</updated>
+  <author>
+    <name>T. Kurt Bond</name>
+  </author>
+  <link rel="self" type="application/atom+xml" href="https://tkurtbond.github.io/categories/time-stamp.atom"/>
+  <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/categories/time-stamp/"/>
+  <generator uri="https://getnikola.com/">Nikola</generator>
+  <entry>
+    <title>Having Emacs time-stamps at the end of files</title>
+    <id>https://tkurtbond.github.io/posts/2020/08/05/having-emacs-time-stamps-at-the-end-of-files/</id>
+    <updated>2020-08-05T16:34:22-04:00</updated>
+    <published>2020-08-05T16:34:22-04:00</published>
+    <author>
+      <name>T. Kurt Bond</name>
+    </author>
+    <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/posts/2020/08/05/having-emacs-time-stamps-at-the-end-of-files/"/>
+    <summary type="html">&lt;div&gt;&lt;p&gt;Do you ever use &lt;span class="app"&gt;Emacs&lt;/span&gt; time stamp functionality (type &lt;span class="key"&gt;C-h
+f time-stamp&lt;/span&gt; in &lt;span class="app"&gt;Emacs&lt;/span&gt; to learn about that) to insert the
+current date time stamp into your file when you save it?  I use this
+frequently in documents I write, for my blog or standalone.  For the
+longest time I thought you had to have the time stamp at the beginning
+of the file.  But I wanted it at the end of blog posts because it’s
+really an afterthought to most readers.  (Sometimes I go back and edit
+posts some time after first posting them — perhaps they were
+incomplete, or they had errors that needed correcting, etc.)  It turns
+out that you can do that — if you set the variable
+&lt;code&gt;time-stamp-line-limit&lt;/code&gt; to a negative number it will look
+backwards from the end of the file for the timestamp.  I often set the
+time stamp variables in a &lt;code class="docutils literal"&gt;Local Variables:&lt;/code&gt; comment at the end of
+the file.&lt;/p&gt;
+&lt;p&gt;Here's the &lt;a class="reference external" href="https://docutils.sourceforge.io/rst.html"&gt;reST&lt;/a&gt; fragment I insert into my blog posts that uses
+&lt;code&gt;time-stamp&lt;/code&gt;:&lt;/p&gt;
+&lt;pre class="code ReST"&gt;&lt;a name="rest_code_6d4a65de8fc64804b7af212c73b56ab1-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;..&lt;/span&gt; &lt;span class="ow"&gt;role&lt;/span&gt;&lt;span class="p"&gt;::&lt;/span&gt; app
+&lt;a name="rest_code_6d4a65de8fc64804b7af212c73b56ab1-2"&gt;&lt;/a&gt;&lt;span class="p"&gt;..&lt;/span&gt; &lt;span class="ow"&gt;role&lt;/span&gt;&lt;span class="p"&gt;::&lt;/span&gt; file
+&lt;a name="rest_code_6d4a65de8fc64804b7af212c73b56ab1-3"&gt;&lt;/a&gt;&lt;span class="p"&gt;..&lt;/span&gt; &lt;span class="ow"&gt;role&lt;/span&gt;&lt;span class="p"&gt;::&lt;/span&gt; command
+&lt;a name="rest_code_6d4a65de8fc64804b7af212c73b56ab1-4"&gt;&lt;/a&gt;&lt;span class="p"&gt;..&lt;/span&gt; &lt;span class="ow"&gt;role&lt;/span&gt;&lt;span class="p"&gt;::&lt;/span&gt; key
+&lt;a name="rest_code_6d4a65de8fc64804b7af212c73b56ab1-5"&gt;&lt;/a&gt;
+&lt;a name="rest_code_6d4a65de8fc64804b7af212c73b56ab1-6"&gt;&lt;/a&gt;&lt;span class="cp"&gt;.. *Last edited: 2020-08-05 17:03:37 EDT*&lt;/span&gt;
+&lt;a name="rest_code_6d4a65de8fc64804b7af212c73b56ab1-7"&gt;&lt;/a&gt;
+&lt;a name="rest_code_6d4a65de8fc64804b7af212c73b56ab1-8"&gt;&lt;/a&gt;&lt;span class="cp"&gt;..&lt;/span&gt;
+&lt;a name="rest_code_6d4a65de8fc64804b7af212c73b56ab1-9"&gt;&lt;/a&gt;&lt;span class="cp"&gt;   Local Variables:&lt;/span&gt;
+&lt;a name="rest_code_6d4a65de8fc64804b7af212c73b56ab1-10"&gt;&lt;/a&gt;&lt;span class="cp"&gt;   time-stamp-format: "%04y-%02m-%02d %02H:%02M:%02S %Z"&lt;/span&gt;
+&lt;a name="rest_code_6d4a65de8fc64804b7af212c73b56ab1-11"&gt;&lt;/a&gt;&lt;span class="cp"&gt;   time-stamp-start: "Last edited:[ \t]+\\\\?"&lt;/span&gt;
+&lt;a name="rest_code_6d4a65de8fc64804b7af212c73b56ab1-12"&gt;&lt;/a&gt;&lt;span class="cp"&gt;   time-stamp-end: "\\*\\\\?\n"&lt;/span&gt;
+&lt;a name="rest_code_6d4a65de8fc64804b7af212c73b56ab1-13"&gt;&lt;/a&gt;&lt;span class="cp"&gt;   time-stamp-line-limit: -20&lt;/span&gt;
+&lt;a name="rest_code_6d4a65de8fc64804b7af212c73b56ab1-14"&gt;&lt;/a&gt;&lt;span class="cp"&gt;   End:&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary>
+    <category term="emacs" label="emacs"/>
+    <category term="time-stamp" label="time-stamp"/>
+  </entry>
+</feed>
