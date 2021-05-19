@@ -21,9 +21,10 @@ __ https://en.wikipedia.org/wiki/Star_Wars:_The_Roleplaying_Game
 .. _West End Games: https://en.wikipedia.org/wiki/West_End_Games
 .. _OpenD6: http://opend6project.org/
 
-The `Anydice.com`_ code is very simple:
+The `Anydice.com`_ code_ is very simple:
 
-.. _Anydice.com: https://anydice.com/program/22199
+.. _Anydice.com: https://anydice.com
+.. _code: https://anydice.com/program/22199/at_least
 
 .. code::
 
@@ -31,7 +32,8 @@ The `Anydice.com`_ code is very simple:
      output Nd6 named "[N]D"
    }
 
-Remember to click “At Least” to get the right results!
+If you enter this manually instead of following the “code” link above,
+remember to click “At Least” to get the right results!
 
 Star Wars D6 1\ :sup:`st` Edition does **NOT** use the Wild Die!
 
@@ -152,7 +154,7 @@ results in graph mode:
 (Right-clicking the image might give you the option to open the image
 in a new tab, where you'll see it at full size.)
 
-*Last edited: 2021-05-10 14:46:56 EDT*
+*Last edited: 2021-05-19 13:32:33 EDT*
 
 ..
    Local Variables:
