@@ -1,25 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity (Posts about wild die)</title><link>https://tkurtbond.github.io/</link><description></description><atom:link href="https://tkurtbond.github.io/categories/wild-die.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2021 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Mon, 10 May 2021 18:33:31 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Mini Six Odds of Hitting a Target Number</title><link>https://tkurtbond.github.io/posts/2021/05/08/mini-six-odds-of-hitting-a-target-number/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;I couldn't find anywhere on the net showing the percentage chance of
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity (Posts about wild die)</title><link>https://tkurtbond.github.io/</link><description></description><atom:link href="https://tkurtbond.github.io/categories/wild-die.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2021 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Wed, 19 May 2021 17:45:17 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Mini Six Odds of Hitting a Target Number</title><link>https://tkurtbond.github.io/posts/2021/05/08/mini-six-odds-of-hitting-a-target-number/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;I couldn't find anywhere on the net showing the percentage chance of
 hitting a target number using the Mini Six Wild Die, which just
 explodes on a 6, unlike the OpenD6 Wild Die, which explodes on a 6,
 but if a 1 is rolled on the initial roll it instead either removes the
 highest die rolled or causes a complication, depending on what the GM
 wants.&lt;/p&gt;
 &lt;p&gt;I much prefer the Mini Six Wild Die.&lt;/p&gt;
-&lt;p&gt;So I went off to &lt;a class="reference external" href="https://anydice.com/program/2212d"&gt;Anydice.com&lt;/a&gt; and came up with the following code:&lt;/p&gt;
-&lt;pre class="code text"&gt;&lt;a name="rest_code_163cd74e35e247629b4d05a5035fe6de-1"&gt;&lt;/a&gt;output [explode d6] named "1M"
-&lt;a name="rest_code_163cd74e35e247629b4d05a5035fe6de-2"&gt;&lt;/a&gt;loop N over {1..11} {
-&lt;a name="rest_code_163cd74e35e247629b4d05a5035fe6de-3"&gt;&lt;/a&gt;  X: N+1
-&lt;a name="rest_code_163cd74e35e247629b4d05a5035fe6de-4"&gt;&lt;/a&gt;  output [explode d6] + Nd6 named "[X]M"
-&lt;a name="rest_code_163cd74e35e247629b4d05a5035fe6de-5"&gt;&lt;/a&gt;}
-&lt;/pre&gt;&lt;p&gt;Remember to click “At Least” to get the right results!&lt;/p&gt;
-&lt;p&gt;(Anydice defaults to only exploding twice, BTW.)&lt;/p&gt;
-&lt;p&gt;(I later found the “Export”, so I've updated the spreadsheet using
+&lt;p&gt;So I went off to &lt;a class="reference external" href="https://anydice.com"&gt;Anydice.com&lt;/a&gt; and came up with the following &lt;a class="reference external" href="https://anydice.com/program/2212d/at_least"&gt;code&lt;/a&gt;:&lt;/p&gt;
+&lt;pre class="code text"&gt;&lt;a name="rest_code_d34c42210f614eaaaa85dc495ba10a5d-1"&gt;&lt;/a&gt;output [explode d6] named "1M"
+&lt;a name="rest_code_d34c42210f614eaaaa85dc495ba10a5d-2"&gt;&lt;/a&gt;loop N over {1..11} {
+&lt;a name="rest_code_d34c42210f614eaaaa85dc495ba10a5d-3"&gt;&lt;/a&gt;  X: N+1
+&lt;a name="rest_code_d34c42210f614eaaaa85dc495ba10a5d-4"&gt;&lt;/a&gt;  output [explode d6] + Nd6 named "[X]M"
+&lt;a name="rest_code_d34c42210f614eaaaa85dc495ba10a5d-5"&gt;&lt;/a&gt;}
+&lt;/pre&gt;&lt;p&gt;If you enter this manually instead of following the “code” link above,
+remember to click “At Least” to get the right results!&lt;/p&gt;
+&lt;p&gt;These are labeled “1M”, “2M”, etc., instead of “1D”, “2D”, etc., to
+emphasize these are Mini Six wild dice probabilities.&lt;/p&gt;
+&lt;p&gt;Anydice defaults to only exploding twice, BTW.  You can change that by
+adding &lt;code class="docutils literal"&gt;set "explode depth" to 5&lt;/code&gt; at the beginning of the above code.&lt;/p&gt;
+&lt;p&gt;(I later found the “Export” view, so I've updated the spreadsheet using
 that data.)&lt;/p&gt;
 &lt;p&gt;The Mini Six Wild Die explodes on a 6; unlike the OpenD6 Wild Die a 1
 is &lt;strong&gt;NOT&lt;/strong&gt; special.&lt;/p&gt;
 &lt;p&gt;The blank cells at Target Numbers 6 and 12 are because you can’t roll
-a 6 or a 12, since those explode again.  Not sure why 18 isn’t blank.&lt;/p&gt;
+a 6 or a 12, since those explode again.  Not sure why 18 isn’t blank,
+but if you set “explode depth” to 5 it is blank, along with 24 and 30,
+but then 36 isn't blank.&lt;/p&gt;
 &lt;p&gt;The multiple 100s from 6D onward are, after the first, not actually
 100s, but 99.x where x is small enough it rounds up to 100.00 when
 shown with two digits of precision.&lt;/p&gt;
@@ -1071,7 +1077,7 @@ results in graph mode:&lt;/p&gt;
 &lt;img alt="/images/mini-six-odds-of-hitting-a-target-number.png" src="https://tkurtbond.github.io/images/mini-six-odds-of-hitting-a-target-number.png"&gt;
 &lt;p&gt;(Right-clicking the image might give you the option to open the image
 in a new tab, where you'll see it at full size.)&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Last edited: 2021-05-10 14:29:31 EDT&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Last edited: 2021-05-19 13:44:47 EDT&lt;/em&gt;&lt;/p&gt;
 &lt;!-- Local Variables:
 time-stamp-format: "%04y-%02m-%02d %02H:%02M:%02S %Z"
 time-stamp-start: "\\*Last edited:[ \t]+\\\\?"

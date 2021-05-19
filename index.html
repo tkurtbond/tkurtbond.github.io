@@ -67,12 +67,13 @@ Wars: the Roleplaying Game</a>, 1<sup>st</sup> Edition, the original Star
 Wars roleplaying game, from <a class="reference external" href="https://en.wikipedia.org/wiki/West_End_Games">West End Games</a>.  It does <strong>NOT</strong> use
 the Wild Die; that was introduced in the 2<sup>nd</sup> Edition and is
 also used in <a class="reference external" href="http://opend6project.org/">OpenD6</a>.</p>
-<p>The <a class="reference external" href="https://anydice.com/program/22199">Anydice.com</a> code is very simple:</p>
-<pre class="code text"><a name="rest_code_acaa9a52e318461ba314e0e36f3cb6b2-1"></a>loop N over {1..12} {
-<a name="rest_code_acaa9a52e318461ba314e0e36f3cb6b2-2"></a>  output Nd6 named "[N]D"
-<a name="rest_code_acaa9a52e318461ba314e0e36f3cb6b2-3"></a>}
+<p>The <a class="reference external" href="https://anydice.com">Anydice.com</a> <a class="reference external" href="https://anydice.com/program/22199/at_least">code</a> is very simple:</p>
+<pre class="code text"><a name="rest_code_f218d55e63164320b50008418d035c1a-1"></a>loop N over {1..12} {
+<a name="rest_code_f218d55e63164320b50008418d035c1a-2"></a>  output Nd6 named "[N]D"
+<a name="rest_code_f218d55e63164320b50008418d035c1a-3"></a>}
 </pre>
-<p>Remember to click “At Least” to get the right results!</p>
+<p>If you enter this manually instead of following the “code” link above,
+remember to click “At Least” to get the right results!</p>
 <p>Star Wars D6 1<sup>st</sup> Edition does <strong>NOT</strong> use the Wild Die!</p>
 <p>The multiple 100s from 6D onward are, after the first, not actually
 100s, but 99.x where x is small enough it rounds up to 100.00 when
@@ -1193,7 +1194,7 @@ will let you download it.</p>
 results in graph mode:</p>
 <img alt="/images/star-wars-d6-1e-odds-of-hitting-a-target-number.png" src="images/star-wars-d6-1e-odds-of-hitting-a-target-number.png"><p>(Right-clicking the image might give you the option to open the image
 in a new tab, where you'll see it at full size.)</p>
-<p><em>Last edited: 2021-05-10 14:46:56 EDT</em></p>
+<p><em>Last edited: 2021-05-19 13:32:33 EDT</em></p>
 <!-- Local Variables:
 time-stamp-format: "%04y-%02m-%02d %02H:%02M:%02S %Z"
 time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
@@ -1664,21 +1665,27 @@ but if a 1 is rolled on the initial roll it instead either removes the
 highest die rolled or causes a complication, depending on what the GM
 wants.</p>
 <p>I much prefer the Mini Six Wild Die.</p>
-<p>So I went off to <a class="reference external" href="https://anydice.com/program/2212d">Anydice.com</a> and came up with the following code:</p>
-<pre class="code text"><a name="rest_code_163cd74e35e247629b4d05a5035fe6de-1"></a>output [explode d6] named "1M"
-<a name="rest_code_163cd74e35e247629b4d05a5035fe6de-2"></a>loop N over {1..11} {
-<a name="rest_code_163cd74e35e247629b4d05a5035fe6de-3"></a>  X: N+1
-<a name="rest_code_163cd74e35e247629b4d05a5035fe6de-4"></a>  output [explode d6] + Nd6 named "[X]M"
-<a name="rest_code_163cd74e35e247629b4d05a5035fe6de-5"></a>}
+<p>So I went off to <a class="reference external" href="https://anydice.com">Anydice.com</a> and came up with the following <a class="reference external" href="https://anydice.com/program/2212d/at_least">code</a>:</p>
+<pre class="code text"><a name="rest_code_d34c42210f614eaaaa85dc495ba10a5d-1"></a>output [explode d6] named "1M"
+<a name="rest_code_d34c42210f614eaaaa85dc495ba10a5d-2"></a>loop N over {1..11} {
+<a name="rest_code_d34c42210f614eaaaa85dc495ba10a5d-3"></a>  X: N+1
+<a name="rest_code_d34c42210f614eaaaa85dc495ba10a5d-4"></a>  output [explode d6] + Nd6 named "[X]M"
+<a name="rest_code_d34c42210f614eaaaa85dc495ba10a5d-5"></a>}
 </pre>
-<p>Remember to click “At Least” to get the right results!</p>
-<p>(Anydice defaults to only exploding twice, BTW.)</p>
-<p>(I later found the “Export”, so I've updated the spreadsheet using
+<p>If you enter this manually instead of following the “code” link above,
+remember to click “At Least” to get the right results!</p>
+<p>These are labeled “1M”, “2M”, etc., instead of “1D”, “2D”, etc., to
+emphasize these are Mini Six wild dice probabilities.</p>
+<p>Anydice defaults to only exploding twice, BTW.  You can change that by
+adding <code class="docutils literal">set "explode depth" to 5</code> at the beginning of the above code.</p>
+<p>(I later found the “Export” view, so I've updated the spreadsheet using
 that data.)</p>
 <p>The Mini Six Wild Die explodes on a 6; unlike the OpenD6 Wild Die a 1
 is <strong>NOT</strong> special.</p>
 <p>The blank cells at Target Numbers 6 and 12 are because you can’t roll
-a 6 or a 12, since those explode again.  Not sure why 18 isn’t blank.</p>
+a 6 or a 12, since those explode again.  Not sure why 18 isn’t blank,
+but if you set “explode depth” to 5 it is blank, along with 24 and 30,
+but then 36 isn't blank.</p>
 <p>The multiple 100s from 6D onward are, after the first, not actually
 100s, but 99.x where x is small enough it rounds up to 100.00 when
 shown with two digits of precision.</p>
@@ -2800,7 +2807,7 @@ index page for the whole blog) what will let you download it.</p>
 results in graph mode:</p>
 <img alt="/images/mini-six-odds-of-hitting-a-target-number.png" src="images/mini-six-odds-of-hitting-a-target-number.png"><p>(Right-clicking the image might give you the option to open the image
 in a new tab, where you'll see it at full size.)</p>
-<p><em>Last edited: 2021-05-10 14:29:31 EDT</em></p>
+<p><em>Last edited: 2021-05-19 13:44:47 EDT</em></p>
 <!-- Local Variables:
 time-stamp-format: "%04y-%02m-%02d %02H:%02M:%02S %Z"
 time-stamp-start: "\\*Last edited:[ \t]+\\\\?"

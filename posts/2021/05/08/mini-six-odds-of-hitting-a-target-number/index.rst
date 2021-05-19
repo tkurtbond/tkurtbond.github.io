@@ -16,9 +16,10 @@ wants.
 
 I much prefer the Mini Six Wild Die.
 
-So I went off to `Anydice.com`_ and came up with the following code:
+So I went off to `Anydice.com`_ and came up with the following code_:
 
-.. _Anydice.com: https://anydice.com/program/2212d
+.. _Anydice.com: https://anydice.com
+.. _code: https://anydice.com/program/2212d/at_least
 
 .. code::
 
@@ -28,18 +29,25 @@ So I went off to `Anydice.com`_ and came up with the following code:
      output [explode d6] + Nd6 named "[X]M"
    }
 
-Remember to click “At Least” to get the right results!
+If you enter this manually instead of following the “code” link above,
+remember to click “At Least” to get the right results!
 
-(Anydice defaults to only exploding twice, BTW.)
+These are labeled “1M”, “2M”, etc., instead of “1D”, “2D”, etc., to
+emphasize these are Mini Six wild dice probabilities.
 
-(I later found the “Export”, so I've updated the spreadsheet using
+Anydice defaults to only exploding twice, BTW.  You can change that by
+adding ``set "explode depth" to 5`` at the beginning of the above code.
+
+(I later found the “Export” view, so I've updated the spreadsheet using
 that data.)
 
 The Mini Six Wild Die explodes on a 6; unlike the OpenD6 Wild Die a 1
 is **NOT** special.
 
 The blank cells at Target Numbers 6 and 12 are because you can’t roll
-a 6 or a 12, since those explode again.  Not sure why 18 isn’t blank.
+a 6 or a 12, since those explode again.  Not sure why 18 isn’t blank,
+but if you set “explode depth” to 5 it is blank, along with 24 and 30,
+but then 36 isn't blank.
 
 The multiple 100s from 6D onward are, after the first, not actually
 100s, but 99.x where x is small enough it rounds up to 100.00 when
@@ -157,7 +165,7 @@ results in graph mode:
 (Right-clicking the image might give you the option to open the image
 in a new tab, where you'll see it at full size.)
 
-*Last edited: 2021-05-10 14:29:31 EDT*
+*Last edited: 2021-05-19 13:44:47 EDT*
 
 ..
    Local Variables:
