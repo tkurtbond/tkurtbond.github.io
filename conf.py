@@ -151,6 +151,7 @@ NAVIGATION_LINKS = {
         ("/archive.html", "Archives"),
         ("/categories/index.html", "Tags"),
         ("/rss.xml", "RSS feed"),
+        ("/feed.atom", "Atom feed"),
     ),
 }
 
@@ -1149,6 +1150,7 @@ MARKDOWN_EXTENSIONS = ['markdown.extensions.fenced_code', 'markdown.extensions.c
 # are generated even for old indexes and have pagination link relations
 # between each other. Old Atom feeds with no changes are marked as archived.
 # GENERATE_ATOM = False
+GENERATE_ATOM = True
 
 # Only include teasers in Atom and RSS feeds. Disabling include the full
 # content. Defaults to True.
