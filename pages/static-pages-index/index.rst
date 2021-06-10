@@ -1,5 +1,5 @@
-.. title: Pages
-.. slug: pages
+.. title: Static Pages Index
+.. slug: static-pages-index
 .. date: 2019-11-06 13:46:35 UTC-05:00
 .. tags: 
 .. category: 
