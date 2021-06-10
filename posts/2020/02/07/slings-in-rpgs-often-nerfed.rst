@@ -1,7 +1,7 @@
 .. title: Slings in RPGs: Often Nerfed
 .. slug: slings-in-rpgs-often-nerfed
 .. date: 2020-02-07 14:40:23 UTC-05:00
-.. tags: rpg,d&d,runequest,dragonquest,talislanta,slings,gurps,savage worlds,hero system,the fantasy trip,tft,big eyes small mouth,besm,harnmaster,d6 fantasy,open d6,tunnels & trolls,t&t,dragon warriors,brp,basic roleplaying,elric!,stormbringer,traveller,classic traveller,cepheus engine,sword of cepheus,nerfed
+.. tags: rpg,d&d,runequest,dragonquest,talislanta,slings,gurps,savage worlds,hero system,the fantasy trip,tft,big eyes small mouth,besm,harnmaster,d6 fantasy,opend6,tunnels & trolls,t&t,dragon warriors,brp,basic roleplaying,elric!,stormbringer,traveller,classic traveller,cepheus engine,sword of cepheus,nerfed
 .. category: gaming
 .. link: 
 .. description: 
@@ -139,7 +139,7 @@ is an average human.  Bow and sling damage and melee damage as d6s
 added to a number of d6s determined by your Strength Damage, which is
 determined by your Physique attribute or Lifting skill (both measured
 in d6s), drop any adds, divided by 2.  So our average human's Strength
-Damage is 1D.  Then longbows add +2D+2, shortbows add +1D+2, and
+Damage is 2D.  Then longbows add +2D+2, shortbows add +1D+2, and
 slings add +1D.  For comparison, daggers add +1D and broad/long swords
 ad +2D+2.  So, nerfed, although it is hard to make precise
 distinctions at this level of resolution.
@@ -197,3 +197,13 @@ nerfed.
 .. _C1: https://www.drivethrurpg.com/product/237247/Cepheus-Engine-RPG
 .. _C2: https://www.paulelliottbooks.com/what-is-cepheus-engine.html
 .. _`Sword of Cepheus`: https://www.drivethrurpg.com/product/304840/The-Sword-of-Cepheus
+
+*Last edited: 2021-06-10 01:42:11 EDT*
+
+..
+   Local Variables:
+   time-stamp-format: "%04y-%02m-%02d %02H:%02M:%02S %Z"
+   time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
+   time-stamp-end: "\\*\\\\?\n"
+   time-stamp-line-limit: -20
+   End:
