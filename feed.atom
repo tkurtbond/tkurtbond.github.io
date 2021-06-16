@@ -3,13 +3,47 @@
 <feed xml:lang="en" xmlns="http://www.w3.org/2005/Atom">
   <title>Lacking Natural Simplicity</title>
   <id>https://tkurtbond.github.io/feed.atom</id>
-  <updated>2021-06-10T18:16:52Z</updated>
+  <updated>2021-06-16T20:36:32Z</updated>
   <author>
     <name>T. Kurt Bond</name>
   </author>
   <link rel="self" type="application/atom+xml" href="https://tkurtbond.github.io/feed.atom"/>
   <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/"/>
   <generator uri="https://getnikola.com/">Nikola</generator>
+  <entry>
+    <title>Using getnstr from Chicken Scheme ncurses egg</title>
+    <id>https://tkurtbond.github.io/posts/2021/06/16/using-getnstr-from-chicken-scheme-ncurses-egg/</id>
+    <updated>2021-06-16T14:57:28-04:00</updated>
+    <published>2021-06-16T14:57:28-04:00</published>
+    <author>
+      <name>T. Kurt Bond</name>
+    </author>
+    <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/posts/2021/06/16/using-getnstr-from-chicken-scheme-ncurses-egg/"/>
+    <summary type="html">&lt;div&gt;&lt;p&gt;The &lt;a class="reference external" href="https://www.call-cc.org/"&gt;Chicken Scheme&lt;/a&gt; documentation for the &lt;a class="reference external" href="http://wiki.call-cc.org/eggref/5/ncurses"&gt;ncurses egg&lt;/a&gt; says that
+you should pass a string to the &lt;code class="docutils literal"&gt;getnstr&lt;/code&gt;, function, but that doesn't
+actually work.&lt;/p&gt;
+&lt;p&gt;I finally found an &lt;a class="reference external" href="Afterlookingathttps://stackoverflow.com/a/45359136"&gt;example&lt;/a&gt;, and after looking at it and figuring out
+what imports are now required I have a working example of using
+getnstr from the chicken scheme ncurses egg!&lt;/p&gt;
+&lt;pre class="code scheme"&gt;&lt;a name="rest_code_4730246352ab4475913833654dad065f-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;import&lt;/span&gt; &lt;span class="nv"&gt;ncurses&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_4730246352ab4475913833654dad065f-2"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;import&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;chicken&lt;/span&gt; &lt;span class="nv"&gt;locative&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;a name="rest_code_4730246352ab4475913833654dad065f-3"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;import&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;chicken&lt;/span&gt; &lt;span class="nv"&gt;string&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;a name="rest_code_4730246352ab4475913833654dad065f-4"&gt;&lt;/a&gt;
+&lt;a name="rest_code_4730246352ab4475913833654dad065f-5"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;define &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;get-string&lt;/span&gt; &lt;span class="nv"&gt;max&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_4730246352ab4475913833654dad065f-6"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;let &lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nf"&gt;buffer&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;make-string &lt;/span&gt;&lt;span class="nv"&gt;max&lt;/span&gt; &lt;span class="sc"&gt;#\null&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+&lt;a name="rest_code_4730246352ab4475913833654dad065f-7"&gt;&lt;/a&gt;    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;getnstr&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;make-locative&lt;/span&gt; &lt;span class="nv"&gt;buffer&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="nv"&gt;max&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_4730246352ab4475913833654dad065f-8"&gt;&lt;/a&gt;    &lt;span class="c1"&gt;;; Delete the #\null characters.&lt;/span&gt;
+&lt;a name="rest_code_4730246352ab4475913833654dad065f-9"&gt;&lt;/a&gt;    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;string-translate&lt;/span&gt; &lt;span class="nv"&gt;buffer&lt;/span&gt; &lt;span class="sc"&gt;#\null&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+&lt;a name="rest_code_4730246352ab4475913833654dad065f-10"&gt;&lt;/a&gt;
+&lt;a name="rest_code_4730246352ab4475913833654dad065f-11"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;let &lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nf"&gt;stdscr&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;initscr&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;a name="rest_code_4730246352ab4475913833654dad065f-12"&gt;&lt;/a&gt;      &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;str&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;get-string&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+&lt;a name="rest_code_4730246352ab4475913833654dad065f-13"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;addstr&lt;/span&gt; &lt;span class="nv"&gt;str&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_4730246352ab4475913833654dad065f-14"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;getch&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_4730246352ab4475913833654dad065f-15"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;write &lt;/span&gt;&lt;span class="nv"&gt;str&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_4730246352ab4475913833654dad065f-16"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;endwin&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/pre&gt;&lt;p&gt;Oh, and I added the example to the ncurses egg documentation: &lt;a class="reference external" href="http://wiki.call-cc.org/eggref/5/ncurses#getnstr-example"&gt;getnstr
+Example&lt;/a&gt;.&lt;/p&gt;&lt;/div&gt;</summary>
+  </entry>
   <entry>
     <title>Ted Harding's "A Guide to Typesetting Mathematics using GNU eqn"</title>
     <id>https://tkurtbond.github.io/posts/2021/06/10/ted-hardings-a-guide-to-typesetting-mathematics-using-gnu-eqn/</id>
@@ -3126,76 +3160,5 @@ like their &lt;a class="reference external" href="https://www.chaosium.com/brp-s
     <category term="brp" label="brp"/>
     <category term="chaosium" label="chaosium"/>
     <category term="rpg" label="rpg"/>
-  </entry>
-  <entry>
-    <title>Advanced Fighting Fantasy Renaissance and Troika! and Warlock!</title>
-    <id>https://tkurtbond.github.io/posts/2020/12/01/advanced-fighting-fantasy-renaissance-and-troika-and-warlock/</id>
-    <updated>2020-12-01T00:56:37-05:00</updated>
-    <published>2020-12-01T00:56:37-05:00</published>
-    <author>
-      <name>T. Kurt Bond</name>
-    </author>
-    <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/posts/2020/12/01/advanced-fighting-fantasy-renaissance-and-troika-and-warlock/"/>
-    <summary type="html">&lt;div&gt;&lt;p&gt;With the release of &lt;cite&gt;Advanced Fighting Fantasy&lt;/cite&gt;, second edition, by
-Arion Games (&lt;a class="reference external" href="http://arion-games.com/"&gt;website&lt;/a&gt;, &lt;a class="reference external" href="https://www.drivethrurpg.com/browse/pub/667/Arion-Games"&gt;DriveThruRPG&lt;/a&gt;) in 2011 it seemed a
-renaissance for Advanced Fighting Fantasy had arrived.  This has been
-born out by Arion Games releasing one or more books for AFF2E &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Advanced_Fighting_Fantasy#Advanced_Fighting_Fantasy_titles_published_by_Arion_Games_(2011-present)"&gt;every
-year since then except 2015&lt;/a&gt;, and by their release of bunches more
-small products in PDF since then.  And most (if not all) of their
-larger &lt;a class="reference external" href="https://www.drivethrurpg.com/browse/pub/667/Arion-Games/subcategory/1684_25223/Advanced-Fighting-Fantasy"&gt;AFF2E products&lt;/a&gt; are available in POD at DriveThruRPG now, as
-well as in PDF.  They also have a science fiction game that uses the
-AFF2E rules, &lt;a class="reference external" href="https://www.drivethrurpg.com/product/214183/Stellar-Adventures"&gt;Stellar Adventures&lt;/a&gt;, which is good and has several
-supplements.&lt;/p&gt;
-&lt;p&gt;I have enjoyed all the the AFF2E products and playing AFF and have
-just gotten two more, &lt;a class="reference external" href="https://www.drivethrurpg.com/product/329240/Creatures-of-Mishna"&gt;Creatures of Mishna&lt;/a&gt; and &lt;a class="reference external" href="https://www.drivethrurpg.com/product/326914/The-Warlock-Returns-Issue-01"&gt;The Warlock Returns
-Issue #01&lt;/a&gt;, both of which look very good to my cursory glance.&lt;/p&gt;
-&lt;p&gt;And I also just got &lt;a class="reference external" href="https://www.melsonia.com/troika-17-p.asp"&gt;Troika! Numinous Edition&lt;/a&gt; science fantasy RPG
-from the &lt;a class="reference external" href="https://www.melsonia.com/"&gt;Melsonian Arts Council&lt;/a&gt; and oh does it look pretty, both
-from a graphical design standpoint and a rules design standpoint! It
-has a website devoted to &lt;a class="reference external" href="https://www.troikarpg.com/"&gt;it&lt;/a&gt;.  It was apparently released in 2019
-(though the book says the copyright is 2015–2018), and I really wish I
-had gotten it earlier.  It uses rules obviously inspired by AFF with
-Skill, Stamina, Luck, and Advanced Skills (similar to AFF's Special
-Skills), and has a neat and quirky random “backgrounds” system for
-character creation that provides you with Skills, Possessions, and
-other Special benefits.  (One of the backgrounds has a “Small but
-vicious dog”, in a neat nod to &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Warhammer_Fantasy_Roleplay"&gt;Warhammer Fantasy Roleplay&lt;/a&gt;.)  I've
-read it except for the backgrounds, which I've skimmed, and the
-bestiary.  It is an excellent rules light RPG.  My one criticism so
-far is that there doesn't seem to be a table or index of all the
-backgrounds, so it is hard to find a specific background if you want
-to read a particular one, as once rules example in the book requires
-to understand completely.  There is a &lt;a class="reference external" href="https://docs.google.com/document/d/1haUfSVekt2gNab3V2CrL1Pg_sZ-ZlskphwXmSnGT9aw/edit"&gt;free version&lt;/a&gt; as well, and it
-contains a license allowing you to publish free or commercial material
-based on or compatible with with &lt;cite&gt;Troika!&lt;/cite&gt;.&lt;/p&gt;
-&lt;p&gt;I also got &lt;a class="reference external" href="https://www.melsonia.com/fronds-of-benevolence-81-p.asp"&gt;Fronds of Benevolence&lt;/a&gt;, which looks good too, on a
-more cursory glace.  I'm probably going to have to look for more &lt;cite&gt;Troika!&lt;/cite&gt;
-products, too; I've seen that there are more out there.&lt;/p&gt;
-&lt;p&gt;Getting &lt;cite&gt;Troika!&lt;/cite&gt; vaguely reminded me that there was another new RPG
-broadly inspired by AFF.  Investigating revealed &lt;a class="reference external" href="https://www.drivethrurpg.com/product/312204/Warlock"&gt;Warlock!&lt;/a&gt; from
-&lt;a class="reference external" href="https://www.drivethrurpg.com/browse/pub/2503/Fire-Ruby-Designs"&gt;Fire Ruby Design&lt;/a&gt; (some of whose games I've greatly enjoyed -
-&lt;a class="reference external" href="https://www.drivethrurpg.com/product/215176/Exilium-Core-Rules?manufacturers_id=2503"&gt;Exilim&lt;/a&gt;, &lt;a class="reference external" href="https://www.drivethrurpg.com/product/233731/Summerland-Second-Edition?manufacturers_id=2503"&gt;Summerlands 2E&lt;/a&gt;, &lt;a class="reference external" href="https://www.drivethrurpg.com/product/246936/Esoterica?manufacturers_id=2503"&gt;Esoterica&lt;/a&gt;, all of which have
-supplements I need to get), and that convinced me so I bought it.  It
-too is obviously inspired by the AFF rules, though it does away with
-the all-in-one Skill of AFF in favor of starting the equivalent of
-AFF's Special Skills at higher values.  It also drops the 2d6 rolls
-for d20s, and damage appears to by a simple dice roll, rather than
-AFF's 1d6+mod indexing a different table for each type of weapon,
-which could have its advantages…  It also has &lt;cite&gt;Warhammer Fantasy
-Roleplay&lt;/cite&gt; style careers.  I haven't read much of it, but I'm
-definitely going to. It has several supplements too.&lt;/p&gt;
-&lt;p&gt;All in all, I think the AFF renaissance is growing!&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Last edited: 2020-12-12 15:25:57 EST&lt;/em&gt;&lt;/p&gt;
-&lt;!-- Local Variables:
-time-stamp-format: "%04y-%02m-%02d %02H:%02M:%02S %Z"
-time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
-time-stamp-end: "\\*\\\\?\n"
-time-stamp-line-limit: -20
-End: --&gt;&lt;/div&gt;</summary>
-    <category term="aff" label="aff"/>
-    <category term="aff2e" label="aff2e"/>
-    <category term="rpg" label="rpg"/>
-    <category term="troika" label="troika!"/>
-    <category term="warlock" label="warlock!"/>
   </entry>
 </feed>
