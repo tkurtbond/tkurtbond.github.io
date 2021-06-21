@@ -1,8 +1,8 @@
 .. title: Using getnstr from Chicken Scheme ncurses egg
 .. slug: using-getnstr-from-chicken-scheme-ncurses-egg
 .. date: 2021-06-16 14:57:28 UTC-04:00
-.. tags: 
-.. category: 
+.. tags: chicken scheme,scheme
+.. category: computer/languages/lisp/scheme
 .. link: 
 .. description: 
 .. type: text
@@ -19,7 +19,7 @@ I finally found an example_, and after looking at it and figuring out
 what imports are now required I have a working example of using
 getnstr from the chicken scheme ncurses egg!
 
-.. _example: After looking at https://stackoverflow.com/a/45359136 
+.. _example: https://stackoverflow.com/a/45359136 
 
 
 
