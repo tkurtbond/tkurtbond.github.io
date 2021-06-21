@@ -1,7 +1,7 @@
 .. title: Why I like Advanced Fighting Fantasy
 .. slug: why-i-like-advanced-fighting-fantasy
 .. date: 2021-06-21 12:48:21 UTC-04:00
-.. tags: advanced fighting fantasy,rpg,fighting fantasy,stellar adventures,titan
+.. tags: advanced fighting fantasy,rpg,fighting fantasy,stellar adventures,titan,out of the pit
 .. category: gaming
 .. link: 
 .. description: 
@@ -179,11 +179,11 @@ otherwise used the same mechanics as Mages.
 .. _Sorcery!: https://en.wikipedia.org/wiki/Steve_Jackson%27s_Sorcery!
 
 Anyway, I played some AFF 1st Edition games with `the kids`_, which
-was a lot of fun.  I also played some AFF 2nd Edition games some of
-them, which was also fun.  I played AFF1E with some of the folks from
-work, and it was fun, but they wanted something with more detailed
-combat.  I could see why, even AFF2e combat is fairly simple.  They
-rest of the game they liked.
+was a lot of fun.  I also played some AFF 2nd Edition games with some
+of them, which was also fun.  I played AFF1E with some of the folks
+from work, and it was fun, but they wanted something with more
+detailed combat.  I could see why, even AFF2e combat is fairly simple.
+They rest of the game they liked.
 
 .. _the kids: link://category/gaming/actual-play/the-kids
 
@@ -215,3 +215,14 @@ gaming.
 
 .. _Stellar Adventures: https://www.drivethrurpg.com/product/214183/Stellar-Adventures
 .. _DriveThruRPG.com: https://www.drivethrurpg.com/browse/pub/667/Arion-Games/subcategory/1684_25223/Advanced-Fighting-Fantasy
+
+
+*Last edited: 2021-06-21 18:14:01 EDT*
+
+..
+   Local Variables:
+   time-stamp-format: "%04y-%02m-%02d %02H:%02M:%02S %Z"
+   time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
+   time-stamp-end: "\\*\\\\?\n"
+   time-stamp-line-limit: -20
+   End:
