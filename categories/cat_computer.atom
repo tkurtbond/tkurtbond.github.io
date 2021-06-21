@@ -3,13 +3,49 @@
 <feed xml:lang="en" xmlns="http://www.w3.org/2005/Atom">
   <title>Lacking Natural Simplicity (Posts about computer)</title>
   <id>https://tkurtbond.github.io/categories/cat_computer.atom</id>
-  <updated>2021-06-10T18:16:32Z</updated>
+  <updated>2021-06-21T22:07:04Z</updated>
   <author>
     <name>T. Kurt Bond</name>
   </author>
   <link rel="self" type="application/atom+xml" href="https://tkurtbond.github.io/categories/cat_computer.atom"/>
   <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/categories/cat_computer/"/>
   <generator uri="https://getnikola.com/">Nikola</generator>
+  <entry>
+    <title>Using getnstr from Chicken Scheme ncurses egg</title>
+    <id>https://tkurtbond.github.io/posts/2021/06/16/using-getnstr-from-chicken-scheme-ncurses-egg/</id>
+    <updated>2021-06-16T14:57:28-04:00</updated>
+    <published>2021-06-16T14:57:28-04:00</published>
+    <author>
+      <name>T. Kurt Bond</name>
+    </author>
+    <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/posts/2021/06/16/using-getnstr-from-chicken-scheme-ncurses-egg/"/>
+    <summary type="html">&lt;div&gt;&lt;p&gt;The &lt;a class="reference external" href="https://www.call-cc.org/"&gt;Chicken Scheme&lt;/a&gt; documentation for the &lt;a class="reference external" href="http://wiki.call-cc.org/eggref/5/ncurses"&gt;ncurses egg&lt;/a&gt; says that
+you should pass a string to the &lt;code class="docutils literal"&gt;getnstr&lt;/code&gt;, function, but that doesn't
+actually work.&lt;/p&gt;
+&lt;p&gt;I finally found an &lt;a class="reference external" href="https://stackoverflow.com/a/45359136"&gt;example&lt;/a&gt;, and after looking at it and figuring out
+what imports are now required I have a working example of using
+getnstr from the chicken scheme ncurses egg!&lt;/p&gt;
+&lt;pre class="code scheme"&gt;&lt;a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;import&lt;/span&gt; &lt;span class="nv"&gt;ncurses&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-2"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;import&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;chicken&lt;/span&gt; &lt;span class="nv"&gt;locative&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-3"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;import&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;chicken&lt;/span&gt; &lt;span class="nv"&gt;string&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-4"&gt;&lt;/a&gt;
+&lt;a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-5"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;define &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;get-string&lt;/span&gt; &lt;span class="nv"&gt;max&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-6"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;let &lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nf"&gt;buffer&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;make-string &lt;/span&gt;&lt;span class="nv"&gt;max&lt;/span&gt; &lt;span class="sc"&gt;#\null&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+&lt;a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-7"&gt;&lt;/a&gt;    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;getnstr&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;make-locative&lt;/span&gt; &lt;span class="nv"&gt;buffer&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="nv"&gt;max&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-8"&gt;&lt;/a&gt;    &lt;span class="c1"&gt;;; Delete the #\null characters.&lt;/span&gt;
+&lt;a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-9"&gt;&lt;/a&gt;    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;string-translate&lt;/span&gt; &lt;span class="nv"&gt;buffer&lt;/span&gt; &lt;span class="sc"&gt;#\null&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+&lt;a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-10"&gt;&lt;/a&gt;
+&lt;a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-11"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;let &lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nf"&gt;stdscr&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;initscr&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-12"&gt;&lt;/a&gt;      &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;str&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;get-string&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+&lt;a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-13"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;addstr&lt;/span&gt; &lt;span class="nv"&gt;str&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-14"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;getch&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-15"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;write &lt;/span&gt;&lt;span class="nv"&gt;str&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-16"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;endwin&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/pre&gt;&lt;p&gt;Oh, and I added the example to the ncurses egg documentation: &lt;a class="reference external" href="http://wiki.call-cc.org/eggref/5/ncurses#getnstr-example"&gt;getnstr
+Example&lt;/a&gt;.&lt;/p&gt;&lt;/div&gt;</summary>
+    <category term="chicken-scheme" label="chicken scheme"/>
+    <category term="scheme" label="scheme"/>
+  </entry>
   <entry>
     <title>Ted Harding's "A Guide to Typesetting Mathematics using GNU eqn"</title>
     <id>https://tkurtbond.github.io/posts/2021/06/10/ted-hardings-a-guide-to-typesetting-mathematics-using-gnu-eqn/</id>
@@ -922,55 +958,5 @@ papers on the subject.&lt;/p&gt;</summary>
     <category term="knuth-plass-line-breaking-algorithm" label="knuth-plass line-breaking algorithm"/>
     <category term="neatroff" label="neatroff"/>
     <category term="tex" label="tex"/>
-  </entry>
-  <entry>
-    <title>Need to specify a file in a GNUmakefile that starts with ~?</title>
-    <id>https://tkurtbond.github.io/posts/2020/07/08/need-to-specify-a-file-in-a-gnumakefile-that-starts-with/</id>
-    <updated>2020-07-08T06:09:38-04:00</updated>
-    <published>2020-07-08T06:09:38-04:00</published>
-    <author>
-      <name>T. Kurt Bond</name>
-    </author>
-    <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/posts/2020/07/08/need-to-specify-a-file-in-a-gnumakefile-that-starts-with/"/>
-    <summary type="html">&lt;div&gt;&lt;p&gt;Like on macOS Catalina where you can't have directories outside your
-home directory any more, so need to refer to the directory you
-manually installed some software to?  You can't just include the raw
-&lt;span class="file"&gt;~/where/ever&lt;/span&gt; in that PATH in the GNUmakefile because the
-&lt;code&gt;~&lt;/code&gt; prefix won't be translated into the user's home directory.
-That substitution is done by the shell when a command is executed, but
-the shells expect that tilde to have been expanded in the command that
-sets the path.  It doesn't do “Tilde Expansion” on each part of the
-PATH when it goes looking things up in the path.  So, you have to get
-that expansion done manually if you set it in a GNUmakefile.&lt;/p&gt;
-&lt;p&gt;Anyway, This ugly hack works:&lt;/p&gt;
-&lt;pre class="code makefile"&gt;&lt;a name="rest_code_2639ae6e622c4ea4a6a8fa1f231b8299-1"&gt;&lt;/a&gt;&lt;span class="k"&gt;export &lt;/span&gt;&lt;span class="nv"&gt;PATH&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="k"&gt;$(&lt;/span&gt;shell &lt;span class="nb"&gt;eval&lt;/span&gt; &lt;span class="nv"&gt;dir&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'~/sw/versions/heirloom-doctools/git/ucb'&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
-&lt;a name="rest_code_2639ae6e622c4ea4a6a8fa1f231b8299-2"&gt;&lt;/a&gt;                 &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="nv"&gt;$$&lt;/span&gt;dir&lt;span class="o"&gt;)&lt;/span&gt;:&lt;span class="k"&gt;$(&lt;/span&gt;PATH&lt;span class="k"&gt;)&lt;/span&gt;
-&lt;a name="rest_code_2639ae6e622c4ea4a6a8fa1f231b8299-3"&gt;&lt;/a&gt;&lt;span class="k"&gt;export &lt;/span&gt;&lt;span class="nv"&gt;TROFFFONTS&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="k"&gt;$(&lt;/span&gt;shell &lt;span class="nb"&gt;eval&lt;/span&gt; &lt;span class="nv"&gt;dir&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'~/Library/Fonts'&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
-&lt;a name="rest_code_2639ae6e622c4ea4a6a8fa1f231b8299-4"&gt;&lt;/a&gt;        &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="nv"&gt;$$&lt;/span&gt;dir&lt;span class="o"&gt;)&lt;/span&gt;:/Library/Fonts
-&lt;a name="rest_code_2639ae6e622c4ea4a6a8fa1f231b8299-5"&gt;&lt;/a&gt;
-&lt;a name="rest_code_2639ae6e622c4ea4a6a8fa1f231b8299-6"&gt;&lt;/a&gt;&lt;span class="nf"&gt;all&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
-&lt;a name="rest_code_2639ae6e622c4ea4a6a8fa1f231b8299-7"&gt;&lt;/a&gt;        @echo &lt;span class="nv"&gt;PATH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;PATH&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;
-&lt;a name="rest_code_2639ae6e622c4ea4a6a8fa1f231b8299-8"&gt;&lt;/a&gt;        @echo
-&lt;a name="rest_code_2639ae6e622c4ea4a6a8fa1f231b8299-9"&gt;&lt;/a&gt;        @echo &lt;span class="nv"&gt;TROFFFONTS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;TROFFFONTS&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;
-&lt;a name="rest_code_2639ae6e622c4ea4a6a8fa1f231b8299-10"&gt;&lt;/a&gt;        @echo
-&lt;a name="rest_code_2639ae6e622c4ea4a6a8fa1f231b8299-11"&gt;&lt;/a&gt;        @echo -n &lt;span class="s1"&gt;'"type troff" returns '&lt;/span&gt;
-&lt;a name="rest_code_2639ae6e622c4ea4a6a8fa1f231b8299-12"&gt;&lt;/a&gt;        @type troff
-&lt;/pre&gt;&lt;p&gt;Put this in a file somewhere and invoke &lt;span class="app"&gt;GNU make&lt;/span&gt; on it and it prints:&lt;/p&gt;
-&lt;pre class="code text"&gt;&lt;a name="rest_code_8f09bcfe34264f67bc47c116ecfa0cfc-1"&gt;&lt;/a&gt;PATH=/Users/tkb/sw/versions/heirloom-doctools/git/ucb:/Users/tkb/local/rndbin:/Users/tkb/.cargo/bin:/Users/tkb/.nimble/bin:/usr/local/opt/libxslt/bin:/usr/local/opt/libxml2/bin:/Users/tkb/sw/versions/mew/git/bin:/Users/tkb/sw/versions/groff-git/bin:/Users/tkb/sw/versions/chibi-scheme/git/bin:/usr/local/opt/tcl-tk/bin:/usr/local/opt/expat/bin:/Users/tkb/.opam/default/bin:/usr/local/opt/texinfo/bin:/usr/local/opt/gnu-sed/libexec/gnubin:/usr/local/opt/findutils/libexec/gnubin:/usr/local/opt/curl/bin:/usr/local/opt/coreutils/libexec/gnubin:/Users/tkb/.local/bin:/Users/tkb/context-osx-64/tex/texmf-osx-64/bin:/Applications/Emacs.app/Contents/MacOS/bin:/Users/tkb/local/unix/bin:/Users/tkb/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:/opt/X11/bin:/Users/tkb/local/unix/rndbin:/Applications/Racket v7.5/bin:/Users/tkb/go/bin:/Applications/Emacs.app/Contents/MacOS/bin-x86_64-10_14:/Applications/Emacs.app/Contents/MacOS/libexec-x86_64-10_14
-&lt;a name="rest_code_8f09bcfe34264f67bc47c116ecfa0cfc-2"&gt;&lt;/a&gt;
-&lt;a name="rest_code_8f09bcfe34264f67bc47c116ecfa0cfc-3"&gt;&lt;/a&gt;TROFFFONTS=/Users/tkb/Library/Fonts:/Library/Fonts
-&lt;a name="rest_code_8f09bcfe34264f67bc47c116ecfa0cfc-4"&gt;&lt;/a&gt;
-&lt;a name="rest_code_8f09bcfe34264f67bc47c116ecfa0cfc-5"&gt;&lt;/a&gt;"type troff" returns troff is /Users/tkb/sw/versions/heirloom-doctools/git/ucb/troff
-&lt;/pre&gt;&lt;p&gt;(Yes, my path may be a little excessive.)&lt;/p&gt;
-&lt;p&gt;Unfortunately I haven't figured out how to do this with the &lt;span class="app"&gt;BSD make&lt;/span&gt;s.&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Last edited: 2020-08-03 16:03:19 EDT&lt;/em&gt;&lt;/p&gt;
-&lt;!-- Local Variables:
-time-stamp-format: "%04y-%02m-%02d %02H:%02M:%02S %Z"
-time-stamp-start: "Last edited:[ \t]+\\\\?"
-time-stamp-end: "\\*\\\\?\n"
-time-stamp-line-limit: -20
-End: --&gt;&lt;/div&gt;</summary>
-    <category term="gnu-make" label="gnu make"/>
-    <category term="macos-catalina" label="macos catalina"/>
   </entry>
 </feed>
