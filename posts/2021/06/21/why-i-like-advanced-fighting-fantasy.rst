@@ -112,30 +112,18 @@ directly to the resulting damage), while a great sword does 2 damage
 on 1, 3 damage on a 2 or 3, 4 damage on a 4 or 5, 5 damage on a 6, and
 6 damage on a 7+.
 
-For instance, here's the damage for Dagger, Club, and Greatsword:
+For instance, here's the damage for Dagger, Club, and Two-handed Sword:
 
-===========  = = = = = = ==
-Weapon       1 2 3 4 5 6 7+
-===========  = = = = = = ==
-Dagger       1 1 2 2 2 2 3
-Club         1 2 2 2 3 3 4
-Greatsword   2 3 3 4 4 5 6
-===========  = = = = = = ==
+=================  = = = = = = ==
+Weapon             1 2 3 4 5 6 7+
+=================  = = = = = = ==
+Club               1 2 2 2 2 2 3
+Dagger             1 1 2 2 2 2 2
+Two-handed Sword   2 2 2 3 3 3 4
+=================  = = = = = = ==
 
-And armour worked the same way, roll a die, look up how much damage is
-blocked on the armour chart.
-
-Here's a Leather Cuirass and Plate Armour:
-
-================ = = = = = = ==
-Armour           1 2 3 4 5 6 7+
-================ = = = = = = ==
-Leather Cuirass  0 0 0 0 1 1 2
-Plate Armour     1 1 2 2 3 3 4
-================ = = = = = = ==
-
-That's an interesting way to get variable damage and protection when
-you are limited to using just six sided dice.
+That's an interesting way to get variable damage when you are limited
+to using just six sided dice.
 
 And of course there was a Magic Special Skill, and if you learned that
 you could learn and cast spells, each spell costing an amount of
@@ -173,7 +161,26 @@ Jackson), and talents, which were special things a character could do.
 I wasn’t so thrilled that priests now used a completely separate magic
 system not based on casting spells costing Magic Points; in 1st
 Edition priests had different spell lists they could learn from, but
-otherwise used the same mechanics as Mages.
+otherwise used the same mechanics as Mages.  AFF2e also added more
+detailed armour, which works similarly to damage — roll a die, look up
+how much damage is blocked on the armour chart.
+
+Here's Leather Cuirass and Plate Armour:
+
+================ = = = = = = ==
+Armour           1 2 3 4 5 6 7+
+================ = = = = = = ==
+Leather Cuirass  0 0 0 0 1 1 2
+Plate Armour     1 1 2 2 3 3 4
+================ = = = = = = ==
+
+AFF1e, by contrast, said that the Damage Table had been carefully
+constructed to take into account armour (`Dungeoneer`, p. 163), and
+assumed Heroes (the player characters) and their adversaries all wore
+armor (`Dungeoneer`, p. 164), and if anyone took off their armour,
+then any Damage Rolls (which was an index into a table, remember, not
+the actual damage) had 2 added to them.  I expect this explains why
+the damage values on the Weapon chart all changed in AFF2e.
 
 .. _Arion Games: http://arion-games.com/
 .. _Sorcery!: https://en.wikipedia.org/wiki/Steve_Jackson%27s_Sorcery!
@@ -187,15 +194,15 @@ They rest of the game they liked.
 
 .. _the kids: link://category/gaming/actual-play/the-kids
 
-And Arion Games has gone on to published slightly more than a book a
+And Arion Games has gone on to publish slightly more than a book a
 year since 2011, covering the same ground as the original AFF’s three
-books did, plus a lot more, including two more monster books, `Beyond
-the Pit` and `Return to the Pit`, more options for heroes in the
-`Heroes Companion`, new areas of Titan, a herbal, and a smaller book
-on creatures from a particular area of Titan, `Creatures of Mishna`.
-And just recently they published the `Combat Companion`, which adds
-extra options for combat that the gamers from my work mentioned
-earlier would have liked.
+books did, plus a lot more, including two more monster books (`Beyond
+the Pit` and `Return to the Pit`), more options for heroes in the
+`Heroes Companion`, a new area of Titan (`Travels in Arion`), a
+herbal, and a smaller book on creatures from a particular area of
+Titan (`Creatures of Mishna`).  And just recently they published the
+`Combat Companion`, which adds extra options for combat that the
+gamers from my work mentioned earlier would have liked.
 
 And Titan, the world of Fighting Fantasy and Advanced Fighting Fantasy
 is a very nice little bit of everything fantasy setting, anchored by
@@ -217,7 +224,7 @@ gaming.
 .. _DriveThruRPG.com: https://www.drivethrurpg.com/browse/pub/667/Arion-Games/subcategory/1684_25223/Advanced-Fighting-Fantasy
 
 
-*Last edited: 2021-06-21 18:14:01 EDT*
+*Last edited: 2021-06-21 22:36:47 EDT*
 
 ..
    Local Variables:
