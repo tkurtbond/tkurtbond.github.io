@@ -51,7 +51,7 @@ MIME_ header field it is displayed inline in Gmail, unless it has a
     Content-Disposition: inline; filename="JRandomFilename.txt"
 
 MIME_ header field, and then it **doesn’t** display it inline,
-unlike all the other mail reading I tried: Wanderlust_, Mew_, Alpine_,
+unlike all the other mail readers I tried: Wanderlust_, Mew_, Alpine_,
 Thunderbird_ (had to have a pure GUI client for comparison), and mutt_.
 
 .. _Alpine: https://en.wikipedia.org/wiki/Alpine_(email_client)
