@@ -1,14 +1,14 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <?xml-stylesheet href="https://tkurtbond.github.io/assets/xml/atom.xsl" type="text/xsl media="all"?>
 <feed xml:lang="en" xmlns="http://www.w3.org/2005/Atom">
-  <title>Lacking Natural Simplicity (Posts about bash)</title>
-  <id>https://tkurtbond.github.io/categories/bash.atom</id>
+  <title>Lacking Natural Simplicity (Posts about logging)</title>
+  <id>https://tkurtbond.github.io/categories/logging.atom</id>
   <updated>2021-07-07T20:28:12Z</updated>
   <author>
     <name>T. Kurt Bond</name>
   </author>
-  <link rel="self" type="application/atom+xml" href="https://tkurtbond.github.io/categories/bash.atom"/>
-  <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/categories/bash/"/>
+  <link rel="self" type="application/atom+xml" href="https://tkurtbond.github.io/categories/logging.atom"/>
+  <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/categories/logging/"/>
   <generator uri="https://getnikola.com/">Nikola</generator>
   <entry>
     <title>Logging the output of long commands run multiple times</title>
@@ -110,95 +110,5 @@ of the filename, and also include it in the log output:&lt;/p&gt;
     <category term="bash" label="bash"/>
     <category term="logging" label="logging"/>
     <category term="unix" label="unix"/>
-  </entry>
-  <entry>
-    <title>Looping on 'dnf -y system-upgrade download' until it succeeds</title>
-    <id>https://tkurtbond.github.io/posts/2019/11/07/looping-on-dnf-y-system-upgrade-download-until-it-succeeds/</id>
-    <updated>2019-11-07T21:16:59-05:00</updated>
-    <published>2019-11-07T21:16:59-05:00</published>
-    <author>
-      <name>T. Kurt Bond</name>
-    </author>
-    <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/posts/2019/11/07/looping-on-dnf-y-system-upgrade-download-until-it-succeeds/"/>
-    <summary type="html">&lt;div&gt;&lt;p&gt;Fedora 31 is out, and fool that I am I'm upgrading to it.
-Unfortunately, my DSL connection is slow and my DSL modem router is flaky.
-With over 3000 packages to download,&lt;/p&gt;
-&lt;pre class="code bash"&gt;&lt;a name="rest_code_98088da3350049bb9c18f53548b5e931-1"&gt;&lt;/a&gt;dnf -y system-upgrade download --refresh --releasever&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;31&lt;/span&gt;
-&lt;/pre&gt;&lt;p&gt;is bound to die in the middle at least once, if not multiple times,
-and with more than 6 hours estimated for the download to run I can't
-sit watching it and restarting it every time it dies.&lt;/p&gt;
-&lt;p&gt;I tried running &lt;code class="docutils literal"&gt;dnf&lt;/code&gt; as the argument to a while loop, but was
-unable to C-c to interrupt it when I &lt;em&gt;did&lt;/em&gt; want to kill it since
-&lt;code class="docutils literal"&gt;dnf&lt;/code&gt; caught the SIGINT and the loop started the &lt;code class="docutils literal"&gt;dnf&lt;/code&gt; command
-over again before I could C-c the shell.&lt;/p&gt;
-&lt;p&gt;Here's the script I came up with to work around the issue:&lt;/p&gt;
-&lt;p&gt;&lt;a class="reference external" href="https://tkurtbond.github.io/listings/tryfedoraupdate.html"&gt;tryfedoraupdate&lt;/a&gt;  &lt;a class="reference external" href="https://tkurtbond.github.io/listings/tryfedoraupdate"&gt;(Source)&lt;/a&gt;&lt;/p&gt;
-&lt;div class="code"&gt;&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos linenodiv"&gt;&lt;a href="https://tkurtbond.github.io/posts/2019/11/07/looping-on-dnf-y-system-upgrade-download-until-it-succeeds/#rest_code_a14f220b35014802bf16141306d97cfa-1"&gt;&lt;code data-line-number=" 1"&gt;&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;code&gt;&lt;a name="rest_code_a14f220b35014802bf16141306d97cfa-1"&gt;&lt;/a&gt;&lt;span class="ch"&gt;#! /usr/bin/bash&lt;/span&gt;
-&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class="linenos linenodiv"&gt;&lt;a href="https://tkurtbond.github.io/posts/2019/11/07/looping-on-dnf-y-system-upgrade-download-until-it-succeeds/#rest_code_a14f220b35014802bf16141306d97cfa-2"&gt;&lt;code data-line-number=" 2"&gt;&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;code&gt;&lt;a name="rest_code_a14f220b35014802bf16141306d97cfa-2"&gt;&lt;/a&gt;
-&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class="linenos linenodiv"&gt;&lt;a href="https://tkurtbond.github.io/posts/2019/11/07/looping-on-dnf-y-system-upgrade-download-until-it-succeeds/#rest_code_a14f220b35014802bf16141306d97cfa-3"&gt;&lt;code data-line-number=" 3"&gt;&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;code&gt;&lt;a name="rest_code_a14f220b35014802bf16141306d97cfa-3"&gt;&lt;/a&gt;&lt;span class="k"&gt;while&lt;/span&gt; ! dnf -y system-upgrade download --refresh --releasever&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;31&lt;/span&gt;
-&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class="linenos linenodiv"&gt;&lt;a href="https://tkurtbond.github.io/posts/2019/11/07/looping-on-dnf-y-system-upgrade-download-until-it-succeeds/#rest_code_a14f220b35014802bf16141306d97cfa-4"&gt;&lt;code data-line-number=" 4"&gt;&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;code&gt;&lt;a name="rest_code_a14f220b35014802bf16141306d97cfa-4"&gt;&lt;/a&gt;&lt;span class="k"&gt;do&lt;/span&gt;
-&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class="linenos linenodiv"&gt;&lt;a href="https://tkurtbond.github.io/posts/2019/11/07/looping-on-dnf-y-system-upgrade-download-until-it-succeeds/#rest_code_a14f220b35014802bf16141306d97cfa-5"&gt;&lt;code data-line-number=" 5"&gt;&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;code&gt;&lt;a name="rest_code_a14f220b35014802bf16141306d97cfa-5"&gt;&lt;/a&gt;    &lt;span class="nb"&gt;read&lt;/span&gt; -t &lt;span class="m"&gt;30&lt;/span&gt; -p &lt;span class="s2"&gt;"Continue? (y/n) "&lt;/span&gt; reply
-&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class="linenos linenodiv"&gt;&lt;a href="https://tkurtbond.github.io/posts/2019/11/07/looping-on-dnf-y-system-upgrade-download-until-it-succeeds/#rest_code_a14f220b35014802bf16141306d97cfa-6"&gt;&lt;code data-line-number=" 6"&gt;&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;code&gt;&lt;a name="rest_code_a14f220b35014802bf16141306d97cfa-6"&gt;&lt;/a&gt;    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;((&lt;/span&gt;&lt;span class="nv"&gt;$?&lt;/span&gt;&amp;gt;128&lt;span class="o"&gt;))&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
-&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class="linenos linenodiv"&gt;&lt;a href="https://tkurtbond.github.io/posts/2019/11/07/looping-on-dnf-y-system-upgrade-download-until-it-succeeds/#rest_code_a14f220b35014802bf16141306d97cfa-7"&gt;&lt;code data-line-number=" 7"&gt;&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;code&gt;&lt;a name="rest_code_a14f220b35014802bf16141306d97cfa-7"&gt;&lt;/a&gt;        &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;"timed out, continuing..."&lt;/span&gt;
-&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class="linenos linenodiv"&gt;&lt;a href="https://tkurtbond.github.io/posts/2019/11/07/looping-on-dnf-y-system-upgrade-download-until-it-succeeds/#rest_code_a14f220b35014802bf16141306d97cfa-8"&gt;&lt;code data-line-number=" 8"&gt;&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;code&gt;&lt;a name="rest_code_a14f220b35014802bf16141306d97cfa-8"&gt;&lt;/a&gt;    &lt;span class="k"&gt;elif&lt;/span&gt; &lt;span class="o"&gt;[[&lt;/span&gt; &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$reply&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt;~ &lt;span class="o"&gt;[&lt;/span&gt;Nn&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;]]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
-&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class="linenos linenodiv"&gt;&lt;a href="https://tkurtbond.github.io/posts/2019/11/07/looping-on-dnf-y-system-upgrade-download-until-it-succeeds/#rest_code_a14f220b35014802bf16141306d97cfa-9"&gt;&lt;code data-line-number=" 9"&gt;&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;code&gt;&lt;a name="rest_code_a14f220b35014802bf16141306d97cfa-9"&gt;&lt;/a&gt;        &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;"Exiting..."&lt;/span&gt;
-&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class="linenos linenodiv"&gt;&lt;a href="https://tkurtbond.github.io/posts/2019/11/07/looping-on-dnf-y-system-upgrade-download-until-it-succeeds/#rest_code_a14f220b35014802bf16141306d97cfa-10"&gt;&lt;code data-line-number="10"&gt;&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;code&gt;&lt;a name="rest_code_a14f220b35014802bf16141306d97cfa-10"&gt;&lt;/a&gt;        &lt;span class="nb"&gt;exit&lt;/span&gt;
-&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class="linenos linenodiv"&gt;&lt;a href="https://tkurtbond.github.io/posts/2019/11/07/looping-on-dnf-y-system-upgrade-download-until-it-succeeds/#rest_code_a14f220b35014802bf16141306d97cfa-11"&gt;&lt;code data-line-number="11"&gt;&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;code&gt;&lt;a name="rest_code_a14f220b35014802bf16141306d97cfa-11"&gt;&lt;/a&gt;    &lt;span class="k"&gt;else&lt;/span&gt;
-&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class="linenos linenodiv"&gt;&lt;a href="https://tkurtbond.github.io/posts/2019/11/07/looping-on-dnf-y-system-upgrade-download-until-it-succeeds/#rest_code_a14f220b35014802bf16141306d97cfa-12"&gt;&lt;code data-line-number="12"&gt;&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;code&gt;&lt;a name="rest_code_a14f220b35014802bf16141306d97cfa-12"&gt;&lt;/a&gt;        &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;"Continuing..."&lt;/span&gt;
-&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class="linenos linenodiv"&gt;&lt;a href="https://tkurtbond.github.io/posts/2019/11/07/looping-on-dnf-y-system-upgrade-download-until-it-succeeds/#rest_code_a14f220b35014802bf16141306d97cfa-13"&gt;&lt;code data-line-number="13"&gt;&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;code&gt;&lt;a name="rest_code_a14f220b35014802bf16141306d97cfa-13"&gt;&lt;/a&gt;    &lt;span class="k"&gt;fi&lt;/span&gt;
-&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class="linenos linenodiv"&gt;&lt;a href="https://tkurtbond.github.io/posts/2019/11/07/looping-on-dnf-y-system-upgrade-download-until-it-succeeds/#rest_code_a14f220b35014802bf16141306d97cfa-14"&gt;&lt;code data-line-number="14"&gt;&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;code&gt;&lt;a name="rest_code_a14f220b35014802bf16141306d97cfa-14"&gt;&lt;/a&gt;&lt;span class="k"&gt;done&lt;/span&gt;
-&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;&lt;p&gt;This way I can stop the script easily, but if it dies itself it will
-continue after a timeout.&lt;/p&gt;&lt;/div&gt;</summary>
-    <category term="bash" label="bash"/>
-    <category term="dnf" label="dnf"/>
-    <category term="fedora" label="fedora"/>
-  </entry>
-  <entry>
-    <title>Case-insenstive filename completion with bash and emacs</title>
-    <id>https://tkurtbond.github.io/posts/2009/04/24/case-insenstive-filename-completion-with-bash-and-emacs/</id>
-    <updated>2009-04-24T13:59:07-05:00</updated>
-    <published>2009-04-24T13:59:07-05:00</published>
-    <author>
-      <name>T. Kurt Bond</name>
-    </author>
-    <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/posts/2009/04/24/case-insenstive-filename-completion-with-bash-and-emacs/"/>
-    <summary type="html">&lt;div&gt;&lt;p&gt;It's strange, I know, that while I like case sensitive filenames, I
-don't actually want to be bothered matching the case exactly when I'm
-using tab completion.  Fortunately, &lt;span class="program"&gt;emacs&lt;/span&gt; and
-&lt;span class="program"&gt;bash&lt;/span&gt; both accommodate my whims.  For bash, add&lt;/p&gt;
-&lt;pre class="code bash"&gt;&lt;a name="rest_code_72ba77b4d9974ae38b09ba4dd0410832-1"&gt;&lt;/a&gt;&lt;span class="nb"&gt;set&lt;/span&gt; completion-ignore-case on
-&lt;/pre&gt;&lt;p&gt;to your &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;~/.inputrc&lt;/span&gt;&lt;/code&gt; file.  For emacs, add&lt;/p&gt;
-&lt;pre class="code emacs-lisp"&gt;&lt;a name="rest_code_72220a4f231342d591b8a1aadc5e4629-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;read-file-name-completion-ignore-case&lt;/span&gt; &lt;span class="no"&gt;t&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;p&gt;to your emacs initialization files.  Of course, if want to get rid of
-all completion case sensitivity, you need&lt;/p&gt;
-&lt;pre class="code emacs-lisp"&gt;&lt;a name="rest_code_46483600b85c4aee991e1a36ab4b7ad1-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;setq&lt;/span&gt; &lt;span class="nv"&gt;completion-ignore-case&lt;/span&gt; &lt;span class="no"&gt;t&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;p&gt;too.&lt;/p&gt;&lt;/div&gt;</summary>
-    <category term="bash" label="bash"/>
-    <category term="computer" label="computer"/>
-    <category term="emacs" label="emacs"/>
-  </entry>
-  <entry>
-    <title>Cygwin setup crashes updating bash</title>
-    <id>https://tkurtbond.github.io/posts/2008/11/26/cygwin-setup-crashes-updating-bash/</id>
-    <updated>2008-11-26T15:57:51-05:00</updated>
-    <published>2008-11-26T15:57:51-05:00</published>
-    <author>
-      <name>T. Kurt Bond</name>
-    </author>
-    <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/posts/2008/11/26/cygwin-setup-crashes-updating-bash/"/>
-    <summary type="html">&lt;div&gt;&lt;p&gt;Thanks to the wonders of Google and &lt;a class="reference external" href="http://rubenlaguna.com/wp/2007/11/05/cygwin-setupexe-crashes-whem-upgrading-packages/"&gt;Ruben&lt;/a&gt; I finally found the answer:
-remove (you'll want to make a backup copy before you remove it,
-though) &lt;code class="docutils literal"&gt;/etc/setup/bash.lst.gz&lt;/code&gt; which apparently had become
-corrupted.&lt;/p&gt;
-&lt;p&gt;According to a comment on that post, running &lt;code class="docutils literal"&gt;gunzip &lt;span class="pre"&gt;-t&lt;/span&gt;&lt;/code&gt; on all
-files in &lt;code class="docutils literal"&gt;/etc/setup&lt;/code&gt; will tell you which setup files have been
-corrupted.&lt;/p&gt;&lt;/div&gt;</summary>
-    <category term="bash" label="bash"/>
-    <category term="computer" label="computer"/>
-    <category term="corrupted" label="corrupted"/>
-    <category term="cygwin" label="cygwin"/>
-    <category term="setupexe" label="setup.exe"/>
-    <category term="tools" label="tools"/>
-    <category term="upgrade" label="upgrade"/>
   </entry>
 </feed>
