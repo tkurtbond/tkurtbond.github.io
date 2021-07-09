@@ -45,8 +45,6 @@ So I wrote a bash function :command:`incf` (increment filename) to put in
        # Example: "incf file .tar.gz" results in "file_2021-07-07.tar.gz", or
        # "file_2021-07-07_N.tar.gz" if "file_2021-07-07.tar.gz" already exists,
        # where N is 1 or greater.
-
-       # Need getopts to match python version.  But it is only for verbose, so no?
        local prefix suffix fileprefix i testname sep1 sep2
        prefix="$1"
        suffix="$2"
@@ -87,6 +85,7 @@ and tees its input into that file:
 .. code:: bash
 
    log () {
+       # tee the input into a log file.
        tee $(logf "$1")
    }
 
@@ -96,20 +95,32 @@ So running ``./configure 2>&1 | log ~/tmp/configure`` generates a file
 
 But what if I specify a lot of options to the command, and would like
 record if it in the log file, so if I get interrupted and then come
-back some time later I can use the same command?  So I wrote a bash
-function, :command:`exlog`, to use the whole command with its options as part
-of the filename, and also include it in the log output:
+back some time later I can use the same command?
+
+First I wrote a base function, :command:`cleanname`, that takes a string and
+converts it to something that should be safe to use as a filename.
 
 .. code:: bash
 
-   function exlog {
-       # Execute a shell command and log it to "Log.<cmd-as-safe-filename>"
+   cleanname () {
+       # Clean up a string so it is (relatively) safe to use as a filename.
        local cmd="$*" name
        name=$(echo "$cmd" | sed 's/[ =";?*&^%$#@!~`|()<>]/-/g' | \
                   sed "s#[/']#-#g" | sed -E 's/--+/-/g' | \
                   sed -E 's/(^[-.]+|-+$)//g' | \
                   sed -E 's/\.\.\.*/./g')
-        # By now name should have no spaces, so the following is safe.
+       echo "$name"
+   }
+
+Then I wrote a bash function, :command:`exlog`, to use the whole
+command with its options as part of the filename (constructed with
+:command:`cleanname`, and also include the whole command in the log output:
+
+.. code:: bash
+
+   exlog () {
+       # Execute a shell command and log it to "Log.<cmd-as-safe-filename>"
+       local cmd="$*" name="$(cleanname "$@")"
        name="$(logf $name)"
        printf 'Logging to %s\n' "$name"
        (echo "cmd was: $cmd"; time "$@") 2>&1 | tee $name
@@ -138,3 +149,18 @@ and running it again produces the file
 .. code:: 
 
    Log.configure-prefix-Users-tkb-sw-versions-groff-git_2021-07-07_1
+
+This code is available in a gist_.
+
+.. _gist: https://gist.github.com/tkurtbond/23255fede737eec89b1fd0e011566cb1
+
+
+*Last edited: 2021-07-09 15:30:53 EDT*
+
+..
+   Local Variables:
+   time-stamp-format: "%04y-%02m-%02d %02H:%02M:%02S %Z"
+   time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
+   time-stamp-end: "\\*\\\\?\n"
+   time-stamp-line-limit: -20
+   End:
