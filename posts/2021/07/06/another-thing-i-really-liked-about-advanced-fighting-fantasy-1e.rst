@@ -12,7 +12,7 @@ I like that one of the example characters in Dungeoneer_, Axel Wolfric
 abilities which mechanically are spells, but which the character
 doesn't regard as magic, something they regard as evil.  Doing this
 sort of thing in a fantasy game makes a lot of sense, where characters
-might have weird on-off abilities.
+might have weird one-off abilities.
 
 .. _Dungeoneer: https://fightingfantasy.fandom.com/wiki/Dungeoneer_(book)
 
