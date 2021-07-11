@@ -1,5 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity (Posts about gmail)</title><link>https://tkurtbond.github.io/</link><description></description><atom:link href="https://tkurtbond.github.io/categories/gmail.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2021 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Thu, 10 Jun 2021 18:16:39 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Line number anchors in pandoc's HTML output for codeblocks with highlighting mess up Gmail text/plain multipart alternative</title><link>https://tkurtbond.github.io/posts/2020/07/05/line-number-anchors-in-pandocs-html-output-for-codeblocks-with-highlighting-mess-up-gmail-textplain-multipart-alternative/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;I’ve found that if I write something in &lt;a class="reference external" href="https://docutils.sourceforge.io/rst.html"&gt;ReStructuredText&lt;/a&gt;, create HTML
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity (Posts about gmail)</title><link>https://tkurtbond.github.io/</link><description></description><atom:link href="https://tkurtbond.github.io/categories/gmail.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2021 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Sun, 11 Jul 2021 00:03:05 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>MIME and Gmail vs other mailers</title><link>https://tkurtbond.github.io/posts/2020/12/11/mime-and-gmail-vs-other-mailers/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;I composed a carefully constructed &lt;a class="reference external" href="https://en.wikipedia.org/wiki/MIME"&gt;MIME&lt;/a&gt; message using &lt;a class="reference external" href="http://www.mew.org/"&gt;Mew&lt;/a&gt;, which has
+a nice way to build &lt;a class="reference external" href="https://en.wikipedia.org/wiki/MIME"&gt;MIME&lt;/a&gt; messages, but Gmail doesn’t know that if you
+have a multipart &lt;a class="reference external" href="https://en.wikipedia.org/wiki/MIME"&gt;MIME&lt;/a&gt; message that has a text part, then an image,
+then a text part, then an image, then a text part then what you want
+is for the image parts to be displayed inline.  In messages like that
+composed in Gmail, it uses the content type of &lt;code class="docutils literal"&gt;multipart/related&lt;/code&gt;,
+which then encloses a &lt;code class="docutils literal"&gt;multipart/alternative&lt;/code&gt;, which has a plain
+text version of the message and an HTML version, which refers to the
+images with an &lt;code class="docutils literal"&gt;img&lt;/code&gt; tag that has an id that refers to the id in a
+&lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;Content-ID&lt;/span&gt;&lt;/code&gt; &lt;a class="reference external" href="https://en.wikipedia.org/wiki/MIME"&gt;MIME&lt;/a&gt; header in following parts of the multipart-related
+&lt;a class="reference external" href="https://en.wikipedia.org/wiki/MIME"&gt;MIME&lt;/a&gt; part that is the main body of the email.&lt;/p&gt;
+&lt;p&gt;I don’t know why Gmail doesn’t display the simpler &lt;code class="docutils literal"&gt;multipart/mixed&lt;/code&gt;
+messages correctly.&lt;/p&gt;
+&lt;p&gt;It is very annoying.  I don’t mind them using the
+&lt;code class="docutils literal"&gt;multipart/related&lt;/code&gt; (which I didn’t even know about before looking
+at one of their messages using &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;wl-summary-reedit&lt;/span&gt;&lt;/code&gt; in &lt;a class="reference external" href="https://www.emacswiki.org/emacs/WanderLust"&gt;Wanderlust&lt;/a&gt;,
+which pulls it up in the &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;mime-edit-mode&lt;/span&gt;&lt;/code&gt; &lt;a class="reference external" href="https://en.wikipedia.org/wiki/MIME"&gt;MIME&lt;/a&gt; composition mode
+&lt;a class="footnote-reference brackets" href="https://tkurtbond.github.io/posts/2020/12/11/mime-and-gmail-vs-other-mailers/#mime-edit-mode" id="id1"&gt;1&lt;/a&gt;, which revealed all the details), but I wish they’d
+get the simpler &lt;code class="docutils literal"&gt;multipart/mixed&lt;/code&gt; version right.  Instead, they
+don’t display the inline attachments (regardless of whether they are
+images or text) and put them all at the end of the display as
+attachments, and display the other text parts smushed together.&lt;/p&gt;
+&lt;p&gt;Interestingly, if a text part it has a &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;Content-Type:&lt;/span&gt; Text/Plain&lt;/code&gt;
+&lt;a class="reference external" href="https://en.wikipedia.org/wiki/MIME"&gt;MIME&lt;/a&gt; header field it is displayed inline in Gmail, unless it has a&lt;/p&gt;
+&lt;pre class="code text"&gt;&lt;a name="rest_code_53568cd90c084212baf4a2a6db92ed05-1"&gt;&lt;/a&gt;Content-Disposition: inline; filename="JRandomFilename.txt"
+&lt;/pre&gt;&lt;p&gt;&lt;a class="reference external" href="https://en.wikipedia.org/wiki/MIME"&gt;MIME&lt;/a&gt; header field, and then it &lt;strong&gt;doesn’t&lt;/strong&gt; display it inline,
+unlike all the other mail readers I tried: &lt;a class="reference external" href="https://www.emacswiki.org/emacs/WanderLust"&gt;Wanderlust&lt;/a&gt;, &lt;a class="reference external" href="http://www.mew.org/"&gt;Mew&lt;/a&gt;, &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Alpine_(email_client)"&gt;Alpine&lt;/a&gt;,
+&lt;a class="reference external" href="https://www.thunderbird.ne"&gt;Thunderbird&lt;/a&gt; (had to have a pure GUI client for comparison), and &lt;a class="reference external" href="http://www.mutt.org/"&gt;mutt&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Interestingly, &lt;a class="reference external" href="https://www.emacswiki.org/emacs/WanderLust"&gt;Wanderlust&lt;/a&gt; displays Gmail’s &lt;code class="docutils literal"&gt;multipart/related&lt;/code&gt;
+messages correctly, which impressed me.&lt;/p&gt;
+&lt;p&gt;I originally I thought that &lt;a class="reference external" href="http://www.mew.org/"&gt;Mew&lt;/a&gt; did not display the
+&lt;code class="docutils literal"&gt;multipart/related&lt;/code&gt; message correctly, punting to just displaying
+original &lt;a class="reference external" href="https://en.wikipedia.org/wiki/MIME"&gt;MIME&lt;/a&gt;-encoded text instead, and not displaying the image
+parts.&lt;/p&gt;
+&lt;p&gt;I was wrong about that; I was just confused by its presentation.
+First it displays the text version of the enclosed
+&lt;code class="docutils literal"&gt;multipart/alternative&lt;/code&gt;, which is what made me think it didn’t
+display the image parts; it just hasn't yet!  Then if I hit space, it
+displays the first of the images, and then if I hit space it displays
+the second of the images.&lt;/p&gt;
+&lt;p&gt;And you can make &lt;a class="reference external" href="http://www.mew.org/"&gt;Mew&lt;/a&gt; display the HTML part, but it doesn’t know how
+the &lt;code class="docutils literal"&gt;&amp;lt;img &lt;span class="pre"&gt;id=“foo”&amp;gt;&lt;/span&gt;&lt;/code&gt; elements work, so it doesn’t display the
+images.&lt;/p&gt;
+&lt;p&gt;I was pleased to see that the &lt;a class="reference external" href="https://www.emacswiki.org/emacs/WanderLust"&gt;Wanderlust&lt;/a&gt; (&lt;a class="reference external" href="https://github.com/wanderlust/wanderlust"&gt;WGH&lt;/a&gt;) and &lt;a class="reference external" href="http://www.mew.org/"&gt;Mew&lt;/a&gt; (&lt;a class="reference external" href="https://github.com/kazu-yamamoto/Mew"&gt;MGH&lt;/a&gt;) github
+repositories both have recent commits.&lt;/p&gt;
+&lt;p&gt;And &lt;a class="reference external" href="https://www.emacswiki.org/emacs/WanderLust"&gt;Wanderlust&lt;/a&gt; and &lt;a class="reference external" href="http://www.mew.org/"&gt;Mew&lt;/a&gt; are both in &lt;a class="reference external" href="https://melpa.org/"&gt;MELPA&lt;/a&gt; these days, although
+&lt;a class="reference external" href="http://www.mew.org/"&gt;Mew&lt;/a&gt;’s &lt;a class="reference external" href="https://melpa.org/"&gt;MELPA&lt;/a&gt; package doesn’t include the command line program,
+&lt;span class="command"&gt;incm&lt;/span&gt;, that is used to pull emails from &lt;span class="file"&gt;/var/mail&lt;/span&gt;
+into &lt;a class="reference external" href="https://en.wikipedia.org/wiki/MH_Message_Handling_System"&gt;MH&lt;/a&gt; style files under &lt;span class="file"&gt;~/Mail&lt;/span&gt;.  &lt;a class="reference external" href="https://www.emacswiki.org/emacs/WanderLust"&gt;Wanderlust&lt;/a&gt; and &lt;a class="reference external" href="http://www.mew.org/"&gt;Mew&lt;/a&gt; both
+use &lt;a class="reference external" href="https://en.wikipedia.org/wiki/MH_Message_Handling_System"&gt;MH&lt;/a&gt; style files under &lt;span class="file"&gt;~/Mail&lt;/span&gt; as their local message store.
+&lt;a class="reference external" href="https://en.wikipedia.org/wiki/MH_Message_Handling_System"&gt;MH&lt;/a&gt; puts subdirectories there for folders, and in each folder the
+messages are named with integers that correspond to the order in which
+they were incorporated from whatever mail source you were using
+(historically &lt;span class="file"&gt;/var/mail&lt;/span&gt;).  &lt;a class="reference external" href="https://en.wikipedia.org/wiki/MH_Message_Handling_System"&gt;MH&lt;/a&gt; used command line programs to
+incorporate mail, list mail messages, display mail messages, and file
+it into folders.  I rather liked it.  I used &lt;a class="reference external" href="https://www.nongnu.org/nmh/"&gt;nmh&lt;/a&gt; (the New MH, a new
+implementation of the original Rand MH commands, which ran on newer
+Unixes) and &lt;a class="reference external" href="https://mailutils.org/"&gt;GNU mailutils&lt;/a&gt; (which provided MH-compatible command
+line programs, if not configured out), sometimes during the same
+period of time, for a considerable time.  At one time, when I was
+getting mail at a server I had online, I was using &lt;a class="reference external" href="https://www.nongnu.org/nmh/"&gt;nmh&lt;/a&gt;, &lt;a class="reference external" href="https://mailutils.org/"&gt;GNU
+mailutils&lt;/a&gt;, Emacs’s built-in interface to MH (&lt;a class="reference external" href="https://www.emacswiki.org/emacs/MH-E"&gt;MH-E&lt;/a&gt;), &lt;a class="reference external" href="https://www.emacswiki.org/emacs/WanderLust"&gt;Wanderlust&lt;/a&gt;,
+and &lt;a class="reference external" href="http://www.mew.org/"&gt;Mew&lt;/a&gt;. (Before that I used &lt;a class="reference external" href="http://savannah.nongnu.org/projects/viewmail"&gt;ViewMail&lt;/a&gt;, and before that I used
+&lt;a class="reference external" href="https://www.emacswiki.org/emacs/Rmail"&gt;RMAIL&lt;/a&gt;) They each had features the other lacked.&lt;/p&gt;
+&lt;p&gt;I tried using &lt;a class="reference external" href="https://www.seas.upenn.edu/~bcpierce/unison/"&gt;Unison&lt;/a&gt; to sync that mail between my server online and
+my computer at home, but that did not work well, since &lt;a class="reference external" href="https://en.wikipedia.org/wiki/MH_Message_Handling_System"&gt;MH&lt;/a&gt; commands
+change the names of files when they move them from one folder to
+another (remember, each message in a folder gets a name that is an
+integer based on the order in which it was incorporated in that
+folder, and its folder command provided an option, &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;-pack&lt;/span&gt;&lt;/code&gt;, that
+renamed all the messages in a folder sequentially, used after you’d
+deleted messages) so you couldn’t keep track if the message named 32
+in one folder on one machine was a new one or just renamed from 976
+when you ran folder -pack last.  Syncing with &lt;a class="reference external" href="https://www.seas.upenn.edu/~bcpierce/unison/"&gt;Unison&lt;/a&gt; just did not
+work at all.  Hmm.  I could have changed the &lt;code class="docutils literal"&gt;Path&lt;/code&gt; option in my
+&lt;span class="file"&gt;.mh-profile`&lt;/span&gt; file on each machine, so that instead of all the
+&lt;a class="reference external" href="https://en.wikipedia.org/wiki/MH_Message_Handling_System"&gt;MH&lt;/a&gt; mail being under &lt;span class="file"&gt;~/Mail&lt;/span&gt; on both machines, on my home
+machine it could have been under &lt;span class="file"&gt;~/Mail-home&lt;/span&gt; and on
+tkb.mpl.com it could have been under &lt;span class="file"&gt;~/Mail-onlineserver&lt;/span&gt;, and
+then I could have used &lt;a class="reference external" href="https://rsync.samba.org/"&gt;rsync&lt;/a&gt; to copy those from one machine to the
+other appropriately so I’d have a backup.  Huh.  Wish I’d figured that
+out back in the day.  Of course, to read email in &lt;span class="file"&gt;~/Mail-home&lt;/span&gt;
+on my online server I’d have had to changed the &lt;code class="docutils literal"&gt;Path&lt;/code&gt; option in my
+&lt;span class="file"&gt;~/.mh_profile&lt;/span&gt; on that machine, and then changed it back when I
+wanted to use &lt;span class="file"&gt;~/Mail-onlineserver&lt;/span&gt;.  It would have worked,
+however.&lt;/p&gt;
+&lt;p&gt;Completion made me go look at the &lt;a class="reference external" href="https://en.wikipedia.org/wiki/MIME"&gt;MIME&lt;/a&gt; messages I was testing in
+&lt;a class="reference external" href="https://www.emacswiki.org/emacs/MH-E"&gt;MH-E&lt;/a&gt;.  In the &lt;code class="docutils literal"&gt;multipart/mixed&lt;/code&gt; message &lt;a class="reference external" href="https://www.emacswiki.org/emacs/MH-E"&gt;MH-E&lt;/a&gt; does not show the
+PNG files inline, though emacs has the capability to do that now.  It
+&lt;em&gt;does&lt;/em&gt; have keybindings to open an external viewer for you.  If you
+specify the macOS command &lt;span class="command"&gt;open&lt;/span&gt; it will open it in whatever
+app is the default for macOS; in the case of PNGs that is
+&lt;span class="app"&gt;Preview&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;I do most of my email reading and sending in Gmail these days, alas.  I
+still use &lt;a class="reference external" href="https://www.emacswiki.org/emacs/WanderLust"&gt;Wanderlust&lt;/a&gt; and &lt;a class="reference external" href="http://www.mew.org/"&gt;Mew&lt;/a&gt; occasionally, since they support &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Internet_Message_Access_Protocol"&gt;IMAP&lt;/a&gt;
+very well.  Now if only Google didn't make it harder to use them:
+Gmail declares IMAP-over-SSL is a “less secure” application, and turns
+&lt;a class="reference external" href="https://en.wikipedia.org/wiki/Internet_Message_Access_Protocol"&gt;IMAP&lt;/a&gt; access off if you don't use it regularly.&lt;/p&gt;
+&lt;dl class="footnote brackets"&gt;
+&lt;dt class="label" id="mime-edit-mode"&gt;&lt;span class="brackets"&gt;&lt;a class="fn-backref" href="https://tkurtbond.github.io/posts/2020/12/11/mime-and-gmail-vs-other-mailers/#id1"&gt;1&lt;/a&gt;&lt;/span&gt;&lt;/dt&gt;
+&lt;dd&gt;&lt;p&gt;This is provided by &lt;a class="reference external" href="https://www.emacswiki.org/emacs/SemiIsEmacsMimeInterface"&gt;SEMI&lt;/a&gt;, an Emacs Lisp package,
+and it has a GitHub repo (&lt;a class="reference external" href="https://github.com/wanderlust/semi"&gt;SEMIGH&lt;/a&gt;), last commit 27 days ago as of
+the time of this writing.&lt;/p&gt;
+&lt;/dd&gt;
+&lt;/dl&gt;&lt;/div&gt;</description><category>alpine</category><category>e-mail</category><category>gmail</category><category>mew</category><category>mime</category><category>mutt</category><category>thunderbird</category><category>wanderlust</category><guid>https://tkurtbond.github.io/posts/2020/12/11/mime-and-gmail-vs-other-mailers/</guid><pubDate>Fri, 11 Dec 2020 14:12:17 GMT</pubDate></item><item><title>Line number anchors in pandoc's HTML output for codeblocks with highlighting mess up Gmail text/plain multipart alternative</title><link>https://tkurtbond.github.io/posts/2020/07/05/line-number-anchors-in-pandocs-html-output-for-codeblocks-with-highlighting-mess-up-gmail-textplain-multipart-alternative/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;I’ve found that if I write something in &lt;a class="reference external" href="https://docutils.sourceforge.io/rst.html"&gt;ReStructuredText&lt;/a&gt;, create HTML
 from it and embed a stylesheet with the proper css in the
 &lt;code class="file docutils literal"&gt;.html&lt;/code&gt; file using &lt;a class="reference external" href="https://pandoc.org/"&gt;pandoc&lt;/a&gt;’s &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;--include-in-header&lt;/span&gt;&lt;/code&gt; option that
 I can cut and paste from the web page displayed in my browser from
