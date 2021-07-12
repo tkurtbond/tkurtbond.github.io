@@ -38,9 +38,10 @@ the character in the variable unicode-character-list (which is defined
 in :file:`unichars.el`) and contains the character values and unicode
 names for the characters.
 
-So, I wrote defadvice that runs ``(tkb-describe-character t)`` after
-``smart-unicode-hyphen`` runs, so it looks at the character just
-before it and describes it, so I know what it is!
+So, I wrote a ``defadvice`` function that runs
+``(tkb-describe-character t)`` after ``smart-unicode-hyphen`` runs, so
+it looks at the character just before it and describes it, so I know
+what it is!
 
 It works wonderfully!
 

@@ -104,9 +104,10 @@ interactively or a value when called non-interactively) that looks up
 the character in the variable unicode-character-list (which is defined
 in <span class="file">unichars.el</span>) and contains the character values and unicode
 names for the characters.</p>
-<p>So, I wrote defadvice that runs <code class="docutils literal"><span class="pre">(tkb-describe-character</span> t)</code> after
-<code class="docutils literal"><span class="pre">smart-unicode-hyphen</span></code> runs, so it looks at the character just
-before it and describes it, so I know what it is!</p>
+<p>So, I wrote a <code class="docutils literal">defadvice</code> function that runs
+<code class="docutils literal"><span class="pre">(tkb-describe-character</span> t)</code> after <code class="docutils literal"><span class="pre">smart-unicode-hyphen</span></code> runs, so
+it looks at the character just before it and describes it, so I know
+what it is!</p>
 <p>It works wonderfully!</p>
 <p>That's the thing about <code class="docutils literal">defadvice</code>: it lets you customize functions
 to better adapt them to how you need to work.  Another way emacs lets
@@ -117,32 +118,32 @@ ago.  It looks like you can get <span class="file">xmlunicode.el</span> from his
 <a class="reference external" href="https://github.com/ndw/xmlunicode">xmlunicode</a> github repository, and it looks like the replacement for
 <span class="file">unichars.el</span> is <span class="file">xmlunicode-character-list.el</span>.</p>
 <p>Here's my code:</p>
-<pre class="code emacs-lisp"><a name="rest_code_47f02f7b03d5473aacb0148e7e045489-1"></a><span class="c1">;; look at https://github.com/ndw/xmlunicode for xmlunicode.el and a way</span>
-<a name="rest_code_47f02f7b03d5473aacb0148e7e045489-2"></a><span class="c1">;; to make something like unichars.el.  xmlunicode.el provides the</span>
-<a name="rest_code_47f02f7b03d5473aacb0148e7e045489-3"></a><span class="c1">;; "smart-unicode-*" functions.</span>
-<a name="rest_code_47f02f7b03d5473aacb0148e7e045489-4"></a><span class="p">(</span><span class="nv">load-library</span> <span class="s">"xmlunicode"</span><span class="p">)</span>
-<a name="rest_code_47f02f7b03d5473aacb0148e7e045489-5"></a><span class="p">(</span><span class="nv">load-library</span> <span class="s">"unichars"</span><span class="p">)</span>
-<a name="rest_code_47f02f7b03d5473aacb0148e7e045489-6"></a>
-<a name="rest_code_47f02f7b03d5473aacb0148e7e045489-7"></a><span class="p">(</span><span class="nb">defun</span> <span class="nv">tkb-describe-character</span> <span class="p">(</span><span class="nv">before</span><span class="p">)</span>
-<a name="rest_code_47f02f7b03d5473aacb0148e7e045489-8"></a>  <span class="s">"Describe the character after point (before if a prefix was specified)</span>
-<a name="rest_code_47f02f7b03d5473aacb0148e7e045489-9"></a><span class="s">if it is a unicode character."</span>
-<a name="rest_code_47f02f7b03d5473aacb0148e7e045489-10"></a>  <span class="p">(</span><span class="k">interactive</span> <span class="s">"P"</span><span class="p">)</span>
-<a name="rest_code_47f02f7b03d5473aacb0148e7e045489-11"></a>  <span class="p">(</span><span class="k">let*</span> <span class="p">((</span><span class="nv">char</span> <span class="p">(</span><span class="k">if</span> <span class="nv">before</span> <span class="p">(</span><span class="nf">char-before</span><span class="p">)</span> <span class="p">(</span><span class="nf">char-after</span><span class="p">)))</span>
-<a name="rest_code_47f02f7b03d5473aacb0148e7e045489-12"></a>         <span class="p">(</span><span class="nv">info</span> <span class="p">(</span><span class="nf">assoc</span> <span class="p">(</span><span class="nf">encode-char</span> <span class="nv">char</span> <span class="ss">'ucs</span><span class="p">)</span> <span class="nv">unicode-character-list</span><span class="p">))</span>
-<a name="rest_code_47f02f7b03d5473aacb0148e7e045489-13"></a>         <span class="p">(</span><span class="nv">info</span> <span class="p">(</span><span class="nf">cons</span> <span class="p">(</span><span class="nf">format</span> <span class="s">"#x%X"</span> <span class="p">(</span><span class="nf">car</span> <span class="nv">info</span><span class="p">))</span> <span class="nv">info</span><span class="p">)))</span>
-<a name="rest_code_47f02f7b03d5473aacb0148e7e045489-14"></a>    <span class="p">(</span><span class="nf">message</span> <span class="s">"%S"</span> <span class="nv">info</span><span class="p">)))</span>
-<a name="rest_code_47f02f7b03d5473aacb0148e7e045489-15"></a><span class="p">(</span><span class="nv">tkb-keys</span> <span class="p">((</span><span class="nv">kbd</span> <span class="s">"C-c k d"</span><span class="p">)</span> <span class="nf">#'</span><span class="nv">tkb-describe-character</span><span class="p">))</span>
-<a name="rest_code_47f02f7b03d5473aacb0148e7e045489-16"></a>
-<a name="rest_code_47f02f7b03d5473aacb0148e7e045489-17"></a><span class="p">(</span><span class="nb">define-minor-mode</span> <span class="nv">tkb-smart-unicode-mode</span>
-<a name="rest_code_47f02f7b03d5473aacb0148e7e045489-18"></a>  <span class="s">"Toggle smart unicode punctuation"</span> <span class="no">nil</span> <span class="s">" ♻⚔☣☥☸◉⅙✽☮"</span> <span class="c1">; "✘▧▧⚅☑☢☹☺♠♥♦♣♨"</span>
-<a name="rest_code_47f02f7b03d5473aacb0148e7e045489-19"></a>  <span class="o">'</span><span class="p">((</span><span class="s">"\""</span> <span class="o">.</span> <span class="nv">unicode-smart-double-quote</span><span class="p">)</span>
-<a name="rest_code_47f02f7b03d5473aacb0148e7e045489-20"></a>    <span class="p">(</span><span class="s">"'"</span>  <span class="o">.</span> <span class="nv">unicode-smart-single-quote</span><span class="p">)</span>
-<a name="rest_code_47f02f7b03d5473aacb0148e7e045489-21"></a>    <span class="p">(</span><span class="s">"-"</span>  <span class="o">.</span> <span class="nv">unicode-smart-hyphen</span><span class="p">)</span>
-<a name="rest_code_47f02f7b03d5473aacb0148e7e045489-22"></a>    <span class="p">(</span><span class="s">"."</span>  <span class="o">.</span> <span class="nv">unicode-smart-period</span><span class="p">)))</span>
-<a name="rest_code_47f02f7b03d5473aacb0148e7e045489-23"></a>
-<a name="rest_code_47f02f7b03d5473aacb0148e7e045489-24"></a><span class="p">(</span><span class="nb">defadvice</span> <span class="nv">unicode-smart-hyphen</span> <span class="p">(</span><span class="nv">after</span> <span class="nv">tkb-after-unicode-smart-hyphen</span> <span class="nv">last</span>
-<a name="rest_code_47f02f7b03d5473aacb0148e7e045489-25"></a>                                       <span class="nv">activate</span> <span class="nv">compile</span><span class="p">)</span>
-<a name="rest_code_47f02f7b03d5473aacb0148e7e045489-26"></a>  <span class="p">(</span><span class="nv">tkb-describe-character</span> <span class="no">t</span><span class="p">))</span>
+<pre class="code emacs-lisp"><a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-1"></a><span class="c1">;; look at https://github.com/ndw/xmlunicode for xmlunicode.el and a way</span>
+<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-2"></a><span class="c1">;; to make something like unichars.el.  xmlunicode.el provides the</span>
+<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-3"></a><span class="c1">;; "smart-unicode-*" functions.</span>
+<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-4"></a><span class="p">(</span><span class="nv">load-library</span> <span class="s">"xmlunicode"</span><span class="p">)</span>
+<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-5"></a><span class="p">(</span><span class="nv">load-library</span> <span class="s">"unichars"</span><span class="p">)</span>
+<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-6"></a>
+<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-7"></a><span class="p">(</span><span class="nb">defun</span> <span class="nv">tkb-describe-character</span> <span class="p">(</span><span class="nv">before</span><span class="p">)</span>
+<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-8"></a>  <span class="s">"Describe the character after point (before if a prefix was specified)</span>
+<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-9"></a><span class="s">if it is a unicode character."</span>
+<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-10"></a>  <span class="p">(</span><span class="k">interactive</span> <span class="s">"P"</span><span class="p">)</span>
+<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-11"></a>  <span class="p">(</span><span class="k">let*</span> <span class="p">((</span><span class="nv">char</span> <span class="p">(</span><span class="k">if</span> <span class="nv">before</span> <span class="p">(</span><span class="nf">char-before</span><span class="p">)</span> <span class="p">(</span><span class="nf">char-after</span><span class="p">)))</span>
+<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-12"></a>         <span class="p">(</span><span class="nv">info</span> <span class="p">(</span><span class="nf">assoc</span> <span class="p">(</span><span class="nf">encode-char</span> <span class="nv">char</span> <span class="ss">'ucs</span><span class="p">)</span> <span class="nv">unicode-character-list</span><span class="p">))</span>
+<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-13"></a>         <span class="p">(</span><span class="nv">info</span> <span class="p">(</span><span class="nf">cons</span> <span class="p">(</span><span class="nf">format</span> <span class="s">"#x%X"</span> <span class="p">(</span><span class="nf">car</span> <span class="nv">info</span><span class="p">))</span> <span class="nv">info</span><span class="p">)))</span>
+<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-14"></a>    <span class="p">(</span><span class="nf">message</span> <span class="s">"%S"</span> <span class="nv">info</span><span class="p">)))</span>
+<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-15"></a><span class="p">(</span><span class="nv">tkb-keys</span> <span class="p">((</span><span class="nv">kbd</span> <span class="s">"C-c k d"</span><span class="p">)</span> <span class="nf">#'</span><span class="nv">tkb-describe-character</span><span class="p">))</span>
+<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-16"></a>
+<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-17"></a><span class="p">(</span><span class="nb">define-minor-mode</span> <span class="nv">tkb-smart-unicode-mode</span>
+<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-18"></a>  <span class="s">"Toggle smart unicode punctuation"</span> <span class="no">nil</span> <span class="s">" ♻⚔☣☥☸◉⅙✽☮"</span> <span class="c1">; "✘▧▧⚅☑☢☹☺♠♥♦♣♨"</span>
+<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-19"></a>  <span class="o">'</span><span class="p">((</span><span class="s">"\""</span> <span class="o">.</span> <span class="nv">unicode-smart-double-quote</span><span class="p">)</span>
+<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-20"></a>    <span class="p">(</span><span class="s">"'"</span>  <span class="o">.</span> <span class="nv">unicode-smart-single-quote</span><span class="p">)</span>
+<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-21"></a>    <span class="p">(</span><span class="s">"-"</span>  <span class="o">.</span> <span class="nv">unicode-smart-hyphen</span><span class="p">)</span>
+<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-22"></a>    <span class="p">(</span><span class="s">"."</span>  <span class="o">.</span> <span class="nv">unicode-smart-period</span><span class="p">)))</span>
+<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-23"></a>
+<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-24"></a><span class="p">(</span><span class="nb">defadvice</span> <span class="nv">unicode-smart-hyphen</span> <span class="p">(</span><span class="nv">after</span> <span class="nv">tkb-after-unicode-smart-hyphen</span> <span class="nv">last</span>
+<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-25"></a>                                       <span class="nv">activate</span> <span class="nv">compile</span><span class="p">)</span>
+<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-26"></a>  <span class="p">(</span><span class="nv">tkb-describe-character</span> <span class="no">t</span><span class="p">))</span>
 </pre>
 <p>Here's a <a class="reference external" href="https://gist.github.com/tkurtbond/3dad54a2141422f39033533e72f53110">gist</a>, and the <a class="reference external" href="https://gist.githubusercontent.com/tkurtbond/3dad54a2141422f39033533e72f53110/raw/f1dc635d64fae89d1202142583df39544a87d7b8/tkb-smart-unicode-mode.el">raw</a> gist if you want to download it directly.</p>
 </div>
