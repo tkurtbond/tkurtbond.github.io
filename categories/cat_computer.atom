@@ -3,13 +3,90 @@
 <feed xml:lang="en" xmlns="http://www.w3.org/2005/Atom">
   <title>Lacking Natural Simplicity (Posts about computer)</title>
   <id>https://tkurtbond.github.io/categories/cat_computer.atom</id>
-  <updated>2021-07-11T00:03:02Z</updated>
+  <updated>2021-07-12T03:16:49Z</updated>
   <author>
     <name>T. Kurt Bond</name>
   </author>
   <link rel="self" type="application/atom+xml" href="https://tkurtbond.github.io/categories/cat_computer.atom"/>
   <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/categories/cat_computer/"/>
   <generator uri="https://getnikola.com/">Nikola</generator>
+  <entry>
+    <title>defadvice lets you improve existing functions!</title>
+    <id>https://tkurtbond.github.io/posts/2021/07/11/defadvice-lets-you-improve-existing-functions/</id>
+    <updated>2021-07-11T22:28:21-04:00</updated>
+    <published>2021-07-11T22:28:21-04:00</published>
+    <author>
+      <name>T. Kurt Bond</name>
+    </author>
+    <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/posts/2021/07/11/defadvice-lets-you-improve-existing-functions/"/>
+    <summary type="html">&lt;div&gt;&lt;p&gt;I used &lt;code class="docutils literal"&gt;defadvice&lt;/code&gt; in emacs lisp and it made the world so much
+better!&lt;/p&gt;
+&lt;p&gt;Specifically, I use the function &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;smart-unicode-hyphen&lt;/span&gt;&lt;/code&gt; from
+&lt;span class="file"&gt;xmlunicode.el&lt;/span&gt; &lt;a class="footnote-reference brackets" href="https://tkurtbond.github.io/posts/2021/07/11/defadvice-lets-you-improve-existing-functions/#tkb-smart-unicode-mode" id="id1"&gt;1&lt;/a&gt; when entering text
+that is to be typeset.  The first time you hit hyphen it inserts a
+hyphen.  The second time you hit hyphen it changes it to an em dash.
+The third time you hit hyphen it changes it to an en dash.  If you hit
+it again it changes it back to a hyphen.  Unfortunately, I’ve never
+found a monospaced font that has em dashes and en dashes that are
+distinguishable from hyphens visually.  (Not to mention the minus
+character, which is also important to enter correctly for
+typesetting.)  So it is hard to tell what character you have just
+inserted, especially since you have to remember which comes after
+which in the sequence.&lt;/p&gt;
+&lt;dl class="footnote brackets"&gt;
+&lt;dt class="label" id="tkb-smart-unicode-mode"&gt;&lt;span class="brackets"&gt;&lt;a class="fn-backref" href="https://tkurtbond.github.io/posts/2021/07/11/defadvice-lets-you-improve-existing-functions/#id1"&gt;1&lt;/a&gt;&lt;/span&gt;&lt;/dt&gt;
+&lt;dd&gt;&lt;p&gt;Specifically, I have a very small minor mode that makes hyphens,
+double and single quotes, and periods smart, so they insert the
+proper Unicode characters in the right situations.&lt;/p&gt;
+&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;p&gt;But I have a function tkb-describe-character that looks up the
+character under the cursor (or before, if you specified a prefix
+interactively or a value when called non-interactively) that looks up
+the character in the variable unicode-character-list (which is defined
+in &lt;span class="file"&gt;unichars.el&lt;/span&gt;) and contains the character values and unicode
+names for the characters.&lt;/p&gt;
+&lt;p&gt;So, I wrote defadvice that runs &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;(tkb-describe-character&lt;/span&gt; t)&lt;/code&gt; after
+&lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;smart-unicode-hyphen&lt;/span&gt;&lt;/code&gt; runs, so it looks at the character just
+before it and describes it, so I know what it is!&lt;/p&gt;
+&lt;p&gt;It works wonderfully!&lt;/p&gt;
+&lt;p&gt;That's the thing about &lt;code class="docutils literal"&gt;defadvice&lt;/code&gt;: it lets you customize functions
+to better adapt them to how you need to work.  Another way emacs lets
+you customize it to better suit your needs.&lt;/p&gt;
+&lt;p&gt;I got my copies of &lt;span class="file"&gt;xmlunicode.el&lt;/span&gt; (copyright 2003 by Norman
+Walsh) and &lt;span class="file"&gt;unichars.el&lt;/span&gt; (unattributed) off the Internet long
+ago.  It looks like you can get &lt;span class="file"&gt;xmlunicode.el&lt;/span&gt; from his
+&lt;a class="reference external" href="https://github.com/ndw/xmlunicode"&gt;xmlunicode&lt;/a&gt; github repository, and it looks like the replacement for
+&lt;span class="file"&gt;unichars.el&lt;/span&gt; is &lt;span class="file"&gt;xmlunicode-character-list.el&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Here's my code:&lt;/p&gt;
+&lt;pre class="code emacs-lisp"&gt;&lt;a name="rest_code_47f02f7b03d5473aacb0148e7e045489-1"&gt;&lt;/a&gt;&lt;span class="c1"&gt;;; look at https://github.com/ndw/xmlunicode for xmlunicode.el and a way&lt;/span&gt;
+&lt;a name="rest_code_47f02f7b03d5473aacb0148e7e045489-2"&gt;&lt;/a&gt;&lt;span class="c1"&gt;;; to make something like unichars.el.  xmlunicode.el provides the&lt;/span&gt;
+&lt;a name="rest_code_47f02f7b03d5473aacb0148e7e045489-3"&gt;&lt;/a&gt;&lt;span class="c1"&gt;;; "smart-unicode-*" functions.&lt;/span&gt;
+&lt;a name="rest_code_47f02f7b03d5473aacb0148e7e045489-4"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;load-library&lt;/span&gt; &lt;span class="s"&gt;"xmlunicode"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_47f02f7b03d5473aacb0148e7e045489-5"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;load-library&lt;/span&gt; &lt;span class="s"&gt;"unichars"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_47f02f7b03d5473aacb0148e7e045489-6"&gt;&lt;/a&gt;
+&lt;a name="rest_code_47f02f7b03d5473aacb0148e7e045489-7"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;defun&lt;/span&gt; &lt;span class="nv"&gt;tkb-describe-character&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;before&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_47f02f7b03d5473aacb0148e7e045489-8"&gt;&lt;/a&gt;  &lt;span class="s"&gt;"Describe the character after point (before if a prefix was specified)&lt;/span&gt;
+&lt;a name="rest_code_47f02f7b03d5473aacb0148e7e045489-9"&gt;&lt;/a&gt;&lt;span class="s"&gt;if it is a unicode character."&lt;/span&gt;
+&lt;a name="rest_code_47f02f7b03d5473aacb0148e7e045489-10"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;interactive&lt;/span&gt; &lt;span class="s"&gt;"P"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_47f02f7b03d5473aacb0148e7e045489-11"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;let*&lt;/span&gt; &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nv"&gt;char&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nv"&gt;before&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;char-before&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;char-after&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+&lt;a name="rest_code_47f02f7b03d5473aacb0148e7e045489-12"&gt;&lt;/a&gt;         &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;info&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;assoc&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;encode-char&lt;/span&gt; &lt;span class="nv"&gt;char&lt;/span&gt; &lt;span class="ss"&gt;'ucs&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="nv"&gt;unicode-character-list&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;a name="rest_code_47f02f7b03d5473aacb0148e7e045489-13"&gt;&lt;/a&gt;         &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;info&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;cons&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;format&lt;/span&gt; &lt;span class="s"&gt;"#x%X"&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;car&lt;/span&gt; &lt;span class="nv"&gt;info&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="nv"&gt;info&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+&lt;a name="rest_code_47f02f7b03d5473aacb0148e7e045489-14"&gt;&lt;/a&gt;    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;message&lt;/span&gt; &lt;span class="s"&gt;"%S"&lt;/span&gt; &lt;span class="nv"&gt;info&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+&lt;a name="rest_code_47f02f7b03d5473aacb0148e7e045489-15"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;tkb-keys&lt;/span&gt; &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nv"&gt;kbd&lt;/span&gt; &lt;span class="s"&gt;"C-c k d"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="nf"&gt;#'&lt;/span&gt;&lt;span class="nv"&gt;tkb-describe-character&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;a name="rest_code_47f02f7b03d5473aacb0148e7e045489-16"&gt;&lt;/a&gt;
+&lt;a name="rest_code_47f02f7b03d5473aacb0148e7e045489-17"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;define-minor-mode&lt;/span&gt; &lt;span class="nv"&gt;tkb-smart-unicode-mode&lt;/span&gt;
+&lt;a name="rest_code_47f02f7b03d5473aacb0148e7e045489-18"&gt;&lt;/a&gt;  &lt;span class="s"&gt;"Toggle smart unicode punctuation"&lt;/span&gt; &lt;span class="no"&gt;nil&lt;/span&gt; &lt;span class="s"&gt;" ♻⚔☣☥☸◉⅙✽☮"&lt;/span&gt; &lt;span class="c1"&gt;; "✘▧▧⚅☑☢☹☺♠♥♦♣♨"&lt;/span&gt;
+&lt;a name="rest_code_47f02f7b03d5473aacb0148e7e045489-19"&gt;&lt;/a&gt;  &lt;span class="o"&gt;'&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="s"&gt;"\""&lt;/span&gt; &lt;span class="o"&gt;.&lt;/span&gt; &lt;span class="nv"&gt;unicode-smart-double-quote&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_47f02f7b03d5473aacb0148e7e045489-20"&gt;&lt;/a&gt;    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"'"&lt;/span&gt;  &lt;span class="o"&gt;.&lt;/span&gt; &lt;span class="nv"&gt;unicode-smart-single-quote&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_47f02f7b03d5473aacb0148e7e045489-21"&gt;&lt;/a&gt;    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"-"&lt;/span&gt;  &lt;span class="o"&gt;.&lt;/span&gt; &lt;span class="nv"&gt;unicode-smart-hyphen&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_47f02f7b03d5473aacb0148e7e045489-22"&gt;&lt;/a&gt;    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"."&lt;/span&gt;  &lt;span class="o"&gt;.&lt;/span&gt; &lt;span class="nv"&gt;unicode-smart-period&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+&lt;a name="rest_code_47f02f7b03d5473aacb0148e7e045489-23"&gt;&lt;/a&gt;
+&lt;a name="rest_code_47f02f7b03d5473aacb0148e7e045489-24"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;defadvice&lt;/span&gt; &lt;span class="nv"&gt;unicode-smart-hyphen&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;after&lt;/span&gt; &lt;span class="nv"&gt;tkb-after-unicode-smart-hyphen&lt;/span&gt; &lt;span class="nv"&gt;last&lt;/span&gt;
+&lt;a name="rest_code_47f02f7b03d5473aacb0148e7e045489-25"&gt;&lt;/a&gt;                                       &lt;span class="nv"&gt;activate&lt;/span&gt; &lt;span class="nv"&gt;compile&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_47f02f7b03d5473aacb0148e7e045489-26"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;tkb-describe-character&lt;/span&gt; &lt;span class="no"&gt;t&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/pre&gt;&lt;p&gt;Here's a &lt;a class="reference external" href="https://gist.github.com/tkurtbond/3dad54a2141422f39033533e72f53110"&gt;gist&lt;/a&gt;, and the &lt;a class="reference external" href="https://gist.githubusercontent.com/tkurtbond/3dad54a2141422f39033533e72f53110/raw/f1dc635d64fae89d1202142583df39544a87d7b8/tkb-smart-unicode-mode.el"&gt;raw&lt;/a&gt; gist if you want to download it directly.&lt;/p&gt;&lt;/div&gt;</summary>
+  </entry>
   <entry>
     <title>Logging the output of long commands run multiple times</title>
     <id>https://tkurtbond.github.io/posts/2021/07/07/logging-the-output-of-long-commands-run-multiple-times/</id>
@@ -1010,41 +1087,5 @@ the message are correctly built from the various included files.&lt;/p&gt;&lt;/d
     <category term="pandoc-discuss" label="pandoc-discuss"/>
     <category term="restructuredtext" label="restructuredtext"/>
     <category term="rst" label="rst"/>
-  </entry>
-  <entry>
-    <title>Compiling s7 scheme on macOS</title>
-    <id>https://tkurtbond.github.io/posts/2020/08/03/compiling-s7-scheme-on-macos/</id>
-    <updated>2020-08-03T14:17:15-04:00</updated>
-    <published>2020-08-03T14:17:15-04:00</published>
-    <author>
-      <name>T. Kurt Bond</name>
-    </author>
-    <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/posts/2020/08/03/compiling-s7-scheme-on-macos/"/>
-    <summary type="html">&lt;div&gt;&lt;p&gt;To compile &lt;a class="reference external" href="https://ccrma.stanford.edu/software/snd/snd/s7.html"&gt;s7 scheme&lt;/a&gt; with a standalone &lt;a class="reference external" href="https://tkurtbond.github.io/pages/computer-vocabulary/#REPL"&gt;REPL&lt;/a&gt;, s7's home page says to
-add the empty file &lt;span class="file"&gt;mus-config.h&lt;/span&gt; to the source directory, then
-(in Linux):&lt;/p&gt;
-&lt;pre class="code bash"&gt;&lt;a name="rest_code_faca3756ba70487da704627fa1afdcc4-1"&gt;&lt;/a&gt;gcc s7.c -o repl -DWITH_MAIN -I. -O2 -g -ldl -lm -Wl,-export-dynamic
-&lt;/pre&gt;&lt;p&gt;It turns out that on macOS, whose &lt;span class="command"&gt;ld&lt;/span&gt; (from clang) doesn't
-understand &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;-export-dynamic&lt;/span&gt;&lt;/code&gt;, you have to do&lt;/p&gt;
-&lt;pre class="code bash"&gt;&lt;a name="rest_code_9f44ec775cae4f87b64137a09d220c1c-1"&gt;&lt;/a&gt;gcc s7.c -o repl -DWITH_MAIN -I. -O2 -g -ldl -lm -Wl,-dynamic
-&lt;/pre&gt;&lt;p&gt;Then you need to do&lt;/p&gt;
-&lt;pre class="code bash"&gt;&lt;a name="rest_code_476ea9b03b6c4faca81ba4e46b4b5b5b-1"&gt;&lt;/a&gt;./repl libc.scm
-&lt;/pre&gt;&lt;p&gt;which seems to generate &lt;span class="file"&gt;libc_s7.c&lt;/span&gt; and compile it into
-&lt;span class="file"&gt;libc_s.so&lt;/span&gt;.   Then you can run the &lt;a class="reference external" href="https://tkurtbond.github.io/pages/computer-vocabulary/#REPL"&gt;REPL&lt;/a&gt;:&lt;/p&gt;
-&lt;pre class="code bash"&gt;&lt;a name="rest_code_e0688398b8f342468dec8fa6046bdf56-1"&gt;&lt;/a&gt;./repl
-&lt;/pre&gt;&lt;p&gt;which, from looking at &lt;span class="file"&gt;s7.c&lt;/span&gt;, loads &lt;span class="file"&gt;repl.scm&lt;/span&gt;.
-Unfortunately, I don't understand the repl commands, except for
-&lt;code class="docutils literal"&gt;pwd&lt;/code&gt; and &lt;code class="docutils literal"&gt;cd&lt;/code&gt;.  Oh, and &lt;code class="docutils literal"&gt;(exit)&lt;/code&gt; exits the repl.&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Last edited: 2020-08-03 16:03:57 EDT&lt;/em&gt;&lt;/p&gt;
-&lt;!-- Local Variables:
-time-stamp-format: "%04y-%02m-%02d %02H:%02M:%02S %Z"
-time-stamp-start: "Last edited:[ \t]+\\\\?"
-time-stamp-end: "\\*\\\\?\n"
-time-stamp-line-limit: -20
-End: --&gt;&lt;/div&gt;</summary>
-    <category term="ld" label="ld"/>
-    <category term="macsos" label="macsOS"/>
-    <category term="s7" label="s7"/>
-    <category term="scheme" label="scheme"/>
   </entry>
 </feed>

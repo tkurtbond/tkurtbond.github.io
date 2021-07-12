@@ -1,5 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity (Posts about emacs)</title><link>https://tkurtbond.github.io/</link><description></description><atom:link href="https://tkurtbond.github.io/categories/cat_computer/emacs.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2021 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Thu, 10 Jun 2021 18:16:32 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Arrow Macros in Emacs Lisp</title><link>https://tkurtbond.github.io/posts/2020/07/03/arrow-macros-in-emacs-lisp/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;Are you familiar with arrow macros?  (They have nothing to do with
+<?xml-stylesheet type="text/xsl" href="../../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity (Posts about emacs)</title><link>https://tkurtbond.github.io/</link><description></description><atom:link href="https://tkurtbond.github.io/categories/cat_computer/emacs.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2021 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Mon, 12 Jul 2021 03:16:48 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>defadvice lets you improve existing functions!</title><link>https://tkurtbond.github.io/posts/2021/07/11/defadvice-lets-you-improve-existing-functions/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;I used &lt;code class="docutils literal"&gt;defadvice&lt;/code&gt; in emacs lisp and it made the world so much
+better!&lt;/p&gt;
+&lt;p&gt;Specifically, I use the function &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;smart-unicode-hyphen&lt;/span&gt;&lt;/code&gt; from
+&lt;span class="file"&gt;xmlunicode.el&lt;/span&gt; &lt;a class="footnote-reference brackets" href="https://tkurtbond.github.io/posts/2021/07/11/defadvice-lets-you-improve-existing-functions/#tkb-smart-unicode-mode" id="id1"&gt;1&lt;/a&gt; when entering text
+that is to be typeset.  The first time you hit hyphen it inserts a
+hyphen.  The second time you hit hyphen it changes it to an em dash.
+The third time you hit hyphen it changes it to an en dash.  If you hit
+it again it changes it back to a hyphen.  Unfortunately, I’ve never
+found a monospaced font that has em dashes and en dashes that are
+distinguishable from hyphens visually.  (Not to mention the minus
+character, which is also important to enter correctly for
+typesetting.)  So it is hard to tell what character you have just
+inserted, especially since you have to remember which comes after
+which in the sequence.&lt;/p&gt;
+&lt;dl class="footnote brackets"&gt;
+&lt;dt class="label" id="tkb-smart-unicode-mode"&gt;&lt;span class="brackets"&gt;&lt;a class="fn-backref" href="https://tkurtbond.github.io/posts/2021/07/11/defadvice-lets-you-improve-existing-functions/#id1"&gt;1&lt;/a&gt;&lt;/span&gt;&lt;/dt&gt;
+&lt;dd&gt;&lt;p&gt;Specifically, I have a very small minor mode that makes hyphens,
+double and single quotes, and periods smart, so they insert the
+proper Unicode characters in the right situations.&lt;/p&gt;
+&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;p&gt;But I have a function tkb-describe-character that looks up the
+character under the cursor (or before, if you specified a prefix
+interactively or a value when called non-interactively) that looks up
+the character in the variable unicode-character-list (which is defined
+in &lt;span class="file"&gt;unichars.el&lt;/span&gt;) and contains the character values and unicode
+names for the characters.&lt;/p&gt;
+&lt;p&gt;So, I wrote defadvice that runs &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;(tkb-describe-character&lt;/span&gt; t)&lt;/code&gt; after
+&lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;smart-unicode-hyphen&lt;/span&gt;&lt;/code&gt; runs, so it looks at the character just
+before it and describes it, so I know what it is!&lt;/p&gt;
+&lt;p&gt;It works wonderfully!&lt;/p&gt;
+&lt;p&gt;That's the thing about &lt;code class="docutils literal"&gt;defadvice&lt;/code&gt;: it lets you customize functions
+to better adapt them to how you need to work.  Another way emacs lets
+you customize it to better suit your needs.&lt;/p&gt;
+&lt;p&gt;I got my copies of &lt;span class="file"&gt;xmlunicode.el&lt;/span&gt; (copyright 2003 by Norman
+Walsh) and &lt;span class="file"&gt;unichars.el&lt;/span&gt; (unattributed) off the Internet long
+ago.  It looks like you can get &lt;span class="file"&gt;xmlunicode.el&lt;/span&gt; from his
+&lt;a class="reference external" href="https://github.com/ndw/xmlunicode"&gt;xmlunicode&lt;/a&gt; github repository, and it looks like the replacement for
+&lt;span class="file"&gt;unichars.el&lt;/span&gt; is &lt;span class="file"&gt;xmlunicode-character-list.el&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Here's my code:&lt;/p&gt;
+&lt;pre class="code emacs-lisp"&gt;&lt;a name="rest_code_47f02f7b03d5473aacb0148e7e045489-1"&gt;&lt;/a&gt;&lt;span class="c1"&gt;;; look at https://github.com/ndw/xmlunicode for xmlunicode.el and a way&lt;/span&gt;
+&lt;a name="rest_code_47f02f7b03d5473aacb0148e7e045489-2"&gt;&lt;/a&gt;&lt;span class="c1"&gt;;; to make something like unichars.el.  xmlunicode.el provides the&lt;/span&gt;
+&lt;a name="rest_code_47f02f7b03d5473aacb0148e7e045489-3"&gt;&lt;/a&gt;&lt;span class="c1"&gt;;; "smart-unicode-*" functions.&lt;/span&gt;
+&lt;a name="rest_code_47f02f7b03d5473aacb0148e7e045489-4"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;load-library&lt;/span&gt; &lt;span class="s"&gt;"xmlunicode"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_47f02f7b03d5473aacb0148e7e045489-5"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;load-library&lt;/span&gt; &lt;span class="s"&gt;"unichars"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_47f02f7b03d5473aacb0148e7e045489-6"&gt;&lt;/a&gt;
+&lt;a name="rest_code_47f02f7b03d5473aacb0148e7e045489-7"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;defun&lt;/span&gt; &lt;span class="nv"&gt;tkb-describe-character&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;before&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_47f02f7b03d5473aacb0148e7e045489-8"&gt;&lt;/a&gt;  &lt;span class="s"&gt;"Describe the character after point (before if a prefix was specified)&lt;/span&gt;
+&lt;a name="rest_code_47f02f7b03d5473aacb0148e7e045489-9"&gt;&lt;/a&gt;&lt;span class="s"&gt;if it is a unicode character."&lt;/span&gt;
+&lt;a name="rest_code_47f02f7b03d5473aacb0148e7e045489-10"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;interactive&lt;/span&gt; &lt;span class="s"&gt;"P"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_47f02f7b03d5473aacb0148e7e045489-11"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;let*&lt;/span&gt; &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nv"&gt;char&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nv"&gt;before&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;char-before&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;char-after&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+&lt;a name="rest_code_47f02f7b03d5473aacb0148e7e045489-12"&gt;&lt;/a&gt;         &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;info&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;assoc&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;encode-char&lt;/span&gt; &lt;span class="nv"&gt;char&lt;/span&gt; &lt;span class="ss"&gt;'ucs&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="nv"&gt;unicode-character-list&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;a name="rest_code_47f02f7b03d5473aacb0148e7e045489-13"&gt;&lt;/a&gt;         &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;info&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;cons&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;format&lt;/span&gt; &lt;span class="s"&gt;"#x%X"&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;car&lt;/span&gt; &lt;span class="nv"&gt;info&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="nv"&gt;info&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+&lt;a name="rest_code_47f02f7b03d5473aacb0148e7e045489-14"&gt;&lt;/a&gt;    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;message&lt;/span&gt; &lt;span class="s"&gt;"%S"&lt;/span&gt; &lt;span class="nv"&gt;info&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+&lt;a name="rest_code_47f02f7b03d5473aacb0148e7e045489-15"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;tkb-keys&lt;/span&gt; &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nv"&gt;kbd&lt;/span&gt; &lt;span class="s"&gt;"C-c k d"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="nf"&gt;#'&lt;/span&gt;&lt;span class="nv"&gt;tkb-describe-character&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;a name="rest_code_47f02f7b03d5473aacb0148e7e045489-16"&gt;&lt;/a&gt;
+&lt;a name="rest_code_47f02f7b03d5473aacb0148e7e045489-17"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;define-minor-mode&lt;/span&gt; &lt;span class="nv"&gt;tkb-smart-unicode-mode&lt;/span&gt;
+&lt;a name="rest_code_47f02f7b03d5473aacb0148e7e045489-18"&gt;&lt;/a&gt;  &lt;span class="s"&gt;"Toggle smart unicode punctuation"&lt;/span&gt; &lt;span class="no"&gt;nil&lt;/span&gt; &lt;span class="s"&gt;" ♻⚔☣☥☸◉⅙✽☮"&lt;/span&gt; &lt;span class="c1"&gt;; "✘▧▧⚅☑☢☹☺♠♥♦♣♨"&lt;/span&gt;
+&lt;a name="rest_code_47f02f7b03d5473aacb0148e7e045489-19"&gt;&lt;/a&gt;  &lt;span class="o"&gt;'&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="s"&gt;"\""&lt;/span&gt; &lt;span class="o"&gt;.&lt;/span&gt; &lt;span class="nv"&gt;unicode-smart-double-quote&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_47f02f7b03d5473aacb0148e7e045489-20"&gt;&lt;/a&gt;    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"'"&lt;/span&gt;  &lt;span class="o"&gt;.&lt;/span&gt; &lt;span class="nv"&gt;unicode-smart-single-quote&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_47f02f7b03d5473aacb0148e7e045489-21"&gt;&lt;/a&gt;    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"-"&lt;/span&gt;  &lt;span class="o"&gt;.&lt;/span&gt; &lt;span class="nv"&gt;unicode-smart-hyphen&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_47f02f7b03d5473aacb0148e7e045489-22"&gt;&lt;/a&gt;    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"."&lt;/span&gt;  &lt;span class="o"&gt;.&lt;/span&gt; &lt;span class="nv"&gt;unicode-smart-period&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+&lt;a name="rest_code_47f02f7b03d5473aacb0148e7e045489-23"&gt;&lt;/a&gt;
+&lt;a name="rest_code_47f02f7b03d5473aacb0148e7e045489-24"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;defadvice&lt;/span&gt; &lt;span class="nv"&gt;unicode-smart-hyphen&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;after&lt;/span&gt; &lt;span class="nv"&gt;tkb-after-unicode-smart-hyphen&lt;/span&gt; &lt;span class="nv"&gt;last&lt;/span&gt;
+&lt;a name="rest_code_47f02f7b03d5473aacb0148e7e045489-25"&gt;&lt;/a&gt;                                       &lt;span class="nv"&gt;activate&lt;/span&gt; &lt;span class="nv"&gt;compile&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_47f02f7b03d5473aacb0148e7e045489-26"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;tkb-describe-character&lt;/span&gt; &lt;span class="no"&gt;t&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/pre&gt;&lt;p&gt;Here's a &lt;a class="reference external" href="https://gist.github.com/tkurtbond/3dad54a2141422f39033533e72f53110"&gt;gist&lt;/a&gt;, and the &lt;a class="reference external" href="https://gist.githubusercontent.com/tkurtbond/3dad54a2141422f39033533e72f53110/raw/f1dc635d64fae89d1202142583df39544a87d7b8/tkb-smart-unicode-mode.el"&gt;raw&lt;/a&gt; gist if you want to download it directly.&lt;/p&gt;&lt;/div&gt;</description><guid>https://tkurtbond.github.io/posts/2021/07/11/defadvice-lets-you-improve-existing-functions/</guid><pubDate>Mon, 12 Jul 2021 02:28:21 GMT</pubDate></item><item><title>Arrow Macros in Emacs Lisp</title><link>https://tkurtbond.github.io/posts/2020/07/03/arrow-macros-in-emacs-lisp/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;Are you familiar with arrow macros?  (They have nothing to do with
 &lt;a class="reference external" href="https://en.wikibooks.org/wiki/Haskell/Understanding_arrows"&gt;arrows in Haskell&lt;/a&gt;.) They started out in &lt;a class="reference external" href="https://clojure.org/"&gt;Clojure&lt;/a&gt;, I think, and have
 been ported to &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Common_Lisp"&gt;Common Lisp&lt;/a&gt; and probably other Lisps, though I didn't
 find one for &lt;a class="reference external" href="https://www.gnu.org/software/emacs/manual/html_node/elisp/"&gt;Emacs Lisp&lt;/a&gt;.  I think the &lt;a class="reference external" href="https://github.com/Harleqin/arrows"&gt;arrows&lt;/a&gt; package is the most up
@@ -292,48 +358,4 @@ allow passing values into the expression.  How about this?&lt;/p&gt;
 &lt;a name="rest_code_c04d0fc6ec0b4c1a8995c27ad226ba74-9"&gt;&lt;/a&gt;Loading /tmp/tkb-madness88647vuE.el (source)...done
 &lt;/pre&gt;&lt;p&gt;(&lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;y-or-n-p&lt;/span&gt;&lt;/code&gt; is used instead of &lt;code class="docutils literal"&gt;message&lt;/code&gt; so you see each message when it
 happens.)&lt;/p&gt;
-&lt;p&gt;Does the &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;eval-after-load*&lt;/span&gt;&lt;/code&gt; macro make sense?&lt;/p&gt;&lt;/div&gt;</description><category>emacs</category><guid>https://tkurtbond.github.io/posts/2008/08/15/fun-with-emacs-eval-after-load/</guid><pubDate>Fri, 15 Aug 2008 23:54:39 GMT</pubDate></item><item><title>Fun With Emacs: Unicode and #'describe-char</title><link>https://tkurtbond.github.io/posts/2008/08/15/fun-with-emacs-unicode-and-describe-char/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;Ever use the emacs command &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;describe-char&lt;/span&gt;&lt;/code&gt;?  It's even more fun with
-proper unicode lookup data!&lt;/p&gt;
-&lt;pre class="code emacs-lisp"&gt;&lt;a name="rest_code_fd4f0a9407634b26a532b8e45d03e371-1"&gt;&lt;/a&gt;&lt;span class="c1"&gt;;; First, we'll bind it to a key.&lt;/span&gt;
-&lt;a name="rest_code_fd4f0a9407634b26a532b8e45d03e371-2"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;global-set-key&lt;/span&gt; &lt;span class="s"&gt;"\C-cD"&lt;/span&gt; &lt;span class="nf"&gt;#'&lt;/span&gt;&lt;span class="nv"&gt;describe-char&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;a name="rest_code_fd4f0a9407634b26a532b8e45d03e371-3"&gt;&lt;/a&gt;
-&lt;a name="rest_code_fd4f0a9407634b26a532b8e45d03e371-4"&gt;&lt;/a&gt;&lt;span class="c1"&gt;;; Now we'll download it if necessary.&lt;/span&gt;
-&lt;a name="rest_code_fd4f0a9407634b26a532b8e45d03e371-5"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;let&lt;/span&gt; &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nv"&gt;udf-url&lt;/span&gt; &lt;span class="s"&gt;"http://www.unicode.org/Public/UNIDATA/UnicodeData.txt"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;a name="rest_code_fd4f0a9407634b26a532b8e45d03e371-6"&gt;&lt;/a&gt;      &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;udf-dest&lt;/span&gt; &lt;span class="s"&gt;"~/tmp/UnicodeData.txt"&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
-&lt;a name="rest_code_fd4f0a9407634b26a532b8e45d03e371-7"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;file-readable-p&lt;/span&gt; &lt;span class="nv"&gt;udf-dest&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;a name="rest_code_fd4f0a9407634b26a532b8e45d03e371-8"&gt;&lt;/a&gt;      &lt;span class="c1"&gt;;; Let describe-char know it exists.&lt;/span&gt;
-&lt;a name="rest_code_fd4f0a9407634b26a532b8e45d03e371-9"&gt;&lt;/a&gt;      &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;setq&lt;/span&gt; &lt;span class="nv"&gt;describe-char-unicodedata-file&lt;/span&gt; &lt;span class="nv"&gt;udf-dest&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;a name="rest_code_fd4f0a9407634b26a532b8e45d03e371-10"&gt;&lt;/a&gt;    &lt;span class="c1"&gt;;; It doesn't exist, and we need to download it!&lt;/span&gt;
-&lt;a name="rest_code_fd4f0a9407634b26a532b8e45d03e371-11"&gt;&lt;/a&gt;    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;when&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;y-or-n-p&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;format&lt;/span&gt; &lt;span class="s"&gt;"You need to download %s ! Do it? "&lt;/span&gt; &lt;span class="nv"&gt;udf-url&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
-&lt;a name="rest_code_fd4f0a9407634b26a532b8e45d03e371-12"&gt;&lt;/a&gt;      &lt;span class="c1"&gt;;; Really weird: wget -O 'file' complains that file doesn't exist.&lt;/span&gt;
-&lt;a name="rest_code_fd4f0a9407634b26a532b8e45d03e371-13"&gt;&lt;/a&gt;      &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;let*&lt;/span&gt; &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nv"&gt;cmd&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;format&lt;/span&gt; &lt;span class="s"&gt;"cd ~/tmp/ &amp;amp;&amp;amp; wget -O %s --progress=dot '%s'"&lt;/span&gt;
-&lt;a name="rest_code_fd4f0a9407634b26a532b8e45d03e371-14"&gt;&lt;/a&gt;                          &lt;span class="nv"&gt;udf-dest&lt;/span&gt; &lt;span class="nv"&gt;udf-url&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
-&lt;a name="rest_code_fd4f0a9407634b26a532b8e45d03e371-15"&gt;&lt;/a&gt;             &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;buf&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;get-buffer-create&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;format&lt;/span&gt; &lt;span class="s"&gt;" *wget '%s'*"&lt;/span&gt; &lt;span class="nv"&gt;udf-url&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
-&lt;a name="rest_code_fd4f0a9407634b26a532b8e45d03e371-16"&gt;&lt;/a&gt;             &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;proc&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;start-process-shell-command&lt;/span&gt; &lt;span class="s"&gt;"wget-unicode-Data"&lt;/span&gt;
-&lt;a name="rest_code_fd4f0a9407634b26a532b8e45d03e371-17"&gt;&lt;/a&gt;                                                &lt;span class="nv"&gt;buf&lt;/span&gt; &lt;span class="nv"&gt;cmd&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
-&lt;a name="rest_code_fd4f0a9407634b26a532b8e45d03e371-18"&gt;&lt;/a&gt;        &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;display-buffer&lt;/span&gt; &lt;span class="nv"&gt;buf&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;a name="rest_code_fd4f0a9407634b26a532b8e45d03e371-19"&gt;&lt;/a&gt;        &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;set-process-sentinel&lt;/span&gt;
-&lt;a name="rest_code_fd4f0a9407634b26a532b8e45d03e371-20"&gt;&lt;/a&gt;         &lt;span class="nv"&gt;proc&lt;/span&gt;
-&lt;a name="rest_code_fd4f0a9407634b26a532b8e45d03e371-21"&gt;&lt;/a&gt;         &lt;span class="o"&gt;`&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;lambda&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;proc&lt;/span&gt; &lt;span class="nv"&gt;event&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;a name="rest_code_fd4f0a9407634b26a532b8e45d03e371-22"&gt;&lt;/a&gt;            &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;unless&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;string-match&lt;/span&gt; &lt;span class="s"&gt;"^finished"&lt;/span&gt; &lt;span class="nv"&gt;event&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;a name="rest_code_fd4f0a9407634b26a532b8e45d03e371-23"&gt;&lt;/a&gt;              &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="ne"&gt;error&lt;/span&gt; &lt;span class="s"&gt;"unexpected status '%s' getting '%s'"&lt;/span&gt; &lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="nv"&gt;udf-url&lt;/span&gt; &lt;span class="nv"&gt;event&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
-&lt;a name="rest_code_fd4f0a9407634b26a532b8e45d03e371-24"&gt;&lt;/a&gt;            &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;setq&lt;/span&gt; &lt;span class="nv"&gt;describe-char-unicodedata-file&lt;/span&gt; &lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="nv"&gt;udf-dest&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;a name="rest_code_fd4f0a9407634b26a532b8e45d03e371-25"&gt;&lt;/a&gt;            &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;message&lt;/span&gt; &lt;span class="s"&gt;"Try describe-char now! ☣☥☸▧◉✘✽☮⅙▧⚅☑☢☹☺♠♥♦♣♨♻⚔"&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
-&lt;a name="rest_code_fd4f0a9407634b26a532b8e45d03e371-26"&gt;&lt;/a&gt;        &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;message&lt;/span&gt; &lt;span class="s"&gt;"Downloading... check describe-char later"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;a name="rest_code_fd4f0a9407634b26a532b8e45d03e371-27"&gt;&lt;/a&gt;        &lt;span class="no"&gt;nil&lt;/span&gt;&lt;span class="p"&gt;))))&lt;/span&gt;
-&lt;/pre&gt;&lt;p&gt;Once this is run and it tells you to try &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;describe-char&lt;/span&gt;&lt;/code&gt; you can
-position your cursor over one of the Unicode characters in the message
-(“C-h e” to display the “&lt;em&gt;Messages&lt;/em&gt;” buffer) and press “C-cD” and look
-for the “Name:” line.  You'll see something like this:&lt;/p&gt;
-&lt;pre class="literal-block"&gt;      character: ♻ (299515, #o1110773, #x491fb, U+267B)
-        charset: mule-unicode-2500-33ff (Unicode characters of the range U+2500..U+33FF.)
-     code point: #x23 #x7B
-         syntax: w    which means: word
-    buffer code: #x9C #xF2 #xA3 #xFB
-      file code: #xE2 #x99 #xBB (encoded by coding system mule-utf-8)
-        display: terminal code #xE2 #x99 #xBB
-   Unicode data:
-           Name: BLACK UNIVERSAL RECYCLING SYMBOL
-       Category: other symbol
-Combining class: Spacing
-  Bidi category: Other Neutrals&lt;/pre&gt;&lt;/div&gt;</description><category>emacs</category><guid>https://tkurtbond.github.io/posts/2008/08/15/fun-with-emacs-unicode-and-describe-char/</guid><pubDate>Fri, 15 Aug 2008 17:07:21 GMT</pubDate></item></channel></rss>
+&lt;p&gt;Does the &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;eval-after-load*&lt;/span&gt;&lt;/code&gt; macro make sense?&lt;/p&gt;&lt;/div&gt;</description><category>emacs</category><guid>https://tkurtbond.github.io/posts/2008/08/15/fun-with-emacs-eval-after-load/</guid><pubDate>Fri, 15 Aug 2008 23:54:39 GMT</pubDate></item></channel></rss>

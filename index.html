@@ -9,8 +9,8 @@
 <link rel="alternate" type="application/rss+xml" title="RSS" href="rss.xml">
 <link rel="alternate" type="application/atom+xml" title="Atom" href="feed.atom">
 <link rel="canonical" href="https://tkurtbond.github.io/">
-<link rel="next" href="index-89.html" type="text/html">
-<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/2021/07/11/color-versus-black-and-white-art-in-rpgs/" type="text/html">
+<link rel="next" href="index-90.html" type="text/html">
+<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/2021/07/11/defadvice-lets-you-improve-existing-functions/" type="text/html">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
@@ -52,7 +52,90 @@
         <div class="row">
             <div class="col-sm-8 blog-main">
 <div class="postindex">
-    <article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2021/07/11/color-versus-black-and-white-art-in-rpgs/" class="u-url">Color versus Black and White Art in RPGs</a></h2>
+    <article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2021/07/11/defadvice-lets-you-improve-existing-functions/" class="u-url">defadvice lets you improve existing functions!</a></h2>
+        <div class="metadata blog-post-meta">
+            <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
+            <p class="dateline"><a href="posts/2021/07/11/defadvice-lets-you-improve-existing-functions/" rel="bookmark"><time class="published dt-published" datetime="2021-07-11T22:28:21-04:00" title="2021-07-11 22:28">2021-07-11 22:28</time></a></p>
+                <p class="commentline">            <a href="posts/2021/07/11/defadvice-lets-you-improve-existing-functions/#disqus_thread" data-disqus-identifier="cache/posts/2021/07/11/defadvice-lets-you-improve-existing-functions.html">Comments</a>
+
+
+        </p>
+</div>
+    </header><div class="e-content entry-content">
+    <div>
+<p>I used <code class="docutils literal">defadvice</code> in emacs lisp and it made the world so much
+better!</p>
+<p>Specifically, I use the function <code class="docutils literal"><span class="pre">smart-unicode-hyphen</span></code> from
+<span class="file">xmlunicode.el</span> <a class="footnote-reference brackets" href="posts/2021/07/11/defadvice-lets-you-improve-existing-functions/#tkb-smart-unicode-mode" id="id1">1</a> when entering text
+that is to be typeset.  The first time you hit hyphen it inserts a
+hyphen.  The second time you hit hyphen it changes it to an em dash.
+The third time you hit hyphen it changes it to an en dash.  If you hit
+it again it changes it back to a hyphen.  Unfortunately, I’ve never
+found a monospaced font that has em dashes and en dashes that are
+distinguishable from hyphens visually.  (Not to mention the minus
+character, which is also important to enter correctly for
+typesetting.)  So it is hard to tell what character you have just
+inserted, especially since you have to remember which comes after
+which in the sequence.</p>
+<dl class="footnote brackets">
+<dt class="label" id="tkb-smart-unicode-mode"><span class="brackets"><a class="fn-backref" href="posts/2021/07/11/defadvice-lets-you-improve-existing-functions/#id1">1</a></span></dt>
+<dd>
+<p>Specifically, I have a very small minor mode that makes hyphens,
+double and single quotes, and periods smart, so they insert the
+proper Unicode characters in the right situations.</p>
+</dd>
+</dl>
+<p>But I have a function tkb-describe-character that looks up the
+character under the cursor (or before, if you specified a prefix
+interactively or a value when called non-interactively) that looks up
+the character in the variable unicode-character-list (which is defined
+in <span class="file">unichars.el</span>) and contains the character values and unicode
+names for the characters.</p>
+<p>So, I wrote defadvice that runs <code class="docutils literal"><span class="pre">(tkb-describe-character</span> t)</code> after
+<code class="docutils literal"><span class="pre">smart-unicode-hyphen</span></code> runs, so it looks at the character just
+before it and describes it, so I know what it is!</p>
+<p>It works wonderfully!</p>
+<p>That's the thing about <code class="docutils literal">defadvice</code>: it lets you customize functions
+to better adapt them to how you need to work.  Another way emacs lets
+you customize it to better suit your needs.</p>
+<p>I got my copies of <span class="file">xmlunicode.el</span> (copyright 2003 by Norman
+Walsh) and <span class="file">unichars.el</span> (unattributed) off the Internet long
+ago.  It looks like you can get <span class="file">xmlunicode.el</span> from his
+<a class="reference external" href="https://github.com/ndw/xmlunicode">xmlunicode</a> github repository, and it looks like the replacement for
+<span class="file">unichars.el</span> is <span class="file">xmlunicode-character-list.el</span>.</p>
+<p>Here's my code:</p>
+<pre class="code emacs-lisp"><a name="rest_code_47f02f7b03d5473aacb0148e7e045489-1"></a><span class="c1">;; look at https://github.com/ndw/xmlunicode for xmlunicode.el and a way</span>
+<a name="rest_code_47f02f7b03d5473aacb0148e7e045489-2"></a><span class="c1">;; to make something like unichars.el.  xmlunicode.el provides the</span>
+<a name="rest_code_47f02f7b03d5473aacb0148e7e045489-3"></a><span class="c1">;; "smart-unicode-*" functions.</span>
+<a name="rest_code_47f02f7b03d5473aacb0148e7e045489-4"></a><span class="p">(</span><span class="nv">load-library</span> <span class="s">"xmlunicode"</span><span class="p">)</span>
+<a name="rest_code_47f02f7b03d5473aacb0148e7e045489-5"></a><span class="p">(</span><span class="nv">load-library</span> <span class="s">"unichars"</span><span class="p">)</span>
+<a name="rest_code_47f02f7b03d5473aacb0148e7e045489-6"></a>
+<a name="rest_code_47f02f7b03d5473aacb0148e7e045489-7"></a><span class="p">(</span><span class="nb">defun</span> <span class="nv">tkb-describe-character</span> <span class="p">(</span><span class="nv">before</span><span class="p">)</span>
+<a name="rest_code_47f02f7b03d5473aacb0148e7e045489-8"></a>  <span class="s">"Describe the character after point (before if a prefix was specified)</span>
+<a name="rest_code_47f02f7b03d5473aacb0148e7e045489-9"></a><span class="s">if it is a unicode character."</span>
+<a name="rest_code_47f02f7b03d5473aacb0148e7e045489-10"></a>  <span class="p">(</span><span class="k">interactive</span> <span class="s">"P"</span><span class="p">)</span>
+<a name="rest_code_47f02f7b03d5473aacb0148e7e045489-11"></a>  <span class="p">(</span><span class="k">let*</span> <span class="p">((</span><span class="nv">char</span> <span class="p">(</span><span class="k">if</span> <span class="nv">before</span> <span class="p">(</span><span class="nf">char-before</span><span class="p">)</span> <span class="p">(</span><span class="nf">char-after</span><span class="p">)))</span>
+<a name="rest_code_47f02f7b03d5473aacb0148e7e045489-12"></a>         <span class="p">(</span><span class="nv">info</span> <span class="p">(</span><span class="nf">assoc</span> <span class="p">(</span><span class="nf">encode-char</span> <span class="nv">char</span> <span class="ss">'ucs</span><span class="p">)</span> <span class="nv">unicode-character-list</span><span class="p">))</span>
+<a name="rest_code_47f02f7b03d5473aacb0148e7e045489-13"></a>         <span class="p">(</span><span class="nv">info</span> <span class="p">(</span><span class="nf">cons</span> <span class="p">(</span><span class="nf">format</span> <span class="s">"#x%X"</span> <span class="p">(</span><span class="nf">car</span> <span class="nv">info</span><span class="p">))</span> <span class="nv">info</span><span class="p">)))</span>
+<a name="rest_code_47f02f7b03d5473aacb0148e7e045489-14"></a>    <span class="p">(</span><span class="nf">message</span> <span class="s">"%S"</span> <span class="nv">info</span><span class="p">)))</span>
+<a name="rest_code_47f02f7b03d5473aacb0148e7e045489-15"></a><span class="p">(</span><span class="nv">tkb-keys</span> <span class="p">((</span><span class="nv">kbd</span> <span class="s">"C-c k d"</span><span class="p">)</span> <span class="nf">#'</span><span class="nv">tkb-describe-character</span><span class="p">))</span>
+<a name="rest_code_47f02f7b03d5473aacb0148e7e045489-16"></a>
+<a name="rest_code_47f02f7b03d5473aacb0148e7e045489-17"></a><span class="p">(</span><span class="nb">define-minor-mode</span> <span class="nv">tkb-smart-unicode-mode</span>
+<a name="rest_code_47f02f7b03d5473aacb0148e7e045489-18"></a>  <span class="s">"Toggle smart unicode punctuation"</span> <span class="no">nil</span> <span class="s">" ♻⚔☣☥☸◉⅙✽☮"</span> <span class="c1">; "✘▧▧⚅☑☢☹☺♠♥♦♣♨"</span>
+<a name="rest_code_47f02f7b03d5473aacb0148e7e045489-19"></a>  <span class="o">'</span><span class="p">((</span><span class="s">"\""</span> <span class="o">.</span> <span class="nv">unicode-smart-double-quote</span><span class="p">)</span>
+<a name="rest_code_47f02f7b03d5473aacb0148e7e045489-20"></a>    <span class="p">(</span><span class="s">"'"</span>  <span class="o">.</span> <span class="nv">unicode-smart-single-quote</span><span class="p">)</span>
+<a name="rest_code_47f02f7b03d5473aacb0148e7e045489-21"></a>    <span class="p">(</span><span class="s">"-"</span>  <span class="o">.</span> <span class="nv">unicode-smart-hyphen</span><span class="p">)</span>
+<a name="rest_code_47f02f7b03d5473aacb0148e7e045489-22"></a>    <span class="p">(</span><span class="s">"."</span>  <span class="o">.</span> <span class="nv">unicode-smart-period</span><span class="p">)))</span>
+<a name="rest_code_47f02f7b03d5473aacb0148e7e045489-23"></a>
+<a name="rest_code_47f02f7b03d5473aacb0148e7e045489-24"></a><span class="p">(</span><span class="nb">defadvice</span> <span class="nv">unicode-smart-hyphen</span> <span class="p">(</span><span class="nv">after</span> <span class="nv">tkb-after-unicode-smart-hyphen</span> <span class="nv">last</span>
+<a name="rest_code_47f02f7b03d5473aacb0148e7e045489-25"></a>                                       <span class="nv">activate</span> <span class="nv">compile</span><span class="p">)</span>
+<a name="rest_code_47f02f7b03d5473aacb0148e7e045489-26"></a>  <span class="p">(</span><span class="nv">tkb-describe-character</span> <span class="no">t</span><span class="p">))</span>
+</pre>
+<p>Here's a <a class="reference external" href="https://gist.github.com/tkurtbond/3dad54a2141422f39033533e72f53110">gist</a>, and the <a class="reference external" href="https://gist.githubusercontent.com/tkurtbond/3dad54a2141422f39033533e72f53110/raw/f1dc635d64fae89d1202142583df39544a87d7b8/tkb-smart-unicode-mode.el">raw</a> gist if you want to download it directly.</p>
+</div>
+    <nav></nav>
+</div>
+    </article><article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2021/07/11/color-versus-black-and-white-art-in-rpgs/" class="u-url">Color versus Black and White Art in RPGs</a></h2>
         <div class="metadata blog-post-meta">
             <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
             <p class="dateline"><a href="posts/2021/07/11/color-versus-black-and-white-art-in-rpgs/" rel="bookmark"><time class="published dt-published" datetime="2021-07-11T21:33:53-04:00" title="2021-07-11 21:33">2021-07-11 21:33</time></a></p>
@@ -1928,271 +2011,11 @@ End: -->
             <li><a class="tag p-category" href="categories/star-wars-d6-1e/" rel="tag">star wars d6 1e</a></li>
         </ul></nav>
 </div>
-    </article><article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2021/05/09/opend6-the-mathematical-mean/" class="u-url">OpenD6: The Mathematical Mean</a></h2>
-        <div class="metadata blog-post-meta">
-            <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
-            <p class="dateline"><a href="posts/2021/05/09/opend6-the-mathematical-mean/" rel="bookmark"><time class="published dt-published" datetime="2021-05-09T01:57:29-04:00" title="2021-05-09 01:57">2021-05-09 01:57</time></a></p>
-                <p class="commentline">            <a href="posts/2021/05/09/opend6-the-mathematical-mean/#disqus_thread" data-disqus-identifier="cache/posts/2021/05/09/opend6-the-mathematical-mean.html">Comments</a>
-
-
-        </p>
-</div>
-    </header><div class="e-content entry-content">
-    <div>
-<p>Another concept that I've found useful for preparing for <a class="reference external" href="https://en.wikipedia.org/wiki/Star_Wars:_The_Roleplaying_Game">Star Wars:
-The Roleplaying Game</a>, <a class="reference external" href="http://opend6project.org/">OpenD6</a> or
-<em>Mini Six</em> (<a class="reference external" href="https://www.drivethrurpg.com/product/144558/Mini-Six-Bare-Bones-Edition">MS1</a>, <a class="reference external" href="http://www.antipaladingames.com/p/mini-six.html">MS2</a>) games is “The Mathematical Mean”, which I
-first saw at <a class="reference external" href="http://opend6project.org/?page_id=53">The OpenD6 Project</a>.  I'll quote it here for reference.</p>
-<div class="section" id="the-mathematical-mean">
-<h2>The Mathematical Mean</h2>
-<p>In the standard rules, traits are rated by whole and partial increments
-of six-sided dice. A whole die increment is written as “1D”, where the
-integer denotes a number of dice to be rolled and totaled. Partial die
-increments are written as “1D+1”, where the primary identity denotes a
-number of dice to be rolled and totaled, and the secondary identity
-denotes an absolute value to be added to the sum total.</p>
-<p>Conflict resolution in OpenD6 is based on a standardized difficulty
-scale that is adjusted for the mathematical mean of a given trait score.</p>
-<p>On this difficulty scale, a “Moderate” difficulty is defined as a number
-approximating the mean roll of a trait score totaling between 3D and 4D,
-so that the sum total of a trait roll will equal or exceed the
-difficulty on approximately 50% of a given set of iterations.
-Difficulties are then derived mathematically in multiples of 3.5, where
-the corresponding descriptive value is derived in multiples of 5. Each
-die code corresponds to a difficulty computed using a fixed value equal
-to 3.5x the whole die increment, and adding the partial die increments
-(pips) to the sum total.</p>
-<p>The purpose of defining a “Moderate” difficulty with this range of
-values is to approximate a 50% success ratio for the most common trait
-totals assigned to protagonists and antagonists within the system, as
-well as to provide an increasing success ratio to higher trait totals.
-The 50% success ratio can be adjusted along a sliding scale to
-correspond to higher trait totals.</p>
-<p>The purpose of providing descriptive values for each numerical value
-allows difficulties to be evaluated quickly relative to a baseline trait
-score of 3D.</p>
-<div class="smalltable boxedtable docutils container">
-<table class="colwidths-auto">
-<caption>Standardized Difficulty Table</caption>
-<thead><tr>
-<th class="head"><p>Description</p></th>
-<th class="head"><p>Difficulty</p></th>
-<th class="head"><p>Die Code</p></th>
-<th class="head"><p>Mean Result</p></th>
-</tr></thead>
-<tbody>
-<tr>
-<td><p>Very Easy</p></td>
-<td><p>1</p></td>
-<td><p>1</p></td>
-<td><p>1</p></td>
-</tr>
-<tr>
-<td><p></p></td>
-<td><p>2</p></td>
-<td><p>2</p></td>
-<td><p>2</p></td>
-</tr>
-<tr>
-<td><p></p></td>
-<td><p>3</p></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><p></p></td>
-<td><p>4</p></td>
-<td><p>1D</p></td>
-<td><p>3.5</p></td>
-</tr>
-<tr>
-<td><p></p></td>
-<td><p>5</p></td>
-<td><p>1D+1</p></td>
-<td><p>4.5</p></td>
-</tr>
-<tr>
-<td><p>Easy</p></td>
-<td><p>6</p></td>
-<td><p>1D+2</p></td>
-<td><p>5.5</p></td>
-</tr>
-<tr>
-<td><p></p></td>
-<td><p>7</p></td>
-<td><p>2D</p></td>
-<td><p>7</p></td>
-</tr>
-<tr>
-<td><p></p></td>
-<td><p>8</p></td>
-<td><p>2D+1</p></td>
-<td><p>8</p></td>
-</tr>
-<tr>
-<td><p></p></td>
-<td><p>9</p></td>
-<td><p>2D+2</p></td>
-<td><p>9</p></td>
-</tr>
-<tr>
-<td><p></p></td>
-<td><p>10</p></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><p>Moderate</p></td>
-<td><p>11</p></td>
-<td><p>3D</p></td>
-<td><p>10.5</p></td>
-</tr>
-<tr>
-<td><p></p></td>
-<td><p>12</p></td>
-<td><p>3D+1</p></td>
-<td><p>11.5</p></td>
-</tr>
-<tr>
-<td><p></p></td>
-<td><p>13</p></td>
-<td><p>3D+2</p></td>
-<td><p>12.5</p></td>
-</tr>
-<tr>
-<td><p></p></td>
-<td><p>14</p></td>
-<td><p>4D</p></td>
-<td><p>14</p></td>
-</tr>
-<tr>
-<td><p></p></td>
-<td><p>15</p></td>
-<td><p>4D+1</p></td>
-<td><p>15</p></td>
-</tr>
-<tr>
-<td><p>Difficult</p></td>
-<td><p>16</p></td>
-<td><p>4D+2</p></td>
-<td><p>16</p></td>
-</tr>
-<tr>
-<td><p></p></td>
-<td><p>17</p></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><p></p></td>
-<td><p>18</p></td>
-<td><p>5D</p></td>
-<td><p>17.5</p></td>
-</tr>
-<tr>
-<td><p></p></td>
-<td><p>19</p></td>
-<td><p>5D+1</p></td>
-<td><p>18.5</p></td>
-</tr>
-<tr>
-<td><p></p></td>
-<td><p>20</p></td>
-<td><p>5D+2</p></td>
-<td><p>19.5</p></td>
-</tr>
-<tr>
-<td><p>Very Difficult</p></td>
-<td><p>21</p></td>
-<td><p>6D</p></td>
-<td><p>21</p></td>
-</tr>
-<tr>
-<td><p></p></td>
-<td><p>22</p></td>
-<td><p>6D+1</p></td>
-<td><p>22</p></td>
-</tr>
-<tr>
-<td><p></p></td>
-<td><p>23</p></td>
-<td><p>6D+2</p></td>
-<td><p>23</p></td>
-</tr>
-<tr>
-<td><p></p></td>
-<td><p>24</p></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><p></p></td>
-<td><p>25</p></td>
-<td><p>7D</p></td>
-<td><p>24</p></td>
-</tr>
-<tr>
-<td><p>Heroic</p></td>
-<td><p>26</p></td>
-<td><p>7D+1</p></td>
-<td><p>25.5</p></td>
-</tr>
-<tr>
-<td><p></p></td>
-<td><p>27</p></td>
-<td><p>7D+2</p></td>
-<td><p>26.5</p></td>
-</tr>
-<tr>
-<td><p></p></td>
-<td><p>28</p></td>
-<td><p>8D</p></td>
-<td><p>28</p></td>
-</tr>
-<tr>
-<td><p></p></td>
-<td><p>29</p></td>
-<td><p>8D+1</p></td>
-<td><p>29</p></td>
-</tr>
-<tr>
-<td><p></p></td>
-<td><p>30</p></td>
-<td><p>8D+2</p></td>
-<td><p>30</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>Here is a <a class="reference external" href="the-mathematical-mean.pdf">PDF</a> with a nicely formatted version of these tables (5½×8½
-inches, suitable for adding to a booklet, or printing two up on on
-8½x11 inch Letter paper) , and the <a class="reference external" href="https://en.wikipedia.org/wiki/ConTeXt">ConTeXt</a> <a class="reference external" href="the-mathematical-mean.ctx">source</a>.  You can always
-look at the <a class="reference external" href="https://docutils.sourceforge.io/rst.html">ReStructuredText</a> source of this page if you want the
-table in <a class="reference external" href="https://docutils.sourceforge.io/rst.html">ReStructuredText</a> format - there should be link named "Source"
-at the beginning of this post if you are visiting the article page
-(not the index page for the whole blog) what will let you download it.</p>
-<p>By the way, does anybody know where this originates?</p>
-<p><em>Last edited: 2021-05-10 18:56:44 EDT</em></p>
-<!-- Local Variables:
-time-stamp-format: "%04y-%02m-%02d %02H:%02M:%02S %Z"
-time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
-time-stamp-end: "\\*\\\\?\n"
-time-stamp-line-limit: -20
-End: -->
-</div>
-</div>
-    <nav><ul itemprop="keywords" class="tags">
-<li><a class="tag p-category" href="categories/mini-six/" rel="tag">mini six</a></li>
-            <li><a class="tag p-category" href="categories/opend6/" rel="tag">opend6</a></li>
-            <li><a class="tag p-category" href="categories/rpg/" rel="tag">rpg</a></li>
-            <li><a class="tag p-category" href="categories/star-wars-d6/" rel="tag">star wars d6</a></li>
-        </ul></nav>
-</div>
     </article>
 </div>
         <nav class="postindexpager"><ul class="pager">
 <li class="next">
-                <a href="index-89.html" rel="next">Older posts</a>
+                <a href="index-90.html" rel="next">Older posts</a>
             </li>
         </ul></nav><script>var disqus_shortname="lacking-natural-simplicity";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
 </div>
