@@ -149,7 +149,7 @@ NAVIGATION_LINKS = {
     DEFAULT_LANG: (
         ("/index.html", "Home"),
         ("/archive.html", "Archives"),
-        ("/categories/index.html", "Tags"),
+        ("/categories/index.html", "Tags &amp; Categories"),
         ("/rss.xml", "RSS feed"),
         ("/feed.atom", "Atom feed"),
     ),
