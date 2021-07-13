@@ -18,11 +18,23 @@ RPGs, especially D&D.  In D&D 5E, for instance, they're only 1d4,
 while a short bow is 1d6 and a long bow is 1d8. For comparison,
 daggers are 1d4 and longswords are 1d8.  In OD&D using Greyhawk's
 “Damage Done by Weapon Type” table sling *stones* are 1d4, and the
-same in B/X D&D's optional “Variable Weapon Damage” table.  AD&D has
-sling *bullets* as 1d4+1 and sling *stones* as 1d4.  D&D 3.5E has them
-as 1d4.  So the D&D editions pretty consistently have it as
-1d4. Definitely nerfed.  Except in 3-book OD&D and B/X D&D without the
-“Variable Weapon Damage” table, where all weapons did 1d6 damage.
+same in B/X D&D's optional “Variable Weapon Damage” table.  However,
+in 3-book OD&D and B/X D&D without the “Variable Weapon Damage” table
+all weapons did 1d6 damage, so slings weren't nerfed there.  AD&D 1E
+has sling *bullets* as 1d4+1 vs. Size Small or Medium and 1d6+1
+vs. Size Large.  Sling *stones* are 1d4 vs. Size Small, Medium or
+Large.  Compare that to arrows at 1d6 vs. Size Small, Medium, or
+Large.  But all bows fire twice per round, so they can be doing up to
+2d6 per round.  Interestingly, heavy quarrels are 1d4+1 vs. Size Small
+or Medium, and 1d6+1 vs. Size Large with the heavy crossbow firing
+once in two rounds, while light quarrels are 1d4 vs. all three sizes
+and fire every round.  So, nerfed once you take into rates of fire.
+D&D 3.5E has sling bullets as 1d4, while longbows are 1d8 and heavy
+repeating crossbows are 1d10 and light repeating crossbows are 1d8.
+Definitely nerfed.  In D&D 4E slings are 1d6, while longbows are 1d10,
+shortbows are 1d8, and a crossbow is 1d8.  There is even more
+variability among editions of D&D than I remembered.
+
 
 In `Savage Worlds`__ slings are Str+d4, while a bow is 2d6.  For
 comparison, a dagger is Str+d4 and a long sword is Str+d8.  Nerfed.
@@ -47,9 +59,8 @@ long bow and broadsword are 8.  Nerfed.
 
 __ https://en.wikipedia.org/wiki/Talislanta
 
-
 In Hero__ 5E, sling damage is 1d6+1, same as a medium bow or a light
-long bow, while a medium long bow is 1 ½ d6 (that's 1 and ½ d6)
+long bow, while a medium long bow is 1½ d6 (that's 1 and ½ d6)
 and a heavy long bow is 2d6.  A dagger is 1d6-1 and a broadsword is
 1d6+1.  Note that strong enough characters add damage to this based on
 how strong they are. Not nerfed.
@@ -198,11 +209,11 @@ nerfed.
 .. _C2: https://www.paulelliottbooks.com/what-is-cepheus-engine.html
 .. _`Sword of Cepheus`: https://www.drivethrurpg.com/product/304840/The-Sword-of-Cepheus
 
-*Last edited: 2021-06-10 01:42:11 EDT*
+*Last edited: 2021-07-13 01:29:11 EDT*
 
 ..
    Local Variables:
-   time-stamp-format: "%04y-%02m-%02d %02H:%02M:%02S %Z"
+   time-stamp-format: "%Y-%02m-%02d %02H:%02M:%02S %Z"
    time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
    time-stamp-end: "\\*\\\\?\n"
    time-stamp-line-limit: -20

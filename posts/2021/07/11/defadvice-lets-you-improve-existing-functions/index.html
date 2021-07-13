@@ -10,6 +10,7 @@
 <link rel="canonical" href="https://tkurtbond.github.io/posts/2021/07/11/defadvice-lets-you-improve-existing-functions/">
 <!--[if lt IE 9]><script src="../../../../../assets/js/html5.js"></script><![endif]--><meta name="author" content="T. Kurt Bond">
 <link rel="prev" href="../color-versus-black-and-white-art-in-rpgs/" title="Color versus Black and White Art in RPGs" type="text/html">
+<link rel="next" href="../../13/updated-my-post-on-slings-for-adnd1e-details-and-dnd-4e/" title="Updated my post on slings for AD&amp;D 1E details and D&amp;D 4E" type="text/html">
 <meta property="og:site_name" content="Lacking Natural Simplicity">
 <meta property="og:title" content="defadvice lets you improve existing functions!">
 <meta property="og:url" content="https://tkurtbond.github.io/posts/2021/07/11/defadvice-lets-you-improve-existing-functions/">
@@ -118,32 +119,32 @@ ago.  It looks like you can get <span class="file">xmlunicode.el</span> from his
 <a class="reference external" href="https://github.com/ndw/xmlunicode">xmlunicode</a> github repository, and it looks like the replacement for
 <span class="file">unichars.el</span> is <span class="file">xmlunicode-character-list.el</span>.</p>
 <p>Here's my code:</p>
-<pre class="code emacs-lisp"><a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-1"></a><span class="c1">;; look at https://github.com/ndw/xmlunicode for xmlunicode.el and a way</span>
-<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-2"></a><span class="c1">;; to make something like unichars.el.  xmlunicode.el provides the</span>
-<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-3"></a><span class="c1">;; "smart-unicode-*" functions.</span>
-<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-4"></a><span class="p">(</span><span class="nv">load-library</span> <span class="s">"xmlunicode"</span><span class="p">)</span>
-<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-5"></a><span class="p">(</span><span class="nv">load-library</span> <span class="s">"unichars"</span><span class="p">)</span>
-<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-6"></a>
-<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-7"></a><span class="p">(</span><span class="nb">defun</span> <span class="nv">tkb-describe-character</span> <span class="p">(</span><span class="nv">before</span><span class="p">)</span>
-<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-8"></a>  <span class="s">"Describe the character after point (before if a prefix was specified)</span>
-<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-9"></a><span class="s">if it is a unicode character."</span>
-<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-10"></a>  <span class="p">(</span><span class="k">interactive</span> <span class="s">"P"</span><span class="p">)</span>
-<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-11"></a>  <span class="p">(</span><span class="k">let*</span> <span class="p">((</span><span class="nv">char</span> <span class="p">(</span><span class="k">if</span> <span class="nv">before</span> <span class="p">(</span><span class="nf">char-before</span><span class="p">)</span> <span class="p">(</span><span class="nf">char-after</span><span class="p">)))</span>
-<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-12"></a>         <span class="p">(</span><span class="nv">info</span> <span class="p">(</span><span class="nf">assoc</span> <span class="p">(</span><span class="nf">encode-char</span> <span class="nv">char</span> <span class="ss">'ucs</span><span class="p">)</span> <span class="nv">unicode-character-list</span><span class="p">))</span>
-<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-13"></a>         <span class="p">(</span><span class="nv">info</span> <span class="p">(</span><span class="nf">cons</span> <span class="p">(</span><span class="nf">format</span> <span class="s">"#x%X"</span> <span class="p">(</span><span class="nf">car</span> <span class="nv">info</span><span class="p">))</span> <span class="nv">info</span><span class="p">)))</span>
-<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-14"></a>    <span class="p">(</span><span class="nf">message</span> <span class="s">"%S"</span> <span class="nv">info</span><span class="p">)))</span>
-<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-15"></a><span class="p">(</span><span class="nv">tkb-keys</span> <span class="p">((</span><span class="nv">kbd</span> <span class="s">"C-c k d"</span><span class="p">)</span> <span class="nf">#'</span><span class="nv">tkb-describe-character</span><span class="p">))</span>
-<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-16"></a>
-<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-17"></a><span class="p">(</span><span class="nb">define-minor-mode</span> <span class="nv">tkb-smart-unicode-mode</span>
-<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-18"></a>  <span class="s">"Toggle smart unicode punctuation"</span> <span class="no">nil</span> <span class="s">" ♻⚔☣☥☸◉⅙✽☮"</span> <span class="c1">; "✘▧▧⚅☑☢☹☺♠♥♦♣♨"</span>
-<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-19"></a>  <span class="o">'</span><span class="p">((</span><span class="s">"\""</span> <span class="o">.</span> <span class="nv">unicode-smart-double-quote</span><span class="p">)</span>
-<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-20"></a>    <span class="p">(</span><span class="s">"'"</span>  <span class="o">.</span> <span class="nv">unicode-smart-single-quote</span><span class="p">)</span>
-<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-21"></a>    <span class="p">(</span><span class="s">"-"</span>  <span class="o">.</span> <span class="nv">unicode-smart-hyphen</span><span class="p">)</span>
-<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-22"></a>    <span class="p">(</span><span class="s">"."</span>  <span class="o">.</span> <span class="nv">unicode-smart-period</span><span class="p">)))</span>
-<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-23"></a>
-<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-24"></a><span class="p">(</span><span class="nb">defadvice</span> <span class="nv">unicode-smart-hyphen</span> <span class="p">(</span><span class="nv">after</span> <span class="nv">tkb-after-unicode-smart-hyphen</span> <span class="nv">last</span>
-<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-25"></a>                                       <span class="nv">activate</span> <span class="nv">compile</span><span class="p">)</span>
-<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-26"></a>  <span class="p">(</span><span class="nv">tkb-describe-character</span> <span class="no">t</span><span class="p">))</span>
+<pre class="code emacs-lisp"><a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-1" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-1"></a><span class="c1">;; look at https://github.com/ndw/xmlunicode for xmlunicode.el and a way</span>
+<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-2" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-2"></a><span class="c1">;; to make something like unichars.el.  xmlunicode.el provides the</span>
+<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-3" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-3"></a><span class="c1">;; "smart-unicode-*" functions.</span>
+<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-4" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-4"></a><span class="p">(</span><span class="nv">load-library</span> <span class="s">"xmlunicode"</span><span class="p">)</span>
+<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-5" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-5"></a><span class="p">(</span><span class="nv">load-library</span> <span class="s">"unichars"</span><span class="p">)</span>
+<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-6" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-6"></a>
+<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-7" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-7"></a><span class="p">(</span><span class="nb">defun</span> <span class="nv">tkb-describe-character</span> <span class="p">(</span><span class="nv">before</span><span class="p">)</span>
+<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-8" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-8"></a>  <span class="s">"Describe the character after point (before if a prefix was specified)</span>
+<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-9" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-9"></a><span class="s">if it is a unicode character."</span>
+<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-10" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-10"></a>  <span class="p">(</span><span class="k">interactive</span> <span class="s">"P"</span><span class="p">)</span>
+<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-11" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-11"></a>  <span class="p">(</span><span class="k">let*</span> <span class="p">((</span><span class="nv">char</span> <span class="p">(</span><span class="k">if</span> <span class="nv">before</span> <span class="p">(</span><span class="nf">char-before</span><span class="p">)</span> <span class="p">(</span><span class="nf">char-after</span><span class="p">)))</span>
+<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-12" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-12"></a>         <span class="p">(</span><span class="nv">info</span> <span class="p">(</span><span class="nf">assoc</span> <span class="p">(</span><span class="nf">encode-char</span> <span class="nv">char</span> <span class="ss">'ucs</span><span class="p">)</span> <span class="nv">unicode-character-list</span><span class="p">))</span>
+<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-13" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-13"></a>         <span class="p">(</span><span class="nv">info</span> <span class="p">(</span><span class="nf">cons</span> <span class="p">(</span><span class="nf">format</span> <span class="s">"#x%X"</span> <span class="p">(</span><span class="nf">car</span> <span class="nv">info</span><span class="p">))</span> <span class="nv">info</span><span class="p">)))</span>
+<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-14" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-14"></a>    <span class="p">(</span><span class="nf">message</span> <span class="s">"%S"</span> <span class="nv">info</span><span class="p">)))</span>
+<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-15" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-15"></a><span class="p">(</span><span class="nv">tkb-keys</span> <span class="p">((</span><span class="nv">kbd</span> <span class="s">"C-c k d"</span><span class="p">)</span> <span class="nf">#'</span><span class="nv">tkb-describe-character</span><span class="p">))</span>
+<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-16" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-16"></a>
+<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-17" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-17"></a><span class="p">(</span><span class="nb">define-minor-mode</span> <span class="nv">tkb-smart-unicode-mode</span>
+<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-18" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-18"></a>  <span class="s">"Toggle smart unicode punctuation"</span> <span class="no">nil</span> <span class="s">" ♻⚔☣☥☸◉⅙✽☮"</span> <span class="c1">; "✘▧▧⚅☑☢☹☺♠♥♦♣♨"</span>
+<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-19" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-19"></a>  <span class="o">'</span><span class="p">((</span><span class="s">"\""</span> <span class="o">.</span> <span class="nv">unicode-smart-double-quote</span><span class="p">)</span>
+<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-20" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-20"></a>    <span class="p">(</span><span class="s">"'"</span>  <span class="o">.</span> <span class="nv">unicode-smart-single-quote</span><span class="p">)</span>
+<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-21" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-21"></a>    <span class="p">(</span><span class="s">"-"</span>  <span class="o">.</span> <span class="nv">unicode-smart-hyphen</span><span class="p">)</span>
+<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-22" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-22"></a>    <span class="p">(</span><span class="s">"."</span>  <span class="o">.</span> <span class="nv">unicode-smart-period</span><span class="p">)))</span>
+<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-23" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-23"></a>
+<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-24" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-24"></a><span class="p">(</span><span class="nb">defadvice</span> <span class="nv">unicode-smart-hyphen</span> <span class="p">(</span><span class="nv">after</span> <span class="nv">tkb-after-unicode-smart-hyphen</span> <span class="nv">last</span>
+<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-25" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-25"></a>                                       <span class="nv">activate</span> <span class="nv">compile</span><span class="p">)</span>
+<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-26" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-26"></a>  <span class="p">(</span><span class="nv">tkb-describe-character</span> <span class="no">t</span><span class="p">))</span>
 </pre>
 <p>Here's a <a class="reference external" href="https://gist.github.com/tkurtbond/3dad54a2141422f39033533e72f53110">gist</a>, and the <a class="reference external" href="https://gist.githubusercontent.com/tkurtbond/3dad54a2141422f39033533e72f53110/raw/f1dc635d64fae89d1202142583df39544a87d7b8/tkb-smart-unicode-mode.el">raw</a> gist if you want to download it directly.</p>
 </div>
@@ -152,6 +153,9 @@ ago.  It looks like you can get <span class="file">xmlunicode.el</span> from his
     <aside class="postpromonav"><nav><ul class="pager hidden-print">
 <li class="previous">
                 <a href="../color-versus-black-and-white-art-in-rpgs/" rel="prev" title="Color versus Black and White Art in RPGs">Previous post</a>
+            </li>
+            <li class="next">
+                <a href="../../13/updated-my-post-on-slings-for-adnd1e-details-and-dnd-4e/" rel="next" title="Updated my post on slings for AD&amp;D 1E details and D&amp;D 4E">Next post</a>
             </li>
         </ul></nav></aside><section class="comments hidden-print"><h2>Comments</h2>
                         <div id="disqus_thread"></div>

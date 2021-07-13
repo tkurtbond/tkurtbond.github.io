@@ -10,7 +10,7 @@
 <link rel="alternate" type="application/atom+xml" title="Atom" href="feed.atom">
 <link rel="canonical" href="https://tkurtbond.github.io/">
 <link rel="next" href="index-90.html" type="text/html">
-<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/2021/07/11/defadvice-lets-you-improve-existing-functions/" type="text/html">
+<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/2021/07/13/updated-my-post-on-slings-for-adnd1e-details-and-dnd-4e/" type="text/html">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
@@ -52,7 +52,27 @@
         <div class="row">
             <div class="col-sm-8 blog-main">
 <div class="postindex">
-    <article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2021/07/11/defadvice-lets-you-improve-existing-functions/" class="u-url">defadvice lets you improve existing functions!</a></h2>
+    <article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2021/07/13/updated-my-post-on-slings-for-adnd1e-details-and-dnd-4e/" class="u-url">Updated my post on slings for AD&amp;D 1E details and D&amp;D 4E</a></h2>
+        <div class="metadata blog-post-meta">
+            <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
+            <p class="dateline"><a href="posts/2021/07/13/updated-my-post-on-slings-for-adnd1e-details-and-dnd-4e/" rel="bookmark"><time class="published dt-published" datetime="2021-07-13T01:32:04-04:00" title="2021-07-13 01:32">2021-07-13 01:32</time></a></p>
+                <p class="commentline">            <a href="posts/2021/07/13/updated-my-post-on-slings-for-adnd1e-details-and-dnd-4e/#disqus_thread" data-disqus-identifier="cache/posts/2021/07/13/updated-my-post-on-slings-for-adnd1e-details-and-dnd-4e.html">Comments</a>
+
+
+        </p>
+</div>
+    </header><div class="e-content entry-content">
+    <p>I updated my post on <a class="reference external" href="posts/2020/02/07/slings-in-rpgs-often-nerfed/">slings</a> with more details on how slings were
+treated in D&amp;D, adding size and rate of fire details for AD&amp;D 1E and
+adding D&amp;D 4E.  I'll have to come back and updated it again once I
+reread AD&amp;D 2E.</p>
+    <nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="categories/nerfed/" rel="tag">nerfed</a></li>
+            <li><a class="tag p-category" href="categories/rpg/" rel="tag">rpg</a></li>
+            <li><a class="tag p-category" href="categories/slings/" rel="tag">slings</a></li>
+        </ul></nav>
+</div>
+    </article><article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2021/07/11/defadvice-lets-you-improve-existing-functions/" class="u-url">defadvice lets you improve existing functions!</a></h2>
         <div class="metadata blog-post-meta">
             <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
             <p class="dateline"><a href="posts/2021/07/11/defadvice-lets-you-improve-existing-functions/" rel="bookmark"><time class="published dt-published" datetime="2021-07-11T22:28:21-04:00" title="2021-07-11 22:28">2021-07-11 22:28</time></a></p>
@@ -105,32 +125,32 @@ ago.  It looks like you can get <span class="file">xmlunicode.el</span> from his
 <a class="reference external" href="https://github.com/ndw/xmlunicode">xmlunicode</a> github repository, and it looks like the replacement for
 <span class="file">unichars.el</span> is <span class="file">xmlunicode-character-list.el</span>.</p>
 <p>Here's my code:</p>
-<pre class="code emacs-lisp"><a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-1"></a><span class="c1">;; look at https://github.com/ndw/xmlunicode for xmlunicode.el and a way</span>
-<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-2"></a><span class="c1">;; to make something like unichars.el.  xmlunicode.el provides the</span>
-<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-3"></a><span class="c1">;; "smart-unicode-*" functions.</span>
-<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-4"></a><span class="p">(</span><span class="nv">load-library</span> <span class="s">"xmlunicode"</span><span class="p">)</span>
-<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-5"></a><span class="p">(</span><span class="nv">load-library</span> <span class="s">"unichars"</span><span class="p">)</span>
-<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-6"></a>
-<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-7"></a><span class="p">(</span><span class="nb">defun</span> <span class="nv">tkb-describe-character</span> <span class="p">(</span><span class="nv">before</span><span class="p">)</span>
-<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-8"></a>  <span class="s">"Describe the character after point (before if a prefix was specified)</span>
-<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-9"></a><span class="s">if it is a unicode character."</span>
-<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-10"></a>  <span class="p">(</span><span class="k">interactive</span> <span class="s">"P"</span><span class="p">)</span>
-<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-11"></a>  <span class="p">(</span><span class="k">let*</span> <span class="p">((</span><span class="nv">char</span> <span class="p">(</span><span class="k">if</span> <span class="nv">before</span> <span class="p">(</span><span class="nf">char-before</span><span class="p">)</span> <span class="p">(</span><span class="nf">char-after</span><span class="p">)))</span>
-<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-12"></a>         <span class="p">(</span><span class="nv">info</span> <span class="p">(</span><span class="nf">assoc</span> <span class="p">(</span><span class="nf">encode-char</span> <span class="nv">char</span> <span class="ss">'ucs</span><span class="p">)</span> <span class="nv">unicode-character-list</span><span class="p">))</span>
-<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-13"></a>         <span class="p">(</span><span class="nv">info</span> <span class="p">(</span><span class="nf">cons</span> <span class="p">(</span><span class="nf">format</span> <span class="s">"#x%X"</span> <span class="p">(</span><span class="nf">car</span> <span class="nv">info</span><span class="p">))</span> <span class="nv">info</span><span class="p">)))</span>
-<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-14"></a>    <span class="p">(</span><span class="nf">message</span> <span class="s">"%S"</span> <span class="nv">info</span><span class="p">)))</span>
-<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-15"></a><span class="p">(</span><span class="nv">tkb-keys</span> <span class="p">((</span><span class="nv">kbd</span> <span class="s">"C-c k d"</span><span class="p">)</span> <span class="nf">#'</span><span class="nv">tkb-describe-character</span><span class="p">))</span>
-<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-16"></a>
-<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-17"></a><span class="p">(</span><span class="nb">define-minor-mode</span> <span class="nv">tkb-smart-unicode-mode</span>
-<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-18"></a>  <span class="s">"Toggle smart unicode punctuation"</span> <span class="no">nil</span> <span class="s">" ♻⚔☣☥☸◉⅙✽☮"</span> <span class="c1">; "✘▧▧⚅☑☢☹☺♠♥♦♣♨"</span>
-<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-19"></a>  <span class="o">'</span><span class="p">((</span><span class="s">"\""</span> <span class="o">.</span> <span class="nv">unicode-smart-double-quote</span><span class="p">)</span>
-<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-20"></a>    <span class="p">(</span><span class="s">"'"</span>  <span class="o">.</span> <span class="nv">unicode-smart-single-quote</span><span class="p">)</span>
-<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-21"></a>    <span class="p">(</span><span class="s">"-"</span>  <span class="o">.</span> <span class="nv">unicode-smart-hyphen</span><span class="p">)</span>
-<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-22"></a>    <span class="p">(</span><span class="s">"."</span>  <span class="o">.</span> <span class="nv">unicode-smart-period</span><span class="p">)))</span>
-<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-23"></a>
-<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-24"></a><span class="p">(</span><span class="nb">defadvice</span> <span class="nv">unicode-smart-hyphen</span> <span class="p">(</span><span class="nv">after</span> <span class="nv">tkb-after-unicode-smart-hyphen</span> <span class="nv">last</span>
-<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-25"></a>                                       <span class="nv">activate</span> <span class="nv">compile</span><span class="p">)</span>
-<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-26"></a>  <span class="p">(</span><span class="nv">tkb-describe-character</span> <span class="no">t</span><span class="p">))</span>
+<pre class="code emacs-lisp"><a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-1" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-1"></a><span class="c1">;; look at https://github.com/ndw/xmlunicode for xmlunicode.el and a way</span>
+<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-2" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-2"></a><span class="c1">;; to make something like unichars.el.  xmlunicode.el provides the</span>
+<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-3" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-3"></a><span class="c1">;; "smart-unicode-*" functions.</span>
+<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-4" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-4"></a><span class="p">(</span><span class="nv">load-library</span> <span class="s">"xmlunicode"</span><span class="p">)</span>
+<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-5" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-5"></a><span class="p">(</span><span class="nv">load-library</span> <span class="s">"unichars"</span><span class="p">)</span>
+<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-6" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-6"></a>
+<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-7" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-7"></a><span class="p">(</span><span class="nb">defun</span> <span class="nv">tkb-describe-character</span> <span class="p">(</span><span class="nv">before</span><span class="p">)</span>
+<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-8" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-8"></a>  <span class="s">"Describe the character after point (before if a prefix was specified)</span>
+<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-9" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-9"></a><span class="s">if it is a unicode character."</span>
+<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-10" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-10"></a>  <span class="p">(</span><span class="k">interactive</span> <span class="s">"P"</span><span class="p">)</span>
+<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-11" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-11"></a>  <span class="p">(</span><span class="k">let*</span> <span class="p">((</span><span class="nv">char</span> <span class="p">(</span><span class="k">if</span> <span class="nv">before</span> <span class="p">(</span><span class="nf">char-before</span><span class="p">)</span> <span class="p">(</span><span class="nf">char-after</span><span class="p">)))</span>
+<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-12" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-12"></a>         <span class="p">(</span><span class="nv">info</span> <span class="p">(</span><span class="nf">assoc</span> <span class="p">(</span><span class="nf">encode-char</span> <span class="nv">char</span> <span class="ss">'ucs</span><span class="p">)</span> <span class="nv">unicode-character-list</span><span class="p">))</span>
+<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-13" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-13"></a>         <span class="p">(</span><span class="nv">info</span> <span class="p">(</span><span class="nf">cons</span> <span class="p">(</span><span class="nf">format</span> <span class="s">"#x%X"</span> <span class="p">(</span><span class="nf">car</span> <span class="nv">info</span><span class="p">))</span> <span class="nv">info</span><span class="p">)))</span>
+<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-14" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-14"></a>    <span class="p">(</span><span class="nf">message</span> <span class="s">"%S"</span> <span class="nv">info</span><span class="p">)))</span>
+<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-15" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-15"></a><span class="p">(</span><span class="nv">tkb-keys</span> <span class="p">((</span><span class="nv">kbd</span> <span class="s">"C-c k d"</span><span class="p">)</span> <span class="nf">#'</span><span class="nv">tkb-describe-character</span><span class="p">))</span>
+<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-16" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-16"></a>
+<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-17" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-17"></a><span class="p">(</span><span class="nb">define-minor-mode</span> <span class="nv">tkb-smart-unicode-mode</span>
+<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-18" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-18"></a>  <span class="s">"Toggle smart unicode punctuation"</span> <span class="no">nil</span> <span class="s">" ♻⚔☣☥☸◉⅙✽☮"</span> <span class="c1">; "✘▧▧⚅☑☢☹☺♠♥♦♣♨"</span>
+<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-19" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-19"></a>  <span class="o">'</span><span class="p">((</span><span class="s">"\""</span> <span class="o">.</span> <span class="nv">unicode-smart-double-quote</span><span class="p">)</span>
+<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-20" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-20"></a>    <span class="p">(</span><span class="s">"'"</span>  <span class="o">.</span> <span class="nv">unicode-smart-single-quote</span><span class="p">)</span>
+<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-21" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-21"></a>    <span class="p">(</span><span class="s">"-"</span>  <span class="o">.</span> <span class="nv">unicode-smart-hyphen</span><span class="p">)</span>
+<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-22" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-22"></a>    <span class="p">(</span><span class="s">"."</span>  <span class="o">.</span> <span class="nv">unicode-smart-period</span><span class="p">)))</span>
+<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-23" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-23"></a>
+<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-24" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-24"></a><span class="p">(</span><span class="nb">defadvice</span> <span class="nv">unicode-smart-hyphen</span> <span class="p">(</span><span class="nv">after</span> <span class="nv">tkb-after-unicode-smart-hyphen</span> <span class="nv">last</span>
+<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-25" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-25"></a>                                       <span class="nv">activate</span> <span class="nv">compile</span><span class="p">)</span>
+<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-26" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-26"></a>  <span class="p">(</span><span class="nv">tkb-describe-character</span> <span class="no">t</span><span class="p">))</span>
 </pre>
 <p>Here's a <a class="reference external" href="https://gist.github.com/tkurtbond/3dad54a2141422f39033533e72f53110">gist</a>, and the <a class="reference external" href="https://gist.githubusercontent.com/tkurtbond/3dad54a2141422f39033533e72f53110/raw/f1dc635d64fae89d1202142583df39544a87d7b8/tkb-smart-unicode-mode.el">raw</a> gist if you want to download it directly.</p>
 </div>
@@ -328,9 +348,9 @@ times to get things to work.  For example, building software from
 source, often using the familiar <code class="docutils literal">./configure; make; make install</code>
 paradigm.</p>
 <p>So, the first thing is to try is to use the venerable <span class="command">tee</span> command.</p>
-<pre class="code bash"><a name="rest_code_4edf7ed7d2c343c0b80ea12d1acc7981-1"></a>./configure <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">|</span> tee Log.configure
-<a name="rest_code_4edf7ed7d2c343c0b80ea12d1acc7981-2"></a>make <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">|</span> tee Log.make
-<a name="rest_code_4edf7ed7d2c343c0b80ea12d1acc7981-3"></a>make install <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">|</span> tee Log.make-install
+<pre class="code bash"><a id="rest_code_b2e461e4f64b4ecbb852db9bf089b287-1" name="rest_code_b2e461e4f64b4ecbb852db9bf089b287-1"></a>./configure <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">|</span> tee Log.configure
+<a id="rest_code_b2e461e4f64b4ecbb852db9bf089b287-2" name="rest_code_b2e461e4f64b4ecbb852db9bf089b287-2"></a>make <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">|</span> tee Log.make
+<a id="rest_code_b2e461e4f64b4ecbb852db9bf089b287-3" name="rest_code_b2e461e4f64b4ecbb852db9bf089b287-3"></a>make install <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">|</span> tee Log.make-install
 </pre>
 <p>To make the log files easy to find I use a <span class="file">Log.</span> prefix.</p>
 <p>But I often need to run the commands multiple times, and want to save
@@ -341,49 +361,49 @@ date in YYYY-MM-DD format, so the resulting names look like
 <span class="file">Log.make-install-2021-07-07_2</span>.</p>
 <p>So I wrote a bash function <span class="command">incf</span> (increment filename) to put in
 <span class="file">.bashrc</span> that generates such a name:</p>
-<pre class="code bash"><a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-1"></a>incf <span class="o">()</span> <span class="o">{</span>
-<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-2"></a>    <span class="c1"># Construct a filename from PREFIX, "_YYYY-MM-DD",  optionally _N (where N</span>
-<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-3"></a>    <span class="c1"># is 1 or greater) if the filename already exists, and optionally SUFFIX.</span>
-<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-4"></a>    <span class="c1"># Example: "incf file .tar.gz" results in "file_2021-07-07.tar.gz", or</span>
-<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-5"></a>    <span class="c1"># "file_2021-07-07_N.tar.gz" if "file_2021-07-07.tar.gz" already exists,</span>
-<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-6"></a>    <span class="c1"># where N is 1 or greater.</span>
-<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-7"></a>    <span class="nb">local</span> prefix suffix fileprefix i testname sep1 sep2
-<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-8"></a>    <span class="nv">prefix</span><span class="o">=</span><span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span>
-<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-9"></a>    <span class="nv">suffix</span><span class="o">=</span><span class="s2">"</span><span class="nv">$2</span><span class="s2">"</span>
-<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-10"></a>    <span class="nv">sep1</span><span class="o">=</span><span class="s2">"_"</span>
-<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-11"></a>    <span class="nv">sep2</span><span class="o">=</span><span class="s2">"_"</span>
-<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-12"></a>    <span class="nv">fileprefix</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">prefix</span><span class="si">}${</span><span class="nv">sep1</span><span class="si">}</span><span class="k">$(</span>date +%F<span class="k">)</span><span class="s2">"</span>
-<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-13"></a>    <span class="nb">let</span> <span class="nv">i</span><span class="o">=</span><span class="m">0</span>
-<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-14"></a>    <span class="c1"># The zeroth filename doesn't have the number.</span>
-<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-15"></a>    <span class="nv">testname</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">fileprefix</span><span class="si">}${</span><span class="nv">suffix</span><span class="si">}</span><span class="s2">"</span>
-<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-16"></a>    <span class="k">while</span> <span class="nb">true</span>
-<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-17"></a>    <span class="k">do</span>
-<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-18"></a>      <span class="o">[</span> ! -e <span class="s2">"</span><span class="nv">$testname</span><span class="s2">"</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="nb">break</span>
-<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-19"></a>      <span class="o">((</span>i++<span class="o">))</span>
-<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-20"></a>      <span class="nv">testname</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">fileprefix</span><span class="si">}${</span><span class="nv">sep2</span><span class="si">}${</span><span class="nv">i</span><span class="si">}${</span><span class="nv">suffix</span><span class="si">}</span><span class="s2">"</span>
-<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-21"></a>    <span class="k">done</span>
-<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-22"></a>    <span class="nb">echo</span> <span class="s2">"</span><span class="nv">$testname</span><span class="s2">"</span>
-<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-23"></a><span class="o">}</span>
+<pre class="code bash"><a id="rest_code_aa66d093c22a47eda7bc3219a83e06a8-1" name="rest_code_aa66d093c22a47eda7bc3219a83e06a8-1"></a>incf <span class="o">()</span> <span class="o">{</span>
+<a id="rest_code_aa66d093c22a47eda7bc3219a83e06a8-2" name="rest_code_aa66d093c22a47eda7bc3219a83e06a8-2"></a>    <span class="c1"># Construct a filename from PREFIX, "_YYYY-MM-DD",  optionally _N (where N</span>
+<a id="rest_code_aa66d093c22a47eda7bc3219a83e06a8-3" name="rest_code_aa66d093c22a47eda7bc3219a83e06a8-3"></a>    <span class="c1"># is 1 or greater) if the filename already exists, and optionally SUFFIX.</span>
+<a id="rest_code_aa66d093c22a47eda7bc3219a83e06a8-4" name="rest_code_aa66d093c22a47eda7bc3219a83e06a8-4"></a>    <span class="c1"># Example: "incf file .tar.gz" results in "file_2021-07-07.tar.gz", or</span>
+<a id="rest_code_aa66d093c22a47eda7bc3219a83e06a8-5" name="rest_code_aa66d093c22a47eda7bc3219a83e06a8-5"></a>    <span class="c1"># "file_2021-07-07_N.tar.gz" if "file_2021-07-07.tar.gz" already exists,</span>
+<a id="rest_code_aa66d093c22a47eda7bc3219a83e06a8-6" name="rest_code_aa66d093c22a47eda7bc3219a83e06a8-6"></a>    <span class="c1"># where N is 1 or greater.</span>
+<a id="rest_code_aa66d093c22a47eda7bc3219a83e06a8-7" name="rest_code_aa66d093c22a47eda7bc3219a83e06a8-7"></a>    <span class="nb">local</span> prefix suffix fileprefix i testname sep1 sep2
+<a id="rest_code_aa66d093c22a47eda7bc3219a83e06a8-8" name="rest_code_aa66d093c22a47eda7bc3219a83e06a8-8"></a>    <span class="nv">prefix</span><span class="o">=</span><span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span>
+<a id="rest_code_aa66d093c22a47eda7bc3219a83e06a8-9" name="rest_code_aa66d093c22a47eda7bc3219a83e06a8-9"></a>    <span class="nv">suffix</span><span class="o">=</span><span class="s2">"</span><span class="nv">$2</span><span class="s2">"</span>
+<a id="rest_code_aa66d093c22a47eda7bc3219a83e06a8-10" name="rest_code_aa66d093c22a47eda7bc3219a83e06a8-10"></a>    <span class="nv">sep1</span><span class="o">=</span><span class="s2">"_"</span>
+<a id="rest_code_aa66d093c22a47eda7bc3219a83e06a8-11" name="rest_code_aa66d093c22a47eda7bc3219a83e06a8-11"></a>    <span class="nv">sep2</span><span class="o">=</span><span class="s2">"_"</span>
+<a id="rest_code_aa66d093c22a47eda7bc3219a83e06a8-12" name="rest_code_aa66d093c22a47eda7bc3219a83e06a8-12"></a>    <span class="nv">fileprefix</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">prefix</span><span class="si">}${</span><span class="nv">sep1</span><span class="si">}</span><span class="k">$(</span>date +%F<span class="k">)</span><span class="s2">"</span>
+<a id="rest_code_aa66d093c22a47eda7bc3219a83e06a8-13" name="rest_code_aa66d093c22a47eda7bc3219a83e06a8-13"></a>    <span class="nb">let</span> <span class="nv">i</span><span class="o">=</span><span class="m">0</span>
+<a id="rest_code_aa66d093c22a47eda7bc3219a83e06a8-14" name="rest_code_aa66d093c22a47eda7bc3219a83e06a8-14"></a>    <span class="c1"># The zeroth filename doesn't have the number.</span>
+<a id="rest_code_aa66d093c22a47eda7bc3219a83e06a8-15" name="rest_code_aa66d093c22a47eda7bc3219a83e06a8-15"></a>    <span class="nv">testname</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">fileprefix</span><span class="si">}${</span><span class="nv">suffix</span><span class="si">}</span><span class="s2">"</span>
+<a id="rest_code_aa66d093c22a47eda7bc3219a83e06a8-16" name="rest_code_aa66d093c22a47eda7bc3219a83e06a8-16"></a>    <span class="k">while</span> <span class="nb">true</span>
+<a id="rest_code_aa66d093c22a47eda7bc3219a83e06a8-17" name="rest_code_aa66d093c22a47eda7bc3219a83e06a8-17"></a>    <span class="k">do</span>
+<a id="rest_code_aa66d093c22a47eda7bc3219a83e06a8-18" name="rest_code_aa66d093c22a47eda7bc3219a83e06a8-18"></a>      <span class="o">[</span> ! -e <span class="s2">"</span><span class="nv">$testname</span><span class="s2">"</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="nb">break</span>
+<a id="rest_code_aa66d093c22a47eda7bc3219a83e06a8-19" name="rest_code_aa66d093c22a47eda7bc3219a83e06a8-19"></a>      <span class="o">((</span>i++<span class="o">))</span>
+<a id="rest_code_aa66d093c22a47eda7bc3219a83e06a8-20" name="rest_code_aa66d093c22a47eda7bc3219a83e06a8-20"></a>      <span class="nv">testname</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">fileprefix</span><span class="si">}${</span><span class="nv">sep2</span><span class="si">}${</span><span class="nv">i</span><span class="si">}${</span><span class="nv">suffix</span><span class="si">}</span><span class="s2">"</span>
+<a id="rest_code_aa66d093c22a47eda7bc3219a83e06a8-21" name="rest_code_aa66d093c22a47eda7bc3219a83e06a8-21"></a>    <span class="k">done</span>
+<a id="rest_code_aa66d093c22a47eda7bc3219a83e06a8-22" name="rest_code_aa66d093c22a47eda7bc3219a83e06a8-22"></a>    <span class="nb">echo</span> <span class="s2">"</span><span class="nv">$testname</span><span class="s2">"</span>
+<a id="rest_code_aa66d093c22a47eda7bc3219a83e06a8-23" name="rest_code_aa66d093c22a47eda7bc3219a83e06a8-23"></a><span class="o">}</span>
 </pre>
 <p>And then I wrote a bash function that uses <span class="command">incf</span> to generate
 the <span class="file">Log.</span> filename, potentially in a different directory:</p>
-<pre class="code bash"><a name="rest_code_15ea5da8699b4a71b17143bb3a53886d-1"></a>logf <span class="o">()</span> <span class="o">{</span>
-<a name="rest_code_15ea5da8699b4a71b17143bb3a53886d-2"></a>    <span class="c1"># Construct a filename, possibly in another directory, that starts with</span>
-<a name="rest_code_15ea5da8699b4a71b17143bb3a53886d-3"></a>    <span class="c1"># "Log." and ends with "YYYY-MM-DD" and optionally "_N", where N is 1 or</span>
-<a name="rest_code_15ea5da8699b4a71b17143bb3a53886d-4"></a>    <span class="c1"># greater, if the filename already exists.</span>
-<a name="rest_code_15ea5da8699b4a71b17143bb3a53886d-5"></a>    <span class="nb">local</span> dn bn fn
-<a name="rest_code_15ea5da8699b4a71b17143bb3a53886d-6"></a>    <span class="nv">dn</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span>dirname <span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span><span class="k">)</span><span class="s2">"</span>
-<a name="rest_code_15ea5da8699b4a71b17143bb3a53886d-7"></a>    <span class="nv">bn</span><span class="o">=</span><span class="s2">"Log.</span><span class="k">$(</span>basename <span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span><span class="k">)</span><span class="s2">"</span>
-<a name="rest_code_15ea5da8699b4a71b17143bb3a53886d-8"></a>    <span class="nv">fn</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span>incf <span class="s2">"</span><span class="nv">$dn</span><span class="s2">/</span><span class="nv">$bn</span><span class="s2">"</span><span class="k">)</span><span class="s2">"</span>
-<a name="rest_code_15ea5da8699b4a71b17143bb3a53886d-9"></a>    <span class="nb">echo</span> <span class="nv">$fn</span>
-<a name="rest_code_15ea5da8699b4a71b17143bb3a53886d-10"></a><span class="o">}</span>
+<pre class="code bash"><a id="rest_code_bbb1991e759e445dad4f3d37b19cc4e1-1" name="rest_code_bbb1991e759e445dad4f3d37b19cc4e1-1"></a>logf <span class="o">()</span> <span class="o">{</span>
+<a id="rest_code_bbb1991e759e445dad4f3d37b19cc4e1-2" name="rest_code_bbb1991e759e445dad4f3d37b19cc4e1-2"></a>    <span class="c1"># Construct a filename, possibly in another directory, that starts with</span>
+<a id="rest_code_bbb1991e759e445dad4f3d37b19cc4e1-3" name="rest_code_bbb1991e759e445dad4f3d37b19cc4e1-3"></a>    <span class="c1"># "Log." and ends with "YYYY-MM-DD" and optionally "_N", where N is 1 or</span>
+<a id="rest_code_bbb1991e759e445dad4f3d37b19cc4e1-4" name="rest_code_bbb1991e759e445dad4f3d37b19cc4e1-4"></a>    <span class="c1"># greater, if the filename already exists.</span>
+<a id="rest_code_bbb1991e759e445dad4f3d37b19cc4e1-5" name="rest_code_bbb1991e759e445dad4f3d37b19cc4e1-5"></a>    <span class="nb">local</span> dn bn fn
+<a id="rest_code_bbb1991e759e445dad4f3d37b19cc4e1-6" name="rest_code_bbb1991e759e445dad4f3d37b19cc4e1-6"></a>    <span class="nv">dn</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span>dirname <span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span><span class="k">)</span><span class="s2">"</span>
+<a id="rest_code_bbb1991e759e445dad4f3d37b19cc4e1-7" name="rest_code_bbb1991e759e445dad4f3d37b19cc4e1-7"></a>    <span class="nv">bn</span><span class="o">=</span><span class="s2">"Log.</span><span class="k">$(</span>basename <span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span><span class="k">)</span><span class="s2">"</span>
+<a id="rest_code_bbb1991e759e445dad4f3d37b19cc4e1-8" name="rest_code_bbb1991e759e445dad4f3d37b19cc4e1-8"></a>    <span class="nv">fn</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span>incf <span class="s2">"</span><span class="nv">$dn</span><span class="s2">/</span><span class="nv">$bn</span><span class="s2">"</span><span class="k">)</span><span class="s2">"</span>
+<a id="rest_code_bbb1991e759e445dad4f3d37b19cc4e1-9" name="rest_code_bbb1991e759e445dad4f3d37b19cc4e1-9"></a>    <span class="nb">echo</span> <span class="nv">$fn</span>
+<a id="rest_code_bbb1991e759e445dad4f3d37b19cc4e1-10" name="rest_code_bbb1991e759e445dad4f3d37b19cc4e1-10"></a><span class="o">}</span>
 </pre>
 <p>And then I wrote a <span class="command">log</span> command that uses <span class="command">logf</span>
 and tees its input into that file:</p>
-<pre class="code bash"><a name="rest_code_4ac282306ed64e06867de0a40c0eb841-1"></a>log <span class="o">()</span> <span class="o">{</span>
-<a name="rest_code_4ac282306ed64e06867de0a40c0eb841-2"></a>    <span class="c1"># tee the input into a log file.</span>
-<a name="rest_code_4ac282306ed64e06867de0a40c0eb841-3"></a>    tee <span class="k">$(</span>logf <span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span><span class="k">)</span>
-<a name="rest_code_4ac282306ed64e06867de0a40c0eb841-4"></a><span class="o">}</span>
+<pre class="code bash"><a id="rest_code_54e9b7ff11e845ddb277bb8c5fd7cf2a-1" name="rest_code_54e9b7ff11e845ddb277bb8c5fd7cf2a-1"></a>log <span class="o">()</span> <span class="o">{</span>
+<a id="rest_code_54e9b7ff11e845ddb277bb8c5fd7cf2a-2" name="rest_code_54e9b7ff11e845ddb277bb8c5fd7cf2a-2"></a>    <span class="c1"># tee the input into a log file.</span>
+<a id="rest_code_54e9b7ff11e845ddb277bb8c5fd7cf2a-3" name="rest_code_54e9b7ff11e845ddb277bb8c5fd7cf2a-3"></a>    tee <span class="k">$(</span>logf <span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span><span class="k">)</span>
+<a id="rest_code_54e9b7ff11e845ddb277bb8c5fd7cf2a-4" name="rest_code_54e9b7ff11e845ddb277bb8c5fd7cf2a-4"></a><span class="o">}</span>
 </pre>
 <p>So running <code class="docutils literal">./configure <span class="pre">2&gt;&amp;1</span> | log ~/tmp/configure</code> generates a file
 <span class="file">Log.configure_2021-07-07</span> in the <span class="file">~/tmp</span> directory.</p>
@@ -392,38 +412,38 @@ record if it in the log file, so if I get interrupted and then come
 back some time later I can use the same command?</p>
 <p>First I wrote a base function, <span class="command">cleanname</span>, that takes a string and
 converts it to something that should be safe to use as a filename.</p>
-<pre class="code bash"><a name="rest_code_1bff1ba0efa64b45bcb89c282a374876-1"></a>cleanname <span class="o">()</span> <span class="o">{</span>
-<a name="rest_code_1bff1ba0efa64b45bcb89c282a374876-2"></a>    <span class="c1"># Clean up a string so it is (relatively) safe to use as a filename.</span>
-<a name="rest_code_1bff1ba0efa64b45bcb89c282a374876-3"></a>    <span class="nb">local</span> <span class="nv">cmd</span><span class="o">=</span><span class="s2">"</span><span class="nv">$*</span><span class="s2">"</span> name
-<a name="rest_code_1bff1ba0efa64b45bcb89c282a374876-4"></a>    <span class="nv">name</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="s2">"</span><span class="nv">$cmd</span><span class="s2">"</span> <span class="p">|</span> sed <span class="s1">'s/[ =";?*&amp;^%$#@!~`|()&lt;&gt;]/-/g'</span> <span class="p">|</span> <span class="se">\</span>
-<a name="rest_code_1bff1ba0efa64b45bcb89c282a374876-5"></a>               sed <span class="s2">"s#[/']#-#g"</span> <span class="p">|</span> sed -E <span class="s1">'s/--+/-/g'</span> <span class="p">|</span> <span class="se">\</span>
-<a name="rest_code_1bff1ba0efa64b45bcb89c282a374876-6"></a>               sed -E <span class="s1">'s/(^[-.]+|-+$)//g'</span> <span class="p">|</span> <span class="se">\</span>
-<a name="rest_code_1bff1ba0efa64b45bcb89c282a374876-7"></a>               sed -E <span class="s1">'s/\.\.\.*/./g'</span><span class="k">)</span>
-<a name="rest_code_1bff1ba0efa64b45bcb89c282a374876-8"></a>    <span class="nb">echo</span> <span class="s2">"</span><span class="nv">$name</span><span class="s2">"</span>
-<a name="rest_code_1bff1ba0efa64b45bcb89c282a374876-9"></a><span class="o">}</span>
+<pre class="code bash"><a id="rest_code_fe8ba9d467c8425eb237af898e28a24d-1" name="rest_code_fe8ba9d467c8425eb237af898e28a24d-1"></a>cleanname <span class="o">()</span> <span class="o">{</span>
+<a id="rest_code_fe8ba9d467c8425eb237af898e28a24d-2" name="rest_code_fe8ba9d467c8425eb237af898e28a24d-2"></a>    <span class="c1"># Clean up a string so it is (relatively) safe to use as a filename.</span>
+<a id="rest_code_fe8ba9d467c8425eb237af898e28a24d-3" name="rest_code_fe8ba9d467c8425eb237af898e28a24d-3"></a>    <span class="nb">local</span> <span class="nv">cmd</span><span class="o">=</span><span class="s2">"</span><span class="nv">$*</span><span class="s2">"</span> name
+<a id="rest_code_fe8ba9d467c8425eb237af898e28a24d-4" name="rest_code_fe8ba9d467c8425eb237af898e28a24d-4"></a>    <span class="nv">name</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="s2">"</span><span class="nv">$cmd</span><span class="s2">"</span> <span class="p">|</span> sed <span class="s1">'s/[ =";?*&amp;^%$#@!~`|()&lt;&gt;]/-/g'</span> <span class="p">|</span> <span class="se">\</span>
+<a id="rest_code_fe8ba9d467c8425eb237af898e28a24d-5" name="rest_code_fe8ba9d467c8425eb237af898e28a24d-5"></a>               sed <span class="s2">"s#[/']#-#g"</span> <span class="p">|</span> sed -E <span class="s1">'s/--+/-/g'</span> <span class="p">|</span> <span class="se">\</span>
+<a id="rest_code_fe8ba9d467c8425eb237af898e28a24d-6" name="rest_code_fe8ba9d467c8425eb237af898e28a24d-6"></a>               sed -E <span class="s1">'s/(^[-.]+|-+$)//g'</span> <span class="p">|</span> <span class="se">\</span>
+<a id="rest_code_fe8ba9d467c8425eb237af898e28a24d-7" name="rest_code_fe8ba9d467c8425eb237af898e28a24d-7"></a>               sed -E <span class="s1">'s/\.\.\.*/./g'</span><span class="k">)</span>
+<a id="rest_code_fe8ba9d467c8425eb237af898e28a24d-8" name="rest_code_fe8ba9d467c8425eb237af898e28a24d-8"></a>    <span class="nb">echo</span> <span class="s2">"</span><span class="nv">$name</span><span class="s2">"</span>
+<a id="rest_code_fe8ba9d467c8425eb237af898e28a24d-9" name="rest_code_fe8ba9d467c8425eb237af898e28a24d-9"></a><span class="o">}</span>
 </pre>
 <p>Then I wrote a bash function, <span class="command">exlog</span>, to use the whole
 command with its options as part of the filename (constructed with
 <span class="command">cleanname</span>, and also include the whole command in the log output:</p>
-<pre class="code bash"><a name="rest_code_a005e595ccfe4017ae540afd46f53c93-1"></a>exlog <span class="o">()</span> <span class="o">{</span>
-<a name="rest_code_a005e595ccfe4017ae540afd46f53c93-2"></a>    <span class="c1"># Execute a shell command and log it to "Log.&lt;cmd-as-safe-filename&gt;"</span>
-<a name="rest_code_a005e595ccfe4017ae540afd46f53c93-3"></a>    <span class="nb">local</span> <span class="nv">cmd</span><span class="o">=</span><span class="s2">"</span><span class="nv">$*</span><span class="s2">"</span> <span class="nv">name</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span>cleanname <span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span><span class="k">)</span><span class="s2">"</span>
-<a name="rest_code_a005e595ccfe4017ae540afd46f53c93-4"></a>    <span class="nv">name</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span>logf <span class="nv">$name</span><span class="k">)</span><span class="s2">"</span>
-<a name="rest_code_a005e595ccfe4017ae540afd46f53c93-5"></a>    <span class="nb">printf</span> <span class="s1">'Logging to %s\n'</span> <span class="s2">"</span><span class="nv">$name</span><span class="s2">"</span>
-<a name="rest_code_a005e595ccfe4017ae540afd46f53c93-6"></a>    <span class="o">(</span><span class="nb">echo</span> <span class="s2">"cmd was: </span><span class="nv">$cmd</span><span class="s2">"</span><span class="p">;</span> <span class="nb">time</span> <span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span><span class="o">)</span> <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">|</span> tee <span class="nv">$name</span>
-<a name="rest_code_a005e595ccfe4017ae540afd46f53c93-7"></a><span class="o">}</span>
+<pre class="code bash"><a id="rest_code_5240f30465244fa9b19e78f20667fbb3-1" name="rest_code_5240f30465244fa9b19e78f20667fbb3-1"></a>exlog <span class="o">()</span> <span class="o">{</span>
+<a id="rest_code_5240f30465244fa9b19e78f20667fbb3-2" name="rest_code_5240f30465244fa9b19e78f20667fbb3-2"></a>    <span class="c1"># Execute a shell command and log it to "Log.&lt;cmd-as-safe-filename&gt;"</span>
+<a id="rest_code_5240f30465244fa9b19e78f20667fbb3-3" name="rest_code_5240f30465244fa9b19e78f20667fbb3-3"></a>    <span class="nb">local</span> <span class="nv">cmd</span><span class="o">=</span><span class="s2">"</span><span class="nv">$*</span><span class="s2">"</span> <span class="nv">name</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span>cleanname <span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span><span class="k">)</span><span class="s2">"</span>
+<a id="rest_code_5240f30465244fa9b19e78f20667fbb3-4" name="rest_code_5240f30465244fa9b19e78f20667fbb3-4"></a>    <span class="nv">name</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span>logf <span class="nv">$name</span><span class="k">)</span><span class="s2">"</span>
+<a id="rest_code_5240f30465244fa9b19e78f20667fbb3-5" name="rest_code_5240f30465244fa9b19e78f20667fbb3-5"></a>    <span class="nb">printf</span> <span class="s1">'Logging to %s\n'</span> <span class="s2">"</span><span class="nv">$name</span><span class="s2">"</span>
+<a id="rest_code_5240f30465244fa9b19e78f20667fbb3-6" name="rest_code_5240f30465244fa9b19e78f20667fbb3-6"></a>    <span class="o">(</span><span class="nb">echo</span> <span class="s2">"cmd was: </span><span class="nv">$cmd</span><span class="s2">"</span><span class="p">;</span> <span class="nb">time</span> <span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span><span class="o">)</span> <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">|</span> tee <span class="nv">$name</span>
+<a id="rest_code_5240f30465244fa9b19e78f20667fbb3-7" name="rest_code_5240f30465244fa9b19e78f20667fbb3-7"></a><span class="o">}</span>
 </pre>
 <p>So running the command</p>
-<pre class="code bash"><a name="rest_code_63af118345e54f2dbc0047506534cadc-1"></a>exlog ../configure --prefix<span class="o">=</span>/Users/tkb/sw/versions/groff/git
+<pre class="code bash"><a id="rest_code_1a4ef1cbb41c4e0b836ee87db310bd0b-1" name="rest_code_1a4ef1cbb41c4e0b836ee87db310bd0b-1"></a>exlog ../configure --prefix<span class="o">=</span>/Users/tkb/sw/versions/groff/git
 </pre>
 <p>produces the file</p>
-<pre class="code text"><a name="rest_code_bfab19bc84384340aa2fa953ab40c29f-1"></a>Log.configure-prefix-Users-tkb-sw-versions-groff-git_2021-07-07
+<pre class="code text"><a id="rest_code_aff028280c0545fcb71aaf38446cd48a-1" name="rest_code_aff028280c0545fcb71aaf38446cd48a-1"></a>Log.configure-prefix-Users-tkb-sw-versions-groff-git_2021-07-07
 </pre>
 <p>and it contains the line</p>
-<pre class="code text"><a name="rest_code_28438b8010f84974b59dcb7a0d1f19d9-1"></a>cmd was: ../configure --prefix=/Users/tkb/sw/versions/groff/git
+<pre class="code text"><a id="rest_code_9d3843c87d31421d9ea462dedc3a9a2e-1" name="rest_code_9d3843c87d31421d9ea462dedc3a9a2e-1"></a>cmd was: ../configure --prefix=/Users/tkb/sw/versions/groff/git
 </pre>
 <p>and running it again produces the file</p>
-<pre class="code text"><a name="rest_code_9cf8051e2cdb438ca1c7644afbbd57a4-1"></a>Log.configure-prefix-Users-tkb-sw-versions-groff-git_2021-07-07_1
+<pre class="code text"><a id="rest_code_e8224efae3b14ad49486759a26308bc5-1" name="rest_code_e8224efae3b14ad49486759a26308bc5-1"></a>Log.configure-prefix-Users-tkb-sw-versions-groff-git_2021-07-07_1
 </pre>
 <p>This code is available in a <a class="reference external" href="https://gist.github.com/tkurtbond/23255fede737eec89b1fd0e011566cb1">gist</a>.</p>
 <p><em>Last edited: 2021-07-09 15:30:53 EDT</em></p>
@@ -479,11 +499,11 @@ at the table.</p>
     <div>
 <p>Just for reference, here is the <a class="reference external" href="https://anydice.com/">Anydice.com</a> code for Savage Worlds
 Wild Die rolls:</p>
-<pre class="code text"><a name="rest_code_17b4749288dd4fa0869e9859348dcd6d-1"></a>output [highest of [explode d4] and [explode d6]] named "d4 or wild die"
-<a name="rest_code_17b4749288dd4fa0869e9859348dcd6d-2"></a>output [highest of [explode d6] and [explode d6]] named "d6 or wild die"
-<a name="rest_code_17b4749288dd4fa0869e9859348dcd6d-3"></a>output [highest of [explode d8] and [explode d6]] named "d8 or wild die"
-<a name="rest_code_17b4749288dd4fa0869e9859348dcd6d-4"></a>output [highest of [explode d10] and [explode d6]] named "d10 or wild die"
-<a name="rest_code_17b4749288dd4fa0869e9859348dcd6d-5"></a>output [highest of [explode d12] and [explode d6]] named "d12 or wild die"
+<pre class="code text"><a id="rest_code_54fd1b69051c420999e1b086e7f69d04-1" name="rest_code_54fd1b69051c420999e1b086e7f69d04-1"></a>output [highest of [explode d4] and [explode d6]] named "d4 or wild die"
+<a id="rest_code_54fd1b69051c420999e1b086e7f69d04-2" name="rest_code_54fd1b69051c420999e1b086e7f69d04-2"></a>output [highest of [explode d6] and [explode d6]] named "d6 or wild die"
+<a id="rest_code_54fd1b69051c420999e1b086e7f69d04-3" name="rest_code_54fd1b69051c420999e1b086e7f69d04-3"></a>output [highest of [explode d8] and [explode d6]] named "d8 or wild die"
+<a id="rest_code_54fd1b69051c420999e1b086e7f69d04-4" name="rest_code_54fd1b69051c420999e1b086e7f69d04-4"></a>output [highest of [explode d10] and [explode d6]] named "d10 or wild die"
+<a id="rest_code_54fd1b69051c420999e1b086e7f69d04-5" name="rest_code_54fd1b69051c420999e1b086e7f69d04-5"></a>output [highest of [explode d12] and [explode d6]] named "d12 or wild die"
 </pre>
 <p>Here's a link to the <a class="reference external" href="https://anydice.com/program/23126/at_least">results</a>.</p>
 </div>
@@ -795,22 +815,22 @@ actually work.</p>
 <p>I finally found an <a class="reference external" href="https://stackoverflow.com/a/45359136">example</a>, and after looking at it and figuring out
 what imports are now required I have a working example of using
 getnstr from the chicken scheme ncurses egg!</p>
-<pre class="code scheme"><a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-1"></a><span class="p">(</span><span class="nf">import</span> <span class="nv">ncurses</span><span class="p">)</span>
-<a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-2"></a><span class="p">(</span><span class="nf">import</span> <span class="p">(</span><span class="nf">chicken</span> <span class="nv">locative</span><span class="p">))</span>
-<a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-3"></a><span class="p">(</span><span class="nf">import</span> <span class="p">(</span><span class="nf">chicken</span> <span class="nv">string</span><span class="p">))</span>
-<a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-4"></a>
-<a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-5"></a><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">get-string</span> <span class="nv">max</span><span class="p">)</span>
-<a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-6"></a>  <span class="p">(</span><span class="k">let </span><span class="p">((</span><span class="nf">buffer</span> <span class="p">(</span><span class="nb">make-string </span><span class="nv">max</span> <span class="sc">#\null</span><span class="p">)))</span>
-<a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-7"></a>    <span class="p">(</span><span class="nf">getnstr</span> <span class="p">(</span><span class="nf">make-locative</span> <span class="nv">buffer</span><span class="p">)</span> <span class="nv">max</span><span class="p">)</span>
-<a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-8"></a>    <span class="c1">;; Delete the #\null characters.</span>
-<a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-9"></a>    <span class="p">(</span><span class="nf">string-translate</span> <span class="nv">buffer</span> <span class="sc">#\null</span><span class="p">)))</span>
-<a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-10"></a>
-<a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-11"></a><span class="p">(</span><span class="k">let </span><span class="p">((</span><span class="nf">stdscr</span> <span class="p">(</span><span class="nf">initscr</span><span class="p">))</span>
-<a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-12"></a>      <span class="p">(</span><span class="nf">str</span> <span class="p">(</span><span class="nf">get-string</span> <span class="mi">10</span><span class="p">)))</span>
-<a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-13"></a>  <span class="p">(</span><span class="nf">addstr</span> <span class="nv">str</span><span class="p">)</span>
-<a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-14"></a>  <span class="p">(</span><span class="nf">getch</span><span class="p">)</span>
-<a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-15"></a>  <span class="p">(</span><span class="nb">write </span><span class="nv">str</span><span class="p">)</span>
-<a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-16"></a>  <span class="p">(</span><span class="nf">endwin</span><span class="p">))</span>
+<pre class="code scheme"><a id="rest_code_f6e1ac31995045f994e2acd3214ead4c-1" name="rest_code_f6e1ac31995045f994e2acd3214ead4c-1"></a><span class="p">(</span><span class="nf">import</span> <span class="nv">ncurses</span><span class="p">)</span>
+<a id="rest_code_f6e1ac31995045f994e2acd3214ead4c-2" name="rest_code_f6e1ac31995045f994e2acd3214ead4c-2"></a><span class="p">(</span><span class="nf">import</span> <span class="p">(</span><span class="nf">chicken</span> <span class="nv">locative</span><span class="p">))</span>
+<a id="rest_code_f6e1ac31995045f994e2acd3214ead4c-3" name="rest_code_f6e1ac31995045f994e2acd3214ead4c-3"></a><span class="p">(</span><span class="nf">import</span> <span class="p">(</span><span class="nf">chicken</span> <span class="nv">string</span><span class="p">))</span>
+<a id="rest_code_f6e1ac31995045f994e2acd3214ead4c-4" name="rest_code_f6e1ac31995045f994e2acd3214ead4c-4"></a>
+<a id="rest_code_f6e1ac31995045f994e2acd3214ead4c-5" name="rest_code_f6e1ac31995045f994e2acd3214ead4c-5"></a><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">get-string</span> <span class="nv">max</span><span class="p">)</span>
+<a id="rest_code_f6e1ac31995045f994e2acd3214ead4c-6" name="rest_code_f6e1ac31995045f994e2acd3214ead4c-6"></a>  <span class="p">(</span><span class="k">let </span><span class="p">((</span><span class="nf">buffer</span> <span class="p">(</span><span class="nb">make-string </span><span class="nv">max</span> <span class="sc">#\null</span><span class="p">)))</span>
+<a id="rest_code_f6e1ac31995045f994e2acd3214ead4c-7" name="rest_code_f6e1ac31995045f994e2acd3214ead4c-7"></a>    <span class="p">(</span><span class="nf">getnstr</span> <span class="p">(</span><span class="nf">make-locative</span> <span class="nv">buffer</span><span class="p">)</span> <span class="nv">max</span><span class="p">)</span>
+<a id="rest_code_f6e1ac31995045f994e2acd3214ead4c-8" name="rest_code_f6e1ac31995045f994e2acd3214ead4c-8"></a>    <span class="c1">;; Delete the #\null characters.</span>
+<a id="rest_code_f6e1ac31995045f994e2acd3214ead4c-9" name="rest_code_f6e1ac31995045f994e2acd3214ead4c-9"></a>    <span class="p">(</span><span class="nf">string-translate</span> <span class="nv">buffer</span> <span class="sc">#\null</span><span class="p">)))</span>
+<a id="rest_code_f6e1ac31995045f994e2acd3214ead4c-10" name="rest_code_f6e1ac31995045f994e2acd3214ead4c-10"></a>
+<a id="rest_code_f6e1ac31995045f994e2acd3214ead4c-11" name="rest_code_f6e1ac31995045f994e2acd3214ead4c-11"></a><span class="p">(</span><span class="k">let </span><span class="p">((</span><span class="nf">stdscr</span> <span class="p">(</span><span class="nf">initscr</span><span class="p">))</span>
+<a id="rest_code_f6e1ac31995045f994e2acd3214ead4c-12" name="rest_code_f6e1ac31995045f994e2acd3214ead4c-12"></a>      <span class="p">(</span><span class="nf">str</span> <span class="p">(</span><span class="nf">get-string</span> <span class="mi">10</span><span class="p">)))</span>
+<a id="rest_code_f6e1ac31995045f994e2acd3214ead4c-13" name="rest_code_f6e1ac31995045f994e2acd3214ead4c-13"></a>  <span class="p">(</span><span class="nf">addstr</span> <span class="nv">str</span><span class="p">)</span>
+<a id="rest_code_f6e1ac31995045f994e2acd3214ead4c-14" name="rest_code_f6e1ac31995045f994e2acd3214ead4c-14"></a>  <span class="p">(</span><span class="nf">getch</span><span class="p">)</span>
+<a id="rest_code_f6e1ac31995045f994e2acd3214ead4c-15" name="rest_code_f6e1ac31995045f994e2acd3214ead4c-15"></a>  <span class="p">(</span><span class="nb">write </span><span class="nv">str</span><span class="p">)</span>
+<a id="rest_code_f6e1ac31995045f994e2acd3214ead4c-16" name="rest_code_f6e1ac31995045f994e2acd3214ead4c-16"></a>  <span class="p">(</span><span class="nf">endwin</span><span class="p">))</span>
 </pre>
 <p>Oh, and I added the example to the ncurses egg documentation: <a class="reference external" href="http://wiki.call-cc.org/eggref/5/ncurses#getnstr-example">getnstr
 Example</a>.</p>
@@ -849,1167 +869,6 @@ October 2013”</em>.  It is also available from <a class="reference external" h
             <li><a class="tag p-category" href="categories/eqnguide/" rel="tag">eqnguide</a></li>
             <li><a class="tag p-category" href="categories/groff/" rel="tag">groff</a></li>
             <li><a class="tag p-category" href="categories/ted-harding/" rel="tag">ted harding</a></li>
-        </ul></nav>
-</div>
-    </article><article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2021/05/10/star-wars-d6-1st-edition-odds-of-hitting-a-target-number/" class="u-url">Star Wars D6 1st Edition Odds of Hitting a Target Number</a></h2>
-        <div class="metadata blog-post-meta">
-            <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
-            <p class="dateline"><a href="posts/2021/05/10/star-wars-d6-1st-edition-odds-of-hitting-a-target-number/" rel="bookmark"><time class="published dt-published" datetime="2021-05-10T11:58:00-04:00" title="2021-05-10 11:58">2021-05-10 11:58</time></a></p>
-                <p class="commentline">            <a href="posts/2021/05/10/star-wars-d6-1st-edition-odds-of-hitting-a-target-number/#disqus_thread" data-disqus-identifier="cache/posts/2021/05/10/star-wars-d6-1st-edition-odds-of-hitting-a-target-number.html">Comments</a>
-
-
-        </p>
-</div>
-    </header><div class="e-content entry-content">
-    <div>
-<p>After <a class="reference external" href="posts/2021/05/08/mini-six-odds-of-hitting-a-target-number/">posting</a> about the odds in <cite>Mini Six</cite> (<a class="reference external" href="https://www.drivethrurpg.com/product/144558/Mini-Six-Bare-Bones-Edition">MS1</a>, <a class="reference external" href="http://www.antipaladingames.com/p/mini-six.html">MS2</a>) of
-hitting a Target Number, I thought I should do the same for <a class="reference external" href="https://en.wikipedia.org/wiki/Star_Wars:_The_Roleplaying_Game">Star
-Wars: the Roleplaying Game</a>, 1<sup>st</sup> Edition, the original Star
-Wars roleplaying game, from <a class="reference external" href="https://en.wikipedia.org/wiki/West_End_Games">West End Games</a>.  It does <strong>NOT</strong> use
-the Wild Die; that was introduced in the 2<sup>nd</sup> Edition and is
-also used in <a class="reference external" href="http://opend6project.org/">OpenD6</a>.</p>
-<p>The <a class="reference external" href="https://anydice.com">Anydice.com</a> <a class="reference external" href="https://anydice.com/program/22199/at_least">code</a> is very simple:</p>
-<pre class="code text"><a name="rest_code_f218d55e63164320b50008418d035c1a-1"></a>loop N over {1..12} {
-<a name="rest_code_f218d55e63164320b50008418d035c1a-2"></a>  output Nd6 named "[N]D"
-<a name="rest_code_f218d55e63164320b50008418d035c1a-3"></a>}
-</pre>
-<p>If you enter this manually instead of following the “code” link above,
-remember to click “At Least” to get the right results!</p>
-<p>Star Wars D6 1<sup>st</sup> Edition does <strong>NOT</strong> use the Wild Die!</p>
-<p>The multiple 100s from 6D onward are, after the first, not actually
-100s, but 99.x where x is small enough it rounds up to 100.00 when
-shown with two digits of precision.</p>
-<p>The 0.00s that appear from 6D onwards are not 0.00, but numbers so
-small that they appear as 0.00 when expressed with two digits of
-precision.</p>
-<div class="smalltable boxedtable docutils container">
-<table class="colwidths-auto">
-<caption>Star Wars D6 1st Edition Odds of Hitting a Target Number</caption>
-<thead><tr>
-<th class="head"><p></p></th>
-<th class="head"><p><strong>1D</strong></p></th>
-<th class="head"><p><strong>2D</strong></p></th>
-<th class="head"><p><strong>3D</strong></p></th>
-<th class="head"><p><strong>4D</strong></p></th>
-<th class="head"><p><strong>5D</strong></p></th>
-<th class="head"><p><strong>6D</strong></p></th>
-<th class="head"><p><strong>7D</strong></p></th>
-<th class="head"><p><strong>8D</strong></p></th>
-<th class="head"><p><strong>9D</strong></p></th>
-<th class="head"><p><strong>10D</strong></p></th>
-<th class="head"><p><strong>11D</strong></p></th>
-<th class="head"><p><strong>12D</strong></p></th>
-</tr></thead>
-<tbody>
-<tr>
-<td><p><strong>1</strong></p></td>
-<td><p>100.00</p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><p><strong>2</strong></p></td>
-<td><p>83.33</p></td>
-<td><p>100.00</p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><p><strong>3</strong></p></td>
-<td><p>66.67</p></td>
-<td><p>97.22</p></td>
-<td><p>100.00</p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><p><strong>4</strong></p></td>
-<td><p>50.00</p></td>
-<td><p>91.67</p></td>
-<td><p>99.54</p></td>
-<td><p>100.00</p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><p><strong>5</strong></p></td>
-<td><p>33.33</p></td>
-<td><p>83.33</p></td>
-<td><p>98.15</p></td>
-<td><p>99.92</p></td>
-<td><p>100.00</p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><p><strong>6</strong></p></td>
-<td><p>16.67</p></td>
-<td><p>72.22</p></td>
-<td><p>95.37</p></td>
-<td><p>99.61</p></td>
-<td><p>99.99</p></td>
-<td><p>100.00</p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><p><strong>7</strong></p></td>
-<td></td>
-<td><p>58.33</p></td>
-<td><p>90.74</p></td>
-<td><p>98.84</p></td>
-<td><p>99.92</p></td>
-<td><p>100.00</p></td>
-<td><p>100.00</p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><p><strong>8</strong></p></td>
-<td></td>
-<td><p>41.67</p></td>
-<td><p>83.80</p></td>
-<td><p>97.30</p></td>
-<td><p>99.73</p></td>
-<td><p>99.98</p></td>
-<td><p>100.00</p></td>
-<td><p>100.00</p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><p><strong>9</strong></p></td>
-<td></td>
-<td><p>27.78</p></td>
-<td><p>74.07</p></td>
-<td><p>94.60</p></td>
-<td><p>99.28</p></td>
-<td><p>99.94</p></td>
-<td><p>100.00</p></td>
-<td><p>100.00</p></td>
-<td><p>100.00</p></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><p><strong>10</strong></p></td>
-<td></td>
-<td><p>16.67</p></td>
-<td><p>62.50</p></td>
-<td><p>90.28</p></td>
-<td><p>98.38</p></td>
-<td><p>99.82</p></td>
-<td><p>99.99</p></td>
-<td><p>100.00</p></td>
-<td><p>100.00</p></td>
-<td><p>100.00</p></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><p><strong>11</strong></p></td>
-<td></td>
-<td><p>8.33</p></td>
-<td><p>50.00</p></td>
-<td><p>84.10</p></td>
-<td><p>96.76</p></td>
-<td><p>99.55</p></td>
-<td><p>99.96</p></td>
-<td><p>100.00</p></td>
-<td><p>100.00</p></td>
-<td><p>100.00</p></td>
-<td><p>100.00</p></td>
-<td></td>
-</tr>
-<tr>
-<td><p><strong>12</strong></p></td>
-<td></td>
-<td><p>2.78</p></td>
-<td><p>37.50</p></td>
-<td><p>76.08</p></td>
-<td><p>94.12</p></td>
-<td><p>99.01</p></td>
-<td><p>99.88</p></td>
-<td><p>99.99</p></td>
-<td><p>100.00</p></td>
-<td><p>100.00</p></td>
-<td><p>100.00</p></td>
-<td><p>100.00</p></td>
-</tr>
-<tr>
-<td><p><strong>13</strong></p></td>
-<td></td>
-<td></td>
-<td><p>25.93</p></td>
-<td><p>66.44</p></td>
-<td><p>90.20</p></td>
-<td><p>98.03</p></td>
-<td><p>99.72</p></td>
-<td><p>99.97</p></td>
-<td><p>100.00</p></td>
-<td><p>100.00</p></td>
-<td><p>100.00</p></td>
-<td><p>100.00</p></td>
-</tr>
-<tr>
-<td><p><strong>14</strong></p></td>
-<td></td>
-<td></td>
-<td><p>16.20</p></td>
-<td><p>55.63</p></td>
-<td><p>84.80</p></td>
-<td><p>96.41</p></td>
-<td><p>99.39</p></td>
-<td><p>99.92</p></td>
-<td><p>99.99</p></td>
-<td><p>100.00</p></td>
-<td><p>100.00</p></td>
-<td><p>100.00</p></td>
-</tr>
-<tr>
-<td><p><strong>15</strong></p></td>
-<td></td>
-<td></td>
-<td><p>9.26</p></td>
-<td><p>44.37</p></td>
-<td><p>77.85</p></td>
-<td><p>93.92</p></td>
-<td><p>98.79</p></td>
-<td><p>99.82</p></td>
-<td><p>99.98</p></td>
-<td><p>100.00</p></td>
-<td><p>100.00</p></td>
-<td><p>100.00</p></td>
-</tr>
-<tr>
-<td><p><strong>16</strong></p></td>
-<td></td>
-<td></td>
-<td><p>4.63</p></td>
-<td><p>33.56</p></td>
-<td><p>69.48</p></td>
-<td><p>90.35</p></td>
-<td><p>97.79</p></td>
-<td><p>99.62</p></td>
-<td><p>99.95</p></td>
-<td><p>100.00</p></td>
-<td><p>100.00</p></td>
-<td><p>100.00</p></td>
-</tr>
-<tr>
-<td><p><strong>17</strong></p></td>
-<td></td>
-<td></td>
-<td><p>1.85</p></td>
-<td><p>23.92</p></td>
-<td><p>60.03</p></td>
-<td><p>85.54</p></td>
-<td><p>96.21</p></td>
-<td><p>99.26</p></td>
-<td><p>99.89</p></td>
-<td><p>99.99</p></td>
-<td><p>100.00</p></td>
-<td><p>100.00</p></td>
-</tr>
-<tr>
-<td><p><strong>18</strong></p></td>
-<td></td>
-<td></td>
-<td><p>0.46</p></td>
-<td><p>15.90</p></td>
-<td><p>50.00</p></td>
-<td><p>79.42</p></td>
-<td><p>93.88</p></td>
-<td><p>98.63</p></td>
-<td><p>99.76</p></td>
-<td><p>99.97</p></td>
-<td><p>100.00</p></td>
-<td><p>100.00</p></td>
-</tr>
-<tr>
-<td><p><strong>19</strong></p></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p>9.72</p></td>
-<td><p>39.97</p></td>
-<td><p>72.06</p></td>
-<td><p>90.61</p></td>
-<td><p>97.63</p></td>
-<td><p>99.54</p></td>
-<td><p>99.93</p></td>
-<td><p>99.99</p></td>
-<td><p>100.00</p></td>
-</tr>
-<tr>
-<td><p><strong>20</strong></p></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p>5.40</p></td>
-<td><p>30.52</p></td>
-<td><p>63.69</p></td>
-<td><p>86.28</p></td>
-<td><p>96.11</p></td>
-<td><p>99.15</p></td>
-<td><p>99.85</p></td>
-<td><p>99.98</p></td>
-<td><p>100.00</p></td>
-</tr>
-<tr>
-<td><p><strong>21</strong></p></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p>2.70</p></td>
-<td><p>22.15</p></td>
-<td><p>54.64</p></td>
-<td><p>80.83</p></td>
-<td><p>93.93</p></td>
-<td><p>98.51</p></td>
-<td><p>99.71</p></td>
-<td><p>99.95</p></td>
-<td><p>99.99</p></td>
-</tr>
-<tr>
-<td><p><strong>22</strong></p></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p>1.16</p></td>
-<td><p>15.20</p></td>
-<td><p>45.36</p></td>
-<td><p>74.28</p></td>
-<td><p>90.93</p></td>
-<td><p>97.53</p></td>
-<td><p>99.47</p></td>
-<td><p>99.91</p></td>
-<td><p>99.99</p></td>
-</tr>
-<tr>
-<td><p><strong>23</strong></p></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p>0.39</p></td>
-<td><p>9.80</p></td>
-<td><p>36.31</p></td>
-<td><p>66.78</p></td>
-<td><p>87.02</p></td>
-<td><p>96.08</p></td>
-<td><p>99.06</p></td>
-<td><p>99.82</p></td>
-<td><p>99.97</p></td>
-</tr>
-<tr>
-<td><p><strong>24</strong></p></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p>0.08</p></td>
-<td><p>5.88</p></td>
-<td><p>27.94</p></td>
-<td><p>58.58</p></td>
-<td><p>82.11</p></td>
-<td><p>94.04</p></td>
-<td><p>98.43</p></td>
-<td><p>99.66</p></td>
-<td><p>99.94</p></td>
-</tr>
-<tr>
-<td><p><strong>25</strong></p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p>3.24</p></td>
-<td><p>20.58</p></td>
-<td><p>50.00</p></td>
-<td><p>76.23</p></td>
-<td><p>91.29</p></td>
-<td><p>97.48</p></td>
-<td><p>99.41</p></td>
-<td><p>99.89</p></td>
-</tr>
-<tr>
-<td><p><strong>26</strong></p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p>1.62</p></td>
-<td><p>14.46</p></td>
-<td><p>41.42</p></td>
-<td><p>69.46</p></td>
-<td><p>87.72</p></td>
-<td><p>96.10</p></td>
-<td><p>99.00</p></td>
-<td><p>99.79</p></td>
-</tr>
-<tr>
-<td><p><strong>27</strong></p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p>0.72</p></td>
-<td><p>9.65</p></td>
-<td><p>33.22</p></td>
-<td><p>61.98</p></td>
-<td><p>83.28</p></td>
-<td><p>94.20</p></td>
-<td><p>98.37</p></td>
-<td><p>99.63</p></td>
-</tr>
-<tr>
-<td><p><strong>28</strong></p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p>0.27</p></td>
-<td><p>6.08</p></td>
-<td><p>25.72</p></td>
-<td><p>54.05</p></td>
-<td><p>77.96</p></td>
-<td><p>91.66</p></td>
-<td><p>97.46</p></td>
-<td><p>99.36</p></td>
-</tr>
-<tr>
-<td><p><strong>29</strong></p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p>0.08</p></td>
-<td><p>3.59</p></td>
-<td><p>19.17</p></td>
-<td><p>45.95</p></td>
-<td><p>71.81</p></td>
-<td><p>88.40</p></td>
-<td><p>96.15</p></td>
-<td><p>98.95</p></td>
-</tr>
-<tr>
-<td><p><strong>30</strong></p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p>0.01</p></td>
-<td><p>1.97</p></td>
-<td><p>13.72</p></td>
-<td><p>38.02</p></td>
-<td><p>64.96</p></td>
-<td><p>84.35</p></td>
-<td><p>94.38</p></td>
-<td><p>98.34</p></td>
-</tr>
-<tr>
-<td><p><strong>31</strong></p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p>0.99</p></td>
-<td><p>9.39</p></td>
-<td><p>30.54</p></td>
-<td><p>57.61</p></td>
-<td><p>79.50</p></td>
-<td><p>92.03</p></td>
-<td><p>97.46</p></td>
-</tr>
-<tr>
-<td><p><strong>32</strong></p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p>0.45</p></td>
-<td><p>6.12</p></td>
-<td><p>23.77</p></td>
-<td><p>50.00</p></td>
-<td><p>73.89</p></td>
-<td><p>89.03</p></td>
-<td><p>96.23</p></td>
-</tr>
-<tr>
-<td><p><strong>33</strong></p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p>0.18</p></td>
-<td><p>3.79</p></td>
-<td><p>17.89</p></td>
-<td><p>42.39</p></td>
-<td><p>67.60</p></td>
-<td><p>85.33</p></td>
-<td><p>94.57</p></td>
-</tr>
-<tr>
-<td><p><strong>34</strong></p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p>0.06</p></td>
-<td><p>2.21</p></td>
-<td><p>12.98</p></td>
-<td><p>35.04</p></td>
-<td><p>60.79</p></td>
-<td><p>80.90</p></td>
-<td><p>92.40</p></td>
-</tr>
-<tr>
-<td><p><strong>35</strong></p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p>0.02</p></td>
-<td><p>1.21</p></td>
-<td><p>9.07</p></td>
-<td><p>28.19</p></td>
-<td><p>53.63</p></td>
-<td><p>75.76</p></td>
-<td><p>89.64</p></td>
-</tr>
-<tr>
-<td><p><strong>36</strong></p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p>0.00</p></td>
-<td><p>0.61</p></td>
-<td><p>6.07</p></td>
-<td><p>22.04</p></td>
-<td><p>46.37</p></td>
-<td><p>69.96</p></td>
-<td><p>86.24</p></td>
-</tr>
-<tr>
-<td><p><strong>37</strong></p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p>0.28</p></td>
-<td><p>3.89</p></td>
-<td><p>16.72</p></td>
-<td><p>39.21</p></td>
-<td><p>63.63</p></td>
-<td><p>82.17</p></td>
-</tr>
-<tr>
-<td><p><strong>38</strong></p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p>0.12</p></td>
-<td><p>2.37</p></td>
-<td><p>12.28</p></td>
-<td><p>32.40</p></td>
-<td><p>56.92</p></td>
-<td><p>77.44</p></td>
-</tr>
-<tr>
-<td><p><strong>39</strong></p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p>0.04</p></td>
-<td><p>1.37</p></td>
-<td><p>8.71</p></td>
-<td><p>26.11</p></td>
-<td><p>50.00</p></td>
-<td><p>72.08</p></td>
-</tr>
-<tr>
-<td><p><strong>40</strong></p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p>0.01</p></td>
-<td><p>0.74</p></td>
-<td><p>5.96</p></td>
-<td><p>20.50</p></td>
-<td><p>43.08</p></td>
-<td><p>66.19</p></td>
-</tr>
-<tr>
-<td><p><strong>41</strong></p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p>0.00</p></td>
-<td><p>0.38</p></td>
-<td><p>3.92</p></td>
-<td><p>15.65</p></td>
-<td><p>36.37</p></td>
-<td><p>59.89</p></td>
-</tr>
-<tr>
-<td><p><strong>42</strong></p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p>0.00</p></td>
-<td><p>0.18</p></td>
-<td><p>2.47</p></td>
-<td><p>11.60</p></td>
-<td><p>30.04</p></td>
-<td><p>53.33</p></td>
-</tr>
-<tr>
-<td><p><strong>43</strong></p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p>0.08</p></td>
-<td><p>1.49</p></td>
-<td><p>8.34</p></td>
-<td><p>24.24</p></td>
-<td><p>46.67</p></td>
-</tr>
-<tr>
-<td><p><strong>44</strong></p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p>0.03</p></td>
-<td><p>0.85</p></td>
-<td><p>5.80</p></td>
-<td><p>19.10</p></td>
-<td><p>40.11</p></td>
-</tr>
-<tr>
-<td><p><strong>45</strong></p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p>0.01</p></td>
-<td><p>0.46</p></td>
-<td><p>3.90</p></td>
-<td><p>14.67</p></td>
-<td><p>33.81</p></td>
-</tr>
-<tr>
-<td><p><strong>46</strong></p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p>0.00</p></td>
-<td><p>0.24</p></td>
-<td><p>2.52</p></td>
-<td><p>10.97</p></td>
-<td><p>27.92</p></td>
-</tr>
-<tr>
-<td><p><strong>47</strong></p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p>0.00</p></td>
-<td><p>0.11</p></td>
-<td><p>1.57</p></td>
-<td><p>7.97</p></td>
-<td><p>22.56</p></td>
-</tr>
-<tr>
-<td><p><strong>48</strong></p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p>0.00</p></td>
-<td><p>0.05</p></td>
-<td><p>0.94</p></td>
-<td><p>5.62</p></td>
-<td><p>17.83</p></td>
-</tr>
-<tr>
-<td><p><strong>49</strong></p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p>0.02</p></td>
-<td><p>0.53</p></td>
-<td><p>3.85</p></td>
-<td><p>13.76</p></td>
-</tr>
-<tr>
-<td><p><strong>50</strong></p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p>0.01</p></td>
-<td><p>0.29</p></td>
-<td><p>2.54</p></td>
-<td><p>10.36</p></td>
-</tr>
-<tr>
-<td><p><strong>51</strong></p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p>0.00</p></td>
-<td><p>0.15</p></td>
-<td><p>1.63</p></td>
-<td><p>7.60</p></td>
-</tr>
-<tr>
-<td><p><strong>52</strong></p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p>0.00</p></td>
-<td><p>0.07</p></td>
-<td><p>1.00</p></td>
-<td><p>5.43</p></td>
-</tr>
-<tr>
-<td><p><strong>53</strong></p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p>0.00</p></td>
-<td><p>0.03</p></td>
-<td><p>0.59</p></td>
-<td><p>3.77</p></td>
-</tr>
-<tr>
-<td><p><strong>54</strong></p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p>0.00</p></td>
-<td><p>0.01</p></td>
-<td><p>0.34</p></td>
-<td><p>2.54</p></td>
-</tr>
-<tr>
-<td><p><strong>55</strong></p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p>0.00</p></td>
-<td><p>0.18</p></td>
-<td><p>1.66</p></td>
-</tr>
-<tr>
-<td><p><strong>56</strong></p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p>0.00</p></td>
-<td><p>0.09</p></td>
-<td><p>1.05</p></td>
-</tr>
-<tr>
-<td><p><strong>57</strong></p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p>0.00</p></td>
-<td><p>0.05</p></td>
-<td><p>0.64</p></td>
-</tr>
-<tr>
-<td><p><strong>58</strong></p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p>0.00</p></td>
-<td><p>0.02</p></td>
-<td><p>0.37</p></td>
-</tr>
-<tr>
-<td><p><strong>59</strong></p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p>0.00</p></td>
-<td><p>0.01</p></td>
-<td><p>0.21</p></td>
-</tr>
-<tr>
-<td><p><strong>60</strong></p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p>0.00</p></td>
-<td><p>0.00</p></td>
-<td><p>0.11</p></td>
-</tr>
-<tr>
-<td><p><strong>61</strong></p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p>0.00</p></td>
-<td><p>0.06</p></td>
-</tr>
-<tr>
-<td><p><strong>62</strong></p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p>0.00</p></td>
-<td><p>0.03</p></td>
-</tr>
-<tr>
-<td><p><strong>63</strong></p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p>0.00</p></td>
-<td><p>0.01</p></td>
-</tr>
-<tr>
-<td><p><strong>64</strong></p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p>0.00</p></td>
-<td><p>0.01</p></td>
-</tr>
-<tr>
-<td><p><strong>65</strong></p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p>0.00</p></td>
-<td><p>0.00</p></td>
-</tr>
-<tr>
-<td><p><strong>66</strong></p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p>0.00</p></td>
-<td><p>0.00</p></td>
-</tr>
-<tr>
-<td><p><strong>67</strong></p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p>0.00</p></td>
-</tr>
-<tr>
-<td><p><strong>68</strong></p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p>0.00</p></td>
-</tr>
-<tr>
-<td><p><strong>69</strong></p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p>0.00</p></td>
-</tr>
-<tr>
-<td><p><strong>70</strong></p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p>0.00</p></td>
-</tr>
-<tr>
-<td><p><strong>71</strong></p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p>0.00</p></td>
-</tr>
-<tr>
-<td><p><strong>72</strong></p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p>0.00</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>Here's the Open Office <a class="reference external" href="star-wars-d6-1e-odds-of-hitting-a-target-number.ods">spreadsheet</a>, here's the <a class="reference external" href="star-wars-d6-1e-odds-of-hitting-a-target-number.pdf">PDF</a>, and here's the
-<a class="reference external" href="star-wars-d6-1e-odds-of-hitting-a-target-number.csv">raw data</a> from Anydice in <a class="reference external" href="https://en.wikipedia.org/wiki/Comma-separated_values">CSV</a> format.  (I saw the “Export” option,
-finally.)  You can always look at the <a class="reference external" href="https://docutils.sourceforge.io/rst.html">ReStructuredText</a> source of this
-page if you want the table in <a class="reference external" href="https://docutils.sourceforge.io/rst.html">ReStructuredText</a> format — there should
-be link named "Source" at the beginning of this post if you are
-visiting the article page (not the index page for the whole blog) what
-will let you download it.</p>
-<p>Perhaps more immediately understandable is this screenshot of the the
-results in graph mode:</p>
-<img alt="/images/star-wars-d6-1e-odds-of-hitting-a-target-number.png" src="images/star-wars-d6-1e-odds-of-hitting-a-target-number.png"><p>(Right-clicking the image might give you the option to open the image
-in a new tab, where you'll see it at full size.)</p>
-<p><em>Last edited: 2021-05-19 13:32:33 EDT</em></p>
-<!-- Local Variables:
-time-stamp-format: "%04y-%02m-%02d %02H:%02M:%02S %Z"
-time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
-time-stamp-end: "\\*\\\\?\n"
-time-stamp-line-limit: -20
-End: -->
-</div>
-    <nav><ul itemprop="keywords" class="tags">
-<li><a class="tag p-category" href="categories/dice/" rel="tag">dice</a></li>
-            <li><a class="tag p-category" href="categories/mini-six/" rel="tag">mini six</a></li>
-            <li><a class="tag p-category" href="categories/odds/" rel="tag">odds</a></li>
-            <li><a class="tag p-category" href="categories/opend6/" rel="tag">opend6</a></li>
-            <li><a class="tag p-category" href="categories/rpg/" rel="tag">rpg</a></li>
-            <li><a class="tag p-category" href="categories/star-wars-d6-1e/" rel="tag">star wars d6 1e</a></li>
         </ul></nav>
 </div>
     </article>
