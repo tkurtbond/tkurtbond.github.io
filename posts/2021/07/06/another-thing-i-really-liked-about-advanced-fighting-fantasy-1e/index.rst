@@ -2,7 +2,7 @@
 .. slug: another-thing-i-really-liked-about-advanced-fighting-fantasy-1e
 .. date: 2021-07-06 14:34:22 UTC-04:00
 .. tags: rpg,advanced fighting fantasy,aff1e
-.. category: games
+.. category: gaming/rpg/aff
 .. link: 
 .. description: 
 .. type: text
