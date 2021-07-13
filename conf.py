@@ -1376,8 +1376,8 @@ GLOBAL_CONTEXT = {'blog_sidebar': """\
         <li><a href="/pages/about-the-blog/index.html">About the Blog</a></li>
         <li><a href="/pages/colophon/index.html">Colophon</a></li>
         <li><a href="/pages/static-pages-index/index.html">Pages</a></li>
-        <li><a href="http://tkb.tx0.org/">My other web page.</a>
-            Mostly empty
+        <li><a href="http://tkb.tx0.org/">My other web page</a>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;Mostly empty</p>
         </li>
       </ol>
     </div>
