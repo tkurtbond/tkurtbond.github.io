@@ -1,7 +1,7 @@
 .. title: MIME and Gmail vs other mailers
 .. slug: mime-and-gmail-vs-other-mailers
 .. date: 2020-12-11 09:12:17 UTC-05:00
-.. tags: mime,mew,wanderlust,mutt,alpine,thunderbird
+.. tags: mime,mew,wanderlust,mutt,alpine,thunderbird,gmail,e-mail
 .. category: computer
 .. link: 
 .. description: 

@@ -7,7 +7,7 @@
 .. description: 
 .. type: text
 
-I like that one of the example characters in Dungeoneer_, Axel Wolfric
+I liked that one of the example characters in Dungeoneer_, Axel Wolfric
 (who in my game was played by L.B. as Alexa Wolfrica), has several
 abilities which mechanically are spells, but which the character
 doesn't regard as magic, something they regard as evil.  Doing this
