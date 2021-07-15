@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>troff Memorandum Macros documentation | Lacking Natural Simplicity</title>
+<link href="../../../../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../../../../rss.xml">
+<link rel="alternate" type="application/atom+xml" title="Atom" href="../../../../../feed.atom">
+<link rel="canonical" href="https://tkurtbond.github.io/posts/2021/07/15/troff-memorandum-macros-documentation/">
+<!--[if lt IE 9]><script src="../../../../../assets/js/html5.js"></script><![endif]--><meta name="author" content="T. Kurt Bond">
+<link rel="prev" href="../../13/in-aff-1e-armour-didnt-make-magic-harder/" title="In AFF 1E armour didn't make magic harder" type="text/html">
+<meta property="og:site_name" content="Lacking Natural Simplicity">
+<meta property="og:title" content="troff Memorandum Macros documentation">
+<meta property="og:url" content="https://tkurtbond.github.io/posts/2021/07/15/troff-memorandum-macros-documentation/">
+<meta property="og:description" content="When I learned troff it was actually on a VAX running VMS (used
+by MPL Corporation) using a port of troff called
+xroff 1, probably around 1986.  (The VAX
+also had TeX and LaTeX, and I used them too.  ">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2021-07-15T15:57:09-04:00">
+<meta property="article:tag" content="charon-vax">
+<meta property="article:tag" content="memorandum macros">
+<meta property="article:tag" content="mm">
+<meta property="article:tag" content="troff">
+<meta property="article:tag" content="vms">
+<meta property="article:tag" content="xroff">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<div class="blog-masthead">
+    <div class="container">
+<!-- This keeps the margins nice -->
+        <nav class="blog-nav" role="navigation"><a href="../../../../../index.html" class="blog-nav-item">Home</a>
+            <a href="../../../../../archive.html" class="blog-nav-item">Archives</a>
+            <a href="../../../../../categories/index.html" class="blog-nav-item">Tags &amp; Categories</a>
+            <a href="../../../../../rss.xml" class="blog-nav-item">RSS feed</a>
+            <a href="../../../../../feed.atom" class="blog-nav-item">Atom feed</a>
+
+            
+
+    <a href="index.rst" class="blog-nav-item blog-nav-item-aside" id="sourcelink">Source</a>
+                
+            
+        </nav>
+</div>
+<!-- /.container -->
+</div>
+<!-- End of Menubar -->
+
+<div class="container" id="content" role="main">
+    <div class="body-content">
+        <div class="blog-header">
+            <h1 class="blog-title">
+                <a href="https://tkurtbond.github.io/">
+
+                    <span id="blog-title">Lacking Natural Simplicity</span>
+                </a>
+            </h1>
+            <p class="lead blog-description">Random musings on books, code, and tabletop games.</p>
+            
+        </div>
+        <!--Body content-->
+        <div class="row">
+            <div class="col-sm-8 blog-main">
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h2 class="p-name entry-title blog-post-title" itemprop="headline name"><a href="." class="u-url">troff Memorandum Macros documentation</a></h2>
+
+        <div class="metadata blog-post-meta">
+            <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
+            <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2021-07-15T15:57:09-04:00" itemprop="datePublished" title="2021-07-15 15:57">2021-07-15 15:57</time></a></p>
+                <p class="commentline">            <a href="#disqus_thread" data-disqus-identifier="cache/posts/2021/07/15/troff-memorandum-macros-documentation.html">Comments</a>
+
+
+                    </p>
+<p class="sourceline"><a href="index.rst" id="sourcelink">Source</a></p>
+
+        </div>
+        
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<p>When I learned <span class="app">troff</span> it was actually on a VAX running VMS (used
+by <a class="reference external" href="http://www.mpl.com/">MPL Corporation</a>) using a port of <span class="app">troff</span> called
+<span class="app">xroff</span> <a class="footnote-reference brackets" href="#who-produced-xroff" id="id1">1</a>, probably around 1986.  (The VAX
+also had TeX and LaTeX, and I used them too.  Both supported the DEC
+LNO3 laserprinter that MPL had.)  While I don't know who produced
+<span class="app">xroff</span> and can't find anything out about it on the Internet, it
+was a complete port of <span class="app">troff</span> to VMS, including all the standard
+utilities and macro packages, including documentation for <span class="app">ms</span>,
+<span class="app">me</span>, and, significantly for this post <span class="app">mm</span>.</p>
+<p>The <span class="app">mm</span> documentation was the paper <cite>MM - Memorandum Macros</cite>, by
+D. W. Smith, J. R. Mashey, E. C. Pariser, and N. W. Smith, AT&amp;T Bell
+Laboratories, June 1980.  I tried out all the macro packages, but
+found <span class="app">mm</span> most to my liking.  I think a large part of that was the
+<span class="app">mm</span> documentation — it described the many features of that macro
+package pretty well, in a user guide sort of way, teaching you how to
+use the features as it went along, rather than being a pure reference
+manual.  And I found <span class="app">mm</span> most comparable in features to LaTeX of the
+troff macro packages.  While configuring <span class="app">mm</span> documents is somewhat
+quirky <a class="footnote-reference brackets" href="#quirky" id="id2">2</a>, I felt that the added features over those found in
+<span class="app">me</span> and <span class="app">ms</span> made it worthwhile.  So I wrote a lot of
+documents using <span class="app">mm</span>.</p>
+<p>Years later when I first got access to <span class="app">groff</span> on Unix machines
+(early 90s?) the documentation supplied with it for <span class="app">mm</span> was the
+<span class="man">groff_mm(7)</span> man page.  It was very complete as a reference, but
+very poor for teaching you how to use <span class="app">mm</span>.  I continued to use <span class="app">mm</span>
+off and on, but I think the lack of the user guide documentation of
+the <span class="app">mm</span> paper made <span class="app">mm</span> less popular among the users of <span class="app">groff</span>
+than it could have been.  So when modern features for PDF appeared for
+groff later on (the <span class="app">pdfmark</span> macros), they were adapted to
+<span class="app">ms</span> but not <span class="app">mm</span>.  (<span class="app">me</span> was left out, as well.)  I was sad
+to see <span class="app">mm</span>'s apparently low popularity, and the <span class="app">mm</span> paper apparently
+is not available on the Internet, unlike the papers on <span class="app">ms</span> and
+<span class="app">me</span>, which come with <span class="app">groff</span>.  I suspect this is because
+<span class="app">mm</span> was used heavily in AT&amp;T's <span class="app">Documenter's Workbench</span>, a commercial product that was
+distributed separately from UNIX System V, if I understand correctly.</p>
+<p>However, eventually the sources to the <span class="app">Documenter's Workbench</span> because available under
+the Eclipse Public License, and they are <a class="reference external" href="https://github.com/n-t-roff/DWB3.3">available</a> in the <a class="reference external" href="https://github.com/n-t-roff">n-t-roff</a>
+github repository (along with <a class="reference external" href="http://n-t-roff.github.io/heirloom/doctools.html">Heirloom Docutils</a>, a descendant of
+the original <span class="app">ditroff</span> with native UTF-8 input and easy use of
+fonts).  This includes the <a class="reference external" href="https://github.com/n-t-roff/DWB3.3/tree/master/doc/mm">source</a> to documentation that is derived
+from the <span class="app">mm</span> paper!  Unfortunately, I haven't been able to find a PDF
+of this on the Internet.</p>
+<p>I think that having this available might help those who might want to
+try out <span class="app">mm</span>, or are returning to it after a long break, so I've
+posted a version that I built a while ago <a class="reference external" href="../../../../../troff/mm-all.pdf">here</a>.</p>
+<dl class="footnote brackets">
+<dt class="label" id="who-produced-xroff"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd>
+<p>While I still maintain a descendant of the VAX I where I used
+<span class="app">xroff</span> (emulated using <a class="reference external" href="https://www.stromasys.com/solutions/charon-vax/">Charon-VAX</a>), sometime in the past the
+<span class="app">xroff</span> software disappeared from it.  I have no idea what
+happened to it.  I blame user PDL!</p>
+</dd>
+<dt class="label" id="quirky"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
+<dd>
+<p>The page offset, page width, and page length have to be set before
+the <span class="app">mm</span> macros were loaded, so while on Unix it is easy to set those
+values on the command line, on VMS due to oddities in its command line
+it was easiest to use <code class="docutils literal">.so</code> and load the macros directly</p>
+</dd>
+</dl>
+</div>
+    </div>
+    <script>var pfHeaderImgUrl = '';var pfHeaderTagline = '';var pfdisableClickToDel = 0;var pfHideImages = 0;var pfImageDisplayStyle = 'right';var pfDisablePDF = 0;var pfDisableEmail = 0;var pfDisablePrint = 0;var pfCustomCSS = '';var pfBtVersion='2';(function(){var js,pf;pf=document.createElement('script');pf.type='text/javascript';pf.src='//cdn.printfriendly.com/printfriendly.js';document.getElementsByTagName('head')[0].appendChild(pf)})();</script><a href="https://www.printfriendly.com" style="color:#6D9F00;text-decoration:none;" class="printfriendly" onclick="window.print();return false;" title="Printer Friendly and PDF"><img style="border:none;-webkit-box-shadow:none;box-shadow:none;" src="//cdn.printfriendly.com/buttons/printfriendly-pdf-button.png" alt="Print Friendly and PDF"></a>    
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../../../../../categories/charon-vax/" rel="tag">charon-vax</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/memorandum-macros/" rel="tag">memorandum macros</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/mm/" rel="tag">mm</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/troff/" rel="tag">troff</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/vms/" rel="tag">vms</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/xroff/" rel="tag">xroff</a></li>
+        </ul>
+<ul class="pager hidden-print">
+<li class="previous">
+                <a href="../../13/in-aff-1e-armour-didnt-make-magic-harder/" rel="prev" title="In AFF 1E armour didn't make magic harder">Previous post</a>
+            </li>
+        </ul></nav></aside><section class="comments hidden-print"><h2>Comments</h2>
+                        <div id="disqus_thread"></div>
+        <script>
+        var disqus_shortname ="lacking-natural-simplicity",
+            disqus_url="https://tkurtbond.github.io/posts/2021/07/15/troff-memorandum-macros-documentation/",
+        disqus_title="troff Memorandum Macros documentation",
+        disqus_identifier="cache/posts/2021/07/15/troff-memorandum-macros-documentation.html",
+        disqus_config = function () {
+            this.language = "en";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.async = true;
+            dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script><noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+    <a href="https://disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+        </section></article><script>var disqus_shortname="lacking-natural-simplicity";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
+</div>
+            <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+                    <div class="sidebar-module sidebar-module-inset">
+      <h4>About</h4>
+      <p>Lacking Natural Simplicity is one, not particularly flattering, 
+         definition of sophisticated.  
+         This blog chronicles my journey through our at times too complicated 
+         and sophisticated world. </p>
+    </div>
+    <div class="sidebar-module">
+      <h4>Links</h4>
+      <ol class="list-unstyled">
+<li><a href="../../../../../pages/about-the-blog/index.html">About the Blog</a></li>
+        <li><a href="../../../../../pages/colophon/index.html">Colophon</a></li>
+        <li><a href="../../../../../pages/static-pages-index/index.html">Pages</a></li>
+        <li>
+<a href="http://tkb.tx0.org/">My other web page</a>
+            <p>    Mostly empty</p>
+        </li>
+      </ol>
+</div>
+    
+            </div>
+        <!--End of body content-->
+        </div>
+    </div>
+</div>
+
+<footer class="blog-footer" id="footer">
+    Contents © 2021         <a href="mailto:tkurtbond@gmail.com">T. Kurt Bond</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+    
+</footer><script src="../../../../../assets/js/all-nocdn.js"></script><!-- fancy dates --><script>
+    moment.locale("en");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates --><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element) {
+            return element.getElementsByTagName('img')[0].alt;
+    }});
+    </script>
+</body>
+</html>

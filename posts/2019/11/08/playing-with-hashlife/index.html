@@ -84,21 +84,21 @@ entered:
 algorithm and wanted my help with running it.  I cloned the <a class="reference external" href="https://github.com/stylewarning/lisp-random">repo</a> it
 was in and ran <code class="docutils literal">sbcl</code> in the <code class="docutils literal">hashlife</code> directory.  Then I
 entered:</p>
-<pre class="code lisp"><a id="rest_code_233ebf5e0e56457da236020e6b422eaa-1" name="rest_code_233ebf5e0e56457da236020e6b422eaa-1"></a><span class="p">(</span><span class="nv">asdf:operate</span> <span class="ss">'asdf:load-op</span> <span class="ss">'charmlife</span><span class="p">)</span>
+<pre class="code lisp"><a name="rest_code_2667f7c48d5c4490b6b828a4c54ba716-1"></a><span class="p">(</span><span class="nv">asdf:operate</span> <span class="ss">'asdf:load-op</span> <span class="ss">'charmlife</span><span class="p">)</span>
 </pre>
 <p>That resulted in a <code class="docutils literal">Component CHARMLIFE not found</code> error in sbcl.  I
 thought that was odd — it was right there in the current directory.  I
 looked at <code class="docutils literal"><span class="pre">asdf:*central-registry*</span></code>, and the only thing in it was
 the quicklisp directory.  The ASDF <a class="reference external" href="https://common-lisp.net/~mmommer/asdf-howto.shtml#sec11">howto</a> showed an example of setting
 <code class="docutils literal"><span class="pre">asdf:*central-registry*</span></code>:</p>
-<pre class="code lisp"><a id="rest_code_7b1575da87d646528a84ba2f9fde07e6-1" name="rest_code_7b1575da87d646528a84ba2f9fde07e6-1"></a><span class="p">(</span><span class="nb">setf</span> <span class="nv">asdf:*central-registry*</span>
-<a id="rest_code_7b1575da87d646528a84ba2f9fde07e6-2" name="rest_code_7b1575da87d646528a84ba2f9fde07e6-2"></a>  <span class="c1">;; Default directories, usually just the ``current directory''</span>
-<a id="rest_code_7b1575da87d646528a84ba2f9fde07e6-3" name="rest_code_7b1575da87d646528a84ba2f9fde07e6-3"></a>  <span class="o">'</span><span class="p">(</span><span class="vg">*default-pathname-defaults*</span>
-<a id="rest_code_7b1575da87d646528a84ba2f9fde07e6-4" name="rest_code_7b1575da87d646528a84ba2f9fde07e6-4"></a>
-<a id="rest_code_7b1575da87d646528a84ba2f9fde07e6-5" name="rest_code_7b1575da87d646528a84ba2f9fde07e6-5"></a>    <span class="c1">;; Additional places where ASDF can find</span>
-<a id="rest_code_7b1575da87d646528a84ba2f9fde07e6-6" name="rest_code_7b1575da87d646528a84ba2f9fde07e6-6"></a>    <span class="c1">;; system definition files</span>
-<a id="rest_code_7b1575da87d646528a84ba2f9fde07e6-7" name="rest_code_7b1575da87d646528a84ba2f9fde07e6-7"></a>    <span class="l l-Other">#p"/home/foo/lisp/systems/"</span>
-<a id="rest_code_7b1575da87d646528a84ba2f9fde07e6-8" name="rest_code_7b1575da87d646528a84ba2f9fde07e6-8"></a>    <span class="l l-Other">#p"/usr/share/common-lisp/systems/"</span><span class="p">))</span>
+<pre class="code lisp"><a name="rest_code_56954bb37e0c46f29c1975da43b98ee9-1"></a><span class="p">(</span><span class="nb">setf</span> <span class="nv">asdf:*central-registry*</span>
+<a name="rest_code_56954bb37e0c46f29c1975da43b98ee9-2"></a>  <span class="c1">;; Default directories, usually just the ``current directory''</span>
+<a name="rest_code_56954bb37e0c46f29c1975da43b98ee9-3"></a>  <span class="o">'</span><span class="p">(</span><span class="vg">*default-pathname-defaults*</span>
+<a name="rest_code_56954bb37e0c46f29c1975da43b98ee9-4"></a>
+<a name="rest_code_56954bb37e0c46f29c1975da43b98ee9-5"></a>    <span class="c1">;; Additional places where ASDF can find</span>
+<a name="rest_code_56954bb37e0c46f29c1975da43b98ee9-6"></a>    <span class="c1">;; system definition files</span>
+<a name="rest_code_56954bb37e0c46f29c1975da43b98ee9-7"></a>    <span class="l l-Other">#p"/home/foo/lisp/systems/"</span>
+<a name="rest_code_56954bb37e0c46f29c1975da43b98ee9-8"></a>    <span class="l l-Other">#p"/usr/share/common-lisp/systems/"</span><span class="p">))</span>
 </pre>
 <p>Noticing that it had the symbol <code class="docutils literal"><span class="pre">*default-pathname-defaults*</span></code> in the
 new value, I guessed that it being missing from mine caused ASDF to
@@ -108,12 +108,12 @@ used <a class="reference external" href="https://www.quicklisp.org/">Quicklisp</
 <code class="docutils literal">charmlife.lisp</code> and looked at the <code class="docutils literal">main</code> function and figured out
 how to run it and how to interact with the program when it was running.</p>
 <p>Here's what I had to do:</p>
-<pre class="code lisp"><a id="rest_code_ceb6d5e257c64e5d89d3b39a0f88602b-1" name="rest_code_ceb6d5e257c64e5d89d3b39a0f88602b-1"></a><span class="p">(</span><span class="nb">setf</span> <span class="nv">asdf:*central-registry*</span>
-<a id="rest_code_ceb6d5e257c64e5d89d3b39a0f88602b-2" name="rest_code_ceb6d5e257c64e5d89d3b39a0f88602b-2"></a>      <span class="p">(</span><span class="nb">cons</span> <span class="ss">'*default-pathname-defaults*</span>
-<a id="rest_code_ceb6d5e257c64e5d89d3b39a0f88602b-3" name="rest_code_ceb6d5e257c64e5d89d3b39a0f88602b-3"></a>            <span class="nv">asdf:*central-registry*</span><span class="p">))</span>
-<a id="rest_code_ceb6d5e257c64e5d89d3b39a0f88602b-4" name="rest_code_ceb6d5e257c64e5d89d3b39a0f88602b-4"></a><span class="p">(</span><span class="nv">ql:quickload</span> <span class="s">"cl-charms"</span><span class="p">)</span>
-<a id="rest_code_ceb6d5e257c64e5d89d3b39a0f88602b-5" name="rest_code_ceb6d5e257c64e5d89d3b39a0f88602b-5"></a><span class="p">(</span><span class="nv">asdf:operate</span> <span class="ss">'asdf:load-op</span> <span class="ss">'charmlife</span><span class="p">)</span>
-<a id="rest_code_ceb6d5e257c64e5d89d3b39a0f88602b-6" name="rest_code_ceb6d5e257c64e5d89d3b39a0f88602b-6"></a><span class="p">(</span><span class="nv">charmlife:main</span><span class="p">)</span>
+<pre class="code lisp"><a name="rest_code_839c426882a0468e8e54aa4dffeeb826-1"></a><span class="p">(</span><span class="nb">setf</span> <span class="nv">asdf:*central-registry*</span>
+<a name="rest_code_839c426882a0468e8e54aa4dffeeb826-2"></a>      <span class="p">(</span><span class="nb">cons</span> <span class="ss">'*default-pathname-defaults*</span>
+<a name="rest_code_839c426882a0468e8e54aa4dffeeb826-3"></a>            <span class="nv">asdf:*central-registry*</span><span class="p">))</span>
+<a name="rest_code_839c426882a0468e8e54aa4dffeeb826-4"></a><span class="p">(</span><span class="nv">ql:quickload</span> <span class="s">"cl-charms"</span><span class="p">)</span>
+<a name="rest_code_839c426882a0468e8e54aa4dffeeb826-5"></a><span class="p">(</span><span class="nv">asdf:operate</span> <span class="ss">'asdf:load-op</span> <span class="ss">'charmlife</span><span class="p">)</span>
+<a name="rest_code_839c426882a0468e8e54aa4dffeeb826-6"></a><span class="p">(</span><span class="nv">charmlife:main</span><span class="p">)</span>
 </pre>
 </div>
     </div>

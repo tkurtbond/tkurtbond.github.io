@@ -3,13 +3,88 @@
 <feed xml:lang="en" xmlns="http://www.w3.org/2005/Atom">
   <title>Lacking Natural Simplicity (Posts about vms)</title>
   <id>https://tkurtbond.github.io/categories/vms.atom</id>
-  <updated>2021-07-10T07:47:29Z</updated>
+  <updated>2021-07-15T21:43:09Z</updated>
   <author>
     <name>T. Kurt Bond</name>
   </author>
   <link rel="self" type="application/atom+xml" href="https://tkurtbond.github.io/categories/vms.atom"/>
   <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/categories/vms/"/>
   <generator uri="https://getnikola.com/">Nikola</generator>
+  <entry>
+    <title>troff Memorandum Macros documentation</title>
+    <id>https://tkurtbond.github.io/posts/2021/07/15/troff-memorandum-macros-documentation/</id>
+    <updated>2021-07-15T15:57:09-04:00</updated>
+    <published>2021-07-15T15:57:09-04:00</published>
+    <author>
+      <name>T. Kurt Bond</name>
+    </author>
+    <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/posts/2021/07/15/troff-memorandum-macros-documentation/"/>
+    <summary type="html">&lt;div&gt;&lt;p&gt;When I learned &lt;span class="app"&gt;troff&lt;/span&gt; it was actually on a VAX running VMS (used
+by &lt;a class="reference external" href="http://www.mpl.com/"&gt;MPL Corporation&lt;/a&gt;) using a port of &lt;span class="app"&gt;troff&lt;/span&gt; called
+&lt;span class="app"&gt;xroff&lt;/span&gt; &lt;a class="footnote-reference brackets" href="https://tkurtbond.github.io/posts/2021/07/15/troff-memorandum-macros-documentation/#who-produced-xroff" id="id1"&gt;1&lt;/a&gt;, probably around 1986.  (The VAX
+also had TeX and LaTeX, and I used them too.  Both supported the DEC
+LNO3 laserprinter that MPL had.)  While I don't know who produced
+&lt;span class="app"&gt;xroff&lt;/span&gt; and can't find anything out about it on the Internet, it
+was a complete port of &lt;span class="app"&gt;troff&lt;/span&gt; to VMS, including all the standard
+utilities and macro packages, including documentation for &lt;span class="app"&gt;ms&lt;/span&gt;,
+&lt;span class="app"&gt;me&lt;/span&gt;, and, significantly for this post &lt;span class="app"&gt;mm&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;The &lt;span class="app"&gt;mm&lt;/span&gt; documentation was the paper &lt;cite&gt;MM - Memorandum Macros&lt;/cite&gt;, by
+D. W. Smith, J. R. Mashey, E. C. Pariser, and N. W. Smith, AT&amp;amp;T Bell
+Laboratories, June 1980.  I tried out all the macro packages, but
+found &lt;span class="app"&gt;mm&lt;/span&gt; most to my liking.  I think a large part of that was the
+&lt;span class="app"&gt;mm&lt;/span&gt; documentation — it described the many features of that macro
+package pretty well, in a user guide sort of way, teaching you how to
+use the features as it went along, rather than being a pure reference
+manual.  And I found &lt;span class="app"&gt;mm&lt;/span&gt; most comparable in features to LaTeX of the
+troff macro packages.  While configuring &lt;span class="app"&gt;mm&lt;/span&gt; documents is somewhat
+quirky &lt;a class="footnote-reference brackets" href="https://tkurtbond.github.io/posts/2021/07/15/troff-memorandum-macros-documentation/#quirky" id="id2"&gt;2&lt;/a&gt;, I felt that the added features over those found in
+&lt;span class="app"&gt;me&lt;/span&gt; and &lt;span class="app"&gt;ms&lt;/span&gt; made it worthwhile.  So I wrote a lot of
+documents using &lt;span class="app"&gt;mm&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Years later when I first got access to &lt;span class="app"&gt;groff&lt;/span&gt; on Unix machines
+(early 90s?) the documentation supplied with it for &lt;span class="app"&gt;mm&lt;/span&gt; was the
+&lt;span class="man"&gt;groff_mm(7)&lt;/span&gt; man page.  It was very complete as a reference, but
+very poor for teaching you how to use &lt;span class="app"&gt;mm&lt;/span&gt;.  I continued to use &lt;span class="app"&gt;mm&lt;/span&gt;
+off and on, but I think the lack of the user guide documentation of
+the &lt;span class="app"&gt;mm&lt;/span&gt; paper made &lt;span class="app"&gt;mm&lt;/span&gt; less popular among the users of &lt;span class="app"&gt;groff&lt;/span&gt;
+than it could have been.  So when modern features for PDF appeared for
+groff later on (the &lt;span class="app"&gt;pdfmark&lt;/span&gt; macros), they were adapted to
+&lt;span class="app"&gt;ms&lt;/span&gt; but not &lt;span class="app"&gt;mm&lt;/span&gt;.  (&lt;span class="app"&gt;me&lt;/span&gt; was left out, as well.)  I was sad
+to see &lt;span class="app"&gt;mm&lt;/span&gt;'s apparently low popularity, and the &lt;span class="app"&gt;mm&lt;/span&gt; paper apparently
+is not available on the Internet, unlike the papers on &lt;span class="app"&gt;ms&lt;/span&gt; and
+&lt;span class="app"&gt;me&lt;/span&gt;, which come with &lt;span class="app"&gt;groff&lt;/span&gt;.  I suspect this is because
+&lt;span class="app"&gt;mm&lt;/span&gt; was used heavily in AT&amp;amp;T's &lt;span class="app"&gt;Documenter's Workbench&lt;/span&gt;, a commercial product that was
+distributed separately from UNIX System V, if I understand correctly.&lt;/p&gt;
+&lt;p&gt;However, eventually the sources to the &lt;span class="app"&gt;Documenter's Workbench&lt;/span&gt; because available under
+the Eclipse Public License, and they are &lt;a class="reference external" href="https://github.com/n-t-roff/DWB3.3"&gt;available&lt;/a&gt; in the &lt;a class="reference external" href="https://github.com/n-t-roff"&gt;n-t-roff&lt;/a&gt;
+github repository (along with &lt;a class="reference external" href="http://n-t-roff.github.io/heirloom/doctools.html"&gt;Heirloom Docutils&lt;/a&gt;, a descendant of
+the original &lt;span class="app"&gt;ditroff&lt;/span&gt; with native UTF-8 input and easy use of
+fonts).  This includes the &lt;a class="reference external" href="https://github.com/n-t-roff/DWB3.3/tree/master/doc/mm"&gt;source&lt;/a&gt; to documentation that is derived
+from the &lt;span class="app"&gt;mm&lt;/span&gt; paper!  Unfortunately, I haven't been able to find a PDF
+of this on the Internet.&lt;/p&gt;
+&lt;p&gt;I think that having this available might help those who might want to
+try out &lt;span class="app"&gt;mm&lt;/span&gt;, or are returning to it after a long break, so I've
+posted a version that I built a while ago &lt;a class="reference external" href="https://tkurtbond.github.io/troff/mm-all.pdf"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;dl class="footnote brackets"&gt;
+&lt;dt class="label" id="who-produced-xroff"&gt;&lt;span class="brackets"&gt;&lt;a class="fn-backref" href="https://tkurtbond.github.io/posts/2021/07/15/troff-memorandum-macros-documentation/#id1"&gt;1&lt;/a&gt;&lt;/span&gt;&lt;/dt&gt;
+&lt;dd&gt;&lt;p&gt;While I still maintain a descendant of the VAX I where I used
+&lt;span class="app"&gt;xroff&lt;/span&gt; (emulated using &lt;a class="reference external" href="https://www.stromasys.com/solutions/charon-vax/"&gt;Charon-VAX&lt;/a&gt;), sometime in the past the
+&lt;span class="app"&gt;xroff&lt;/span&gt; software disappeared from it.  I have no idea what
+happened to it.  I blame user PDL!&lt;/p&gt;
+&lt;/dd&gt;
+&lt;dt class="label" id="quirky"&gt;&lt;span class="brackets"&gt;&lt;a class="fn-backref" href="https://tkurtbond.github.io/posts/2021/07/15/troff-memorandum-macros-documentation/#id2"&gt;2&lt;/a&gt;&lt;/span&gt;&lt;/dt&gt;
+&lt;dd&gt;&lt;p&gt;The page offset, page width, and page length have to be set before
+the &lt;span class="app"&gt;mm&lt;/span&gt; macros were loaded, so while on Unix it is easy to set those
+values on the command line, on VMS due to oddities in its command line
+it was easiest to use &lt;code class="docutils literal"&gt;.so&lt;/code&gt; and load the macros directly&lt;/p&gt;
+&lt;/dd&gt;
+&lt;/dl&gt;&lt;/div&gt;</summary>
+    <category term="charon-vax" label="charon-vax"/>
+    <category term="memorandum-macros" label="memorandum macros"/>
+    <category term="mm" label="mm"/>
+    <category term="troff" label="troff"/>
+    <category term="vms" label="vms"/>
+    <category term="xroff" label="xroff"/>
+  </entry>
   <entry>
     <title>FILETAP</title>
     <id>https://tkurtbond.github.io/posts/2004/01/09/2004-01-09/</id>
@@ -104,7 +179,7 @@ VMS, with extensive homegrown applications written in VMS BASIC and
 using the POISE SPL API.&lt;/p&gt;
 &lt;/dd&gt;
 &lt;/dl&gt;
-&lt;section id="id5"&gt;
+&lt;div class="section" id="id5"&gt;
 &lt;h2&gt;2014-11-03&lt;/h2&gt;
 &lt;p&gt;Here's the text of my post to comp.os.vms:&lt;/p&gt;
 &lt;blockquote&gt;
@@ -138,57 +213,57 @@ and is probably bad style.  However, are there any &lt;em&gt;practical&lt;/em&gt
 reasons why this wouldn't work safely?  Are there any
 conditions under which this hack would fail to work?&lt;/p&gt;
 &lt;p&gt;Here is an example program:&lt;/p&gt;
-&lt;pre class="code text"&gt;&lt;a id="rest_code_dac8c84c49e04f8788198dbc05448350-1" name="rest_code_dac8c84c49e04f8788198dbc05448350-1"&gt;&lt;/a&gt;program redim
-&lt;a id="rest_code_dac8c84c49e04f8788198dbc05448350-2" name="rest_code_dac8c84c49e04f8788198dbc05448350-2"&gt;&lt;/a&gt;    option type = explicit, constant type = integer, &amp;amp;
-&lt;a id="rest_code_dac8c84c49e04f8788198dbc05448350-3" name="rest_code_dac8c84c49e04f8788198dbc05448350-3"&gt;&lt;/a&gt;        size = integer long, size = real double
-&lt;a id="rest_code_dac8c84c49e04f8788198dbc05448350-4" name="rest_code_dac8c84c49e04f8788198dbc05448350-4"&gt;&lt;/a&gt;
-&lt;a id="rest_code_dac8c84c49e04f8788198dbc05448350-5" name="rest_code_dac8c84c49e04f8788198dbc05448350-5"&gt;&lt;/a&gt;    external sub redim_in_sub (string dim())
-&lt;a id="rest_code_dac8c84c49e04f8788198dbc05448350-6" name="rest_code_dac8c84c49e04f8788198dbc05448350-6"&gt;&lt;/a&gt;    external long function my_redim (string dim(), long)
-&lt;a id="rest_code_dac8c84c49e04f8788198dbc05448350-7" name="rest_code_dac8c84c49e04f8788198dbc05448350-7"&gt;&lt;/a&gt;
-&lt;a id="rest_code_dac8c84c49e04f8788198dbc05448350-8" name="rest_code_dac8c84c49e04f8788198dbc05448350-8"&gt;&lt;/a&gt;    declare long i, r
-&lt;a id="rest_code_dac8c84c49e04f8788198dbc05448350-9" name="rest_code_dac8c84c49e04f8788198dbc05448350-9"&gt;&lt;/a&gt;
-&lt;a id="rest_code_dac8c84c49e04f8788198dbc05448350-10" name="rest_code_dac8c84c49e04f8788198dbc05448350-10"&gt;&lt;/a&gt;    i = 10
-&lt;a id="rest_code_dac8c84c49e04f8788198dbc05448350-11" name="rest_code_dac8c84c49e04f8788198dbc05448350-11"&gt;&lt;/a&gt;    dim string vs(i) ! has to be a variable to make it an executable dim.
-&lt;a id="rest_code_dac8c84c49e04f8788198dbc05448350-12" name="rest_code_dac8c84c49e04f8788198dbc05448350-12"&gt;&lt;/a&gt;
-&lt;a id="rest_code_dac8c84c49e04f8788198dbc05448350-13" name="rest_code_dac8c84c49e04f8788198dbc05448350-13"&gt;&lt;/a&gt;    r = my_redim (vs(), 30)
-&lt;a id="rest_code_dac8c84c49e04f8788198dbc05448350-14" name="rest_code_dac8c84c49e04f8788198dbc05448350-14"&gt;&lt;/a&gt;    print "ubound(vs):"; ubound(vs)
-&lt;a id="rest_code_dac8c84c49e04f8788198dbc05448350-15" name="rest_code_dac8c84c49e04f8788198dbc05448350-15"&gt;&lt;/a&gt;    for i = lbound(vs) to ubound(vs) \ vs(i) = "vs 30-" + num1$(i) \ next i
-&lt;a id="rest_code_dac8c84c49e04f8788198dbc05448350-16" name="rest_code_dac8c84c49e04f8788198dbc05448350-16"&gt;&lt;/a&gt;    gosub print_vs
-&lt;a id="rest_code_dac8c84c49e04f8788198dbc05448350-17" name="rest_code_dac8c84c49e04f8788198dbc05448350-17"&gt;&lt;/a&gt;
-&lt;a id="rest_code_dac8c84c49e04f8788198dbc05448350-18" name="rest_code_dac8c84c49e04f8788198dbc05448350-18"&gt;&lt;/a&gt;    call redim_in_sub (vs())
-&lt;a id="rest_code_dac8c84c49e04f8788198dbc05448350-19" name="rest_code_dac8c84c49e04f8788198dbc05448350-19"&gt;&lt;/a&gt;    print "ubound(vs):"; ubound(vs)
-&lt;a id="rest_code_dac8c84c49e04f8788198dbc05448350-20" name="rest_code_dac8c84c49e04f8788198dbc05448350-20"&gt;&lt;/a&gt;    gosub print_Vs
-&lt;a id="rest_code_dac8c84c49e04f8788198dbc05448350-21" name="rest_code_dac8c84c49e04f8788198dbc05448350-21"&gt;&lt;/a&gt;
-&lt;a id="rest_code_dac8c84c49e04f8788198dbc05448350-22" name="rest_code_dac8c84c49e04f8788198dbc05448350-22"&gt;&lt;/a&gt;    exit program
-&lt;a id="rest_code_dac8c84c49e04f8788198dbc05448350-23" name="rest_code_dac8c84c49e04f8788198dbc05448350-23"&gt;&lt;/a&gt;
-&lt;a id="rest_code_dac8c84c49e04f8788198dbc05448350-24" name="rest_code_dac8c84c49e04f8788198dbc05448350-24"&gt;&lt;/a&gt;print_vs:
-&lt;a id="rest_code_dac8c84c49e04f8788198dbc05448350-25" name="rest_code_dac8c84c49e04f8788198dbc05448350-25"&gt;&lt;/a&gt;    for i = lbound(vs) to ubound(vs) \ print i; ": "; vs(i) \ next i
-&lt;a id="rest_code_dac8c84c49e04f8788198dbc05448350-26" name="rest_code_dac8c84c49e04f8788198dbc05448350-26"&gt;&lt;/a&gt;    return ! from print_vs
-&lt;a id="rest_code_dac8c84c49e04f8788198dbc05448350-27" name="rest_code_dac8c84c49e04f8788198dbc05448350-27"&gt;&lt;/a&gt;
-&lt;a id="rest_code_dac8c84c49e04f8788198dbc05448350-28" name="rest_code_dac8c84c49e04f8788198dbc05448350-28"&gt;&lt;/a&gt;end program ! redim
-&lt;a id="rest_code_dac8c84c49e04f8788198dbc05448350-29" name="rest_code_dac8c84c49e04f8788198dbc05448350-29"&gt;&lt;/a&gt;
-&lt;a id="rest_code_dac8c84c49e04f8788198dbc05448350-30" name="rest_code_dac8c84c49e04f8788198dbc05448350-30"&gt;&lt;/a&gt;function long my_redim (long s by value, long n)
-&lt;a id="rest_code_dac8c84c49e04f8788198dbc05448350-31" name="rest_code_dac8c84c49e04f8788198dbc05448350-31"&gt;&lt;/a&gt;    option type = explicit, constant type = integer, &amp;amp;
-&lt;a id="rest_code_dac8c84c49e04f8788198dbc05448350-32" name="rest_code_dac8c84c49e04f8788198dbc05448350-32"&gt;&lt;/a&gt;        size = integer long, size = real double
-&lt;a id="rest_code_dac8c84c49e04f8788198dbc05448350-33" name="rest_code_dac8c84c49e04f8788198dbc05448350-33"&gt;&lt;/a&gt;    declare long r
-&lt;a id="rest_code_dac8c84c49e04f8788198dbc05448350-34" name="rest_code_dac8c84c49e04f8788198dbc05448350-34"&gt;&lt;/a&gt;    external long function dbasic$rt_dim (long by value, long by value)
-&lt;a id="rest_code_dac8c84c49e04f8788198dbc05448350-35" name="rest_code_dac8c84c49e04f8788198dbc05448350-35"&gt;&lt;/a&gt;    r = dbasic$rt_dim (s, n)
-&lt;a id="rest_code_dac8c84c49e04f8788198dbc05448350-36" name="rest_code_dac8c84c49e04f8788198dbc05448350-36"&gt;&lt;/a&gt;end function r ! my_redim
-&lt;a id="rest_code_dac8c84c49e04f8788198dbc05448350-37" name="rest_code_dac8c84c49e04f8788198dbc05448350-37"&gt;&lt;/a&gt;
-&lt;a id="rest_code_dac8c84c49e04f8788198dbc05448350-38" name="rest_code_dac8c84c49e04f8788198dbc05448350-38"&gt;&lt;/a&gt;sub redim_in_sub (string s())
-&lt;a id="rest_code_dac8c84c49e04f8788198dbc05448350-39" name="rest_code_dac8c84c49e04f8788198dbc05448350-39"&gt;&lt;/a&gt;    option type = explicit, constant type = integer, &amp;amp;
-&lt;a id="rest_code_dac8c84c49e04f8788198dbc05448350-40" name="rest_code_dac8c84c49e04f8788198dbc05448350-40"&gt;&lt;/a&gt;        size = integer long, size = real double
-&lt;a id="rest_code_dac8c84c49e04f8788198dbc05448350-41" name="rest_code_dac8c84c49e04f8788198dbc05448350-41"&gt;&lt;/a&gt;    external sub set_strings (string dim(), string)
-&lt;a id="rest_code_dac8c84c49e04f8788198dbc05448350-42" name="rest_code_dac8c84c49e04f8788198dbc05448350-42"&gt;&lt;/a&gt;    declare long i
-&lt;a id="rest_code_dac8c84c49e04f8788198dbc05448350-43" name="rest_code_dac8c84c49e04f8788198dbc05448350-43"&gt;&lt;/a&gt;    call my_redim (s(), 40)
-&lt;a id="rest_code_dac8c84c49e04f8788198dbc05448350-44" name="rest_code_dac8c84c49e04f8788198dbc05448350-44"&gt;&lt;/a&gt;    for i = 0 to 40 \ s(i) = "redim in sub " + num1$(i) \ next i
-&lt;a id="rest_code_dac8c84c49e04f8788198dbc05448350-45" name="rest_code_dac8c84c49e04f8788198dbc05448350-45"&gt;&lt;/a&gt;end sub ! redim_in_sub
+&lt;pre class="code text"&gt;&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-1"&gt;&lt;/a&gt;program redim
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-2"&gt;&lt;/a&gt;    option type = explicit, constant type = integer, &amp;amp;
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-3"&gt;&lt;/a&gt;        size = integer long, size = real double
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-4"&gt;&lt;/a&gt;
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-5"&gt;&lt;/a&gt;    external sub redim_in_sub (string dim())
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-6"&gt;&lt;/a&gt;    external long function my_redim (string dim(), long)
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-7"&gt;&lt;/a&gt;
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-8"&gt;&lt;/a&gt;    declare long i, r
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-9"&gt;&lt;/a&gt;
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-10"&gt;&lt;/a&gt;    i = 10
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-11"&gt;&lt;/a&gt;    dim string vs(i) ! has to be a variable to make it an executable dim.
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-12"&gt;&lt;/a&gt;
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-13"&gt;&lt;/a&gt;    r = my_redim (vs(), 30)
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-14"&gt;&lt;/a&gt;    print "ubound(vs):"; ubound(vs)
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-15"&gt;&lt;/a&gt;    for i = lbound(vs) to ubound(vs) \ vs(i) = "vs 30-" + num1$(i) \ next i
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-16"&gt;&lt;/a&gt;    gosub print_vs
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-17"&gt;&lt;/a&gt;
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-18"&gt;&lt;/a&gt;    call redim_in_sub (vs())
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-19"&gt;&lt;/a&gt;    print "ubound(vs):"; ubound(vs)
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-20"&gt;&lt;/a&gt;    gosub print_Vs
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-21"&gt;&lt;/a&gt;
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-22"&gt;&lt;/a&gt;    exit program
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-23"&gt;&lt;/a&gt;
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-24"&gt;&lt;/a&gt;print_vs:
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-25"&gt;&lt;/a&gt;    for i = lbound(vs) to ubound(vs) \ print i; ": "; vs(i) \ next i
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-26"&gt;&lt;/a&gt;    return ! from print_vs
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-27"&gt;&lt;/a&gt;
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-28"&gt;&lt;/a&gt;end program ! redim
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-29"&gt;&lt;/a&gt;
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-30"&gt;&lt;/a&gt;function long my_redim (long s by value, long n)
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-31"&gt;&lt;/a&gt;    option type = explicit, constant type = integer, &amp;amp;
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-32"&gt;&lt;/a&gt;        size = integer long, size = real double
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-33"&gt;&lt;/a&gt;    declare long r
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-34"&gt;&lt;/a&gt;    external long function dbasic$rt_dim (long by value, long by value)
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-35"&gt;&lt;/a&gt;    r = dbasic$rt_dim (s, n)
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-36"&gt;&lt;/a&gt;end function r ! my_redim
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-37"&gt;&lt;/a&gt;
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-38"&gt;&lt;/a&gt;sub redim_in_sub (string s())
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-39"&gt;&lt;/a&gt;    option type = explicit, constant type = integer, &amp;amp;
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-40"&gt;&lt;/a&gt;        size = integer long, size = real double
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-41"&gt;&lt;/a&gt;    external sub set_strings (string dim(), string)
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-42"&gt;&lt;/a&gt;    declare long i
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-43"&gt;&lt;/a&gt;    call my_redim (s(), 40)
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-44"&gt;&lt;/a&gt;    for i = 0 to 40 \ s(i) = "redim in sub " + num1$(i) \ next i
+&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-45"&gt;&lt;/a&gt;end sub ! redim_in_sub
 &lt;/pre&gt;&lt;p&gt;(Interestingly, a slightly different approach was necessary using VAX
 BASIC V3.5 under VMS V5.5-2: using BY VALUE in function
 definition statements is not allowed by this version of VAX BASIC,
 and BAS$RT_DIM had to be used instead of DBASIC$RT_DIM, of course.)&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;/section&gt;&lt;/div&gt;</summary>
+&lt;/div&gt;&lt;/div&gt;</summary>
     <category term="basic" label="basic"/>
     <category term="dms-plus" label="dms-plus"/>
     <category term="mmk" label="mmk"/>

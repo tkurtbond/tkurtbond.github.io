@@ -10,7 +10,7 @@
 <link rel="alternate" type="application/atom+xml" title="Atom" href="feed.atom">
 <link rel="canonical" href="https://tkurtbond.github.io/">
 <link rel="next" href="index-90.html" type="text/html">
-<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/2021/07/13/in-aff-1e-armour-didnt-make-magic-harder/" type="text/html">
+<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/2021/07/15/troff-memorandum-macros-documentation/" type="text/html">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
@@ -52,7 +52,89 @@
         <div class="row">
             <div class="col-sm-8 blog-main">
 <div class="postindex">
-    <article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2021/07/13/in-aff-1e-armour-didnt-make-magic-harder/" class="u-url">In AFF 1E armour didn't make magic harder</a></h2>
+    <article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2021/07/15/troff-memorandum-macros-documentation/" class="u-url">troff Memorandum Macros documentation</a></h2>
+        <div class="metadata blog-post-meta">
+            <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
+            <p class="dateline"><a href="posts/2021/07/15/troff-memorandum-macros-documentation/" rel="bookmark"><time class="published dt-published" datetime="2021-07-15T15:57:09-04:00" title="2021-07-15 15:57">2021-07-15 15:57</time></a></p>
+                <p class="commentline">            <a href="posts/2021/07/15/troff-memorandum-macros-documentation/#disqus_thread" data-disqus-identifier="cache/posts/2021/07/15/troff-memorandum-macros-documentation.html">Comments</a>
+
+
+        </p>
+</div>
+    </header><div class="e-content entry-content">
+    <div>
+<p>When I learned <span class="app">troff</span> it was actually on a VAX running VMS (used
+by <a class="reference external" href="http://www.mpl.com/">MPL Corporation</a>) using a port of <span class="app">troff</span> called
+<span class="app">xroff</span> <a class="footnote-reference brackets" href="posts/2021/07/15/troff-memorandum-macros-documentation/#who-produced-xroff" id="id1">1</a>, probably around 1986.  (The VAX
+also had TeX and LaTeX, and I used them too.  Both supported the DEC
+LNO3 laserprinter that MPL had.)  While I don't know who produced
+<span class="app">xroff</span> and can't find anything out about it on the Internet, it
+was a complete port of <span class="app">troff</span> to VMS, including all the standard
+utilities and macro packages, including documentation for <span class="app">ms</span>,
+<span class="app">me</span>, and, significantly for this post <span class="app">mm</span>.</p>
+<p>The <span class="app">mm</span> documentation was the paper <cite>MM - Memorandum Macros</cite>, by
+D. W. Smith, J. R. Mashey, E. C. Pariser, and N. W. Smith, AT&amp;T Bell
+Laboratories, June 1980.  I tried out all the macro packages, but
+found <span class="app">mm</span> most to my liking.  I think a large part of that was the
+<span class="app">mm</span> documentation — it described the many features of that macro
+package pretty well, in a user guide sort of way, teaching you how to
+use the features as it went along, rather than being a pure reference
+manual.  And I found <span class="app">mm</span> most comparable in features to LaTeX of the
+troff macro packages.  While configuring <span class="app">mm</span> documents is somewhat
+quirky <a class="footnote-reference brackets" href="posts/2021/07/15/troff-memorandum-macros-documentation/#quirky" id="id2">2</a>, I felt that the added features over those found in
+<span class="app">me</span> and <span class="app">ms</span> made it worthwhile.  So I wrote a lot of
+documents using <span class="app">mm</span>.</p>
+<p>Years later when I first got access to <span class="app">groff</span> on Unix machines
+(early 90s?) the documentation supplied with it for <span class="app">mm</span> was the
+<span class="man">groff_mm(7)</span> man page.  It was very complete as a reference, but
+very poor for teaching you how to use <span class="app">mm</span>.  I continued to use <span class="app">mm</span>
+off and on, but I think the lack of the user guide documentation of
+the <span class="app">mm</span> paper made <span class="app">mm</span> less popular among the users of <span class="app">groff</span>
+than it could have been.  So when modern features for PDF appeared for
+groff later on (the <span class="app">pdfmark</span> macros), they were adapted to
+<span class="app">ms</span> but not <span class="app">mm</span>.  (<span class="app">me</span> was left out, as well.)  I was sad
+to see <span class="app">mm</span>'s apparently low popularity, and the <span class="app">mm</span> paper apparently
+is not available on the Internet, unlike the papers on <span class="app">ms</span> and
+<span class="app">me</span>, which come with <span class="app">groff</span>.  I suspect this is because
+<span class="app">mm</span> was used heavily in AT&amp;T's <span class="app">Documenter's Workbench</span>, a commercial product that was
+distributed separately from UNIX System V, if I understand correctly.</p>
+<p>However, eventually the sources to the <span class="app">Documenter's Workbench</span> because available under
+the Eclipse Public License, and they are <a class="reference external" href="https://github.com/n-t-roff/DWB3.3">available</a> in the <a class="reference external" href="https://github.com/n-t-roff">n-t-roff</a>
+github repository (along with <a class="reference external" href="http://n-t-roff.github.io/heirloom/doctools.html">Heirloom Docutils</a>, a descendant of
+the original <span class="app">ditroff</span> with native UTF-8 input and easy use of
+fonts).  This includes the <a class="reference external" href="https://github.com/n-t-roff/DWB3.3/tree/master/doc/mm">source</a> to documentation that is derived
+from the <span class="app">mm</span> paper!  Unfortunately, I haven't been able to find a PDF
+of this on the Internet.</p>
+<p>I think that having this available might help those who might want to
+try out <span class="app">mm</span>, or are returning to it after a long break, so I've
+posted a version that I built a while ago <a class="reference external" href="troff/mm-all.pdf">here</a>.</p>
+<dl class="footnote brackets">
+<dt class="label" id="who-produced-xroff"><span class="brackets"><a class="fn-backref" href="posts/2021/07/15/troff-memorandum-macros-documentation/#id1">1</a></span></dt>
+<dd>
+<p>While I still maintain a descendant of the VAX I where I used
+<span class="app">xroff</span> (emulated using <a class="reference external" href="https://www.stromasys.com/solutions/charon-vax/">Charon-VAX</a>), sometime in the past the
+<span class="app">xroff</span> software disappeared from it.  I have no idea what
+happened to it.  I blame user PDL!</p>
+</dd>
+<dt class="label" id="quirky"><span class="brackets"><a class="fn-backref" href="posts/2021/07/15/troff-memorandum-macros-documentation/#id2">2</a></span></dt>
+<dd>
+<p>The page offset, page width, and page length have to be set before
+the <span class="app">mm</span> macros were loaded, so while on Unix it is easy to set those
+values on the command line, on VMS due to oddities in its command line
+it was easiest to use <code class="docutils literal">.so</code> and load the macros directly</p>
+</dd>
+</dl>
+</div>
+    <nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="categories/charon-vax/" rel="tag">charon-vax</a></li>
+            <li><a class="tag p-category" href="categories/memorandum-macros/" rel="tag">memorandum macros</a></li>
+            <li><a class="tag p-category" href="categories/mm/" rel="tag">mm</a></li>
+            <li><a class="tag p-category" href="categories/troff/" rel="tag">troff</a></li>
+            <li><a class="tag p-category" href="categories/vms/" rel="tag">vms</a></li>
+            <li><a class="tag p-category" href="categories/xroff/" rel="tag">xroff</a></li>
+        </ul></nav>
+</div>
+    </article><article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2021/07/13/in-aff-1e-armour-didnt-make-magic-harder/" class="u-url">In AFF 1E armour didn't make magic harder</a></h2>
         <div class="metadata blog-post-meta">
             <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
             <p class="dateline"><a href="posts/2021/07/13/in-aff-1e-armour-didnt-make-magic-harder/" rel="bookmark"><time class="published dt-published" datetime="2021-07-13T02:47:58-04:00" title="2021-07-13 02:47">2021-07-13 02:47</time></a></p>
@@ -205,32 +287,32 @@ ago.  It looks like you can get <span class="file">xmlunicode.el</span> from his
 <a class="reference external" href="https://github.com/ndw/xmlunicode">xmlunicode</a> github repository, and it looks like the replacement for
 <span class="file">unichars.el</span> is <span class="file">xmlunicode-character-list.el</span>.</p>
 <p>Here's my code:</p>
-<pre class="code emacs-lisp"><a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-1" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-1"></a><span class="c1">;; look at https://github.com/ndw/xmlunicode for xmlunicode.el and a way</span>
-<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-2" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-2"></a><span class="c1">;; to make something like unichars.el.  xmlunicode.el provides the</span>
-<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-3" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-3"></a><span class="c1">;; "smart-unicode-*" functions.</span>
-<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-4" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-4"></a><span class="p">(</span><span class="nv">load-library</span> <span class="s">"xmlunicode"</span><span class="p">)</span>
-<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-5" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-5"></a><span class="p">(</span><span class="nv">load-library</span> <span class="s">"unichars"</span><span class="p">)</span>
-<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-6" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-6"></a>
-<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-7" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-7"></a><span class="p">(</span><span class="nb">defun</span> <span class="nv">tkb-describe-character</span> <span class="p">(</span><span class="nv">before</span><span class="p">)</span>
-<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-8" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-8"></a>  <span class="s">"Describe the character after point (before if a prefix was specified)</span>
-<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-9" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-9"></a><span class="s">if it is a unicode character."</span>
-<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-10" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-10"></a>  <span class="p">(</span><span class="k">interactive</span> <span class="s">"P"</span><span class="p">)</span>
-<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-11" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-11"></a>  <span class="p">(</span><span class="k">let*</span> <span class="p">((</span><span class="nv">char</span> <span class="p">(</span><span class="k">if</span> <span class="nv">before</span> <span class="p">(</span><span class="nf">char-before</span><span class="p">)</span> <span class="p">(</span><span class="nf">char-after</span><span class="p">)))</span>
-<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-12" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-12"></a>         <span class="p">(</span><span class="nv">info</span> <span class="p">(</span><span class="nf">assoc</span> <span class="p">(</span><span class="nf">encode-char</span> <span class="nv">char</span> <span class="ss">'ucs</span><span class="p">)</span> <span class="nv">unicode-character-list</span><span class="p">))</span>
-<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-13" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-13"></a>         <span class="p">(</span><span class="nv">info</span> <span class="p">(</span><span class="nf">cons</span> <span class="p">(</span><span class="nf">format</span> <span class="s">"#x%X"</span> <span class="p">(</span><span class="nf">car</span> <span class="nv">info</span><span class="p">))</span> <span class="nv">info</span><span class="p">)))</span>
-<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-14" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-14"></a>    <span class="p">(</span><span class="nf">message</span> <span class="s">"%S"</span> <span class="nv">info</span><span class="p">)))</span>
-<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-15" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-15"></a><span class="p">(</span><span class="nv">tkb-keys</span> <span class="p">((</span><span class="nv">kbd</span> <span class="s">"C-c k d"</span><span class="p">)</span> <span class="nf">#'</span><span class="nv">tkb-describe-character</span><span class="p">))</span>
-<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-16" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-16"></a>
-<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-17" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-17"></a><span class="p">(</span><span class="nb">define-minor-mode</span> <span class="nv">tkb-smart-unicode-mode</span>
-<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-18" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-18"></a>  <span class="s">"Toggle smart unicode punctuation"</span> <span class="no">nil</span> <span class="s">" ♻⚔☣☥☸◉⅙✽☮"</span> <span class="c1">; "✘▧▧⚅☑☢☹☺♠♥♦♣♨"</span>
-<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-19" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-19"></a>  <span class="o">'</span><span class="p">((</span><span class="s">"\""</span> <span class="o">.</span> <span class="nv">unicode-smart-double-quote</span><span class="p">)</span>
-<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-20" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-20"></a>    <span class="p">(</span><span class="s">"'"</span>  <span class="o">.</span> <span class="nv">unicode-smart-single-quote</span><span class="p">)</span>
-<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-21" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-21"></a>    <span class="p">(</span><span class="s">"-"</span>  <span class="o">.</span> <span class="nv">unicode-smart-hyphen</span><span class="p">)</span>
-<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-22" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-22"></a>    <span class="p">(</span><span class="s">"."</span>  <span class="o">.</span> <span class="nv">unicode-smart-period</span><span class="p">)))</span>
-<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-23" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-23"></a>
-<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-24" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-24"></a><span class="p">(</span><span class="nb">defadvice</span> <span class="nv">unicode-smart-hyphen</span> <span class="p">(</span><span class="nv">after</span> <span class="nv">tkb-after-unicode-smart-hyphen</span> <span class="nv">last</span>
-<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-25" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-25"></a>                                       <span class="nv">activate</span> <span class="nv">compile</span><span class="p">)</span>
-<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-26" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-26"></a>  <span class="p">(</span><span class="nv">tkb-describe-character</span> <span class="no">t</span><span class="p">))</span>
+<pre class="code emacs-lisp"><a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-1"></a><span class="c1">;; look at https://github.com/ndw/xmlunicode for xmlunicode.el and a way</span>
+<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-2"></a><span class="c1">;; to make something like unichars.el.  xmlunicode.el provides the</span>
+<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-3"></a><span class="c1">;; "smart-unicode-*" functions.</span>
+<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-4"></a><span class="p">(</span><span class="nv">load-library</span> <span class="s">"xmlunicode"</span><span class="p">)</span>
+<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-5"></a><span class="p">(</span><span class="nv">load-library</span> <span class="s">"unichars"</span><span class="p">)</span>
+<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-6"></a>
+<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-7"></a><span class="p">(</span><span class="nb">defun</span> <span class="nv">tkb-describe-character</span> <span class="p">(</span><span class="nv">before</span><span class="p">)</span>
+<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-8"></a>  <span class="s">"Describe the character after point (before if a prefix was specified)</span>
+<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-9"></a><span class="s">if it is a unicode character."</span>
+<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-10"></a>  <span class="p">(</span><span class="k">interactive</span> <span class="s">"P"</span><span class="p">)</span>
+<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-11"></a>  <span class="p">(</span><span class="k">let*</span> <span class="p">((</span><span class="nv">char</span> <span class="p">(</span><span class="k">if</span> <span class="nv">before</span> <span class="p">(</span><span class="nf">char-before</span><span class="p">)</span> <span class="p">(</span><span class="nf">char-after</span><span class="p">)))</span>
+<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-12"></a>         <span class="p">(</span><span class="nv">info</span> <span class="p">(</span><span class="nf">assoc</span> <span class="p">(</span><span class="nf">encode-char</span> <span class="nv">char</span> <span class="ss">'ucs</span><span class="p">)</span> <span class="nv">unicode-character-list</span><span class="p">))</span>
+<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-13"></a>         <span class="p">(</span><span class="nv">info</span> <span class="p">(</span><span class="nf">cons</span> <span class="p">(</span><span class="nf">format</span> <span class="s">"#x%X"</span> <span class="p">(</span><span class="nf">car</span> <span class="nv">info</span><span class="p">))</span> <span class="nv">info</span><span class="p">)))</span>
+<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-14"></a>    <span class="p">(</span><span class="nf">message</span> <span class="s">"%S"</span> <span class="nv">info</span><span class="p">)))</span>
+<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-15"></a><span class="p">(</span><span class="nv">tkb-keys</span> <span class="p">((</span><span class="nv">kbd</span> <span class="s">"C-c k d"</span><span class="p">)</span> <span class="nf">#'</span><span class="nv">tkb-describe-character</span><span class="p">))</span>
+<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-16"></a>
+<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-17"></a><span class="p">(</span><span class="nb">define-minor-mode</span> <span class="nv">tkb-smart-unicode-mode</span>
+<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-18"></a>  <span class="s">"Toggle smart unicode punctuation"</span> <span class="no">nil</span> <span class="s">" ♻⚔☣☥☸◉⅙✽☮"</span> <span class="c1">; "✘▧▧⚅☑☢☹☺♠♥♦♣♨"</span>
+<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-19"></a>  <span class="o">'</span><span class="p">((</span><span class="s">"\""</span> <span class="o">.</span> <span class="nv">unicode-smart-double-quote</span><span class="p">)</span>
+<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-20"></a>    <span class="p">(</span><span class="s">"'"</span>  <span class="o">.</span> <span class="nv">unicode-smart-single-quote</span><span class="p">)</span>
+<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-21"></a>    <span class="p">(</span><span class="s">"-"</span>  <span class="o">.</span> <span class="nv">unicode-smart-hyphen</span><span class="p">)</span>
+<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-22"></a>    <span class="p">(</span><span class="s">"."</span>  <span class="o">.</span> <span class="nv">unicode-smart-period</span><span class="p">)))</span>
+<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-23"></a>
+<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-24"></a><span class="p">(</span><span class="nb">defadvice</span> <span class="nv">unicode-smart-hyphen</span> <span class="p">(</span><span class="nv">after</span> <span class="nv">tkb-after-unicode-smart-hyphen</span> <span class="nv">last</span>
+<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-25"></a>                                       <span class="nv">activate</span> <span class="nv">compile</span><span class="p">)</span>
+<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-26"></a>  <span class="p">(</span><span class="nv">tkb-describe-character</span> <span class="no">t</span><span class="p">))</span>
 </pre>
 <p>Here's a <a class="reference external" href="https://gist.github.com/tkurtbond/3dad54a2141422f39033533e72f53110">gist</a>, and the <a class="reference external" href="https://gist.githubusercontent.com/tkurtbond/3dad54a2141422f39033533e72f53110/raw/f1dc635d64fae89d1202142583df39544a87d7b8/tkb-smart-unicode-mode.el">raw</a> gist if you want to download it directly.</p>
 </div>
@@ -428,9 +510,9 @@ times to get things to work.  For example, building software from
 source, often using the familiar <code class="docutils literal">./configure; make; make install</code>
 paradigm.</p>
 <p>So, the first thing is to try is to use the venerable <span class="command">tee</span> command.</p>
-<pre class="code bash"><a id="rest_code_b2e461e4f64b4ecbb852db9bf089b287-1" name="rest_code_b2e461e4f64b4ecbb852db9bf089b287-1"></a>./configure <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">|</span> tee Log.configure
-<a id="rest_code_b2e461e4f64b4ecbb852db9bf089b287-2" name="rest_code_b2e461e4f64b4ecbb852db9bf089b287-2"></a>make <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">|</span> tee Log.make
-<a id="rest_code_b2e461e4f64b4ecbb852db9bf089b287-3" name="rest_code_b2e461e4f64b4ecbb852db9bf089b287-3"></a>make install <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">|</span> tee Log.make-install
+<pre class="code bash"><a name="rest_code_4edf7ed7d2c343c0b80ea12d1acc7981-1"></a>./configure <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">|</span> tee Log.configure
+<a name="rest_code_4edf7ed7d2c343c0b80ea12d1acc7981-2"></a>make <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">|</span> tee Log.make
+<a name="rest_code_4edf7ed7d2c343c0b80ea12d1acc7981-3"></a>make install <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">|</span> tee Log.make-install
 </pre>
 <p>To make the log files easy to find I use a <span class="file">Log.</span> prefix.</p>
 <p>But I often need to run the commands multiple times, and want to save
@@ -441,49 +523,49 @@ date in YYYY-MM-DD format, so the resulting names look like
 <span class="file">Log.make-install-2021-07-07_2</span>.</p>
 <p>So I wrote a bash function <span class="command">incf</span> (increment filename) to put in
 <span class="file">.bashrc</span> that generates such a name:</p>
-<pre class="code bash"><a id="rest_code_aa66d093c22a47eda7bc3219a83e06a8-1" name="rest_code_aa66d093c22a47eda7bc3219a83e06a8-1"></a>incf <span class="o">()</span> <span class="o">{</span>
-<a id="rest_code_aa66d093c22a47eda7bc3219a83e06a8-2" name="rest_code_aa66d093c22a47eda7bc3219a83e06a8-2"></a>    <span class="c1"># Construct a filename from PREFIX, "_YYYY-MM-DD",  optionally _N (where N</span>
-<a id="rest_code_aa66d093c22a47eda7bc3219a83e06a8-3" name="rest_code_aa66d093c22a47eda7bc3219a83e06a8-3"></a>    <span class="c1"># is 1 or greater) if the filename already exists, and optionally SUFFIX.</span>
-<a id="rest_code_aa66d093c22a47eda7bc3219a83e06a8-4" name="rest_code_aa66d093c22a47eda7bc3219a83e06a8-4"></a>    <span class="c1"># Example: "incf file .tar.gz" results in "file_2021-07-07.tar.gz", or</span>
-<a id="rest_code_aa66d093c22a47eda7bc3219a83e06a8-5" name="rest_code_aa66d093c22a47eda7bc3219a83e06a8-5"></a>    <span class="c1"># "file_2021-07-07_N.tar.gz" if "file_2021-07-07.tar.gz" already exists,</span>
-<a id="rest_code_aa66d093c22a47eda7bc3219a83e06a8-6" name="rest_code_aa66d093c22a47eda7bc3219a83e06a8-6"></a>    <span class="c1"># where N is 1 or greater.</span>
-<a id="rest_code_aa66d093c22a47eda7bc3219a83e06a8-7" name="rest_code_aa66d093c22a47eda7bc3219a83e06a8-7"></a>    <span class="nb">local</span> prefix suffix fileprefix i testname sep1 sep2
-<a id="rest_code_aa66d093c22a47eda7bc3219a83e06a8-8" name="rest_code_aa66d093c22a47eda7bc3219a83e06a8-8"></a>    <span class="nv">prefix</span><span class="o">=</span><span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span>
-<a id="rest_code_aa66d093c22a47eda7bc3219a83e06a8-9" name="rest_code_aa66d093c22a47eda7bc3219a83e06a8-9"></a>    <span class="nv">suffix</span><span class="o">=</span><span class="s2">"</span><span class="nv">$2</span><span class="s2">"</span>
-<a id="rest_code_aa66d093c22a47eda7bc3219a83e06a8-10" name="rest_code_aa66d093c22a47eda7bc3219a83e06a8-10"></a>    <span class="nv">sep1</span><span class="o">=</span><span class="s2">"_"</span>
-<a id="rest_code_aa66d093c22a47eda7bc3219a83e06a8-11" name="rest_code_aa66d093c22a47eda7bc3219a83e06a8-11"></a>    <span class="nv">sep2</span><span class="o">=</span><span class="s2">"_"</span>
-<a id="rest_code_aa66d093c22a47eda7bc3219a83e06a8-12" name="rest_code_aa66d093c22a47eda7bc3219a83e06a8-12"></a>    <span class="nv">fileprefix</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">prefix</span><span class="si">}${</span><span class="nv">sep1</span><span class="si">}</span><span class="k">$(</span>date +%F<span class="k">)</span><span class="s2">"</span>
-<a id="rest_code_aa66d093c22a47eda7bc3219a83e06a8-13" name="rest_code_aa66d093c22a47eda7bc3219a83e06a8-13"></a>    <span class="nb">let</span> <span class="nv">i</span><span class="o">=</span><span class="m">0</span>
-<a id="rest_code_aa66d093c22a47eda7bc3219a83e06a8-14" name="rest_code_aa66d093c22a47eda7bc3219a83e06a8-14"></a>    <span class="c1"># The zeroth filename doesn't have the number.</span>
-<a id="rest_code_aa66d093c22a47eda7bc3219a83e06a8-15" name="rest_code_aa66d093c22a47eda7bc3219a83e06a8-15"></a>    <span class="nv">testname</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">fileprefix</span><span class="si">}${</span><span class="nv">suffix</span><span class="si">}</span><span class="s2">"</span>
-<a id="rest_code_aa66d093c22a47eda7bc3219a83e06a8-16" name="rest_code_aa66d093c22a47eda7bc3219a83e06a8-16"></a>    <span class="k">while</span> <span class="nb">true</span>
-<a id="rest_code_aa66d093c22a47eda7bc3219a83e06a8-17" name="rest_code_aa66d093c22a47eda7bc3219a83e06a8-17"></a>    <span class="k">do</span>
-<a id="rest_code_aa66d093c22a47eda7bc3219a83e06a8-18" name="rest_code_aa66d093c22a47eda7bc3219a83e06a8-18"></a>      <span class="o">[</span> ! -e <span class="s2">"</span><span class="nv">$testname</span><span class="s2">"</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="nb">break</span>
-<a id="rest_code_aa66d093c22a47eda7bc3219a83e06a8-19" name="rest_code_aa66d093c22a47eda7bc3219a83e06a8-19"></a>      <span class="o">((</span>i++<span class="o">))</span>
-<a id="rest_code_aa66d093c22a47eda7bc3219a83e06a8-20" name="rest_code_aa66d093c22a47eda7bc3219a83e06a8-20"></a>      <span class="nv">testname</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">fileprefix</span><span class="si">}${</span><span class="nv">sep2</span><span class="si">}${</span><span class="nv">i</span><span class="si">}${</span><span class="nv">suffix</span><span class="si">}</span><span class="s2">"</span>
-<a id="rest_code_aa66d093c22a47eda7bc3219a83e06a8-21" name="rest_code_aa66d093c22a47eda7bc3219a83e06a8-21"></a>    <span class="k">done</span>
-<a id="rest_code_aa66d093c22a47eda7bc3219a83e06a8-22" name="rest_code_aa66d093c22a47eda7bc3219a83e06a8-22"></a>    <span class="nb">echo</span> <span class="s2">"</span><span class="nv">$testname</span><span class="s2">"</span>
-<a id="rest_code_aa66d093c22a47eda7bc3219a83e06a8-23" name="rest_code_aa66d093c22a47eda7bc3219a83e06a8-23"></a><span class="o">}</span>
+<pre class="code bash"><a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-1"></a>incf <span class="o">()</span> <span class="o">{</span>
+<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-2"></a>    <span class="c1"># Construct a filename from PREFIX, "_YYYY-MM-DD",  optionally _N (where N</span>
+<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-3"></a>    <span class="c1"># is 1 or greater) if the filename already exists, and optionally SUFFIX.</span>
+<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-4"></a>    <span class="c1"># Example: "incf file .tar.gz" results in "file_2021-07-07.tar.gz", or</span>
+<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-5"></a>    <span class="c1"># "file_2021-07-07_N.tar.gz" if "file_2021-07-07.tar.gz" already exists,</span>
+<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-6"></a>    <span class="c1"># where N is 1 or greater.</span>
+<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-7"></a>    <span class="nb">local</span> prefix suffix fileprefix i testname sep1 sep2
+<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-8"></a>    <span class="nv">prefix</span><span class="o">=</span><span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span>
+<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-9"></a>    <span class="nv">suffix</span><span class="o">=</span><span class="s2">"</span><span class="nv">$2</span><span class="s2">"</span>
+<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-10"></a>    <span class="nv">sep1</span><span class="o">=</span><span class="s2">"_"</span>
+<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-11"></a>    <span class="nv">sep2</span><span class="o">=</span><span class="s2">"_"</span>
+<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-12"></a>    <span class="nv">fileprefix</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">prefix</span><span class="si">}${</span><span class="nv">sep1</span><span class="si">}</span><span class="k">$(</span>date +%F<span class="k">)</span><span class="s2">"</span>
+<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-13"></a>    <span class="nb">let</span> <span class="nv">i</span><span class="o">=</span><span class="m">0</span>
+<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-14"></a>    <span class="c1"># The zeroth filename doesn't have the number.</span>
+<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-15"></a>    <span class="nv">testname</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">fileprefix</span><span class="si">}${</span><span class="nv">suffix</span><span class="si">}</span><span class="s2">"</span>
+<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-16"></a>    <span class="k">while</span> <span class="nb">true</span>
+<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-17"></a>    <span class="k">do</span>
+<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-18"></a>      <span class="o">[</span> ! -e <span class="s2">"</span><span class="nv">$testname</span><span class="s2">"</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="nb">break</span>
+<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-19"></a>      <span class="o">((</span>i++<span class="o">))</span>
+<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-20"></a>      <span class="nv">testname</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">fileprefix</span><span class="si">}${</span><span class="nv">sep2</span><span class="si">}${</span><span class="nv">i</span><span class="si">}${</span><span class="nv">suffix</span><span class="si">}</span><span class="s2">"</span>
+<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-21"></a>    <span class="k">done</span>
+<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-22"></a>    <span class="nb">echo</span> <span class="s2">"</span><span class="nv">$testname</span><span class="s2">"</span>
+<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-23"></a><span class="o">}</span>
 </pre>
 <p>And then I wrote a bash function that uses <span class="command">incf</span> to generate
 the <span class="file">Log.</span> filename, potentially in a different directory:</p>
-<pre class="code bash"><a id="rest_code_bbb1991e759e445dad4f3d37b19cc4e1-1" name="rest_code_bbb1991e759e445dad4f3d37b19cc4e1-1"></a>logf <span class="o">()</span> <span class="o">{</span>
-<a id="rest_code_bbb1991e759e445dad4f3d37b19cc4e1-2" name="rest_code_bbb1991e759e445dad4f3d37b19cc4e1-2"></a>    <span class="c1"># Construct a filename, possibly in another directory, that starts with</span>
-<a id="rest_code_bbb1991e759e445dad4f3d37b19cc4e1-3" name="rest_code_bbb1991e759e445dad4f3d37b19cc4e1-3"></a>    <span class="c1"># "Log." and ends with "YYYY-MM-DD" and optionally "_N", where N is 1 or</span>
-<a id="rest_code_bbb1991e759e445dad4f3d37b19cc4e1-4" name="rest_code_bbb1991e759e445dad4f3d37b19cc4e1-4"></a>    <span class="c1"># greater, if the filename already exists.</span>
-<a id="rest_code_bbb1991e759e445dad4f3d37b19cc4e1-5" name="rest_code_bbb1991e759e445dad4f3d37b19cc4e1-5"></a>    <span class="nb">local</span> dn bn fn
-<a id="rest_code_bbb1991e759e445dad4f3d37b19cc4e1-6" name="rest_code_bbb1991e759e445dad4f3d37b19cc4e1-6"></a>    <span class="nv">dn</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span>dirname <span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span><span class="k">)</span><span class="s2">"</span>
-<a id="rest_code_bbb1991e759e445dad4f3d37b19cc4e1-7" name="rest_code_bbb1991e759e445dad4f3d37b19cc4e1-7"></a>    <span class="nv">bn</span><span class="o">=</span><span class="s2">"Log.</span><span class="k">$(</span>basename <span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span><span class="k">)</span><span class="s2">"</span>
-<a id="rest_code_bbb1991e759e445dad4f3d37b19cc4e1-8" name="rest_code_bbb1991e759e445dad4f3d37b19cc4e1-8"></a>    <span class="nv">fn</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span>incf <span class="s2">"</span><span class="nv">$dn</span><span class="s2">/</span><span class="nv">$bn</span><span class="s2">"</span><span class="k">)</span><span class="s2">"</span>
-<a id="rest_code_bbb1991e759e445dad4f3d37b19cc4e1-9" name="rest_code_bbb1991e759e445dad4f3d37b19cc4e1-9"></a>    <span class="nb">echo</span> <span class="nv">$fn</span>
-<a id="rest_code_bbb1991e759e445dad4f3d37b19cc4e1-10" name="rest_code_bbb1991e759e445dad4f3d37b19cc4e1-10"></a><span class="o">}</span>
+<pre class="code bash"><a name="rest_code_15ea5da8699b4a71b17143bb3a53886d-1"></a>logf <span class="o">()</span> <span class="o">{</span>
+<a name="rest_code_15ea5da8699b4a71b17143bb3a53886d-2"></a>    <span class="c1"># Construct a filename, possibly in another directory, that starts with</span>
+<a name="rest_code_15ea5da8699b4a71b17143bb3a53886d-3"></a>    <span class="c1"># "Log." and ends with "YYYY-MM-DD" and optionally "_N", where N is 1 or</span>
+<a name="rest_code_15ea5da8699b4a71b17143bb3a53886d-4"></a>    <span class="c1"># greater, if the filename already exists.</span>
+<a name="rest_code_15ea5da8699b4a71b17143bb3a53886d-5"></a>    <span class="nb">local</span> dn bn fn
+<a name="rest_code_15ea5da8699b4a71b17143bb3a53886d-6"></a>    <span class="nv">dn</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span>dirname <span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span><span class="k">)</span><span class="s2">"</span>
+<a name="rest_code_15ea5da8699b4a71b17143bb3a53886d-7"></a>    <span class="nv">bn</span><span class="o">=</span><span class="s2">"Log.</span><span class="k">$(</span>basename <span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span><span class="k">)</span><span class="s2">"</span>
+<a name="rest_code_15ea5da8699b4a71b17143bb3a53886d-8"></a>    <span class="nv">fn</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span>incf <span class="s2">"</span><span class="nv">$dn</span><span class="s2">/</span><span class="nv">$bn</span><span class="s2">"</span><span class="k">)</span><span class="s2">"</span>
+<a name="rest_code_15ea5da8699b4a71b17143bb3a53886d-9"></a>    <span class="nb">echo</span> <span class="nv">$fn</span>
+<a name="rest_code_15ea5da8699b4a71b17143bb3a53886d-10"></a><span class="o">}</span>
 </pre>
 <p>And then I wrote a <span class="command">log</span> command that uses <span class="command">logf</span>
 and tees its input into that file:</p>
-<pre class="code bash"><a id="rest_code_54e9b7ff11e845ddb277bb8c5fd7cf2a-1" name="rest_code_54e9b7ff11e845ddb277bb8c5fd7cf2a-1"></a>log <span class="o">()</span> <span class="o">{</span>
-<a id="rest_code_54e9b7ff11e845ddb277bb8c5fd7cf2a-2" name="rest_code_54e9b7ff11e845ddb277bb8c5fd7cf2a-2"></a>    <span class="c1"># tee the input into a log file.</span>
-<a id="rest_code_54e9b7ff11e845ddb277bb8c5fd7cf2a-3" name="rest_code_54e9b7ff11e845ddb277bb8c5fd7cf2a-3"></a>    tee <span class="k">$(</span>logf <span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span><span class="k">)</span>
-<a id="rest_code_54e9b7ff11e845ddb277bb8c5fd7cf2a-4" name="rest_code_54e9b7ff11e845ddb277bb8c5fd7cf2a-4"></a><span class="o">}</span>
+<pre class="code bash"><a name="rest_code_4ac282306ed64e06867de0a40c0eb841-1"></a>log <span class="o">()</span> <span class="o">{</span>
+<a name="rest_code_4ac282306ed64e06867de0a40c0eb841-2"></a>    <span class="c1"># tee the input into a log file.</span>
+<a name="rest_code_4ac282306ed64e06867de0a40c0eb841-3"></a>    tee <span class="k">$(</span>logf <span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span><span class="k">)</span>
+<a name="rest_code_4ac282306ed64e06867de0a40c0eb841-4"></a><span class="o">}</span>
 </pre>
 <p>So running <code class="docutils literal">./configure <span class="pre">2&gt;&amp;1</span> | log ~/tmp/configure</code> generates a file
 <span class="file">Log.configure_2021-07-07</span> in the <span class="file">~/tmp</span> directory.</p>
@@ -492,38 +574,38 @@ record if it in the log file, so if I get interrupted and then come
 back some time later I can use the same command?</p>
 <p>First I wrote a base function, <span class="command">cleanname</span>, that takes a string and
 converts it to something that should be safe to use as a filename.</p>
-<pre class="code bash"><a id="rest_code_fe8ba9d467c8425eb237af898e28a24d-1" name="rest_code_fe8ba9d467c8425eb237af898e28a24d-1"></a>cleanname <span class="o">()</span> <span class="o">{</span>
-<a id="rest_code_fe8ba9d467c8425eb237af898e28a24d-2" name="rest_code_fe8ba9d467c8425eb237af898e28a24d-2"></a>    <span class="c1"># Clean up a string so it is (relatively) safe to use as a filename.</span>
-<a id="rest_code_fe8ba9d467c8425eb237af898e28a24d-3" name="rest_code_fe8ba9d467c8425eb237af898e28a24d-3"></a>    <span class="nb">local</span> <span class="nv">cmd</span><span class="o">=</span><span class="s2">"</span><span class="nv">$*</span><span class="s2">"</span> name
-<a id="rest_code_fe8ba9d467c8425eb237af898e28a24d-4" name="rest_code_fe8ba9d467c8425eb237af898e28a24d-4"></a>    <span class="nv">name</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="s2">"</span><span class="nv">$cmd</span><span class="s2">"</span> <span class="p">|</span> sed <span class="s1">'s/[ =";?*&amp;^%$#@!~`|()&lt;&gt;]/-/g'</span> <span class="p">|</span> <span class="se">\</span>
-<a id="rest_code_fe8ba9d467c8425eb237af898e28a24d-5" name="rest_code_fe8ba9d467c8425eb237af898e28a24d-5"></a>               sed <span class="s2">"s#[/']#-#g"</span> <span class="p">|</span> sed -E <span class="s1">'s/--+/-/g'</span> <span class="p">|</span> <span class="se">\</span>
-<a id="rest_code_fe8ba9d467c8425eb237af898e28a24d-6" name="rest_code_fe8ba9d467c8425eb237af898e28a24d-6"></a>               sed -E <span class="s1">'s/(^[-.]+|-+$)//g'</span> <span class="p">|</span> <span class="se">\</span>
-<a id="rest_code_fe8ba9d467c8425eb237af898e28a24d-7" name="rest_code_fe8ba9d467c8425eb237af898e28a24d-7"></a>               sed -E <span class="s1">'s/\.\.\.*/./g'</span><span class="k">)</span>
-<a id="rest_code_fe8ba9d467c8425eb237af898e28a24d-8" name="rest_code_fe8ba9d467c8425eb237af898e28a24d-8"></a>    <span class="nb">echo</span> <span class="s2">"</span><span class="nv">$name</span><span class="s2">"</span>
-<a id="rest_code_fe8ba9d467c8425eb237af898e28a24d-9" name="rest_code_fe8ba9d467c8425eb237af898e28a24d-9"></a><span class="o">}</span>
+<pre class="code bash"><a name="rest_code_1bff1ba0efa64b45bcb89c282a374876-1"></a>cleanname <span class="o">()</span> <span class="o">{</span>
+<a name="rest_code_1bff1ba0efa64b45bcb89c282a374876-2"></a>    <span class="c1"># Clean up a string so it is (relatively) safe to use as a filename.</span>
+<a name="rest_code_1bff1ba0efa64b45bcb89c282a374876-3"></a>    <span class="nb">local</span> <span class="nv">cmd</span><span class="o">=</span><span class="s2">"</span><span class="nv">$*</span><span class="s2">"</span> name
+<a name="rest_code_1bff1ba0efa64b45bcb89c282a374876-4"></a>    <span class="nv">name</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="s2">"</span><span class="nv">$cmd</span><span class="s2">"</span> <span class="p">|</span> sed <span class="s1">'s/[ =";?*&amp;^%$#@!~`|()&lt;&gt;]/-/g'</span> <span class="p">|</span> <span class="se">\</span>
+<a name="rest_code_1bff1ba0efa64b45bcb89c282a374876-5"></a>               sed <span class="s2">"s#[/']#-#g"</span> <span class="p">|</span> sed -E <span class="s1">'s/--+/-/g'</span> <span class="p">|</span> <span class="se">\</span>
+<a name="rest_code_1bff1ba0efa64b45bcb89c282a374876-6"></a>               sed -E <span class="s1">'s/(^[-.]+|-+$)//g'</span> <span class="p">|</span> <span class="se">\</span>
+<a name="rest_code_1bff1ba0efa64b45bcb89c282a374876-7"></a>               sed -E <span class="s1">'s/\.\.\.*/./g'</span><span class="k">)</span>
+<a name="rest_code_1bff1ba0efa64b45bcb89c282a374876-8"></a>    <span class="nb">echo</span> <span class="s2">"</span><span class="nv">$name</span><span class="s2">"</span>
+<a name="rest_code_1bff1ba0efa64b45bcb89c282a374876-9"></a><span class="o">}</span>
 </pre>
 <p>Then I wrote a bash function, <span class="command">exlog</span>, to use the whole
 command with its options as part of the filename (constructed with
 <span class="command">cleanname</span>, and also include the whole command in the log output:</p>
-<pre class="code bash"><a id="rest_code_5240f30465244fa9b19e78f20667fbb3-1" name="rest_code_5240f30465244fa9b19e78f20667fbb3-1"></a>exlog <span class="o">()</span> <span class="o">{</span>
-<a id="rest_code_5240f30465244fa9b19e78f20667fbb3-2" name="rest_code_5240f30465244fa9b19e78f20667fbb3-2"></a>    <span class="c1"># Execute a shell command and log it to "Log.&lt;cmd-as-safe-filename&gt;"</span>
-<a id="rest_code_5240f30465244fa9b19e78f20667fbb3-3" name="rest_code_5240f30465244fa9b19e78f20667fbb3-3"></a>    <span class="nb">local</span> <span class="nv">cmd</span><span class="o">=</span><span class="s2">"</span><span class="nv">$*</span><span class="s2">"</span> <span class="nv">name</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span>cleanname <span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span><span class="k">)</span><span class="s2">"</span>
-<a id="rest_code_5240f30465244fa9b19e78f20667fbb3-4" name="rest_code_5240f30465244fa9b19e78f20667fbb3-4"></a>    <span class="nv">name</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span>logf <span class="nv">$name</span><span class="k">)</span><span class="s2">"</span>
-<a id="rest_code_5240f30465244fa9b19e78f20667fbb3-5" name="rest_code_5240f30465244fa9b19e78f20667fbb3-5"></a>    <span class="nb">printf</span> <span class="s1">'Logging to %s\n'</span> <span class="s2">"</span><span class="nv">$name</span><span class="s2">"</span>
-<a id="rest_code_5240f30465244fa9b19e78f20667fbb3-6" name="rest_code_5240f30465244fa9b19e78f20667fbb3-6"></a>    <span class="o">(</span><span class="nb">echo</span> <span class="s2">"cmd was: </span><span class="nv">$cmd</span><span class="s2">"</span><span class="p">;</span> <span class="nb">time</span> <span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span><span class="o">)</span> <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">|</span> tee <span class="nv">$name</span>
-<a id="rest_code_5240f30465244fa9b19e78f20667fbb3-7" name="rest_code_5240f30465244fa9b19e78f20667fbb3-7"></a><span class="o">}</span>
+<pre class="code bash"><a name="rest_code_a005e595ccfe4017ae540afd46f53c93-1"></a>exlog <span class="o">()</span> <span class="o">{</span>
+<a name="rest_code_a005e595ccfe4017ae540afd46f53c93-2"></a>    <span class="c1"># Execute a shell command and log it to "Log.&lt;cmd-as-safe-filename&gt;"</span>
+<a name="rest_code_a005e595ccfe4017ae540afd46f53c93-3"></a>    <span class="nb">local</span> <span class="nv">cmd</span><span class="o">=</span><span class="s2">"</span><span class="nv">$*</span><span class="s2">"</span> <span class="nv">name</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span>cleanname <span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span><span class="k">)</span><span class="s2">"</span>
+<a name="rest_code_a005e595ccfe4017ae540afd46f53c93-4"></a>    <span class="nv">name</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span>logf <span class="nv">$name</span><span class="k">)</span><span class="s2">"</span>
+<a name="rest_code_a005e595ccfe4017ae540afd46f53c93-5"></a>    <span class="nb">printf</span> <span class="s1">'Logging to %s\n'</span> <span class="s2">"</span><span class="nv">$name</span><span class="s2">"</span>
+<a name="rest_code_a005e595ccfe4017ae540afd46f53c93-6"></a>    <span class="o">(</span><span class="nb">echo</span> <span class="s2">"cmd was: </span><span class="nv">$cmd</span><span class="s2">"</span><span class="p">;</span> <span class="nb">time</span> <span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span><span class="o">)</span> <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">|</span> tee <span class="nv">$name</span>
+<a name="rest_code_a005e595ccfe4017ae540afd46f53c93-7"></a><span class="o">}</span>
 </pre>
 <p>So running the command</p>
-<pre class="code bash"><a id="rest_code_1a4ef1cbb41c4e0b836ee87db310bd0b-1" name="rest_code_1a4ef1cbb41c4e0b836ee87db310bd0b-1"></a>exlog ../configure --prefix<span class="o">=</span>/Users/tkb/sw/versions/groff/git
+<pre class="code bash"><a name="rest_code_63af118345e54f2dbc0047506534cadc-1"></a>exlog ../configure --prefix<span class="o">=</span>/Users/tkb/sw/versions/groff/git
 </pre>
 <p>produces the file</p>
-<pre class="code text"><a id="rest_code_aff028280c0545fcb71aaf38446cd48a-1" name="rest_code_aff028280c0545fcb71aaf38446cd48a-1"></a>Log.configure-prefix-Users-tkb-sw-versions-groff-git_2021-07-07
+<pre class="code text"><a name="rest_code_bfab19bc84384340aa2fa953ab40c29f-1"></a>Log.configure-prefix-Users-tkb-sw-versions-groff-git_2021-07-07
 </pre>
 <p>and it contains the line</p>
-<pre class="code text"><a id="rest_code_9d3843c87d31421d9ea462dedc3a9a2e-1" name="rest_code_9d3843c87d31421d9ea462dedc3a9a2e-1"></a>cmd was: ../configure --prefix=/Users/tkb/sw/versions/groff/git
+<pre class="code text"><a name="rest_code_28438b8010f84974b59dcb7a0d1f19d9-1"></a>cmd was: ../configure --prefix=/Users/tkb/sw/versions/groff/git
 </pre>
 <p>and running it again produces the file</p>
-<pre class="code text"><a id="rest_code_e8224efae3b14ad49486759a26308bc5-1" name="rest_code_e8224efae3b14ad49486759a26308bc5-1"></a>Log.configure-prefix-Users-tkb-sw-versions-groff-git_2021-07-07_1
+<pre class="code text"><a name="rest_code_9cf8051e2cdb438ca1c7644afbbd57a4-1"></a>Log.configure-prefix-Users-tkb-sw-versions-groff-git_2021-07-07_1
 </pre>
 <p>This code is available in a <a class="reference external" href="https://gist.github.com/tkurtbond/23255fede737eec89b1fd0e011566cb1">gist</a>.</p>
 <p><em>Last edited: 2021-07-09 15:30:53 EDT</em></p>
@@ -579,11 +661,11 @@ at the table.</p>
     <div>
 <p>Just for reference, here is the <a class="reference external" href="https://anydice.com/">Anydice.com</a> code for Savage Worlds
 Wild Die rolls:</p>
-<pre class="code text"><a id="rest_code_54fd1b69051c420999e1b086e7f69d04-1" name="rest_code_54fd1b69051c420999e1b086e7f69d04-1"></a>output [highest of [explode d4] and [explode d6]] named "d4 or wild die"
-<a id="rest_code_54fd1b69051c420999e1b086e7f69d04-2" name="rest_code_54fd1b69051c420999e1b086e7f69d04-2"></a>output [highest of [explode d6] and [explode d6]] named "d6 or wild die"
-<a id="rest_code_54fd1b69051c420999e1b086e7f69d04-3" name="rest_code_54fd1b69051c420999e1b086e7f69d04-3"></a>output [highest of [explode d8] and [explode d6]] named "d8 or wild die"
-<a id="rest_code_54fd1b69051c420999e1b086e7f69d04-4" name="rest_code_54fd1b69051c420999e1b086e7f69d04-4"></a>output [highest of [explode d10] and [explode d6]] named "d10 or wild die"
-<a id="rest_code_54fd1b69051c420999e1b086e7f69d04-5" name="rest_code_54fd1b69051c420999e1b086e7f69d04-5"></a>output [highest of [explode d12] and [explode d6]] named "d12 or wild die"
+<pre class="code text"><a name="rest_code_17b4749288dd4fa0869e9859348dcd6d-1"></a>output [highest of [explode d4] and [explode d6]] named "d4 or wild die"
+<a name="rest_code_17b4749288dd4fa0869e9859348dcd6d-2"></a>output [highest of [explode d6] and [explode d6]] named "d6 or wild die"
+<a name="rest_code_17b4749288dd4fa0869e9859348dcd6d-3"></a>output [highest of [explode d8] and [explode d6]] named "d8 or wild die"
+<a name="rest_code_17b4749288dd4fa0869e9859348dcd6d-4"></a>output [highest of [explode d10] and [explode d6]] named "d10 or wild die"
+<a name="rest_code_17b4749288dd4fa0869e9859348dcd6d-5"></a>output [highest of [explode d12] and [explode d6]] named "d12 or wild die"
 </pre>
 <p>Here's a link to the <a class="reference external" href="https://anydice.com/program/23126/at_least">results</a>.</p>
 </div>
@@ -591,291 +673,6 @@ Wild Die rolls:</p>
 <li><a class="tag p-category" href="categories/anydicecom/" rel="tag">anydice.com</a></li>
             <li><a class="tag p-category" href="categories/rpg/" rel="tag">rpg</a></li>
             <li><a class="tag p-category" href="categories/savage-worlds/" rel="tag">savage worlds</a></li>
-        </ul></nav>
-</div>
-    </article><article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2021/06/21/why-i-like-advanced-fighting-fantasy/" class="u-url">Why I like Advanced Fighting Fantasy</a></h2>
-        <div class="metadata blog-post-meta">
-            <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
-            <p class="dateline"><a href="posts/2021/06/21/why-i-like-advanced-fighting-fantasy/" rel="bookmark"><time class="published dt-published" datetime="2021-06-21T12:48:21-04:00" title="2021-06-21 12:48">2021-06-21 12:48</time></a></p>
-                <p class="commentline">            <a href="posts/2021/06/21/why-i-like-advanced-fighting-fantasy/#disqus_thread" data-disqus-identifier="cache/posts/2021/06/21/why-i-like-advanced-fighting-fantasy.html">Comments</a>
-
-
-        </p>
-</div>
-    </header><div class="e-content entry-content">
-    <div>
-<p>I have a great fondness for the original <a class="reference external" href="https://en.wikipedia.org/wiki/Advanced_Fighting_Fantasy">Advanced Fighting Fantasy</a>
-series, even though I didn’t get them until 2011 or so.  I think the
-the Arion Games <a class="reference external" href="https://en.wikipedia.org/wiki/Advanced_Fighting_Fantasy#Advanced_Fighting_Fantasy_titles_published_by_Arion_Games_(2011-present)">2nd edition</a> of Advanced Fighting Fantasy is
-probably a slightly better game, especially for campaigns (it made a
-few adjustments, so character creation is not as random, and a few
-other things), but I like it’s layout and typography less.  Also,
-there is something about the presentation of the game in <cite>Dungeoneer</cite>
-as something for people new to RPGs that made it appealing.</p>
-<blockquote>
-<p>What is it about the Advanced Fighting Fantasy series that makes
-it so cool?</p>
-</blockquote>
-<p>Well, the original <a class="reference external" href="https://en.wikipedia.org/wiki/Fighting_Fantasy">Fighting Fantasy</a> gamebooks were neat.  The
-series was started by <a class="reference external" href="https://en.wikipedia.org/wiki/Ian_Livingstone">Ian Livingstone</a> and <a class="reference external" href="https://en.wikipedia.org/wiki/Steve_Jackson_(British_game_designer)">Steve Jackson</a>.
-(That's the British Steve Jackson, not the <a class="reference external" href="https://en.wikipedia.org/wiki/Steve_Jackson_(American_game_designer)">American</a> one.)  They
-included a really simple RPG and a choose your own adventure style
-adventure.  That’s where the book is made up at numbered paragraphs,
-and when you get to a decision point you can choose among two or more
-choices, and those point you at different paragraphs depending on the
-choice you make.  For instance, you might have a choice to attack,
-retreat to an earlier location, or try something off the wall.  The
-addition of the simple RPG added a lot, in my opinion, increasing
-replayability.  Anyway, that addition made the Fighting Fantasy books
-some of the most popular gamebooks.  Many of them are classics of the
-genre.  Most of them are fantasy, and set in the world of Titan, which
-was popular enough that there was a world book devoted to it,
-<a class="reference external" href="https://en.wikipedia.org/wiki/Titan_(Fighting_Fantasy_book)">Titan</a>, and a book of monsters from that word, <a class="reference external" href="https://fightingfantasy.fandom.com/wiki/Out_of_the_Pit">Out of the Pit</a>.
-And the art used in illustrating the books was very evocative.  (I
-particularly liked Russ Nicholson's art (<a class="reference external" href="https://russnicholson.blogspot.com/">R1</a>, <a class="reference external" href="https://en.wikipedia.org/wiki/Russ_Nicholson">R2</a>).</p>
-<p>The mini RPG used in the Fighting Fantasy books was really simple: the
-reader’s character has three stats, SKILL, which measures their
-general level of skill, STAMINA, which measures the character’s energy
-and fitness and how much damage they can take, and LUCK, which
-measures how lucky the character is.  SKILL is 1d6+6, STAMINA is
-2d6+12, LUCK is 1d6+6.  NPCs and creatures just have SKILL and
-STAMINA.  Generally, if the character is trying to do something
-outside combat, they roll 2d6 &lt;= their SKILL to succeed.  Combat is
-simple, the player rolls 2d6 and adds their skill, their opponent
-rolls 2d6 and adds their skill, and the one with the higher total
-subtracts 2 from the other’s STAMINA total.  If they tie neither win.
-LUCK is used to see how lucky the character is.  For instance, if a
-cave is collapsing a character will “Test their LUCK” and roll 2d6 &lt;=
-their LUCK to succeed at escaping the collapse.  Every time a
-character Tests their LUCK, they reduce their current luck by 1.
-Luck can also be used in Combat to increase the wounds they deal or
-decrease the wounds they take.  If a character has wounded an
-opponent, they can Test their LUCK, and if they are Unlucky the
-opponent takes only 1 damage instead of 2, but if they are Lucky the
-opponent takes 4 damage instead of 2.  If the character has been
-wounded, they can Test their Luck and if Lucky they take only 1
-damage, but if they are unlucky they take 3 damage.  So it is a
-tradeoff.</p>
-<p>Now, that system works well for a gamebook, but doesn’t have enough
-detail for most RPG players.  (Although it was published as an intro
-RPG, in <a class="reference external" href="https://fightingfantasy.fandom.com/wiki/Fighting_Fantasy_-_The_Introductory_Role-playing_Game">Fighting Fantasy: The Introductory Role-playing Game</a>.)</p>
-<p>Advanced Fighting Fantasy, written by Marc Gascoigne, takes that
-framework and adds to it in a way that increases the interesting
-detail of the system, without overcomplicating it too much.
-Primarily, they add Special Skills, which allow characters to
-specialize.  For instance, if a character wanted to be good with a bow
-and able to follow people through the forest they’d pick up the
-Special Skills Bow and Awareness.  Then, when shooting arrows at
-opponents they’d add the rating for their Bow Special Skill to their
-SKILL.  When tracking someone through the forest, they’d add their
-Awareness Special Skill to their SKILL.  And so on.  A sneaky person
-might have the Special Skills Locks, Sleigh of Hand, Sneaking, and
-Trap Knowledge.  And so on.  Someone from a noble background might
-have Etiquette, Law, and Leadership.  A merchant might have Bargan,
-City Lore, and Evaluate.</p>
-<p>I like that characters are competent in general, due to SKILL, but can
-be more competent in their areas of interest, using Special Skills.</p>
-<p>You can build important NPCs just like characters if you want the
-detail, but for run-of-the-mill opponents you can just use SKILL and
-STAMINA, so stating out NPCs and opponents is very easy.</p>
-<p>And Advanced Fighting Fantasy added more detail to weapons and armor,
-still keeping to the use of six sided dice only. So, instead of each
-attack doing 2 STAMINA damage every time, you roll a die and depending
-on the weapon, that tells you how much damage you do, by looking up
-the weapon’s damage chart.  For instance, a dagger might do 1 damage
-on a 1 or 2, 2 damage on a 3 through 6, and 3 damage on a 7+ (because
-there are a few things that add one to the damage roll, but not
-directly to the resulting damage), while a great sword does 2 damage
-on 1, 3 damage on a 2 or 3, 4 damage on a 4 or 5, 5 damage on a 6, and
-6 damage on a 7+.</p>
-<p>For instance, here's the damage for Dagger, Club, and Two-handed Sword:</p>
-<table>
-<colgroup>
-<col style="width: 68%">
-<col style="width: 4%">
-<col style="width: 4%">
-<col style="width: 4%">
-<col style="width: 4%">
-<col style="width: 4%">
-<col style="width: 4%">
-<col style="width: 8%">
-</colgroup>
-<thead><tr>
-<th class="head"><p>Weapon</p></th>
-<th class="head"><p>1</p></th>
-<th class="head"><p>2</p></th>
-<th class="head"><p>3</p></th>
-<th class="head"><p>4</p></th>
-<th class="head"><p>5</p></th>
-<th class="head"><p>6</p></th>
-<th class="head"><p>7+</p></th>
-</tr></thead>
-<tbody>
-<tr>
-<td><p>Club</p></td>
-<td><p>1</p></td>
-<td><p>2</p></td>
-<td><p>2</p></td>
-<td><p>2</p></td>
-<td><p>2</p></td>
-<td><p>2</p></td>
-<td><p>3</p></td>
-</tr>
-<tr>
-<td><p>Dagger</p></td>
-<td><p>1</p></td>
-<td><p>1</p></td>
-<td><p>2</p></td>
-<td><p>2</p></td>
-<td><p>2</p></td>
-<td><p>2</p></td>
-<td><p>2</p></td>
-</tr>
-<tr>
-<td><p>Two-handed Sword</p></td>
-<td><p>2</p></td>
-<td><p>2</p></td>
-<td><p>2</p></td>
-<td><p>3</p></td>
-<td><p>3</p></td>
-<td><p>3</p></td>
-<td><p>4</p></td>
-</tr>
-</tbody>
-</table>
-<p>That's an interesting way to get variable damage when you are limited
-to using just six sided dice.</p>
-<p>And of course there was a Magic Special Skill, and if you learned that
-you could learn and cast spells, each spell costing an amount of
-STAMINA to cast.</p>
-<p>And Advanced Fighting Fantasy had a nice mass combat system, and lots
-of setting detail from <cite>Titan</cite> and opponents from <cite>Out of the Pit</cite>
-(both republished in trade paperback to go with the AFF trade
-paperbacks), and so forth.</p>
-<p>Anyway, Advanced Fighting Fantasy (AFF1e) was published in three trade
-paperback sized books, <cite>Dungeoneer</cite> (1989), <cite>Blacksand</cite> (1990), and
-<cite>Allansia</cite> (1994).  <cite>Titan</cite> and <cite>Out of the Pit</cite>, were republished in
-1989 in trade paperback sized books to match.  <cite>Dungeoneer</cite> had the
-basic rules, <cite>Blacksand</cite> added more options and described the city of
-Blacksand (a fantasy hive of scum and villainy), and <cite>Allansia</cite> added
-more options and described the continent of Allansia in more detail.
-The books were less available in the US than in Great Britain where
-they originated, and I never saw them in either bookstores (where they
-were sold alongside the Fighting Fantasy gamebooks, hence the trade
-paperback size) or in gaming stores.  I got my copies in 2011, when
-AFF 2nd Edition came out, for comparison.</p>
-<p>In 2011 Graham Bottley of <a class="reference external" href="http://arion-games.com/">Arion Games</a> got the license to publish a
-2nd edition of Advanced Fighting Fantasy (AFF2e).  It was a more
-familiar A4 sized book (the international paper size closest to the US
-Letter paper size), and while I didn’t particularly care for its
-layout choices, I did like the way it made the game better for running
-campaigns (character creation was less random, and gave characters
-more room for growth), its addition of a MAGIC stat and Magic Points
-from which the costs for spells were deducted instead of STAMINA, and
-its additions of multiple types of magic (one, Sorcery, was based on a
-different gamebook series, the <a class="reference external" href="https://en.wikipedia.org/wiki/Steve_Jackson%27s_Sorcery!">Sorcery!</a> series, from Steve
-Jackson), and talents, which were special things a character could do.
-I wasn’t so thrilled that priests now used a completely separate magic
-system not based on casting spells costing Magic Points; in 1st
-Edition priests had different spell lists they could learn from, but
-otherwise used the same mechanics as Mages.  AFF2e also added more
-detailed armour, which works similarly to damage — roll a die, look up
-how much damage is blocked on the armour chart.</p>
-<p>Here's Leather Cuirass and Plate Armour:</p>
-<table>
-<colgroup>
-<col style="width: 67%">
-<col style="width: 4%">
-<col style="width: 4%">
-<col style="width: 4%">
-<col style="width: 4%">
-<col style="width: 4%">
-<col style="width: 4%">
-<col style="width: 8%">
-</colgroup>
-<thead><tr>
-<th class="head"><p>Armour</p></th>
-<th class="head"><p>1</p></th>
-<th class="head"><p>2</p></th>
-<th class="head"><p>3</p></th>
-<th class="head"><p>4</p></th>
-<th class="head"><p>5</p></th>
-<th class="head"><p>6</p></th>
-<th class="head"><p>7+</p></th>
-</tr></thead>
-<tbody>
-<tr>
-<td><p>Leather Cuirass</p></td>
-<td><p>0</p></td>
-<td><p>0</p></td>
-<td><p>0</p></td>
-<td><p>0</p></td>
-<td><p>1</p></td>
-<td><p>1</p></td>
-<td><p>2</p></td>
-</tr>
-<tr>
-<td><p>Plate Armour</p></td>
-<td><p>1</p></td>
-<td><p>1</p></td>
-<td><p>2</p></td>
-<td><p>2</p></td>
-<td><p>3</p></td>
-<td><p>3</p></td>
-<td><p>4</p></td>
-</tr>
-</tbody>
-</table>
-<p>AFF1e, by contrast, said that the Damage Table had been carefully
-constructed to take into account armour (<cite>Dungeoneer</cite>, p. 163), and
-assumed Heroes (the player characters) and their adversaries all wore
-armor (<cite>Dungeoneer</cite>, p. 164), and if anyone took off their armour,
-then any Damage Rolls (which was an index into a table, remember, not
-the actual damage) had 2 added to them.  I expect this explains why
-the damage values on the Weapon chart all changed in AFF2e.</p>
-<p>Anyway, I played some AFF 1st Edition games with <a class="reference external" href="categories/cat_gaming/actual-play/the-kids/">the kids</a>, which
-was a lot of fun.  I also played some AFF 2nd Edition games with some
-of them, which was also fun.  I played AFF1E with some of the folks
-from work, and it was fun, but they wanted something with more
-detailed combat.  I could see why, even AFF2e combat is fairly simple.
-They rest of the game they liked.</p>
-<p>And Arion Games has gone on to publish slightly more than a book a
-year since 2011, covering the same ground as the original AFF’s three
-books did, plus a lot more, including two more monster books (<cite>Beyond
-the Pit</cite> and <cite>Return to the Pit</cite>), more options for heroes in the
-<cite>Heroes Companion</cite>, a new area of Titan (<cite>Travels in Arion</cite>), a
-herbal, and a smaller book on creatures from a particular area of
-Titan (<cite>Creatures of Mishna</cite>).  And just recently they published the
-<cite>Combat Companion</cite>, which adds extra options for combat that the
-gamers from my work mentioned earlier would have liked.</p>
-<p>And Titan, the world of Fighting Fantasy and Advanced Fighting Fantasy
-is a very nice little bit of everything fantasy setting, anchored by
-locations and characters from 59 Fighting Fantasy gamebooks.</p>
-<p>In summary, Advanced Fighting Fantasy is a role-playing game with
-simple mechanics that still provide ample detail, set in an
-interesting fantasy world.</p>
-<p>Arion Games also publishes <a class="reference external" href="https://www.drivethrurpg.com/product/214183/Stellar-Adventures">Stellar Adventures</a>, a science fiction
-game that uses the same rules, customized for science fiction
-adventures, which has several supplements as well.  The <cite>Stellar
-Adventures</cite> and <cite>Advanced Fighting Fantasy</cite>, 2nd Edition lines are all
-available in PDF on <a class="reference external" href="https://www.drivethrurpg.com/browse/pub/667/Arion-Games/subcategory/1684_25223/Advanced-Fighting-Fantasy">DriveThruRPG.com</a>, with most available in
-print-on-demand as well, very important in these days of online
-gaming.</p>
-<p><em>Last edited: 2021-06-21 22:36:47 EDT</em></p>
-<!-- Local Variables:
-time-stamp-format: "%04y-%02m-%02d %02H:%02M:%02S %Z"
-time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
-time-stamp-end: "\\*\\\\?\n"
-time-stamp-line-limit: -20
-End: -->
-</div>
-    <nav><ul itemprop="keywords" class="tags">
-<li><a class="tag p-category" href="categories/advanced-fighting-fantasy/" rel="tag">advanced fighting fantasy</a></li>
-            <li><a class="tag p-category" href="categories/fighting-fantasy/" rel="tag">fighting fantasy</a></li>
-            <li><a class="tag p-category" href="categories/out-of-the-pit/" rel="tag">out of the pit</a></li>
-            <li><a class="tag p-category" href="categories/rpg/" rel="tag">rpg</a></li>
-            <li><a class="tag p-category" href="categories/stellar-adventures/" rel="tag">stellar adventures</a></li>
-            <li><a class="tag p-category" href="categories/titan/" rel="tag">titan</a></li>
         </ul></nav>
 </div>
     </article>
