@@ -3,7 +3,7 @@
 <feed xml:lang="en" xmlns="http://www.w3.org/2005/Atom">
   <title>Lacking Natural Simplicity (Posts about charon-vax)</title>
   <id>https://tkurtbond.github.io/categories/charon-vax.atom</id>
-  <updated>2021-07-15T21:43:09Z</updated>
+  <updated>2021-07-15T22:10:57Z</updated>
   <author>
     <name>T. Kurt Bond</name>
   </author>
@@ -19,7 +19,9 @@
       <name>T. Kurt Bond</name>
     </author>
     <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/posts/2021/07/15/troff-memorandum-macros-documentation/"/>
-    <summary type="html">&lt;div&gt;&lt;p&gt;When I learned &lt;span class="app"&gt;troff&lt;/span&gt; it was actually on a VAX running VMS (used
+    <summary type="html">&lt;div&gt;&lt;p&gt;&lt;strong&gt;TL;DR:&lt;/strong&gt; Look &lt;a class="reference external" href="https://tkurtbond.github.io/troff/mm-all.pdf"&gt;here&lt;/a&gt; for documentation for the &lt;span class="app"&gt;Documenter's Workbench&lt;/span&gt; &lt;span class="app"&gt;mm&lt;/span&gt; Memorandum
+Macros for &lt;span class="app"&gt;groff&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;When I learned &lt;span class="app"&gt;troff&lt;/span&gt; it was actually on a VAX running VMS (used
 by &lt;a class="reference external" href="http://www.mpl.com/"&gt;MPL Corporation&lt;/a&gt;) using a port of &lt;span class="app"&gt;troff&lt;/span&gt; called
 &lt;span class="app"&gt;xroff&lt;/span&gt; &lt;a class="footnote-reference brackets" href="https://tkurtbond.github.io/posts/2021/07/15/troff-memorandum-macros-documentation/#who-produced-xroff" id="id1"&gt;1&lt;/a&gt;, probably around 1986.  (The VAX
 also had TeX and LaTeX, and I used them too.  Both supported the DEC
@@ -64,6 +66,26 @@ of this on the Internet.&lt;/p&gt;
 &lt;p&gt;I think that having this available might help those who might want to
 try out &lt;span class="app"&gt;mm&lt;/span&gt;, or are returning to it after a long break, so I've
 posted a version that I built a while ago &lt;a class="reference external" href="https://tkurtbond.github.io/troff/mm-all.pdf"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;As a bonus for reading down this far, here is how I add PDF
+outline/table-of-contents entries for sections in &lt;span class="app"&gt;groff&lt;/span&gt; &lt;span class="app"&gt;mm&lt;/span&gt;,
+using the &lt;code class="docutils literal"&gt;HZ&lt;/code&gt; user-defined heading exit macro (see
+&lt;span class="man"&gt;groff_mm(7)&lt;/span&gt;):&lt;/p&gt;
+&lt;pre class="code nroff"&gt;&lt;a name="rest_code_bb87c5ee8369498786f777fc235c565b-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="c"&gt;\" pdf outline fold level&lt;/span&gt;
+&lt;a name="rest_code_bb87c5ee8369498786f777fc235c565b-2"&gt;&lt;/a&gt;.&lt;span class="k"&gt;nr&lt;/span&gt; &lt;span class="s"&gt;PDFOUTLINE.FOLDLEVEL&lt;/span&gt; &lt;span class="m"&gt;3&lt;/span&gt;
+&lt;a name="rest_code_bb87c5ee8369498786f777fc235c565b-3"&gt;&lt;/a&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="c"&gt;\" start out in outline view&lt;/span&gt;
+&lt;a name="rest_code_bb87c5ee8369498786f777fc235c565b-4"&gt;&lt;/a&gt;.&lt;span class="k"&gt;pdfview&lt;/span&gt; &lt;span class="s"&gt;/PageMode&lt;/span&gt; &lt;span class="s"&gt;/UseOutlines&lt;/span&gt;
+&lt;a name="rest_code_bb87c5ee8369498786f777fc235c565b-5"&gt;&lt;/a&gt;.&lt;span class="k"&gt;de&lt;/span&gt; &lt;span class="s"&gt;HZ&lt;/span&gt;
+&lt;a name="rest_code_bb87c5ee8369498786f777fc235c565b-6"&gt;&lt;/a&gt;.&lt;span class="k"&gt;pdfhref&lt;/span&gt; &lt;span class="s"&gt;O&lt;/span&gt; &lt;span class="se"&gt;\\&lt;/span&gt;&lt;span class="s"&gt;$2&lt;/span&gt; &lt;span class="se"&gt;\\&lt;/span&gt;&lt;span class="s"&gt;*[}0]&lt;/span&gt; &lt;span class="se"&gt;\\&lt;/span&gt;&lt;span class="s"&gt;$3&lt;/span&gt;
+&lt;a name="rest_code_bb87c5ee8369498786f777fc235c565b-7"&gt;&lt;/a&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="s"&gt;.&lt;/span&gt;
+&lt;/pre&gt;&lt;p&gt;And here's how to do it in &lt;a class="reference external" href="http://n-t-roff.github.io/heirloom/doctools.html"&gt;Heirloom Docutils&lt;/a&gt; &lt;span class="app"&gt;troff&lt;/span&gt;:&lt;/p&gt;
+&lt;pre class="code nroff"&gt;&lt;a name="rest_code_3e2d264ec1ee4654a62bcfc5d3413720-1"&gt;&lt;/a&gt;.&lt;span class="k"&gt;de&lt;/span&gt; &lt;span class="s"&gt;HY&lt;/span&gt;
+&lt;a name="rest_code_3e2d264ec1ee4654a62bcfc5d3413720-2"&gt;&lt;/a&gt;.&lt;span class="k"&gt;nr&lt;/span&gt; &lt;span class="s"&gt;HYtmp&lt;/span&gt; &lt;span class="s"&gt;(\\$1-1)&lt;/span&gt;
+&lt;a name="rest_code_3e2d264ec1ee4654a62bcfc5d3413720-3"&gt;&lt;/a&gt;&lt;span class="se"&gt;\\&lt;/span&gt;X'PDFMark: Bookmark &lt;span class="se"&gt;\\&lt;/span&gt;n[HYtmp] &lt;span class="se"&gt;\\&lt;/span&gt;$3'
+&lt;a name="rest_code_3e2d264ec1ee4654a62bcfc5d3413720-4"&gt;&lt;/a&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="s"&gt;.&lt;/span&gt;
+&lt;/pre&gt;&lt;p&gt;This version uses the &lt;code class="docutils literal"&gt;HY&lt;/code&gt; user-defined heading exit macro and
+doesn't include the section numbers.&lt;/p&gt;
+&lt;p&gt;I'm not sure why the two use different macros.  All I can say is that
+I wrote them at different times for slightly different purposes.&lt;/p&gt;
 &lt;dl class="footnote brackets"&gt;
 &lt;dt class="label" id="who-produced-xroff"&gt;&lt;span class="brackets"&gt;&lt;a class="fn-backref" href="https://tkurtbond.github.io/posts/2021/07/15/troff-memorandum-macros-documentation/#id1"&gt;1&lt;/a&gt;&lt;/span&gt;&lt;/dt&gt;
 &lt;dd&gt;&lt;p&gt;While I still maintain a descendant of the VAX I where I used
@@ -79,6 +101,9 @@ it was easiest to use &lt;code class="docutils literal"&gt;.so&lt;/code&gt; and 
 &lt;/dd&gt;
 &lt;/dl&gt;&lt;/div&gt;</summary>
     <category term="charon-vax" label="charon-vax"/>
+    <category term="documenters-workbench" label="documenter's workbench"/>
+    <category term="dwb" label="dwb"/>
+    <category term="groff" label="groff"/>
     <category term="memorandum-macros" label="memorandum macros"/>
     <category term="mm" label="mm"/>
     <category term="troff" label="troff"/>

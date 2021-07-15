@@ -1,7 +1,7 @@
 .. title: troff Memorandum Macros documentation
 .. slug: troff-memorandum-macros-documentation
 .. date: 2021-07-15 15:57:09 UTC-04:00
-.. tags: troff,xroff,mm,memorandum macros,vms,charon-vax
+.. tags: troff,xroff,mm,memorandum macros,vms,charon-vax,dwb,documenter's workbench,groff
 .. category: computer/document-formatting/troff
 .. link: 
 .. description: 
@@ -11,6 +11,9 @@
 .. role:: man
 .. |MM| replace:: :app:`mm`
 .. |DWB| replace:: :app:`Documenter's Workbench`
+
+**TL;DR:** Look here_ for documentation for the |DWB| |MM| Memorandum
+Macros for :app:`groff`.
 
 When I learned :app:`troff` it was actually on a VAX running VMS (used
 by `MPL Corporation`_) using a port of :app:`troff` called
@@ -63,6 +66,36 @@ of this on the Internet.
 I think that having this available might help those who might want to
 try out |MM|, or are returning to it after a long break, so I've
 posted a version that I built a while ago here_.
+
+As a bonus for reading down this far, here is how I add PDF
+outline/table-of-contents entries for sections in :app:`groff` |MM|,
+using the ``HZ`` user-defined heading exit macro (see
+:man:`groff_mm(7)`):
+
+.. code:: nroff
+
+   .\" pdf outline fold level
+   .nr PDFOUTLINE.FOLDLEVEL 3
+   .\" start out in outline view
+   .pdfview /PageMode /UseOutlines
+   .de HZ
+   .pdfhref O \\$2 \\*[}0] \\$3
+   ..
+
+And here's how to do it in `Heirloom Docutils`_ :app:`troff`:
+
+.. code:: nroff
+
+   .de HY
+   .nr HYtmp (\\$1-1)
+   \\X'PDFMark: Bookmark \\n[HYtmp] \\$3'
+   ..
+
+This version uses the ``HY`` user-defined heading exit macro and
+doesn't include the section numbers.
+
+I'm not sure why the two use different macros.  All I can say is that
+I wrote them at different times for slightly different purposes.
 
 .. _available: https://github.com/n-t-roff/DWB3.3
 .. _n-t-roff: https://github.com/n-t-roff

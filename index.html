@@ -63,6 +63,8 @@
 </div>
     </header><div class="e-content entry-content">
     <div>
+<p><strong>TL;DR:</strong> Look <a class="reference external" href="troff/mm-all.pdf">here</a> for documentation for the <span class="app">Documenter's Workbench</span> <span class="app">mm</span> Memorandum
+Macros for <span class="app">groff</span>.</p>
 <p>When I learned <span class="app">troff</span> it was actually on a VAX running VMS (used
 by <a class="reference external" href="http://www.mpl.com/">MPL Corporation</a>) using a port of <span class="app">troff</span> called
 <span class="app">xroff</span> <a class="footnote-reference brackets" href="posts/2021/07/15/troff-memorandum-macros-documentation/#who-produced-xroff" id="id1">1</a>, probably around 1986.  (The VAX
@@ -108,6 +110,28 @@ of this on the Internet.</p>
 <p>I think that having this available might help those who might want to
 try out <span class="app">mm</span>, or are returning to it after a long break, so I've
 posted a version that I built a while ago <a class="reference external" href="troff/mm-all.pdf">here</a>.</p>
+<p>As a bonus for reading down this far, here is how I add PDF
+outline/table-of-contents entries for sections in <span class="app">groff</span> <span class="app">mm</span>,
+using the <code class="docutils literal">HZ</code> user-defined heading exit macro (see
+<span class="man">groff_mm(7)</span>):</p>
+<pre class="code nroff"><a name="rest_code_bb87c5ee8369498786f777fc235c565b-1"></a><span class="p">.</span><span class="c">\" pdf outline fold level</span>
+<a name="rest_code_bb87c5ee8369498786f777fc235c565b-2"></a>.<span class="k">nr</span> <span class="s">PDFOUTLINE.FOLDLEVEL</span> <span class="m">3</span>
+<a name="rest_code_bb87c5ee8369498786f777fc235c565b-3"></a><span class="p">.</span><span class="c">\" start out in outline view</span>
+<a name="rest_code_bb87c5ee8369498786f777fc235c565b-4"></a>.<span class="k">pdfview</span> <span class="s">/PageMode</span> <span class="s">/UseOutlines</span>
+<a name="rest_code_bb87c5ee8369498786f777fc235c565b-5"></a>.<span class="k">de</span> <span class="s">HZ</span>
+<a name="rest_code_bb87c5ee8369498786f777fc235c565b-6"></a>.<span class="k">pdfhref</span> <span class="s">O</span> <span class="se">\\</span><span class="s">$2</span> <span class="se">\\</span><span class="s">*[}0]</span> <span class="se">\\</span><span class="s">$3</span>
+<a name="rest_code_bb87c5ee8369498786f777fc235c565b-7"></a><span class="p">.</span><span class="s">.</span>
+</pre>
+<p>And here's how to do it in <a class="reference external" href="http://n-t-roff.github.io/heirloom/doctools.html">Heirloom Docutils</a> <span class="app">troff</span>:</p>
+<pre class="code nroff"><a name="rest_code_3e2d264ec1ee4654a62bcfc5d3413720-1"></a>.<span class="k">de</span> <span class="s">HY</span>
+<a name="rest_code_3e2d264ec1ee4654a62bcfc5d3413720-2"></a>.<span class="k">nr</span> <span class="s">HYtmp</span> <span class="s">(\\$1-1)</span>
+<a name="rest_code_3e2d264ec1ee4654a62bcfc5d3413720-3"></a><span class="se">\\</span>X'PDFMark: Bookmark <span class="se">\\</span>n[HYtmp] <span class="se">\\</span>$3'
+<a name="rest_code_3e2d264ec1ee4654a62bcfc5d3413720-4"></a><span class="p">.</span><span class="s">.</span>
+</pre>
+<p>This version uses the <code class="docutils literal">HY</code> user-defined heading exit macro and
+doesn't include the section numbers.</p>
+<p>I'm not sure why the two use different macros.  All I can say is that
+I wrote them at different times for slightly different purposes.</p>
 <dl class="footnote brackets">
 <dt class="label" id="who-produced-xroff"><span class="brackets"><a class="fn-backref" href="posts/2021/07/15/troff-memorandum-macros-documentation/#id1">1</a></span></dt>
 <dd>
@@ -127,6 +151,9 @@ it was easiest to use <code class="docutils literal">.so</code> and load the mac
 </div>
     <nav><ul itemprop="keywords" class="tags">
 <li><a class="tag p-category" href="categories/charon-vax/" rel="tag">charon-vax</a></li>
+            <li><a class="tag p-category" href="categories/documenters-workbench/" rel="tag">documenter's workbench</a></li>
+            <li><a class="tag p-category" href="categories/dwb/" rel="tag">dwb</a></li>
+            <li><a class="tag p-category" href="categories/groff/" rel="tag">groff</a></li>
             <li><a class="tag p-category" href="categories/memorandum-macros/" rel="tag">memorandum macros</a></li>
             <li><a class="tag p-category" href="categories/mm/" rel="tag">mm</a></li>
             <li><a class="tag p-category" href="categories/troff/" rel="tag">troff</a></li>
