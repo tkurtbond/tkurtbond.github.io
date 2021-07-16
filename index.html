@@ -64,7 +64,8 @@
     </header><div class="e-content entry-content">
     <div>
 <p><strong>TL;DR:</strong> Look <a class="reference external" href="troff/mm-all.pdf">here</a> for documentation for the <span class="app">Documenter's Workbench</span> <span class="app">mm</span> Memorandum
-Macros for <span class="app">groff</span>.</p>
+Macros for <span class="app">groff</span>, based on the original paper <cite>MM - Memorandum
+Macros</cite>.</p>
 <p>When I learned <span class="app">troff</span> it was actually on a VAX running VMS (used
 by <a class="reference external" href="http://www.mpl.com/">MPL Corporation</a>) using a port of <span class="app">troff</span> called
 <span class="app">xroff</span> <a class="footnote-reference brackets" href="posts/2021/07/15/troff-memorandum-macros-documentation/#who-produced-xroff" id="id1">1</a>, probably around 1986.  (The VAX
@@ -115,19 +116,19 @@ posted a version that I built a while ago <a class="reference external" href="tr
 outline/table-of-contents entries for sections in <span class="app">groff</span> <span class="app">mm</span>,
 using the <code class="docutils literal">HZ</code> user-defined heading exit macro (see
 <span class="man">groff_mm(7)</span>):</p>
-<pre class="code nroff"><a name="rest_code_9a3a7367d271403ab6208ba0bac13909-1"></a><span class="p">.</span><span class="c">\" pdf outline fold level</span>
-<a name="rest_code_9a3a7367d271403ab6208ba0bac13909-2"></a>.<span class="k">nr</span> <span class="s">PDFOUTLINE.FOLDLEVEL</span> <span class="m">3</span>
-<a name="rest_code_9a3a7367d271403ab6208ba0bac13909-3"></a><span class="p">.</span><span class="c">\" start out in outline view</span>
-<a name="rest_code_9a3a7367d271403ab6208ba0bac13909-4"></a>.<span class="k">pdfview</span> <span class="s">/PageMode</span> <span class="s">/UseOutlines</span>
-<a name="rest_code_9a3a7367d271403ab6208ba0bac13909-5"></a>.<span class="k">de</span> <span class="s">HZ</span>
-<a name="rest_code_9a3a7367d271403ab6208ba0bac13909-6"></a>.<span class="k">pdfhref</span> <span class="s">O</span> <span class="se">\\</span><span class="s">$2</span> <span class="se">\\</span><span class="s">*[}0]</span> <span class="se">\\</span><span class="s">$3</span>
-<a name="rest_code_9a3a7367d271403ab6208ba0bac13909-7"></a><span class="p">.</span><span class="s">.</span>
+<pre class="code nroff"><a name="rest_code_3396b6c8204c4fca8d59cf14a708ae16-1"></a><span class="p">.</span><span class="c">\" pdf outline fold level</span>
+<a name="rest_code_3396b6c8204c4fca8d59cf14a708ae16-2"></a>.<span class="k">nr</span> <span class="s">PDFOUTLINE.FOLDLEVEL</span> <span class="m">3</span>
+<a name="rest_code_3396b6c8204c4fca8d59cf14a708ae16-3"></a><span class="p">.</span><span class="c">\" start out in outline view</span>
+<a name="rest_code_3396b6c8204c4fca8d59cf14a708ae16-4"></a>.<span class="k">pdfview</span> <span class="s">/PageMode</span> <span class="s">/UseOutlines</span>
+<a name="rest_code_3396b6c8204c4fca8d59cf14a708ae16-5"></a>.<span class="k">de</span> <span class="s">HZ</span>
+<a name="rest_code_3396b6c8204c4fca8d59cf14a708ae16-6"></a>.<span class="k">pdfhref</span> <span class="s">O</span> <span class="se">\\</span><span class="s">$2</span> <span class="se">\\</span><span class="s">*[}0]</span> <span class="se">\\</span><span class="s">$3</span>
+<a name="rest_code_3396b6c8204c4fca8d59cf14a708ae16-7"></a><span class="p">.</span><span class="s">.</span>
 </pre>
 <p>And here's how to do it in <a class="reference external" href="http://n-t-roff.github.io/heirloom/doctools.html">Heirloom Docutils</a> <span class="app">troff</span>:</p>
-<pre class="code nroff"><a name="rest_code_53d1df9e34b740e792e6c68788d01482-1"></a>.<span class="k">de</span> <span class="s">HY</span>
-<a name="rest_code_53d1df9e34b740e792e6c68788d01482-2"></a>.<span class="k">nr</span> <span class="s">HYtmp</span> <span class="s">(\\$1-1)</span>
-<a name="rest_code_53d1df9e34b740e792e6c68788d01482-3"></a><span class="se">\\</span>X'PDFMark: Bookmark <span class="se">\\</span>n[HYtmp] <span class="se">\\</span>$3'
-<a name="rest_code_53d1df9e34b740e792e6c68788d01482-4"></a><span class="p">.</span><span class="s">.</span>
+<pre class="code nroff"><a name="rest_code_f0a13fd913c2460d94a186477621d81b-1"></a>.<span class="k">de</span> <span class="s">HY</span>
+<a name="rest_code_f0a13fd913c2460d94a186477621d81b-2"></a>.<span class="k">nr</span> <span class="s">HYtmp</span> <span class="s">(\\$1-1)</span>
+<a name="rest_code_f0a13fd913c2460d94a186477621d81b-3"></a><span class="se">\\</span>X'PDFMark: Bookmark <span class="se">\\</span>n[HYtmp] <span class="se">\\</span>$3'
+<a name="rest_code_f0a13fd913c2460d94a186477621d81b-4"></a><span class="p">.</span><span class="s">.</span>
 </pre>
 <p>This version uses the <code class="docutils literal">HY</code> user-defined heading exit macro and
 doesn't include the section numbers.</p>
