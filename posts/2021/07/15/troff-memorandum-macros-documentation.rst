@@ -50,10 +50,11 @@ than it could have been.  So when modern features for PDF appeared for
 groff later on (the :app:`pdfmark` macros), they were adapted to
 :app:`ms` but not |MM|.  (:app:`me` was left out, as well.)  I was sad
 to see |MM|'s apparently low popularity, and the |MM| paper apparently
-is not available on the Internet, unlike the papers on :app:`ms` and
-:app:`me`, which come with :app:`groff`.  I suspect this is because
-|MM| was used heavily in AT&T's |DWB|, a commercial product that was
-distributed separately from UNIX System V, if I understand correctly.
+is not available on the Internet in a form that copyright allows to be
+copied around, unlike the papers on :app:`ms` and :app:`me`, which
+come with :app:`groff`.  I suspect this is because |MM| was used
+heavily in AT&T's |DWB|, a commercial product that was distributed
+separately from UNIX System V, if I understand correctly.
 
 However, eventually the sources to the |DWB| because available under
 the Eclipse Public License, and they are available_ in the `n-t-roff`_
