@@ -1,0 +1,70 @@
+#! /usr/bin/env bash
+###############################################################################
+# Sort a list of words that are seperated by commas, optionally followed by
+# a newline into a single line seperated by commas followed by spaces.
+# 
+# For example: it translates (ignore the "# +" at the beginning of lines)
+#    bookman, schoolbook,palatino,
+#    times, helvetica, helvetica-narrow,
+# to
+#    bookman, helvetica, helvetica-narrow, palatino, schoolbook, times
+###############################################################################
+
+AND_OPT=off                     # Insert "and " before last word.
+FINAL_OPT=off                   # Leave "," after last word.
+OR_OPT=off                      # Insert "or " before last word.
+PERIOD_OPT=off                  # Insert a final period after last word.
+REMOVE_AND_OR_PERIOD_OPT=off
+
+
+let errors=0
+while getopts "?afhopr" opt
+do
+    case "$opt" in
+        (\?|h) let errors++ ;;
+        (a) AND_OPT=on ;;
+        (f) FINAL_OPT=on ;;
+        (o) OR_OPT=on ;;
+        (p) PERIOD_OPT=on ;;
+        (r) REMOVE_AND_OR_PERIOD_OPT=on ;;
+    esac
+done
+
+shift $((OPTIND-1))
+
+[[ $# > 0 ]] || [[ $errors > 0 ]] && {
+    cat <<EOF
+usage: sort-with-commas [OPTION]
+
+This reads its standard input and sorts a line or multiple lines with
+"words" separated by commas, then reassembles the line, words
+separated by a comma and s space, optionally leaving a final comma
+after the last word, or a period, and optionally putting "and " or "or
+" before the last word.
+
+Options
+
+-? -h   This message.
+-a      Insert "and " before last word.
+-f      Leave final comma after last word.
+-o      Insert "or " before last word.
+-p      Insert a period after the last word.
+-r      Remove "and " or "or " that occur at the beginning of a "word" in the
+        original list.
+
+Note that combining -a and -o, or -f and -p do what you say, but the results
+are silly.
+EOF
+    exit 1
+}
+
+tr ',' '\n' | sed -E -e 's/^[ 	]+//' -e '/^$/d' |
+    ([[ "$REMOVE_AND_OR_PERIOD_OPT" = "on" ]] &&
+         sed -E -e 's/^(and|or)[ \t]+//' -e 's/\.[ \t]*$//' || cat) | 
+    sort -u |
+    sed -E -e 's/$/,/' |
+    (if [[ "$AND_OPT" = "on" ]]; then sed -e '$s/^/and /'; else cat; fi) |
+    (if [[ "$FINAL_OPT" = "on" ]]; then cat; else sed -e '$s/,//'; fi) |
+    (if [[ "$OR_OPT" = "on" ]]; then sed -e '$s/^/or /'; else cat; fi) |
+    (if [[ "$PERIOD_OPT" = "on" ]]; then sed -e '$s/$/./'; else cat; fi) | 
+    tr '\n' ' ' | sed -E -e 's/[ ]$//'
