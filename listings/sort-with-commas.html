@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="description" content="sort-with-commas">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>sort-with-commas | Lacking Natural Simplicity</title>
+<link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
+<link rel="alternate" type="application/atom+xml" title="Atom" href="../feed.atom">
+<link rel="canonical" href="https://tkurtbond.github.io/listings/sort-with-commas.html">
+<!--[if lt IE 9]><script src="../assets/js/html5.js"></script><![endif]-->
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<div class="blog-masthead">
+    <div class="container">
+<!-- This keeps the margins nice -->
+        <nav class="blog-nav" role="navigation"><a href="../index.html" class="blog-nav-item">Home</a>
+            <a href="../archive.html" class="blog-nav-item">Archives</a>
+            <a href="../categories/index.html" class="blog-nav-item">Tags &amp; Categories</a>
+            <a href="../rss.xml" class="blog-nav-item">RSS feed</a>
+            <a href="../feed.atom" class="blog-nav-item">Atom feed</a>
+
+            
+
+    <li>
+    <a href="sort-with-commas" id="sourcelink">Source</a>
+    </li>
+                
+            
+        </nav>
+</div>
+<!-- /.container -->
+</div>
+<!-- End of Menubar -->
+
+<div class="container" id="content" role="main">
+    <div class="body-content">
+        <div class="blog-header">
+            <h1 class="blog-title">
+                <a href="https://tkurtbond.github.io/">
+
+                    <span id="blog-title">Lacking Natural Simplicity</span>
+                </a>
+            </h1>
+            <p class="lead blog-description">Random musings on books, code, and tabletop games.</p>
+            
+        </div>
+        <!--Body content-->
+        <div class="row">
+            <div class="col-sm-8 blog-main">
+<nav class="breadcrumbs"><ul class="breadcrumb">
+<li><a href=".">listings</a></li>
+                <li>sort-with-commas</li>
+</ul></nav><h1>sort-with-commas
+        <small><a href="sort-with-commas">(Source)</a></small>
+    </h1>
+    <div class="code"><table class="codetable">
+<tr>
+<td class="linenos linenodiv"><a href="#listingssort-with-commas-1"><code data-line-number=" 1"></code></a></td>
+<td class="code"><code><a name="listingssort-with-commas-1"></a><span class="ch">#! /usr/bin/env bash</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingssort-with-commas-2"><code data-line-number=" 2"></code></a></td>
+<td class="code"><code><a name="listingssort-with-commas-2"></a><span class="c1">###############################################################################</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingssort-with-commas-3"><code data-line-number=" 3"></code></a></td>
+<td class="code"><code><a name="listingssort-with-commas-3"></a><span class="c1"># Sort a list of words that are seperated by commas, optionally followed by</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingssort-with-commas-4"><code data-line-number=" 4"></code></a></td>
+<td class="code"><code><a name="listingssort-with-commas-4"></a><span class="c1"># a newline into a single line seperated by commas followed by spaces.</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingssort-with-commas-5"><code data-line-number=" 5"></code></a></td>
+<td class="code"><code><a name="listingssort-with-commas-5"></a><span class="c1"># </span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingssort-with-commas-6"><code data-line-number=" 6"></code></a></td>
+<td class="code"><code><a name="listingssort-with-commas-6"></a><span class="c1"># For example: it translates (ignore the "# +" at the beginning of lines)</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingssort-with-commas-7"><code data-line-number=" 7"></code></a></td>
+<td class="code"><code><a name="listingssort-with-commas-7"></a><span class="c1">#    bookman, schoolbook,palatino,</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingssort-with-commas-8"><code data-line-number=" 8"></code></a></td>
+<td class="code"><code><a name="listingssort-with-commas-8"></a><span class="c1">#    times, helvetica, helvetica-narrow,</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingssort-with-commas-9"><code data-line-number=" 9"></code></a></td>
+<td class="code"><code><a name="listingssort-with-commas-9"></a><span class="c1"># to</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingssort-with-commas-10"><code data-line-number="10"></code></a></td>
+<td class="code"><code><a name="listingssort-with-commas-10"></a><span class="c1">#    bookman, helvetica, helvetica-narrow, palatino, schoolbook, times</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingssort-with-commas-11"><code data-line-number="11"></code></a></td>
+<td class="code"><code><a name="listingssort-with-commas-11"></a><span class="c1">###############################################################################</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingssort-with-commas-12"><code data-line-number="12"></code></a></td>
+<td class="code"><code><a name="listingssort-with-commas-12"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingssort-with-commas-13"><code data-line-number="13"></code></a></td>
+<td class="code"><code><a name="listingssort-with-commas-13"></a><span class="nv">AND_OPT</span><span class="o">=</span>off                     <span class="c1"># Insert "and " before last word.</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingssort-with-commas-14"><code data-line-number="14"></code></a></td>
+<td class="code"><code><a name="listingssort-with-commas-14"></a><span class="nv">FINAL_OPT</span><span class="o">=</span>off                   <span class="c1"># Leave "," after last word.</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingssort-with-commas-15"><code data-line-number="15"></code></a></td>
+<td class="code"><code><a name="listingssort-with-commas-15"></a><span class="nv">OR_OPT</span><span class="o">=</span>off                      <span class="c1"># Insert "or " before last word.</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingssort-with-commas-16"><code data-line-number="16"></code></a></td>
+<td class="code"><code><a name="listingssort-with-commas-16"></a><span class="nv">PERIOD_OPT</span><span class="o">=</span>off                  <span class="c1"># Insert a final period after last word.</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingssort-with-commas-17"><code data-line-number="17"></code></a></td>
+<td class="code"><code><a name="listingssort-with-commas-17"></a><span class="nv">REMOVE_AND_OR_PERIOD_OPT</span><span class="o">=</span>off
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingssort-with-commas-18"><code data-line-number="18"></code></a></td>
+<td class="code"><code><a name="listingssort-with-commas-18"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingssort-with-commas-19"><code data-line-number="19"></code></a></td>
+<td class="code"><code><a name="listingssort-with-commas-19"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingssort-with-commas-20"><code data-line-number="20"></code></a></td>
+<td class="code"><code><a name="listingssort-with-commas-20"></a><span class="nb">let</span> <span class="nv">errors</span><span class="o">=</span><span class="m">0</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingssort-with-commas-21"><code data-line-number="21"></code></a></td>
+<td class="code"><code><a name="listingssort-with-commas-21"></a><span class="k">while</span> <span class="nb">getopts</span> <span class="s2">"?afhopr"</span> opt
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingssort-with-commas-22"><code data-line-number="22"></code></a></td>
+<td class="code"><code><a name="listingssort-with-commas-22"></a><span class="k">do</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingssort-with-commas-23"><code data-line-number="23"></code></a></td>
+<td class="code"><code><a name="listingssort-with-commas-23"></a>    <span class="k">case</span> <span class="s2">"</span><span class="nv">$opt</span><span class="s2">"</span> in
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingssort-with-commas-24"><code data-line-number="24"></code></a></td>
+<td class="code"><code><a name="listingssort-with-commas-24"></a>        <span class="o">(</span><span class="se">\?</span><span class="p">|</span>h<span class="o">)</span> <span class="nb">let</span> errors++ <span class="p">;;</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingssort-with-commas-25"><code data-line-number="25"></code></a></td>
+<td class="code"><code><a name="listingssort-with-commas-25"></a>        <span class="o">(</span>a<span class="o">)</span> <span class="nv">AND_OPT</span><span class="o">=</span>on <span class="p">;;</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingssort-with-commas-26"><code data-line-number="26"></code></a></td>
+<td class="code"><code><a name="listingssort-with-commas-26"></a>        <span class="o">(</span>f<span class="o">)</span> <span class="nv">FINAL_OPT</span><span class="o">=</span>on <span class="p">;;</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingssort-with-commas-27"><code data-line-number="27"></code></a></td>
+<td class="code"><code><a name="listingssort-with-commas-27"></a>        <span class="o">(</span>o<span class="o">)</span> <span class="nv">OR_OPT</span><span class="o">=</span>on <span class="p">;;</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingssort-with-commas-28"><code data-line-number="28"></code></a></td>
+<td class="code"><code><a name="listingssort-with-commas-28"></a>        <span class="o">(</span>p<span class="o">)</span> <span class="nv">PERIOD_OPT</span><span class="o">=</span>on <span class="p">;;</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingssort-with-commas-29"><code data-line-number="29"></code></a></td>
+<td class="code"><code><a name="listingssort-with-commas-29"></a>        <span class="o">(</span>r<span class="o">)</span> <span class="nv">REMOVE_AND_OR_PERIOD_OPT</span><span class="o">=</span>on <span class="p">;;</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingssort-with-commas-30"><code data-line-number="30"></code></a></td>
+<td class="code"><code><a name="listingssort-with-commas-30"></a>    <span class="k">esac</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingssort-with-commas-31"><code data-line-number="31"></code></a></td>
+<td class="code"><code><a name="listingssort-with-commas-31"></a><span class="k">done</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingssort-with-commas-32"><code data-line-number="32"></code></a></td>
+<td class="code"><code><a name="listingssort-with-commas-32"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingssort-with-commas-33"><code data-line-number="33"></code></a></td>
+<td class="code"><code><a name="listingssort-with-commas-33"></a><span class="nb">shift</span> <span class="k">$((</span>OPTIND-1<span class="k">))</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingssort-with-commas-34"><code data-line-number="34"></code></a></td>
+<td class="code"><code><a name="listingssort-with-commas-34"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingssort-with-commas-35"><code data-line-number="35"></code></a></td>
+<td class="code"><code><a name="listingssort-with-commas-35"></a><span class="o">[[</span> <span class="nv">$#</span> &gt; <span class="m">0</span> <span class="o">]]</span> <span class="o">||</span> <span class="o">[[</span> <span class="nv">$errors</span> &gt; <span class="m">0</span> <span class="o">]]</span> <span class="o">&amp;&amp;</span> <span class="o">{</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingssort-with-commas-36"><code data-line-number="36"></code></a></td>
+<td class="code"><code><a name="listingssort-with-commas-36"></a>    cat <span class="s">&lt;&lt;EOF</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingssort-with-commas-37"><code data-line-number="37"></code></a></td>
+<td class="code"><code><a name="listingssort-with-commas-37"></a><span class="s">usage: sort-with-commas [OPTION]</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingssort-with-commas-38"><code data-line-number="38"></code></a></td>
+<td class="code"><code><a name="listingssort-with-commas-38"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingssort-with-commas-39"><code data-line-number="39"></code></a></td>
+<td class="code"><code><a name="listingssort-with-commas-39"></a><span class="s">This reads its standard input and sorts a line or multiple lines with</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingssort-with-commas-40"><code data-line-number="40"></code></a></td>
+<td class="code"><code><a name="listingssort-with-commas-40"></a><span class="s">"words" separated by commas, then reassembles the line, words</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingssort-with-commas-41"><code data-line-number="41"></code></a></td>
+<td class="code"><code><a name="listingssort-with-commas-41"></a><span class="s">separated by a comma and s space, optionally leaving a final comma</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingssort-with-commas-42"><code data-line-number="42"></code></a></td>
+<td class="code"><code><a name="listingssort-with-commas-42"></a><span class="s">after the last word, or a period, and optionally putting "and " or "or</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingssort-with-commas-43"><code data-line-number="43"></code></a></td>
+<td class="code"><code><a name="listingssort-with-commas-43"></a><span class="s">" before the last word.</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingssort-with-commas-44"><code data-line-number="44"></code></a></td>
+<td class="code"><code><a name="listingssort-with-commas-44"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingssort-with-commas-45"><code data-line-number="45"></code></a></td>
+<td class="code"><code><a name="listingssort-with-commas-45"></a><span class="s">Options</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingssort-with-commas-46"><code data-line-number="46"></code></a></td>
+<td class="code"><code><a name="listingssort-with-commas-46"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingssort-with-commas-47"><code data-line-number="47"></code></a></td>
+<td class="code"><code><a name="listingssort-with-commas-47"></a><span class="s">-? -h   This message.</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingssort-with-commas-48"><code data-line-number="48"></code></a></td>
+<td class="code"><code><a name="listingssort-with-commas-48"></a><span class="s">-a      Insert "and " before last word.</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingssort-with-commas-49"><code data-line-number="49"></code></a></td>
+<td class="code"><code><a name="listingssort-with-commas-49"></a><span class="s">-f      Leave final comma after last word.</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingssort-with-commas-50"><code data-line-number="50"></code></a></td>
+<td class="code"><code><a name="listingssort-with-commas-50"></a><span class="s">-o      Insert "or " before last word.</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingssort-with-commas-51"><code data-line-number="51"></code></a></td>
+<td class="code"><code><a name="listingssort-with-commas-51"></a><span class="s">-p      Insert a period after the last word.</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingssort-with-commas-52"><code data-line-number="52"></code></a></td>
+<td class="code"><code><a name="listingssort-with-commas-52"></a><span class="s">-r      Remove "and " or "or " that occur at the beginning of a "word" in the</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingssort-with-commas-53"><code data-line-number="53"></code></a></td>
+<td class="code"><code><a name="listingssort-with-commas-53"></a><span class="s">        original list.</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingssort-with-commas-54"><code data-line-number="54"></code></a></td>
+<td class="code"><code><a name="listingssort-with-commas-54"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingssort-with-commas-55"><code data-line-number="55"></code></a></td>
+<td class="code"><code><a name="listingssort-with-commas-55"></a><span class="s">Note that combining -a and -o, or -f and -p do what you say, but the results</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingssort-with-commas-56"><code data-line-number="56"></code></a></td>
+<td class="code"><code><a name="listingssort-with-commas-56"></a><span class="s">are silly.</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingssort-with-commas-57"><code data-line-number="57"></code></a></td>
+<td class="code"><code><a name="listingssort-with-commas-57"></a><span class="s">EOF</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingssort-with-commas-58"><code data-line-number="58"></code></a></td>
+<td class="code"><code><a name="listingssort-with-commas-58"></a>    <span class="nb">exit</span> <span class="m">1</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingssort-with-commas-59"><code data-line-number="59"></code></a></td>
+<td class="code"><code><a name="listingssort-with-commas-59"></a><span class="o">}</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingssort-with-commas-60"><code data-line-number="60"></code></a></td>
+<td class="code"><code><a name="listingssort-with-commas-60"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingssort-with-commas-61"><code data-line-number="61"></code></a></td>
+<td class="code"><code><a name="listingssort-with-commas-61"></a>tr <span class="s1">','</span> <span class="s1">'\n'</span> <span class="p">|</span> sed -E -e <span class="s1">'s/^[ 	]+//'</span> -e <span class="s1">'/^$/d'</span> <span class="p">|</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingssort-with-commas-62"><code data-line-number="62"></code></a></td>
+<td class="code"><code><a name="listingssort-with-commas-62"></a>    <span class="o">([[</span> <span class="s2">"</span><span class="nv">$REMOVE_AND_OR_PERIOD_OPT</span><span class="s2">"</span> <span class="o">=</span> <span class="s2">"on"</span> <span class="o">]]</span> <span class="o">&amp;&amp;</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingssort-with-commas-63"><code data-line-number="63"></code></a></td>
+<td class="code"><code><a name="listingssort-with-commas-63"></a>         sed -E -e <span class="s1">'s/^(and|or)[ \t]+//'</span> -e <span class="s1">'s/\.[ \t]*$//'</span> <span class="o">||</span> cat<span class="o">)</span> <span class="p">|</span> 
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingssort-with-commas-64"><code data-line-number="64"></code></a></td>
+<td class="code"><code><a name="listingssort-with-commas-64"></a>    sort -u <span class="p">|</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingssort-with-commas-65"><code data-line-number="65"></code></a></td>
+<td class="code"><code><a name="listingssort-with-commas-65"></a>    sed -E -e <span class="s1">'s/$/,/'</span> <span class="p">|</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingssort-with-commas-66"><code data-line-number="66"></code></a></td>
+<td class="code"><code><a name="listingssort-with-commas-66"></a>    <span class="o">(</span><span class="k">if</span> <span class="o">[[</span> <span class="s2">"</span><span class="nv">$AND_OPT</span><span class="s2">"</span> <span class="o">=</span> <span class="s2">"on"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span> sed -e <span class="s1">'$s/^/and /'</span><span class="p">;</span> <span class="k">else</span> cat<span class="p">;</span> <span class="k">fi</span><span class="o">)</span> <span class="p">|</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingssort-with-commas-67"><code data-line-number="67"></code></a></td>
+<td class="code"><code><a name="listingssort-with-commas-67"></a>    <span class="o">(</span><span class="k">if</span> <span class="o">[[</span> <span class="s2">"</span><span class="nv">$FINAL_OPT</span><span class="s2">"</span> <span class="o">=</span> <span class="s2">"on"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span> cat<span class="p">;</span> <span class="k">else</span> sed -e <span class="s1">'$s/,//'</span><span class="p">;</span> <span class="k">fi</span><span class="o">)</span> <span class="p">|</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingssort-with-commas-68"><code data-line-number="68"></code></a></td>
+<td class="code"><code><a name="listingssort-with-commas-68"></a>    <span class="o">(</span><span class="k">if</span> <span class="o">[[</span> <span class="s2">"</span><span class="nv">$OR_OPT</span><span class="s2">"</span> <span class="o">=</span> <span class="s2">"on"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span> sed -e <span class="s1">'$s/^/or /'</span><span class="p">;</span> <span class="k">else</span> cat<span class="p">;</span> <span class="k">fi</span><span class="o">)</span> <span class="p">|</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingssort-with-commas-69"><code data-line-number="69"></code></a></td>
+<td class="code"><code><a name="listingssort-with-commas-69"></a>    <span class="o">(</span><span class="k">if</span> <span class="o">[[</span> <span class="s2">"</span><span class="nv">$PERIOD_OPT</span><span class="s2">"</span> <span class="o">=</span> <span class="s2">"on"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span> sed -e <span class="s1">'$s/$/./'</span><span class="p">;</span> <span class="k">else</span> cat<span class="p">;</span> <span class="k">fi</span><span class="o">)</span> <span class="p">|</span> 
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingssort-with-commas-70"><code data-line-number="70"></code></a></td>
+<td class="code"><code><a name="listingssort-with-commas-70"></a>    tr <span class="s1">'\n'</span> <span class="s1">' '</span> <span class="p">|</span> sed -E -e <span class="s1">'s/[ ]$//'</span>
+</code></td>
+</tr>
+</table></div>
+            </div>
+            <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+                    <div class="sidebar-module sidebar-module-inset">
+      <h4>About</h4>
+      <p>Lacking Natural Simplicity is one, not particularly flattering, 
+         definition of sophisticated.  
+         This blog chronicles my journey through our at times too complicated 
+         and sophisticated world. </p>
+    </div>
+    <div class="sidebar-module">
+      <h4>Links</h4>
+      <ol class="list-unstyled">
+<li><a href="../pages/about-the-blog/index.html">About the Blog</a></li>
+        <li><a href="../pages/colophon/index.html">Colophon</a></li>
+        <li><a href="../pages/static-pages-index/index.html">Pages</a></li>
+        <li>
+<a href="http://tkb.tx0.org/">My other web page</a>
+            <p>    Mostly empty</p>
+        </li>
+      </ol>
+</div>
+    
+            </div>
+        <!--End of body content-->
+        </div>
+    </div>
+</div>
+
+<footer class="blog-footer" id="footer">
+    Contents © 2021         <a href="mailto:tkurtbond@gmail.com">T. Kurt Bond</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+    
+</footer><script src="../assets/js/all-nocdn.js"></script><!-- fancy dates --><script>
+    moment.locale("en");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates --><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element) {
+            return element.getElementsByTagName('img')[0].alt;
+    }});
+    </script>
+</body>
+</html>

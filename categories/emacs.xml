@@ -1,5 +1,131 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity (Posts about emacs)</title><link>https://tkurtbond.github.io/</link><description></description><atom:link href="https://tkurtbond.github.io/categories/emacs.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2021 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Thu, 10 Jun 2021 18:16:33 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Having Emacs time-stamps at the end of files</title><link>https://tkurtbond.github.io/posts/2020/08/05/having-emacs-time-stamps-at-the-end-of-files/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;Do you ever use &lt;span class="app"&gt;Emacs&lt;/span&gt; time stamp functionality (type &lt;span class="key"&gt;C-h
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity (Posts about emacs)</title><link>https://tkurtbond.github.io/</link><description></description><atom:link href="https://tkurtbond.github.io/categories/emacs.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2021 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Fri, 16 Jul 2021 19:11:16 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Sorting words separated by commas</title><link>https://tkurtbond.github.io/posts/2021/07/16/sorting-words-separated-by-commas/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;I often have lists of "words", separated by commas, possibly on
+multiple lines, like this example from a &lt;span class="file"&gt;Makefile&lt;/span&gt;:&lt;/p&gt;
+&lt;pre class="code makefile"&gt;&lt;a name="rest_code_de2e03e802444dcb8975b8f790486f04-1"&gt;&lt;/a&gt;&lt;span class="c"&gt;#    bookman, schoolbook, palatino, times,&lt;/span&gt;
+&lt;a name="rest_code_de2e03e802444dcb8975b8f790486f04-2"&gt;&lt;/a&gt;&lt;span class="c"&gt;#    helvetica, helvetica-narrow, optima, cormorant-garamond,&lt;/span&gt;
+&lt;a name="rest_code_de2e03e802444dcb8975b8f790486f04-3"&gt;&lt;/a&gt;&lt;span class="c"&gt;#    or ebgaramond.&lt;/span&gt;
+&lt;/pre&gt;&lt;p&gt;I find these lists are always getting out of order, or they end up
+with some short lines and some long lines.  I want to be able to
+reformat them automatically, like this:&lt;/p&gt;
+&lt;pre class="code makefile"&gt;&lt;a name="rest_code_18f8185edca04d0da4f870f047cf7c39-1"&gt;&lt;/a&gt;&lt;span class="c"&gt;#    bookman, cormorant-garamond, ebgaramond, helvetica, helvetica-narrow,&lt;/span&gt;
+&lt;a name="rest_code_18f8185edca04d0da4f870f047cf7c39-2"&gt;&lt;/a&gt;&lt;span class="c"&gt;#    optima, palatino, schoolbook, or times.&lt;/span&gt;
+&lt;/pre&gt;&lt;p&gt;So, I wrote three scripts to deal with them,
+&lt;span class="command"&gt;sort-with-commas&lt;/span&gt;, &lt;span class="command"&gt;strip-leading-hash&lt;/span&gt; to get rid
+of the leading hashes and spaces, and &lt;span class="command"&gt;prefix&lt;/span&gt; to put the
+leading hashes and spaces back.&lt;/p&gt;
+&lt;p&gt;Now, above I said "words", because really it's anything separated by
+commas, so the "words" can contain space, etc.&lt;/p&gt;
+&lt;p&gt;Also, notice that the period after "ebgaramond" and the "or" before
+"ebgaramond"` in the original list disappear, and an "or " appears
+before the new end of the list, "times", and a period follows it.  And
+you can have have the same situation with "and".  So, the &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;-p&lt;/span&gt;&lt;/code&gt;
+option to &lt;span class="command"&gt;sort-with-commas&lt;/span&gt; adds a period after the last
+word, the &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;-a&lt;/span&gt;&lt;/code&gt; option adds and "and " before the last word, and the
+&lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;-o&lt;/span&gt;&lt;/code&gt; option adds an "or " before the last word.  If you are sorting
+only part of a list, you want to have a comma after the last "word",
+so there is the option &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;-f&lt;/span&gt;&lt;/code&gt; for that.  And to remove the the period
+from the original list, so it doesn't end up in the middle of the new
+list, or to remove "and " or "or ", there is the &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;-r&lt;/span&gt;&lt;/code&gt; option.&lt;/p&gt;
+&lt;p&gt;The default is to return the sorted list as one long line, but you can
+easily reformat it to multiple lines by running it through the Unix
+command &lt;span class="command"&gt;fmt&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Although in this case the list is prefixed with a "#" and some spaces
+because it comes from a comment in a Makefile, you have to remove
+those to sort the list.  I wrote the script
+&lt;span class="command"&gt;strip-leading-hash&lt;/span&gt; to do that, too, rather than having to
+remember the &lt;span class="command"&gt;sed&lt;/span&gt; command to so that all the time.&lt;/p&gt;
+&lt;p&gt;So, to sort the original list I'd run the command&lt;/p&gt;
+&lt;pre class="code bash"&gt;&lt;a name="rest_code_eb875012b7f04983afa48ad56f77ac8b-1"&gt;&lt;/a&gt;strip-leading-hash &lt;span class="p"&gt;|&lt;/span&gt; sort-with-commas -r -p -o &lt;span class="p"&gt;|&lt;/span&gt; fmt &lt;span class="p"&gt;|&lt;/span&gt; prefix &lt;span class="s2"&gt;"#    "&lt;/span&gt;
+&lt;/pre&gt;&lt;p&gt;which means “strip the leading hashes and spaces, remove the trailing
+period and the "and " or "or ", add a final period after the last word,
+add an "or " before the final word, reformat as a paragraph, and
+prefix the lines with the hash and spaces.”&lt;/p&gt;
+&lt;p&gt;When I use this I'm usually in &lt;span class="app"&gt;emacs&lt;/span&gt; and using &lt;span class="key"&gt;M-|&lt;/span&gt; to
+run it on the region (the currently selected text), often with the
+&lt;span class="key"&gt;C-u&lt;/span&gt; to replace the region with results.&lt;/p&gt;
+&lt;p&gt;Here's the main script, &lt;span class="file"&gt;sort-with-commas&lt;/span&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://tkurtbond.github.io/listings/sort-with-commas.html"&gt;sort-with-commas&lt;/a&gt;  &lt;a class="reference external" href="https://tkurtbond.github.io/listings/sort-with-commas"&gt;(Source)&lt;/a&gt;&lt;/p&gt;
+&lt;pre class="code bash"&gt;&lt;a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-1"&gt;&lt;/a&gt;&lt;span class="ch"&gt;#! /usr/bin/env bash&lt;/span&gt;
+&lt;a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-2"&gt;&lt;/a&gt;&lt;span class="c1"&gt;###############################################################################&lt;/span&gt;
+&lt;a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-3"&gt;&lt;/a&gt;&lt;span class="c1"&gt;# Sort a list of words that are seperated by commas, optionally followed by&lt;/span&gt;
+&lt;a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-4"&gt;&lt;/a&gt;&lt;span class="c1"&gt;# a newline into a single line seperated by commas followed by spaces.&lt;/span&gt;
+&lt;a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-5"&gt;&lt;/a&gt;&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-6"&gt;&lt;/a&gt;&lt;span class="c1"&gt;# For example: it translates (ignore the "# +" at the beginning of lines)&lt;/span&gt;
+&lt;a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-7"&gt;&lt;/a&gt;&lt;span class="c1"&gt;#    bookman, schoolbook,palatino,&lt;/span&gt;
+&lt;a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-8"&gt;&lt;/a&gt;&lt;span class="c1"&gt;#    times, helvetica, helvetica-narrow,&lt;/span&gt;
+&lt;a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-9"&gt;&lt;/a&gt;&lt;span class="c1"&gt;# to&lt;/span&gt;
+&lt;a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-10"&gt;&lt;/a&gt;&lt;span class="c1"&gt;#    bookman, helvetica, helvetica-narrow, palatino, schoolbook, times&lt;/span&gt;
+&lt;a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-11"&gt;&lt;/a&gt;&lt;span class="c1"&gt;###############################################################################&lt;/span&gt;
+&lt;a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-12"&gt;&lt;/a&gt;
+&lt;a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-13"&gt;&lt;/a&gt;&lt;span class="nv"&gt;AND_OPT&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;off                     &lt;span class="c1"&gt;# Insert "and " before last word.&lt;/span&gt;
+&lt;a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-14"&gt;&lt;/a&gt;&lt;span class="nv"&gt;FINAL_OPT&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;off                   &lt;span class="c1"&gt;# Leave "," after last word.&lt;/span&gt;
+&lt;a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-15"&gt;&lt;/a&gt;&lt;span class="nv"&gt;OR_OPT&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;off                      &lt;span class="c1"&gt;# Insert "or " before last word.&lt;/span&gt;
+&lt;a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-16"&gt;&lt;/a&gt;&lt;span class="nv"&gt;PERIOD_OPT&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;off                  &lt;span class="c1"&gt;# Insert a final period after last word.&lt;/span&gt;
+&lt;a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-17"&gt;&lt;/a&gt;&lt;span class="nv"&gt;REMOVE_AND_OR_PERIOD_OPT&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;off
+&lt;a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-18"&gt;&lt;/a&gt;
+&lt;a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-19"&gt;&lt;/a&gt;
+&lt;a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-20"&gt;&lt;/a&gt;&lt;span class="nb"&gt;let&lt;/span&gt; &lt;span class="nv"&gt;errors&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;
+&lt;a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-21"&gt;&lt;/a&gt;&lt;span class="k"&gt;while&lt;/span&gt; &lt;span class="nb"&gt;getopts&lt;/span&gt; &lt;span class="s2"&gt;"?afhopr"&lt;/span&gt; opt
+&lt;a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-22"&gt;&lt;/a&gt;&lt;span class="k"&gt;do&lt;/span&gt;
+&lt;a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-23"&gt;&lt;/a&gt;    &lt;span class="k"&gt;case&lt;/span&gt; &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$opt&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt; in
+&lt;a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-24"&gt;&lt;/a&gt;        &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="se"&gt;\?&lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;h&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="nb"&gt;let&lt;/span&gt; errors++ &lt;span class="p"&gt;;;&lt;/span&gt;
+&lt;a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-25"&gt;&lt;/a&gt;        &lt;span class="o"&gt;(&lt;/span&gt;a&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="nv"&gt;AND_OPT&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;on &lt;span class="p"&gt;;;&lt;/span&gt;
+&lt;a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-26"&gt;&lt;/a&gt;        &lt;span class="o"&gt;(&lt;/span&gt;f&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="nv"&gt;FINAL_OPT&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;on &lt;span class="p"&gt;;;&lt;/span&gt;
+&lt;a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-27"&gt;&lt;/a&gt;        &lt;span class="o"&gt;(&lt;/span&gt;o&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="nv"&gt;OR_OPT&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;on &lt;span class="p"&gt;;;&lt;/span&gt;
+&lt;a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-28"&gt;&lt;/a&gt;        &lt;span class="o"&gt;(&lt;/span&gt;p&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="nv"&gt;PERIOD_OPT&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;on &lt;span class="p"&gt;;;&lt;/span&gt;
+&lt;a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-29"&gt;&lt;/a&gt;        &lt;span class="o"&gt;(&lt;/span&gt;r&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="nv"&gt;REMOVE_AND_OR_PERIOD_OPT&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;on &lt;span class="p"&gt;;;&lt;/span&gt;
+&lt;a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-30"&gt;&lt;/a&gt;    &lt;span class="k"&gt;esac&lt;/span&gt;
+&lt;a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-31"&gt;&lt;/a&gt;&lt;span class="k"&gt;done&lt;/span&gt;
+&lt;a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-32"&gt;&lt;/a&gt;
+&lt;a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-33"&gt;&lt;/a&gt;&lt;span class="nb"&gt;shift&lt;/span&gt; &lt;span class="k"&gt;$((&lt;/span&gt;OPTIND-1&lt;span class="k"&gt;))&lt;/span&gt;
+&lt;a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-34"&gt;&lt;/a&gt;
+&lt;a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-35"&gt;&lt;/a&gt;&lt;span class="o"&gt;[[&lt;/span&gt; &lt;span class="nv"&gt;$#&lt;/span&gt; &amp;gt; &lt;span class="m"&gt;0&lt;/span&gt; &lt;span class="o"&gt;]]&lt;/span&gt; &lt;span class="o"&gt;||&lt;/span&gt; &lt;span class="o"&gt;[[&lt;/span&gt; &lt;span class="nv"&gt;$errors&lt;/span&gt; &amp;gt; &lt;span class="m"&gt;0&lt;/span&gt; &lt;span class="o"&gt;]]&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+&lt;a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-36"&gt;&lt;/a&gt;    cat &lt;span class="s"&gt;&amp;lt;&amp;lt;EOF&lt;/span&gt;
+&lt;a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-37"&gt;&lt;/a&gt;&lt;span class="s"&gt;usage: sort-with-commas [OPTION]&lt;/span&gt;
+&lt;a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-38"&gt;&lt;/a&gt;
+&lt;a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-39"&gt;&lt;/a&gt;&lt;span class="s"&gt;This reads its standard input and sorts a line or multiple lines with&lt;/span&gt;
+&lt;a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-40"&gt;&lt;/a&gt;&lt;span class="s"&gt;"words" separated by commas, then reassembles the line, words&lt;/span&gt;
+&lt;a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-41"&gt;&lt;/a&gt;&lt;span class="s"&gt;separated by a comma and s space, optionally leaving a final comma&lt;/span&gt;
+&lt;a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-42"&gt;&lt;/a&gt;&lt;span class="s"&gt;after the last word, or a period, and optionally putting "and " or "or&lt;/span&gt;
+&lt;a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-43"&gt;&lt;/a&gt;&lt;span class="s"&gt;" before the last word.&lt;/span&gt;
+&lt;a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-44"&gt;&lt;/a&gt;
+&lt;a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-45"&gt;&lt;/a&gt;&lt;span class="s"&gt;Options&lt;/span&gt;
+&lt;a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-46"&gt;&lt;/a&gt;
+&lt;a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-47"&gt;&lt;/a&gt;&lt;span class="s"&gt;-? -h   This message.&lt;/span&gt;
+&lt;a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-48"&gt;&lt;/a&gt;&lt;span class="s"&gt;-a      Insert "and " before last word.&lt;/span&gt;
+&lt;a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-49"&gt;&lt;/a&gt;&lt;span class="s"&gt;-f      Leave final comma after last word.&lt;/span&gt;
+&lt;a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-50"&gt;&lt;/a&gt;&lt;span class="s"&gt;-o      Insert "or " before last word.&lt;/span&gt;
+&lt;a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-51"&gt;&lt;/a&gt;&lt;span class="s"&gt;-p      Insert a period after the last word.&lt;/span&gt;
+&lt;a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-52"&gt;&lt;/a&gt;&lt;span class="s"&gt;-r      Remove "and " or "or " that occur at the beginning of a "word" in the&lt;/span&gt;
+&lt;a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-53"&gt;&lt;/a&gt;&lt;span class="s"&gt;        original list.&lt;/span&gt;
+&lt;a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-54"&gt;&lt;/a&gt;
+&lt;a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-55"&gt;&lt;/a&gt;&lt;span class="s"&gt;Note that combining -a and -o, or -f and -p do what you say, but the results&lt;/span&gt;
+&lt;a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-56"&gt;&lt;/a&gt;&lt;span class="s"&gt;are silly.&lt;/span&gt;
+&lt;a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-57"&gt;&lt;/a&gt;&lt;span class="s"&gt;EOF&lt;/span&gt;
+&lt;a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-58"&gt;&lt;/a&gt;    &lt;span class="nb"&gt;exit&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;
+&lt;a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-59"&gt;&lt;/a&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-60"&gt;&lt;/a&gt;
+&lt;a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-61"&gt;&lt;/a&gt;tr &lt;span class="s1"&gt;','&lt;/span&gt; &lt;span class="s1"&gt;'\n'&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; sed -E -e &lt;span class="s1"&gt;'s/^[   ]+//'&lt;/span&gt; -e &lt;span class="s1"&gt;'/^$/d'&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-62"&gt;&lt;/a&gt;    &lt;span class="o"&gt;([[&lt;/span&gt; &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$REMOVE_AND_OR_PERIOD_OPT&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"on"&lt;/span&gt; &lt;span class="o"&gt;]]&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt;
+&lt;a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-63"&gt;&lt;/a&gt;         sed -E -e &lt;span class="s1"&gt;'s/^(and|or)[ \t]+//'&lt;/span&gt; -e &lt;span class="s1"&gt;'s/\.[ \t]*$//'&lt;/span&gt; &lt;span class="o"&gt;||&lt;/span&gt; cat&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-64"&gt;&lt;/a&gt;    sort -u &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-65"&gt;&lt;/a&gt;    sed -E -e &lt;span class="s1"&gt;'s/$/,/'&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-66"&gt;&lt;/a&gt;    &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[[&lt;/span&gt; &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$AND_OPT&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"on"&lt;/span&gt; &lt;span class="o"&gt;]]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt; sed -e &lt;span class="s1"&gt;'$s/^/and /'&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; cat&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;fi&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-67"&gt;&lt;/a&gt;    &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[[&lt;/span&gt; &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$FINAL_OPT&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"on"&lt;/span&gt; &lt;span class="o"&gt;]]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt; cat&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; sed -e &lt;span class="s1"&gt;'$s/,//'&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;fi&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-68"&gt;&lt;/a&gt;    &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[[&lt;/span&gt; &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$OR_OPT&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"on"&lt;/span&gt; &lt;span class="o"&gt;]]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt; sed -e &lt;span class="s1"&gt;'$s/^/or /'&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; cat&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;fi&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-69"&gt;&lt;/a&gt;    &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[[&lt;/span&gt; &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$PERIOD_OPT&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"on"&lt;/span&gt; &lt;span class="o"&gt;]]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt; sed -e &lt;span class="s1"&gt;'$s/$/./'&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; cat&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;fi&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-70"&gt;&lt;/a&gt;    tr &lt;span class="s1"&gt;'\n'&lt;/span&gt; &lt;span class="s1"&gt;' '&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; sed -E -e &lt;span class="s1"&gt;'s/[ ]$//'&lt;/span&gt;
+&lt;/pre&gt;&lt;p&gt;Here's &lt;span class="file"&gt;strip-leading-hash&lt;/span&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://tkurtbond.github.io/listings/strip-leading-hash.html"&gt;strip-leading-hash&lt;/a&gt;  &lt;a class="reference external" href="https://tkurtbond.github.io/listings/strip-leading-hash"&gt;(Source)&lt;/a&gt;&lt;/p&gt;
+&lt;pre class="code bash"&gt;&lt;a name="rest_code_d1228d2b760b41ec9203483924081657-1"&gt;&lt;/a&gt;&lt;span class="ch"&gt;#! /usr/bin/env bash&lt;/span&gt;
+&lt;a name="rest_code_d1228d2b760b41ec9203483924081657-2"&gt;&lt;/a&gt;
+&lt;a name="rest_code_d1228d2b760b41ec9203483924081657-3"&gt;&lt;/a&gt;sed -E -e &lt;span class="s1"&gt;'s/^#[ \t]*//'&lt;/span&gt;
+&lt;/pre&gt;&lt;p&gt;And here's &lt;span class="file"&gt;prefix&lt;/span&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://tkurtbond.github.io/listings/prefix.html"&gt;prefix&lt;/a&gt;  &lt;a class="reference external" href="https://tkurtbond.github.io/listings/prefix"&gt;(Source)&lt;/a&gt;&lt;/p&gt;
+&lt;pre class="code bash"&gt;&lt;a name="rest_code_6e0ffebdcc4c441e9b17bc9ef077dccd-1"&gt;&lt;/a&gt;&lt;span class="ch"&gt;#! /usr/bin/env bash&lt;/span&gt;
+&lt;a name="rest_code_6e0ffebdcc4c441e9b17bc9ef077dccd-2"&gt;&lt;/a&gt;
+&lt;a name="rest_code_6e0ffebdcc4c441e9b17bc9ef077dccd-3"&gt;&lt;/a&gt;sed &lt;span class="s2"&gt;"s/^/&lt;/span&gt;&lt;span class="nv"&gt;$1&lt;/span&gt;&lt;span class="s2"&gt;/"&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</description><category>bash</category><category>emacs</category><category>script</category><category>shell</category><guid>https://tkurtbond.github.io/posts/2021/07/16/sorting-words-separated-by-commas/</guid><pubDate>Fri, 16 Jul 2021 17:05:09 GMT</pubDate></item><item><title>Having Emacs time-stamps at the end of files</title><link>https://tkurtbond.github.io/posts/2020/08/05/having-emacs-time-stamps-at-the-end-of-files/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;Do you ever use &lt;span class="app"&gt;Emacs&lt;/span&gt; time stamp functionality (type &lt;span class="key"&gt;C-h
 f time-stamp&lt;/span&gt; in &lt;span class="app"&gt;Emacs&lt;/span&gt; to learn about that) to insert the
 current date time stamp into your file when you save it?  I use this
 frequently in documents I write, for my blog or standalone.  For the
@@ -247,18 +373,4 @@ running &lt;a class="reference external" href="http://www.gnu.org/software/emacs
 work.  Normal mouse functionality is still available by holding the
 Shift key while clicking.  I use the &lt;a class="reference external" href="http://www.chiark.greenend.org.uk/~sgtatham/putty/"&gt;PuTTY&lt;/a&gt; ssh client for remote
 access to various servers, and this works well Emacs in Screen under
-PuTTY, too.&lt;/p&gt;</description><category>computer</category><category>emacs</category><category>screen</category><category>tools</category><guid>https://tkurtbond.github.io/posts/2008/12/11/mousing-in-emacs-under-screen/</guid><pubDate>Thu, 11 Dec 2008 17:46:02 GMT</pubDate></item><item><title>E-mail Crisis, Part 4</title><link>https://tkurtbond.github.io/posts/2008/09/10/e-mail-crisis-part-4/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;Well, it looks like a leader is slowly emerging in my quest for an
-Emacs based mail reader: &lt;a class="reference external" href="http://www.gohome.org/wl/"&gt;Wanderlust&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;It handles MH- and Maildir-format mailboxes, UTF-8 in headers, has
-good facilities for reading and composing MIME messages, and I finally
-got it to work with Lotus Domino/Notes IMAP/SSL, amazingly.&lt;/p&gt;
-&lt;p&gt;Moreover, it looks like I'm probably going to switch to using a
-Maildir-format mailbox, which will work well with my use of &lt;a class="reference external" href="http://www.cis.upenn.edu/~bcpierce/unison/"&gt;Unison&lt;/a&gt;:
-MH-format mailboxes' use of plain numbers for message IDs/filenames
-(which can change a lot) makes things a little more confusing when
-syncing mailboxes with Unison.&lt;/p&gt;
-&lt;p&gt;Moving away from MH-format mailboxes is a bit of a shame, since it
-means that I'll be losing the ability to use the MH command line
-programs for accessing my e-mail.  I've used MH in the past, and have
-always liked the command line access it gives you.  Ah well.  I wish
-mdmh had advanced further.&lt;/p&gt;&lt;/div&gt;</description><category>e-mail</category><category>emacs</category><guid>https://tkurtbond.github.io/posts/2008/09/10/e-mail-crisis-part-4/</guid><pubDate>Wed, 10 Sep 2008 06:05:39 GMT</pubDate></item></channel></rss>
+PuTTY, too.&lt;/p&gt;</description><category>computer</category><category>emacs</category><category>screen</category><category>tools</category><guid>https://tkurtbond.github.io/posts/2008/12/11/mousing-in-emacs-under-screen/</guid><pubDate>Thu, 11 Dec 2008 17:46:02 GMT</pubDate></item></channel></rss>

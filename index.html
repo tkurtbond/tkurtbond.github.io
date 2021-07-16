@@ -10,7 +10,7 @@
 <link rel="alternate" type="application/atom+xml" title="Atom" href="feed.atom">
 <link rel="canonical" href="https://tkurtbond.github.io/">
 <link rel="next" href="index-90.html" type="text/html">
-<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/2021/07/15/troff-memorandum-macros-documentation/" type="text/html">
+<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/2021/07/16/sorting-words-separated-by-commas/" type="text/html">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
@@ -52,7 +52,158 @@
         <div class="row">
             <div class="col-sm-8 blog-main">
 <div class="postindex">
-    <article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2021/07/15/troff-memorandum-macros-documentation/" class="u-url">troff Memorandum Macros documentation</a></h2>
+    <article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2021/07/16/sorting-words-separated-by-commas/" class="u-url">Sorting words separated by commas</a></h2>
+        <div class="metadata blog-post-meta">
+            <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
+            <p class="dateline"><a href="posts/2021/07/16/sorting-words-separated-by-commas/" rel="bookmark"><time class="published dt-published" datetime="2021-07-16T13:05:09-04:00" title="2021-07-16 13:05">2021-07-16 13:05</time></a></p>
+                <p class="commentline">            <a href="posts/2021/07/16/sorting-words-separated-by-commas/#disqus_thread" data-disqus-identifier="cache/posts/2021/07/16/sorting-words-separated-by-commas.html">Comments</a>
+
+
+        </p>
+</div>
+    </header><div class="e-content entry-content">
+    <div>
+<p>I often have lists of "words", separated by commas, possibly on
+multiple lines, like this example from a <span class="file">Makefile</span>:</p>
+<pre class="code makefile"><a name="rest_code_de2e03e802444dcb8975b8f790486f04-1"></a><span class="c">#    bookman, schoolbook, palatino, times,</span>
+<a name="rest_code_de2e03e802444dcb8975b8f790486f04-2"></a><span class="c">#    helvetica, helvetica-narrow, optima, cormorant-garamond,</span>
+<a name="rest_code_de2e03e802444dcb8975b8f790486f04-3"></a><span class="c">#    or ebgaramond.</span>
+</pre>
+<p>I find these lists are always getting out of order, or they end up
+with some short lines and some long lines.  I want to be able to
+reformat them automatically, like this:</p>
+<pre class="code makefile"><a name="rest_code_18f8185edca04d0da4f870f047cf7c39-1"></a><span class="c">#    bookman, cormorant-garamond, ebgaramond, helvetica, helvetica-narrow,</span>
+<a name="rest_code_18f8185edca04d0da4f870f047cf7c39-2"></a><span class="c">#    optima, palatino, schoolbook, or times.</span>
+</pre>
+<p>So, I wrote three scripts to deal with them,
+<span class="command">sort-with-commas</span>, <span class="command">strip-leading-hash</span> to get rid
+of the leading hashes and spaces, and <span class="command">prefix</span> to put the
+leading hashes and spaces back.</p>
+<p>Now, above I said "words", because really it's anything separated by
+commas, so the "words" can contain space, etc.</p>
+<p>Also, notice that the period after "ebgaramond" and the "or" before
+"ebgaramond"` in the original list disappear, and an "or " appears
+before the new end of the list, "times", and a period follows it.  And
+you can have have the same situation with "and".  So, the <code class="docutils literal"><span class="pre">-p</span></code>
+option to <span class="command">sort-with-commas</span> adds a period after the last
+word, the <code class="docutils literal"><span class="pre">-a</span></code> option adds and "and " before the last word, and the
+<code class="docutils literal"><span class="pre">-o</span></code> option adds an "or " before the last word.  If you are sorting
+only part of a list, you want to have a comma after the last "word",
+so there is the option <code class="docutils literal"><span class="pre">-f</span></code> for that.  And to remove the the period
+from the original list, so it doesn't end up in the middle of the new
+list, or to remove "and " or "or ", there is the <code class="docutils literal"><span class="pre">-r</span></code> option.</p>
+<p>The default is to return the sorted list as one long line, but you can
+easily reformat it to multiple lines by running it through the Unix
+command <span class="command">fmt</span>.</p>
+<p>Although in this case the list is prefixed with a "#" and some spaces
+because it comes from a comment in a Makefile, you have to remove
+those to sort the list.  I wrote the script
+<span class="command">strip-leading-hash</span> to do that, too, rather than having to
+remember the <span class="command">sed</span> command to so that all the time.</p>
+<p>So, to sort the original list I'd run the command</p>
+<pre class="code bash"><a name="rest_code_eb875012b7f04983afa48ad56f77ac8b-1"></a>strip-leading-hash <span class="p">|</span> sort-with-commas -r -p -o <span class="p">|</span> fmt <span class="p">|</span> prefix <span class="s2">"#    "</span>
+</pre>
+<p>which means “strip the leading hashes and spaces, remove the trailing
+period and the "and " or "or ", add a final period after the last word,
+add an "or " before the final word, reformat as a paragraph, and
+prefix the lines with the hash and spaces.”</p>
+<p>When I use this I'm usually in <span class="app">emacs</span> and using <span class="key">M-|</span> to
+run it on the region (the currently selected text), often with the
+<span class="key">C-u</span> to replace the region with results.</p>
+<p>Here's the main script, <span class="file">sort-with-commas</span>:</p>
+<p><a class="reference external" href="listings/sort-with-commas.html">sort-with-commas</a>  <a class="reference external" href="listings/sort-with-commas">(Source)</a></p>
+<pre class="code bash"><a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-1"></a><span class="ch">#! /usr/bin/env bash</span>
+<a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-2"></a><span class="c1">###############################################################################</span>
+<a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-3"></a><span class="c1"># Sort a list of words that are seperated by commas, optionally followed by</span>
+<a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-4"></a><span class="c1"># a newline into a single line seperated by commas followed by spaces.</span>
+<a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-5"></a><span class="c1">#</span>
+<a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-6"></a><span class="c1"># For example: it translates (ignore the "# +" at the beginning of lines)</span>
+<a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-7"></a><span class="c1">#    bookman, schoolbook,palatino,</span>
+<a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-8"></a><span class="c1">#    times, helvetica, helvetica-narrow,</span>
+<a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-9"></a><span class="c1"># to</span>
+<a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-10"></a><span class="c1">#    bookman, helvetica, helvetica-narrow, palatino, schoolbook, times</span>
+<a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-11"></a><span class="c1">###############################################################################</span>
+<a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-12"></a>
+<a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-13"></a><span class="nv">AND_OPT</span><span class="o">=</span>off                     <span class="c1"># Insert "and " before last word.</span>
+<a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-14"></a><span class="nv">FINAL_OPT</span><span class="o">=</span>off                   <span class="c1"># Leave "," after last word.</span>
+<a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-15"></a><span class="nv">OR_OPT</span><span class="o">=</span>off                      <span class="c1"># Insert "or " before last word.</span>
+<a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-16"></a><span class="nv">PERIOD_OPT</span><span class="o">=</span>off                  <span class="c1"># Insert a final period after last word.</span>
+<a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-17"></a><span class="nv">REMOVE_AND_OR_PERIOD_OPT</span><span class="o">=</span>off
+<a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-18"></a>
+<a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-19"></a>
+<a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-20"></a><span class="nb">let</span> <span class="nv">errors</span><span class="o">=</span><span class="m">0</span>
+<a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-21"></a><span class="k">while</span> <span class="nb">getopts</span> <span class="s2">"?afhopr"</span> opt
+<a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-22"></a><span class="k">do</span>
+<a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-23"></a>    <span class="k">case</span> <span class="s2">"</span><span class="nv">$opt</span><span class="s2">"</span> in
+<a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-24"></a>        <span class="o">(</span><span class="se">\?</span><span class="p">|</span>h<span class="o">)</span> <span class="nb">let</span> errors++ <span class="p">;;</span>
+<a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-25"></a>        <span class="o">(</span>a<span class="o">)</span> <span class="nv">AND_OPT</span><span class="o">=</span>on <span class="p">;;</span>
+<a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-26"></a>        <span class="o">(</span>f<span class="o">)</span> <span class="nv">FINAL_OPT</span><span class="o">=</span>on <span class="p">;;</span>
+<a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-27"></a>        <span class="o">(</span>o<span class="o">)</span> <span class="nv">OR_OPT</span><span class="o">=</span>on <span class="p">;;</span>
+<a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-28"></a>        <span class="o">(</span>p<span class="o">)</span> <span class="nv">PERIOD_OPT</span><span class="o">=</span>on <span class="p">;;</span>
+<a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-29"></a>        <span class="o">(</span>r<span class="o">)</span> <span class="nv">REMOVE_AND_OR_PERIOD_OPT</span><span class="o">=</span>on <span class="p">;;</span>
+<a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-30"></a>    <span class="k">esac</span>
+<a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-31"></a><span class="k">done</span>
+<a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-32"></a>
+<a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-33"></a><span class="nb">shift</span> <span class="k">$((</span>OPTIND-1<span class="k">))</span>
+<a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-34"></a>
+<a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-35"></a><span class="o">[[</span> <span class="nv">$#</span> &gt; <span class="m">0</span> <span class="o">]]</span> <span class="o">||</span> <span class="o">[[</span> <span class="nv">$errors</span> &gt; <span class="m">0</span> <span class="o">]]</span> <span class="o">&amp;&amp;</span> <span class="o">{</span>
+<a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-36"></a>    cat <span class="s">&lt;&lt;EOF</span>
+<a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-37"></a><span class="s">usage: sort-with-commas [OPTION]</span>
+<a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-38"></a>
+<a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-39"></a><span class="s">This reads its standard input and sorts a line or multiple lines with</span>
+<a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-40"></a><span class="s">"words" separated by commas, then reassembles the line, words</span>
+<a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-41"></a><span class="s">separated by a comma and s space, optionally leaving a final comma</span>
+<a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-42"></a><span class="s">after the last word, or a period, and optionally putting "and " or "or</span>
+<a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-43"></a><span class="s">" before the last word.</span>
+<a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-44"></a>
+<a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-45"></a><span class="s">Options</span>
+<a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-46"></a>
+<a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-47"></a><span class="s">-? -h   This message.</span>
+<a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-48"></a><span class="s">-a      Insert "and " before last word.</span>
+<a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-49"></a><span class="s">-f      Leave final comma after last word.</span>
+<a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-50"></a><span class="s">-o      Insert "or " before last word.</span>
+<a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-51"></a><span class="s">-p      Insert a period after the last word.</span>
+<a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-52"></a><span class="s">-r      Remove "and " or "or " that occur at the beginning of a "word" in the</span>
+<a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-53"></a><span class="s">        original list.</span>
+<a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-54"></a>
+<a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-55"></a><span class="s">Note that combining -a and -o, or -f and -p do what you say, but the results</span>
+<a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-56"></a><span class="s">are silly.</span>
+<a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-57"></a><span class="s">EOF</span>
+<a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-58"></a>    <span class="nb">exit</span> <span class="m">1</span>
+<a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-59"></a><span class="o">}</span>
+<a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-60"></a>
+<a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-61"></a>tr <span class="s1">','</span> <span class="s1">'\n'</span> <span class="p">|</span> sed -E -e <span class="s1">'s/^[   ]+//'</span> -e <span class="s1">'/^$/d'</span> <span class="p">|</span>
+<a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-62"></a>    <span class="o">([[</span> <span class="s2">"</span><span class="nv">$REMOVE_AND_OR_PERIOD_OPT</span><span class="s2">"</span> <span class="o">=</span> <span class="s2">"on"</span> <span class="o">]]</span> <span class="o">&amp;&amp;</span>
+<a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-63"></a>         sed -E -e <span class="s1">'s/^(and|or)[ \t]+//'</span> -e <span class="s1">'s/\.[ \t]*$//'</span> <span class="o">||</span> cat<span class="o">)</span> <span class="p">|</span>
+<a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-64"></a>    sort -u <span class="p">|</span>
+<a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-65"></a>    sed -E -e <span class="s1">'s/$/,/'</span> <span class="p">|</span>
+<a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-66"></a>    <span class="o">(</span><span class="k">if</span> <span class="o">[[</span> <span class="s2">"</span><span class="nv">$AND_OPT</span><span class="s2">"</span> <span class="o">=</span> <span class="s2">"on"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span> sed -e <span class="s1">'$s/^/and /'</span><span class="p">;</span> <span class="k">else</span> cat<span class="p">;</span> <span class="k">fi</span><span class="o">)</span> <span class="p">|</span>
+<a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-67"></a>    <span class="o">(</span><span class="k">if</span> <span class="o">[[</span> <span class="s2">"</span><span class="nv">$FINAL_OPT</span><span class="s2">"</span> <span class="o">=</span> <span class="s2">"on"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span> cat<span class="p">;</span> <span class="k">else</span> sed -e <span class="s1">'$s/,//'</span><span class="p">;</span> <span class="k">fi</span><span class="o">)</span> <span class="p">|</span>
+<a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-68"></a>    <span class="o">(</span><span class="k">if</span> <span class="o">[[</span> <span class="s2">"</span><span class="nv">$OR_OPT</span><span class="s2">"</span> <span class="o">=</span> <span class="s2">"on"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span> sed -e <span class="s1">'$s/^/or /'</span><span class="p">;</span> <span class="k">else</span> cat<span class="p">;</span> <span class="k">fi</span><span class="o">)</span> <span class="p">|</span>
+<a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-69"></a>    <span class="o">(</span><span class="k">if</span> <span class="o">[[</span> <span class="s2">"</span><span class="nv">$PERIOD_OPT</span><span class="s2">"</span> <span class="o">=</span> <span class="s2">"on"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span> sed -e <span class="s1">'$s/$/./'</span><span class="p">;</span> <span class="k">else</span> cat<span class="p">;</span> <span class="k">fi</span><span class="o">)</span> <span class="p">|</span>
+<a name="rest_code_c7de9844ca0d445bb0ca53ae60dbd0cb-70"></a>    tr <span class="s1">'\n'</span> <span class="s1">' '</span> <span class="p">|</span> sed -E -e <span class="s1">'s/[ ]$//'</span>
+</pre>
+<p>Here's <span class="file">strip-leading-hash</span>:</p>
+<p><a class="reference external" href="listings/strip-leading-hash.html">strip-leading-hash</a>  <a class="reference external" href="listings/strip-leading-hash">(Source)</a></p>
+<pre class="code bash"><a name="rest_code_d1228d2b760b41ec9203483924081657-1"></a><span class="ch">#! /usr/bin/env bash</span>
+<a name="rest_code_d1228d2b760b41ec9203483924081657-2"></a>
+<a name="rest_code_d1228d2b760b41ec9203483924081657-3"></a>sed -E -e <span class="s1">'s/^#[ \t]*//'</span>
+</pre>
+<p>And here's <span class="file">prefix</span>:</p>
+<p><a class="reference external" href="listings/prefix.html">prefix</a>  <a class="reference external" href="listings/prefix">(Source)</a></p>
+<pre class="code bash"><a name="rest_code_6e0ffebdcc4c441e9b17bc9ef077dccd-1"></a><span class="ch">#! /usr/bin/env bash</span>
+<a name="rest_code_6e0ffebdcc4c441e9b17bc9ef077dccd-2"></a>
+<a name="rest_code_6e0ffebdcc4c441e9b17bc9ef077dccd-3"></a>sed <span class="s2">"s/^/</span><span class="nv">$1</span><span class="s2">/"</span>
+</pre>
+</div>
+    <nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="categories/bash/" rel="tag">bash</a></li>
+            <li><a class="tag p-category" href="categories/emacs/" rel="tag">emacs</a></li>
+            <li><a class="tag p-category" href="categories/script/" rel="tag">script</a></li>
+            <li><a class="tag p-category" href="categories/shell/" rel="tag">shell</a></li>
+        </ul></nav>
+</div>
+    </article><article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2021/07/15/troff-memorandum-macros-documentation/" class="u-url">troff Memorandum Macros documentation</a></h2>
         <div class="metadata blog-post-meta">
             <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
             <p class="dateline"><a href="posts/2021/07/15/troff-memorandum-macros-documentation/" rel="bookmark"><time class="published dt-published" datetime="2021-07-15T15:57:09-04:00" title="2021-07-15 15:57">2021-07-15 15:57</time></a></p>
@@ -676,33 +827,6 @@ at the table.</p>
 <li><a class="tag p-category" href="categories/advanced-fighting-fantasy/" rel="tag">advanced fighting fantasy</a></li>
             <li><a class="tag p-category" href="categories/aff1e/" rel="tag">aff1e</a></li>
             <li><a class="tag p-category" href="categories/rpg/" rel="tag">rpg</a></li>
-        </ul></nav>
-</div>
-    </article><article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2021/07/04/savage-worlds-wild-die-rolls-at-anydicecom/" class="u-url">Savage Worlds Wild Die Rolls at Anydice.com</a></h2>
-        <div class="metadata blog-post-meta">
-            <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
-            <p class="dateline"><a href="posts/2021/07/04/savage-worlds-wild-die-rolls-at-anydicecom/" rel="bookmark"><time class="published dt-published" datetime="2021-07-04T15:51:54-04:00" title="2021-07-04 15:51">2021-07-04 15:51</time></a></p>
-                <p class="commentline">            <a href="posts/2021/07/04/savage-worlds-wild-die-rolls-at-anydicecom/#disqus_thread" data-disqus-identifier="cache/posts/2021/07/04/savage-worlds-wild-die-rolls-at-anydicecom.html">Comments</a>
-
-
-        </p>
-</div>
-    </header><div class="e-content entry-content">
-    <div>
-<p>Just for reference, here is the <a class="reference external" href="https://anydice.com/">Anydice.com</a> code for Savage Worlds
-Wild Die rolls:</p>
-<pre class="code text"><a name="rest_code_17b4749288dd4fa0869e9859348dcd6d-1"></a>output [highest of [explode d4] and [explode d6]] named "d4 or wild die"
-<a name="rest_code_17b4749288dd4fa0869e9859348dcd6d-2"></a>output [highest of [explode d6] and [explode d6]] named "d6 or wild die"
-<a name="rest_code_17b4749288dd4fa0869e9859348dcd6d-3"></a>output [highest of [explode d8] and [explode d6]] named "d8 or wild die"
-<a name="rest_code_17b4749288dd4fa0869e9859348dcd6d-4"></a>output [highest of [explode d10] and [explode d6]] named "d10 or wild die"
-<a name="rest_code_17b4749288dd4fa0869e9859348dcd6d-5"></a>output [highest of [explode d12] and [explode d6]] named "d12 or wild die"
-</pre>
-<p>Here's a link to the <a class="reference external" href="https://anydice.com/program/23126/at_least">results</a>.</p>
-</div>
-    <nav><ul itemprop="keywords" class="tags">
-<li><a class="tag p-category" href="categories/anydicecom/" rel="tag">anydice.com</a></li>
-            <li><a class="tag p-category" href="categories/rpg/" rel="tag">rpg</a></li>
-            <li><a class="tag p-category" href="categories/savage-worlds/" rel="tag">savage worlds</a></li>
         </ul></nav>
 </div>
     </article>
