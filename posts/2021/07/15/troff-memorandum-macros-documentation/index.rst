@@ -14,7 +14,7 @@
 
 **TL;DR:** Look here_ for documentation for the |DWB| |MM| Memorandum
 Macros for :app:`groff`, based on the original paper `MM - Memorandum
-Macros`.
+Macros`, and there is a bonus_ at the end.
 
 When I learned :app:`troff` it was actually on a VAX running VMS (used
 by `MPL Corporation`_) using a port of :app:`troff` called
@@ -68,6 +68,10 @@ of this on the Internet.
 I think that having this available might help those who might want to
 try out |MM|, or are returning to it after a long break, so I've
 posted a version that I built a while ago here_.
+
+-----
+
+.. _bonus:
 
 As a bonus for reading down this far, here is how I add PDF
 outline/table-of-contents entries for sections in :app:`groff` |MM|,
