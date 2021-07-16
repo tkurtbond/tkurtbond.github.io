@@ -13,7 +13,8 @@
 .. |DWB| replace:: :app:`Documenter's Workbench`
 
 **TL;DR:** Look here_ for documentation for the |DWB| |MM| Memorandum
-Macros for :app:`groff`.
+Macros for :app:`groff`, based on the original paper `MM - Memorandum
+Macros`.
 
 When I learned :app:`troff` it was actually on a VAX running VMS (used
 by `MPL Corporation`_) using a port of :app:`troff` called
