@@ -96,10 +96,11 @@ than it could have been.  So when modern features for PDF appeared for
 groff later on (the <span class="app">pdfmark</span> macros), they were adapted to
 <span class="app">ms</span> but not <span class="app">mm</span>.  (<span class="app">me</span> was left out, as well.)  I was sad
 to see <span class="app">mm</span>'s apparently low popularity, and the <span class="app">mm</span> paper apparently
-is not available on the Internet, unlike the papers on <span class="app">ms</span> and
-<span class="app">me</span>, which come with <span class="app">groff</span>.  I suspect this is because
-<span class="app">mm</span> was used heavily in AT&amp;T's <span class="app">Documenter's Workbench</span>, a commercial product that was
-distributed separately from UNIX System V, if I understand correctly.</p>
+is not available on the Internet in a form that copyright allows to be
+copied around, unlike the papers on <span class="app">ms</span> and <span class="app">me</span>, which
+come with <span class="app">groff</span>.  I suspect this is because <span class="app">mm</span> was used
+heavily in AT&amp;T's <span class="app">Documenter's Workbench</span>, a commercial product that was distributed
+separately from UNIX System V, if I understand correctly.</p>
 <p>However, eventually the sources to the <span class="app">Documenter's Workbench</span> because available under
 the Eclipse Public License, and they are <a class="reference external" href="https://github.com/n-t-roff/DWB3.3">available</a> in the <a class="reference external" href="https://github.com/n-t-roff">n-t-roff</a>
 github repository (along with <a class="reference external" href="http://n-t-roff.github.io/heirloom/doctools.html">Heirloom Docutils</a>, a descendant of
@@ -114,19 +115,19 @@ posted a version that I built a while ago <a class="reference external" href="tr
 outline/table-of-contents entries for sections in <span class="app">groff</span> <span class="app">mm</span>,
 using the <code class="docutils literal">HZ</code> user-defined heading exit macro (see
 <span class="man">groff_mm(7)</span>):</p>
-<pre class="code nroff"><a name="rest_code_bb87c5ee8369498786f777fc235c565b-1"></a><span class="p">.</span><span class="c">\" pdf outline fold level</span>
-<a name="rest_code_bb87c5ee8369498786f777fc235c565b-2"></a>.<span class="k">nr</span> <span class="s">PDFOUTLINE.FOLDLEVEL</span> <span class="m">3</span>
-<a name="rest_code_bb87c5ee8369498786f777fc235c565b-3"></a><span class="p">.</span><span class="c">\" start out in outline view</span>
-<a name="rest_code_bb87c5ee8369498786f777fc235c565b-4"></a>.<span class="k">pdfview</span> <span class="s">/PageMode</span> <span class="s">/UseOutlines</span>
-<a name="rest_code_bb87c5ee8369498786f777fc235c565b-5"></a>.<span class="k">de</span> <span class="s">HZ</span>
-<a name="rest_code_bb87c5ee8369498786f777fc235c565b-6"></a>.<span class="k">pdfhref</span> <span class="s">O</span> <span class="se">\\</span><span class="s">$2</span> <span class="se">\\</span><span class="s">*[}0]</span> <span class="se">\\</span><span class="s">$3</span>
-<a name="rest_code_bb87c5ee8369498786f777fc235c565b-7"></a><span class="p">.</span><span class="s">.</span>
+<pre class="code nroff"><a name="rest_code_9a3a7367d271403ab6208ba0bac13909-1"></a><span class="p">.</span><span class="c">\" pdf outline fold level</span>
+<a name="rest_code_9a3a7367d271403ab6208ba0bac13909-2"></a>.<span class="k">nr</span> <span class="s">PDFOUTLINE.FOLDLEVEL</span> <span class="m">3</span>
+<a name="rest_code_9a3a7367d271403ab6208ba0bac13909-3"></a><span class="p">.</span><span class="c">\" start out in outline view</span>
+<a name="rest_code_9a3a7367d271403ab6208ba0bac13909-4"></a>.<span class="k">pdfview</span> <span class="s">/PageMode</span> <span class="s">/UseOutlines</span>
+<a name="rest_code_9a3a7367d271403ab6208ba0bac13909-5"></a>.<span class="k">de</span> <span class="s">HZ</span>
+<a name="rest_code_9a3a7367d271403ab6208ba0bac13909-6"></a>.<span class="k">pdfhref</span> <span class="s">O</span> <span class="se">\\</span><span class="s">$2</span> <span class="se">\\</span><span class="s">*[}0]</span> <span class="se">\\</span><span class="s">$3</span>
+<a name="rest_code_9a3a7367d271403ab6208ba0bac13909-7"></a><span class="p">.</span><span class="s">.</span>
 </pre>
 <p>And here's how to do it in <a class="reference external" href="http://n-t-roff.github.io/heirloom/doctools.html">Heirloom Docutils</a> <span class="app">troff</span>:</p>
-<pre class="code nroff"><a name="rest_code_3e2d264ec1ee4654a62bcfc5d3413720-1"></a>.<span class="k">de</span> <span class="s">HY</span>
-<a name="rest_code_3e2d264ec1ee4654a62bcfc5d3413720-2"></a>.<span class="k">nr</span> <span class="s">HYtmp</span> <span class="s">(\\$1-1)</span>
-<a name="rest_code_3e2d264ec1ee4654a62bcfc5d3413720-3"></a><span class="se">\\</span>X'PDFMark: Bookmark <span class="se">\\</span>n[HYtmp] <span class="se">\\</span>$3'
-<a name="rest_code_3e2d264ec1ee4654a62bcfc5d3413720-4"></a><span class="p">.</span><span class="s">.</span>
+<pre class="code nroff"><a name="rest_code_53d1df9e34b740e792e6c68788d01482-1"></a>.<span class="k">de</span> <span class="s">HY</span>
+<a name="rest_code_53d1df9e34b740e792e6c68788d01482-2"></a>.<span class="k">nr</span> <span class="s">HYtmp</span> <span class="s">(\\$1-1)</span>
+<a name="rest_code_53d1df9e34b740e792e6c68788d01482-3"></a><span class="se">\\</span>X'PDFMark: Bookmark <span class="se">\\</span>n[HYtmp] <span class="se">\\</span>$3'
+<a name="rest_code_53d1df9e34b740e792e6c68788d01482-4"></a><span class="p">.</span><span class="s">.</span>
 </pre>
 <p>This version uses the <code class="docutils literal">HY</code> user-defined heading exit macro and
 doesn't include the section numbers.</p>

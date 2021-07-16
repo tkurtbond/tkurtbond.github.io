@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity (Posts about dwb)</title><link>https://tkurtbond.github.io/</link><description></description><atom:link href="https://tkurtbond.github.io/categories/dwb.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2021 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Thu, 15 Jul 2021 22:10:57 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>troff Memorandum Macros documentation</title><link>https://tkurtbond.github.io/posts/2021/07/15/troff-memorandum-macros-documentation/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;strong&gt;TL;DR:&lt;/strong&gt; Look &lt;a class="reference external" href="https://tkurtbond.github.io/troff/mm-all.pdf"&gt;here&lt;/a&gt; for documentation for the &lt;span class="app"&gt;Documenter's Workbench&lt;/span&gt; &lt;span class="app"&gt;mm&lt;/span&gt; Memorandum
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity (Posts about dwb)</title><link>https://tkurtbond.github.io/</link><description></description><atom:link href="https://tkurtbond.github.io/categories/dwb.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2021 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Fri, 16 Jul 2021 00:47:57 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>troff Memorandum Macros documentation</title><link>https://tkurtbond.github.io/posts/2021/07/15/troff-memorandum-macros-documentation/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;strong&gt;TL;DR:&lt;/strong&gt; Look &lt;a class="reference external" href="https://tkurtbond.github.io/troff/mm-all.pdf"&gt;here&lt;/a&gt; for documentation for the &lt;span class="app"&gt;Documenter's Workbench&lt;/span&gt; &lt;span class="app"&gt;mm&lt;/span&gt; Memorandum
 Macros for &lt;span class="app"&gt;groff&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;When I learned &lt;span class="app"&gt;troff&lt;/span&gt; it was actually on a VAX running VMS (used
 by &lt;a class="reference external" href="http://www.mpl.com/"&gt;MPL Corporation&lt;/a&gt;) using a port of &lt;span class="app"&gt;troff&lt;/span&gt; called
@@ -32,10 +32,11 @@ than it could have been.  So when modern features for PDF appeared for
 groff later on (the &lt;span class="app"&gt;pdfmark&lt;/span&gt; macros), they were adapted to
 &lt;span class="app"&gt;ms&lt;/span&gt; but not &lt;span class="app"&gt;mm&lt;/span&gt;.  (&lt;span class="app"&gt;me&lt;/span&gt; was left out, as well.)  I was sad
 to see &lt;span class="app"&gt;mm&lt;/span&gt;'s apparently low popularity, and the &lt;span class="app"&gt;mm&lt;/span&gt; paper apparently
-is not available on the Internet, unlike the papers on &lt;span class="app"&gt;ms&lt;/span&gt; and
-&lt;span class="app"&gt;me&lt;/span&gt;, which come with &lt;span class="app"&gt;groff&lt;/span&gt;.  I suspect this is because
-&lt;span class="app"&gt;mm&lt;/span&gt; was used heavily in AT&amp;amp;T's &lt;span class="app"&gt;Documenter's Workbench&lt;/span&gt;, a commercial product that was
-distributed separately from UNIX System V, if I understand correctly.&lt;/p&gt;
+is not available on the Internet in a form that copyright allows to be
+copied around, unlike the papers on &lt;span class="app"&gt;ms&lt;/span&gt; and &lt;span class="app"&gt;me&lt;/span&gt;, which
+come with &lt;span class="app"&gt;groff&lt;/span&gt;.  I suspect this is because &lt;span class="app"&gt;mm&lt;/span&gt; was used
+heavily in AT&amp;amp;T's &lt;span class="app"&gt;Documenter's Workbench&lt;/span&gt;, a commercial product that was distributed
+separately from UNIX System V, if I understand correctly.&lt;/p&gt;
 &lt;p&gt;However, eventually the sources to the &lt;span class="app"&gt;Documenter's Workbench&lt;/span&gt; because available under
 the Eclipse Public License, and they are &lt;a class="reference external" href="https://github.com/n-t-roff/DWB3.3"&gt;available&lt;/a&gt; in the &lt;a class="reference external" href="https://github.com/n-t-roff"&gt;n-t-roff&lt;/a&gt;
 github repository (along with &lt;a class="reference external" href="http://n-t-roff.github.io/heirloom/doctools.html"&gt;Heirloom Docutils&lt;/a&gt;, a descendant of
@@ -50,18 +51,18 @@ posted a version that I built a while ago &lt;a class="reference external" href=
 outline/table-of-contents entries for sections in &lt;span class="app"&gt;groff&lt;/span&gt; &lt;span class="app"&gt;mm&lt;/span&gt;,
 using the &lt;code class="docutils literal"&gt;HZ&lt;/code&gt; user-defined heading exit macro (see
 &lt;span class="man"&gt;groff_mm(7)&lt;/span&gt;):&lt;/p&gt;
-&lt;pre class="code nroff"&gt;&lt;a name="rest_code_bb87c5ee8369498786f777fc235c565b-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="c"&gt;\" pdf outline fold level&lt;/span&gt;
-&lt;a name="rest_code_bb87c5ee8369498786f777fc235c565b-2"&gt;&lt;/a&gt;.&lt;span class="k"&gt;nr&lt;/span&gt; &lt;span class="s"&gt;PDFOUTLINE.FOLDLEVEL&lt;/span&gt; &lt;span class="m"&gt;3&lt;/span&gt;
-&lt;a name="rest_code_bb87c5ee8369498786f777fc235c565b-3"&gt;&lt;/a&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="c"&gt;\" start out in outline view&lt;/span&gt;
-&lt;a name="rest_code_bb87c5ee8369498786f777fc235c565b-4"&gt;&lt;/a&gt;.&lt;span class="k"&gt;pdfview&lt;/span&gt; &lt;span class="s"&gt;/PageMode&lt;/span&gt; &lt;span class="s"&gt;/UseOutlines&lt;/span&gt;
-&lt;a name="rest_code_bb87c5ee8369498786f777fc235c565b-5"&gt;&lt;/a&gt;.&lt;span class="k"&gt;de&lt;/span&gt; &lt;span class="s"&gt;HZ&lt;/span&gt;
-&lt;a name="rest_code_bb87c5ee8369498786f777fc235c565b-6"&gt;&lt;/a&gt;.&lt;span class="k"&gt;pdfhref&lt;/span&gt; &lt;span class="s"&gt;O&lt;/span&gt; &lt;span class="se"&gt;\\&lt;/span&gt;&lt;span class="s"&gt;$2&lt;/span&gt; &lt;span class="se"&gt;\\&lt;/span&gt;&lt;span class="s"&gt;*[}0]&lt;/span&gt; &lt;span class="se"&gt;\\&lt;/span&gt;&lt;span class="s"&gt;$3&lt;/span&gt;
-&lt;a name="rest_code_bb87c5ee8369498786f777fc235c565b-7"&gt;&lt;/a&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="s"&gt;.&lt;/span&gt;
+&lt;pre class="code nroff"&gt;&lt;a name="rest_code_9a3a7367d271403ab6208ba0bac13909-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="c"&gt;\" pdf outline fold level&lt;/span&gt;
+&lt;a name="rest_code_9a3a7367d271403ab6208ba0bac13909-2"&gt;&lt;/a&gt;.&lt;span class="k"&gt;nr&lt;/span&gt; &lt;span class="s"&gt;PDFOUTLINE.FOLDLEVEL&lt;/span&gt; &lt;span class="m"&gt;3&lt;/span&gt;
+&lt;a name="rest_code_9a3a7367d271403ab6208ba0bac13909-3"&gt;&lt;/a&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="c"&gt;\" start out in outline view&lt;/span&gt;
+&lt;a name="rest_code_9a3a7367d271403ab6208ba0bac13909-4"&gt;&lt;/a&gt;.&lt;span class="k"&gt;pdfview&lt;/span&gt; &lt;span class="s"&gt;/PageMode&lt;/span&gt; &lt;span class="s"&gt;/UseOutlines&lt;/span&gt;
+&lt;a name="rest_code_9a3a7367d271403ab6208ba0bac13909-5"&gt;&lt;/a&gt;.&lt;span class="k"&gt;de&lt;/span&gt; &lt;span class="s"&gt;HZ&lt;/span&gt;
+&lt;a name="rest_code_9a3a7367d271403ab6208ba0bac13909-6"&gt;&lt;/a&gt;.&lt;span class="k"&gt;pdfhref&lt;/span&gt; &lt;span class="s"&gt;O&lt;/span&gt; &lt;span class="se"&gt;\\&lt;/span&gt;&lt;span class="s"&gt;$2&lt;/span&gt; &lt;span class="se"&gt;\\&lt;/span&gt;&lt;span class="s"&gt;*[}0]&lt;/span&gt; &lt;span class="se"&gt;\\&lt;/span&gt;&lt;span class="s"&gt;$3&lt;/span&gt;
+&lt;a name="rest_code_9a3a7367d271403ab6208ba0bac13909-7"&gt;&lt;/a&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="s"&gt;.&lt;/span&gt;
 &lt;/pre&gt;&lt;p&gt;And here's how to do it in &lt;a class="reference external" href="http://n-t-roff.github.io/heirloom/doctools.html"&gt;Heirloom Docutils&lt;/a&gt; &lt;span class="app"&gt;troff&lt;/span&gt;:&lt;/p&gt;
-&lt;pre class="code nroff"&gt;&lt;a name="rest_code_3e2d264ec1ee4654a62bcfc5d3413720-1"&gt;&lt;/a&gt;.&lt;span class="k"&gt;de&lt;/span&gt; &lt;span class="s"&gt;HY&lt;/span&gt;
-&lt;a name="rest_code_3e2d264ec1ee4654a62bcfc5d3413720-2"&gt;&lt;/a&gt;.&lt;span class="k"&gt;nr&lt;/span&gt; &lt;span class="s"&gt;HYtmp&lt;/span&gt; &lt;span class="s"&gt;(\\$1-1)&lt;/span&gt;
-&lt;a name="rest_code_3e2d264ec1ee4654a62bcfc5d3413720-3"&gt;&lt;/a&gt;&lt;span class="se"&gt;\\&lt;/span&gt;X'PDFMark: Bookmark &lt;span class="se"&gt;\\&lt;/span&gt;n[HYtmp] &lt;span class="se"&gt;\\&lt;/span&gt;$3'
-&lt;a name="rest_code_3e2d264ec1ee4654a62bcfc5d3413720-4"&gt;&lt;/a&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="s"&gt;.&lt;/span&gt;
+&lt;pre class="code nroff"&gt;&lt;a name="rest_code_53d1df9e34b740e792e6c68788d01482-1"&gt;&lt;/a&gt;.&lt;span class="k"&gt;de&lt;/span&gt; &lt;span class="s"&gt;HY&lt;/span&gt;
+&lt;a name="rest_code_53d1df9e34b740e792e6c68788d01482-2"&gt;&lt;/a&gt;.&lt;span class="k"&gt;nr&lt;/span&gt; &lt;span class="s"&gt;HYtmp&lt;/span&gt; &lt;span class="s"&gt;(\\$1-1)&lt;/span&gt;
+&lt;a name="rest_code_53d1df9e34b740e792e6c68788d01482-3"&gt;&lt;/a&gt;&lt;span class="se"&gt;\\&lt;/span&gt;X'PDFMark: Bookmark &lt;span class="se"&gt;\\&lt;/span&gt;n[HYtmp] &lt;span class="se"&gt;\\&lt;/span&gt;$3'
+&lt;a name="rest_code_53d1df9e34b740e792e6c68788d01482-4"&gt;&lt;/a&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="s"&gt;.&lt;/span&gt;
 &lt;/pre&gt;&lt;p&gt;This version uses the &lt;code class="docutils literal"&gt;HY&lt;/code&gt; user-defined heading exit macro and
 doesn't include the section numbers.&lt;/p&gt;
 &lt;p&gt;I'm not sure why the two use different macros.  All I can say is that
