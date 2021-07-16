@@ -58,7 +58,7 @@ EOF
     exit 1
 }
 
-tr ',' '\n' | sed -E -e 's/^[ 	]+//' -e '/^$/d' |
+tr ',' '\n' | sed -E -e 's/^[ \t]+//' -e '/^$/d' |
     ([[ "$REMOVE_AND_OR_PERIOD_OPT" = "on" ]] &&
          sed -E -e 's/^(and|or)[ \t]+//' -e 's/\.[ \t]*$//' || cat) | 
     sort -u |
