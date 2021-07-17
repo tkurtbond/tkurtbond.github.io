@@ -124,7 +124,7 @@ copied around, unlike the papers on <span class="app">ms</span> and <span class=
 come with <span class="app">groff</span>.  I suspect this is because <span class="app">mm</span> was used
 heavily in AT&amp;T's <span class="app">Documenter's Workbench</span>, a commercial product that was distributed
 separately from UNIX System V, if I understand correctly.</p>
-<p>However, eventually the sources to the <span class="app">Documenter's Workbench</span> because available under
+<p>However, eventually the sources to the <span class="app">Documenter's Workbench</span> became available under
 the Eclipse Public License, and they are <a class="reference external" href="https://github.com/n-t-roff/DWB3.3">available</a> in the <a class="reference external" href="https://github.com/n-t-roff">n-t-roff</a>
 github repository (along with <a class="reference external" href="http://n-t-roff.github.io/heirloom/doctools.html">Heirloom Docutils</a>, a descendant of
 the original <span class="app">ditroff</span> with native UTF-8 input and easy use of
@@ -139,19 +139,19 @@ posted a version that I built a while ago <a class="reference external" href="..
 outline/table-of-contents entries for sections in <span class="app">groff</span> <span class="app">mm</span>,
 using the <code class="docutils literal">HZ</code> user-defined heading exit macro (see
 <span class="man">groff_mm(7)</span>):</p>
-<pre class="code nroff"><a name="rest_code_842f06e0414b4c5ca6070fe7e3f9de20-1"></a><span class="p">.</span><span class="c">\" pdf outline fold level</span>
-<a name="rest_code_842f06e0414b4c5ca6070fe7e3f9de20-2"></a>.<span class="k">nr</span> <span class="s">PDFOUTLINE.FOLDLEVEL</span> <span class="m">3</span>
-<a name="rest_code_842f06e0414b4c5ca6070fe7e3f9de20-3"></a><span class="p">.</span><span class="c">\" start out in outline view</span>
-<a name="rest_code_842f06e0414b4c5ca6070fe7e3f9de20-4"></a>.<span class="k">pdfview</span> <span class="s">/PageMode</span> <span class="s">/UseOutlines</span>
-<a name="rest_code_842f06e0414b4c5ca6070fe7e3f9de20-5"></a>.<span class="k">de</span> <span class="s">HZ</span>
-<a name="rest_code_842f06e0414b4c5ca6070fe7e3f9de20-6"></a>.<span class="k">pdfhref</span> <span class="s">O</span> <span class="se">\\</span><span class="s">$2</span> <span class="se">\\</span><span class="s">*[}0]</span> <span class="se">\\</span><span class="s">$3</span>
-<a name="rest_code_842f06e0414b4c5ca6070fe7e3f9de20-7"></a><span class="p">.</span><span class="s">.</span>
+<pre class="code nroff"><a name="rest_code_70bed5ada63145f291076cfe1287da67-1"></a><span class="p">.</span><span class="c">\" pdf outline fold level</span>
+<a name="rest_code_70bed5ada63145f291076cfe1287da67-2"></a>.<span class="k">nr</span> <span class="s">PDFOUTLINE.FOLDLEVEL</span> <span class="m">3</span>
+<a name="rest_code_70bed5ada63145f291076cfe1287da67-3"></a><span class="p">.</span><span class="c">\" start out in outline view</span>
+<a name="rest_code_70bed5ada63145f291076cfe1287da67-4"></a>.<span class="k">pdfview</span> <span class="s">/PageMode</span> <span class="s">/UseOutlines</span>
+<a name="rest_code_70bed5ada63145f291076cfe1287da67-5"></a>.<span class="k">de</span> <span class="s">HZ</span>
+<a name="rest_code_70bed5ada63145f291076cfe1287da67-6"></a>.<span class="k">pdfhref</span> <span class="s">O</span> <span class="se">\\</span><span class="s">$2</span> <span class="se">\\</span><span class="s">*[}0]</span> <span class="se">\\</span><span class="s">$3</span>
+<a name="rest_code_70bed5ada63145f291076cfe1287da67-7"></a><span class="p">.</span><span class="s">.</span>
 </pre>
 <p>And here's how to do it in <a class="reference external" href="http://n-t-roff.github.io/heirloom/doctools.html">Heirloom Docutils</a> <span class="app">troff</span>:</p>
-<pre class="code nroff"><a name="rest_code_693ab7b3c8e74633b6c10c61b9699b61-1"></a>.<span class="k">de</span> <span class="s">HY</span>
-<a name="rest_code_693ab7b3c8e74633b6c10c61b9699b61-2"></a>.<span class="k">nr</span> <span class="s">HYtmp</span> <span class="s">(\\$1-1)</span>
-<a name="rest_code_693ab7b3c8e74633b6c10c61b9699b61-3"></a><span class="se">\\</span>X'PDFMark: Bookmark <span class="se">\\</span>n[HYtmp] <span class="se">\\</span>$3'
-<a name="rest_code_693ab7b3c8e74633b6c10c61b9699b61-4"></a><span class="p">.</span><span class="s">.</span>
+<pre class="code nroff"><a name="rest_code_fa966f1b4ff84e2d8a5135697db4d3fa-1"></a>.<span class="k">de</span> <span class="s">HY</span>
+<a name="rest_code_fa966f1b4ff84e2d8a5135697db4d3fa-2"></a>.<span class="k">nr</span> <span class="s">HYtmp</span> <span class="s">(\\$1-1)</span>
+<a name="rest_code_fa966f1b4ff84e2d8a5135697db4d3fa-3"></a><span class="se">\\</span>X'PDFMark: Bookmark <span class="se">\\</span>n[HYtmp] <span class="se">\\</span>$3'
+<a name="rest_code_fa966f1b4ff84e2d8a5135697db4d3fa-4"></a><span class="p">.</span><span class="s">.</span>
 </pre>
 <p>This version uses the <code class="docutils literal">HY</code> user-defined heading exit macro and
 doesn't include the section numbers.</p>
@@ -173,6 +173,13 @@ values on the command line, on VMS due to oddities in its command line
 it was easiest to use <code class="docutils literal">.so</code> and load the macros directly</p>
 </dd>
 </dl>
+<p><em>Last edited: 2021-07-17 13:59:43 EDT</em></p>
+<!-- Local Variables:
+time-stamp-format: "%Y-%02m-%02d %02H:%02M:%02S %Z"
+time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
+time-stamp-end: "\\*\\\\?\n"
+time-stamp-line-limit: -20
+End: -->
 </div>
     </div>
     <script>var pfHeaderImgUrl = '';var pfHeaderTagline = '';var pfdisableClickToDel = 0;var pfHideImages = 0;var pfImageDisplayStyle = 'right';var pfDisablePDF = 0;var pfDisableEmail = 0;var pfDisablePrint = 0;var pfCustomCSS = '';var pfBtVersion='2';(function(){var js,pf;pf=document.createElement('script');pf.type='text/javascript';pf.src='//cdn.printfriendly.com/printfriendly.js';document.getElementsByTagName('head')[0].appendChild(pf)})();</script><a href="https://www.printfriendly.com" style="color:#6D9F00;text-decoration:none;" class="printfriendly" onclick="window.print();return false;" title="Printer Friendly and PDF"><img style="border:none;-webkit-box-shadow:none;box-shadow:none;" src="//cdn.printfriendly.com/buttons/printfriendly-pdf-button.png" alt="Print Friendly and PDF"></a>    

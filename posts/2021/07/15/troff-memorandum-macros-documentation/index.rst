@@ -1,7 +1,7 @@
 .. title: troff Memorandum Macros documentation
 .. slug: troff-memorandum-macros-documentation
 .. date: 2021-07-15 15:57:09 UTC-04:00
-.. tags: troff,xroff,mm,memorandum macros,vms,charon-vax,dwb,documenter's workbench,groff
+.. tags: troff,xroff,mm,memorandum macros,vms,charon-vax,dwb,documenter's workbench,groff,dwb
 .. category: computer/document-formatting/troff
 .. link: 
 .. description: 
@@ -57,7 +57,7 @@ come with :app:`groff`.  I suspect this is because |MM| was used
 heavily in AT&T's |DWB|, a commercial product that was distributed
 separately from UNIX System V, if I understand correctly.
 
-However, eventually the sources to the |DWB| because available under
+However, eventually the sources to the |DWB| became available under
 the Eclipse Public License, and they are available_ in the `n-t-roff`_
 github repository (along with `Heirloom Docutils`_, a descendant of
 the original :app:`ditroff` with native UTF-8 input and easy use of
@@ -124,3 +124,14 @@ I wrote them at different times for slightly different purposes.
    it was easiest to use ``.so`` and load the macros directly
 
 .. _Charon-VAX: https://www.stromasys.com/solutions/charon-vax/
+
+*Last edited: 2021-07-17 13:59:43 EDT*
+
+..
+   Local Variables:
+   time-stamp-format: "%Y-%02m-%02d %02H:%02M:%02S %Z"
+   time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
+   time-stamp-end: "\\*\\\\?\n"
+   time-stamp-line-limit: -20
+   End:
+
