@@ -1,5 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity (Posts about troff)</title><link>https://tkurtbond.github.io/</link><description></description><atom:link href="https://tkurtbond.github.io/categories/troff.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2021 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Fri, 16 Jul 2021 14:40:40 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>troff Memorandum Macros documentation</title><link>https://tkurtbond.github.io/posts/2021/07/15/troff-memorandum-macros-documentation/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;strong&gt;TL;DR:&lt;/strong&gt; Look &lt;a class="reference external" href="https://tkurtbond.github.io/troff/mm-all.pdf"&gt;here&lt;/a&gt; for documentation for the &lt;span class="app"&gt;Documenter's Workbench&lt;/span&gt; &lt;span class="app"&gt;mm&lt;/span&gt; Memorandum
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity (Posts about troff)</title><link>https://tkurtbond.github.io/</link><description></description><atom:link href="https://tkurtbond.github.io/categories/troff.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2021 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Sat, 17 Jul 2021 04:58:25 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>groff and install-font.sh and installing fonts for use in groff</title><link>https://tkurtbond.github.io/posts/2021/07/17/groff-and-install-fontsh-and-installing-fonts-for-use-in-groff/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;div class="admonition note"&gt;
+&lt;p class="admonition-title"&gt;Note&lt;/p&gt;
+&lt;p&gt;This was originally a &lt;a class="reference external" href="https://lists.gnu.org/archive/html/groff/2021-07/msg00089.html"&gt;post&lt;/a&gt; to the &lt;a class="reference external" href="https://www.gnu.org/software/groff/"&gt;groff&lt;/a&gt; &lt;a class="reference external" href="https://lists.gnu.org/mailman/listinfo/groff/"&gt;mailing list&lt;/a&gt;.  It has
+been slightly modified.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Currently &lt;span class="command"&gt;install-font.sh&lt;/span&gt; is not part of &lt;span class="app"&gt;groff&lt;/span&gt;.
+We've had some discussion on the list &lt;a class="reference external" href="https://lists.gnu.org/archive/html/groff/2021-07/msg00061.html"&gt;recently&lt;/a&gt; and in the past about
+integrating it into the &lt;span class="app"&gt;groff&lt;/span&gt; distribution, and in response to
+recent &lt;a class="reference external" href="https://lists.gnu.org/archive/html/groff/2021-07/msg00054.html"&gt;discussion&lt;/a&gt; there is a new bug, &lt;a class="reference external" href="https://savannah.gnu.org/bugs/index.php?60930"&gt;#60930&lt;/a&gt;, requesting
+integrating it, including documentation, etc.&lt;/p&gt;
+&lt;p&gt;In the meantime, if you want to install fonts in OpenType or TrueType
+formats for use with &lt;code class="docutils literal"&gt;devps&lt;/code&gt; and &lt;code class="docutils literal"&gt;devpdf&lt;/code&gt;,
+&lt;span class="command"&gt;install-font.sh&lt;/span&gt; greatly simplifies the process.&lt;/p&gt;
+&lt;p&gt;The &lt;span class="command"&gt;install-font.sh&lt;/span&gt; script was written by Peter Schaffter, the author
+of the &lt;a class="reference external" href="https://www.schaffter.ca/mom/mom-01.html"&gt;mom macros&lt;/a&gt; for
+&lt;span class="app"&gt;groff&lt;/span&gt;, and is distributed on mom's &lt;a class="reference external" href="https://www.schaffter.ca/mom/mom-05.html#install-font"&gt;download page&lt;/a&gt; and can be
+downloaded &lt;a class="reference external" href="https://www.schaffter.ca/mom/bin/install-font.sh"&gt;directly&lt;/a&gt;.  It has a &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;-H&lt;/span&gt;&lt;/code&gt;
+option that prints the documentation for it.&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://fontforge.org/"&gt;Fontforge&lt;/a&gt; is a free and open source font
+editor.  It can run scripts to manipulate fonts and convert between
+font formats.  (I only use &lt;span class="app"&gt;fontforge&lt;/span&gt; to install fonts with
+&lt;span class="command"&gt;install-font.sh&lt;/span&gt;, so I use a version that is command line
+only, but the normal build has a GUI for interactively building
+fonts.)  The &lt;span class="command"&gt;install-font.sh&lt;/span&gt; script uses &lt;span class="app"&gt;Fontforge&lt;/span&gt; to convert
+OpenType and TrueType fonts to PostScript Type42 (&lt;span class="file"&gt;.t42&lt;/span&gt;) and Type1
+(&lt;span class="file"&gt;.pfa&lt;/span&gt;), from which a &lt;span class="app"&gt;groff&lt;/span&gt; font is generated by the
+&lt;span class="app"&gt;groff&lt;/span&gt; utility &lt;span class="command"&gt;afmtodit&lt;/span&gt;.  Then the necessary files are moved to
+&lt;span class="file"&gt;site-font/devps&lt;/span&gt; and registered in its download file for use by &lt;span class="command"&gt;grops&lt;/span&gt;.
+Optionally the same can be done for &lt;span class="file"&gt;site-font/devpdf&lt;/span&gt; for the use of
+&lt;span class="file"&gt;gropdf&lt;/span&gt;.  Then the fonts are available for use by &lt;code class="docutils literal"&gt;groff
+&lt;span class="pre"&gt;-Tps&lt;/span&gt;&lt;/code&gt; and &lt;code class="docutils literal"&gt;groff &lt;span class="pre"&gt;-Tpdf&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;So, suppose you wanted to use &lt;a class="reference external" href="https://fonts.google.com/specimen/Cormorant+Garamond"&gt;Cormorant Garamond&lt;/a&gt;, a free
+font.  You could download the Regular, Italic, Bold, and Bold Italic
+variants of the font, since &lt;span class="app"&gt;groff&lt;/span&gt; tends to expect there to be
+R, I, B, and BI variants of the fonts it uses, though that is not
+mandatory.  This would give you the files
+&lt;span class="file"&gt;CormorantGaramond-Regular.ttf&lt;/span&gt;,
+&lt;span class="file"&gt;CormorantGaramond-Italic.ttf&lt;/span&gt;,
+&lt;span class="file"&gt;CormorantGaramond-Bold.ttf&lt;/span&gt;, and
+&lt;span class="file"&gt;CormorantGaramond-BoldItalic.ttf&lt;/span&gt;.  You would then use
+&lt;span class="command"&gt;install-font.sh&lt;/span&gt; to convert them and install the resulting
+files into proper places under &lt;span class="app"&gt;groff&lt;/span&gt;'s site-font directory.&lt;/p&gt;
+&lt;p&gt;So, for instance, you'd cd to the directory that holds the &lt;span class="file"&gt;.ttf&lt;/span&gt; files
+you downloaded.  Then, to install the Regular variant of Cormorant
+Garamond you'd run the command&lt;/p&gt;
+&lt;pre class="code bash"&gt;&lt;a name="rest_code_980e39099f264b79b9dfdc9b45058cc9-1"&gt;&lt;/a&gt;&lt;span class="k"&gt;$(&lt;/span&gt;IFDIR&lt;span class="k"&gt;)&lt;/span&gt;/install-font.sh -n -P &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$DEST&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt; -d -F CormorantGaramond -f +R CormorantGaramond-Regular.ttf
+&lt;/pre&gt;&lt;p&gt;where &lt;code class="docutils literal"&gt;IFDIR&lt;/code&gt; is an environment variable indicating the directory
+where &lt;span class="command"&gt;install-font.sh&lt;/span&gt; is located and &lt;code class="docutils literal"&gt;DEST&lt;/code&gt; is an
+environment variable indicating the directory that contains
+&lt;span class="app"&gt;groff&lt;/span&gt;'s &lt;span class="file"&gt;site-font&lt;/span&gt; directory (not the actual
+&lt;span class="file"&gt;site-font&lt;/span&gt; directory itself).  The &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;-n&lt;/span&gt;&lt;/code&gt; option means don't
+try to copy the TrueType file to where the system font files are
+located.  The &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;-P&lt;/span&gt;&lt;/code&gt; option takes as its argument the directory that
+contains the &lt;span class="app"&gt;groff&lt;/span&gt;'s site-font directory.  Usually this is some
+place like &lt;span class="file"&gt;/usr/share/groff&lt;/span&gt; or &lt;span class="file"&gt;/usr/local/share/groff&lt;/span&gt;,
+but not all distributions create the &lt;span class="file"&gt;site-font&lt;/span&gt; directory.  If
+you don't specify &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;-P&lt;/span&gt;&lt;/code&gt; &lt;span class="command"&gt;install-font.sh&lt;/span&gt; will guess the
+location.  (If the &lt;span class="file"&gt;site-font&lt;/span&gt; directory doesn't exist, or you
+don't have write access to it I think you can use the environment
+variable &lt;code class="docutils literal"&gt;GROFF_FONT_PATH&lt;/code&gt; to tell &lt;span class="app"&gt;groff&lt;/span&gt; where to find it,
+but I've never used that and don't know the specifics.  I often build
+&lt;span class="app"&gt;groff&lt;/span&gt; from git and install it someplace my normal user has
+write access to, so I haven't had to worry about it.)  The &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;-d&lt;/span&gt;&lt;/code&gt;
+option says to make the font available to &lt;span class="command"&gt;gropdf&lt;/span&gt;.  The
+&lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;-F&lt;/span&gt;&lt;/code&gt; option takes an argument that specifies the font family name to
+use.  This is the name that you would use with the &lt;code class="docutils literal"&gt;.fam&lt;/code&gt; request or
+the &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;-f&lt;/span&gt;&lt;/code&gt; option to &lt;span class="command"&gt;groff&lt;/span&gt; to let it know you want to use
+this font family.  The &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;-f&lt;/span&gt;&lt;/code&gt; option takes an argument that specifies
+the font style to use, &lt;code class="docutils literal"&gt;+R&lt;/code&gt;, &lt;code class="docutils literal"&gt;+I&lt;/code&gt;, &lt;code class="docutils literal"&gt;+B&lt;/code&gt;, or &lt;code class="docutils literal"&gt;+BI&lt;/code&gt;.  (The
+&lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;-f&lt;/span&gt;&lt;/code&gt; option can instead take a name, but I don't use that form and
+can't explain the distinctions.)  The style (&lt;code class="docutils literal"&gt;R&lt;/code&gt;, &lt;code class="docutils literal"&gt;I&lt;/code&gt;, &lt;code class="docutils literal"&gt;B&lt;/code&gt;, or
+&lt;code class="docutils literal"&gt;BI&lt;/code&gt;) is appended to the font family name specified with &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;-F&lt;/span&gt;&lt;/code&gt; to
+produce the name of the &lt;span class="app"&gt;groff&lt;/span&gt; font, and consequently the name
+of the &lt;span class="app"&gt;groff&lt;/span&gt; font file that is written to the &lt;code class="docutils literal"&gt;devps&lt;/code&gt; and
+&lt;code class="docutils literal"&gt;devpdf&lt;/code&gt; directories under &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;site-font&lt;/span&gt;&lt;/code&gt;.  So, in this example, the
+name of the &lt;span class="app"&gt;groff&lt;/span&gt; font and the &lt;span class="app"&gt;groff&lt;/span&gt; font file would be
+&lt;span class="file"&gt;CormorantGaramondR&lt;/span&gt;.  The last argument to the script is the
+name of the Truetype or OpenType file you are converting.&lt;/p&gt;
+&lt;p&gt;To complete the example, here are the commands to install the Italic,
+Bold, and Bold Italic variants of Cormorant Garamond:&lt;/p&gt;
+&lt;pre class="code bash"&gt;&lt;a name="rest_code_72735ba6dc6d493ea74d3d34ef9ffc2d-1"&gt;&lt;/a&gt;&lt;span class="k"&gt;$(&lt;/span&gt;IFDIR&lt;span class="k"&gt;)&lt;/span&gt;/install-font.sh -n -P &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$DEST&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt; -d -F CormorantGaramond -f +I CormorantGaramond-Italic.ttf
+&lt;a name="rest_code_72735ba6dc6d493ea74d3d34ef9ffc2d-2"&gt;&lt;/a&gt;&lt;span class="k"&gt;$(&lt;/span&gt;IFDIR&lt;span class="k"&gt;)&lt;/span&gt;/install-font.sh -n -P &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$DEST&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt; -d -F CormorantGaramond -f +B CormorantGaramond-Bold.ttf
+&lt;a name="rest_code_72735ba6dc6d493ea74d3d34ef9ffc2d-3"&gt;&lt;/a&gt;&lt;span class="k"&gt;$(&lt;/span&gt;IFDIR&lt;span class="k"&gt;)&lt;/span&gt;/install-font.sh -n -P &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$DEST&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt; -d -F CormorantGaramond -f +BI CormorantGaramond-BoldItalic.
+&lt;/pre&gt;&lt;p&gt;As I said in an earlier email to the list, I tend to put all four
+commands into a script so I can run them again if something goes wrong
+or when I need to install them on a new machine or in a new
+installation of &lt;span class="app"&gt;groff&lt;/span&gt;.  In the case of Cormorant Garamond I named the
+file &lt;span class="file"&gt;install-cormorant-garamond.sh&lt;/span&gt;.&lt;/p&gt;&lt;/div&gt;</description><category>fonts</category><category>groff</category><category>install-font.sh</category><category>mom</category><category>troff</category><guid>https://tkurtbond.github.io/posts/2021/07/17/groff-and-install-fontsh-and-installing-fonts-for-use-in-groff/</guid><pubDate>Sat, 17 Jul 2021 04:16:49 GMT</pubDate></item><item><title>troff Memorandum Macros documentation</title><link>https://tkurtbond.github.io/posts/2021/07/15/troff-memorandum-macros-documentation/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;strong&gt;TL;DR:&lt;/strong&gt; Look &lt;a class="reference external" href="https://tkurtbond.github.io/troff/mm-all.pdf"&gt;here&lt;/a&gt; for documentation for the &lt;span class="app"&gt;Documenter's Workbench&lt;/span&gt; &lt;span class="app"&gt;mm&lt;/span&gt; Memorandum
 Macros for &lt;span class="app"&gt;groff&lt;/span&gt;, based on the original paper &lt;cite&gt;MM - Memorandum
 Macros&lt;/cite&gt;, and there is a &lt;a class="reference internal" href="https://tkurtbond.github.io/posts/2021/07/15/troff-memorandum-macros-documentation/#bonus"&gt;bonus&lt;/a&gt; at the end.&lt;/p&gt;
 &lt;p&gt;When I learned &lt;span class="app"&gt;troff&lt;/span&gt; it was actually on a VAX running VMS (used
@@ -390,9 +477,9 @@ has a &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;-utf8&lt;/spa
 I do this.  (There will inevitably be a next time.)&lt;/p&gt;
 &lt;p&gt;OMG, now I have have to put that in the blog post!  How many &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Saving_throw"&gt;saving
 throws&lt;/a&gt; am I going to fail today anyway?&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Last edited: 2020-12-28 11:11:54 EST&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Last edited: 2021-07-17 00:53:29 EDT&lt;/em&gt;&lt;/p&gt;
 &lt;!-- Local Variables:
-time-stamp-format: "%04y-%02m-%02d %02H:%02M:%02S %Z"
+time-stamp-format: "%Y-%02m-%02d %02H:%02M:%02S %Z"
 time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
 time-stamp-end: "\\*\\\\?\n"
 time-stamp-line-limit: -20

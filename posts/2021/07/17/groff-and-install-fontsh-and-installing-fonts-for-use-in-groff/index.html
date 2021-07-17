@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>groff and install-font.sh and installing fonts for use in groff | Lacking Natural Simplicity</title>
+<link href="../../../../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../../../../rss.xml">
+<link rel="alternate" type="application/atom+xml" title="Atom" href="../../../../../feed.atom">
+<link rel="canonical" href="https://tkurtbond.github.io/posts/2021/07/17/groff-and-install-fontsh-and-installing-fonts-for-use-in-groff/">
+<!--[if lt IE 9]><script src="../../../../../assets/js/html5.js"></script><![endif]--><meta name="author" content="T. Kurt Bond">
+<link rel="prev" href="../../16/sorting-words-separated-by-commas/" title="Sorting words separated by commas" type="text/html">
+<meta property="og:site_name" content="Lacking Natural Simplicity">
+<meta property="og:title" content="groff and install-font.sh and installing fonts for use in groff">
+<meta property="og:url" content="https://tkurtbond.github.io/posts/2021/07/17/groff-and-install-fontsh-and-installing-fonts-for-use-in-groff/">
+<meta property="og:description" content="Note
+This was originally a post to the groff mailing list.  It has
+been slightly modified.
+
+Currently install-font.sh is not part of groff.
+We've had some discussion on the list recently and in the pa">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2021-07-17T00:16:49-04:00">
+<meta property="article:tag" content="fonts">
+<meta property="article:tag" content="groff">
+<meta property="article:tag" content="install-font.sh">
+<meta property="article:tag" content="mom">
+<meta property="article:tag" content="troff">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<div class="blog-masthead">
+    <div class="container">
+<!-- This keeps the margins nice -->
+        <nav class="blog-nav" role="navigation"><a href="../../../../../index.html" class="blog-nav-item">Home</a>
+            <a href="../../../../../archive.html" class="blog-nav-item">Archives</a>
+            <a href="../../../../../categories/index.html" class="blog-nav-item">Tags &amp; Categories</a>
+            <a href="../../../../../rss.xml" class="blog-nav-item">RSS feed</a>
+            <a href="../../../../../feed.atom" class="blog-nav-item">Atom feed</a>
+
+            
+
+    <a href="index.rst" class="blog-nav-item blog-nav-item-aside" id="sourcelink">Source</a>
+                
+            
+        </nav>
+</div>
+<!-- /.container -->
+</div>
+<!-- End of Menubar -->
+
+<div class="container" id="content" role="main">
+    <div class="body-content">
+        <div class="blog-header">
+            <h1 class="blog-title">
+                <a href="https://tkurtbond.github.io/">
+
+                    <span id="blog-title">Lacking Natural Simplicity</span>
+                </a>
+            </h1>
+            <p class="lead blog-description">Random musings on books, code, and tabletop games.</p>
+            
+        </div>
+        <!--Body content-->
+        <div class="row">
+            <div class="col-sm-8 blog-main">
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h2 class="p-name entry-title blog-post-title" itemprop="headline name"><a href="." class="u-url">groff and install-font.sh and installing fonts for use in groff</a></h2>
+
+        <div class="metadata blog-post-meta">
+            <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
+            <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2021-07-17T00:16:49-04:00" itemprop="datePublished" title="2021-07-17 00:16">2021-07-17 00:16</time></a></p>
+                <p class="commentline">            <a href="#disqus_thread" data-disqus-identifier="cache/posts/2021/07/17/groff-and-install-fontsh-and-installing-fonts-for-use-in-groff.html">Comments</a>
+
+
+                    </p>
+<p class="sourceline"><a href="index.rst" id="sourcelink">Source</a></p>
+
+        </div>
+        
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This was originally a <a class="reference external" href="https://lists.gnu.org/archive/html/groff/2021-07/msg00089.html">post</a> to the <a class="reference external" href="https://www.gnu.org/software/groff/">groff</a> <a class="reference external" href="https://lists.gnu.org/mailman/listinfo/groff/">mailing list</a>.  It has
+been slightly modified.</p>
+</div>
+<p>Currently <span class="command">install-font.sh</span> is not part of <span class="app">groff</span>.
+We've had some discussion on the list <a class="reference external" href="https://lists.gnu.org/archive/html/groff/2021-07/msg00061.html">recently</a> and in the past about
+integrating it into the <span class="app">groff</span> distribution, and in response to
+recent <a class="reference external" href="https://lists.gnu.org/archive/html/groff/2021-07/msg00054.html">discussion</a> there is a new bug, <a class="reference external" href="https://savannah.gnu.org/bugs/index.php?60930">#60930</a>, requesting
+integrating it, including documentation, etc.</p>
+<p>In the meantime, if you want to install fonts in OpenType or TrueType
+formats for use with <code class="docutils literal">devps</code> and <code class="docutils literal">devpdf</code>,
+<span class="command">install-font.sh</span> greatly simplifies the process.</p>
+<p>The <span class="command">install-font.sh</span> script was written by Peter Schaffter, the author
+of the <a class="reference external" href="https://www.schaffter.ca/mom/mom-01.html">mom macros</a> for
+<span class="app">groff</span>, and is distributed on mom's <a class="reference external" href="https://www.schaffter.ca/mom/mom-05.html#install-font">download page</a> and can be
+downloaded <a class="reference external" href="https://www.schaffter.ca/mom/bin/install-font.sh">directly</a>.  It has a <code class="docutils literal"><span class="pre">-H</span></code>
+option that prints the documentation for it.</p>
+<p><a class="reference external" href="https://fontforge.org/">Fontforge</a> is a free and open source font
+editor.  It can run scripts to manipulate fonts and convert between
+font formats.  (I only use <span class="app">fontforge</span> to install fonts with
+<span class="command">install-font.sh</span>, so I use a version that is command line
+only, but the normal build has a GUI for interactively building
+fonts.)  The <span class="command">install-font.sh</span> script uses <span class="app">Fontforge</span> to convert
+OpenType and TrueType fonts to PostScript Type42 (<span class="file">.t42</span>) and Type1
+(<span class="file">.pfa</span>), from which a <span class="app">groff</span> font is generated by the
+<span class="app">groff</span> utility <span class="command">afmtodit</span>.  Then the necessary files are moved to
+<span class="file">site-font/devps</span> and registered in its download file for use by <span class="command">grops</span>.
+Optionally the same can be done for <span class="file">site-font/devpdf</span> for the use of
+<span class="file">gropdf</span>.  Then the fonts are available for use by <code class="docutils literal">groff
+<span class="pre">-Tps</span></code> and <code class="docutils literal">groff <span class="pre">-Tpdf</span></code>.</p>
+<p>So, suppose you wanted to use <a class="reference external" href="https://fonts.google.com/specimen/Cormorant+Garamond">Cormorant Garamond</a>, a free
+font.  You could download the Regular, Italic, Bold, and Bold Italic
+variants of the font, since <span class="app">groff</span> tends to expect there to be
+R, I, B, and BI variants of the fonts it uses, though that is not
+mandatory.  This would give you the files
+<span class="file">CormorantGaramond-Regular.ttf</span>,
+<span class="file">CormorantGaramond-Italic.ttf</span>,
+<span class="file">CormorantGaramond-Bold.ttf</span>, and
+<span class="file">CormorantGaramond-BoldItalic.ttf</span>.  You would then use
+<span class="command">install-font.sh</span> to convert them and install the resulting
+files into proper places under <span class="app">groff</span>'s site-font directory.</p>
+<p>So, for instance, you'd cd to the directory that holds the <span class="file">.ttf</span> files
+you downloaded.  Then, to install the Regular variant of Cormorant
+Garamond you'd run the command</p>
+<pre class="code bash"><a name="rest_code_980e39099f264b79b9dfdc9b45058cc9-1"></a><span class="k">$(</span>IFDIR<span class="k">)</span>/install-font.sh -n -P <span class="s2">"</span><span class="nv">$DEST</span><span class="s2">"</span> -d -F CormorantGaramond -f +R CormorantGaramond-Regular.ttf
+</pre>
+<p>where <code class="docutils literal">IFDIR</code> is an environment variable indicating the directory
+where <span class="command">install-font.sh</span> is located and <code class="docutils literal">DEST</code> is an
+environment variable indicating the directory that contains
+<span class="app">groff</span>'s <span class="file">site-font</span> directory (not the actual
+<span class="file">site-font</span> directory itself).  The <code class="docutils literal"><span class="pre">-n</span></code> option means don't
+try to copy the TrueType file to where the system font files are
+located.  The <code class="docutils literal"><span class="pre">-P</span></code> option takes as its argument the directory that
+contains the <span class="app">groff</span>'s site-font directory.  Usually this is some
+place like <span class="file">/usr/share/groff</span> or <span class="file">/usr/local/share/groff</span>,
+but not all distributions create the <span class="file">site-font</span> directory.  If
+you don't specify <code class="docutils literal"><span class="pre">-P</span></code> <span class="command">install-font.sh</span> will guess the
+location.  (If the <span class="file">site-font</span> directory doesn't exist, or you
+don't have write access to it I think you can use the environment
+variable <code class="docutils literal">GROFF_FONT_PATH</code> to tell <span class="app">groff</span> where to find it,
+but I've never used that and don't know the specifics.  I often build
+<span class="app">groff</span> from git and install it someplace my normal user has
+write access to, so I haven't had to worry about it.)  The <code class="docutils literal"><span class="pre">-d</span></code>
+option says to make the font available to <span class="command">gropdf</span>.  The
+<code class="docutils literal"><span class="pre">-F</span></code> option takes an argument that specifies the font family name to
+use.  This is the name that you would use with the <code class="docutils literal">.fam</code> request or
+the <code class="docutils literal"><span class="pre">-f</span></code> option to <span class="command">groff</span> to let it know you want to use
+this font family.  The <code class="docutils literal"><span class="pre">-f</span></code> option takes an argument that specifies
+the font style to use, <code class="docutils literal">+R</code>, <code class="docutils literal">+I</code>, <code class="docutils literal">+B</code>, or <code class="docutils literal">+BI</code>.  (The
+<code class="docutils literal"><span class="pre">-f</span></code> option can instead take a name, but I don't use that form and
+can't explain the distinctions.)  The style (<code class="docutils literal">R</code>, <code class="docutils literal">I</code>, <code class="docutils literal">B</code>, or
+<code class="docutils literal">BI</code>) is appended to the font family name specified with <code class="docutils literal"><span class="pre">-F</span></code> to
+produce the name of the <span class="app">groff</span> font, and consequently the name
+of the <span class="app">groff</span> font file that is written to the <code class="docutils literal">devps</code> and
+<code class="docutils literal">devpdf</code> directories under <code class="docutils literal"><span class="pre">site-font</span></code>.  So, in this example, the
+name of the <span class="app">groff</span> font and the <span class="app">groff</span> font file would be
+<span class="file">CormorantGaramondR</span>.  The last argument to the script is the
+name of the Truetype or OpenType file you are converting.</p>
+<p>To complete the example, here are the commands to install the Italic,
+Bold, and Bold Italic variants of Cormorant Garamond:</p>
+<pre class="code bash"><a name="rest_code_72735ba6dc6d493ea74d3d34ef9ffc2d-1"></a><span class="k">$(</span>IFDIR<span class="k">)</span>/install-font.sh -n -P <span class="s2">"</span><span class="nv">$DEST</span><span class="s2">"</span> -d -F CormorantGaramond -f +I CormorantGaramond-Italic.ttf
+<a name="rest_code_72735ba6dc6d493ea74d3d34ef9ffc2d-2"></a><span class="k">$(</span>IFDIR<span class="k">)</span>/install-font.sh -n -P <span class="s2">"</span><span class="nv">$DEST</span><span class="s2">"</span> -d -F CormorantGaramond -f +B CormorantGaramond-Bold.ttf
+<a name="rest_code_72735ba6dc6d493ea74d3d34ef9ffc2d-3"></a><span class="k">$(</span>IFDIR<span class="k">)</span>/install-font.sh -n -P <span class="s2">"</span><span class="nv">$DEST</span><span class="s2">"</span> -d -F CormorantGaramond -f +BI CormorantGaramond-BoldItalic.
+</pre>
+<p>As I said in an earlier email to the list, I tend to put all four
+commands into a script so I can run them again if something goes wrong
+or when I need to install them on a new machine or in a new
+installation of <span class="app">groff</span>.  In the case of Cormorant Garamond I named the
+file <span class="file">install-cormorant-garamond.sh</span>.</p>
+</div>
+    </div>
+    <script>var pfHeaderImgUrl = '';var pfHeaderTagline = '';var pfdisableClickToDel = 0;var pfHideImages = 0;var pfImageDisplayStyle = 'right';var pfDisablePDF = 0;var pfDisableEmail = 0;var pfDisablePrint = 0;var pfCustomCSS = '';var pfBtVersion='2';(function(){var js,pf;pf=document.createElement('script');pf.type='text/javascript';pf.src='//cdn.printfriendly.com/printfriendly.js';document.getElementsByTagName('head')[0].appendChild(pf)})();</script><a href="https://www.printfriendly.com" style="color:#6D9F00;text-decoration:none;" class="printfriendly" onclick="window.print();return false;" title="Printer Friendly and PDF"><img style="border:none;-webkit-box-shadow:none;box-shadow:none;" src="//cdn.printfriendly.com/buttons/printfriendly-pdf-button.png" alt="Print Friendly and PDF"></a>    
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../../../../../categories/fonts/" rel="tag">fonts</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/groff/" rel="tag">groff</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/install-fontsh/" rel="tag">install-font.sh</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/mom/" rel="tag">mom</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/troff/" rel="tag">troff</a></li>
+        </ul>
+<ul class="pager hidden-print">
+<li class="previous">
+                <a href="../../16/sorting-words-separated-by-commas/" rel="prev" title="Sorting words separated by commas">Previous post</a>
+            </li>
+        </ul></nav></aside><section class="comments hidden-print"><h2>Comments</h2>
+                        <div id="disqus_thread"></div>
+        <script>
+        var disqus_shortname ="lacking-natural-simplicity",
+            disqus_url="https://tkurtbond.github.io/posts/2021/07/17/groff-and-install-fontsh-and-installing-fonts-for-use-in-groff/",
+        disqus_title="groff and install-font.sh and installing fonts for use in groff",
+        disqus_identifier="cache/posts/2021/07/17/groff-and-install-fontsh-and-installing-fonts-for-use-in-groff.html",
+        disqus_config = function () {
+            this.language = "en";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.async = true;
+            dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script><noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+    <a href="https://disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+        </section></article><script>var disqus_shortname="lacking-natural-simplicity";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
+</div>
+            <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+                    <div class="sidebar-module sidebar-module-inset">
+      <h4>About</h4>
+      <p>Lacking Natural Simplicity is one, not particularly flattering, 
+         definition of sophisticated.  
+         This blog chronicles my journey through our at times too complicated 
+         and sophisticated world. </p>
+    </div>
+    <div class="sidebar-module">
+      <h4>Links</h4>
+      <ol class="list-unstyled">
+<li><a href="../../../../../pages/about-the-blog/index.html">About the Blog</a></li>
+        <li><a href="../../../../../pages/colophon/index.html">Colophon</a></li>
+        <li><a href="../../../../../pages/static-pages-index/index.html">Pages</a></li>
+        <li>
+<a href="http://tkb.tx0.org/">My other web page</a>
+            <p>    Mostly empty</p>
+        </li>
+      </ol>
+</div>
+    
+            </div>
+        <!--End of body content-->
+        </div>
+    </div>
+</div>
+
+<footer class="blog-footer" id="footer">
+    Contents © 2021         <a href="mailto:tkurtbond@gmail.com">T. Kurt Bond</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+    
+</footer><script src="../../../../../assets/js/all-nocdn.js"></script><!-- fancy dates --><script>
+    moment.locale("en");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates --><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element) {
+            return element.getElementsByTagName('img')[0].alt;
+    }});
+    </script>
+</body>
+</html>
