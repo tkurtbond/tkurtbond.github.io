@@ -143,6 +143,10 @@ those locations are :file:`/usr/local/share/groff` and
 
 .. _pointed out: https://lists.gnu.org/archive/html/groff/2021-07/msg00090.html
 
+For a walk-through of the simple use see the follow-up_.
+
+.. _follow-up: link://slug/install-fontsh-the-simple-approach
+
 *Last edited: 2021-07-15 17:46:40 EDT*
 
 ..
