@@ -124,3 +124,31 @@ commands into a script so I can run them again if something goes wrong
 or when I need to install them on a new machine or in a new
 installation of :app:`groff`.  In the case of Cormorant Garamond I named the
 file :file:`install-cormorant-garamond.sh`.
+
+**Later:** Peter Schaffter `pointed out`_ that the *simple* use of
+:command:`install-font.sh` is:
+
+.. code:: bash
+
+   sudo install-font.sh fontfile
+
+and then answer the questions the script asks.  He also pointed out
+that it creates the :file:`site-font` directory and necessary
+subdirectories if needed in, and here I quote: “the only two locations
+it's ever likely to be”.  Looking at :command:`install-font.sh` reveal
+those locations are :file:`/usr/local/share/groff` and
+:file:`/usr/share/groff`, defaulting to
+:file:`/usr/local/share/groff`; to get it to use
+:file:`/usr/share/groff` you specify the ``-s`` option.
+
+.. _pointed out: https://lists.gnu.org/archive/html/groff/2021-07/msg00090.html
+
+*Last edited: 2021-07-15 17:46:40 EDT*
+
+..
+   Local Variables:
+   time-stamp-format: "%Y-%02m-%02d %02H:%02M:%02S %Z"
+   time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
+   time-stamp-end: "\\*\\\\?\n"
+   time-stamp-line-limit: -20
+   End:
