@@ -14,7 +14,7 @@
 
 **TL;DR:** Look here_ for documentation for the |DWB| |MM| Memorandum
 Macros for :app:`groff`, based on the original paper `MM - Memorandum
-Macros`, and there is a bonus_ at the end.
+Macros`.  If you read that far there is a bonus_ at the end.
 
 When I learned :app:`troff` it was actually on a VAX running VMS (used
 by `MPL Corporation`_) using a port of :app:`troff` called
@@ -125,7 +125,7 @@ I wrote them at different times for slightly different purposes.
 
 .. _Charon-VAX: https://www.stromasys.com/solutions/charon-vax/
 
-*Last edited: 2021-07-17 13:59:43 EDT*
+*Last edited: 2021-07-17 19:09:27 EDT*
 
 ..
    Local Variables:
