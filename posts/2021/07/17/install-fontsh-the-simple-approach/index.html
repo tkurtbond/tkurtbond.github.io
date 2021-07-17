@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>install-font.sh - The simple approach | Lacking Natural Simplicity</title>
+<link href="../../../../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../../../../rss.xml">
+<link rel="alternate" type="application/atom+xml" title="Atom" href="../../../../../feed.atom">
+<link rel="canonical" href="https://tkurtbond.github.io/posts/2021/07/17/install-fontsh-the-simple-approach/">
+<!--[if lt IE 9]><script src="../../../../../assets/js/html5.js"></script><![endif]--><meta name="author" content="T. Kurt Bond">
+<link rel="prev" href="../groff-and-install-fontsh-and-installing-fonts-for-use-in-groff/" title="groff and install-font.sh and installing fonts for use in groff" type="text/html">
+<meta property="og:site_name" content="Lacking Natural Simplicity">
+<meta property="og:title" content="install-font.sh - The simple approach">
+<meta property="og:url" content="https://tkurtbond.github.io/posts/2021/07/17/install-fontsh-the-simple-approach/">
+<meta property="og:description" content="The simple approach to using install-font.sh to install
+fonts for groff probably works for almost everybody: call the
+command with one argument, the font file, and answer the prompts.
+This will instal">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2021-07-17T15:36:43-04:00">
+<meta property="article:tag" content="fonts">
+<meta property="article:tag" content="groff">
+<meta property="article:tag" content="install-font.sh">
+<meta property="article:tag" content="troff">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<div class="blog-masthead">
+    <div class="container">
+<!-- This keeps the margins nice -->
+        <nav class="blog-nav" role="navigation"><a href="../../../../../index.html" class="blog-nav-item">Home</a>
+            <a href="../../../../../archive.html" class="blog-nav-item">Archives</a>
+            <a href="../../../../../categories/index.html" class="blog-nav-item">Tags &amp; Categories</a>
+            <a href="../../../../../rss.xml" class="blog-nav-item">RSS feed</a>
+            <a href="../../../../../feed.atom" class="blog-nav-item">Atom feed</a>
+
+            
+
+    <a href="index.rst" class="blog-nav-item blog-nav-item-aside" id="sourcelink">Source</a>
+                
+            
+        </nav>
+</div>
+<!-- /.container -->
+</div>
+<!-- End of Menubar -->
+
+<div class="container" id="content" role="main">
+    <div class="body-content">
+        <div class="blog-header">
+            <h1 class="blog-title">
+                <a href="https://tkurtbond.github.io/">
+
+                    <span id="blog-title">Lacking Natural Simplicity</span>
+                </a>
+            </h1>
+            <p class="lead blog-description">Random musings on books, code, and tabletop games.</p>
+            
+        </div>
+        <!--Body content-->
+        <div class="row">
+            <div class="col-sm-8 blog-main">
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h2 class="p-name entry-title blog-post-title" itemprop="headline name"><a href="." class="u-url">install-font.sh - The simple approach</a></h2>
+
+        <div class="metadata blog-post-meta">
+            <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
+            <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2021-07-17T15:36:43-04:00" itemprop="datePublished" title="2021-07-17 15:36">2021-07-17 15:36</time></a></p>
+                <p class="commentline">            <a href="#disqus_thread" data-disqus-identifier="cache/posts/2021/07/17/install-fontsh-the-simple-approach.html">Comments</a>
+
+
+                    </p>
+<p class="sourceline"><a href="index.rst" id="sourcelink">Source</a></p>
+
+        </div>
+        
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<p>The simple approach to using <a class="reference external" href="https://www.schaffter.ca/mom/mom-05.html#install-font">install-font.sh</a> to install
+fonts for <span class="app">groff</span> probably works for almost everybody: call the
+command with one argument, the font file, and answer the prompts.
+This will install the fonts for <span class="app">groff</span>'s use under
+<span class="file">/usr/local/share/groff/site-font</span>, creating the directories if
+necessary.  For instance:</p>
+<pre class="code text"><a name="rest_code_ad3537f4f1804b2da4a2a8b50c58b9dd-1"></a>$ install-font.sh Lora-Regular.ttf
+</pre>
+<p>will install the Regular variant of the font.</p>
+<p>The only prompt where you need to do something other than accept the
+default is the prompt for the style.  For <span class="file">Lora-Regular</span> you'd
+specify <code class="docutils literal">+R</code>.  For italic, bold, and bold italic, the other
+traditional <span class="app">troff</span> font styles, you'd specify <code class="docutils literal">+I</code>, <code class="docutils literal">+B</code>,
+and <code class="docutils literal">+BI</code>.  One thing to notice is that in the walk-through below
+the prompt for the style mentions <code class="docutils literal">+BD</code> rather than <code class="docutils literal">+B</code> for bold.
+This means you have an older version of <span class="command">install-font.sh</span>,
+but you should still specify <code class="docutils literal">+B</code> for bold.  (This should be fixed
+in a newer version of <span class="command">install-font.sh</span>.)</p>
+<p>Here's a walk-through of installing the <a class="reference external" href="https://fonts.google.com/specimen/Lora">Lora</a> font, assuming that
+<span class="command">install-font.sh</span> is in your path.  (If your
+<span class="file">/usr/local/share/groff</span> directory isn't writable for you, you
+should prefix the command with <code class="docutils literal">sudo</code>.)</p>
+<pre class="code text"><a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-1"></a>$ install-font.sh Lora-Regular.ttf
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-2"></a>/usr/local/share/groff/site-font not found; creating.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-3"></a>/usr/local/share/groff/site-font/devps not found; creating.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-4"></a>/usr/local/share/groff/site-font/devpdf not found; creating.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-5"></a>Processing Lora-Regular.ttf...
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-6"></a>Running fontforge...
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-7"></a>Copyright (c) 2000-2020. See AUTHORS for Contributors.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-8"></a> License GPLv3+: GNU GPL version 3 or later &lt;http://gnu.org/licenses/gpl.html&gt;
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-9"></a> with many parts BSD &lt;http://fontforge.org/license.html&gt;. Please read LICENSE.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-10"></a> Version: 20201107
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-11"></a> Based on sources from 2020-11-16 19:11 UTC-D.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-12"></a>The following table(s) in the font have been ignored by FontForge
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-13"></a>  Ignoring 'STAT' style attributes table
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-14"></a>Done.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-15"></a>Family name (default = Lora):
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-16"></a>  =&gt;Lora-Regular (Lora-Regular.ttf) assigned to family 'Lora'.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-17"></a>Enter +STYLE (eg +R, +I, +BD, +BI), or a unique groff name for Lora-Regular.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-18"></a>Leave blank to set name to 'Lora-Regular': +R
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-19"></a>  =&gt;Lora-Regular assigned groff fontname 'LoraR'.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-20"></a>Creating LoraR...
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-21"></a>both uni03BC and uni00B5 map to mc at /usr/local/bin/afmtodit line 6411.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-22"></a>Done.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-23"></a>Installing LoraR in /usr/local/share/groff/site-font/devps/... Done.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-24"></a>Make LoraR available to gropdf? (y/n; default = y)
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-25"></a>Checking for gropdf executable and devpdf directory... gropdf found.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-26"></a>Installing LoraR in /usr/local/share/groff/site-font/devpdf/... Done.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-27"></a>Copy Lora-Regular.ttf to /usr/local/share/fonts/truetype/Lora/
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-28"></a>  (y/n; default = n)
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-29"></a>Install Lora-Regular.ttf manually to make it available system-wide.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-30"></a>
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-31"></a>$ install-font.sh Lora-Italic.ttf
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-32"></a>Processing Lora-Italic.ttf...
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-33"></a>Running fontforge...
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-34"></a>Copyright (c) 2000-2020. See AUTHORS for Contributors.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-35"></a> License GPLv3+: GNU GPL version 3 or later &lt;http://gnu.org/licenses/gpl.html&gt;
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-36"></a> with many parts BSD &lt;http://fontforge.org/license.html&gt;. Please read LICENSE.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-37"></a> Version: 20201107
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-38"></a> Based on sources from 2020-11-16 19:11 UTC-D.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-39"></a>The following table(s) in the font have been ignored by FontForge
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-40"></a>  Ignoring 'STAT' style attributes table
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-41"></a>Done.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-42"></a>Family name (default = Lora):
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-43"></a>  =&gt;Lora-Italic (Lora-Italic.ttf) assigned to family 'Lora'.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-44"></a>Enter +STYLE (eg +R, +I, +BD, +BI), or a unique groff name for Lora-Italic.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-45"></a>Leave blank to set name to 'Lora-Italic': +I
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-46"></a>  =&gt;Lora-Italic assigned groff fontname 'LoraI'.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-47"></a>Creating LoraI...
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-48"></a>both uni03BC and uni00B5 map to mc at /usr/local/bin/afmtodit line 6411.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-49"></a>Done.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-50"></a>Installing LoraI in /usr/local/share/groff/site-font/devps/... Done.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-51"></a>Make LoraI available to gropdf? (y/n; default = y)
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-52"></a>Checking for gropdf executable and devpdf directory... gropdf found.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-53"></a>Installing LoraI in /usr/local/share/groff/site-font/devpdf/... Done.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-54"></a>Copy Lora-Italic.ttf to /usr/local/share/fonts/truetype/Lora/
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-55"></a>  (y/n; default = n)
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-56"></a>Install Lora-Italic.ttf manually to make it available system-wide.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-57"></a>
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-58"></a>$ install-font.sh Lora-Bold.ttf
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-59"></a>Processing Lora-Bold.ttf...
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-60"></a>Running fontforge...
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-61"></a>Copyright (c) 2000-2020. See AUTHORS for Contributors.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-62"></a> License GPLv3+: GNU GPL version 3 or later &lt;http://gnu.org/licenses/gpl.html&gt;
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-63"></a> with many parts BSD &lt;http://fontforge.org/license.html&gt;. Please read LICENSE.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-64"></a> Version: 20201107
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-65"></a> Based on sources from 2020-11-16 19:11 UTC-D.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-66"></a>The following table(s) in the font have been ignored by FontForge
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-67"></a>  Ignoring 'STAT' style attributes table
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-68"></a>Glyph bounding box data exceeds font bounding box data for GID 4
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-69"></a>  Subsequent errors will not be reported.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-70"></a>In GID 769 the advance width (1316) is greater than the stated maximum (1291)
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-71"></a>  Subsequent errors will not be reported.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-72"></a>Done.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-73"></a>Family name (default = Lora):
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-74"></a>  =&gt;Lora-Bold (Lora-Bold.ttf) assigned to family 'Lora'.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-75"></a>Enter +STYLE (eg +R, +I, +BD, +BI), or a unique groff name for Lora-Bold.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-76"></a>Leave blank to set name to 'Lora-Bold': +B
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-77"></a>  =&gt;Lora-Bold assigned groff fontname 'LoraB'.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-78"></a>Creating LoraB...
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-79"></a>both uni00B5 and uni03BC map to mc at /usr/local/bin/afmtodit line 6411.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-80"></a>Done.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-81"></a>Installing LoraB in /usr/local/share/groff/site-font/devps/... Done.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-82"></a>Make LoraB available to gropdf? (y/n; default = y)
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-83"></a>Checking for gropdf executable and devpdf directory... gropdf found.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-84"></a>Installing LoraB in /usr/local/share/groff/site-font/devpdf/... Done.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-85"></a>Copy Lora-Bold.ttf to /usr/local/share/fonts/truetype/Lora/
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-86"></a>  (y/n; default = n)
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-87"></a>Install Lora-Bold.ttf manually to make it available system-wide.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-88"></a>
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-89"></a>$ install-font.sh Lora-BoldItalic.ttf
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-90"></a>Processing Lora-BoldItalic.ttf...
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-91"></a>Running fontforge...
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-92"></a>Copyright (c) 2000-2020. See AUTHORS for Contributors.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-93"></a> License GPLv3+: GNU GPL version 3 or later &lt;http://gnu.org/licenses/gpl.html&gt;
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-94"></a> with many parts BSD &lt;http://fontforge.org/license.html&gt;. Please read LICENSE.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-95"></a> Version: 20201107
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-96"></a> Based on sources from 2020-11-16 19:11 UTC-D.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-97"></a>The following table(s) in the font have been ignored by FontForge
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-98"></a>  Ignoring 'STAT' style attributes table
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-99"></a>Glyph bounding box data exceeds font bounding box data for GID 4
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-100"></a>  Subsequent errors will not be reported.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-101"></a>In GID 776 the advance width (1297) is greater than the stated maximum (1273)
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-102"></a>  Subsequent errors will not be reported.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-103"></a>Done.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-104"></a>Family name (default = Lora):
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-105"></a>  =&gt;Lora-BoldItalic (Lora-BoldItalic.ttf) assigned to family 'Lora'.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-106"></a>Enter +STYLE (eg +R, +I, +BD, +BI), or a unique groff name for Lora-BoldItalic.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-107"></a>Leave blank to set name to 'Lora-BoldItalic': +BI
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-108"></a>  =&gt;Lora-BoldItalic assigned groff fontname 'LoraBI'.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-109"></a>Creating LoraBI...
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-110"></a>both uni03BC and uni00B5 map to mc at /usr/local/bin/afmtodit line 6411.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-111"></a>Done.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-112"></a>Installing LoraBI in /usr/local/share/groff/site-font/devps/... Done.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-113"></a>Make LoraBI available to gropdf? (y/n; default = y)
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-114"></a>Checking for gropdf executable and devpdf directory... gropdf found.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-115"></a>Installing LoraBI in /usr/local/share/groff/site-font/devpdf/... Done.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-116"></a>Copy Lora-BoldItalic.ttf to /usr/local/share/fonts/truetype/Lora/
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-117"></a>  (y/n; default = n)
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-118"></a>Install Lora-BoldItalic.ttf manually to make it available system-wide.
+</pre>
+</div>
+    </div>
+    <script>var pfHeaderImgUrl = '';var pfHeaderTagline = '';var pfdisableClickToDel = 0;var pfHideImages = 0;var pfImageDisplayStyle = 'right';var pfDisablePDF = 0;var pfDisableEmail = 0;var pfDisablePrint = 0;var pfCustomCSS = '';var pfBtVersion='2';(function(){var js,pf;pf=document.createElement('script');pf.type='text/javascript';pf.src='//cdn.printfriendly.com/printfriendly.js';document.getElementsByTagName('head')[0].appendChild(pf)})();</script><a href="https://www.printfriendly.com" style="color:#6D9F00;text-decoration:none;" class="printfriendly" onclick="window.print();return false;" title="Printer Friendly and PDF"><img style="border:none;-webkit-box-shadow:none;box-shadow:none;" src="//cdn.printfriendly.com/buttons/printfriendly-pdf-button.png" alt="Print Friendly and PDF"></a>    
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../../../../../categories/fonts/" rel="tag">fonts</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/groff/" rel="tag">groff</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/install-fontsh/" rel="tag">install-font.sh</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/troff/" rel="tag">troff</a></li>
+        </ul>
+<ul class="pager hidden-print">
+<li class="previous">
+                <a href="../groff-and-install-fontsh-and-installing-fonts-for-use-in-groff/" rel="prev" title="groff and install-font.sh and installing fonts for use in groff">Previous post</a>
+            </li>
+        </ul></nav></aside><section class="comments hidden-print"><h2>Comments</h2>
+                        <div id="disqus_thread"></div>
+        <script>
+        var disqus_shortname ="lacking-natural-simplicity",
+            disqus_url="https://tkurtbond.github.io/posts/2021/07/17/install-fontsh-the-simple-approach/",
+        disqus_title="install-font.sh - The simple approach",
+        disqus_identifier="cache/posts/2021/07/17/install-fontsh-the-simple-approach.html",
+        disqus_config = function () {
+            this.language = "en";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.async = true;
+            dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script><noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+    <a href="https://disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+        </section></article><script>var disqus_shortname="lacking-natural-simplicity";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
+</div>
+            <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+                    <div class="sidebar-module sidebar-module-inset">
+      <h4>About</h4>
+      <p>Lacking Natural Simplicity is one, not particularly flattering, 
+         definition of sophisticated.  
+         This blog chronicles my journey through our at times too complicated 
+         and sophisticated world. </p>
+    </div>
+    <div class="sidebar-module">
+      <h4>Links</h4>
+      <ol class="list-unstyled">
+<li><a href="../../../../../pages/about-the-blog/index.html">About the Blog</a></li>
+        <li><a href="../../../../../pages/colophon/index.html">Colophon</a></li>
+        <li><a href="../../../../../pages/static-pages-index/index.html">Pages</a></li>
+        <li>
+<a href="http://tkb.tx0.org/">My other web page</a>
+            <p>    Mostly empty</p>
+        </li>
+      </ol>
+</div>
+    
+            </div>
+        <!--End of body content-->
+        </div>
+    </div>
+</div>
+
+<footer class="blog-footer" id="footer">
+    Contents © 2021         <a href="mailto:tkurtbond@gmail.com">T. Kurt Bond</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+    
+</footer><script src="../../../../../assets/js/all-nocdn.js"></script><!-- fancy dates --><script>
+    moment.locale("en");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates --><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element) {
+            return element.getElementsByTagName('img')[0].alt;
+    }});
+    </script>
+</body>
+</html>

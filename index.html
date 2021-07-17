@@ -10,7 +10,7 @@
 <link rel="alternate" type="application/atom+xml" title="Atom" href="feed.atom">
 <link rel="canonical" href="https://tkurtbond.github.io/">
 <link rel="next" href="index-90.html" type="text/html">
-<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/2021/07/17/groff-and-install-fontsh-and-installing-fonts-for-use-in-groff/" type="text/html">
+<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/2021/07/17/install-fontsh-the-simple-approach/" type="text/html">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
@@ -52,7 +52,167 @@
         <div class="row">
             <div class="col-sm-8 blog-main">
 <div class="postindex">
-    <article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2021/07/17/groff-and-install-fontsh-and-installing-fonts-for-use-in-groff/" class="u-url">groff and install-font.sh and installing fonts for use in groff</a></h2>
+    <article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2021/07/17/install-fontsh-the-simple-approach/" class="u-url">install-font.sh - The simple approach</a></h2>
+        <div class="metadata blog-post-meta">
+            <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
+            <p class="dateline"><a href="posts/2021/07/17/install-fontsh-the-simple-approach/" rel="bookmark"><time class="published dt-published" datetime="2021-07-17T15:36:43-04:00" title="2021-07-17 15:36">2021-07-17 15:36</time></a></p>
+                <p class="commentline">            <a href="posts/2021/07/17/install-fontsh-the-simple-approach/#disqus_thread" data-disqus-identifier="cache/posts/2021/07/17/install-fontsh-the-simple-approach.html">Comments</a>
+
+
+        </p>
+</div>
+    </header><div class="e-content entry-content">
+    <div>
+<p>The simple approach to using <a class="reference external" href="https://www.schaffter.ca/mom/mom-05.html#install-font">install-font.sh</a> to install
+fonts for <span class="app">groff</span> probably works for almost everybody: call the
+command with one argument, the font file, and answer the prompts.
+This will install the fonts for <span class="app">groff</span>'s use under
+<span class="file">/usr/local/share/groff/site-font</span>, creating the directories if
+necessary.  For instance:</p>
+<pre class="code text"><a name="rest_code_ad3537f4f1804b2da4a2a8b50c58b9dd-1"></a>$ install-font.sh Lora-Regular.ttf
+</pre>
+<p>will install the Regular variant of the font.</p>
+<p>The only prompt where you need to do something other than accept the
+default is the prompt for the style.  For <span class="file">Lora-Regular</span> you'd
+specify <code class="docutils literal">+R</code>.  For italic, bold, and bold italic, the other
+traditional <span class="app">troff</span> font styles, you'd specify <code class="docutils literal">+I</code>, <code class="docutils literal">+B</code>,
+and <code class="docutils literal">+BI</code>.  One thing to notice is that in the walk-through below
+the prompt for the style mentions <code class="docutils literal">+BD</code> rather than <code class="docutils literal">+B</code> for bold.
+This means you have an older version of <span class="command">install-font.sh</span>,
+but you should still specify <code class="docutils literal">+B</code> for bold.  (This should be fixed
+in a newer version of <span class="command">install-font.sh</span>.)</p>
+<p>Here's a walk-through of installing the <a class="reference external" href="https://fonts.google.com/specimen/Lora">Lora</a> font, assuming that
+<span class="command">install-font.sh</span> is in your path.  (If your
+<span class="file">/usr/local/share/groff</span> directory isn't writable for you, you
+should prefix the command with <code class="docutils literal">sudo</code>.)</p>
+<pre class="code text"><a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-1"></a>$ install-font.sh Lora-Regular.ttf
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-2"></a>/usr/local/share/groff/site-font not found; creating.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-3"></a>/usr/local/share/groff/site-font/devps not found; creating.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-4"></a>/usr/local/share/groff/site-font/devpdf not found; creating.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-5"></a>Processing Lora-Regular.ttf...
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-6"></a>Running fontforge...
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-7"></a>Copyright (c) 2000-2020. See AUTHORS for Contributors.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-8"></a> License GPLv3+: GNU GPL version 3 or later &lt;http://gnu.org/licenses/gpl.html&gt;
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-9"></a> with many parts BSD &lt;http://fontforge.org/license.html&gt;. Please read LICENSE.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-10"></a> Version: 20201107
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-11"></a> Based on sources from 2020-11-16 19:11 UTC-D.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-12"></a>The following table(s) in the font have been ignored by FontForge
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-13"></a>  Ignoring 'STAT' style attributes table
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-14"></a>Done.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-15"></a>Family name (default = Lora):
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-16"></a>  =&gt;Lora-Regular (Lora-Regular.ttf) assigned to family 'Lora'.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-17"></a>Enter +STYLE (eg +R, +I, +BD, +BI), or a unique groff name for Lora-Regular.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-18"></a>Leave blank to set name to 'Lora-Regular': +R
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-19"></a>  =&gt;Lora-Regular assigned groff fontname 'LoraR'.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-20"></a>Creating LoraR...
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-21"></a>both uni03BC and uni00B5 map to mc at /usr/local/bin/afmtodit line 6411.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-22"></a>Done.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-23"></a>Installing LoraR in /usr/local/share/groff/site-font/devps/... Done.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-24"></a>Make LoraR available to gropdf? (y/n; default = y)
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-25"></a>Checking for gropdf executable and devpdf directory... gropdf found.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-26"></a>Installing LoraR in /usr/local/share/groff/site-font/devpdf/... Done.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-27"></a>Copy Lora-Regular.ttf to /usr/local/share/fonts/truetype/Lora/
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-28"></a>  (y/n; default = n)
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-29"></a>Install Lora-Regular.ttf manually to make it available system-wide.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-30"></a>
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-31"></a>$ install-font.sh Lora-Italic.ttf
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-32"></a>Processing Lora-Italic.ttf...
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-33"></a>Running fontforge...
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-34"></a>Copyright (c) 2000-2020. See AUTHORS for Contributors.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-35"></a> License GPLv3+: GNU GPL version 3 or later &lt;http://gnu.org/licenses/gpl.html&gt;
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-36"></a> with many parts BSD &lt;http://fontforge.org/license.html&gt;. Please read LICENSE.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-37"></a> Version: 20201107
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-38"></a> Based on sources from 2020-11-16 19:11 UTC-D.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-39"></a>The following table(s) in the font have been ignored by FontForge
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-40"></a>  Ignoring 'STAT' style attributes table
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-41"></a>Done.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-42"></a>Family name (default = Lora):
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-43"></a>  =&gt;Lora-Italic (Lora-Italic.ttf) assigned to family 'Lora'.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-44"></a>Enter +STYLE (eg +R, +I, +BD, +BI), or a unique groff name for Lora-Italic.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-45"></a>Leave blank to set name to 'Lora-Italic': +I
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-46"></a>  =&gt;Lora-Italic assigned groff fontname 'LoraI'.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-47"></a>Creating LoraI...
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-48"></a>both uni03BC and uni00B5 map to mc at /usr/local/bin/afmtodit line 6411.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-49"></a>Done.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-50"></a>Installing LoraI in /usr/local/share/groff/site-font/devps/... Done.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-51"></a>Make LoraI available to gropdf? (y/n; default = y)
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-52"></a>Checking for gropdf executable and devpdf directory... gropdf found.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-53"></a>Installing LoraI in /usr/local/share/groff/site-font/devpdf/... Done.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-54"></a>Copy Lora-Italic.ttf to /usr/local/share/fonts/truetype/Lora/
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-55"></a>  (y/n; default = n)
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-56"></a>Install Lora-Italic.ttf manually to make it available system-wide.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-57"></a>
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-58"></a>$ install-font.sh Lora-Bold.ttf
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-59"></a>Processing Lora-Bold.ttf...
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-60"></a>Running fontforge...
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-61"></a>Copyright (c) 2000-2020. See AUTHORS for Contributors.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-62"></a> License GPLv3+: GNU GPL version 3 or later &lt;http://gnu.org/licenses/gpl.html&gt;
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-63"></a> with many parts BSD &lt;http://fontforge.org/license.html&gt;. Please read LICENSE.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-64"></a> Version: 20201107
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-65"></a> Based on sources from 2020-11-16 19:11 UTC-D.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-66"></a>The following table(s) in the font have been ignored by FontForge
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-67"></a>  Ignoring 'STAT' style attributes table
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-68"></a>Glyph bounding box data exceeds font bounding box data for GID 4
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-69"></a>  Subsequent errors will not be reported.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-70"></a>In GID 769 the advance width (1316) is greater than the stated maximum (1291)
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-71"></a>  Subsequent errors will not be reported.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-72"></a>Done.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-73"></a>Family name (default = Lora):
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-74"></a>  =&gt;Lora-Bold (Lora-Bold.ttf) assigned to family 'Lora'.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-75"></a>Enter +STYLE (eg +R, +I, +BD, +BI), or a unique groff name for Lora-Bold.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-76"></a>Leave blank to set name to 'Lora-Bold': +B
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-77"></a>  =&gt;Lora-Bold assigned groff fontname 'LoraB'.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-78"></a>Creating LoraB...
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-79"></a>both uni00B5 and uni03BC map to mc at /usr/local/bin/afmtodit line 6411.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-80"></a>Done.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-81"></a>Installing LoraB in /usr/local/share/groff/site-font/devps/... Done.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-82"></a>Make LoraB available to gropdf? (y/n; default = y)
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-83"></a>Checking for gropdf executable and devpdf directory... gropdf found.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-84"></a>Installing LoraB in /usr/local/share/groff/site-font/devpdf/... Done.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-85"></a>Copy Lora-Bold.ttf to /usr/local/share/fonts/truetype/Lora/
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-86"></a>  (y/n; default = n)
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-87"></a>Install Lora-Bold.ttf manually to make it available system-wide.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-88"></a>
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-89"></a>$ install-font.sh Lora-BoldItalic.ttf
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-90"></a>Processing Lora-BoldItalic.ttf...
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-91"></a>Running fontforge...
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-92"></a>Copyright (c) 2000-2020. See AUTHORS for Contributors.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-93"></a> License GPLv3+: GNU GPL version 3 or later &lt;http://gnu.org/licenses/gpl.html&gt;
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-94"></a> with many parts BSD &lt;http://fontforge.org/license.html&gt;. Please read LICENSE.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-95"></a> Version: 20201107
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-96"></a> Based on sources from 2020-11-16 19:11 UTC-D.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-97"></a>The following table(s) in the font have been ignored by FontForge
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-98"></a>  Ignoring 'STAT' style attributes table
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-99"></a>Glyph bounding box data exceeds font bounding box data for GID 4
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-100"></a>  Subsequent errors will not be reported.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-101"></a>In GID 776 the advance width (1297) is greater than the stated maximum (1273)
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-102"></a>  Subsequent errors will not be reported.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-103"></a>Done.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-104"></a>Family name (default = Lora):
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-105"></a>  =&gt;Lora-BoldItalic (Lora-BoldItalic.ttf) assigned to family 'Lora'.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-106"></a>Enter +STYLE (eg +R, +I, +BD, +BI), or a unique groff name for Lora-BoldItalic.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-107"></a>Leave blank to set name to 'Lora-BoldItalic': +BI
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-108"></a>  =&gt;Lora-BoldItalic assigned groff fontname 'LoraBI'.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-109"></a>Creating LoraBI...
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-110"></a>both uni03BC and uni00B5 map to mc at /usr/local/bin/afmtodit line 6411.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-111"></a>Done.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-112"></a>Installing LoraBI in /usr/local/share/groff/site-font/devps/... Done.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-113"></a>Make LoraBI available to gropdf? (y/n; default = y)
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-114"></a>Checking for gropdf executable and devpdf directory... gropdf found.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-115"></a>Installing LoraBI in /usr/local/share/groff/site-font/devpdf/... Done.
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-116"></a>Copy Lora-BoldItalic.ttf to /usr/local/share/fonts/truetype/Lora/
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-117"></a>  (y/n; default = n)
+<a name="rest_code_498e96cadf3b4d3b9bcea96c9f8cda85-118"></a>Install Lora-BoldItalic.ttf manually to make it available system-wide.
+</pre>
+</div>
+    <nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="categories/fonts/" rel="tag">fonts</a></li>
+            <li><a class="tag p-category" href="categories/groff/" rel="tag">groff</a></li>
+            <li><a class="tag p-category" href="categories/install-fontsh/" rel="tag">install-font.sh</a></li>
+            <li><a class="tag p-category" href="categories/troff/" rel="tag">troff</a></li>
+        </ul></nav>
+</div>
+    </article><article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2021/07/17/groff-and-install-fontsh-and-installing-fonts-for-use-in-groff/" class="u-url">groff and install-font.sh and installing fonts for use in groff</a></h2>
         <div class="metadata blog-post-meta">
             <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
             <p class="dateline"><a href="posts/2021/07/17/groff-and-install-fontsh-and-installing-fonts-for-use-in-groff/" rel="bookmark"><time class="published dt-published" datetime="2021-07-17T00:16:49-04:00" title="2021-07-17 00:16">2021-07-17 00:16</time></a></p>
@@ -108,7 +268,7 @@ files into proper places under <span class="app">groff</span>'s site-font direct
 <p>So, for instance, you'd cd to the directory that holds the <span class="file">.ttf</span> files
 you downloaded.  Then, to install the Regular variant of Cormorant
 Garamond you'd run the command</p>
-<pre class="code bash"><a name="rest_code_980e39099f264b79b9dfdc9b45058cc9-1"></a><span class="k">$(</span>IFDIR<span class="k">)</span>/install-font.sh -n -P <span class="s2">"</span><span class="nv">$DEST</span><span class="s2">"</span> -d -F CormorantGaramond -f +R CormorantGaramond-Regular.ttf
+<pre class="code bash"><a name="rest_code_2fd3a75bdcdc439eb9f8ee4929a83a00-1"></a><span class="k">$(</span>IFDIR<span class="k">)</span>/install-font.sh -n -P <span class="s2">"</span><span class="nv">$DEST</span><span class="s2">"</span> -d -F CormorantGaramond -f +R CormorantGaramond-Regular.ttf
 </pre>
 <p>where <code class="docutils literal">IFDIR</code> is an environment variable indicating the directory
 where <span class="command">install-font.sh</span> is located and <code class="docutils literal">DEST</code> is an
@@ -144,15 +304,35 @@ name of the <span class="app">groff</span> font and the <span class="app">groff<
 name of the Truetype or OpenType file you are converting.</p>
 <p>To complete the example, here are the commands to install the Italic,
 Bold, and Bold Italic variants of Cormorant Garamond:</p>
-<pre class="code bash"><a name="rest_code_72735ba6dc6d493ea74d3d34ef9ffc2d-1"></a><span class="k">$(</span>IFDIR<span class="k">)</span>/install-font.sh -n -P <span class="s2">"</span><span class="nv">$DEST</span><span class="s2">"</span> -d -F CormorantGaramond -f +I CormorantGaramond-Italic.ttf
-<a name="rest_code_72735ba6dc6d493ea74d3d34ef9ffc2d-2"></a><span class="k">$(</span>IFDIR<span class="k">)</span>/install-font.sh -n -P <span class="s2">"</span><span class="nv">$DEST</span><span class="s2">"</span> -d -F CormorantGaramond -f +B CormorantGaramond-Bold.ttf
-<a name="rest_code_72735ba6dc6d493ea74d3d34ef9ffc2d-3"></a><span class="k">$(</span>IFDIR<span class="k">)</span>/install-font.sh -n -P <span class="s2">"</span><span class="nv">$DEST</span><span class="s2">"</span> -d -F CormorantGaramond -f +BI CormorantGaramond-BoldItalic.
+<pre class="code bash"><a name="rest_code_19c244ff68784702b43727a817f61e6f-1"></a><span class="k">$(</span>IFDIR<span class="k">)</span>/install-font.sh -n -P <span class="s2">"</span><span class="nv">$DEST</span><span class="s2">"</span> -d -F CormorantGaramond -f +I CormorantGaramond-Italic.ttf
+<a name="rest_code_19c244ff68784702b43727a817f61e6f-2"></a><span class="k">$(</span>IFDIR<span class="k">)</span>/install-font.sh -n -P <span class="s2">"</span><span class="nv">$DEST</span><span class="s2">"</span> -d -F CormorantGaramond -f +B CormorantGaramond-Bold.ttf
+<a name="rest_code_19c244ff68784702b43727a817f61e6f-3"></a><span class="k">$(</span>IFDIR<span class="k">)</span>/install-font.sh -n -P <span class="s2">"</span><span class="nv">$DEST</span><span class="s2">"</span> -d -F CormorantGaramond -f +BI CormorantGaramond-BoldItalic.
 </pre>
 <p>As I said in an earlier email to the list, I tend to put all four
 commands into a script so I can run them again if something goes wrong
 or when I need to install them on a new machine or in a new
 installation of <span class="app">groff</span>.  In the case of Cormorant Garamond I named the
 file <span class="file">install-cormorant-garamond.sh</span>.</p>
+<p><strong>Later:</strong> Peter Schaffter <a class="reference external" href="https://lists.gnu.org/archive/html/groff/2021-07/msg00090.html">pointed out</a> that the <em>simple</em> use of
+<span class="command">install-font.sh</span> is:</p>
+<pre class="code bash"><a name="rest_code_26555d406f4042ad874f33fe54da22b9-1"></a>sudo install-font.sh fontfile
+</pre>
+<p>and then answer the questions the script asks.  He also pointed out
+that it creates the <span class="file">site-font</span> directory and necessary
+subdirectories if needed in, and here I quote: “the only two locations
+it's ever likely to be”.  Looking at <span class="command">install-font.sh</span> reveal
+those locations are <span class="file">/usr/local/share/groff</span> and
+<span class="file">/usr/share/groff</span>, defaulting to
+<span class="file">/usr/local/share/groff</span>; to get it to use
+<span class="file">/usr/share/groff</span> you specify the <code class="docutils literal"><span class="pre">-s</span></code> option.</p>
+<p>For a walk-through of the simple use see the <a class="reference external" href="posts/2021/07/17/install-fontsh-the-simple-approach/">follow-up</a>.</p>
+<p><em>Last edited: 2021-07-15 17:46:40 EDT</em></p>
+<!-- Local Variables:
+time-stamp-format: "%Y-%02m-%02d %02H:%02M:%02S %Z"
+time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
+time-stamp-end: "\\*\\\\?\n"
+time-stamp-line-limit: -20
+End: -->
 </div>
     <nav><ul itemprop="keywords" class="tags">
 <li><a class="tag p-category" href="categories/fonts/" rel="tag">fonts</a></li>
@@ -789,135 +969,6 @@ one group I played it with.</p>
 <li><a class="tag p-category" href="categories/advanced-fighting-fantasy/" rel="tag">advanced fighting fantasy</a></li>
             <li><a class="tag p-category" href="categories/aff2e/" rel="tag">aff2e</a></li>
             <li><a class="tag p-category" href="categories/rpg/" rel="tag">rpg</a></li>
-        </ul></nav>
-</div>
-    </article><article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2021/07/07/logging-the-output-of-long-commands-run-multiple-times/" class="u-url">Logging the output of long commands run multiple times</a></h2>
-        <div class="metadata blog-post-meta">
-            <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
-            <p class="dateline"><a href="posts/2021/07/07/logging-the-output-of-long-commands-run-multiple-times/" rel="bookmark"><time class="published dt-published" datetime="2021-07-07T12:47:25-04:00" title="2021-07-07 12:47">2021-07-07 12:47</time></a></p>
-                <p class="commentline">            <a href="posts/2021/07/07/logging-the-output-of-long-commands-run-multiple-times/#disqus_thread" data-disqus-identifier="cache/posts/2021/07/07/logging-the-output-of-long-commands-run-multiple-times.html">Comments</a>
-
-
-        </p>
-</div>
-    </header><div class="e-content entry-content">
-    <div>
-<p>I often run commands that produce a lot of output that needs to saved
-for debugging, and often the commands have to be repeated multiple
-times to get things to work.  For example, building software from
-source, often using the familiar <code class="docutils literal">./configure; make; make install</code>
-paradigm.</p>
-<p>So, the first thing is to try is to use the venerable <span class="command">tee</span> command.</p>
-<pre class="code bash"><a name="rest_code_4edf7ed7d2c343c0b80ea12d1acc7981-1"></a>./configure <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">|</span> tee Log.configure
-<a name="rest_code_4edf7ed7d2c343c0b80ea12d1acc7981-2"></a>make <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">|</span> tee Log.make
-<a name="rest_code_4edf7ed7d2c343c0b80ea12d1acc7981-3"></a>make install <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">|</span> tee Log.make-install
-</pre>
-<p>To make the log files easy to find I use a <span class="file">Log.</span> prefix.</p>
-<p>But I often need to run the commands multiple times, and want to save
-each run under a new filename, so if the filename already exists I
-want to add a number to the end and then increment the number until I
-find one that hasn't been used.  And I'd like the filename to have the
-date in YYYY-MM-DD format, so the resulting names look like
-<span class="file">Log.make-install-2021-07-07_2</span>.</p>
-<p>So I wrote a bash function <span class="command">incf</span> (increment filename) to put in
-<span class="file">.bashrc</span> that generates such a name:</p>
-<pre class="code bash"><a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-1"></a>incf <span class="o">()</span> <span class="o">{</span>
-<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-2"></a>    <span class="c1"># Construct a filename from PREFIX, "_YYYY-MM-DD",  optionally _N (where N</span>
-<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-3"></a>    <span class="c1"># is 1 or greater) if the filename already exists, and optionally SUFFIX.</span>
-<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-4"></a>    <span class="c1"># Example: "incf file .tar.gz" results in "file_2021-07-07.tar.gz", or</span>
-<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-5"></a>    <span class="c1"># "file_2021-07-07_N.tar.gz" if "file_2021-07-07.tar.gz" already exists,</span>
-<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-6"></a>    <span class="c1"># where N is 1 or greater.</span>
-<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-7"></a>    <span class="nb">local</span> prefix suffix fileprefix i testname sep1 sep2
-<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-8"></a>    <span class="nv">prefix</span><span class="o">=</span><span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span>
-<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-9"></a>    <span class="nv">suffix</span><span class="o">=</span><span class="s2">"</span><span class="nv">$2</span><span class="s2">"</span>
-<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-10"></a>    <span class="nv">sep1</span><span class="o">=</span><span class="s2">"_"</span>
-<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-11"></a>    <span class="nv">sep2</span><span class="o">=</span><span class="s2">"_"</span>
-<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-12"></a>    <span class="nv">fileprefix</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">prefix</span><span class="si">}${</span><span class="nv">sep1</span><span class="si">}</span><span class="k">$(</span>date +%F<span class="k">)</span><span class="s2">"</span>
-<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-13"></a>    <span class="nb">let</span> <span class="nv">i</span><span class="o">=</span><span class="m">0</span>
-<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-14"></a>    <span class="c1"># The zeroth filename doesn't have the number.</span>
-<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-15"></a>    <span class="nv">testname</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">fileprefix</span><span class="si">}${</span><span class="nv">suffix</span><span class="si">}</span><span class="s2">"</span>
-<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-16"></a>    <span class="k">while</span> <span class="nb">true</span>
-<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-17"></a>    <span class="k">do</span>
-<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-18"></a>      <span class="o">[</span> ! -e <span class="s2">"</span><span class="nv">$testname</span><span class="s2">"</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="nb">break</span>
-<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-19"></a>      <span class="o">((</span>i++<span class="o">))</span>
-<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-20"></a>      <span class="nv">testname</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">fileprefix</span><span class="si">}${</span><span class="nv">sep2</span><span class="si">}${</span><span class="nv">i</span><span class="si">}${</span><span class="nv">suffix</span><span class="si">}</span><span class="s2">"</span>
-<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-21"></a>    <span class="k">done</span>
-<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-22"></a>    <span class="nb">echo</span> <span class="s2">"</span><span class="nv">$testname</span><span class="s2">"</span>
-<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-23"></a><span class="o">}</span>
-</pre>
-<p>And then I wrote a bash function that uses <span class="command">incf</span> to generate
-the <span class="file">Log.</span> filename, potentially in a different directory:</p>
-<pre class="code bash"><a name="rest_code_15ea5da8699b4a71b17143bb3a53886d-1"></a>logf <span class="o">()</span> <span class="o">{</span>
-<a name="rest_code_15ea5da8699b4a71b17143bb3a53886d-2"></a>    <span class="c1"># Construct a filename, possibly in another directory, that starts with</span>
-<a name="rest_code_15ea5da8699b4a71b17143bb3a53886d-3"></a>    <span class="c1"># "Log." and ends with "YYYY-MM-DD" and optionally "_N", where N is 1 or</span>
-<a name="rest_code_15ea5da8699b4a71b17143bb3a53886d-4"></a>    <span class="c1"># greater, if the filename already exists.</span>
-<a name="rest_code_15ea5da8699b4a71b17143bb3a53886d-5"></a>    <span class="nb">local</span> dn bn fn
-<a name="rest_code_15ea5da8699b4a71b17143bb3a53886d-6"></a>    <span class="nv">dn</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span>dirname <span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span><span class="k">)</span><span class="s2">"</span>
-<a name="rest_code_15ea5da8699b4a71b17143bb3a53886d-7"></a>    <span class="nv">bn</span><span class="o">=</span><span class="s2">"Log.</span><span class="k">$(</span>basename <span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span><span class="k">)</span><span class="s2">"</span>
-<a name="rest_code_15ea5da8699b4a71b17143bb3a53886d-8"></a>    <span class="nv">fn</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span>incf <span class="s2">"</span><span class="nv">$dn</span><span class="s2">/</span><span class="nv">$bn</span><span class="s2">"</span><span class="k">)</span><span class="s2">"</span>
-<a name="rest_code_15ea5da8699b4a71b17143bb3a53886d-9"></a>    <span class="nb">echo</span> <span class="nv">$fn</span>
-<a name="rest_code_15ea5da8699b4a71b17143bb3a53886d-10"></a><span class="o">}</span>
-</pre>
-<p>And then I wrote a <span class="command">log</span> command that uses <span class="command">logf</span>
-and tees its input into that file:</p>
-<pre class="code bash"><a name="rest_code_4ac282306ed64e06867de0a40c0eb841-1"></a>log <span class="o">()</span> <span class="o">{</span>
-<a name="rest_code_4ac282306ed64e06867de0a40c0eb841-2"></a>    <span class="c1"># tee the input into a log file.</span>
-<a name="rest_code_4ac282306ed64e06867de0a40c0eb841-3"></a>    tee <span class="k">$(</span>logf <span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span><span class="k">)</span>
-<a name="rest_code_4ac282306ed64e06867de0a40c0eb841-4"></a><span class="o">}</span>
-</pre>
-<p>So running <code class="docutils literal">./configure <span class="pre">2&gt;&amp;1</span> | log ~/tmp/configure</code> generates a file
-<span class="file">Log.configure_2021-07-07</span> in the <span class="file">~/tmp</span> directory.</p>
-<p>But what if I specify a lot of options to the command, and would like
-record if it in the log file, so if I get interrupted and then come
-back some time later I can use the same command?</p>
-<p>First I wrote a base function, <span class="command">cleanname</span>, that takes a string and
-converts it to something that should be safe to use as a filename.</p>
-<pre class="code bash"><a name="rest_code_1bff1ba0efa64b45bcb89c282a374876-1"></a>cleanname <span class="o">()</span> <span class="o">{</span>
-<a name="rest_code_1bff1ba0efa64b45bcb89c282a374876-2"></a>    <span class="c1"># Clean up a string so it is (relatively) safe to use as a filename.</span>
-<a name="rest_code_1bff1ba0efa64b45bcb89c282a374876-3"></a>    <span class="nb">local</span> <span class="nv">cmd</span><span class="o">=</span><span class="s2">"</span><span class="nv">$*</span><span class="s2">"</span> name
-<a name="rest_code_1bff1ba0efa64b45bcb89c282a374876-4"></a>    <span class="nv">name</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="s2">"</span><span class="nv">$cmd</span><span class="s2">"</span> <span class="p">|</span> sed <span class="s1">'s/[ =";?*&amp;^%$#@!~`|()&lt;&gt;]/-/g'</span> <span class="p">|</span> <span class="se">\</span>
-<a name="rest_code_1bff1ba0efa64b45bcb89c282a374876-5"></a>               sed <span class="s2">"s#[/']#-#g"</span> <span class="p">|</span> sed -E <span class="s1">'s/--+/-/g'</span> <span class="p">|</span> <span class="se">\</span>
-<a name="rest_code_1bff1ba0efa64b45bcb89c282a374876-6"></a>               sed -E <span class="s1">'s/(^[-.]+|-+$)//g'</span> <span class="p">|</span> <span class="se">\</span>
-<a name="rest_code_1bff1ba0efa64b45bcb89c282a374876-7"></a>               sed -E <span class="s1">'s/\.\.\.*/./g'</span><span class="k">)</span>
-<a name="rest_code_1bff1ba0efa64b45bcb89c282a374876-8"></a>    <span class="nb">echo</span> <span class="s2">"</span><span class="nv">$name</span><span class="s2">"</span>
-<a name="rest_code_1bff1ba0efa64b45bcb89c282a374876-9"></a><span class="o">}</span>
-</pre>
-<p>Then I wrote a bash function, <span class="command">exlog</span>, to use the whole
-command with its options as part of the filename (constructed with
-<span class="command">cleanname</span>, and also include the whole command in the log output:</p>
-<pre class="code bash"><a name="rest_code_a005e595ccfe4017ae540afd46f53c93-1"></a>exlog <span class="o">()</span> <span class="o">{</span>
-<a name="rest_code_a005e595ccfe4017ae540afd46f53c93-2"></a>    <span class="c1"># Execute a shell command and log it to "Log.&lt;cmd-as-safe-filename&gt;"</span>
-<a name="rest_code_a005e595ccfe4017ae540afd46f53c93-3"></a>    <span class="nb">local</span> <span class="nv">cmd</span><span class="o">=</span><span class="s2">"</span><span class="nv">$*</span><span class="s2">"</span> <span class="nv">name</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span>cleanname <span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span><span class="k">)</span><span class="s2">"</span>
-<a name="rest_code_a005e595ccfe4017ae540afd46f53c93-4"></a>    <span class="nv">name</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span>logf <span class="nv">$name</span><span class="k">)</span><span class="s2">"</span>
-<a name="rest_code_a005e595ccfe4017ae540afd46f53c93-5"></a>    <span class="nb">printf</span> <span class="s1">'Logging to %s\n'</span> <span class="s2">"</span><span class="nv">$name</span><span class="s2">"</span>
-<a name="rest_code_a005e595ccfe4017ae540afd46f53c93-6"></a>    <span class="o">(</span><span class="nb">echo</span> <span class="s2">"cmd was: </span><span class="nv">$cmd</span><span class="s2">"</span><span class="p">;</span> <span class="nb">time</span> <span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span><span class="o">)</span> <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">|</span> tee <span class="nv">$name</span>
-<a name="rest_code_a005e595ccfe4017ae540afd46f53c93-7"></a><span class="o">}</span>
-</pre>
-<p>So running the command</p>
-<pre class="code bash"><a name="rest_code_63af118345e54f2dbc0047506534cadc-1"></a>exlog ../configure --prefix<span class="o">=</span>/Users/tkb/sw/versions/groff/git
-</pre>
-<p>produces the file</p>
-<pre class="code text"><a name="rest_code_bfab19bc84384340aa2fa953ab40c29f-1"></a>Log.configure-prefix-Users-tkb-sw-versions-groff-git_2021-07-07
-</pre>
-<p>and it contains the line</p>
-<pre class="code text"><a name="rest_code_28438b8010f84974b59dcb7a0d1f19d9-1"></a>cmd was: ../configure --prefix=/Users/tkb/sw/versions/groff/git
-</pre>
-<p>and running it again produces the file</p>
-<pre class="code text"><a name="rest_code_9cf8051e2cdb438ca1c7644afbbd57a4-1"></a>Log.configure-prefix-Users-tkb-sw-versions-groff-git_2021-07-07_1
-</pre>
-<p>This code is available in a <a class="reference external" href="https://gist.github.com/tkurtbond/23255fede737eec89b1fd0e011566cb1">gist</a>.</p>
-<p><em>Last edited: 2021-07-09 15:30:53 EDT</em></p>
-<!-- Local Variables:
-time-stamp-format: "%04y-%02m-%02d %02H:%02M:%02S %Z"
-time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
-time-stamp-end: "\\*\\\\?\n"
-time-stamp-line-limit: -20
-End: -->
-</div>
-    <nav><ul itemprop="keywords" class="tags">
-<li><a class="tag p-category" href="categories/bash/" rel="tag">bash</a></li>
-            <li><a class="tag p-category" href="categories/logging/" rel="tag">logging</a></li>
-            <li><a class="tag p-category" href="categories/unix/" rel="tag">unix</a></li>
         </ul></nav>
 </div>
     </article>
