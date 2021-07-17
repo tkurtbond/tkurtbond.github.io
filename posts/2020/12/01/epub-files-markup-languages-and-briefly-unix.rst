@@ -2,7 +2,7 @@
 .. slug: epub-files-markup-languages-and-briefly-unix
 .. date: 2020-12-01 15:56:13 UTC-05:00
 .. tags: epub,markup languages,lightweight markup languages,unix,troff,latex,context,tex
-.. category: computer/markup-languages
+.. category: computer/documents
 .. link: 
 .. description: 
 .. type: text
@@ -373,11 +373,11 @@ throws`_ am I going to fail today anyway?
 .. _Saving Throws: https://en.wikipedia.org/wiki/Saving_throw
 
 
-*Last edited: 2020-12-28 11:11:54 EST*
+*Last edited: 2021-07-17 00:53:29 EDT*
 
 ..
    Local Variables:
-   time-stamp-format: "%04y-%02m-%02d %02H:%02M:%02S %Z"
+   time-stamp-format: "%Y-%02m-%02d %02H:%02M:%02S %Z"
    time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
    time-stamp-end: "\\*\\\\?\n"
    time-stamp-line-limit: -20

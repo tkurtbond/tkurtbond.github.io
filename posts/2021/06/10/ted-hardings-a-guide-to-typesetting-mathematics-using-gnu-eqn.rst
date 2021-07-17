@@ -2,7 +2,7 @@
 .. slug: ted-hardings-a-guide-to-typesetting-mathematics-using-gnu-eqn
 .. date: 2021-06-10 11:46:55 UTC-04:00
 .. tags: groff,eqn,ted harding,eqnguide
-.. category: computer/markup-languages
+.. category: computer/documents
 .. link: 
 .. description: 
 .. type: text
