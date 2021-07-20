@@ -1,7 +1,7 @@
 .. title: Monks can't use potions (and scrolls) in OD&D and AD&D 1E!
 .. slug: monks-cant-use-potions-and-scrolls-in-odd-and-add-1e
 .. date: 2021-07-13 02:11:12 UTC-04:00
-.. tags: rpg,ad&d1e,od&d,monks,potions,swords & wizardry,swords & wizardry complete
+.. tags: rpg,ad&d 1e,od&d,monks,potions,swords & wizardry,swords & wizardry complete
 .. category: gaming/rpg
 .. link: 
 .. description: 

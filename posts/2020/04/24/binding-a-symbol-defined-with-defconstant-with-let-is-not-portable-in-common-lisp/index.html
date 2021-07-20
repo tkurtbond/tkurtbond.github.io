@@ -86,12 +86,12 @@ If yo'>
     <div>
 <p><a class="reference external" href="http://www.sbcl.org/">SBCL</a> and <a class="reference external" href="https://ccl.clozure.com/">CCL</a> and <a class="reference external" href="https://clisp.sourceforge.io/">CLISP</a> think binding a symbol defined with <code class="docutils literal">defconstant</code>
 is an error, so if you do</p>
-<pre class="code common-lisp"><a name="rest_code_ad67f543d59f4ed4824dd151eb867da5-1"></a><span class="p">(</span><span class="nb">defconstant</span> <span class="nv">foo</span> <span class="s">"foo"</span><span class="p">)</span>
-<a name="rest_code_ad67f543d59f4ed4824dd151eb867da5-2"></a><span class="p">(</span><span class="k">let</span> <span class="p">((</span><span class="nv">foo</span> <span class="s">"bar"</span><span class="p">))</span> <span class="nv">foo</span><span class="p">)</span>
+<pre class="code common-lisp"><a id="rest_code_f7af15042b80410b96523ef680657328-1" name="rest_code_f7af15042b80410b96523ef680657328-1"></a><span class="p">(</span><span class="nb">defconstant</span> <span class="nv">foo</span> <span class="s">"foo"</span><span class="p">)</span>
+<a id="rest_code_f7af15042b80410b96523ef680657328-2" name="rest_code_f7af15042b80410b96523ef680657328-2"></a><span class="p">(</span><span class="k">let</span> <span class="p">((</span><span class="nv">foo</span> <span class="s">"bar"</span><span class="p">))</span> <span class="nv">foo</span><span class="p">)</span>
 </pre>
 <p>you get an error.  But in <a class="reference external" href="https://abcl.org/">ABCL</a> and <a class="reference external" href="https://common-lisp.net/project/ecl/">ECL</a> you don’t.</p>
 <p>If you try</p>
-<pre class="code common-lisp"><a name="rest_code_acbe60c93b5b4c1593ef37f79b38bffd-1"></a><span class="p">(</span><span class="nb">defun</span> <span class="nv">x</span> <span class="p">()</span> <span class="p">(</span><span class="k">let</span> <span class="p">((</span><span class="nv">foo</span> <span class="s">"bar"</span><span class="p">))</span> <span class="nv">foo</span><span class="p">))</span>
+<pre class="code common-lisp"><a id="rest_code_219f2b7142054b0c8e863aaf6d151a10-1" name="rest_code_219f2b7142054b0c8e863aaf6d151a10-1"></a><span class="p">(</span><span class="nb">defun</span> <span class="nv">x</span> <span class="p">()</span> <span class="p">(</span><span class="k">let</span> <span class="p">((</span><span class="nv">foo</span> <span class="s">"bar"</span><span class="p">))</span> <span class="nv">foo</span><span class="p">))</span>
 </pre>
 <p>in SBCL and CCL you get an error when the function is compiled.
 In SBCL the function is defined, but always gives an error when run.
