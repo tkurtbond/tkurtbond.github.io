@@ -87,10 +87,10 @@ ms output, and a workaround for it until the version with changes
 comes out, but I forgot to mention it here.</p>
 <p>In short, use a pipeline like this:</p>
 <p><a class="reference external" href="../../../../../listings/GNUmakefile.change-RS-RE-to-QS-QE.html">GNUmakefile.change-RS-RE-to-QS-QE</a>  <a class="reference external" href="../../../../../listings/GNUmakefile.change-RS-RE-to-QS-QE">(Source)</a></p>
-<pre class="code make"><a id="rest_code_9e548aff198145b8b86faa869d609265-1" name="rest_code_9e548aff198145b8b86faa869d609265-1"></a><span class="nf">%.qs.ms.pdf </span><span class="o">:</span> %.<span class="n">rst</span>
-<a id="rest_code_9e548aff198145b8b86faa869d609265-2" name="rest_code_9e548aff198145b8b86faa869d609265-2"></a>        pandoc --verbose -r rst -w ms <span class="k">$(</span>PANDOCOPTS<span class="k">)</span> <span class="se">\</span>
-<a id="rest_code_9e548aff198145b8b86faa869d609265-3" name="rest_code_9e548aff198145b8b86faa869d609265-3"></a>                --output<span class="o">=</span>- $&lt; <span class="p">|</span> gsed -e <span class="s1">'s/^\.RS$$/.QS/'</span> -e <span class="s1">'s/^\.RE$$/.QE/'</span> <span class="p">|</span> <span class="se">\</span>
-<a id="rest_code_9e548aff198145b8b86faa869d609265-4" name="rest_code_9e548aff198145b8b86faa869d609265-4"></a>        pdfroff -ms -mpdfmark -e -t -k -KUTF-8 -i --no-toc-relocation &gt;<span class="nv">$@</span>
+<pre class="code make"><a name="rest_code_65841705b4aa433681d88012d1a4cd28-1"></a><span class="nf">%.qs.ms.pdf </span><span class="o">:</span> %.<span class="n">rst</span>
+<a name="rest_code_65841705b4aa433681d88012d1a4cd28-2"></a>        pandoc --verbose -r rst -w ms <span class="k">$(</span>PANDOCOPTS<span class="k">)</span> <span class="se">\</span>
+<a name="rest_code_65841705b4aa433681d88012d1a4cd28-3"></a>                --output<span class="o">=</span>- $&lt; <span class="p">|</span> gsed -e <span class="s1">'s/^\.RS$$/.QS/'</span> -e <span class="s1">'s/^\.RE$$/.QE/'</span> <span class="p">|</span> <span class="se">\</span>
+<a name="rest_code_65841705b4aa433681d88012d1a4cd28-4"></a>        pdfroff -ms -mpdfmark -e -t -k -KUTF-8 -i --no-toc-relocation &gt;<span class="nv">$@</span>
 </pre>
 </div>
     </div>

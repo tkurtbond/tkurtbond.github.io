@@ -84,22 +84,22 @@ actually work.</p>
 <p>I finally found an <a class="reference external" href="https://stackoverflow.com/a/45359136">example</a>, and after looking at it and figuring out
 what imports are now required I have a working example of using
 getnstr from the chicken scheme ncurses egg!</p>
-<pre class="code scheme"><a id="rest_code_f6e1ac31995045f994e2acd3214ead4c-1" name="rest_code_f6e1ac31995045f994e2acd3214ead4c-1"></a><span class="p">(</span><span class="nf">import</span> <span class="nv">ncurses</span><span class="p">)</span>
-<a id="rest_code_f6e1ac31995045f994e2acd3214ead4c-2" name="rest_code_f6e1ac31995045f994e2acd3214ead4c-2"></a><span class="p">(</span><span class="nf">import</span> <span class="p">(</span><span class="nf">chicken</span> <span class="nv">locative</span><span class="p">))</span>
-<a id="rest_code_f6e1ac31995045f994e2acd3214ead4c-3" name="rest_code_f6e1ac31995045f994e2acd3214ead4c-3"></a><span class="p">(</span><span class="nf">import</span> <span class="p">(</span><span class="nf">chicken</span> <span class="nv">string</span><span class="p">))</span>
-<a id="rest_code_f6e1ac31995045f994e2acd3214ead4c-4" name="rest_code_f6e1ac31995045f994e2acd3214ead4c-4"></a>
-<a id="rest_code_f6e1ac31995045f994e2acd3214ead4c-5" name="rest_code_f6e1ac31995045f994e2acd3214ead4c-5"></a><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">get-string</span> <span class="nv">max</span><span class="p">)</span>
-<a id="rest_code_f6e1ac31995045f994e2acd3214ead4c-6" name="rest_code_f6e1ac31995045f994e2acd3214ead4c-6"></a>  <span class="p">(</span><span class="k">let </span><span class="p">((</span><span class="nf">buffer</span> <span class="p">(</span><span class="nb">make-string </span><span class="nv">max</span> <span class="sc">#\null</span><span class="p">)))</span>
-<a id="rest_code_f6e1ac31995045f994e2acd3214ead4c-7" name="rest_code_f6e1ac31995045f994e2acd3214ead4c-7"></a>    <span class="p">(</span><span class="nf">getnstr</span> <span class="p">(</span><span class="nf">make-locative</span> <span class="nv">buffer</span><span class="p">)</span> <span class="nv">max</span><span class="p">)</span>
-<a id="rest_code_f6e1ac31995045f994e2acd3214ead4c-8" name="rest_code_f6e1ac31995045f994e2acd3214ead4c-8"></a>    <span class="c1">;; Delete the #\null characters.</span>
-<a id="rest_code_f6e1ac31995045f994e2acd3214ead4c-9" name="rest_code_f6e1ac31995045f994e2acd3214ead4c-9"></a>    <span class="p">(</span><span class="nf">string-translate</span> <span class="nv">buffer</span> <span class="sc">#\null</span><span class="p">)))</span>
-<a id="rest_code_f6e1ac31995045f994e2acd3214ead4c-10" name="rest_code_f6e1ac31995045f994e2acd3214ead4c-10"></a>
-<a id="rest_code_f6e1ac31995045f994e2acd3214ead4c-11" name="rest_code_f6e1ac31995045f994e2acd3214ead4c-11"></a><span class="p">(</span><span class="k">let </span><span class="p">((</span><span class="nf">stdscr</span> <span class="p">(</span><span class="nf">initscr</span><span class="p">))</span>
-<a id="rest_code_f6e1ac31995045f994e2acd3214ead4c-12" name="rest_code_f6e1ac31995045f994e2acd3214ead4c-12"></a>      <span class="p">(</span><span class="nf">str</span> <span class="p">(</span><span class="nf">get-string</span> <span class="mi">10</span><span class="p">)))</span>
-<a id="rest_code_f6e1ac31995045f994e2acd3214ead4c-13" name="rest_code_f6e1ac31995045f994e2acd3214ead4c-13"></a>  <span class="p">(</span><span class="nf">addstr</span> <span class="nv">str</span><span class="p">)</span>
-<a id="rest_code_f6e1ac31995045f994e2acd3214ead4c-14" name="rest_code_f6e1ac31995045f994e2acd3214ead4c-14"></a>  <span class="p">(</span><span class="nf">getch</span><span class="p">)</span>
-<a id="rest_code_f6e1ac31995045f994e2acd3214ead4c-15" name="rest_code_f6e1ac31995045f994e2acd3214ead4c-15"></a>  <span class="p">(</span><span class="nb">write </span><span class="nv">str</span><span class="p">)</span>
-<a id="rest_code_f6e1ac31995045f994e2acd3214ead4c-16" name="rest_code_f6e1ac31995045f994e2acd3214ead4c-16"></a>  <span class="p">(</span><span class="nf">endwin</span><span class="p">))</span>
+<pre class="code scheme"><a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-1"></a><span class="p">(</span><span class="nf">import</span> <span class="nv">ncurses</span><span class="p">)</span>
+<a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-2"></a><span class="p">(</span><span class="nf">import</span> <span class="p">(</span><span class="nf">chicken</span> <span class="nv">locative</span><span class="p">))</span>
+<a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-3"></a><span class="p">(</span><span class="nf">import</span> <span class="p">(</span><span class="nf">chicken</span> <span class="nv">string</span><span class="p">))</span>
+<a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-4"></a>
+<a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-5"></a><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">get-string</span> <span class="nv">max</span><span class="p">)</span>
+<a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-6"></a>  <span class="p">(</span><span class="k">let </span><span class="p">((</span><span class="nf">buffer</span> <span class="p">(</span><span class="nb">make-string </span><span class="nv">max</span> <span class="sc">#\null</span><span class="p">)))</span>
+<a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-7"></a>    <span class="p">(</span><span class="nf">getnstr</span> <span class="p">(</span><span class="nf">make-locative</span> <span class="nv">buffer</span><span class="p">)</span> <span class="nv">max</span><span class="p">)</span>
+<a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-8"></a>    <span class="c1">;; Delete the #\null characters.</span>
+<a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-9"></a>    <span class="p">(</span><span class="nf">string-translate</span> <span class="nv">buffer</span> <span class="sc">#\null</span><span class="p">)))</span>
+<a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-10"></a>
+<a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-11"></a><span class="p">(</span><span class="k">let </span><span class="p">((</span><span class="nf">stdscr</span> <span class="p">(</span><span class="nf">initscr</span><span class="p">))</span>
+<a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-12"></a>      <span class="p">(</span><span class="nf">str</span> <span class="p">(</span><span class="nf">get-string</span> <span class="mi">10</span><span class="p">)))</span>
+<a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-13"></a>  <span class="p">(</span><span class="nf">addstr</span> <span class="nv">str</span><span class="p">)</span>
+<a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-14"></a>  <span class="p">(</span><span class="nf">getch</span><span class="p">)</span>
+<a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-15"></a>  <span class="p">(</span><span class="nb">write </span><span class="nv">str</span><span class="p">)</span>
+<a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-16"></a>  <span class="p">(</span><span class="nf">endwin</span><span class="p">))</span>
 </pre>
 <p>Oh, and I added the example to the ncurses egg documentation: <a class="reference external" href="http://wiki.call-cc.org/eggref/5/ncurses#getnstr-example">getnstr
 Example</a>.</p>
