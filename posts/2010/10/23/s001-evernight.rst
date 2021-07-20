@@ -9,9 +9,9 @@
 
 
 .. role:: area
-.. role:: dice(strong)
-.. role:: skill(emphasis)
-.. role:: spell(emphasis)
+.. role:: dice
+.. role:: skill
+.. role:: spell
 
 .. admonition:: Spoilers!
 

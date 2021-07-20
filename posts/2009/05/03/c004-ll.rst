@@ -9,7 +9,7 @@
 
 
 .. role:: store
-.. role:: dice(strong)
+.. role:: dice
 
 L.B. was in town visiting the other side of her family, so I got to
 take her to dinner Sunday.  Since she would be playing in the

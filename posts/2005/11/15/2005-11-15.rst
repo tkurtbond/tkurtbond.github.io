@@ -8,9 +8,10 @@
 .. type: text
 
 
-.. role:: program(literal)
+.. role:: app
+.. role:: file
 
-Ok, so you deprecate :program:`qpkg`, and remove it from the user bin
+Ok, so you deprecate :app:`qpkg`, and remove it from the user bin
 directories without providing a replacement that has all its
 functionality, but continue to use it and hide it in
-`/usr/lib/gentoolkit/bin/qpkg`? That's idiotic.
+:file:`/usr/lib/gentoolkit/bin/qpkg`? That's idiotic.

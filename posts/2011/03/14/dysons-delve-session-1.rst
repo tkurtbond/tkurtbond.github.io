@@ -8,8 +8,7 @@
 .. type: text
 
 
-.. role:: spell(emphasis)
-
+.. role:: spell
 
 L.B. was in for spring break, so I decided to run `Dyson's Delve`_
 using `Swords & Wizardry Whitebox` (the `Brave Halfling`__ version,

@@ -8,7 +8,7 @@
 .. type: text
 
 
-.. role:: ss(emphasis)
+.. role:: skill
 
 .. admonition:: Spoilers!
 

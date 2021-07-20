@@ -8,7 +8,7 @@
 .. type: text
 
 
-.. role:: spell(emphasis)
+.. role:: spell
 
 .. admonition:: Spoilers!
 

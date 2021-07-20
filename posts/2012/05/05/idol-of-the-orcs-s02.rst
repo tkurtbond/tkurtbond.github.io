@@ -14,7 +14,7 @@
 .. role:: area
 .. role:: dead
 .. role:: spell
-.. .. role:: loot(strong)
+.. role:: loot
 
 .. admonition:: Spoilers!
 

@@ -8,9 +8,9 @@
 .. type: text
 
 
-.. role:: dice(strong)
-.. role:: skill(emphasis)
-.. role:: spell(emphasis)
+.. role:: dice
+.. role:: skill
+.. role:: spell
 
 Jesse's Run flooded over the road in three places, so I wasn't able to
 get to work, and the kids_ weren't able to go to school, so in the

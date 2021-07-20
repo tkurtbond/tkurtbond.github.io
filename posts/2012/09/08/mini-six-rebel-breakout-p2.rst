@@ -8,8 +8,8 @@
 .. type: text
 
 
-.. role:: area(emphasis)
-.. role:: scene(emphasis)
+.. role:: area
+.. role:: scene
 
 This is the concluding session of the “Rebel Breakout” adventure from
 `Star Wars: the Roleplaying Game`, run using `Mini Six`__ from

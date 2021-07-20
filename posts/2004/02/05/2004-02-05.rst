@@ -8,7 +8,7 @@
 .. type: text
 
 
-.. role:: program(literal)
+.. role:: app
 
 Recent Reading
 --------------
@@ -48,4 +48,4 @@ happens to either FreeBSD or OCaml.
 Looks like some other things have broken, too: `gimp
 <http://www.gimp.org/>`__, for one.
 
-I resolved all this by upgrading my ports using :program:`portupgrade`.
+I resolved all this by upgrading my ports using :app:`portupgrade`.

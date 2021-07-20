@@ -8,7 +8,7 @@
 .. type: text
 
 
-.. role:: app(literal)
+.. role:: app
 
 When I unzip a MS Windows emacs distribution using the Cygwin
 :app:`unzip` and try to execute :app:`addpm` with the MS Windows

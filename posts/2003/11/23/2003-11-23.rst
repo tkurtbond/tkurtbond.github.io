@@ -8,14 +8,14 @@
 .. type: text
 
 
-.. role:: program(literal)
+.. role:: app
 
 I've always had an interest in markup and document formatting
-languages, and have long used :program:`troff` and :program:`LaTeX`
+languages, and have long used :app:`troff` and :app:`LaTeX`
 for document formatting and XML and `DocBook
 <http://www.docbook.org/>`__ for markup, using the DSSSL DocBook
 Stylesheets and `OpenJade <http://openjade.sourceforge.net/>`__ along
-with :program:`JadeTeX` to produce HTML and PDF output.  I've also used a
+with :app:`JadeTeX` to produce HTML and PDF output.  I've also used a
 homebrewed application that produced Postscript output from Simplified
 DocBook using `Groff
 <http://www.gnu.org/software/groff/groff.html>`__.
@@ -25,14 +25,14 @@ Many of the tools involved are complicated to set up, some are
 suffering from a lack of manpower for maintenance, and often it is
 very difficult to customize the appearance of the generate output.
 Groff is perhaps the simpliest to install, but I've no desire to write
-in bare troff any more than I have in bare :program:`LaTeX`, and :program:`groff` and its
+in bare troff any more than I have in bare :app:`LaTeX`, and :app:`groff` and its
 macro packages lack good support for PDF - in particular, pdfmarks.
 LaTeX has good support for PDF (especially when you are using
-:program:`pdfelatex`), but it is difficult to customize the appearance of the
+:app:`pdfelatex`), but it is difficult to customize the appearance of the
 output, and there are a number of quirks when it comes to font
 handling.  [1]_ And the PDF output from the DSSSL DocBook Stylesheets
 [2]_ can be very ugly when you are doing complicated things, and since
-it uses :program:`JadeTeX` it's even harder to customize the appearance of the
+it uses :app:`JadeTeX` it's even harder to customize the appearance of the
 output than LaTeX .
 
 While I've not found any general solution for the problem, I've have
@@ -42,7 +42,7 @@ same level of structural markup as LaTeX but appears to be much more
 customizable.  [3]_ It also has very good support for interactive
 documents, reasonably good manuals, and appears to have significant
 development resources behind it.  I think it would make a more suitable
-backend than :program:`LaTeX`.  [4]_
+backend than :app:`LaTeX`.  [4]_
 
 As for those documents where XML markup is too much of a pain (say,
 things that should be easy to read as plain text, where the verbosity
@@ -83,7 +83,7 @@ they seem in short supply.
    <http://www.tug.org/TUGboat/Articles/tb13-3/eijkhout.pdf>`__, though
    more complete.
 
-.. [4] Doesn't that mean I'll be using :program:`TeX`, which is rather complicated
+.. [4] Doesn't that mean I'll be using :app:`TeX`, which is rather complicated
    to install and use? Well, yes.  However, there are easy-to-use
    distributions of TeX that include ConTeXt for the Unix distributions
    that I use as well as for MS Windows

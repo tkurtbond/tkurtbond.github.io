@@ -11,13 +11,12 @@
 .. role:: area
 .. role:: dead
 .. role:: spell
-.. role:: loot(strong)
-.. role:: pc(strong)
-.. role:: npc(strong)
+.. role:: loot
+.. role:: pc
+.. role:: npc
 .. role:: hire
-.. role:: rule(strong)
+.. role:: house
 .. role:: player
-.. role:: ll
 
 .. admonition:: Spoilers!
 
@@ -65,10 +64,10 @@ Clockwise round the table, starting with the Labyrinth Lord:
 House Rules
 ===========
 
-A `Critical Hit`:rule: happens on a natural twenty on an attack roll,
+A `Critical Hit`:house: happens on a natural twenty on an attack roll,
 and damage is doubled.
 
-There **isn't** a `Critical Misses`:rule: rule, but sometimes on a
+There **isn't** a `Critical Misses`:house: rule, but sometimes on a
 natural one on an attack roll something embarrassing and
 funny but usually non-damaging happens.
 

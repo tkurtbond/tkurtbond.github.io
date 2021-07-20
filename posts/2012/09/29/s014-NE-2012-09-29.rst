@@ -13,7 +13,7 @@ WVHTCF Necessary Evil, Session #14: Success and Inevitable Betrayal
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 :date: 2012-09-29 17:00:30
-:version: 2012-10-02 22:40:53
+:version: 2021-07-20 14:42:38
 
 
 .. role:: pc
@@ -25,7 +25,7 @@ WVHTCF Necessary Evil, Session #14: Success and Inevitable Betrayal
 .. role:: power
 .. role:: racial
 .. role:: skill
-.. role:: xp(strong)
+.. role:: xp
 .. role:: place
 
 .. |NE| replace:: `Necessary Evil`_

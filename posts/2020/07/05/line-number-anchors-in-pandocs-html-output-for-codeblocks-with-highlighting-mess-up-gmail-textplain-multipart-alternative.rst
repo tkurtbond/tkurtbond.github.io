@@ -7,7 +7,7 @@
 .. description: 
 .. type: text
 
-.. role:: file(literal)
+.. role:: file
 
 I’ve found that if I write something in ReStructuredText_, create HTML
 from it and embed a stylesheet with the proper css in the

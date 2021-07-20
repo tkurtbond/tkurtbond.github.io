@@ -13,7 +13,7 @@ WVHTCF Necessary Evil, Session #12: That Dastardly Dr. Desctructo!
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 :Date: 2012-08-15
-:Version: 2012-10-02 19:40:24
+:Version: 2021-07-20 14:42:48
 
 
 .. role:: pc
@@ -25,7 +25,7 @@ WVHTCF Necessary Evil, Session #12: That Dastardly Dr. Desctructo!
 .. role:: power
 .. role:: racial
 .. role:: skill
-.. role:: xp(strong)
+.. role:: xp
 .. role:: place
 
 .. |NE| replace:: `Necessary Evil`_

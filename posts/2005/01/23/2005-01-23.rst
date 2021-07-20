@@ -8,7 +8,7 @@
 .. type: text
 
 
-.. role:: program(literal)
+.. role:: app
 
 Goodbye, PM3
 ------------
@@ -25,7 +25,7 @@ packages. I had no desire to go back there, so I decided to delete all
 the PM3 packages and CVSup and rebuild CVSup from scratch. Upon
 consideration, I decided to use the ezm3 Modula 3 distribution instead
 of PM3 ; the ezm3 distribution is specifically maintined to support
-:program:`CVSup`, and since that's the only thing I'm using Modula 3 for any
+:app:`CVSup`, and since that's the only thing I'm using Modula 3 for any
 more it makes sense to use the smaller but better maintained ezm3
 instead of the bigger and more featureful but almost unmaintained PM3
 distribution.

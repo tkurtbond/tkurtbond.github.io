@@ -11,13 +11,12 @@
 .. role:: area
 .. role:: dead
 .. role:: spell
-.. role:: loot(strong)
-.. role:: pc(strong)
-.. role:: npc(strong)
+.. role:: loot
+.. role:: pc
+.. role:: npc
 .. role:: hire
-.. role:: rule(strong)
+.. role:: rule
 .. role:: player
-.. role:: ll
 
 .. admonition:: Spoilers!
 
@@ -113,7 +112,7 @@ behind them, with :pc:`Orm`, :pc:`Skeggi`, and :pc:`Avarey` ready to
 move up to support them with silver maces, if they need help, and
 :pc:`Gustavio` behind them.  The plan is to hold the wight off with
 the some of the 8' long spears, while stabbing him with the others, so
-he can't touch anybody and steel their life force.  :ll:`T.T.` comes
+he can't touch anybody and steel their life force.  :gm:`T.A.` comes
 up with some rulings on the fly for the situation, and we move
 forward.
 
@@ -141,7 +140,7 @@ the dungeon as they explored.
 
 .. admonition:: Meta!
 
-   Meta knowledge lets us know that :ll:`T.T.` rolled dice to figure
+   Meta knowledge lets us know that :gm:`T.A.` rolled dice to figure
    out where they would end up, and the characters were lucky!  Random
    teleports, the worst kind!
 
@@ -156,7 +155,7 @@ Aftermath
 The main party had been using a bulls-eye lantern the whole session,
 but an uncertainty about the length of the beam prompts us to look it
 up, and of course it is not in `LL` or `AEC`, so I download `OSRIC`
-for :ll:`T.T.`
+for :gm:`T.A.`
 
 
 

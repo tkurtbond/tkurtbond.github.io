@@ -11,7 +11,7 @@
 
 Notes for the WVHTCF Necessary Evil Campaign
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-:version: 2012-06-06 13:32:06
+:version: 2021-07-20 14:41:37
 
 
 .. role:: pc
@@ -23,7 +23,7 @@ Notes for the WVHTCF Necessary Evil Campaign
 .. role:: power
 .. role:: racial
 .. role:: skill
-.. role:: xp(strong)
+.. role:: xp
 .. role:: place
 
 .. |NE| replace:: `Necessary Evil`_
