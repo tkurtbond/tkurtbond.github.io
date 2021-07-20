@@ -33,7 +33,7 @@ script.  For instance:
    $ install-font.sh Lora-Regular.ttf
 
 will install the Regular variant of the font, leading you through four
-prompts, for most of which you just need to take the default.
+prompts, for three of which you just need to take the default.
 
 The only prompt where you need to do something other than accept the
 default is the prompt for the style.  For :file:`Lora-Regular` you'd
@@ -179,7 +179,7 @@ where the user presses the RETURN key to accept defaults.
    </pre>
 
          
-*Last edited: 2021-07-20 12:28:14 EDT*
+*Last edited: 2021-07-20 12:40:30 EDT*
 
 ..
    Local Variables:
