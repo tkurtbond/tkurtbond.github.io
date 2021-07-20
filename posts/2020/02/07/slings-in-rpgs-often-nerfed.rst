@@ -1,7 +1,7 @@
 .. title: Slings in RPGs: Often Nerfed
 .. slug: slings-in-rpgs-often-nerfed
 .. date: 2020-02-07 14:40:23 UTC-05:00
-.. tags: rpg,d&d,runequest,dragonquest,talislanta,slings,gurps,savage worlds,hero system,the fantasy trip,tft,big eyes small mouth,besm,harnmaster,d6 fantasy,opend6,tunnels & trolls,t&t,dragon warriors,brp,basic roleplaying,elric!,stormbringer,traveller,classic traveller,cepheus engine,sword of cepheus,nerfed,ad&d 1e,d&d 4e,aff 1e,aff 2e,advanced fighting fantasy
+.. tags: rpg,d&d,runequest,dragonquest,talislanta,slings,gurps,savage worlds,hero system,the fantasy trip,tft,big eyes small mouth,besm,harnmaster,d6 fantasy,opend6,tunnels & trolls,t&t,dragon warriors,brp,basic roleplaying,elric!,stormbringer,traveller,classic traveller,cepheus engine,sword of cepheus,nerfed,ad&d 1e,d&d 4e,d&d 3.5e,aff 1e,aff 2e,advanced fighting fantasy,b/x d&d,od&d
 .. category: gaming
 .. link: 
 .. description: 
@@ -245,7 +245,7 @@ What do you think?
 .. _AFF 2E: https://www.drivethrurpg.com/browse/pub/667/Arion-Games/subcategory/1684_25223/Advanced-Fighting-Fantasy
 
 
-*Last edited: 2021-07-19 23:16:31 EDT*
+*Last edited: 2021-07-19 23:24:27 EDT*
 
 ..
    Local Variables:
