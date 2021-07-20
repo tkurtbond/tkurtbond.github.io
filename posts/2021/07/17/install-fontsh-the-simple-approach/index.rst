@@ -46,6 +46,9 @@ Here's a walk-through of installing the Lora_ font, assuming that
 :file:`/usr/local/share/groff` directory isn't writable for your
 normal user, you should prefix the command with ``sudo``.)
 
+:command:`install-font.sh` does produce a lot of output, but the
+colorizing helps pick out the important things.
+
 
 .. _Lora: https://fonts.google.com/specimen/Lora
 
@@ -170,7 +173,7 @@ normal user, you should prefix the command with ``sudo``.)
    </pre>
 
          
-*Last edited: 2021-07-20 11:41:10 EDT*
+*Last edited: 2021-07-20 11:53:36 EDT*
 
 ..
    Local Variables:
