@@ -1,7 +1,7 @@
 .. title: RPG Vocabulary
 .. slug: rpg-vocabulary
 .. date: 2019-11-06 08:38:20 UTC-05:00
-.. tags: rpg,vocabulary
+.. tags: rpg,vocabulary,tpk,retro-clone,neo-clone,megadungeon,labyrinth lord,ose,old-school essentials,swords & wizardry,osric,od&d
 .. category: gaming
 .. link: 
 .. description: 
@@ -24,7 +24,7 @@ Retro-clone
     from `Open Gaming`__ materials under the `Open Gaming License`__
     (OGL) or similar `public copyright licenses`__.
 
-    `Labyrinth Lord` (LL1_, LL2_, LL3_) and `Old School Essentials`
+    `Labyrinth Lord` (LL1_, LL2_, LL3_) and `Old-School Essentials`
     (OSE1_, OSE2_) are retro-clones of B/X D&D (B1_, B2_, X1_, X2_).
     `Swords & Wizardry Complete` (`S&W1`_, `S&W2`_) is a retro-clone
     of `Original D&D`_ plus some additional material from `The

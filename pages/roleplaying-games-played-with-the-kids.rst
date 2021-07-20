@@ -1,7 +1,7 @@
 .. title: Roleplaying Games Played with the Kids
 .. slug: roleplaying-games-played-with-the-kids
 .. date: 2019-11-06 08:36:40 UTC-05:00
-.. tags: rpg,the kids,buggin,besm,d&d,fudge,bunnies and burrows,savage worlds,toon,labyrinth lord,mini six,star wars d6,breachworld rpg
+.. tags: rpg,the kids,buggin,besm,d&d 3.5,fudge,bunnies and burrows,savage worlds,toon,labyrinth lord,mini six,star wars d6,breachworld rpg,b/x d&d,advanced edition companion,d6 star wars
 .. category: gaming
 .. link: 
 .. description: 
@@ -34,8 +34,8 @@ in one book and simpler than GURPS, it is good for a broad spectrum of
 games.  Character creation can be deep, but play is very simple.
 
 
-D&D
-===
+D&D 3.5e
+========
 
 *Dungeons and Dragons*, 3.5E, `Wizards of the Coast`_.
 
