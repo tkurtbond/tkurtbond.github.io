@@ -14,8 +14,8 @@
 .. role:: area
 .. role:: dead
 .. role:: spell
-.. role:: loot(strong)
-.. role:: pc(strong)
+.. role:: loot
+.. role:: pc
 
 .. admonition:: Spoilers!
 
@@ -90,7 +90,7 @@ putting here into the negative, but on the second round Skeggi heals
 her back to the positive. On the fourth round Sallee Marie makes the
 killing blow on the ogre.
 
-Loot: small chest with 488 gp, 20 sp, a :loot:`+1 shield` (which the
+Loot: small chest with 488 gp, 20 sp, a :item:`+1 shield` (which the
 ogre had been using as a plate), and an elven skill missing its
 jawbone, but containing a filthy gold earring, worth 25 GP.
 

@@ -8,10 +8,10 @@
 .. type: text
 
 
-.. role:: program(literal)
-.. role:: file(literal)
+.. role:: app
+.. role:: file
 
-I had to do some maintenance on the :program:`FILETAP` program today.
+I had to do some maintenance on the :app:`FILETAP` program today.
 I last worked on it in 1988, as far as I can tell.  The last time it
 was compiled was in 1990 (going by the file dates) but I doubt that
 anybody had changed the code since 1988 when I last worked on it.
@@ -25,10 +25,10 @@ linked library (:file:`.OLB`).  And the program required no code changes to
 get it to work.
 
 So where's the maintenance? It turns out that there are actually two
-version of this program, :program:`TFILETAP` and :program:`FILETAP`,
-and it's not obvious *why* there are two versions.  :program:`FILETAP`
+version of this program, :app:`TFILETAP` and :app:`FILETAP`,
+and it's not obvious *why* there are two versions.  :app:`FILETAP`
 is the version that appears to be used the most, but
-:program:`TFILETAP` is slightly different (mostly because it opens the
+:app:`TFILETAP` is slightly different (mostly because it opens the
 key file for exclusive access).  Unfortunately, as I've lamented
 several times in the past, we weren't using any sort of revision
 control back then, much less configuration control, so there is no

@@ -13,7 +13,7 @@
 .. role:: dead
 .. role:: spell
 .. role:: pc
-.. .. role:: loot(strong)
+.. role:: loot
 
 .. admonition:: Spoilers!
 
@@ -32,7 +32,7 @@ Clockwise round the table, starting with the Labyrinth Lord:
 
   + :pc:`Gustavio`, a Gnome.  HP 4, AC 5.
 
-  + :pc:`1Karl`, a Dwarf.  HP 4, AC 6.
+  + :pc:`Karl`, a Dwarf.  HP 4, AC 6.
 
 + T.K.B. 
 

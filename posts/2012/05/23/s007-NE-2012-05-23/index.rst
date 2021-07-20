@@ -14,7 +14,7 @@ WVHTCF Necessary Evil, Session #7: RoboRally Trap!
 Or, Anvil Looses His Grip!
 ##########################
 :date: 2012-05-23
-:version: 2012-09-17 00:51:27
+:version: 2021-07-20 14:41:25
 
 
 .. role:: pc
@@ -24,9 +24,8 @@ Or, Anvil Looses His Grip!
 .. role:: comment
 .. role:: spell
 .. role:: power
-.. role:: racial
 .. role:: skill
-.. role:: xp(strong)
+.. role:: xp
 .. role:: place
 
 .. |NE| replace:: `Necessary Evil`_

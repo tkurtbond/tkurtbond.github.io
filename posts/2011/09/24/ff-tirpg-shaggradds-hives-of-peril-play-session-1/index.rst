@@ -14,7 +14,7 @@
 .. role:: area
 .. role:: npc
 .. role:: creature
-.. role:: spell(emphasis)
+.. role:: spell
 
 .. admonition:: Spoilers!
 

@@ -8,8 +8,8 @@
 .. type: text
 
 
-.. role:: skill(emphasis)
-.. role:: power(emphasis)
+.. role:: skill
+.. role:: power
 
 .. admonition:: Spoilers!
 

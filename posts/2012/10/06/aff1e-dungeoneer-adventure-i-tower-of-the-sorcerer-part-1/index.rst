@@ -9,7 +9,7 @@
 
 
 
-.. role:: ss(emphasis)
+.. role:: skill
 
 .. admonition:: Spoilers!
 
@@ -77,8 +77,8 @@ characters on the other side worked.
 
 Then I had them do some tunnel exploring under an abandoned temple to
 show them how some of the other Special Skills worked, including
-:ss:`Trap Sense`, :ss:`Underground Lore`, :ss:`Dark Sense`, and
-:ss:`Awareness`.  There were pressure plates, a rolling boulder (ala
+:skill:`Trap Sense`, :skill:`Underground Lore`, :skill:`Dark Sense`, and
+:skill:`Awareness`.  There were pressure plates, a rolling boulder (ala
 Indiana Jones), and a chasm across the tunnel that the boulder herded
 them toward.  Aspen and Alexa both noticed the chasm, but Gordo and
 Grimbold, behind them, did not, and right out into midair, luckily

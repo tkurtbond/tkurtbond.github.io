@@ -11,9 +11,9 @@
 .. role:: area
 .. role:: dead
 .. role:: spell
-.. role:: loot(strong)
-.. role:: pc(strong)
-.. role:: npc(strong)
+.. role:: loot
+.. role:: pc
+.. role:: npc
 
 .. admonition:: Spoilers!
 

@@ -95,7 +95,7 @@ Local Gossip Proves True
 ````````````````````````
 
 Now, local gossip has it young Brand was caught behind the woodsheed
-with Gelsie  (sp?) Hillfield, but normally he's a quiet 14 year old.
+with Gelsie (sp?) Hillfield, but normally he's a quiet 14 year old.
 However, anytime any of us got near his wagon he gets belligerent.
 Eventually we call him on it, and it turns out Gelsie's hiding in the
 wagon under a tarp.  He and Gelsie plan to run for distant parts where

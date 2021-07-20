@@ -9,10 +9,10 @@
 
 
 .. role:: area
-.. role:: dice(strong)
-.. role:: item(strong)
-.. role:: skill(emphasis)
-.. role:: spell(emphasis)
+.. role:: dice
+.. role:: item
+.. role:: skill
+.. role:: spell
 
 Attending
 =========

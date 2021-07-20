@@ -9,9 +9,9 @@
 
 
 
-.. role:: ss(emphasis)
-.. role:: spell(emphasis)
-.. role:: mech(emphasis)
+.. role:: skill
+.. role:: spell
+.. role:: mech
 
 .. admonition:: Spoilers!
 
@@ -58,7 +58,7 @@ Blow`, and was brought back to 5 STAMINA by another :spell:`Stamina`
 from Aspen.  All through the fight the Ogre had been laughing at the
 Heroes and throwing stuff at them that knocked them down, but Aspen
 had been steadily sniping at them, and despite one impressive
-:ss:`Dodge`, where the Ogre interposed a Goblin haunch from his supper
+:skill:`Dodge`, where the Ogre interposed a Goblin haunch from his supper
 and blocked an arrow she had steadily brought his STAMINA down.  When
 the Orcs were finally disposed of and he threw the table on the Heros,
 Aspen was far enough back to escape the spill, and switched from

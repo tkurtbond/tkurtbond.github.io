@@ -13,7 +13,7 @@ WVHTCF Necessary Evil, Session #13: V'Sori are made from People!
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 :Date: 2012-09-19 17:00:00
-:Version: 2012-10-02 22:40:34
+:Version: 2021-07-20 14:42:43
 
 
 .. role:: pc
@@ -25,7 +25,7 @@ WVHTCF Necessary Evil, Session #13: V'Sori are made from People!
 .. role:: power
 .. role:: racial
 .. role:: skill
-.. role:: xp(strong)
+.. role:: xp
 .. role:: place
 
 .. |NE| replace:: `Necessary Evil`_

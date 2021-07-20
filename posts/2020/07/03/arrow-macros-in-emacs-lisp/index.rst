@@ -8,7 +8,7 @@
 .. type: text
 
 .. role:: file
-.. role:: key(literal)
+.. role:: key
 
 Are you familiar with arrow macros?  (They have nothing to do with
 `arrows in Haskell`__.) They started out in Clojure_, I think, and have
@@ -143,13 +143,13 @@ whatever program is saving the file, and use the generated,
 sanitized name ``Flashy-Product-Name`` with :key:`⌘-V`.  Nifty!  
 
 (And if you've ever wondered what the Unicode_ character for the Mac
-keyboard `Command key`__ (⌘) is, it is the PLACE OF INTEREST SIGN, and you
-can enter it by C-x 8 RETURN PLACE OF INTEREST SIGN.  The symbol they
-use for for the key labeled alt and option__ (⌥) is the Unicode OPTION
-KEY, and the symbol they use for the `Shift Key`__ (⇧) is UPWARDS WHITE ARROW.
-I'm surprised they don't have a special symbol for Control__, but it
-looks like they just use the plain ASCII ^, known in Unicode as
-CIRCUMFLEX ACCENT.)
+keyboard `Command key`__ (⌘) is, it is the PLACE OF INTEREST SIGN, and
+you can enter it in :app:`Emacs` by :key:`C-x 8 RETURN PLACE OF
+INTEREST SIGN⏎`.  The symbol they use for for the key labeled alt and
+option__ (⌥) is the Unicode OPTION KEY, and the symbol they use for
+the `Shift Key`__ (⇧) is UPWARDS WHITE ARROW.  I'm surprised they
+don't have a special symbol for Control__, but it looks like they just
+use the plain ASCII ^, known in Unicode as CIRCUMFLEX ACCENT.)
 
 .. _Unicode: https://en.wikipedia.org/wiki/Unicode
 

@@ -8,8 +8,6 @@
 .. type: text
 
 
-.. role:: ss(emphasis)
-
 .. admonition:: Spoilers!
 
    We're playing “Dungeoneer Adventure II: Revenge of the Sorcerer”,

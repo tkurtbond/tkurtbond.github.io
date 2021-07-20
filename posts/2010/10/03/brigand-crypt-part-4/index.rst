@@ -11,8 +11,8 @@
 Played `Labyrinth Lord` with the kids_.  E.A. went to the Jubilee, but
 T.A. and M.A. stayed to play `Labyrinth Lord`.
 
-.. role:: scroll(emphasis)
-.. role:: spell(emphasis)
+.. role:: scroll
+.. role:: spell
 
 .. admonition:: Spoilers!
 

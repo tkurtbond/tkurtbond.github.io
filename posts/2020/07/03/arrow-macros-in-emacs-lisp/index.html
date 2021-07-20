@@ -97,24 +97,24 @@ have them.</p></li>
 you want it to be processed by several functions in a chain you
 can use an arrow macro instead of using lots of nested function
 calls. For instance,</p>
-<pre class="code emacs-lisp"><a name="rest_code_1f8909a18eef421a919e2b056ca3d7b1-1"></a><span class="p">(</span><span class="nv">replace-regexp-in-string</span> <span class="s">"-+$"</span> <span class="s">""</span> <span class="p">(</span><span class="nv">replace-regexp-in-string</span> <span class="s">"^-+"</span> <span class="s">""</span> <span class="p">(</span><span class="nv">replace-regexp-in-string</span> <span class="s">"^-+"</span> <span class="s">""</span> <span class="p">(</span><span class="nv">replace-regexp-in-string</span> <span class="s">"\\.+"</span> <span class="s">"."</span> <span class="p">(</span><span class="nv">replace-regexp-in-string</span> <span class="s">"\\.-"</span> <span class="s">"."</span> <span class="p">(</span><span class="nv">replace-regexp-in-string</span> <span class="s">"-\\."</span> <span class="s">"."</span> <span class="p">(</span><span class="nv">replace-regexp-in-string</span> <span class="s">"-+"</span> <span class="s">"-"</span> <span class="p">(</span><span class="nv">replace-regexp-in-string</span> <span class="s">"[^-.a-z0-9]+"</span> <span class="s">"-"</span> <span class="nf">string</span><span class="p">))))))))</span>
+<pre class="code emacs-lisp"><a name="rest_code_60fece8d690640b19968422dac91d95d-1"></a><span class="p">(</span><span class="nv">replace-regexp-in-string</span> <span class="s">"-+$"</span> <span class="s">""</span> <span class="p">(</span><span class="nv">replace-regexp-in-string</span> <span class="s">"^-+"</span> <span class="s">""</span> <span class="p">(</span><span class="nv">replace-regexp-in-string</span> <span class="s">"^-+"</span> <span class="s">""</span> <span class="p">(</span><span class="nv">replace-regexp-in-string</span> <span class="s">"\\.+"</span> <span class="s">"."</span> <span class="p">(</span><span class="nv">replace-regexp-in-string</span> <span class="s">"\\.-"</span> <span class="s">"."</span> <span class="p">(</span><span class="nv">replace-regexp-in-string</span> <span class="s">"-\\."</span> <span class="s">"."</span> <span class="p">(</span><span class="nv">replace-regexp-in-string</span> <span class="s">"-+"</span> <span class="s">"-"</span> <span class="p">(</span><span class="nv">replace-regexp-in-string</span> <span class="s">"[^-.a-z0-9]+"</span> <span class="s">"-"</span> <span class="nf">string</span><span class="p">))))))))</span>
 </pre>
 <p>is annoying and hard to read on one line.  If you split it into multiple lines</p>
-<pre class="code emacs-lisp"><a name="rest_code_7d02afe92c924010add36e109a03e397-1"></a><span class="p">(</span><span class="nv">replace-regexp-in-string</span>
-<a name="rest_code_7d02afe92c924010add36e109a03e397-2"></a> <span class="s">"-+$"</span> <span class="s">""</span>
-<a name="rest_code_7d02afe92c924010add36e109a03e397-3"></a> <span class="p">(</span><span class="nv">replace-regexp-in-string</span>
-<a name="rest_code_7d02afe92c924010add36e109a03e397-4"></a>  <span class="s">"^-+"</span> <span class="s">""</span>
-<a name="rest_code_7d02afe92c924010add36e109a03e397-5"></a>  <span class="p">(</span><span class="nv">replace-regexp-in-string</span>
-<a name="rest_code_7d02afe92c924010add36e109a03e397-6"></a>   <span class="s">"^-+"</span> <span class="s">""</span>
-<a name="rest_code_7d02afe92c924010add36e109a03e397-7"></a>   <span class="p">(</span><span class="nv">replace-regexp-in-string</span>
-<a name="rest_code_7d02afe92c924010add36e109a03e397-8"></a>    <span class="s">"\\.+"</span> <span class="s">"."</span>
-<a name="rest_code_7d02afe92c924010add36e109a03e397-9"></a>    <span class="p">(</span><span class="nv">replace-regexp-in-string</span>
-<a name="rest_code_7d02afe92c924010add36e109a03e397-10"></a>     <span class="s">"\\.-"</span> <span class="s">"."</span>
-<a name="rest_code_7d02afe92c924010add36e109a03e397-11"></a>     <span class="p">(</span><span class="nv">replace-regexp-in-string</span>
-<a name="rest_code_7d02afe92c924010add36e109a03e397-12"></a>      <span class="s">"-\\."</span> <span class="s">"."</span>
-<a name="rest_code_7d02afe92c924010add36e109a03e397-13"></a>      <span class="p">(</span><span class="nv">replace-regexp-in-string</span>
-<a name="rest_code_7d02afe92c924010add36e109a03e397-14"></a>       <span class="s">"-+"</span> <span class="s">"-"</span>
-<a name="rest_code_7d02afe92c924010add36e109a03e397-15"></a>       <span class="p">(</span><span class="nv">replace-regexp-in-string</span> <span class="s">"[^-.a-z0-9]+"</span> <span class="s">"-"</span> <span class="nf">string</span><span class="p">))))))))</span>
+<pre class="code emacs-lisp"><a name="rest_code_49433027975d4e09a738ca1da6145124-1"></a><span class="p">(</span><span class="nv">replace-regexp-in-string</span>
+<a name="rest_code_49433027975d4e09a738ca1da6145124-2"></a> <span class="s">"-+$"</span> <span class="s">""</span>
+<a name="rest_code_49433027975d4e09a738ca1da6145124-3"></a> <span class="p">(</span><span class="nv">replace-regexp-in-string</span>
+<a name="rest_code_49433027975d4e09a738ca1da6145124-4"></a>  <span class="s">"^-+"</span> <span class="s">""</span>
+<a name="rest_code_49433027975d4e09a738ca1da6145124-5"></a>  <span class="p">(</span><span class="nv">replace-regexp-in-string</span>
+<a name="rest_code_49433027975d4e09a738ca1da6145124-6"></a>   <span class="s">"^-+"</span> <span class="s">""</span>
+<a name="rest_code_49433027975d4e09a738ca1da6145124-7"></a>   <span class="p">(</span><span class="nv">replace-regexp-in-string</span>
+<a name="rest_code_49433027975d4e09a738ca1da6145124-8"></a>    <span class="s">"\\.+"</span> <span class="s">"."</span>
+<a name="rest_code_49433027975d4e09a738ca1da6145124-9"></a>    <span class="p">(</span><span class="nv">replace-regexp-in-string</span>
+<a name="rest_code_49433027975d4e09a738ca1da6145124-10"></a>     <span class="s">"\\.-"</span> <span class="s">"."</span>
+<a name="rest_code_49433027975d4e09a738ca1da6145124-11"></a>     <span class="p">(</span><span class="nv">replace-regexp-in-string</span>
+<a name="rest_code_49433027975d4e09a738ca1da6145124-12"></a>      <span class="s">"-\\."</span> <span class="s">"."</span>
+<a name="rest_code_49433027975d4e09a738ca1da6145124-13"></a>      <span class="p">(</span><span class="nv">replace-regexp-in-string</span>
+<a name="rest_code_49433027975d4e09a738ca1da6145124-14"></a>       <span class="s">"-+"</span> <span class="s">"-"</span>
+<a name="rest_code_49433027975d4e09a738ca1da6145124-15"></a>       <span class="p">(</span><span class="nv">replace-regexp-in-string</span> <span class="s">"[^-.a-z0-9]+"</span> <span class="s">"-"</span> <span class="nf">string</span><span class="p">))))))))</span>
 </pre>
 <p>that's also pretty horrible.  To read it you have to skip to the end,
 figure out that function call, then skip back to the next function
@@ -122,14 +122,14 @@ call, and so forth, until you get back to the last function call,
 reading it from inside out.  It looks much better if you use the
 <code class="docutils literal"><span class="pre">-&gt;&gt;</span></code> arrow macro, which substitutes the value you are passing along
 as the last argument to the functions you are calling:</p>
-<pre class="code emacs-lisp"><a name="rest_code_fce35874477a4d518ab23c06dc92bff1-1"></a><span class="p">(</span><span class="nv">-&gt;&gt;</span> <span class="nf">string</span>
-<a name="rest_code_fce35874477a4d518ab23c06dc92bff1-2"></a>     <span class="p">(</span><span class="nv">replace-regexp-in-string</span> <span class="s">"[^-.a-z0-9]+"</span> <span class="s">"-"</span><span class="p">)</span>
-<a name="rest_code_fce35874477a4d518ab23c06dc92bff1-3"></a>     <span class="p">(</span><span class="nv">replace-regexp-in-string</span> <span class="s">"-+"</span> <span class="s">"-"</span><span class="p">)</span>
-<a name="rest_code_fce35874477a4d518ab23c06dc92bff1-4"></a>     <span class="p">(</span><span class="nv">replace-regexp-in-string</span> <span class="s">"-\\."</span> <span class="s">"."</span><span class="p">)</span>
-<a name="rest_code_fce35874477a4d518ab23c06dc92bff1-5"></a>     <span class="p">(</span><span class="nv">replace-regexp-in-string</span> <span class="s">"\\.-"</span> <span class="s">"."</span><span class="p">)</span>
-<a name="rest_code_fce35874477a4d518ab23c06dc92bff1-6"></a>     <span class="p">(</span><span class="nv">replace-regexp-in-string</span> <span class="s">"\\.+"</span> <span class="s">"."</span><span class="p">)</span>
-<a name="rest_code_fce35874477a4d518ab23c06dc92bff1-7"></a>     <span class="p">(</span><span class="nv">replace-regexp-in-string</span> <span class="s">"^-+"</span> <span class="s">""</span><span class="p">)</span>
-<a name="rest_code_fce35874477a4d518ab23c06dc92bff1-8"></a>     <span class="p">(</span><span class="nv">replace-regexp-in-string</span> <span class="s">"-+$"</span> <span class="s">""</span><span class="p">))</span>
+<pre class="code emacs-lisp"><a name="rest_code_6171a837cf294383baa5f435f4973da1-1"></a><span class="p">(</span><span class="nv">-&gt;&gt;</span> <span class="nf">string</span>
+<a name="rest_code_6171a837cf294383baa5f435f4973da1-2"></a>     <span class="p">(</span><span class="nv">replace-regexp-in-string</span> <span class="s">"[^-.a-z0-9]+"</span> <span class="s">"-"</span><span class="p">)</span>
+<a name="rest_code_6171a837cf294383baa5f435f4973da1-3"></a>     <span class="p">(</span><span class="nv">replace-regexp-in-string</span> <span class="s">"-+"</span> <span class="s">"-"</span><span class="p">)</span>
+<a name="rest_code_6171a837cf294383baa5f435f4973da1-4"></a>     <span class="p">(</span><span class="nv">replace-regexp-in-string</span> <span class="s">"-\\."</span> <span class="s">"."</span><span class="p">)</span>
+<a name="rest_code_6171a837cf294383baa5f435f4973da1-5"></a>     <span class="p">(</span><span class="nv">replace-regexp-in-string</span> <span class="s">"\\.-"</span> <span class="s">"."</span><span class="p">)</span>
+<a name="rest_code_6171a837cf294383baa5f435f4973da1-6"></a>     <span class="p">(</span><span class="nv">replace-regexp-in-string</span> <span class="s">"\\.+"</span> <span class="s">"."</span><span class="p">)</span>
+<a name="rest_code_6171a837cf294383baa5f435f4973da1-7"></a>     <span class="p">(</span><span class="nv">replace-regexp-in-string</span> <span class="s">"^-+"</span> <span class="s">""</span><span class="p">)</span>
+<a name="rest_code_6171a837cf294383baa5f435f4973da1-8"></a>     <span class="p">(</span><span class="nv">replace-regexp-in-string</span> <span class="s">"-+$"</span> <span class="s">""</span><span class="p">))</span>
 </pre>
 <p>I also think it is more understandable than the highly nested calls,
 since you can follow along in from start to finish, rather than from
@@ -151,29 +151,29 @@ don't want dashes repeated multiple times, just a single dash,
 and I don't want dashes followed or preceded by periods, only
 the period.</p>
 <p>Here' s some code to do that:</p>
-<pre class="code emacs-lisp"><a name="rest_code_f3808ed9b9174a9a90b1409cfee9f3f0-1"></a><span class="p">(</span><span class="nb">defun</span> <span class="nv">tkb-sanitize-for-filename</span> <span class="p">(</span><span class="nf">string</span><span class="p">)</span>
-<a name="rest_code_f3808ed9b9174a9a90b1409cfee9f3f0-2"></a>  <span class="s">"Clean up characters in STRING that aren't good for</span>
-<a name="rest_code_f3808ed9b9174a9a90b1409cfee9f3f0-3"></a><span class="s">filenames."</span>
-<a name="rest_code_f3808ed9b9174a9a90b1409cfee9f3f0-4"></a>  <span class="p">(</span><span class="nv">-&gt;&gt;</span> <span class="nf">string</span>
-<a name="rest_code_f3808ed9b9174a9a90b1409cfee9f3f0-5"></a>       <span class="p">(</span><span class="nv">replace-regexp-in-string</span> <span class="s">"[^-.a-z0-9]+"</span> <span class="s">"-"</span><span class="p">)</span>
-<a name="rest_code_f3808ed9b9174a9a90b1409cfee9f3f0-6"></a>       <span class="p">(</span><span class="nv">replace-regexp-in-string</span> <span class="s">"-+"</span> <span class="s">"-"</span><span class="p">)</span>
-<a name="rest_code_f3808ed9b9174a9a90b1409cfee9f3f0-7"></a>       <span class="p">(</span><span class="nv">replace-regexp-in-string</span> <span class="s">"-\\."</span> <span class="s">"."</span><span class="p">)</span>
-<a name="rest_code_f3808ed9b9174a9a90b1409cfee9f3f0-8"></a>       <span class="p">(</span><span class="nv">replace-regexp-in-string</span> <span class="s">"\\.-"</span> <span class="s">"."</span><span class="p">)</span>
-<a name="rest_code_f3808ed9b9174a9a90b1409cfee9f3f0-9"></a>       <span class="p">(</span><span class="nv">replace-regexp-in-string</span> <span class="s">"\\.+"</span> <span class="s">"."</span><span class="p">)</span>
-<a name="rest_code_f3808ed9b9174a9a90b1409cfee9f3f0-10"></a>       <span class="p">(</span><span class="nv">replace-regexp-in-string</span> <span class="s">"^-+"</span> <span class="s">""</span><span class="p">)</span>
-<a name="rest_code_f3808ed9b9174a9a90b1409cfee9f3f0-11"></a>       <span class="p">(</span><span class="nv">replace-regexp-in-string</span> <span class="s">"-+$"</span> <span class="s">""</span><span class="p">)))</span>
-<a name="rest_code_f3808ed9b9174a9a90b1409cfee9f3f0-12"></a>
-<a name="rest_code_f3808ed9b9174a9a90b1409cfee9f3f0-13"></a><span class="p">(</span><span class="nb">defun</span> <span class="nv">tkb-sanitize-kill-for-filename</span> <span class="p">(</span><span class="nf">string</span><span class="p">)</span>
-<a name="rest_code_f3808ed9b9174a9a90b1409cfee9f3f0-14"></a>  <span class="s">"Clean up characters that aren't good for filenames in the</span>
-<a name="rest_code_f3808ed9b9174a9a90b1409cfee9f3f0-15"></a><span class="s">top of the kill</span>
-<a name="rest_code_f3808ed9b9174a9a90b1409cfee9f3f0-16"></a><span class="s">ring and put the result on the top of the kill ring."</span>
-<a name="rest_code_f3808ed9b9174a9a90b1409cfee9f3f0-17"></a>  <span class="c1">;; gets the kill or the system clipboard if it is new.</span>
-<a name="rest_code_f3808ed9b9174a9a90b1409cfee9f3f0-18"></a>  <span class="p">(</span><span class="k">interactive</span> <span class="p">(</span><span class="nf">list</span> <span class="p">(</span><span class="nv">current-kill</span> <span class="mi">0</span> <span class="no">t</span><span class="p">)))</span>
-<a name="rest_code_f3808ed9b9174a9a90b1409cfee9f3f0-19"></a>  <span class="p">(</span><span class="k">let</span> <span class="p">((</span><span class="nv">new-string</span> <span class="p">(</span><span class="nv">tkb-sanitize-for-filename</span> <span class="nf">string</span><span class="p">)))</span>
-<a name="rest_code_f3808ed9b9174a9a90b1409cfee9f3f0-20"></a>    <span class="p">(</span><span class="nf">message</span> <span class="s">"Old string: %s\nNew String: %s"</span> <span class="nf">string</span> <span class="nv">new-string</span><span class="p">)</span>
-<a name="rest_code_f3808ed9b9174a9a90b1409cfee9f3f0-21"></a>    <span class="p">(</span><span class="nv">kill-new</span> <span class="nv">new-string</span><span class="p">)))</span>
-<a name="rest_code_f3808ed9b9174a9a90b1409cfee9f3f0-22"></a>
-<a name="rest_code_f3808ed9b9174a9a90b1409cfee9f3f0-23"></a><span class="p">(</span><span class="nv">global-set-key</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">"C-c k S"</span><span class="p">)</span> <span class="ss">'tkb-sanitize-kill-for-filename</span><span class="p">)</span>
+<pre class="code emacs-lisp"><a name="rest_code_9511db77249f42dda969954b814aaa96-1"></a><span class="p">(</span><span class="nb">defun</span> <span class="nv">tkb-sanitize-for-filename</span> <span class="p">(</span><span class="nf">string</span><span class="p">)</span>
+<a name="rest_code_9511db77249f42dda969954b814aaa96-2"></a>  <span class="s">"Clean up characters in STRING that aren't good for</span>
+<a name="rest_code_9511db77249f42dda969954b814aaa96-3"></a><span class="s">filenames."</span>
+<a name="rest_code_9511db77249f42dda969954b814aaa96-4"></a>  <span class="p">(</span><span class="nv">-&gt;&gt;</span> <span class="nf">string</span>
+<a name="rest_code_9511db77249f42dda969954b814aaa96-5"></a>       <span class="p">(</span><span class="nv">replace-regexp-in-string</span> <span class="s">"[^-.a-z0-9]+"</span> <span class="s">"-"</span><span class="p">)</span>
+<a name="rest_code_9511db77249f42dda969954b814aaa96-6"></a>       <span class="p">(</span><span class="nv">replace-regexp-in-string</span> <span class="s">"-+"</span> <span class="s">"-"</span><span class="p">)</span>
+<a name="rest_code_9511db77249f42dda969954b814aaa96-7"></a>       <span class="p">(</span><span class="nv">replace-regexp-in-string</span> <span class="s">"-\\."</span> <span class="s">"."</span><span class="p">)</span>
+<a name="rest_code_9511db77249f42dda969954b814aaa96-8"></a>       <span class="p">(</span><span class="nv">replace-regexp-in-string</span> <span class="s">"\\.-"</span> <span class="s">"."</span><span class="p">)</span>
+<a name="rest_code_9511db77249f42dda969954b814aaa96-9"></a>       <span class="p">(</span><span class="nv">replace-regexp-in-string</span> <span class="s">"\\.+"</span> <span class="s">"."</span><span class="p">)</span>
+<a name="rest_code_9511db77249f42dda969954b814aaa96-10"></a>       <span class="p">(</span><span class="nv">replace-regexp-in-string</span> <span class="s">"^-+"</span> <span class="s">""</span><span class="p">)</span>
+<a name="rest_code_9511db77249f42dda969954b814aaa96-11"></a>       <span class="p">(</span><span class="nv">replace-regexp-in-string</span> <span class="s">"-+$"</span> <span class="s">""</span><span class="p">)))</span>
+<a name="rest_code_9511db77249f42dda969954b814aaa96-12"></a>
+<a name="rest_code_9511db77249f42dda969954b814aaa96-13"></a><span class="p">(</span><span class="nb">defun</span> <span class="nv">tkb-sanitize-kill-for-filename</span> <span class="p">(</span><span class="nf">string</span><span class="p">)</span>
+<a name="rest_code_9511db77249f42dda969954b814aaa96-14"></a>  <span class="s">"Clean up characters that aren't good for filenames in the</span>
+<a name="rest_code_9511db77249f42dda969954b814aaa96-15"></a><span class="s">top of the kill</span>
+<a name="rest_code_9511db77249f42dda969954b814aaa96-16"></a><span class="s">ring and put the result on the top of the kill ring."</span>
+<a name="rest_code_9511db77249f42dda969954b814aaa96-17"></a>  <span class="c1">;; gets the kill or the system clipboard if it is new.</span>
+<a name="rest_code_9511db77249f42dda969954b814aaa96-18"></a>  <span class="p">(</span><span class="k">interactive</span> <span class="p">(</span><span class="nf">list</span> <span class="p">(</span><span class="nv">current-kill</span> <span class="mi">0</span> <span class="no">t</span><span class="p">)))</span>
+<a name="rest_code_9511db77249f42dda969954b814aaa96-19"></a>  <span class="p">(</span><span class="k">let</span> <span class="p">((</span><span class="nv">new-string</span> <span class="p">(</span><span class="nv">tkb-sanitize-for-filename</span> <span class="nf">string</span><span class="p">)))</span>
+<a name="rest_code_9511db77249f42dda969954b814aaa96-20"></a>    <span class="p">(</span><span class="nf">message</span> <span class="s">"Old string: %s\nNew String: %s"</span> <span class="nf">string</span> <span class="nv">new-string</span><span class="p">)</span>
+<a name="rest_code_9511db77249f42dda969954b814aaa96-21"></a>    <span class="p">(</span><span class="nv">kill-new</span> <span class="nv">new-string</span><span class="p">)))</span>
+<a name="rest_code_9511db77249f42dda969954b814aaa96-22"></a>
+<a name="rest_code_9511db77249f42dda969954b814aaa96-23"></a><span class="p">(</span><span class="nv">global-set-key</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">"C-c k S"</span><span class="p">)</span> <span class="ss">'tkb-sanitize-kill-for-filename</span><span class="p">)</span>
 </pre>
 <p>Note that the function <code class="docutils literal"><span class="pre">tkb-sanitize-kill-for-filename</span></code> that I use
 interactively gets uses <code class="docutils literal"><span class="pre">(current-kill</span> 0 t)</code> because it either
@@ -182,17 +182,17 @@ it puts that on top of the kill ring and returns it.  (The docstring
 of <code class="docutils literal"><span class="pre">current-kill</span></code> makes that a little difficult to figure out.)</p>
 <p>So if I have the name of a product as
 <code class="docutils literal"><span class="pre">"***Flashy####Product%%%%Name!!!!"</span></code> I copy that to the clipboard
-with <code class="key docutils literal"><span class="pre">⌘-C</span></code>, switch to emacs, do <code class="key docutils literal"><span class="pre">C-c</span> k S</code>, switch back to
+with <span class="key">⌘-C</span>, switch to emacs, do <span class="key">C-c k S</span>, switch back to
 whatever program is saving the file, and use the generated,
-sanitized name <code class="docutils literal"><span class="pre">Flashy-Product-Name</span></code> with <code class="key docutils literal"><span class="pre">⌘-V</span></code>.  Nifty!</p>
+sanitized name <code class="docutils literal"><span class="pre">Flashy-Product-Name</span></code> with <span class="key">⌘-V</span>.  Nifty!</p>
 <p>(And if you've ever wondered what the <a class="reference external" href="https://en.wikipedia.org/wiki/Unicode">Unicode</a> character for the Mac
-keyboard <a class="reference external" href="https://en.wikipedia.org/wiki/Command_key">Command key</a> (⌘) is, it is the PLACE OF INTEREST SIGN, and you
-can enter it by C-x 8 RETURN PLACE OF INTEREST SIGN.  The symbol they
-use for for the key labeled alt and <a class="reference external" href="https://en.wikipedia.org/wiki/Option_key">option</a> (⌥) is the Unicode OPTION
-KEY, and the symbol they use for the <a class="reference external" href="https://en.wikipedia.org/wiki/Shift_key">Shift Key</a> (⇧) is UPWARDS WHITE ARROW.
-I'm surprised they don't have a special symbol for <a class="reference external" href="https://en.wikipedia.org/wiki/Control_key">Control</a>, but it
-looks like they just use the plain ASCII ^, known in Unicode as
-CIRCUMFLEX ACCENT.)</p>
+keyboard <a class="reference external" href="https://en.wikipedia.org/wiki/Command_key">Command key</a> (⌘) is, it is the PLACE OF INTEREST SIGN, and
+you can enter it in <span class="app">Emacs</span> by <span class="key">C-x 8 RETURN PLACE OF
+INTEREST SIGN⏎</span>.  The symbol they use for for the key labeled alt and
+<a class="reference external" href="https://en.wikipedia.org/wiki/Option_key">option</a> (⌥) is the Unicode OPTION KEY, and the symbol they use for
+the <a class="reference external" href="https://en.wikipedia.org/wiki/Shift_key">Shift Key</a> (⇧) is UPWARDS WHITE ARROW.  I'm surprised they
+don't have a special symbol for <a class="reference external" href="https://en.wikipedia.org/wiki/Control_key">Control</a>, but it looks like they just
+use the plain ASCII ^, known in Unicode as CIRCUMFLEX ACCENT.)</p>
 <p>Anyway, <a class="reference external" href="../../../../../arrows-for-emacs.zip">here</a>'s a <a class="reference external" href="https://en.wikipedia.org/wiki/Info-ZIP">ZIP</a> file with the Emacs Lisp source for the arrow
 macros so you can use them if you've been convinced of their
 usefulness by this post.  It also has some minimal documentation in
@@ -252,6 +252,7 @@ docstrings for the macros.</p>
       <ol class="list-unstyled">
 <li><a href="../../../../../pages/about-the-blog/index.html">About the Blog</a></li>
         <li><a href="../../../../../pages/colophon/index.html">Colophon</a></li>
+        <li><a href="../../../../../pages/typographical-conventions/index.html">Typographical Conventions</a></li>
         <li><a href="../../../../../pages/static-pages-index/index.html">Pages</a></li>
         <li>
 <a href="http://tkb.tx0.org/">My other web page</a>

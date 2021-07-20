@@ -8,8 +8,8 @@
 .. type: text
 
 
-.. role:: area(emphasis)
-.. role:: scene(emphasis)
+.. role:: area
+.. role:: scene
 
 I ran the “Rebel Breakout” adventure from `Star Wars: the Roleplaying
 Game` using `Mini Six`__ from `AntiPaladin Games`__.  `Mini Six` is a very
