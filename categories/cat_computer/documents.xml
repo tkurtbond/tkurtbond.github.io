@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity (Posts about documents)</title><link>https://tkurtbond.github.io/</link><description></description><atom:link href="https://tkurtbond.github.io/categories/cat_computer/documents.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2021 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Tue, 20 Jul 2021 15:53:49 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>install-font.sh - The simple approach</title><link>https://tkurtbond.github.io/posts/2021/07/17/install-fontsh-the-simple-approach/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;The simple approach to using &lt;a class="reference external" href="https://www.schaffter.ca/mom/mom-05.html#install-font"&gt;install-font.sh&lt;/a&gt; to install fonts for
+<?xml-stylesheet type="text/xsl" href="../../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity (Posts about documents)</title><link>https://tkurtbond.github.io/</link><description></description><atom:link href="https://tkurtbond.github.io/categories/cat_computer/documents.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2021 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Tue, 20 Jul 2021 16:28:24 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>install-font.sh - The simple approach</title><link>https://tkurtbond.github.io/posts/2021/07/17/install-fontsh-the-simple-approach/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;The simple approach to using &lt;a class="reference external" href="https://www.schaffter.ca/mom/mom-05.html#install-font"&gt;install-font.sh&lt;/a&gt; to install fonts for
 &lt;span class="app"&gt;groff&lt;/span&gt; probably works for almost everybody.&lt;/p&gt;
 &lt;p&gt;First, make sure that &lt;a class="reference external" href="https://fontforge.org/"&gt;FontForge&lt;/a&gt; is installed; it is free and open
 source and available for installation in most distributions.  Second,
@@ -10,9 +10,9 @@ directories under &lt;span class="file"&gt;/usr/local/share/groff&lt;/span&gt;, 
 directories if necessary.  If you need to install into
 &lt;span class="file"&gt;/usr/share/groff&lt;/span&gt; you should specify the &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;-s&lt;/span&gt;&lt;/code&gt; option to the
 script.  For instance:&lt;/p&gt;
-&lt;pre class="code text"&gt;&lt;a name="rest_code_4fe7c0f65777440caca8bc0f7cc1491e-1"&gt;&lt;/a&gt;$ install-font.sh Lora-Regular.ttf
-&lt;/pre&gt;&lt;p&gt;will install the Regular variant of the font, leading you through a
-series of prompts, for most of which you just need to take the default.&lt;/p&gt;
+&lt;pre class="code text"&gt;&lt;a name="rest_code_ffa634e36a5a49439e20bec3edd51ba2-1"&gt;&lt;/a&gt;$ install-font.sh Lora-Regular.ttf
+&lt;/pre&gt;&lt;p&gt;will install the Regular variant of the font, leading you through four
+prompts, for most of which you just need to take the default.&lt;/p&gt;
 &lt;p&gt;The only prompt where you need to do something other than accept the
 default is the prompt for the style.  For &lt;span class="file"&gt;Lora-Regular&lt;/span&gt; you'd
 specify &lt;code class="docutils literal"&gt;+R&lt;/code&gt;.  For italic, bold, and bold italic, the other
@@ -23,9 +23,11 @@ and &lt;code class="docutils literal"&gt;+BI&lt;/code&gt;.  The prompt lists the
 &lt;span class="file"&gt;/usr/local/share/groff&lt;/span&gt; directory isn't writable for your
 normal user, you should prefix the command with &lt;code class="docutils literal"&gt;sudo&lt;/code&gt;.)&lt;/p&gt;
 &lt;p&gt;&lt;span class="command"&gt;install-font.sh&lt;/span&gt; does produce a lot of output, but the
-colorizing helps pick out the important things.&lt;/p&gt;
+colorizing helps pick out the important things.  I've put the
+responses the user types in bold and red, and added “&amp;lt;RETURN&amp;gt;”
+where the user presses the RETURN key to accept defaults.&lt;/p&gt;
 &lt;pre&gt;
-$ install-font.sh Lora-Regular.ttf
+$ &lt;span style="color:red;"&gt;&lt;b&gt;install-font.sh Lora-Regular.ttf&lt;/b&gt;&lt;/span&gt;
 /usr/local/share/groff/site-font not found; creating.
 /usr/local/share/groff/site-font/devps not found; creating.
 /usr/local/share/groff/site-font/devpdf not found; creating.
@@ -39,22 +41,22 @@ Copyright (c) 2000-2020. See AUTHORS for Contributors.
 The following table(s) in the font have been ignored by FontForge
   Ignoring 'STAT' style attributes table
 Done.
-Family name (default = Lora):
+Family name (default = Lora): &lt;span style="color:red;"&gt;&lt;b&gt;&amp;lt;RETURN&amp;gt;&lt;/b&gt;&lt;/span&gt;
   =&amp;gt;&lt;span style="color:teal;"&gt;Lora-Regular&lt;/span&gt; (Lora-Regular.ttf) assigned to family '&lt;span style="color:olive;"&gt;Lora&lt;/span&gt;'.
 Enter +STYLE (eg +R, +I, +B, +BI), or a unique groff name for &lt;span style="color:teal;"&gt;Lora-Regular&lt;/span&gt;.
-Leave blank to set name to '&lt;span style="color:teal;"&gt;Lora-Regular&lt;/span&gt;': +R
+Leave blank to set name to '&lt;span style="color:teal;"&gt;Lora-Regular&lt;/span&gt;': &lt;span style="color:red;"&gt;&lt;b&gt;+R&lt;/b&gt;&lt;/span&gt;
   =&amp;gt;&lt;span style="color:teal;"&gt;Lora-Regular&lt;/span&gt; assigned groff fontname '&lt;span style="color:olive;"&gt;LoraR&lt;/span&gt;'.
 Creating &lt;span style="color:olive;"&gt;LoraR&lt;/span&gt;...
 afmtodit: both uni00B5 and uni03BC map to mc at /Users/tkb/sw/versions/groff/git/bin/afmtodit line 6441.
 Done.
 Installing &lt;span style="color:olive;"&gt;LoraR&lt;/span&gt; in /usr/local/share/groff/site-font/devps/... Done.
-Make &lt;span style="color:olive;"&gt;LoraR&lt;/span&gt; available to gropdf? (y/n; default = y)
+Make &lt;span style="color:olive;"&gt;LoraR&lt;/span&gt; available to gropdf? (y/n; default = y) &lt;span style="color:red;"&gt;&lt;b&gt;&amp;lt;RETURN&amp;gt;&lt;/b&gt;&lt;/span&gt;
 Checking for gropdf executable and devpdf directory... gropdf found.
 Installing &lt;span style="color:olive;"&gt;LoraR&lt;/span&gt; in /usr/local/share/groff/site-font/devpdf/... Done.
 Copy &lt;span style="color:teal;"&gt;Lora-Regular.ttf&lt;/span&gt; to /usr/local/share/fonts/truetype/Lora/
-  (y/n; default = n)
+  (y/n; default = n) &lt;span style="color:red;"&gt;&lt;b&gt;&amp;lt;RETURN&amp;gt;&lt;/b&gt;&lt;/span&gt;
 Install &lt;span style="color:teal;"&gt;Lora-Regular.ttf&lt;/span&gt; manually to make it available system-wide.
-$ install-font.sh Lora-Italic.ttf
+$ &lt;span style="color:red;"&gt;&lt;b&gt;install-font.sh Lora-Italic.ttf&lt;/b&gt;&lt;/span&gt;
 Processing &lt;span style="color:teal;"&gt;Lora-Italic.ttf&lt;/span&gt;...
 Running fontforge...
 Copyright (c) 2000-2020. See AUTHORS for Contributors.
@@ -65,22 +67,22 @@ Copyright (c) 2000-2020. See AUTHORS for Contributors.
 The following table(s) in the font have been ignored by FontForge
   Ignoring 'STAT' style attributes table
 Done.
-Family name (default = Lora):
+Family name (default = Lora): &lt;span style="color:red;"&gt;&lt;b&gt;&amp;lt;RETURN&amp;gt;&lt;/b&gt;&lt;/span&gt;
   =&amp;gt;&lt;span style="color:teal;"&gt;Lora-Italic&lt;/span&gt; (Lora-Italic.ttf) assigned to family '&lt;span style="color:olive;"&gt;Lora&lt;/span&gt;'.
 Enter +STYLE (eg +R, +I, +B, +BI), or a unique groff name for &lt;span style="color:teal;"&gt;Lora-Italic&lt;/span&gt;.
-Leave blank to set name to '&lt;span style="color:teal;"&gt;Lora-Italic&lt;/span&gt;':
-  =&amp;gt;&lt;span style="color:teal;"&gt;Lora-Italic&lt;/span&gt; assigned groff fontname '&lt;span style="color:olive;"&gt;Lora-Italic&lt;/span&gt;'.
-Creating &lt;span style="color:olive;"&gt;Lora-Italic&lt;/span&gt;...
+Leave blank to set name to '&lt;span style="color:teal;"&gt;Lora-Italic&lt;/span&gt;': &lt;span style="color:red;"&gt;&lt;b&gt;+I&lt;/b&gt;&lt;/span&gt;
+  =&amp;gt;&lt;span style="color:teal;"&gt;Lora-Italic&lt;/span&gt; assigned groff fontname '&lt;span style="color:olive;"&gt;LoraI&lt;/span&gt;'.
+Creating &lt;span style="color:olive;"&gt;LoraI&lt;/span&gt;...
 afmtodit: both uni00B5 and uni03BC map to mc at /Users/tkb/sw/versions/groff/git/bin/afmtodit line 6441.
 Done.
-Installing &lt;span style="color:olive;"&gt;Lora-Italic&lt;/span&gt; in /usr/local/share/groff/site-font/devps/... Done.
-Make &lt;span style="color:olive;"&gt;Lora-Italic&lt;/span&gt; available to gropdf? (y/n; default = y)
+Installing &lt;span style="color:olive;"&gt;LoraI&lt;/span&gt; in /usr/local/share/groff/site-font/devps/... Done.
+Make &lt;span style="color:olive;"&gt;LoraI&lt;/span&gt; available to gropdf? (y/n; default = y) &lt;span style="color:red;"&gt;&lt;b&gt;&amp;lt;RETURN&amp;gt;&lt;/b&gt;&lt;/span&gt;
 Checking for gropdf executable and devpdf directory... gropdf found.
-Installing &lt;span style="color:olive;"&gt;Lora-Italic&lt;/span&gt; in /usr/local/share/groff/site-font/devpdf/... Done.
+Installing &lt;span style="color:olive;"&gt;LoraI&lt;/span&gt; in /usr/local/share/groff/site-font/devpdf/... Done.
 Copy &lt;span style="color:teal;"&gt;Lora-Italic.ttf&lt;/span&gt; to /usr/local/share/fonts/truetype/Lora/
-  (y/n; default = n)
+  (y/n; default = n) &lt;span style="color:red;"&gt;&lt;b&gt;&amp;lt;RETURN&amp;gt;&lt;/b&gt;&lt;/span&gt;
 Install &lt;span style="color:teal;"&gt;Lora-Italic.ttf&lt;/span&gt; manually to make it available system-wide.
-$ install-font.sh Lora-Bold.ttf
+$ &lt;span style="color:red;"&gt;&lt;b&gt;install-font.sh Lora-Bold.ttf&lt;/b&gt;&lt;/span&gt;
 Processing &lt;span style="color:teal;"&gt;Lora-Bold.ttf&lt;/span&gt;...
 Running fontforge...
 Copyright (c) 2000-2020. See AUTHORS for Contributors.
@@ -95,20 +97,20 @@ Glyph bounding box data exceeds font bounding box data for GID 4
 In GID 769 the advance width (1316) is greater than the stated maximum (1291)
   Subsequent errors will not be reported.
 Done.
-Family name (default = Lora):
+Family name (default = Lora): &lt;span style="color:red;"&gt;&lt;b&gt;&amp;lt;RETURN&amp;gt;&lt;/b&gt;&lt;/span&gt;
   =&amp;gt;&lt;span style="color:teal;"&gt;Lora-Bold&lt;/span&gt; (Lora-Bold.ttf) assigned to family '&lt;span style="color:olive;"&gt;Lora&lt;/span&gt;'.
 Enter +STYLE (eg +R, +I, +B, +BI), or a unique groff name for &lt;span style="color:teal;"&gt;Lora-Bold&lt;/span&gt;.
-Leave blank to set name to '&lt;span style="color:teal;"&gt;Lora-Bold&lt;/span&gt;': +B
+Leave blank to set name to '&lt;span style="color:teal;"&gt;Lora-Bold&lt;/span&gt;': &lt;span style="color:red;"&gt;&lt;b&gt;+B&lt;/b&gt;&lt;/span&gt;
   =&amp;gt;&lt;span style="color:teal;"&gt;Lora-Bold&lt;/span&gt; assigned groff fontname '&lt;span style="color:olive;"&gt;LoraB&lt;/span&gt;'.
 Creating &lt;span style="color:olive;"&gt;LoraB&lt;/span&gt;...
 afmtodit: both uni00B5 and uni03BC map to mc at /Users/tkb/sw/versions/groff/git/bin/afmtodit line 6441.
 Done.
 Installing &lt;span style="color:olive;"&gt;LoraB&lt;/span&gt; in /usr/local/share/groff/site-font/devps/... Done.
-Make &lt;span style="color:olive;"&gt;LoraB&lt;/span&gt; available to gropdf? (y/n; default = y)
+Make &lt;span style="color:olive;"&gt;LoraB&lt;/span&gt; available to gropdf? (y/n; default = y) &lt;span style="color:red;"&gt;&lt;b&gt;&amp;lt;RETURN&amp;gt;&lt;/b&gt;&lt;/span&gt;
 Checking for gropdf executable and devpdf directory... gropdf found.
 Installing &lt;span style="color:olive;"&gt;LoraB&lt;/span&gt; in /usr/local/share/groff/site-font/devpdf/... Done.
 Copy &lt;span style="color:teal;"&gt;Lora-Bold.ttf&lt;/span&gt; to /usr/local/share/fonts/truetype/Lora/
-  (y/n; default = n)
+  (y/n; default = n) &lt;span style="color:red;"&gt;&lt;b&gt;&amp;lt;RETURN&amp;gt;&lt;/b&gt;&lt;/span&gt;
 Install &lt;span style="color:teal;"&gt;Lora-Bold.ttf&lt;/span&gt; manually to make it available system-wide.
 $ install-font.sh Lora-BoldItalic.ttf
 Processing &lt;span style="color:teal;"&gt;Lora-BoldItalic.ttf&lt;/span&gt;...
@@ -125,22 +127,22 @@ Glyph bounding box data exceeds font bounding box data for GID 4
 In GID 776 the advance width (1297) is greater than the stated maximum (1273)
   Subsequent errors will not be reported.
 Done.
-Family name (default = Lora):
+Family name (default = Lora): &lt;span style="color:red;"&gt;&lt;b&gt;&amp;lt;RETURN&amp;gt;&lt;/b&gt;&lt;/span&gt;
   =&amp;gt;&lt;span style="color:teal;"&gt;Lora-BoldItalic&lt;/span&gt; (Lora-BoldItalic.ttf) assigned to family '&lt;span style="color:olive;"&gt;Lora&lt;/span&gt;'.
 Enter +STYLE (eg +R, +I, +B, +BI), or a unique groff name for &lt;span style="color:teal;"&gt;Lora-BoldItalic&lt;/span&gt;.
-Leave blank to set name to '&lt;span style="color:teal;"&gt;Lora-BoldItalic&lt;/span&gt;': +BI
+Leave blank to set name to '&lt;span style="color:teal;"&gt;Lora-BoldItalic&lt;/span&gt;': &lt;span style="color:red;"&gt;&lt;b&gt;+BI&lt;/b&gt;&lt;/span&gt;
   =&amp;gt;&lt;span style="color:teal;"&gt;Lora-BoldItalic&lt;/span&gt; assigned groff fontname '&lt;span style="color:olive;"&gt;LoraBI&lt;/span&gt;'.
 Creating &lt;span style="color:olive;"&gt;LoraBI&lt;/span&gt;...
 afmtodit: both uni00B5 and uni03BC map to mc at /Users/tkb/sw/versions/groff/git/bin/afmtodit line 6441.
 Done.
 Installing &lt;span style="color:olive;"&gt;LoraBI&lt;/span&gt; in /usr/local/share/groff/site-font/devps/... Done.
-Make &lt;span style="color:olive;"&gt;LoraBI&lt;/span&gt; available to gropdf? (y/n; default = y)
+Make &lt;span style="color:olive;"&gt;LoraBI&lt;/span&gt; available to gropdf? (y/n; default = y) &lt;span style="color:red;"&gt;&lt;b&gt;&amp;lt;RETURN&amp;gt;&lt;/b&gt;&lt;/span&gt;
 Checking for gropdf executable and devpdf directory... gropdf found.
 Installing &lt;span style="color:olive;"&gt;LoraBI&lt;/span&gt; in /usr/local/share/groff/site-font/devpdf/... Done.
 Copy &lt;span style="color:teal;"&gt;Lora-BoldItalic.ttf&lt;/span&gt; to /usr/local/share/fonts/truetype/Lora/
-  (y/n; default = n)
+  (y/n; default = n) &lt;span style="color:red;"&gt;&lt;b&gt;&amp;lt;RETURN&amp;gt;&lt;/b&gt;&lt;/span&gt;
 Install &lt;span style="color:teal;"&gt;Lora-BoldItalic.ttf&lt;/span&gt; manually to make it available system-wide.
-&lt;/pre&gt;&lt;p&gt;&lt;em&gt;Last edited: 2021-07-20 11:53:36 EDT&lt;/em&gt;&lt;/p&gt;
+&lt;/pre&gt;&lt;p&gt;&lt;em&gt;Last edited: 2021-07-20 12:28:14 EDT&lt;/em&gt;&lt;/p&gt;
 &lt;!-- Local Variables:
 time-stamp-format: "%Y-%02m-%02d %02H:%02M:%02S %Z"
 time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
