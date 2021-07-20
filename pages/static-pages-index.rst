@@ -20,3 +20,4 @@ Static Pages on this Site
 * `Roleplaying Games <link://slug/roleplaying-games>`_
 * `RPGs played with the kids <link://slug/roleplaying-games-played-with-the-kids>`_
 * `RPG Vocabulary <link://slug/rpg-vocabulary>`_
+* `Typographical Conventions <link://slug/typographical-conventions>`_
