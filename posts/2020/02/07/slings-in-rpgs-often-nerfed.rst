@@ -1,7 +1,7 @@
 .. title: Slings in RPGs: Often Nerfed
 .. slug: slings-in-rpgs-often-nerfed
 .. date: 2020-02-07 14:40:23 UTC-05:00
-.. tags: rpg,d&d,runequest,dragonquest,talislanta,slings,gurps,savage worlds,hero system,the fantasy trip,tft,big eyes small mouth,besm,harnmaster,d6 fantasy,opend6,tunnels & trolls,t&t,dragon warriors,brp,basic roleplaying,elric!,stormbringer,traveller,classic traveller,cepheus engine,sword of cepheus,nerfed
+.. tags: rpg,d&d,runequest,dragonquest,talislanta,slings,gurps,savage worlds,hero system,the fantasy trip,tft,big eyes small mouth,besm,harnmaster,d6 fantasy,opend6,tunnels & trolls,t&t,dragon warriors,brp,basic roleplaying,elric!,stormbringer,traveller,classic traveller,cepheus engine,sword of cepheus,nerfed,ad&d 1e,d&d 4e,aff 1e,aff 2e,advanced fighting fantasy
 .. category: gaming
 .. link: 
 .. description: 
@@ -189,8 +189,8 @@ long bow, 1d8, as Chaosium's `Basic Roleplaying (BRP)`_ variants
 
 .. _`Basic Roleplaying (BRP)`: https://en.wikipedia.org/wiki/Basic_Role-Playing
 
-2020-03-14 Addendum
-===================
+2020-03-14 Addendum — Classic Traveller & Cepheus Engine
+========================================================
 
 `Classic Traveller`_\ 's `Supplement 04 Citizens of the
 Imperium` (1979) has a section on bow weapons, on p. 16!  A sling does
@@ -209,7 +209,43 @@ nerfed.
 .. _C2: https://www.paulelliottbooks.com/what-is-cepheus-engine.html
 .. _`Sword of Cepheus`: https://www.drivethrurpg.com/product/304840/The-Sword-of-Cepheus
 
-*Last edited: 2021-07-13 01:29:11 EDT*
+.. _aff:
+
+2021-07-19 Addendum — Advanced Fighting Fantasy 1E & 2E
+=======================================================
+
+AFF 1E (Dungeoneer_, Blacksand_, Allansia_) does not, as far as I can tell,
+mention slings at all.  Boo, hiss!
+
+.. _Dungeoneer: https://fightingfantasy.fandom.com/wiki/Dungeoneer_(book)
+.. _Blacksand: https://fightingfantasy.fandom.com/wiki/Blacksand_(AFF)
+.. _Allansia: https://fightingfantasy.fandom.com/wiki/Allansia_(book)
+
+`AFF 2E`_ *does* have slings.  Yay!  In AFF you roll a d6 (the Damage
+roll) and look up the result on a table for your weapon.  You can have
+bonuses to the d6 Damage roll that can give a result of 7 or above.
+Here is the entry for sling, along with longbow, shortbow and sword
+for comparison.
+
+================  ===== ===== ===== ===== ===== ===== ======
+**Weapon**        **1** **2** **3** **4** **5** **6** **7+**
+================  ===== ===== ===== ===== ===== ===== ======
+Sling             1     1     2     2     2     3     4
+Arrow - Longbow   2     3     3     3     3     4     5
+Arrow - Shortbow  1     2     2     3     3     3     4
+Sword             2     3     3     3     3     4     5
+================  ===== ===== ===== ===== ===== ===== ======
+
+So, slings are a little nerfed.  I think I'll use a house rule that
+says the sling damage in the book is for sling stones, and sling
+bullets do the same damage as an arrow fired from a shortbow.
+
+What do you think? 
+
+.. _AFF 2E: https://www.drivethrurpg.com/browse/pub/667/Arion-Games/subcategory/1684_25223/Advanced-Fighting-Fantasy
+
+
+*Last edited: 2021-07-19 23:16:31 EDT*
 
 ..
    Local Variables:
