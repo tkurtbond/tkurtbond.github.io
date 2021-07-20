@@ -51,6 +51,7 @@ Now for the fun stuff:
 .. role:: scene
 .. role:: gm
 .. role:: hire
+.. role:: xp
 
 • Encounter area identifiers (usually letters or numbers or a
   combination thereof) are enclosed in a box with rounded corners:
@@ -75,4 +76,5 @@ Now for the fun stuff:
 • A GM's name, when notated, is in underlined, overlined dark green: :gm:`T.T.`.
 • A hireling's name, notated, is in underline: :hire:`Symna` and
   :hire:`Karl`.
-• Experience points (or character points, whatever they are named), when notated, are in bold: :xp:`250 xp`.
+• Experience points (or character points, whatever they are named),
+  when notated, are in bold: :xp:`250 xp`.
