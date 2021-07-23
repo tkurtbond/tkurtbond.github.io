@@ -32,10 +32,13 @@ after a hiatus, I've moved everything to Nikola_.
 
 * I've moved on to Nikola_, a static site generator.  All the text is
   still written in reStructuredText, and all the posts and pages from
-  the first blog are again available.
+  the first blog are again available.  I'm hosting it on `Github
+  Pages`_, but since it's a static site I could easily move it
+  elsewhere if it becomes necessary.
 
 .. _Emacs: http://www.gnu.org/software/emacs/
 .. _reStructuredText: http://docutils.sourceforge.net/rst.html
 .. _Docutils: http://docutils.sourceforge.net/index.html
 .. _PyBloxsom: http://pyblosxom.github.io/
 .. _Nikola: https://getnikola.com/
+.. _Github Pages: https://pages.github.com/
