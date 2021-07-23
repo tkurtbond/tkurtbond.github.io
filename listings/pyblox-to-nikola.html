@@ -62,337 +62,337 @@
     <div class="code"><table class="codetable">
 <tr>
 <td class="linenos linenodiv"><a href="#listingspyblox-to-nikola-1"><code data-line-number=" 1"></code></a></td>
-<td class="code"><code><a id="listingspyblox-to-nikola-1" name="listingspyblox-to-nikola-1"></a><span class="ch">#! /usr/bin/env python3.7</span>
+<td class="code"><code><a name="listingspyblox-to-nikola-1"></a><span class="ch">#! /usr/bin/env python3.7</span>
 </code></td>
 </tr>
 <tr>
 <td class="linenos linenodiv"><a href="#listingspyblox-to-nikola-2"><code data-line-number=" 2"></code></a></td>
-<td class="code"><code><a id="listingspyblox-to-nikola-2" name="listingspyblox-to-nikola-2"></a>
+<td class="code"><code><a name="listingspyblox-to-nikola-2"></a>
 </code></td>
 </tr>
 <tr>
 <td class="linenos linenodiv"><a href="#listingspyblox-to-nikola-3"><code data-line-number=" 3"></code></a></td>
-<td class="code"><code><a id="listingspyblox-to-nikola-3" name="listingspyblox-to-nikola-3"></a><span class="kn">import</span> <span class="nn">os</span>
+<td class="code"><code><a name="listingspyblox-to-nikola-3"></a><span class="kn">import</span> <span class="nn">os</span>
 </code></td>
 </tr>
 <tr>
 <td class="linenos linenodiv"><a href="#listingspyblox-to-nikola-4"><code data-line-number=" 4"></code></a></td>
-<td class="code"><code><a id="listingspyblox-to-nikola-4" name="listingspyblox-to-nikola-4"></a><span class="kn">import</span> <span class="nn">os.path</span>
+<td class="code"><code><a name="listingspyblox-to-nikola-4"></a><span class="kn">import</span> <span class="nn">os.path</span>
 </code></td>
 </tr>
 <tr>
 <td class="linenos linenodiv"><a href="#listingspyblox-to-nikola-5"><code data-line-number=" 5"></code></a></td>
-<td class="code"><code><a id="listingspyblox-to-nikola-5" name="listingspyblox-to-nikola-5"></a><span class="kn">import</span> <span class="nn">sys</span>
+<td class="code"><code><a name="listingspyblox-to-nikola-5"></a><span class="kn">import</span> <span class="nn">sys</span>
 </code></td>
 </tr>
 <tr>
 <td class="linenos linenodiv"><a href="#listingspyblox-to-nikola-6"><code data-line-number=" 6"></code></a></td>
-<td class="code"><code><a id="listingspyblox-to-nikola-6" name="listingspyblox-to-nikola-6"></a><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<td class="code"><code><a name="listingspyblox-to-nikola-6"></a><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
 </code></td>
 </tr>
 <tr>
 <td class="linenos linenodiv"><a href="#listingspyblox-to-nikola-7"><code data-line-number=" 7"></code></a></td>
-<td class="code"><code><a id="listingspyblox-to-nikola-7" name="listingspyblox-to-nikola-7"></a>
+<td class="code"><code><a name="listingspyblox-to-nikola-7"></a>
 </code></td>
 </tr>
 <tr>
 <td class="linenos linenodiv"><a href="#listingspyblox-to-nikola-8"><code data-line-number=" 8"></code></a></td>
-<td class="code"><code><a id="listingspyblox-to-nikola-8" name="listingspyblox-to-nikola-8"></a><span class="c1"># datetime.strptime ('2019-11-05 20:32:24', '%Y-%m-%d %H:%M:%S')</span>
+<td class="code"><code><a name="listingspyblox-to-nikola-8"></a><span class="c1"># datetime.strptime ('2019-11-05 20:32:24', '%Y-%m-%d %H:%M:%S')</span>
 </code></td>
 </tr>
 <tr>
 <td class="linenos linenodiv"><a href="#listingspyblox-to-nikola-9"><code data-line-number=" 9"></code></a></td>
-<td class="code"><code><a id="listingspyblox-to-nikola-9" name="listingspyblox-to-nikola-9"></a><span class="c1"># dt.strftime ('%Y-%m-%d %H:%M:%S UTC-05:00')</span>
+<td class="code"><code><a name="listingspyblox-to-nikola-9"></a><span class="c1"># dt.strftime ('%Y-%m-%d %H:%M:%S UTC-05:00')</span>
 </code></td>
 </tr>
 <tr>
 <td class="linenos linenodiv"><a href="#listingspyblox-to-nikola-10"><code data-line-number="10"></code></a></td>
-<td class="code"><code><a id="listingspyblox-to-nikola-10" name="listingspyblox-to-nikola-10"></a>
+<td class="code"><code><a name="listingspyblox-to-nikola-10"></a>
 </code></td>
 </tr>
 <tr>
 <td class="linenos linenodiv"><a href="#listingspyblox-to-nikola-11"><code data-line-number="11"></code></a></td>
-<td class="code"><code><a id="listingspyblox-to-nikola-11" name="listingspyblox-to-nikola-11"></a><span class="n">entries_prefix</span> <span class="o">=</span> <span class="s1">'entries/'</span>
+<td class="code"><code><a name="listingspyblox-to-nikola-11"></a><span class="n">entries_prefix</span> <span class="o">=</span> <span class="s1">'entries/'</span>
 </code></td>
 </tr>
 <tr>
 <td class="linenos linenodiv"><a href="#listingspyblox-to-nikola-12"><code data-line-number="12"></code></a></td>
-<td class="code"><code><a id="listingspyblox-to-nikola-12" name="listingspyblox-to-nikola-12"></a><span class="n">notentries_prefix</span> <span class="o">=</span> <span class="s1">'notentries/'</span>
+<td class="code"><code><a name="listingspyblox-to-nikola-12"></a><span class="n">notentries_prefix</span> <span class="o">=</span> <span class="s1">'notentries/'</span>
 </code></td>
 </tr>
 <tr>
 <td class="linenos linenodiv"><a href="#listingspyblox-to-nikola-13"><code data-line-number="13"></code></a></td>
-<td class="code"><code><a id="listingspyblox-to-nikola-13" name="listingspyblox-to-nikola-13"></a><span class="n">published_prefix</span> <span class="o">=</span> <span class="s1">'#published '</span>
+<td class="code"><code><a name="listingspyblox-to-nikola-13"></a><span class="n">published_prefix</span> <span class="o">=</span> <span class="s1">'#published '</span>
 </code></td>
 </tr>
 <tr>
 <td class="linenos linenodiv"><a href="#listingspyblox-to-nikola-14"><code data-line-number="14"></code></a></td>
-<td class="code"><code><a id="listingspyblox-to-nikola-14" name="listingspyblox-to-nikola-14"></a><span class="n">tags_prefix</span> <span class="o">=</span> <span class="s1">'#tags '</span>
+<td class="code"><code><a name="listingspyblox-to-nikola-14"></a><span class="n">tags_prefix</span> <span class="o">=</span> <span class="s1">'#tags '</span>
 </code></td>
 </tr>
 <tr>
 <td class="linenos linenodiv"><a href="#listingspyblox-to-nikola-15"><code data-line-number="15"></code></a></td>
-<td class="code"><code><a id="listingspyblox-to-nikola-15" name="listingspyblox-to-nikola-15"></a>
+<td class="code"><code><a name="listingspyblox-to-nikola-15"></a>
 </code></td>
 </tr>
 <tr>
 <td class="linenos linenodiv"><a href="#listingspyblox-to-nikola-16"><code data-line-number="16"></code></a></td>
-<td class="code"><code><a id="listingspyblox-to-nikola-16" name="listingspyblox-to-nikola-16"></a><span class="n">files_read</span> <span class="o">=</span> <span class="mi">0</span>
+<td class="code"><code><a name="listingspyblox-to-nikola-16"></a><span class="n">files_read</span> <span class="o">=</span> <span class="mi">0</span>
 </code></td>
 </tr>
 <tr>
 <td class="linenos linenodiv"><a href="#listingspyblox-to-nikola-17"><code data-line-number="17"></code></a></td>
-<td class="code"><code><a id="listingspyblox-to-nikola-17" name="listingspyblox-to-nikola-17"></a><span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdin</span><span class="p">:</span>
+<td class="code"><code><a name="listingspyblox-to-nikola-17"></a><span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdin</span><span class="p">:</span>
 </code></td>
 </tr>
 <tr>
 <td class="linenos linenodiv"><a href="#listingspyblox-to-nikola-18"><code data-line-number="18"></code></a></td>
-<td class="code"><code><a id="listingspyblox-to-nikola-18" name="listingspyblox-to-nikola-18"></a>    <span class="n">filename</span> <span class="o">=</span> <span class="n">filename</span><span class="o">.</span><span class="n">rstrip</span> <span class="p">()</span>
+<td class="code"><code><a name="listingspyblox-to-nikola-18"></a>    <span class="n">filename</span> <span class="o">=</span> <span class="n">filename</span><span class="o">.</span><span class="n">rstrip</span> <span class="p">()</span>
 </code></td>
 </tr>
 <tr>
 <td class="linenos linenodiv"><a href="#listingspyblox-to-nikola-19"><code data-line-number="19"></code></a></td>
-<td class="code"><code><a id="listingspyblox-to-nikola-19" name="listingspyblox-to-nikola-19"></a>    <span class="n">basename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span>  <span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+<td class="code"><code><a name="listingspyblox-to-nikola-19"></a>    <span class="n">basename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span>  <span class="p">(</span><span class="n">filename</span><span class="p">)</span>
 </code></td>
 </tr>
 <tr>
 <td class="linenos linenodiv"><a href="#listingspyblox-to-nikola-20"><code data-line-number="20"></code></a></td>
-<td class="code"><code><a id="listingspyblox-to-nikola-20" name="listingspyblox-to-nikola-20"></a>    <span class="n">dirname</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span> <span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+<td class="code"><code><a name="listingspyblox-to-nikola-20"></a>    <span class="n">dirname</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span> <span class="p">(</span><span class="n">filename</span><span class="p">)</span>
 </code></td>
 </tr>
 <tr>
 <td class="linenos linenodiv"><a href="#listingspyblox-to-nikola-21"><code data-line-number="21"></code></a></td>
-<td class="code"><code><a id="listingspyblox-to-nikola-21" name="listingspyblox-to-nikola-21"></a>    <span class="k">if</span> <span class="n">dirname</span><span class="o">.</span><span class="n">startswith</span> <span class="p">(</span><span class="n">entries_prefix</span><span class="p">):</span>
+<td class="code"><code><a name="listingspyblox-to-nikola-21"></a>    <span class="k">if</span> <span class="n">dirname</span><span class="o">.</span><span class="n">startswith</span> <span class="p">(</span><span class="n">entries_prefix</span><span class="p">):</span>
 </code></td>
 </tr>
 <tr>
 <td class="linenos linenodiv"><a href="#listingspyblox-to-nikola-22"><code data-line-number="22"></code></a></td>
-<td class="code"><code><a id="listingspyblox-to-nikola-22" name="listingspyblox-to-nikola-22"></a>        <span class="n">category</span> <span class="o">=</span> <span class="n">dirname</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">entries_prefix</span><span class="p">):]</span>
+<td class="code"><code><a name="listingspyblox-to-nikola-22"></a>        <span class="n">category</span> <span class="o">=</span> <span class="n">dirname</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">entries_prefix</span><span class="p">):]</span>
 </code></td>
 </tr>
 <tr>
 <td class="linenos linenodiv"><a href="#listingspyblox-to-nikola-23"><code data-line-number="23"></code></a></td>
-<td class="code"><code><a id="listingspyblox-to-nikola-23" name="listingspyblox-to-nikola-23"></a>    <span class="k">elif</span> <span class="n">dirname</span><span class="o">.</span><span class="n">startswith</span> <span class="p">(</span><span class="n">notentries_prefix</span><span class="p">):</span>
+<td class="code"><code><a name="listingspyblox-to-nikola-23"></a>    <span class="k">elif</span> <span class="n">dirname</span><span class="o">.</span><span class="n">startswith</span> <span class="p">(</span><span class="n">notentries_prefix</span><span class="p">):</span>
 </code></td>
 </tr>
 <tr>
 <td class="linenos linenodiv"><a href="#listingspyblox-to-nikola-24"><code data-line-number="24"></code></a></td>
-<td class="code"><code><a id="listingspyblox-to-nikola-24" name="listingspyblox-to-nikola-24"></a>        <span class="n">category</span> <span class="o">=</span> <span class="n">dirname</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">notentries_prefix</span><span class="p">):]</span>
+<td class="code"><code><a name="listingspyblox-to-nikola-24"></a>        <span class="n">category</span> <span class="o">=</span> <span class="n">dirname</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">notentries_prefix</span><span class="p">):]</span>
 </code></td>
 </tr>
 <tr>
 <td class="linenos linenodiv"><a href="#listingspyblox-to-nikola-25"><code data-line-number="25"></code></a></td>
-<td class="code"><code><a id="listingspyblox-to-nikola-25" name="listingspyblox-to-nikola-25"></a>    <span class="k">else</span><span class="p">:</span>
+<td class="code"><code><a name="listingspyblox-to-nikola-25"></a>    <span class="k">else</span><span class="p">:</span>
 </code></td>
 </tr>
 <tr>
 <td class="linenos linenodiv"><a href="#listingspyblox-to-nikola-26"><code data-line-number="26"></code></a></td>
-<td class="code"><code><a id="listingspyblox-to-nikola-26" name="listingspyblox-to-nikola-26"></a>        <span class="n">category</span> <span class="o">=</span> <span class="s1">''</span>
+<td class="code"><code><a name="listingspyblox-to-nikola-26"></a>        <span class="n">category</span> <span class="o">=</span> <span class="s1">''</span>
 </code></td>
 </tr>
 <tr>
 <td class="linenos linenodiv"><a href="#listingspyblox-to-nikola-27"><code data-line-number="27"></code></a></td>
-<td class="code"><code><a id="listingspyblox-to-nikola-27" name="listingspyblox-to-nikola-27"></a>    <span class="p">(</span><span class="n">slug</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span> <span class="p">(</span><span class="n">basename</span><span class="p">)</span>
+<td class="code"><code><a name="listingspyblox-to-nikola-27"></a>    <span class="p">(</span><span class="n">slug</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span> <span class="p">(</span><span class="n">basename</span><span class="p">)</span>
 </code></td>
 </tr>
 <tr>
 <td class="linenos linenodiv"><a href="#listingspyblox-to-nikola-28"><code data-line-number="28"></code></a></td>
-<td class="code"><code><a id="listingspyblox-to-nikola-28" name="listingspyblox-to-nikola-28"></a>    <span class="nb">print</span> <span class="p">(</span><span class="s1">'filename: </span><span class="si">%s</span><span class="se">\n</span><span class="s1">basename: </span><span class="si">%s</span><span class="se">\n</span><span class="s1">dirname: </span><span class="si">%s</span><span class="se">\n</span><span class="s1">category: </span><span class="si">%s</span><span class="se">\n</span><span class="s1">slug: </span><span class="si">%s</span><span class="s1">'</span> <span class="o">%</span>
+<td class="code"><code><a name="listingspyblox-to-nikola-28"></a>    <span class="k">print</span> <span class="p">(</span><span class="s1">'filename: </span><span class="si">%s</span><span class="se">\n</span><span class="s1">basename: </span><span class="si">%s</span><span class="se">\n</span><span class="s1">dirname: </span><span class="si">%s</span><span class="se">\n</span><span class="s1">category: </span><span class="si">%s</span><span class="se">\n</span><span class="s1">slug: </span><span class="si">%s</span><span class="s1">'</span> <span class="o">%</span>
 </code></td>
 </tr>
 <tr>
 <td class="linenos linenodiv"><a href="#listingspyblox-to-nikola-29"><code data-line-number="29"></code></a></td>
-<td class="code"><code><a id="listingspyblox-to-nikola-29" name="listingspyblox-to-nikola-29"></a>           <span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">basename</span><span class="p">,</span> <span class="n">dirname</span><span class="p">,</span> <span class="n">category</span><span class="p">,</span> <span class="n">slug</span><span class="p">))</span>
+<td class="code"><code><a name="listingspyblox-to-nikola-29"></a>           <span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">basename</span><span class="p">,</span> <span class="n">dirname</span><span class="p">,</span> <span class="n">category</span><span class="p">,</span> <span class="n">slug</span><span class="p">))</span>
 </code></td>
 </tr>
 <tr>
 <td class="linenos linenodiv"><a href="#listingspyblox-to-nikola-30"><code data-line-number="30"></code></a></td>
-<td class="code"><code><a id="listingspyblox-to-nikola-30" name="listingspyblox-to-nikola-30"></a>    <span class="n">inf</span> <span class="o">=</span> <span class="nb">open</span> <span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">)</span>
+<td class="code"><code><a name="listingspyblox-to-nikola-30"></a>    <span class="n">inf</span> <span class="o">=</span> <span class="nb">open</span> <span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">)</span>
 </code></td>
 </tr>
 <tr>
 <td class="linenos linenodiv"><a href="#listingspyblox-to-nikola-31"><code data-line-number="31"></code></a></td>
-<td class="code"><code><a id="listingspyblox-to-nikola-31" name="listingspyblox-to-nikola-31"></a>    <span class="n">files_read</span> <span class="o">=</span> <span class="n">files_read</span> <span class="o">+</span> <span class="mi">1</span>
+<td class="code"><code><a name="listingspyblox-to-nikola-31"></a>    <span class="n">files_read</span> <span class="o">=</span> <span class="n">files_read</span> <span class="o">+</span> <span class="mi">1</span>
 </code></td>
 </tr>
 <tr>
 <td class="linenos linenodiv"><a href="#listingspyblox-to-nikola-32"><code data-line-number="32"></code></a></td>
-<td class="code"><code><a id="listingspyblox-to-nikola-32" name="listingspyblox-to-nikola-32"></a>    <span class="n">title</span> <span class="o">=</span> <span class="n">inf</span><span class="o">.</span><span class="n">readline</span> <span class="p">()</span>
+<td class="code"><code><a name="listingspyblox-to-nikola-32"></a>    <span class="n">title</span> <span class="o">=</span> <span class="n">inf</span><span class="o">.</span><span class="n">readline</span> <span class="p">()</span>
 </code></td>
 </tr>
 <tr>
 <td class="linenos linenodiv"><a href="#listingspyblox-to-nikola-33"><code data-line-number="33"></code></a></td>
-<td class="code"><code><a id="listingspyblox-to-nikola-33" name="listingspyblox-to-nikola-33"></a>    <span class="n">title</span> <span class="o">=</span> <span class="n">title</span><span class="o">.</span><span class="n">rstrip</span> <span class="p">()</span>
+<td class="code"><code><a name="listingspyblox-to-nikola-33"></a>    <span class="n">title</span> <span class="o">=</span> <span class="n">title</span><span class="o">.</span><span class="n">rstrip</span> <span class="p">()</span>
 </code></td>
 </tr>
 <tr>
 <td class="linenos linenodiv"><a href="#listingspyblox-to-nikola-34"><code data-line-number="34"></code></a></td>
-<td class="code"><code><a id="listingspyblox-to-nikola-34" name="listingspyblox-to-nikola-34"></a>    <span class="n">published</span> <span class="o">=</span> <span class="n">inf</span><span class="o">.</span><span class="n">readline</span> <span class="p">()</span>
+<td class="code"><code><a name="listingspyblox-to-nikola-34"></a>    <span class="n">published</span> <span class="o">=</span> <span class="n">inf</span><span class="o">.</span><span class="n">readline</span> <span class="p">()</span>
 </code></td>
 </tr>
 <tr>
 <td class="linenos linenodiv"><a href="#listingspyblox-to-nikola-35"><code data-line-number="35"></code></a></td>
-<td class="code"><code><a id="listingspyblox-to-nikola-35" name="listingspyblox-to-nikola-35"></a>    <span class="n">published</span> <span class="o">=</span> <span class="n">published</span><span class="o">.</span><span class="n">strip</span> <span class="p">()</span>
+<td class="code"><code><a name="listingspyblox-to-nikola-35"></a>    <span class="n">published</span> <span class="o">=</span> <span class="n">published</span><span class="o">.</span><span class="n">strip</span> <span class="p">()</span>
 </code></td>
 </tr>
 <tr>
 <td class="linenos linenodiv"><a href="#listingspyblox-to-nikola-36"><code data-line-number="36"></code></a></td>
-<td class="code"><code><a id="listingspyblox-to-nikola-36" name="listingspyblox-to-nikola-36"></a>    <span class="k">if</span> <span class="n">published</span><span class="o">.</span><span class="n">startswith</span> <span class="p">(</span><span class="n">published_prefix</span><span class="p">):</span>
+<td class="code"><code><a name="listingspyblox-to-nikola-36"></a>    <span class="k">if</span> <span class="n">published</span><span class="o">.</span><span class="n">startswith</span> <span class="p">(</span><span class="n">published_prefix</span><span class="p">):</span>
 </code></td>
 </tr>
 <tr>
 <td class="linenos linenodiv"><a href="#listingspyblox-to-nikola-37"><code data-line-number="37"></code></a></td>
-<td class="code"><code><a id="listingspyblox-to-nikola-37" name="listingspyblox-to-nikola-37"></a>        <span class="n">published</span> <span class="o">=</span> <span class="n">published</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">published_prefix</span><span class="p">):]</span>
+<td class="code"><code><a name="listingspyblox-to-nikola-37"></a>        <span class="n">published</span> <span class="o">=</span> <span class="n">published</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">published_prefix</span><span class="p">):]</span>
 </code></td>
 </tr>
 <tr>
 <td class="linenos linenodiv"><a href="#listingspyblox-to-nikola-38"><code data-line-number="38"></code></a></td>
-<td class="code"><code><a id="listingspyblox-to-nikola-38" name="listingspyblox-to-nikola-38"></a>    <span class="k">else</span><span class="p">:</span>
+<td class="code"><code><a name="listingspyblox-to-nikola-38"></a>    <span class="k">else</span><span class="p">:</span>
 </code></td>
 </tr>
 <tr>
 <td class="linenos linenodiv"><a href="#listingspyblox-to-nikola-39"><code data-line-number="39"></code></a></td>
-<td class="code"><code><a id="listingspyblox-to-nikola-39" name="listingspyblox-to-nikola-39"></a>        <span class="k">raise</span> <span class="p">(</span><span class="s1">'Unknown line should be #published'</span><span class="p">,</span> <span class="n">published</span><span class="p">)</span>
+<td class="code"><code><a name="listingspyblox-to-nikola-39"></a>        <span class="k">raise</span> <span class="p">(</span><span class="s1">'Unknown line should be #published'</span><span class="p">,</span> <span class="n">published</span><span class="p">)</span>
 </code></td>
 </tr>
 <tr>
 <td class="linenos linenodiv"><a href="#listingspyblox-to-nikola-40"><code data-line-number="40"></code></a></td>
-<td class="code"><code><a id="listingspyblox-to-nikola-40" name="listingspyblox-to-nikola-40"></a>    <span class="n">published_date</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span> <span class="p">(</span><span class="n">published</span><span class="p">,</span> <span class="s1">'%Y-%m-</span><span class="si">%d</span><span class="s1"> %H:%M:%S'</span><span class="p">)</span>
+<td class="code"><code><a name="listingspyblox-to-nikola-40"></a>    <span class="n">published_date</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span> <span class="p">(</span><span class="n">published</span><span class="p">,</span> <span class="s1">'%Y-%m-</span><span class="si">%d</span><span class="s1"> %H:%M:%S'</span><span class="p">)</span>
 </code></td>
 </tr>
 <tr>
 <td class="linenos linenodiv"><a href="#listingspyblox-to-nikola-41"><code data-line-number="41"></code></a></td>
-<td class="code"><code><a id="listingspyblox-to-nikola-41" name="listingspyblox-to-nikola-41"></a>    <span class="n">nikola_date</span> <span class="o">=</span> <span class="n">published_date</span><span class="o">.</span><span class="n">strftime</span> <span class="p">(</span><span class="s1">'%Y-%m-</span><span class="si">%d</span><span class="s1"> %H:%M:%S UTC-05:00'</span><span class="p">)</span>
+<td class="code"><code><a name="listingspyblox-to-nikola-41"></a>    <span class="n">nikola_date</span> <span class="o">=</span> <span class="n">published_date</span><span class="o">.</span><span class="n">strftime</span> <span class="p">(</span><span class="s1">'%Y-%m-</span><span class="si">%d</span><span class="s1"> %H:%M:%S UTC-05:00'</span><span class="p">)</span>
 </code></td>
 </tr>
 <tr>
 <td class="linenos linenodiv"><a href="#listingspyblox-to-nikola-42"><code data-line-number="42"></code></a></td>
-<td class="code"><code><a id="listingspyblox-to-nikola-42" name="listingspyblox-to-nikola-42"></a>    <span class="n">datepath</span> <span class="o">=</span> <span class="n">published_date</span><span class="o">.</span><span class="n">strftime</span> <span class="p">(</span><span class="s1">'%Y/%m/</span><span class="si">%d</span><span class="s1">'</span><span class="p">)</span>
+<td class="code"><code><a name="listingspyblox-to-nikola-42"></a>    <span class="n">datepath</span> <span class="o">=</span> <span class="n">published_date</span><span class="o">.</span><span class="n">strftime</span> <span class="p">(</span><span class="s1">'%Y/%m/</span><span class="si">%d</span><span class="s1">'</span><span class="p">)</span>
 </code></td>
 </tr>
 <tr>
 <td class="linenos linenodiv"><a href="#listingspyblox-to-nikola-43"><code data-line-number="43"></code></a></td>
-<td class="code"><code><a id="listingspyblox-to-nikola-43" name="listingspyblox-to-nikola-43"></a>    <span class="n">newdir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span> <span class="p">(</span><span class="s1">'/Users/tkb/nikola/newblog/posts'</span><span class="p">,</span> <span class="n">datepath</span><span class="p">)</span> 
+<td class="code"><code><a name="listingspyblox-to-nikola-43"></a>    <span class="n">newdir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span> <span class="p">(</span><span class="s1">'/Users/tkb/nikola/newblog/posts'</span><span class="p">,</span> <span class="n">datepath</span><span class="p">)</span> 
 </code></td>
 </tr>
 <tr>
 <td class="linenos linenodiv"><a href="#listingspyblox-to-nikola-44"><code data-line-number="44"></code></a></td>
-<td class="code"><code><a id="listingspyblox-to-nikola-44" name="listingspyblox-to-nikola-44"></a>    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span> <span class="p">(</span><span class="n">newdir</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<td class="code"><code><a name="listingspyblox-to-nikola-44"></a>    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span> <span class="p">(</span><span class="n">newdir</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 </code></td>
 </tr>
 <tr>
 <td class="linenos linenodiv"><a href="#listingspyblox-to-nikola-45"><code data-line-number="45"></code></a></td>
-<td class="code"><code><a id="listingspyblox-to-nikola-45" name="listingspyblox-to-nikola-45"></a>    <span class="n">tags</span> <span class="o">=</span> <span class="n">inf</span><span class="o">.</span><span class="n">readline</span> <span class="p">()</span>
+<td class="code"><code><a name="listingspyblox-to-nikola-45"></a>    <span class="n">tags</span> <span class="o">=</span> <span class="n">inf</span><span class="o">.</span><span class="n">readline</span> <span class="p">()</span>
 </code></td>
 </tr>
 <tr>
 <td class="linenos linenodiv"><a href="#listingspyblox-to-nikola-46"><code data-line-number="46"></code></a></td>
-<td class="code"><code><a id="listingspyblox-to-nikola-46" name="listingspyblox-to-nikola-46"></a>    <span class="n">tags</span> <span class="o">=</span> <span class="n">tags</span><span class="o">.</span><span class="n">rstrip</span> <span class="p">()</span>
+<td class="code"><code><a name="listingspyblox-to-nikola-46"></a>    <span class="n">tags</span> <span class="o">=</span> <span class="n">tags</span><span class="o">.</span><span class="n">rstrip</span> <span class="p">()</span>
 </code></td>
 </tr>
 <tr>
 <td class="linenos linenodiv"><a href="#listingspyblox-to-nikola-47"><code data-line-number="47"></code></a></td>
-<td class="code"><code><a id="listingspyblox-to-nikola-47" name="listingspyblox-to-nikola-47"></a>    <span class="k">if</span> <span class="n">tags</span><span class="o">.</span><span class="n">startswith</span> <span class="p">(</span><span class="n">tags_prefix</span><span class="p">):</span>
+<td class="code"><code><a name="listingspyblox-to-nikola-47"></a>    <span class="k">if</span> <span class="n">tags</span><span class="o">.</span><span class="n">startswith</span> <span class="p">(</span><span class="n">tags_prefix</span><span class="p">):</span>
 </code></td>
 </tr>
 <tr>
 <td class="linenos linenodiv"><a href="#listingspyblox-to-nikola-48"><code data-line-number="48"></code></a></td>
-<td class="code"><code><a id="listingspyblox-to-nikola-48" name="listingspyblox-to-nikola-48"></a>        <span class="n">tags</span> <span class="o">=</span> <span class="n">tags</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">tags_prefix</span><span class="p">):]</span>
+<td class="code"><code><a name="listingspyblox-to-nikola-48"></a>        <span class="n">tags</span> <span class="o">=</span> <span class="n">tags</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">tags_prefix</span><span class="p">):]</span>
 </code></td>
 </tr>
 <tr>
 <td class="linenos linenodiv"><a href="#listingspyblox-to-nikola-49"><code data-line-number="49"></code></a></td>
-<td class="code"><code><a id="listingspyblox-to-nikola-49" name="listingspyblox-to-nikola-49"></a>    <span class="k">else</span><span class="p">:</span>
+<td class="code"><code><a name="listingspyblox-to-nikola-49"></a>    <span class="k">else</span><span class="p">:</span>
 </code></td>
 </tr>
 <tr>
 <td class="linenos linenodiv"><a href="#listingspyblox-to-nikola-50"><code data-line-number="50"></code></a></td>
-<td class="code"><code><a id="listingspyblox-to-nikola-50" name="listingspyblox-to-nikola-50"></a>        <span class="k">raise</span> <span class="p">(</span><span class="s1">'Unknown line should be #tags'</span><span class="p">,</span> <span class="n">tags</span><span class="p">)</span>
+<td class="code"><code><a name="listingspyblox-to-nikola-50"></a>        <span class="k">raise</span> <span class="p">(</span><span class="s1">'Unknown line should be #tags'</span><span class="p">,</span> <span class="n">tags</span><span class="p">)</span>
 </code></td>
 </tr>
 <tr>
 <td class="linenos linenodiv"><a href="#listingspyblox-to-nikola-51"><code data-line-number="51"></code></a></td>
-<td class="code"><code><a id="listingspyblox-to-nikola-51" name="listingspyblox-to-nikola-51"></a>    <span class="n">tags</span> <span class="o">=</span> <span class="n">tags</span><span class="o">.</span><span class="n">lower</span> <span class="p">()</span>
+<td class="code"><code><a name="listingspyblox-to-nikola-51"></a>    <span class="n">tags</span> <span class="o">=</span> <span class="n">tags</span><span class="o">.</span><span class="n">lower</span> <span class="p">()</span>
 </code></td>
 </tr>
 <tr>
 <td class="linenos linenodiv"><a href="#listingspyblox-to-nikola-52"><code data-line-number="52"></code></a></td>
-<td class="code"><code><a id="listingspyblox-to-nikola-52" name="listingspyblox-to-nikola-52"></a>    <span class="n">outfname</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span> <span class="p">(</span><span class="n">newdir</span><span class="p">,</span> <span class="n">basename</span><span class="p">)</span>
+<td class="code"><code><a name="listingspyblox-to-nikola-52"></a>    <span class="n">outfname</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span> <span class="p">(</span><span class="n">newdir</span><span class="p">,</span> <span class="n">basename</span><span class="p">)</span>
 </code></td>
 </tr>
 <tr>
 <td class="linenos linenodiv"><a href="#listingspyblox-to-nikola-53"><code data-line-number="53"></code></a></td>
-<td class="code"><code><a id="listingspyblox-to-nikola-53" name="listingspyblox-to-nikola-53"></a>    <span class="nb">print</span> <span class="p">(</span><span class="s1">'outfname: </span><span class="si">%s</span><span class="s1">'</span> <span class="o">%</span> <span class="n">outfname</span><span class="p">)</span>
+<td class="code"><code><a name="listingspyblox-to-nikola-53"></a>    <span class="k">print</span> <span class="p">(</span><span class="s1">'outfname: </span><span class="si">%s</span><span class="s1">'</span> <span class="o">%</span> <span class="n">outfname</span><span class="p">)</span>
 </code></td>
 </tr>
 <tr>
 <td class="linenos linenodiv"><a href="#listingspyblox-to-nikola-54"><code data-line-number="54"></code></a></td>
-<td class="code"><code><a id="listingspyblox-to-nikola-54" name="listingspyblox-to-nikola-54"></a>    <span class="n">outf</span> <span class="o">=</span> <span class="nb">open</span> <span class="p">(</span><span class="n">outfname</span><span class="p">,</span> <span class="s1">'w'</span><span class="p">)</span>
+<td class="code"><code><a name="listingspyblox-to-nikola-54"></a>    <span class="n">outf</span> <span class="o">=</span> <span class="nb">open</span> <span class="p">(</span><span class="n">outfname</span><span class="p">,</span> <span class="s1">'w'</span><span class="p">)</span>
 </code></td>
 </tr>
 <tr>
 <td class="linenos linenodiv"><a href="#listingspyblox-to-nikola-55"><code data-line-number="55"></code></a></td>
-<td class="code"><code><a id="listingspyblox-to-nikola-55" name="listingspyblox-to-nikola-55"></a>    <span class="n">outf</span><span class="o">.</span><span class="n">write</span> <span class="p">(</span><span class="s1">'.. title: </span><span class="si">%s</span><span class="se">\n</span><span class="s1">'</span> <span class="o">%</span> <span class="n">title</span><span class="p">)</span>
+<td class="code"><code><a name="listingspyblox-to-nikola-55"></a>    <span class="n">outf</span><span class="o">.</span><span class="n">write</span> <span class="p">(</span><span class="s1">'.. title: </span><span class="si">%s</span><span class="se">\n</span><span class="s1">'</span> <span class="o">%</span> <span class="n">title</span><span class="p">)</span>
 </code></td>
 </tr>
 <tr>
 <td class="linenos linenodiv"><a href="#listingspyblox-to-nikola-56"><code data-line-number="56"></code></a></td>
-<td class="code"><code><a id="listingspyblox-to-nikola-56" name="listingspyblox-to-nikola-56"></a>    <span class="n">outf</span><span class="o">.</span><span class="n">write</span> <span class="p">(</span><span class="s1">'.. slug: </span><span class="si">%s</span><span class="se">\n</span><span class="s1">'</span> <span class="o">%</span> <span class="n">slug</span><span class="p">)</span>
+<td class="code"><code><a name="listingspyblox-to-nikola-56"></a>    <span class="n">outf</span><span class="o">.</span><span class="n">write</span> <span class="p">(</span><span class="s1">'.. slug: </span><span class="si">%s</span><span class="se">\n</span><span class="s1">'</span> <span class="o">%</span> <span class="n">slug</span><span class="p">)</span>
 </code></td>
 </tr>
 <tr>
 <td class="linenos linenodiv"><a href="#listingspyblox-to-nikola-57"><code data-line-number="57"></code></a></td>
-<td class="code"><code><a id="listingspyblox-to-nikola-57" name="listingspyblox-to-nikola-57"></a>    <span class="n">outf</span><span class="o">.</span><span class="n">write</span> <span class="p">(</span><span class="s1">'.. date: </span><span class="si">%s</span><span class="se">\n</span><span class="s1">'</span> <span class="o">%</span> <span class="n">nikola_date</span><span class="p">)</span>
+<td class="code"><code><a name="listingspyblox-to-nikola-57"></a>    <span class="n">outf</span><span class="o">.</span><span class="n">write</span> <span class="p">(</span><span class="s1">'.. date: </span><span class="si">%s</span><span class="se">\n</span><span class="s1">'</span> <span class="o">%</span> <span class="n">nikola_date</span><span class="p">)</span>
 </code></td>
 </tr>
 <tr>
 <td class="linenos linenodiv"><a href="#listingspyblox-to-nikola-58"><code data-line-number="58"></code></a></td>
-<td class="code"><code><a id="listingspyblox-to-nikola-58" name="listingspyblox-to-nikola-58"></a>    <span class="n">outf</span><span class="o">.</span><span class="n">write</span> <span class="p">(</span><span class="s1">'.. tags: </span><span class="si">%s</span><span class="se">\n</span><span class="s1">'</span> <span class="o">%</span> <span class="n">tags</span><span class="p">)</span>
+<td class="code"><code><a name="listingspyblox-to-nikola-58"></a>    <span class="n">outf</span><span class="o">.</span><span class="n">write</span> <span class="p">(</span><span class="s1">'.. tags: </span><span class="si">%s</span><span class="se">\n</span><span class="s1">'</span> <span class="o">%</span> <span class="n">tags</span><span class="p">)</span>
 </code></td>
 </tr>
 <tr>
 <td class="linenos linenodiv"><a href="#listingspyblox-to-nikola-59"><code data-line-number="59"></code></a></td>
-<td class="code"><code><a id="listingspyblox-to-nikola-59" name="listingspyblox-to-nikola-59"></a>    <span class="n">outf</span><span class="o">.</span><span class="n">write</span> <span class="p">(</span><span class="s1">'.. category: </span><span class="si">%s</span><span class="se">\n</span><span class="s1">'</span> <span class="o">%</span> <span class="n">category</span><span class="p">)</span>
+<td class="code"><code><a name="listingspyblox-to-nikola-59"></a>    <span class="n">outf</span><span class="o">.</span><span class="n">write</span> <span class="p">(</span><span class="s1">'.. category: </span><span class="si">%s</span><span class="se">\n</span><span class="s1">'</span> <span class="o">%</span> <span class="n">category</span><span class="p">)</span>
 </code></td>
 </tr>
 <tr>
 <td class="linenos linenodiv"><a href="#listingspyblox-to-nikola-60"><code data-line-number="60"></code></a></td>
-<td class="code"><code><a id="listingspyblox-to-nikola-60" name="listingspyblox-to-nikola-60"></a>    <span class="n">outf</span><span class="o">.</span><span class="n">write</span> <span class="p">(</span><span class="s1">'.. link: </span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
+<td class="code"><code><a name="listingspyblox-to-nikola-60"></a>    <span class="n">outf</span><span class="o">.</span><span class="n">write</span> <span class="p">(</span><span class="s1">'.. link: </span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
 </code></td>
 </tr>
 <tr>
 <td class="linenos linenodiv"><a href="#listingspyblox-to-nikola-61"><code data-line-number="61"></code></a></td>
-<td class="code"><code><a id="listingspyblox-to-nikola-61" name="listingspyblox-to-nikola-61"></a>    <span class="n">outf</span><span class="o">.</span><span class="n">write</span> <span class="p">(</span><span class="s1">'.. description: </span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
+<td class="code"><code><a name="listingspyblox-to-nikola-61"></a>    <span class="n">outf</span><span class="o">.</span><span class="n">write</span> <span class="p">(</span><span class="s1">'.. description: </span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
 </code></td>
 </tr>
 <tr>
 <td class="linenos linenodiv"><a href="#listingspyblox-to-nikola-62"><code data-line-number="62"></code></a></td>
-<td class="code"><code><a id="listingspyblox-to-nikola-62" name="listingspyblox-to-nikola-62"></a>    <span class="n">outf</span><span class="o">.</span><span class="n">write</span> <span class="p">(</span><span class="s1">'.. type: text</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
+<td class="code"><code><a name="listingspyblox-to-nikola-62"></a>    <span class="n">outf</span><span class="o">.</span><span class="n">write</span> <span class="p">(</span><span class="s1">'.. type: text</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
 </code></td>
 </tr>
 <tr>
 <td class="linenos linenodiv"><a href="#listingspyblox-to-nikola-63"><code data-line-number="63"></code></a></td>
-<td class="code"><code><a id="listingspyblox-to-nikola-63" name="listingspyblox-to-nikola-63"></a>    <span class="n">outf</span><span class="o">.</span><span class="n">write</span> <span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
+<td class="code"><code><a name="listingspyblox-to-nikola-63"></a>    <span class="n">outf</span><span class="o">.</span><span class="n">write</span> <span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
 </code></td>
 </tr>
 <tr>
 <td class="linenos linenodiv"><a href="#listingspyblox-to-nikola-64"><code data-line-number="64"></code></a></td>
-<td class="code"><code><a id="listingspyblox-to-nikola-64" name="listingspyblox-to-nikola-64"></a>    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">inf</span><span class="p">:</span>
+<td class="code"><code><a name="listingspyblox-to-nikola-64"></a>    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">inf</span><span class="p">:</span>
 </code></td>
 </tr>
 <tr>
 <td class="linenos linenodiv"><a href="#listingspyblox-to-nikola-65"><code data-line-number="65"></code></a></td>
-<td class="code"><code><a id="listingspyblox-to-nikola-65" name="listingspyblox-to-nikola-65"></a>        <span class="n">outf</span><span class="o">.</span><span class="n">write</span> <span class="p">(</span><span class="n">line</span><span class="p">)</span>
+<td class="code"><code><a name="listingspyblox-to-nikola-65"></a>        <span class="n">outf</span><span class="o">.</span><span class="n">write</span> <span class="p">(</span><span class="n">line</span><span class="p">)</span>
 </code></td>
 </tr>
 <tr>
 <td class="linenos linenodiv"><a href="#listingspyblox-to-nikola-66"><code data-line-number="66"></code></a></td>
-<td class="code"><code><a id="listingspyblox-to-nikola-66" name="listingspyblox-to-nikola-66"></a>    <span class="n">inf</span><span class="o">.</span><span class="n">close</span> <span class="p">()</span>
+<td class="code"><code><a name="listingspyblox-to-nikola-66"></a>    <span class="n">inf</span><span class="o">.</span><span class="n">close</span> <span class="p">()</span>
 </code></td>
 </tr>
 <tr>
 <td class="linenos linenodiv"><a href="#listingspyblox-to-nikola-67"><code data-line-number="67"></code></a></td>
-<td class="code"><code><a id="listingspyblox-to-nikola-67" name="listingspyblox-to-nikola-67"></a><span class="nb">print</span> <span class="p">(</span><span class="s1">'</span><span class="se">\n\n</span><span class="s1">Files Read: </span><span class="si">%d</span><span class="s1">'</span> <span class="o">%</span> <span class="n">files_read</span><span class="p">)</span>
+<td class="code"><code><a name="listingspyblox-to-nikola-67"></a><span class="k">print</span> <span class="p">(</span><span class="s1">'</span><span class="se">\n\n</span><span class="s1">Files Read: </span><span class="si">%d</span><span class="s1">'</span> <span class="o">%</span> <span class="n">files_read</span><span class="p">)</span>
 </code></td>
 </tr>
 </table></div>
