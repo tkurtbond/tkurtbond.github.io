@@ -3,13 +3,80 @@
 <feed xml:lang="en" xmlns="http://www.w3.org/2005/Atom">
   <title>Lacking Natural Simplicity</title>
   <id>https://tkurtbond.github.io/feed.atom</id>
-  <updated>2021-07-25T19:17:59Z</updated>
+  <updated>2021-07-26T22:51:29Z</updated>
   <author>
     <name>T. Kurt Bond</name>
   </author>
   <link rel="self" type="application/atom+xml" href="https://tkurtbond.github.io/feed.atom"/>
   <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/"/>
   <generator uri="https://getnikola.com/">Nikola</generator>
+  <entry>
+    <title>Making an newer version of groff work with man and emacs on macOS</title>
+    <id>https://tkurtbond.github.io/posts/2021/07/26/making-an-newer-version-of-groff-work-with-man-and-emacs-on-macos/</id>
+    <updated>2021-07-26T17:30:19-04:00</updated>
+    <published>2021-07-26T17:30:19-04:00</published>
+    <author>
+      <name>T. Kurt Bond</name>
+    </author>
+    <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/posts/2021/07/26/making-an-newer-version-of-groff-work-with-man-and-emacs-on-macos/"/>
+    <summary type="html">&lt;div&gt;&lt;p&gt;I'm posting this mostly to remind myself if I ever have to fiddle with
+this again.&lt;/p&gt;
+&lt;p&gt;I use a version of &lt;span class="app"&gt;groff&lt;/span&gt; installed from &lt;span class="app"&gt;git&lt;/span&gt; because some
+of my documents depend on fixes that are coming out in the next
+release, 1.23.0.  I install it on my macOS machine in
+&lt;span class="file"&gt;/usr/local/sw/versions/groff/git&lt;/span&gt;.  (The directory hierarchy
+under &lt;span class="file"&gt;/usr/local/sw/versions&lt;/span&gt; is where I put programs that I
+compile from scratch, to keep them separated from the programs that
+come from the operating system and/or package managers.  I often have
+more than one version of a program installed, therefore the
+&lt;span class="file"&gt;versions&lt;/span&gt; component of the name.)&lt;/p&gt;
+&lt;p&gt;Because the &lt;span class="command"&gt;groff&lt;/span&gt; that is first in my path is the new one I
+installed, and because &lt;span class="app"&gt;man&lt;/span&gt; on macOS knows to look for man pages
+according to what your &lt;code class="docutils literal"&gt;PATH&lt;/code&gt; is, when I as &lt;code class="docutils literal"&gt;man groff_ms&lt;/code&gt; I get
+the new man page for &lt;code class="docutils literal"&gt;groff_ms&lt;/code&gt;.  Yay!  Unfortunately, it gets
+rendered with the old &lt;span class="app"&gt;groff&lt;/span&gt; that macOS supplies, version
+1.19.2, which doesn't include the &lt;code class="docutils literal"&gt;.SY&lt;/code&gt; macro that current versions
+of &lt;span class="app"&gt;groff&lt;/span&gt; supply in their &lt;span class="app"&gt;man&lt;/span&gt; macros, and which they
+&lt;em&gt;use&lt;/em&gt; in their man pages, so it renders wrong.  A typical example is
+that when it renders &lt;span class="man"&gt;groff_ms(7)&lt;/span&gt; the &lt;code class="docutils literal"&gt;groff &lt;span class="pre"&gt;-ms&lt;/span&gt;&lt;/code&gt; and
+&lt;code class="docutils literal"&gt;groff &lt;span class="pre"&gt;-m&lt;/span&gt; ms&lt;/code&gt; are missing from the lines in the SYNOPSIS section.
+Boo!&lt;/p&gt;
+&lt;p&gt;Luckily, &lt;span class="app"&gt;man&lt;/span&gt; takes a &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;-C&lt;/span&gt;&lt;/code&gt; option that lets you specify an
+alternate configuration file (on macOS the default one is in
+&lt;span class="file"&gt;/private/etc/man.conf&lt;/span&gt;), so you can supply one that specifies
+the absolute path to the newer &lt;span class="app"&gt;groff&lt;/span&gt; you are using.  So I added&lt;/p&gt;
+&lt;pre class="code bash"&gt;&lt;a name="rest_code_fcb14de0681f4f9b8cf423a143c4d9a2-1"&gt;&lt;/a&gt;&lt;span class="nb"&gt;alias&lt;/span&gt; &lt;span class="nv"&gt;man&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'man -C ~/local/etc/man.conf'&lt;/span&gt;
+&lt;/pre&gt;&lt;p&gt;to the appropriate shell startup file.  And I can add&lt;/p&gt;
+&lt;pre class="code emacs-lisp"&gt;&lt;a name="rest_code_c5b076f511754ce3ba5f6b6b8f0538ef-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;setq&lt;/span&gt; &lt;span class="nv"&gt;Man-switches&lt;/span&gt; &lt;span class="s"&gt;"-C ~/local/etc/man.conf"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;p&gt;to my &lt;span class="app"&gt;emacs&lt;/span&gt; configuration so it uses the right version of
+&lt;span class="app"&gt;groff&lt;/span&gt; too.&lt;/p&gt;
+&lt;p&gt;But a modern &lt;span class="app"&gt;groff&lt;/span&gt; produces ANSI escapes for bold and
+underline, rather than the older convention of over-striking via the
+backspace character with the same character for bold or with the
+underscore character for underlining.  My pager, &lt;span class="app"&gt;less&lt;/span&gt;, can deal
+with that, but something in &lt;span class="app"&gt;emacs&lt;/span&gt; doesn't like that, leaving
+the buffer with &lt;span class="man"&gt;groff_ms(7)&lt;/span&gt; with underlining on every line.&lt;a class="footnote-reference brackets" href="https://tkurtbond.github.io/posts/2021/07/26/making-an-newer-version-of-groff-work-with-man-and-emacs-on-macos/#manual" id="id1"&gt;1&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Eventually I figured out that the old style over-striking via
+backspaces worked just fine with emacs, so I added the &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;-P-c&lt;/span&gt;&lt;/code&gt; option
+to the invocation of &lt;span class="app"&gt;groff&lt;/span&gt; in the NROFF definition in my
+modified &lt;span class="file"&gt;man.conf&lt;/span&gt; file.  That tells &lt;span class="command"&gt;groff&lt;/span&gt; to pass
+the &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;-c&lt;/span&gt;&lt;/code&gt; option to the &lt;span class="command"&gt;grotty&lt;/span&gt; output driver, which tells
+it to use old-style backspace over-striking.&lt;/p&gt;
+&lt;p&gt;This seems overly complicated.&lt;/p&gt;
+&lt;p&gt;I suspect I'll need to do something different on the Linux boxes I
+use.&lt;/p&gt;
+&lt;dl class="footnote brackets"&gt;
+&lt;dt class="label" id="manual"&gt;&lt;span class="brackets"&gt;&lt;a class="fn-backref" href="https://tkurtbond.github.io/posts/2021/07/26/making-an-newer-version-of-groff-work-with-man-and-emacs-on-macos/#id1"&gt;1&lt;/a&gt;&lt;/span&gt;&lt;/dt&gt;
+&lt;dd&gt;&lt;p&gt;Oddly, if I direct &lt;span class="app"&gt;man&lt;/span&gt;'s output to a file, visit that file in
+&lt;span class="app"&gt;emacs&lt;/span&gt;, and manually invoke the &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;Man-fontify-manpage&lt;/span&gt;&lt;/code&gt; function
+&lt;span class="app"&gt;emacs&lt;/span&gt; uses to fontify the man page, it &lt;em&gt;doesn't&lt;/em&gt; end up
+erroneously underlined.&lt;/p&gt;
+&lt;/dd&gt;
+&lt;/dl&gt;&lt;/div&gt;</summary>
+    <category term="groff" label="groff"/>
+    <category term="macos" label="macos"/>
+    <category term="troff" label="troff"/>
+  </entry>
   <entry>
     <title>BX Options: Class Builder</title>
     <id>https://tkurtbond.github.io/posts/2021/07/25/bx-options-class-builder/</id>
@@ -24,6 +91,11 @@ My rating: &lt;a href="https://www.goodreads.com/review/show/4130207047"&gt;5 of
 If you are looking for a way to customize existing classes or create new classes for B/X D&amp;amp;D style games, especially Old-School Essentials, this book is a wonderful resource. It breaks the original classes down into their fundamental parts and provides a simple system for building those parts into new or customized classes. It presents the breakdown for each of the original classes, then provides a list of class variants, customized versions of the original class, as well as sub-classes, heavily redesigned classes. For instance, for the Cleric, the class variants are: Cleric (Dead God), Cleric (God of Death), Cleric (God of Knowledge), Cleric (God of Life), Cleric (God of Nature), and Cleric (God of War); and the sub-classes are Crusader and Shaman. Class variants and sub-classes are presented for Cleric, Dwarf, Elf, Fighter, Halfling, Magic-User, and Thief. It also provides a version of Thief skills using the d6, other d6 skills that can be used in creating classes, some additional armour, weapons, and ammunition, an optional table for spell failure in appropriate circumstances (for example, when non-casters read a spell scroll), a table of special abilities gained by classes that have animal companions, differing depending on the animal in question, and options for characters to gain at high levels, beyond the limits of their level progression tables.&lt;br&gt;&lt;br&gt;I'll definitely be using this in my next B/X-style game!
 &lt;br&gt;&lt;br&gt;
 &lt;a href="https://www.goodreads.com/review/list/13454227-t-kurt"&gt;View all my reviews at Goodreads&lt;/a&gt;&lt;/span&gt;</summary>
+    <category term="bx" label="b/x"/>
+    <category term="bx-dd" label="b/x d&amp;d"/>
+    <category term="old-school-essentials" label="old school essentials"/>
+    <category term="ose" label="ose"/>
+    <category term="rpg" label="rpg"/>
   </entry>
   <entry>
     <title>I wish the B/X and OD&amp;D retro-clones had added a "Saving Throw" entry for spells</title>
@@ -172,7 +244,7 @@ directories under &lt;span class="file"&gt;/usr/local/share/groff&lt;/span&gt;, 
 directories if necessary.  If you need to install into
 &lt;span class="file"&gt;/usr/share/groff&lt;/span&gt; you should specify the &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;-s&lt;/span&gt;&lt;/code&gt; option to the
 script.  For instance:&lt;/p&gt;
-&lt;pre class="code text"&gt;&lt;a id="rest_code_a34df42cbf204f0ebf6c8eb0c66e6a12-1" name="rest_code_a34df42cbf204f0ebf6c8eb0c66e6a12-1"&gt;&lt;/a&gt;$ install-font.sh Lora-Regular.ttf
+&lt;pre class="code text"&gt;&lt;a name="rest_code_fcd20ada2a444b6b9ef8a78217b4c9dc-1"&gt;&lt;/a&gt;$ install-font.sh Lora-Regular.ttf
 &lt;/pre&gt;&lt;p&gt;will install the Regular variant of the font, leading you through four
 prompts, for three of which you just need to take the default.&lt;/p&gt;
 &lt;p&gt;The only prompt where you need to do something other than accept the
@@ -370,7 +442,7 @@ files into proper places under &lt;span class="app"&gt;groff&lt;/span&gt;'s site
 &lt;p&gt;So, for instance, you'd cd to the directory that holds the &lt;span class="file"&gt;.ttf&lt;/span&gt; files
 you downloaded.  Then, to install the Regular variant of Cormorant
 Garamond you'd run the command&lt;/p&gt;
-&lt;pre class="code bash"&gt;&lt;a id="rest_code_6812261c5cfc4b12a7db044dc4b8b5bd-1" name="rest_code_6812261c5cfc4b12a7db044dc4b8b5bd-1"&gt;&lt;/a&gt;&lt;span class="k"&gt;$(&lt;/span&gt;IFDIR&lt;span class="k"&gt;)&lt;/span&gt;/install-font.sh -n -P &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$DEST&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt; -d -F CormorantGaramond -f +R CormorantGaramond-Regular.ttf
+&lt;pre class="code bash"&gt;&lt;a name="rest_code_2fd3a75bdcdc439eb9f8ee4929a83a00-1"&gt;&lt;/a&gt;&lt;span class="k"&gt;$(&lt;/span&gt;IFDIR&lt;span class="k"&gt;)&lt;/span&gt;/install-font.sh -n -P &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$DEST&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt; -d -F CormorantGaramond -f +R CormorantGaramond-Regular.ttf
 &lt;/pre&gt;&lt;p&gt;where &lt;code class="docutils literal"&gt;IFDIR&lt;/code&gt; is an environment variable indicating the directory
 where &lt;span class="command"&gt;install-font.sh&lt;/span&gt; is located and &lt;code class="docutils literal"&gt;DEST&lt;/code&gt; is an
 environment variable indicating the directory that contains
@@ -405,9 +477,9 @@ name of the &lt;span class="app"&gt;groff&lt;/span&gt; font and the &lt;span cla
 name of the Truetype or OpenType file you are converting.&lt;/p&gt;
 &lt;p&gt;To complete the example, here are the commands to install the Italic,
 Bold, and Bold Italic variants of Cormorant Garamond:&lt;/p&gt;
-&lt;pre class="code bash"&gt;&lt;a id="rest_code_a290ed067e82497aade37088534c4286-1" name="rest_code_a290ed067e82497aade37088534c4286-1"&gt;&lt;/a&gt;&lt;span class="k"&gt;$(&lt;/span&gt;IFDIR&lt;span class="k"&gt;)&lt;/span&gt;/install-font.sh -n -P &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$DEST&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt; -d -F CormorantGaramond -f +I CormorantGaramond-Italic.ttf
-&lt;a id="rest_code_a290ed067e82497aade37088534c4286-2" name="rest_code_a290ed067e82497aade37088534c4286-2"&gt;&lt;/a&gt;&lt;span class="k"&gt;$(&lt;/span&gt;IFDIR&lt;span class="k"&gt;)&lt;/span&gt;/install-font.sh -n -P &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$DEST&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt; -d -F CormorantGaramond -f +B CormorantGaramond-Bold.ttf
-&lt;a id="rest_code_a290ed067e82497aade37088534c4286-3" name="rest_code_a290ed067e82497aade37088534c4286-3"&gt;&lt;/a&gt;&lt;span class="k"&gt;$(&lt;/span&gt;IFDIR&lt;span class="k"&gt;)&lt;/span&gt;/install-font.sh -n -P &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$DEST&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt; -d -F CormorantGaramond -f +BI CormorantGaramond-BoldItalic.
+&lt;pre class="code bash"&gt;&lt;a name="rest_code_19c244ff68784702b43727a817f61e6f-1"&gt;&lt;/a&gt;&lt;span class="k"&gt;$(&lt;/span&gt;IFDIR&lt;span class="k"&gt;)&lt;/span&gt;/install-font.sh -n -P &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$DEST&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt; -d -F CormorantGaramond -f +I CormorantGaramond-Italic.ttf
+&lt;a name="rest_code_19c244ff68784702b43727a817f61e6f-2"&gt;&lt;/a&gt;&lt;span class="k"&gt;$(&lt;/span&gt;IFDIR&lt;span class="k"&gt;)&lt;/span&gt;/install-font.sh -n -P &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$DEST&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt; -d -F CormorantGaramond -f +B CormorantGaramond-Bold.ttf
+&lt;a name="rest_code_19c244ff68784702b43727a817f61e6f-3"&gt;&lt;/a&gt;&lt;span class="k"&gt;$(&lt;/span&gt;IFDIR&lt;span class="k"&gt;)&lt;/span&gt;/install-font.sh -n -P &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$DEST&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt; -d -F CormorantGaramond -f +BI CormorantGaramond-BoldItalic.
 &lt;/pre&gt;&lt;p&gt;As I said in an earlier email to the list, I tend to put all four
 commands into a script so I can run them again if something goes wrong
 or when I need to install them on a new machine or in a new
@@ -415,7 +487,7 @@ installation of &lt;span class="app"&gt;groff&lt;/span&gt;.  In the case of Corm
 file &lt;span class="file"&gt;install-cormorant-garamond.sh&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Later:&lt;/strong&gt; Peter Schaffter &lt;a class="reference external" href="https://lists.gnu.org/archive/html/groff/2021-07/msg00090.html"&gt;pointed out&lt;/a&gt; that the &lt;em&gt;simple&lt;/em&gt; use of
 &lt;span class="command"&gt;install-font.sh&lt;/span&gt; is:&lt;/p&gt;
-&lt;pre class="code bash"&gt;&lt;a id="rest_code_b2a89db039cf4a13b5350a5ee5d2b589-1" name="rest_code_b2a89db039cf4a13b5350a5ee5d2b589-1"&gt;&lt;/a&gt;sudo install-font.sh fontfile
+&lt;pre class="code bash"&gt;&lt;a name="rest_code_26555d406f4042ad874f33fe54da22b9-1"&gt;&lt;/a&gt;sudo install-font.sh fontfile
 &lt;/pre&gt;&lt;p&gt;and then answer the questions the script asks.  He also pointed out
 that it creates the &lt;span class="file"&gt;site-font&lt;/span&gt; directory and necessary
 subdirectories if needed in, and here I quote: “the only two locations
@@ -449,14 +521,14 @@ End: --&gt;&lt;/div&gt;</summary>
     <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/posts/2021/07/16/sorting-words-separated-by-commas/"/>
     <summary type="html">&lt;div&gt;&lt;p&gt;I often have lists of "words", separated by commas, possibly on
 multiple lines, like this example from a &lt;span class="file"&gt;Makefile&lt;/span&gt;:&lt;/p&gt;
-&lt;pre class="code makefile"&gt;&lt;a id="rest_code_6220d168de80446fa7c2806e5d779d6b-1" name="rest_code_6220d168de80446fa7c2806e5d779d6b-1"&gt;&lt;/a&gt;&lt;span class="c"&gt;#    bookman, schoolbook, palatino, times,&lt;/span&gt;
-&lt;a id="rest_code_6220d168de80446fa7c2806e5d779d6b-2" name="rest_code_6220d168de80446fa7c2806e5d779d6b-2"&gt;&lt;/a&gt;&lt;span class="c"&gt;#    helvetica, helvetica-narrow, optima, cormorant-garamond,&lt;/span&gt;
-&lt;a id="rest_code_6220d168de80446fa7c2806e5d779d6b-3" name="rest_code_6220d168de80446fa7c2806e5d779d6b-3"&gt;&lt;/a&gt;&lt;span class="c"&gt;#    or ebgaramond.&lt;/span&gt;
+&lt;pre class="code makefile"&gt;&lt;a name="rest_code_e64e051df37d48cb8b4c48d2ef9b5117-1"&gt;&lt;/a&gt;&lt;span class="c"&gt;#    bookman, schoolbook, palatino, times,&lt;/span&gt;
+&lt;a name="rest_code_e64e051df37d48cb8b4c48d2ef9b5117-2"&gt;&lt;/a&gt;&lt;span class="c"&gt;#    helvetica, helvetica-narrow, optima, cormorant-garamond,&lt;/span&gt;
+&lt;a name="rest_code_e64e051df37d48cb8b4c48d2ef9b5117-3"&gt;&lt;/a&gt;&lt;span class="c"&gt;#    or ebgaramond.&lt;/span&gt;
 &lt;/pre&gt;&lt;p&gt;I find these lists are always getting out of order, or they end up
 with some short lines and some long lines.  I want to be able to
 reformat them automatically, like this:&lt;/p&gt;
-&lt;pre class="code makefile"&gt;&lt;a id="rest_code_33d2c8f4c6a64be08c86c95bd54b7b42-1" name="rest_code_33d2c8f4c6a64be08c86c95bd54b7b42-1"&gt;&lt;/a&gt;&lt;span class="c"&gt;#    bookman, cormorant-garamond, ebgaramond, helvetica, helvetica-narrow,&lt;/span&gt;
-&lt;a id="rest_code_33d2c8f4c6a64be08c86c95bd54b7b42-2" name="rest_code_33d2c8f4c6a64be08c86c95bd54b7b42-2"&gt;&lt;/a&gt;&lt;span class="c"&gt;#    optima, palatino, schoolbook, or times.&lt;/span&gt;
+&lt;pre class="code makefile"&gt;&lt;a name="rest_code_8c1788b67e8e4629af1455006ee71da3-1"&gt;&lt;/a&gt;&lt;span class="c"&gt;#    bookman, cormorant-garamond, ebgaramond, helvetica, helvetica-narrow,&lt;/span&gt;
+&lt;a name="rest_code_8c1788b67e8e4629af1455006ee71da3-2"&gt;&lt;/a&gt;&lt;span class="c"&gt;#    optima, palatino, schoolbook, or times.&lt;/span&gt;
 &lt;/pre&gt;&lt;p&gt;So, I wrote three scripts to deal with them,
 &lt;span class="command"&gt;sort-with-commas&lt;/span&gt;, &lt;span class="command"&gt;strip-leading-hash&lt;/span&gt; to get rid
 of the leading hashes and spaces, and &lt;span class="command"&gt;prefix&lt;/span&gt; to put the
@@ -483,7 +555,7 @@ those to sort the list.  I wrote the script
 &lt;span class="command"&gt;strip-leading-hash&lt;/span&gt; to do that, too, rather than having to
 remember the &lt;span class="command"&gt;sed&lt;/span&gt; command to so that all the time.&lt;/p&gt;
 &lt;p&gt;So, to sort the original list I'd run the command&lt;/p&gt;
-&lt;pre class="code bash"&gt;&lt;a id="rest_code_5ab4077e7dca40fb9630d76a48755be4-1" name="rest_code_5ab4077e7dca40fb9630d76a48755be4-1"&gt;&lt;/a&gt;strip-leading-hash &lt;span class="p"&gt;|&lt;/span&gt; sort-with-commas -r -p -o &lt;span class="p"&gt;|&lt;/span&gt; fmt &lt;span class="p"&gt;|&lt;/span&gt; prefix &lt;span class="s2"&gt;"#    "&lt;/span&gt;
+&lt;pre class="code bash"&gt;&lt;a name="rest_code_5c4723a023cd4b6aa4262ff162dcc5bd-1"&gt;&lt;/a&gt;strip-leading-hash &lt;span class="p"&gt;|&lt;/span&gt; sort-with-commas -r -p -o &lt;span class="p"&gt;|&lt;/span&gt; fmt &lt;span class="p"&gt;|&lt;/span&gt; prefix &lt;span class="s2"&gt;"#    "&lt;/span&gt;
 &lt;/pre&gt;&lt;p&gt;which means “strip the leading hashes and spaces, remove the trailing
 period and the "and " or "or ", add a final period after the last word,
 add an "or " before the final word, reformat as a paragraph, and
@@ -493,200 +565,90 @@ run it on the region (the currently selected text), often with the
 &lt;span class="key"&gt;C-u&lt;/span&gt; to replace the region with results.&lt;/p&gt;
 &lt;p&gt;Here's the main script, &lt;span class="file"&gt;sort-with-commas&lt;/span&gt;:&lt;/p&gt;
 &lt;p&gt;&lt;a class="reference external" href="https://tkurtbond.github.io/listings/sort-with-commas.html"&gt;sort-with-commas&lt;/a&gt;  &lt;a class="reference external" href="https://tkurtbond.github.io/listings/sort-with-commas"&gt;(Source)&lt;/a&gt;&lt;/p&gt;
-&lt;pre class="code bash"&gt;&lt;a id="rest_code_6f64f21ef65f48caa58713118c0dc787-1" name="rest_code_6f64f21ef65f48caa58713118c0dc787-1"&gt;&lt;/a&gt;&lt;span class="ch"&gt;#! /usr/bin/env bash&lt;/span&gt;
-&lt;a id="rest_code_6f64f21ef65f48caa58713118c0dc787-2" name="rest_code_6f64f21ef65f48caa58713118c0dc787-2"&gt;&lt;/a&gt;&lt;span class="c1"&gt;###############################################################################&lt;/span&gt;
-&lt;a id="rest_code_6f64f21ef65f48caa58713118c0dc787-3" name="rest_code_6f64f21ef65f48caa58713118c0dc787-3"&gt;&lt;/a&gt;&lt;span class="c1"&gt;# Sort a list of words that are seperated by commas, optionally followed by&lt;/span&gt;
-&lt;a id="rest_code_6f64f21ef65f48caa58713118c0dc787-4" name="rest_code_6f64f21ef65f48caa58713118c0dc787-4"&gt;&lt;/a&gt;&lt;span class="c1"&gt;# a newline into a single line seperated by commas followed by spaces.&lt;/span&gt;
-&lt;a id="rest_code_6f64f21ef65f48caa58713118c0dc787-5" name="rest_code_6f64f21ef65f48caa58713118c0dc787-5"&gt;&lt;/a&gt;&lt;span class="c1"&gt;#&lt;/span&gt;
-&lt;a id="rest_code_6f64f21ef65f48caa58713118c0dc787-6" name="rest_code_6f64f21ef65f48caa58713118c0dc787-6"&gt;&lt;/a&gt;&lt;span class="c1"&gt;# For example: it translates (ignore the "# +" at the beginning of lines)&lt;/span&gt;
-&lt;a id="rest_code_6f64f21ef65f48caa58713118c0dc787-7" name="rest_code_6f64f21ef65f48caa58713118c0dc787-7"&gt;&lt;/a&gt;&lt;span class="c1"&gt;#    bookman, schoolbook,palatino,&lt;/span&gt;
-&lt;a id="rest_code_6f64f21ef65f48caa58713118c0dc787-8" name="rest_code_6f64f21ef65f48caa58713118c0dc787-8"&gt;&lt;/a&gt;&lt;span class="c1"&gt;#    times, helvetica, helvetica-narrow,&lt;/span&gt;
-&lt;a id="rest_code_6f64f21ef65f48caa58713118c0dc787-9" name="rest_code_6f64f21ef65f48caa58713118c0dc787-9"&gt;&lt;/a&gt;&lt;span class="c1"&gt;# to&lt;/span&gt;
-&lt;a id="rest_code_6f64f21ef65f48caa58713118c0dc787-10" name="rest_code_6f64f21ef65f48caa58713118c0dc787-10"&gt;&lt;/a&gt;&lt;span class="c1"&gt;#    bookman, helvetica, helvetica-narrow, palatino, schoolbook, times&lt;/span&gt;
-&lt;a id="rest_code_6f64f21ef65f48caa58713118c0dc787-11" name="rest_code_6f64f21ef65f48caa58713118c0dc787-11"&gt;&lt;/a&gt;&lt;span class="c1"&gt;###############################################################################&lt;/span&gt;
-&lt;a id="rest_code_6f64f21ef65f48caa58713118c0dc787-12" name="rest_code_6f64f21ef65f48caa58713118c0dc787-12"&gt;&lt;/a&gt;
-&lt;a id="rest_code_6f64f21ef65f48caa58713118c0dc787-13" name="rest_code_6f64f21ef65f48caa58713118c0dc787-13"&gt;&lt;/a&gt;&lt;span class="nv"&gt;AND_OPT&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;off                     &lt;span class="c1"&gt;# Insert "and " before last word.&lt;/span&gt;
-&lt;a id="rest_code_6f64f21ef65f48caa58713118c0dc787-14" name="rest_code_6f64f21ef65f48caa58713118c0dc787-14"&gt;&lt;/a&gt;&lt;span class="nv"&gt;FINAL_OPT&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;off                   &lt;span class="c1"&gt;# Leave "," after last word.&lt;/span&gt;
-&lt;a id="rest_code_6f64f21ef65f48caa58713118c0dc787-15" name="rest_code_6f64f21ef65f48caa58713118c0dc787-15"&gt;&lt;/a&gt;&lt;span class="nv"&gt;OR_OPT&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;off                      &lt;span class="c1"&gt;# Insert "or " before last word.&lt;/span&gt;
-&lt;a id="rest_code_6f64f21ef65f48caa58713118c0dc787-16" name="rest_code_6f64f21ef65f48caa58713118c0dc787-16"&gt;&lt;/a&gt;&lt;span class="nv"&gt;PERIOD_OPT&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;off                  &lt;span class="c1"&gt;# Insert a final period after last word.&lt;/span&gt;
-&lt;a id="rest_code_6f64f21ef65f48caa58713118c0dc787-17" name="rest_code_6f64f21ef65f48caa58713118c0dc787-17"&gt;&lt;/a&gt;&lt;span class="nv"&gt;REMOVE_AND_OR_PERIOD_OPT&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;off
-&lt;a id="rest_code_6f64f21ef65f48caa58713118c0dc787-18" name="rest_code_6f64f21ef65f48caa58713118c0dc787-18"&gt;&lt;/a&gt;
-&lt;a id="rest_code_6f64f21ef65f48caa58713118c0dc787-19" name="rest_code_6f64f21ef65f48caa58713118c0dc787-19"&gt;&lt;/a&gt;
-&lt;a id="rest_code_6f64f21ef65f48caa58713118c0dc787-20" name="rest_code_6f64f21ef65f48caa58713118c0dc787-20"&gt;&lt;/a&gt;&lt;span class="nb"&gt;let&lt;/span&gt; &lt;span class="nv"&gt;errors&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;
-&lt;a id="rest_code_6f64f21ef65f48caa58713118c0dc787-21" name="rest_code_6f64f21ef65f48caa58713118c0dc787-21"&gt;&lt;/a&gt;&lt;span class="k"&gt;while&lt;/span&gt; &lt;span class="nb"&gt;getopts&lt;/span&gt; &lt;span class="s2"&gt;"?afhopr"&lt;/span&gt; opt
-&lt;a id="rest_code_6f64f21ef65f48caa58713118c0dc787-22" name="rest_code_6f64f21ef65f48caa58713118c0dc787-22"&gt;&lt;/a&gt;&lt;span class="k"&gt;do&lt;/span&gt;
-&lt;a id="rest_code_6f64f21ef65f48caa58713118c0dc787-23" name="rest_code_6f64f21ef65f48caa58713118c0dc787-23"&gt;&lt;/a&gt;    &lt;span class="k"&gt;case&lt;/span&gt; &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$opt&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt;
-&lt;a id="rest_code_6f64f21ef65f48caa58713118c0dc787-24" name="rest_code_6f64f21ef65f48caa58713118c0dc787-24"&gt;&lt;/a&gt;        &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="se"&gt;\?&lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;h&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="nb"&gt;let&lt;/span&gt; errors++ &lt;span class="p"&gt;;;&lt;/span&gt;
-&lt;a id="rest_code_6f64f21ef65f48caa58713118c0dc787-25" name="rest_code_6f64f21ef65f48caa58713118c0dc787-25"&gt;&lt;/a&gt;        &lt;span class="o"&gt;(&lt;/span&gt;a&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="nv"&gt;AND_OPT&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;on &lt;span class="p"&gt;;;&lt;/span&gt;
-&lt;a id="rest_code_6f64f21ef65f48caa58713118c0dc787-26" name="rest_code_6f64f21ef65f48caa58713118c0dc787-26"&gt;&lt;/a&gt;        &lt;span class="o"&gt;(&lt;/span&gt;f&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="nv"&gt;FINAL_OPT&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;on &lt;span class="p"&gt;;;&lt;/span&gt;
-&lt;a id="rest_code_6f64f21ef65f48caa58713118c0dc787-27" name="rest_code_6f64f21ef65f48caa58713118c0dc787-27"&gt;&lt;/a&gt;        &lt;span class="o"&gt;(&lt;/span&gt;o&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="nv"&gt;OR_OPT&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;on &lt;span class="p"&gt;;;&lt;/span&gt;
-&lt;a id="rest_code_6f64f21ef65f48caa58713118c0dc787-28" name="rest_code_6f64f21ef65f48caa58713118c0dc787-28"&gt;&lt;/a&gt;        &lt;span class="o"&gt;(&lt;/span&gt;p&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="nv"&gt;PERIOD_OPT&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;on &lt;span class="p"&gt;;;&lt;/span&gt;
-&lt;a id="rest_code_6f64f21ef65f48caa58713118c0dc787-29" name="rest_code_6f64f21ef65f48caa58713118c0dc787-29"&gt;&lt;/a&gt;        &lt;span class="o"&gt;(&lt;/span&gt;r&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="nv"&gt;REMOVE_AND_OR_PERIOD_OPT&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;on &lt;span class="p"&gt;;;&lt;/span&gt;
-&lt;a id="rest_code_6f64f21ef65f48caa58713118c0dc787-30" name="rest_code_6f64f21ef65f48caa58713118c0dc787-30"&gt;&lt;/a&gt;    &lt;span class="k"&gt;esac&lt;/span&gt;
-&lt;a id="rest_code_6f64f21ef65f48caa58713118c0dc787-31" name="rest_code_6f64f21ef65f48caa58713118c0dc787-31"&gt;&lt;/a&gt;&lt;span class="k"&gt;done&lt;/span&gt;
-&lt;a id="rest_code_6f64f21ef65f48caa58713118c0dc787-32" name="rest_code_6f64f21ef65f48caa58713118c0dc787-32"&gt;&lt;/a&gt;
-&lt;a id="rest_code_6f64f21ef65f48caa58713118c0dc787-33" name="rest_code_6f64f21ef65f48caa58713118c0dc787-33"&gt;&lt;/a&gt;&lt;span class="nb"&gt;shift&lt;/span&gt; &lt;span class="k"&gt;$((&lt;/span&gt;OPTIND-1&lt;span class="k"&gt;))&lt;/span&gt;
-&lt;a id="rest_code_6f64f21ef65f48caa58713118c0dc787-34" name="rest_code_6f64f21ef65f48caa58713118c0dc787-34"&gt;&lt;/a&gt;
-&lt;a id="rest_code_6f64f21ef65f48caa58713118c0dc787-35" name="rest_code_6f64f21ef65f48caa58713118c0dc787-35"&gt;&lt;/a&gt;&lt;span class="o"&gt;[[&lt;/span&gt; &lt;span class="nv"&gt;$#&lt;/span&gt; &amp;gt; &lt;span class="m"&gt;0&lt;/span&gt; &lt;span class="o"&gt;]]&lt;/span&gt; &lt;span class="o"&gt;||&lt;/span&gt; &lt;span class="o"&gt;[[&lt;/span&gt; &lt;span class="nv"&gt;$errors&lt;/span&gt; &amp;gt; &lt;span class="m"&gt;0&lt;/span&gt; &lt;span class="o"&gt;]]&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
-&lt;a id="rest_code_6f64f21ef65f48caa58713118c0dc787-36" name="rest_code_6f64f21ef65f48caa58713118c0dc787-36"&gt;&lt;/a&gt;    cat &lt;span class="s"&gt;&amp;lt;&amp;lt;EOF&lt;/span&gt;
-&lt;a id="rest_code_6f64f21ef65f48caa58713118c0dc787-37" name="rest_code_6f64f21ef65f48caa58713118c0dc787-37"&gt;&lt;/a&gt;&lt;span class="s"&gt;usage: sort-with-commas [OPTION]&lt;/span&gt;
-&lt;a id="rest_code_6f64f21ef65f48caa58713118c0dc787-38" name="rest_code_6f64f21ef65f48caa58713118c0dc787-38"&gt;&lt;/a&gt;
-&lt;a id="rest_code_6f64f21ef65f48caa58713118c0dc787-39" name="rest_code_6f64f21ef65f48caa58713118c0dc787-39"&gt;&lt;/a&gt;&lt;span class="s"&gt;This reads its standard input and sorts a line or multiple lines with&lt;/span&gt;
-&lt;a id="rest_code_6f64f21ef65f48caa58713118c0dc787-40" name="rest_code_6f64f21ef65f48caa58713118c0dc787-40"&gt;&lt;/a&gt;&lt;span class="s"&gt;"words" separated by commas, then reassembles the line, words&lt;/span&gt;
-&lt;a id="rest_code_6f64f21ef65f48caa58713118c0dc787-41" name="rest_code_6f64f21ef65f48caa58713118c0dc787-41"&gt;&lt;/a&gt;&lt;span class="s"&gt;separated by a comma and s space, optionally leaving a final comma&lt;/span&gt;
-&lt;a id="rest_code_6f64f21ef65f48caa58713118c0dc787-42" name="rest_code_6f64f21ef65f48caa58713118c0dc787-42"&gt;&lt;/a&gt;&lt;span class="s"&gt;after the last word, or a period, and optionally putting "and " or "or&lt;/span&gt;
-&lt;a id="rest_code_6f64f21ef65f48caa58713118c0dc787-43" name="rest_code_6f64f21ef65f48caa58713118c0dc787-43"&gt;&lt;/a&gt;&lt;span class="s"&gt;" before the last word.&lt;/span&gt;
-&lt;a id="rest_code_6f64f21ef65f48caa58713118c0dc787-44" name="rest_code_6f64f21ef65f48caa58713118c0dc787-44"&gt;&lt;/a&gt;
-&lt;a id="rest_code_6f64f21ef65f48caa58713118c0dc787-45" name="rest_code_6f64f21ef65f48caa58713118c0dc787-45"&gt;&lt;/a&gt;&lt;span class="s"&gt;Options&lt;/span&gt;
-&lt;a id="rest_code_6f64f21ef65f48caa58713118c0dc787-46" name="rest_code_6f64f21ef65f48caa58713118c0dc787-46"&gt;&lt;/a&gt;
-&lt;a id="rest_code_6f64f21ef65f48caa58713118c0dc787-47" name="rest_code_6f64f21ef65f48caa58713118c0dc787-47"&gt;&lt;/a&gt;&lt;span class="s"&gt;-? -h   This message.&lt;/span&gt;
-&lt;a id="rest_code_6f64f21ef65f48caa58713118c0dc787-48" name="rest_code_6f64f21ef65f48caa58713118c0dc787-48"&gt;&lt;/a&gt;&lt;span class="s"&gt;-a      Insert "and " before last word.&lt;/span&gt;
-&lt;a id="rest_code_6f64f21ef65f48caa58713118c0dc787-49" name="rest_code_6f64f21ef65f48caa58713118c0dc787-49"&gt;&lt;/a&gt;&lt;span class="s"&gt;-f      Leave final comma after last word.&lt;/span&gt;
-&lt;a id="rest_code_6f64f21ef65f48caa58713118c0dc787-50" name="rest_code_6f64f21ef65f48caa58713118c0dc787-50"&gt;&lt;/a&gt;&lt;span class="s"&gt;-o      Insert "or " before last word.&lt;/span&gt;
-&lt;a id="rest_code_6f64f21ef65f48caa58713118c0dc787-51" name="rest_code_6f64f21ef65f48caa58713118c0dc787-51"&gt;&lt;/a&gt;&lt;span class="s"&gt;-p      Insert a period after the last word.&lt;/span&gt;
-&lt;a id="rest_code_6f64f21ef65f48caa58713118c0dc787-52" name="rest_code_6f64f21ef65f48caa58713118c0dc787-52"&gt;&lt;/a&gt;&lt;span class="s"&gt;-r      Remove "and " or "or " that occur at the beginning of a "word" in the&lt;/span&gt;
-&lt;a id="rest_code_6f64f21ef65f48caa58713118c0dc787-53" name="rest_code_6f64f21ef65f48caa58713118c0dc787-53"&gt;&lt;/a&gt;&lt;span class="s"&gt;        original list.&lt;/span&gt;
-&lt;a id="rest_code_6f64f21ef65f48caa58713118c0dc787-54" name="rest_code_6f64f21ef65f48caa58713118c0dc787-54"&gt;&lt;/a&gt;
-&lt;a id="rest_code_6f64f21ef65f48caa58713118c0dc787-55" name="rest_code_6f64f21ef65f48caa58713118c0dc787-55"&gt;&lt;/a&gt;&lt;span class="s"&gt;Note that combining -a and -o, or -f and -p do what you say, but the results&lt;/span&gt;
-&lt;a id="rest_code_6f64f21ef65f48caa58713118c0dc787-56" name="rest_code_6f64f21ef65f48caa58713118c0dc787-56"&gt;&lt;/a&gt;&lt;span class="s"&gt;are silly.&lt;/span&gt;
-&lt;a id="rest_code_6f64f21ef65f48caa58713118c0dc787-57" name="rest_code_6f64f21ef65f48caa58713118c0dc787-57"&gt;&lt;/a&gt;&lt;span class="s"&gt;EOF&lt;/span&gt;
-&lt;a id="rest_code_6f64f21ef65f48caa58713118c0dc787-58" name="rest_code_6f64f21ef65f48caa58713118c0dc787-58"&gt;&lt;/a&gt;    &lt;span class="nb"&gt;exit&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;
-&lt;a id="rest_code_6f64f21ef65f48caa58713118c0dc787-59" name="rest_code_6f64f21ef65f48caa58713118c0dc787-59"&gt;&lt;/a&gt;&lt;span class="o"&gt;}&lt;/span&gt;
-&lt;a id="rest_code_6f64f21ef65f48caa58713118c0dc787-60" name="rest_code_6f64f21ef65f48caa58713118c0dc787-60"&gt;&lt;/a&gt;
-&lt;a id="rest_code_6f64f21ef65f48caa58713118c0dc787-61" name="rest_code_6f64f21ef65f48caa58713118c0dc787-61"&gt;&lt;/a&gt;tr &lt;span class="s1"&gt;','&lt;/span&gt; &lt;span class="s1"&gt;'\n'&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; sed -E -e &lt;span class="s1"&gt;'s/^[ \t]+//'&lt;/span&gt; -e &lt;span class="s1"&gt;'/^$/d'&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;
-&lt;a id="rest_code_6f64f21ef65f48caa58713118c0dc787-62" name="rest_code_6f64f21ef65f48caa58713118c0dc787-62"&gt;&lt;/a&gt;    &lt;span class="o"&gt;([[&lt;/span&gt; &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$REMOVE_AND_OR_PERIOD_OPT&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"on"&lt;/span&gt; &lt;span class="o"&gt;]]&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt;
-&lt;a id="rest_code_6f64f21ef65f48caa58713118c0dc787-63" name="rest_code_6f64f21ef65f48caa58713118c0dc787-63"&gt;&lt;/a&gt;         sed -E -e &lt;span class="s1"&gt;'s/^(and|or)[ \t]+//'&lt;/span&gt; -e &lt;span class="s1"&gt;'s/\.[ \t]*$//'&lt;/span&gt; &lt;span class="o"&gt;||&lt;/span&gt; cat&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;
-&lt;a id="rest_code_6f64f21ef65f48caa58713118c0dc787-64" name="rest_code_6f64f21ef65f48caa58713118c0dc787-64"&gt;&lt;/a&gt;    sort -u &lt;span class="p"&gt;|&lt;/span&gt;
-&lt;a id="rest_code_6f64f21ef65f48caa58713118c0dc787-65" name="rest_code_6f64f21ef65f48caa58713118c0dc787-65"&gt;&lt;/a&gt;    sed -E -e &lt;span class="s1"&gt;'s/$/,/'&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;
-&lt;a id="rest_code_6f64f21ef65f48caa58713118c0dc787-66" name="rest_code_6f64f21ef65f48caa58713118c0dc787-66"&gt;&lt;/a&gt;    &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[[&lt;/span&gt; &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$AND_OPT&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"on"&lt;/span&gt; &lt;span class="o"&gt;]]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt; sed -e &lt;span class="s1"&gt;'$s/^/and /'&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; cat&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;fi&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;
-&lt;a id="rest_code_6f64f21ef65f48caa58713118c0dc787-67" name="rest_code_6f64f21ef65f48caa58713118c0dc787-67"&gt;&lt;/a&gt;    &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[[&lt;/span&gt; &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$FINAL_OPT&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"on"&lt;/span&gt; &lt;span class="o"&gt;]]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt; cat&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; sed -e &lt;span class="s1"&gt;'$s/,//'&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;fi&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;
-&lt;a id="rest_code_6f64f21ef65f48caa58713118c0dc787-68" name="rest_code_6f64f21ef65f48caa58713118c0dc787-68"&gt;&lt;/a&gt;    &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[[&lt;/span&gt; &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$OR_OPT&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"on"&lt;/span&gt; &lt;span class="o"&gt;]]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt; sed -e &lt;span class="s1"&gt;'$s/^/or /'&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; cat&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;fi&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;
-&lt;a id="rest_code_6f64f21ef65f48caa58713118c0dc787-69" name="rest_code_6f64f21ef65f48caa58713118c0dc787-69"&gt;&lt;/a&gt;    &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[[&lt;/span&gt; &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$PERIOD_OPT&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"on"&lt;/span&gt; &lt;span class="o"&gt;]]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt; sed -e &lt;span class="s1"&gt;'$s/$/./'&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; cat&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;fi&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;
-&lt;a id="rest_code_6f64f21ef65f48caa58713118c0dc787-70" name="rest_code_6f64f21ef65f48caa58713118c0dc787-70"&gt;&lt;/a&gt;    tr &lt;span class="s1"&gt;'\n'&lt;/span&gt; &lt;span class="s1"&gt;' '&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; sed -E -e &lt;span class="s1"&gt;'s/[ ]$//'&lt;/span&gt;
+&lt;pre class="code bash"&gt;&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-1"&gt;&lt;/a&gt;&lt;span class="ch"&gt;#! /usr/bin/env bash&lt;/span&gt;
+&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-2"&gt;&lt;/a&gt;&lt;span class="c1"&gt;###############################################################################&lt;/span&gt;
+&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-3"&gt;&lt;/a&gt;&lt;span class="c1"&gt;# Sort a list of words that are seperated by commas, optionally followed by&lt;/span&gt;
+&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-4"&gt;&lt;/a&gt;&lt;span class="c1"&gt;# a newline into a single line seperated by commas followed by spaces.&lt;/span&gt;
+&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-5"&gt;&lt;/a&gt;&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-6"&gt;&lt;/a&gt;&lt;span class="c1"&gt;# For example: it translates (ignore the "# +" at the beginning of lines)&lt;/span&gt;
+&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-7"&gt;&lt;/a&gt;&lt;span class="c1"&gt;#    bookman, schoolbook,palatino,&lt;/span&gt;
+&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-8"&gt;&lt;/a&gt;&lt;span class="c1"&gt;#    times, helvetica, helvetica-narrow,&lt;/span&gt;
+&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-9"&gt;&lt;/a&gt;&lt;span class="c1"&gt;# to&lt;/span&gt;
+&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-10"&gt;&lt;/a&gt;&lt;span class="c1"&gt;#    bookman, helvetica, helvetica-narrow, palatino, schoolbook, times&lt;/span&gt;
+&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-11"&gt;&lt;/a&gt;&lt;span class="c1"&gt;###############################################################################&lt;/span&gt;
+&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-12"&gt;&lt;/a&gt;
+&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-13"&gt;&lt;/a&gt;&lt;span class="nv"&gt;AND_OPT&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;off                     &lt;span class="c1"&gt;# Insert "and " before last word.&lt;/span&gt;
+&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-14"&gt;&lt;/a&gt;&lt;span class="nv"&gt;FINAL_OPT&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;off                   &lt;span class="c1"&gt;# Leave "," after last word.&lt;/span&gt;
+&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-15"&gt;&lt;/a&gt;&lt;span class="nv"&gt;OR_OPT&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;off                      &lt;span class="c1"&gt;# Insert "or " before last word.&lt;/span&gt;
+&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-16"&gt;&lt;/a&gt;&lt;span class="nv"&gt;PERIOD_OPT&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;off                  &lt;span class="c1"&gt;# Insert a final period after last word.&lt;/span&gt;
+&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-17"&gt;&lt;/a&gt;&lt;span class="nv"&gt;REMOVE_AND_OR_PERIOD_OPT&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;off
+&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-18"&gt;&lt;/a&gt;
+&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-19"&gt;&lt;/a&gt;
+&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-20"&gt;&lt;/a&gt;&lt;span class="nb"&gt;let&lt;/span&gt; &lt;span class="nv"&gt;errors&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;
+&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-21"&gt;&lt;/a&gt;&lt;span class="k"&gt;while&lt;/span&gt; &lt;span class="nb"&gt;getopts&lt;/span&gt; &lt;span class="s2"&gt;"?afhopr"&lt;/span&gt; opt
+&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-22"&gt;&lt;/a&gt;&lt;span class="k"&gt;do&lt;/span&gt;
+&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-23"&gt;&lt;/a&gt;    &lt;span class="k"&gt;case&lt;/span&gt; &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$opt&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt; in
+&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-24"&gt;&lt;/a&gt;        &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="se"&gt;\?&lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;h&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="nb"&gt;let&lt;/span&gt; errors++ &lt;span class="p"&gt;;;&lt;/span&gt;
+&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-25"&gt;&lt;/a&gt;        &lt;span class="o"&gt;(&lt;/span&gt;a&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="nv"&gt;AND_OPT&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;on &lt;span class="p"&gt;;;&lt;/span&gt;
+&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-26"&gt;&lt;/a&gt;        &lt;span class="o"&gt;(&lt;/span&gt;f&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="nv"&gt;FINAL_OPT&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;on &lt;span class="p"&gt;;;&lt;/span&gt;
+&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-27"&gt;&lt;/a&gt;        &lt;span class="o"&gt;(&lt;/span&gt;o&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="nv"&gt;OR_OPT&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;on &lt;span class="p"&gt;;;&lt;/span&gt;
+&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-28"&gt;&lt;/a&gt;        &lt;span class="o"&gt;(&lt;/span&gt;p&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="nv"&gt;PERIOD_OPT&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;on &lt;span class="p"&gt;;;&lt;/span&gt;
+&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-29"&gt;&lt;/a&gt;        &lt;span class="o"&gt;(&lt;/span&gt;r&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="nv"&gt;REMOVE_AND_OR_PERIOD_OPT&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;on &lt;span class="p"&gt;;;&lt;/span&gt;
+&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-30"&gt;&lt;/a&gt;    &lt;span class="k"&gt;esac&lt;/span&gt;
+&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-31"&gt;&lt;/a&gt;&lt;span class="k"&gt;done&lt;/span&gt;
+&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-32"&gt;&lt;/a&gt;
+&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-33"&gt;&lt;/a&gt;&lt;span class="nb"&gt;shift&lt;/span&gt; &lt;span class="k"&gt;$((&lt;/span&gt;OPTIND-1&lt;span class="k"&gt;))&lt;/span&gt;
+&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-34"&gt;&lt;/a&gt;
+&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-35"&gt;&lt;/a&gt;&lt;span class="o"&gt;[[&lt;/span&gt; &lt;span class="nv"&gt;$#&lt;/span&gt; &amp;gt; &lt;span class="m"&gt;0&lt;/span&gt; &lt;span class="o"&gt;]]&lt;/span&gt; &lt;span class="o"&gt;||&lt;/span&gt; &lt;span class="o"&gt;[[&lt;/span&gt; &lt;span class="nv"&gt;$errors&lt;/span&gt; &amp;gt; &lt;span class="m"&gt;0&lt;/span&gt; &lt;span class="o"&gt;]]&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-36"&gt;&lt;/a&gt;    cat &lt;span class="s"&gt;&amp;lt;&amp;lt;EOF&lt;/span&gt;
+&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-37"&gt;&lt;/a&gt;&lt;span class="s"&gt;usage: sort-with-commas [OPTION]&lt;/span&gt;
+&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-38"&gt;&lt;/a&gt;
+&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-39"&gt;&lt;/a&gt;&lt;span class="s"&gt;This reads its standard input and sorts a line or multiple lines with&lt;/span&gt;
+&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-40"&gt;&lt;/a&gt;&lt;span class="s"&gt;"words" separated by commas, then reassembles the line, words&lt;/span&gt;
+&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-41"&gt;&lt;/a&gt;&lt;span class="s"&gt;separated by a comma and s space, optionally leaving a final comma&lt;/span&gt;
+&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-42"&gt;&lt;/a&gt;&lt;span class="s"&gt;after the last word, or a period, and optionally putting "and " or "or&lt;/span&gt;
+&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-43"&gt;&lt;/a&gt;&lt;span class="s"&gt;" before the last word.&lt;/span&gt;
+&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-44"&gt;&lt;/a&gt;
+&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-45"&gt;&lt;/a&gt;&lt;span class="s"&gt;Options&lt;/span&gt;
+&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-46"&gt;&lt;/a&gt;
+&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-47"&gt;&lt;/a&gt;&lt;span class="s"&gt;-? -h   This message.&lt;/span&gt;
+&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-48"&gt;&lt;/a&gt;&lt;span class="s"&gt;-a      Insert "and " before last word.&lt;/span&gt;
+&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-49"&gt;&lt;/a&gt;&lt;span class="s"&gt;-f      Leave final comma after last word.&lt;/span&gt;
+&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-50"&gt;&lt;/a&gt;&lt;span class="s"&gt;-o      Insert "or " before last word.&lt;/span&gt;
+&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-51"&gt;&lt;/a&gt;&lt;span class="s"&gt;-p      Insert a period after the last word.&lt;/span&gt;
+&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-52"&gt;&lt;/a&gt;&lt;span class="s"&gt;-r      Remove "and " or "or " that occur at the beginning of a "word" in the&lt;/span&gt;
+&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-53"&gt;&lt;/a&gt;&lt;span class="s"&gt;        original list.&lt;/span&gt;
+&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-54"&gt;&lt;/a&gt;
+&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-55"&gt;&lt;/a&gt;&lt;span class="s"&gt;Note that combining -a and -o, or -f and -p do what you say, but the results&lt;/span&gt;
+&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-56"&gt;&lt;/a&gt;&lt;span class="s"&gt;are silly.&lt;/span&gt;
+&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-57"&gt;&lt;/a&gt;&lt;span class="s"&gt;EOF&lt;/span&gt;
+&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-58"&gt;&lt;/a&gt;    &lt;span class="nb"&gt;exit&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;
+&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-59"&gt;&lt;/a&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-60"&gt;&lt;/a&gt;
+&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-61"&gt;&lt;/a&gt;tr &lt;span class="s1"&gt;','&lt;/span&gt; &lt;span class="s1"&gt;'\n'&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; sed -E -e &lt;span class="s1"&gt;'s/^[ \t]+//'&lt;/span&gt; -e &lt;span class="s1"&gt;'/^$/d'&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-62"&gt;&lt;/a&gt;    &lt;span class="o"&gt;([[&lt;/span&gt; &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$REMOVE_AND_OR_PERIOD_OPT&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"on"&lt;/span&gt; &lt;span class="o"&gt;]]&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt;
+&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-63"&gt;&lt;/a&gt;         sed -E -e &lt;span class="s1"&gt;'s/^(and|or)[ \t]+//'&lt;/span&gt; -e &lt;span class="s1"&gt;'s/\.[ \t]*$//'&lt;/span&gt; &lt;span class="o"&gt;||&lt;/span&gt; cat&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-64"&gt;&lt;/a&gt;    sort -u &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-65"&gt;&lt;/a&gt;    sed -E -e &lt;span class="s1"&gt;'s/$/,/'&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-66"&gt;&lt;/a&gt;    &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[[&lt;/span&gt; &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$AND_OPT&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"on"&lt;/span&gt; &lt;span class="o"&gt;]]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt; sed -e &lt;span class="s1"&gt;'$s/^/and /'&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; cat&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;fi&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-67"&gt;&lt;/a&gt;    &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[[&lt;/span&gt; &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$FINAL_OPT&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"on"&lt;/span&gt; &lt;span class="o"&gt;]]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt; cat&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; sed -e &lt;span class="s1"&gt;'$s/,//'&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;fi&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-68"&gt;&lt;/a&gt;    &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[[&lt;/span&gt; &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$OR_OPT&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"on"&lt;/span&gt; &lt;span class="o"&gt;]]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt; sed -e &lt;span class="s1"&gt;'$s/^/or /'&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; cat&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;fi&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-69"&gt;&lt;/a&gt;    &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[[&lt;/span&gt; &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$PERIOD_OPT&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"on"&lt;/span&gt; &lt;span class="o"&gt;]]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt; sed -e &lt;span class="s1"&gt;'$s/$/./'&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; cat&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;fi&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-70"&gt;&lt;/a&gt;    tr &lt;span class="s1"&gt;'\n'&lt;/span&gt; &lt;span class="s1"&gt;' '&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; sed -E -e &lt;span class="s1"&gt;'s/[ ]$//'&lt;/span&gt;
 &lt;/pre&gt;&lt;p&gt;Here's &lt;span class="file"&gt;strip-leading-hash&lt;/span&gt;:&lt;/p&gt;
 &lt;p&gt;&lt;a class="reference external" href="https://tkurtbond.github.io/listings/strip-leading-hash.html"&gt;strip-leading-hash&lt;/a&gt;  &lt;a class="reference external" href="https://tkurtbond.github.io/listings/strip-leading-hash"&gt;(Source)&lt;/a&gt;&lt;/p&gt;
-&lt;pre class="code bash"&gt;&lt;a id="rest_code_3c27174e7461430a9cd5bd8e10e88e23-1" name="rest_code_3c27174e7461430a9cd5bd8e10e88e23-1"&gt;&lt;/a&gt;&lt;span class="ch"&gt;#! /usr/bin/env bash&lt;/span&gt;
-&lt;a id="rest_code_3c27174e7461430a9cd5bd8e10e88e23-2" name="rest_code_3c27174e7461430a9cd5bd8e10e88e23-2"&gt;&lt;/a&gt;
-&lt;a id="rest_code_3c27174e7461430a9cd5bd8e10e88e23-3" name="rest_code_3c27174e7461430a9cd5bd8e10e88e23-3"&gt;&lt;/a&gt;sed -E -e &lt;span class="s1"&gt;'s/^#[ \t]*//'&lt;/span&gt;
+&lt;pre class="code bash"&gt;&lt;a name="rest_code_0c0c34ba8d874575a14bacec94596314-1"&gt;&lt;/a&gt;&lt;span class="ch"&gt;#! /usr/bin/env bash&lt;/span&gt;
+&lt;a name="rest_code_0c0c34ba8d874575a14bacec94596314-2"&gt;&lt;/a&gt;
+&lt;a name="rest_code_0c0c34ba8d874575a14bacec94596314-3"&gt;&lt;/a&gt;sed -E -e &lt;span class="s1"&gt;'s/^#[ \t]*//'&lt;/span&gt;
 &lt;/pre&gt;&lt;p&gt;And here's &lt;span class="file"&gt;prefix&lt;/span&gt;:&lt;/p&gt;
 &lt;p&gt;&lt;a class="reference external" href="https://tkurtbond.github.io/listings/prefix.html"&gt;prefix&lt;/a&gt;  &lt;a class="reference external" href="https://tkurtbond.github.io/listings/prefix"&gt;(Source)&lt;/a&gt;&lt;/p&gt;
-&lt;pre class="code bash"&gt;&lt;a id="rest_code_44d02fb1181f481cbd7183025f04997e-1" name="rest_code_44d02fb1181f481cbd7183025f04997e-1"&gt;&lt;/a&gt;&lt;span class="ch"&gt;#! /usr/bin/env bash&lt;/span&gt;
-&lt;a id="rest_code_44d02fb1181f481cbd7183025f04997e-2" name="rest_code_44d02fb1181f481cbd7183025f04997e-2"&gt;&lt;/a&gt;
-&lt;a id="rest_code_44d02fb1181f481cbd7183025f04997e-3" name="rest_code_44d02fb1181f481cbd7183025f04997e-3"&gt;&lt;/a&gt;sed &lt;span class="s2"&gt;"s/^/&lt;/span&gt;&lt;span class="nv"&gt;$1&lt;/span&gt;&lt;span class="s2"&gt;/"&lt;/span&gt;
+&lt;pre class="code bash"&gt;&lt;a name="rest_code_43c6d092c63947afaa0aa33f8258e215-1"&gt;&lt;/a&gt;&lt;span class="ch"&gt;#! /usr/bin/env bash&lt;/span&gt;
+&lt;a name="rest_code_43c6d092c63947afaa0aa33f8258e215-2"&gt;&lt;/a&gt;
+&lt;a name="rest_code_43c6d092c63947afaa0aa33f8258e215-3"&gt;&lt;/a&gt;sed &lt;span class="s2"&gt;"s/^/&lt;/span&gt;&lt;span class="nv"&gt;$1&lt;/span&gt;&lt;span class="s2"&gt;/"&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;</summary>
     <category term="bash" label="bash"/>
     <category term="emacs" label="emacs"/>
     <category term="script" label="script"/>
     <category term="shell" label="shell"/>
-  </entry>
-  <entry>
-    <title>troff Memorandum Macros documentation</title>
-    <id>https://tkurtbond.github.io/posts/2021/07/15/troff-memorandum-macros-documentation/</id>
-    <updated>2021-07-15T15:57:09-04:00</updated>
-    <published>2021-07-15T15:57:09-04:00</published>
-    <author>
-      <name>T. Kurt Bond</name>
-    </author>
-    <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/posts/2021/07/15/troff-memorandum-macros-documentation/"/>
-    <summary type="html">&lt;div&gt;&lt;p&gt;&lt;strong&gt;TL;DR:&lt;/strong&gt; Look &lt;a class="reference external" href="https://tkurtbond.github.io/troff/mm-all.pdf"&gt;here&lt;/a&gt; for documentation for the &lt;span class="app"&gt;Documenter's Workbench&lt;/span&gt; &lt;span class="app"&gt;mm&lt;/span&gt; Memorandum
-Macros for &lt;span class="app"&gt;groff&lt;/span&gt;, based on the original paper &lt;cite&gt;MM - Memorandum
-Macros&lt;/cite&gt;.  If you read that far there is a &lt;a class="reference internal" href="https://tkurtbond.github.io/posts/2021/07/15/troff-memorandum-macros-documentation/#bonus"&gt;bonus&lt;/a&gt; at the end.&lt;/p&gt;
-&lt;p&gt;When I learned &lt;span class="app"&gt;troff&lt;/span&gt; it was actually on a VAX running VMS (used
-by &lt;a class="reference external" href="http://www.mpl.com/"&gt;MPL Corporation&lt;/a&gt;) using a port of &lt;span class="app"&gt;troff&lt;/span&gt; called
-&lt;span class="app"&gt;xroff&lt;/span&gt; &lt;a class="footnote-reference brackets" href="https://tkurtbond.github.io/posts/2021/07/15/troff-memorandum-macros-documentation/#who-produced-xroff" id="id1"&gt;1&lt;/a&gt;, probably around 1986.  (The VAX
-also had TeX and LaTeX, and I used them too.  Both supported the DEC
-LNO3 laserprinter that MPL had.)  While I don't know who produced
-&lt;span class="app"&gt;xroff&lt;/span&gt; and can't find anything out about it on the Internet, it
-was a complete port of &lt;span class="app"&gt;troff&lt;/span&gt; to VMS, including all the standard
-utilities and macro packages, including documentation for &lt;span class="app"&gt;ms&lt;/span&gt;,
-&lt;span class="app"&gt;me&lt;/span&gt;, and, significantly for this post &lt;span class="app"&gt;mm&lt;/span&gt;.&lt;/p&gt;
-&lt;p&gt;The &lt;span class="app"&gt;mm&lt;/span&gt; documentation was the paper &lt;cite&gt;MM - Memorandum Macros&lt;/cite&gt;, by
-D. W. Smith, J. R. Mashey, E. C. Pariser, and N. W. Smith, AT&amp;amp;T Bell
-Laboratories, June 1980.  I tried out all the macro packages, but
-found &lt;span class="app"&gt;mm&lt;/span&gt; most to my liking.  I think a large part of that was the
-&lt;span class="app"&gt;mm&lt;/span&gt; documentation — it described the many features of that macro
-package pretty well, in a user guide sort of way, teaching you how to
-use the features as it went along, rather than being a pure reference
-manual.  And I found &lt;span class="app"&gt;mm&lt;/span&gt; most comparable in features to LaTeX of the
-troff macro packages.  While configuring &lt;span class="app"&gt;mm&lt;/span&gt; documents is somewhat
-quirky &lt;a class="footnote-reference brackets" href="https://tkurtbond.github.io/posts/2021/07/15/troff-memorandum-macros-documentation/#quirky" id="id2"&gt;2&lt;/a&gt;, I felt that the added features over those found in
-&lt;span class="app"&gt;me&lt;/span&gt; and &lt;span class="app"&gt;ms&lt;/span&gt; made it worthwhile.  So I wrote a lot of
-documents using &lt;span class="app"&gt;mm&lt;/span&gt;.&lt;/p&gt;
-&lt;p&gt;Years later when I first got access to &lt;span class="app"&gt;groff&lt;/span&gt; on Unix machines
-(early 90s?) the documentation supplied with it for &lt;span class="app"&gt;mm&lt;/span&gt; was the
-&lt;span class="man"&gt;groff_mm(7)&lt;/span&gt; man page.  It was very complete as a reference, but
-very poor for teaching you how to use &lt;span class="app"&gt;mm&lt;/span&gt;.  I continued to use &lt;span class="app"&gt;mm&lt;/span&gt;
-off and on, but I think the lack of the user guide documentation of
-the &lt;span class="app"&gt;mm&lt;/span&gt; paper made &lt;span class="app"&gt;mm&lt;/span&gt; less popular among the users of &lt;span class="app"&gt;groff&lt;/span&gt;
-than it could have been.  So when modern features for PDF appeared for
-groff later on (the &lt;span class="app"&gt;pdfmark&lt;/span&gt; macros), they were adapted to
-&lt;span class="app"&gt;ms&lt;/span&gt; but not &lt;span class="app"&gt;mm&lt;/span&gt;.  (&lt;span class="app"&gt;me&lt;/span&gt; was left out, as well.)  I was sad
-to see &lt;span class="app"&gt;mm&lt;/span&gt;'s apparently low popularity, and the &lt;span class="app"&gt;mm&lt;/span&gt; paper apparently
-is not available on the Internet in a form that copyright allows to be
-copied around, unlike the papers on &lt;span class="app"&gt;ms&lt;/span&gt; and &lt;span class="app"&gt;me&lt;/span&gt;, which
-come with &lt;span class="app"&gt;groff&lt;/span&gt;.  I suspect this is because &lt;span class="app"&gt;mm&lt;/span&gt; was used
-heavily in AT&amp;amp;T's &lt;span class="app"&gt;Documenter's Workbench&lt;/span&gt;, a commercial product that was distributed
-separately from UNIX System V, if I understand correctly.&lt;/p&gt;
-&lt;p&gt;However, eventually the sources to the &lt;span class="app"&gt;Documenter's Workbench&lt;/span&gt; became available under
-the Eclipse Public License, and they are &lt;a class="reference external" href="https://github.com/n-t-roff/DWB3.3"&gt;available&lt;/a&gt; in the &lt;a class="reference external" href="https://github.com/n-t-roff"&gt;n-t-roff&lt;/a&gt;
-github repository (along with &lt;a class="reference external" href="http://n-t-roff.github.io/heirloom/doctools.html"&gt;Heirloom Docutils&lt;/a&gt;, a descendant of
-the original &lt;span class="app"&gt;ditroff&lt;/span&gt; with native UTF-8 input and easy use of
-fonts).  This includes the &lt;a class="reference external" href="https://github.com/n-t-roff/DWB3.3/tree/master/doc/mm"&gt;source&lt;/a&gt; to documentation that is derived
-from the &lt;span class="app"&gt;mm&lt;/span&gt; paper!  Unfortunately, I haven't been able to find a PDF
-of this on the Internet.&lt;/p&gt;
-&lt;p&gt;I think that having this available might help those who might want to
-try out &lt;span class="app"&gt;mm&lt;/span&gt;, or are returning to it after a long break, so I've
-posted a version that I built a while ago &lt;a class="reference external" href="https://tkurtbond.github.io/troff/mm-all.pdf"&gt;here&lt;/a&gt;.&lt;/p&gt;
-&lt;hr class="docutils"&gt;
-&lt;p id="bonus"&gt;As a bonus for reading down this far, here is how I add PDF
-outline/table-of-contents entries for sections in &lt;span class="app"&gt;groff&lt;/span&gt; &lt;span class="app"&gt;mm&lt;/span&gt;,
-using the &lt;code class="docutils literal"&gt;HZ&lt;/code&gt; user-defined heading exit macro (see
-&lt;span class="man"&gt;groff_mm(7)&lt;/span&gt;):&lt;/p&gt;
-&lt;pre class="code nroff"&gt;&lt;a id="rest_code_d066a79dff964ba7b6069fea6d334e88-1" name="rest_code_d066a79dff964ba7b6069fea6d334e88-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="c"&gt;\" pdf outline fold level&lt;/span&gt;
-&lt;a id="rest_code_d066a79dff964ba7b6069fea6d334e88-2" name="rest_code_d066a79dff964ba7b6069fea6d334e88-2"&gt;&lt;/a&gt;.&lt;span class="k"&gt;nr&lt;/span&gt; &lt;span class="s"&gt;PDFOUTLINE.FOLDLEVEL&lt;/span&gt; &lt;span class="m"&gt;3&lt;/span&gt;
-&lt;a id="rest_code_d066a79dff964ba7b6069fea6d334e88-3" name="rest_code_d066a79dff964ba7b6069fea6d334e88-3"&gt;&lt;/a&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="c"&gt;\" start out in outline view&lt;/span&gt;
-&lt;a id="rest_code_d066a79dff964ba7b6069fea6d334e88-4" name="rest_code_d066a79dff964ba7b6069fea6d334e88-4"&gt;&lt;/a&gt;.&lt;span class="k"&gt;pdfview&lt;/span&gt; &lt;span class="s"&gt;/PageMode&lt;/span&gt; &lt;span class="s"&gt;/UseOutlines&lt;/span&gt;
-&lt;a id="rest_code_d066a79dff964ba7b6069fea6d334e88-5" name="rest_code_d066a79dff964ba7b6069fea6d334e88-5"&gt;&lt;/a&gt;.&lt;span class="k"&gt;de&lt;/span&gt; &lt;span class="s"&gt;HZ&lt;/span&gt;
-&lt;a id="rest_code_d066a79dff964ba7b6069fea6d334e88-6" name="rest_code_d066a79dff964ba7b6069fea6d334e88-6"&gt;&lt;/a&gt;.&lt;span class="k"&gt;pdfhref&lt;/span&gt; &lt;span class="s"&gt;O&lt;/span&gt; &lt;span class="se"&gt;\\&lt;/span&gt;&lt;span class="s"&gt;$2&lt;/span&gt; &lt;span class="se"&gt;\\&lt;/span&gt;&lt;span class="s"&gt;*[}0]&lt;/span&gt; &lt;span class="se"&gt;\\&lt;/span&gt;&lt;span class="s"&gt;$3&lt;/span&gt;
-&lt;a id="rest_code_d066a79dff964ba7b6069fea6d334e88-7" name="rest_code_d066a79dff964ba7b6069fea6d334e88-7"&gt;&lt;/a&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="s"&gt;.&lt;/span&gt;
-&lt;/pre&gt;&lt;p&gt;And here's how to do it in &lt;a class="reference external" href="http://n-t-roff.github.io/heirloom/doctools.html"&gt;Heirloom Docutils&lt;/a&gt; &lt;span class="app"&gt;troff&lt;/span&gt;:&lt;/p&gt;
-&lt;pre class="code nroff"&gt;&lt;a id="rest_code_d5b0c0b0b2634e5cb803ac30acd88430-1" name="rest_code_d5b0c0b0b2634e5cb803ac30acd88430-1"&gt;&lt;/a&gt;.&lt;span class="k"&gt;de&lt;/span&gt; &lt;span class="s"&gt;HY&lt;/span&gt;
-&lt;a id="rest_code_d5b0c0b0b2634e5cb803ac30acd88430-2" name="rest_code_d5b0c0b0b2634e5cb803ac30acd88430-2"&gt;&lt;/a&gt;.&lt;span class="k"&gt;nr&lt;/span&gt; &lt;span class="s"&gt;HYtmp&lt;/span&gt; &lt;span class="s"&gt;(\\$1-1)&lt;/span&gt;
-&lt;a id="rest_code_d5b0c0b0b2634e5cb803ac30acd88430-3" name="rest_code_d5b0c0b0b2634e5cb803ac30acd88430-3"&gt;&lt;/a&gt;&lt;span class="se"&gt;\\&lt;/span&gt;X'PDFMark: Bookmark &lt;span class="se"&gt;\\&lt;/span&gt;n[HYtmp] &lt;span class="se"&gt;\\&lt;/span&gt;$3'
-&lt;a id="rest_code_d5b0c0b0b2634e5cb803ac30acd88430-4" name="rest_code_d5b0c0b0b2634e5cb803ac30acd88430-4"&gt;&lt;/a&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="s"&gt;.&lt;/span&gt;
-&lt;/pre&gt;&lt;p&gt;This version uses the &lt;code class="docutils literal"&gt;HY&lt;/code&gt; user-defined heading exit macro and
-doesn't include the section numbers.&lt;/p&gt;
-&lt;p&gt;I'm not sure why the two use different macros.  All I can say is that
-I wrote them at different times for slightly different purposes.&lt;/p&gt;
-&lt;dl class="footnote brackets"&gt;
-&lt;dt class="label" id="who-produced-xroff"&gt;&lt;span class="brackets"&gt;&lt;a class="fn-backref" href="https://tkurtbond.github.io/posts/2021/07/15/troff-memorandum-macros-documentation/#id1"&gt;1&lt;/a&gt;&lt;/span&gt;&lt;/dt&gt;
-&lt;dd&gt;&lt;p&gt;While I still maintain a descendant of the VAX I where I used
-&lt;span class="app"&gt;xroff&lt;/span&gt; (emulated using &lt;a class="reference external" href="https://www.stromasys.com/solutions/charon-vax/"&gt;Charon-VAX&lt;/a&gt;), sometime in the past the
-&lt;span class="app"&gt;xroff&lt;/span&gt; software disappeared from it.  I have no idea what
-happened to it.  I blame user PDL!&lt;/p&gt;
-&lt;/dd&gt;
-&lt;dt class="label" id="quirky"&gt;&lt;span class="brackets"&gt;&lt;a class="fn-backref" href="https://tkurtbond.github.io/posts/2021/07/15/troff-memorandum-macros-documentation/#id2"&gt;2&lt;/a&gt;&lt;/span&gt;&lt;/dt&gt;
-&lt;dd&gt;&lt;p&gt;The page offset, page width, and page length have to be set before
-the &lt;span class="app"&gt;mm&lt;/span&gt; macros were loaded, so while on Unix it is easy to set those
-values on the command line, on VMS due to oddities in its command line
-it was easiest to use &lt;code class="docutils literal"&gt;.so&lt;/code&gt; and load the macros directly&lt;/p&gt;
-&lt;/dd&gt;
-&lt;/dl&gt;
-&lt;p&gt;&lt;em&gt;Last edited: 2021-07-17 19:09:27 EDT&lt;/em&gt;&lt;/p&gt;
-&lt;!-- Local Variables:
-time-stamp-format: "%Y-%02m-%02d %02H:%02M:%02S %Z"
-time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
-time-stamp-end: "\\*\\\\?\n"
-time-stamp-line-limit: -20
-End: --&gt;&lt;/div&gt;</summary>
-    <category term="charon-vax" label="charon-vax"/>
-    <category term="documenters-workbench" label="documenter's workbench"/>
-    <category term="dwb" label="dwb"/>
-    <category term="groff" label="groff"/>
-    <category term="memorandum-macros" label="memorandum macros"/>
-    <category term="mm" label="mm"/>
-    <category term="troff" label="troff"/>
-    <category term="vms" label="vms"/>
-    <category term="xroff" label="xroff"/>
   </entry>
 </feed>

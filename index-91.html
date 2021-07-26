@@ -53,7 +53,126 @@
         <div class="row">
             <div class="col-sm-8 blog-main">
 <div class="postindex">
-    <article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2021/07/13/in-aff-1e-armour-didnt-make-magic-harder/" class="u-url">In AFF 1E armour didn't make magic harder</a></h2>
+    <article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2021/07/15/troff-memorandum-macros-documentation/" class="u-url">troff Memorandum Macros documentation</a></h2>
+        <div class="metadata blog-post-meta">
+            <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
+            <p class="dateline"><a href="posts/2021/07/15/troff-memorandum-macros-documentation/" rel="bookmark"><time class="published dt-published" datetime="2021-07-15T15:57:09-04:00" title="2021-07-15 15:57">2021-07-15 15:57</time></a></p>
+                <p class="commentline">            <a href="posts/2021/07/15/troff-memorandum-macros-documentation/#disqus_thread" data-disqus-identifier="cache/posts/2021/07/15/troff-memorandum-macros-documentation.html">Comments</a>
+
+
+        </p>
+</div>
+    </header><div class="e-content entry-content">
+    <div>
+<p><strong>TL;DR:</strong> Look <a class="reference external" href="troff/mm-all.pdf">here</a> for documentation for the <span class="app">Documenter's Workbench</span> <span class="app">mm</span> Memorandum
+Macros for <span class="app">groff</span>, based on the original paper <cite>MM - Memorandum
+Macros</cite>.  If you read that far there is a <a class="reference internal" href="posts/2021/07/15/troff-memorandum-macros-documentation/#bonus">bonus</a> at the end.</p>
+<p>When I learned <span class="app">troff</span> it was actually on a VAX running VMS (used
+by <a class="reference external" href="http://www.mpl.com/">MPL Corporation</a>) using a port of <span class="app">troff</span> called
+<span class="app">xroff</span> <a class="footnote-reference brackets" href="posts/2021/07/15/troff-memorandum-macros-documentation/#who-produced-xroff" id="id1">1</a>, probably around 1986.  (The VAX
+also had TeX and LaTeX, and I used them too.  Both supported the DEC
+LNO3 laserprinter that MPL had.)  While I don't know who produced
+<span class="app">xroff</span> and can't find anything out about it on the Internet, it
+was a complete port of <span class="app">troff</span> to VMS, including all the standard
+utilities and macro packages, including documentation for <span class="app">ms</span>,
+<span class="app">me</span>, and, significantly for this post <span class="app">mm</span>.</p>
+<p>The <span class="app">mm</span> documentation was the paper <cite>MM - Memorandum Macros</cite>, by
+D. W. Smith, J. R. Mashey, E. C. Pariser, and N. W. Smith, AT&amp;T Bell
+Laboratories, June 1980.  I tried out all the macro packages, but
+found <span class="app">mm</span> most to my liking.  I think a large part of that was the
+<span class="app">mm</span> documentation — it described the many features of that macro
+package pretty well, in a user guide sort of way, teaching you how to
+use the features as it went along, rather than being a pure reference
+manual.  And I found <span class="app">mm</span> most comparable in features to LaTeX of the
+troff macro packages.  While configuring <span class="app">mm</span> documents is somewhat
+quirky <a class="footnote-reference brackets" href="posts/2021/07/15/troff-memorandum-macros-documentation/#quirky" id="id2">2</a>, I felt that the added features over those found in
+<span class="app">me</span> and <span class="app">ms</span> made it worthwhile.  So I wrote a lot of
+documents using <span class="app">mm</span>.</p>
+<p>Years later when I first got access to <span class="app">groff</span> on Unix machines
+(early 90s?) the documentation supplied with it for <span class="app">mm</span> was the
+<span class="man">groff_mm(7)</span> man page.  It was very complete as a reference, but
+very poor for teaching you how to use <span class="app">mm</span>.  I continued to use <span class="app">mm</span>
+off and on, but I think the lack of the user guide documentation of
+the <span class="app">mm</span> paper made <span class="app">mm</span> less popular among the users of <span class="app">groff</span>
+than it could have been.  So when modern features for PDF appeared for
+groff later on (the <span class="app">pdfmark</span> macros), they were adapted to
+<span class="app">ms</span> but not <span class="app">mm</span>.  (<span class="app">me</span> was left out, as well.)  I was sad
+to see <span class="app">mm</span>'s apparently low popularity, and the <span class="app">mm</span> paper apparently
+is not available on the Internet in a form that copyright allows to be
+copied around, unlike the papers on <span class="app">ms</span> and <span class="app">me</span>, which
+come with <span class="app">groff</span>.  I suspect this is because <span class="app">mm</span> was used
+heavily in AT&amp;T's <span class="app">Documenter's Workbench</span>, a commercial product that was distributed
+separately from UNIX System V, if I understand correctly.</p>
+<p>However, eventually the sources to the <span class="app">Documenter's Workbench</span> became available under
+the Eclipse Public License, and they are <a class="reference external" href="https://github.com/n-t-roff/DWB3.3">available</a> in the <a class="reference external" href="https://github.com/n-t-roff">n-t-roff</a>
+github repository (along with <a class="reference external" href="http://n-t-roff.github.io/heirloom/doctools.html">Heirloom Docutils</a>, a descendant of
+the original <span class="app">ditroff</span> with native UTF-8 input and easy use of
+fonts).  This includes the <a class="reference external" href="https://github.com/n-t-roff/DWB3.3/tree/master/doc/mm">source</a> to documentation that is derived
+from the <span class="app">mm</span> paper!  Unfortunately, I haven't been able to find a PDF
+of this on the Internet.</p>
+<p>I think that having this available might help those who might want to
+try out <span class="app">mm</span>, or are returning to it after a long break, so I've
+posted a version that I built a while ago <a class="reference external" href="troff/mm-all.pdf">here</a>.</p>
+<hr class="docutils">
+<p id="bonus">As a bonus for reading down this far, here is how I add PDF
+outline/table-of-contents entries for sections in <span class="app">groff</span> <span class="app">mm</span>,
+using the <code class="docutils literal">HZ</code> user-defined heading exit macro (see
+<span class="man">groff_mm(7)</span>):</p>
+<pre class="code nroff"><a name="rest_code_df1dfa8657964e4c94c08a4449273cb0-1"></a><span class="p">.</span><span class="c">\" pdf outline fold level</span>
+<a name="rest_code_df1dfa8657964e4c94c08a4449273cb0-2"></a>.<span class="k">nr</span> <span class="s">PDFOUTLINE.FOLDLEVEL</span> <span class="m">3</span>
+<a name="rest_code_df1dfa8657964e4c94c08a4449273cb0-3"></a><span class="p">.</span><span class="c">\" start out in outline view</span>
+<a name="rest_code_df1dfa8657964e4c94c08a4449273cb0-4"></a>.<span class="k">pdfview</span> <span class="s">/PageMode</span> <span class="s">/UseOutlines</span>
+<a name="rest_code_df1dfa8657964e4c94c08a4449273cb0-5"></a>.<span class="k">de</span> <span class="s">HZ</span>
+<a name="rest_code_df1dfa8657964e4c94c08a4449273cb0-6"></a>.<span class="k">pdfhref</span> <span class="s">O</span> <span class="se">\\</span><span class="s">$2</span> <span class="se">\\</span><span class="s">*[}0]</span> <span class="se">\\</span><span class="s">$3</span>
+<a name="rest_code_df1dfa8657964e4c94c08a4449273cb0-7"></a><span class="p">.</span><span class="s">.</span>
+</pre>
+<p>And here's how to do it in <a class="reference external" href="http://n-t-roff.github.io/heirloom/doctools.html">Heirloom Docutils</a> <span class="app">troff</span>:</p>
+<pre class="code nroff"><a name="rest_code_35db5f339038467db0126c9c04977290-1"></a>.<span class="k">de</span> <span class="s">HY</span>
+<a name="rest_code_35db5f339038467db0126c9c04977290-2"></a>.<span class="k">nr</span> <span class="s">HYtmp</span> <span class="s">(\\$1-1)</span>
+<a name="rest_code_35db5f339038467db0126c9c04977290-3"></a><span class="se">\\</span>X'PDFMark: Bookmark <span class="se">\\</span>n[HYtmp] <span class="se">\\</span>$3'
+<a name="rest_code_35db5f339038467db0126c9c04977290-4"></a><span class="p">.</span><span class="s">.</span>
+</pre>
+<p>This version uses the <code class="docutils literal">HY</code> user-defined heading exit macro and
+doesn't include the section numbers.</p>
+<p>I'm not sure why the two use different macros.  All I can say is that
+I wrote them at different times for slightly different purposes.</p>
+<dl class="footnote brackets">
+<dt class="label" id="who-produced-xroff"><span class="brackets"><a class="fn-backref" href="posts/2021/07/15/troff-memorandum-macros-documentation/#id1">1</a></span></dt>
+<dd>
+<p>While I still maintain a descendant of the VAX I where I used
+<span class="app">xroff</span> (emulated using <a class="reference external" href="https://www.stromasys.com/solutions/charon-vax/">Charon-VAX</a>), sometime in the past the
+<span class="app">xroff</span> software disappeared from it.  I have no idea what
+happened to it.  I blame user PDL!</p>
+</dd>
+<dt class="label" id="quirky"><span class="brackets"><a class="fn-backref" href="posts/2021/07/15/troff-memorandum-macros-documentation/#id2">2</a></span></dt>
+<dd>
+<p>The page offset, page width, and page length have to be set before
+the <span class="app">mm</span> macros were loaded, so while on Unix it is easy to set those
+values on the command line, on VMS due to oddities in its command line
+it was easiest to use <code class="docutils literal">.so</code> and load the macros directly</p>
+</dd>
+</dl>
+<p><em>Last edited: 2021-07-17 19:09:27 EDT</em></p>
+<!-- Local Variables:
+time-stamp-format: "%Y-%02m-%02d %02H:%02M:%02S %Z"
+time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
+time-stamp-end: "\\*\\\\?\n"
+time-stamp-line-limit: -20
+End: -->
+</div>
+    <nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="categories/charon-vax/" rel="tag">charon-vax</a></li>
+            <li><a class="tag p-category" href="categories/documenters-workbench/" rel="tag">documenter's workbench</a></li>
+            <li><a class="tag p-category" href="categories/dwb/" rel="tag">dwb</a></li>
+            <li><a class="tag p-category" href="categories/groff/" rel="tag">groff</a></li>
+            <li><a class="tag p-category" href="categories/memorandum-macros/" rel="tag">memorandum macros</a></li>
+            <li><a class="tag p-category" href="categories/mm/" rel="tag">mm</a></li>
+            <li><a class="tag p-category" href="categories/troff/" rel="tag">troff</a></li>
+            <li><a class="tag p-category" href="categories/vms/" rel="tag">vms</a></li>
+            <li><a class="tag p-category" href="categories/xroff/" rel="tag">xroff</a></li>
+        </ul></nav>
+</div>
+    </article><article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2021/07/13/in-aff-1e-armour-didnt-make-magic-harder/" class="u-url">In AFF 1E armour didn't make magic harder</a></h2>
         <div class="metadata blog-post-meta">
             <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
             <p class="dateline"><a href="posts/2021/07/13/in-aff-1e-armour-didnt-make-magic-harder/" rel="bookmark"><time class="published dt-published" datetime="2021-07-13T02:47:58-04:00" title="2021-07-13 02:47">2021-07-13 02:47</time></a></p>
@@ -208,32 +327,32 @@ ago.  It looks like you can get <span class="file">xmlunicode.el</span> from his
 <a class="reference external" href="https://github.com/ndw/xmlunicode">xmlunicode</a> github repository, and it looks like the replacement for
 <span class="file">unichars.el</span> is <span class="file">xmlunicode-character-list.el</span>.</p>
 <p>Here's my code:</p>
-<pre class="code emacs-lisp"><a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-1" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-1"></a><span class="c1">;; look at https://github.com/ndw/xmlunicode for xmlunicode.el and a way</span>
-<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-2" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-2"></a><span class="c1">;; to make something like unichars.el.  xmlunicode.el provides the</span>
-<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-3" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-3"></a><span class="c1">;; "smart-unicode-*" functions.</span>
-<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-4" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-4"></a><span class="p">(</span><span class="nv">load-library</span> <span class="s">"xmlunicode"</span><span class="p">)</span>
-<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-5" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-5"></a><span class="p">(</span><span class="nv">load-library</span> <span class="s">"unichars"</span><span class="p">)</span>
-<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-6" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-6"></a>
-<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-7" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-7"></a><span class="p">(</span><span class="nb">defun</span> <span class="nv">tkb-describe-character</span> <span class="p">(</span><span class="nv">before</span><span class="p">)</span>
-<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-8" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-8"></a>  <span class="s">"Describe the character after point (before if a prefix was specified)</span>
-<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-9" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-9"></a><span class="s">if it is a unicode character."</span>
-<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-10" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-10"></a>  <span class="p">(</span><span class="k">interactive</span> <span class="s">"P"</span><span class="p">)</span>
-<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-11" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-11"></a>  <span class="p">(</span><span class="k">let*</span> <span class="p">((</span><span class="nv">char</span> <span class="p">(</span><span class="k">if</span> <span class="nv">before</span> <span class="p">(</span><span class="nf">char-before</span><span class="p">)</span> <span class="p">(</span><span class="nf">char-after</span><span class="p">)))</span>
-<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-12" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-12"></a>         <span class="p">(</span><span class="nv">info</span> <span class="p">(</span><span class="nf">assoc</span> <span class="p">(</span><span class="nf">encode-char</span> <span class="nv">char</span> <span class="ss">'ucs</span><span class="p">)</span> <span class="nv">unicode-character-list</span><span class="p">))</span>
-<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-13" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-13"></a>         <span class="p">(</span><span class="nv">info</span> <span class="p">(</span><span class="nf">cons</span> <span class="p">(</span><span class="nf">format</span> <span class="s">"#x%X"</span> <span class="p">(</span><span class="nf">car</span> <span class="nv">info</span><span class="p">))</span> <span class="nv">info</span><span class="p">)))</span>
-<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-14" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-14"></a>    <span class="p">(</span><span class="nf">message</span> <span class="s">"%S"</span> <span class="nv">info</span><span class="p">)))</span>
-<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-15" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-15"></a><span class="p">(</span><span class="nv">tkb-keys</span> <span class="p">((</span><span class="nv">kbd</span> <span class="s">"C-c k d"</span><span class="p">)</span> <span class="nf">#'</span><span class="nv">tkb-describe-character</span><span class="p">))</span>
-<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-16" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-16"></a>
-<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-17" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-17"></a><span class="p">(</span><span class="nb">define-minor-mode</span> <span class="nv">tkb-smart-unicode-mode</span>
-<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-18" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-18"></a>  <span class="s">"Toggle smart unicode punctuation"</span> <span class="no">nil</span> <span class="s">" ♻⚔☣☥☸◉⅙✽☮"</span> <span class="c1">; "✘▧▧⚅☑☢☹☺♠♥♦♣♨"</span>
-<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-19" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-19"></a>  <span class="o">'</span><span class="p">((</span><span class="s">"\""</span> <span class="o">.</span> <span class="nv">unicode-smart-double-quote</span><span class="p">)</span>
-<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-20" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-20"></a>    <span class="p">(</span><span class="s">"'"</span>  <span class="o">.</span> <span class="nv">unicode-smart-single-quote</span><span class="p">)</span>
-<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-21" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-21"></a>    <span class="p">(</span><span class="s">"-"</span>  <span class="o">.</span> <span class="nv">unicode-smart-hyphen</span><span class="p">)</span>
-<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-22" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-22"></a>    <span class="p">(</span><span class="s">"."</span>  <span class="o">.</span> <span class="nv">unicode-smart-period</span><span class="p">)))</span>
-<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-23" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-23"></a>
-<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-24" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-24"></a><span class="p">(</span><span class="nb">defadvice</span> <span class="nv">unicode-smart-hyphen</span> <span class="p">(</span><span class="nv">after</span> <span class="nv">tkb-after-unicode-smart-hyphen</span> <span class="nv">last</span>
-<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-25" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-25"></a>                                       <span class="nv">activate</span> <span class="nv">compile</span><span class="p">)</span>
-<a id="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-26" name="rest_code_45516ae7fe344cf8a07dfb66b90d1bf6-26"></a>  <span class="p">(</span><span class="nv">tkb-describe-character</span> <span class="no">t</span><span class="p">))</span>
+<pre class="code emacs-lisp"><a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-1"></a><span class="c1">;; look at https://github.com/ndw/xmlunicode for xmlunicode.el and a way</span>
+<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-2"></a><span class="c1">;; to make something like unichars.el.  xmlunicode.el provides the</span>
+<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-3"></a><span class="c1">;; "smart-unicode-*" functions.</span>
+<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-4"></a><span class="p">(</span><span class="nv">load-library</span> <span class="s">"xmlunicode"</span><span class="p">)</span>
+<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-5"></a><span class="p">(</span><span class="nv">load-library</span> <span class="s">"unichars"</span><span class="p">)</span>
+<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-6"></a>
+<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-7"></a><span class="p">(</span><span class="nb">defun</span> <span class="nv">tkb-describe-character</span> <span class="p">(</span><span class="nv">before</span><span class="p">)</span>
+<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-8"></a>  <span class="s">"Describe the character after point (before if a prefix was specified)</span>
+<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-9"></a><span class="s">if it is a unicode character."</span>
+<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-10"></a>  <span class="p">(</span><span class="k">interactive</span> <span class="s">"P"</span><span class="p">)</span>
+<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-11"></a>  <span class="p">(</span><span class="k">let*</span> <span class="p">((</span><span class="nv">char</span> <span class="p">(</span><span class="k">if</span> <span class="nv">before</span> <span class="p">(</span><span class="nf">char-before</span><span class="p">)</span> <span class="p">(</span><span class="nf">char-after</span><span class="p">)))</span>
+<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-12"></a>         <span class="p">(</span><span class="nv">info</span> <span class="p">(</span><span class="nf">assoc</span> <span class="p">(</span><span class="nf">encode-char</span> <span class="nv">char</span> <span class="ss">'ucs</span><span class="p">)</span> <span class="nv">unicode-character-list</span><span class="p">))</span>
+<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-13"></a>         <span class="p">(</span><span class="nv">info</span> <span class="p">(</span><span class="nf">cons</span> <span class="p">(</span><span class="nf">format</span> <span class="s">"#x%X"</span> <span class="p">(</span><span class="nf">car</span> <span class="nv">info</span><span class="p">))</span> <span class="nv">info</span><span class="p">)))</span>
+<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-14"></a>    <span class="p">(</span><span class="nf">message</span> <span class="s">"%S"</span> <span class="nv">info</span><span class="p">)))</span>
+<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-15"></a><span class="p">(</span><span class="nv">tkb-keys</span> <span class="p">((</span><span class="nv">kbd</span> <span class="s">"C-c k d"</span><span class="p">)</span> <span class="nf">#'</span><span class="nv">tkb-describe-character</span><span class="p">))</span>
+<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-16"></a>
+<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-17"></a><span class="p">(</span><span class="nb">define-minor-mode</span> <span class="nv">tkb-smart-unicode-mode</span>
+<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-18"></a>  <span class="s">"Toggle smart unicode punctuation"</span> <span class="no">nil</span> <span class="s">" ♻⚔☣☥☸◉⅙✽☮"</span> <span class="c1">; "✘▧▧⚅☑☢☹☺♠♥♦♣♨"</span>
+<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-19"></a>  <span class="o">'</span><span class="p">((</span><span class="s">"\""</span> <span class="o">.</span> <span class="nv">unicode-smart-double-quote</span><span class="p">)</span>
+<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-20"></a>    <span class="p">(</span><span class="s">"'"</span>  <span class="o">.</span> <span class="nv">unicode-smart-single-quote</span><span class="p">)</span>
+<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-21"></a>    <span class="p">(</span><span class="s">"-"</span>  <span class="o">.</span> <span class="nv">unicode-smart-hyphen</span><span class="p">)</span>
+<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-22"></a>    <span class="p">(</span><span class="s">"."</span>  <span class="o">.</span> <span class="nv">unicode-smart-period</span><span class="p">)))</span>
+<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-23"></a>
+<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-24"></a><span class="p">(</span><span class="nb">defadvice</span> <span class="nv">unicode-smart-hyphen</span> <span class="p">(</span><span class="nv">after</span> <span class="nv">tkb-after-unicode-smart-hyphen</span> <span class="nv">last</span>
+<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-25"></a>                                       <span class="nv">activate</span> <span class="nv">compile</span><span class="p">)</span>
+<a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-26"></a>  <span class="p">(</span><span class="nv">tkb-describe-character</span> <span class="no">t</span><span class="p">))</span>
 </pre>
 <p>Here's a <a class="reference external" href="https://gist.github.com/tkurtbond/3dad54a2141422f39033533e72f53110">gist</a>, and the <a class="reference external" href="https://gist.githubusercontent.com/tkurtbond/3dad54a2141422f39033533e72f53110/raw/f1dc635d64fae89d1202142583df39544a87d7b8/tkb-smart-unicode-mode.el">raw</a> gist if you want to download it directly.</p>
 </div>

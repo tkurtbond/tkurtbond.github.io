@@ -10,7 +10,7 @@
 <link rel="alternate" type="application/atom+xml" title="Atom" href="feed.atom">
 <link rel="canonical" href="https://tkurtbond.github.io/">
 <link rel="next" href="index-91.html" type="text/html">
-<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/2021/07/25/bx-options-class-builder/" type="text/html">
+<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/2021/07/26/making-an-newer-version-of-groff-work-with-man-and-emacs-on-macos/" type="text/html">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
@@ -52,7 +52,82 @@
         <div class="row">
             <div class="col-sm-8 blog-main">
 <div class="postindex">
-    <article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2021/07/25/bx-options-class-builder/" class="u-url">BX Options: Class Builder</a></h2>
+    <article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2021/07/26/making-an-newer-version-of-groff-work-with-man-and-emacs-on-macos/" class="u-url">Making an newer version of groff work with man and emacs on macOS</a></h2>
+        <div class="metadata blog-post-meta">
+            <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
+            <p class="dateline"><a href="posts/2021/07/26/making-an-newer-version-of-groff-work-with-man-and-emacs-on-macos/" rel="bookmark"><time class="published dt-published" datetime="2021-07-26T17:30:19-04:00" title="2021-07-26 17:30">2021-07-26 17:30</time></a></p>
+                <p class="commentline">            <a href="posts/2021/07/26/making-an-newer-version-of-groff-work-with-man-and-emacs-on-macos/#disqus_thread" data-disqus-identifier="cache/posts/2021/07/26/making-an-newer-version-of-groff-work-with-man-and-emacs-on-macos.html">Comments</a>
+
+
+        </p>
+</div>
+    </header><div class="e-content entry-content">
+    <div>
+<p>I'm posting this mostly to remind myself if I ever have to fiddle with
+this again.</p>
+<p>I use a version of <span class="app">groff</span> installed from <span class="app">git</span> because some
+of my documents depend on fixes that are coming out in the next
+release, 1.23.0.  I install it on my macOS machine in
+<span class="file">/usr/local/sw/versions/groff/git</span>.  (The directory hierarchy
+under <span class="file">/usr/local/sw/versions</span> is where I put programs that I
+compile from scratch, to keep them separated from the programs that
+come from the operating system and/or package managers.  I often have
+more than one version of a program installed, therefore the
+<span class="file">versions</span> component of the name.)</p>
+<p>Because the <span class="command">groff</span> that is first in my path is the new one I
+installed, and because <span class="app">man</span> on macOS knows to look for man pages
+according to what your <code class="docutils literal">PATH</code> is, when I as <code class="docutils literal">man groff_ms</code> I get
+the new man page for <code class="docutils literal">groff_ms</code>.  Yay!  Unfortunately, it gets
+rendered with the old <span class="app">groff</span> that macOS supplies, version
+1.19.2, which doesn't include the <code class="docutils literal">.SY</code> macro that current versions
+of <span class="app">groff</span> supply in their <span class="app">man</span> macros, and which they
+<em>use</em> in their man pages, so it renders wrong.  A typical example is
+that when it renders <span class="man">groff_ms(7)</span> the <code class="docutils literal">groff <span class="pre">-ms</span></code> and
+<code class="docutils literal">groff <span class="pre">-m</span> ms</code> are missing from the lines in the SYNOPSIS section.
+Boo!</p>
+<p>Luckily, <span class="app">man</span> takes a <code class="docutils literal"><span class="pre">-C</span></code> option that lets you specify an
+alternate configuration file (on macOS the default one is in
+<span class="file">/private/etc/man.conf</span>), so you can supply one that specifies
+the absolute path to the newer <span class="app">groff</span> you are using.  So I added</p>
+<pre class="code bash"><a name="rest_code_fcb14de0681f4f9b8cf423a143c4d9a2-1"></a><span class="nb">alias</span> <span class="nv">man</span><span class="o">=</span><span class="s1">'man -C ~/local/etc/man.conf'</span>
+</pre>
+<p>to the appropriate shell startup file.  And I can add</p>
+<pre class="code emacs-lisp"><a name="rest_code_c5b076f511754ce3ba5f6b6b8f0538ef-1"></a><span class="p">(</span><span class="k">setq</span> <span class="nv">Man-switches</span> <span class="s">"-C ~/local/etc/man.conf"</span><span class="p">)</span>
+</pre>
+<p>to my <span class="app">emacs</span> configuration so it uses the right version of
+<span class="app">groff</span> too.</p>
+<p>But a modern <span class="app">groff</span> produces ANSI escapes for bold and
+underline, rather than the older convention of over-striking via the
+backspace character with the same character for bold or with the
+underscore character for underlining.  My pager, <span class="app">less</span>, can deal
+with that, but something in <span class="app">emacs</span> doesn't like that, leaving
+the buffer with <span class="man">groff_ms(7)</span> with underlining on every line.<a class="footnote-reference brackets" href="posts/2021/07/26/making-an-newer-version-of-groff-work-with-man-and-emacs-on-macos/#manual" id="id1">1</a></p>
+<p>Eventually I figured out that the old style over-striking via
+backspaces worked just fine with emacs, so I added the <code class="docutils literal"><span class="pre">-P-c</span></code> option
+to the invocation of <span class="app">groff</span> in the NROFF definition in my
+modified <span class="file">man.conf</span> file.  That tells <span class="command">groff</span> to pass
+the <code class="docutils literal"><span class="pre">-c</span></code> option to the <span class="command">grotty</span> output driver, which tells
+it to use old-style backspace over-striking.</p>
+<p>This seems overly complicated.</p>
+<p>I suspect I'll need to do something different on the Linux boxes I
+use.</p>
+<dl class="footnote brackets">
+<dt class="label" id="manual"><span class="brackets"><a class="fn-backref" href="posts/2021/07/26/making-an-newer-version-of-groff-work-with-man-and-emacs-on-macos/#id1">1</a></span></dt>
+<dd>
+<p>Oddly, if I direct <span class="app">man</span>'s output to a file, visit that file in
+<span class="app">emacs</span>, and manually invoke the <code class="docutils literal"><span class="pre">Man-fontify-manpage</span></code> function
+<span class="app">emacs</span> uses to fontify the man page, it <em>doesn't</em> end up
+erroneously underlined.</p>
+</dd>
+</dl>
+</div>
+    <nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="categories/groff/" rel="tag">groff</a></li>
+            <li><a class="tag p-category" href="categories/macos/" rel="tag">macos</a></li>
+            <li><a class="tag p-category" href="categories/troff/" rel="tag">troff</a></li>
+        </ul></nav>
+</div>
+    </article><article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2021/07/25/bx-options-class-builder/" class="u-url">BX Options: Class Builder</a></h2>
         <div class="metadata blog-post-meta">
             <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
             <p class="dateline"><a href="posts/2021/07/25/bx-options-class-builder/" rel="bookmark"><time class="published dt-published" datetime="2021-07-25T15:17:09-04:00" title="2021-07-25 15:17">2021-07-25 15:17</time></a></p>
@@ -240,7 +315,7 @@ directories under <span class="file">/usr/local/share/groff</span>, creating the
 directories if necessary.  If you need to install into
 <span class="file">/usr/share/groff</span> you should specify the <code class="docutils literal"><span class="pre">-s</span></code> option to the
 script.  For instance:</p>
-<pre class="code text"><a id="rest_code_a34df42cbf204f0ebf6c8eb0c66e6a12-1" name="rest_code_a34df42cbf204f0ebf6c8eb0c66e6a12-1"></a>$ install-font.sh Lora-Regular.ttf
+<pre class="code text"><a name="rest_code_fcd20ada2a444b6b9ef8a78217b4c9dc-1"></a>$ install-font.sh Lora-Regular.ttf
 </pre>
 <p>will install the Regular variant of the font, leading you through four
 prompts, for three of which you just need to take the default.</p>
@@ -445,7 +520,7 @@ files into proper places under <span class="app">groff</span>'s site-font direct
 <p>So, for instance, you'd cd to the directory that holds the <span class="file">.ttf</span> files
 you downloaded.  Then, to install the Regular variant of Cormorant
 Garamond you'd run the command</p>
-<pre class="code bash"><a id="rest_code_6812261c5cfc4b12a7db044dc4b8b5bd-1" name="rest_code_6812261c5cfc4b12a7db044dc4b8b5bd-1"></a><span class="k">$(</span>IFDIR<span class="k">)</span>/install-font.sh -n -P <span class="s2">"</span><span class="nv">$DEST</span><span class="s2">"</span> -d -F CormorantGaramond -f +R CormorantGaramond-Regular.ttf
+<pre class="code bash"><a name="rest_code_2fd3a75bdcdc439eb9f8ee4929a83a00-1"></a><span class="k">$(</span>IFDIR<span class="k">)</span>/install-font.sh -n -P <span class="s2">"</span><span class="nv">$DEST</span><span class="s2">"</span> -d -F CormorantGaramond -f +R CormorantGaramond-Regular.ttf
 </pre>
 <p>where <code class="docutils literal">IFDIR</code> is an environment variable indicating the directory
 where <span class="command">install-font.sh</span> is located and <code class="docutils literal">DEST</code> is an
@@ -481,9 +556,9 @@ name of the <span class="app">groff</span> font and the <span class="app">groff<
 name of the Truetype or OpenType file you are converting.</p>
 <p>To complete the example, here are the commands to install the Italic,
 Bold, and Bold Italic variants of Cormorant Garamond:</p>
-<pre class="code bash"><a id="rest_code_a290ed067e82497aade37088534c4286-1" name="rest_code_a290ed067e82497aade37088534c4286-1"></a><span class="k">$(</span>IFDIR<span class="k">)</span>/install-font.sh -n -P <span class="s2">"</span><span class="nv">$DEST</span><span class="s2">"</span> -d -F CormorantGaramond -f +I CormorantGaramond-Italic.ttf
-<a id="rest_code_a290ed067e82497aade37088534c4286-2" name="rest_code_a290ed067e82497aade37088534c4286-2"></a><span class="k">$(</span>IFDIR<span class="k">)</span>/install-font.sh -n -P <span class="s2">"</span><span class="nv">$DEST</span><span class="s2">"</span> -d -F CormorantGaramond -f +B CormorantGaramond-Bold.ttf
-<a id="rest_code_a290ed067e82497aade37088534c4286-3" name="rest_code_a290ed067e82497aade37088534c4286-3"></a><span class="k">$(</span>IFDIR<span class="k">)</span>/install-font.sh -n -P <span class="s2">"</span><span class="nv">$DEST</span><span class="s2">"</span> -d -F CormorantGaramond -f +BI CormorantGaramond-BoldItalic.
+<pre class="code bash"><a name="rest_code_19c244ff68784702b43727a817f61e6f-1"></a><span class="k">$(</span>IFDIR<span class="k">)</span>/install-font.sh -n -P <span class="s2">"</span><span class="nv">$DEST</span><span class="s2">"</span> -d -F CormorantGaramond -f +I CormorantGaramond-Italic.ttf
+<a name="rest_code_19c244ff68784702b43727a817f61e6f-2"></a><span class="k">$(</span>IFDIR<span class="k">)</span>/install-font.sh -n -P <span class="s2">"</span><span class="nv">$DEST</span><span class="s2">"</span> -d -F CormorantGaramond -f +B CormorantGaramond-Bold.ttf
+<a name="rest_code_19c244ff68784702b43727a817f61e6f-3"></a><span class="k">$(</span>IFDIR<span class="k">)</span>/install-font.sh -n -P <span class="s2">"</span><span class="nv">$DEST</span><span class="s2">"</span> -d -F CormorantGaramond -f +BI CormorantGaramond-BoldItalic.
 </pre>
 <p>As I said in an earlier email to the list, I tend to put all four
 commands into a script so I can run them again if something goes wrong
@@ -492,7 +567,7 @@ installation of <span class="app">groff</span>.  In the case of Cormorant Garamo
 file <span class="file">install-cormorant-garamond.sh</span>.</p>
 <p><strong>Later:</strong> Peter Schaffter <a class="reference external" href="https://lists.gnu.org/archive/html/groff/2021-07/msg00090.html">pointed out</a> that the <em>simple</em> use of
 <span class="command">install-font.sh</span> is:</p>
-<pre class="code bash"><a id="rest_code_b2a89db039cf4a13b5350a5ee5d2b589-1" name="rest_code_b2a89db039cf4a13b5350a5ee5d2b589-1"></a>sudo install-font.sh fontfile
+<pre class="code bash"><a name="rest_code_26555d406f4042ad874f33fe54da22b9-1"></a>sudo install-font.sh fontfile
 </pre>
 <p>and then answer the questions the script asks.  He also pointed out
 that it creates the <span class="file">site-font</span> directory and necessary
@@ -532,15 +607,15 @@ End: -->
     <div>
 <p>I often have lists of "words", separated by commas, possibly on
 multiple lines, like this example from a <span class="file">Makefile</span>:</p>
-<pre class="code makefile"><a id="rest_code_6220d168de80446fa7c2806e5d779d6b-1" name="rest_code_6220d168de80446fa7c2806e5d779d6b-1"></a><span class="c">#    bookman, schoolbook, palatino, times,</span>
-<a id="rest_code_6220d168de80446fa7c2806e5d779d6b-2" name="rest_code_6220d168de80446fa7c2806e5d779d6b-2"></a><span class="c">#    helvetica, helvetica-narrow, optima, cormorant-garamond,</span>
-<a id="rest_code_6220d168de80446fa7c2806e5d779d6b-3" name="rest_code_6220d168de80446fa7c2806e5d779d6b-3"></a><span class="c">#    or ebgaramond.</span>
+<pre class="code makefile"><a name="rest_code_e64e051df37d48cb8b4c48d2ef9b5117-1"></a><span class="c">#    bookman, schoolbook, palatino, times,</span>
+<a name="rest_code_e64e051df37d48cb8b4c48d2ef9b5117-2"></a><span class="c">#    helvetica, helvetica-narrow, optima, cormorant-garamond,</span>
+<a name="rest_code_e64e051df37d48cb8b4c48d2ef9b5117-3"></a><span class="c">#    or ebgaramond.</span>
 </pre>
 <p>I find these lists are always getting out of order, or they end up
 with some short lines and some long lines.  I want to be able to
 reformat them automatically, like this:</p>
-<pre class="code makefile"><a id="rest_code_33d2c8f4c6a64be08c86c95bd54b7b42-1" name="rest_code_33d2c8f4c6a64be08c86c95bd54b7b42-1"></a><span class="c">#    bookman, cormorant-garamond, ebgaramond, helvetica, helvetica-narrow,</span>
-<a id="rest_code_33d2c8f4c6a64be08c86c95bd54b7b42-2" name="rest_code_33d2c8f4c6a64be08c86c95bd54b7b42-2"></a><span class="c">#    optima, palatino, schoolbook, or times.</span>
+<pre class="code makefile"><a name="rest_code_8c1788b67e8e4629af1455006ee71da3-1"></a><span class="c">#    bookman, cormorant-garamond, ebgaramond, helvetica, helvetica-narrow,</span>
+<a name="rest_code_8c1788b67e8e4629af1455006ee71da3-2"></a><span class="c">#    optima, palatino, schoolbook, or times.</span>
 </pre>
 <p>So, I wrote three scripts to deal with them,
 <span class="command">sort-with-commas</span>, <span class="command">strip-leading-hash</span> to get rid
@@ -568,7 +643,7 @@ those to sort the list.  I wrote the script
 <span class="command">strip-leading-hash</span> to do that, too, rather than having to
 remember the <span class="command">sed</span> command to so that all the time.</p>
 <p>So, to sort the original list I'd run the command</p>
-<pre class="code bash"><a id="rest_code_5ab4077e7dca40fb9630d76a48755be4-1" name="rest_code_5ab4077e7dca40fb9630d76a48755be4-1"></a>strip-leading-hash <span class="p">|</span> sort-with-commas -r -p -o <span class="p">|</span> fmt <span class="p">|</span> prefix <span class="s2">"#    "</span>
+<pre class="code bash"><a name="rest_code_5c4723a023cd4b6aa4262ff162dcc5bd-1"></a>strip-leading-hash <span class="p">|</span> sort-with-commas -r -p -o <span class="p">|</span> fmt <span class="p">|</span> prefix <span class="s2">"#    "</span>
 </pre>
 <p>which means “strip the leading hashes and spaces, remove the trailing
 period and the "and " or "or ", add a final period after the last word,
@@ -579,88 +654,88 @@ run it on the region (the currently selected text), often with the
 <span class="key">C-u</span> to replace the region with results.</p>
 <p>Here's the main script, <span class="file">sort-with-commas</span>:</p>
 <p><a class="reference external" href="listings/sort-with-commas.html">sort-with-commas</a>  <a class="reference external" href="listings/sort-with-commas">(Source)</a></p>
-<pre class="code bash"><a id="rest_code_6f64f21ef65f48caa58713118c0dc787-1" name="rest_code_6f64f21ef65f48caa58713118c0dc787-1"></a><span class="ch">#! /usr/bin/env bash</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-2" name="rest_code_6f64f21ef65f48caa58713118c0dc787-2"></a><span class="c1">###############################################################################</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-3" name="rest_code_6f64f21ef65f48caa58713118c0dc787-3"></a><span class="c1"># Sort a list of words that are seperated by commas, optionally followed by</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-4" name="rest_code_6f64f21ef65f48caa58713118c0dc787-4"></a><span class="c1"># a newline into a single line seperated by commas followed by spaces.</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-5" name="rest_code_6f64f21ef65f48caa58713118c0dc787-5"></a><span class="c1">#</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-6" name="rest_code_6f64f21ef65f48caa58713118c0dc787-6"></a><span class="c1"># For example: it translates (ignore the "# +" at the beginning of lines)</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-7" name="rest_code_6f64f21ef65f48caa58713118c0dc787-7"></a><span class="c1">#    bookman, schoolbook,palatino,</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-8" name="rest_code_6f64f21ef65f48caa58713118c0dc787-8"></a><span class="c1">#    times, helvetica, helvetica-narrow,</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-9" name="rest_code_6f64f21ef65f48caa58713118c0dc787-9"></a><span class="c1"># to</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-10" name="rest_code_6f64f21ef65f48caa58713118c0dc787-10"></a><span class="c1">#    bookman, helvetica, helvetica-narrow, palatino, schoolbook, times</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-11" name="rest_code_6f64f21ef65f48caa58713118c0dc787-11"></a><span class="c1">###############################################################################</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-12" name="rest_code_6f64f21ef65f48caa58713118c0dc787-12"></a>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-13" name="rest_code_6f64f21ef65f48caa58713118c0dc787-13"></a><span class="nv">AND_OPT</span><span class="o">=</span>off                     <span class="c1"># Insert "and " before last word.</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-14" name="rest_code_6f64f21ef65f48caa58713118c0dc787-14"></a><span class="nv">FINAL_OPT</span><span class="o">=</span>off                   <span class="c1"># Leave "," after last word.</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-15" name="rest_code_6f64f21ef65f48caa58713118c0dc787-15"></a><span class="nv">OR_OPT</span><span class="o">=</span>off                      <span class="c1"># Insert "or " before last word.</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-16" name="rest_code_6f64f21ef65f48caa58713118c0dc787-16"></a><span class="nv">PERIOD_OPT</span><span class="o">=</span>off                  <span class="c1"># Insert a final period after last word.</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-17" name="rest_code_6f64f21ef65f48caa58713118c0dc787-17"></a><span class="nv">REMOVE_AND_OR_PERIOD_OPT</span><span class="o">=</span>off
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-18" name="rest_code_6f64f21ef65f48caa58713118c0dc787-18"></a>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-19" name="rest_code_6f64f21ef65f48caa58713118c0dc787-19"></a>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-20" name="rest_code_6f64f21ef65f48caa58713118c0dc787-20"></a><span class="nb">let</span> <span class="nv">errors</span><span class="o">=</span><span class="m">0</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-21" name="rest_code_6f64f21ef65f48caa58713118c0dc787-21"></a><span class="k">while</span> <span class="nb">getopts</span> <span class="s2">"?afhopr"</span> opt
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-22" name="rest_code_6f64f21ef65f48caa58713118c0dc787-22"></a><span class="k">do</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-23" name="rest_code_6f64f21ef65f48caa58713118c0dc787-23"></a>    <span class="k">case</span> <span class="s2">"</span><span class="nv">$opt</span><span class="s2">"</span> <span class="k">in</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-24" name="rest_code_6f64f21ef65f48caa58713118c0dc787-24"></a>        <span class="o">(</span><span class="se">\?</span><span class="p">|</span>h<span class="o">)</span> <span class="nb">let</span> errors++ <span class="p">;;</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-25" name="rest_code_6f64f21ef65f48caa58713118c0dc787-25"></a>        <span class="o">(</span>a<span class="o">)</span> <span class="nv">AND_OPT</span><span class="o">=</span>on <span class="p">;;</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-26" name="rest_code_6f64f21ef65f48caa58713118c0dc787-26"></a>        <span class="o">(</span>f<span class="o">)</span> <span class="nv">FINAL_OPT</span><span class="o">=</span>on <span class="p">;;</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-27" name="rest_code_6f64f21ef65f48caa58713118c0dc787-27"></a>        <span class="o">(</span>o<span class="o">)</span> <span class="nv">OR_OPT</span><span class="o">=</span>on <span class="p">;;</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-28" name="rest_code_6f64f21ef65f48caa58713118c0dc787-28"></a>        <span class="o">(</span>p<span class="o">)</span> <span class="nv">PERIOD_OPT</span><span class="o">=</span>on <span class="p">;;</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-29" name="rest_code_6f64f21ef65f48caa58713118c0dc787-29"></a>        <span class="o">(</span>r<span class="o">)</span> <span class="nv">REMOVE_AND_OR_PERIOD_OPT</span><span class="o">=</span>on <span class="p">;;</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-30" name="rest_code_6f64f21ef65f48caa58713118c0dc787-30"></a>    <span class="k">esac</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-31" name="rest_code_6f64f21ef65f48caa58713118c0dc787-31"></a><span class="k">done</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-32" name="rest_code_6f64f21ef65f48caa58713118c0dc787-32"></a>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-33" name="rest_code_6f64f21ef65f48caa58713118c0dc787-33"></a><span class="nb">shift</span> <span class="k">$((</span>OPTIND-1<span class="k">))</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-34" name="rest_code_6f64f21ef65f48caa58713118c0dc787-34"></a>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-35" name="rest_code_6f64f21ef65f48caa58713118c0dc787-35"></a><span class="o">[[</span> <span class="nv">$#</span> &gt; <span class="m">0</span> <span class="o">]]</span> <span class="o">||</span> <span class="o">[[</span> <span class="nv">$errors</span> &gt; <span class="m">0</span> <span class="o">]]</span> <span class="o">&amp;&amp;</span> <span class="o">{</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-36" name="rest_code_6f64f21ef65f48caa58713118c0dc787-36"></a>    cat <span class="s">&lt;&lt;EOF</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-37" name="rest_code_6f64f21ef65f48caa58713118c0dc787-37"></a><span class="s">usage: sort-with-commas [OPTION]</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-38" name="rest_code_6f64f21ef65f48caa58713118c0dc787-38"></a>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-39" name="rest_code_6f64f21ef65f48caa58713118c0dc787-39"></a><span class="s">This reads its standard input and sorts a line or multiple lines with</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-40" name="rest_code_6f64f21ef65f48caa58713118c0dc787-40"></a><span class="s">"words" separated by commas, then reassembles the line, words</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-41" name="rest_code_6f64f21ef65f48caa58713118c0dc787-41"></a><span class="s">separated by a comma and s space, optionally leaving a final comma</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-42" name="rest_code_6f64f21ef65f48caa58713118c0dc787-42"></a><span class="s">after the last word, or a period, and optionally putting "and " or "or</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-43" name="rest_code_6f64f21ef65f48caa58713118c0dc787-43"></a><span class="s">" before the last word.</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-44" name="rest_code_6f64f21ef65f48caa58713118c0dc787-44"></a>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-45" name="rest_code_6f64f21ef65f48caa58713118c0dc787-45"></a><span class="s">Options</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-46" name="rest_code_6f64f21ef65f48caa58713118c0dc787-46"></a>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-47" name="rest_code_6f64f21ef65f48caa58713118c0dc787-47"></a><span class="s">-? -h   This message.</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-48" name="rest_code_6f64f21ef65f48caa58713118c0dc787-48"></a><span class="s">-a      Insert "and " before last word.</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-49" name="rest_code_6f64f21ef65f48caa58713118c0dc787-49"></a><span class="s">-f      Leave final comma after last word.</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-50" name="rest_code_6f64f21ef65f48caa58713118c0dc787-50"></a><span class="s">-o      Insert "or " before last word.</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-51" name="rest_code_6f64f21ef65f48caa58713118c0dc787-51"></a><span class="s">-p      Insert a period after the last word.</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-52" name="rest_code_6f64f21ef65f48caa58713118c0dc787-52"></a><span class="s">-r      Remove "and " or "or " that occur at the beginning of a "word" in the</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-53" name="rest_code_6f64f21ef65f48caa58713118c0dc787-53"></a><span class="s">        original list.</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-54" name="rest_code_6f64f21ef65f48caa58713118c0dc787-54"></a>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-55" name="rest_code_6f64f21ef65f48caa58713118c0dc787-55"></a><span class="s">Note that combining -a and -o, or -f and -p do what you say, but the results</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-56" name="rest_code_6f64f21ef65f48caa58713118c0dc787-56"></a><span class="s">are silly.</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-57" name="rest_code_6f64f21ef65f48caa58713118c0dc787-57"></a><span class="s">EOF</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-58" name="rest_code_6f64f21ef65f48caa58713118c0dc787-58"></a>    <span class="nb">exit</span> <span class="m">1</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-59" name="rest_code_6f64f21ef65f48caa58713118c0dc787-59"></a><span class="o">}</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-60" name="rest_code_6f64f21ef65f48caa58713118c0dc787-60"></a>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-61" name="rest_code_6f64f21ef65f48caa58713118c0dc787-61"></a>tr <span class="s1">','</span> <span class="s1">'\n'</span> <span class="p">|</span> sed -E -e <span class="s1">'s/^[ \t]+//'</span> -e <span class="s1">'/^$/d'</span> <span class="p">|</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-62" name="rest_code_6f64f21ef65f48caa58713118c0dc787-62"></a>    <span class="o">([[</span> <span class="s2">"</span><span class="nv">$REMOVE_AND_OR_PERIOD_OPT</span><span class="s2">"</span> <span class="o">=</span> <span class="s2">"on"</span> <span class="o">]]</span> <span class="o">&amp;&amp;</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-63" name="rest_code_6f64f21ef65f48caa58713118c0dc787-63"></a>         sed -E -e <span class="s1">'s/^(and|or)[ \t]+//'</span> -e <span class="s1">'s/\.[ \t]*$//'</span> <span class="o">||</span> cat<span class="o">)</span> <span class="p">|</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-64" name="rest_code_6f64f21ef65f48caa58713118c0dc787-64"></a>    sort -u <span class="p">|</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-65" name="rest_code_6f64f21ef65f48caa58713118c0dc787-65"></a>    sed -E -e <span class="s1">'s/$/,/'</span> <span class="p">|</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-66" name="rest_code_6f64f21ef65f48caa58713118c0dc787-66"></a>    <span class="o">(</span><span class="k">if</span> <span class="o">[[</span> <span class="s2">"</span><span class="nv">$AND_OPT</span><span class="s2">"</span> <span class="o">=</span> <span class="s2">"on"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span> sed -e <span class="s1">'$s/^/and /'</span><span class="p">;</span> <span class="k">else</span> cat<span class="p">;</span> <span class="k">fi</span><span class="o">)</span> <span class="p">|</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-67" name="rest_code_6f64f21ef65f48caa58713118c0dc787-67"></a>    <span class="o">(</span><span class="k">if</span> <span class="o">[[</span> <span class="s2">"</span><span class="nv">$FINAL_OPT</span><span class="s2">"</span> <span class="o">=</span> <span class="s2">"on"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span> cat<span class="p">;</span> <span class="k">else</span> sed -e <span class="s1">'$s/,//'</span><span class="p">;</span> <span class="k">fi</span><span class="o">)</span> <span class="p">|</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-68" name="rest_code_6f64f21ef65f48caa58713118c0dc787-68"></a>    <span class="o">(</span><span class="k">if</span> <span class="o">[[</span> <span class="s2">"</span><span class="nv">$OR_OPT</span><span class="s2">"</span> <span class="o">=</span> <span class="s2">"on"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span> sed -e <span class="s1">'$s/^/or /'</span><span class="p">;</span> <span class="k">else</span> cat<span class="p">;</span> <span class="k">fi</span><span class="o">)</span> <span class="p">|</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-69" name="rest_code_6f64f21ef65f48caa58713118c0dc787-69"></a>    <span class="o">(</span><span class="k">if</span> <span class="o">[[</span> <span class="s2">"</span><span class="nv">$PERIOD_OPT</span><span class="s2">"</span> <span class="o">=</span> <span class="s2">"on"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span> sed -e <span class="s1">'$s/$/./'</span><span class="p">;</span> <span class="k">else</span> cat<span class="p">;</span> <span class="k">fi</span><span class="o">)</span> <span class="p">|</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-70" name="rest_code_6f64f21ef65f48caa58713118c0dc787-70"></a>    tr <span class="s1">'\n'</span> <span class="s1">' '</span> <span class="p">|</span> sed -E -e <span class="s1">'s/[ ]$//'</span>
+<pre class="code bash"><a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-1"></a><span class="ch">#! /usr/bin/env bash</span>
+<a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-2"></a><span class="c1">###############################################################################</span>
+<a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-3"></a><span class="c1"># Sort a list of words that are seperated by commas, optionally followed by</span>
+<a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-4"></a><span class="c1"># a newline into a single line seperated by commas followed by spaces.</span>
+<a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-5"></a><span class="c1">#</span>
+<a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-6"></a><span class="c1"># For example: it translates (ignore the "# +" at the beginning of lines)</span>
+<a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-7"></a><span class="c1">#    bookman, schoolbook,palatino,</span>
+<a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-8"></a><span class="c1">#    times, helvetica, helvetica-narrow,</span>
+<a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-9"></a><span class="c1"># to</span>
+<a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-10"></a><span class="c1">#    bookman, helvetica, helvetica-narrow, palatino, schoolbook, times</span>
+<a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-11"></a><span class="c1">###############################################################################</span>
+<a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-12"></a>
+<a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-13"></a><span class="nv">AND_OPT</span><span class="o">=</span>off                     <span class="c1"># Insert "and " before last word.</span>
+<a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-14"></a><span class="nv">FINAL_OPT</span><span class="o">=</span>off                   <span class="c1"># Leave "," after last word.</span>
+<a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-15"></a><span class="nv">OR_OPT</span><span class="o">=</span>off                      <span class="c1"># Insert "or " before last word.</span>
+<a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-16"></a><span class="nv">PERIOD_OPT</span><span class="o">=</span>off                  <span class="c1"># Insert a final period after last word.</span>
+<a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-17"></a><span class="nv">REMOVE_AND_OR_PERIOD_OPT</span><span class="o">=</span>off
+<a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-18"></a>
+<a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-19"></a>
+<a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-20"></a><span class="nb">let</span> <span class="nv">errors</span><span class="o">=</span><span class="m">0</span>
+<a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-21"></a><span class="k">while</span> <span class="nb">getopts</span> <span class="s2">"?afhopr"</span> opt
+<a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-22"></a><span class="k">do</span>
+<a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-23"></a>    <span class="k">case</span> <span class="s2">"</span><span class="nv">$opt</span><span class="s2">"</span> in
+<a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-24"></a>        <span class="o">(</span><span class="se">\?</span><span class="p">|</span>h<span class="o">)</span> <span class="nb">let</span> errors++ <span class="p">;;</span>
+<a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-25"></a>        <span class="o">(</span>a<span class="o">)</span> <span class="nv">AND_OPT</span><span class="o">=</span>on <span class="p">;;</span>
+<a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-26"></a>        <span class="o">(</span>f<span class="o">)</span> <span class="nv">FINAL_OPT</span><span class="o">=</span>on <span class="p">;;</span>
+<a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-27"></a>        <span class="o">(</span>o<span class="o">)</span> <span class="nv">OR_OPT</span><span class="o">=</span>on <span class="p">;;</span>
+<a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-28"></a>        <span class="o">(</span>p<span class="o">)</span> <span class="nv">PERIOD_OPT</span><span class="o">=</span>on <span class="p">;;</span>
+<a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-29"></a>        <span class="o">(</span>r<span class="o">)</span> <span class="nv">REMOVE_AND_OR_PERIOD_OPT</span><span class="o">=</span>on <span class="p">;;</span>
+<a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-30"></a>    <span class="k">esac</span>
+<a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-31"></a><span class="k">done</span>
+<a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-32"></a>
+<a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-33"></a><span class="nb">shift</span> <span class="k">$((</span>OPTIND-1<span class="k">))</span>
+<a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-34"></a>
+<a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-35"></a><span class="o">[[</span> <span class="nv">$#</span> &gt; <span class="m">0</span> <span class="o">]]</span> <span class="o">||</span> <span class="o">[[</span> <span class="nv">$errors</span> &gt; <span class="m">0</span> <span class="o">]]</span> <span class="o">&amp;&amp;</span> <span class="o">{</span>
+<a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-36"></a>    cat <span class="s">&lt;&lt;EOF</span>
+<a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-37"></a><span class="s">usage: sort-with-commas [OPTION]</span>
+<a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-38"></a>
+<a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-39"></a><span class="s">This reads its standard input and sorts a line or multiple lines with</span>
+<a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-40"></a><span class="s">"words" separated by commas, then reassembles the line, words</span>
+<a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-41"></a><span class="s">separated by a comma and s space, optionally leaving a final comma</span>
+<a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-42"></a><span class="s">after the last word, or a period, and optionally putting "and " or "or</span>
+<a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-43"></a><span class="s">" before the last word.</span>
+<a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-44"></a>
+<a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-45"></a><span class="s">Options</span>
+<a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-46"></a>
+<a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-47"></a><span class="s">-? -h   This message.</span>
+<a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-48"></a><span class="s">-a      Insert "and " before last word.</span>
+<a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-49"></a><span class="s">-f      Leave final comma after last word.</span>
+<a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-50"></a><span class="s">-o      Insert "or " before last word.</span>
+<a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-51"></a><span class="s">-p      Insert a period after the last word.</span>
+<a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-52"></a><span class="s">-r      Remove "and " or "or " that occur at the beginning of a "word" in the</span>
+<a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-53"></a><span class="s">        original list.</span>
+<a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-54"></a>
+<a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-55"></a><span class="s">Note that combining -a and -o, or -f and -p do what you say, but the results</span>
+<a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-56"></a><span class="s">are silly.</span>
+<a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-57"></a><span class="s">EOF</span>
+<a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-58"></a>    <span class="nb">exit</span> <span class="m">1</span>
+<a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-59"></a><span class="o">}</span>
+<a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-60"></a>
+<a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-61"></a>tr <span class="s1">','</span> <span class="s1">'\n'</span> <span class="p">|</span> sed -E -e <span class="s1">'s/^[ \t]+//'</span> -e <span class="s1">'/^$/d'</span> <span class="p">|</span>
+<a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-62"></a>    <span class="o">([[</span> <span class="s2">"</span><span class="nv">$REMOVE_AND_OR_PERIOD_OPT</span><span class="s2">"</span> <span class="o">=</span> <span class="s2">"on"</span> <span class="o">]]</span> <span class="o">&amp;&amp;</span>
+<a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-63"></a>         sed -E -e <span class="s1">'s/^(and|or)[ \t]+//'</span> -e <span class="s1">'s/\.[ \t]*$//'</span> <span class="o">||</span> cat<span class="o">)</span> <span class="p">|</span>
+<a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-64"></a>    sort -u <span class="p">|</span>
+<a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-65"></a>    sed -E -e <span class="s1">'s/$/,/'</span> <span class="p">|</span>
+<a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-66"></a>    <span class="o">(</span><span class="k">if</span> <span class="o">[[</span> <span class="s2">"</span><span class="nv">$AND_OPT</span><span class="s2">"</span> <span class="o">=</span> <span class="s2">"on"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span> sed -e <span class="s1">'$s/^/and /'</span><span class="p">;</span> <span class="k">else</span> cat<span class="p">;</span> <span class="k">fi</span><span class="o">)</span> <span class="p">|</span>
+<a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-67"></a>    <span class="o">(</span><span class="k">if</span> <span class="o">[[</span> <span class="s2">"</span><span class="nv">$FINAL_OPT</span><span class="s2">"</span> <span class="o">=</span> <span class="s2">"on"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span> cat<span class="p">;</span> <span class="k">else</span> sed -e <span class="s1">'$s/,//'</span><span class="p">;</span> <span class="k">fi</span><span class="o">)</span> <span class="p">|</span>
+<a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-68"></a>    <span class="o">(</span><span class="k">if</span> <span class="o">[[</span> <span class="s2">"</span><span class="nv">$OR_OPT</span><span class="s2">"</span> <span class="o">=</span> <span class="s2">"on"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span> sed -e <span class="s1">'$s/^/or /'</span><span class="p">;</span> <span class="k">else</span> cat<span class="p">;</span> <span class="k">fi</span><span class="o">)</span> <span class="p">|</span>
+<a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-69"></a>    <span class="o">(</span><span class="k">if</span> <span class="o">[[</span> <span class="s2">"</span><span class="nv">$PERIOD_OPT</span><span class="s2">"</span> <span class="o">=</span> <span class="s2">"on"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span> sed -e <span class="s1">'$s/$/./'</span><span class="p">;</span> <span class="k">else</span> cat<span class="p">;</span> <span class="k">fi</span><span class="o">)</span> <span class="p">|</span>
+<a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-70"></a>    tr <span class="s1">'\n'</span> <span class="s1">' '</span> <span class="p">|</span> sed -E -e <span class="s1">'s/[ ]$//'</span>
 </pre>
 <p>Here's <span class="file">strip-leading-hash</span>:</p>
 <p><a class="reference external" href="listings/strip-leading-hash.html">strip-leading-hash</a>  <a class="reference external" href="listings/strip-leading-hash">(Source)</a></p>
-<pre class="code bash"><a id="rest_code_3c27174e7461430a9cd5bd8e10e88e23-1" name="rest_code_3c27174e7461430a9cd5bd8e10e88e23-1"></a><span class="ch">#! /usr/bin/env bash</span>
-<a id="rest_code_3c27174e7461430a9cd5bd8e10e88e23-2" name="rest_code_3c27174e7461430a9cd5bd8e10e88e23-2"></a>
-<a id="rest_code_3c27174e7461430a9cd5bd8e10e88e23-3" name="rest_code_3c27174e7461430a9cd5bd8e10e88e23-3"></a>sed -E -e <span class="s1">'s/^#[ \t]*//'</span>
+<pre class="code bash"><a name="rest_code_0c0c34ba8d874575a14bacec94596314-1"></a><span class="ch">#! /usr/bin/env bash</span>
+<a name="rest_code_0c0c34ba8d874575a14bacec94596314-2"></a>
+<a name="rest_code_0c0c34ba8d874575a14bacec94596314-3"></a>sed -E -e <span class="s1">'s/^#[ \t]*//'</span>
 </pre>
 <p>And here's <span class="file">prefix</span>:</p>
 <p><a class="reference external" href="listings/prefix.html">prefix</a>  <a class="reference external" href="listings/prefix">(Source)</a></p>
-<pre class="code bash"><a id="rest_code_44d02fb1181f481cbd7183025f04997e-1" name="rest_code_44d02fb1181f481cbd7183025f04997e-1"></a><span class="ch">#! /usr/bin/env bash</span>
-<a id="rest_code_44d02fb1181f481cbd7183025f04997e-2" name="rest_code_44d02fb1181f481cbd7183025f04997e-2"></a>
-<a id="rest_code_44d02fb1181f481cbd7183025f04997e-3" name="rest_code_44d02fb1181f481cbd7183025f04997e-3"></a>sed <span class="s2">"s/^/</span><span class="nv">$1</span><span class="s2">/"</span>
+<pre class="code bash"><a name="rest_code_43c6d092c63947afaa0aa33f8258e215-1"></a><span class="ch">#! /usr/bin/env bash</span>
+<a name="rest_code_43c6d092c63947afaa0aa33f8258e215-2"></a>
+<a name="rest_code_43c6d092c63947afaa0aa33f8258e215-3"></a>sed <span class="s2">"s/^/</span><span class="nv">$1</span><span class="s2">/"</span>
 </pre>
 </div>
     <nav><ul itemprop="keywords" class="tags">
@@ -668,125 +743,6 @@ run it on the region (the currently selected text), often with the
             <li><a class="tag p-category" href="categories/emacs/" rel="tag">emacs</a></li>
             <li><a class="tag p-category" href="categories/script/" rel="tag">script</a></li>
             <li><a class="tag p-category" href="categories/shell/" rel="tag">shell</a></li>
-        </ul></nav>
-</div>
-    </article><article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2021/07/15/troff-memorandum-macros-documentation/" class="u-url">troff Memorandum Macros documentation</a></h2>
-        <div class="metadata blog-post-meta">
-            <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
-            <p class="dateline"><a href="posts/2021/07/15/troff-memorandum-macros-documentation/" rel="bookmark"><time class="published dt-published" datetime="2021-07-15T15:57:09-04:00" title="2021-07-15 15:57">2021-07-15 15:57</time></a></p>
-                <p class="commentline">            <a href="posts/2021/07/15/troff-memorandum-macros-documentation/#disqus_thread" data-disqus-identifier="cache/posts/2021/07/15/troff-memorandum-macros-documentation.html">Comments</a>
-
-
-        </p>
-</div>
-    </header><div class="e-content entry-content">
-    <div>
-<p><strong>TL;DR:</strong> Look <a class="reference external" href="troff/mm-all.pdf">here</a> for documentation for the <span class="app">Documenter's Workbench</span> <span class="app">mm</span> Memorandum
-Macros for <span class="app">groff</span>, based on the original paper <cite>MM - Memorandum
-Macros</cite>.  If you read that far there is a <a class="reference internal" href="posts/2021/07/15/troff-memorandum-macros-documentation/#bonus">bonus</a> at the end.</p>
-<p>When I learned <span class="app">troff</span> it was actually on a VAX running VMS (used
-by <a class="reference external" href="http://www.mpl.com/">MPL Corporation</a>) using a port of <span class="app">troff</span> called
-<span class="app">xroff</span> <a class="footnote-reference brackets" href="posts/2021/07/15/troff-memorandum-macros-documentation/#who-produced-xroff" id="id1">1</a>, probably around 1986.  (The VAX
-also had TeX and LaTeX, and I used them too.  Both supported the DEC
-LNO3 laserprinter that MPL had.)  While I don't know who produced
-<span class="app">xroff</span> and can't find anything out about it on the Internet, it
-was a complete port of <span class="app">troff</span> to VMS, including all the standard
-utilities and macro packages, including documentation for <span class="app">ms</span>,
-<span class="app">me</span>, and, significantly for this post <span class="app">mm</span>.</p>
-<p>The <span class="app">mm</span> documentation was the paper <cite>MM - Memorandum Macros</cite>, by
-D. W. Smith, J. R. Mashey, E. C. Pariser, and N. W. Smith, AT&amp;T Bell
-Laboratories, June 1980.  I tried out all the macro packages, but
-found <span class="app">mm</span> most to my liking.  I think a large part of that was the
-<span class="app">mm</span> documentation — it described the many features of that macro
-package pretty well, in a user guide sort of way, teaching you how to
-use the features as it went along, rather than being a pure reference
-manual.  And I found <span class="app">mm</span> most comparable in features to LaTeX of the
-troff macro packages.  While configuring <span class="app">mm</span> documents is somewhat
-quirky <a class="footnote-reference brackets" href="posts/2021/07/15/troff-memorandum-macros-documentation/#quirky" id="id2">2</a>, I felt that the added features over those found in
-<span class="app">me</span> and <span class="app">ms</span> made it worthwhile.  So I wrote a lot of
-documents using <span class="app">mm</span>.</p>
-<p>Years later when I first got access to <span class="app">groff</span> on Unix machines
-(early 90s?) the documentation supplied with it for <span class="app">mm</span> was the
-<span class="man">groff_mm(7)</span> man page.  It was very complete as a reference, but
-very poor for teaching you how to use <span class="app">mm</span>.  I continued to use <span class="app">mm</span>
-off and on, but I think the lack of the user guide documentation of
-the <span class="app">mm</span> paper made <span class="app">mm</span> less popular among the users of <span class="app">groff</span>
-than it could have been.  So when modern features for PDF appeared for
-groff later on (the <span class="app">pdfmark</span> macros), they were adapted to
-<span class="app">ms</span> but not <span class="app">mm</span>.  (<span class="app">me</span> was left out, as well.)  I was sad
-to see <span class="app">mm</span>'s apparently low popularity, and the <span class="app">mm</span> paper apparently
-is not available on the Internet in a form that copyright allows to be
-copied around, unlike the papers on <span class="app">ms</span> and <span class="app">me</span>, which
-come with <span class="app">groff</span>.  I suspect this is because <span class="app">mm</span> was used
-heavily in AT&amp;T's <span class="app">Documenter's Workbench</span>, a commercial product that was distributed
-separately from UNIX System V, if I understand correctly.</p>
-<p>However, eventually the sources to the <span class="app">Documenter's Workbench</span> became available under
-the Eclipse Public License, and they are <a class="reference external" href="https://github.com/n-t-roff/DWB3.3">available</a> in the <a class="reference external" href="https://github.com/n-t-roff">n-t-roff</a>
-github repository (along with <a class="reference external" href="http://n-t-roff.github.io/heirloom/doctools.html">Heirloom Docutils</a>, a descendant of
-the original <span class="app">ditroff</span> with native UTF-8 input and easy use of
-fonts).  This includes the <a class="reference external" href="https://github.com/n-t-roff/DWB3.3/tree/master/doc/mm">source</a> to documentation that is derived
-from the <span class="app">mm</span> paper!  Unfortunately, I haven't been able to find a PDF
-of this on the Internet.</p>
-<p>I think that having this available might help those who might want to
-try out <span class="app">mm</span>, or are returning to it after a long break, so I've
-posted a version that I built a while ago <a class="reference external" href="troff/mm-all.pdf">here</a>.</p>
-<hr class="docutils">
-<p id="bonus">As a bonus for reading down this far, here is how I add PDF
-outline/table-of-contents entries for sections in <span class="app">groff</span> <span class="app">mm</span>,
-using the <code class="docutils literal">HZ</code> user-defined heading exit macro (see
-<span class="man">groff_mm(7)</span>):</p>
-<pre class="code nroff"><a id="rest_code_d066a79dff964ba7b6069fea6d334e88-1" name="rest_code_d066a79dff964ba7b6069fea6d334e88-1"></a><span class="p">.</span><span class="c">\" pdf outline fold level</span>
-<a id="rest_code_d066a79dff964ba7b6069fea6d334e88-2" name="rest_code_d066a79dff964ba7b6069fea6d334e88-2"></a>.<span class="k">nr</span> <span class="s">PDFOUTLINE.FOLDLEVEL</span> <span class="m">3</span>
-<a id="rest_code_d066a79dff964ba7b6069fea6d334e88-3" name="rest_code_d066a79dff964ba7b6069fea6d334e88-3"></a><span class="p">.</span><span class="c">\" start out in outline view</span>
-<a id="rest_code_d066a79dff964ba7b6069fea6d334e88-4" name="rest_code_d066a79dff964ba7b6069fea6d334e88-4"></a>.<span class="k">pdfview</span> <span class="s">/PageMode</span> <span class="s">/UseOutlines</span>
-<a id="rest_code_d066a79dff964ba7b6069fea6d334e88-5" name="rest_code_d066a79dff964ba7b6069fea6d334e88-5"></a>.<span class="k">de</span> <span class="s">HZ</span>
-<a id="rest_code_d066a79dff964ba7b6069fea6d334e88-6" name="rest_code_d066a79dff964ba7b6069fea6d334e88-6"></a>.<span class="k">pdfhref</span> <span class="s">O</span> <span class="se">\\</span><span class="s">$2</span> <span class="se">\\</span><span class="s">*[}0]</span> <span class="se">\\</span><span class="s">$3</span>
-<a id="rest_code_d066a79dff964ba7b6069fea6d334e88-7" name="rest_code_d066a79dff964ba7b6069fea6d334e88-7"></a><span class="p">.</span><span class="s">.</span>
-</pre>
-<p>And here's how to do it in <a class="reference external" href="http://n-t-roff.github.io/heirloom/doctools.html">Heirloom Docutils</a> <span class="app">troff</span>:</p>
-<pre class="code nroff"><a id="rest_code_d5b0c0b0b2634e5cb803ac30acd88430-1" name="rest_code_d5b0c0b0b2634e5cb803ac30acd88430-1"></a>.<span class="k">de</span> <span class="s">HY</span>
-<a id="rest_code_d5b0c0b0b2634e5cb803ac30acd88430-2" name="rest_code_d5b0c0b0b2634e5cb803ac30acd88430-2"></a>.<span class="k">nr</span> <span class="s">HYtmp</span> <span class="s">(\\$1-1)</span>
-<a id="rest_code_d5b0c0b0b2634e5cb803ac30acd88430-3" name="rest_code_d5b0c0b0b2634e5cb803ac30acd88430-3"></a><span class="se">\\</span>X'PDFMark: Bookmark <span class="se">\\</span>n[HYtmp] <span class="se">\\</span>$3'
-<a id="rest_code_d5b0c0b0b2634e5cb803ac30acd88430-4" name="rest_code_d5b0c0b0b2634e5cb803ac30acd88430-4"></a><span class="p">.</span><span class="s">.</span>
-</pre>
-<p>This version uses the <code class="docutils literal">HY</code> user-defined heading exit macro and
-doesn't include the section numbers.</p>
-<p>I'm not sure why the two use different macros.  All I can say is that
-I wrote them at different times for slightly different purposes.</p>
-<dl class="footnote brackets">
-<dt class="label" id="who-produced-xroff"><span class="brackets"><a class="fn-backref" href="posts/2021/07/15/troff-memorandum-macros-documentation/#id1">1</a></span></dt>
-<dd>
-<p>While I still maintain a descendant of the VAX I where I used
-<span class="app">xroff</span> (emulated using <a class="reference external" href="https://www.stromasys.com/solutions/charon-vax/">Charon-VAX</a>), sometime in the past the
-<span class="app">xroff</span> software disappeared from it.  I have no idea what
-happened to it.  I blame user PDL!</p>
-</dd>
-<dt class="label" id="quirky"><span class="brackets"><a class="fn-backref" href="posts/2021/07/15/troff-memorandum-macros-documentation/#id2">2</a></span></dt>
-<dd>
-<p>The page offset, page width, and page length have to be set before
-the <span class="app">mm</span> macros were loaded, so while on Unix it is easy to set those
-values on the command line, on VMS due to oddities in its command line
-it was easiest to use <code class="docutils literal">.so</code> and load the macros directly</p>
-</dd>
-</dl>
-<p><em>Last edited: 2021-07-17 19:09:27 EDT</em></p>
-<!-- Local Variables:
-time-stamp-format: "%Y-%02m-%02d %02H:%02M:%02S %Z"
-time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
-time-stamp-end: "\\*\\\\?\n"
-time-stamp-line-limit: -20
-End: -->
-</div>
-    <nav><ul itemprop="keywords" class="tags">
-<li><a class="tag p-category" href="categories/charon-vax/" rel="tag">charon-vax</a></li>
-            <li><a class="tag p-category" href="categories/documenters-workbench/" rel="tag">documenter's workbench</a></li>
-            <li><a class="tag p-category" href="categories/dwb/" rel="tag">dwb</a></li>
-            <li><a class="tag p-category" href="categories/groff/" rel="tag">groff</a></li>
-            <li><a class="tag p-category" href="categories/memorandum-macros/" rel="tag">memorandum macros</a></li>
-            <li><a class="tag p-category" href="categories/mm/" rel="tag">mm</a></li>
-            <li><a class="tag p-category" href="categories/troff/" rel="tag">troff</a></li>
-            <li><a class="tag p-category" href="categories/vms/" rel="tag">vms</a></li>
-            <li><a class="tag p-category" href="categories/xroff/" rel="tag">xroff</a></li>
         </ul></nav>
 </div>
     </article>
