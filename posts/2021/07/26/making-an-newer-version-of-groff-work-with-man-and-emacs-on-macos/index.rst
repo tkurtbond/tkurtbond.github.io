@@ -75,6 +75,20 @@ This seems overly complicated.
 I suspect I'll need to do something different on the Linux boxes I
 use.
 
+Later
+=====
+
+Aannnd I was right.  Fedora 33 has a similar problem, which I fixed by
+creating a :file:`~/.manpath` file with
+
+.. code::
+
+   DEFINE 	nroff 	/sw/versions/groff/git/bin/nroff -mandoc -P-c
+
+in it.  I found the information I needed in :man:`manpath(5)`, which
+documents the format of the :file:`/etc/man_db.conf` file.  (Why isn't
+it :man:`man_db.conf(5)`, then?)
+
 
 .. [#manual]
 
@@ -84,3 +98,12 @@ use.
    erroneously underlined.
 
 
+*Last edited: 2021-07-26 22:34:57 EDT*
+
+..
+   Local Variables:
+   time-stamp-format: "%Y-%02m-%02d %02H:%02M:%02S %Z"
+   time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
+   time-stamp-end: "\\*\\\\?\n"
+   time-stamp-line-limit: -20
+   End:

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity (Posts about macos)</title><link>https://tkurtbond.github.io/</link><description></description><atom:link href="https://tkurtbond.github.io/categories/macos.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2021 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Mon, 26 Jul 2021 22:51:28 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Making an newer version of groff work with man and emacs on macOS</title><link>https://tkurtbond.github.io/posts/2021/07/26/making-an-newer-version-of-groff-work-with-man-and-emacs-on-macos/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;I'm posting this mostly to remind myself if I ever have to fiddle with
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity (Posts about macos)</title><link>https://tkurtbond.github.io/</link><description></description><atom:link href="https://tkurtbond.github.io/categories/macos.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2021 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Tue, 27 Jul 2021 02:35:08 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Making an newer version of groff work with man and emacs on macOS</title><link>https://tkurtbond.github.io/posts/2021/07/26/making-an-newer-version-of-groff-work-with-man-and-emacs-on-macos/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;I'm posting this mostly to remind myself if I ever have to fiddle with
 this again.&lt;/p&gt;
 &lt;p&gt;I use a version of &lt;span class="app"&gt;groff&lt;/span&gt; installed from &lt;span class="app"&gt;git&lt;/span&gt; because some
 of my documents depend on fixes that are coming out in the next
@@ -25,9 +25,9 @@ Boo!&lt;/p&gt;
 alternate configuration file (on macOS the default one is in
 &lt;span class="file"&gt;/private/etc/man.conf&lt;/span&gt;), so you can supply one that specifies
 the absolute path to the newer &lt;span class="app"&gt;groff&lt;/span&gt; you are using.  So I added&lt;/p&gt;
-&lt;pre class="code bash"&gt;&lt;a name="rest_code_fcb14de0681f4f9b8cf423a143c4d9a2-1"&gt;&lt;/a&gt;&lt;span class="nb"&gt;alias&lt;/span&gt; &lt;span class="nv"&gt;man&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'man -C ~/local/etc/man.conf'&lt;/span&gt;
+&lt;pre class="code bash"&gt;&lt;a id="rest_code_ff7b66c4c47a4bc0a7055b1d72d1294e-1" name="rest_code_ff7b66c4c47a4bc0a7055b1d72d1294e-1"&gt;&lt;/a&gt;&lt;span class="nb"&gt;alias&lt;/span&gt; &lt;span class="nv"&gt;man&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'man -C ~/local/etc/man.conf'&lt;/span&gt;
 &lt;/pre&gt;&lt;p&gt;to the appropriate shell startup file.  And I can add&lt;/p&gt;
-&lt;pre class="code emacs-lisp"&gt;&lt;a name="rest_code_c5b076f511754ce3ba5f6b6b8f0538ef-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;setq&lt;/span&gt; &lt;span class="nv"&gt;Man-switches&lt;/span&gt; &lt;span class="s"&gt;"-C ~/local/etc/man.conf"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;pre class="code emacs-lisp"&gt;&lt;a id="rest_code_ecb3160f18b04669a2d482d7885e8f00-1" name="rest_code_ecb3160f18b04669a2d482d7885e8f00-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;setq&lt;/span&gt; &lt;span class="nv"&gt;Man-switches&lt;/span&gt; &lt;span class="s"&gt;"-C ~/local/etc/man.conf"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;p&gt;to my &lt;span class="app"&gt;emacs&lt;/span&gt; configuration so it uses the right version of
 &lt;span class="app"&gt;groff&lt;/span&gt; too.&lt;/p&gt;
 &lt;p&gt;But a modern &lt;span class="app"&gt;groff&lt;/span&gt; produces ANSI escapes for bold and
@@ -45,6 +45,14 @@ it to use old-style backspace over-striking.&lt;/p&gt;
 &lt;p&gt;This seems overly complicated.&lt;/p&gt;
 &lt;p&gt;I suspect I'll need to do something different on the Linux boxes I
 use.&lt;/p&gt;
+&lt;section id="later"&gt;
+&lt;h2&gt;Later&lt;/h2&gt;
+&lt;p&gt;Aannnd I was right.  Fedora 33 has a similar problem, which I fixed by
+creating a &lt;span class="file"&gt;~/.manpath&lt;/span&gt; file with&lt;/p&gt;
+&lt;pre class="code text"&gt;&lt;a id="rest_code_32e003d251044b30a5d918156dbc5ac1-1" name="rest_code_32e003d251044b30a5d918156dbc5ac1-1"&gt;&lt;/a&gt;DEFINE       nroff   /sw/versions/groff/git/bin/nroff -mandoc -P-c
+&lt;/pre&gt;&lt;p&gt;in it.  I found the information I needed in &lt;span class="man"&gt;manpath(5)&lt;/span&gt;, which
+documents the format of the &lt;span class="file"&gt;/etc/man_db.conf&lt;/span&gt; file.  (Why isn't
+it &lt;span class="man"&gt;man_db.conf(5)&lt;/span&gt;, then?)&lt;/p&gt;
 &lt;dl class="footnote brackets"&gt;
 &lt;dt class="label" id="manual"&gt;&lt;span class="brackets"&gt;&lt;a class="fn-backref" href="https://tkurtbond.github.io/posts/2021/07/26/making-an-newer-version-of-groff-work-with-man-and-emacs-on-macos/#id1"&gt;1&lt;/a&gt;&lt;/span&gt;&lt;/dt&gt;
 &lt;dd&gt;&lt;p&gt;Oddly, if I direct &lt;span class="app"&gt;man&lt;/span&gt;'s output to a file, visit that file in
@@ -52,7 +60,15 @@ use.&lt;/p&gt;
 &lt;span class="app"&gt;emacs&lt;/span&gt; uses to fontify the man page, it &lt;em&gt;doesn't&lt;/em&gt; end up
 erroneously underlined.&lt;/p&gt;
 &lt;/dd&gt;
-&lt;/dl&gt;&lt;/div&gt;</description><category>groff</category><category>macos</category><category>troff</category><guid>https://tkurtbond.github.io/posts/2021/07/26/making-an-newer-version-of-groff-work-with-man-and-emacs-on-macos/</guid><pubDate>Mon, 26 Jul 2021 21:30:19 GMT</pubDate></item><item><title>Foreign File Systems on macOS: Fail!</title><link>https://tkurtbond.github.io/posts/2020/02/24/foreign-file-systems-on-macos-fail/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;Back sometime in March 2018 I installed &lt;a class="reference external" href="https://www.tuxera.com/"&gt;Tuxera&lt;/a&gt; &lt;a class="reference external" href="https://www.tuxera.com/products/tuxera-ntfs-for-mac/"&gt;NTFS for Mac&lt;/a&gt;.  It was
+&lt;/dl&gt;
+&lt;p&gt;&lt;em&gt;Last edited: 2021-07-26 22:34:57 EDT&lt;/em&gt;&lt;/p&gt;
+&lt;!-- Local Variables:
+time-stamp-format: "%Y-%02m-%02d %02H:%02M:%02S %Z"
+time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
+time-stamp-end: "\\*\\\\?\n"
+time-stamp-line-limit: -20
+End: --&gt;
+&lt;/section&gt;&lt;/div&gt;</description><category>groff</category><category>macos</category><category>troff</category><guid>https://tkurtbond.github.io/posts/2021/07/26/making-an-newer-version-of-groff-work-with-man-and-emacs-on-macos/</guid><pubDate>Mon, 26 Jul 2021 21:30:19 GMT</pubDate></item><item><title>Foreign File Systems on macOS: Fail!</title><link>https://tkurtbond.github.io/posts/2020/02/24/foreign-file-systems-on-macos-fail/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;Back sometime in March 2018 I installed &lt;a class="reference external" href="https://www.tuxera.com/"&gt;Tuxera&lt;/a&gt; &lt;a class="reference external" href="https://www.tuxera.com/products/tuxera-ntfs-for-mac/"&gt;NTFS for Mac&lt;/a&gt;.  It was
 the first NTFS for Mac that I found.  I used it casually for a while
 and it seemed ok.&lt;/p&gt;
 &lt;p&gt;Sometime later, probably in October 2019, I decided I needed to move
@@ -85,7 +101,7 @@ with both of these file systems.&lt;/p&gt;&lt;/div&gt;</description><category>ex
 terribly insecure, but I only use it inside our firewall to access one
 legacy computer system.  I was glad &lt;a class="reference external" href="https://brew.sh/"&gt;brew&lt;/a&gt; had &lt;a class="reference external" href="https://lftp.yar.ru/"&gt;LFTP&lt;/a&gt;, and I figured out
 how to use active mode in &lt;code class="docutils literal"&gt;LFTP&lt;/code&gt;:&lt;/p&gt;
-&lt;pre class="code bash"&gt;&lt;a name="rest_code_7623fa8678664d3cb043fb20f44e555b-1"&gt;&lt;/a&gt;&lt;span class="nb"&gt;set&lt;/span&gt; ftp:passive-mode off
+&lt;pre class="code bash"&gt;&lt;a id="rest_code_66903d36328e4ca59a7db3b02cb5c556-1" name="rest_code_66903d36328e4ca59a7db3b02cb5c556-1"&gt;&lt;/a&gt;&lt;span class="nb"&gt;set&lt;/span&gt; ftp:passive-mode off
 &lt;/pre&gt;&lt;p&gt;because that machine's FTP server only works with active mode.&lt;/p&gt;&lt;/div&gt;</description><category>catalina</category><category>ftp</category><category>macos</category><guid>https://tkurtbond.github.io/posts/2019/11/09/macos-catalina-doesnt-have-a-ftp-client/</guid><pubDate>Sun, 10 Nov 2019 03:00:04 GMT</pubDate></item><item><title>Getting nxml-mode in emacs to validate DocBook 5 documents</title><link>https://tkurtbond.github.io/posts/2019/11/05/getting-nxml-mode-in-emacs-to-validate-docbook-5-documents/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;I have occasion to edit and build a DocBook 5 document under both
 macOS Catalina and Fedora 30.&lt;/p&gt;
 &lt;p&gt;On macOS I've used homebrew to install the docbook, docbook-xsl, and
@@ -107,15 +123,15 @@ look up the translation for the URI for the RELAX NG compiled schema
 file and generate the &lt;code class="docutils literal"&gt;schemas.xml&lt;/code&gt; file and substitute the translation
 into the file:&lt;/p&gt;
 &lt;p&gt;&lt;a class="reference external" href="https://tkurtbond.github.io/listings/generate-schemas-xml.html"&gt;generate-schemas-xml&lt;/a&gt;  &lt;a class="reference external" href="https://tkurtbond.github.io/listings/generate-schemas-xml"&gt;(Source)&lt;/a&gt;&lt;/p&gt;
-&lt;pre class="code bash"&gt;&lt;a name="rest_code_93e9e426edc94171999b50cc0a1cf50d-1"&gt;&lt;/a&gt;&lt;span class="ch"&gt;#! /usr/bin/env bash&lt;/span&gt;
-&lt;a name="rest_code_93e9e426edc94171999b50cc0a1cf50d-2"&gt;&lt;/a&gt;
-&lt;a name="rest_code_93e9e426edc94171999b50cc0a1cf50d-3"&gt;&lt;/a&gt;&lt;span class="nv"&gt;schema_location&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;xmlcatalog &lt;span class="s2"&gt;""&lt;/span&gt; &lt;span class="s2"&gt;"http://docbook.org/xml/5.0/rng/docbookxi.rnc"&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;
-&lt;a name="rest_code_93e9e426edc94171999b50cc0a1cf50d-4"&gt;&lt;/a&gt;    grep &lt;span class="s2"&gt;"^file:///"&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; sed &lt;span class="s1"&gt;'s#^file://##'&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;
-&lt;a name="rest_code_93e9e426edc94171999b50cc0a1cf50d-5"&gt;&lt;/a&gt;
-&lt;a name="rest_code_93e9e426edc94171999b50cc0a1cf50d-6"&gt;&lt;/a&gt;cat &amp;gt;schemas.xml &lt;span class="s"&gt;&amp;lt;&amp;lt;EOF&lt;/span&gt;
-&lt;a name="rest_code_93e9e426edc94171999b50cc0a1cf50d-7"&gt;&lt;/a&gt;&lt;span class="s"&gt;&amp;lt;locatingRules xmlns="http://thaiopensource.com/ns/locating-rules/1.0"&amp;gt;&lt;/span&gt;
-&lt;a name="rest_code_93e9e426edc94171999b50cc0a1cf50d-8"&gt;&lt;/a&gt;&lt;span class="s"&gt;&amp;lt;namespace ns="http://docbook.org/ns/docbook" uri="$schema_location"/&amp;gt;&lt;/span&gt;
-&lt;a name="rest_code_93e9e426edc94171999b50cc0a1cf50d-9"&gt;&lt;/a&gt;&lt;span class="s"&gt;&amp;lt;/locatingRules&amp;gt;&lt;/span&gt;
-&lt;a name="rest_code_93e9e426edc94171999b50cc0a1cf50d-10"&gt;&lt;/a&gt;&lt;span class="s"&gt;EOF&lt;/span&gt;
+&lt;pre class="code bash"&gt;&lt;a id="rest_code_6f4da7884bdb4194a5e0ef83e6ffaf31-1" name="rest_code_6f4da7884bdb4194a5e0ef83e6ffaf31-1"&gt;&lt;/a&gt;&lt;span class="ch"&gt;#! /usr/bin/env bash&lt;/span&gt;
+&lt;a id="rest_code_6f4da7884bdb4194a5e0ef83e6ffaf31-2" name="rest_code_6f4da7884bdb4194a5e0ef83e6ffaf31-2"&gt;&lt;/a&gt;
+&lt;a id="rest_code_6f4da7884bdb4194a5e0ef83e6ffaf31-3" name="rest_code_6f4da7884bdb4194a5e0ef83e6ffaf31-3"&gt;&lt;/a&gt;&lt;span class="nv"&gt;schema_location&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;xmlcatalog &lt;span class="s2"&gt;""&lt;/span&gt; &lt;span class="s2"&gt;"http://docbook.org/xml/5.0/rng/docbookxi.rnc"&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;a id="rest_code_6f4da7884bdb4194a5e0ef83e6ffaf31-4" name="rest_code_6f4da7884bdb4194a5e0ef83e6ffaf31-4"&gt;&lt;/a&gt;    grep &lt;span class="s2"&gt;"^file:///"&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; sed &lt;span class="s1"&gt;'s#^file://##'&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;
+&lt;a id="rest_code_6f4da7884bdb4194a5e0ef83e6ffaf31-5" name="rest_code_6f4da7884bdb4194a5e0ef83e6ffaf31-5"&gt;&lt;/a&gt;
+&lt;a id="rest_code_6f4da7884bdb4194a5e0ef83e6ffaf31-6" name="rest_code_6f4da7884bdb4194a5e0ef83e6ffaf31-6"&gt;&lt;/a&gt;cat &amp;gt;schemas.xml &lt;span class="s"&gt;&amp;lt;&amp;lt;EOF&lt;/span&gt;
+&lt;a id="rest_code_6f4da7884bdb4194a5e0ef83e6ffaf31-7" name="rest_code_6f4da7884bdb4194a5e0ef83e6ffaf31-7"&gt;&lt;/a&gt;&lt;span class="s"&gt;&amp;lt;locatingRules xmlns="http://thaiopensource.com/ns/locating-rules/1.0"&amp;gt;&lt;/span&gt;
+&lt;a id="rest_code_6f4da7884bdb4194a5e0ef83e6ffaf31-8" name="rest_code_6f4da7884bdb4194a5e0ef83e6ffaf31-8"&gt;&lt;/a&gt;&lt;span class="s"&gt;&amp;lt;namespace ns="http://docbook.org/ns/docbook" uri="$schema_location"/&amp;gt;&lt;/span&gt;
+&lt;a id="rest_code_6f4da7884bdb4194a5e0ef83e6ffaf31-9" name="rest_code_6f4da7884bdb4194a5e0ef83e6ffaf31-9"&gt;&lt;/a&gt;&lt;span class="s"&gt;&amp;lt;/locatingRules&amp;gt;&lt;/span&gt;
+&lt;a id="rest_code_6f4da7884bdb4194a5e0ef83e6ffaf31-10" name="rest_code_6f4da7884bdb4194a5e0ef83e6ffaf31-10"&gt;&lt;/a&gt;&lt;span class="s"&gt;EOF&lt;/span&gt;
 &lt;/pre&gt;&lt;p&gt;Then I had my Makefile generate the &lt;code class="docutils literal"&gt;schemas.xml&lt;/code&gt; file if it was missing.&lt;/p&gt;
 &lt;p&gt;It was more complicated that I'd have liked, but it does work.&lt;/p&gt;&lt;/div&gt;</description><category>docbook 5</category><category>emacs</category><category>fedora</category><category>macos</category><guid>https://tkurtbond.github.io/posts/2019/11/05/getting-nxml-mode-in-emacs-to-validate-docbook-5-documents/</guid><pubDate>Wed, 06 Nov 2019 01:32:24 GMT</pubDate></item></channel></rss>
