@@ -34,3 +34,22 @@ Edition, p. 72, bottom of the 1\ :sup:`st` column and the top of the
 
 I wonder how much it would affect things in a game if I just ignored
 that rule?  I'll have to try it sometime.
+
+Later
+=====
+
+Of course, that takes away some from the users of Sorcery in AFF 2E,
+who spend STAMINA instead of MAGIC POINTS to cast a completely
+different set of spells than Wizardry, *and* can cast in armour.
+Hmm.  I'll have to think about it.
+
+
+*Last edited: 2021-07-15 17:46:40 EDT*
+
+..
+   Local Variables:
+   time-stamp-format: "%Y-%02m-%02d %02H:%02M:%02S %Z"
+   time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
+   time-stamp-end: "\\*\\\\?\n"
+   time-stamp-line-limit: -20
+   End:
