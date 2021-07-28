@@ -10,7 +10,7 @@
 <link rel="alternate" type="application/atom+xml" title="Atom" href="feed.atom">
 <link rel="canonical" href="https://tkurtbond.github.io/">
 <link rel="next" href="index-91.html" type="text/html">
-<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/2021/07/26/making-an-newer-version-of-groff-work-with-man-and-emacs-on-macos/" type="text/html">
+<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/2021/07/28/sorting-differs-between-langc-and-langen_usutf-8-even-in-ls/" type="text/html">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
@@ -52,7 +52,53 @@
         <div class="row">
             <div class="col-sm-8 blog-main">
 <div class="postindex">
-    <article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2021/07/26/making-an-newer-version-of-groff-work-with-man-and-emacs-on-macos/" class="u-url">Making an newer version of groff work with man and emacs on macOS</a></h2>
+    <article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2021/07/28/sorting-differs-between-langc-and-langen_usutf-8-even-in-ls/" class="u-url">Sorting differs between LANG=C and LANG=en_US.UTF-8, even in ls</a></h2>
+        <div class="metadata blog-post-meta">
+            <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
+            <p class="dateline"><a href="posts/2021/07/28/sorting-differs-between-langc-and-langen_usutf-8-even-in-ls/" rel="bookmark"><time class="published dt-published" datetime="2021-07-28T05:05:50-04:00" title="2021-07-28 05:05">2021-07-28 05:05</time></a></p>
+                <p class="commentline">            <a href="posts/2021/07/28/sorting-differs-between-langc-and-langen_usutf-8-even-in-ls/#disqus_thread" data-disqus-identifier="cache/posts/2021/07/28/sorting-differs-between-langc-and-langen_usutf-8-even-in-ls.html">Comments</a>
+
+
+        </p>
+</div>
+    </header><div class="e-content entry-content">
+    <div>
+<p>This is here mostly to give me a concrete example of this happening.</p>
+<p>I have a directory, with two files in it, <span class="file">ab.txt</span> and
+<span class="file">a-c.txt</span>.  Which sorts first when I do a <span class="command">ls</span>?  It
+depends on what locale is set.  Like this:</p>
+<pre class="code bash"><a id="rest_code_09aca967a2c740dcb7a79a75177556ba-1" name="rest_code_09aca967a2c740dcb7a79a75177556ba-1"></a>$ <span class="nv">LANG</span><span class="o">=</span>en_US.UTF-8 ls
+<a id="rest_code_09aca967a2c740dcb7a79a75177556ba-2" name="rest_code_09aca967a2c740dcb7a79a75177556ba-2"></a>ab.txt       a-c.txt
+<a id="rest_code_09aca967a2c740dcb7a79a75177556ba-3" name="rest_code_09aca967a2c740dcb7a79a75177556ba-3"></a>$ <span class="nv">LANG</span><span class="o">=</span>C ls
+<a id="rest_code_09aca967a2c740dcb7a79a75177556ba-4" name="rest_code_09aca967a2c740dcb7a79a75177556ba-4"></a>a-c.txt  ab.txt
+</pre>
+<p>Same thing happens with the <span class="command">sort</span> command:</p>
+<pre class="code bash"><a id="rest_code_5bbc8b9a3c81472c83c1ca674efe688b-1" name="rest_code_5bbc8b9a3c81472c83c1ca674efe688b-1"></a>$ cat &gt;a-c-first.txt
+<a id="rest_code_5bbc8b9a3c81472c83c1ca674efe688b-2" name="rest_code_5bbc8b9a3c81472c83c1ca674efe688b-2"></a>a-c.txt
+<a id="rest_code_5bbc8b9a3c81472c83c1ca674efe688b-3" name="rest_code_5bbc8b9a3c81472c83c1ca674efe688b-3"></a>ab.txt
+<a id="rest_code_5bbc8b9a3c81472c83c1ca674efe688b-4" name="rest_code_5bbc8b9a3c81472c83c1ca674efe688b-4"></a>$ cat &gt;ab-first.txt
+<a id="rest_code_5bbc8b9a3c81472c83c1ca674efe688b-5" name="rest_code_5bbc8b9a3c81472c83c1ca674efe688b-5"></a>ab.txt
+<a id="rest_code_5bbc8b9a3c81472c83c1ca674efe688b-6" name="rest_code_5bbc8b9a3c81472c83c1ca674efe688b-6"></a>a-c.txt
+<a id="rest_code_5bbc8b9a3c81472c83c1ca674efe688b-7" name="rest_code_5bbc8b9a3c81472c83c1ca674efe688b-7"></a>$ <span class="nv">LANG</span><span class="o">=</span>C sort ab-first.txt
+<a id="rest_code_5bbc8b9a3c81472c83c1ca674efe688b-8" name="rest_code_5bbc8b9a3c81472c83c1ca674efe688b-8"></a>a-c.txt
+<a id="rest_code_5bbc8b9a3c81472c83c1ca674efe688b-9" name="rest_code_5bbc8b9a3c81472c83c1ca674efe688b-9"></a>ab.txt
+<a id="rest_code_5bbc8b9a3c81472c83c1ca674efe688b-10" name="rest_code_5bbc8b9a3c81472c83c1ca674efe688b-10"></a>$ <span class="nv">LANG</span><span class="o">=</span>en_US.UTF-8 sort a-c-first.txt
+<a id="rest_code_5bbc8b9a3c81472c83c1ca674efe688b-11" name="rest_code_5bbc8b9a3c81472c83c1ca674efe688b-11"></a>ab.txt
+<a id="rest_code_5bbc8b9a3c81472c83c1ca674efe688b-12" name="rest_code_5bbc8b9a3c81472c83c1ca674efe688b-12"></a>a-c.txt
+</pre>
+<p>I found this surprising when it first broke some code I was using,
+since I'd spent so much of my existence in LANG=C, but once I set
+LANG=en_US.UTF-8 because I was using UTF-8 characters in my documents
+I found I was in a different (sorting) world.</p>
+</div>
+    <nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="categories/langc/" rel="tag">LANG=C</a></li>
+            <li><a class="tag p-category" href="categories/langen_usutf-8/" rel="tag">LANG=en_US.UTF-8</a></li>
+            <li><a class="tag p-category" href="categories/sort/" rel="tag">sort</a></li>
+            <li><a class="tag p-category" href="categories/sorting/" rel="tag">sorting</a></li>
+        </ul></nav>
+</div>
+    </article><article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2021/07/26/making-an-newer-version-of-groff-work-with-man-and-emacs-on-macos/" class="u-url">Making an newer version of groff work with man and emacs on macOS</a></h2>
         <div class="metadata blog-post-meta">
             <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
             <p class="dateline"><a href="posts/2021/07/26/making-an-newer-version-of-groff-work-with-man-and-emacs-on-macos/" rel="bookmark"><time class="published dt-published" datetime="2021-07-26T17:30:19-04:00" title="2021-07-26 17:30">2021-07-26 17:30</time></a></p>
@@ -608,157 +654,6 @@ End: -->
             <li><a class="tag p-category" href="categories/install-fontsh/" rel="tag">install-font.sh</a></li>
             <li><a class="tag p-category" href="categories/mom/" rel="tag">mom</a></li>
             <li><a class="tag p-category" href="categories/troff/" rel="tag">troff</a></li>
-        </ul></nav>
-</div>
-    </article><article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2021/07/16/sorting-words-separated-by-commas/" class="u-url">Sorting words separated by commas</a></h2>
-        <div class="metadata blog-post-meta">
-            <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
-            <p class="dateline"><a href="posts/2021/07/16/sorting-words-separated-by-commas/" rel="bookmark"><time class="published dt-published" datetime="2021-07-16T13:05:09-04:00" title="2021-07-16 13:05">2021-07-16 13:05</time></a></p>
-                <p class="commentline">            <a href="posts/2021/07/16/sorting-words-separated-by-commas/#disqus_thread" data-disqus-identifier="cache/posts/2021/07/16/sorting-words-separated-by-commas.html">Comments</a>
-
-
-        </p>
-</div>
-    </header><div class="e-content entry-content">
-    <div>
-<p>I often have lists of "words", separated by commas, possibly on
-multiple lines, like this example from a <span class="file">Makefile</span>:</p>
-<pre class="code makefile"><a id="rest_code_6220d168de80446fa7c2806e5d779d6b-1" name="rest_code_6220d168de80446fa7c2806e5d779d6b-1"></a><span class="c">#    bookman, schoolbook, palatino, times,</span>
-<a id="rest_code_6220d168de80446fa7c2806e5d779d6b-2" name="rest_code_6220d168de80446fa7c2806e5d779d6b-2"></a><span class="c">#    helvetica, helvetica-narrow, optima, cormorant-garamond,</span>
-<a id="rest_code_6220d168de80446fa7c2806e5d779d6b-3" name="rest_code_6220d168de80446fa7c2806e5d779d6b-3"></a><span class="c">#    or ebgaramond.</span>
-</pre>
-<p>I find these lists are always getting out of order, or they end up
-with some short lines and some long lines.  I want to be able to
-reformat them automatically, like this:</p>
-<pre class="code makefile"><a id="rest_code_33d2c8f4c6a64be08c86c95bd54b7b42-1" name="rest_code_33d2c8f4c6a64be08c86c95bd54b7b42-1"></a><span class="c">#    bookman, cormorant-garamond, ebgaramond, helvetica, helvetica-narrow,</span>
-<a id="rest_code_33d2c8f4c6a64be08c86c95bd54b7b42-2" name="rest_code_33d2c8f4c6a64be08c86c95bd54b7b42-2"></a><span class="c">#    optima, palatino, schoolbook, or times.</span>
-</pre>
-<p>So, I wrote three scripts to deal with them,
-<span class="command">sort-with-commas</span>, <span class="command">strip-leading-hash</span> to get rid
-of the leading hashes and spaces, and <span class="command">prefix</span> to put the
-leading hashes and spaces back.</p>
-<p>Now, above I said "words", because really it's anything separated by
-commas, so the "words" can contain space, etc.</p>
-<p>Also, notice that the period after "ebgaramond" and the "or" before
-"ebgaramond"` in the original list disappear, and an "or " appears
-before the new end of the list, "times", and a period follows it.  And
-you can have have the same situation with "and".  So, the <code class="docutils literal"><span class="pre">-p</span></code>
-option to <span class="command">sort-with-commas</span> adds a period after the last
-word, the <code class="docutils literal"><span class="pre">-a</span></code> option adds and "and " before the last word, and the
-<code class="docutils literal"><span class="pre">-o</span></code> option adds an "or " before the last word.  If you are sorting
-only part of a list, you want to have a comma after the last "word",
-so there is the option <code class="docutils literal"><span class="pre">-f</span></code> for that.  And to remove the the period
-from the original list, so it doesn't end up in the middle of the new
-list, or to remove "and " or "or ", there is the <code class="docutils literal"><span class="pre">-r</span></code> option.</p>
-<p>The default is to return the sorted list as one long line, but you can
-easily reformat it to multiple lines by running it through the Unix
-command <span class="command">fmt</span>.</p>
-<p>Although in this case the list is prefixed with a "#" and some spaces
-because it comes from a comment in a Makefile, you have to remove
-those to sort the list.  I wrote the script
-<span class="command">strip-leading-hash</span> to do that, too, rather than having to
-remember the <span class="command">sed</span> command to so that all the time.</p>
-<p>So, to sort the original list I'd run the command</p>
-<pre class="code bash"><a id="rest_code_5ab4077e7dca40fb9630d76a48755be4-1" name="rest_code_5ab4077e7dca40fb9630d76a48755be4-1"></a>strip-leading-hash <span class="p">|</span> sort-with-commas -r -p -o <span class="p">|</span> fmt <span class="p">|</span> prefix <span class="s2">"#    "</span>
-</pre>
-<p>which means “strip the leading hashes and spaces, remove the trailing
-period and the "and " or "or ", add a final period after the last word,
-add an "or " before the final word, reformat as a paragraph, and
-prefix the lines with the hash and spaces.”</p>
-<p>When I use this I'm usually in <span class="app">emacs</span> and using <span class="key">M-|</span> to
-run it on the region (the currently selected text), often with the
-<span class="key">C-u</span> to replace the region with results.</p>
-<p>Here's the main script, <span class="file">sort-with-commas</span>:</p>
-<p><a class="reference external" href="listings/sort-with-commas.html">sort-with-commas</a>  <a class="reference external" href="listings/sort-with-commas">(Source)</a></p>
-<pre class="code bash"><a id="rest_code_6f64f21ef65f48caa58713118c0dc787-1" name="rest_code_6f64f21ef65f48caa58713118c0dc787-1"></a><span class="ch">#! /usr/bin/env bash</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-2" name="rest_code_6f64f21ef65f48caa58713118c0dc787-2"></a><span class="c1">###############################################################################</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-3" name="rest_code_6f64f21ef65f48caa58713118c0dc787-3"></a><span class="c1"># Sort a list of words that are seperated by commas, optionally followed by</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-4" name="rest_code_6f64f21ef65f48caa58713118c0dc787-4"></a><span class="c1"># a newline into a single line seperated by commas followed by spaces.</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-5" name="rest_code_6f64f21ef65f48caa58713118c0dc787-5"></a><span class="c1">#</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-6" name="rest_code_6f64f21ef65f48caa58713118c0dc787-6"></a><span class="c1"># For example: it translates (ignore the "# +" at the beginning of lines)</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-7" name="rest_code_6f64f21ef65f48caa58713118c0dc787-7"></a><span class="c1">#    bookman, schoolbook,palatino,</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-8" name="rest_code_6f64f21ef65f48caa58713118c0dc787-8"></a><span class="c1">#    times, helvetica, helvetica-narrow,</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-9" name="rest_code_6f64f21ef65f48caa58713118c0dc787-9"></a><span class="c1"># to</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-10" name="rest_code_6f64f21ef65f48caa58713118c0dc787-10"></a><span class="c1">#    bookman, helvetica, helvetica-narrow, palatino, schoolbook, times</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-11" name="rest_code_6f64f21ef65f48caa58713118c0dc787-11"></a><span class="c1">###############################################################################</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-12" name="rest_code_6f64f21ef65f48caa58713118c0dc787-12"></a>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-13" name="rest_code_6f64f21ef65f48caa58713118c0dc787-13"></a><span class="nv">AND_OPT</span><span class="o">=</span>off                     <span class="c1"># Insert "and " before last word.</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-14" name="rest_code_6f64f21ef65f48caa58713118c0dc787-14"></a><span class="nv">FINAL_OPT</span><span class="o">=</span>off                   <span class="c1"># Leave "," after last word.</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-15" name="rest_code_6f64f21ef65f48caa58713118c0dc787-15"></a><span class="nv">OR_OPT</span><span class="o">=</span>off                      <span class="c1"># Insert "or " before last word.</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-16" name="rest_code_6f64f21ef65f48caa58713118c0dc787-16"></a><span class="nv">PERIOD_OPT</span><span class="o">=</span>off                  <span class="c1"># Insert a final period after last word.</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-17" name="rest_code_6f64f21ef65f48caa58713118c0dc787-17"></a><span class="nv">REMOVE_AND_OR_PERIOD_OPT</span><span class="o">=</span>off
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-18" name="rest_code_6f64f21ef65f48caa58713118c0dc787-18"></a>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-19" name="rest_code_6f64f21ef65f48caa58713118c0dc787-19"></a>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-20" name="rest_code_6f64f21ef65f48caa58713118c0dc787-20"></a><span class="nb">let</span> <span class="nv">errors</span><span class="o">=</span><span class="m">0</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-21" name="rest_code_6f64f21ef65f48caa58713118c0dc787-21"></a><span class="k">while</span> <span class="nb">getopts</span> <span class="s2">"?afhopr"</span> opt
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-22" name="rest_code_6f64f21ef65f48caa58713118c0dc787-22"></a><span class="k">do</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-23" name="rest_code_6f64f21ef65f48caa58713118c0dc787-23"></a>    <span class="k">case</span> <span class="s2">"</span><span class="nv">$opt</span><span class="s2">"</span> <span class="k">in</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-24" name="rest_code_6f64f21ef65f48caa58713118c0dc787-24"></a>        <span class="o">(</span><span class="se">\?</span><span class="p">|</span>h<span class="o">)</span> <span class="nb">let</span> errors++ <span class="p">;;</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-25" name="rest_code_6f64f21ef65f48caa58713118c0dc787-25"></a>        <span class="o">(</span>a<span class="o">)</span> <span class="nv">AND_OPT</span><span class="o">=</span>on <span class="p">;;</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-26" name="rest_code_6f64f21ef65f48caa58713118c0dc787-26"></a>        <span class="o">(</span>f<span class="o">)</span> <span class="nv">FINAL_OPT</span><span class="o">=</span>on <span class="p">;;</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-27" name="rest_code_6f64f21ef65f48caa58713118c0dc787-27"></a>        <span class="o">(</span>o<span class="o">)</span> <span class="nv">OR_OPT</span><span class="o">=</span>on <span class="p">;;</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-28" name="rest_code_6f64f21ef65f48caa58713118c0dc787-28"></a>        <span class="o">(</span>p<span class="o">)</span> <span class="nv">PERIOD_OPT</span><span class="o">=</span>on <span class="p">;;</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-29" name="rest_code_6f64f21ef65f48caa58713118c0dc787-29"></a>        <span class="o">(</span>r<span class="o">)</span> <span class="nv">REMOVE_AND_OR_PERIOD_OPT</span><span class="o">=</span>on <span class="p">;;</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-30" name="rest_code_6f64f21ef65f48caa58713118c0dc787-30"></a>    <span class="k">esac</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-31" name="rest_code_6f64f21ef65f48caa58713118c0dc787-31"></a><span class="k">done</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-32" name="rest_code_6f64f21ef65f48caa58713118c0dc787-32"></a>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-33" name="rest_code_6f64f21ef65f48caa58713118c0dc787-33"></a><span class="nb">shift</span> <span class="k">$((</span>OPTIND-1<span class="k">))</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-34" name="rest_code_6f64f21ef65f48caa58713118c0dc787-34"></a>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-35" name="rest_code_6f64f21ef65f48caa58713118c0dc787-35"></a><span class="o">[[</span> <span class="nv">$#</span> &gt; <span class="m">0</span> <span class="o">]]</span> <span class="o">||</span> <span class="o">[[</span> <span class="nv">$errors</span> &gt; <span class="m">0</span> <span class="o">]]</span> <span class="o">&amp;&amp;</span> <span class="o">{</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-36" name="rest_code_6f64f21ef65f48caa58713118c0dc787-36"></a>    cat <span class="s">&lt;&lt;EOF</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-37" name="rest_code_6f64f21ef65f48caa58713118c0dc787-37"></a><span class="s">usage: sort-with-commas [OPTION]</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-38" name="rest_code_6f64f21ef65f48caa58713118c0dc787-38"></a>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-39" name="rest_code_6f64f21ef65f48caa58713118c0dc787-39"></a><span class="s">This reads its standard input and sorts a line or multiple lines with</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-40" name="rest_code_6f64f21ef65f48caa58713118c0dc787-40"></a><span class="s">"words" separated by commas, then reassembles the line, words</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-41" name="rest_code_6f64f21ef65f48caa58713118c0dc787-41"></a><span class="s">separated by a comma and s space, optionally leaving a final comma</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-42" name="rest_code_6f64f21ef65f48caa58713118c0dc787-42"></a><span class="s">after the last word, or a period, and optionally putting "and " or "or</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-43" name="rest_code_6f64f21ef65f48caa58713118c0dc787-43"></a><span class="s">" before the last word.</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-44" name="rest_code_6f64f21ef65f48caa58713118c0dc787-44"></a>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-45" name="rest_code_6f64f21ef65f48caa58713118c0dc787-45"></a><span class="s">Options</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-46" name="rest_code_6f64f21ef65f48caa58713118c0dc787-46"></a>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-47" name="rest_code_6f64f21ef65f48caa58713118c0dc787-47"></a><span class="s">-? -h   This message.</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-48" name="rest_code_6f64f21ef65f48caa58713118c0dc787-48"></a><span class="s">-a      Insert "and " before last word.</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-49" name="rest_code_6f64f21ef65f48caa58713118c0dc787-49"></a><span class="s">-f      Leave final comma after last word.</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-50" name="rest_code_6f64f21ef65f48caa58713118c0dc787-50"></a><span class="s">-o      Insert "or " before last word.</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-51" name="rest_code_6f64f21ef65f48caa58713118c0dc787-51"></a><span class="s">-p      Insert a period after the last word.</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-52" name="rest_code_6f64f21ef65f48caa58713118c0dc787-52"></a><span class="s">-r      Remove "and " or "or " that occur at the beginning of a "word" in the</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-53" name="rest_code_6f64f21ef65f48caa58713118c0dc787-53"></a><span class="s">        original list.</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-54" name="rest_code_6f64f21ef65f48caa58713118c0dc787-54"></a>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-55" name="rest_code_6f64f21ef65f48caa58713118c0dc787-55"></a><span class="s">Note that combining -a and -o, or -f and -p do what you say, but the results</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-56" name="rest_code_6f64f21ef65f48caa58713118c0dc787-56"></a><span class="s">are silly.</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-57" name="rest_code_6f64f21ef65f48caa58713118c0dc787-57"></a><span class="s">EOF</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-58" name="rest_code_6f64f21ef65f48caa58713118c0dc787-58"></a>    <span class="nb">exit</span> <span class="m">1</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-59" name="rest_code_6f64f21ef65f48caa58713118c0dc787-59"></a><span class="o">}</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-60" name="rest_code_6f64f21ef65f48caa58713118c0dc787-60"></a>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-61" name="rest_code_6f64f21ef65f48caa58713118c0dc787-61"></a>tr <span class="s1">','</span> <span class="s1">'\n'</span> <span class="p">|</span> sed -E -e <span class="s1">'s/^[ \t]+//'</span> -e <span class="s1">'/^$/d'</span> <span class="p">|</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-62" name="rest_code_6f64f21ef65f48caa58713118c0dc787-62"></a>    <span class="o">([[</span> <span class="s2">"</span><span class="nv">$REMOVE_AND_OR_PERIOD_OPT</span><span class="s2">"</span> <span class="o">=</span> <span class="s2">"on"</span> <span class="o">]]</span> <span class="o">&amp;&amp;</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-63" name="rest_code_6f64f21ef65f48caa58713118c0dc787-63"></a>         sed -E -e <span class="s1">'s/^(and|or)[ \t]+//'</span> -e <span class="s1">'s/\.[ \t]*$//'</span> <span class="o">||</span> cat<span class="o">)</span> <span class="p">|</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-64" name="rest_code_6f64f21ef65f48caa58713118c0dc787-64"></a>    sort -u <span class="p">|</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-65" name="rest_code_6f64f21ef65f48caa58713118c0dc787-65"></a>    sed -E -e <span class="s1">'s/$/,/'</span> <span class="p">|</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-66" name="rest_code_6f64f21ef65f48caa58713118c0dc787-66"></a>    <span class="o">(</span><span class="k">if</span> <span class="o">[[</span> <span class="s2">"</span><span class="nv">$AND_OPT</span><span class="s2">"</span> <span class="o">=</span> <span class="s2">"on"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span> sed -e <span class="s1">'$s/^/and /'</span><span class="p">;</span> <span class="k">else</span> cat<span class="p">;</span> <span class="k">fi</span><span class="o">)</span> <span class="p">|</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-67" name="rest_code_6f64f21ef65f48caa58713118c0dc787-67"></a>    <span class="o">(</span><span class="k">if</span> <span class="o">[[</span> <span class="s2">"</span><span class="nv">$FINAL_OPT</span><span class="s2">"</span> <span class="o">=</span> <span class="s2">"on"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span> cat<span class="p">;</span> <span class="k">else</span> sed -e <span class="s1">'$s/,//'</span><span class="p">;</span> <span class="k">fi</span><span class="o">)</span> <span class="p">|</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-68" name="rest_code_6f64f21ef65f48caa58713118c0dc787-68"></a>    <span class="o">(</span><span class="k">if</span> <span class="o">[[</span> <span class="s2">"</span><span class="nv">$OR_OPT</span><span class="s2">"</span> <span class="o">=</span> <span class="s2">"on"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span> sed -e <span class="s1">'$s/^/or /'</span><span class="p">;</span> <span class="k">else</span> cat<span class="p">;</span> <span class="k">fi</span><span class="o">)</span> <span class="p">|</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-69" name="rest_code_6f64f21ef65f48caa58713118c0dc787-69"></a>    <span class="o">(</span><span class="k">if</span> <span class="o">[[</span> <span class="s2">"</span><span class="nv">$PERIOD_OPT</span><span class="s2">"</span> <span class="o">=</span> <span class="s2">"on"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span> sed -e <span class="s1">'$s/$/./'</span><span class="p">;</span> <span class="k">else</span> cat<span class="p">;</span> <span class="k">fi</span><span class="o">)</span> <span class="p">|</span>
-<a id="rest_code_6f64f21ef65f48caa58713118c0dc787-70" name="rest_code_6f64f21ef65f48caa58713118c0dc787-70"></a>    tr <span class="s1">'\n'</span> <span class="s1">' '</span> <span class="p">|</span> sed -E -e <span class="s1">'s/[ ]$//'</span>
-</pre>
-<p>Here's <span class="file">strip-leading-hash</span>:</p>
-<p><a class="reference external" href="listings/strip-leading-hash.html">strip-leading-hash</a>  <a class="reference external" href="listings/strip-leading-hash">(Source)</a></p>
-<pre class="code bash"><a id="rest_code_3c27174e7461430a9cd5bd8e10e88e23-1" name="rest_code_3c27174e7461430a9cd5bd8e10e88e23-1"></a><span class="ch">#! /usr/bin/env bash</span>
-<a id="rest_code_3c27174e7461430a9cd5bd8e10e88e23-2" name="rest_code_3c27174e7461430a9cd5bd8e10e88e23-2"></a>
-<a id="rest_code_3c27174e7461430a9cd5bd8e10e88e23-3" name="rest_code_3c27174e7461430a9cd5bd8e10e88e23-3"></a>sed -E -e <span class="s1">'s/^#[ \t]*//'</span>
-</pre>
-<p>And here's <span class="file">prefix</span>:</p>
-<p><a class="reference external" href="listings/prefix.html">prefix</a>  <a class="reference external" href="listings/prefix">(Source)</a></p>
-<pre class="code bash"><a id="rest_code_44d02fb1181f481cbd7183025f04997e-1" name="rest_code_44d02fb1181f481cbd7183025f04997e-1"></a><span class="ch">#! /usr/bin/env bash</span>
-<a id="rest_code_44d02fb1181f481cbd7183025f04997e-2" name="rest_code_44d02fb1181f481cbd7183025f04997e-2"></a>
-<a id="rest_code_44d02fb1181f481cbd7183025f04997e-3" name="rest_code_44d02fb1181f481cbd7183025f04997e-3"></a>sed <span class="s2">"s/^/</span><span class="nv">$1</span><span class="s2">/"</span>
-</pre>
-</div>
-    <nav><ul itemprop="keywords" class="tags">
-<li><a class="tag p-category" href="categories/bash/" rel="tag">bash</a></li>
-            <li><a class="tag p-category" href="categories/emacs/" rel="tag">emacs</a></li>
-            <li><a class="tag p-category" href="categories/script/" rel="tag">script</a></li>
-            <li><a class="tag p-category" href="categories/shell/" rel="tag">shell</a></li>
         </ul></nav>
 </div>
     </article>

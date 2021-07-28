@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?xml-stylesheet href="https://tkurtbond.github.io/assets/xml/atom.xsl" type="text/xsl media="all"?>
+<feed xml:lang="en" xmlns="http://www.w3.org/2005/Atom">
+  <title>Lacking Natural Simplicity (Posts about sort)</title>
+  <id>https://tkurtbond.github.io/categories/sort.atom</id>
+  <updated>2021-07-28T09:21:58Z</updated>
+  <author>
+    <name>T. Kurt Bond</name>
+  </author>
+  <link rel="self" type="application/atom+xml" href="https://tkurtbond.github.io/categories/sort.atom"/>
+  <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/categories/sort/"/>
+  <generator uri="https://getnikola.com/">Nikola</generator>
+  <entry>
+    <title>Sorting differs between LANG=C and LANG=en_US.UTF-8, even in ls</title>
+    <id>https://tkurtbond.github.io/posts/2021/07/28/sorting-differs-between-langc-and-langen_usutf-8-even-in-ls/</id>
+    <updated>2021-07-28T05:05:50-04:00</updated>
+    <published>2021-07-28T05:05:50-04:00</published>
+    <author>
+      <name>T. Kurt Bond</name>
+    </author>
+    <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/posts/2021/07/28/sorting-differs-between-langc-and-langen_usutf-8-even-in-ls/"/>
+    <summary type="html">&lt;div&gt;&lt;p&gt;This is here mostly to give me a concrete example of this happening.&lt;/p&gt;
+&lt;p&gt;I have a directory, with two files in it, &lt;span class="file"&gt;ab.txt&lt;/span&gt; and
+&lt;span class="file"&gt;a-c.txt&lt;/span&gt;.  Which sorts first when I do a &lt;span class="command"&gt;ls&lt;/span&gt;?  It
+depends on what locale is set.  Like this:&lt;/p&gt;
+&lt;pre class="code bash"&gt;&lt;a id="rest_code_09aca967a2c740dcb7a79a75177556ba-1" name="rest_code_09aca967a2c740dcb7a79a75177556ba-1"&gt;&lt;/a&gt;$ &lt;span class="nv"&gt;LANG&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;en_US.UTF-8 ls
+&lt;a id="rest_code_09aca967a2c740dcb7a79a75177556ba-2" name="rest_code_09aca967a2c740dcb7a79a75177556ba-2"&gt;&lt;/a&gt;ab.txt       a-c.txt
+&lt;a id="rest_code_09aca967a2c740dcb7a79a75177556ba-3" name="rest_code_09aca967a2c740dcb7a79a75177556ba-3"&gt;&lt;/a&gt;$ &lt;span class="nv"&gt;LANG&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;C ls
+&lt;a id="rest_code_09aca967a2c740dcb7a79a75177556ba-4" name="rest_code_09aca967a2c740dcb7a79a75177556ba-4"&gt;&lt;/a&gt;a-c.txt  ab.txt
+&lt;/pre&gt;&lt;p&gt;Same thing happens with the &lt;span class="command"&gt;sort&lt;/span&gt; command:&lt;/p&gt;
+&lt;pre class="code bash"&gt;&lt;a id="rest_code_5bbc8b9a3c81472c83c1ca674efe688b-1" name="rest_code_5bbc8b9a3c81472c83c1ca674efe688b-1"&gt;&lt;/a&gt;$ cat &amp;gt;a-c-first.txt
+&lt;a id="rest_code_5bbc8b9a3c81472c83c1ca674efe688b-2" name="rest_code_5bbc8b9a3c81472c83c1ca674efe688b-2"&gt;&lt;/a&gt;a-c.txt
+&lt;a id="rest_code_5bbc8b9a3c81472c83c1ca674efe688b-3" name="rest_code_5bbc8b9a3c81472c83c1ca674efe688b-3"&gt;&lt;/a&gt;ab.txt
+&lt;a id="rest_code_5bbc8b9a3c81472c83c1ca674efe688b-4" name="rest_code_5bbc8b9a3c81472c83c1ca674efe688b-4"&gt;&lt;/a&gt;$ cat &amp;gt;ab-first.txt
+&lt;a id="rest_code_5bbc8b9a3c81472c83c1ca674efe688b-5" name="rest_code_5bbc8b9a3c81472c83c1ca674efe688b-5"&gt;&lt;/a&gt;ab.txt
+&lt;a id="rest_code_5bbc8b9a3c81472c83c1ca674efe688b-6" name="rest_code_5bbc8b9a3c81472c83c1ca674efe688b-6"&gt;&lt;/a&gt;a-c.txt
+&lt;a id="rest_code_5bbc8b9a3c81472c83c1ca674efe688b-7" name="rest_code_5bbc8b9a3c81472c83c1ca674efe688b-7"&gt;&lt;/a&gt;$ &lt;span class="nv"&gt;LANG&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;C sort ab-first.txt
+&lt;a id="rest_code_5bbc8b9a3c81472c83c1ca674efe688b-8" name="rest_code_5bbc8b9a3c81472c83c1ca674efe688b-8"&gt;&lt;/a&gt;a-c.txt
+&lt;a id="rest_code_5bbc8b9a3c81472c83c1ca674efe688b-9" name="rest_code_5bbc8b9a3c81472c83c1ca674efe688b-9"&gt;&lt;/a&gt;ab.txt
+&lt;a id="rest_code_5bbc8b9a3c81472c83c1ca674efe688b-10" name="rest_code_5bbc8b9a3c81472c83c1ca674efe688b-10"&gt;&lt;/a&gt;$ &lt;span class="nv"&gt;LANG&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;en_US.UTF-8 sort a-c-first.txt
+&lt;a id="rest_code_5bbc8b9a3c81472c83c1ca674efe688b-11" name="rest_code_5bbc8b9a3c81472c83c1ca674efe688b-11"&gt;&lt;/a&gt;ab.txt
+&lt;a id="rest_code_5bbc8b9a3c81472c83c1ca674efe688b-12" name="rest_code_5bbc8b9a3c81472c83c1ca674efe688b-12"&gt;&lt;/a&gt;a-c.txt
+&lt;/pre&gt;&lt;p&gt;I found this surprising when it first broke some code I was using,
+since I'd spent so much of my existence in LANG=C, but once I set
+LANG=en_US.UTF-8 because I was using UTF-8 characters in my documents
+I found I was in a different (sorting) world.&lt;/p&gt;&lt;/div&gt;</summary>
+    <category term="langc" label="LANG=C"/>
+    <category term="langen_usutf-8" label="LANG=en_US.UTF-8"/>
+    <category term="sort" label="sort"/>
+    <category term="sorting" label="sorting"/>
+  </entry>
+</feed>
