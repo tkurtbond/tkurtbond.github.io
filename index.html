@@ -122,7 +122,7 @@ more than one version of a program installed, therefore the
 <span class="file">versions</span> component of the name.)</p>
 <p>Because the <span class="command">groff</span> that is first in my path is the new one I
 installed, and because <span class="app">man</span> on macOS knows to look for man pages
-according to what your <code class="docutils literal">PATH</code> is, when I as <code class="docutils literal">man groff_ms</code> I get
+according to what your <code class="docutils literal">PATH</code> is, when I say <code class="docutils literal">man groff_ms</code> I get
 the new man page for <code class="docutils literal">groff_ms</code>.  Yay!  Unfortunately, it gets
 rendered with the old <span class="app">groff</span> that macOS supplies, version
 1.19.2, which doesn't include the <code class="docutils literal">.SY</code> macro that current versions
@@ -135,10 +135,10 @@ Boo!</p>
 alternate configuration file (on macOS the default one is in
 <span class="file">/private/etc/man.conf</span>), so you can supply one that specifies
 the absolute path to the newer <span class="app">groff</span> you are using.  So I added</p>
-<pre class="code bash"><a id="rest_code_ff7b66c4c47a4bc0a7055b1d72d1294e-1" name="rest_code_ff7b66c4c47a4bc0a7055b1d72d1294e-1"></a><span class="nb">alias</span> <span class="nv">man</span><span class="o">=</span><span class="s1">'man -C ~/local/etc/man.conf'</span>
+<pre class="code bash"><a id="rest_code_751f663f76284bd9a2a74a4d7edbdd29-1" name="rest_code_751f663f76284bd9a2a74a4d7edbdd29-1"></a><span class="nb">alias</span> <span class="nv">man</span><span class="o">=</span><span class="s1">'man -C ~/local/etc/man.conf'</span>
 </pre>
 <p>to the appropriate shell startup file.  And I can add</p>
-<pre class="code emacs-lisp"><a id="rest_code_ecb3160f18b04669a2d482d7885e8f00-1" name="rest_code_ecb3160f18b04669a2d482d7885e8f00-1"></a><span class="p">(</span><span class="k">setq</span> <span class="nv">Man-switches</span> <span class="s">"-C ~/local/etc/man.conf"</span><span class="p">)</span>
+<pre class="code emacs-lisp"><a id="rest_code_847f513c26e04956b616f6c73e7d7e91-1" name="rest_code_847f513c26e04956b616f6c73e7d7e91-1"></a><span class="p">(</span><span class="k">setq</span> <span class="nv">Man-switches</span> <span class="s">"-C ~/local/etc/man.conf"</span><span class="p">)</span>
 </pre>
 <p>to my <span class="app">emacs</span> configuration so it uses the right version of
 <span class="app">groff</span> too.</p>
@@ -160,7 +160,7 @@ use.</p>
 <section id="later"><h2>Later</h2>
 <p>Aannnd I was right.  Fedora 33 has a similar problem, which I fixed by
 creating a <span class="file">~/.manpath</span> file with</p>
-<pre class="code text"><a id="rest_code_32e003d251044b30a5d918156dbc5ac1-1" name="rest_code_32e003d251044b30a5d918156dbc5ac1-1"></a>DEFINE       nroff   /sw/versions/groff/git/bin/nroff -mandoc -P-c
+<pre class="code text"><a id="rest_code_249aa4683a2f4a688da1c7d7e3c96ca3-1" name="rest_code_249aa4683a2f4a688da1c7d7e3c96ca3-1"></a>DEFINE       nroff   /sw/versions/groff/git/bin/nroff -mandoc -P-c
 </pre>
 <p>in it.  I found the information I needed in <span class="man">manpath(5)</span>, which
 documents the format of the <span class="file">/etc/man_db.conf</span> file.  (Why isn't
@@ -174,7 +174,7 @@ it <span class="man">man_db.conf(5)</span>, then?)</p>
 erroneously underlined.</p>
 </dd>
 </dl>
-<p><em>Last edited: 2021-07-26 22:34:57 EDT</em></p>
+<p><em>Last edited: 2021-07-28 05:33:55 EDT</em></p>
 <!-- Local Variables:
 time-stamp-format: "%Y-%02m-%02d %02H:%02M:%02S %Z"
 time-stamp-start: "\\*Last edited:[ \t]+\\\\?"

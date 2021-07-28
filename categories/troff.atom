@@ -3,7 +3,7 @@
 <feed xml:lang="en" xmlns="http://www.w3.org/2005/Atom">
   <title>Lacking Natural Simplicity (Posts about troff)</title>
   <id>https://tkurtbond.github.io/categories/troff.atom</id>
-  <updated>2021-07-27T02:35:08Z</updated>
+  <updated>2021-07-28T09:34:06Z</updated>
   <author>
     <name>T. Kurt Bond</name>
   </author>
@@ -32,7 +32,7 @@ more than one version of a program installed, therefore the
 &lt;span class="file"&gt;versions&lt;/span&gt; component of the name.)&lt;/p&gt;
 &lt;p&gt;Because the &lt;span class="command"&gt;groff&lt;/span&gt; that is first in my path is the new one I
 installed, and because &lt;span class="app"&gt;man&lt;/span&gt; on macOS knows to look for man pages
-according to what your &lt;code class="docutils literal"&gt;PATH&lt;/code&gt; is, when I as &lt;code class="docutils literal"&gt;man groff_ms&lt;/code&gt; I get
+according to what your &lt;code class="docutils literal"&gt;PATH&lt;/code&gt; is, when I say &lt;code class="docutils literal"&gt;man groff_ms&lt;/code&gt; I get
 the new man page for &lt;code class="docutils literal"&gt;groff_ms&lt;/code&gt;.  Yay!  Unfortunately, it gets
 rendered with the old &lt;span class="app"&gt;groff&lt;/span&gt; that macOS supplies, version
 1.19.2, which doesn't include the &lt;code class="docutils literal"&gt;.SY&lt;/code&gt; macro that current versions
@@ -45,9 +45,9 @@ Boo!&lt;/p&gt;
 alternate configuration file (on macOS the default one is in
 &lt;span class="file"&gt;/private/etc/man.conf&lt;/span&gt;), so you can supply one that specifies
 the absolute path to the newer &lt;span class="app"&gt;groff&lt;/span&gt; you are using.  So I added&lt;/p&gt;
-&lt;pre class="code bash"&gt;&lt;a id="rest_code_ff7b66c4c47a4bc0a7055b1d72d1294e-1" name="rest_code_ff7b66c4c47a4bc0a7055b1d72d1294e-1"&gt;&lt;/a&gt;&lt;span class="nb"&gt;alias&lt;/span&gt; &lt;span class="nv"&gt;man&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'man -C ~/local/etc/man.conf'&lt;/span&gt;
+&lt;pre class="code bash"&gt;&lt;a id="rest_code_751f663f76284bd9a2a74a4d7edbdd29-1" name="rest_code_751f663f76284bd9a2a74a4d7edbdd29-1"&gt;&lt;/a&gt;&lt;span class="nb"&gt;alias&lt;/span&gt; &lt;span class="nv"&gt;man&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'man -C ~/local/etc/man.conf'&lt;/span&gt;
 &lt;/pre&gt;&lt;p&gt;to the appropriate shell startup file.  And I can add&lt;/p&gt;
-&lt;pre class="code emacs-lisp"&gt;&lt;a id="rest_code_ecb3160f18b04669a2d482d7885e8f00-1" name="rest_code_ecb3160f18b04669a2d482d7885e8f00-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;setq&lt;/span&gt; &lt;span class="nv"&gt;Man-switches&lt;/span&gt; &lt;span class="s"&gt;"-C ~/local/etc/man.conf"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;pre class="code emacs-lisp"&gt;&lt;a id="rest_code_847f513c26e04956b616f6c73e7d7e91-1" name="rest_code_847f513c26e04956b616f6c73e7d7e91-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;setq&lt;/span&gt; &lt;span class="nv"&gt;Man-switches&lt;/span&gt; &lt;span class="s"&gt;"-C ~/local/etc/man.conf"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;p&gt;to my &lt;span class="app"&gt;emacs&lt;/span&gt; configuration so it uses the right version of
 &lt;span class="app"&gt;groff&lt;/span&gt; too.&lt;/p&gt;
 &lt;p&gt;But a modern &lt;span class="app"&gt;groff&lt;/span&gt; produces ANSI escapes for bold and
@@ -69,7 +69,7 @@ use.&lt;/p&gt;
 &lt;h2&gt;Later&lt;/h2&gt;
 &lt;p&gt;Aannnd I was right.  Fedora 33 has a similar problem, which I fixed by
 creating a &lt;span class="file"&gt;~/.manpath&lt;/span&gt; file with&lt;/p&gt;
-&lt;pre class="code text"&gt;&lt;a id="rest_code_32e003d251044b30a5d918156dbc5ac1-1" name="rest_code_32e003d251044b30a5d918156dbc5ac1-1"&gt;&lt;/a&gt;DEFINE       nroff   /sw/versions/groff/git/bin/nroff -mandoc -P-c
+&lt;pre class="code text"&gt;&lt;a id="rest_code_249aa4683a2f4a688da1c7d7e3c96ca3-1" name="rest_code_249aa4683a2f4a688da1c7d7e3c96ca3-1"&gt;&lt;/a&gt;DEFINE       nroff   /sw/versions/groff/git/bin/nroff -mandoc -P-c
 &lt;/pre&gt;&lt;p&gt;in it.  I found the information I needed in &lt;span class="man"&gt;manpath(5)&lt;/span&gt;, which
 documents the format of the &lt;span class="file"&gt;/etc/man_db.conf&lt;/span&gt; file.  (Why isn't
 it &lt;span class="man"&gt;man_db.conf(5)&lt;/span&gt;, then?)&lt;/p&gt;
@@ -81,7 +81,7 @@ it &lt;span class="man"&gt;man_db.conf(5)&lt;/span&gt;, then?)&lt;/p&gt;
 erroneously underlined.&lt;/p&gt;
 &lt;/dd&gt;
 &lt;/dl&gt;
-&lt;p&gt;&lt;em&gt;Last edited: 2021-07-26 22:34:57 EDT&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Last edited: 2021-07-28 05:33:55 EDT&lt;/em&gt;&lt;/p&gt;
 &lt;!-- Local Variables:
 time-stamp-format: "%Y-%02m-%02d %02H:%02M:%02S %Z"
 time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
