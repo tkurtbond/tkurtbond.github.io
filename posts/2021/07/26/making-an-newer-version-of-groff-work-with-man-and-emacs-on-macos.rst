@@ -27,7 +27,7 @@ more than one version of a program installed, therefore the
 
 Because the :command:`groff` that is first in my path is the new one I
 installed, and because :app:`man` on macOS knows to look for man pages
-according to what your ``PATH`` is, when I as ``man groff_ms`` I get
+according to what your ``PATH`` is, when I say ``man groff_ms`` I get
 the new man page for ``groff_ms``.  Yay!  Unfortunately, it gets
 rendered with the old :app:`groff` that macOS supplies, version
 1.19.2, which doesn't include the ``.SY`` macro that current versions
@@ -98,7 +98,7 @@ it :man:`man_db.conf(5)`, then?)
    erroneously underlined.
 
 
-*Last edited: 2021-07-26 22:34:57 EDT*
+*Last edited: 2021-07-28 05:33:55 EDT*
 
 ..
    Local Variables:
