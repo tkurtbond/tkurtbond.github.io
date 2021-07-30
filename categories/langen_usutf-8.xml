@@ -1,26 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity (Posts about LANG=en_US.UTF-8)</title><link>https://tkurtbond.github.io/</link><description></description><atom:link href="https://tkurtbond.github.io/categories/langen_usutf-8.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2021 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Wed, 28 Jul 2021 09:21:58 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Sorting differs between LANG=C and LANG=en_US.UTF-8, even in ls</title><link>https://tkurtbond.github.io/posts/2021/07/28/sorting-differs-between-langc-and-langen_usutf-8-even-in-ls/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;This is here mostly to give me a concrete example of this happening.&lt;/p&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity (Posts about LANG=en_US.UTF-8)</title><link>https://tkurtbond.github.io/</link><description></description><atom:link href="https://tkurtbond.github.io/categories/langen_usutf-8.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2021 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Fri, 30 Jul 2021 07:22:52 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Sorting differs between LANG=C and LANG=en_US.UTF-8, even in ls</title><link>https://tkurtbond.github.io/posts/2021/07/28/sorting-differs-between-langc-and-langen_usutf-8-even-in-ls/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;This is here mostly to give me a concrete example of this happening.&lt;/p&gt;
 &lt;p&gt;I have a directory, with two files in it, &lt;span class="file"&gt;ab.txt&lt;/span&gt; and
 &lt;span class="file"&gt;a-c.txt&lt;/span&gt;.  Which sorts first when I do a &lt;span class="command"&gt;ls&lt;/span&gt;?  It
 depends on what locale is set.  Like this:&lt;/p&gt;
-&lt;pre class="code bash"&gt;&lt;a id="rest_code_09aca967a2c740dcb7a79a75177556ba-1" name="rest_code_09aca967a2c740dcb7a79a75177556ba-1"&gt;&lt;/a&gt;$ &lt;span class="nv"&gt;LANG&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;en_US.UTF-8 ls
-&lt;a id="rest_code_09aca967a2c740dcb7a79a75177556ba-2" name="rest_code_09aca967a2c740dcb7a79a75177556ba-2"&gt;&lt;/a&gt;ab.txt       a-c.txt
-&lt;a id="rest_code_09aca967a2c740dcb7a79a75177556ba-3" name="rest_code_09aca967a2c740dcb7a79a75177556ba-3"&gt;&lt;/a&gt;$ &lt;span class="nv"&gt;LANG&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;C ls
-&lt;a id="rest_code_09aca967a2c740dcb7a79a75177556ba-4" name="rest_code_09aca967a2c740dcb7a79a75177556ba-4"&gt;&lt;/a&gt;a-c.txt  ab.txt
+&lt;pre class="code bash"&gt;&lt;a id="rest_code_5ec8410dee1b48d0a1bdc25993478892-1" name="rest_code_5ec8410dee1b48d0a1bdc25993478892-1"&gt;&lt;/a&gt;$ &lt;span class="nv"&gt;LANG&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;en_US.UTF-8 ls
+&lt;a id="rest_code_5ec8410dee1b48d0a1bdc25993478892-2" name="rest_code_5ec8410dee1b48d0a1bdc25993478892-2"&gt;&lt;/a&gt;ab.txt       a-c.txt
+&lt;a id="rest_code_5ec8410dee1b48d0a1bdc25993478892-3" name="rest_code_5ec8410dee1b48d0a1bdc25993478892-3"&gt;&lt;/a&gt;$ &lt;span class="nv"&gt;LANG&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;C ls
+&lt;a id="rest_code_5ec8410dee1b48d0a1bdc25993478892-4" name="rest_code_5ec8410dee1b48d0a1bdc25993478892-4"&gt;&lt;/a&gt;a-c.txt  ab.txt
 &lt;/pre&gt;&lt;p&gt;Same thing happens with the &lt;span class="command"&gt;sort&lt;/span&gt; command:&lt;/p&gt;
-&lt;pre class="code bash"&gt;&lt;a id="rest_code_5bbc8b9a3c81472c83c1ca674efe688b-1" name="rest_code_5bbc8b9a3c81472c83c1ca674efe688b-1"&gt;&lt;/a&gt;$ cat &amp;gt;a-c-first.txt
-&lt;a id="rest_code_5bbc8b9a3c81472c83c1ca674efe688b-2" name="rest_code_5bbc8b9a3c81472c83c1ca674efe688b-2"&gt;&lt;/a&gt;a-c.txt
-&lt;a id="rest_code_5bbc8b9a3c81472c83c1ca674efe688b-3" name="rest_code_5bbc8b9a3c81472c83c1ca674efe688b-3"&gt;&lt;/a&gt;ab.txt
-&lt;a id="rest_code_5bbc8b9a3c81472c83c1ca674efe688b-4" name="rest_code_5bbc8b9a3c81472c83c1ca674efe688b-4"&gt;&lt;/a&gt;$ cat &amp;gt;ab-first.txt
-&lt;a id="rest_code_5bbc8b9a3c81472c83c1ca674efe688b-5" name="rest_code_5bbc8b9a3c81472c83c1ca674efe688b-5"&gt;&lt;/a&gt;ab.txt
-&lt;a id="rest_code_5bbc8b9a3c81472c83c1ca674efe688b-6" name="rest_code_5bbc8b9a3c81472c83c1ca674efe688b-6"&gt;&lt;/a&gt;a-c.txt
-&lt;a id="rest_code_5bbc8b9a3c81472c83c1ca674efe688b-7" name="rest_code_5bbc8b9a3c81472c83c1ca674efe688b-7"&gt;&lt;/a&gt;$ &lt;span class="nv"&gt;LANG&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;C sort ab-first.txt
-&lt;a id="rest_code_5bbc8b9a3c81472c83c1ca674efe688b-8" name="rest_code_5bbc8b9a3c81472c83c1ca674efe688b-8"&gt;&lt;/a&gt;a-c.txt
-&lt;a id="rest_code_5bbc8b9a3c81472c83c1ca674efe688b-9" name="rest_code_5bbc8b9a3c81472c83c1ca674efe688b-9"&gt;&lt;/a&gt;ab.txt
-&lt;a id="rest_code_5bbc8b9a3c81472c83c1ca674efe688b-10" name="rest_code_5bbc8b9a3c81472c83c1ca674efe688b-10"&gt;&lt;/a&gt;$ &lt;span class="nv"&gt;LANG&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;en_US.UTF-8 sort a-c-first.txt
-&lt;a id="rest_code_5bbc8b9a3c81472c83c1ca674efe688b-11" name="rest_code_5bbc8b9a3c81472c83c1ca674efe688b-11"&gt;&lt;/a&gt;ab.txt
-&lt;a id="rest_code_5bbc8b9a3c81472c83c1ca674efe688b-12" name="rest_code_5bbc8b9a3c81472c83c1ca674efe688b-12"&gt;&lt;/a&gt;a-c.txt
+&lt;pre class="code bash"&gt;&lt;a id="rest_code_cb170e5ed20e42308e750d97668805ea-1" name="rest_code_cb170e5ed20e42308e750d97668805ea-1"&gt;&lt;/a&gt;$ cat &amp;gt;a-c-first.txt
+&lt;a id="rest_code_cb170e5ed20e42308e750d97668805ea-2" name="rest_code_cb170e5ed20e42308e750d97668805ea-2"&gt;&lt;/a&gt;a-c.txt
+&lt;a id="rest_code_cb170e5ed20e42308e750d97668805ea-3" name="rest_code_cb170e5ed20e42308e750d97668805ea-3"&gt;&lt;/a&gt;ab.txt
+&lt;a id="rest_code_cb170e5ed20e42308e750d97668805ea-4" name="rest_code_cb170e5ed20e42308e750d97668805ea-4"&gt;&lt;/a&gt;$ cat &amp;gt;ab-first.txt
+&lt;a id="rest_code_cb170e5ed20e42308e750d97668805ea-5" name="rest_code_cb170e5ed20e42308e750d97668805ea-5"&gt;&lt;/a&gt;ab.txt
+&lt;a id="rest_code_cb170e5ed20e42308e750d97668805ea-6" name="rest_code_cb170e5ed20e42308e750d97668805ea-6"&gt;&lt;/a&gt;a-c.txt
+&lt;a id="rest_code_cb170e5ed20e42308e750d97668805ea-7" name="rest_code_cb170e5ed20e42308e750d97668805ea-7"&gt;&lt;/a&gt;$ &lt;span class="nv"&gt;LANG&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;C sort ab-first.txt
+&lt;a id="rest_code_cb170e5ed20e42308e750d97668805ea-8" name="rest_code_cb170e5ed20e42308e750d97668805ea-8"&gt;&lt;/a&gt;a-c.txt
+&lt;a id="rest_code_cb170e5ed20e42308e750d97668805ea-9" name="rest_code_cb170e5ed20e42308e750d97668805ea-9"&gt;&lt;/a&gt;ab.txt
+&lt;a id="rest_code_cb170e5ed20e42308e750d97668805ea-10" name="rest_code_cb170e5ed20e42308e750d97668805ea-10"&gt;&lt;/a&gt;$ &lt;span class="nv"&gt;LANG&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;en_US.UTF-8 sort a-c-first.txt
+&lt;a id="rest_code_cb170e5ed20e42308e750d97668805ea-11" name="rest_code_cb170e5ed20e42308e750d97668805ea-11"&gt;&lt;/a&gt;ab.txt
+&lt;a id="rest_code_cb170e5ed20e42308e750d97668805ea-12" name="rest_code_cb170e5ed20e42308e750d97668805ea-12"&gt;&lt;/a&gt;a-c.txt
 &lt;/pre&gt;&lt;p&gt;I found this surprising when it first broke some code I was using,
-since I'd spent so much of my existence in LANG=C, but once I set
+since I'd spent so much of my existence in LANG=C (I'm still surprised
+that Unicode has existed for more than half my life), but once I set
 LANG=en_US.UTF-8 because I was using UTF-8 characters in my documents
 I found I was in a different (sorting) world.&lt;/p&gt;&lt;/div&gt;</description><category>LANG=C</category><category>LANG=en_US.UTF-8</category><category>sort</category><category>sorting</category><guid>https://tkurtbond.github.io/posts/2021/07/28/sorting-differs-between-langc-and-langen_usutf-8-even-in-ls/</guid><pubDate>Wed, 28 Jul 2021 09:05:50 GMT</pubDate></item></channel></rss>
