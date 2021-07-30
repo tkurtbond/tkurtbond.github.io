@@ -41,6 +41,7 @@ Same thing happens with the :command:`sort` command:
    a-c.txt
 
 I found this surprising when it first broke some code I was using,
-since I'd spent so much of my existence in LANG=C, but once I set
+since I'd spent so much of my existence in LANG=C (I'm still surprised
+that Unicode has existed for more than half my life), but once I set
 LANG=en_US.UTF-8 because I was using UTF-8 characters in my documents
 I found I was in a different (sorting) world.
