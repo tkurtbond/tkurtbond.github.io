@@ -1,7 +1,7 @@
 .. title: Return to the Frontiers of Alusia Uploaded
 .. slug: return-to-the-frontiers-of-alusia-uploaded
 .. date: 2010-09-10 00:38:15 UTC-05:00
-.. tags: frontiers of alusia,spi,dq,dragonquest,gurps,savage worlds,kids,maps
+.. tags: frontiers of alusia,spi,dq,dragonquest,gurps,savage worlds,kids,maps,alusia
 .. category: gaming/rpg
 .. link: 
 .. description: 
@@ -24,4 +24,4 @@ should not be used.  So I deleted the few documents I'd uploaded
 there, including this one, and I'm hosting here_ instead.
 
 __ http://www.scribd.com/doc/36876162/Return1-All
-.. _here: /
+.. _here: /return1.pdf
