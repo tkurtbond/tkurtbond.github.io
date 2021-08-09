@@ -1,7 +1,7 @@
 .. title: Return to Alusia, Part 1
 .. slug: return-to-alusia-part-1
 .. date: 2007-12-23 00:00:00 UTC-05:00
-.. tags: savage worlds,rpg,actual-play,timewarp,kids,alusia
+.. tags: savage worlds,rpg,actual-play,timewarp,kids,alusia,return to alusia precursor
 .. category: gaming/rpg/actual-play/the-kids/alusia
 .. link: 
 .. description: 
