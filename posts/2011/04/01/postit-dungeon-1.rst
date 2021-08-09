@@ -1,7 +1,7 @@
 .. title: A Post-It™ Dungeon
 .. slug: postit-dungeon-1
 .. date: 2011-04-01 00:00:00 UTC-05:00
-.. tags: dungeon
+.. tags: dungeon,maps,post-it
 .. category: gaming/rpg/maps
 .. link: 
 .. description: 
