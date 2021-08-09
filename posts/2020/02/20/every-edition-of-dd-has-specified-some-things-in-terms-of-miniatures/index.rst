@@ -2,7 +2,7 @@
 .. slug: every-edition-of-dd-has-specified-some-things-in-terms-of-miniatures
 .. date: 2020-02-20 15:27:44 UTC-05:00
 .. tags: d&d,miniatures,rpg,ad&d,holmes basic d&d
-.. category: gaming
+.. category: gaming/rpg
 .. link: 
 .. description: 
 .. type: text

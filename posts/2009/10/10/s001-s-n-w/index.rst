@@ -2,7 +2,7 @@
 .. slug: s001-s-n-w
 .. date: 2009-10-10 00:00:00 UTC-05:00
 .. tags: gaming,rpg,swords & wizardry,actual-play,timewarp,spoilers
-.. category: gaming/actual-play/the-kids/tomb-of-the-iron-god
+.. category: gaming/rpg/actual-play/the-kids/tomb-of-the-iron-god
 .. link: 
 .. description: 
 .. type: text

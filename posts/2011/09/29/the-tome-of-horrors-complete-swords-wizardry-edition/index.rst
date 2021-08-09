@@ -2,7 +2,7 @@
 .. slug: the-tome-of-horrors-complete-swords-wizardry-edition
 .. date: 2011-09-29 18:19:58 UTC-05:00
 .. tags: rpg,swords & wizardry,frog god games,mythmere games
-.. category: gaming
+.. category: gaming/rpg
 .. link: 
 .. description: 
 .. type: text

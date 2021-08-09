@@ -2,7 +2,7 @@
 .. slug: powers-perils-is-oddly-fascinating
 .. date: 2020-02-14 22:15:25 UTC-05:00
 .. tags: rpg,powers & perils
-.. category: gaming
+.. category: gaming/rpg
 .. link: 
 .. description: 
 .. type: text

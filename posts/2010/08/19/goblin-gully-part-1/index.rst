@@ -2,7 +2,7 @@
 .. slug: goblin-gully-part-1
 .. date: 2010-08-19 23:00:00 UTC-05:00
 .. tags: gaming,rpg,labyrinth lord,actual-play,dld2
-.. category: gaming/actual-play/the-kids/goblin-gully
+.. category: gaming/rpg/actual-play/the-kids/goblin-gully
 .. link: 
 .. description: 
 .. type: text

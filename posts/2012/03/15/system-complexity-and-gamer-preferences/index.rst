@@ -2,7 +2,7 @@
 .. slug: system-complexity-and-gamer-preferences
 .. date: 2012-03-15 17:31:45 UTC-05:00
 .. tags: rpg,d&d,steve winter,ad&d,bd&d
-.. category: gaming
+.. category: gaming/rpg
 .. link: 
 .. description: 
 .. type: text

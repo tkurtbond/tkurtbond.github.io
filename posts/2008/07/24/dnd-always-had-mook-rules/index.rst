@@ -2,7 +2,7 @@
 .. slug: dnd-always-had-mook-rules
 .. date: 2008-07-24 16:18:38 UTC-05:00
 .. tags: d&d,rpg
-.. category: gaming
+.. category: gaming/rpg
 .. link: 
 .. description: 
 .. type: text

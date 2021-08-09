@@ -2,7 +2,7 @@
 .. slug: tas-form-2-revised-at-tales-to-astonish
 .. date: 2020-03-15 23:22:43 UTC-04:00
 .. tags: rpg,traveller,classic traveller,character sheet
-.. category: gaming
+.. category: gaming/rpg
 .. link: 
 .. description: 
 .. type: text

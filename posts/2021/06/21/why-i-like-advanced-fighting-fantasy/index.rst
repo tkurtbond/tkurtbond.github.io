@@ -2,7 +2,7 @@
 .. slug: why-i-like-advanced-fighting-fantasy
 .. date: 2021-06-21 12:48:21 UTC-04:00
 .. tags: advanced fighting fantasy,rpg,fighting fantasy,stellar adventures,titan,out of the pit
-.. category: gaming
+.. category: gaming/rpg
 .. link: 
 .. description: 
 .. type: text
@@ -224,11 +224,11 @@ gaming.
 .. _DriveThruRPG.com: https://www.drivethrurpg.com/browse/pub/667/Arion-Games/subcategory/1684_25223/Advanced-Fighting-Fantasy
 
 
-*Last edited: 2021-06-21 22:36:47 EDT*
+*Last edited: 2021-08-09 12:10:07 EDT*
 
 ..
    Local Variables:
-   time-stamp-format: "%04y-%02m-%02d %02H:%02M:%02S %Z"
+   time-stamp-format: "%Y-%02m-%02d %02H:%02M:%02S %Z"
    time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
    time-stamp-end: "\\*\\\\?\n"
    time-stamp-line-limit: -20

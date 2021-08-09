@@ -2,7 +2,7 @@
 .. slug: ept-way-better-organization-than-odd
 .. date: 2012-06-10 23:29:38 UTC-05:00
 .. tags: ept,tekumel,od&d,rpg
-.. category: gaming
+.. category: gaming/rpg
 .. link: 
 .. description: 
 .. type: text

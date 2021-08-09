@@ -2,7 +2,7 @@
 .. slug: t.a-ll-shadowbrook-manor-finished
 .. date: 2014-06-29 00:00:00 UTC-05:00
 .. tags: rpg,kids,labyrinth lord,t.a.
-.. category: gaming/actual-play/the-kids/kids-gming/idol-of-the-orcs
+.. category: gaming/rpg/actual-play/the-kids/kids-gming/idol-of-the-orcs
 .. link: 
 .. description: 
 .. type: text

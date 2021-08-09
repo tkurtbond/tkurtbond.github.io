@@ -2,7 +2,7 @@
 .. slug: weapon-cards-for-classic-traveller-1981-and-1977-editions
 .. date: 2020-03-07 19:08:06 UTC-05:00
 .. tags: rpg,classic traveller,traveller
-.. category: gaming
+.. category: gaming/rpg
 .. link: 
 .. description: 
 .. type: text

@@ -2,17 +2,17 @@
 .. slug: brigand-crypt-part-1
 .. date: 2010-08-06 23:00:00 UTC-05:00
 .. tags: gaming,rpg,labyrinth lord,actual-play,dld2
-.. category: gaming/actual-play/the-kids/brigand-crypt
+.. category: gaming/rpg/actual-play/the-kids/brigand-crypt
 .. link: 
 .. description: 
 .. type: text
 
 
 I had originally planned to start off the school year campaign for the
-A. kids_ with *B5 — Horror on the Hill*, by Douglas Niles, but since
+A\. kids_ with *B5 — Horror on the Hill*, by Douglas Niles, but since
 D.B. was in and M.A. and E.A. were not available, I started instead
-with `Prime Requisite Games`_ `DLD2 — Fabled Curse of the Brigand Crypt`_, by
-R. Lawrence Blake.
+with `Prime Requisite Games`_ `DLD2 — Fabled Curse of the Brigand
+Crypt`_, by R\. Lawrence Blake.
 
 .. admonition:: Spoilers!
 

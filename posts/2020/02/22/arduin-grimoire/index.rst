@@ -2,7 +2,7 @@
 .. slug: arduin-grimoire
 .. date: 2020-02-22 18:07:21 UTC-05:00
 .. tags: rpg,arduin
-.. category: gaming
+.. category: gaming/rpg
 .. link: 
 .. description: 
 .. type: text

@@ -2,7 +2,7 @@
 .. slug: advanced-fighting-fantasy-2e-combat-companion
 .. date: 2021-07-07 13:45:09 UTC-04:00
 .. tags: rpg,advanced fighting fantasy,aff2e
-.. category: gaming
+.. category: gaming/rpg
 .. link: 
 .. description: 
 .. type: text

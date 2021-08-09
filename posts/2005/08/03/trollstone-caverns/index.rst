@@ -2,7 +2,7 @@
 .. slug: trollstone-caverns
 .. date: 2005-08-03 23:00:00 UTC-05:00
 .. tags: actual-play,rpg,t&t,kids,timewarp
-.. category: gaming/actual-play/the-kids/tnt
+.. category: gaming/rpg/actual-play/the-kids/tnt
 .. link: 
 .. description: 
 .. type: text

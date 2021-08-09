@@ -2,7 +2,7 @@
 .. slug: swords-wizardry-complete-rules
 .. date: 2010-12-16 23:39:26 UTC-05:00
 .. tags: swords & wizardry,rpg,d&d,retro-clone
-.. category: gaming
+.. category: gaming/rpg
 .. link: 
 .. description: 
 .. type: text

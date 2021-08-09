@@ -2,7 +2,7 @@
 .. slug: week-of-july-4th-gaming-2008
 .. date: 2008-06-27 20:00:00 UTC-05:00
 .. tags: gaming,rpg,timewarp
-.. category: gaming
+.. category: gaming/rpg
 .. link: 
 .. description: 
 .. type: text

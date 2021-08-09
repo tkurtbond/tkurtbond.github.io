@@ -2,7 +2,7 @@
 .. slug: brigand-crypt-part-2
 .. date: 2010-08-07 23:00:00 UTC-05:00
 .. tags: gaming,rpg,labyrinth lord,actual-play,dld2
-.. category: gaming/actual-play/the-kids/brigand-crypt
+.. category: gaming/rpg/actual-play/the-kids/brigand-crypt
 .. link: 
 .. description: 
 .. type: text

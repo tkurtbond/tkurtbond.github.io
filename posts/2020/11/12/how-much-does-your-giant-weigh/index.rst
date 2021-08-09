@@ -2,7 +2,7 @@
 .. slug: how-much-does-your-giant-weigh
 .. date: 2020-11-12 10:42:10 UTC-05:00
 .. tags: emacs lisp,fantasy,rpg
-.. category: gaming
+.. category: gaming/rpg
 .. link: 
 .. description: 
 .. type: text

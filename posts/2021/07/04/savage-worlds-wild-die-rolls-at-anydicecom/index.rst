@@ -2,7 +2,7 @@
 .. slug: savage-worlds-wild-die-rolls-at-anydicecom
 .. date: 2021-07-04 15:51:54 UTC-04:00
 .. tags: rpg,savage worlds,anydice.com
-.. category: gaming
+.. category: gaming/rpg
 .. link: 
 .. description: 
 .. type: text

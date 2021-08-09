@@ -2,7 +2,7 @@
 .. slug: why-dd-is-so-successful
 .. date: 2020-08-19 10:43:18 UTC-04:00
 .. tags: rpg,d&d,ken hite
-.. category: gaming
+.. category: gaming/rpg
 .. link: 
 .. description: 
 .. type: text

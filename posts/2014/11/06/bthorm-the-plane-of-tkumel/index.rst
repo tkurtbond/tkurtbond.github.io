@@ -2,7 +2,7 @@
 .. slug: bthorm-the-plane-of-tkumel
 .. date: 2014-11-06 18:45:36 UTC-05:00
 .. tags: rpg,tekumel
-.. category: gaming
+.. category: gaming/rpg
 .. link: 
 .. description: 
 .. type: text

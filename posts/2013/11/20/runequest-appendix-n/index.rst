@@ -2,7 +2,7 @@
 .. slug: runequest-appendix-n
 .. date: 2013-11-20 08:36:10 UTC-05:00
 .. tags: rpg,rq2,runequest,appendix n,d&d dungeon masters guide
-.. category: gaming
+.. category: gaming/rpg
 .. link: 
 .. description: 
 .. type: text

@@ -2,7 +2,7 @@
 .. slug: tomb-of-terror-part-1
 .. date: 2008-11-01 00:00:00 UTC-05:00
 .. tags: actual-play,rpg,savage worlds,kids,one-sheet,fantasy,spoilers
-.. category: gaming/actual-play/the-kids/savage-worlds
+.. category: gaming/rpg/actual-play/the-kids/savage-worlds
 .. link: 
 .. description: 
 .. type: text

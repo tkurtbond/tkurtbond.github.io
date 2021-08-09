@@ -2,7 +2,7 @@
 .. slug: t.a.s-potsm-the-ladys-favor
 .. date: 2014-11-01 17:00:00 UTC-05:00
 .. tags: rpg,savage worlds,potsm
-.. category: gaming/actual-play/the-kids/kids-gming/t.a.-pirates
+.. category: gaming/rpg/actual-play/the-kids/kids-gming/t.a.-pirates
 .. link: 
 .. description: 
 .. type: text

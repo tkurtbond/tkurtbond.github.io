@@ -2,7 +2,7 @@
 .. slug: 7-rpgs-ive-most-played-or-run
 .. date: 2012-12-21 12:23:38 UTC-05:00
 .. tags: gaming,rpg
-.. category: gaming
+.. category: gaming/rpg
 .. link: 
 .. description: 
 .. type: text

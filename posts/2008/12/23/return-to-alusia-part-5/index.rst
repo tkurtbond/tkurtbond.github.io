@@ -1,8 +1,8 @@
 .. title: Return to Alusia, Part 5
-o.. slug: return-to-alusia-part-5
+.. slug: return-to-alusia-part-5
 .. date: 2008-12-23 00:00:00 UTC-05:00
-.. tags: savage worlds,rpg,actual-play,timewarp,kids,alusia
-.. category: gaming/actual-play/the-kids/alusia
+.. tags: savage worlds,rpg,actual-play,timewarp,kids,alusia,return to alusia precursor
+.. category: gaming/rpg/actual-play/the-kids/alusia
 .. link: 
 .. description: 
 .. type: text

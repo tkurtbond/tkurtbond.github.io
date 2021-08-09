@@ -2,7 +2,7 @@
 .. slug: dragonquest-a-return
 .. date: 2010-09-08 00:25:23 UTC-05:00
 .. tags: rpg,dq,dragonquest,todo
-.. category: gaming
+.. category: gaming/rpg
 .. link: 
 .. description: 
 .. type: text

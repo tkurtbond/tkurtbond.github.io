@@ -2,7 +2,7 @@
 .. slug: gaming-weekend-2008-07-19-dnd
 .. date: 2008-07-19 00:00:00 UTC-05:00
 .. tags: actual-play,rpg,d&d,kids,fantasy
-.. category: gaming/actual-play/the-kids/kids-gming
+.. category: gaming/rpg/actual-play/the-kids/kids-gming
 .. link: 
 .. description: 
 .. type: text

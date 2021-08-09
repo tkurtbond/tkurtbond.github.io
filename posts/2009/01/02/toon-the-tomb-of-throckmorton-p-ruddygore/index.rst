@@ -2,7 +2,7 @@
 .. slug: toon-the-tomb-of-throckmorton-p-ruddygore
 .. date: 2009-01-02 20:00:00 UTC-05:00
 .. tags: actual-play,rpg,toon,steve jackson games,kids
-.. category: gaming/actual-play/the-kids/toon
+.. category: gaming/rpg/actual-play/the-kids/toon
 .. link: 
 .. description: 
 .. type: text

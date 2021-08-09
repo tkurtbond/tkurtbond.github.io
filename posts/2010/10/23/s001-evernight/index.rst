@@ -2,7 +2,7 @@
 .. slug: s001-evernight
 .. date: 2010-10-23 17:15:00 UTC-05:00
 .. tags: gaming,rpg,savage worlds,evernight,kids,spoilers
-.. category: gaming/actual-play/the-kids/evernight
+.. category: gaming/rpg/actual-play/the-kids/evernight
 .. link: 
 .. description: 
 .. type: text

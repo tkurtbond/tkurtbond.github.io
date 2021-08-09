@@ -2,7 +2,7 @@
 .. slug: pirates-session-4-smugglers-song
 .. date: 2008-12-20 00:00:00 UTC-05:00
 .. tags: actual-play,rpg,kids,savage worlds,pirates of the spanish main,one-sheet,peg,spoilers
-.. category: gaming/actual-play/the-kids/pirates
+.. category: gaming/rpg/actual-play/the-kids/pirates
 .. link: 
 .. description: 
 .. type: text

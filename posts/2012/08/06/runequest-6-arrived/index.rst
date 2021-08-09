@@ -2,7 +2,7 @@
 .. slug: runequest-6-arrived
 .. date: 2012-08-06 23:31:18 UTC-05:00
 .. tags: runequest,rpg,rq6,the design mechanism
-.. category: gaming
+.. category: gaming/rpg
 .. link: 
 .. description: 
 .. type: text

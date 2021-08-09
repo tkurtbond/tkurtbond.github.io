@@ -2,7 +2,7 @@
 .. slug: bnb-fudge-bunnies-n-burrows-session-1
 .. date: 2001-01-27 00:00:00 UTC-05:00
 .. tags: actual-play,rpg,fudge,kids,bunnies & burrows,first,timewarp,spoilers
-.. category: gaming/actual-play/the-kids/bunnies-and-burrows
+.. category: gaming/rpg/actual-play/the-kids/bunnies-and-burrows
 .. link: 
 .. description: 
 .. type: text

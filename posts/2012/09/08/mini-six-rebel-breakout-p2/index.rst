@@ -2,7 +2,7 @@
 .. slug: mini-six-rebel-breakout-p2
 .. date: 2012-09-08 00:00:00 UTC-05:00
 .. tags: gaming,actual-play,rpg,kids,rebel breakout,mini six
-.. category: gaming/actual-play/the-kids
+.. category: gaming/rpg/actual-play/the-kids
 .. link: 
 .. description: 
 .. type: text

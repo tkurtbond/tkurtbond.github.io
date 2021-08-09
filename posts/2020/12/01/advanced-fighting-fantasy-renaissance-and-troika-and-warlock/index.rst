@@ -2,7 +2,7 @@
 .. slug: advanced-fighting-fantasy-renaissance-and-troika-and-warlock
 .. date: 2020-12-01 00:56:37 UTC-05:00
 .. tags: rpg,aff,aff2e,troika!,warlock!
-.. category: gaming
+.. category: gaming/rpg
 .. link: 
 .. description: 
 .. type: text
@@ -85,11 +85,11 @@ __ https://www.drivethrurpg.com/product/246936/Esoterica?manufacturers_id=2503
 
 All in all, I think the AFF renaissance is growing!
 
-*Last edited: 2020-12-12 15:25:57 EST*
+*Last edited: 2021-08-09 12:22:23 EDT*
 
 ..
    Local Variables:
-   time-stamp-format: "%04y-%02m-%02d %02H:%02M:%02S %Z"
+   time-stamp-format: "%Y-%02m-%02d %02H:%02M:%02S %Z"
    time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
    time-stamp-end: "\\*\\\\?\n"
    time-stamp-line-limit: -20

@@ -2,7 +2,7 @@
 .. slug: new-bunnies-and-burrows
 .. date: 2009-04-11 17:00:00 UTC-05:00
 .. tags: gaming,rpg,b&b,bunnies & burrows,gurps,steffan o'sullivan,gurps bunnies & burrows,fudge,kids,spoilers
-.. category: gaming/actual-play/the-kids/bunnies-and-burrows
+.. category: gaming/rpg/actual-play/the-kids/bunnies-and-burrows
 .. link: 
 .. description: 
 .. type: text

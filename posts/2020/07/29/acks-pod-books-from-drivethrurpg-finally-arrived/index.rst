@@ -2,7 +2,7 @@
 .. slug: acks-pod-books-from-drivethrurpg-finally-arrived
 .. date: 2020-07-29 22:00:00 UTC-04:00
 .. tags: rpg,acks,d&d,labyrinth lord,virtual table top,ad&d 1e,d&d 3.5e
-.. category: gaming
+.. category: gaming/rpg
 .. link: 
 .. description: 
 .. type: text

@@ -2,7 +2,7 @@
 .. slug: runequest-versions
 .. date: 2012-06-11 21:41:57 UTC-05:00
 .. tags: rpg,runequest,history,rq1,rq2,rq3,rqiv,rq:aig,rqii,rqi,rqiii,chaosium,mongoose,mrq,mrq2,rq6,the design mechanism,legend,basic roleplaying,brp,heroquest
-.. category: gaming
+.. category: gaming/rpg
 .. link: 
 .. description: 
 .. type: text

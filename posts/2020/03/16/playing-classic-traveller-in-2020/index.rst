@@ -2,7 +2,7 @@
 .. slug: playing-classic-traveller-in-2020
 .. date: 2020-03-16 10:11:52 UTC-04:00
 .. tags: rpg,classic traveller,starter traveller,d&d,my gaming history,gurps,hero system
-.. category: gaming
+.. category: gaming/rpg
 .. link: 
 .. description: 
 .. type: text

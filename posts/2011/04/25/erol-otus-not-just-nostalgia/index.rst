@@ -2,7 +2,7 @@
 .. slug: erol-otus-not-just-nostalgia
 .. date: 2011-04-25 19:56:19 UTC-05:00
 .. tags: d&d,art
-.. category: gaming
+.. category: gaming/rpg
 .. link: 
 .. description: 
 .. type: text

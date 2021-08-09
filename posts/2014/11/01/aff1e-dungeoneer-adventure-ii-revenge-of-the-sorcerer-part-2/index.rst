@@ -2,7 +2,7 @@
 .. slug: aff1e-dungeoneer-adventure-ii-revenge-of-the-sorcerer-part-2
 .. date: 2014-11-01 15:00:00 UTC-05:00
 .. tags: rpg,aff1e,fighting fantasy,advanced fighting fantasy
-.. category: gaming/actual-play/the-kids/AFF1e
+.. category: gaming/rpg/actual-play/the-kids/AFF1e
 .. link: 
 .. description: 
 .. type: text

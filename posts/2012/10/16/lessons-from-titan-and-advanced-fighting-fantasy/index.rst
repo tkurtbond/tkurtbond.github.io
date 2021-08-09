@@ -2,7 +2,7 @@
 .. slug: lessons-from-titan-and-advanced-fighting-fantasy
 .. date: 2012-10-16 10:07:04 UTC-05:00
 .. tags: rpg,gamebooks,aff,advanced fighting fantasy,fighting fantasy,ff,titan
-.. category: gaming
+.. category: gaming/rpg
 .. link: 
 .. description: 
 .. type: text

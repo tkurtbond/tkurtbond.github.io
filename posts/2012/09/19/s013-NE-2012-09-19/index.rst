@@ -2,7 +2,7 @@
 .. slug: s013-NE-2012-09-19
 .. date: 2012-09-19 23:59:00 UTC-05:00
 .. tags: actual-play,rpg,wvhtf,necessary evil,savage worlds
-.. category: gaming/actual-play/WVHTF/Necessary-Evil
+.. category: gaming/rpg/actual-play/WVHTF/Necessary-Evil
 .. link: 
 .. description: 
 .. type: text
@@ -13,7 +13,7 @@ WVHTCF Necessary Evil, Session #13: V'Sori are made from People!
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 :Date: 2012-09-19 17:00:00
-:Version: 2021-07-20 14:42:43
+:Version: 2021-08-09 10:52:01
 
 
 .. role:: pc

@@ -2,7 +2,7 @@
 .. slug: c001-ll
 .. date: 2009-04-25 13:30:00 UTC-05:00
 .. tags: gaming,rpg,labyrinth lord,character generation,actual-play,keep on the borderlands,b2
-.. category: gaming/actual-play/the-kids/keep-on-the-borderlands
+.. category: gaming/rpg/actual-play/the-kids/keep-on-the-borderlands
 .. link: 
 .. description: 
 .. type: text

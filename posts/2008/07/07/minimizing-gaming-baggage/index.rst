@@ -2,7 +2,7 @@
 .. slug: minimizing-gaming-baggage
 .. date: 2008-07-07 20:15:00 UTC-05:00
 .. tags: rpg,minimizing
-.. category: gaming
+.. category: gaming/rpg
 .. link: 
 .. description: 
 .. type: text

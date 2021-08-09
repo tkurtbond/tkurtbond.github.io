@@ -2,7 +2,7 @@
 .. slug: classic-traveller-just-the-right-size
 .. date: 2009-05-02 11:30:16 UTC-05:00
 .. tags: gaming,rpg,traveller,classic traveller,design,physical,visual,econimcs of rpgs
-.. category: gaming
+.. category: gaming/rpg
 .. link: 
 .. description: 
 .. type: text

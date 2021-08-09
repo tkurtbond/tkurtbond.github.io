@@ -2,7 +2,7 @@
 .. slug: my-actual-play
 .. date: 2011-09-29 20:48:17 UTC-05:00
 .. tags: rpg,actual-play
-.. category: gaming
+.. category: gaming/rpg
 .. link: 
 .. description: 
 .. type: text

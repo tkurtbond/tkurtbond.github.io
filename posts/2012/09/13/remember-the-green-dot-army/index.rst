@@ -2,7 +2,7 @@
 .. slug: remember-the-green-dot-army
 .. date: 2012-09-13 14:16:02 UTC-05:00
 .. tags: gaming,rpg,labyrinth lord,b2,d&d,kids,keep on the borderlands
-.. category: gaming/actual-play/the-kids/keep-on-the-borderlands
+.. category: gaming/rpg/actual-play/the-kids/keep-on-the-borderlands
 .. link: 
 .. description: 
 .. type: text

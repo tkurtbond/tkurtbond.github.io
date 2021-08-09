@@ -2,7 +2,7 @@
 .. slug: t.b.s-steampunk
 .. date: 2014-03-26 00:00:00 UTC-05:00
 .. tags: rpg,savage worlds,t.b.,actual-play,steampunk,kids
-.. category: gaming/actual-play/the-kids/kids-gming/t.b.-steampunk
+.. category: gaming/rpg/actual-play/the-kids/kids-gming/t.b.-steampunk
 .. link: 
 .. description: 
 .. type: text

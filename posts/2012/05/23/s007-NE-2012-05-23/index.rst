@@ -2,7 +2,7 @@
 .. slug: s007-NE-2012-05-23
 .. date: 2012-05-23 22:30:00 UTC-05:00
 .. tags: actual-play,rpg,wvhtf,necessary evil,savage worlds
-.. category: gaming/actual-play/WVHTF/Necessary-Evil
+.. category: gaming/rpg/actual-play/WVHTF/Necessary-Evil
 .. link: 
 .. description: 
 .. type: text
@@ -14,7 +14,7 @@ WVHTCF Necessary Evil, Session #7: RoboRally Trap!
 Or, Anvil Looses His Grip!
 ##########################
 :date: 2012-05-23
-:version: 2021-07-20 14:41:25
+:version: 2021-08-09 10:47:45
 
 
 .. role:: pc

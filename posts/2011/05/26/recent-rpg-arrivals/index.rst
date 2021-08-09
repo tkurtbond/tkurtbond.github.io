@@ -2,7 +2,7 @@
 .. slug: recent-rpg-arrivals
 .. date: 2011-05-26 20:25:40 UTC-05:00
 .. tags: rpg,dresden files,houses of the blooded
-.. category: gaming
+.. category: gaming/rpg
 .. link: 
 .. description: 
 .. type: text

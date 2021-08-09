@@ -2,7 +2,7 @@
 .. slug: s012-NE-2012-08-15
 .. date: 2012-08-15 00:00:00 UTC-05:00
 .. tags: actual-play,rpg,wvhtf,necessary evil,savage worlds
-.. category: gaming/actual-play/WVHTF/Necessary-Evil
+.. category: gaming/rpg/actual-play/WVHTF/Necessary-Evil
 .. link: 
 .. description: 
 .. type: text
@@ -13,7 +13,7 @@ WVHTCF Necessary Evil, Session #12: That Dastardly Dr. Desctructo!
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 :Date: 2012-08-15
-:Version: 2021-07-20 14:42:48
+:Version: 2021-08-09 10:53:06
 
 
 .. role:: pc

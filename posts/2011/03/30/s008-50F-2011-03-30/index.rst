@@ -2,7 +2,7 @@
 .. slug: s008-50F-2011-03-30
 .. date: 2011-03-30 00:00:00 UTC-05:00
 .. tags: actual-play,rpg,wvhtf,50 fathoms,savage worlds
-.. category: gaming/actual-play/WVHTF/50-Fathoms
+.. category: gaming/rpg/actual-play/WVHTF/50-Fathoms
 .. link: 
 .. description: 
 .. type: text
@@ -12,7 +12,7 @@
 WVHTCF 50 Fathoms, Session #8: Sharks, Timber, Pirates
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 :date: 2011-03-30
-:version: 2011-03-31 05:26:14
+:version: 2021-08-09 12:23:04
 
 
 .. role:: comment

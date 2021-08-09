@@ -2,7 +2,7 @@
 .. slug: triad-odnd-tekumel-tnt
 .. date: 2008-10-01 23:50:00 UTC-05:00
 .. tags: gaming,d&d,t&t,tekumel
-.. category: gaming
+.. category: gaming/rpg
 .. link: 
 .. description: 
 .. type: text

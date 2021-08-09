@@ -2,7 +2,7 @@
 .. slug: dead-men-tell-no-tales-part-1
 .. date: 2008-11-15 23:29:42 UTC-05:00
 .. tags: actual-play,rpg,savage worlds,kids,spoilers,pirates,one-sheet,peg
-.. category: gaming/actual-play/the-kids/pirates
+.. category: gaming/rpg/actual-play/the-kids/pirates
 .. link: 
 .. description: 
 .. type: text

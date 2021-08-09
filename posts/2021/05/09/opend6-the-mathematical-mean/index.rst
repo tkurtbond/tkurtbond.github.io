@@ -2,7 +2,7 @@
 .. slug: opend6-the-mathematical-mean
 .. date: 2021-05-09 01:57:29 UTC-04:00
 .. tags: opend6,mini six,rpg,star wars d6
-.. category: gaming
+.. category: gaming/rpg
 .. link: 
 .. description: 
 .. type: text
@@ -107,11 +107,11 @@ at the beginning of this post if you are visiting the article page
 
 By the way, does anybody know where this originates?
 
-*Last edited: 2021-05-10 18:56:44 EDT*
+*Last edited: 2021-08-09 12:07:36 EDT*
 
 ..
    Local Variables:
-   time-stamp-format: "%04y-%02m-%02d %02H:%02M:%02S %Z"
+   time-stamp-format: "%Y-%02m-%02d %02H:%02M:%02S %Z"
    time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
    time-stamp-end: "\\*\\\\?\n"
    time-stamp-line-limit: -20

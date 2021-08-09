@@ -2,7 +2,7 @@
 .. slug: gray-goblin-warrens-part-1
 .. date: 2009-10-17 00:00:00 UTC-05:00
 .. tags: labyrinth lord,d&d,kids,spoilers,gray goblin warrens
-.. category: gaming/actual-play/the-kids/gray-goblin-warrens
+.. category: gaming/rpg/actual-play/the-kids/gray-goblin-warrens
 .. link: 
 .. description: 
 .. type: text

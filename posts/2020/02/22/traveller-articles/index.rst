@@ -2,7 +2,7 @@
 .. slug: traveller-articles
 .. date: 2020-02-22 21:56:04 UTC-05:00
 .. tags: rpg,traveller,classic traveller
-.. category: gaming
+.. category: gaming/rpg
 .. link: 
 .. description: 
 .. type: text

@@ -2,7 +2,7 @@
 .. slug: s001
 .. date: 2014-10-25 00:00:00 UTC-05:00
 .. tags: gaming,rpg,labyrinth lord,kids,spoilers,i3,pharaoh
-.. category: gaming/actual-play/the-kids/i3-pharaoh
+.. category: gaming/rpg/actual-play/the-kids/i3-pharaoh
 .. link: 
 .. description: 
 .. type: text

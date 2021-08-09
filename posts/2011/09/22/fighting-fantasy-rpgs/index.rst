@@ -2,7 +2,7 @@
 .. slug: fighting-fantasy-rpgs
 .. date: 2011-09-22 19:45:22 UTC-05:00
 .. tags: rpg,aff,aff2e,ff,ff:tirpg,gamebooks,fighting fantasy,advanced fighting fantasy
-.. category: gaming
+.. category: gaming/rpg
 .. link: 
 .. description: 
 .. type: text
@@ -56,7 +56,7 @@ At some point I figured out (again, probably by reading on `rpg.net`_)
 that the `Advanced Fighting Fantasy` RPG was a different set of books
 from the |FF| RPG, with a more detailed system, and it was probably
 what I should have been looking for instead of |FF:TIRpG|, but my
-interest had fall asleep; no doubt in part because the third book of the
+interest had fallen asleep; no doubt in part because the third book of the
 set, `Allansia`, was reputedly difficult and expensive to get. [#few]_
 
 However, the `Arion Games`_ edition (|AFF2e|) published in 2011

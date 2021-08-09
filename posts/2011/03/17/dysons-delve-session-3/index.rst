@@ -2,7 +2,7 @@
 .. slug: dysons-delve-session-3
 .. date: 2011-03-17 00:00:00 UTC-05:00
 .. tags: gaming,rpg,kids,swords & wizardry whitebox,actual-play,dyson's delve,spoilers
-.. category: gaming/actual-play/the-kids/dysons-delve
+.. category: gaming/rpg/actual-play/the-kids/dysons-delve
 .. link: 
 .. description: 
 .. type: text

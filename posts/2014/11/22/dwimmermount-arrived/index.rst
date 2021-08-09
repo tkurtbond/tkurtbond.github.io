@@ -2,7 +2,7 @@
 .. slug: dwimmermount-arrived
 .. date: 2014-11-22 20:47:13 UTC-05:00
 .. tags: rpg,dwimmermount
-.. category: gaming
+.. category: gaming/rpg
 .. link: 
 .. description: 
 .. type: text

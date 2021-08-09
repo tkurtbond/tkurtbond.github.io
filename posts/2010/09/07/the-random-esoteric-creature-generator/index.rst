@@ -2,7 +2,7 @@
 .. slug: the-random-esoteric-creature-generator
 .. date: 2010-09-07 22:46:14 UTC-05:00
 .. tags: rpg
-.. category: gaming
+.. category: gaming/rpg
 .. link: 
 .. description: 
 .. type: text

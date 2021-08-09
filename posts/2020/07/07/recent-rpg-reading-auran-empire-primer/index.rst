@@ -2,7 +2,7 @@
 .. slug: recent-rpg-reading-auran-empire-primer
 .. date: 2020-07-07 21:54:52 UTC-04:00
 .. tags: acks,autarch,auran empire,rpg
-.. category: gaming
+.. category: gaming/rpg
 .. link: 
 .. description: 
 .. type: text
@@ -75,11 +75,11 @@ __ https://www.drivethrurpg.com/product/197374/Auran-Empire-Primer?manufacturers
 __ https://www.drivethrurpg.com/product/99123/Adventurer-Conqueror-King-System?manufacturers_id=4277
 __ http://www.autarch.co/
 
-*Last edited: 2020-08-03 16:21:33 EDT*
+*Last edited: 2021-08-09 12:20:39 EDT*
 
 ..
    Local Variables:
-   time-stamp-format: "%04y-%02m-%02d %02H:%02M:%02S %Z"
+   time-stamp-format: "%Y-%02m-%02d %02H:%02M:%02S %Z"
    time-stamp-start: "Last edited:[ \t]+\\\\?"
    time-stamp-end: "\\*\\\\?\n"
    time-stamp-line-limit: -20

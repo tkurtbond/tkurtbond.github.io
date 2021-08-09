@@ -2,7 +2,7 @@
 .. slug: savage-worlds-test-drive-v6
 .. date: 2008-07-08 19:31:26 UTC-05:00
 .. tags: rpg,savage worlds,test drive
-.. category: gaming
+.. category: gaming/rpg
 .. link: 
 .. description: 
 .. type: text

@@ -2,7 +2,7 @@
 .. slug: s001-4e-2009-11-10
 .. date: 2009-11-10 00:00:00 UTC-05:00
 .. tags: actual-play,rpg,wvhtf,d&d,4e
-.. category: gaming/actual-play/WVHTF/4e
+.. category: gaming/rpg/actual-play/WVHTF/4e
 .. link: 
 .. description: 
 .. type: text
@@ -11,7 +11,7 @@
 
 4e, Session #1: Goblins and Villagers
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-:version: 2012-10-05 11:43:18
+:version: 2021-08-09 11:59:34
 
 
 .. role:: comment

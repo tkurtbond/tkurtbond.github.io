@@ -2,13 +2,13 @@
 .. slug: ive-got-a-problem
 .. date: 2011-09-25 00:58:39 UTC-05:00
 .. tags: rpg
-.. category: gaming
+.. category: gaming/rpg
 .. link: 
 .. description: 
 .. type: text
 
 
-I've got a problem — I like RPGs just as area of study and as
+I've got a problem — I like RPGs just as an area of study and as
 artifacts, even if I never get to play a particular RPG.  When I was
 younger I'd buy new systems just to compare them, even if I never
 expected to play them.  Even now I sometimes buy multiple editions of

@@ -2,7 +2,7 @@
 .. slug: p003-ll
 .. date: 2009-05-04 17:30:00 UTC-05:00
 .. tags: gaming,rpg,labyrinth lord,b2,d&d,kids,spoilers,keep on the borderlands
-.. category: gaming/actual-play/the-kids/keep-on-the-borderlands
+.. category: gaming/rpg/actual-play/the-kids/keep-on-the-borderlands
 .. link: 
 .. description: 
 .. type: text

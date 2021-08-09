@@ -2,7 +2,7 @@
 .. slug: ff-tirpg-shaggradds-hives-of-peril-play-session-1
 .. date: 2011-09-24 22:28:12 UTC-05:00
 .. tags: gaming,rpg,fighting fantasy,ff,ff:tirpg,actual-play,spoilers
-.. category: gaming/actual-play/the-kids/fighting-fantasy
+.. category: gaming/rpg/actual-play/the-kids/fighting-fantasy
 .. link: 
 .. description: 
 .. type: text

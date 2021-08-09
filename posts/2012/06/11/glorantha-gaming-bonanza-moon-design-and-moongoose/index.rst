@@ -2,7 +2,7 @@
 .. slug: glorantha-gaming-bonanza-moon-design-and-moongoose
 .. date: 2012-06-11 20:09:28 UTC-05:00
 .. tags: rpg,runequest,moon design,mongoose,glorantha,pavis,mrq2,heroquest
-.. category: gaming
+.. category: gaming/rpg
 .. link: 
 .. description: 
 .. type: text
