@@ -2,7 +2,7 @@
 .. slug: return-to-alusia-part-3
 .. date: 2007-12-27 00:00:00 UTC-05:00
 .. tags: savage worlds,rpg,actual-play,timewarp,kids,alusia
-.. category: gaming/actual-play/the-kids/alusia
+.. category: gaming/rpg/actual-play/the-kids/alusia
 .. link: 
 .. description: 
 .. type: text

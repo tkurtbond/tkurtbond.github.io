@@ -2,7 +2,7 @@
 .. slug: buggin-2008-06-28
 .. date: 2008-06-28 17:45:00 UTC-05:00
 .. tags: buggin',rpg,actual-play,kids,timewarp
-.. category: gaming/actual-play/the-kids/buggin
+.. category: gaming/rpg/actual-play/the-kids/buggin
 .. link: 
 .. description: 
 .. type: text

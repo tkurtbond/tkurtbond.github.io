@@ -2,7 +2,7 @@
 .. slug: s009-rv-2010-02-02
 .. date: 2010-02-02 00:00:00 UTC-05:00
 .. tags: actual-play,rpg,wvhtf,d&d,rushing valley
-.. category: gaming/actual-play/WVHTF/rushing-valley
+.. category: gaming/rpg/actual-play/WVHTF/rushing-valley
 .. link: 
 .. description: 
 .. type: text
@@ -13,7 +13,7 @@ Rushing Valley D&D, Session #9
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 Tuesday, 2 February 2010
 ~~~~~~~~~~~~~~~~~~~~~~~~
-:version: 2010-02-11 19:41:32
+:version: 2021-08-09 12:01:39
 
 
 .. role:: comment

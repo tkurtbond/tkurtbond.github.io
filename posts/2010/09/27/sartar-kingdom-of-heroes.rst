@@ -2,7 +2,7 @@
 .. slug: sartar-kingdom-of-heroes
 .. date: 2010-09-27 00:00:00 UTC-05:00
 .. tags: rpg,heroquest,moon design
-.. category: gaming
+.. category: gaming/rpg
 .. link: 
 .. description: 
 .. type: text

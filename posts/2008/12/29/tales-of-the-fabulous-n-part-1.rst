@@ -2,7 +2,7 @@
 .. slug: tales-of-the-fabulous-n-part-1
 .. date: 2008-12-29 00:00:00 UTC-05:00
 .. tags: actual-play,rpg,savage worlds,triple ace games,pulp,kids,spoilers
-.. category: gaming/actual-play/the-kids/savage-worlds
+.. category: gaming/rpg/actual-play/the-kids/savage-worlds
 .. link: 
 .. description: 
 .. type: text

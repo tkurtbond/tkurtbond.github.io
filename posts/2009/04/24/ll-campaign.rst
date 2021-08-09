@@ -2,7 +2,7 @@
 .. slug: ll-campaign
 .. date: 2009-04-24 00:00:00 UTC-05:00
 .. tags: gaming,rpg,labyrinth lord,character generation,actual-play,d&d,timewarp,keep on the borderlands,b2
-.. category: gaming/actual-play/the-kids/keep-on-the-borderlands
+.. category: gaming/rpg/actual-play/the-kids/keep-on-the-borderlands
 .. link: 
 .. description: 
 .. type: text

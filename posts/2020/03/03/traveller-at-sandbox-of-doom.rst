@@ -2,7 +2,7 @@
 .. slug: traveller-at-sandbox-of-doom
 .. date: 2020-03-03 11:44:38 UTC-05:00
 .. tags: traveller,rpg
-.. category: gaming
+.. category: gaming/rpg
 .. link: 
 .. description: 
 .. type: text

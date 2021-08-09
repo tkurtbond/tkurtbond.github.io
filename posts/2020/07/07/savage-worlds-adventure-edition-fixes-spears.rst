@@ -2,7 +2,7 @@
 .. slug: savage-worlds-adventure-edition-fixes-spears
 .. date: 2020-07-07 13:59:55 UTC-04:00
 .. tags: rpg,savage worlds,spear,savage worlds deluxe edition,savage worlds adventure edition
-.. category: gaming
+.. category: gaming/rpg
 .. link: 
 .. description: 
 .. type: text
@@ -32,11 +32,11 @@ its damage than the mostly piercing spear.
 
 __ https://www.peginc.com/store/savage-worlds-adventure-edition-core-rules-pdf-swade/
 
-Last edited: 2020-07-07 20:16:14 EDT
+Last edited: 2021-08-09 12:19:35 EDT
 
 ..
    Local Variables:
-   time-stamp-format: "%04y-%02m-%02d %02H:%02M:%02S %Z"
+   time-stamp-format: "%Y-%02m-%02d %02H:%02M:%02S %Z"
    time-stamp-start: "Last edited:[ \t]+\\\\?"
    time-stamp-end: "\\\\?\n"
    time-stamp-line-limit: -20

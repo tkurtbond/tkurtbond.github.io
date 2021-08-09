@@ -2,7 +2,7 @@
 .. slug: s005-rv-2009-04-15
 .. date: 2009-04-15 00:00:00 UTC-05:00
 .. tags: actual-play,rpg,wvhtf,d&d,rushing valley
-.. category: gaming/actual-play/WVHTF/rushing-valley
+.. category: gaming/rpg/actual-play/WVHTF/rushing-valley
 .. link: 
 .. description: 
 .. type: text
@@ -13,7 +13,7 @@ Rushing Valley D&D, Session #5
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 Wednesday, 15 April 2009
 ~~~~~~~~~~~~~~~~~~~~~~~~
-:version: 2010-02-08 00:15:33
+:version: 2021-08-09 11:50:57
 
 
 .. role:: comment

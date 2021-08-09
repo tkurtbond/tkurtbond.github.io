@@ -2,7 +2,7 @@
 .. slug: hell-on-earth-reloaded-arrived
 .. date: 2012-11-21 23:03:46 UTC-05:00
 .. tags: rpg,savage worlds,hell on earth,peg
-.. category: gaming
+.. category: gaming/rpg
 .. link: 
 .. description: 
 .. type: text

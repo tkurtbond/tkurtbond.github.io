@@ -2,7 +2,7 @@
 .. slug: besm-4e-initial-look
 .. date: 2020-02-12 13:13:10 UTC-05:00
 .. tags: rpg,besm
-.. category: gaming
+.. category: gaming/rpg
 .. link: 
 .. description: 
 .. type: text

@@ -2,7 +2,7 @@
 .. slug: steve-jacksons-goal-with-gurps
 .. date: 2020-07-04 20:45:17 UTC-04:00
 .. tags: steve jackson,gurps,man to man,rpg
-.. category: gaming
+.. category: gaming/rpg
 .. link: 
 .. description: 
 .. type: text

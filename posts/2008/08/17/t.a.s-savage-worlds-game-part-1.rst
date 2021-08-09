@@ -2,7 +2,7 @@
 .. slug: t.a.s-savage-worlds-game-part-1
 .. date: 2008-08-17 19:30:00 UTC-05:00
 .. tags: actual-play,rpg,savage worlds,kids,fantasy
-.. category: gaming/actual-play/the-kids/kids-gming
+.. category: gaming/rpg/actual-play/the-kids/kids-gming
 .. link: 
 .. description: 
 .. type: text

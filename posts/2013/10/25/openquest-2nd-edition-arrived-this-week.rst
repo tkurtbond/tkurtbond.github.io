@@ -2,7 +2,7 @@
 .. slug: openquest-2nd-edition-arrived-this-week
 .. date: 2013-10-25 21:11:25 UTC-05:00
 .. tags: gaming,rpg,openquest
-.. category: gaming
+.. category: gaming/rpg
 .. link: 
 .. description: 
 .. type: text

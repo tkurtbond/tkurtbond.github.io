@@ -2,7 +2,7 @@
 .. slug: worlds-of-wonder-from-chaosium
 .. date: 2020-12-01 03:17:47 UTC-05:00
 .. tags: rpg,brp,chaosium,big gold book,basic roleplaying
-.. category: gaming
+.. category: gaming/rpg
 .. link: 
 .. description: 
 .. type: text

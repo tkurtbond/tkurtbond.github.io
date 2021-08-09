@@ -2,7 +2,7 @@
 .. slug: acks-links-for-later-reference
 .. date: 2020-07-30 16:48:05 UTC-04:00
 .. tags: rpg,acks
-.. category: gaming
+.. category: gaming/rpg
 .. link: 
 .. description: 
 .. type: text

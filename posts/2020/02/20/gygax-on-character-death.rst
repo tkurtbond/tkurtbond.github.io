@@ -2,7 +2,7 @@
 .. slug: gygax-on-character-death
 .. date: 2020-02-20 13:27:26 UTC-05:00
 .. tags: rpg,d&d,gygax,ad&d,1e,od&d
-.. category: gaming
+.. category: gaming/rpg
 .. link: 
 .. description: 
 .. type: text

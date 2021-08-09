@@ -2,7 +2,7 @@
 .. slug: gaming-weekend-2008-07-20-the-eternal-nazi
 .. date: 2008-07-20 00:00:10 UTC-05:00
 .. tags: actual-play,rpg,savage worlds,pulp,one-sheet,tools,tiles
-.. category: gaming/actual-play/the-kids/savage-worlds
+.. category: gaming/rpg/actual-play/the-kids/savage-worlds
 .. link: 
 .. description: 
 .. type: text

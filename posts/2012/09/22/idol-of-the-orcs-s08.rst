@@ -2,7 +2,7 @@
 .. slug: idol-of-the-orcs-s08
 .. date: 2012-09-22 00:00:00 UTC-05:00
 .. tags: gaming,actual-play,rpg,d&d,kids,labyrinth lord,spoilers,idol of the orcs
-.. category: gaming/actual-play/the-kids/kids-gming/idol-of-the-orcs
+.. category: gaming/rpg/actual-play/the-kids/kids-gming/idol-of-the-orcs
 .. link: 
 .. description: 
 .. type: text

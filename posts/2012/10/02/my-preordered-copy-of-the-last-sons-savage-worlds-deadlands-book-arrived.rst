@@ -2,14 +2,15 @@
 .. slug: my-preordered-copy-of-the-last-sons-savage-worlds-deadlands-book-arrived
 .. date: 2012-10-02 21:57:27 UTC-05:00
 .. tags: rpg,deadlands,savage worlds,plot point,campaign
-.. category: gaming
+.. category: gaming/rpg
 .. link: 
 .. description: 
 .. type: text
 
 
-My `print copy`_ of the `Savage Worlds`_ plot point campaign book `The Last
-Sons`_ for Deadlands_ from `Pinnacle Entertainment Group`_ that I preordered months ago arrived today.
+My `print copy`_ of the `Savage Worlds`_ plot point campaign book `The
+Last Sons`_ for Deadlands_ from `Pinnacle Entertainment Group`_ that I
+preordered months ago arrived today.
 
 It is a large, heavy, beautiful book, and from my quick look it is
 full of interesting, useful stuff.

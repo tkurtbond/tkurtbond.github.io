@@ -2,7 +2,7 @@
 .. slug: toon-2008-06-21
 .. date: 2008-06-21 18:41:17 UTC-05:00
 .. tags: toon,rpg,actual-play,timewarp
-.. category: gaming/actual-play/the-kids/toon
+.. category: gaming/rpg/actual-play/the-kids/toon
 .. link: 
 .. description: 
 .. type: text

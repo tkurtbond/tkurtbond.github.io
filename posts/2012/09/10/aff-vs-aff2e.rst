@@ -2,7 +2,7 @@
 .. slug: aff-vs-aff2e
 .. date: 2012-09-10 21:58:50 UTC-05:00
 .. tags: rpg,aff,aff2e,ff:tirpg,ff,advanced fighting fantasy
-.. category: gaming
+.. category: gaming/rpg
 .. link: 
 .. description: 
 .. type: text

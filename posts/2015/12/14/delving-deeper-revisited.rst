@@ -2,7 +2,7 @@
 .. slug: delving-deeper-revisited
 .. date: 2015-12-14 14:09:02 UTC-05:00
 .. tags: rpg,delving deeper,d&d,0e
-.. category: gaming
+.. category: gaming/rpg
 .. link: 
 .. description: 
 .. type: text

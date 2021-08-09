@@ -2,7 +2,7 @@
 .. slug: gurps-generic-universal-roleplaying-system
 .. date: 2020-06-29 20:58:58 UTC-04:00
 .. tags: gurps,rpg,definitions
-.. category: gaming
+.. category: gaming/rpg
 .. link: 
 .. description: 
 .. type: text

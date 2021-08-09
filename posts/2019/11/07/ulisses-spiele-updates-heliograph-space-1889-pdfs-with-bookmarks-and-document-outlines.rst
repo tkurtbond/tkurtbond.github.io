@@ -2,7 +2,7 @@
 .. slug: ulisses-spiele-updates-heliograph-space-1889-pdfs-with-bookmarks-and-document-outlines
 .. date: 2019-11-07 10:10:36 UTC-05:00
 .. tags: rpg,space 1889
-.. category: gaming
+.. category: gaming/rpg
 .. link: 
 .. description: 
 .. type: text

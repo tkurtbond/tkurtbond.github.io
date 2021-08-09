@@ -2,7 +2,7 @@
 .. slug: toon-car-blazers-session-2
 .. date: 2009-03-29 13:30:00 UTC-05:00
 .. tags: actual-play,rpg,toon,kids,spoilers
-.. category: gaming/actual-play/the-kids/toon
+.. category: gaming/rpg/actual-play/the-kids/toon
 .. link: 
 .. description: 
 .. type: text

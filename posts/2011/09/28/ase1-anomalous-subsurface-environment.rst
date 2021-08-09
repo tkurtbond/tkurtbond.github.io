@@ -2,7 +2,7 @@
 .. slug: ase1-anomalous-subsurface-environment
 .. date: 2011-09-28 22:00:00 UTC-05:00
 .. tags: gaming,rpg,osr
-.. category: gaming
+.. category: gaming/rpg
 .. link: 
 .. description: 
 .. type: text

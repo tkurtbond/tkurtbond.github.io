@@ -2,7 +2,7 @@
 .. slug: 50-fathoms-sessions
 .. date: 2011-04-09 02:57:39 UTC-05:00
 .. tags: actual-play,rpg,wvhtf,50 fathoms,savage worlds
-.. category: gaming/actual-play/WVHTF/50-Fathoms
+.. category: gaming/rpg/actual-play/WVHTF/50-Fathoms
 .. link: 
 .. description: 
 .. type: text
@@ -12,7 +12,7 @@
 WVHTCF 50 Fathoms, Sessions Index
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 :date: 2011-03-31
-:version: 2011-04-09 02:57:39
+:version: 2021-08-09 12:23:14
 
 * `Campaign Notes`__
 

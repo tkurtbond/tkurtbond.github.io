@@ -2,7 +2,7 @@
 .. slug: reactions-to-s-john-rosss-medieval-demographics-made-easy
 .. date: 2020-05-04 10:26:19 UTC-04:00
 .. tags: medieval demographics,s. john ross
-.. category: gaming
+.. category: gaming/rpg
 .. link: 
 .. description: 
 .. type: text

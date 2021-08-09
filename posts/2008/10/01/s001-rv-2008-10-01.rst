@@ -2,7 +2,7 @@
 .. slug: s001-rv-2008-10-01
 .. date: 2008-10-01 00:00:00 UTC-05:00
 .. tags: actual-play,rpg,wvhtf,d&d,rushing valley
-.. category: gaming/actual-play/WVHTF/rushing-valley
+.. category: gaming/rpg/actual-play/WVHTF/rushing-valley
 .. link: 
 .. description: 
 .. type: text
@@ -13,7 +13,7 @@ Rushing Valley D&D, Session #1
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 Wednesday, 1 October 2008
 ~~~~~~~~~~~~~~~~~~~~~~~~~
-:version: 2010-02-08 00:22:09
+:version: 2021-08-09 10:56:45
 
 
 .. role:: comment

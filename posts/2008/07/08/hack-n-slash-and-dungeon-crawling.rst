@@ -2,7 +2,7 @@
 .. slug: hack-n-slash-and-dungeon-crawling
 .. date: 2008-07-08 14:10:07 UTC-05:00
 .. tags: rpg,hack-n-slash,dungeon crawling
-.. category: gaming
+.. category: gaming/rpg
 .. link: 
 .. description: 
 .. type: text

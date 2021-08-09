@@ -2,7 +2,7 @@
 .. slug: 4e-dnd-admits-what-game-its-always-been
 .. date: 2008-10-06 18:30:11 UTC-05:00
 .. tags: gaming,d&d,retro-clone, d&d 4e,b/x d&d,holmes d&d,mentzer d&d,rules cyclopedia,ad&d 2e,d&d 3e,d&d 3.5e
-.. category: gaming
+.. category: gaming/rpg
 .. link: 
 .. description: 
 .. type: text

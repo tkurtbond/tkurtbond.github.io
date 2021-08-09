@@ -2,7 +2,7 @@
 .. slug: buggin-protect-the-vips-daughter
 .. date: 2008-10-11 00:00:00 UTC-05:00
 .. tags: actual-play,rpg,buggin',kids
-.. category: gaming/actual-play/the-kids/buggin
+.. category: gaming/rpg/actual-play/the-kids/buggin
 .. link: 
 .. description: 
 .. type: text

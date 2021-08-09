@@ -2,7 +2,7 @@
 .. slug: wizards-selling-pdfs-again
 .. date: 2013-01-24 12:08:31 UTC-05:00
 .. tags: rpg,wotc,d&d
-.. category: gaming
+.. category: gaming/rpg
 .. link: 
 .. description: 
 .. type: text

@@ -2,7 +2,7 @@
 .. slug: dragonquest-1st-edition
 .. date: 2010-02-20 18:00:00 UTC-05:00
 .. tags: gaming,dragonquest
-.. category: gaming
+.. category: gaming/rpg
 .. link: 
 .. description: 
 .. type: text

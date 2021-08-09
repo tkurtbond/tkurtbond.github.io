@@ -2,7 +2,7 @@
 .. slug: pirates-session-5-revenge-is-sweet-and-so-are-pies
 .. date: 2009-03-29 15:30:00 UTC-05:00
 .. tags: actual-play,rpg,kids,savage worlds,pirates of the spanish main
-.. category: gaming/actual-play/the-kids/pirates
+.. category: gaming/rpg/actual-play/the-kids/pirates
 .. link: 
 .. description: 
 .. type: text

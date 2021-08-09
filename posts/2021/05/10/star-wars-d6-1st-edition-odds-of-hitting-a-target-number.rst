@@ -2,7 +2,7 @@
 .. slug: star-wars-d6-1st-edition-odds-of-hitting-a-target-number
 .. date: 2021-05-10 11:58:00 UTC-04:00
 .. tags: star wars d6 1e,dice,odds,rpg,mini six,opend6
-.. category: gaming
+.. category: gaming/rpg
 .. link: 
 .. description: 
 .. type: text
@@ -154,11 +154,11 @@ results in graph mode:
 (Right-clicking the image might give you the option to open the image
 in a new tab, where you'll see it at full size.)
 
-*Last edited: 2021-05-19 13:32:33 EDT*
+*Last edited: 2021-08-09 12:07:06 EDT*
 
 ..
    Local Variables:
-   time-stamp-format: "%04y-%02m-%02d %02H:%02M:%02S %Z"
+   time-stamp-format: "%Y-%02m-%02d %02H:%02M:%02S %Z"
    time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
    time-stamp-end: "\\*\\\\?\n"
    time-stamp-line-limit: -20

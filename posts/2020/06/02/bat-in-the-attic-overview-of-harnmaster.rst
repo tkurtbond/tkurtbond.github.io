@@ -2,7 +2,7 @@
 .. slug: bat-in-the-attic-overview-of-harnmaster
 .. date: 2020-06-02 20:02:23 UTC-04:00
 .. tags: rpg,harnmaster,bat in the attic
-.. category: gaming
+.. category: gaming/rpg
 .. link: 
 .. description: 
 .. type: text

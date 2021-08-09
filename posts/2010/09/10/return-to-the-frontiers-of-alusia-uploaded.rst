@@ -2,7 +2,7 @@
 .. slug: return-to-the-frontiers-of-alusia-uploaded
 .. date: 2010-09-10 00:38:15 UTC-05:00
 .. tags: frontiers of alusia,spi,dq,dragonquest,gurps,savage worlds,kids,maps
-.. category: gaming
+.. category: gaming/rpg
 .. link: 
 .. description: 
 .. type: text

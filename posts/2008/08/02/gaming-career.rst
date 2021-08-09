@@ -2,7 +2,7 @@
 .. slug: gaming-career
 .. date: 2008-08-02 11:42:50 UTC-05:00
 .. tags: unfinished,rpg,gaming,d&d,gurps,retro-clone,ad&d,moldvay/cook/marsh d&d,t&t,tunnels & trolls,gamma world,dragonquest,the enchanted wood,powers & perils,rolemaster,traveller,frontiers of alusia,spi,gurps,runequest,rq3,griffin island,elric!,brp,wfrp,rq2,call of cthulhu,tekumel,jorune,savage worlds,fudge,besm,wilderlands,tegel manor,badabaskor,caverns of thracia,d&d 3.5e,thunder rift,swords & wizardry,od&d,philotomy,judges guild,jg,b10,ready-ref sheets,road building
-.. category: gaming
+.. category: gaming/rpg
 .. link: 
 .. description: 
 .. type: text
@@ -242,11 +242,11 @@ custom poker chips for wounds, shaken
    `3 <http://www.indie-rpgs.com/viewtopic.php?t=7104>`__,
    `4 <http://www.indie-rpgs.com/viewtopic.php?t=7863>`__).
 
-*Last edited: 2021-04-21 15:52:44 EDT*
+*Last edited: 2021-08-09 11:47:21 EDT*
 
 ..
    Local Variables:
-   time-stamp-format: "%04y-%02m-%02d %02H:%02M:%02S %Z"
+   time-stamp-format: "%Y-%02m-%02d %02H:%02M:%02S %Z"
    time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
    time-stamp-end: "\\*\\\\?\n"
    time-stamp-line-limit: -20

@@ -2,7 +2,7 @@
 .. slug: nostalgia
 .. date: 2012-06-10 21:51:16 UTC-05:00
 .. tags: osr,nostalgia,s&w,d&d,labyrinth lord,advanced edition companion
-.. category: gaming
+.. category: gaming/rpg
 .. link: 
 .. description: 
 .. type: text

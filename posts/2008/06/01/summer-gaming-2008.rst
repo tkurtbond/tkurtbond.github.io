@@ -2,7 +2,7 @@
 .. slug: summer-gaming-2008
 .. date: 2008-06-01 23:00:23 UTC-05:00
 .. tags: gaming,rpg,board games,timewarp
-.. category: gaming
+.. category: gaming/rpg
 .. link: 
 .. description: 
 .. type: text

@@ -2,7 +2,7 @@
 .. slug: journey-to-red-temple-part-1
 .. date: 2009-12-28 23:00:00 UTC-05:00
 .. tags: actual-play,rpg,savage worlds,kids
-.. category: gaming/actual-play/the-kids/savage-worlds
+.. category: gaming/rpg/actual-play/the-kids/savage-worlds
 .. link: 
 .. description: 
 .. type: text

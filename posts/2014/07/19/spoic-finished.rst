@@ -2,7 +2,7 @@
 .. slug: spoic-finished
 .. date: 2014-07-19 00:00:00 UTC-05:00
 .. tags: gaming,rpg,labyrinth lord,kids,spoilers,spire of iron and crystal
-.. category: gaming/actual-play/the-kids/spire-of-iron-and-crystal
+.. category: gaming/rpg/actual-play/the-kids/spire-of-iron-and-crystal
 .. link: 
 .. description: 
 .. type: text

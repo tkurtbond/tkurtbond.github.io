@@ -2,7 +2,7 @@
 .. slug: s002-50F-2010-01-14
 .. date: 2010-01-14 00:00:00 UTC-05:00
 .. tags: actual-play,rpg,wvhtf,50 fathoms,savage worlds
-.. category: gaming/actual-play/WVHTF/50-Fathoms
+.. category: gaming/rpg/actual-play/WVHTF/50-Fathoms
 .. link: 
 .. description: 
 .. type: text
@@ -12,7 +12,7 @@
 WVHTCF 50 Fathoms, Session #2: Sharks, Pirates, and Commerce
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 :date: 2010-01-14
-:version: 2011-02-23 21:06:30
+:version: 2021-08-09 12:05:14
 
 
 

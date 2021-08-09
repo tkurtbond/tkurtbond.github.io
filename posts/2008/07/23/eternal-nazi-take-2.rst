@@ -2,7 +2,7 @@
 .. slug: eternal-nazi-take-2
 .. date: 2008-07-23 23:30:00 UTC-05:00
 .. tags: actual-play,rpg,savage worlds,pulp,wvhtf
-.. category: gaming/actual-play/WVHTF/one-shots
+.. category: gaming/rpg/actual-play/WVHTF/one-shots
 .. link: 
 .. description: 
 .. type: text

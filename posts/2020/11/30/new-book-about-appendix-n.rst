@@ -2,7 +2,7 @@
 .. slug: new-book-about-appendix-n
 .. date: 2020-11-30 20:37:50 UTC-05:00
 .. tags: appendix n,gary gygax,sword & sorcery
-.. category: gaming
+.. category: gaming/rpg
 .. link: 
 .. description: 
 .. type: text

@@ -2,7 +2,7 @@
 .. slug: ff-tirpg-shaggradds-hives-of-peril-play-session-missing
 .. date: 2012-09-17 00:00:00 UTC-05:00
 .. tags: gaming,rpg,fighting fantasy,ff,ff:tirpg,actual-play,spoilers,missing
-.. category: gaming/actual-play/the-kids/fighting-fantasy
+.. category: gaming/rpg/actual-play/the-kids/fighting-fantasy
 .. link: 
 .. description: 
 .. type: text

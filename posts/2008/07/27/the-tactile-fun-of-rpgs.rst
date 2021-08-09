@@ -2,14 +2,14 @@
 .. slug: the-tactile-fun-of-rpgs
 .. date: 2008-07-27 11:09:27 UTC-05:00
 .. tags: rpg,gaming
-.. category: gaming
+.. category: gaming/rpg
 .. link: 
 .. description: 
 .. type: text
 
 
 I've found that, for an abstract game that can take place just in your
-head, there can be a lot of **tacticle** fun to RPGs.  Rolling dice
+head, there can be a lot of **tactile** fun to RPGs.  Rolling dice
 and moving miniatures are the obvious ones, but there are others.
 Gaming tokens (glass “stones” ) are used by many games and gamers,
 either as a component of the system or informally by the gamers for

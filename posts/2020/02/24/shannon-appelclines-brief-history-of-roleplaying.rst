@@ -2,13 +2,13 @@
 .. slug: shannon-appelclines-brief-history-of-roleplaying
 .. date: 2020-02-24 14:55:34 UTC-05:00
 .. tags: rpg,history
-.. category: gaming
+.. category: gaming/rpg
 .. link: 
 .. description: 
 .. type: text
 
 I ran across some old articles:  Shannnon Appelcline's “A Brief History
-of Roleplaying”, and am saving them here for reference.
+of Roleplaying”, and am saving references to them here for later reference.
 
 * `A Brief History of Roleplaying, Part One`__
 * `A Brief History of Roleplaying, Part Two`__ 

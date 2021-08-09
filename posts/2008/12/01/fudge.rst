@@ -2,7 +2,7 @@
 .. slug: fudge
 .. date: 2008-12-01 00:35:57 UTC-05:00
 .. tags: rpg,fudge,to do
-.. category: gaming
+.. category: gaming/rpg
 .. link: 
 .. description: 
 .. type: text

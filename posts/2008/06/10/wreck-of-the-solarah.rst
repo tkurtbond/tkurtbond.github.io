@@ -2,7 +2,7 @@
 .. slug: wreck-of-the-solarah
 .. date: 2008-06-10 23:00:00 UTC-05:00
 .. tags: actual-play,rpg,savage worlds,kids,spoilers,timewarp
-.. category: gaming/actual-play/the-kids/savage-worlds
+.. category: gaming/rpg/actual-play/the-kids/savage-worlds
 .. link: 
 .. description: 
 .. type: text

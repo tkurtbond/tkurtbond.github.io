@@ -2,7 +2,7 @@
 .. slug: barrowmaze-ii-arrived
 .. date: 2012-10-15 17:58:29 UTC-05:00
 .. tags: rpg,roleplaying,adventure,labyrinth lord,ll,d&d
-.. category: gaming
+.. category: gaming/rpg
 .. link: 
 .. description: 
 .. type: text

@@ -2,7 +2,7 @@
 .. slug: bnb-the-missing-kit
 .. date: 2002-04-06 00:00:00 UTC-05:00
 .. tags: games,rpg,bunnies & burrows,gurps bunnies & burrows,the kids
-.. category: gaming/actual-play/the-kids/bunnies-and-burrows
+.. category: gaming/rpg/actual-play/the-kids/bunnies-and-burrows
 .. link: 
 .. description: 
 .. type: text

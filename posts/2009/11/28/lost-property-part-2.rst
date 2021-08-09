@@ -2,7 +2,7 @@
 .. slug: lost-property-part-2
 .. date: 2009-11-28 19:00:00 UTC-05:00
 .. tags: actual-play,rpg,savage worlds,kids,spoilers
-.. category: gaming/actual-play/the-kids/savage-worlds
+.. category: gaming/rpg/actual-play/the-kids/savage-worlds
 .. link: 
 .. description: 
 .. type: text

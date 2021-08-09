@@ -2,7 +2,7 @@
 .. slug: my-delving-deeper-boxset-came-today
 .. date: 2013-03-21 00:00:00 UTC-05:00
 .. tags: rpg,delving deeper
-.. category: gaming
+.. category: gaming/rpg
 .. link: 
 .. description: 
 .. type: text

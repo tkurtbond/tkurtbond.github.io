@@ -2,7 +2,7 @@
 .. slug: the-kids
 .. date: 2008-07-08 16:07:10 UTC-05:00
 .. tags: gaming,rpg,family
-.. category: gaming
+.. category: gaming/rpg
 .. link: 
 .. description: 
 .. type: text

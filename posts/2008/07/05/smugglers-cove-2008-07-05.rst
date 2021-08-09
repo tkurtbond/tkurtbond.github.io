@@ -2,7 +2,7 @@
 .. slug: smugglers-cove-2008-07-05
 .. date: 2008-07-05 22:25:52 UTC-05:00
 .. tags: savage worlds,rpg,actual-play,kids,timewarp,spoilers
-.. category: gaming/actual-play/the-kids/savage-worlds
+.. category: gaming/rpg/actual-play/the-kids/savage-worlds
 .. link: 
 .. description: 
 .. type: text

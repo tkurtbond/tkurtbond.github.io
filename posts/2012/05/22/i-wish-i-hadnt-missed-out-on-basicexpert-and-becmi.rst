@@ -2,7 +2,7 @@
 .. slug: i-wish-i-hadnt-missed-out-on-basicexpert-and-becmi
 .. date: 2012-05-22 14:54:55 UTC-05:00
 .. tags: rpg,d&d,b/x d&d,becmi d&d,ad&d 1e
-.. category: gaming
+.. category: gaming/rpg
 .. link: 
 .. description: 
 .. type: text

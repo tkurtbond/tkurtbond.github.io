@@ -2,7 +2,7 @@
 .. slug: how-did-i-miss-this
 .. date: 2012-06-10 22:48:18 UTC-05:00
 .. tags: runequest,barbarian,aardvark,jaquays,dungeoneer
-.. category: gaming
+.. category: gaming/rpg
 .. link: 
 .. description: 
 .. type: text

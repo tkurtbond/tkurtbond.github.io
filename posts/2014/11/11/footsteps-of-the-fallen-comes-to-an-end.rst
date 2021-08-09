@@ -2,7 +2,7 @@
 .. slug: footsteps-of-the-fallen-comes-to-an-end
 .. date: 2014-11-11 00:00:00 UTC-05:00
 .. tags: rpg,d&d,4e,eberron
-.. category: gaming/actual-play/WVHTF/4e-Eberron
+.. category: gaming/rpg/actual-play/WVHTF/4e-Eberron
 .. link: 
 .. description: 
 .. type: text

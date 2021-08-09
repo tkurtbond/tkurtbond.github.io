@@ -2,7 +2,7 @@
 .. slug: looking-at-the-mini-six-rpg-and-related-games
 .. date: 2020-11-29 02:14:48 UTC-05:00
 .. tags: mini six, opend6, one shots, rpg
-.. category: gaming
+.. category: gaming/rpg
 .. link: 
 .. description: 
 .. type: text
@@ -120,7 +120,7 @@ I like it for many reasons:
   use, suitable for games where the characters are competent.
 • Since the rules are short and the game mechanics relatively light it
   is easy to customize for a particular game or genre.
-• Since the rules (but not the settings) are Open Content you can
+• Since the rules (but not all the settings) are Open Content you can
   easily base a new game on it and release it for free or sell it.
   There are several `Mini Six`-based games on DriveThruRPG.com.\
   [#games]_
@@ -223,12 +223,12 @@ pickup games.
    DriveThruRPG: `Breachworld Adventure Folio #1 - The Big Score
    <https://www.drivethrurpg.com/product/175297/Breachworld-Adventure-Folio-1--The-Big-Score>`_.
 
-*Last edited: 2020-12-28 11:44:10 EST*
+*Last edited: 2021-08-09 12:18:15 EDT*
 
 ..
    Local Variables:
    compile-command: "pandoc -r rst -w html  --output=mini-six-described.html mini-six-described.rst && op mini-six-described.html"
-   time-stamp-format: "%04y-%02m-%02d %02H:%02M:%02S %Z"
+   time-stamp-format: "%Y-%02m-%02d %02H:%02M:%02S %Z"
    time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
    time-stamp-end: "\\*\\\\?\n"
    time-stamp-line-limit: -20

@@ -2,7 +2,7 @@
 .. slug: d6-system-the-universal-standard-and-standard-difficulties
 .. date: 2021-05-09 01:21:23 UTC-04:00
 .. tags: d6,opend6,mini six,rpg
-.. category: gaming
+.. category: gaming/rpg
 .. link: 
 .. description: 
 .. type: text

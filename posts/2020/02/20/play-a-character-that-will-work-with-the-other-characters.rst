@@ -2,7 +2,7 @@
 .. slug: play-a-character-that-will-work-with-the-other-characters
 .. date: 2020-02-20 18:28:55 UTC-05:00
 .. tags: rpg
-.. category: gaming
+.. category: gaming/rpg
 .. link: 
 .. description: 
 .. type: text

@@ -2,7 +2,7 @@
 .. slug: s001-50F-2009-12-04
 .. date: 2009-12-04 00:00:00 UTC-05:00
 .. tags: actual-play,rpg,wvhtf,50 fathoms,savage worlds
-.. category: gaming/actual-play/WVHTF/50-Fathoms
+.. category: gaming/rpg/actual-play/WVHTF/50-Fathoms
 .. link: 
 .. description: 
 .. type: text
@@ -12,7 +12,7 @@
 WVHTCF 50 Fathoms, Session #1: Shipwreck, Savages, and Giant Monkapes
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 :date: 2009-12-04
-:version: 2011-02-23 20:59:34
+:version: 2021-08-09 12:00:50
 
 
 .. role:: comment

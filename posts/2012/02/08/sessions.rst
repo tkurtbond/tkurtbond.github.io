@@ -2,7 +2,7 @@
 .. slug: necessary-evil-sessions-index
 .. date: 2012-02-08 23:00:00 UTC-05:00
 .. tags: actual-play,rpg,wvhtf,necessary evil,savage worlds
-.. category: gaming/actual-play/WVHTF/Necessary-Evil
+.. category: gaming/rpg/actual-play/WVHTF/Necessary-Evil
 .. link: 
 .. description: 
 .. type: text
@@ -12,7 +12,7 @@
 WVHTCF Necessary Evil, Sessions Index
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 :date: 2012-02-08
-:version: 2014-11-04 00:52:54
+:version: 2021-08-09 10:48:37
 
 * `Session Notes`__ (this file)
 

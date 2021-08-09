@@ -2,7 +2,7 @@
 .. slug: p001-ll-attack-in-the-dark
 .. date: 2009-04-26 14:45:00 UTC-05:00
 .. tags: gaming,rpg,labyrinth lord,actual-play,keep on the borderlands,b2
-.. category: gaming/actual-play/the-kids/keep-on-the-borderlands
+.. category: gaming/rpg/actual-play/the-kids/keep-on-the-borderlands
 .. link: 
 .. description: 
 .. type: text

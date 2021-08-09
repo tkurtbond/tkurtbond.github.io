@@ -2,7 +2,7 @@
 .. slug: s007-50F-2011-02-24
 .. date: 2011-02-24 00:00:00 UTC-05:00
 .. tags: actual-play,rpg,wvhtf,50 fathoms,savage worlds
-.. category: gaming/actual-play/WVHTF/50-Fathoms
+.. category: gaming/rpg/actual-play/WVHTF/50-Fathoms
 .. link: 
 .. description: 
 .. type: text
@@ -12,7 +12,7 @@
 WVHTCF 50 Fathoms, Session #7: The Gullet and the Teeth
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 :date: 2010-02-24
-:version: 2011-03-31 05:25:52
+:version: 2021-08-09 12:24:22
 
 
 .. role:: comment
