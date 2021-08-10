@@ -40,11 +40,12 @@ Later
 
 Of course, that takes away some from the users of Sorcery in AFF 2E,
 who spend STAMINA instead of MAGIC POINTS to cast a completely
-different set of spells than Wizardry, *and* can cast in armour.
-Hmm.  I'll have to think about it.
+different set of spells (many of which require material components)
+than Wizardry, **and** can cast in armour.  Hmm.  I'll have to think
+about it.
 
 
-*Last edited: 2021-07-15 17:46:40 EDT*
+*Last edited: 2021-08-09 23:55:19 EDT*
 
 ..
    Local Variables:
