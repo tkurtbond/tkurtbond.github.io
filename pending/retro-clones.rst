@@ -30,19 +30,21 @@ Retro-clones and neo-clones
 
 • OSRIC_
 
-  I looked at OSRIC, (a free `OSRIC PDF`_ is available) but was more
-  interested in Basic/Export retroclones at the time.  I think it is a
-  well written, organized, and presented restatement of AD&D 1E.  The
-  `Black Blade Publishing`_ print edition is a very nice offset
-  printed, sewn spine, volume.  I just wish it wasn't missing some of
-  the classes.  (I miss the Monk in particular.)  I was also surprised
-  by how many of the little quirks and restrictions of AD&D 1E have
-  been ironed out, although many remain.
+  I looked at OSRIC, (a free `OSRIC PDF`_ is available, as well as a
+  free PDF of the Usherwood_ Pocket_ version) but was more interested in
+  Basic/Export retroclones at the time.  I think it is a well written,
+  organized, and presented restatement of AD&D 1E.  The `Black Blade
+  Publishing`_ print edition is a very nice offset printed, sewn
+  spine, volume.  I just wish it wasn't missing some of the classes.
+  (I miss the Monk in particular.)  I was also surprised by how many
+  of the little quirks and restrictions of AD&D 1E have been ironed
+  out, although many remain.
 
   .. _OSRIC: http://www.knights-n-knaves.com/osric/
   .. _OSRIC PDF: http://www.knights-n-knaves.com/osric/download.html
   .. _Black Blade Publishing: https://www.facebook.com/BlackBladePublishing/
-  .. _OSRIC Pocket SRD PDF: https://www.drivethrurpg.com/product/111392/OSRIC-Pocket-SRD-PDF
+  .. _Usherwood: https://www.drivethrurpg.com/browse/pub/2411/Usherwood-Publishing
+  .. _Pocket: https://www.drivethrurpg.com/product/111392/OSRIC-Pocket-SRD-PDF
 
 • `Dark Dungeons`_
 
