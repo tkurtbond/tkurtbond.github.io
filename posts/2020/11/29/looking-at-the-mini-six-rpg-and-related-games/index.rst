@@ -190,6 +190,10 @@ pickup games.
      abused lives as test subjects and who want to be left alone, or
      help other mutants or the persecuted, or take the flight to
      MiraiCorp).
+   • `Fallen Earth: Battle for Freedom!`_: An Apocalyptic Sci-Fi Role
+     Playing Game, where earth and humans are under attack from the
+     Grays and other alien races, with the Grays using humans for
+     food!
 
    † marks games I find particularly interesting, either for the
    setting or for how a game adapts `Mini Six`.‡
@@ -205,6 +209,7 @@ pickup games.
    .. _Players Introduction: https://www.drivethrurpg.com/product/216829/Exilium-Players-Introduction
    .. _Summerland Second Edition: https://www.drivethrurpg.com/product/233731/Summerland-Second-Edition
    .. _Esoterica: https://www.drivethrurpg.com/product/246936/Esoterica
+   .. _Fallen Earth\: Battle for Freedom!: https://www.drivethrurpg.com/product/362553/Fallen-Earth
    
 
 .. [#adventures] Some `Mini Six` compatible adventures are:
@@ -223,7 +228,7 @@ pickup games.
    DriveThruRPG: `Breachworld Adventure Folio #1 - The Big Score
    <https://www.drivethrurpg.com/product/175297/Breachworld-Adventure-Folio-1--The-Big-Score>`_.
 
-*Last edited: 2021-08-09 12:18:15 EDT*
+*Last edited: 2021-08-12 19:02:11 EDT*
 
 ..
    Local Variables:
