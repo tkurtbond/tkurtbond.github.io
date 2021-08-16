@@ -1,7 +1,7 @@
 .. title: Miniatures, battlemats, and terrain at my table
 .. slug: miniatures-and-battlemaps-at-my-table
 .. date: 2020-02-20 20:17:47 UTC-05:00
-.. tags: rpg,miniatures,battlemaps,terrain,ad&d,dragonquest,d&d,chainmail,gurps,d&d 3.5e,dungeon tiles,dwarven forge,savage worlds,skeletonkey games,arion games,precis intermedia,flip mat,paper miniatures,melee,wizard,the fantasy trip,ad&d,labyrinth lord,swords & wizardry,old school essentials,necrotic gnome,goblinoid games,tiamat the tile mapper,chessex,hex grid,cardboard heroes
+.. tags: rpg,miniatures,battlemaps,terrain,ad&d,dragonquest,d&d,chainmail,gurps,d&d 3.5e,dungeon tiles,dwarven forge,savage worlds,skeletonkey games,arion games,precis intermedia,flip mat,paper miniatures,melee,wizard,the fantasy trip,ad&d,labyrinth lord,swords & wizardry,old-school essentials,necrotic gnome,goblinoid games,tiamat the tile mapper,chessex,hex grid,cardboard heroes
 .. category: gaming/rpg
 .. link: 
 .. description: 

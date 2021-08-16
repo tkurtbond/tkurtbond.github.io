@@ -1,7 +1,7 @@
 .. title: BX Options: Class Builder
 .. slug: bx-options-class-builder
 .. date: 2021-07-25 15:17:09 UTC-04:00
-.. tags: rpg,b/x,b/x d&d,ose,old school essentials
+.. tags: rpg,b/x,b/x d&d,ose,old-school essentials
 .. category: gaming/rpg/dnd
 .. link: 
 .. description: 
