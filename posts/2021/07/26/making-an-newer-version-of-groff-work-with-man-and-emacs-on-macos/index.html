@@ -105,10 +105,10 @@ Boo!</p>
 alternate configuration file (on macOS the default one is in
 <span class="file">/private/etc/man.conf</span>), so you can supply one that specifies
 the absolute path to the newer <span class="app">groff</span> you are using.  So I added</p>
-<pre class="code bash"><a id="rest_code_751f663f76284bd9a2a74a4d7edbdd29-1" name="rest_code_751f663f76284bd9a2a74a4d7edbdd29-1"></a><span class="nb">alias</span> <span class="nv">man</span><span class="o">=</span><span class="s1">'man -C ~/local/etc/man.conf'</span>
+<pre class="code bash"><a name="rest_code_1ac7c893597a4fa2a7fd5bf62c2b549e-1"></a><span class="nb">alias</span> <span class="nv">man</span><span class="o">=</span><span class="s1">'man -C ~/local/etc/man.conf'</span>
 </pre>
 <p>to the appropriate shell startup file.  And I can add</p>
-<pre class="code emacs-lisp"><a id="rest_code_847f513c26e04956b616f6c73e7d7e91-1" name="rest_code_847f513c26e04956b616f6c73e7d7e91-1"></a><span class="p">(</span><span class="k">setq</span> <span class="nv">Man-switches</span> <span class="s">"-C ~/local/etc/man.conf"</span><span class="p">)</span>
+<pre class="code emacs-lisp"><a name="rest_code_f7f6cd1459574f7cb1758c49782c4df9-1"></a><span class="p">(</span><span class="k">setq</span> <span class="nv">Man-switches</span> <span class="s">"-C ~/local/etc/man.conf"</span><span class="p">)</span>
 </pre>
 <p>to my <span class="app">emacs</span> configuration so it uses the right version of
 <span class="app">groff</span> too.</p>
@@ -127,10 +127,11 @@ it to use old-style backspace over-striking.</p>
 <p>This seems overly complicated.</p>
 <p>I suspect I'll need to do something different on the Linux boxes I
 use.</p>
-<section id="later"><h2>Later</h2>
+<div class="section" id="later">
+<h2>Later</h2>
 <p>Aannnd I was right.  Fedora 33 has a similar problem, which I fixed by
 creating a <span class="file">~/.manpath</span> file with</p>
-<pre class="code text"><a id="rest_code_249aa4683a2f4a688da1c7d7e3c96ca3-1" name="rest_code_249aa4683a2f4a688da1c7d7e3c96ca3-1"></a>DEFINE       nroff   /sw/versions/groff/git/bin/nroff -mandoc -P-c
+<pre class="code text"><a name="rest_code_d999157d7c6348239b521b352ed409ec-1"></a>DEFINE       nroff   /sw/versions/groff/git/bin/nroff -mandoc -P-c
 </pre>
 <p>in it.  I found the information I needed in <span class="man">manpath(5)</span>, which
 documents the format of the <span class="file">/etc/man_db.conf</span> file.  (Why isn't
@@ -151,7 +152,7 @@ time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
 time-stamp-end: "\\*\\\\?\n"
 time-stamp-line-limit: -20
 End: -->
-</section>
+</div>
 </div>
     </div>
     <script>var pfHeaderImgUrl = '';var pfHeaderTagline = '';var pfdisableClickToDel = 0;var pfHideImages = 0;var pfImageDisplayStyle = 'right';var pfDisablePDF = 0;var pfDisableEmail = 0;var pfDisablePrint = 0;var pfCustomCSS = '';var pfBtVersion='2';(function(){var js,pf;pf=document.createElement('script');pf.type='text/javascript';pf.src='//cdn.printfriendly.com/printfriendly.js';document.getElementsByTagName('head')[0].appendChild(pf)})();</script><a href="https://www.printfriendly.com" style="color:#6D9F00;text-decoration:none;" class="printfriendly" onclick="window.print();return false;" title="Printer Friendly and PDF"><img style="border:none;-webkit-box-shadow:none;box-shadow:none;" src="//cdn.printfriendly.com/buttons/printfriendly-pdf-button.png" alt="Print Friendly and PDF"></a>    
