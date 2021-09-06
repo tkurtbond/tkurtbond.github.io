@@ -1,7 +1,7 @@
 .. title: Old-School Essentials Advanced Fantasy Player’s Tome
 .. slug: old-school-essentials-advanced-fantasy-players-tome
 .. date: 2021-08-15 23:25:47 UTC-04:00
-.. tags: d&d,b/x d&d, basic/expert d&d,ose,old-school essentials,advanced fantasy
+.. tags: rpg,d&d,b/x d&d, basic/expert d&d,ose,old-school essentials,advanced fantasy
 .. category: gaming/rpg/dnd
 .. link: 
 .. description: 

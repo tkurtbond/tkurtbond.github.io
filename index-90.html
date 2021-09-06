@@ -245,9 +245,9 @@ times to get things to work.  For example, building software from
 source, often using the familiar <code class="docutils literal">./configure; make; make install</code>
 paradigm.</p>
 <p>So, the first thing is to try is to use the venerable <span class="command">tee</span> command.</p>
-<pre class="code bash"><a name="rest_code_4edf7ed7d2c343c0b80ea12d1acc7981-1"></a>./configure <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">|</span> tee Log.configure
-<a name="rest_code_4edf7ed7d2c343c0b80ea12d1acc7981-2"></a>make <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">|</span> tee Log.make
-<a name="rest_code_4edf7ed7d2c343c0b80ea12d1acc7981-3"></a>make install <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">|</span> tee Log.make-install
+<pre class="code bash"><a id="rest_code_b2e461e4f64b4ecbb852db9bf089b287-1" name="rest_code_b2e461e4f64b4ecbb852db9bf089b287-1"></a>./configure <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">|</span> tee Log.configure
+<a id="rest_code_b2e461e4f64b4ecbb852db9bf089b287-2" name="rest_code_b2e461e4f64b4ecbb852db9bf089b287-2"></a>make <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">|</span> tee Log.make
+<a id="rest_code_b2e461e4f64b4ecbb852db9bf089b287-3" name="rest_code_b2e461e4f64b4ecbb852db9bf089b287-3"></a>make install <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">|</span> tee Log.make-install
 </pre>
 <p>To make the log files easy to find I use a <span class="file">Log.</span> prefix.</p>
 <p>But I often need to run the commands multiple times, and want to save
@@ -258,49 +258,49 @@ date in YYYY-MM-DD format, so the resulting names look like
 <span class="file">Log.make-install-2021-07-07_2</span>.</p>
 <p>So I wrote a bash function <span class="command">incf</span> (increment filename) to put in
 <span class="file">.bashrc</span> that generates such a name:</p>
-<pre class="code bash"><a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-1"></a>incf <span class="o">()</span> <span class="o">{</span>
-<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-2"></a>    <span class="c1"># Construct a filename from PREFIX, "_YYYY-MM-DD",  optionally _N (where N</span>
-<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-3"></a>    <span class="c1"># is 1 or greater) if the filename already exists, and optionally SUFFIX.</span>
-<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-4"></a>    <span class="c1"># Example: "incf file .tar.gz" results in "file_2021-07-07.tar.gz", or</span>
-<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-5"></a>    <span class="c1"># "file_2021-07-07_N.tar.gz" if "file_2021-07-07.tar.gz" already exists,</span>
-<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-6"></a>    <span class="c1"># where N is 1 or greater.</span>
-<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-7"></a>    <span class="nb">local</span> prefix suffix fileprefix i testname sep1 sep2
-<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-8"></a>    <span class="nv">prefix</span><span class="o">=</span><span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span>
-<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-9"></a>    <span class="nv">suffix</span><span class="o">=</span><span class="s2">"</span><span class="nv">$2</span><span class="s2">"</span>
-<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-10"></a>    <span class="nv">sep1</span><span class="o">=</span><span class="s2">"_"</span>
-<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-11"></a>    <span class="nv">sep2</span><span class="o">=</span><span class="s2">"_"</span>
-<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-12"></a>    <span class="nv">fileprefix</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">prefix</span><span class="si">}${</span><span class="nv">sep1</span><span class="si">}</span><span class="k">$(</span>date +%F<span class="k">)</span><span class="s2">"</span>
-<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-13"></a>    <span class="nb">let</span> <span class="nv">i</span><span class="o">=</span><span class="m">0</span>
-<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-14"></a>    <span class="c1"># The zeroth filename doesn't have the number.</span>
-<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-15"></a>    <span class="nv">testname</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">fileprefix</span><span class="si">}${</span><span class="nv">suffix</span><span class="si">}</span><span class="s2">"</span>
-<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-16"></a>    <span class="k">while</span> <span class="nb">true</span>
-<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-17"></a>    <span class="k">do</span>
-<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-18"></a>      <span class="o">[</span> ! -e <span class="s2">"</span><span class="nv">$testname</span><span class="s2">"</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="nb">break</span>
-<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-19"></a>      <span class="o">((</span>i++<span class="o">))</span>
-<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-20"></a>      <span class="nv">testname</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">fileprefix</span><span class="si">}${</span><span class="nv">sep2</span><span class="si">}${</span><span class="nv">i</span><span class="si">}${</span><span class="nv">suffix</span><span class="si">}</span><span class="s2">"</span>
-<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-21"></a>    <span class="k">done</span>
-<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-22"></a>    <span class="nb">echo</span> <span class="s2">"</span><span class="nv">$testname</span><span class="s2">"</span>
-<a name="rest_code_bc2fbc886e3644ceb047ec476fdd93a1-23"></a><span class="o">}</span>
+<pre class="code bash"><a id="rest_code_aa66d093c22a47eda7bc3219a83e06a8-1" name="rest_code_aa66d093c22a47eda7bc3219a83e06a8-1"></a>incf <span class="o">()</span> <span class="o">{</span>
+<a id="rest_code_aa66d093c22a47eda7bc3219a83e06a8-2" name="rest_code_aa66d093c22a47eda7bc3219a83e06a8-2"></a>    <span class="c1"># Construct a filename from PREFIX, "_YYYY-MM-DD",  optionally _N (where N</span>
+<a id="rest_code_aa66d093c22a47eda7bc3219a83e06a8-3" name="rest_code_aa66d093c22a47eda7bc3219a83e06a8-3"></a>    <span class="c1"># is 1 or greater) if the filename already exists, and optionally SUFFIX.</span>
+<a id="rest_code_aa66d093c22a47eda7bc3219a83e06a8-4" name="rest_code_aa66d093c22a47eda7bc3219a83e06a8-4"></a>    <span class="c1"># Example: "incf file .tar.gz" results in "file_2021-07-07.tar.gz", or</span>
+<a id="rest_code_aa66d093c22a47eda7bc3219a83e06a8-5" name="rest_code_aa66d093c22a47eda7bc3219a83e06a8-5"></a>    <span class="c1"># "file_2021-07-07_N.tar.gz" if "file_2021-07-07.tar.gz" already exists,</span>
+<a id="rest_code_aa66d093c22a47eda7bc3219a83e06a8-6" name="rest_code_aa66d093c22a47eda7bc3219a83e06a8-6"></a>    <span class="c1"># where N is 1 or greater.</span>
+<a id="rest_code_aa66d093c22a47eda7bc3219a83e06a8-7" name="rest_code_aa66d093c22a47eda7bc3219a83e06a8-7"></a>    <span class="nb">local</span> prefix suffix fileprefix i testname sep1 sep2
+<a id="rest_code_aa66d093c22a47eda7bc3219a83e06a8-8" name="rest_code_aa66d093c22a47eda7bc3219a83e06a8-8"></a>    <span class="nv">prefix</span><span class="o">=</span><span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span>
+<a id="rest_code_aa66d093c22a47eda7bc3219a83e06a8-9" name="rest_code_aa66d093c22a47eda7bc3219a83e06a8-9"></a>    <span class="nv">suffix</span><span class="o">=</span><span class="s2">"</span><span class="nv">$2</span><span class="s2">"</span>
+<a id="rest_code_aa66d093c22a47eda7bc3219a83e06a8-10" name="rest_code_aa66d093c22a47eda7bc3219a83e06a8-10"></a>    <span class="nv">sep1</span><span class="o">=</span><span class="s2">"_"</span>
+<a id="rest_code_aa66d093c22a47eda7bc3219a83e06a8-11" name="rest_code_aa66d093c22a47eda7bc3219a83e06a8-11"></a>    <span class="nv">sep2</span><span class="o">=</span><span class="s2">"_"</span>
+<a id="rest_code_aa66d093c22a47eda7bc3219a83e06a8-12" name="rest_code_aa66d093c22a47eda7bc3219a83e06a8-12"></a>    <span class="nv">fileprefix</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">prefix</span><span class="si">}${</span><span class="nv">sep1</span><span class="si">}</span><span class="k">$(</span>date +%F<span class="k">)</span><span class="s2">"</span>
+<a id="rest_code_aa66d093c22a47eda7bc3219a83e06a8-13" name="rest_code_aa66d093c22a47eda7bc3219a83e06a8-13"></a>    <span class="nb">let</span> <span class="nv">i</span><span class="o">=</span><span class="m">0</span>
+<a id="rest_code_aa66d093c22a47eda7bc3219a83e06a8-14" name="rest_code_aa66d093c22a47eda7bc3219a83e06a8-14"></a>    <span class="c1"># The zeroth filename doesn't have the number.</span>
+<a id="rest_code_aa66d093c22a47eda7bc3219a83e06a8-15" name="rest_code_aa66d093c22a47eda7bc3219a83e06a8-15"></a>    <span class="nv">testname</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">fileprefix</span><span class="si">}${</span><span class="nv">suffix</span><span class="si">}</span><span class="s2">"</span>
+<a id="rest_code_aa66d093c22a47eda7bc3219a83e06a8-16" name="rest_code_aa66d093c22a47eda7bc3219a83e06a8-16"></a>    <span class="k">while</span> <span class="nb">true</span>
+<a id="rest_code_aa66d093c22a47eda7bc3219a83e06a8-17" name="rest_code_aa66d093c22a47eda7bc3219a83e06a8-17"></a>    <span class="k">do</span>
+<a id="rest_code_aa66d093c22a47eda7bc3219a83e06a8-18" name="rest_code_aa66d093c22a47eda7bc3219a83e06a8-18"></a>      <span class="o">[</span> ! -e <span class="s2">"</span><span class="nv">$testname</span><span class="s2">"</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="nb">break</span>
+<a id="rest_code_aa66d093c22a47eda7bc3219a83e06a8-19" name="rest_code_aa66d093c22a47eda7bc3219a83e06a8-19"></a>      <span class="o">((</span>i++<span class="o">))</span>
+<a id="rest_code_aa66d093c22a47eda7bc3219a83e06a8-20" name="rest_code_aa66d093c22a47eda7bc3219a83e06a8-20"></a>      <span class="nv">testname</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">fileprefix</span><span class="si">}${</span><span class="nv">sep2</span><span class="si">}${</span><span class="nv">i</span><span class="si">}${</span><span class="nv">suffix</span><span class="si">}</span><span class="s2">"</span>
+<a id="rest_code_aa66d093c22a47eda7bc3219a83e06a8-21" name="rest_code_aa66d093c22a47eda7bc3219a83e06a8-21"></a>    <span class="k">done</span>
+<a id="rest_code_aa66d093c22a47eda7bc3219a83e06a8-22" name="rest_code_aa66d093c22a47eda7bc3219a83e06a8-22"></a>    <span class="nb">echo</span> <span class="s2">"</span><span class="nv">$testname</span><span class="s2">"</span>
+<a id="rest_code_aa66d093c22a47eda7bc3219a83e06a8-23" name="rest_code_aa66d093c22a47eda7bc3219a83e06a8-23"></a><span class="o">}</span>
 </pre>
 <p>And then I wrote a bash function that uses <span class="command">incf</span> to generate
 the <span class="file">Log.</span> filename, potentially in a different directory:</p>
-<pre class="code bash"><a name="rest_code_15ea5da8699b4a71b17143bb3a53886d-1"></a>logf <span class="o">()</span> <span class="o">{</span>
-<a name="rest_code_15ea5da8699b4a71b17143bb3a53886d-2"></a>    <span class="c1"># Construct a filename, possibly in another directory, that starts with</span>
-<a name="rest_code_15ea5da8699b4a71b17143bb3a53886d-3"></a>    <span class="c1"># "Log." and ends with "YYYY-MM-DD" and optionally "_N", where N is 1 or</span>
-<a name="rest_code_15ea5da8699b4a71b17143bb3a53886d-4"></a>    <span class="c1"># greater, if the filename already exists.</span>
-<a name="rest_code_15ea5da8699b4a71b17143bb3a53886d-5"></a>    <span class="nb">local</span> dn bn fn
-<a name="rest_code_15ea5da8699b4a71b17143bb3a53886d-6"></a>    <span class="nv">dn</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span>dirname <span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span><span class="k">)</span><span class="s2">"</span>
-<a name="rest_code_15ea5da8699b4a71b17143bb3a53886d-7"></a>    <span class="nv">bn</span><span class="o">=</span><span class="s2">"Log.</span><span class="k">$(</span>basename <span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span><span class="k">)</span><span class="s2">"</span>
-<a name="rest_code_15ea5da8699b4a71b17143bb3a53886d-8"></a>    <span class="nv">fn</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span>incf <span class="s2">"</span><span class="nv">$dn</span><span class="s2">/</span><span class="nv">$bn</span><span class="s2">"</span><span class="k">)</span><span class="s2">"</span>
-<a name="rest_code_15ea5da8699b4a71b17143bb3a53886d-9"></a>    <span class="nb">echo</span> <span class="nv">$fn</span>
-<a name="rest_code_15ea5da8699b4a71b17143bb3a53886d-10"></a><span class="o">}</span>
+<pre class="code bash"><a id="rest_code_bbb1991e759e445dad4f3d37b19cc4e1-1" name="rest_code_bbb1991e759e445dad4f3d37b19cc4e1-1"></a>logf <span class="o">()</span> <span class="o">{</span>
+<a id="rest_code_bbb1991e759e445dad4f3d37b19cc4e1-2" name="rest_code_bbb1991e759e445dad4f3d37b19cc4e1-2"></a>    <span class="c1"># Construct a filename, possibly in another directory, that starts with</span>
+<a id="rest_code_bbb1991e759e445dad4f3d37b19cc4e1-3" name="rest_code_bbb1991e759e445dad4f3d37b19cc4e1-3"></a>    <span class="c1"># "Log." and ends with "YYYY-MM-DD" and optionally "_N", where N is 1 or</span>
+<a id="rest_code_bbb1991e759e445dad4f3d37b19cc4e1-4" name="rest_code_bbb1991e759e445dad4f3d37b19cc4e1-4"></a>    <span class="c1"># greater, if the filename already exists.</span>
+<a id="rest_code_bbb1991e759e445dad4f3d37b19cc4e1-5" name="rest_code_bbb1991e759e445dad4f3d37b19cc4e1-5"></a>    <span class="nb">local</span> dn bn fn
+<a id="rest_code_bbb1991e759e445dad4f3d37b19cc4e1-6" name="rest_code_bbb1991e759e445dad4f3d37b19cc4e1-6"></a>    <span class="nv">dn</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span>dirname <span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span><span class="k">)</span><span class="s2">"</span>
+<a id="rest_code_bbb1991e759e445dad4f3d37b19cc4e1-7" name="rest_code_bbb1991e759e445dad4f3d37b19cc4e1-7"></a>    <span class="nv">bn</span><span class="o">=</span><span class="s2">"Log.</span><span class="k">$(</span>basename <span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span><span class="k">)</span><span class="s2">"</span>
+<a id="rest_code_bbb1991e759e445dad4f3d37b19cc4e1-8" name="rest_code_bbb1991e759e445dad4f3d37b19cc4e1-8"></a>    <span class="nv">fn</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span>incf <span class="s2">"</span><span class="nv">$dn</span><span class="s2">/</span><span class="nv">$bn</span><span class="s2">"</span><span class="k">)</span><span class="s2">"</span>
+<a id="rest_code_bbb1991e759e445dad4f3d37b19cc4e1-9" name="rest_code_bbb1991e759e445dad4f3d37b19cc4e1-9"></a>    <span class="nb">echo</span> <span class="nv">$fn</span>
+<a id="rest_code_bbb1991e759e445dad4f3d37b19cc4e1-10" name="rest_code_bbb1991e759e445dad4f3d37b19cc4e1-10"></a><span class="o">}</span>
 </pre>
 <p>And then I wrote a <span class="command">log</span> command that uses <span class="command">logf</span>
 and tees its input into that file:</p>
-<pre class="code bash"><a name="rest_code_4ac282306ed64e06867de0a40c0eb841-1"></a>log <span class="o">()</span> <span class="o">{</span>
-<a name="rest_code_4ac282306ed64e06867de0a40c0eb841-2"></a>    <span class="c1"># tee the input into a log file.</span>
-<a name="rest_code_4ac282306ed64e06867de0a40c0eb841-3"></a>    tee <span class="k">$(</span>logf <span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span><span class="k">)</span>
-<a name="rest_code_4ac282306ed64e06867de0a40c0eb841-4"></a><span class="o">}</span>
+<pre class="code bash"><a id="rest_code_54e9b7ff11e845ddb277bb8c5fd7cf2a-1" name="rest_code_54e9b7ff11e845ddb277bb8c5fd7cf2a-1"></a>log <span class="o">()</span> <span class="o">{</span>
+<a id="rest_code_54e9b7ff11e845ddb277bb8c5fd7cf2a-2" name="rest_code_54e9b7ff11e845ddb277bb8c5fd7cf2a-2"></a>    <span class="c1"># tee the input into a log file.</span>
+<a id="rest_code_54e9b7ff11e845ddb277bb8c5fd7cf2a-3" name="rest_code_54e9b7ff11e845ddb277bb8c5fd7cf2a-3"></a>    tee <span class="k">$(</span>logf <span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span><span class="k">)</span>
+<a id="rest_code_54e9b7ff11e845ddb277bb8c5fd7cf2a-4" name="rest_code_54e9b7ff11e845ddb277bb8c5fd7cf2a-4"></a><span class="o">}</span>
 </pre>
 <p>So running <code class="docutils literal">./configure <span class="pre">2&gt;&amp;1</span> | log ~/tmp/configure</code> generates a file
 <span class="file">Log.configure_2021-07-07</span> in the <span class="file">~/tmp</span> directory.</p>
@@ -309,38 +309,38 @@ record if it in the log file, so if I get interrupted and then come
 back some time later I can use the same command?</p>
 <p>First I wrote a base function, <span class="command">cleanname</span>, that takes a string and
 converts it to something that should be safe to use as a filename.</p>
-<pre class="code bash"><a name="rest_code_1bff1ba0efa64b45bcb89c282a374876-1"></a>cleanname <span class="o">()</span> <span class="o">{</span>
-<a name="rest_code_1bff1ba0efa64b45bcb89c282a374876-2"></a>    <span class="c1"># Clean up a string so it is (relatively) safe to use as a filename.</span>
-<a name="rest_code_1bff1ba0efa64b45bcb89c282a374876-3"></a>    <span class="nb">local</span> <span class="nv">cmd</span><span class="o">=</span><span class="s2">"</span><span class="nv">$*</span><span class="s2">"</span> name
-<a name="rest_code_1bff1ba0efa64b45bcb89c282a374876-4"></a>    <span class="nv">name</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="s2">"</span><span class="nv">$cmd</span><span class="s2">"</span> <span class="p">|</span> sed <span class="s1">'s/[ =";?*&amp;^%$#@!~`|()&lt;&gt;]/-/g'</span> <span class="p">|</span> <span class="se">\</span>
-<a name="rest_code_1bff1ba0efa64b45bcb89c282a374876-5"></a>               sed <span class="s2">"s#[/']#-#g"</span> <span class="p">|</span> sed -E <span class="s1">'s/--+/-/g'</span> <span class="p">|</span> <span class="se">\</span>
-<a name="rest_code_1bff1ba0efa64b45bcb89c282a374876-6"></a>               sed -E <span class="s1">'s/(^[-.]+|-+$)//g'</span> <span class="p">|</span> <span class="se">\</span>
-<a name="rest_code_1bff1ba0efa64b45bcb89c282a374876-7"></a>               sed -E <span class="s1">'s/\.\.\.*/./g'</span><span class="k">)</span>
-<a name="rest_code_1bff1ba0efa64b45bcb89c282a374876-8"></a>    <span class="nb">echo</span> <span class="s2">"</span><span class="nv">$name</span><span class="s2">"</span>
-<a name="rest_code_1bff1ba0efa64b45bcb89c282a374876-9"></a><span class="o">}</span>
+<pre class="code bash"><a id="rest_code_fe8ba9d467c8425eb237af898e28a24d-1" name="rest_code_fe8ba9d467c8425eb237af898e28a24d-1"></a>cleanname <span class="o">()</span> <span class="o">{</span>
+<a id="rest_code_fe8ba9d467c8425eb237af898e28a24d-2" name="rest_code_fe8ba9d467c8425eb237af898e28a24d-2"></a>    <span class="c1"># Clean up a string so it is (relatively) safe to use as a filename.</span>
+<a id="rest_code_fe8ba9d467c8425eb237af898e28a24d-3" name="rest_code_fe8ba9d467c8425eb237af898e28a24d-3"></a>    <span class="nb">local</span> <span class="nv">cmd</span><span class="o">=</span><span class="s2">"</span><span class="nv">$*</span><span class="s2">"</span> name
+<a id="rest_code_fe8ba9d467c8425eb237af898e28a24d-4" name="rest_code_fe8ba9d467c8425eb237af898e28a24d-4"></a>    <span class="nv">name</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="s2">"</span><span class="nv">$cmd</span><span class="s2">"</span> <span class="p">|</span> sed <span class="s1">'s/[ =";?*&amp;^%$#@!~`|()&lt;&gt;]/-/g'</span> <span class="p">|</span> <span class="se">\</span>
+<a id="rest_code_fe8ba9d467c8425eb237af898e28a24d-5" name="rest_code_fe8ba9d467c8425eb237af898e28a24d-5"></a>               sed <span class="s2">"s#[/']#-#g"</span> <span class="p">|</span> sed -E <span class="s1">'s/--+/-/g'</span> <span class="p">|</span> <span class="se">\</span>
+<a id="rest_code_fe8ba9d467c8425eb237af898e28a24d-6" name="rest_code_fe8ba9d467c8425eb237af898e28a24d-6"></a>               sed -E <span class="s1">'s/(^[-.]+|-+$)//g'</span> <span class="p">|</span> <span class="se">\</span>
+<a id="rest_code_fe8ba9d467c8425eb237af898e28a24d-7" name="rest_code_fe8ba9d467c8425eb237af898e28a24d-7"></a>               sed -E <span class="s1">'s/\.\.\.*/./g'</span><span class="k">)</span>
+<a id="rest_code_fe8ba9d467c8425eb237af898e28a24d-8" name="rest_code_fe8ba9d467c8425eb237af898e28a24d-8"></a>    <span class="nb">echo</span> <span class="s2">"</span><span class="nv">$name</span><span class="s2">"</span>
+<a id="rest_code_fe8ba9d467c8425eb237af898e28a24d-9" name="rest_code_fe8ba9d467c8425eb237af898e28a24d-9"></a><span class="o">}</span>
 </pre>
 <p>Then I wrote a bash function, <span class="command">exlog</span>, to use the whole
 command with its options as part of the filename (constructed with
 <span class="command">cleanname</span>, and also include the whole command in the log output:</p>
-<pre class="code bash"><a name="rest_code_a005e595ccfe4017ae540afd46f53c93-1"></a>exlog <span class="o">()</span> <span class="o">{</span>
-<a name="rest_code_a005e595ccfe4017ae540afd46f53c93-2"></a>    <span class="c1"># Execute a shell command and log it to "Log.&lt;cmd-as-safe-filename&gt;"</span>
-<a name="rest_code_a005e595ccfe4017ae540afd46f53c93-3"></a>    <span class="nb">local</span> <span class="nv">cmd</span><span class="o">=</span><span class="s2">"</span><span class="nv">$*</span><span class="s2">"</span> <span class="nv">name</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span>cleanname <span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span><span class="k">)</span><span class="s2">"</span>
-<a name="rest_code_a005e595ccfe4017ae540afd46f53c93-4"></a>    <span class="nv">name</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span>logf <span class="nv">$name</span><span class="k">)</span><span class="s2">"</span>
-<a name="rest_code_a005e595ccfe4017ae540afd46f53c93-5"></a>    <span class="nb">printf</span> <span class="s1">'Logging to %s\n'</span> <span class="s2">"</span><span class="nv">$name</span><span class="s2">"</span>
-<a name="rest_code_a005e595ccfe4017ae540afd46f53c93-6"></a>    <span class="o">(</span><span class="nb">echo</span> <span class="s2">"cmd was: </span><span class="nv">$cmd</span><span class="s2">"</span><span class="p">;</span> <span class="nb">time</span> <span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span><span class="o">)</span> <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">|</span> tee <span class="nv">$name</span>
-<a name="rest_code_a005e595ccfe4017ae540afd46f53c93-7"></a><span class="o">}</span>
+<pre class="code bash"><a id="rest_code_5240f30465244fa9b19e78f20667fbb3-1" name="rest_code_5240f30465244fa9b19e78f20667fbb3-1"></a>exlog <span class="o">()</span> <span class="o">{</span>
+<a id="rest_code_5240f30465244fa9b19e78f20667fbb3-2" name="rest_code_5240f30465244fa9b19e78f20667fbb3-2"></a>    <span class="c1"># Execute a shell command and log it to "Log.&lt;cmd-as-safe-filename&gt;"</span>
+<a id="rest_code_5240f30465244fa9b19e78f20667fbb3-3" name="rest_code_5240f30465244fa9b19e78f20667fbb3-3"></a>    <span class="nb">local</span> <span class="nv">cmd</span><span class="o">=</span><span class="s2">"</span><span class="nv">$*</span><span class="s2">"</span> <span class="nv">name</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span>cleanname <span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span><span class="k">)</span><span class="s2">"</span>
+<a id="rest_code_5240f30465244fa9b19e78f20667fbb3-4" name="rest_code_5240f30465244fa9b19e78f20667fbb3-4"></a>    <span class="nv">name</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span>logf <span class="nv">$name</span><span class="k">)</span><span class="s2">"</span>
+<a id="rest_code_5240f30465244fa9b19e78f20667fbb3-5" name="rest_code_5240f30465244fa9b19e78f20667fbb3-5"></a>    <span class="nb">printf</span> <span class="s1">'Logging to %s\n'</span> <span class="s2">"</span><span class="nv">$name</span><span class="s2">"</span>
+<a id="rest_code_5240f30465244fa9b19e78f20667fbb3-6" name="rest_code_5240f30465244fa9b19e78f20667fbb3-6"></a>    <span class="o">(</span><span class="nb">echo</span> <span class="s2">"cmd was: </span><span class="nv">$cmd</span><span class="s2">"</span><span class="p">;</span> <span class="nb">time</span> <span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span><span class="o">)</span> <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">|</span> tee <span class="nv">$name</span>
+<a id="rest_code_5240f30465244fa9b19e78f20667fbb3-7" name="rest_code_5240f30465244fa9b19e78f20667fbb3-7"></a><span class="o">}</span>
 </pre>
 <p>So running the command</p>
-<pre class="code bash"><a name="rest_code_63af118345e54f2dbc0047506534cadc-1"></a>exlog ../configure --prefix<span class="o">=</span>/Users/tkb/sw/versions/groff/git
+<pre class="code bash"><a id="rest_code_1a4ef1cbb41c4e0b836ee87db310bd0b-1" name="rest_code_1a4ef1cbb41c4e0b836ee87db310bd0b-1"></a>exlog ../configure --prefix<span class="o">=</span>/Users/tkb/sw/versions/groff/git
 </pre>
 <p>produces the file</p>
-<pre class="code text"><a name="rest_code_bfab19bc84384340aa2fa953ab40c29f-1"></a>Log.configure-prefix-Users-tkb-sw-versions-groff-git_2021-07-07
+<pre class="code text"><a id="rest_code_aff028280c0545fcb71aaf38446cd48a-1" name="rest_code_aff028280c0545fcb71aaf38446cd48a-1"></a>Log.configure-prefix-Users-tkb-sw-versions-groff-git_2021-07-07
 </pre>
 <p>and it contains the line</p>
-<pre class="code text"><a name="rest_code_28438b8010f84974b59dcb7a0d1f19d9-1"></a>cmd was: ../configure --prefix=/Users/tkb/sw/versions/groff/git
+<pre class="code text"><a id="rest_code_9d3843c87d31421d9ea462dedc3a9a2e-1" name="rest_code_9d3843c87d31421d9ea462dedc3a9a2e-1"></a>cmd was: ../configure --prefix=/Users/tkb/sw/versions/groff/git
 </pre>
 <p>and running it again produces the file</p>
-<pre class="code text"><a name="rest_code_9cf8051e2cdb438ca1c7644afbbd57a4-1"></a>Log.configure-prefix-Users-tkb-sw-versions-groff-git_2021-07-07_1
+<pre class="code text"><a id="rest_code_e8224efae3b14ad49486759a26308bc5-1" name="rest_code_e8224efae3b14ad49486759a26308bc5-1"></a>Log.configure-prefix-Users-tkb-sw-versions-groff-git_2021-07-07_1
 </pre>
 <p>This code is available in a <a class="reference external" href="https://gist.github.com/tkurtbond/23255fede737eec89b1fd0e011566cb1">gist</a>.</p>
 <p><em>Last edited: 2021-07-09 15:30:53 EDT</em></p>
@@ -396,11 +396,11 @@ at the table.</p>
     <div>
 <p>Just for reference, here is the <a class="reference external" href="https://anydice.com/">Anydice.com</a> code for Savage Worlds
 Wild Die rolls:</p>
-<pre class="code text"><a name="rest_code_380f73f382bb4706a8efd0f63ab35876-1"></a>output [highest of [explode d4] and [explode d6]] named "d4 or wild die"
-<a name="rest_code_380f73f382bb4706a8efd0f63ab35876-2"></a>output [highest of [explode d6] and [explode d6]] named "d6 or wild die"
-<a name="rest_code_380f73f382bb4706a8efd0f63ab35876-3"></a>output [highest of [explode d8] and [explode d6]] named "d8 or wild die"
-<a name="rest_code_380f73f382bb4706a8efd0f63ab35876-4"></a>output [highest of [explode d10] and [explode d6]] named "d10 or wild die"
-<a name="rest_code_380f73f382bb4706a8efd0f63ab35876-5"></a>output [highest of [explode d12] and [explode d6]] named "d12 or wild die"
+<pre class="code text"><a id="rest_code_64725e6c3a214ae5a1951017b291b8b2-1" name="rest_code_64725e6c3a214ae5a1951017b291b8b2-1"></a>output [highest of [explode d4] and [explode d6]] named "d4 or wild die"
+<a id="rest_code_64725e6c3a214ae5a1951017b291b8b2-2" name="rest_code_64725e6c3a214ae5a1951017b291b8b2-2"></a>output [highest of [explode d6] and [explode d6]] named "d6 or wild die"
+<a id="rest_code_64725e6c3a214ae5a1951017b291b8b2-3" name="rest_code_64725e6c3a214ae5a1951017b291b8b2-3"></a>output [highest of [explode d8] and [explode d6]] named "d8 or wild die"
+<a id="rest_code_64725e6c3a214ae5a1951017b291b8b2-4" name="rest_code_64725e6c3a214ae5a1951017b291b8b2-4"></a>output [highest of [explode d10] and [explode d6]] named "d10 or wild die"
+<a id="rest_code_64725e6c3a214ae5a1951017b291b8b2-5" name="rest_code_64725e6c3a214ae5a1951017b291b8b2-5"></a>output [highest of [explode d12] and [explode d6]] named "d12 or wild die"
 </pre>
 <p>Here's a link to the <a class="reference external" href="https://anydice.com/program/23126/at_least">results</a>.</p>
 </div>
@@ -712,22 +712,22 @@ actually work.</p>
 <p>I finally found an <a class="reference external" href="https://stackoverflow.com/a/45359136">example</a>, and after looking at it and figuring out
 what imports are now required I have a working example of using
 getnstr from the chicken scheme ncurses egg!</p>
-<pre class="code scheme"><a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-1"></a><span class="p">(</span><span class="nf">import</span> <span class="nv">ncurses</span><span class="p">)</span>
-<a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-2"></a><span class="p">(</span><span class="nf">import</span> <span class="p">(</span><span class="nf">chicken</span> <span class="nv">locative</span><span class="p">))</span>
-<a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-3"></a><span class="p">(</span><span class="nf">import</span> <span class="p">(</span><span class="nf">chicken</span> <span class="nv">string</span><span class="p">))</span>
-<a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-4"></a>
-<a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-5"></a><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">get-string</span> <span class="nv">max</span><span class="p">)</span>
-<a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-6"></a>  <span class="p">(</span><span class="k">let </span><span class="p">((</span><span class="nf">buffer</span> <span class="p">(</span><span class="nb">make-string </span><span class="nv">max</span> <span class="sc">#\null</span><span class="p">)))</span>
-<a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-7"></a>    <span class="p">(</span><span class="nf">getnstr</span> <span class="p">(</span><span class="nf">make-locative</span> <span class="nv">buffer</span><span class="p">)</span> <span class="nv">max</span><span class="p">)</span>
-<a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-8"></a>    <span class="c1">;; Delete the #\null characters.</span>
-<a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-9"></a>    <span class="p">(</span><span class="nf">string-translate</span> <span class="nv">buffer</span> <span class="sc">#\null</span><span class="p">)))</span>
-<a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-10"></a>
-<a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-11"></a><span class="p">(</span><span class="k">let </span><span class="p">((</span><span class="nf">stdscr</span> <span class="p">(</span><span class="nf">initscr</span><span class="p">))</span>
-<a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-12"></a>      <span class="p">(</span><span class="nf">str</span> <span class="p">(</span><span class="nf">get-string</span> <span class="mi">10</span><span class="p">)))</span>
-<a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-13"></a>  <span class="p">(</span><span class="nf">addstr</span> <span class="nv">str</span><span class="p">)</span>
-<a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-14"></a>  <span class="p">(</span><span class="nf">getch</span><span class="p">)</span>
-<a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-15"></a>  <span class="p">(</span><span class="nb">write </span><span class="nv">str</span><span class="p">)</span>
-<a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-16"></a>  <span class="p">(</span><span class="nf">endwin</span><span class="p">))</span>
+<pre class="code scheme"><a id="rest_code_f6e1ac31995045f994e2acd3214ead4c-1" name="rest_code_f6e1ac31995045f994e2acd3214ead4c-1"></a><span class="p">(</span><span class="nf">import</span> <span class="nv">ncurses</span><span class="p">)</span>
+<a id="rest_code_f6e1ac31995045f994e2acd3214ead4c-2" name="rest_code_f6e1ac31995045f994e2acd3214ead4c-2"></a><span class="p">(</span><span class="nf">import</span> <span class="p">(</span><span class="nf">chicken</span> <span class="nv">locative</span><span class="p">))</span>
+<a id="rest_code_f6e1ac31995045f994e2acd3214ead4c-3" name="rest_code_f6e1ac31995045f994e2acd3214ead4c-3"></a><span class="p">(</span><span class="nf">import</span> <span class="p">(</span><span class="nf">chicken</span> <span class="nv">string</span><span class="p">))</span>
+<a id="rest_code_f6e1ac31995045f994e2acd3214ead4c-4" name="rest_code_f6e1ac31995045f994e2acd3214ead4c-4"></a>
+<a id="rest_code_f6e1ac31995045f994e2acd3214ead4c-5" name="rest_code_f6e1ac31995045f994e2acd3214ead4c-5"></a><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">get-string</span> <span class="nv">max</span><span class="p">)</span>
+<a id="rest_code_f6e1ac31995045f994e2acd3214ead4c-6" name="rest_code_f6e1ac31995045f994e2acd3214ead4c-6"></a>  <span class="p">(</span><span class="k">let </span><span class="p">((</span><span class="nf">buffer</span> <span class="p">(</span><span class="nb">make-string </span><span class="nv">max</span> <span class="sc">#\null</span><span class="p">)))</span>
+<a id="rest_code_f6e1ac31995045f994e2acd3214ead4c-7" name="rest_code_f6e1ac31995045f994e2acd3214ead4c-7"></a>    <span class="p">(</span><span class="nf">getnstr</span> <span class="p">(</span><span class="nf">make-locative</span> <span class="nv">buffer</span><span class="p">)</span> <span class="nv">max</span><span class="p">)</span>
+<a id="rest_code_f6e1ac31995045f994e2acd3214ead4c-8" name="rest_code_f6e1ac31995045f994e2acd3214ead4c-8"></a>    <span class="c1">;; Delete the #\null characters.</span>
+<a id="rest_code_f6e1ac31995045f994e2acd3214ead4c-9" name="rest_code_f6e1ac31995045f994e2acd3214ead4c-9"></a>    <span class="p">(</span><span class="nf">string-translate</span> <span class="nv">buffer</span> <span class="sc">#\null</span><span class="p">)))</span>
+<a id="rest_code_f6e1ac31995045f994e2acd3214ead4c-10" name="rest_code_f6e1ac31995045f994e2acd3214ead4c-10"></a>
+<a id="rest_code_f6e1ac31995045f994e2acd3214ead4c-11" name="rest_code_f6e1ac31995045f994e2acd3214ead4c-11"></a><span class="p">(</span><span class="k">let </span><span class="p">((</span><span class="nf">stdscr</span> <span class="p">(</span><span class="nf">initscr</span><span class="p">))</span>
+<a id="rest_code_f6e1ac31995045f994e2acd3214ead4c-12" name="rest_code_f6e1ac31995045f994e2acd3214ead4c-12"></a>      <span class="p">(</span><span class="nf">str</span> <span class="p">(</span><span class="nf">get-string</span> <span class="mi">10</span><span class="p">)))</span>
+<a id="rest_code_f6e1ac31995045f994e2acd3214ead4c-13" name="rest_code_f6e1ac31995045f994e2acd3214ead4c-13"></a>  <span class="p">(</span><span class="nf">addstr</span> <span class="nv">str</span><span class="p">)</span>
+<a id="rest_code_f6e1ac31995045f994e2acd3214ead4c-14" name="rest_code_f6e1ac31995045f994e2acd3214ead4c-14"></a>  <span class="p">(</span><span class="nf">getch</span><span class="p">)</span>
+<a id="rest_code_f6e1ac31995045f994e2acd3214ead4c-15" name="rest_code_f6e1ac31995045f994e2acd3214ead4c-15"></a>  <span class="p">(</span><span class="nb">write </span><span class="nv">str</span><span class="p">)</span>
+<a id="rest_code_f6e1ac31995045f994e2acd3214ead4c-16" name="rest_code_f6e1ac31995045f994e2acd3214ead4c-16"></a>  <span class="p">(</span><span class="nf">endwin</span><span class="p">))</span>
 </pre>
 <p>Oh, and I added the example to the ncurses egg documentation: <a class="reference external" href="http://wiki.call-cc.org/eggref/5/ncurses#getnstr-example">getnstr
 Example</a>.</p>
@@ -786,9 +786,9 @@ Wars roleplaying game, from <a class="reference external" href="https://en.wikip
 the Wild Die; that was introduced in the 2<sup>nd</sup> Edition and is
 also used in <a class="reference external" href="http://opend6project.org/">OpenD6</a>.</p>
 <p>The <a class="reference external" href="https://anydice.com">Anydice.com</a> <a class="reference external" href="https://anydice.com/program/22199/at_least">code</a> is very simple:</p>
-<pre class="code text"><a name="rest_code_c18e468131ec4ee08d89deab2cc08c9b-1"></a>loop N over {1..12} {
-<a name="rest_code_c18e468131ec4ee08d89deab2cc08c9b-2"></a>  output Nd6 named "[N]D"
-<a name="rest_code_c18e468131ec4ee08d89deab2cc08c9b-3"></a>}
+<pre class="code text"><a id="rest_code_d66d7cfae3a94f469d7e97e19a231bbc-1" name="rest_code_d66d7cfae3a94f469d7e97e19a231bbc-1"></a>loop N over {1..12} {
+<a id="rest_code_d66d7cfae3a94f469d7e97e19a231bbc-2" name="rest_code_d66d7cfae3a94f469d7e97e19a231bbc-2"></a>  output Nd6 named "[N]D"
+<a id="rest_code_d66d7cfae3a94f469d7e97e19a231bbc-3" name="rest_code_d66d7cfae3a94f469d7e97e19a231bbc-3"></a>}
 </pre>
 <p>If you enter this manually instead of following the “code” link above,
 remember to click “At Least” to get the right results!</p>
@@ -1944,8 +1944,7 @@ End: -->
 The Roleplaying Game</a>, <a class="reference external" href="http://opend6project.org/">OpenD6</a> or
 <em>Mini Six</em> (<a class="reference external" href="https://www.drivethrurpg.com/product/144558/Mini-Six-Bare-Bones-Edition">MS1</a>, <a class="reference external" href="http://www.antipaladingames.com/p/mini-six.html">MS2</a>) games is “The Mathematical Mean”, which I
 first saw at <a class="reference external" href="http://opend6project.org/?page_id=53">The OpenD6 Project</a>.  I'll quote it here for reference.</p>
-<div class="section" id="the-mathematical-mean">
-<h2>The Mathematical Mean</h2>
+<section id="the-mathematical-mean"><h2>The Mathematical Mean</h2>
 <p>In the standard rules, traits are rated by whole and partial increments
 of six-sided dice. A whole die increment is written as “1D”, where the
 integer denotes a number of dice to be rolled and totaled. Partial die
@@ -2180,7 +2179,7 @@ time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
 time-stamp-end: "\\*\\\\?\n"
 time-stamp-line-limit: -20
 End: -->
-</div>
+</section>
 </div>
     <nav><ul itemprop="keywords" class="tags">
 <li><a class="tag p-category" href="categories/mini-six/" rel="tag">mini six</a></li>
