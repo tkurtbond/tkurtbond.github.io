@@ -73,10 +73,11 @@ roleplaying games.
 I tried a lot of other game systems, but unfortunately the game stores
 in my area usually didn't carry much beyond TSR's products, and if
 they carried anything else they rarely carried anything except the
-core rules. So, for instance, I found `RuneQuest` (3rd edition), but
-never any Glorantha supplements, so I didn't really learn anything
-about Glorantha until running across it on USENET news groups and
-the Internet years later.
+core rules. So, for instance, I found `RuneQuest` (3rd edition), but I
+never bought any `RuneQuest` supplements other than `Griffon Island`
+(probably because they weren't available locally), so I didn't really
+learn anything about Glorantha until running across it on USENET news
+groups and the Internet years later.
 
 
 
@@ -203,36 +204,38 @@ published by Games Designers Workshop and has been republished by
 Big Eyes, Small Mouth
 .....................
 
-`BESM <http://www.guardiansorder.on.ca/>`_ (`Big Eyes, Small
-Mouth`) from `Guardians of Order`_, an anime RPG, is a good game even
-for those who aren't really anime fans. [1]_ The second edition is
+`BESM <http://www.guardiansorder.on.ca/>`_ (`Big Eyes, Small Mouth`)
+from `Guardians of Order`_, an anime RPG, is a good game even for
+those who aren't really anime fans. [1]_ The second edition is
 especially good, giving you a lite, flexible system that works
-reasonably well from normal humans to over-the-top superheros, as
-well as integrated robot/mecha/vehicle and magic design systems. If
-someone asked me to recommend a good universal roleplaying game that
-was simpler than the `Hero System <http://www.herogames.com/>`_
-from Hero Games, better at high-power levels than `CORPS`, and complete in one book (unlike
-`GURPS`), I'd say `BESM` would be a good choice. `Tri-Stat dX`,
-released in July 2003, looks like a fairly comprehensive synthesis
-of `BESM` and Guardians superhero game, SAS. dX is a bit crunchier
-than `BESM`, and is completely generic (without the anime trappings
-of `BESM`), but at 10$US for the printed version and free for the
-PDF it's definitely a great value. I hope this does well for
-Guardians. Personally, though, I was glad that Guardians still
-supported `BESM`, since the addition of PMV s to `Tri-Stat dX` adds
-just enough extra complexity to the base system to turn some people
-off. I don't think it's actually that much more complicated, but it
-certainly gives that appearance.  `BESM`'s more-or-less
-effects-based powers system is pretty flexible, but the
+reasonably well from normal humans to over-the-top superheros, as well
+as integrated robot/mecha/vehicle and magic design systems. If someone
+asked me to recommend a good universal roleplaying game that was
+simpler than the `Hero System <http://www.herogames.com/>`_ from Hero
+Games, better at high-power levels than `CORPS`, and complete in one
+book (unlike `GURPS`), I'd say `BESM` would be a good
+choice. `Tri-Stat dX`, released in July 2003, looks like a fairly
+comprehensive synthesis of `BESM` and Guardians superhero game,
+SAS. dX is a bit crunchier than `BESM`, and is completely generic
+(without the anime trappings of `BESM`), but at 10$US for the printed
+version and free for the PDF it's definitely a great value. I hope
+this does well for Guardians. Personally, though, I was glad that
+Guardians still supported `BESM`, since the addition of PMV s to
+`Tri-Stat dX` adds just enough extra complexity to the base system to
+turn some people off. I don't think it's actually that much more
+complicated, but it certainly gives that appearance.  `BESM`'s
+more-or-less effects-based powers system is pretty flexible, but the
 effects-based paradigm takes some getting used to; I remember being
 surprised and delighted when I learned that in `BESM` a `AD&D`-like
 thief backstab ability is something that you build with the standard
 `Weapon Attack` attribute with a couple of weapon disabilities. This
 system does seem to work well for anime-type characters, who may all
 have weird and unique powers. Mostly things are well defined, like
-Weapon Attack, but there are a few places where things are a lot
-more fuzzy. Overall it works pretty well, and is much simpler than
-`Hero`.
+Weapon Attack, but there are a few places where things are a lot more
+fuzzy. Overall it works pretty well, and is much simpler than `Hero`.
+
+BESM 3E
+~~~~~~~
 
 `Big Eyes, Small Mouth, 3rd edition <http://www.white-
 wolf.com/besm/>`_ was published by the `White Wolf <http://www.white-
@@ -247,14 +250,37 @@ perhaps even a little less. It is compatible in philosophy and spirit
 to the earlier editions, but characters are not directly
 compatible. It made me want to play it when I read it, which is always
 a good test. Except for that fact that it is already (at the end of
-2007; at least it is still available in PDF) out of print I can't see
-why I'd want to use Hero or GURPS instead of BESM third edition unless
-there was already an exceedingly well-written supplement for a
-particular setting, genre, or campaign that I particularly wanted to
-use. There were some minor errata in the first printing, and the
-author (and former proprietor of `Guardians of Order`_) Mark C. Mackinnon
-made the `corrections
+2007; at least it is still available in PDF) out of print it makes a
+good alternative to Hero or GURPS for those looking for something
+mechanically simpler.  There were some minor errata in the first
+printing, and the author (and former proprietor of `Guardians of
+Order`_) Mark C. Mackinnon made the `corrections
 <http://guardiansorder.livejournal.com/19955.html>`_ available.
+
+(These errata have vanished in the mists of time, so I've made them
+available on my site (BESM3Errata_), along with the two pages (P154_, P168_)
+that were horribly misprinted.)
+
+.. _BESM3Errata: /BESM3/BESM3E_errata.pdf
+.. _P154: /BESM3/BESM3_page154.pdf
+.. _P168: /BESM3/BESM3_page168.pdf
+
+
+BESM 4E
+~~~~~~~
+
+`BESM 4th Edition`_ was launched with a Kickstarter in 2019, and
+supplemented with `BESM Extras`_ in 2020.  All-in-all, I like the
+changes it made to the system, but dislike the graphic design of the
+books.  (I preferred the third edition graphic design.)  I wish that
+some of the things in `BESM Extras` were in the core rulebook, but
+overall I'm happy with the two books.  It is still a little more
+complex than BESM second edition, which hit a sweet spot for me, but
+looks like it will be a lot of fun.
+
+.. _BESM 4th Edition: https://www.kickstarter.com/projects/japanimegames/besm-fourth-edition-big-eyes-small-mouth-rpg/
+.. _BESM Extras: https://www.kickstarter.com/projects/dyskami/besm-extras-fourth-edition-rpg-expansions/
+
 
 Story Engine
 ............
