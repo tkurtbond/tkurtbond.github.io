@@ -79,3 +79,15 @@ Megadungeon
 .. _DMD1: https://dmdavid.com/tag/when-megadungeons-ruled-dungeons-dragons/
 .. _DMD2: https://dmdavid.com/tag/why-dungeons-dragons-players-stopped-exploring-megadungeons/
 .. _DMD3: https://dmdavid.com/tag/megadungeons-in-print-and-on-the-web/
+
+
+Metacurrency
+    A renewable resource that a player can spend so their character
+    can do something they otherwise couldn't do, like reroll something
+    or convert a damage strike into a flesh wound or buying a clue or
+    increase a die roll before or after the fact. Examples are Force
+    Points in `Star Wars: the Roleplaying Game`_, Hero Points in Mini
+    Six, Fate Points in OpenD6, Bennies in Savage Worlds, Inspiration
+    in D&D 5E.
+
+.. _Star Wars\: the Roleplaying Game: https://en.wikipedia.org/wiki/Star_Wars:_The_Roleplaying_Game    
