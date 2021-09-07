@@ -28,10 +28,12 @@ conventions.)
   *``.
 • Key strokes are in an orange monospaced font with a gray background
   with a hint of red (``#f9f2f4`` again): :key:`C-x C-s`. They are
-  notated with the :app:`Emacs` conventions: ``M-`` indicates the
-  Meta, key (usually "Alt" or "Option" on common keyboards), ``C-``
-  indicates the "Control" key.  ``S-`` indicates the "Super" key, ⌘ on
-  Macs, and something else weird on other keyboards.
+  notated with the :app:`Emacs` conventions: ``M-`` indicates the Meta
+  key (usually "Alt" or "Option" on common keyboards, sometimes
+  indicated with ⌥ by Apple, although the Unicode character is ⎇),
+  ``C-`` indicates the "Control" key.  ``S-`` indicates the "Super"
+  key, ⌘ (“Command”) on Macs, and something else weird on other
+  keyboards.
 
 Now for the fun stuff:
 
@@ -46,8 +48,9 @@ Now for the fun stuff:
 .. role:: loot
 .. role:: pc
 .. role:: npc
+.. role:: deadpc
+.. role:: deadnpc
 .. role:: creature
-.. role:: dead
 .. role:: scene
 .. role:: gm
 .. role:: hire
@@ -66,12 +69,14 @@ Now for the fun stuff:
 • A house rule, when notated, is in red italic bold: :house:`Critical Hit`. 
 • Loot, when notated, is in bold: :loot:`30 gp`.
 • A player character name, when notated, is in bold: :pc:`Alexa`.
-• A non-player character name, when notated, is in bold italic:
+• A non-player character name, when notated, is in bold italics:
   :npc:`Neven  Wesved`.
+• When a dead player character is notated, their name is in bold and
+  strikethrough: :deadpc:`Bytor`.
+• When a dead non-player character is notated, their name is in bold
+  italics and strikethrough: :deadnpc:`Polam Wesved`.
 • A creature name, when notated, is in red and bold:
   :creature:`Carrion Crawler`.
-• When someone dead is notated, their name is in bold and
-  strikethrough: :dead:`Polam Wesved`.
 • A scene name, when notated, is in italics: :scene:`Across the Chasm`.
 • A GM's name, when notated, is in underlined, overlined dark green: :gm:`T.T.`.
 • A hireling's name, notated, is in underline: :hire:`Symna` and
