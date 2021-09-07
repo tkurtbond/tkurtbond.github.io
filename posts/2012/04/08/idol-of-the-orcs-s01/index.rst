@@ -10,7 +10,7 @@
 
 
 .. role:: area
-.. role:: dead
+.. role:: deadnpc
 .. role:: spell
 .. role:: pc
 .. role:: loot
@@ -81,11 +81,11 @@ worshippers, Orcs, all down through the ages.
 
 Episode 1: we approach the cave mouth, and are attacked by 4 war
 wolves (wargs by any other name).  In 4 rounds the war wolves were
-dead, but we'd lost :dead:`Balin` and :dead:`Oin` and had been seriously wounded
-ourselves.   So, we head back to town, healed up, and hired nine more
-hirelings: Symna (6 HP), Zenith (6 HP), Ragnar (5 HP), Roger (6 HP),
-Pergold (3 HP), Poviteh (3 HP), Matil (3 HP) Murgar (3 HP), Zathar (1
-HP). 
+dead, but we'd lost :deadnpc:`Balin` and :deadnpc:`Oin` and had been
+seriously wounded ourselves.  So, we head back to town, healed up, and
+hired nine more hirelings: Symna (6 HP), Zenith (6 HP), Ragnar (5 HP),
+Roger (6 HP), Pergold (3 HP), Poviteh (3 HP), Matil (3 HP) Murgar (3
+HP), Zathar (1 HP).
 
 Several days pass.
 

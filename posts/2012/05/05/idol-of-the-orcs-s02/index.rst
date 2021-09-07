@@ -12,7 +12,7 @@
    Area already has CSS on the blog.
 
 .. role:: area
-.. role:: dead
+.. role:: deadnpc
 .. role:: spell
 .. role:: loot
 
@@ -56,8 +56,8 @@ Orm and Skeggi switched places in the marching order.
 Tristan agreed that “Shields will be splintered!” and magic and
 falling.
 
-:dead:`Balin`, who died last session, had chain armor, 2 darts, and a
-longsword.  :dead:`Oin`, who died last session, had leather armor,
+:deadnpc:`Balin`, who died last session, had chain armor, 2 darts, and a
+longsword.  :deadnpc:`Oin`, who died last session, had leather armor,
 spear, and 2 darts.
 
 We gave Balin's chain to Zenith.
@@ -109,7 +109,7 @@ surprised 7 orcs.  We killed 6 and captured 1.
 7 leather armor, 7 hand axes, 7 slings.  46 sp 32 cp, and 70 XP.
 
 They were going to swear loyalty to warlord Ngarsh in Sacern Hills
-where the Hidden Dagger trip have taken refuge.  Warlord Ngarsh acts
+where the Hidden Dagger tribe have taken refuge.  Warlord Ngarsh acts
 on orders from a powerful demon that resides in the idol.  The orcs
 are gaining stength due to the demon.
 
