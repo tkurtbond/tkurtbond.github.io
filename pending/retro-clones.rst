@@ -5,9 +5,28 @@ Retro-clones and neo-clones
   I *think* I looked at `Basic Fantasy`_ first, but it wasn't what I
   was looking for at the time.
 
+  All its PDFs are free, and the print on demand books are *very*
+  inexpensive.
+
+  Although I notice that the character class tables all go to
+  level 20.  I conjecture this is a residual artifact of the D&D 3E
+  character classes going to level 20, since it doesn't match the B/X
+  model that that is implied by the Basic Fantasy website with the
+  statement “The Basic Fantasy Role-Playing Game is a rules-light game
+  system modeled on the classic RPG rules of the early 1980's.” rather
+  than Labyrinth Lord's rescaling of B/X to match AD&D.
+
   .. _Basic Fantasy: https://www.basicfantasy.org/
 
-• `Labyrinth Lord`_ & `Advanced Edition Companion`_
+• `Labyrinth Lord Revised`_ & `Advanced Edition Companion`_
+
+  While `Labyrinth Lord Revised` has been criticized for not being a
+  completely faithful retro-clone of the Moldvay/Cook/Marsh
+  Basic/Expert D&D rules (B/X), I think it still holds a useful spot.  The
+  changes that were made in the revised version of `Labyrinth Lord`
+  made it easier to be used with `Advanced Edition Companion` (AEC).  They
+  adapted the 1–14 level scale of B/X to the scale of AD&D 1E,
+  generally about 20 levels, and with AEC they provide 
 
   (`No-art LL`_; `no-art AEC`_.)
 
@@ -17,11 +36,17 @@ Retro-clones and neo-clones
   .. _no-art AEC: https://www.drivethrurpg.com/product/78524/Advanced-Edition-Companion-Labyrinth-Lord-noart-version
 
 
-  - Advanced Labyrinth Lord
+  - `Advanced Labyrinth Lord`_
+
+    This compiles the information from `Labyrinth Lord` and `Advanced
+    Edition Companion` into one convenient book.
 
     .. _Advanced Labyrinth Lord: https://www.drivethrurpg.com/product/259983/Advanced-Labyrinth-Lord-Dragon-Cover
 
 • `Swords & Wizardry`_
+
+  Relatively faithful retro-clone of Original D&D and its supplements
+  and articles in `The Strategic Review` and `The Dragon`.
   
   .. _Swords & Wizardry WhiteBox: https://www.lulu.com/en/us/shop/matthew-finch/swords-wizardry-whitebox-rules-softcover/paperback/product-1wzw887q.html?page=1&pageSize=4
   .. _Swords & Wizardry Core: https://www.lulu.com/en/us/shop/matthew-finch/swords-wizardry-core-rules-softcover/paperback/product-1yvrdzg2.html?
@@ -73,7 +98,23 @@ Retro-clones and neo-clones
   .. _Player's Tome: https://necroticgnome.com/collections/rules/products/old-school-essentials-advanced-fantasy-players-tome
   .. _Referee's Tome: https://necroticgnome.com/collections/rules/products/old-school-essentials-advanced-fantasy-referees-tome
 
+  `Old School Essentials: Classic Fantasy` is the best organized and
+  presented version of the classic rules from the
+  Moldvay/Cook/Marsh Basic/Expert D&D sets.  This is the game that I
+  wish had been around when I started playing.
+
+  `Old School Essentials: Advanced Fantasy` is the best organized and
+  presented version of the ideas of the classic rules from 1\
+  :sup:`st` edition AD&D, scaled to match the 1–14 level scope of the
+  Moldvay/Cook/Marsh Basic/Expert D&D sets.  If I was starting a new
+  D&D campaign these are the rules I'd use, all things being equal.
+
+• `Adventure, Conqueror, King System`_ (ACKS)
+
+  .. _Adventure, Conqueror, King System: https://www3.autarch.co/?page_id=128
+
 ..
    Reference: http://taxidermicowlbear.weebly.com/dd-retroclones.html
    also: http://taxidermicowlbear.weebly.com/downloads.html
    https://en.wikipedia.org/wiki/Dungeons_%26_Dragons_retro-clones
+
