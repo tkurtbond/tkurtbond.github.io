@@ -9,6 +9,7 @@
 
 .. role:: file
 .. role:: key
+.. role:: app
 
 Are you familiar with arrow macros?  (They have nothing to do with
 `arrows in Haskell`__.) They started out in Clojure_, I think, and have
@@ -167,3 +168,23 @@ docstrings for the macros.
 
 .. _here: /arrows-for-emacs.zip
 .. _ZIP: https://en.wikipedia.org/wiki/Info-ZIP
+
+2021-09-07
+==========
+
+Now in a `Gitub repo`_.
+
+.. _Gitub repo: https://github.com/tkurtbond/arrow-macros-for-emacs
+
+*Last edited: 2021-09-07 13:25:09 EDT*
+
+..
+   Local Variables:
+   time-stamp-format: "%Y-%02m-%02d %02H:%02M:%02S %Z"
+   time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
+   time-stamp-end: "\\*\\\\?\n"
+   time-stamp-line-limit: -20
+   End:
+
+
+   
