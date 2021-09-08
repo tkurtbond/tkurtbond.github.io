@@ -23,6 +23,8 @@ conventions.)
 • Command names (Unix, VMS, Microsoft Windows/DOS, whatever) are a
   black bold monospaced font: :command:`ls` or :command:`emacs` when talking
   about the actual command.
+• The names and section numbers of :app:`man` pages are in a
+  monospaced italic font :man:`groff_ms(7)`.
 • Inline literal or code text is a red monospaced font with a gray
   background with a hint of red (``#f9f2f4`` to be precise): ``rm -rfv
   *``.
