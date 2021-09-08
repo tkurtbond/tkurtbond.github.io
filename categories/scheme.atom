@@ -3,7 +3,7 @@
 <feed xml:lang="en" xmlns="http://www.w3.org/2005/Atom">
   <title>Lacking Natural Simplicity (Posts about scheme)</title>
   <id>https://tkurtbond.github.io/categories/scheme.atom</id>
-  <updated>2021-06-21T22:07:04Z</updated>
+  <updated>2021-07-10T07:47:29Z</updated>
   <author>
     <name>T. Kurt Bond</name>
   </author>
@@ -25,22 +25,22 @@ actually work.&lt;/p&gt;
 &lt;p&gt;I finally found an &lt;a class="reference external" href="https://stackoverflow.com/a/45359136"&gt;example&lt;/a&gt;, and after looking at it and figuring out
 what imports are now required I have a working example of using
 getnstr from the chicken scheme ncurses egg!&lt;/p&gt;
-&lt;pre class="code scheme"&gt;&lt;a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;import&lt;/span&gt; &lt;span class="nv"&gt;ncurses&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-2"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;import&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;chicken&lt;/span&gt; &lt;span class="nv"&gt;locative&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
-&lt;a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-3"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;import&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;chicken&lt;/span&gt; &lt;span class="nv"&gt;string&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
-&lt;a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-4"&gt;&lt;/a&gt;
-&lt;a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-5"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;define &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;get-string&lt;/span&gt; &lt;span class="nv"&gt;max&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-6"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;let &lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nf"&gt;buffer&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;make-string &lt;/span&gt;&lt;span class="nv"&gt;max&lt;/span&gt; &lt;span class="sc"&gt;#\null&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
-&lt;a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-7"&gt;&lt;/a&gt;    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;getnstr&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;make-locative&lt;/span&gt; &lt;span class="nv"&gt;buffer&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="nv"&gt;max&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-8"&gt;&lt;/a&gt;    &lt;span class="c1"&gt;;; Delete the #\null characters.&lt;/span&gt;
-&lt;a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-9"&gt;&lt;/a&gt;    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;string-translate&lt;/span&gt; &lt;span class="nv"&gt;buffer&lt;/span&gt; &lt;span class="sc"&gt;#\null&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
-&lt;a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-10"&gt;&lt;/a&gt;
-&lt;a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-11"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;let &lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nf"&gt;stdscr&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;initscr&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
-&lt;a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-12"&gt;&lt;/a&gt;      &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;str&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;get-string&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
-&lt;a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-13"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;addstr&lt;/span&gt; &lt;span class="nv"&gt;str&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-14"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;getch&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-15"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;write &lt;/span&gt;&lt;span class="nv"&gt;str&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-16"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;endwin&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;pre class="code scheme"&gt;&lt;a id="rest_code_f6e1ac31995045f994e2acd3214ead4c-1" name="rest_code_f6e1ac31995045f994e2acd3214ead4c-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;import&lt;/span&gt; &lt;span class="nv"&gt;ncurses&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a id="rest_code_f6e1ac31995045f994e2acd3214ead4c-2" name="rest_code_f6e1ac31995045f994e2acd3214ead4c-2"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;import&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;chicken&lt;/span&gt; &lt;span class="nv"&gt;locative&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;a id="rest_code_f6e1ac31995045f994e2acd3214ead4c-3" name="rest_code_f6e1ac31995045f994e2acd3214ead4c-3"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;import&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;chicken&lt;/span&gt; &lt;span class="nv"&gt;string&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;a id="rest_code_f6e1ac31995045f994e2acd3214ead4c-4" name="rest_code_f6e1ac31995045f994e2acd3214ead4c-4"&gt;&lt;/a&gt;
+&lt;a id="rest_code_f6e1ac31995045f994e2acd3214ead4c-5" name="rest_code_f6e1ac31995045f994e2acd3214ead4c-5"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;define &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;get-string&lt;/span&gt; &lt;span class="nv"&gt;max&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a id="rest_code_f6e1ac31995045f994e2acd3214ead4c-6" name="rest_code_f6e1ac31995045f994e2acd3214ead4c-6"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;let &lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nf"&gt;buffer&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;make-string &lt;/span&gt;&lt;span class="nv"&gt;max&lt;/span&gt; &lt;span class="sc"&gt;#\null&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+&lt;a id="rest_code_f6e1ac31995045f994e2acd3214ead4c-7" name="rest_code_f6e1ac31995045f994e2acd3214ead4c-7"&gt;&lt;/a&gt;    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;getnstr&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;make-locative&lt;/span&gt; &lt;span class="nv"&gt;buffer&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="nv"&gt;max&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a id="rest_code_f6e1ac31995045f994e2acd3214ead4c-8" name="rest_code_f6e1ac31995045f994e2acd3214ead4c-8"&gt;&lt;/a&gt;    &lt;span class="c1"&gt;;; Delete the #\null characters.&lt;/span&gt;
+&lt;a id="rest_code_f6e1ac31995045f994e2acd3214ead4c-9" name="rest_code_f6e1ac31995045f994e2acd3214ead4c-9"&gt;&lt;/a&gt;    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;string-translate&lt;/span&gt; &lt;span class="nv"&gt;buffer&lt;/span&gt; &lt;span class="sc"&gt;#\null&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+&lt;a id="rest_code_f6e1ac31995045f994e2acd3214ead4c-10" name="rest_code_f6e1ac31995045f994e2acd3214ead4c-10"&gt;&lt;/a&gt;
+&lt;a id="rest_code_f6e1ac31995045f994e2acd3214ead4c-11" name="rest_code_f6e1ac31995045f994e2acd3214ead4c-11"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;let &lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nf"&gt;stdscr&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;initscr&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;a id="rest_code_f6e1ac31995045f994e2acd3214ead4c-12" name="rest_code_f6e1ac31995045f994e2acd3214ead4c-12"&gt;&lt;/a&gt;      &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;str&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;get-string&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+&lt;a id="rest_code_f6e1ac31995045f994e2acd3214ead4c-13" name="rest_code_f6e1ac31995045f994e2acd3214ead4c-13"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;addstr&lt;/span&gt; &lt;span class="nv"&gt;str&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a id="rest_code_f6e1ac31995045f994e2acd3214ead4c-14" name="rest_code_f6e1ac31995045f994e2acd3214ead4c-14"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;getch&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a id="rest_code_f6e1ac31995045f994e2acd3214ead4c-15" name="rest_code_f6e1ac31995045f994e2acd3214ead4c-15"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;write &lt;/span&gt;&lt;span class="nv"&gt;str&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a id="rest_code_f6e1ac31995045f994e2acd3214ead4c-16" name="rest_code_f6e1ac31995045f994e2acd3214ead4c-16"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;endwin&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 &lt;/pre&gt;&lt;p&gt;Oh, and I added the example to the ncurses egg documentation: &lt;a class="reference external" href="http://wiki.call-cc.org/eggref/5/ncurses#getnstr-example"&gt;getnstr
 Example&lt;/a&gt;.&lt;/p&gt;&lt;/div&gt;</summary>
     <category term="chicken-scheme" label="chicken scheme"/>
@@ -81,15 +81,15 @@ to be a &lt;a class="reference external" href="http://snow-fort.org/"&gt;Snow&lt
     <summary type="html">&lt;div&gt;&lt;p&gt;To compile &lt;a class="reference external" href="https://ccrma.stanford.edu/software/snd/snd/s7.html"&gt;s7 scheme&lt;/a&gt; with a standalone &lt;a class="reference external" href="https://tkurtbond.github.io/pages/computer-vocabulary/#REPL"&gt;REPL&lt;/a&gt;, s7's home page says to
 add the empty file &lt;span class="file"&gt;mus-config.h&lt;/span&gt; to the source directory, then
 (in Linux):&lt;/p&gt;
-&lt;pre class="code bash"&gt;&lt;a name="rest_code_faca3756ba70487da704627fa1afdcc4-1"&gt;&lt;/a&gt;gcc s7.c -o repl -DWITH_MAIN -I. -O2 -g -ldl -lm -Wl,-export-dynamic
+&lt;pre class="code bash"&gt;&lt;a id="rest_code_c858b17e087b4eb4b09afad8c45093c6-1" name="rest_code_c858b17e087b4eb4b09afad8c45093c6-1"&gt;&lt;/a&gt;gcc s7.c -o repl -DWITH_MAIN -I. -O2 -g -ldl -lm -Wl,-export-dynamic
 &lt;/pre&gt;&lt;p&gt;It turns out that on macOS, whose &lt;span class="command"&gt;ld&lt;/span&gt; (from clang) doesn't
 understand &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;-export-dynamic&lt;/span&gt;&lt;/code&gt;, you have to do&lt;/p&gt;
-&lt;pre class="code bash"&gt;&lt;a name="rest_code_9f44ec775cae4f87b64137a09d220c1c-1"&gt;&lt;/a&gt;gcc s7.c -o repl -DWITH_MAIN -I. -O2 -g -ldl -lm -Wl,-dynamic
+&lt;pre class="code bash"&gt;&lt;a id="rest_code_7871f5bde09c4075907a8c4a48c33da4-1" name="rest_code_7871f5bde09c4075907a8c4a48c33da4-1"&gt;&lt;/a&gt;gcc s7.c -o repl -DWITH_MAIN -I. -O2 -g -ldl -lm -Wl,-dynamic
 &lt;/pre&gt;&lt;p&gt;Then you need to do&lt;/p&gt;
-&lt;pre class="code bash"&gt;&lt;a name="rest_code_476ea9b03b6c4faca81ba4e46b4b5b5b-1"&gt;&lt;/a&gt;./repl libc.scm
+&lt;pre class="code bash"&gt;&lt;a id="rest_code_f02f3634dc9048cab9d664a39ba28573-1" name="rest_code_f02f3634dc9048cab9d664a39ba28573-1"&gt;&lt;/a&gt;./repl libc.scm
 &lt;/pre&gt;&lt;p&gt;which seems to generate &lt;span class="file"&gt;libc_s7.c&lt;/span&gt; and compile it into
 &lt;span class="file"&gt;libc_s.so&lt;/span&gt;.   Then you can run the &lt;a class="reference external" href="https://tkurtbond.github.io/pages/computer-vocabulary/#REPL"&gt;REPL&lt;/a&gt;:&lt;/p&gt;
-&lt;pre class="code bash"&gt;&lt;a name="rest_code_e0688398b8f342468dec8fa6046bdf56-1"&gt;&lt;/a&gt;./repl
+&lt;pre class="code bash"&gt;&lt;a id="rest_code_0c91faebd60b45a3abe3e9f70b46571e-1" name="rest_code_0c91faebd60b45a3abe3e9f70b46571e-1"&gt;&lt;/a&gt;./repl
 &lt;/pre&gt;&lt;p&gt;which, from looking at &lt;span class="file"&gt;s7.c&lt;/span&gt;, loads &lt;span class="file"&gt;repl.scm&lt;/span&gt;.
 Unfortunately, I don't understand the repl commands, except for
 &lt;code class="docutils literal"&gt;pwd&lt;/code&gt; and &lt;code class="docutils literal"&gt;cd&lt;/code&gt;.  Oh, and &lt;code class="docutils literal"&gt;(exit)&lt;/code&gt; exits the repl.&lt;/p&gt;
@@ -115,8 +115,8 @@ End: --&gt;&lt;/div&gt;</summary>
     </author>
     <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/posts/2009/09/03/chicken-410-on-cygwin/"/>
     <summary type="html">&lt;div&gt;&lt;p&gt;Weird: after compiling and installing &lt;a class="reference external" href="http://www.call-with-current-continuation.org/"&gt;chicken&lt;/a&gt; with:&lt;/p&gt;
-&lt;pre class="code bash"&gt;&lt;a name="rest_code_9a2e7e6d74944d0d965b82ec82ccd0d8-1"&gt;&lt;/a&gt;make &lt;span class="nv"&gt;PLATFORM&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;cygwin &lt;span class="nv"&gt;PREFIX&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/sw/versions/cygwin/chicken/4.1.0
-&lt;a name="rest_code_9a2e7e6d74944d0d965b82ec82ccd0d8-2"&gt;&lt;/a&gt;make &lt;span class="nv"&gt;PLATFORM&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;cygwin &lt;span class="nv"&gt;PREFIX&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/sw/versions/cygwin/chicken/4.1.0 install
+&lt;pre class="code bash"&gt;&lt;a id="rest_code_c77862a2dfc7491f827bce87b9805567-1" name="rest_code_c77862a2dfc7491f827bce87b9805567-1"&gt;&lt;/a&gt;make &lt;span class="nv"&gt;PLATFORM&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;cygwin &lt;span class="nv"&gt;PREFIX&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/sw/versions/cygwin/chicken/4.1.0
+&lt;a id="rest_code_c77862a2dfc7491f827bce87b9805567-2" name="rest_code_c77862a2dfc7491f827bce87b9805567-2"&gt;&lt;/a&gt;make &lt;span class="nv"&gt;PLATFORM&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;cygwin &lt;span class="nv"&gt;PREFIX&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/sw/versions/cygwin/chicken/4.1.0 install
 &lt;/pre&gt;&lt;p&gt;I had to copy &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;/sw/versions/cygwin/chicken/4.1.0/lib/*.a&lt;/span&gt;&lt;/code&gt; to
 &lt;code class="docutils literal"&gt;/sw/versions/cygwin/chicken/4.1.0/bin&lt;/code&gt; before it could link things
 properly.  (I first noticed this while doing a
@@ -159,7 +159,7 @@ line in configure that read&lt;/p&gt;
 experience changing from &lt;code class="docutils literal"&gt;defmacro&lt;/code&gt; to &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;syntax-case&lt;/span&gt;&lt;/code&gt;. Unfortunately, I
 didn't understand Shriram Krishnamurthi's &lt;a class="reference external" href="http://groups-beta.google.com/group/comp.lang.scheme/msg/f7f4e2373846759c"&gt;comments on hygiene&lt;/a&gt; at
 all.&lt;/p&gt;
-&lt;div class="section" id="additions-on-tuesday-21-april-2009"&gt;
+&lt;section id="additions-on-tuesday-21-april-2009"&gt;
 &lt;h2&gt;Additions on Tuesday, 21 April 2009&lt;/h2&gt;
 &lt;p&gt;I thought I'd better quote what he said:&lt;/p&gt;
 &lt;blockquote&gt;
@@ -183,7 +183,7 @@ really have to wonder.&lt;/p&gt;
 article comparing all the Lisp and Scheme macro systems and
 considering all the interactions with modules and pattern matching.  I
 think it's really needed.  [Do I say this somewhere else, too?]&lt;/p&gt;
-&lt;/div&gt;&lt;/div&gt;</summary>
+&lt;/section&gt;&lt;/div&gt;</summary>
     <category term="hygiene" label="hygiene"/>
     <category term="lisp" label="lisp"/>
     <category term="macros" label="macros"/>
