@@ -123,6 +123,9 @@ Retro-clones and neo-clones
 
 • `Adventure, Conqueror, King System`_ (ACKS)
 
+  Liked B/X D&D's scale, but wanted more details?  ACKS is the game
+  for you.
+
   .. _Adventure, Conqueror, King System: https://www3.autarch.co/?page_id=128
 
 ..
