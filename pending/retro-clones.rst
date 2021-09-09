@@ -13,8 +13,9 @@ Retro-clones and neo-clones
   character classes going to level 20, since it doesn't match the B/X
   model that that is implied by the Basic Fantasy website with the
   statement “The Basic Fantasy Role-Playing Game is a rules-light game
-  system modeled on the classic RPG rules of the early 1980's.” rather
-  than Labyrinth Lord's rescaling of B/X to match AD&D.
+  system modeled on the classic RPG rules of the early 1980's.”
+  Compare that to Labyrinth Lord's rescaling of B/X to match
+  AD&D.
 
   .. _Basic Fantasy: https://www.basicfantasy.org/
 
@@ -22,11 +23,13 @@ Retro-clones and neo-clones
 
   While `Labyrinth Lord Revised` has been criticized for not being a
   completely faithful retro-clone of the Moldvay/Cook/Marsh
-  Basic/Expert D&D rules (B/X), I think it still holds a useful spot.  The
-  changes that were made in the revised version of `Labyrinth Lord`
-  made it easier to be used with `Advanced Edition Companion` (AEC).  They
-  adapted the 1–14 level scale of B/X to the scale of AD&D 1E,
-  generally about 20 levels, and with AEC they provide 
+  Basic/Expert D&D rules (B/X), I think it still holds a useful spot.
+  The changes that were made in the revised version of `Labyrinth
+  Lord` made it easier to be used with `Advanced Edition Companion`
+  (AEC).  It adapted the 1–14 level scale of B/X to the scale of AD&D
+  1E, generally about 20 levels, and with AEC it added the separate
+  races and the additional classes, spells, monsters, and magic items
+  of AD&D 1E.
 
   (`No-art LL`_; `no-art AEC`_.)
 
@@ -46,7 +49,12 @@ Retro-clones and neo-clones
 • `Swords & Wizardry`_
 
   Relatively faithful retro-clone of Original D&D and its supplements
-  and articles in `The Strategic Review` and `The Dragon`.
+  at a point just before AD&D 1E was introduced, so it includes the
+  classes and many of the spells of AD&D 1E.
+
+  If you are looking to play something with the feel of AD&D 1E,
+  but want something even simpler than `Labyrinth Lord Revised`_ and
+  `Advanced Edition Companion`_, this is an excellent choice.
   
   .. _Swords & Wizardry WhiteBox: https://www.lulu.com/en/us/shop/matthew-finch/swords-wizardry-whitebox-rules-softcover/paperback/product-1wzw887q.html?page=1&pageSize=4
   .. _Swords & Wizardry Core: https://www.lulu.com/en/us/shop/matthew-finch/swords-wizardry-core-rules-softcover/paperback/product-1yvrdzg2.html?
@@ -71,12 +79,16 @@ Retro-clones and neo-clones
   .. _Usherwood: https://www.drivethrurpg.com/browse/pub/2411/Usherwood-Publishing
   .. _Pocket: https://www.drivethrurpg.com/product/111392/OSRIC-Pocket-SRD-PDF
 
-• `Dark Dungeons`_
+• `Dark Dungeons`_ (DDFreePDF_, DDHardback_, DDSoftcover_, DDDeluxe_)
 
   This is a retro-clone of The D&D Rules Cyclopedia.  With the RC
   available in PDD, the urgency for this seems less.  
 
-  .. _Dark Dungeons: https://www.drivethrurpg.com/product/177410/Dark-Dungeons
+  .. _Dark Dungeons: https://gurbintrollgames.wordpress.com/dark-dungeons/
+  .. _DDFreePDF: https://www.drivethrurpg.com/product/177410/Dark-Dungeons
+  .. _DDHardback: https://www.lulu.com/en/us/shop/blacky-the-blackball/dark-dungeons-hardback/hardcover/product-16q68rge.html
+  .. _DDSoftcover: https://www.lulu.com/en/us/shop/blacky-the-blackball/dark-dungeons-softcover/paperback/product-18n6qr25.html
+  .. _DDDeluxe: https://www.lulu.com/en/us/shop/blacky-the-blackball/dark-dungeons-deluxe/hardcover/product-1gvq52ng.html
 
 • `Delving Deeper`_
 
