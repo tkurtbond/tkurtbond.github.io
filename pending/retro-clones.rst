@@ -1,5 +1,23 @@
 Retro-clones and neo-clones
 
+Want a simple, clear, exceptionally well organized and presented
+version of the classic B/X D&D rules?  `Old-School Essentials Classic
+Fantasy`.
+
+Want races separate from classes and the extra classes, races, and
+many spells from AD&D 1E?  `Old-School Essentials Advanced Fantasy`.
+
+Want to play classic AD&D 1E modules with all races, classes, and
+most spells from AD&D 1E?  `Labyrinth Lord: Revised` and
+`Advanced Edition Companion`, or `Advanced Labyrinth Lord`.
+
+Want something that feels like Original D&D, just before AD&D 1E came
+out, with the classes and races and spells familiar from AD&D 1E, but
+simpler? `Swords & Wizardry Complete`.
+
+Like the 1 to 14 level scale and the lower hit dice of B/X D&D, but
+want more detailed rules?  `Adventurer, Conqueror, King System`.
+
 • `Basic Fantasy`_
 
   I *think* I looked at `Basic Fantasy`_ first, but it wasn't what I
