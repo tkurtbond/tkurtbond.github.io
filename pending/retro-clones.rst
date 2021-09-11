@@ -107,16 +107,19 @@ want more detailed rules?  `Adventurer, Conqueror, King System`.
   This is a retro-clone of The D&D Rules Cyclopedia.  With the RC
   available in PDF and Print-on-Demand, the urgency for this seems less.
 
-  `Dark Dungeons` does have changes from the Rules Cyclopedia,
+  `Dark Dungeons` does have changes_ from the Rules Cyclopedia,
   integrating some optional rules, extrapolating, clarifying and
   adjusting other rules, and integrating rules for Immortals.  It does 
-  not include the Mystara setting and cosmology elements.
+  not include the Mystara setting and cosmology elements.  The
+  monsters differ_ somewhat.
 
   .. _Dark Dungeons: https://gurbintrollgames.wordpress.com/dark-dungeons/
   .. _DDFreePDF: https://www.drivethrurpg.com/product/177410/Dark-Dungeons
   .. _DDHardback: https://www.lulu.com/en/us/shop/blacky-the-blackball/dark-dungeons-hardback/hardcover/product-16q68rge.html
   .. _DDSoftcover: https://www.lulu.com/en/us/shop/blacky-the-blackball/dark-dungeons-softcover/paperback/product-18n6qr25.html
   .. _DDDeluxe: https://www.lulu.com/en/us/shop/blacky-the-blackball/dark-dungeons-deluxe/hardcover/product-1gvq52ng.html
+  .. _changes: https://www.thepiazza.org.uk/bb/viewtopic.php?p=60695#p60695
+  .. _differ: https://www.thepiazza.org.uk/bb/viewtopic.php?p=60126#p60126
 
 • `Delving Deeper`_
 
@@ -139,9 +142,9 @@ want more detailed rules?  `Adventurer, Conqueror, King System`.
   .. _Referee's Tome: https://necroticgnome.com/collections/rules/products/old-school-essentials-advanced-fantasy-referees-tome
 
   `Old School Essentials: Classic Fantasy` is the best organized and
-  presented version of the classic rules from the
-  Moldvay/Cook/Marsh Basic/Expert D&D sets.  This is the game that I
-  wish had been around when I started playing.
+  presented version of the classic rules from the Moldvay/Cook/Marsh
+  Basic/Expert D&D sets.  This is the game that I wish had been around
+  when I started playing.
 
   `Old School Essentials: Advanced Fantasy` is the best organized and
   presented version of the ideas of the classic rules from 1\
