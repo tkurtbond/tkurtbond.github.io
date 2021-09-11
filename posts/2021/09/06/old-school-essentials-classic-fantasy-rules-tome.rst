@@ -30,7 +30,7 @@ I've said elsewhere_ that I started playing with first edition AD&D.
 As far as I can remember, we often simplified things: I don't remember
 using segments, spell components, weapon speed factors, or armor class
 adjustments, and I'm not sure we used anything like the actual
-official combat sequence.\ [#addict]_ I never picked up the
+official combat sequence.\ [#addict]_\ I never picked up the
 Moldvay/Cook/Marsh Basic/Expert Sets, unfortunately, since I foolishly
 thought “Advanced” meant better than “Basic”.
 
@@ -57,11 +57,23 @@ prefers the classic rules.
    consistent interpretation of the rules, but people have spent a lot
    of time and effort trying to figure one out.
 
+   Oh, here's a brief but clear discussion of the `AD&D Initiative
+   Controversy`_, (mirror_ on archive.org) describing both the The
+   A.D.D.I.C.T. Method and the OSRIC method.
+
    .. _I1: https://idiscepolidellamanticora.files.wordpress.com/2012/09/addict.pdf
    .. _I2: http://knights-n-knaves.com/dmprata/ADDICT.pdf
+   .. _AD&D Initiative Controversy: https://www.knights-n-knaves.com/phpbb3/viewtopic.php?f=8&t=15891
+   .. _mirror: https://web.archive.org/web/20210706181418/http://knights-n-knaves.com/phpbb3/viewtopic.php?f=8&t=15891
+
+
+
+*Last edited: 2021-09-11 12:03:36 EDT*
 
 ..
    Local Variables:
-   compile-command: "pandoc -r rst -w html -o ose-classic.html ose-classic.rst"
+   time-stamp-format: "%Y-%02m-%02d %02H:%02M:%02S %Z"
+   time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
+   time-stamp-end: "\\*\\\\?\n"
+   time-stamp-line-limit: -20
    End:
-
