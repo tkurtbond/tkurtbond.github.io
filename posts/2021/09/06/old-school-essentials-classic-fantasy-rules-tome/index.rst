@@ -48,6 +48,11 @@ prefers the classic rules.
 
 .. [#addict]
 
+   The rules on Initiative on p. 62–63 of the Dungeon Master's Guide
+   (DMG) sound simple, but there are further elaborations elsewhere in
+   the DMG (“Simultaneous Initiative” on p. 66, for instance) and
+   other AD&D 1E rule books.
+
    It takes a 20 page document, `Advanced Dungeons & Dragons®
    Initiative and Combat Table`, compiled by David M. Prata, (I1_ or
    I2_) to come anywhere near compiling and explaining the actual
@@ -58,7 +63,7 @@ prefers the classic rules.
    of time and effort trying to figure one out.
 
    Oh, here's a brief but clear discussion of the `AD&D Initiative
-   Controversy`_, (mirror_ on archive.org) describing both the The
+   Controversy`_, (mirror_ on archive.org) describing both The
    A.D.D.I.C.T. Method and the OSRIC method.
 
    .. _I1: https://idiscepolidellamanticora.files.wordpress.com/2012/09/addict.pdf
@@ -68,7 +73,7 @@ prefers the classic rules.
 
 
 
-*Last edited: 2021-09-11 12:03:36 EDT*
+*Last edited: 2021-09-11 12:31:47 EDT*
 
 ..
    Local Variables:
