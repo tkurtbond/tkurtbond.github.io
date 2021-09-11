@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity (Posts about troff)</title><link>https://tkurtbond.github.io/</link><description></description><atom:link href="https://tkurtbond.github.io/categories/troff.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2021 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Wed, 28 Jul 2021 09:34:06 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Making an newer version of groff work with man and emacs on macOS</title><link>https://tkurtbond.github.io/posts/2021/07/26/making-an-newer-version-of-groff-work-with-man-and-emacs-on-macos/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;I'm posting this mostly to remind myself if I ever have to fiddle with
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity (Posts about troff)</title><link>https://tkurtbond.github.io/</link><description></description><atom:link href="https://tkurtbond.github.io/categories/troff.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2021 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Sat, 11 Sep 2021 15:59:07 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Making a newer version of groff work with man and emacs on macOS</title><link>https://tkurtbond.github.io/posts/2021/07/26/making-a-newer-version-of-groff-work-with-man-and-emacs-on-macos/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;I'm posting this mostly to remind myself if I ever have to fiddle with
 this again.&lt;/p&gt;
 &lt;p&gt;I use a version of &lt;span class="app"&gt;groff&lt;/span&gt; installed from &lt;span class="app"&gt;git&lt;/span&gt; because some
 of my documents depend on fixes that are coming out in the next
@@ -25,9 +25,9 @@ Boo!&lt;/p&gt;
 alternate configuration file (on macOS the default one is in
 &lt;span class="file"&gt;/private/etc/man.conf&lt;/span&gt;), so you can supply one that specifies
 the absolute path to the newer &lt;span class="app"&gt;groff&lt;/span&gt; you are using.  So I added&lt;/p&gt;
-&lt;pre class="code bash"&gt;&lt;a id="rest_code_751f663f76284bd9a2a74a4d7edbdd29-1" name="rest_code_751f663f76284bd9a2a74a4d7edbdd29-1"&gt;&lt;/a&gt;&lt;span class="nb"&gt;alias&lt;/span&gt; &lt;span class="nv"&gt;man&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'man -C ~/local/etc/man.conf'&lt;/span&gt;
+&lt;pre class="code bash"&gt;&lt;a id="rest_code_6c31248792e14bd8bc97952192041a8b-1" name="rest_code_6c31248792e14bd8bc97952192041a8b-1"&gt;&lt;/a&gt;&lt;span class="nb"&gt;alias&lt;/span&gt; &lt;span class="nv"&gt;man&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'man -C ~/local/etc/man.conf'&lt;/span&gt;
 &lt;/pre&gt;&lt;p&gt;to the appropriate shell startup file.  And I can add&lt;/p&gt;
-&lt;pre class="code emacs-lisp"&gt;&lt;a id="rest_code_847f513c26e04956b616f6c73e7d7e91-1" name="rest_code_847f513c26e04956b616f6c73e7d7e91-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;setq&lt;/span&gt; &lt;span class="nv"&gt;Man-switches&lt;/span&gt; &lt;span class="s"&gt;"-C ~/local/etc/man.conf"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;pre class="code emacs-lisp"&gt;&lt;a id="rest_code_9487e5f827534bc98c531d2a305fbaa6-1" name="rest_code_9487e5f827534bc98c531d2a305fbaa6-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;setq&lt;/span&gt; &lt;span class="nv"&gt;Man-switches&lt;/span&gt; &lt;span class="s"&gt;"-C ~/local/etc/man.conf"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;p&gt;to my &lt;span class="app"&gt;emacs&lt;/span&gt; configuration so it uses the right version of
 &lt;span class="app"&gt;groff&lt;/span&gt; too.&lt;/p&gt;
 &lt;p&gt;But a modern &lt;span class="app"&gt;groff&lt;/span&gt; produces ANSI escapes for bold and
@@ -35,7 +35,7 @@ underline, rather than the older convention of over-striking via the
 backspace character with the same character for bold or with the
 underscore character for underlining.  My pager, &lt;span class="app"&gt;less&lt;/span&gt;, can deal
 with that, but something in &lt;span class="app"&gt;emacs&lt;/span&gt; doesn't like that, leaving
-the buffer with &lt;span class="man"&gt;groff_ms(7)&lt;/span&gt; with underlining on every line.&lt;a class="footnote-reference brackets" href="https://tkurtbond.github.io/posts/2021/07/26/making-an-newer-version-of-groff-work-with-man-and-emacs-on-macos/#manual" id="id1"&gt;1&lt;/a&gt;&lt;/p&gt;
+the buffer with &lt;span class="man"&gt;groff_ms(7)&lt;/span&gt; with underlining on every line.&lt;a class="footnote-reference brackets" href="https://tkurtbond.github.io/posts/2021/07/26/making-a-newer-version-of-groff-work-with-man-and-emacs-on-macos/#manual" id="id1"&gt;1&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Eventually I figured out that the old style over-striking via
 backspaces worked just fine with emacs, so I added the &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;-P-c&lt;/span&gt;&lt;/code&gt; option
 to the invocation of &lt;span class="app"&gt;groff&lt;/span&gt; in the NROFF definition in my
@@ -49,26 +49,26 @@ use.&lt;/p&gt;
 &lt;h2&gt;Later&lt;/h2&gt;
 &lt;p&gt;Aannnd I was right.  Fedora 33 has a similar problem, which I fixed by
 creating a &lt;span class="file"&gt;~/.manpath&lt;/span&gt; file with&lt;/p&gt;
-&lt;pre class="code text"&gt;&lt;a id="rest_code_249aa4683a2f4a688da1c7d7e3c96ca3-1" name="rest_code_249aa4683a2f4a688da1c7d7e3c96ca3-1"&gt;&lt;/a&gt;DEFINE       nroff   /sw/versions/groff/git/bin/nroff -mandoc -P-c
+&lt;pre class="code text"&gt;&lt;a id="rest_code_c713c8ad49b54f3885d4c2f77383ad85-1" name="rest_code_c713c8ad49b54f3885d4c2f77383ad85-1"&gt;&lt;/a&gt;DEFINE       nroff   /sw/versions/groff/git/bin/nroff -mandoc -P-c
 &lt;/pre&gt;&lt;p&gt;in it.  I found the information I needed in &lt;span class="man"&gt;manpath(5)&lt;/span&gt;, which
 documents the format of the &lt;span class="file"&gt;/etc/man_db.conf&lt;/span&gt; file.  (Why isn't
 it &lt;span class="man"&gt;man_db.conf(5)&lt;/span&gt;, then?)&lt;/p&gt;
 &lt;dl class="footnote brackets"&gt;
-&lt;dt class="label" id="manual"&gt;&lt;span class="brackets"&gt;&lt;a class="fn-backref" href="https://tkurtbond.github.io/posts/2021/07/26/making-an-newer-version-of-groff-work-with-man-and-emacs-on-macos/#id1"&gt;1&lt;/a&gt;&lt;/span&gt;&lt;/dt&gt;
+&lt;dt class="label" id="manual"&gt;&lt;span class="brackets"&gt;&lt;a class="fn-backref" href="https://tkurtbond.github.io/posts/2021/07/26/making-a-newer-version-of-groff-work-with-man-and-emacs-on-macos/#id1"&gt;1&lt;/a&gt;&lt;/span&gt;&lt;/dt&gt;
 &lt;dd&gt;&lt;p&gt;Oddly, if I direct &lt;span class="app"&gt;man&lt;/span&gt;'s output to a file, visit that file in
 &lt;span class="app"&gt;emacs&lt;/span&gt;, and manually invoke the &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;Man-fontify-manpage&lt;/span&gt;&lt;/code&gt; function
 &lt;span class="app"&gt;emacs&lt;/span&gt; uses to fontify the man page, it &lt;em&gt;doesn't&lt;/em&gt; end up
 erroneously underlined.&lt;/p&gt;
 &lt;/dd&gt;
 &lt;/dl&gt;
-&lt;p&gt;&lt;em&gt;Last edited: 2021-07-28 05:33:55 EDT&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Last edited: 2021-09-09 10:11:03 EDT&lt;/em&gt;&lt;/p&gt;
 &lt;!-- Local Variables:
 time-stamp-format: "%Y-%02m-%02d %02H:%02M:%02S %Z"
 time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
 time-stamp-end: "\\*\\\\?\n"
 time-stamp-line-limit: -20
 End: --&gt;
-&lt;/section&gt;&lt;/div&gt;</description><category>groff</category><category>macos</category><category>troff</category><guid>https://tkurtbond.github.io/posts/2021/07/26/making-an-newer-version-of-groff-work-with-man-and-emacs-on-macos/</guid><pubDate>Mon, 26 Jul 2021 21:30:19 GMT</pubDate></item><item><title>install-font.sh - The simple approach</title><link>https://tkurtbond.github.io/posts/2021/07/17/install-fontsh-the-simple-approach/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;The simple approach to using &lt;a class="reference external" href="https://www.schaffter.ca/mom/mom-05.html#install-font"&gt;install-font.sh&lt;/a&gt; to install fonts for
+&lt;/section&gt;&lt;/div&gt;</description><category>groff</category><category>macos</category><category>troff</category><guid>https://tkurtbond.github.io/posts/2021/07/26/making-a-newer-version-of-groff-work-with-man-and-emacs-on-macos/</guid><pubDate>Mon, 26 Jul 2021 21:30:19 GMT</pubDate></item><item><title>install-font.sh - The simple approach</title><link>https://tkurtbond.github.io/posts/2021/07/17/install-fontsh-the-simple-approach/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;The simple approach to using &lt;a class="reference external" href="https://www.schaffter.ca/mom/mom-05.html#install-font"&gt;install-font.sh&lt;/a&gt; to install fonts for
 &lt;span class="app"&gt;groff&lt;/span&gt; probably works for almost everybody.&lt;/p&gt;
 &lt;p&gt;First, make sure that &lt;a class="reference external" href="https://fontforge.org/"&gt;FontForge&lt;/a&gt; is installed; it is free and open
 source and available for installation in most distributions.  Second,

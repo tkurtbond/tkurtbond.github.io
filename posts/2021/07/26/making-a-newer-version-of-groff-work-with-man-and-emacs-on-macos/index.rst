@@ -1,5 +1,5 @@
-.. title: Making an newer version of groff work with man and emacs on macOS
-.. slug: making-an-newer-version-of-groff-work-with-man-and-emacs-on-macos
+.. title: Making a newer version of groff work with man and emacs on macOS
+.. slug: making-a-newer-version-of-groff-work-with-man-and-emacs-on-macos
 .. date: 2021-07-26 17:30:19 UTC-04:00
 .. tags: groff,troff,macos
 .. category: computer
@@ -98,7 +98,7 @@ it :man:`man_db.conf(5)`, then?)
    erroneously underlined.
 
 
-*Last edited: 2021-07-28 05:33:55 EDT*
+*Last edited: 2021-09-09 10:11:03 EDT*
 
 ..
    Local Variables:
