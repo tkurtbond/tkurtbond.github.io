@@ -5,15 +5,20 @@ version of the classic B/X D&D rules?  `Old-School Essentials Classic
 Fantasy`.
 
 Want races separate from classes and the extra classes, races, and
-many spells from AD&D 1E?  `Old-School Essentials Advanced Fantasy`.
+many spells from AD&D 1E, all on the 1 to 14 level scale of B/X D&D?
+`Old-School Essentials Advanced Fantasy`.
 
-Want to play classic AD&D 1E modules with all races, classes, and
-most spells from AD&D 1E?  `Labyrinth Lord: Revised` and
-`Advanced Edition Companion`, or `Advanced Labyrinth Lord`.
+Want to play classic AD&D 1E modules with all races, classes, and most
+spells from AD&D 1E, on a mostly 1 to 20 level scale, with 9\
+:sup:`th` level magic user spells and 7\ :sup:`th` cleric spells?
+`Labyrinth Lord: Revised` and `Advanced Edition Companion`, or
+`Advanced Labyrinth Lord`.
 
 Want something that feels like Original D&D, just before AD&D 1E came
 out, with the classes and races and spells familiar from AD&D 1E, but
-simpler? `Swords & Wizardry Complete`.
+simpler, on a mostly 1 to 20+ level scale, with 9\ :sup:`th` level
+magic user spells and 7\ :sup:`th` cleric spells?? `Swords & Wizardry
+Complete`.
 
 Like the 1 to 14 level scale and the lower hit dice of B/X D&D, but
 want more detailed rules?  `Adventurer, Conqueror, King System`.
@@ -100,7 +105,12 @@ want more detailed rules?  `Adventurer, Conqueror, King System`.
 • `Dark Dungeons`_ (DDFreePDF_, DDHardback_, DDSoftcover_, DDDeluxe_)
 
   This is a retro-clone of The D&D Rules Cyclopedia.  With the RC
-  available in PDD, the urgency for this seems less.  
+  available in PDF and Print-on-Demand, the urgency for this seems less.
+
+  `Dark Dungeons` does have changes from the Rules Cyclopedia,
+  integrating some optional rules, extrapolating, clarifying and
+  adjusting other rules, and integrating rules for Immortals.  It does 
+  not include the Mystara setting and cosmology elements.
 
   .. _Dark Dungeons: https://gurbintrollgames.wordpress.com/dark-dungeons/
   .. _DDFreePDF: https://www.drivethrurpg.com/product/177410/Dark-Dungeons
