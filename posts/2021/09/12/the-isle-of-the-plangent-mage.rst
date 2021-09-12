@@ -1,7 +1,7 @@
 .. title: The Isle of the Plangent Mage
 .. slug: the-isle-of-the-plangent-mage
 .. date: 2021-09-12 17:56:32 UTC-04:00
-.. tags: rpg,necrotic gnome,donn stroud,old-school essentials
+.. tags: rpg,necrotic gnome,donn stroud,old-school essentials,ose
 .. category: gaming/rpg/dnd
 .. link: 
 .. description: 
