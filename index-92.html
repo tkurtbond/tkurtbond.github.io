@@ -55,7 +55,99 @@
         <div class="row">
             <div class="col-sm-8 blog-main">
 <div class="postindex">
-    <article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2021/07/25/bx-options-class-builder/" class="u-url">BX Options: Class Builder</a></h2>
+    <article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2021/07/26/making-a-newer-version-of-groff-work-with-man-and-emacs-on-macos/" class="u-url">Making a newer version of groff work with man and emacs on macOS</a></h2>
+        <div class="metadata blog-post-meta">
+            <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
+            <p class="dateline"><a href="posts/2021/07/26/making-a-newer-version-of-groff-work-with-man-and-emacs-on-macos/" rel="bookmark"><time class="published dt-published" datetime="2021-07-26T17:30:19-04:00" title="2021-07-26 17:30">2021-07-26 17:30</time></a></p>
+                <p class="commentline">            <a href="posts/2021/07/26/making-a-newer-version-of-groff-work-with-man-and-emacs-on-macos/#disqus_thread" data-disqus-identifier="cache/posts/2021/07/26/making-a-newer-version-of-groff-work-with-man-and-emacs-on-macos.html">Comments</a>
+
+
+        </p>
+</div>
+    </header><div class="e-content entry-content">
+    <div>
+<p>I'm posting this mostly to remind myself if I ever have to fiddle with
+this again.</p>
+<p>I use a version of <span class="app">groff</span> installed from <span class="app">git</span> because some
+of my documents depend on fixes that are coming out in the next
+release, 1.23.0.  I install it on my macOS machine in
+<span class="file">/usr/local/sw/versions/groff/git</span>.  (The directory hierarchy
+under <span class="file">/usr/local/sw/versions</span> is where I put programs that I
+compile from scratch, to keep them separated from the programs that
+come from the operating system and/or package managers.  I often have
+more than one version of a program installed, therefore the
+<span class="file">versions</span> component of the name.)</p>
+<p>Because the <span class="command">groff</span> that is first in my path is the new one I
+installed, and because <span class="app">man</span> on macOS knows to look for man pages
+according to what your <code class="docutils literal">PATH</code> is, when I say <code class="docutils literal">man groff_ms</code> I get
+the new man page for <code class="docutils literal">groff_ms</code>.  Yay!  Unfortunately, it gets
+rendered with the old <span class="app">groff</span> that macOS supplies, version
+1.19.2, which doesn't include the <code class="docutils literal">.SY</code> macro that current versions
+of <span class="app">groff</span> supply in their <span class="app">man</span> macros, and which they
+<em>use</em> in their man pages, so it renders wrong.  A typical example is
+that when it renders <span class="man">groff_ms(7)</span> the <code class="docutils literal">groff <span class="pre">-ms</span></code> and
+<code class="docutils literal">groff <span class="pre">-m</span> ms</code> are missing from the lines in the SYNOPSIS section.
+Boo!</p>
+<p>Luckily, <span class="app">man</span> takes a <code class="docutils literal"><span class="pre">-C</span></code> option that lets you specify an
+alternate configuration file (on macOS the default one is in
+<span class="file">/private/etc/man.conf</span>), so you can supply one that specifies
+the absolute path to the newer <span class="app">groff</span> you are using.  So I added</p>
+<pre class="code bash"><a name="rest_code_7ae3946c1eff4097bf8a3740763a8804-1"></a><span class="nb">alias</span> <span class="nv">man</span><span class="o">=</span><span class="s1">'man -C ~/local/etc/man.conf'</span>
+</pre>
+<p>to the appropriate shell startup file.  And I can add</p>
+<pre class="code emacs-lisp"><a name="rest_code_d2b69487aefc4f5a9a9b50440170e14a-1"></a><span class="p">(</span><span class="k">setq</span> <span class="nv">Man-switches</span> <span class="s">"-C ~/local/etc/man.conf"</span><span class="p">)</span>
+</pre>
+<p>to my <span class="app">emacs</span> configuration so it uses the right version of
+<span class="app">groff</span> too.</p>
+<p>But a modern <span class="app">groff</span> produces ANSI escapes for bold and
+underline, rather than the older convention of over-striking via the
+backspace character with the same character for bold or with the
+underscore character for underlining.  My pager, <span class="app">less</span>, can deal
+with that, but something in <span class="app">emacs</span> doesn't like that, leaving
+the buffer with <span class="man">groff_ms(7)</span> with underlining on every line.<a class="footnote-reference brackets" href="posts/2021/07/26/making-a-newer-version-of-groff-work-with-man-and-emacs-on-macos/#manual" id="id1">1</a></p>
+<p>Eventually I figured out that the old style over-striking via
+backspaces worked just fine with emacs, so I added the <code class="docutils literal"><span class="pre">-P-c</span></code> option
+to the invocation of <span class="app">groff</span> in the NROFF definition in my
+modified <span class="file">man.conf</span> file.  That tells <span class="command">groff</span> to pass
+the <code class="docutils literal"><span class="pre">-c</span></code> option to the <span class="command">grotty</span> output driver, which tells
+it to use old-style backspace over-striking.</p>
+<p>This seems overly complicated.</p>
+<p>I suspect I'll need to do something different on the Linux boxes I
+use.</p>
+<div class="section" id="later">
+<h2>Later</h2>
+<p>Aannnd I was right.  Fedora 33 has a similar problem, which I fixed by
+creating a <span class="file">~/.manpath</span> file with</p>
+<pre class="code text"><a name="rest_code_e6f83f57cc6c43fea46be03bf34c8827-1"></a>DEFINE       nroff   /sw/versions/groff/git/bin/nroff -mandoc -P-c
+</pre>
+<p>in it.  I found the information I needed in <span class="man">manpath(5)</span>, which
+documents the format of the <span class="file">/etc/man_db.conf</span> file.  (Why isn't
+it <span class="man">man_db.conf(5)</span>, then?)</p>
+<dl class="footnote brackets">
+<dt class="label" id="manual"><span class="brackets"><a class="fn-backref" href="posts/2021/07/26/making-a-newer-version-of-groff-work-with-man-and-emacs-on-macos/#id1">1</a></span></dt>
+<dd>
+<p>Oddly, if I direct <span class="app">man</span>'s output to a file, visit that file in
+<span class="app">emacs</span>, and manually invoke the <code class="docutils literal"><span class="pre">Man-fontify-manpage</span></code> function
+<span class="app">emacs</span> uses to fontify the man page, it <em>doesn't</em> end up
+erroneously underlined.</p>
+</dd>
+</dl>
+<p><em>Last edited: 2021-09-09 10:11:03 EDT</em></p>
+<!-- Local Variables:
+time-stamp-format: "%Y-%02m-%02d %02H:%02M:%02S %Z"
+time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
+time-stamp-end: "\\*\\\\?\n"
+time-stamp-line-limit: -20
+End: -->
+</div>
+</div>
+    <nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="categories/groff/" rel="tag">groff</a></li>
+            <li><a class="tag p-category" href="categories/macos/" rel="tag">macos</a></li>
+            <li><a class="tag p-category" href="categories/troff/" rel="tag">troff</a></li>
+        </ul></nav>
+</div>
+    </article><article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2021/07/25/bx-options-class-builder/" class="u-url">BX Options: Class Builder</a></h2>
         <div class="metadata blog-post-meta">
             <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
             <p class="dateline"><a href="posts/2021/07/25/bx-options-class-builder/" rel="bookmark"><time class="published dt-published" datetime="2021-07-25T15:17:09-04:00" title="2021-07-25 15:17">2021-07-25 15:17</time></a></p>

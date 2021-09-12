@@ -1,7 +1,7 @@
 .. title: Miniatures, battlemats, and terrain at my table
 .. slug: miniatures-and-battlemaps-at-my-table
 .. date: 2020-02-20 20:17:47 UTC-05:00
-.. tags: rpg,miniatures,battlemaps,terrain,ad&d,dragonquest,d&d,chainmail,gurps,d&d 3.5e,dungeon tiles,dwarven forge,savage worlds,skeletonkey games,arion games,precis intermedia,flip mat,paper miniatures,melee,wizard,the fantasy trip,ad&d,labyrinth lord,swords & wizardry,old-school essentials,necrotic gnome,goblinoid games,tiamat the tile mapper,chessex,hex grid,cardboard heroes
+.. tags: rpg,miniatures,battlemaps,terrain,ad&d,dragonquest,d&d,chainmail,gurps,d&d 3.5e,dungeon tiles,dwarven forge,savage worlds,skeletonkey games,arion games,precis intermedia,flip mat,paper miniatures,melee,wizard,the fantasy trip,ad&d,labyrinth lord,swords & wizardry,old-school essentials,necrotic gnome,goblinoid games,tiamat the tile mapper,chessex,hex grid,cardboard heroes,ll,ose
 .. category: gaming/rpg
 .. link: 
 .. description: 
@@ -180,7 +180,7 @@ Of course, when running `AD&D` or `B/X D&D`_ or `retro-clones`_ there of
 (like `Goblinoid Games`_'s `Labyrinth Lord` (L1_, L2_), it's `AD&D`
 inspired `Advanced Edition Companion`_, or the book that squashes them
 together: `Advanced Labyrinth Lord`_, or like `Necrotic Gnome`_'s `Old
-School Essentials`_, or `Swords & Wizardry`_) it's all theater of the
+School Essentials`_, or `Swords & Wizardry`_) it's often theater of the
 mind: no miniatures, no battle map.
 
 .. _`B/X D&D`: https://en.wikipedia.org/wiki/Dungeons_%26_Dragons_Basic_Set#1981_revision

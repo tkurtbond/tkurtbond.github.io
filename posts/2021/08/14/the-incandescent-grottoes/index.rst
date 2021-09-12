@@ -1,8 +1,8 @@
 .. title: The Incandescent Grottoes
 .. slug: the-incandescent-grottoes
 .. date: 2021-08-14 01:54:25 UTC-04:00
-.. tags: rpg,necrotic gnome,gavin norman,old-school essentials
-.. category: gaming/rpg
+.. tags: rpg,necrotic gnome,gavin norman,old-school essentials,ose
+.. category: gaming/rpg/dnd
 .. link: 
 .. description: 
 .. type: text
