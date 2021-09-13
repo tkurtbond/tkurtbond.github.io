@@ -10,7 +10,7 @@
 <link rel="alternate" type="application/atom+xml" title="Atom" href="feed.atom">
 <link rel="canonical" href="https://tkurtbond.github.io/">
 <link rel="next" href="index-92.html" type="text/html">
-<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/2021/09/13/define-word-results-using-wordnik-stopped-working/" type="text/html">
+<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/2021/09/13/getting-the-homebrew-chicken-scheme-sqlite3-egg-to-use-the-homebrew-installed-sqlite3-include-files-and-library-files/" type="text/html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400;1,700&amp;family=Lato:ital,wght@0,400;0,700;1,400;1,700&amp;family=Source+Code+Pro:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet">
@@ -55,7 +55,40 @@
         <div class="row">
             <div class="col-sm-8 blog-main">
 <div class="postindex">
-    <article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2021/09/13/define-word-results-using-wordnik-stopped-working/" class="u-url">define-word results using wordnik stopped working</a></h2>
+    <article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2021/09/13/getting-the-homebrew-chicken-scheme-sqlite3-egg-to-use-the-homebrew-installed-sqlite3-include-files-and-library-files/" class="u-url">Getting the homebrew CHICKEN Scheme sqlite3 egg to use the homebrew-installed sqlite3 include files and library files</a></h2>
+        <div class="metadata blog-post-meta">
+            <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
+            <p class="dateline"><a href="posts/2021/09/13/getting-the-homebrew-chicken-scheme-sqlite3-egg-to-use-the-homebrew-installed-sqlite3-include-files-and-library-files/" rel="bookmark"><time class="published dt-published" datetime="2021-09-13T16:59:50-04:00" title="2021-09-13 16:59">2021-09-13 16:59</time></a></p>
+                <p class="commentline">            <a href="posts/2021/09/13/getting-the-homebrew-chicken-scheme-sqlite3-egg-to-use-the-homebrew-installed-sqlite3-include-files-and-library-files/#disqus_thread" data-disqus-identifier="cache/posts/2021/09/13/getting-the-homebrew-chicken-scheme-sqlite3-egg-to-use-the-homebrew-installed-sqlite3-include-files-and-library-files.html">Comments</a>
+
+
+        </p>
+</div>
+    </header><div class="e-content entry-content">
+    <div>
+<p>To get the <a class="reference external" href="https://brew.sh/">Homebrew</a> installed <a class="reference external" href="http://call-cc.org">CHICKEN Scheme</a> (<a class="reference external" href="https://formulae.brew.sh/formula/chicken">HBCHICKEN</a>) to use
+the <a class="reference external" href="https://brew.sh/">Homebrew</a> installed version of <a class="reference external" href="https://www.sqlite.org/">sqlite3</a> (<a class="reference external" href="https://formulae.brew.sh/formula/sqlite">HBSQLITE3</a>) — because the
+one supplied by Apple in macOS is obsolete — for the <a class="reference external" href="http://wiki.call-cc.org/eggref/5/sqlite3">sqlite egg</a>,
+you need to set <code class="docutils literal">CSC_OPTIONS</code> properly:</p>
+<pre class="code bash"><a name="rest_code_cd7d55dbc96f430c9ef9e82b98731374-1"></a>$ <span class="nb">export</span> <span class="nv">CSC_OPTIONS</span><span class="o">=</span><span class="s2">"-I/usr/local/Cellar/sqlite/3.36.0/include -L/usr/local/Cellar/sqlite/3.36.0/lib"</span>
+<a name="rest_code_cd7d55dbc96f430c9ef9e82b98731374-2"></a>$ chicken-install sqlite3
+<a name="rest_code_cd7d55dbc96f430c9ef9e82b98731374-3"></a>building sqlite3
+<a name="rest_code_cd7d55dbc96f430c9ef9e82b98731374-4"></a>   /usr/local/Cellar/chicken/5.2.0/bin/csc -host -D compiling-extension -J -s -regenerate-import-libraries -setup-mode -I /Users/tkb/.cache/chicken-install/sqlite3 -C -I/Users/tkb/.cache/chicken-install/sqlite3 -O2 -d1 -L -lsqlite3 sqlite3.scm -o /Users/tkb/.cache/chicken-install/sqlite3/sqlite3.so
+<a name="rest_code_cd7d55dbc96f430c9ef9e82b98731374-5"></a>   /usr/local/Cellar/chicken/5.2.0/bin/csc -regenerate-import-libraries -M -setup-mode -static -I /Users/tkb/.cache/chicken-install/sqlite3 -emit-link-file /Users/tkb/.cache/chicken-install/sqlite3/sqlite3.link -host -D compiling-extension -c -unit sqlite3 -D compiling-static-extension -C -I/Users/tkb/.cache/chicken-install/sqlite3 -O2 -d1 sqlite3.scm -o /Users/tkb/.cache/chicken-install/sqlite3/sqlite3.static.o
+<a name="rest_code_cd7d55dbc96f430c9ef9e82b98731374-6"></a>   /usr/local/Cellar/chicken/5.2.0/bin/csc -setup-mode -s -host -I /Users/tkb/.cache/chicken-install/sqlite3 -C -I/Users/tkb/.cache/chicken-install/sqlite3 -O2 -d0 -L -lsqlite3 sqlite3.import.scm -o /Users/tkb/.cache/chicken-install/sqlite3/sqlite3.import.so
+<a name="rest_code_cd7d55dbc96f430c9ef9e82b98731374-7"></a>installing sqlite3
+</pre>
+<p>You'll probably need to adjust the version numbers in the pathnames
+for whatever version is installed on your computer.</p>
+</div>
+    <nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="categories/chicken-scheme/" rel="tag">chicken scheme</a></li>
+            <li><a class="tag p-category" href="categories/chicken-install/" rel="tag">chicken-install</a></li>
+            <li><a class="tag p-category" href="categories/csc/" rel="tag">csc</a></li>
+            <li><a class="tag p-category" href="categories/scheme/" rel="tag">scheme</a></li>
+        </ul></nav>
+</div>
+    </article><article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2021/09/13/define-word-results-using-wordnik-stopped-working/" class="u-url">define-word results using wordnik stopped working</a></h2>
         <div class="metadata blog-post-meta">
             <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
             <p class="dateline"><a href="posts/2021/09/13/define-word-results-using-wordnik-stopped-working/" rel="bookmark"><time class="published dt-published" datetime="2021-09-13T15:48:30-04:00" title="2021-09-13 15:48">2021-09-13 15:48</time></a></p>
@@ -167,7 +200,7 @@ Excellent restatement of the class Basic/Expert D&amp;D (B/X D&amp;D) rules from
 As far as I can remember, we often simplified things: I don't remember
 using segments, spell components, weapon speed factors, or armor class
 adjustments, and I'm not sure we used anything like the actual
-official combat sequence.<a class="footnote-reference brackets" href="posts/2021/09/06/old-school-essentials-classic-fantasy-rules-tome/#addict" id="id1">1</a>I never picked up the
+official combat sequence.<a class="footnote-reference brackets" href="posts/2021/09/06/old-school-essentials-classic-fantasy-rules-tome/#addict" id="id1">1</a> I never picked up the
 Moldvay/Cook/Marsh Basic/Expert Sets, unfortunately, since I foolishly
 thought “Advanced” meant better than “Basic”.</p>
 <p>I think <cite>Old-School Essentials Classic Fantasy</cite> is an wonderful way
@@ -195,7 +228,7 @@ Controversy</a>, (<a class="reference external" href="https://web.archive.org/we
 A.D.D.I.C.T. Method and the OSRIC method.</p>
 </dd>
 </dl>
-<p><em>Last edited: 2021-09-11 12:31:47 EDT</em></p>
+<p><em>Last edited: 2021-09-13 17:13:50 EDT</em></p>
 <!-- Local Variables:
 time-stamp-format: "%Y-%02m-%02d %02H:%02M:%02S %Z"
 time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
@@ -339,27 +372,6 @@ for his Nordlond campaign setting.</p>
     <nav><ul itemprop="keywords" class="tags">
 <li><a class="tag p-category" href="categories/dungeon-fantasy-rpg/" rel="tag">dungeon fantasy rpg</a></li>
             <li><a class="tag p-category" href="categories/gurps/" rel="tag">gurps</a></li>
-            <li><a class="tag p-category" href="categories/rpg/" rel="tag">rpg</a></li>
-        </ul></nav>
-</div>
-    </article><article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2021/08/09/found-a-3x5-card-dungeon-i-drew-long-ago/" class="u-url">Found a 3x5 card dungeon I drew long ago</a></h2>
-        <div class="metadata blog-post-meta">
-            <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
-            <p class="dateline"><a href="posts/2021/08/09/found-a-3x5-card-dungeon-i-drew-long-ago/" rel="bookmark"><time class="published dt-published" datetime="2021-08-09T16:05:39-04:00" title="2021-08-09 16:05">2021-08-09 16:05</time></a></p>
-                <p class="commentline">            <a href="posts/2021/08/09/found-a-3x5-card-dungeon-i-drew-long-ago/#disqus_thread" data-disqus-identifier="cache/posts/2021/08/09/found-a-3x5-card-dungeon-i-drew-long-ago.html">Comments</a>
-
-
-        </p>
-</div>
-    </header><div class="e-content entry-content">
-    <div>
-<p>Here's a small dungeon I drew on a 3×5" index card some time ago.
-(Probably in 2008 or so?)</p>
-<img alt="an index card dungeon" src="images/Purple-300.png" style="width: 5in;">
-</div>
-    <nav><ul itemprop="keywords" class="tags">
-<li><a class="tag p-category" href="categories/dungeon/" rel="tag">dungeon</a></li>
-            <li><a class="tag p-category" href="categories/maps/" rel="tag">maps</a></li>
             <li><a class="tag p-category" href="categories/rpg/" rel="tag">rpg</a></li>
         </ul></nav>
 </div>
