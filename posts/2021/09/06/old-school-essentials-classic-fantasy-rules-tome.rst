@@ -30,7 +30,7 @@ I've said elsewhere_ that I started playing with first edition AD&D.
 As far as I can remember, we often simplified things: I don't remember
 using segments, spell components, weapon speed factors, or armor class
 adjustments, and I'm not sure we used anything like the actual
-official combat sequence.\ [#addict]_\ I never picked up the
+official combat sequence.\ [#addict]_ I never picked up the
 Moldvay/Cook/Marsh Basic/Expert Sets, unfortunately, since I foolishly
 thought “Advanced” meant better than “Basic”.
 
@@ -73,7 +73,7 @@ prefers the classic rules.
 
 
 
-*Last edited: 2021-09-11 12:31:47 EDT*
+*Last edited: 2021-09-13 17:13:50 EDT*
 
 ..
    Local Variables:
