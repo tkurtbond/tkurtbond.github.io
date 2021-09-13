@@ -10,7 +10,7 @@
 <link rel="alternate" type="application/atom+xml" title="Atom" href="feed.atom">
 <link rel="canonical" href="https://tkurtbond.github.io/">
 <link rel="next" href="index-92.html" type="text/html">
-<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/2021/09/12/the-isle-of-the-plangent-mage/" type="text/html">
+<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/2021/09/13/define-word-results-using-wordnik-stopped-working/" type="text/html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400;1,700&amp;family=Lato:ital,wght@0,400;0,700;1,400;1,700&amp;family=Source+Code+Pro:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet">
@@ -55,7 +55,51 @@
         <div class="row">
             <div class="col-sm-8 blog-main">
 <div class="postindex">
-    <article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2021/09/12/the-isle-of-the-plangent-mage/" class="u-url">The Isle of the Plangent Mage</a></h2>
+    <article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2021/09/13/define-word-results-using-wordnik-stopped-working/" class="u-url">define-word results using wordnik stopped working</a></h2>
+        <div class="metadata blog-post-meta">
+            <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
+            <p class="dateline"><a href="posts/2021/09/13/define-word-results-using-wordnik-stopped-working/" rel="bookmark"><time class="published dt-published" datetime="2021-09-13T15:48:30-04:00" title="2021-09-13 15:48">2021-09-13 15:48</time></a></p>
+                <p class="commentline">            <a href="posts/2021/09/13/define-word-results-using-wordnik-stopped-working/#disqus_thread" data-disqus-identifier="cache/posts/2021/09/13/define-word-results-using-wordnik-stopped-working.html">Comments</a>
+
+
+        </p>
+</div>
+    </header><div class="e-content entry-content">
+    <div>
+<p>I use <a class="reference external" href="https://github.com/abo-abo/define-word">define-word</a>, a package from melpa (<a class="reference external" href="https://melpa.org/#/define-word">DWM</a>), that looks up the
+definition of a word online.  It uses <a class="reference external" href="http://wordnik.com/">wordnik.com</a> by default.
+Recently it stopped returning definitions.</p>
+<p>I did a little digging, and it turns out that it works when
+you visit the url with Chrome, but not if you just try to download it
+with curl, or <code class="docutils literal"><span class="pre">url-retrieve</span></code> in Emacs. Adding a
+“<code class="docutils literal"><span class="pre">User-Agent:</span> Mozilla/5.0 (Macintosh; Intel Mac OS X 11_5_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36</code>”
+with curl’s -H option made it work.</p>
+<pre class="code bash"><a name="rest_code_8e021d4077de40a491236cc3473877c7-1"></a>curl -i -H <span class="s1">'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 11_5_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36'</span> http://wordnik.com/words/importunate
+</pre>
+<p>So I added a <code class="docutils literal">let</code> in my advice for <code class="docutils literal"><span class="pre">define-word</span></code> that binds
+<code class="docutils literal"><span class="pre">url-request-extra-headers</span></code> to an alist with <code class="docutils literal"><span class="pre">"User-Agent"</span></code> as the
+key and <code class="docutils literal">"Mozilla/5.0 (Macintosh; Intel Mac OS X 11_5_2)
+AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63
+Safari/537.36"</code> as the value, and it works again.</p>
+<p>My solution looks something like this (simplified from my actual advice,
+which does other things too):</p>
+<pre class="code emacs-lisp"><a name="rest_code_59b1eba96d3e495aa9d2b645073b3bda-1"></a><span class="p">(</span><span class="nb">defadvice</span> <span class="nv">define-word</span> <span class="p">(</span><span class="nv">around</span> <span class="nv">your-around-define-word</span> <span class="nv">activate</span><span class="p">)</span>
+<a name="rest_code_59b1eba96d3e495aa9d2b645073b3bda-2"></a>  <span class="s">"Dynamically bind tkb-define-word-word to the word passed in."</span>
+<a name="rest_code_59b1eba96d3e495aa9d2b645073b3bda-3"></a>  <span class="p">(</span><span class="k">let</span> <span class="p">((</span><span class="nv">url-request-extra-headers</span>
+<a name="rest_code_59b1eba96d3e495aa9d2b645073b3bda-4"></a>         <span class="o">'</span><span class="p">((</span><span class="s">"User-Agent"</span> <span class="o">.</span> <span class="s">"Mozilla/5.0 (Macintosh; Intel Mac OS X 11_5_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36"</span><span class="p">))))</span>
+<a name="rest_code_59b1eba96d3e495aa9d2b645073b3bda-5"></a>    <span class="nv">ad-do-it</span><span class="p">))</span>
+</pre>
+<p>I opened an <a class="reference external" href="https://github.com/abo-abo/define-word/issues/31">issue</a> on github, suggesting it might be a good idea to
+add a simpler way to add a <code class="docutils literal"><span class="pre">User-Agent:</span></code> header around
+<code class="docutils literal"><span class="pre">define-word--to-string</span></code>’s call to <code class="docutils literal"><span class="pre">url-retrieve-synchronously</span></code>.</p>
+</div>
+    <nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="categories/define-word/" rel="tag">define-word</a></li>
+            <li><a class="tag p-category" href="categories/emacs/" rel="tag">emacs</a></li>
+            <li><a class="tag p-category" href="categories/wordnik/" rel="tag">wordnik</a></li>
+        </ul></nav>
+</div>
+    </article><article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2021/09/12/the-isle-of-the-plangent-mage/" class="u-url">The Isle of the Plangent Mage</a></h2>
         <div class="metadata blog-post-meta">
             <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
             <p class="dateline"><a href="posts/2021/09/12/the-isle-of-the-plangent-mage/" rel="bookmark"><time class="published dt-published" datetime="2021-09-12T17:56:32-04:00" title="2021-09-12 17:56">2021-09-12 17:56</time></a></p>
@@ -317,53 +361,6 @@ for his Nordlond campaign setting.</p>
 <li><a class="tag p-category" href="categories/dungeon/" rel="tag">dungeon</a></li>
             <li><a class="tag p-category" href="categories/maps/" rel="tag">maps</a></li>
             <li><a class="tag p-category" href="categories/rpg/" rel="tag">rpg</a></li>
-        </ul></nav>
-</div>
-    </article><article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2021/07/28/sorting-differs-between-langc-and-langen_usutf-8-even-in-ls/" class="u-url">Sorting differs between LANG=C and LANG=en_US.UTF-8, even in ls</a></h2>
-        <div class="metadata blog-post-meta">
-            <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
-            <p class="dateline"><a href="posts/2021/07/28/sorting-differs-between-langc-and-langen_usutf-8-even-in-ls/" rel="bookmark"><time class="published dt-published" datetime="2021-07-28T05:05:50-04:00" title="2021-07-28 05:05">2021-07-28 05:05</time></a></p>
-                <p class="commentline">            <a href="posts/2021/07/28/sorting-differs-between-langc-and-langen_usutf-8-even-in-ls/#disqus_thread" data-disqus-identifier="cache/posts/2021/07/28/sorting-differs-between-langc-and-langen_usutf-8-even-in-ls.html">Comments</a>
-
-
-        </p>
-</div>
-    </header><div class="e-content entry-content">
-    <div>
-<p>This is here mostly to give me a concrete example of this happening.</p>
-<p>I have a directory, with two files in it, <span class="file">ab.txt</span> and
-<span class="file">a-c.txt</span>.  Which sorts first when I do a <span class="command">ls</span>?  It
-depends on what locale is set.  Like this:</p>
-<pre class="code bash"><a name="rest_code_f13f70d55e524ee19f1799175652ebca-1"></a>$ <span class="nv">LANG</span><span class="o">=</span>en_US.UTF-8 ls
-<a name="rest_code_f13f70d55e524ee19f1799175652ebca-2"></a>ab.txt       a-c.txt
-<a name="rest_code_f13f70d55e524ee19f1799175652ebca-3"></a>$ <span class="nv">LANG</span><span class="o">=</span>C ls
-<a name="rest_code_f13f70d55e524ee19f1799175652ebca-4"></a>a-c.txt  ab.txt
-</pre>
-<p>Same thing happens with the <span class="command">sort</span> command:</p>
-<pre class="code bash"><a name="rest_code_6e65117ca6494d2cae9f87f7ac82cefd-1"></a>$ cat &gt;a-c-first.txt
-<a name="rest_code_6e65117ca6494d2cae9f87f7ac82cefd-2"></a>a-c.txt
-<a name="rest_code_6e65117ca6494d2cae9f87f7ac82cefd-3"></a>ab.txt
-<a name="rest_code_6e65117ca6494d2cae9f87f7ac82cefd-4"></a>$ cat &gt;ab-first.txt
-<a name="rest_code_6e65117ca6494d2cae9f87f7ac82cefd-5"></a>ab.txt
-<a name="rest_code_6e65117ca6494d2cae9f87f7ac82cefd-6"></a>a-c.txt
-<a name="rest_code_6e65117ca6494d2cae9f87f7ac82cefd-7"></a>$ <span class="nv">LANG</span><span class="o">=</span>C sort ab-first.txt
-<a name="rest_code_6e65117ca6494d2cae9f87f7ac82cefd-8"></a>a-c.txt
-<a name="rest_code_6e65117ca6494d2cae9f87f7ac82cefd-9"></a>ab.txt
-<a name="rest_code_6e65117ca6494d2cae9f87f7ac82cefd-10"></a>$ <span class="nv">LANG</span><span class="o">=</span>en_US.UTF-8 sort a-c-first.txt
-<a name="rest_code_6e65117ca6494d2cae9f87f7ac82cefd-11"></a>ab.txt
-<a name="rest_code_6e65117ca6494d2cae9f87f7ac82cefd-12"></a>a-c.txt
-</pre>
-<p>I found this surprising when it first broke some code I was using,
-since I'd spent so much of my existence in LANG=C (I'm still surprised
-that Unicode has existed for more than half my life), but once I set
-LANG=en_US.UTF-8 because I was using UTF-8 characters in my documents
-I found I was in a different (sorting) world.</p>
-</div>
-    <nav><ul itemprop="keywords" class="tags">
-<li><a class="tag p-category" href="categories/langc/" rel="tag">LANG=C</a></li>
-            <li><a class="tag p-category" href="categories/langen_usutf-8/" rel="tag">LANG=en_US.UTF-8</a></li>
-            <li><a class="tag p-category" href="categories/sort/" rel="tag">sort</a></li>
-            <li><a class="tag p-category" href="categories/sorting/" rel="tag">sorting</a></li>
         </ul></nav>
 </div>
     </article>

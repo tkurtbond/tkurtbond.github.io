@@ -3,13 +3,50 @@
 <feed xml:lang="en" xmlns="http://www.w3.org/2005/Atom">
   <title>Lacking Natural Simplicity (Posts about emacs)</title>
   <id>https://tkurtbond.github.io/categories/cat_computer/emacs.atom</id>
-  <updated>2021-09-08T21:17:13Z</updated>
+  <updated>2021-09-13T19:51:22Z</updated>
   <author>
     <name>T. Kurt Bond</name>
   </author>
   <link rel="self" type="application/atom+xml" href="https://tkurtbond.github.io/categories/cat_computer/emacs.atom"/>
   <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/categories/cat_computer/emacs/"/>
   <generator uri="https://getnikola.com/">Nikola</generator>
+  <entry>
+    <title>define-word results using wordnik stopped working</title>
+    <id>https://tkurtbond.github.io/posts/2021/09/13/define-word-results-using-wordnik-stopped-working/</id>
+    <updated>2021-09-13T15:48:30-04:00</updated>
+    <published>2021-09-13T15:48:30-04:00</published>
+    <author>
+      <name>T. Kurt Bond</name>
+    </author>
+    <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/posts/2021/09/13/define-word-results-using-wordnik-stopped-working/"/>
+    <summary type="html">&lt;div&gt;&lt;p&gt;I use &lt;a class="reference external" href="https://github.com/abo-abo/define-word"&gt;define-word&lt;/a&gt;, a package from melpa (&lt;a class="reference external" href="https://melpa.org/#/define-word"&gt;DWM&lt;/a&gt;), that looks up the
+definition of a word online.  It uses &lt;a class="reference external" href="http://wordnik.com/"&gt;wordnik.com&lt;/a&gt; by default.
+Recently it stopped returning definitions.&lt;/p&gt;
+&lt;p&gt;I did a little digging, and it turns out that it works when
+you visit the url with Chrome, but not if you just try to download it
+with curl, or &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;url-retrieve&lt;/span&gt;&lt;/code&gt; in Emacs. Adding a
+“&lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;User-Agent:&lt;/span&gt; Mozilla/5.0 (Macintosh; Intel Mac OS X 11_5_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36&lt;/code&gt;”
+with curl’s -H option made it work.&lt;/p&gt;
+&lt;pre class="code bash"&gt;&lt;a name="rest_code_8e021d4077de40a491236cc3473877c7-1"&gt;&lt;/a&gt;curl -i -H &lt;span class="s1"&gt;'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 11_5_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36'&lt;/span&gt; http://wordnik.com/words/importunate
+&lt;/pre&gt;&lt;p&gt;So I added a &lt;code class="docutils literal"&gt;let&lt;/code&gt; in my advice for &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;define-word&lt;/span&gt;&lt;/code&gt; that binds
+&lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;url-request-extra-headers&lt;/span&gt;&lt;/code&gt; to an alist with &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;"User-Agent"&lt;/span&gt;&lt;/code&gt; as the
+key and &lt;code class="docutils literal"&gt;"Mozilla/5.0 (Macintosh; Intel Mac OS X 11_5_2)
+AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63
+Safari/537.36"&lt;/code&gt; as the value, and it works again.&lt;/p&gt;
+&lt;p&gt;My solution looks something like this (simplified from my actual advice,
+which does other things too):&lt;/p&gt;
+&lt;pre class="code emacs-lisp"&gt;&lt;a name="rest_code_59b1eba96d3e495aa9d2b645073b3bda-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;defadvice&lt;/span&gt; &lt;span class="nv"&gt;define-word&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;around&lt;/span&gt; &lt;span class="nv"&gt;your-around-define-word&lt;/span&gt; &lt;span class="nv"&gt;activate&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_59b1eba96d3e495aa9d2b645073b3bda-2"&gt;&lt;/a&gt;  &lt;span class="s"&gt;"Dynamically bind tkb-define-word-word to the word passed in."&lt;/span&gt;
+&lt;a name="rest_code_59b1eba96d3e495aa9d2b645073b3bda-3"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;let&lt;/span&gt; &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nv"&gt;url-request-extra-headers&lt;/span&gt;
+&lt;a name="rest_code_59b1eba96d3e495aa9d2b645073b3bda-4"&gt;&lt;/a&gt;         &lt;span class="o"&gt;'&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="s"&gt;"User-Agent"&lt;/span&gt; &lt;span class="o"&gt;.&lt;/span&gt; &lt;span class="s"&gt;"Mozilla/5.0 (Macintosh; Intel Mac OS X 11_5_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36"&lt;/span&gt;&lt;span class="p"&gt;))))&lt;/span&gt;
+&lt;a name="rest_code_59b1eba96d3e495aa9d2b645073b3bda-5"&gt;&lt;/a&gt;    &lt;span class="nv"&gt;ad-do-it&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/pre&gt;&lt;p&gt;I opened an &lt;a class="reference external" href="https://github.com/abo-abo/define-word/issues/31"&gt;issue&lt;/a&gt; on github, suggesting it might be a good idea to
+add a simpler way to add a &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;User-Agent:&lt;/span&gt;&lt;/code&gt; header around
+&lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;define-word--to-string&lt;/span&gt;&lt;/code&gt;’s call to &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;url-retrieve-synchronously&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;&lt;/div&gt;</summary>
+    <category term="define-word" label="define-word"/>
+    <category term="emacs" label="emacs"/>
+    <category term="wordnik" label="wordnik"/>
+  </entry>
   <entry>
     <title>Gitub repo for Arrow Macros for Emacs</title>
     <id>https://tkurtbond.github.io/posts/2021/09/07/gitub-repo-for-arrow-macros-for-emacs/</id>
@@ -455,18 +492,5 @@ PuTTY, too.&lt;/p&gt;</summary>
     <category term="emacs" label="emacs"/>
     <category term="screen" label="screen"/>
     <category term="tools" label="tools"/>
-  </entry>
-  <entry>
-    <title>linum.el</title>
-    <id>https://tkurtbond.github.io/posts/2008/08/16/linumel/</id>
-    <updated>2008-08-16T03:33:26-05:00</updated>
-    <published>2008-08-16T03:33:26-05:00</published>
-    <author>
-      <name>T. Kurt Bond</name>
-    </author>
-    <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/posts/2008/08/16/linumel/"/>
-    <summary type="html">&lt;p&gt;I found a very useful &lt;a class="reference external" href="http://www.gnu.org/software/emacs/"&gt;Emacs&lt;/a&gt; minor mode today: &lt;a class="reference external" href="http://stud4.tuwien.ac.at/~e0225855/linum/linum.html"&gt;linum.el&lt;/a&gt;, which puts line
-numbers at the beginning of all the lines in a buffer.&lt;/p&gt;</summary>
-    <category term="emacs" label="emacs"/>
   </entry>
 </feed>

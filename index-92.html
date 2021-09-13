@@ -55,7 +55,54 @@
         <div class="row">
             <div class="col-sm-8 blog-main">
 <div class="postindex">
-    <article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2021/07/26/making-a-newer-version-of-groff-work-with-man-and-emacs-on-macos/" class="u-url">Making a newer version of groff work with man and emacs on macOS</a></h2>
+    <article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2021/07/28/sorting-differs-between-langc-and-langen_usutf-8-even-in-ls/" class="u-url">Sorting differs between LANG=C and LANG=en_US.UTF-8, even in ls</a></h2>
+        <div class="metadata blog-post-meta">
+            <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
+            <p class="dateline"><a href="posts/2021/07/28/sorting-differs-between-langc-and-langen_usutf-8-even-in-ls/" rel="bookmark"><time class="published dt-published" datetime="2021-07-28T05:05:50-04:00" title="2021-07-28 05:05">2021-07-28 05:05</time></a></p>
+                <p class="commentline">            <a href="posts/2021/07/28/sorting-differs-between-langc-and-langen_usutf-8-even-in-ls/#disqus_thread" data-disqus-identifier="cache/posts/2021/07/28/sorting-differs-between-langc-and-langen_usutf-8-even-in-ls.html">Comments</a>
+
+
+        </p>
+</div>
+    </header><div class="e-content entry-content">
+    <div>
+<p>This is here mostly to give me a concrete example of this happening.</p>
+<p>I have a directory, with two files in it, <span class="file">ab.txt</span> and
+<span class="file">a-c.txt</span>.  Which sorts first when I do a <span class="command">ls</span>?  It
+depends on what locale is set.  Like this:</p>
+<pre class="code bash"><a name="rest_code_f13f70d55e524ee19f1799175652ebca-1"></a>$ <span class="nv">LANG</span><span class="o">=</span>en_US.UTF-8 ls
+<a name="rest_code_f13f70d55e524ee19f1799175652ebca-2"></a>ab.txt       a-c.txt
+<a name="rest_code_f13f70d55e524ee19f1799175652ebca-3"></a>$ <span class="nv">LANG</span><span class="o">=</span>C ls
+<a name="rest_code_f13f70d55e524ee19f1799175652ebca-4"></a>a-c.txt  ab.txt
+</pre>
+<p>Same thing happens with the <span class="command">sort</span> command:</p>
+<pre class="code bash"><a name="rest_code_6e65117ca6494d2cae9f87f7ac82cefd-1"></a>$ cat &gt;a-c-first.txt
+<a name="rest_code_6e65117ca6494d2cae9f87f7ac82cefd-2"></a>a-c.txt
+<a name="rest_code_6e65117ca6494d2cae9f87f7ac82cefd-3"></a>ab.txt
+<a name="rest_code_6e65117ca6494d2cae9f87f7ac82cefd-4"></a>$ cat &gt;ab-first.txt
+<a name="rest_code_6e65117ca6494d2cae9f87f7ac82cefd-5"></a>ab.txt
+<a name="rest_code_6e65117ca6494d2cae9f87f7ac82cefd-6"></a>a-c.txt
+<a name="rest_code_6e65117ca6494d2cae9f87f7ac82cefd-7"></a>$ <span class="nv">LANG</span><span class="o">=</span>C sort ab-first.txt
+<a name="rest_code_6e65117ca6494d2cae9f87f7ac82cefd-8"></a>a-c.txt
+<a name="rest_code_6e65117ca6494d2cae9f87f7ac82cefd-9"></a>ab.txt
+<a name="rest_code_6e65117ca6494d2cae9f87f7ac82cefd-10"></a>$ <span class="nv">LANG</span><span class="o">=</span>en_US.UTF-8 sort a-c-first.txt
+<a name="rest_code_6e65117ca6494d2cae9f87f7ac82cefd-11"></a>ab.txt
+<a name="rest_code_6e65117ca6494d2cae9f87f7ac82cefd-12"></a>a-c.txt
+</pre>
+<p>I found this surprising when it first broke some code I was using,
+since I'd spent so much of my existence in LANG=C (I'm still surprised
+that Unicode has existed for more than half my life), but once I set
+LANG=en_US.UTF-8 because I was using UTF-8 characters in my documents
+I found I was in a different (sorting) world.</p>
+</div>
+    <nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="categories/langc/" rel="tag">LANG=C</a></li>
+            <li><a class="tag p-category" href="categories/langen_usutf-8/" rel="tag">LANG=en_US.UTF-8</a></li>
+            <li><a class="tag p-category" href="categories/sort/" rel="tag">sort</a></li>
+            <li><a class="tag p-category" href="categories/sorting/" rel="tag">sorting</a></li>
+        </ul></nav>
+</div>
+    </article><article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2021/07/26/making-a-newer-version-of-groff-work-with-man-and-emacs-on-macos/" class="u-url">Making a newer version of groff work with man and emacs on macOS</a></h2>
         <div class="metadata blog-post-meta">
             <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
             <p class="dateline"><a href="posts/2021/07/26/making-a-newer-version-of-groff-work-with-man-and-emacs-on-macos/" rel="bookmark"><time class="published dt-published" datetime="2021-07-26T17:30:19-04:00" title="2021-07-26 17:30">2021-07-26 17:30</time></a></p>
