@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity (Posts about troff)</title><link>https://tkurtbond.github.io/</link><description></description><atom:link href="https://tkurtbond.github.io/categories/troff.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2021 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Thu, 09 Sep 2021 14:11:33 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Making a newer version of groff work with man and emacs on macOS</title><link>https://tkurtbond.github.io/posts/2021/07/26/making-a-newer-version-of-groff-work-with-man-and-emacs-on-macos/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;I'm posting this mostly to remind myself if I ever have to fiddle with
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity (Posts about troff)</title><link>https://tkurtbond.github.io/</link><description></description><atom:link href="https://tkurtbond.github.io/categories/troff.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2021 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Sat, 11 Sep 2021 15:59:07 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Making a newer version of groff work with man and emacs on macOS</title><link>https://tkurtbond.github.io/posts/2021/07/26/making-a-newer-version-of-groff-work-with-man-and-emacs-on-macos/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;I'm posting this mostly to remind myself if I ever have to fiddle with
 this again.&lt;/p&gt;
 &lt;p&gt;I use a version of &lt;span class="app"&gt;groff&lt;/span&gt; installed from &lt;span class="app"&gt;git&lt;/span&gt; because some
 of my documents depend on fixes that are coming out in the next
@@ -25,9 +25,9 @@ Boo!&lt;/p&gt;
 alternate configuration file (on macOS the default one is in
 &lt;span class="file"&gt;/private/etc/man.conf&lt;/span&gt;), so you can supply one that specifies
 the absolute path to the newer &lt;span class="app"&gt;groff&lt;/span&gt; you are using.  So I added&lt;/p&gt;
-&lt;pre class="code bash"&gt;&lt;a name="rest_code_7ae3946c1eff4097bf8a3740763a8804-1"&gt;&lt;/a&gt;&lt;span class="nb"&gt;alias&lt;/span&gt; &lt;span class="nv"&gt;man&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'man -C ~/local/etc/man.conf'&lt;/span&gt;
+&lt;pre class="code bash"&gt;&lt;a id="rest_code_6c31248792e14bd8bc97952192041a8b-1" name="rest_code_6c31248792e14bd8bc97952192041a8b-1"&gt;&lt;/a&gt;&lt;span class="nb"&gt;alias&lt;/span&gt; &lt;span class="nv"&gt;man&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'man -C ~/local/etc/man.conf'&lt;/span&gt;
 &lt;/pre&gt;&lt;p&gt;to the appropriate shell startup file.  And I can add&lt;/p&gt;
-&lt;pre class="code emacs-lisp"&gt;&lt;a name="rest_code_d2b69487aefc4f5a9a9b50440170e14a-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;setq&lt;/span&gt; &lt;span class="nv"&gt;Man-switches&lt;/span&gt; &lt;span class="s"&gt;"-C ~/local/etc/man.conf"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;pre class="code emacs-lisp"&gt;&lt;a id="rest_code_9487e5f827534bc98c531d2a305fbaa6-1" name="rest_code_9487e5f827534bc98c531d2a305fbaa6-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;setq&lt;/span&gt; &lt;span class="nv"&gt;Man-switches&lt;/span&gt; &lt;span class="s"&gt;"-C ~/local/etc/man.conf"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;p&gt;to my &lt;span class="app"&gt;emacs&lt;/span&gt; configuration so it uses the right version of
 &lt;span class="app"&gt;groff&lt;/span&gt; too.&lt;/p&gt;
 &lt;p&gt;But a modern &lt;span class="app"&gt;groff&lt;/span&gt; produces ANSI escapes for bold and
@@ -45,11 +45,11 @@ it to use old-style backspace over-striking.&lt;/p&gt;
 &lt;p&gt;This seems overly complicated.&lt;/p&gt;
 &lt;p&gt;I suspect I'll need to do something different on the Linux boxes I
 use.&lt;/p&gt;
-&lt;div class="section" id="later"&gt;
+&lt;section id="later"&gt;
 &lt;h2&gt;Later&lt;/h2&gt;
 &lt;p&gt;Aannnd I was right.  Fedora 33 has a similar problem, which I fixed by
 creating a &lt;span class="file"&gt;~/.manpath&lt;/span&gt; file with&lt;/p&gt;
-&lt;pre class="code text"&gt;&lt;a name="rest_code_e6f83f57cc6c43fea46be03bf34c8827-1"&gt;&lt;/a&gt;DEFINE       nroff   /sw/versions/groff/git/bin/nroff -mandoc -P-c
+&lt;pre class="code text"&gt;&lt;a id="rest_code_c713c8ad49b54f3885d4c2f77383ad85-1" name="rest_code_c713c8ad49b54f3885d4c2f77383ad85-1"&gt;&lt;/a&gt;DEFINE       nroff   /sw/versions/groff/git/bin/nroff -mandoc -P-c
 &lt;/pre&gt;&lt;p&gt;in it.  I found the information I needed in &lt;span class="man"&gt;manpath(5)&lt;/span&gt;, which
 documents the format of the &lt;span class="file"&gt;/etc/man_db.conf&lt;/span&gt; file.  (Why isn't
 it &lt;span class="man"&gt;man_db.conf(5)&lt;/span&gt;, then?)&lt;/p&gt;
@@ -68,7 +68,7 @@ time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
 time-stamp-end: "\\*\\\\?\n"
 time-stamp-line-limit: -20
 End: --&gt;
-&lt;/div&gt;&lt;/div&gt;</description><category>groff</category><category>macos</category><category>troff</category><guid>https://tkurtbond.github.io/posts/2021/07/26/making-a-newer-version-of-groff-work-with-man-and-emacs-on-macos/</guid><pubDate>Mon, 26 Jul 2021 21:30:19 GMT</pubDate></item><item><title>install-font.sh - The simple approach</title><link>https://tkurtbond.github.io/posts/2021/07/17/install-fontsh-the-simple-approach/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;The simple approach to using &lt;a class="reference external" href="https://www.schaffter.ca/mom/mom-05.html#install-font"&gt;install-font.sh&lt;/a&gt; to install fonts for
+&lt;/section&gt;&lt;/div&gt;</description><category>groff</category><category>macos</category><category>troff</category><guid>https://tkurtbond.github.io/posts/2021/07/26/making-a-newer-version-of-groff-work-with-man-and-emacs-on-macos/</guid><pubDate>Mon, 26 Jul 2021 21:30:19 GMT</pubDate></item><item><title>install-font.sh - The simple approach</title><link>https://tkurtbond.github.io/posts/2021/07/17/install-fontsh-the-simple-approach/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;The simple approach to using &lt;a class="reference external" href="https://www.schaffter.ca/mom/mom-05.html#install-font"&gt;install-font.sh&lt;/a&gt; to install fonts for
 &lt;span class="app"&gt;groff&lt;/span&gt; probably works for almost everybody.&lt;/p&gt;
 &lt;p&gt;First, make sure that &lt;a class="reference external" href="https://fontforge.org/"&gt;FontForge&lt;/a&gt; is installed; it is free and open
 source and available for installation in most distributions.  Second,
@@ -79,7 +79,7 @@ directories under &lt;span class="file"&gt;/usr/local/share/groff&lt;/span&gt;, 
 directories if necessary.  If you need to install into
 &lt;span class="file"&gt;/usr/share/groff&lt;/span&gt; you should specify the &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;-s&lt;/span&gt;&lt;/code&gt; option to the
 script.  For instance:&lt;/p&gt;
-&lt;pre class="code text"&gt;&lt;a name="rest_code_fcd20ada2a444b6b9ef8a78217b4c9dc-1"&gt;&lt;/a&gt;$ install-font.sh Lora-Regular.ttf
+&lt;pre class="code text"&gt;&lt;a id="rest_code_a34df42cbf204f0ebf6c8eb0c66e6a12-1" name="rest_code_a34df42cbf204f0ebf6c8eb0c66e6a12-1"&gt;&lt;/a&gt;$ install-font.sh Lora-Regular.ttf
 &lt;/pre&gt;&lt;p&gt;will install the Regular variant of the font, leading you through four
 prompts, for three of which you just need to take the default.&lt;/p&gt;
 &lt;p&gt;The only prompt where you need to do something other than accept the
@@ -262,7 +262,7 @@ files into proper places under &lt;span class="app"&gt;groff&lt;/span&gt;'s site
 &lt;p&gt;So, for instance, you'd cd to the directory that holds the &lt;span class="file"&gt;.ttf&lt;/span&gt; files
 you downloaded.  Then, to install the Regular variant of Cormorant
 Garamond you'd run the command&lt;/p&gt;
-&lt;pre class="code bash"&gt;&lt;a name="rest_code_2fd3a75bdcdc439eb9f8ee4929a83a00-1"&gt;&lt;/a&gt;&lt;span class="k"&gt;$(&lt;/span&gt;IFDIR&lt;span class="k"&gt;)&lt;/span&gt;/install-font.sh -n -P &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$DEST&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt; -d -F CormorantGaramond -f +R CormorantGaramond-Regular.ttf
+&lt;pre class="code bash"&gt;&lt;a id="rest_code_6812261c5cfc4b12a7db044dc4b8b5bd-1" name="rest_code_6812261c5cfc4b12a7db044dc4b8b5bd-1"&gt;&lt;/a&gt;&lt;span class="k"&gt;$(&lt;/span&gt;IFDIR&lt;span class="k"&gt;)&lt;/span&gt;/install-font.sh -n -P &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$DEST&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt; -d -F CormorantGaramond -f +R CormorantGaramond-Regular.ttf
 &lt;/pre&gt;&lt;p&gt;where &lt;code class="docutils literal"&gt;IFDIR&lt;/code&gt; is an environment variable indicating the directory
 where &lt;span class="command"&gt;install-font.sh&lt;/span&gt; is located and &lt;code class="docutils literal"&gt;DEST&lt;/code&gt; is an
 environment variable indicating the directory that contains
@@ -297,9 +297,9 @@ name of the &lt;span class="app"&gt;groff&lt;/span&gt; font and the &lt;span cla
 name of the Truetype or OpenType file you are converting.&lt;/p&gt;
 &lt;p&gt;To complete the example, here are the commands to install the Italic,
 Bold, and Bold Italic variants of Cormorant Garamond:&lt;/p&gt;
-&lt;pre class="code bash"&gt;&lt;a name="rest_code_19c244ff68784702b43727a817f61e6f-1"&gt;&lt;/a&gt;&lt;span class="k"&gt;$(&lt;/span&gt;IFDIR&lt;span class="k"&gt;)&lt;/span&gt;/install-font.sh -n -P &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$DEST&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt; -d -F CormorantGaramond -f +I CormorantGaramond-Italic.ttf
-&lt;a name="rest_code_19c244ff68784702b43727a817f61e6f-2"&gt;&lt;/a&gt;&lt;span class="k"&gt;$(&lt;/span&gt;IFDIR&lt;span class="k"&gt;)&lt;/span&gt;/install-font.sh -n -P &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$DEST&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt; -d -F CormorantGaramond -f +B CormorantGaramond-Bold.ttf
-&lt;a name="rest_code_19c244ff68784702b43727a817f61e6f-3"&gt;&lt;/a&gt;&lt;span class="k"&gt;$(&lt;/span&gt;IFDIR&lt;span class="k"&gt;)&lt;/span&gt;/install-font.sh -n -P &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$DEST&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt; -d -F CormorantGaramond -f +BI CormorantGaramond-BoldItalic.
+&lt;pre class="code bash"&gt;&lt;a id="rest_code_a290ed067e82497aade37088534c4286-1" name="rest_code_a290ed067e82497aade37088534c4286-1"&gt;&lt;/a&gt;&lt;span class="k"&gt;$(&lt;/span&gt;IFDIR&lt;span class="k"&gt;)&lt;/span&gt;/install-font.sh -n -P &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$DEST&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt; -d -F CormorantGaramond -f +I CormorantGaramond-Italic.ttf
+&lt;a id="rest_code_a290ed067e82497aade37088534c4286-2" name="rest_code_a290ed067e82497aade37088534c4286-2"&gt;&lt;/a&gt;&lt;span class="k"&gt;$(&lt;/span&gt;IFDIR&lt;span class="k"&gt;)&lt;/span&gt;/install-font.sh -n -P &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$DEST&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt; -d -F CormorantGaramond -f +B CormorantGaramond-Bold.ttf
+&lt;a id="rest_code_a290ed067e82497aade37088534c4286-3" name="rest_code_a290ed067e82497aade37088534c4286-3"&gt;&lt;/a&gt;&lt;span class="k"&gt;$(&lt;/span&gt;IFDIR&lt;span class="k"&gt;)&lt;/span&gt;/install-font.sh -n -P &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$DEST&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt; -d -F CormorantGaramond -f +BI CormorantGaramond-BoldItalic.
 &lt;/pre&gt;&lt;p&gt;As I said in an earlier email to the list, I tend to put all four
 commands into a script so I can run them again if something goes wrong
 or when I need to install them on a new machine or in a new
@@ -307,7 +307,7 @@ installation of &lt;span class="app"&gt;groff&lt;/span&gt;.  In the case of Corm
 file &lt;span class="file"&gt;install-cormorant-garamond.sh&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Later:&lt;/strong&gt; Peter Schaffter &lt;a class="reference external" href="https://lists.gnu.org/archive/html/groff/2021-07/msg00090.html"&gt;pointed out&lt;/a&gt; that the &lt;em&gt;simple&lt;/em&gt; use of
 &lt;span class="command"&gt;install-font.sh&lt;/span&gt; is:&lt;/p&gt;
-&lt;pre class="code bash"&gt;&lt;a name="rest_code_26555d406f4042ad874f33fe54da22b9-1"&gt;&lt;/a&gt;sudo install-font.sh fontfile
+&lt;pre class="code bash"&gt;&lt;a id="rest_code_b2a89db039cf4a13b5350a5ee5d2b589-1" name="rest_code_b2a89db039cf4a13b5350a5ee5d2b589-1"&gt;&lt;/a&gt;sudo install-font.sh fontfile
 &lt;/pre&gt;&lt;p&gt;and then answer the questions the script asks.  He also pointed out
 that it creates the &lt;span class="file"&gt;site-font&lt;/span&gt; directory and necessary
 subdirectories if needed in, and here I quote: “the only two locations
@@ -377,18 +377,18 @@ posted a version that I built a while ago &lt;a class="reference external" href=
 outline/table-of-contents entries for sections in &lt;span class="app"&gt;groff&lt;/span&gt; &lt;span class="app"&gt;mm&lt;/span&gt;,
 using the &lt;code class="docutils literal"&gt;HZ&lt;/code&gt; user-defined heading exit macro (see
 &lt;span class="man"&gt;groff_mm(7)&lt;/span&gt;):&lt;/p&gt;
-&lt;pre class="code nroff"&gt;&lt;a name="rest_code_df1dfa8657964e4c94c08a4449273cb0-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="c"&gt;\" pdf outline fold level&lt;/span&gt;
-&lt;a name="rest_code_df1dfa8657964e4c94c08a4449273cb0-2"&gt;&lt;/a&gt;.&lt;span class="k"&gt;nr&lt;/span&gt; &lt;span class="s"&gt;PDFOUTLINE.FOLDLEVEL&lt;/span&gt; &lt;span class="m"&gt;3&lt;/span&gt;
-&lt;a name="rest_code_df1dfa8657964e4c94c08a4449273cb0-3"&gt;&lt;/a&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="c"&gt;\" start out in outline view&lt;/span&gt;
-&lt;a name="rest_code_df1dfa8657964e4c94c08a4449273cb0-4"&gt;&lt;/a&gt;.&lt;span class="k"&gt;pdfview&lt;/span&gt; &lt;span class="s"&gt;/PageMode&lt;/span&gt; &lt;span class="s"&gt;/UseOutlines&lt;/span&gt;
-&lt;a name="rest_code_df1dfa8657964e4c94c08a4449273cb0-5"&gt;&lt;/a&gt;.&lt;span class="k"&gt;de&lt;/span&gt; &lt;span class="s"&gt;HZ&lt;/span&gt;
-&lt;a name="rest_code_df1dfa8657964e4c94c08a4449273cb0-6"&gt;&lt;/a&gt;.&lt;span class="k"&gt;pdfhref&lt;/span&gt; &lt;span class="s"&gt;O&lt;/span&gt; &lt;span class="se"&gt;\\&lt;/span&gt;&lt;span class="s"&gt;$2&lt;/span&gt; &lt;span class="se"&gt;\\&lt;/span&gt;&lt;span class="s"&gt;*[}0]&lt;/span&gt; &lt;span class="se"&gt;\\&lt;/span&gt;&lt;span class="s"&gt;$3&lt;/span&gt;
-&lt;a name="rest_code_df1dfa8657964e4c94c08a4449273cb0-7"&gt;&lt;/a&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="s"&gt;.&lt;/span&gt;
+&lt;pre class="code nroff"&gt;&lt;a id="rest_code_d066a79dff964ba7b6069fea6d334e88-1" name="rest_code_d066a79dff964ba7b6069fea6d334e88-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="c"&gt;\" pdf outline fold level&lt;/span&gt;
+&lt;a id="rest_code_d066a79dff964ba7b6069fea6d334e88-2" name="rest_code_d066a79dff964ba7b6069fea6d334e88-2"&gt;&lt;/a&gt;.&lt;span class="k"&gt;nr&lt;/span&gt; &lt;span class="s"&gt;PDFOUTLINE.FOLDLEVEL&lt;/span&gt; &lt;span class="m"&gt;3&lt;/span&gt;
+&lt;a id="rest_code_d066a79dff964ba7b6069fea6d334e88-3" name="rest_code_d066a79dff964ba7b6069fea6d334e88-3"&gt;&lt;/a&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="c"&gt;\" start out in outline view&lt;/span&gt;
+&lt;a id="rest_code_d066a79dff964ba7b6069fea6d334e88-4" name="rest_code_d066a79dff964ba7b6069fea6d334e88-4"&gt;&lt;/a&gt;.&lt;span class="k"&gt;pdfview&lt;/span&gt; &lt;span class="s"&gt;/PageMode&lt;/span&gt; &lt;span class="s"&gt;/UseOutlines&lt;/span&gt;
+&lt;a id="rest_code_d066a79dff964ba7b6069fea6d334e88-5" name="rest_code_d066a79dff964ba7b6069fea6d334e88-5"&gt;&lt;/a&gt;.&lt;span class="k"&gt;de&lt;/span&gt; &lt;span class="s"&gt;HZ&lt;/span&gt;
+&lt;a id="rest_code_d066a79dff964ba7b6069fea6d334e88-6" name="rest_code_d066a79dff964ba7b6069fea6d334e88-6"&gt;&lt;/a&gt;.&lt;span class="k"&gt;pdfhref&lt;/span&gt; &lt;span class="s"&gt;O&lt;/span&gt; &lt;span class="se"&gt;\\&lt;/span&gt;&lt;span class="s"&gt;$2&lt;/span&gt; &lt;span class="se"&gt;\\&lt;/span&gt;&lt;span class="s"&gt;*[}0]&lt;/span&gt; &lt;span class="se"&gt;\\&lt;/span&gt;&lt;span class="s"&gt;$3&lt;/span&gt;
+&lt;a id="rest_code_d066a79dff964ba7b6069fea6d334e88-7" name="rest_code_d066a79dff964ba7b6069fea6d334e88-7"&gt;&lt;/a&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="s"&gt;.&lt;/span&gt;
 &lt;/pre&gt;&lt;p&gt;And here's how to do it in &lt;a class="reference external" href="http://n-t-roff.github.io/heirloom/doctools.html"&gt;Heirloom Docutils&lt;/a&gt; &lt;span class="app"&gt;troff&lt;/span&gt;:&lt;/p&gt;
-&lt;pre class="code nroff"&gt;&lt;a name="rest_code_35db5f339038467db0126c9c04977290-1"&gt;&lt;/a&gt;.&lt;span class="k"&gt;de&lt;/span&gt; &lt;span class="s"&gt;HY&lt;/span&gt;
-&lt;a name="rest_code_35db5f339038467db0126c9c04977290-2"&gt;&lt;/a&gt;.&lt;span class="k"&gt;nr&lt;/span&gt; &lt;span class="s"&gt;HYtmp&lt;/span&gt; &lt;span class="s"&gt;(\\$1-1)&lt;/span&gt;
-&lt;a name="rest_code_35db5f339038467db0126c9c04977290-3"&gt;&lt;/a&gt;&lt;span class="se"&gt;\\&lt;/span&gt;X'PDFMark: Bookmark &lt;span class="se"&gt;\\&lt;/span&gt;n[HYtmp] &lt;span class="se"&gt;\\&lt;/span&gt;$3'
-&lt;a name="rest_code_35db5f339038467db0126c9c04977290-4"&gt;&lt;/a&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="s"&gt;.&lt;/span&gt;
+&lt;pre class="code nroff"&gt;&lt;a id="rest_code_d5b0c0b0b2634e5cb803ac30acd88430-1" name="rest_code_d5b0c0b0b2634e5cb803ac30acd88430-1"&gt;&lt;/a&gt;.&lt;span class="k"&gt;de&lt;/span&gt; &lt;span class="s"&gt;HY&lt;/span&gt;
+&lt;a id="rest_code_d5b0c0b0b2634e5cb803ac30acd88430-2" name="rest_code_d5b0c0b0b2634e5cb803ac30acd88430-2"&gt;&lt;/a&gt;.&lt;span class="k"&gt;nr&lt;/span&gt; &lt;span class="s"&gt;HYtmp&lt;/span&gt; &lt;span class="s"&gt;(\\$1-1)&lt;/span&gt;
+&lt;a id="rest_code_d5b0c0b0b2634e5cb803ac30acd88430-3" name="rest_code_d5b0c0b0b2634e5cb803ac30acd88430-3"&gt;&lt;/a&gt;&lt;span class="se"&gt;\\&lt;/span&gt;X'PDFMark: Bookmark &lt;span class="se"&gt;\\&lt;/span&gt;n[HYtmp] &lt;span class="se"&gt;\\&lt;/span&gt;$3'
+&lt;a id="rest_code_d5b0c0b0b2634e5cb803ac30acd88430-4" name="rest_code_d5b0c0b0b2634e5cb803ac30acd88430-4"&gt;&lt;/a&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="s"&gt;.&lt;/span&gt;
 &lt;/pre&gt;&lt;p&gt;This version uses the &lt;code class="docutils literal"&gt;HY&lt;/code&gt; user-defined heading exit macro and
 doesn't include the section numbers.&lt;/p&gt;
 &lt;p&gt;I'm not sure why the two use different macros.  All I can say is that
