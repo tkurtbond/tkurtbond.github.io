@@ -6,8 +6,9 @@ D&D Retro-clones and Neo-clones
 .. _Retro-clone: link://slug/rpg-vocabulary#Retro-clone
 .. _Neo-clone: link://slug/rpg-vocabulary#Neo-clone
 
-All of the retro-clones and neo-clones mentioned below are games with which 
-I have some familiarity.  Many of them I've played.  The others I've read.
+All of the retro-clones and neo-clones mentioned below are games with
+which I have some familiarity.  Many of them I've played.  The others
+I've read.  All of them have something interesting to recommend them.
 
 What do you want?
 =================
@@ -144,12 +145,82 @@ as you don't need gnomes or illusionists.
 
 .. _Swords & Wizardry Complete: https://www.froggodgames.com/product/swords-wizardry-complete-rulebook/
 
+Old-School Essentials
+=====================
+
+`Old-School Essentials` (OSE) is published by `Necrotic Gnome`_ in two
+flavors so far, `Classic Fantasy` and `Advanced Fantasy`.
+
+.. _Necrotic Gnome: https://necroticgnome.com/
+
+In my opinion, OSE has improved the clarity and presentation of its
+rules over the already very good `Basic/Expert D&D`_ rules.  As well
+as clear wording it uses layout and typography to enhance its
+presentation of the rules, from the use of one and two page spreads
+that completely cover one subject to the careful use of bold and
+bullet points to call out important information, OSE really shines.
+The adventures_ that `Necrotic Gnome`_ have produced for it (`The Hole
+in the Oak`_, `Winter's Daughter`_, `The Incandescent Grottoes`_, `The
+Isle of the Plangent Mage`_, `Halls of the Blood King`_, and `Holy
+Mountain Shaker`_) continue this excellent use of layout, bold, and
+bullet points to present their information clearly and without the
+dreaded “wall of text” or “read aloud text”.
+
+.. _adventures: https://necroticgnome.com/collections/adventures
+.. _The Hole in the Oak: https://necroticgnome.com/collections/adventures/products/the-hole-in-the-oak
+.. _Winter's Daughter: https://necroticgnome.com/collections/adventures/products/dolmenwood-winters-daughter
+.. _The Incandescent Grottoes: https://necroticgnome.com/collections/adventures/products/the-incandescent-grottoes
+.. _The Isle of the Plangent Mage: https://necroticgnome.com/collections/adventures/products/the-isle-of-the-plangent-mage
+.. _Halls of the Blood King: https://necroticgnome.com/collections/adventures/products/halls-of-the-blood-king
+.. _Holy Mountain Shaker: https://necroticgnome.com/collections/adventures/products/holy-mountain-shaker
+
+
+
+Old-School Essentials Classic Fantasy
+-------------------------------------
+
+`Old-School Essentials Classic Fantasy` (OSECF_) is the best organized
+and presented version of the classic rules from the Moldvay/Cook/Marsh
+Basic/Expert D&D sets.  This is the game that I wish had been around
+when I started playing.  There is an SRD (OSESRD_).
+
+.. _OSECF: https://necroticgnome.com/collections/rules/products/old-school-essentials-rules-tome
+.. _OSESRD: https://oldschoolessentials.necroticgnome.com/srd/
+
+Old-School Essentials Advanced Fantasy
+--------------------------------------
+
+`Old-School Essentials Advanced Fantasy` is the best organized and
+presented version of the ideas of the classic rules from 1\
+:sup:`st` edition AD&D, scaled to match the 1–14 level scope of the
+Moldvay/Cook/Marsh Basic/Expert D&D sets.  If I was starting a new
+D&D campaign these are the rules I'd use, all things being equal.
+
+`Old-School Essentials Advanced Fantasy` is collected in the `Player's
+Tome`_ and `Referee's Tome`_.
+
+.. _Player's Tome: https://necroticgnome.com/collections/rules/products/old-school-essentials-advanced-fantasy-players-tome
+.. _Referee's Tome: https://necroticgnome.com/collections/rules/products/old-school-essentials-advanced-fantasy-referees-tome
+
+
+Adventurer, Conqueror, King System
+==================================
+
+The name of this system is often abbreviated as ACKS.  One of its
+explicit design goals for to supply more rules for the end of game of
+Original D&D, where the players built strongholds and ruled.
+
+It uses some different mechanics, especially for “to hit” roles, so it
+might be considered a `Neo-Clone`_.
+
+.. _Adventure, Conqueror, King System: https://www3.autarch.co/?page_id=128
+
 OSRIC
 =====
 
 I looked at OSRIC_, (a free `OSRIC PDF`_ is available, as well as a
 free PDF of the `Usherwood Publishing`_ `OSRIC Pocket SRD`_ version)
-but was more interested in Basic/Export retroclones at the time.  I
+but was more interested in `Basic/Expert D&D`_ retroclones at the time.  I
 think it is a well written, organized, and presented restatement of
 AD&D 1E.  The `Black Blade Publishing`_ print edition is a very nice
 offset printed, sewn spine, volume.  The `Usherwood Publishing`_
@@ -212,52 +283,6 @@ The Hero's Journey
 ==================
 
 .. _The Hero's Journey: https://www.drivethrurpg.com/product/295279/The-Heros-Journey-Second-Edition
-
-Old-School Essentials
-=====================
-
-`Old-School Essentials` (OSE) is published by `Necrotic Gnome`_ in two
-flavors so far, `Classic Fantasy` and `Advanced Fantasy`.
-
-.. _Necrotic Gnome: https://necroticgnome.com/
-
-
-Old-School Essentials Classic Fantasy
--------------------------------------
-
-`Old-School Essentials Classic Fantasy` (OSECF_) is the best organized
-and presented version of the classic rules from the Moldvay/Cook/Marsh
-Basic/Expert D&D sets.  This is the game that I wish had been around
-when I started playing.  There is an SRD (OSESRD_).
-
-.. _OSECF: https://necroticgnome.com/collections/rules/products/old-school-essentials-rules-tome
-.. _OSESRD: https://oldschoolessentials.necroticgnome.com/srd/
-
-Old-School Essentials Advanced Fantasy
---------------------------------------
-
-`Old-School Essentials Advanced Fantasy` is the best organized and
-presented version of the ideas of the classic rules from 1\
-:sup:`st` edition AD&D, scaled to match the 1–14 level scope of the
-Moldvay/Cook/Marsh Basic/Expert D&D sets.  If I was starting a new
-D&D campaign these are the rules I'd use, all things being equal.
-
-`Old-School Essentials Advanced Fantasy` is collected in the `Player's
-Tome`_ and `Referee's Tome`_.
-
-.. _Player's Tome: https://necroticgnome.com/collections/rules/products/old-school-essentials-advanced-fantasy-players-tome
-.. _Referee's Tome: https://necroticgnome.com/collections/rules/products/old-school-essentials-advanced-fantasy-referees-tome
-
-
-Adventurer, Conqueror, King System
-==================================
-
-This the name of this system is often abbreviated as ACKS.
-
-Liked B/X D&D's scale, but wanted more details?  ACKS is the game
-for you.
-
-.. _Adventure, Conqueror, King System: https://www3.autarch.co/?page_id=128
 
 See Also
 ========
