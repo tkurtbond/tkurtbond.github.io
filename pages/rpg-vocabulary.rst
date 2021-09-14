@@ -29,7 +29,7 @@ Retro-clone
     `Swords & Wizardry Complete` (`S&W1`_, `S&W2`_) is a retro-clone
     of `Original D&D`_ plus some additional material from `The
     Strategic Review` and `Dragon` magazines_.  OSRIC_ is a
-    retro-clone of `Advanced Dungeons & Dragons`.
+    retro-clone of `Advanced Dungeons & Dragons`, first edition.
 
 __ https://en.wikipedia.org/wiki/Open_gaming
 __ https://en.wikipedia.org/wiki/Open_Game_License
@@ -63,6 +63,17 @@ Neo-clone
 .. _Dan Proctor: http://goblinoidgames.blogspot.com/
 .. _discussion: http://goblinoidgames.blogspot.com/2013/02/three-fold-guide-to-neo-retro-revised.html
 
+.. _Neo_retro:
+
+Neo-retro
+    A broad category of game systems that claims a “retro” or
+    “old-school” feel.  It stretches to include games such as the
+    `Dungeon Crawl Classics RPG`_ or `Mazes & Minotaurs`_ which
+    include mechanics that are considerably different from
+    retro-clones and the games that inspired them.
+
+.. _Dungeon Crawl Classics RPG: https://goodman-games.com/dungeon-crawl-classics-rpg/
+.. _Mazes & Minotaurs: http://mazesandminotaurs.free.fr/
 
 .. _Megadungeon:
 
