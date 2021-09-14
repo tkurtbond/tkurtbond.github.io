@@ -1,29 +1,59 @@
-Retro-clones and neo-clones
-@@@@@@@@@@@@@@@@@@@@@@@@@@@
+D&D Retro-clones and Neo-clones
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+(See `Retro-clone`_ and `Neo-clone`_ for definitions.)
+
+.. _Retro-clone: link://slug/rpg-vocabulary#Retro-clone
+.. _Neo-clone: link://slug/rpg-vocabulary#Neo-clone
+
+All of the retro-clones and neo-clones mentioned below are games with which 
+I have some familiarity.  Many of them I've played.  The others I've read.
+
+What do you want?
+=================
 
 Want a simple, clear, exceptionally well organized and presented
-version of the classic B/X D&D rules?  `Old-School Essentials Classic
-Fantasy`.
+version of the classic `Basic/Expert D&D`_ (B/X) rules?  See
+`Old-School Essentials Classic Fantasy`_.
+
+.. _Basic/Expert D&D: https://en.wikipedia.org/wiki/Dungeons_%26_Dragons_Basic_Set#1981_revision
 
 Want races separate from classes and the most of the extra classes,
 races, and many spells from AD&D 1E, all on the 1 to 14 level scale of
-B/X D&D?  `Old-School Essentials Advanced Fantasy`.
+the classic `Basic/Expert D&D`_ (B/X)?  See `Old-School Essentials
+Advanced Fantasy`_.
 
 Want to play classic AD&D 1E modules with all races, classes, and most
 spells from AD&D 1E, on a mostly 1 to 20 level scale, with 9\
 :sup:`th` level magic user spells and 7\ :sup:`th` cleric spells?
-`Labyrinth Lord: Revised` and `Advanced Edition Companion`, or
-`Advanced Labyrinth Lord`.
+See `Labyrinth Lord: Revised & Advanced Edition Companion`_, or
+`Advanced Labyrinth Lord`_.
 
-Want something that feels like Original D&D, just before AD&D 1E came
-out, with the classes and races (except for gnomes and illusionists)
-and spells familiar from AD&D 1E, but simpler, on a mostly 1 to 20+
-level scale, with 9\ :sup:`th` level magic user spells and 7\
-:sup:`th` cleric spells?? `Swords & Wizardry Complete`.
+Want something that feels like `Original D&D`_, just what was in the
+three original Little Brown Books?  See `Swords & Wizardry Whitebox`_,
+`Labyrinth Lord`\'s `Original Edition Characters`_, or `Delving
+Deeper`_.  Do you also want the thief class?  See `Swords & Wizardry
+Core`_.
 
-Like the 1 to 14 level scale and the lower hit dice of B/X D&D, but
-want more detailed rules, especially for domain play?  `Adventurer,
-Conqueror, King System`.
+.. _Original D&D: https://en.wikipedia.org/wiki/Dungeons_%26_Dragons_(1974)
+
+Want something that feels like `Original D&D`_, just before AD&D 1E
+came out, with the classes and races (except for gnomes and
+illusionists) and spells familiar from AD&D 1E, but simpler, on a
+mostly 1 to 20+ level scale, with up to 9\ :sup:`th` level magic user
+spells and 7\ :sup:`th` level cleric spells?  See `Swords & Wizardry
+Complete`_.
+
+Like the 1 to 14 level scale and the lower hit dice of `Basic/Expert
+D&D`_, but want more detailed rules, especially economics and domain
+play (the D&D end game, where the players build strongholds and rule)?
+See the `Adventurer, Conqueror, King System`_.
+
+Want the 1 to 36 level scale of Frank Mentzer's BECMI_ rules or Aaron
+Allston's `Rules Cyclopedia`_?  See `Dark Dungeons`_.
+
+.. _BECMI: https://en.wikipedia.org/wiki/Dungeons_%26_Dragons_Basic_Set#1983_revision
+.. _Rules Cyclopedia: https://en.wikipedia.org/wiki/Dungeons_%26_Dragons_Basic_Set#1991_revision
 
 Basic Fantasy
 =============
@@ -34,8 +64,8 @@ was looking for at the time.
 All its PDFs are free, and the print on demand books are *very*
 inexpensive.
 
-Although I notice that the character class tables all go to
-level 20.  I conjecture this is a residual artifact of the D&D 3E
+I notice that the character class tables all go to
+level 20.  I wonder if this is a residual artifact of the `D&D 3E`_
 character classes going to level 20, since it doesn't match the B/X
 model that that is implied by the Basic Fantasy website with the
 statement “The Basic Fantasy Role-Playing Game is a rules-light game
@@ -44,6 +74,7 @@ Compare that to Labyrinth Lord's rescaling of B/X to match
 AD&D.
 
 .. _Basic Fantasy: https://www.basicfantasy.org/
+.. _D&D 3E: https://en.wikipedia.org/wiki/Editions_of_Dungeons_%26_Dragons#Dungeons_&_Dragons_3rd_edition
 
 Labyrinth Lord
 ==============
@@ -52,7 +83,7 @@ Original Edition Characters
 ---------------------------
 
 `Original Edition Characters` is a player's supplement for `Labyrinth
-Lord` that provides characters more like those of Original D&D.
+Lord` that provides characters more like those of `Original D&D`_.
 (OECPDF_, OECPOD_)
 
 .. _OECPDF: https://www.drivethrurpg.com/product/58558/Original-Edition-Characters?manufacturers_id=760
@@ -140,7 +171,7 @@ Dark Dungeons
 
 `Dark Dungeons` is available in a free PDF (DDFreePDF_), a hardback
 (DDHardback_), a paperback (DDPaperback_), and a deluxe color edition
-(DDDeluxe_).
+(DDDeluxe_).  It has a `home page`_.
 
 This is a retro-clone of The D&D Rules Cyclopedia.
 
@@ -150,7 +181,7 @@ adjusting other rules, and integrating rules for Immortals.  It does
 not include the Mystara setting and cosmology elements.  The
 monsters differ_ somewhat.
 
-.. _Dark Dungeons: https://gurbintrollgames.wordpress.com/dark-dungeons/
+.. _home page: https://gurbintrollgames.wordpress.com/dark-dungeons/
 .. _DDFreePDF: https://www.drivethrurpg.com/product/177410/Dark-Dungeons
 .. _DDHardback: https://www.lulu.com/en/us/shop/blacky-the-blackball/dark-dungeons-hardback/hardcover/product-16q68rge.html
 .. _DDPaperback: https://www.lulu.com/en/us/shop/blacky-the-blackball/dark-dungeons-softcover/paperback/product-18n6qr25.html
@@ -168,32 +199,33 @@ they were intended to be used) as possible.  The `Delving Deeper V4
 Reference Rules Compendium`_ is a Print-on-Demand version of the three
 booklets.  There is also the `Delving Deeper SRD`_.  I was
 particularly interested in Version 5 of `Delving Deeper`, as that
-promised annotated versions of the three booklets, but only one of the
+promised annotated versions of the three booklets, but only one_ of the
 annotated versions has been completed so far.
 
 .. _Delving Deeper Description: http://www.immersiveink.com/?page_id=22
 .. _Delving Deeper PDFs: http://forum.immersiveink.com/viewtopic.php?f=15&t=113
 .. _Delving Deeper V4 Reference Rules Compendium: https://www.lulu.com/shop/simon-j-bull/delving-deeper-reference-rules-compendium/paperback/product-21911339.html
 .. _Delving Deeper SRD: http://ddo.immersiveink.com/dd.html
+.. _one: http://download.immersiveink.com/DDRefRulesV5/HeroesAndMagicV5_Gamma_Annotated_Alpha_20180722.pdf
 
 The Hero's Journey
 ==================
 
 .. _The Hero's Journey: https://www.drivethrurpg.com/product/295279/The-Heros-Journey-Second-Edition
 
-Old School Essentials
+Old-School Essentials
 =====================
 
-`Old School Essentials` is published by `Necrotic Gnome`_ in two
+`Old-School Essentials` (OSE) is published by `Necrotic Gnome`_ in two
 flavors so far, `Classic Fantasy` and `Advanced Fantasy`.
 
 .. _Necrotic Gnome: https://necroticgnome.com/
 
 
-Old School Essentials Classic Fantasy
+Old-School Essentials Classic Fantasy
 -------------------------------------
 
-`Old School Essentials Classic Fantasy` (OSECF_) is the best organized
+`Old-School Essentials Classic Fantasy` (OSECF_) is the best organized
 and presented version of the classic rules from the Moldvay/Cook/Marsh
 Basic/Expert D&D sets.  This is the game that I wish had been around
 when I started playing.  There is an SRD (OSESRD_).
@@ -201,10 +233,10 @@ when I started playing.  There is an SRD (OSESRD_).
 .. _OSECF: https://necroticgnome.com/collections/rules/products/old-school-essentials-rules-tome
 .. _OSESRD: https://oldschoolessentials.necroticgnome.com/srd/
 
-Old School Essentials Advanced Fantasy
+Old-School Essentials Advanced Fantasy
 --------------------------------------
 
-`Old School Essentials Advanced Fantasy` is the best organized and
+`Old-School Essentials Advanced Fantasy` is the best organized and
 presented version of the ideas of the classic rules from 1\
 :sup:`st` edition AD&D, scaled to match the 1–14 level scope of the
 Moldvay/Cook/Marsh Basic/Expert D&D sets.  If I was starting a new
@@ -217,21 +249,32 @@ Tome`_ and `Referee's Tome`_.
 .. _Referee's Tome: https://necroticgnome.com/collections/rules/products/old-school-essentials-advanced-fantasy-referees-tome
 
 
-Adventure, Conqueror, King System (ACKS)
-========================================
+Adventurer, Conqueror, King System
+==================================
+
+This the name of this system is often abbreviated as ACKS.
 
 Liked B/X D&D's scale, but wanted more details?  ACKS is the game
 for you.
 
 .. _Adventure, Conqueror, King System: https://www3.autarch.co/?page_id=128
 
-..
-   Reference: http://taxidermicowlbear.weebly.com/dd-retroclones.html
-   also: http://taxidermicowlbear.weebly.com/downloads.html
-   https://en.wikipedia.org/wiki/Dungeons_%26_Dragons_retro-clones
+See Also
+========
+
+If you want even more information, you could try `Taxidermic
+Owlbear`_\'s `D&D Retroclones`_ (and downloads_) and Wikipedia_.
+
+.. _Taxidermic Owlbear: http://taxidermicowlbear.weebly.com/
+.. _D&D Retroclones: http://taxidermicowlbear.weebly.com/dd-retroclones.html
+.. _downloads: http://taxidermicowlbear.weebly.com/downloads.html
+.. _Wikipedia: https://en.wikipedia.org/wiki/Dungeons_%26_Dragons_retro-clones
+
+There are also retro-clones of games other than D&D, if you go
+looking.
 
 ..
   Local Variables:
-  compile-command: "rst2html retro-clones.rst ~/tmp/x.html && op ~/tmp/x.html"
-  compile-command: "pandoc -r rst -w html retro-clones.rst -o ~/tmp/x.html && op ~/tmp/x.html"
+  compile-command: "dnd-rst2html retro-clones.rst ~/tmp/x.html && op ~/tmp/x.html"
+  compile-command: "pandoc -r rst -w html dnd-retro-clones.rst -o ~/tmp/x.html && op ~/tmp/x.html"
   End:
