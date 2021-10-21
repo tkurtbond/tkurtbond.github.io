@@ -87,24 +87,24 @@ depends on what locale is set.">
 <p>I have a directory, with two files in it, <span class="file">ab.txt</span> and
 <span class="file">a-c.txt</span>.  Which sorts first when I do a <span class="command">ls</span>?  It
 depends on what locale is set.  Like this:</p>
-<pre class="code bash"><a id="rest_code_5ec8410dee1b48d0a1bdc25993478892-1" name="rest_code_5ec8410dee1b48d0a1bdc25993478892-1"></a>$ <span class="nv">LANG</span><span class="o">=</span>en_US.UTF-8 ls
-<a id="rest_code_5ec8410dee1b48d0a1bdc25993478892-2" name="rest_code_5ec8410dee1b48d0a1bdc25993478892-2"></a>ab.txt       a-c.txt
-<a id="rest_code_5ec8410dee1b48d0a1bdc25993478892-3" name="rest_code_5ec8410dee1b48d0a1bdc25993478892-3"></a>$ <span class="nv">LANG</span><span class="o">=</span>C ls
-<a id="rest_code_5ec8410dee1b48d0a1bdc25993478892-4" name="rest_code_5ec8410dee1b48d0a1bdc25993478892-4"></a>a-c.txt  ab.txt
+<pre class="code bash"><a name="rest_code_f13f70d55e524ee19f1799175652ebca-1"></a>$ <span class="nv">LANG</span><span class="o">=</span>en_US.UTF-8 ls
+<a name="rest_code_f13f70d55e524ee19f1799175652ebca-2"></a>ab.txt       a-c.txt
+<a name="rest_code_f13f70d55e524ee19f1799175652ebca-3"></a>$ <span class="nv">LANG</span><span class="o">=</span>C ls
+<a name="rest_code_f13f70d55e524ee19f1799175652ebca-4"></a>a-c.txt  ab.txt
 </pre>
 <p>Same thing happens with the <span class="command">sort</span> command:</p>
-<pre class="code bash"><a id="rest_code_cb170e5ed20e42308e750d97668805ea-1" name="rest_code_cb170e5ed20e42308e750d97668805ea-1"></a>$ cat &gt;a-c-first.txt
-<a id="rest_code_cb170e5ed20e42308e750d97668805ea-2" name="rest_code_cb170e5ed20e42308e750d97668805ea-2"></a>a-c.txt
-<a id="rest_code_cb170e5ed20e42308e750d97668805ea-3" name="rest_code_cb170e5ed20e42308e750d97668805ea-3"></a>ab.txt
-<a id="rest_code_cb170e5ed20e42308e750d97668805ea-4" name="rest_code_cb170e5ed20e42308e750d97668805ea-4"></a>$ cat &gt;ab-first.txt
-<a id="rest_code_cb170e5ed20e42308e750d97668805ea-5" name="rest_code_cb170e5ed20e42308e750d97668805ea-5"></a>ab.txt
-<a id="rest_code_cb170e5ed20e42308e750d97668805ea-6" name="rest_code_cb170e5ed20e42308e750d97668805ea-6"></a>a-c.txt
-<a id="rest_code_cb170e5ed20e42308e750d97668805ea-7" name="rest_code_cb170e5ed20e42308e750d97668805ea-7"></a>$ <span class="nv">LANG</span><span class="o">=</span>C sort ab-first.txt
-<a id="rest_code_cb170e5ed20e42308e750d97668805ea-8" name="rest_code_cb170e5ed20e42308e750d97668805ea-8"></a>a-c.txt
-<a id="rest_code_cb170e5ed20e42308e750d97668805ea-9" name="rest_code_cb170e5ed20e42308e750d97668805ea-9"></a>ab.txt
-<a id="rest_code_cb170e5ed20e42308e750d97668805ea-10" name="rest_code_cb170e5ed20e42308e750d97668805ea-10"></a>$ <span class="nv">LANG</span><span class="o">=</span>en_US.UTF-8 sort a-c-first.txt
-<a id="rest_code_cb170e5ed20e42308e750d97668805ea-11" name="rest_code_cb170e5ed20e42308e750d97668805ea-11"></a>ab.txt
-<a id="rest_code_cb170e5ed20e42308e750d97668805ea-12" name="rest_code_cb170e5ed20e42308e750d97668805ea-12"></a>a-c.txt
+<pre class="code bash"><a name="rest_code_6e65117ca6494d2cae9f87f7ac82cefd-1"></a>$ cat &gt;a-c-first.txt
+<a name="rest_code_6e65117ca6494d2cae9f87f7ac82cefd-2"></a>a-c.txt
+<a name="rest_code_6e65117ca6494d2cae9f87f7ac82cefd-3"></a>ab.txt
+<a name="rest_code_6e65117ca6494d2cae9f87f7ac82cefd-4"></a>$ cat &gt;ab-first.txt
+<a name="rest_code_6e65117ca6494d2cae9f87f7ac82cefd-5"></a>ab.txt
+<a name="rest_code_6e65117ca6494d2cae9f87f7ac82cefd-6"></a>a-c.txt
+<a name="rest_code_6e65117ca6494d2cae9f87f7ac82cefd-7"></a>$ <span class="nv">LANG</span><span class="o">=</span>C sort ab-first.txt
+<a name="rest_code_6e65117ca6494d2cae9f87f7ac82cefd-8"></a>a-c.txt
+<a name="rest_code_6e65117ca6494d2cae9f87f7ac82cefd-9"></a>ab.txt
+<a name="rest_code_6e65117ca6494d2cae9f87f7ac82cefd-10"></a>$ <span class="nv">LANG</span><span class="o">=</span>en_US.UTF-8 sort a-c-first.txt
+<a name="rest_code_6e65117ca6494d2cae9f87f7ac82cefd-11"></a>ab.txt
+<a name="rest_code_6e65117ca6494d2cae9f87f7ac82cefd-12"></a>a-c.txt
 </pre>
 <p>I found this surprising when it first broke some code I was using,
 since I'd spent so much of my existence in LANG=C (I'm still surprised

@@ -64,22 +64,22 @@
     <div class="code"><table class="codetable">
 <tr>
 <td class="linenos linenodiv"><a href="#listingsgnumakefilechange-rs-re-to-qs-qe-1"><code data-line-number="1"></code></a></td>
-<td class="code"><code><a id="listingsgnumakefilechange-rs-re-to-qs-qe-1" name="listingsgnumakefilechange-rs-re-to-qs-qe-1"></a><span class="c">%.qs.ms.pdf : %.rst</span><span class="w"></span>
+<td class="code"><code><a name="listingsgnumakefilechange-rs-re-to-qs-qe-1"></a><span class="c">%.qs.ms.pdf : %.rst</span>
 </code></td>
 </tr>
 <tr>
 <td class="linenos linenodiv"><a href="#listingsgnumakefilechange-rs-re-to-qs-qe-2"><code data-line-number="2"></code></a></td>
-<td class="code"><code><a id="listingsgnumakefilechange-rs-re-to-qs-qe-2" name="listingsgnumakefilechange-rs-re-to-qs-qe-2"></a><span class="w">	</span><span class="n">pandoc</span><span class="w"> </span><span class="o">--</span><span class="n">verbose</span><span class="w"> </span><span class="o">-</span><span class="n">r</span><span class="w"> </span><span class="n">rst</span><span class="w"> </span><span class="o">-</span><span class="n">w</span><span class="w"> </span><span class="n">ms</span><span class="w"> </span>$<span class="p">(</span><span class="n">PANDOCOPTS</span><span class="p">)</span><span class="w"> </span><span class="o">\</span><span class="w"></span>
+<td class="code"><code><a name="listingsgnumakefilechange-rs-re-to-qs-qe-2"></a>	<span class="n">pandoc</span> <span class="o">--</span><span class="n">verbose</span> <span class="o">-</span><span class="n">r</span> <span class="n">rst</span> <span class="o">-</span><span class="n">w</span> <span class="n">ms</span> $<span class="p">(</span><span class="n">PANDOCOPTS</span><span class="p">)</span> <span class="o">\</span>
 </code></td>
 </tr>
 <tr>
 <td class="linenos linenodiv"><a href="#listingsgnumakefilechange-rs-re-to-qs-qe-3"><code data-line-number="3"></code></a></td>
-<td class="code"><code><a id="listingsgnumakefilechange-rs-re-to-qs-qe-3" name="listingsgnumakefilechange-rs-re-to-qs-qe-3"></a><span class="w">		</span><span class="o">--</span><span class="n">output</span><span class="p">=</span><span class="o">-</span><span class="w"> </span>$<span class="o">&lt;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">gsed</span><span class="w"> </span><span class="o">-</span><span class="n">e</span><span class="w"> </span><span class="s">'s/^\.RS$$/.QS/'</span><span class="w"> </span><span class="o">-</span><span class="n">e</span><span class="w"> </span><span class="s">'s/^\.RE$$/.QE/'</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">\</span><span class="w"></span>
+<td class="code"><code><a name="listingsgnumakefilechange-rs-re-to-qs-qe-3"></a>		<span class="o">--</span><span class="n">output</span><span class="p">=</span><span class="o">-</span> $<span class="o">&lt;</span> <span class="o">|</span> <span class="n">gsed</span> <span class="o">-</span><span class="n">e</span> <span class="s">'s/^\.RS$$/.QS/'</span> <span class="o">-</span><span class="n">e</span> <span class="s">'s/^\.RE$$/.QE/'</span> <span class="o">|</span> <span class="o">\</span>
 </code></td>
 </tr>
 <tr>
 <td class="linenos linenodiv"><a href="#listingsgnumakefilechange-rs-re-to-qs-qe-4"><code data-line-number="4"></code></a></td>
-<td class="code"><code><a id="listingsgnumakefilechange-rs-re-to-qs-qe-4" name="listingsgnumakefilechange-rs-re-to-qs-qe-4"></a><span class="w">	</span><span class="n">pdfroff</span><span class="w"> </span><span class="o">-</span><span class="n">ms</span><span class="w"> </span><span class="o">-</span><span class="n">mpdfmark</span><span class="w"> </span><span class="o">-</span><span class="n">e</span><span class="w"> </span><span class="o">-</span><span class="n">t</span><span class="w"> </span><span class="o">-</span><span class="n">k</span><span class="w"> </span><span class="o">-</span><span class="n">KUTF</span><span class="o">-</span><span class="mi">8</span><span class="w"> </span><span class="o">-</span><span class="nb">i</span><span class="w"> </span><span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="nb">toc</span><span class="o">-</span><span class="n">relocation</span><span class="w"> </span><span class="o">&gt;</span>$<span class="p">@</span><span class="w"></span>
+<td class="code"><code><a name="listingsgnumakefilechange-rs-re-to-qs-qe-4"></a>	<span class="n">pdfroff</span> <span class="o">-</span><span class="n">ms</span> <span class="o">-</span><span class="n">mpdfmark</span> <span class="o">-</span><span class="n">e</span> <span class="o">-</span><span class="n">t</span> <span class="o">-</span><span class="n">k</span> <span class="o">-</span><span class="n">KUTF</span><span class="o">-</span><span class="mi">8</span> <span class="o">-</span><span class="nb">i</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">toc</span><span class="o">-</span><span class="n">relocation</span> <span class="o">&gt;</span>$<span class="p">@</span>
 </code></td>
 </tr>
 </table></div>

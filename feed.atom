@@ -3,7 +3,7 @@
 <feed xml:lang="en" xmlns="http://www.w3.org/2005/Atom">
   <title>Lacking Natural Simplicity</title>
   <id>https://tkurtbond.github.io/feed.atom</id>
-  <updated>2021-09-14T03:24:22Z</updated>
+  <updated>2021-09-13T21:14:03Z</updated>
   <author>
     <name>T. Kurt Bond</name>
   </author>
@@ -23,13 +23,13 @@
 the &lt;a class="reference external" href="https://brew.sh/"&gt;Homebrew&lt;/a&gt; installed version of &lt;a class="reference external" href="https://www.sqlite.org/"&gt;sqlite3&lt;/a&gt; (&lt;a class="reference external" href="https://formulae.brew.sh/formula/sqlite"&gt;HBSQLITE3&lt;/a&gt;) — because the
 one supplied by Apple in macOS is obsolete — for the &lt;a class="reference external" href="http://wiki.call-cc.org/eggref/5/sqlite3"&gt;sqlite egg&lt;/a&gt;,
 you need to set &lt;code class="docutils literal"&gt;CSC_OPTIONS&lt;/code&gt; properly:&lt;/p&gt;
-&lt;pre class="code bash"&gt;&lt;a id="rest_code_58f376c41e064a0c99a4ffc95498929a-1" name="rest_code_58f376c41e064a0c99a4ffc95498929a-1"&gt;&lt;/a&gt;$ &lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;CSC_OPTIONS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"-I/usr/local/Cellar/sqlite/3.36.0/include -L/usr/local/Cellar/sqlite/3.36.0/lib"&lt;/span&gt;
-&lt;a id="rest_code_58f376c41e064a0c99a4ffc95498929a-2" name="rest_code_58f376c41e064a0c99a4ffc95498929a-2"&gt;&lt;/a&gt;$ chicken-install sqlite3
-&lt;a id="rest_code_58f376c41e064a0c99a4ffc95498929a-3" name="rest_code_58f376c41e064a0c99a4ffc95498929a-3"&gt;&lt;/a&gt;building sqlite3
-&lt;a id="rest_code_58f376c41e064a0c99a4ffc95498929a-4" name="rest_code_58f376c41e064a0c99a4ffc95498929a-4"&gt;&lt;/a&gt;   /usr/local/Cellar/chicken/5.2.0/bin/csc -host -D compiling-extension -J -s -regenerate-import-libraries -setup-mode -I /Users/tkb/.cache/chicken-install/sqlite3 -C -I/Users/tkb/.cache/chicken-install/sqlite3 -O2 -d1 -L -lsqlite3 sqlite3.scm -o /Users/tkb/.cache/chicken-install/sqlite3/sqlite3.so
-&lt;a id="rest_code_58f376c41e064a0c99a4ffc95498929a-5" name="rest_code_58f376c41e064a0c99a4ffc95498929a-5"&gt;&lt;/a&gt;   /usr/local/Cellar/chicken/5.2.0/bin/csc -regenerate-import-libraries -M -setup-mode -static -I /Users/tkb/.cache/chicken-install/sqlite3 -emit-link-file /Users/tkb/.cache/chicken-install/sqlite3/sqlite3.link -host -D compiling-extension -c -unit sqlite3 -D compiling-static-extension -C -I/Users/tkb/.cache/chicken-install/sqlite3 -O2 -d1 sqlite3.scm -o /Users/tkb/.cache/chicken-install/sqlite3/sqlite3.static.o
-&lt;a id="rest_code_58f376c41e064a0c99a4ffc95498929a-6" name="rest_code_58f376c41e064a0c99a4ffc95498929a-6"&gt;&lt;/a&gt;   /usr/local/Cellar/chicken/5.2.0/bin/csc -setup-mode -s -host -I /Users/tkb/.cache/chicken-install/sqlite3 -C -I/Users/tkb/.cache/chicken-install/sqlite3 -O2 -d0 -L -lsqlite3 sqlite3.import.scm -o /Users/tkb/.cache/chicken-install/sqlite3/sqlite3.import.so
-&lt;a id="rest_code_58f376c41e064a0c99a4ffc95498929a-7" name="rest_code_58f376c41e064a0c99a4ffc95498929a-7"&gt;&lt;/a&gt;installing sqlite3
+&lt;pre class="code bash"&gt;&lt;a name="rest_code_cd7d55dbc96f430c9ef9e82b98731374-1"&gt;&lt;/a&gt;$ &lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;CSC_OPTIONS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"-I/usr/local/Cellar/sqlite/3.36.0/include -L/usr/local/Cellar/sqlite/3.36.0/lib"&lt;/span&gt;
+&lt;a name="rest_code_cd7d55dbc96f430c9ef9e82b98731374-2"&gt;&lt;/a&gt;$ chicken-install sqlite3
+&lt;a name="rest_code_cd7d55dbc96f430c9ef9e82b98731374-3"&gt;&lt;/a&gt;building sqlite3
+&lt;a name="rest_code_cd7d55dbc96f430c9ef9e82b98731374-4"&gt;&lt;/a&gt;   /usr/local/Cellar/chicken/5.2.0/bin/csc -host -D compiling-extension -J -s -regenerate-import-libraries -setup-mode -I /Users/tkb/.cache/chicken-install/sqlite3 -C -I/Users/tkb/.cache/chicken-install/sqlite3 -O2 -d1 -L -lsqlite3 sqlite3.scm -o /Users/tkb/.cache/chicken-install/sqlite3/sqlite3.so
+&lt;a name="rest_code_cd7d55dbc96f430c9ef9e82b98731374-5"&gt;&lt;/a&gt;   /usr/local/Cellar/chicken/5.2.0/bin/csc -regenerate-import-libraries -M -setup-mode -static -I /Users/tkb/.cache/chicken-install/sqlite3 -emit-link-file /Users/tkb/.cache/chicken-install/sqlite3/sqlite3.link -host -D compiling-extension -c -unit sqlite3 -D compiling-static-extension -C -I/Users/tkb/.cache/chicken-install/sqlite3 -O2 -d1 sqlite3.scm -o /Users/tkb/.cache/chicken-install/sqlite3/sqlite3.static.o
+&lt;a name="rest_code_cd7d55dbc96f430c9ef9e82b98731374-6"&gt;&lt;/a&gt;   /usr/local/Cellar/chicken/5.2.0/bin/csc -setup-mode -s -host -I /Users/tkb/.cache/chicken-install/sqlite3 -C -I/Users/tkb/.cache/chicken-install/sqlite3 -O2 -d0 -L -lsqlite3 sqlite3.import.scm -o /Users/tkb/.cache/chicken-install/sqlite3/sqlite3.import.so
+&lt;a name="rest_code_cd7d55dbc96f430c9ef9e82b98731374-7"&gt;&lt;/a&gt;installing sqlite3
 &lt;/pre&gt;&lt;p&gt;You'll probably need to adjust the version numbers in the pathnames
 for whatever version is installed on your computer.&lt;/p&gt;&lt;/div&gt;</summary>
     <category term="chicken-scheme" label="chicken scheme"/>
@@ -54,7 +54,7 @@ you visit the url with Chrome, but not if you just try to download it
 with curl, or &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;url-retrieve&lt;/span&gt;&lt;/code&gt; in Emacs. Adding a
 “&lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;User-Agent:&lt;/span&gt; Mozilla/5.0 (Macintosh; Intel Mac OS X 11_5_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36&lt;/code&gt;”
 with curl’s -H option made it work.&lt;/p&gt;
-&lt;pre class="code bash"&gt;&lt;a id="rest_code_9ee5eb8c843d4651a6c1f3211ffa1c8f-1" name="rest_code_9ee5eb8c843d4651a6c1f3211ffa1c8f-1"&gt;&lt;/a&gt;curl -i -H &lt;span class="s1"&gt;'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 11_5_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36'&lt;/span&gt; http://wordnik.com/words/importunate
+&lt;pre class="code bash"&gt;&lt;a name="rest_code_8e021d4077de40a491236cc3473877c7-1"&gt;&lt;/a&gt;curl -i -H &lt;span class="s1"&gt;'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 11_5_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36'&lt;/span&gt; http://wordnik.com/words/importunate
 &lt;/pre&gt;&lt;p&gt;So I added a &lt;code class="docutils literal"&gt;let&lt;/code&gt; in my advice for &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;define-word&lt;/span&gt;&lt;/code&gt; that binds
 &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;url-request-extra-headers&lt;/span&gt;&lt;/code&gt; to an alist with &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;"User-Agent"&lt;/span&gt;&lt;/code&gt; as the
 key and &lt;code class="docutils literal"&gt;"Mozilla/5.0 (Macintosh; Intel Mac OS X 11_5_2)
@@ -62,11 +62,11 @@ AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63
 Safari/537.36"&lt;/code&gt; as the value, and it works again.&lt;/p&gt;
 &lt;p&gt;My solution looks something like this (simplified from my actual advice,
 which does other things too):&lt;/p&gt;
-&lt;pre class="code emacs-lisp"&gt;&lt;a id="rest_code_1a4cf08f0c584de28a3da3df32dc76b9-1" name="rest_code_1a4cf08f0c584de28a3da3df32dc76b9-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;defadvice&lt;/span&gt; &lt;span class="nv"&gt;define-word&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;around&lt;/span&gt; &lt;span class="nv"&gt;your-around-define-word&lt;/span&gt; &lt;span class="nv"&gt;activate&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;a id="rest_code_1a4cf08f0c584de28a3da3df32dc76b9-2" name="rest_code_1a4cf08f0c584de28a3da3df32dc76b9-2"&gt;&lt;/a&gt;  &lt;span class="s"&gt;"Dynamically bind tkb-define-word-word to the word passed in."&lt;/span&gt;
-&lt;a id="rest_code_1a4cf08f0c584de28a3da3df32dc76b9-3" name="rest_code_1a4cf08f0c584de28a3da3df32dc76b9-3"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;let&lt;/span&gt; &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nv"&gt;url-request-extra-headers&lt;/span&gt;
-&lt;a id="rest_code_1a4cf08f0c584de28a3da3df32dc76b9-4" name="rest_code_1a4cf08f0c584de28a3da3df32dc76b9-4"&gt;&lt;/a&gt;         &lt;span class="o"&gt;'&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="s"&gt;"User-Agent"&lt;/span&gt; &lt;span class="o"&gt;.&lt;/span&gt; &lt;span class="s"&gt;"Mozilla/5.0 (Macintosh; Intel Mac OS X 11_5_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36"&lt;/span&gt;&lt;span class="p"&gt;))))&lt;/span&gt;
-&lt;a id="rest_code_1a4cf08f0c584de28a3da3df32dc76b9-5" name="rest_code_1a4cf08f0c584de28a3da3df32dc76b9-5"&gt;&lt;/a&gt;    &lt;span class="nv"&gt;ad-do-it&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;pre class="code emacs-lisp"&gt;&lt;a name="rest_code_59b1eba96d3e495aa9d2b645073b3bda-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;defadvice&lt;/span&gt; &lt;span class="nv"&gt;define-word&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;around&lt;/span&gt; &lt;span class="nv"&gt;your-around-define-word&lt;/span&gt; &lt;span class="nv"&gt;activate&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_59b1eba96d3e495aa9d2b645073b3bda-2"&gt;&lt;/a&gt;  &lt;span class="s"&gt;"Dynamically bind tkb-define-word-word to the word passed in."&lt;/span&gt;
+&lt;a name="rest_code_59b1eba96d3e495aa9d2b645073b3bda-3"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;let&lt;/span&gt; &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nv"&gt;url-request-extra-headers&lt;/span&gt;
+&lt;a name="rest_code_59b1eba96d3e495aa9d2b645073b3bda-4"&gt;&lt;/a&gt;         &lt;span class="o"&gt;'&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="s"&gt;"User-Agent"&lt;/span&gt; &lt;span class="o"&gt;.&lt;/span&gt; &lt;span class="s"&gt;"Mozilla/5.0 (Macintosh; Intel Mac OS X 11_5_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36"&lt;/span&gt;&lt;span class="p"&gt;))))&lt;/span&gt;
+&lt;a name="rest_code_59b1eba96d3e495aa9d2b645073b3bda-5"&gt;&lt;/a&gt;    &lt;span class="nv"&gt;ad-do-it&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 &lt;/pre&gt;&lt;p&gt;I opened an &lt;a class="reference external" href="https://github.com/abo-abo/define-word/issues/31"&gt;issue&lt;/a&gt; on github, suggesting it might be a good idea to
 add a simpler way to add a &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;User-Agent:&lt;/span&gt;&lt;/code&gt; header around
 &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;define-word--to-string&lt;/span&gt;&lt;/code&gt;’s call to &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;url-retrieve-synchronously&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;&lt;/div&gt;</summary>

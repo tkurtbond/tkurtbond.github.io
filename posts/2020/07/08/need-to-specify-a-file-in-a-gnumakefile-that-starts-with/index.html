@@ -91,25 +91,25 @@ sets the path.  It doesn't do “Tilde Expansion” on each part of the
 PATH when it goes looking things up in the path.  So, you have to get
 that expansion done manually if you set it in a GNUmakefile.</p>
 <p>Anyway, This ugly hack works:</p>
-<pre class="code makefile"><a id="rest_code_18e733a44d704d7da3c509d6f986b098-1" name="rest_code_18e733a44d704d7da3c509d6f986b098-1"></a><span class="k">export </span><span class="nv">PATH</span> <span class="o">:=</span> <span class="k">$(</span>shell <span class="nb">eval</span> <span class="nv">dir</span><span class="o">=</span><span class="s1">'~/sw/versions/heirloom-doctools/git/ucb'</span><span class="p">;</span><span class="se">\</span>
-<a id="rest_code_18e733a44d704d7da3c509d6f986b098-2" name="rest_code_18e733a44d704d7da3c509d6f986b098-2"></a>                 <span class="nb">echo</span> <span class="nv">$$</span>dir<span class="o">)</span>:<span class="k">$(</span>PATH<span class="k">)</span>
-<a id="rest_code_18e733a44d704d7da3c509d6f986b098-3" name="rest_code_18e733a44d704d7da3c509d6f986b098-3"></a><span class="k">export </span><span class="nv">TROFFFONTS</span> <span class="o">:=</span> <span class="k">$(</span>shell <span class="nb">eval</span> <span class="nv">dir</span><span class="o">=</span><span class="s1">'~/Library/Fonts'</span><span class="p">;</span><span class="se">\</span>
-<a id="rest_code_18e733a44d704d7da3c509d6f986b098-4" name="rest_code_18e733a44d704d7da3c509d6f986b098-4"></a>        <span class="nb">echo</span> <span class="nv">$$</span>dir<span class="o">)</span>:/Library/Fonts
-<a id="rest_code_18e733a44d704d7da3c509d6f986b098-5" name="rest_code_18e733a44d704d7da3c509d6f986b098-5"></a>
-<a id="rest_code_18e733a44d704d7da3c509d6f986b098-6" name="rest_code_18e733a44d704d7da3c509d6f986b098-6"></a><span class="nf">all</span><span class="o">:</span>
-<a id="rest_code_18e733a44d704d7da3c509d6f986b098-7" name="rest_code_18e733a44d704d7da3c509d6f986b098-7"></a>        @echo <span class="nv">PATH</span><span class="o">=</span><span class="si">${</span><span class="nv">PATH</span><span class="si">}</span>
-<a id="rest_code_18e733a44d704d7da3c509d6f986b098-8" name="rest_code_18e733a44d704d7da3c509d6f986b098-8"></a>        @echo
-<a id="rest_code_18e733a44d704d7da3c509d6f986b098-9" name="rest_code_18e733a44d704d7da3c509d6f986b098-9"></a>        @echo <span class="nv">TROFFFONTS</span><span class="o">=</span><span class="si">${</span><span class="nv">TROFFFONTS</span><span class="si">}</span>
-<a id="rest_code_18e733a44d704d7da3c509d6f986b098-10" name="rest_code_18e733a44d704d7da3c509d6f986b098-10"></a>        @echo
-<a id="rest_code_18e733a44d704d7da3c509d6f986b098-11" name="rest_code_18e733a44d704d7da3c509d6f986b098-11"></a>        @echo -n <span class="s1">'"type troff" returns '</span>
-<a id="rest_code_18e733a44d704d7da3c509d6f986b098-12" name="rest_code_18e733a44d704d7da3c509d6f986b098-12"></a>        @type troff
+<pre class="code makefile"><a name="rest_code_2639ae6e622c4ea4a6a8fa1f231b8299-1"></a><span class="k">export </span><span class="nv">PATH</span> <span class="o">:=</span> <span class="k">$(</span>shell <span class="nb">eval</span> <span class="nv">dir</span><span class="o">=</span><span class="s1">'~/sw/versions/heirloom-doctools/git/ucb'</span><span class="p">;</span><span class="se">\</span>
+<a name="rest_code_2639ae6e622c4ea4a6a8fa1f231b8299-2"></a>                 <span class="nb">echo</span> <span class="nv">$$</span>dir<span class="o">)</span>:<span class="k">$(</span>PATH<span class="k">)</span>
+<a name="rest_code_2639ae6e622c4ea4a6a8fa1f231b8299-3"></a><span class="k">export </span><span class="nv">TROFFFONTS</span> <span class="o">:=</span> <span class="k">$(</span>shell <span class="nb">eval</span> <span class="nv">dir</span><span class="o">=</span><span class="s1">'~/Library/Fonts'</span><span class="p">;</span><span class="se">\</span>
+<a name="rest_code_2639ae6e622c4ea4a6a8fa1f231b8299-4"></a>        <span class="nb">echo</span> <span class="nv">$$</span>dir<span class="o">)</span>:/Library/Fonts
+<a name="rest_code_2639ae6e622c4ea4a6a8fa1f231b8299-5"></a>
+<a name="rest_code_2639ae6e622c4ea4a6a8fa1f231b8299-6"></a><span class="nf">all</span><span class="o">:</span>
+<a name="rest_code_2639ae6e622c4ea4a6a8fa1f231b8299-7"></a>        @echo <span class="nv">PATH</span><span class="o">=</span><span class="si">${</span><span class="nv">PATH</span><span class="si">}</span>
+<a name="rest_code_2639ae6e622c4ea4a6a8fa1f231b8299-8"></a>        @echo
+<a name="rest_code_2639ae6e622c4ea4a6a8fa1f231b8299-9"></a>        @echo <span class="nv">TROFFFONTS</span><span class="o">=</span><span class="si">${</span><span class="nv">TROFFFONTS</span><span class="si">}</span>
+<a name="rest_code_2639ae6e622c4ea4a6a8fa1f231b8299-10"></a>        @echo
+<a name="rest_code_2639ae6e622c4ea4a6a8fa1f231b8299-11"></a>        @echo -n <span class="s1">'"type troff" returns '</span>
+<a name="rest_code_2639ae6e622c4ea4a6a8fa1f231b8299-12"></a>        @type troff
 </pre>
 <p>Put this in a file somewhere and invoke <span class="app">GNU make</span> on it and it prints:</p>
-<pre class="code text"><a id="rest_code_4c350599b52b4341a918580442b8e359-1" name="rest_code_4c350599b52b4341a918580442b8e359-1"></a>PATH=/Users/tkb/sw/versions/heirloom-doctools/git/ucb:/Users/tkb/local/rndbin:/Users/tkb/.cargo/bin:/Users/tkb/.nimble/bin:/usr/local/opt/libxslt/bin:/usr/local/opt/libxml2/bin:/Users/tkb/sw/versions/mew/git/bin:/Users/tkb/sw/versions/groff-git/bin:/Users/tkb/sw/versions/chibi-scheme/git/bin:/usr/local/opt/tcl-tk/bin:/usr/local/opt/expat/bin:/Users/tkb/.opam/default/bin:/usr/local/opt/texinfo/bin:/usr/local/opt/gnu-sed/libexec/gnubin:/usr/local/opt/findutils/libexec/gnubin:/usr/local/opt/curl/bin:/usr/local/opt/coreutils/libexec/gnubin:/Users/tkb/.local/bin:/Users/tkb/context-osx-64/tex/texmf-osx-64/bin:/Applications/Emacs.app/Contents/MacOS/bin:/Users/tkb/local/unix/bin:/Users/tkb/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:/opt/X11/bin:/Users/tkb/local/unix/rndbin:/Applications/Racket v7.5/bin:/Users/tkb/go/bin:/Applications/Emacs.app/Contents/MacOS/bin-x86_64-10_14:/Applications/Emacs.app/Contents/MacOS/libexec-x86_64-10_14
-<a id="rest_code_4c350599b52b4341a918580442b8e359-2" name="rest_code_4c350599b52b4341a918580442b8e359-2"></a>
-<a id="rest_code_4c350599b52b4341a918580442b8e359-3" name="rest_code_4c350599b52b4341a918580442b8e359-3"></a>TROFFFONTS=/Users/tkb/Library/Fonts:/Library/Fonts
-<a id="rest_code_4c350599b52b4341a918580442b8e359-4" name="rest_code_4c350599b52b4341a918580442b8e359-4"></a>
-<a id="rest_code_4c350599b52b4341a918580442b8e359-5" name="rest_code_4c350599b52b4341a918580442b8e359-5"></a>"type troff" returns troff is /Users/tkb/sw/versions/heirloom-doctools/git/ucb/troff
+<pre class="code text"><a name="rest_code_8f09bcfe34264f67bc47c116ecfa0cfc-1"></a>PATH=/Users/tkb/sw/versions/heirloom-doctools/git/ucb:/Users/tkb/local/rndbin:/Users/tkb/.cargo/bin:/Users/tkb/.nimble/bin:/usr/local/opt/libxslt/bin:/usr/local/opt/libxml2/bin:/Users/tkb/sw/versions/mew/git/bin:/Users/tkb/sw/versions/groff-git/bin:/Users/tkb/sw/versions/chibi-scheme/git/bin:/usr/local/opt/tcl-tk/bin:/usr/local/opt/expat/bin:/Users/tkb/.opam/default/bin:/usr/local/opt/texinfo/bin:/usr/local/opt/gnu-sed/libexec/gnubin:/usr/local/opt/findutils/libexec/gnubin:/usr/local/opt/curl/bin:/usr/local/opt/coreutils/libexec/gnubin:/Users/tkb/.local/bin:/Users/tkb/context-osx-64/tex/texmf-osx-64/bin:/Applications/Emacs.app/Contents/MacOS/bin:/Users/tkb/local/unix/bin:/Users/tkb/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:/opt/X11/bin:/Users/tkb/local/unix/rndbin:/Applications/Racket v7.5/bin:/Users/tkb/go/bin:/Applications/Emacs.app/Contents/MacOS/bin-x86_64-10_14:/Applications/Emacs.app/Contents/MacOS/libexec-x86_64-10_14
+<a name="rest_code_8f09bcfe34264f67bc47c116ecfa0cfc-2"></a>
+<a name="rest_code_8f09bcfe34264f67bc47c116ecfa0cfc-3"></a>TROFFFONTS=/Users/tkb/Library/Fonts:/Library/Fonts
+<a name="rest_code_8f09bcfe34264f67bc47c116ecfa0cfc-4"></a>
+<a name="rest_code_8f09bcfe34264f67bc47c116ecfa0cfc-5"></a>"type troff" returns troff is /Users/tkb/sw/versions/heirloom-doctools/git/ucb/troff
 </pre>
 <p>(Yes, my path may be a little excessive.)</p>
 <p>Unfortunately I haven't figured out how to do this with the <span class="app">BSD make</span>s.</p>
