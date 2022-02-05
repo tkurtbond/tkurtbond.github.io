@@ -1,7 +1,7 @@
 .. title: VMS Code from the Past
 .. slug: 2003-05-08-vms-code-from-the-past
 .. date: 2003-05-08 00:00:00 UTC-05:00
-.. tags: old blog,vms,basic,mmk,poise,dms-plus
+.. tags: old blog,vms,basic,mmk,poise,dms-plus,usenet,vax,alpha,hacks
 .. category: oldblog
 .. link: 
 .. description: 
