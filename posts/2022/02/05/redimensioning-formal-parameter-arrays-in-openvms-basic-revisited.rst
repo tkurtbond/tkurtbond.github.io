@@ -23,7 +23,7 @@ necromancy?)
 .. _new USENET post: https://groups.google.com/g/comp.os.vms/c/mVWznNVN17U/m/yuOAmQtQBAAJ
 
 I'll include the code in this blog post, too, for ease of reference.
-Here's :file:`vax_redim_best.bas`
+Here's :file:`vax_redim_best.bas`\ :
 
 .. code::
 
