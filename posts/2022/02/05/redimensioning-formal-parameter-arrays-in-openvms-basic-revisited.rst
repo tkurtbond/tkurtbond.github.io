@@ -88,7 +88,7 @@ So use:
 
 If you had said:
 
-..code::
+.. code::
 
    dim string s(1 to 5) ! Notice that last thing is a constant, 5
    redim (s, 3, 10)
