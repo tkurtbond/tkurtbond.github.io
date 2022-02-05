@@ -10,7 +10,7 @@
 <link rel="alternate" type="application/atom+xml" title="Atom" href="feed.atom">
 <link rel="canonical" href="https://tkurtbond.github.io/">
 <link rel="next" href="index-92.html" type="text/html">
-<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/2021/09/13/getting-the-homebrew-chicken-scheme-sqlite3-egg-to-use-the-homebrew-installed-sqlite3-include-files-and-library-files/" type="text/html">
+<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/" type="text/html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400;1,700&amp;family=Lato:ital,wght@0,400;0,700;1,400;1,700&amp;family=Source+Code+Pro:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet">
@@ -55,7 +55,87 @@
         <div class="row">
             <div class="col-sm-8 blog-main">
 <div class="postindex">
-    <article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2021/09/13/getting-the-homebrew-chicken-scheme-sqlite3-egg-to-use-the-homebrew-installed-sqlite3-include-files-and-library-files/" class="u-url">Getting the homebrew CHICKEN Scheme sqlite3 egg to use the homebrew-installed sqlite3 include files and library files</a></h2>
+    <article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/" class="u-url">Redimensioning formal parameter arrays in OpenVMS BASIC, Revisited</a></h2>
+        <div class="metadata blog-post-meta">
+            <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
+            <p class="dateline"><a href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/" rel="bookmark"><time class="published dt-published" datetime="2022-02-05T16:08:22-05:00" title="2022-02-05 16:08">2022-02-05 16:08</time></a></p>
+                <p class="commentline">            <a href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#disqus_thread" data-disqus-identifier="cache/posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited.html">Comments</a>
+
+
+        </p>
+</div>
+    </header><div class="e-content entry-content">
+    <div>
+<p>I was working on a program on a VAX today, and needed to redimension
+dynamically allocated arrays that are passed to an external function.
+I've done this in the past (an <a class="reference external" href="https://groups.google.com/g/comp.os.vms/c/mVWznNVN17U/m/HE3L4N4nIJAJ">old USENET post</a>, and the <a class="reference external" href="posts/2003/05/08/2003-05-08-vms-code-from-the-past/">old blog
+post</a> that mentions it), but this time I managed to simplify my
+solution, and generalize it to work with both lower and upper bounds,
+and so the same function would work with multiple VMS BASIC data
+types.  Here's the <a class="reference external" href="https://groups.google.com/g/comp.os.vms/c/mVWznNVN17U/m/yuOAmQtQBAAJ">new USENET post</a>.  (How's that for thread
+necromancy?)</p>
+<p>I'll include the code in this blog post, too, for ease of reference.
+Here's <span class="file">vax_redim_best.bas</span></p>
+<pre class="code text"><a name="rest_code_16dff64c3f064122b8aba9b005e159cd-1"></a>program vax_redim_best
+<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-2"></a>    option type = explicit, constant type = integer, &amp;
+<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-3"></a>        size = integer long, size = real double
+<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-4"></a>    record rec
+<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-5"></a>        string s = 13
+<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-6"></a>        long   i
+<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-7"></a>    end record rec
+<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-8"></a>
+<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-9"></a>    ! Don't declare the parameters, and everything works, even passing
+<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-10"></a>    ! different types.
+<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-11"></a>    external sub redim
+<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-12"></a>
+<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-13"></a>    declare long stat, i
+<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-14"></a>    i = 1
+<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-15"></a>    dim rec rec(1 to i)
+<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-16"></a>    print "lbound (rec) at start: "; lbound (rec)
+<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-17"></a>    print "ubound (rec) at start: "; ubound (rec)
+<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-18"></a>    call redim (rec(), 3, 10)
+<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-19"></a>    print "lbound (rec) after redim: "; lbound (rec)
+<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-20"></a>    print "ubound (rec) after redim: "; ubound (rec)
+<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-21"></a>
+<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-22"></a>    dim string s(1 to i)
+<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-23"></a>    print "lbound (s) at start: "; lbound (s)
+<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-24"></a>    print "ubound (s) at start: "; ubound (s)
+<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-25"></a>    call redim (s(), 3, 10)
+<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-26"></a>    print "lbound (s) after redim: "; lbound (s)
+<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-27"></a>    print "ubound (s) after redim: "; ubound (s)
+<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-28"></a>
+<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-29"></a>    dim long l(1 to i)
+<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-30"></a>    print "lbound (l) at start: "; lbound (l)
+<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-31"></a>    print "ubound (l) at start: "; ubound (l)
+<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-32"></a>    call redim (l(), 3, 10)
+<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-33"></a>    print "lbound (l) after redim: "; lbound (l)
+<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-34"></a>    print "ubound (l) after redim: "; ubound (l)
+<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-35"></a>
+<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-36"></a>
+<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-37"></a>end program ! vax_redim_best
+<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-38"></a>
+<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-39"></a>function long redim (long s, long low, long high)
+<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-40"></a>    option type = explicit, constant type = integer, &amp;
+<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-41"></a>        size = integer long, size = real double
+<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-42"></a>    external long function bas$rt_dim_bounds (long by value, long by value, long by value)
+<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-43"></a>    declare long r
+<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-44"></a>    r = bas$rt_dim_bounds (loc (s), low, high)
+<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-45"></a>end function r ! redim
+</pre>
+<p>I'll just point out, which I failed to do in the <a class="reference external" href="https://groups.google.com/g/comp.os.vms/c/mVWznNVN17U/m/HE3L4N4nIJAJ">old USENET post</a> or
+the <a class="reference external" href="https://groups.google.com/g/comp.os.vms/c/mVWznNVN17U/m/yuOAmQtQBAAJ">new USENET post</a>, that you have to use a <strong>variable</strong> when using
+the VMS BASIC <code class="docutils literal">dim</code> statement or you get a fatal runtime error.  Ooops.</p>
+</div>
+    <nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="categories/alpha/" rel="tag">alpha</a></li>
+            <li><a class="tag p-category" href="categories/basic/" rel="tag">basic</a></li>
+            <li><a class="tag p-category" href="categories/hacks/" rel="tag">hacks</a></li>
+            <li><a class="tag p-category" href="categories/usenet/" rel="tag">usenet</a></li>
+            <li><a class="tag p-category" href="categories/vax/" rel="tag">vax</a></li>
+            <li><a class="tag p-category" href="categories/vms/" rel="tag">vms</a></li>
+        </ul></nav>
+</div>
+    </article><article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2021/09/13/getting-the-homebrew-chicken-scheme-sqlite3-egg-to-use-the-homebrew-installed-sqlite3-include-files-and-library-files/" class="u-url">Getting the homebrew CHICKEN Scheme sqlite3 egg to use the homebrew-installed sqlite3 include files and library files</a></h2>
         <div class="metadata blog-post-meta">
             <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
             <p class="dateline"><a href="posts/2021/09/13/getting-the-homebrew-chicken-scheme-sqlite3-egg-to-use-the-homebrew-installed-sqlite3-include-files-and-library-files/" rel="bookmark"><time class="published dt-published" datetime="2021-09-13T16:59:50-04:00" title="2021-09-13 16:59">2021-09-13 16:59</time></a></p>
@@ -345,33 +425,6 @@ Six and related games.</p>
             <li><a class="tag p-category" href="categories/keck-publishing/" rel="tag">keck publishing</a></li>
             <li><a class="tag p-category" href="categories/mini-six/" rel="tag">mini six</a></li>
             <li><a class="tag p-category" href="categories/opend6/" rel="tag">opend6</a></li>
-            <li><a class="tag p-category" href="categories/rpg/" rel="tag">rpg</a></li>
-        </ul></nav>
-</div>
-    </article><article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2021/08/09/delvers-to-grow-omnibus-arrived/" class="u-url">Delvers to Grow Omnibus Arrived!</a></h2>
-        <div class="metadata blog-post-meta">
-            <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
-            <p class="dateline"><a href="posts/2021/08/09/delvers-to-grow-omnibus-arrived/" rel="bookmark"><time class="published dt-published" datetime="2021-08-09T22:25:18-04:00" title="2021-08-09 22:25">2021-08-09 22:25</time></a></p>
-                <p class="commentline">            <a href="posts/2021/08/09/delvers-to-grow-omnibus-arrived/#disqus_thread" data-disqus-identifier="cache/posts/2021/08/09/delvers-to-grow-omnibus-arrived.html">Comments</a>
-
-
-        </p>
-</div>
-    </header><div class="e-content entry-content">
-    <div>
-<p>My copy of the <cite>Delvers to Grow Omnibus</cite> written by Kevin Smith and
-produced by <a class="reference external" href="https://gamingballistic.com/">Gaming Ballistic</a> arrived today.  It is a book to help
-folks quickly make characters for <a class="reference external" href="http://www.sjgames.com/">Steve Jackson Games</a>'s <a class="reference external" href="http://www.sjgames.com/dungeonfantasy/">Dungeon
-Fantasy Roleplaying Game</a>, a “Powered by GURPS” dungeon crawling
-fantasy game.</p>
-<p>Anyway, I've read it and it looks very useful.</p>
-<p>I really want to run a Dungeon Fantasy RPG campaign with this and all
-the other stuff that Gaming Ballistic's Douglas H. Cole has produced
-for his Nordlond campaign setting.</p>
-</div>
-    <nav><ul itemprop="keywords" class="tags">
-<li><a class="tag p-category" href="categories/dungeon-fantasy-rpg/" rel="tag">dungeon fantasy rpg</a></li>
-            <li><a class="tag p-category" href="categories/gurps/" rel="tag">gurps</a></li>
             <li><a class="tag p-category" href="categories/rpg/" rel="tag">rpg</a></li>
         </ul></nav>
 </div>

@@ -1,5 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity (Posts about vms)</title><link>https://tkurtbond.github.io/</link><description></description><atom:link href="https://tkurtbond.github.io/categories/vms.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2021 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Tue, 20 Jul 2021 18:57:24 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>troff Memorandum Macros documentation</title><link>https://tkurtbond.github.io/posts/2021/07/15/troff-memorandum-macros-documentation/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;strong&gt;TL;DR:&lt;/strong&gt; Look &lt;a class="reference external" href="https://tkurtbond.github.io/troff/mm-all.pdf"&gt;here&lt;/a&gt; for documentation for the &lt;span class="app"&gt;Documenter's Workbench&lt;/span&gt; &lt;span class="app"&gt;mm&lt;/span&gt; Memorandum
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity (Posts about vms)</title><link>https://tkurtbond.github.io/</link><description></description><atom:link href="https://tkurtbond.github.io/categories/vms.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2022 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Sat, 05 Feb 2022 21:26:16 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Redimensioning formal parameter arrays in OpenVMS BASIC, Revisited</title><link>https://tkurtbond.github.io/posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;I was working on a program on a VAX today, and needed to redimension
+dynamically allocated arrays that are passed to an external function.
+I've done this in the past (an &lt;a class="reference external" href="https://groups.google.com/g/comp.os.vms/c/mVWznNVN17U/m/HE3L4N4nIJAJ"&gt;old USENET post&lt;/a&gt;, and the &lt;a class="reference external" href="https://tkurtbond.github.io/posts/2003/05/08/2003-05-08-vms-code-from-the-past/"&gt;old blog
+post&lt;/a&gt; that mentions it), but this time I managed to simplify my
+solution, and generalize it to work with both lower and upper bounds,
+and so the same function would work with multiple VMS BASIC data
+types.  Here's the &lt;a class="reference external" href="https://groups.google.com/g/comp.os.vms/c/mVWznNVN17U/m/yuOAmQtQBAAJ"&gt;new USENET post&lt;/a&gt;.  (How's that for thread
+necromancy?)&lt;/p&gt;
+&lt;p&gt;I'll include the code in this blog post, too, for ease of reference.
+Here's &lt;span class="file"&gt;vax_redim_best.bas&lt;/span&gt;&lt;/p&gt;
+&lt;pre class="code text"&gt;&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-1"&gt;&lt;/a&gt;program vax_redim_best
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-2"&gt;&lt;/a&gt;    option type = explicit, constant type = integer, &amp;amp;
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-3"&gt;&lt;/a&gt;        size = integer long, size = real double
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-4"&gt;&lt;/a&gt;    record rec
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-5"&gt;&lt;/a&gt;        string s = 13
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-6"&gt;&lt;/a&gt;        long   i
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-7"&gt;&lt;/a&gt;    end record rec
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-8"&gt;&lt;/a&gt;
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-9"&gt;&lt;/a&gt;    ! Don't declare the parameters, and everything works, even passing
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-10"&gt;&lt;/a&gt;    ! different types.
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-11"&gt;&lt;/a&gt;    external sub redim
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-12"&gt;&lt;/a&gt;
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-13"&gt;&lt;/a&gt;    declare long stat, i
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-14"&gt;&lt;/a&gt;    i = 1
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-15"&gt;&lt;/a&gt;    dim rec rec(1 to i)
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-16"&gt;&lt;/a&gt;    print "lbound (rec) at start: "; lbound (rec)
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-17"&gt;&lt;/a&gt;    print "ubound (rec) at start: "; ubound (rec)
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-18"&gt;&lt;/a&gt;    call redim (rec(), 3, 10)
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-19"&gt;&lt;/a&gt;    print "lbound (rec) after redim: "; lbound (rec)
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-20"&gt;&lt;/a&gt;    print "ubound (rec) after redim: "; ubound (rec)
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-21"&gt;&lt;/a&gt;
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-22"&gt;&lt;/a&gt;    dim string s(1 to i)
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-23"&gt;&lt;/a&gt;    print "lbound (s) at start: "; lbound (s)
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-24"&gt;&lt;/a&gt;    print "ubound (s) at start: "; ubound (s)
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-25"&gt;&lt;/a&gt;    call redim (s(), 3, 10)
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-26"&gt;&lt;/a&gt;    print "lbound (s) after redim: "; lbound (s)
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-27"&gt;&lt;/a&gt;    print "ubound (s) after redim: "; ubound (s)
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-28"&gt;&lt;/a&gt;
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-29"&gt;&lt;/a&gt;    dim long l(1 to i)
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-30"&gt;&lt;/a&gt;    print "lbound (l) at start: "; lbound (l)
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-31"&gt;&lt;/a&gt;    print "ubound (l) at start: "; ubound (l)
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-32"&gt;&lt;/a&gt;    call redim (l(), 3, 10)
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-33"&gt;&lt;/a&gt;    print "lbound (l) after redim: "; lbound (l)
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-34"&gt;&lt;/a&gt;    print "ubound (l) after redim: "; ubound (l)
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-35"&gt;&lt;/a&gt;
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-36"&gt;&lt;/a&gt;
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-37"&gt;&lt;/a&gt;end program ! vax_redim_best
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-38"&gt;&lt;/a&gt;
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-39"&gt;&lt;/a&gt;function long redim (long s, long low, long high)
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-40"&gt;&lt;/a&gt;    option type = explicit, constant type = integer, &amp;amp;
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-41"&gt;&lt;/a&gt;        size = integer long, size = real double
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-42"&gt;&lt;/a&gt;    external long function bas$rt_dim_bounds (long by value, long by value, long by value)
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-43"&gt;&lt;/a&gt;    declare long r
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-44"&gt;&lt;/a&gt;    r = bas$rt_dim_bounds (loc (s), low, high)
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-45"&gt;&lt;/a&gt;end function r ! redim
+&lt;/pre&gt;&lt;p&gt;I'll just point out, which I failed to do in the &lt;a class="reference external" href="https://groups.google.com/g/comp.os.vms/c/mVWznNVN17U/m/HE3L4N4nIJAJ"&gt;old USENET post&lt;/a&gt; or
+the &lt;a class="reference external" href="https://groups.google.com/g/comp.os.vms/c/mVWznNVN17U/m/yuOAmQtQBAAJ"&gt;new USENET post&lt;/a&gt;, that you have to use a &lt;strong&gt;variable&lt;/strong&gt; when using
+the VMS BASIC &lt;code class="docutils literal"&gt;dim&lt;/code&gt; statement or you get a fatal runtime error.  Ooops.&lt;/p&gt;&lt;/div&gt;</description><category>alpha</category><category>basic</category><category>hacks</category><category>usenet</category><category>vax</category><category>vms</category><guid>https://tkurtbond.github.io/posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/</guid><pubDate>Sat, 05 Feb 2022 21:08:22 GMT</pubDate></item><item><title>troff Memorandum Macros documentation</title><link>https://tkurtbond.github.io/posts/2021/07/15/troff-memorandum-macros-documentation/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;strong&gt;TL;DR:&lt;/strong&gt; Look &lt;a class="reference external" href="https://tkurtbond.github.io/troff/mm-all.pdf"&gt;here&lt;/a&gt; for documentation for the &lt;span class="app"&gt;Documenter's Workbench&lt;/span&gt; &lt;span class="app"&gt;mm&lt;/span&gt; Memorandum
 Macros for &lt;span class="app"&gt;groff&lt;/span&gt;, based on the original paper &lt;cite&gt;MM - Memorandum
 Macros&lt;/cite&gt;.  If you read that far there is a &lt;a class="reference internal" href="https://tkurtbond.github.io/posts/2021/07/15/troff-memorandum-macros-documentation/#bonus"&gt;bonus&lt;/a&gt; at the end.&lt;/p&gt;
 &lt;p&gt;When I learned &lt;span class="app"&gt;troff&lt;/span&gt; it was actually on a VAX running VMS (used
@@ -191,54 +248,54 @@ and is probably bad style.  However, are there any &lt;em&gt;practical&lt;/em&gt
 reasons why this wouldn't work safely?  Are there any
 conditions under which this hack would fail to work?&lt;/p&gt;
 &lt;p&gt;Here is an example program:&lt;/p&gt;
-&lt;pre class="code text"&gt;&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-1"&gt;&lt;/a&gt;program redim
-&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-2"&gt;&lt;/a&gt;    option type = explicit, constant type = integer, &amp;amp;
-&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-3"&gt;&lt;/a&gt;        size = integer long, size = real double
-&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-4"&gt;&lt;/a&gt;
-&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-5"&gt;&lt;/a&gt;    external sub redim_in_sub (string dim())
-&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-6"&gt;&lt;/a&gt;    external long function my_redim (string dim(), long)
-&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-7"&gt;&lt;/a&gt;
-&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-8"&gt;&lt;/a&gt;    declare long i, r
-&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-9"&gt;&lt;/a&gt;
-&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-10"&gt;&lt;/a&gt;    i = 10
-&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-11"&gt;&lt;/a&gt;    dim string vs(i) ! has to be a variable to make it an executable dim.
-&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-12"&gt;&lt;/a&gt;
-&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-13"&gt;&lt;/a&gt;    r = my_redim (vs(), 30)
-&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-14"&gt;&lt;/a&gt;    print "ubound(vs):"; ubound(vs)
-&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-15"&gt;&lt;/a&gt;    for i = lbound(vs) to ubound(vs) \ vs(i) = "vs 30-" + num1$(i) \ next i
-&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-16"&gt;&lt;/a&gt;    gosub print_vs
-&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-17"&gt;&lt;/a&gt;
-&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-18"&gt;&lt;/a&gt;    call redim_in_sub (vs())
-&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-19"&gt;&lt;/a&gt;    print "ubound(vs):"; ubound(vs)
-&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-20"&gt;&lt;/a&gt;    gosub print_Vs
-&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-21"&gt;&lt;/a&gt;
-&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-22"&gt;&lt;/a&gt;    exit program
-&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-23"&gt;&lt;/a&gt;
-&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-24"&gt;&lt;/a&gt;print_vs:
-&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-25"&gt;&lt;/a&gt;    for i = lbound(vs) to ubound(vs) \ print i; ": "; vs(i) \ next i
-&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-26"&gt;&lt;/a&gt;    return ! from print_vs
-&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-27"&gt;&lt;/a&gt;
-&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-28"&gt;&lt;/a&gt;end program ! redim
-&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-29"&gt;&lt;/a&gt;
-&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-30"&gt;&lt;/a&gt;function long my_redim (long s by value, long n)
-&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-31"&gt;&lt;/a&gt;    option type = explicit, constant type = integer, &amp;amp;
-&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-32"&gt;&lt;/a&gt;        size = integer long, size = real double
-&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-33"&gt;&lt;/a&gt;    declare long r
-&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-34"&gt;&lt;/a&gt;    external long function dbasic$rt_dim (long by value, long by value)
-&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-35"&gt;&lt;/a&gt;    r = dbasic$rt_dim (s, n)
-&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-36"&gt;&lt;/a&gt;end function r ! my_redim
-&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-37"&gt;&lt;/a&gt;
-&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-38"&gt;&lt;/a&gt;sub redim_in_sub (string s())
-&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-39"&gt;&lt;/a&gt;    option type = explicit, constant type = integer, &amp;amp;
-&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-40"&gt;&lt;/a&gt;        size = integer long, size = real double
-&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-41"&gt;&lt;/a&gt;    external sub set_strings (string dim(), string)
-&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-42"&gt;&lt;/a&gt;    declare long i
-&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-43"&gt;&lt;/a&gt;    call my_redim (s(), 40)
-&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-44"&gt;&lt;/a&gt;    for i = 0 to 40 \ s(i) = "redim in sub " + num1$(i) \ next i
-&lt;a name="rest_code_e5f6fbbd51654635a5cb279f61a9704f-45"&gt;&lt;/a&gt;end sub ! redim_in_sub
+&lt;pre class="code text"&gt;&lt;a name="rest_code_ce86c513295147cebe1c0ed654468d2f-1"&gt;&lt;/a&gt;program redim
+&lt;a name="rest_code_ce86c513295147cebe1c0ed654468d2f-2"&gt;&lt;/a&gt;    option type = explicit, constant type = integer, &amp;amp;
+&lt;a name="rest_code_ce86c513295147cebe1c0ed654468d2f-3"&gt;&lt;/a&gt;        size = integer long, size = real double
+&lt;a name="rest_code_ce86c513295147cebe1c0ed654468d2f-4"&gt;&lt;/a&gt;
+&lt;a name="rest_code_ce86c513295147cebe1c0ed654468d2f-5"&gt;&lt;/a&gt;    external sub redim_in_sub (string dim())
+&lt;a name="rest_code_ce86c513295147cebe1c0ed654468d2f-6"&gt;&lt;/a&gt;    external long function my_redim (string dim(), long)
+&lt;a name="rest_code_ce86c513295147cebe1c0ed654468d2f-7"&gt;&lt;/a&gt;
+&lt;a name="rest_code_ce86c513295147cebe1c0ed654468d2f-8"&gt;&lt;/a&gt;    declare long i, r
+&lt;a name="rest_code_ce86c513295147cebe1c0ed654468d2f-9"&gt;&lt;/a&gt;
+&lt;a name="rest_code_ce86c513295147cebe1c0ed654468d2f-10"&gt;&lt;/a&gt;    i = 10
+&lt;a name="rest_code_ce86c513295147cebe1c0ed654468d2f-11"&gt;&lt;/a&gt;    dim string vs(i) ! has to be a variable to make it an executable dim.
+&lt;a name="rest_code_ce86c513295147cebe1c0ed654468d2f-12"&gt;&lt;/a&gt;
+&lt;a name="rest_code_ce86c513295147cebe1c0ed654468d2f-13"&gt;&lt;/a&gt;    r = my_redim (vs(), 30)
+&lt;a name="rest_code_ce86c513295147cebe1c0ed654468d2f-14"&gt;&lt;/a&gt;    print "ubound(vs):"; ubound(vs)
+&lt;a name="rest_code_ce86c513295147cebe1c0ed654468d2f-15"&gt;&lt;/a&gt;    for i = lbound(vs) to ubound(vs) \ vs(i) = "vs 30-" + num1$(i) \ next i
+&lt;a name="rest_code_ce86c513295147cebe1c0ed654468d2f-16"&gt;&lt;/a&gt;    gosub print_vs
+&lt;a name="rest_code_ce86c513295147cebe1c0ed654468d2f-17"&gt;&lt;/a&gt;
+&lt;a name="rest_code_ce86c513295147cebe1c0ed654468d2f-18"&gt;&lt;/a&gt;    call redim_in_sub (vs())
+&lt;a name="rest_code_ce86c513295147cebe1c0ed654468d2f-19"&gt;&lt;/a&gt;    print "ubound(vs):"; ubound(vs)
+&lt;a name="rest_code_ce86c513295147cebe1c0ed654468d2f-20"&gt;&lt;/a&gt;    gosub print_Vs
+&lt;a name="rest_code_ce86c513295147cebe1c0ed654468d2f-21"&gt;&lt;/a&gt;
+&lt;a name="rest_code_ce86c513295147cebe1c0ed654468d2f-22"&gt;&lt;/a&gt;    exit program
+&lt;a name="rest_code_ce86c513295147cebe1c0ed654468d2f-23"&gt;&lt;/a&gt;
+&lt;a name="rest_code_ce86c513295147cebe1c0ed654468d2f-24"&gt;&lt;/a&gt;print_vs:
+&lt;a name="rest_code_ce86c513295147cebe1c0ed654468d2f-25"&gt;&lt;/a&gt;    for i = lbound(vs) to ubound(vs) \ print i; ": "; vs(i) \ next i
+&lt;a name="rest_code_ce86c513295147cebe1c0ed654468d2f-26"&gt;&lt;/a&gt;    return ! from print_vs
+&lt;a name="rest_code_ce86c513295147cebe1c0ed654468d2f-27"&gt;&lt;/a&gt;
+&lt;a name="rest_code_ce86c513295147cebe1c0ed654468d2f-28"&gt;&lt;/a&gt;end program ! redim
+&lt;a name="rest_code_ce86c513295147cebe1c0ed654468d2f-29"&gt;&lt;/a&gt;
+&lt;a name="rest_code_ce86c513295147cebe1c0ed654468d2f-30"&gt;&lt;/a&gt;function long my_redim (long s by value, long n)
+&lt;a name="rest_code_ce86c513295147cebe1c0ed654468d2f-31"&gt;&lt;/a&gt;    option type = explicit, constant type = integer, &amp;amp;
+&lt;a name="rest_code_ce86c513295147cebe1c0ed654468d2f-32"&gt;&lt;/a&gt;        size = integer long, size = real double
+&lt;a name="rest_code_ce86c513295147cebe1c0ed654468d2f-33"&gt;&lt;/a&gt;    declare long r
+&lt;a name="rest_code_ce86c513295147cebe1c0ed654468d2f-34"&gt;&lt;/a&gt;    external long function dbasic$rt_dim (long by value, long by value)
+&lt;a name="rest_code_ce86c513295147cebe1c0ed654468d2f-35"&gt;&lt;/a&gt;    r = dbasic$rt_dim (s, n)
+&lt;a name="rest_code_ce86c513295147cebe1c0ed654468d2f-36"&gt;&lt;/a&gt;end function r ! my_redim
+&lt;a name="rest_code_ce86c513295147cebe1c0ed654468d2f-37"&gt;&lt;/a&gt;
+&lt;a name="rest_code_ce86c513295147cebe1c0ed654468d2f-38"&gt;&lt;/a&gt;sub redim_in_sub (string s())
+&lt;a name="rest_code_ce86c513295147cebe1c0ed654468d2f-39"&gt;&lt;/a&gt;    option type = explicit, constant type = integer, &amp;amp;
+&lt;a name="rest_code_ce86c513295147cebe1c0ed654468d2f-40"&gt;&lt;/a&gt;        size = integer long, size = real double
+&lt;a name="rest_code_ce86c513295147cebe1c0ed654468d2f-41"&gt;&lt;/a&gt;    external sub set_strings (string dim(), string)
+&lt;a name="rest_code_ce86c513295147cebe1c0ed654468d2f-42"&gt;&lt;/a&gt;    declare long i
+&lt;a name="rest_code_ce86c513295147cebe1c0ed654468d2f-43"&gt;&lt;/a&gt;    call my_redim (s(), 40)
+&lt;a name="rest_code_ce86c513295147cebe1c0ed654468d2f-44"&gt;&lt;/a&gt;    for i = 0 to 40 \ s(i) = "redim in sub " + num1$(i) \ next i
+&lt;a name="rest_code_ce86c513295147cebe1c0ed654468d2f-45"&gt;&lt;/a&gt;end sub ! redim_in_sub
 &lt;/pre&gt;&lt;p&gt;(Interestingly, a slightly different approach was necessary using VAX
 BASIC V3.5 under VMS V5.5-2: using BY VALUE in function
 definition statements is not allowed by this version of VAX BASIC,
 and BAS$RT_DIM had to be used instead of DBASIC$RT_DIM, of course.)&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;/div&gt;&lt;/div&gt;</description><category>basic</category><category>dms-plus</category><category>mmk</category><category>old blog</category><category>poise</category><category>vms</category><guid>https://tkurtbond.github.io/posts/2003/05/08/2003-05-08-vms-code-from-the-past/</guid><pubDate>Thu, 08 May 2003 05:00:00 GMT</pubDate></item></channel></rss>
+&lt;/div&gt;&lt;/div&gt;</description><category>alpha</category><category>basic</category><category>dms-plus</category><category>hacks</category><category>mmk</category><category>old blog</category><category>poise</category><category>usenet</category><category>vax</category><category>vms</category><guid>https://tkurtbond.github.io/posts/2003/05/08/2003-05-08-vms-code-from-the-past/</guid><pubDate>Thu, 08 May 2003 05:00:00 GMT</pubDate></item></channel></rss>

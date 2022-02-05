@@ -3,13 +3,87 @@
 <feed xml:lang="en" xmlns="http://www.w3.org/2005/Atom">
   <title>Lacking Natural Simplicity (Posts about computer)</title>
   <id>https://tkurtbond.github.io/categories/cat_computer.atom</id>
-  <updated>2021-09-13T21:11:24Z</updated>
+  <updated>2022-02-05T21:26:15Z</updated>
   <author>
     <name>T. Kurt Bond</name>
   </author>
   <link rel="self" type="application/atom+xml" href="https://tkurtbond.github.io/categories/cat_computer.atom"/>
   <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/categories/cat_computer/"/>
   <generator uri="https://getnikola.com/">Nikola</generator>
+  <entry>
+    <title>Redimensioning formal parameter arrays in OpenVMS BASIC, Revisited</title>
+    <id>https://tkurtbond.github.io/posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/</id>
+    <updated>2022-02-05T16:08:22-05:00</updated>
+    <published>2022-02-05T16:08:22-05:00</published>
+    <author>
+      <name>T. Kurt Bond</name>
+    </author>
+    <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/"/>
+    <summary type="html">&lt;div&gt;&lt;p&gt;I was working on a program on a VAX today, and needed to redimension
+dynamically allocated arrays that are passed to an external function.
+I've done this in the past (an &lt;a class="reference external" href="https://groups.google.com/g/comp.os.vms/c/mVWznNVN17U/m/HE3L4N4nIJAJ"&gt;old USENET post&lt;/a&gt;, and the &lt;a class="reference external" href="https://tkurtbond.github.io/posts/2003/05/08/2003-05-08-vms-code-from-the-past/"&gt;old blog
+post&lt;/a&gt; that mentions it), but this time I managed to simplify my
+solution, and generalize it to work with both lower and upper bounds,
+and so the same function would work with multiple VMS BASIC data
+types.  Here's the &lt;a class="reference external" href="https://groups.google.com/g/comp.os.vms/c/mVWznNVN17U/m/yuOAmQtQBAAJ"&gt;new USENET post&lt;/a&gt;.  (How's that for thread
+necromancy?)&lt;/p&gt;
+&lt;p&gt;I'll include the code in this blog post, too, for ease of reference.
+Here's &lt;span class="file"&gt;vax_redim_best.bas&lt;/span&gt;&lt;/p&gt;
+&lt;pre class="code text"&gt;&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-1"&gt;&lt;/a&gt;program vax_redim_best
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-2"&gt;&lt;/a&gt;    option type = explicit, constant type = integer, &amp;amp;
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-3"&gt;&lt;/a&gt;        size = integer long, size = real double
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-4"&gt;&lt;/a&gt;    record rec
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-5"&gt;&lt;/a&gt;        string s = 13
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-6"&gt;&lt;/a&gt;        long   i
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-7"&gt;&lt;/a&gt;    end record rec
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-8"&gt;&lt;/a&gt;
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-9"&gt;&lt;/a&gt;    ! Don't declare the parameters, and everything works, even passing
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-10"&gt;&lt;/a&gt;    ! different types.
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-11"&gt;&lt;/a&gt;    external sub redim
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-12"&gt;&lt;/a&gt;
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-13"&gt;&lt;/a&gt;    declare long stat, i
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-14"&gt;&lt;/a&gt;    i = 1
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-15"&gt;&lt;/a&gt;    dim rec rec(1 to i)
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-16"&gt;&lt;/a&gt;    print "lbound (rec) at start: "; lbound (rec)
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-17"&gt;&lt;/a&gt;    print "ubound (rec) at start: "; ubound (rec)
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-18"&gt;&lt;/a&gt;    call redim (rec(), 3, 10)
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-19"&gt;&lt;/a&gt;    print "lbound (rec) after redim: "; lbound (rec)
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-20"&gt;&lt;/a&gt;    print "ubound (rec) after redim: "; ubound (rec)
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-21"&gt;&lt;/a&gt;
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-22"&gt;&lt;/a&gt;    dim string s(1 to i)
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-23"&gt;&lt;/a&gt;    print "lbound (s) at start: "; lbound (s)
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-24"&gt;&lt;/a&gt;    print "ubound (s) at start: "; ubound (s)
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-25"&gt;&lt;/a&gt;    call redim (s(), 3, 10)
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-26"&gt;&lt;/a&gt;    print "lbound (s) after redim: "; lbound (s)
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-27"&gt;&lt;/a&gt;    print "ubound (s) after redim: "; ubound (s)
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-28"&gt;&lt;/a&gt;
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-29"&gt;&lt;/a&gt;    dim long l(1 to i)
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-30"&gt;&lt;/a&gt;    print "lbound (l) at start: "; lbound (l)
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-31"&gt;&lt;/a&gt;    print "ubound (l) at start: "; ubound (l)
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-32"&gt;&lt;/a&gt;    call redim (l(), 3, 10)
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-33"&gt;&lt;/a&gt;    print "lbound (l) after redim: "; lbound (l)
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-34"&gt;&lt;/a&gt;    print "ubound (l) after redim: "; ubound (l)
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-35"&gt;&lt;/a&gt;
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-36"&gt;&lt;/a&gt;
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-37"&gt;&lt;/a&gt;end program ! vax_redim_best
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-38"&gt;&lt;/a&gt;
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-39"&gt;&lt;/a&gt;function long redim (long s, long low, long high)
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-40"&gt;&lt;/a&gt;    option type = explicit, constant type = integer, &amp;amp;
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-41"&gt;&lt;/a&gt;        size = integer long, size = real double
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-42"&gt;&lt;/a&gt;    external long function bas$rt_dim_bounds (long by value, long by value, long by value)
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-43"&gt;&lt;/a&gt;    declare long r
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-44"&gt;&lt;/a&gt;    r = bas$rt_dim_bounds (loc (s), low, high)
+&lt;a name="rest_code_16dff64c3f064122b8aba9b005e159cd-45"&gt;&lt;/a&gt;end function r ! redim
+&lt;/pre&gt;&lt;p&gt;I'll just point out, which I failed to do in the &lt;a class="reference external" href="https://groups.google.com/g/comp.os.vms/c/mVWznNVN17U/m/HE3L4N4nIJAJ"&gt;old USENET post&lt;/a&gt; or
+the &lt;a class="reference external" href="https://groups.google.com/g/comp.os.vms/c/mVWznNVN17U/m/yuOAmQtQBAAJ"&gt;new USENET post&lt;/a&gt;, that you have to use a &lt;strong&gt;variable&lt;/strong&gt; when using
+the VMS BASIC &lt;code class="docutils literal"&gt;dim&lt;/code&gt; statement or you get a fatal runtime error.  Ooops.&lt;/p&gt;&lt;/div&gt;</summary>
+    <category term="alpha" label="alpha"/>
+    <category term="basic" label="basic"/>
+    <category term="hacks" label="hacks"/>
+    <category term="usenet" label="usenet"/>
+    <category term="vax" label="vax"/>
+    <category term="vms" label="vms"/>
+  </entry>
   <entry>
     <title>Getting the homebrew CHICKEN Scheme sqlite3 egg to use the homebrew-installed sqlite3 include files and library files</title>
     <id>https://tkurtbond.github.io/posts/2021/09/13/getting-the-homebrew-chicken-scheme-sqlite3-egg-to-use-the-homebrew-installed-sqlite3-include-files-and-library-files/</id>
@@ -750,83 +824,5 @@ End: --&gt;&lt;/div&gt;</summary>
     <category term="troff" label="troff"/>
     <category term="vms" label="vms"/>
     <category term="xroff" label="xroff"/>
-  </entry>
-  <entry>
-    <title>defadvice lets you improve existing functions!</title>
-    <id>https://tkurtbond.github.io/posts/2021/07/11/defadvice-lets-you-improve-existing-functions/</id>
-    <updated>2021-07-11T22:28:21-04:00</updated>
-    <published>2021-07-11T22:28:21-04:00</published>
-    <author>
-      <name>T. Kurt Bond</name>
-    </author>
-    <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/posts/2021/07/11/defadvice-lets-you-improve-existing-functions/"/>
-    <summary type="html">&lt;div&gt;&lt;p&gt;I used &lt;code class="docutils literal"&gt;defadvice&lt;/code&gt; in emacs lisp and it made the world so much
-better!&lt;/p&gt;
-&lt;p&gt;Specifically, I use the function &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;smart-unicode-hyphen&lt;/span&gt;&lt;/code&gt; from
-&lt;span class="file"&gt;xmlunicode.el&lt;/span&gt; &lt;a class="footnote-reference brackets" href="https://tkurtbond.github.io/posts/2021/07/11/defadvice-lets-you-improve-existing-functions/#tkb-smart-unicode-mode" id="id1"&gt;1&lt;/a&gt; when entering text
-that is to be typeset.  The first time you hit hyphen it inserts a
-hyphen.  The second time you hit hyphen it changes it to an em dash.
-The third time you hit hyphen it changes it to an en dash.  If you hit
-it again it changes it back to a hyphen.  Unfortunately, I’ve never
-found a monospaced font that has em dashes and en dashes that are
-distinguishable from hyphens visually.  (Not to mention the minus
-character, which is also important to enter correctly for
-typesetting.)  So it is hard to tell what character you have just
-inserted, especially since you have to remember which comes after
-which in the sequence.&lt;/p&gt;
-&lt;dl class="footnote brackets"&gt;
-&lt;dt class="label" id="tkb-smart-unicode-mode"&gt;&lt;span class="brackets"&gt;&lt;a class="fn-backref" href="https://tkurtbond.github.io/posts/2021/07/11/defadvice-lets-you-improve-existing-functions/#id1"&gt;1&lt;/a&gt;&lt;/span&gt;&lt;/dt&gt;
-&lt;dd&gt;&lt;p&gt;Specifically, I have a very small minor mode that makes hyphens,
-double and single quotes, and periods smart, so they insert the
-proper Unicode characters in the right situations.&lt;/p&gt;
-&lt;/dd&gt;
-&lt;/dl&gt;
-&lt;p&gt;But I have a function tkb-describe-character that looks up the
-character under the cursor (or before, if you specified a prefix
-interactively or a value when called non-interactively) that looks up
-the character in the variable unicode-character-list (which is defined
-in &lt;span class="file"&gt;unichars.el&lt;/span&gt;) and contains the character values and unicode
-names for the characters.&lt;/p&gt;
-&lt;p&gt;So, I wrote a &lt;code class="docutils literal"&gt;defadvice&lt;/code&gt; function that runs
-&lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;(tkb-describe-character&lt;/span&gt; t)&lt;/code&gt; after &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;smart-unicode-hyphen&lt;/span&gt;&lt;/code&gt; runs, so
-it looks at the character just before it and describes it, so I know
-what it is!&lt;/p&gt;
-&lt;p&gt;It works wonderfully!&lt;/p&gt;
-&lt;p&gt;That's the thing about &lt;code class="docutils literal"&gt;defadvice&lt;/code&gt;: it lets you customize functions
-to better adapt them to how you need to work.  Another way emacs lets
-you customize it to better suit your needs.&lt;/p&gt;
-&lt;p&gt;I got my copies of &lt;span class="file"&gt;xmlunicode.el&lt;/span&gt; (copyright 2003 by Norman
-Walsh) and &lt;span class="file"&gt;unichars.el&lt;/span&gt; (unattributed) off the Internet long
-ago.  It looks like you can get &lt;span class="file"&gt;xmlunicode.el&lt;/span&gt; from his
-&lt;a class="reference external" href="https://github.com/ndw/xmlunicode"&gt;xmlunicode&lt;/a&gt; github repository, and it looks like the replacement for
-&lt;span class="file"&gt;unichars.el&lt;/span&gt; is &lt;span class="file"&gt;xmlunicode-character-list.el&lt;/span&gt;.&lt;/p&gt;
-&lt;p&gt;Here's my code:&lt;/p&gt;
-&lt;pre class="code emacs-lisp"&gt;&lt;a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-1"&gt;&lt;/a&gt;&lt;span class="c1"&gt;;; look at https://github.com/ndw/xmlunicode for xmlunicode.el and a way&lt;/span&gt;
-&lt;a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-2"&gt;&lt;/a&gt;&lt;span class="c1"&gt;;; to make something like unichars.el.  xmlunicode.el provides the&lt;/span&gt;
-&lt;a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-3"&gt;&lt;/a&gt;&lt;span class="c1"&gt;;; "smart-unicode-*" functions.&lt;/span&gt;
-&lt;a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-4"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;load-library&lt;/span&gt; &lt;span class="s"&gt;"xmlunicode"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-5"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;load-library&lt;/span&gt; &lt;span class="s"&gt;"unichars"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-6"&gt;&lt;/a&gt;
-&lt;a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-7"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;defun&lt;/span&gt; &lt;span class="nv"&gt;tkb-describe-character&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;before&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-8"&gt;&lt;/a&gt;  &lt;span class="s"&gt;"Describe the character after point (before if a prefix was specified)&lt;/span&gt;
-&lt;a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-9"&gt;&lt;/a&gt;&lt;span class="s"&gt;if it is a unicode character."&lt;/span&gt;
-&lt;a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-10"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;interactive&lt;/span&gt; &lt;span class="s"&gt;"P"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-11"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;let*&lt;/span&gt; &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nv"&gt;char&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nv"&gt;before&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;char-before&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;char-after&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
-&lt;a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-12"&gt;&lt;/a&gt;         &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;info&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;assoc&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;encode-char&lt;/span&gt; &lt;span class="nv"&gt;char&lt;/span&gt; &lt;span class="ss"&gt;'ucs&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="nv"&gt;unicode-character-list&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
-&lt;a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-13"&gt;&lt;/a&gt;         &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;info&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;cons&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;format&lt;/span&gt; &lt;span class="s"&gt;"#x%X"&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;car&lt;/span&gt; &lt;span class="nv"&gt;info&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="nv"&gt;info&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
-&lt;a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-14"&gt;&lt;/a&gt;    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;message&lt;/span&gt; &lt;span class="s"&gt;"%S"&lt;/span&gt; &lt;span class="nv"&gt;info&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
-&lt;a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-15"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;tkb-keys&lt;/span&gt; &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nv"&gt;kbd&lt;/span&gt; &lt;span class="s"&gt;"C-c k d"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="nf"&gt;#'&lt;/span&gt;&lt;span class="nv"&gt;tkb-describe-character&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
-&lt;a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-16"&gt;&lt;/a&gt;
-&lt;a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-17"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;define-minor-mode&lt;/span&gt; &lt;span class="nv"&gt;tkb-smart-unicode-mode&lt;/span&gt;
-&lt;a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-18"&gt;&lt;/a&gt;  &lt;span class="s"&gt;"Toggle smart unicode punctuation"&lt;/span&gt; &lt;span class="no"&gt;nil&lt;/span&gt; &lt;span class="s"&gt;" ♻⚔☣☥☸◉⅙✽☮"&lt;/span&gt; &lt;span class="c1"&gt;; "✘▧▧⚅☑☢☹☺♠♥♦♣♨"&lt;/span&gt;
-&lt;a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-19"&gt;&lt;/a&gt;  &lt;span class="o"&gt;'&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="s"&gt;"\""&lt;/span&gt; &lt;span class="o"&gt;.&lt;/span&gt; &lt;span class="nv"&gt;unicode-smart-double-quote&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-20"&gt;&lt;/a&gt;    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"'"&lt;/span&gt;  &lt;span class="o"&gt;.&lt;/span&gt; &lt;span class="nv"&gt;unicode-smart-single-quote&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-21"&gt;&lt;/a&gt;    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"-"&lt;/span&gt;  &lt;span class="o"&gt;.&lt;/span&gt; &lt;span class="nv"&gt;unicode-smart-hyphen&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-22"&gt;&lt;/a&gt;    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"."&lt;/span&gt;  &lt;span class="o"&gt;.&lt;/span&gt; &lt;span class="nv"&gt;unicode-smart-period&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
-&lt;a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-23"&gt;&lt;/a&gt;
-&lt;a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-24"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;defadvice&lt;/span&gt; &lt;span class="nv"&gt;unicode-smart-hyphen&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;after&lt;/span&gt; &lt;span class="nv"&gt;tkb-after-unicode-smart-hyphen&lt;/span&gt; &lt;span class="nv"&gt;last&lt;/span&gt;
-&lt;a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-25"&gt;&lt;/a&gt;                                       &lt;span class="nv"&gt;activate&lt;/span&gt; &lt;span class="nv"&gt;compile&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;a name="rest_code_02feafffff044814ba1fde2b0d9ddaf1-26"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;tkb-describe-character&lt;/span&gt; &lt;span class="no"&gt;t&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
-&lt;/pre&gt;&lt;p&gt;Here's a &lt;a class="reference external" href="https://gist.github.com/tkurtbond/3dad54a2141422f39033533e72f53110"&gt;gist&lt;/a&gt;, and the &lt;a class="reference external" href="https://gist.githubusercontent.com/tkurtbond/3dad54a2141422f39033533e72f53110/raw/f1dc635d64fae89d1202142583df39544a87d7b8/tkb-smart-unicode-mode.el"&gt;raw&lt;/a&gt; gist if you want to download it directly.&lt;/p&gt;&lt;/div&gt;</summary>
   </entry>
 </feed>
