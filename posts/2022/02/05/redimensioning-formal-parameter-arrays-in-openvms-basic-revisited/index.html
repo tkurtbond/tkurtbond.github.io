@@ -92,52 +92,52 @@ and so the same function would work with multiple VMS BASIC data
 types.  Here's the <a class="reference external" href="https://groups.google.com/g/comp.os.vms/c/mVWznNVN17U/m/yuOAmQtQBAAJ">new USENET post</a>.  (How's that for thread
 necromancy?)</p>
 <p>I'll include the code in this blog post, too, for ease of reference.
-Here's <span class="file">vax_redim_best.bas</span></p>
-<pre class="code text"><a name="rest_code_16dff64c3f064122b8aba9b005e159cd-1"></a>program vax_redim_best
-<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-2"></a>    option type = explicit, constant type = integer, &amp;
-<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-3"></a>        size = integer long, size = real double
-<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-4"></a>    record rec
-<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-5"></a>        string s = 13
-<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-6"></a>        long   i
-<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-7"></a>    end record rec
-<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-8"></a>
-<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-9"></a>    ! Don't declare the parameters, and everything works, even passing
-<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-10"></a>    ! different types.
-<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-11"></a>    external sub redim
-<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-12"></a>
-<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-13"></a>    declare long stat, i
-<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-14"></a>    i = 1
-<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-15"></a>    dim rec rec(1 to i)
-<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-16"></a>    print "lbound (rec) at start: "; lbound (rec)
-<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-17"></a>    print "ubound (rec) at start: "; ubound (rec)
-<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-18"></a>    call redim (rec(), 3, 10)
-<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-19"></a>    print "lbound (rec) after redim: "; lbound (rec)
-<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-20"></a>    print "ubound (rec) after redim: "; ubound (rec)
-<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-21"></a>
-<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-22"></a>    dim string s(1 to i)
-<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-23"></a>    print "lbound (s) at start: "; lbound (s)
-<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-24"></a>    print "ubound (s) at start: "; ubound (s)
-<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-25"></a>    call redim (s(), 3, 10)
-<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-26"></a>    print "lbound (s) after redim: "; lbound (s)
-<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-27"></a>    print "ubound (s) after redim: "; ubound (s)
-<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-28"></a>
-<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-29"></a>    dim long l(1 to i)
-<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-30"></a>    print "lbound (l) at start: "; lbound (l)
-<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-31"></a>    print "ubound (l) at start: "; ubound (l)
-<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-32"></a>    call redim (l(), 3, 10)
-<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-33"></a>    print "lbound (l) after redim: "; lbound (l)
-<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-34"></a>    print "ubound (l) after redim: "; ubound (l)
-<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-35"></a>
-<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-36"></a>
-<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-37"></a>end program ! vax_redim_best
-<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-38"></a>
-<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-39"></a>function long redim (long s, long low, long high)
-<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-40"></a>    option type = explicit, constant type = integer, &amp;
-<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-41"></a>        size = integer long, size = real double
-<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-42"></a>    external long function bas$rt_dim_bounds (long by value, long by value, long by value)
-<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-43"></a>    declare long r
-<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-44"></a>    r = bas$rt_dim_bounds (loc (s), low, high)
-<a name="rest_code_16dff64c3f064122b8aba9b005e159cd-45"></a>end function r ! redim
+Here's <span class="file">vax_redim_best.bas</span>:</p>
+<pre class="code text"><a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-1"></a>program vax_redim_best
+<a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-2"></a>    option type = explicit, constant type = integer, &amp;
+<a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-3"></a>        size = integer long, size = real double
+<a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-4"></a>    record rec
+<a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-5"></a>        string s = 13
+<a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-6"></a>        long   i
+<a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-7"></a>    end record rec
+<a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-8"></a>
+<a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-9"></a>    ! Don't declare the parameters, and everything works, even passing
+<a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-10"></a>    ! different types.
+<a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-11"></a>    external sub redim
+<a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-12"></a>
+<a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-13"></a>    declare long stat, i
+<a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-14"></a>    i = 1
+<a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-15"></a>    dim rec rec(1 to i)
+<a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-16"></a>    print "lbound (rec) at start: "; lbound (rec)
+<a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-17"></a>    print "ubound (rec) at start: "; ubound (rec)
+<a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-18"></a>    call redim (rec(), 3, 10)
+<a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-19"></a>    print "lbound (rec) after redim: "; lbound (rec)
+<a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-20"></a>    print "ubound (rec) after redim: "; ubound (rec)
+<a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-21"></a>
+<a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-22"></a>    dim string s(1 to i)
+<a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-23"></a>    print "lbound (s) at start: "; lbound (s)
+<a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-24"></a>    print "ubound (s) at start: "; ubound (s)
+<a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-25"></a>    call redim (s(), 3, 10)
+<a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-26"></a>    print "lbound (s) after redim: "; lbound (s)
+<a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-27"></a>    print "ubound (s) after redim: "; ubound (s)
+<a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-28"></a>
+<a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-29"></a>    dim long l(1 to i)
+<a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-30"></a>    print "lbound (l) at start: "; lbound (l)
+<a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-31"></a>    print "ubound (l) at start: "; ubound (l)
+<a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-32"></a>    call redim (l(), 3, 10)
+<a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-33"></a>    print "lbound (l) after redim: "; lbound (l)
+<a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-34"></a>    print "ubound (l) after redim: "; ubound (l)
+<a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-35"></a>
+<a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-36"></a>
+<a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-37"></a>end program ! vax_redim_best
+<a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-38"></a>
+<a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-39"></a>function long redim (long s, long low, long high)
+<a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-40"></a>    option type = explicit, constant type = integer, &amp;
+<a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-41"></a>        size = integer long, size = real double
+<a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-42"></a>    external long function bas$rt_dim_bounds (long by value, long by value, long by value)
+<a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-43"></a>    declare long r
+<a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-44"></a>    r = bas$rt_dim_bounds (loc (s), low, high)
+<a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-45"></a>end function r ! redim
 </pre>
 <p>I'll just point out, which I failed to do in the <a class="reference external" href="https://groups.google.com/g/comp.os.vms/c/mVWznNVN17U/m/HE3L4N4nIJAJ">old USENET post</a> or
 the <a class="reference external" href="https://groups.google.com/g/comp.os.vms/c/mVWznNVN17U/m/yuOAmQtQBAAJ">new USENET post</a>, that you have to use a <strong>variable</strong> when using
