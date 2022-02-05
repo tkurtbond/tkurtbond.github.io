@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity (Posts about alpha)</title><link>https://tkurtbond.github.io/</link><description></description><atom:link href="https://tkurtbond.github.io/categories/alpha.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2022 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Sat, 05 Feb 2022 21:34:39 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Redimensioning formal parameter arrays in OpenVMS BASIC, Revisited</title><link>https://tkurtbond.github.io/posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;I was working on a program on a VAX today, and needed to redimension
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity (Posts about alpha)</title><link>https://tkurtbond.github.io/</link><description></description><atom:link href="https://tkurtbond.github.io/categories/alpha.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2022 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Sat, 05 Feb 2022 21:47:07 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Redimensioning formal parameter arrays in OpenVMS BASIC, Revisited</title><link>https://tkurtbond.github.io/posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;I was working on a program on a VAX today, and needed to redimension
 dynamically allocated arrays that are passed to an external function.
 I've done this in the past (an &lt;a class="reference external" href="https://groups.google.com/g/comp.os.vms/c/mVWznNVN17U/m/HE3L4N4nIJAJ"&gt;old USENET post&lt;/a&gt;, and the &lt;a class="reference external" href="https://tkurtbond.github.io/posts/2003/05/08/2003-05-08-vms-code-from-the-past/"&gt;old blog
 post&lt;/a&gt; that mentions it), but this time I managed to simplify my
@@ -9,54 +9,88 @@ types.  Here's the &lt;a class="reference external" href="https://groups.google.
 necromancy?)&lt;/p&gt;
 &lt;p&gt;I'll include the code in this blog post, too, for ease of reference.
 Here's &lt;span class="file"&gt;vax_redim_best.bas&lt;/span&gt;:&lt;/p&gt;
-&lt;pre class="code text"&gt;&lt;a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-1"&gt;&lt;/a&gt;program vax_redim_best
-&lt;a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-2"&gt;&lt;/a&gt;    option type = explicit, constant type = integer, &amp;amp;
-&lt;a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-3"&gt;&lt;/a&gt;        size = integer long, size = real double
-&lt;a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-4"&gt;&lt;/a&gt;    record rec
-&lt;a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-5"&gt;&lt;/a&gt;        string s = 13
-&lt;a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-6"&gt;&lt;/a&gt;        long   i
-&lt;a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-7"&gt;&lt;/a&gt;    end record rec
-&lt;a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-8"&gt;&lt;/a&gt;
-&lt;a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-9"&gt;&lt;/a&gt;    ! Don't declare the parameters, and everything works, even passing
-&lt;a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-10"&gt;&lt;/a&gt;    ! different types.
-&lt;a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-11"&gt;&lt;/a&gt;    external sub redim
-&lt;a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-12"&gt;&lt;/a&gt;
-&lt;a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-13"&gt;&lt;/a&gt;    declare long stat, i
-&lt;a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-14"&gt;&lt;/a&gt;    i = 1
-&lt;a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-15"&gt;&lt;/a&gt;    dim rec rec(1 to i)
-&lt;a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-16"&gt;&lt;/a&gt;    print "lbound (rec) at start: "; lbound (rec)
-&lt;a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-17"&gt;&lt;/a&gt;    print "ubound (rec) at start: "; ubound (rec)
-&lt;a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-18"&gt;&lt;/a&gt;    call redim (rec(), 3, 10)
-&lt;a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-19"&gt;&lt;/a&gt;    print "lbound (rec) after redim: "; lbound (rec)
-&lt;a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-20"&gt;&lt;/a&gt;    print "ubound (rec) after redim: "; ubound (rec)
-&lt;a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-21"&gt;&lt;/a&gt;
-&lt;a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-22"&gt;&lt;/a&gt;    dim string s(1 to i)
-&lt;a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-23"&gt;&lt;/a&gt;    print "lbound (s) at start: "; lbound (s)
-&lt;a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-24"&gt;&lt;/a&gt;    print "ubound (s) at start: "; ubound (s)
-&lt;a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-25"&gt;&lt;/a&gt;    call redim (s(), 3, 10)
-&lt;a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-26"&gt;&lt;/a&gt;    print "lbound (s) after redim: "; lbound (s)
-&lt;a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-27"&gt;&lt;/a&gt;    print "ubound (s) after redim: "; ubound (s)
-&lt;a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-28"&gt;&lt;/a&gt;
-&lt;a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-29"&gt;&lt;/a&gt;    dim long l(1 to i)
-&lt;a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-30"&gt;&lt;/a&gt;    print "lbound (l) at start: "; lbound (l)
-&lt;a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-31"&gt;&lt;/a&gt;    print "ubound (l) at start: "; ubound (l)
-&lt;a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-32"&gt;&lt;/a&gt;    call redim (l(), 3, 10)
-&lt;a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-33"&gt;&lt;/a&gt;    print "lbound (l) after redim: "; lbound (l)
-&lt;a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-34"&gt;&lt;/a&gt;    print "ubound (l) after redim: "; ubound (l)
-&lt;a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-35"&gt;&lt;/a&gt;
-&lt;a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-36"&gt;&lt;/a&gt;
-&lt;a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-37"&gt;&lt;/a&gt;end program ! vax_redim_best
-&lt;a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-38"&gt;&lt;/a&gt;
-&lt;a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-39"&gt;&lt;/a&gt;function long redim (long s, long low, long high)
-&lt;a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-40"&gt;&lt;/a&gt;    option type = explicit, constant type = integer, &amp;amp;
-&lt;a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-41"&gt;&lt;/a&gt;        size = integer long, size = real double
-&lt;a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-42"&gt;&lt;/a&gt;    external long function bas$rt_dim_bounds (long by value, long by value, long by value)
-&lt;a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-43"&gt;&lt;/a&gt;    declare long r
-&lt;a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-44"&gt;&lt;/a&gt;    r = bas$rt_dim_bounds (loc (s), low, high)
-&lt;a name="rest_code_645c1fe2f8ea4e94bba2f3db47b4eb1a-45"&gt;&lt;/a&gt;end function r ! redim
+&lt;pre class="code text"&gt;&lt;a name="rest_code_af21e73dd54947eca531b3a7e02d89fe-1"&gt;&lt;/a&gt;program vax_redim_best
+&lt;a name="rest_code_af21e73dd54947eca531b3a7e02d89fe-2"&gt;&lt;/a&gt;    option type = explicit, constant type = integer, &amp;amp;
+&lt;a name="rest_code_af21e73dd54947eca531b3a7e02d89fe-3"&gt;&lt;/a&gt;        size = integer long, size = real double
+&lt;a name="rest_code_af21e73dd54947eca531b3a7e02d89fe-4"&gt;&lt;/a&gt;    record rec
+&lt;a name="rest_code_af21e73dd54947eca531b3a7e02d89fe-5"&gt;&lt;/a&gt;        string s = 13
+&lt;a name="rest_code_af21e73dd54947eca531b3a7e02d89fe-6"&gt;&lt;/a&gt;        long   i
+&lt;a name="rest_code_af21e73dd54947eca531b3a7e02d89fe-7"&gt;&lt;/a&gt;    end record rec
+&lt;a name="rest_code_af21e73dd54947eca531b3a7e02d89fe-8"&gt;&lt;/a&gt;
+&lt;a name="rest_code_af21e73dd54947eca531b3a7e02d89fe-9"&gt;&lt;/a&gt;    ! Don't declare the parameters, and everything works, even passing
+&lt;a name="rest_code_af21e73dd54947eca531b3a7e02d89fe-10"&gt;&lt;/a&gt;    ! different types.
+&lt;a name="rest_code_af21e73dd54947eca531b3a7e02d89fe-11"&gt;&lt;/a&gt;    external sub redim
+&lt;a name="rest_code_af21e73dd54947eca531b3a7e02d89fe-12"&gt;&lt;/a&gt;
+&lt;a name="rest_code_af21e73dd54947eca531b3a7e02d89fe-13"&gt;&lt;/a&gt;    declare long stat, i
+&lt;a name="rest_code_af21e73dd54947eca531b3a7e02d89fe-14"&gt;&lt;/a&gt;    i = 1
+&lt;a name="rest_code_af21e73dd54947eca531b3a7e02d89fe-15"&gt;&lt;/a&gt;    dim rec rec(1 to i)
+&lt;a name="rest_code_af21e73dd54947eca531b3a7e02d89fe-16"&gt;&lt;/a&gt;    print "lbound (rec) at start: "; lbound (rec)
+&lt;a name="rest_code_af21e73dd54947eca531b3a7e02d89fe-17"&gt;&lt;/a&gt;    print "ubound (rec) at start: "; ubound (rec)
+&lt;a name="rest_code_af21e73dd54947eca531b3a7e02d89fe-18"&gt;&lt;/a&gt;    call redim (rec(), 3, 10)
+&lt;a name="rest_code_af21e73dd54947eca531b3a7e02d89fe-19"&gt;&lt;/a&gt;    print "lbound (rec) after redim: "; lbound (rec)
+&lt;a name="rest_code_af21e73dd54947eca531b3a7e02d89fe-20"&gt;&lt;/a&gt;    print "ubound (rec) after redim: "; ubound (rec)
+&lt;a name="rest_code_af21e73dd54947eca531b3a7e02d89fe-21"&gt;&lt;/a&gt;
+&lt;a name="rest_code_af21e73dd54947eca531b3a7e02d89fe-22"&gt;&lt;/a&gt;    dim string s(1 to i)
+&lt;a name="rest_code_af21e73dd54947eca531b3a7e02d89fe-23"&gt;&lt;/a&gt;    print "lbound (s) at start: "; lbound (s)
+&lt;a name="rest_code_af21e73dd54947eca531b3a7e02d89fe-24"&gt;&lt;/a&gt;    print "ubound (s) at start: "; ubound (s)
+&lt;a name="rest_code_af21e73dd54947eca531b3a7e02d89fe-25"&gt;&lt;/a&gt;    call redim (s(), 3, 10)
+&lt;a name="rest_code_af21e73dd54947eca531b3a7e02d89fe-26"&gt;&lt;/a&gt;    print "lbound (s) after redim: "; lbound (s)
+&lt;a name="rest_code_af21e73dd54947eca531b3a7e02d89fe-27"&gt;&lt;/a&gt;    print "ubound (s) after redim: "; ubound (s)
+&lt;a name="rest_code_af21e73dd54947eca531b3a7e02d89fe-28"&gt;&lt;/a&gt;
+&lt;a name="rest_code_af21e73dd54947eca531b3a7e02d89fe-29"&gt;&lt;/a&gt;    dim long l(1 to i)
+&lt;a name="rest_code_af21e73dd54947eca531b3a7e02d89fe-30"&gt;&lt;/a&gt;    print "lbound (l) at start: "; lbound (l)
+&lt;a name="rest_code_af21e73dd54947eca531b3a7e02d89fe-31"&gt;&lt;/a&gt;    print "ubound (l) at start: "; ubound (l)
+&lt;a name="rest_code_af21e73dd54947eca531b3a7e02d89fe-32"&gt;&lt;/a&gt;    call redim (l(), 3, 10)
+&lt;a name="rest_code_af21e73dd54947eca531b3a7e02d89fe-33"&gt;&lt;/a&gt;    print "lbound (l) after redim: "; lbound (l)
+&lt;a name="rest_code_af21e73dd54947eca531b3a7e02d89fe-34"&gt;&lt;/a&gt;    print "ubound (l) after redim: "; ubound (l)
+&lt;a name="rest_code_af21e73dd54947eca531b3a7e02d89fe-35"&gt;&lt;/a&gt;
+&lt;a name="rest_code_af21e73dd54947eca531b3a7e02d89fe-36"&gt;&lt;/a&gt;
+&lt;a name="rest_code_af21e73dd54947eca531b3a7e02d89fe-37"&gt;&lt;/a&gt;end program ! vax_redim_best
+&lt;a name="rest_code_af21e73dd54947eca531b3a7e02d89fe-38"&gt;&lt;/a&gt;
+&lt;a name="rest_code_af21e73dd54947eca531b3a7e02d89fe-39"&gt;&lt;/a&gt;function long redim (long s, long low, long high)
+&lt;a name="rest_code_af21e73dd54947eca531b3a7e02d89fe-40"&gt;&lt;/a&gt;    option type = explicit, constant type = integer, &amp;amp;
+&lt;a name="rest_code_af21e73dd54947eca531b3a7e02d89fe-41"&gt;&lt;/a&gt;        size = integer long, size = real double
+&lt;a name="rest_code_af21e73dd54947eca531b3a7e02d89fe-42"&gt;&lt;/a&gt;    external long function bas$rt_dim_bounds (long by value, long by value, long by value)
+&lt;a name="rest_code_af21e73dd54947eca531b3a7e02d89fe-43"&gt;&lt;/a&gt;    declare long r
+&lt;a name="rest_code_af21e73dd54947eca531b3a7e02d89fe-44"&gt;&lt;/a&gt;    r = bas$rt_dim_bounds (loc (s), low, high)
+&lt;a name="rest_code_af21e73dd54947eca531b3a7e02d89fe-45"&gt;&lt;/a&gt;end function r ! redim
 &lt;/pre&gt;&lt;p&gt;I'll just point out, which I failed to do in the &lt;a class="reference external" href="https://groups.google.com/g/comp.os.vms/c/mVWznNVN17U/m/HE3L4N4nIJAJ"&gt;old USENET post&lt;/a&gt; or
 the &lt;a class="reference external" href="https://groups.google.com/g/comp.os.vms/c/mVWznNVN17U/m/yuOAmQtQBAAJ"&gt;new USENET post&lt;/a&gt;, that you have to use a &lt;strong&gt;variable&lt;/strong&gt; when using
-the VMS BASIC &lt;code class="docutils literal"&gt;dim&lt;/code&gt; statement or you get a fatal runtime error.  Ooops.&lt;/p&gt;&lt;/div&gt;</description><category>alpha</category><category>basic</category><category>hacks</category><category>usenet</category><category>vax</category><category>vms</category><guid>https://tkurtbond.github.io/posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/</guid><pubDate>Sat, 05 Feb 2022 21:08:22 GMT</pubDate></item><item><title>VMS Code from the Past</title><link>https://tkurtbond.github.io/posts/2003/05/08/2003-05-08-vms-code-from-the-past/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;Listening to: Hawkwind, &lt;a class="reference external" href="http://www.freedb.org/freedb_search_fmt.php?cat=rock&amp;amp;id=d50ba50e"&gt;Chronicle of the Black Sword&lt;/a&gt;.&lt;/p&gt;
+the VMS BASIC &lt;code class="docutils literal"&gt;dim&lt;/code&gt; statement or you get a fatal runtime error.  Ooops.&lt;/p&gt;
+&lt;p&gt;So use:&lt;/p&gt;
+&lt;pre class="code text"&gt;&lt;a name="rest_code_335a3e1bea9d4c3b873ddd6063921b4f-1"&gt;&lt;/a&gt;declare long i
+&lt;a name="rest_code_335a3e1bea9d4c3b873ddd6063921b4f-2"&gt;&lt;/a&gt;i = 5
+&lt;a name="rest_code_335a3e1bea9d4c3b873ddd6063921b4f-3"&gt;&lt;/a&gt;dim string s(1 to i) ! Notice that last thing is the variable, i
+&lt;a name="rest_code_335a3e1bea9d4c3b873ddd6063921b4f-4"&gt;&lt;/a&gt;redim (s, 3, 10)
+&lt;/pre&gt;&lt;p&gt;If you had said:&lt;/p&gt;
+&lt;p&gt;..code:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;dim string s(1 to 5) ! Notice that last thing is a constant, 5
+redim (s, 3, 10)&lt;/pre&gt;
+&lt;p&gt;You'd have gotten the following error:&lt;/p&gt;
+&lt;pre class="code text"&gt;&lt;a name="rest_code_86688c3e7b964050b161da1cd61aed31-1"&gt;&lt;/a&gt;%BAS-F-PROLOSSOR, Internal error in VAX BASIC Run-Time Library.  Please submit an SPR
+&lt;a name="rest_code_86688c3e7b964050b161da1cd61aed31-2"&gt;&lt;/a&gt;-BAS-I-FROFUN, In external function ALT_REDIM
+&lt;a name="rest_code_86688c3e7b964050b161da1cd61aed31-3"&gt;&lt;/a&gt;-BAS-I-FROMOD, In module Y
+&lt;a name="rest_code_86688c3e7b964050b161da1cd61aed31-4"&gt;&lt;/a&gt;%TRACE-F-TRACEBACK, symbolic stack dump follows
+&lt;a name="rest_code_86688c3e7b964050b161da1cd61aed31-5"&gt;&lt;/a&gt;module name     routine name                     line       rel PC    abs PC
+&lt;a name="rest_code_86688c3e7b964050b161da1cd61aed31-6"&gt;&lt;/a&gt;
+&lt;a name="rest_code_86688c3e7b964050b161da1cd61aed31-7"&gt;&lt;/a&gt;                                                           0004B2AA  0004B2AA
+&lt;a name="rest_code_86688c3e7b964050b161da1cd61aed31-8"&gt;&lt;/a&gt;----- above condition handler called with exception 001A833C:
+&lt;a name="rest_code_86688c3e7b964050b161da1cd61aed31-9"&gt;&lt;/a&gt;%BAS-F-PROLOSSOR, Internal error in VAX BASIC Run-Time Library.  Please submit an SPR
+&lt;a name="rest_code_86688c3e7b964050b161da1cd61aed31-10"&gt;&lt;/a&gt;-BAS-I-FROFUN, In external function ALT_REDIM
+&lt;a name="rest_code_86688c3e7b964050b161da1cd61aed31-11"&gt;&lt;/a&gt;----- end of exception message
+&lt;a name="rest_code_86688c3e7b964050b161da1cd61aed31-12"&gt;&lt;/a&gt;                                                           0004B2AA  0004B2AA
+&lt;a name="rest_code_86688c3e7b964050b161da1cd61aed31-13"&gt;&lt;/a&gt;----- above condition handler called with exception 001A833C:
+&lt;a name="rest_code_86688c3e7b964050b161da1cd61aed31-14"&gt;&lt;/a&gt;%BAS-F-PROLOSSOR, Internal error in VAX BASIC Run-Time Library.  Please submit an SPR
+&lt;a name="rest_code_86688c3e7b964050b161da1cd61aed31-15"&gt;&lt;/a&gt;----- end of exception message
+&lt;a name="rest_code_86688c3e7b964050b161da1cd61aed31-16"&gt;&lt;/a&gt;                                                           0004A352  0004A352
+&lt;a name="rest_code_86688c3e7b964050b161da1cd61aed31-17"&gt;&lt;/a&gt;                                                           00054E37  00054E37
+&lt;a name="rest_code_86688c3e7b964050b161da1cd61aed31-18"&gt;&lt;/a&gt;ALT_REDIM       ALT_REDIM                          43      0000002E  00000AC2
+&lt;a name="rest_code_86688c3e7b964050b161da1cd61aed31-19"&gt;&lt;/a&gt;Y               Y                                  24      0000015D  0000095D
+&lt;/pre&gt;&lt;p&gt;Don't actually submit an SPR, of course: you did it to yourself by
+using an undocumented VMS BASIC internal runtime function.&lt;/p&gt;
+&lt;p&gt;Oh, I don't have access to an Alpha these days, so I haven't tried it
+there, but I imagine using something named &lt;code class="docutils literal"&gt;DBASIC$RT_DIM_BOUNDS&lt;/code&gt;
+instead of &lt;code class="docutils literal"&gt;DBASIC$RT_DIM&lt;/code&gt; would likely work there.&lt;/p&gt;&lt;/div&gt;</description><category>alpha</category><category>basic</category><category>hacks</category><category>usenet</category><category>vax</category><category>vms</category><guid>https://tkurtbond.github.io/posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/</guid><pubDate>Sat, 05 Feb 2022 21:08:22 GMT</pubDate></item><item><title>VMS Code from the Past</title><link>https://tkurtbond.github.io/posts/2003/05/08/2003-05-08-vms-code-from-the-past/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;Listening to: Hawkwind, &lt;a class="reference external" href="http://www.freedb.org/freedb_search_fmt.php?cat=rock&amp;amp;id=d50ba50e"&gt;Chronicle of the Black Sword&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;I've been reading a lot of VMS BASIC &lt;a class="footnote-reference brackets" href="https://tkurtbond.github.io/posts/2003/05/08/2003-05-08-vms-code-from-the-past/#id3" id="id1"&gt;1&lt;/a&gt; source code from the early
 1990s &lt;a class="footnote-reference brackets" href="https://tkurtbond.github.io/posts/2003/05/08/2003-05-08-vms-code-from-the-past/#id4" id="id2"&gt;2&lt;/a&gt; recently, and the one lesson it has taught me is that
 refactoring source code is vital for maintainability.  Much of this
