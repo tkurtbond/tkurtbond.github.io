@@ -8,7 +8,7 @@
 .. type: text
 
 (This was originally on my site as a static page, but those don't get
-added the tags page, so I moved it here as a post.)
+added to the tags page, so I moved it here as a post.)
 
 From the `AD&D Dungeon Masters Guide`__ (1979), by `Gary Gygax`__.
 
