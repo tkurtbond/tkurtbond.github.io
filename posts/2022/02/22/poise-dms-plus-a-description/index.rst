@@ -11,9 +11,10 @@
 
 Some time ago I linked_ to a description of the POISE DMS-Plus, a Data
 Management System that I've used extensively since the mid 1980s.
-Last time knew it was owned by Jenzabar.  Since Jenzabar's description
-of it (as part of Jenzabar PX) has vanished from their web pages I
-thought it would be useful to have a description of it on my blog.
+Last time I knew it was owned by Jenzabar.  Since Jenzabar's
+description of it (as part of Jenzabar PX) has vanished from their web
+pages I thought it would be useful to have a description of it on my
+blog.
 
 .. _linked: link://slug/poise-dms-plus
 
@@ -128,12 +129,12 @@ instance, it was possible to have a code field in one file, but on
 reports include the description of the code by pulling it from a code
 file, keyed by the code field.
 
-All the POISE DMS-Plus used a documented API, the Support Procedure
-Library, which programmers could use to write programs that accessed
-POISE DMS-Plus files for applications that required sophisticated,
-special purpose processing.  Furthermore, they documented the file
-structures they used, so it was possible to write programs that
-accessed DMS-Plus files directly, if necessary.
+All the POISE DMS-Plus programs used a documented API, the Support
+Procedure Library, which programmers could use to write programs that
+accessed POISE DMS-Plus files for applications that required
+sophisticated, special purpose processing.  Furthermore, they
+documented the file structures they used, so it was possible to write
+programs that accessed DMS-Plus files directly, if necessary.
 
 POISE, by the way, stood for “People Oriented Interactive Software for
 Education”, and it probably had its greatest success in systems for
