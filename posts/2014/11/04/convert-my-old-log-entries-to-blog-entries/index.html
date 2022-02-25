@@ -70,7 +70,7 @@ using the">
         <div class="metadata blog-post-meta">
             <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
             <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2014-11-04T00:31:38-05:00" itemprop="datePublished" title="2014-11-04 00:31">2014-11-04 00:31</time></a></p>
-                <p class="commentline">            <a href="#disqus_thread" data-disqus-identifier="cache/posts/2014/11/04/convert-my-old-log-entries-to-blog-entries.html">Comments</a>
+                <p class="commentline">        <a href="#disqus_thread" data-disqus-identifier="cache/posts/2014/11/04/convert-my-old-log-entries-to-blog-entries.html">Comments</a>
 
 
                     </p>
@@ -79,26 +79,24 @@ using the">
         </div>
         
     </header><div class="e-content entry-content" itemprop="articleBody text">
-    <div>
-<p>I converted my old log entries, which originated from my original
+    <p>I converted my old log entries, which originated from my original
 Docbook-based website, and were presently part of my static
 Sphinx-based website, over to my current PyBlosxom blog tonight,
 using the following script:</p>
-<pre class="code text"><a name="rest_code_de2e0b4b02c640979b6e7ad5cf430647-1"></a>#! /usr/bin/env bash
-<a name="rest_code_de2e0b4b02c640979b6e7ad5cf430647-2"></a>find 200? -type f ! -name \*~ ! -name \*-idx-*.rst |
-<a name="rest_code_de2e0b4b02c640979b6e7ad5cf430647-3"></a>while read filename
-<a name="rest_code_de2e0b4b02c640979b6e7ad5cf430647-4"></a>do
-<a name="rest_code_de2e0b4b02c640979b6e7ad5cf430647-5"></a>    newname="$(echo $filename | sed 's#/#-#g')"
-<a name="rest_code_de2e0b4b02c640979b6e7ad5cf430647-6"></a>    date="$(basename $newname .rst)"
-<a name="rest_code_de2e0b4b02c640979b6e7ad5cf430647-7"></a>    (echo $date; echo "#published $date 00:00:00"; echo "#tags Old Blog";
-<a name="rest_code_de2e0b4b02c640979b6e7ad5cf430647-8"></a>        cat $filename) &gt;/home/tkb/myblog/entries/oldblog/$newname
-<a name="rest_code_de2e0b4b02c640979b6e7ad5cf430647-9"></a>done
+<pre class="code text"><a id="rest_code_ad1253c445b64ba89dd524e9cb9dfcf2-1" name="rest_code_ad1253c445b64ba89dd524e9cb9dfcf2-1" href="#rest_code_ad1253c445b64ba89dd524e9cb9dfcf2-1"></a>#! /usr/bin/env bash
+<a id="rest_code_ad1253c445b64ba89dd524e9cb9dfcf2-2" name="rest_code_ad1253c445b64ba89dd524e9cb9dfcf2-2" href="#rest_code_ad1253c445b64ba89dd524e9cb9dfcf2-2"></a>find 200? -type f ! -name \*~ ! -name \*-idx-*.rst |
+<a id="rest_code_ad1253c445b64ba89dd524e9cb9dfcf2-3" name="rest_code_ad1253c445b64ba89dd524e9cb9dfcf2-3" href="#rest_code_ad1253c445b64ba89dd524e9cb9dfcf2-3"></a>while read filename
+<a id="rest_code_ad1253c445b64ba89dd524e9cb9dfcf2-4" name="rest_code_ad1253c445b64ba89dd524e9cb9dfcf2-4" href="#rest_code_ad1253c445b64ba89dd524e9cb9dfcf2-4"></a>do
+<a id="rest_code_ad1253c445b64ba89dd524e9cb9dfcf2-5" name="rest_code_ad1253c445b64ba89dd524e9cb9dfcf2-5" href="#rest_code_ad1253c445b64ba89dd524e9cb9dfcf2-5"></a>    newname="$(echo $filename | sed 's#/#-#g')"
+<a id="rest_code_ad1253c445b64ba89dd524e9cb9dfcf2-6" name="rest_code_ad1253c445b64ba89dd524e9cb9dfcf2-6" href="#rest_code_ad1253c445b64ba89dd524e9cb9dfcf2-6"></a>    date="$(basename $newname .rst)"
+<a id="rest_code_ad1253c445b64ba89dd524e9cb9dfcf2-7" name="rest_code_ad1253c445b64ba89dd524e9cb9dfcf2-7" href="#rest_code_ad1253c445b64ba89dd524e9cb9dfcf2-7"></a>    (echo $date; echo "#published $date 00:00:00"; echo "#tags Old Blog";
+<a id="rest_code_ad1253c445b64ba89dd524e9cb9dfcf2-8" name="rest_code_ad1253c445b64ba89dd524e9cb9dfcf2-8" href="#rest_code_ad1253c445b64ba89dd524e9cb9dfcf2-8"></a>        cat $filename) &gt;/home/tkb/myblog/entries/oldblog/$newname
+<a id="rest_code_ad1253c445b64ba89dd524e9cb9dfcf2-9" name="rest_code_ad1253c445b64ba89dd524e9cb9dfcf2-9" href="#rest_code_ad1253c445b64ba89dd524e9cb9dfcf2-9"></a>done
 </pre>
 <p>I'll have to go through and fix uses of Sphinx-specific RST
 extensions, and I'll probably add real entry titles as I do so; in the
 meanwhile, if the blog entry title is a date I haven't updated the
 entry.  I think this was pretty good for a ½ hour's work.</p>
-</div>
     </div>
     <script>var pfHeaderImgUrl = '';var pfHeaderTagline = '';var pfdisableClickToDel = 0;var pfHideImages = 0;var pfImageDisplayStyle = 'right';var pfDisablePDF = 0;var pfDisableEmail = 0;var pfDisablePrint = 0;var pfCustomCSS = '';var pfBtVersion='2';(function(){var js,pf;pf=document.createElement('script');pf.type='text/javascript';pf.src='//cdn.printfriendly.com/printfriendly.js';document.getElementsByTagName('head')[0].appendChild(pf)})();</script><a href="https://www.printfriendly.com" style="color:#6D9F00;text-decoration:none;" class="printfriendly" onclick="window.print();return false;" title="Printer Friendly and PDF"><img style="border:none;-webkit-box-shadow:none;box-shadow:none;" src="//cdn.printfriendly.com/buttons/printfriendly-pdf-button.png" alt="Print Friendly and PDF"></a>    
     <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
@@ -112,7 +110,7 @@ entry.  I think this was pretty good for a ½ hour's work.</p>
                 <a href="../../06/bthorm-the-plane-of-tkumel/" rel="next" title="Béthorm: The Plane of Tékumel">Next post</a>
             </li>
         </ul></nav></aside><section class="comments hidden-print"><h2>Comments</h2>
-                        <div id="disqus_thread"></div>
+                    <div id="disqus_thread"></div>
         <script>
         var disqus_shortname ="lacking-natural-simplicity",
             disqus_url="https://tkurtbond.github.io/posts/2014/11/04/convert-my-old-log-entries-to-blog-entries/",

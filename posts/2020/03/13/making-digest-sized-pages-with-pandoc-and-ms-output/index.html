@@ -78,7 +78,7 @@ post, show">
         <div class="metadata blog-post-meta">
             <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
             <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2020-03-13T14:01:10-04:00" itemprop="datePublished" title="2020-03-13 14:01">2020-03-13 14:01</time></a></p>
-                <p class="commentline">            <a href="#disqus_thread" data-disqus-identifier="cache/posts/2020/03/13/making-digest-sized-pages-with-pandoc-and-ms-output.html">Comments</a>
+                <p class="commentline">        <a href="#disqus_thread" data-disqus-identifier="cache/posts/2020/03/13/making-digest-sized-pages-with-pandoc-and-ms-output.html">Comments</a>
 
 
                     </p>
@@ -87,28 +87,25 @@ post, show">
         </div>
         
     </header><div class="e-content entry-content" itemprop="articleBody text">
-    <div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
+    <aside class="admonition note"><p class="admonition-title">Note</p>
 <p>After I wrote this post, I made a last minute check of the options
 to <span class="app">pandoc</span> and found that the <code class="docutils literal"><span class="pre">--pdf-engine-opt=</span></code> option
 does exactly what I want.  How embarrassing.  So I changed this
 post, showing both the easy way and the hard way to do it.</p>
-</div>
-<p>I use <a class="reference external" href="https://pandoc.org/">pandoc</a> to produce digest-sized pages (5½×8½ inches) in PDF
+</aside><p>I use <a class="reference external" href="https://pandoc.org/">pandoc</a> to produce digest-sized pages (5½×8½ inches) in PDF
 documents from <a class="reference external" href="https://en.wikipedia.org/wiki/ReStructuredText">ReStructuredText</a>.  I have a <span class="app">ms</span> output template,
 <span class="file">digest2.ms</span> in <span class="file">~/pandoc/templates</span> that sets the page
 width and page height correctly.  Unfortunately, there is no way to
-set the papersize properly in the template. <a class="footnote-reference brackets" href="#heirloomtroff" id="id1">1</a></p>
+set the papersize properly in the template. <a class="footnote-reference brackets" href="#heirloomtroff" id="footnote-reference-1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
 <p>Luckily, <span class="app">pandoc</span> has the <code class="docutils literal"><span class="pre">--pdf-engine-opt=</span></code> option to pass
 options to the PDF engine that <span class="app">pandoc</span> is using, in this case
 <span class="app">pdfroff</span>.  In the case of <span class="app">ms</span> output the thing to do is
-pass the argument <code class="docutils literal"><span class="pre">--pdf-engine-opt=-P-p8.5i,5.5i</span></code> <a class="footnote-reference brackets" href="#recursively" id="id2">2</a>,
+pass the argument <code class="docutils literal"><span class="pre">--pdf-engine-opt=-P-p8.5i,5.5i</span></code> <a class="footnote-reference brackets" href="#recursively" id="footnote-reference-2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>,
 like below.</p>
 <p><a class="reference external" href="../../../../../listings/GNUmakefile.pandoc-digest-pdf-engine-opt.html">GNUmakefile.pandoc-digest-pdf-engine-opt</a>  <a class="reference external" href="../../../../../listings/GNUmakefile.pandoc-digest-pdf-engine-opt">(Source)</a></p>
-<pre class="code make"><a name="rest_code_8d76b135b72d43cca40c91681803edac-1"></a><span class="nf">%.digest.ms.pdf </span><span class="o">:</span> %.<span class="n">rst</span>
-<a name="rest_code_8d76b135b72d43cca40c91681803edac-2"></a>        pandoc -s -r rst -w ms --template<span class="o">=</span>digest2 <span class="k">$(</span>VARIABLES<span class="k">)</span> <span class="se">\</span>
-<a name="rest_code_8d76b135b72d43cca40c91681803edac-3"></a>                --output<span class="o">=</span><span class="nv">$@</span> --pdf-engine-opt<span class="o">=</span>-P-p8.5i,5.5i $&lt;
+<pre class="code make"><a id="rest_code_e1c8b542014747afba6100c3e2a57031-1" name="rest_code_e1c8b542014747afba6100c3e2a57031-1" href="#rest_code_e1c8b542014747afba6100c3e2a57031-1"></a><span class="nf">%.digest.ms.pdf </span><span class="o">:</span> %.<span class="n">rst</span>
+<a id="rest_code_e1c8b542014747afba6100c3e2a57031-2" name="rest_code_e1c8b542014747afba6100c3e2a57031-2" href="#rest_code_e1c8b542014747afba6100c3e2a57031-2"></a>        pandoc -s -r rst -w ms --template<span class="o">=</span>digest2 <span class="k">$(</span>VARIABLES<span class="k">)</span> <span class="se">\</span>
+<a id="rest_code_e1c8b542014747afba6100c3e2a57031-3" name="rest_code_e1c8b542014747afba6100c3e2a57031-3" href="#rest_code_e1c8b542014747afba6100c3e2a57031-3"></a>                --output<span class="o">=</span><span class="nv">$@</span> --pdf-engine-opt<span class="o">=</span>-P-p8.5i,5.5i $&lt;
 </pre>
 <p>Unfortunately when I originally had this need for digest pages I
 hadn't realized that the <code class="docutils literal"><span class="pre">--pdf-engine-opt=</span></code> option existed.</p>
@@ -118,20 +115,20 @@ hadn't realized that the <code class="docutils literal"><span class="pre">--pdf-
 command with the added <code class="docutils literal"><span class="pre">-P-p8.5i,5.5i</span></code> argument.  Here's what I put
 in my <span class="file">GNUmakefile</span>:</p>
 <p><a class="reference external" href="../../../../../listings/GNUmakefile.pandoc-digest-save-ms.html">GNUmakefile.pandoc-digest-save-ms</a>  <a class="reference external" href="../../../../../listings/GNUmakefile.pandoc-digest-save-ms">(Source)</a></p>
-<pre class="code make"><a name="rest_code_84d2232ac0bf4cd197a58a6512998407-1"></a><span class="nf">%.digest.ms.pdf </span><span class="o">:</span> %.<span class="n">rst</span>
-<a name="rest_code_84d2232ac0bf4cd197a58a6512998407-2"></a>        pandoc -s -r rst -w ms -s --template<span class="o">=</span>digest2 <span class="k">$(</span>VARIABLES<span class="k">)</span> <span class="se">\</span>
-<a name="rest_code_84d2232ac0bf4cd197a58a6512998407-3"></a>               --output<span class="o">=</span><span class="nv">$*</span>.ms $&lt;
-<a name="rest_code_84d2232ac0bf4cd197a58a6512998407-4"></a>        pdfroff -ms -mpdfmark -e -t -k -KUTF-8 --no-toc-relocation <span class="se">\</span>
-<a name="rest_code_84d2232ac0bf4cd197a58a6512998407-5"></a>                -P-p8.5i,5.5i <span class="nv">$*</span>.ms &gt; <span class="nv">$@</span>
+<pre class="code make"><a id="rest_code_e5cd55f9369f4046bc5d6209a3e3231b-1" name="rest_code_e5cd55f9369f4046bc5d6209a3e3231b-1" href="#rest_code_e5cd55f9369f4046bc5d6209a3e3231b-1"></a><span class="nf">%.digest.ms.pdf </span><span class="o">:</span> %.<span class="n">rst</span>
+<a id="rest_code_e5cd55f9369f4046bc5d6209a3e3231b-2" name="rest_code_e5cd55f9369f4046bc5d6209a3e3231b-2" href="#rest_code_e5cd55f9369f4046bc5d6209a3e3231b-2"></a>        pandoc -s -r rst -w ms -s --template<span class="o">=</span>digest2 <span class="k">$(</span>VARIABLES<span class="k">)</span> <span class="se">\</span>
+<a id="rest_code_e5cd55f9369f4046bc5d6209a3e3231b-3" name="rest_code_e5cd55f9369f4046bc5d6209a3e3231b-3" href="#rest_code_e5cd55f9369f4046bc5d6209a3e3231b-3"></a>               --output<span class="o">=</span><span class="nv">$*</span>.ms $&lt;
+<a id="rest_code_e5cd55f9369f4046bc5d6209a3e3231b-4" name="rest_code_e5cd55f9369f4046bc5d6209a3e3231b-4" href="#rest_code_e5cd55f9369f4046bc5d6209a3e3231b-4"></a>        pdfroff -ms -mpdfmark -e -t -k -KUTF-8 --no-toc-relocation <span class="se">\</span>
+<a id="rest_code_e5cd55f9369f4046bc5d6209a3e3231b-5" name="rest_code_e5cd55f9369f4046bc5d6209a3e3231b-5" href="#rest_code_e5cd55f9369f4046bc5d6209a3e3231b-5"></a>                -P-p8.5i,5.5i <span class="nv">$*</span>.ms &gt; <span class="nv">$@</span>
 </pre>
 <p>Or, if you don't care about having the <span class="app">ms</span> output for debugging,
 you could do it as a pipeline:</p>
 <p><a class="reference external" href="../../../../../listings/GNUmakefile.pandoc-digest-pipeline.html">GNUmakefile.pandoc-digest-pipeline</a>  <a class="reference external" href="../../../../../listings/GNUmakefile.pandoc-digest-pipeline">(Source)</a></p>
-<pre class="code make"><a name="rest_code_d7ca5558c86943e6b8c7a6745e77c726-1"></a><span class="nf">%.digest.ms.pdf </span><span class="o">:</span> %.<span class="n">rst</span>
-<a name="rest_code_d7ca5558c86943e6b8c7a6745e77c726-2"></a>        pandoc -s -r rst -w ms -s --template<span class="o">=</span>digest2 <span class="k">$(</span>VARIABLES<span class="k">)</span> <span class="se">\</span>
-<a name="rest_code_d7ca5558c86943e6b8c7a6745e77c726-3"></a>               --output<span class="o">=</span>- $&lt; <span class="p">|</span> <span class="se">\</span>
-<a name="rest_code_d7ca5558c86943e6b8c7a6745e77c726-4"></a>        pdfroff -ms -mpdfmark -e -t -k -KUTF-8 --no-toc-relocation <span class="se">\</span>
-<a name="rest_code_d7ca5558c86943e6b8c7a6745e77c726-5"></a>                -P-p8.5i,5.5i - &gt;<span class="nv">$@</span>
+<pre class="code make"><a id="rest_code_07134103380c4d0cb9f4b7a7f3190b7c-1" name="rest_code_07134103380c4d0cb9f4b7a7f3190b7c-1" href="#rest_code_07134103380c4d0cb9f4b7a7f3190b7c-1"></a><span class="nf">%.digest.ms.pdf </span><span class="o">:</span> %.<span class="n">rst</span>
+<a id="rest_code_07134103380c4d0cb9f4b7a7f3190b7c-2" name="rest_code_07134103380c4d0cb9f4b7a7f3190b7c-2" href="#rest_code_07134103380c4d0cb9f4b7a7f3190b7c-2"></a>        pandoc -s -r rst -w ms -s --template<span class="o">=</span>digest2 <span class="k">$(</span>VARIABLES<span class="k">)</span> <span class="se">\</span>
+<a id="rest_code_07134103380c4d0cb9f4b7a7f3190b7c-3" name="rest_code_07134103380c4d0cb9f4b7a7f3190b7c-3" href="#rest_code_07134103380c4d0cb9f4b7a7f3190b7c-3"></a>               --output<span class="o">=</span>- $&lt; <span class="p">|</span> <span class="se">\</span>
+<a id="rest_code_07134103380c4d0cb9f4b7a7f3190b7c-4" name="rest_code_07134103380c4d0cb9f4b7a7f3190b7c-4" href="#rest_code_07134103380c4d0cb9f4b7a7f3190b7c-4"></a>        pdfroff -ms -mpdfmark -e -t -k -KUTF-8 --no-toc-relocation <span class="se">\</span>
+<a id="rest_code_07134103380c4d0cb9f4b7a7f3190b7c-5" name="rest_code_07134103380c4d0cb9f4b7a7f3190b7c-5" href="#rest_code_07134103380c4d0cb9f4b7a7f3190b7c-5"></a>                -P-p8.5i,5.5i - &gt;<span class="nv">$@</span>
 </pre>
 <p>There are still some instances where this technique of having
 <span class="app">pandoc</span> output the <span class="app">ms</span> source directly and pass it through
@@ -139,24 +136,18 @@ you could do it as a pipeline:</p>
 massaging of the <span class="app">ms</span> source, like changing <code class="docutils literal"><span class="pre">.RS/.RE</span></code> to
 <code class="docutils literal"><span class="pre">.QS/.QE</span></code> to get around the problem with block quotes in <span class="app">ms</span>
 output in the current <span class="app">pandoc</span> release, discussed <a class="reference external" href="../../11/pandoc-discuss-post-can-the-rsre-macros-in-ms-output-be-replaced-with-qsqe/">here</a>.</p>
-<dl class="footnote brackets">
-<dt class="label" id="heirloomtroff"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd>
+<aside class="footnote brackets" id="heirloomtroff" role="note"><span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#footnote-reference-1">1</a><span class="fn-bracket">]</span></span>
 <p>Heirloom Troff (originally at <a class="reference external" href="http://heirloom.sourceforge.net/doctools.html">H1</a>, but now <em>I
 think</em> more up to date at <a class="reference external" href="http://n-t-roff.github.io/heirloom/doctools.html">H2</a> and <a class="reference external" href="https://github.com/n-t-roff/heirloom-doctools">H3</a>) has the <code class="docutils literal">.mediasize</code> and
 <code class="docutils literal">.papersize</code> commands for that.</p>
-</dd>
-<dt class="label" id="recursively"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
-<dd>
+</aside><aside class="footnote brackets" id="recursively" role="note"><span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#footnote-reference-2">2</a><span class="fn-bracket">]</span></span>
 <p>Amusingly, <span class="app">pandoc</span> passes the
 <code class="docutils literal"><span class="pre">--pdf-engine-opt=-P-p8.5i,5.5i</span></code> argument to <span class="app">pdfroff</span>,
 which passes the <code class="docutils literal"><span class="pre">-P-p8.5i,5.5i</span></code> part to <span class="app">groff</span>, which
 passes the <code class="docutils literal"><span class="pre">-p8.5i,5.5i</span></code> part to the (final) post processor — I'm
 not sure if <em>that</em> is <span class="app">grops</span> or <span class="app">gropdf</span>.</p>
-</dd>
-</dl>
+</aside>
 </div>
-    </div>
     <script>var pfHeaderImgUrl = '';var pfHeaderTagline = '';var pfdisableClickToDel = 0;var pfHideImages = 0;var pfImageDisplayStyle = 'right';var pfDisablePDF = 0;var pfDisableEmail = 0;var pfDisablePrint = 0;var pfCustomCSS = '';var pfBtVersion='2';(function(){var js,pf;pf=document.createElement('script');pf.type='text/javascript';pf.src='//cdn.printfriendly.com/printfriendly.js';document.getElementsByTagName('head')[0].appendChild(pf)})();</script><a href="https://www.printfriendly.com" style="color:#6D9F00;text-decoration:none;" class="printfriendly" onclick="window.print();return false;" title="Printer Friendly and PDF"><img style="border:none;-webkit-box-shadow:none;box-shadow:none;" src="//cdn.printfriendly.com/buttons/printfriendly-pdf-button.png" alt="Print Friendly and PDF"></a>    
     <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
 <li><a class="tag p-category" href="../../../../../categories/computer/" rel="tag">computer</a></li>
@@ -176,7 +167,7 @@ not sure if <em>that</em> is <span class="app">grops</span> or <span class="app"
                 <a href="../recent-reading-under-the-green-star/" rel="next" title="Recent Reading: Under the Green Star">Next post</a>
             </li>
         </ul></nav></aside><section class="comments hidden-print"><h2>Comments</h2>
-                        <div id="disqus_thread"></div>
+                    <div id="disqus_thread"></div>
         <script>
         var disqus_shortname ="lacking-natural-simplicity",
             disqus_url="https://tkurtbond.github.io/posts/2020/03/13/making-digest-sized-pages-with-pandoc-and-ms-output/",

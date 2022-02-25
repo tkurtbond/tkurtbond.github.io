@@ -72,7 +72,7 @@ dnf -y system-upgrade download">
         <div class="metadata blog-post-meta">
             <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
             <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2019-11-07T21:16:59-05:00" itemprop="datePublished" title="2019-11-07 21:16">2019-11-07 21:16</time></a></p>
-                <p class="commentline">            <a href="#disqus_thread" data-disqus-identifier="cache/posts/2019/11/07/looping-on-dnf-y-system-upgrade-download-until-it-succeeds.html">Comments</a>
+                <p class="commentline">        <a href="#disqus_thread" data-disqus-identifier="cache/posts/2019/11/07/looping-on-dnf-y-system-upgrade-download-until-it-succeeds.html">Comments</a>
 
 
                     </p>
@@ -81,11 +81,10 @@ dnf -y system-upgrade download">
         </div>
         
     </header><div class="e-content entry-content" itemprop="articleBody text">
-    <div>
-<p>Fedora 31 is out, and fool that I am I'm upgrading to it.
+    <p>Fedora 31 is out, and fool that I am I'm upgrading to it.
 Unfortunately, my DSL connection is slow and my DSL modem router is flaky.
 With over 3000 packages to download,</p>
-<pre class="code bash"><a name="rest_code_98088da3350049bb9c18f53548b5e931-1"></a>dnf -y system-upgrade download --refresh --releasever<span class="o">=</span><span class="m">31</span>
+<pre class="code bash"><a id="rest_code_d4daa2f7e5374597b379557cdd14aaf7-1" name="rest_code_d4daa2f7e5374597b379557cdd14aaf7-1" href="#rest_code_d4daa2f7e5374597b379557cdd14aaf7-1"></a>dnf -y system-upgrade download --refresh --releasever<span class="o">=</span><span class="m">31</span>
 </pre>
 <p>is bound to die in the middle at least once, if not multiple times,
 and with more than 6 hours estimated for the download to run I can't
@@ -98,79 +97,78 @@ over again before I could C-c the shell.</p>
 <p><a class="reference external" href="../../../../../listings/tryfedoraupdate.html">tryfedoraupdate</a>  <a class="reference external" href="../../../../../listings/tryfedoraupdate">(Source)</a></p>
 <div class="code"><table class="codetable">
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_a14f220b35014802bf16141306d97cfa-1"><code data-line-number=" 1"></code></a></td>
-<td class="code"><code><a name="rest_code_a14f220b35014802bf16141306d97cfa-1"></a><span class="ch">#! /usr/bin/bash</span>
+<td class="linenos linenodiv"><a href="#rest_code_481d60d1831747fbbd405073ef2de7f2-1"><code data-line-number=" 1"></code></a></td>
+<td class="code"><code><a id="rest_code_481d60d1831747fbbd405073ef2de7f2-1" name="rest_code_481d60d1831747fbbd405073ef2de7f2-1"></a><span class="ch">#! /usr/bin/bash</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_a14f220b35014802bf16141306d97cfa-2"><code data-line-number=" 2"></code></a></td>
-<td class="code"><code><a name="rest_code_a14f220b35014802bf16141306d97cfa-2"></a>
+<td class="linenos linenodiv"><a href="#rest_code_481d60d1831747fbbd405073ef2de7f2-2"><code data-line-number=" 2"></code></a></td>
+<td class="code"><code><a id="rest_code_481d60d1831747fbbd405073ef2de7f2-2" name="rest_code_481d60d1831747fbbd405073ef2de7f2-2"></a>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_a14f220b35014802bf16141306d97cfa-3"><code data-line-number=" 3"></code></a></td>
-<td class="code"><code><a name="rest_code_a14f220b35014802bf16141306d97cfa-3"></a><span class="k">while</span> ! dnf -y system-upgrade download --refresh --releasever<span class="o">=</span><span class="m">31</span>
+<td class="linenos linenodiv"><a href="#rest_code_481d60d1831747fbbd405073ef2de7f2-3"><code data-line-number=" 3"></code></a></td>
+<td class="code"><code><a id="rest_code_481d60d1831747fbbd405073ef2de7f2-3" name="rest_code_481d60d1831747fbbd405073ef2de7f2-3"></a><span class="k">while</span> ! dnf -y system-upgrade download --refresh --releasever<span class="o">=</span><span class="m">31</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_a14f220b35014802bf16141306d97cfa-4"><code data-line-number=" 4"></code></a></td>
-<td class="code"><code><a name="rest_code_a14f220b35014802bf16141306d97cfa-4"></a><span class="k">do</span>
+<td class="linenos linenodiv"><a href="#rest_code_481d60d1831747fbbd405073ef2de7f2-4"><code data-line-number=" 4"></code></a></td>
+<td class="code"><code><a id="rest_code_481d60d1831747fbbd405073ef2de7f2-4" name="rest_code_481d60d1831747fbbd405073ef2de7f2-4"></a><span class="k">do</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_a14f220b35014802bf16141306d97cfa-5"><code data-line-number=" 5"></code></a></td>
-<td class="code"><code><a name="rest_code_a14f220b35014802bf16141306d97cfa-5"></a>    <span class="nb">read</span> -t <span class="m">30</span> -p <span class="s2">"Continue? (y/n) "</span> reply
+<td class="linenos linenodiv"><a href="#rest_code_481d60d1831747fbbd405073ef2de7f2-5"><code data-line-number=" 5"></code></a></td>
+<td class="code"><code><a id="rest_code_481d60d1831747fbbd405073ef2de7f2-5" name="rest_code_481d60d1831747fbbd405073ef2de7f2-5"></a>    <span class="nb">read</span> -t <span class="m">30</span> -p <span class="s2">"Continue? (y/n) "</span> reply
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_a14f220b35014802bf16141306d97cfa-6"><code data-line-number=" 6"></code></a></td>
-<td class="code"><code><a name="rest_code_a14f220b35014802bf16141306d97cfa-6"></a>    <span class="k">if</span> <span class="o">((</span><span class="nv">$?</span>&gt;128<span class="o">))</span><span class="p">;</span> <span class="k">then</span>
+<td class="linenos linenodiv"><a href="#rest_code_481d60d1831747fbbd405073ef2de7f2-6"><code data-line-number=" 6"></code></a></td>
+<td class="code"><code><a id="rest_code_481d60d1831747fbbd405073ef2de7f2-6" name="rest_code_481d60d1831747fbbd405073ef2de7f2-6"></a>    <span class="k">if</span> <span class="o">((</span><span class="nv">$?</span>&gt;128<span class="o">))</span><span class="p">;</span> <span class="k">then</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_a14f220b35014802bf16141306d97cfa-7"><code data-line-number=" 7"></code></a></td>
-<td class="code"><code><a name="rest_code_a14f220b35014802bf16141306d97cfa-7"></a>        <span class="nb">echo</span> <span class="s2">"timed out, continuing..."</span>
+<td class="linenos linenodiv"><a href="#rest_code_481d60d1831747fbbd405073ef2de7f2-7"><code data-line-number=" 7"></code></a></td>
+<td class="code"><code><a id="rest_code_481d60d1831747fbbd405073ef2de7f2-7" name="rest_code_481d60d1831747fbbd405073ef2de7f2-7"></a>        <span class="nb">echo</span> <span class="s2">"timed out, continuing..."</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_a14f220b35014802bf16141306d97cfa-8"><code data-line-number=" 8"></code></a></td>
-<td class="code"><code><a name="rest_code_a14f220b35014802bf16141306d97cfa-8"></a>    <span class="k">elif</span> <span class="o">[[</span> <span class="s2">"</span><span class="nv">$reply</span><span class="s2">"</span> <span class="o">=</span>~ <span class="o">[</span>Nn<span class="o">]</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+<td class="linenos linenodiv"><a href="#rest_code_481d60d1831747fbbd405073ef2de7f2-8"><code data-line-number=" 8"></code></a></td>
+<td class="code"><code><a id="rest_code_481d60d1831747fbbd405073ef2de7f2-8" name="rest_code_481d60d1831747fbbd405073ef2de7f2-8"></a>    <span class="k">elif</span> <span class="o">[[</span> <span class="s2">"</span><span class="nv">$reply</span><span class="s2">"</span> <span class="o">=</span>~ <span class="o">[</span>Nn<span class="o">]</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_a14f220b35014802bf16141306d97cfa-9"><code data-line-number=" 9"></code></a></td>
-<td class="code"><code><a name="rest_code_a14f220b35014802bf16141306d97cfa-9"></a>        <span class="nb">echo</span> <span class="s2">"Exiting..."</span>
+<td class="linenos linenodiv"><a href="#rest_code_481d60d1831747fbbd405073ef2de7f2-9"><code data-line-number=" 9"></code></a></td>
+<td class="code"><code><a id="rest_code_481d60d1831747fbbd405073ef2de7f2-9" name="rest_code_481d60d1831747fbbd405073ef2de7f2-9"></a>        <span class="nb">echo</span> <span class="s2">"Exiting..."</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_a14f220b35014802bf16141306d97cfa-10"><code data-line-number="10"></code></a></td>
-<td class="code"><code><a name="rest_code_a14f220b35014802bf16141306d97cfa-10"></a>        <span class="nb">exit</span>
+<td class="linenos linenodiv"><a href="#rest_code_481d60d1831747fbbd405073ef2de7f2-10"><code data-line-number="10"></code></a></td>
+<td class="code"><code><a id="rest_code_481d60d1831747fbbd405073ef2de7f2-10" name="rest_code_481d60d1831747fbbd405073ef2de7f2-10"></a>        <span class="nb">exit</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_a14f220b35014802bf16141306d97cfa-11"><code data-line-number="11"></code></a></td>
-<td class="code"><code><a name="rest_code_a14f220b35014802bf16141306d97cfa-11"></a>    <span class="k">else</span>
+<td class="linenos linenodiv"><a href="#rest_code_481d60d1831747fbbd405073ef2de7f2-11"><code data-line-number="11"></code></a></td>
+<td class="code"><code><a id="rest_code_481d60d1831747fbbd405073ef2de7f2-11" name="rest_code_481d60d1831747fbbd405073ef2de7f2-11"></a>    <span class="k">else</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_a14f220b35014802bf16141306d97cfa-12"><code data-line-number="12"></code></a></td>
-<td class="code"><code><a name="rest_code_a14f220b35014802bf16141306d97cfa-12"></a>        <span class="nb">echo</span> <span class="s2">"Continuing..."</span>
+<td class="linenos linenodiv"><a href="#rest_code_481d60d1831747fbbd405073ef2de7f2-12"><code data-line-number="12"></code></a></td>
+<td class="code"><code><a id="rest_code_481d60d1831747fbbd405073ef2de7f2-12" name="rest_code_481d60d1831747fbbd405073ef2de7f2-12"></a>        <span class="nb">echo</span> <span class="s2">"Continuing..."</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_a14f220b35014802bf16141306d97cfa-13"><code data-line-number="13"></code></a></td>
-<td class="code"><code><a name="rest_code_a14f220b35014802bf16141306d97cfa-13"></a>    <span class="k">fi</span>
+<td class="linenos linenodiv"><a href="#rest_code_481d60d1831747fbbd405073ef2de7f2-13"><code data-line-number="13"></code></a></td>
+<td class="code"><code><a id="rest_code_481d60d1831747fbbd405073ef2de7f2-13" name="rest_code_481d60d1831747fbbd405073ef2de7f2-13"></a>    <span class="k">fi</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_a14f220b35014802bf16141306d97cfa-14"><code data-line-number="14"></code></a></td>
-<td class="code"><code><a name="rest_code_a14f220b35014802bf16141306d97cfa-14"></a><span class="k">done</span>
+<td class="linenos linenodiv"><a href="#rest_code_481d60d1831747fbbd405073ef2de7f2-14"><code data-line-number="14"></code></a></td>
+<td class="code"><code><a id="rest_code_481d60d1831747fbbd405073ef2de7f2-14" name="rest_code_481d60d1831747fbbd405073ef2de7f2-14"></a><span class="k">done</span>
 </code></td>
 </tr>
 </table></div>
 <p>This way I can stop the script easily, but if it dies itself it will
 continue after a timeout.</p>
-</div>
     </div>
     <script>var pfHeaderImgUrl = '';var pfHeaderTagline = '';var pfdisableClickToDel = 0;var pfHideImages = 0;var pfImageDisplayStyle = 'right';var pfDisablePDF = 0;var pfDisableEmail = 0;var pfDisablePrint = 0;var pfCustomCSS = '';var pfBtVersion='2';(function(){var js,pf;pf=document.createElement('script');pf.type='text/javascript';pf.src='//cdn.printfriendly.com/printfriendly.js';document.getElementsByTagName('head')[0].appendChild(pf)})();</script><a href="https://www.printfriendly.com" style="color:#6D9F00;text-decoration:none;" class="printfriendly" onclick="window.print();return false;" title="Printer Friendly and PDF"><img style="border:none;-webkit-box-shadow:none;box-shadow:none;" src="//cdn.printfriendly.com/buttons/printfriendly-pdf-button.png" alt="Print Friendly and PDF"></a>    
     <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
@@ -186,7 +184,7 @@ continue after a timeout.</p>
                 <a href="../../08/playing-with-hashlife/" rel="next" title="Playing with Hashlife">Next post</a>
             </li>
         </ul></nav></aside><section class="comments hidden-print"><h2>Comments</h2>
-                        <div id="disqus_thread"></div>
+                    <div id="disqus_thread"></div>
         <script>
         var disqus_shortname ="lacking-natural-simplicity",
             disqus_url="https://tkurtbond.github.io/posts/2019/11/07/looping-on-dnf-y-system-upgrade-download-until-it-succeeds/",

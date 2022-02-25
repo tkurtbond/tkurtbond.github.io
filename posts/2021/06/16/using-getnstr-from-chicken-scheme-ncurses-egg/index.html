@@ -71,7 +71,7 @@ I finally found an example, and after looking at it an">
         <div class="metadata blog-post-meta">
             <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
             <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2021-06-16T14:57:28-04:00" itemprop="datePublished" title="2021-06-16 14:57">2021-06-16 14:57</time></a></p>
-                <p class="commentline">            <a href="#disqus_thread" data-disqus-identifier="cache/posts/2021/06/16/using-getnstr-from-chicken-scheme-ncurses-egg.html">Comments</a>
+                <p class="commentline">        <a href="#disqus_thread" data-disqus-identifier="cache/posts/2021/06/16/using-getnstr-from-chicken-scheme-ncurses-egg.html">Comments</a>
 
 
                     </p>
@@ -80,33 +80,31 @@ I finally found an example, and after looking at it an">
         </div>
         
     </header><div class="e-content entry-content" itemprop="articleBody text">
-    <div>
-<p>The <a class="reference external" href="https://www.call-cc.org/">Chicken Scheme</a> documentation for the <a class="reference external" href="http://wiki.call-cc.org/eggref/5/ncurses">ncurses egg</a> says that
+    <p>The <a class="reference external" href="https://www.call-cc.org/">Chicken Scheme</a> documentation for the <a class="reference external" href="http://wiki.call-cc.org/eggref/5/ncurses">ncurses egg</a> says that
 you should pass a string to the <code class="docutils literal">getnstr</code>, function, but that doesn't
 actually work.</p>
 <p>I finally found an <a class="reference external" href="https://stackoverflow.com/a/45359136">example</a>, and after looking at it and figuring out
 what imports are now required I have a working example of using
 getnstr from the chicken scheme ncurses egg!</p>
-<pre class="code scheme"><a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-1"></a><span class="p">(</span><span class="nf">import</span> <span class="nv">ncurses</span><span class="p">)</span>
-<a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-2"></a><span class="p">(</span><span class="nf">import</span> <span class="p">(</span><span class="nf">chicken</span> <span class="nv">locative</span><span class="p">))</span>
-<a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-3"></a><span class="p">(</span><span class="nf">import</span> <span class="p">(</span><span class="nf">chicken</span> <span class="nv">string</span><span class="p">))</span>
-<a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-4"></a>
-<a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-5"></a><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">get-string</span> <span class="nv">max</span><span class="p">)</span>
-<a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-6"></a>  <span class="p">(</span><span class="k">let </span><span class="p">((</span><span class="nf">buffer</span> <span class="p">(</span><span class="nb">make-string </span><span class="nv">max</span> <span class="sc">#\null</span><span class="p">)))</span>
-<a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-7"></a>    <span class="p">(</span><span class="nf">getnstr</span> <span class="p">(</span><span class="nf">make-locative</span> <span class="nv">buffer</span><span class="p">)</span> <span class="nv">max</span><span class="p">)</span>
-<a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-8"></a>    <span class="c1">;; Delete the #\null characters.</span>
-<a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-9"></a>    <span class="p">(</span><span class="nf">string-translate</span> <span class="nv">buffer</span> <span class="sc">#\null</span><span class="p">)))</span>
-<a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-10"></a>
-<a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-11"></a><span class="p">(</span><span class="k">let </span><span class="p">((</span><span class="nf">stdscr</span> <span class="p">(</span><span class="nf">initscr</span><span class="p">))</span>
-<a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-12"></a>      <span class="p">(</span><span class="nf">str</span> <span class="p">(</span><span class="nf">get-string</span> <span class="mi">10</span><span class="p">)))</span>
-<a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-13"></a>  <span class="p">(</span><span class="nf">addstr</span> <span class="nv">str</span><span class="p">)</span>
-<a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-14"></a>  <span class="p">(</span><span class="nf">getch</span><span class="p">)</span>
-<a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-15"></a>  <span class="p">(</span><span class="nb">write </span><span class="nv">str</span><span class="p">)</span>
-<a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-16"></a>  <span class="p">(</span><span class="nf">endwin</span><span class="p">))</span>
+<pre class="code scheme"><a id="rest_code_6cff78b8befb4dc3bebcb04e65b25925-1" name="rest_code_6cff78b8befb4dc3bebcb04e65b25925-1" href="#rest_code_6cff78b8befb4dc3bebcb04e65b25925-1"></a><span class="p">(</span><span class="nf">import</span> <span class="nv">ncurses</span><span class="p">)</span>
+<a id="rest_code_6cff78b8befb4dc3bebcb04e65b25925-2" name="rest_code_6cff78b8befb4dc3bebcb04e65b25925-2" href="#rest_code_6cff78b8befb4dc3bebcb04e65b25925-2"></a><span class="p">(</span><span class="nf">import</span> <span class="p">(</span><span class="nf">chicken</span> <span class="nv">locative</span><span class="p">))</span>
+<a id="rest_code_6cff78b8befb4dc3bebcb04e65b25925-3" name="rest_code_6cff78b8befb4dc3bebcb04e65b25925-3" href="#rest_code_6cff78b8befb4dc3bebcb04e65b25925-3"></a><span class="p">(</span><span class="nf">import</span> <span class="p">(</span><span class="nf">chicken</span> <span class="nv">string</span><span class="p">))</span>
+<a id="rest_code_6cff78b8befb4dc3bebcb04e65b25925-4" name="rest_code_6cff78b8befb4dc3bebcb04e65b25925-4" href="#rest_code_6cff78b8befb4dc3bebcb04e65b25925-4"></a>
+<a id="rest_code_6cff78b8befb4dc3bebcb04e65b25925-5" name="rest_code_6cff78b8befb4dc3bebcb04e65b25925-5" href="#rest_code_6cff78b8befb4dc3bebcb04e65b25925-5"></a><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">get-string</span> <span class="nv">max</span><span class="p">)</span>
+<a id="rest_code_6cff78b8befb4dc3bebcb04e65b25925-6" name="rest_code_6cff78b8befb4dc3bebcb04e65b25925-6" href="#rest_code_6cff78b8befb4dc3bebcb04e65b25925-6"></a>  <span class="p">(</span><span class="k">let </span><span class="p">((</span><span class="nf">buffer</span> <span class="p">(</span><span class="nb">make-string </span><span class="nv">max</span> <span class="sc">#\null</span><span class="p">)))</span>
+<a id="rest_code_6cff78b8befb4dc3bebcb04e65b25925-7" name="rest_code_6cff78b8befb4dc3bebcb04e65b25925-7" href="#rest_code_6cff78b8befb4dc3bebcb04e65b25925-7"></a>    <span class="p">(</span><span class="nf">getnstr</span> <span class="p">(</span><span class="nf">make-locative</span> <span class="nv">buffer</span><span class="p">)</span> <span class="nv">max</span><span class="p">)</span>
+<a id="rest_code_6cff78b8befb4dc3bebcb04e65b25925-8" name="rest_code_6cff78b8befb4dc3bebcb04e65b25925-8" href="#rest_code_6cff78b8befb4dc3bebcb04e65b25925-8"></a>    <span class="c1">;; Delete the #\null characters.</span>
+<a id="rest_code_6cff78b8befb4dc3bebcb04e65b25925-9" name="rest_code_6cff78b8befb4dc3bebcb04e65b25925-9" href="#rest_code_6cff78b8befb4dc3bebcb04e65b25925-9"></a>    <span class="p">(</span><span class="nf">string-translate</span> <span class="nv">buffer</span> <span class="sc">#\null</span><span class="p">)))</span>
+<a id="rest_code_6cff78b8befb4dc3bebcb04e65b25925-10" name="rest_code_6cff78b8befb4dc3bebcb04e65b25925-10" href="#rest_code_6cff78b8befb4dc3bebcb04e65b25925-10"></a>
+<a id="rest_code_6cff78b8befb4dc3bebcb04e65b25925-11" name="rest_code_6cff78b8befb4dc3bebcb04e65b25925-11" href="#rest_code_6cff78b8befb4dc3bebcb04e65b25925-11"></a><span class="p">(</span><span class="k">let </span><span class="p">((</span><span class="nf">stdscr</span> <span class="p">(</span><span class="nf">initscr</span><span class="p">))</span>
+<a id="rest_code_6cff78b8befb4dc3bebcb04e65b25925-12" name="rest_code_6cff78b8befb4dc3bebcb04e65b25925-12" href="#rest_code_6cff78b8befb4dc3bebcb04e65b25925-12"></a>      <span class="p">(</span><span class="nf">str</span> <span class="p">(</span><span class="nf">get-string</span> <span class="mi">10</span><span class="p">)))</span>
+<a id="rest_code_6cff78b8befb4dc3bebcb04e65b25925-13" name="rest_code_6cff78b8befb4dc3bebcb04e65b25925-13" href="#rest_code_6cff78b8befb4dc3bebcb04e65b25925-13"></a>  <span class="p">(</span><span class="nf">addstr</span> <span class="nv">str</span><span class="p">)</span>
+<a id="rest_code_6cff78b8befb4dc3bebcb04e65b25925-14" name="rest_code_6cff78b8befb4dc3bebcb04e65b25925-14" href="#rest_code_6cff78b8befb4dc3bebcb04e65b25925-14"></a>  <span class="p">(</span><span class="nf">getch</span><span class="p">)</span>
+<a id="rest_code_6cff78b8befb4dc3bebcb04e65b25925-15" name="rest_code_6cff78b8befb4dc3bebcb04e65b25925-15" href="#rest_code_6cff78b8befb4dc3bebcb04e65b25925-15"></a>  <span class="p">(</span><span class="nb">write </span><span class="nv">str</span><span class="p">)</span>
+<a id="rest_code_6cff78b8befb4dc3bebcb04e65b25925-16" name="rest_code_6cff78b8befb4dc3bebcb04e65b25925-16" href="#rest_code_6cff78b8befb4dc3bebcb04e65b25925-16"></a>  <span class="p">(</span><span class="nf">endwin</span><span class="p">))</span>
 </pre>
 <p>Oh, and I added the example to the ncurses egg documentation: <a class="reference external" href="http://wiki.call-cc.org/eggref/5/ncurses#getnstr-example">getnstr
 Example</a>.</p>
-</div>
     </div>
     <script>var pfHeaderImgUrl = '';var pfHeaderTagline = '';var pfdisableClickToDel = 0;var pfHideImages = 0;var pfImageDisplayStyle = 'right';var pfDisablePDF = 0;var pfDisableEmail = 0;var pfDisablePrint = 0;var pfCustomCSS = '';var pfBtVersion='2';(function(){var js,pf;pf=document.createElement('script');pf.type='text/javascript';pf.src='//cdn.printfriendly.com/printfriendly.js';document.getElementsByTagName('head')[0].appendChild(pf)})();</script><a href="https://www.printfriendly.com" style="color:#6D9F00;text-decoration:none;" class="printfriendly" onclick="window.print();return false;" title="Printer Friendly and PDF"><img style="border:none;-webkit-box-shadow:none;box-shadow:none;" src="//cdn.printfriendly.com/buttons/printfriendly-pdf-button.png" alt="Print Friendly and PDF"></a>    
     <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
@@ -121,7 +119,7 @@ Example</a>.</p>
                 <a href="../../21/why-i-like-advanced-fighting-fantasy/" rel="next" title="Why I like Advanced Fighting Fantasy">Next post</a>
             </li>
         </ul></nav></aside><section class="comments hidden-print"><h2>Comments</h2>
-                        <div id="disqus_thread"></div>
+                    <div id="disqus_thread"></div>
         <script>
         var disqus_shortname ="lacking-natural-simplicity",
             disqus_url="https://tkurtbond.github.io/posts/2021/06/16/using-getnstr-from-chicken-scheme-ncurses-egg/",
