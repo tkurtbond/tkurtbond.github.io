@@ -77,7 +77,7 @@ If yo'>
         <div class="metadata blog-post-meta">
             <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
             <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2020-04-24T23:46:39-04:00" itemprop="datePublished" title="2020-04-24 23:46">2020-04-24 23:46</time></a></p>
-                <p class="commentline">        <a href="#disqus_thread" data-disqus-identifier="cache/posts/2020/04/24/binding-a-symbol-defined-with-defconstant-with-let-is-not-portable-in-common-lisp.html">Comments</a>
+                <p class="commentline">            <a href="#disqus_thread" data-disqus-identifier="cache/posts/2020/04/24/binding-a-symbol-defined-with-defconstant-with-let-is-not-portable-in-common-lisp.html">Comments</a>
 
 
                     </p>
@@ -86,18 +86,20 @@ If yo'>
         </div>
         
     </header><div class="e-content entry-content" itemprop="articleBody text">
-    <p><a class="reference external" href="http://www.sbcl.org/">SBCL</a> and <a class="reference external" href="https://ccl.clozure.com/">CCL</a> and <a class="reference external" href="https://clisp.sourceforge.io/">CLISP</a> think binding a symbol defined with <code class="docutils literal">defconstant</code>
+    <div>
+<p><a class="reference external" href="http://www.sbcl.org/">SBCL</a> and <a class="reference external" href="https://ccl.clozure.com/">CCL</a> and <a class="reference external" href="https://clisp.sourceforge.io/">CLISP</a> think binding a symbol defined with <code class="docutils literal">defconstant</code>
 is an error, so if you do</p>
-<pre class="code common-lisp"><a id="rest_code_b55ea677845e45d79cee317b90950eba-1" name="rest_code_b55ea677845e45d79cee317b90950eba-1" href="#rest_code_b55ea677845e45d79cee317b90950eba-1"></a><span class="p">(</span><span class="nb">defconstant</span> <span class="nv">foo</span> <span class="s">"foo"</span><span class="p">)</span>
-<a id="rest_code_b55ea677845e45d79cee317b90950eba-2" name="rest_code_b55ea677845e45d79cee317b90950eba-2" href="#rest_code_b55ea677845e45d79cee317b90950eba-2"></a><span class="p">(</span><span class="k">let</span> <span class="p">((</span><span class="nv">foo</span> <span class="s">"bar"</span><span class="p">))</span> <span class="nv">foo</span><span class="p">)</span>
+<pre class="code common-lisp"><a name="rest_code_ad67f543d59f4ed4824dd151eb867da5-1"></a><span class="p">(</span><span class="nb">defconstant</span> <span class="nv">foo</span> <span class="s">"foo"</span><span class="p">)</span>
+<a name="rest_code_ad67f543d59f4ed4824dd151eb867da5-2"></a><span class="p">(</span><span class="k">let</span> <span class="p">((</span><span class="nv">foo</span> <span class="s">"bar"</span><span class="p">))</span> <span class="nv">foo</span><span class="p">)</span>
 </pre>
 <p>you get an error.  But in <a class="reference external" href="https://abcl.org/">ABCL</a> and <a class="reference external" href="https://common-lisp.net/project/ecl/">ECL</a> you don’t.</p>
 <p>If you try</p>
-<pre class="code common-lisp"><a id="rest_code_3b7e229341e54fc0a6fbb53ad67ec00e-1" name="rest_code_3b7e229341e54fc0a6fbb53ad67ec00e-1" href="#rest_code_3b7e229341e54fc0a6fbb53ad67ec00e-1"></a><span class="p">(</span><span class="nb">defun</span> <span class="nv">x</span> <span class="p">()</span> <span class="p">(</span><span class="k">let</span> <span class="p">((</span><span class="nv">foo</span> <span class="s">"bar"</span><span class="p">))</span> <span class="nv">foo</span><span class="p">))</span>
+<pre class="code common-lisp"><a name="rest_code_acbe60c93b5b4c1593ef37f79b38bffd-1"></a><span class="p">(</span><span class="nb">defun</span> <span class="nv">x</span> <span class="p">()</span> <span class="p">(</span><span class="k">let</span> <span class="p">((</span><span class="nv">foo</span> <span class="s">"bar"</span><span class="p">))</span> <span class="nv">foo</span><span class="p">))</span>
 </pre>
 <p>in SBCL and CCL you get an error when the function is compiled.
 In SBCL the function is defined, but always gives an error when run.
 In CCL the function does not get defined.</p>
+</div>
     </div>
     <script>var pfHeaderImgUrl = '';var pfHeaderTagline = '';var pfdisableClickToDel = 0;var pfHideImages = 0;var pfImageDisplayStyle = 'right';var pfDisablePDF = 0;var pfDisableEmail = 0;var pfDisablePrint = 0;var pfCustomCSS = '';var pfBtVersion='2';(function(){var js,pf;pf=document.createElement('script');pf.type='text/javascript';pf.src='//cdn.printfriendly.com/printfriendly.js';document.getElementsByTagName('head')[0].appendChild(pf)})();</script><a href="https://www.printfriendly.com" style="color:#6D9F00;text-decoration:none;" class="printfriendly" onclick="window.print();return false;" title="Printer Friendly and PDF"><img style="border:none;-webkit-box-shadow:none;box-shadow:none;" src="//cdn.printfriendly.com/buttons/printfriendly-pdf-button.png" alt="Print Friendly and PDF"></a>    
     <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
@@ -116,7 +118,7 @@ In CCL the function does not get defined.</p>
                 <a href="../../../05/03/customizing-pandoc-ms-output-with-a-lua-filter/" rel="next" title="Customizing pandoc ms output with a Lua filter">Next post</a>
             </li>
         </ul></nav></aside><section class="comments hidden-print"><h2>Comments</h2>
-                    <div id="disqus_thread"></div>
+                        <div id="disqus_thread"></div>
         <script>
         var disqus_shortname ="lacking-natural-simplicity",
             disqus_url="https://tkurtbond.github.io/posts/2020/04/24/binding-a-symbol-defined-with-defconstant-with-let-is-not-portable-in-common-lisp/",

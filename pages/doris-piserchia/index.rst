@@ -66,7 +66,9 @@ list <http://groups.yahoo.com/group/thedorispiserchiafanpage/>`__.
 
 
 
-.. [1] I reread this in November 1997, and found it odder than I had
+.. [1]
+
+   I reread this in November 1997, and found it odder than I had
    remembered.  It depicts, among other things, the careless
    destruction of one ecosystem and the rampage of the one surviving
    member of that ecosystem; the plight of the elderly, and one
@@ -76,6 +78,8 @@ list <http://groups.yahoo.com/group/thedorispiserchiafanpage/>`__.
    military; and the moral and mental decay of a number of
    individuals.
 
-.. [2] I may have actually run across `Star Rider` earlier, but if so
+.. [2]
+
+   I may have actually run across `Star Rider` earlier, but if so
    I was too young for it to make much of an impression on me.
 

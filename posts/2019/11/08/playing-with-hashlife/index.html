@@ -73,7 +73,7 @@ entered:
         <div class="metadata blog-post-meta">
             <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
             <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2019-11-08T09:43:19-05:00" itemprop="datePublished" title="2019-11-08 09:43">2019-11-08 09:43</time></a></p>
-                <p class="commentline">        <a href="#disqus_thread" data-disqus-identifier="cache/posts/2019/11/08/playing-with-hashlife.html">Comments</a>
+                <p class="commentline">            <a href="#disqus_thread" data-disqus-identifier="cache/posts/2019/11/08/playing-with-hashlife.html">Comments</a>
 
 
                     </p>
@@ -82,25 +82,26 @@ entered:
         </div>
         
     </header><div class="e-content entry-content" itemprop="articleBody text">
-    <p>C.P. found <a class="reference external" href="https://github.com/stylewarning">Robert Smith</a>'s <a class="reference external" href="https://github.com/stylewarning/lisp-random/tree/master/hashlife">implementation</a> of Bill Gosper's HASHLIFE
+    <div>
+<p>C.P. found <a class="reference external" href="https://github.com/stylewarning">Robert Smith</a>'s <a class="reference external" href="https://github.com/stylewarning/lisp-random/tree/master/hashlife">implementation</a> of Bill Gosper's HASHLIFE
 algorithm and wanted my help with running it.  I cloned the <a class="reference external" href="https://github.com/stylewarning/lisp-random">repo</a> it
 was in and ran <code class="docutils literal">sbcl</code> in the <code class="docutils literal">hashlife</code> directory.  Then I
 entered:</p>
-<pre class="code lisp"><a id="rest_code_09bd633bd83b48479551338e2ff20ca7-1" name="rest_code_09bd633bd83b48479551338e2ff20ca7-1" href="#rest_code_09bd633bd83b48479551338e2ff20ca7-1"></a><span class="p">(</span><span class="nv">asdf:operate</span> <span class="ss">'asdf:load-op</span> <span class="ss">'charmlife</span><span class="p">)</span>
+<pre class="code lisp"><a name="rest_code_2667f7c48d5c4490b6b828a4c54ba716-1"></a><span class="p">(</span><span class="nv">asdf:operate</span> <span class="ss">'asdf:load-op</span> <span class="ss">'charmlife</span><span class="p">)</span>
 </pre>
 <p>That resulted in a <code class="docutils literal">Component CHARMLIFE not found</code> error in sbcl.  I
 thought that was odd — it was right there in the current directory.  I
 looked at <code class="docutils literal"><span class="pre">asdf:*central-registry*</span></code>, and the only thing in it was
 the quicklisp directory.  The ASDF <a class="reference external" href="https://common-lisp.net/~mmommer/asdf-howto.shtml#sec11">howto</a> showed an example of setting
 <code class="docutils literal"><span class="pre">asdf:*central-registry*</span></code>:</p>
-<pre class="code lisp"><a id="rest_code_88e2a382387c4f038774a6ca4c61162e-1" name="rest_code_88e2a382387c4f038774a6ca4c61162e-1" href="#rest_code_88e2a382387c4f038774a6ca4c61162e-1"></a><span class="p">(</span><span class="nb">setf</span> <span class="nv">asdf:*central-registry*</span>
-<a id="rest_code_88e2a382387c4f038774a6ca4c61162e-2" name="rest_code_88e2a382387c4f038774a6ca4c61162e-2" href="#rest_code_88e2a382387c4f038774a6ca4c61162e-2"></a>  <span class="c1">;; Default directories, usually just the ``current directory''</span>
-<a id="rest_code_88e2a382387c4f038774a6ca4c61162e-3" name="rest_code_88e2a382387c4f038774a6ca4c61162e-3" href="#rest_code_88e2a382387c4f038774a6ca4c61162e-3"></a>  <span class="o">'</span><span class="p">(</span><span class="vg">*default-pathname-defaults*</span>
-<a id="rest_code_88e2a382387c4f038774a6ca4c61162e-4" name="rest_code_88e2a382387c4f038774a6ca4c61162e-4" href="#rest_code_88e2a382387c4f038774a6ca4c61162e-4"></a>
-<a id="rest_code_88e2a382387c4f038774a6ca4c61162e-5" name="rest_code_88e2a382387c4f038774a6ca4c61162e-5" href="#rest_code_88e2a382387c4f038774a6ca4c61162e-5"></a>    <span class="c1">;; Additional places where ASDF can find</span>
-<a id="rest_code_88e2a382387c4f038774a6ca4c61162e-6" name="rest_code_88e2a382387c4f038774a6ca4c61162e-6" href="#rest_code_88e2a382387c4f038774a6ca4c61162e-6"></a>    <span class="c1">;; system definition files</span>
-<a id="rest_code_88e2a382387c4f038774a6ca4c61162e-7" name="rest_code_88e2a382387c4f038774a6ca4c61162e-7" href="#rest_code_88e2a382387c4f038774a6ca4c61162e-7"></a>    <span class="l l-Other">#p"/home/foo/lisp/systems/"</span>
-<a id="rest_code_88e2a382387c4f038774a6ca4c61162e-8" name="rest_code_88e2a382387c4f038774a6ca4c61162e-8" href="#rest_code_88e2a382387c4f038774a6ca4c61162e-8"></a>    <span class="l l-Other">#p"/usr/share/common-lisp/systems/"</span><span class="p">))</span>
+<pre class="code lisp"><a name="rest_code_56954bb37e0c46f29c1975da43b98ee9-1"></a><span class="p">(</span><span class="nb">setf</span> <span class="nv">asdf:*central-registry*</span>
+<a name="rest_code_56954bb37e0c46f29c1975da43b98ee9-2"></a>  <span class="c1">;; Default directories, usually just the ``current directory''</span>
+<a name="rest_code_56954bb37e0c46f29c1975da43b98ee9-3"></a>  <span class="o">'</span><span class="p">(</span><span class="vg">*default-pathname-defaults*</span>
+<a name="rest_code_56954bb37e0c46f29c1975da43b98ee9-4"></a>
+<a name="rest_code_56954bb37e0c46f29c1975da43b98ee9-5"></a>    <span class="c1">;; Additional places where ASDF can find</span>
+<a name="rest_code_56954bb37e0c46f29c1975da43b98ee9-6"></a>    <span class="c1">;; system definition files</span>
+<a name="rest_code_56954bb37e0c46f29c1975da43b98ee9-7"></a>    <span class="l l-Other">#p"/home/foo/lisp/systems/"</span>
+<a name="rest_code_56954bb37e0c46f29c1975da43b98ee9-8"></a>    <span class="l l-Other">#p"/usr/share/common-lisp/systems/"</span><span class="p">))</span>
 </pre>
 <p>Noticing that it had the symbol <code class="docutils literal"><span class="pre">*default-pathname-defaults*</span></code> in the
 new value, I guessed that it being missing from mine caused ASDF to
@@ -110,13 +111,14 @@ used <a class="reference external" href="https://www.quicklisp.org/">Quicklisp</
 <code class="docutils literal">charmlife.lisp</code> and looked at the <code class="docutils literal">main</code> function and figured out
 how to run it and how to interact with the program when it was running.</p>
 <p>Here's what I had to do:</p>
-<pre class="code lisp"><a id="rest_code_9e8ffa8cc20a46f4b8d36bc389ba2120-1" name="rest_code_9e8ffa8cc20a46f4b8d36bc389ba2120-1" href="#rest_code_9e8ffa8cc20a46f4b8d36bc389ba2120-1"></a><span class="p">(</span><span class="nb">setf</span> <span class="nv">asdf:*central-registry*</span>
-<a id="rest_code_9e8ffa8cc20a46f4b8d36bc389ba2120-2" name="rest_code_9e8ffa8cc20a46f4b8d36bc389ba2120-2" href="#rest_code_9e8ffa8cc20a46f4b8d36bc389ba2120-2"></a>      <span class="p">(</span><span class="nb">cons</span> <span class="ss">'*default-pathname-defaults*</span>
-<a id="rest_code_9e8ffa8cc20a46f4b8d36bc389ba2120-3" name="rest_code_9e8ffa8cc20a46f4b8d36bc389ba2120-3" href="#rest_code_9e8ffa8cc20a46f4b8d36bc389ba2120-3"></a>            <span class="nv">asdf:*central-registry*</span><span class="p">))</span>
-<a id="rest_code_9e8ffa8cc20a46f4b8d36bc389ba2120-4" name="rest_code_9e8ffa8cc20a46f4b8d36bc389ba2120-4" href="#rest_code_9e8ffa8cc20a46f4b8d36bc389ba2120-4"></a><span class="p">(</span><span class="nv">ql:quickload</span> <span class="s">"cl-charms"</span><span class="p">)</span>
-<a id="rest_code_9e8ffa8cc20a46f4b8d36bc389ba2120-5" name="rest_code_9e8ffa8cc20a46f4b8d36bc389ba2120-5" href="#rest_code_9e8ffa8cc20a46f4b8d36bc389ba2120-5"></a><span class="p">(</span><span class="nv">asdf:operate</span> <span class="ss">'asdf:load-op</span> <span class="ss">'charmlife</span><span class="p">)</span>
-<a id="rest_code_9e8ffa8cc20a46f4b8d36bc389ba2120-6" name="rest_code_9e8ffa8cc20a46f4b8d36bc389ba2120-6" href="#rest_code_9e8ffa8cc20a46f4b8d36bc389ba2120-6"></a><span class="p">(</span><span class="nv">charmlife:main</span><span class="p">)</span>
+<pre class="code lisp"><a name="rest_code_839c426882a0468e8e54aa4dffeeb826-1"></a><span class="p">(</span><span class="nb">setf</span> <span class="nv">asdf:*central-registry*</span>
+<a name="rest_code_839c426882a0468e8e54aa4dffeeb826-2"></a>      <span class="p">(</span><span class="nb">cons</span> <span class="ss">'*default-pathname-defaults*</span>
+<a name="rest_code_839c426882a0468e8e54aa4dffeeb826-3"></a>            <span class="nv">asdf:*central-registry*</span><span class="p">))</span>
+<a name="rest_code_839c426882a0468e8e54aa4dffeeb826-4"></a><span class="p">(</span><span class="nv">ql:quickload</span> <span class="s">"cl-charms"</span><span class="p">)</span>
+<a name="rest_code_839c426882a0468e8e54aa4dffeeb826-5"></a><span class="p">(</span><span class="nv">asdf:operate</span> <span class="ss">'asdf:load-op</span> <span class="ss">'charmlife</span><span class="p">)</span>
+<a name="rest_code_839c426882a0468e8e54aa4dffeeb826-6"></a><span class="p">(</span><span class="nv">charmlife:main</span><span class="p">)</span>
 </pre>
+</div>
     </div>
     <script>var pfHeaderImgUrl = '';var pfHeaderTagline = '';var pfdisableClickToDel = 0;var pfHideImages = 0;var pfImageDisplayStyle = 'right';var pfDisablePDF = 0;var pfDisableEmail = 0;var pfDisablePrint = 0;var pfCustomCSS = '';var pfBtVersion='2';(function(){var js,pf;pf=document.createElement('script');pf.type='text/javascript';pf.src='//cdn.printfriendly.com/printfriendly.js';document.getElementsByTagName('head')[0].appendChild(pf)})();</script><a href="https://www.printfriendly.com" style="color:#6D9F00;text-decoration:none;" class="printfriendly" onclick="window.print();return false;" title="Printer Friendly and PDF"><img style="border:none;-webkit-box-shadow:none;box-shadow:none;" src="//cdn.printfriendly.com/buttons/printfriendly-pdf-button.png" alt="Print Friendly and PDF"></a>    
     <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
@@ -132,7 +134,7 @@ how to run it and how to interact with the program when it was running.</p>
                 <a href="../../09/apple-podcasts-doesnt-recognize-my-ipod-shuffle/" rel="next" title="Apple Podcasts doesn't recognize my iPod Shuffle">Next post</a>
             </li>
         </ul></nav></aside><section class="comments hidden-print"><h2>Comments</h2>
-                    <div id="disqus_thread"></div>
+                        <div id="disqus_thread"></div>
         <script>
         var disqus_shortname ="lacking-natural-simplicity",
             disqus_url="https://tkurtbond.github.io/posts/2019/11/08/playing-with-hashlife/",

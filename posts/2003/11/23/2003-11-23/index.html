@@ -71,7 +71,7 @@ Stylesheets ">
         <div class="metadata blog-post-meta">
             <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
             <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2003-11-23T00:00:00-05:00" itemprop="datePublished" title="2003-11-23 00:00">2003-11-23 00:00</time></a></p>
-                <p class="commentline">        <a href="#disqus_thread" data-disqus-identifier="cache/posts/2003/11/23/2003-11-23.html">Comments</a>
+                <p class="commentline">            <a href="#disqus_thread" data-disqus-identifier="cache/posts/2003/11/23/2003-11-23.html">Comments</a>
 
 
                     </p>
@@ -80,7 +80,8 @@ Stylesheets ">
         </div>
         
     </header><div class="e-content entry-content" itemprop="articleBody text">
-    <p>I've always had an interest in markup and document formatting
+    <div>
+<p>I've always had an interest in markup and document formatting
 languages, and have long used <span class="app">troff</span> and <span class="app">LaTeX</span>
 for document formatting and XML and <a class="reference external" href="http://www.docbook.org/">DocBook</a> for markup, using the DSSSL DocBook
 Stylesheets and <a class="reference external" href="http://openjade.sourceforge.net/">OpenJade</a> along
@@ -97,17 +98,17 @@ macro packages lack good support for PDF - in particular, pdfmarks.
 LaTeX has good support for PDF (especially when you are using
 <span class="app">pdfelatex</span>), but it is difficult to customize the appearance of the
 output, and there are a number of quirks when it comes to font
-handling.  <a class="footnote-reference brackets" href="#footnote-1" id="footnote-reference-1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> And the PDF output from the DSSSL DocBook Stylesheets
-<a class="footnote-reference brackets" href="#footnote-2" id="footnote-reference-2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> can be very ugly when you are doing complicated things, and since
+handling.  <a class="footnote-reference brackets" href="#id5" id="id1">1</a> And the PDF output from the DSSSL DocBook Stylesheets
+<a class="footnote-reference brackets" href="#id6" id="id2">2</a> can be very ugly when you are doing complicated things, and since
 it uses <span class="app">JadeTeX</span> it's even harder to customize the appearance of the
 output than LaTeX .</p>
 <p>While I've not found any general solution for the problem, I've have
 run across something that looks promising: <a class="reference external" href="http://www.pragma-ade.com">ConTeXt</a>.  It is a TeX macro package that provides about the
 same level of structural markup as LaTeX but appears to be much more
-customizable.  <a class="footnote-reference brackets" href="#footnote-3" id="footnote-reference-3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a> It also has very good support for interactive
+customizable.  <a class="footnote-reference brackets" href="#id7" id="id3">3</a> It also has very good support for interactive
 documents, reasonably good manuals, and appears to have significant
 development resources behind it.  I think it would make a more suitable
-backend than <span class="app">LaTeX</span>.  <a class="footnote-reference brackets" href="#footnote-4" id="footnote-reference-4" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a></p>
+backend than <span class="app">LaTeX</span>.  <a class="footnote-reference brackets" href="#id8" id="id4">4</a></p>
 <p>As for those documents where XML markup is too much of a pain (say,
 things that should be easy to read as plain text, where the verbosity
 of XML tags overwhelms the text), I've found that the
@@ -127,25 +128,35 @@ reStructuredText to ConTeXt writer as I have time.</p>
 works well for anything but the simpliest documents.  I'd like to find
 a portable, open source WYSIWYG XML editor that supports DocBook, but
 they seem in short supply.</p>
-<aside class="footnote brackets" id="footnote-1" role="note"><span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#footnote-reference-1">1</a><span class="fn-bracket">]</span></span>
+<dl class="footnote brackets">
+<dt class="label" id="id5"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd>
 <p>In particular, it's very annoying to have the ligatures disappear
 from printed output when using the standard Postscript fonts because
 Adobe Acrobat 's printer driver mishandles them.</p>
-</aside><aside class="footnote brackets" id="footnote-2" role="note"><span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#footnote-reference-2">2</a><span class="fn-bracket">]</span></span>
+</dd>
+<dt class="label" id="id6"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
+<dd>
 <p>I've not tried the XSL DocBook Stylesheets because in some ways
 the toolchain involved is even more complicated than for the DSSSL
 DocBook Stylesheets toolchain.</p>
-</aside><aside class="footnote brackets" id="footnote-3" role="note"><span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#footnote-reference-3">3</a><span class="fn-bracket">]</span></span>
+</dd>
+<dt class="label" id="id7"><span class="brackets"><a class="fn-backref" href="#id3">3</a></span></dt>
+<dd>
 <p>In some ways it reminds me of <a class="reference external" href="http://www.eijkhout.net/">Victor Eijkhout</a>'s TeX macro package <a class="reference external" href="http://www.tug.org/TUGboat/Articles/tb13-3/eijkhout.pdf">Lollipop</a>, though
 more complete.</p>
-</aside><aside class="footnote brackets" id="footnote-4" role="note"><span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#footnote-reference-4">4</a><span class="fn-bracket">]</span></span>
+</dd>
+<dt class="label" id="id8"><span class="brackets"><a class="fn-backref" href="#id4">4</a></span></dt>
+<dd>
 <p>Doesn't that mean I'll be using <span class="app">TeX</span>, which is rather complicated
 to install and use? Well, yes.  However, there are easy-to-use
 distributions of TeX that include ConTeXt for the Unix distributions
 that I use as well as for MS Windows
 (<a class="reference external" href="http://www.gug.org/tetex/">teTeX</a>, for instance).</p>
-</aside>
+</dd>
+</dl>
 </div>
+    </div>
     <script>var pfHeaderImgUrl = '';var pfHeaderTagline = '';var pfdisableClickToDel = 0;var pfHideImages = 0;var pfImageDisplayStyle = 'right';var pfDisablePDF = 0;var pfDisableEmail = 0;var pfDisablePrint = 0;var pfCustomCSS = '';var pfBtVersion='2';(function(){var js,pf;pf=document.createElement('script');pf.type='text/javascript';pf.src='//cdn.printfriendly.com/printfriendly.js';document.getElementsByTagName('head')[0].appendChild(pf)})();</script><a href="https://www.printfriendly.com" style="color:#6D9F00;text-decoration:none;" class="printfriendly" onclick="window.print();return false;" title="Printer Friendly and PDF"><img style="border:none;-webkit-box-shadow:none;box-shadow:none;" src="//cdn.printfriendly.com/buttons/printfriendly-pdf-button.png" alt="Print Friendly and PDF"></a>    
     <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
 <li><a class="tag p-category" href="../../../../../categories/markup-languages/" rel="tag">markup languages</a></li>
@@ -159,7 +170,7 @@ that I use as well as for MS Windows
                 <a href="../../24/2003-11-24/" rel="next" title="Recent Viewing">Next post</a>
             </li>
         </ul></nav></aside><section class="comments hidden-print"><h2>Comments</h2>
-                    <div id="disqus_thread"></div>
+                        <div id="disqus_thread"></div>
         <script>
         var disqus_shortname ="lacking-natural-simplicity",
             disqus_url="https://tkurtbond.github.io/posts/2003/11/23/2003-11-23/",

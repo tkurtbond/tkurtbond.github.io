@@ -72,7 +72,7 @@ proper unicode lookup data!
         <div class="metadata blog-post-meta">
             <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
             <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2008-08-15T12:07:21-05:00" itemprop="datePublished" title="2008-08-15 12:07">2008-08-15 12:07</time></a></p>
-                <p class="commentline">        <a href="#disqus_thread" data-disqus-identifier="cache/posts/2008/08/15/fun-with-emacs-unicode-and-describe-char.html">Comments</a>
+                <p class="commentline">            <a href="#disqus_thread" data-disqus-identifier="cache/posts/2008/08/15/fun-with-emacs-unicode-and-describe-char.html">Comments</a>
 
 
                     </p>
@@ -81,35 +81,36 @@ proper unicode lookup data!
         </div>
         
     </header><div class="e-content entry-content" itemprop="articleBody text">
-    <p>Ever use the emacs command <code class="docutils literal"><span class="pre">describe-char</span></code>?  It's even more fun with
+    <div>
+<p>Ever use the emacs command <code class="docutils literal"><span class="pre">describe-char</span></code>?  It's even more fun with
 proper unicode lookup data!</p>
-<pre class="code emacs-lisp"><a id="rest_code_9a3e8240cd114500b18d9367e967e15c-1" name="rest_code_9a3e8240cd114500b18d9367e967e15c-1" href="#rest_code_9a3e8240cd114500b18d9367e967e15c-1"></a><span class="c1">;; First, we'll bind it to a key.</span>
-<a id="rest_code_9a3e8240cd114500b18d9367e967e15c-2" name="rest_code_9a3e8240cd114500b18d9367e967e15c-2" href="#rest_code_9a3e8240cd114500b18d9367e967e15c-2"></a><span class="p">(</span><span class="nv">global-set-key</span> <span class="s">"\C-cD"</span> <span class="nf">#'</span><span class="nv">describe-char</span><span class="p">)</span>
-<a id="rest_code_9a3e8240cd114500b18d9367e967e15c-3" name="rest_code_9a3e8240cd114500b18d9367e967e15c-3" href="#rest_code_9a3e8240cd114500b18d9367e967e15c-3"></a>
-<a id="rest_code_9a3e8240cd114500b18d9367e967e15c-4" name="rest_code_9a3e8240cd114500b18d9367e967e15c-4" href="#rest_code_9a3e8240cd114500b18d9367e967e15c-4"></a><span class="c1">;; Now we'll download it if necessary.</span>
-<a id="rest_code_9a3e8240cd114500b18d9367e967e15c-5" name="rest_code_9a3e8240cd114500b18d9367e967e15c-5" href="#rest_code_9a3e8240cd114500b18d9367e967e15c-5"></a><span class="p">(</span><span class="k">let</span> <span class="p">((</span><span class="nv">udf-url</span> <span class="s">"http://www.unicode.org/Public/UNIDATA/UnicodeData.txt"</span><span class="p">)</span>
-<a id="rest_code_9a3e8240cd114500b18d9367e967e15c-6" name="rest_code_9a3e8240cd114500b18d9367e967e15c-6" href="#rest_code_9a3e8240cd114500b18d9367e967e15c-6"></a>      <span class="p">(</span><span class="nv">udf-dest</span> <span class="s">"~/tmp/UnicodeData.txt"</span><span class="p">))</span>
-<a id="rest_code_9a3e8240cd114500b18d9367e967e15c-7" name="rest_code_9a3e8240cd114500b18d9367e967e15c-7" href="#rest_code_9a3e8240cd114500b18d9367e967e15c-7"></a>  <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nf">file-readable-p</span> <span class="nv">udf-dest</span><span class="p">)</span>
-<a id="rest_code_9a3e8240cd114500b18d9367e967e15c-8" name="rest_code_9a3e8240cd114500b18d9367e967e15c-8" href="#rest_code_9a3e8240cd114500b18d9367e967e15c-8"></a>      <span class="c1">;; Let describe-char know it exists.</span>
-<a id="rest_code_9a3e8240cd114500b18d9367e967e15c-9" name="rest_code_9a3e8240cd114500b18d9367e967e15c-9" href="#rest_code_9a3e8240cd114500b18d9367e967e15c-9"></a>      <span class="p">(</span><span class="k">setq</span> <span class="nv">describe-char-unicodedata-file</span> <span class="nv">udf-dest</span><span class="p">)</span>
-<a id="rest_code_9a3e8240cd114500b18d9367e967e15c-10" name="rest_code_9a3e8240cd114500b18d9367e967e15c-10" href="#rest_code_9a3e8240cd114500b18d9367e967e15c-10"></a>    <span class="c1">;; It doesn't exist, and we need to download it!</span>
-<a id="rest_code_9a3e8240cd114500b18d9367e967e15c-11" name="rest_code_9a3e8240cd114500b18d9367e967e15c-11" href="#rest_code_9a3e8240cd114500b18d9367e967e15c-11"></a>    <span class="p">(</span><span class="nb">when</span> <span class="p">(</span><span class="nv">y-or-n-p</span> <span class="p">(</span><span class="nf">format</span> <span class="s">"You need to download %s ! Do it? "</span> <span class="nv">udf-url</span><span class="p">))</span>
-<a id="rest_code_9a3e8240cd114500b18d9367e967e15c-12" name="rest_code_9a3e8240cd114500b18d9367e967e15c-12" href="#rest_code_9a3e8240cd114500b18d9367e967e15c-12"></a>      <span class="c1">;; Really weird: wget -O 'file' complains that file doesn't exist.</span>
-<a id="rest_code_9a3e8240cd114500b18d9367e967e15c-13" name="rest_code_9a3e8240cd114500b18d9367e967e15c-13" href="#rest_code_9a3e8240cd114500b18d9367e967e15c-13"></a>      <span class="p">(</span><span class="k">let*</span> <span class="p">((</span><span class="nv">cmd</span> <span class="p">(</span><span class="nf">format</span> <span class="s">"cd ~/tmp/ &amp;&amp; wget -O %s --progress=dot '%s'"</span>
-<a id="rest_code_9a3e8240cd114500b18d9367e967e15c-14" name="rest_code_9a3e8240cd114500b18d9367e967e15c-14" href="#rest_code_9a3e8240cd114500b18d9367e967e15c-14"></a>                          <span class="nv">udf-dest</span> <span class="nv">udf-url</span><span class="p">))</span>
-<a id="rest_code_9a3e8240cd114500b18d9367e967e15c-15" name="rest_code_9a3e8240cd114500b18d9367e967e15c-15" href="#rest_code_9a3e8240cd114500b18d9367e967e15c-15"></a>             <span class="p">(</span><span class="nv">buf</span> <span class="p">(</span><span class="nf">get-buffer-create</span> <span class="p">(</span><span class="nf">format</span> <span class="s">" *wget '%s'*"</span> <span class="nv">udf-url</span><span class="p">)))</span>
-<a id="rest_code_9a3e8240cd114500b18d9367e967e15c-16" name="rest_code_9a3e8240cd114500b18d9367e967e15c-16" href="#rest_code_9a3e8240cd114500b18d9367e967e15c-16"></a>             <span class="p">(</span><span class="nv">proc</span> <span class="p">(</span><span class="nv">start-process-shell-command</span> <span class="s">"wget-unicode-Data"</span>
-<a id="rest_code_9a3e8240cd114500b18d9367e967e15c-17" name="rest_code_9a3e8240cd114500b18d9367e967e15c-17" href="#rest_code_9a3e8240cd114500b18d9367e967e15c-17"></a>                                                <span class="nv">buf</span> <span class="nv">cmd</span><span class="p">)))</span>
-<a id="rest_code_9a3e8240cd114500b18d9367e967e15c-18" name="rest_code_9a3e8240cd114500b18d9367e967e15c-18" href="#rest_code_9a3e8240cd114500b18d9367e967e15c-18"></a>        <span class="p">(</span><span class="nv">display-buffer</span> <span class="nv">buf</span><span class="p">)</span>
-<a id="rest_code_9a3e8240cd114500b18d9367e967e15c-19" name="rest_code_9a3e8240cd114500b18d9367e967e15c-19" href="#rest_code_9a3e8240cd114500b18d9367e967e15c-19"></a>        <span class="p">(</span><span class="nf">set-process-sentinel</span>
-<a id="rest_code_9a3e8240cd114500b18d9367e967e15c-20" name="rest_code_9a3e8240cd114500b18d9367e967e15c-20" href="#rest_code_9a3e8240cd114500b18d9367e967e15c-20"></a>         <span class="nv">proc</span>
-<a id="rest_code_9a3e8240cd114500b18d9367e967e15c-21" name="rest_code_9a3e8240cd114500b18d9367e967e15c-21" href="#rest_code_9a3e8240cd114500b18d9367e967e15c-21"></a>         <span class="o">`</span><span class="p">(</span><span class="nb">lambda</span> <span class="p">(</span><span class="nv">proc</span> <span class="nv">event</span><span class="p">)</span>
-<a id="rest_code_9a3e8240cd114500b18d9367e967e15c-22" name="rest_code_9a3e8240cd114500b18d9367e967e15c-22" href="#rest_code_9a3e8240cd114500b18d9367e967e15c-22"></a>            <span class="p">(</span><span class="nb">unless</span> <span class="p">(</span><span class="nf">string-match</span> <span class="s">"^finished"</span> <span class="nv">event</span><span class="p">)</span>
-<a id="rest_code_9a3e8240cd114500b18d9367e967e15c-23" name="rest_code_9a3e8240cd114500b18d9367e967e15c-23" href="#rest_code_9a3e8240cd114500b18d9367e967e15c-23"></a>              <span class="p">(</span><span class="ne">error</span> <span class="s">"unexpected status '%s' getting '%s'"</span> <span class="o">,</span><span class="nv">udf-url</span> <span class="nv">event</span><span class="p">))</span>
-<a id="rest_code_9a3e8240cd114500b18d9367e967e15c-24" name="rest_code_9a3e8240cd114500b18d9367e967e15c-24" href="#rest_code_9a3e8240cd114500b18d9367e967e15c-24"></a>            <span class="p">(</span><span class="k">setq</span> <span class="nv">describe-char-unicodedata-file</span> <span class="o">,</span><span class="nv">udf-dest</span><span class="p">)</span>
-<a id="rest_code_9a3e8240cd114500b18d9367e967e15c-25" name="rest_code_9a3e8240cd114500b18d9367e967e15c-25" href="#rest_code_9a3e8240cd114500b18d9367e967e15c-25"></a>            <span class="p">(</span><span class="nf">message</span> <span class="s">"Try describe-char now! ☣☥☸▧◉✘✽☮⅙▧⚅☑☢☹☺♠♥♦♣♨♻⚔"</span><span class="p">)))</span>
-<a id="rest_code_9a3e8240cd114500b18d9367e967e15c-26" name="rest_code_9a3e8240cd114500b18d9367e967e15c-26" href="#rest_code_9a3e8240cd114500b18d9367e967e15c-26"></a>        <span class="p">(</span><span class="nf">message</span> <span class="s">"Downloading... check describe-char later"</span><span class="p">)</span>
-<a id="rest_code_9a3e8240cd114500b18d9367e967e15c-27" name="rest_code_9a3e8240cd114500b18d9367e967e15c-27" href="#rest_code_9a3e8240cd114500b18d9367e967e15c-27"></a>        <span class="no">nil</span><span class="p">))))</span>
+<pre class="code emacs-lisp"><a name="rest_code_fd4f0a9407634b26a532b8e45d03e371-1"></a><span class="c1">;; First, we'll bind it to a key.</span>
+<a name="rest_code_fd4f0a9407634b26a532b8e45d03e371-2"></a><span class="p">(</span><span class="nv">global-set-key</span> <span class="s">"\C-cD"</span> <span class="nf">#'</span><span class="nv">describe-char</span><span class="p">)</span>
+<a name="rest_code_fd4f0a9407634b26a532b8e45d03e371-3"></a>
+<a name="rest_code_fd4f0a9407634b26a532b8e45d03e371-4"></a><span class="c1">;; Now we'll download it if necessary.</span>
+<a name="rest_code_fd4f0a9407634b26a532b8e45d03e371-5"></a><span class="p">(</span><span class="k">let</span> <span class="p">((</span><span class="nv">udf-url</span> <span class="s">"http://www.unicode.org/Public/UNIDATA/UnicodeData.txt"</span><span class="p">)</span>
+<a name="rest_code_fd4f0a9407634b26a532b8e45d03e371-6"></a>      <span class="p">(</span><span class="nv">udf-dest</span> <span class="s">"~/tmp/UnicodeData.txt"</span><span class="p">))</span>
+<a name="rest_code_fd4f0a9407634b26a532b8e45d03e371-7"></a>  <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nf">file-readable-p</span> <span class="nv">udf-dest</span><span class="p">)</span>
+<a name="rest_code_fd4f0a9407634b26a532b8e45d03e371-8"></a>      <span class="c1">;; Let describe-char know it exists.</span>
+<a name="rest_code_fd4f0a9407634b26a532b8e45d03e371-9"></a>      <span class="p">(</span><span class="k">setq</span> <span class="nv">describe-char-unicodedata-file</span> <span class="nv">udf-dest</span><span class="p">)</span>
+<a name="rest_code_fd4f0a9407634b26a532b8e45d03e371-10"></a>    <span class="c1">;; It doesn't exist, and we need to download it!</span>
+<a name="rest_code_fd4f0a9407634b26a532b8e45d03e371-11"></a>    <span class="p">(</span><span class="nb">when</span> <span class="p">(</span><span class="nv">y-or-n-p</span> <span class="p">(</span><span class="nf">format</span> <span class="s">"You need to download %s ! Do it? "</span> <span class="nv">udf-url</span><span class="p">))</span>
+<a name="rest_code_fd4f0a9407634b26a532b8e45d03e371-12"></a>      <span class="c1">;; Really weird: wget -O 'file' complains that file doesn't exist.</span>
+<a name="rest_code_fd4f0a9407634b26a532b8e45d03e371-13"></a>      <span class="p">(</span><span class="k">let*</span> <span class="p">((</span><span class="nv">cmd</span> <span class="p">(</span><span class="nf">format</span> <span class="s">"cd ~/tmp/ &amp;&amp; wget -O %s --progress=dot '%s'"</span>
+<a name="rest_code_fd4f0a9407634b26a532b8e45d03e371-14"></a>                          <span class="nv">udf-dest</span> <span class="nv">udf-url</span><span class="p">))</span>
+<a name="rest_code_fd4f0a9407634b26a532b8e45d03e371-15"></a>             <span class="p">(</span><span class="nv">buf</span> <span class="p">(</span><span class="nf">get-buffer-create</span> <span class="p">(</span><span class="nf">format</span> <span class="s">" *wget '%s'*"</span> <span class="nv">udf-url</span><span class="p">)))</span>
+<a name="rest_code_fd4f0a9407634b26a532b8e45d03e371-16"></a>             <span class="p">(</span><span class="nv">proc</span> <span class="p">(</span><span class="nv">start-process-shell-command</span> <span class="s">"wget-unicode-Data"</span>
+<a name="rest_code_fd4f0a9407634b26a532b8e45d03e371-17"></a>                                                <span class="nv">buf</span> <span class="nv">cmd</span><span class="p">)))</span>
+<a name="rest_code_fd4f0a9407634b26a532b8e45d03e371-18"></a>        <span class="p">(</span><span class="nv">display-buffer</span> <span class="nv">buf</span><span class="p">)</span>
+<a name="rest_code_fd4f0a9407634b26a532b8e45d03e371-19"></a>        <span class="p">(</span><span class="nf">set-process-sentinel</span>
+<a name="rest_code_fd4f0a9407634b26a532b8e45d03e371-20"></a>         <span class="nv">proc</span>
+<a name="rest_code_fd4f0a9407634b26a532b8e45d03e371-21"></a>         <span class="o">`</span><span class="p">(</span><span class="nb">lambda</span> <span class="p">(</span><span class="nv">proc</span> <span class="nv">event</span><span class="p">)</span>
+<a name="rest_code_fd4f0a9407634b26a532b8e45d03e371-22"></a>            <span class="p">(</span><span class="nb">unless</span> <span class="p">(</span><span class="nf">string-match</span> <span class="s">"^finished"</span> <span class="nv">event</span><span class="p">)</span>
+<a name="rest_code_fd4f0a9407634b26a532b8e45d03e371-23"></a>              <span class="p">(</span><span class="ne">error</span> <span class="s">"unexpected status '%s' getting '%s'"</span> <span class="o">,</span><span class="nv">udf-url</span> <span class="nv">event</span><span class="p">))</span>
+<a name="rest_code_fd4f0a9407634b26a532b8e45d03e371-24"></a>            <span class="p">(</span><span class="k">setq</span> <span class="nv">describe-char-unicodedata-file</span> <span class="o">,</span><span class="nv">udf-dest</span><span class="p">)</span>
+<a name="rest_code_fd4f0a9407634b26a532b8e45d03e371-25"></a>            <span class="p">(</span><span class="nf">message</span> <span class="s">"Try describe-char now! ☣☥☸▧◉✘✽☮⅙▧⚅☑☢☹☺♠♥♦♣♨♻⚔"</span><span class="p">)))</span>
+<a name="rest_code_fd4f0a9407634b26a532b8e45d03e371-26"></a>        <span class="p">(</span><span class="nf">message</span> <span class="s">"Downloading... check describe-char later"</span><span class="p">)</span>
+<a name="rest_code_fd4f0a9407634b26a532b8e45d03e371-27"></a>        <span class="no">nil</span><span class="p">))))</span>
 </pre>
 <p>Once this is run and it tells you to try <code class="docutils literal"><span class="pre">describe-char</span></code> you can
 position your cursor over one of the Unicode characters in the message
@@ -127,6 +128,7 @@ for the “Name:” line.  You'll see something like this:</p>
        Category: other symbol
 Combining class: Spacing
   Bidi category: Other Neutrals</pre>
+</div>
     </div>
     <script>var pfHeaderImgUrl = '';var pfHeaderTagline = '';var pfdisableClickToDel = 0;var pfHideImages = 0;var pfImageDisplayStyle = 'right';var pfDisablePDF = 0;var pfDisableEmail = 0;var pfDisablePrint = 0;var pfCustomCSS = '';var pfBtVersion='2';(function(){var js,pf;pf=document.createElement('script');pf.type='text/javascript';pf.src='//cdn.printfriendly.com/printfriendly.js';document.getElementsByTagName('head')[0].appendChild(pf)})();</script><a href="https://www.printfriendly.com" style="color:#6D9F00;text-decoration:none;" class="printfriendly" onclick="window.print();return false;" title="Printer Friendly and PDF"><img style="border:none;-webkit-box-shadow:none;box-shadow:none;" src="//cdn.printfriendly.com/buttons/printfriendly-pdf-button.png" alt="Print Friendly and PDF"></a>    
     <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
@@ -140,7 +142,7 @@ Combining class: Spacing
                 <a href="../fun-with-emacs-eval-after-load/" rel="next" title="Fun with Emacs: eval-after-load*">Next post</a>
             </li>
         </ul></nav></aside><section class="comments hidden-print"><h2>Comments</h2>
-                    <div id="disqus_thread"></div>
+                        <div id="disqus_thread"></div>
         <script>
         var disqus_shortname ="lacking-natural-simplicity",
             disqus_url="https://tkurtbond.github.io/posts/2008/08/15/fun-with-emacs-unicode-and-describe-char/",

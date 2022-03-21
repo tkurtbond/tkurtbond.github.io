@@ -74,7 +74,7 @@ mingw_libdir=`min">
         <div class="metadata blog-post-meta">
             <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
             <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2005-12-07T00:00:00-05:00" itemprop="datePublished" title="2005-12-07 00:00">2005-12-07 00:00</time></a></p>
-                <p class="commentline">        <a href="#disqus_thread" data-disqus-identifier="cache/posts/2005/12/07/2005-12-07.html">Comments</a>
+                <p class="commentline">            <a href="#disqus_thread" data-disqus-identifier="cache/posts/2005/12/07/2005-12-07.html">Comments</a>
 
 
                     </p>
@@ -83,13 +83,15 @@ mingw_libdir=`min">
         </div>
         
     </header><div class="e-content entry-content" itemprop="articleBody text">
-    <p>To get Chicken version 2.207 to compile with MinGW I had to change the
+    <div>
+<p>To get Chicken version 2.207 to compile with MinGW I had to change the
 line in configure that read</p>
 <pre class="literal-block">mingw_libdir=`mingw32-gcc -print-prog-name=ld | sed 's%/lib/gcc-lib/.*%/lib%'`</pre>
 <p>with</p>
 <pre class="literal-block">mingw_libdir=`mingw32-gcc -print-prog-name=ld | sed 's%/lib/gcc/.*%/lib%'`</pre>
 <p>and copy <code class="docutils literal">posixwin.c</code> over <code class="docutils literal">posix.c</code> and <code class="docutils literal">uposixwin.c</code> over
 <code class="docutils literal">uposix.c</code>.</p>
+</div>
     </div>
     <script>var pfHeaderImgUrl = '';var pfHeaderTagline = '';var pfdisableClickToDel = 0;var pfHideImages = 0;var pfImageDisplayStyle = 'right';var pfDisablePDF = 0;var pfDisableEmail = 0;var pfDisablePrint = 0;var pfCustomCSS = '';var pfBtVersion='2';(function(){var js,pf;pf=document.createElement('script');pf.type='text/javascript';pf.src='//cdn.printfriendly.com/printfriendly.js';document.getElementsByTagName('head')[0].appendChild(pf)})();</script><a href="https://www.printfriendly.com" style="color:#6D9F00;text-decoration:none;" class="printfriendly" onclick="window.print();return false;" title="Printer Friendly and PDF"><img style="border:none;-webkit-box-shadow:none;box-shadow:none;" src="//cdn.printfriendly.com/buttons/printfriendly-pdf-button.png" alt="Print Friendly and PDF"></a>    
     <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
@@ -106,7 +108,7 @@ line in configure that read</p>
                 <a href="../../../../2006/01/08/2006-01-08/" rel="next" title="Recent Reading">Next post</a>
             </li>
         </ul></nav></aside><section class="comments hidden-print"><h2>Comments</h2>
-                    <div id="disqus_thread"></div>
+                        <div id="disqus_thread"></div>
         <script>
         var disqus_shortname ="lacking-natural-simplicity",
             disqus_url="https://tkurtbond.github.io/posts/2005/12/07/2005-12-07/",

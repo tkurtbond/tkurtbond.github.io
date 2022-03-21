@@ -74,7 +74,7 @@ I've done this in the past (an old USENET post, and the old b">
         <div class="metadata blog-post-meta">
             <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
             <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2022-02-05T16:08:22-05:00" itemprop="datePublished" title="2022-02-05 16:08">2022-02-05 16:08</time></a></p>
-                <p class="commentline">        <a href="#disqus_thread" data-disqus-identifier="cache/posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited.html">Comments</a>
+                <p class="commentline">            <a href="#disqus_thread" data-disqus-identifier="cache/posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited.html">Comments</a>
 
 
                     </p>
@@ -83,7 +83,8 @@ I've done this in the past (an old USENET post, and the old b">
         </div>
         
     </header><div class="e-content entry-content" itemprop="articleBody text">
-    <p>I was working on a program on a VAX today, and needed to redimension
+    <div>
+<p>I was working on a program on a VAX today, and needed to redimension
 dynamically allocated arrays that are passed to an external function.
 I've done this in the past (an <a class="reference external" href="https://groups.google.com/g/comp.os.vms/c/mVWznNVN17U/m/HE3L4N4nIJAJ">old USENET post</a>, and the <a class="reference external" href="../../../../2003/05/08/2003-05-08-vms-code-from-the-past/">old blog
 post</a> that mentions it), but this time I managed to simplify my
@@ -93,91 +94,92 @@ types.  Here's the <a class="reference external" href="https://groups.google.com
 necromancy?)</p>
 <p>I'll include the code in this blog post, too, for ease of reference.
 Here's <span class="file">vax_redim_best.bas</span>:</p>
-<pre class="code text"><a id="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-1" name="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-1" href="#rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-1"></a>program vax_redim_best
-<a id="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-2" name="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-2" href="#rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-2"></a>    option type = explicit, constant type = integer, &amp;
-<a id="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-3" name="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-3" href="#rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-3"></a>        size = integer long, size = real double
-<a id="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-4" name="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-4" href="#rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-4"></a>    record rec
-<a id="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-5" name="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-5" href="#rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-5"></a>        string s = 13
-<a id="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-6" name="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-6" href="#rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-6"></a>        long   i
-<a id="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-7" name="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-7" href="#rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-7"></a>    end record rec
-<a id="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-8" name="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-8" href="#rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-8"></a>
-<a id="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-9" name="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-9" href="#rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-9"></a>    ! Don't declare the parameters, and everything works, even passing
-<a id="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-10" name="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-10" href="#rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-10"></a>    ! different types.
-<a id="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-11" name="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-11" href="#rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-11"></a>    external sub redim
-<a id="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-12" name="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-12" href="#rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-12"></a>
-<a id="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-13" name="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-13" href="#rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-13"></a>    declare long stat, i
-<a id="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-14" name="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-14" href="#rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-14"></a>    i = 1
-<a id="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-15" name="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-15" href="#rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-15"></a>    dim rec rec(1 to i)
-<a id="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-16" name="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-16" href="#rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-16"></a>    print "lbound (rec) at start: "; lbound (rec)
-<a id="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-17" name="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-17" href="#rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-17"></a>    print "ubound (rec) at start: "; ubound (rec)
-<a id="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-18" name="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-18" href="#rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-18"></a>    call redim (rec(), 3, 10)
-<a id="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-19" name="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-19" href="#rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-19"></a>    print "lbound (rec) after redim: "; lbound (rec)
-<a id="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-20" name="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-20" href="#rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-20"></a>    print "ubound (rec) after redim: "; ubound (rec)
-<a id="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-21" name="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-21" href="#rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-21"></a>
-<a id="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-22" name="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-22" href="#rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-22"></a>    dim string s(1 to i)
-<a id="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-23" name="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-23" href="#rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-23"></a>    print "lbound (s) at start: "; lbound (s)
-<a id="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-24" name="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-24" href="#rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-24"></a>    print "ubound (s) at start: "; ubound (s)
-<a id="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-25" name="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-25" href="#rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-25"></a>    call redim (s(), 3, 10)
-<a id="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-26" name="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-26" href="#rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-26"></a>    print "lbound (s) after redim: "; lbound (s)
-<a id="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-27" name="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-27" href="#rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-27"></a>    print "ubound (s) after redim: "; ubound (s)
-<a id="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-28" name="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-28" href="#rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-28"></a>
-<a id="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-29" name="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-29" href="#rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-29"></a>    dim long l(1 to i)
-<a id="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-30" name="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-30" href="#rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-30"></a>    print "lbound (l) at start: "; lbound (l)
-<a id="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-31" name="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-31" href="#rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-31"></a>    print "ubound (l) at start: "; ubound (l)
-<a id="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-32" name="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-32" href="#rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-32"></a>    call redim (l(), 3, 10)
-<a id="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-33" name="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-33" href="#rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-33"></a>    print "lbound (l) after redim: "; lbound (l)
-<a id="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-34" name="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-34" href="#rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-34"></a>    print "ubound (l) after redim: "; ubound (l)
-<a id="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-35" name="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-35" href="#rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-35"></a>
-<a id="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-36" name="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-36" href="#rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-36"></a>
-<a id="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-37" name="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-37" href="#rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-37"></a>end program ! vax_redim_best
-<a id="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-38" name="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-38" href="#rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-38"></a>
-<a id="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-39" name="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-39" href="#rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-39"></a>function long redim (long s, long low, long high)
-<a id="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-40" name="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-40" href="#rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-40"></a>    option type = explicit, constant type = integer, &amp;
-<a id="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-41" name="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-41" href="#rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-41"></a>        size = integer long, size = real double
-<a id="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-42" name="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-42" href="#rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-42"></a>    external long function bas$rt_dim_bounds (long by value, long by value, long by value)
-<a id="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-43" name="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-43" href="#rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-43"></a>    declare long r
-<a id="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-44" name="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-44" href="#rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-44"></a>    r = bas$rt_dim_bounds (loc (s), low, high)
-<a id="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-45" name="rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-45" href="#rest_code_6eba0952b94c4edbb9b40a4e5b83d30b-45"></a>end function r ! redim
+<pre class="code text"><a name="rest_code_fe2a242171a54440b9680b2ad5688461-1"></a>program vax_redim_best
+<a name="rest_code_fe2a242171a54440b9680b2ad5688461-2"></a>    option type = explicit, constant type = integer, &amp;
+<a name="rest_code_fe2a242171a54440b9680b2ad5688461-3"></a>        size = integer long, size = real double
+<a name="rest_code_fe2a242171a54440b9680b2ad5688461-4"></a>    record rec
+<a name="rest_code_fe2a242171a54440b9680b2ad5688461-5"></a>        string s = 13
+<a name="rest_code_fe2a242171a54440b9680b2ad5688461-6"></a>        long   i
+<a name="rest_code_fe2a242171a54440b9680b2ad5688461-7"></a>    end record rec
+<a name="rest_code_fe2a242171a54440b9680b2ad5688461-8"></a>
+<a name="rest_code_fe2a242171a54440b9680b2ad5688461-9"></a>    ! Don't declare the parameters, and everything works, even passing
+<a name="rest_code_fe2a242171a54440b9680b2ad5688461-10"></a>    ! different types.
+<a name="rest_code_fe2a242171a54440b9680b2ad5688461-11"></a>    external sub redim
+<a name="rest_code_fe2a242171a54440b9680b2ad5688461-12"></a>
+<a name="rest_code_fe2a242171a54440b9680b2ad5688461-13"></a>    declare long stat, i
+<a name="rest_code_fe2a242171a54440b9680b2ad5688461-14"></a>    i = 1
+<a name="rest_code_fe2a242171a54440b9680b2ad5688461-15"></a>    dim rec rec(1 to i)
+<a name="rest_code_fe2a242171a54440b9680b2ad5688461-16"></a>    print "lbound (rec) at start: "; lbound (rec)
+<a name="rest_code_fe2a242171a54440b9680b2ad5688461-17"></a>    print "ubound (rec) at start: "; ubound (rec)
+<a name="rest_code_fe2a242171a54440b9680b2ad5688461-18"></a>    call redim (rec(), 3, 10)
+<a name="rest_code_fe2a242171a54440b9680b2ad5688461-19"></a>    print "lbound (rec) after redim: "; lbound (rec)
+<a name="rest_code_fe2a242171a54440b9680b2ad5688461-20"></a>    print "ubound (rec) after redim: "; ubound (rec)
+<a name="rest_code_fe2a242171a54440b9680b2ad5688461-21"></a>
+<a name="rest_code_fe2a242171a54440b9680b2ad5688461-22"></a>    dim string s(1 to i)
+<a name="rest_code_fe2a242171a54440b9680b2ad5688461-23"></a>    print "lbound (s) at start: "; lbound (s)
+<a name="rest_code_fe2a242171a54440b9680b2ad5688461-24"></a>    print "ubound (s) at start: "; ubound (s)
+<a name="rest_code_fe2a242171a54440b9680b2ad5688461-25"></a>    call redim (s(), 3, 10)
+<a name="rest_code_fe2a242171a54440b9680b2ad5688461-26"></a>    print "lbound (s) after redim: "; lbound (s)
+<a name="rest_code_fe2a242171a54440b9680b2ad5688461-27"></a>    print "ubound (s) after redim: "; ubound (s)
+<a name="rest_code_fe2a242171a54440b9680b2ad5688461-28"></a>
+<a name="rest_code_fe2a242171a54440b9680b2ad5688461-29"></a>    dim long l(1 to i)
+<a name="rest_code_fe2a242171a54440b9680b2ad5688461-30"></a>    print "lbound (l) at start: "; lbound (l)
+<a name="rest_code_fe2a242171a54440b9680b2ad5688461-31"></a>    print "ubound (l) at start: "; ubound (l)
+<a name="rest_code_fe2a242171a54440b9680b2ad5688461-32"></a>    call redim (l(), 3, 10)
+<a name="rest_code_fe2a242171a54440b9680b2ad5688461-33"></a>    print "lbound (l) after redim: "; lbound (l)
+<a name="rest_code_fe2a242171a54440b9680b2ad5688461-34"></a>    print "ubound (l) after redim: "; ubound (l)
+<a name="rest_code_fe2a242171a54440b9680b2ad5688461-35"></a>
+<a name="rest_code_fe2a242171a54440b9680b2ad5688461-36"></a>
+<a name="rest_code_fe2a242171a54440b9680b2ad5688461-37"></a>end program ! vax_redim_best
+<a name="rest_code_fe2a242171a54440b9680b2ad5688461-38"></a>
+<a name="rest_code_fe2a242171a54440b9680b2ad5688461-39"></a>function long redim (long s, long low, long high)
+<a name="rest_code_fe2a242171a54440b9680b2ad5688461-40"></a>    option type = explicit, constant type = integer, &amp;
+<a name="rest_code_fe2a242171a54440b9680b2ad5688461-41"></a>        size = integer long, size = real double
+<a name="rest_code_fe2a242171a54440b9680b2ad5688461-42"></a>    external long function bas$rt_dim_bounds (long by value, long by value, long by value)
+<a name="rest_code_fe2a242171a54440b9680b2ad5688461-43"></a>    declare long r
+<a name="rest_code_fe2a242171a54440b9680b2ad5688461-44"></a>    r = bas$rt_dim_bounds (loc (s), low, high)
+<a name="rest_code_fe2a242171a54440b9680b2ad5688461-45"></a>end function r ! redim
 </pre>
 <p>I'll just point out, which I failed to do in the <a class="reference external" href="https://groups.google.com/g/comp.os.vms/c/mVWznNVN17U/m/HE3L4N4nIJAJ">old USENET post</a> or
 the <a class="reference external" href="https://groups.google.com/g/comp.os.vms/c/mVWznNVN17U/m/yuOAmQtQBAAJ">new USENET post</a>, that you have to use a <strong>variable</strong> when using
 the VMS BASIC <code class="docutils literal">dim</code> statement or you get a fatal runtime error.  Ooops.</p>
 <p>So use:</p>
-<pre class="code text"><a id="rest_code_26b2815174b54523a5ceec96af01be3b-1" name="rest_code_26b2815174b54523a5ceec96af01be3b-1" href="#rest_code_26b2815174b54523a5ceec96af01be3b-1"></a>declare long i
-<a id="rest_code_26b2815174b54523a5ceec96af01be3b-2" name="rest_code_26b2815174b54523a5ceec96af01be3b-2" href="#rest_code_26b2815174b54523a5ceec96af01be3b-2"></a>i = 5
-<a id="rest_code_26b2815174b54523a5ceec96af01be3b-3" name="rest_code_26b2815174b54523a5ceec96af01be3b-3" href="#rest_code_26b2815174b54523a5ceec96af01be3b-3"></a>dim string s(1 to i) ! Notice that last thing is the variable, i
-<a id="rest_code_26b2815174b54523a5ceec96af01be3b-4" name="rest_code_26b2815174b54523a5ceec96af01be3b-4" href="#rest_code_26b2815174b54523a5ceec96af01be3b-4"></a>redim (s, 3, 10)
+<pre class="code text"><a name="rest_code_57b1896242a243a0b7226d5acce0209c-1"></a>declare long i
+<a name="rest_code_57b1896242a243a0b7226d5acce0209c-2"></a>i = 5
+<a name="rest_code_57b1896242a243a0b7226d5acce0209c-3"></a>dim string s(1 to i) ! Notice that last thing is the variable, i
+<a name="rest_code_57b1896242a243a0b7226d5acce0209c-4"></a>redim (s, 3, 10)
 </pre>
 <p>If you had said:</p>
-<pre class="code text"><a id="rest_code_3f0b64e85b99403e964d3a0cf0789c16-1" name="rest_code_3f0b64e85b99403e964d3a0cf0789c16-1" href="#rest_code_3f0b64e85b99403e964d3a0cf0789c16-1"></a>dim string s(1 to 5) ! Notice that last thing is a constant, 5
-<a id="rest_code_3f0b64e85b99403e964d3a0cf0789c16-2" name="rest_code_3f0b64e85b99403e964d3a0cf0789c16-2" href="#rest_code_3f0b64e85b99403e964d3a0cf0789c16-2"></a>redim (s, 3, 10)
+<pre class="code text"><a name="rest_code_d42051b1982a4d6ca5e876dcf280a30a-1"></a>dim string s(1 to 5) ! Notice that last thing is a constant, 5
+<a name="rest_code_d42051b1982a4d6ca5e876dcf280a30a-2"></a>redim (s, 3, 10)
 </pre>
 <p>You'd have gotten the following error:</p>
-<pre class="code text"><a id="rest_code_8c35555bb135451a8b3d4d6b3513e7e1-1" name="rest_code_8c35555bb135451a8b3d4d6b3513e7e1-1" href="#rest_code_8c35555bb135451a8b3d4d6b3513e7e1-1"></a>%BAS-F-PROLOSSOR, Internal error in VAX BASIC Run-Time Library.  Please submit an SPR
-<a id="rest_code_8c35555bb135451a8b3d4d6b3513e7e1-2" name="rest_code_8c35555bb135451a8b3d4d6b3513e7e1-2" href="#rest_code_8c35555bb135451a8b3d4d6b3513e7e1-2"></a>-BAS-I-FROFUN, In external function ALT_REDIM
-<a id="rest_code_8c35555bb135451a8b3d4d6b3513e7e1-3" name="rest_code_8c35555bb135451a8b3d4d6b3513e7e1-3" href="#rest_code_8c35555bb135451a8b3d4d6b3513e7e1-3"></a>-BAS-I-FROMOD, In module Y
-<a id="rest_code_8c35555bb135451a8b3d4d6b3513e7e1-4" name="rest_code_8c35555bb135451a8b3d4d6b3513e7e1-4" href="#rest_code_8c35555bb135451a8b3d4d6b3513e7e1-4"></a>%TRACE-F-TRACEBACK, symbolic stack dump follows
-<a id="rest_code_8c35555bb135451a8b3d4d6b3513e7e1-5" name="rest_code_8c35555bb135451a8b3d4d6b3513e7e1-5" href="#rest_code_8c35555bb135451a8b3d4d6b3513e7e1-5"></a>module name     routine name                     line       rel PC    abs PC
-<a id="rest_code_8c35555bb135451a8b3d4d6b3513e7e1-6" name="rest_code_8c35555bb135451a8b3d4d6b3513e7e1-6" href="#rest_code_8c35555bb135451a8b3d4d6b3513e7e1-6"></a>
-<a id="rest_code_8c35555bb135451a8b3d4d6b3513e7e1-7" name="rest_code_8c35555bb135451a8b3d4d6b3513e7e1-7" href="#rest_code_8c35555bb135451a8b3d4d6b3513e7e1-7"></a>                                                           0004B2AA  0004B2AA
-<a id="rest_code_8c35555bb135451a8b3d4d6b3513e7e1-8" name="rest_code_8c35555bb135451a8b3d4d6b3513e7e1-8" href="#rest_code_8c35555bb135451a8b3d4d6b3513e7e1-8"></a>----- above condition handler called with exception 001A833C:
-<a id="rest_code_8c35555bb135451a8b3d4d6b3513e7e1-9" name="rest_code_8c35555bb135451a8b3d4d6b3513e7e1-9" href="#rest_code_8c35555bb135451a8b3d4d6b3513e7e1-9"></a>%BAS-F-PROLOSSOR, Internal error in VAX BASIC Run-Time Library.  Please submit an SPR
-<a id="rest_code_8c35555bb135451a8b3d4d6b3513e7e1-10" name="rest_code_8c35555bb135451a8b3d4d6b3513e7e1-10" href="#rest_code_8c35555bb135451a8b3d4d6b3513e7e1-10"></a>-BAS-I-FROFUN, In external function ALT_REDIM
-<a id="rest_code_8c35555bb135451a8b3d4d6b3513e7e1-11" name="rest_code_8c35555bb135451a8b3d4d6b3513e7e1-11" href="#rest_code_8c35555bb135451a8b3d4d6b3513e7e1-11"></a>----- end of exception message
-<a id="rest_code_8c35555bb135451a8b3d4d6b3513e7e1-12" name="rest_code_8c35555bb135451a8b3d4d6b3513e7e1-12" href="#rest_code_8c35555bb135451a8b3d4d6b3513e7e1-12"></a>                                                           0004B2AA  0004B2AA
-<a id="rest_code_8c35555bb135451a8b3d4d6b3513e7e1-13" name="rest_code_8c35555bb135451a8b3d4d6b3513e7e1-13" href="#rest_code_8c35555bb135451a8b3d4d6b3513e7e1-13"></a>----- above condition handler called with exception 001A833C:
-<a id="rest_code_8c35555bb135451a8b3d4d6b3513e7e1-14" name="rest_code_8c35555bb135451a8b3d4d6b3513e7e1-14" href="#rest_code_8c35555bb135451a8b3d4d6b3513e7e1-14"></a>%BAS-F-PROLOSSOR, Internal error in VAX BASIC Run-Time Library.  Please submit an SPR
-<a id="rest_code_8c35555bb135451a8b3d4d6b3513e7e1-15" name="rest_code_8c35555bb135451a8b3d4d6b3513e7e1-15" href="#rest_code_8c35555bb135451a8b3d4d6b3513e7e1-15"></a>----- end of exception message
-<a id="rest_code_8c35555bb135451a8b3d4d6b3513e7e1-16" name="rest_code_8c35555bb135451a8b3d4d6b3513e7e1-16" href="#rest_code_8c35555bb135451a8b3d4d6b3513e7e1-16"></a>                                                           0004A352  0004A352
-<a id="rest_code_8c35555bb135451a8b3d4d6b3513e7e1-17" name="rest_code_8c35555bb135451a8b3d4d6b3513e7e1-17" href="#rest_code_8c35555bb135451a8b3d4d6b3513e7e1-17"></a>                                                           00054E37  00054E37
-<a id="rest_code_8c35555bb135451a8b3d4d6b3513e7e1-18" name="rest_code_8c35555bb135451a8b3d4d6b3513e7e1-18" href="#rest_code_8c35555bb135451a8b3d4d6b3513e7e1-18"></a>ALT_REDIM       ALT_REDIM                          43      0000002E  00000AC2
-<a id="rest_code_8c35555bb135451a8b3d4d6b3513e7e1-19" name="rest_code_8c35555bb135451a8b3d4d6b3513e7e1-19" href="#rest_code_8c35555bb135451a8b3d4d6b3513e7e1-19"></a>Y               Y                                  24      0000015D  0000095D
+<pre class="code text"><a name="rest_code_b6aad6d7f4c84129945145afac5f6327-1"></a>%BAS-F-PROLOSSOR, Internal error in VAX BASIC Run-Time Library.  Please submit an SPR
+<a name="rest_code_b6aad6d7f4c84129945145afac5f6327-2"></a>-BAS-I-FROFUN, In external function ALT_REDIM
+<a name="rest_code_b6aad6d7f4c84129945145afac5f6327-3"></a>-BAS-I-FROMOD, In module Y
+<a name="rest_code_b6aad6d7f4c84129945145afac5f6327-4"></a>%TRACE-F-TRACEBACK, symbolic stack dump follows
+<a name="rest_code_b6aad6d7f4c84129945145afac5f6327-5"></a>module name     routine name                     line       rel PC    abs PC
+<a name="rest_code_b6aad6d7f4c84129945145afac5f6327-6"></a>
+<a name="rest_code_b6aad6d7f4c84129945145afac5f6327-7"></a>                                                           0004B2AA  0004B2AA
+<a name="rest_code_b6aad6d7f4c84129945145afac5f6327-8"></a>----- above condition handler called with exception 001A833C:
+<a name="rest_code_b6aad6d7f4c84129945145afac5f6327-9"></a>%BAS-F-PROLOSSOR, Internal error in VAX BASIC Run-Time Library.  Please submit an SPR
+<a name="rest_code_b6aad6d7f4c84129945145afac5f6327-10"></a>-BAS-I-FROFUN, In external function ALT_REDIM
+<a name="rest_code_b6aad6d7f4c84129945145afac5f6327-11"></a>----- end of exception message
+<a name="rest_code_b6aad6d7f4c84129945145afac5f6327-12"></a>                                                           0004B2AA  0004B2AA
+<a name="rest_code_b6aad6d7f4c84129945145afac5f6327-13"></a>----- above condition handler called with exception 001A833C:
+<a name="rest_code_b6aad6d7f4c84129945145afac5f6327-14"></a>%BAS-F-PROLOSSOR, Internal error in VAX BASIC Run-Time Library.  Please submit an SPR
+<a name="rest_code_b6aad6d7f4c84129945145afac5f6327-15"></a>----- end of exception message
+<a name="rest_code_b6aad6d7f4c84129945145afac5f6327-16"></a>                                                           0004A352  0004A352
+<a name="rest_code_b6aad6d7f4c84129945145afac5f6327-17"></a>                                                           00054E37  00054E37
+<a name="rest_code_b6aad6d7f4c84129945145afac5f6327-18"></a>ALT_REDIM       ALT_REDIM                          43      0000002E  00000AC2
+<a name="rest_code_b6aad6d7f4c84129945145afac5f6327-19"></a>Y               Y                                  24      0000015D  0000095D
 </pre>
 <p>Don't actually submit an SPR, of course: you did it to yourself by
 using an undocumented VMS BASIC internal runtime function.</p>
 <p>Oh, I don't have access to an Alpha these days, so I haven't tried it
 there, but I imagine using something named <code class="docutils literal">DBASIC$RT_DIM_BOUNDS</code>
 instead of <code class="docutils literal">DBASIC$RT_DIM</code> would likely work there.</p>
+</div>
     </div>
     <script>var pfHeaderImgUrl = '';var pfHeaderTagline = '';var pfdisableClickToDel = 0;var pfHideImages = 0;var pfImageDisplayStyle = 'right';var pfDisablePDF = 0;var pfDisableEmail = 0;var pfDisablePrint = 0;var pfCustomCSS = '';var pfBtVersion='2';(function(){var js,pf;pf=document.createElement('script');pf.type='text/javascript';pf.src='//cdn.printfriendly.com/printfriendly.js';document.getElementsByTagName('head')[0].appendChild(pf)})();</script><a href="https://www.printfriendly.com" style="color:#6D9F00;text-decoration:none;" class="printfriendly" onclick="window.print();return false;" title="Printer Friendly and PDF"><img style="border:none;-webkit-box-shadow:none;box-shadow:none;" src="//cdn.printfriendly.com/buttons/printfriendly-pdf-button.png" alt="Print Friendly and PDF"></a>    
     <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
@@ -196,7 +198,7 @@ instead of <code class="docutils literal">DBASIC$RT_DIM</code> would likely work
                 <a href="../../22/poise-dms-plus-a-description/" rel="next" title="POISE DMS-PLus, a Description">Next post</a>
             </li>
         </ul></nav></aside><section class="comments hidden-print"><h2>Comments</h2>
-                    <div id="disqus_thread"></div>
+                        <div id="disqus_thread"></div>
         <script>
         var disqus_shortname ="lacking-natural-simplicity",
             disqus_url="https://tkurtbond.github.io/posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/",

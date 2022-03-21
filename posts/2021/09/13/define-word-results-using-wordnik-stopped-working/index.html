@@ -72,7 +72,7 @@ I did a little digging, and it">
         <div class="metadata blog-post-meta">
             <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
             <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2021-09-13T15:48:30-04:00" itemprop="datePublished" title="2021-09-13 15:48">2021-09-13 15:48</time></a></p>
-                <p class="commentline">        <a href="#disqus_thread" data-disqus-identifier="cache/posts/2021/09/13/define-word-results-using-wordnik-stopped-working.html">Comments</a>
+                <p class="commentline">            <a href="#disqus_thread" data-disqus-identifier="cache/posts/2021/09/13/define-word-results-using-wordnik-stopped-working.html">Comments</a>
 
 
                     </p>
@@ -81,7 +81,8 @@ I did a little digging, and it">
         </div>
         
     </header><div class="e-content entry-content" itemprop="articleBody text">
-    <p>I use <a class="reference external" href="https://github.com/abo-abo/define-word">define-word</a>, a package from melpa (<a class="reference external" href="https://melpa.org/#/define-word">DWM</a>), that looks up the
+    <div>
+<p>I use <a class="reference external" href="https://github.com/abo-abo/define-word">define-word</a>, a package from melpa (<a class="reference external" href="https://melpa.org/#/define-word">DWM</a>), that looks up the
 definition of a word online.  It uses <a class="reference external" href="http://wordnik.com/">wordnik.com</a> by default.
 Recently it stopped returning definitions.</p>
 <p>I did a little digging, and it turns out that it works when
@@ -89,7 +90,7 @@ you visit the url with Chrome, but not if you just try to download it
 with curl, or <code class="docutils literal"><span class="pre">url-retrieve</span></code> in Emacs. Adding a
 “<code class="docutils literal"><span class="pre">User-Agent:</span> Mozilla/5.0 (Macintosh; Intel Mac OS X 11_5_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36</code>”
 with curl’s -H option made it work.</p>
-<pre class="code bash"><a id="rest_code_507cead1d1ec40fcaa6774dfa77f8c33-1" name="rest_code_507cead1d1ec40fcaa6774dfa77f8c33-1" href="#rest_code_507cead1d1ec40fcaa6774dfa77f8c33-1"></a>curl -i -H <span class="s1">'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 11_5_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36'</span> http://wordnik.com/words/importunate
+<pre class="code bash"><a name="rest_code_8e021d4077de40a491236cc3473877c7-1"></a>curl -i -H <span class="s1">'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 11_5_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36'</span> http://wordnik.com/words/importunate
 </pre>
 <p>So I added a <code class="docutils literal">let</code> in my advice for <code class="docutils literal"><span class="pre">define-word</span></code> that binds
 <code class="docutils literal"><span class="pre">url-request-extra-headers</span></code> to an alist with <code class="docutils literal"><span class="pre">"User-Agent"</span></code> as the
@@ -98,15 +99,16 @@ AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63
 Safari/537.36"</code> as the value, and it works again.</p>
 <p>My solution looks something like this (simplified from my actual advice,
 which does other things too):</p>
-<pre class="code emacs-lisp"><a id="rest_code_c2d991f73ae446a4ae3300bafc5a2ab6-1" name="rest_code_c2d991f73ae446a4ae3300bafc5a2ab6-1" href="#rest_code_c2d991f73ae446a4ae3300bafc5a2ab6-1"></a><span class="p">(</span><span class="nb">defadvice</span> <span class="nv">define-word</span> <span class="p">(</span><span class="nv">around</span> <span class="nv">your-around-define-word</span> <span class="nv">activate</span><span class="p">)</span>
-<a id="rest_code_c2d991f73ae446a4ae3300bafc5a2ab6-2" name="rest_code_c2d991f73ae446a4ae3300bafc5a2ab6-2" href="#rest_code_c2d991f73ae446a4ae3300bafc5a2ab6-2"></a>  <span class="s">"Dynamically bind tkb-define-word-word to the word passed in."</span>
-<a id="rest_code_c2d991f73ae446a4ae3300bafc5a2ab6-3" name="rest_code_c2d991f73ae446a4ae3300bafc5a2ab6-3" href="#rest_code_c2d991f73ae446a4ae3300bafc5a2ab6-3"></a>  <span class="p">(</span><span class="k">let</span> <span class="p">((</span><span class="nv">url-request-extra-headers</span>
-<a id="rest_code_c2d991f73ae446a4ae3300bafc5a2ab6-4" name="rest_code_c2d991f73ae446a4ae3300bafc5a2ab6-4" href="#rest_code_c2d991f73ae446a4ae3300bafc5a2ab6-4"></a>         <span class="o">'</span><span class="p">((</span><span class="s">"User-Agent"</span> <span class="o">.</span> <span class="s">"Mozilla/5.0 (Macintosh; Intel Mac OS X 11_5_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36"</span><span class="p">))))</span>
-<a id="rest_code_c2d991f73ae446a4ae3300bafc5a2ab6-5" name="rest_code_c2d991f73ae446a4ae3300bafc5a2ab6-5" href="#rest_code_c2d991f73ae446a4ae3300bafc5a2ab6-5"></a>    <span class="nv">ad-do-it</span><span class="p">))</span>
+<pre class="code emacs-lisp"><a name="rest_code_59b1eba96d3e495aa9d2b645073b3bda-1"></a><span class="p">(</span><span class="nb">defadvice</span> <span class="nv">define-word</span> <span class="p">(</span><span class="nv">around</span> <span class="nv">your-around-define-word</span> <span class="nv">activate</span><span class="p">)</span>
+<a name="rest_code_59b1eba96d3e495aa9d2b645073b3bda-2"></a>  <span class="s">"Dynamically bind tkb-define-word-word to the word passed in."</span>
+<a name="rest_code_59b1eba96d3e495aa9d2b645073b3bda-3"></a>  <span class="p">(</span><span class="k">let</span> <span class="p">((</span><span class="nv">url-request-extra-headers</span>
+<a name="rest_code_59b1eba96d3e495aa9d2b645073b3bda-4"></a>         <span class="o">'</span><span class="p">((</span><span class="s">"User-Agent"</span> <span class="o">.</span> <span class="s">"Mozilla/5.0 (Macintosh; Intel Mac OS X 11_5_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36"</span><span class="p">))))</span>
+<a name="rest_code_59b1eba96d3e495aa9d2b645073b3bda-5"></a>    <span class="nv">ad-do-it</span><span class="p">))</span>
 </pre>
 <p>I opened an <a class="reference external" href="https://github.com/abo-abo/define-word/issues/31">issue</a> on github, suggesting it might be a good idea to
 add a simpler way to add a <code class="docutils literal"><span class="pre">User-Agent:</span></code> header around
 <code class="docutils literal"><span class="pre">define-word--to-string</span></code>’s call to <code class="docutils literal"><span class="pre">url-retrieve-synchronously</span></code>.</p>
+</div>
     </div>
     <script>var pfHeaderImgUrl = '';var pfHeaderTagline = '';var pfdisableClickToDel = 0;var pfHideImages = 0;var pfImageDisplayStyle = 'right';var pfDisablePDF = 0;var pfDisableEmail = 0;var pfDisablePrint = 0;var pfCustomCSS = '';var pfBtVersion='2';(function(){var js,pf;pf=document.createElement('script');pf.type='text/javascript';pf.src='//cdn.printfriendly.com/printfriendly.js';document.getElementsByTagName('head')[0].appendChild(pf)})();</script><a href="https://www.printfriendly.com" style="color:#6D9F00;text-decoration:none;" class="printfriendly" onclick="window.print();return false;" title="Printer Friendly and PDF"><img style="border:none;-webkit-box-shadow:none;box-shadow:none;" src="//cdn.printfriendly.com/buttons/printfriendly-pdf-button.png" alt="Print Friendly and PDF"></a>    
     <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
@@ -122,7 +124,7 @@ add a simpler way to add a <code class="docutils literal"><span class="pre">User
                 <a href="../getting-the-homebrew-chicken-scheme-sqlite3-egg-to-use-the-homebrew-installed-sqlite3-include-files-and-library-files/" rel="next" title="Getting the homebrew CHICKEN Scheme sqlite3 egg to use the homebrew-installed sqlite3 include files and library files">Next post</a>
             </li>
         </ul></nav></aside><section class="comments hidden-print"><h2>Comments</h2>
-                    <div id="disqus_thread"></div>
+                        <div id="disqus_thread"></div>
         <script>
         var disqus_shortname ="lacking-natural-simplicity",
             disqus_url="https://tkurtbond.github.io/posts/2021/09/13/define-word-results-using-wordnik-stopped-working/",
