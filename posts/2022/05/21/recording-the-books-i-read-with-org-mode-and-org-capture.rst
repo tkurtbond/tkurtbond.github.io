@@ -9,12 +9,13 @@
 
 .. role:: app
 
-I used to record the books that I read on this blog, but that took too
-much effort__.  However, if I don't record the books I read, I
+I used to record the books that I read on this blog__, but that took
+too much effort__.  However, if I don't record the books I read, I
 sometimes can't remember whether I read a particular book or not,
 especially with Kindle Unlimited books.  (Was it the seventh book of
 the series that I read last, or the eighth?)
 
+__ link://tag/recent%20reading
 __ link://slug/reading-but-not-recording
 
 I record the books that I read in emacs__ using `org-mode`__ and —
