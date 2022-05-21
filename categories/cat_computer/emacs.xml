@@ -1,5 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity (Posts about emacs)</title><link>https://tkurtbond.github.io/</link><description></description><atom:link href="https://tkurtbond.github.io/categories/cat_computer/emacs.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2021 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Mon, 13 Sep 2021 19:51:22 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>define-word results using wordnik stopped working</title><link>https://tkurtbond.github.io/posts/2021/09/13/define-word-results-using-wordnik-stopped-working/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;I use &lt;a class="reference external" href="https://github.com/abo-abo/define-word"&gt;define-word&lt;/a&gt;, a package from melpa (&lt;a class="reference external" href="https://melpa.org/#/define-word"&gt;DWM&lt;/a&gt;), that looks up the
+<?xml-stylesheet type="text/xsl" href="../../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity (Posts about emacs)</title><link>https://tkurtbond.github.io/</link><description></description><atom:link href="https://tkurtbond.github.io/categories/cat_computer/emacs.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2022 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Sat, 21 May 2022 15:01:45 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Recording the books I read with org-mode and org-capture</title><link>https://tkurtbond.github.io/posts/2022/05/21/recording-the-books-i-read-with-org-mode-and-org-capture/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;I used to record the books that I read on this &lt;a class="reference external" href="https://tkurtbond.github.io/categories/recent-reading/"&gt;blog&lt;/a&gt;, but that took
+too much &lt;a class="reference external" href="https://tkurtbond.github.io/posts/2010/07/21/reading-but-not-recording/"&gt;effort&lt;/a&gt;.  However, if I don't record the books I read, I
+sometimes can't remember whether I read a particular book or not,
+especially with Kindle Unlimited books.  (Was it the seventh book of
+the series that I read last, or the eighth?)&lt;/p&gt;
+&lt;p&gt;I record the books that I read in &lt;a class="reference external" href="https://www.gnu.org/software/emacs/"&gt;emacs&lt;/a&gt; using &lt;a class="reference external" href="https://orgmode.org/"&gt;org-mode&lt;/a&gt; and —
+since today — &lt;a class="reference external" href="ttps://orgmode.org/manual/Capture.html"&gt;org-capture&lt;/a&gt;.  Here's what the org file looks like:&lt;/p&gt;
+&lt;pre class="code text"&gt;&lt;a name="rest_code_2573659774f445c88f3c6006957980dc-1"&gt;&lt;/a&gt;* 2022
+&lt;a name="rest_code_2573659774f445c88f3c6006957980dc-2"&gt;&lt;/a&gt;** Read
+&lt;a name="rest_code_2573659774f445c88f3c6006957980dc-3"&gt;&lt;/a&gt;*** : Title of Book I Haven't Finished Reading -- https://www.amazon.com/amazon-book-link-if-it-exists
+&lt;a name="rest_code_2573659774f445c88f3c6006957980dc-4"&gt;&lt;/a&gt;...
+&lt;a name="rest_code_2573659774f445c88f3c6006957980dc-5"&gt;&lt;/a&gt;*** 2022-05-21: Title of Book I **Have** Finished Reading -- https://www.amazon.com/amazon-book-link-if-it-exists
+&lt;a name="rest_code_2573659774f445c88f3c6006957980dc-6"&gt;&lt;/a&gt;...
+&lt;a name="rest_code_2573659774f445c88f3c6006957980dc-7"&gt;&lt;/a&gt;** Did not finish
+&lt;a name="rest_code_2573659774f445c88f3c6006957980dc-8"&gt;&lt;/a&gt;*** : Title of Book I Won't Finish Reading -- https://www.amazon.com/amazon-book-link-if-it-exists
+&lt;a name="rest_code_2573659774f445c88f3c6006957980dc-9"&gt;&lt;/a&gt;...
+&lt;a name="rest_code_2573659774f445c88f3c6006957980dc-10"&gt;&lt;/a&gt;* 2021
+&lt;a name="rest_code_2573659774f445c88f3c6006957980dc-11"&gt;&lt;/a&gt;* Previously read, sometime
+&lt;a name="rest_code_2573659774f445c88f3c6006957980dc-12"&gt;&lt;/a&gt;** Title of Book I Finished Reading at some indeterminate date in the past -- https://www.amazon.com/amazon-book-link-if-it-exists
+&lt;a name="rest_code_2573659774f445c88f3c6006957980dc-13"&gt;&lt;/a&gt;...
+&lt;/pre&gt;&lt;p&gt;I keep the org file in a &lt;span class="app"&gt;git&lt;/span&gt; repository hosted online so I can
+edit it on whatever computer is close at hand, or on my cell phone.
+(Having a &lt;span class="app"&gt;git&lt;/span&gt; client with a simple editor on my phone is
+wonderful!)&lt;/p&gt;
+&lt;p&gt;When I start reading a book I create a new entry by selecting the
+title and author of the book on its Amazon page, use the Chrome
+extension Create Link to create a plain text link, which I then insert
+into the org file at the right heading level and with a &lt;code class="docutils literal"&gt;:␢&lt;/code&gt; (a
+colon followed by a blank space) after the asterisks of the heading
+and before the link.  When I'm done with reading the book I put the
+&lt;a class="reference external" href="https://en.wikipedia.org/wiki/ISO_8601"&gt;ISO 8601&lt;/a&gt; date (&lt;em&gt;YYYY-MM-DD&lt;/em&gt;) before the colon.&lt;/p&gt;
+&lt;p&gt;I wrote a script today to count how many books I've read so far this
+year:&lt;/p&gt;
+&lt;pre class="code bash"&gt;&lt;a name="rest_code_46a8e6a2deb94bad8b53181058565f8c-1"&gt;&lt;/a&gt;&lt;span class="ch"&gt;#! /usr/bin/env bash&lt;/span&gt;
+&lt;a name="rest_code_46a8e6a2deb94bad8b53181058565f8c-2"&gt;&lt;/a&gt;
+&lt;a name="rest_code_46a8e6a2deb94bad8b53181058565f8c-3"&gt;&lt;/a&gt;&lt;span class="nv"&gt;YEAR&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;date &lt;span class="s1"&gt;'+%Y'&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_46a8e6a2deb94bad8b53181058565f8c-4"&gt;&lt;/a&gt;&lt;span class="nv"&gt;LAST_YEAR&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;$((&lt;/span&gt;YEAR &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="k"&gt;))&lt;/span&gt;
+&lt;a name="rest_code_46a8e6a2deb94bad8b53181058565f8c-5"&gt;&lt;/a&gt;
+&lt;a name="rest_code_46a8e6a2deb94bad8b53181058565f8c-6"&gt;&lt;/a&gt;sed -E -n &lt;span class="s2"&gt;"/^\* &lt;/span&gt;&lt;span class="nv"&gt;$YEAR&lt;/span&gt;&lt;span class="s2"&gt;/,/^(\*\* Did not finish|\* &lt;/span&gt;&lt;span class="nv"&gt;$LAST_YEAR&lt;/span&gt;&lt;span class="s2"&gt;)/p"&lt;/span&gt; &lt;span class="nv"&gt;$READ_FILE&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;a name="rest_code_46a8e6a2deb94bad8b53181058565f8c-7"&gt;&lt;/a&gt;    sed -e &lt;span class="s2"&gt;"/^* &lt;/span&gt;&lt;span class="nv"&gt;$YEAR&lt;/span&gt;&lt;span class="s2"&gt;/d"&lt;/span&gt; -e &lt;span class="s2"&gt;"/^** Read/d"&lt;/span&gt; &lt;span class="se"&gt;\&lt;/span&gt;
+&lt;a name="rest_code_46a8e6a2deb94bad8b53181058565f8c-8"&gt;&lt;/a&gt;        -e &lt;span class="s2"&gt;"/^(\*\* Did not finish|\* &lt;/span&gt;&lt;span class="nv"&gt;$LAST_YEAR&lt;/span&gt;&lt;span class="s2"&gt;)/d"&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;a name="rest_code_46a8e6a2deb94bad8b53181058565f8c-9"&gt;&lt;/a&gt;    sed -E -n &lt;span class="s2"&gt;"/^\*\*\*[ \t]+[0-9]/p"&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;a name="rest_code_46a8e6a2deb94bad8b53181058565f8c-10"&gt;&lt;/a&gt;    wc -l
+&lt;/pre&gt;&lt;p&gt;This gets all the lines for this year, or just up to the ones that I did not finish, if there are any yet, then gets read of the leading&lt;/p&gt;
+&lt;p&gt;This works pretty well.&lt;/p&gt;
+&lt;p&gt;And so far I've read 227 books this year.&lt;/p&gt;
+&lt;p&gt;And then I got to thinking: I could probably use &lt;a class="reference external" href="ttps://orgmode.org/manual/Capture.html"&gt;org-capture&lt;/a&gt; to
+automate finding the file, finding the right place to insert the
+information, and then copying the link from the clipboard and
+inserting it along with the heading formation!&lt;/p&gt;
+&lt;p&gt;Here's the &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;org-capture-templates&lt;/span&gt;&lt;/code&gt; value I use for this:&lt;/p&gt;
+&lt;pre class="code emacs-lisp"&gt;&lt;a name="rest_code_bd9e60ee57f74d76b5f254de98dc3e24-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;setq&lt;/span&gt; &lt;span class="nv"&gt;org-capture-templates&lt;/span&gt;
+&lt;a name="rest_code_bd9e60ee57f74d76b5f254de98dc3e24-2"&gt;&lt;/a&gt;      &lt;span class="o"&gt;`&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="s"&gt;"b"&lt;/span&gt; &lt;span class="s"&gt;"Add book about to read"&lt;/span&gt; &lt;span class="nv"&gt;entry&lt;/span&gt;
+&lt;a name="rest_code_bd9e60ee57f74d76b5f254de98dc3e24-3"&gt;&lt;/a&gt;         &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;file+olp&lt;/span&gt; &lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;expand-file-name&lt;/span&gt; &lt;span class="s"&gt;"~/Repos/tkb-org/Books/read.org"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_bd9e60ee57f74d76b5f254de98dc3e24-4"&gt;&lt;/a&gt;                   &lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;format-time-string&lt;/span&gt; &lt;span class="s"&gt;"%Y"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="s"&gt;"Read"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_bd9e60ee57f74d76b5f254de98dc3e24-5"&gt;&lt;/a&gt;         &lt;span class="s"&gt;"*** : %c"&lt;/span&gt; &lt;span class="nb"&gt;:prepend&lt;/span&gt; &lt;span class="no"&gt;t&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+&lt;/pre&gt;&lt;p&gt;You'll want to read &lt;a class="reference external" href="https://orgmode.org/manual/Capture-templates.html"&gt;Capture templates&lt;/a&gt; to understand how this works.&lt;/p&gt;
+&lt;p&gt;Of course, then I thought: what if my &lt;span class="app"&gt;emacs&lt;/span&gt; session lasts from
+one year into the other, and I then add a new book?  It will have the
+wrong year!&lt;/p&gt;
+&lt;p&gt;And then I immediately thought of &lt;a class="reference external" href="https://www.gnu.org/software/emacs/manual/html_node/elisp/Advising-Functions.html"&gt;Advising Emacs Lisp Functions&lt;/a&gt;!
+(I feel old — it was the &lt;code class="docutils literal"&gt;defadvice&lt;/code&gt; function when I started using
+it.)&lt;/p&gt;
+&lt;p&gt;So I added the following code:&lt;/p&gt;
+&lt;pre class="code emacs-lisp"&gt;&lt;a name="rest_code_8fd2a0f6bfc84af882e55ec8f24ce656-1"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;defvar&lt;/span&gt; &lt;span class="nv"&gt;tkb-org-year&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;format-time-string&lt;/span&gt; &lt;span class="s"&gt;"%Y"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_8fd2a0f6bfc84af882e55ec8f24ce656-2"&gt;&lt;/a&gt;    &lt;span class="s"&gt;"The year the current emacs session was started, for use with org-capture."&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_8fd2a0f6bfc84af882e55ec8f24ce656-3"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;defun&lt;/span&gt; &lt;span class="nv"&gt;tkb-org-capture-advice-update-year&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;&amp;amp;optional&lt;/span&gt; &lt;span class="nv"&gt;goto&lt;/span&gt; &lt;span class="nv"&gt;keys&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_8fd2a0f6bfc84af882e55ec8f24ce656-4"&gt;&lt;/a&gt;    &lt;span class="s"&gt;"Update ‘tkb-org-year’ and update the entry for adding a book in&lt;/span&gt;
+&lt;a name="rest_code_8fd2a0f6bfc84af882e55ec8f24ce656-5"&gt;&lt;/a&gt;&lt;span class="s"&gt;‘org-capture-templates’ to use the new value."&lt;/span&gt;
+&lt;a name="rest_code_8fd2a0f6bfc84af882e55ec8f24ce656-6"&gt;&lt;/a&gt;    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;let&lt;/span&gt; &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nv"&gt;new-year&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;format-time-string&lt;/span&gt; &lt;span class="s"&gt;"%Y"&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+&lt;a name="rest_code_8fd2a0f6bfc84af882e55ec8f24ce656-7"&gt;&lt;/a&gt;      &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;unless&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;string-equal&lt;/span&gt; &lt;span class="nv"&gt;tkb-org-year&lt;/span&gt; &lt;span class="nv"&gt;new-year&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_8fd2a0f6bfc84af882e55ec8f24ce656-8"&gt;&lt;/a&gt;        &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;setf&lt;/span&gt; &lt;span class="nv"&gt;tkb-org-year&lt;/span&gt; &lt;span class="nv"&gt;new-year&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_8fd2a0f6bfc84af882e55ec8f24ce656-9"&gt;&lt;/a&gt;        &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;setf&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;--&amp;gt;&lt;/span&gt; &lt;span class="s"&gt;"b"&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;assoc&lt;/span&gt; &lt;span class="nv"&gt;it&lt;/span&gt; &lt;span class="nv"&gt;org-capture-templates&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_8fd2a0f6bfc84af882e55ec8f24ce656-10"&gt;&lt;/a&gt;                   &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;assoc&lt;/span&gt; &lt;span class="ss"&gt;'file+olp&lt;/span&gt; &lt;span class="nv"&gt;it&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;nth&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="nv"&gt;it&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;a name="rest_code_8fd2a0f6bfc84af882e55ec8f24ce656-11"&gt;&lt;/a&gt;              &lt;span class="nv"&gt;tkb-org-year&lt;/span&gt;&lt;span class="p"&gt;))))&lt;/span&gt;
+&lt;a name="rest_code_8fd2a0f6bfc84af882e55ec8f24ce656-12"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;advice-add&lt;/span&gt; &lt;span class="ss"&gt;'org-capture&lt;/span&gt; &lt;span class="nb"&gt;:before&lt;/span&gt; &lt;span class="nf"&gt;#'&lt;/span&gt;&lt;span class="nv"&gt;tkb-org-capture-advice-update-year&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;p&gt;I tested this by manually setting &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;tkb-org-year&lt;/span&gt;&lt;/code&gt; to &lt;code class="docutils literal"&gt;"2021"&lt;/code&gt; and
+capturing a new book.  It worked fine!&lt;/p&gt;&lt;/div&gt;</description><category>reading</category><guid>https://tkurtbond.github.io/posts/2022/05/21/recording-the-books-i-read-with-org-mode-and-org-capture/</guid><pubDate>Sat, 21 May 2022 11:17:18 GMT</pubDate></item><item><title>define-word results using wordnik stopped working</title><link>https://tkurtbond.github.io/posts/2021/09/13/define-word-results-using-wordnik-stopped-working/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;I use &lt;a class="reference external" href="https://github.com/abo-abo/define-word"&gt;define-word&lt;/a&gt;, a package from melpa (&lt;a class="reference external" href="https://melpa.org/#/define-word"&gt;DWM&lt;/a&gt;), that looks up the
 definition of a word online.  It uses &lt;a class="reference external" href="http://wordnik.com/"&gt;wordnik.com&lt;/a&gt; by default.
 Recently it stopped returning definitions.&lt;/p&gt;
 &lt;p&gt;I did a little digging, and it turns out that it works when
@@ -332,10 +409,4 @@ colons, which means &lt;code class="docutils literal"&gt;sys.path&lt;/code&gt; e
 component (usually interpreted as a relative path) and everything
 after the colon as another component.  It that's a valid Cygwin
 pathname for the Emacs data directory (which is what the above mount
-command did), things work (accidentally).&lt;/p&gt;&lt;/div&gt;</description><category>emacs</category><category>python</category><guid>https://tkurtbond.github.io/posts/2008/12/15/emacs-and-cygwin-python/</guid><pubDate>Mon, 15 Dec 2008 22:07:43 GMT</pubDate></item><item><title>Mousing in Emacs under Screen</title><link>https://tkurtbond.github.io/posts/2008/12/11/mousing-in-emacs-under-screen/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;p&gt;It &lt;a class="reference external" href="http://savannah.gnu.org/bugs/?14930"&gt;turns out&lt;/a&gt; that if you execute the command &lt;cite&gt;xterm-mouse-mode&lt;/cite&gt; (or
-evaluate &lt;cite&gt;(xterm-mouse-mode 1)&lt;/cite&gt; in your initialization file) when
-running &lt;a class="reference external" href="http://www.gnu.org/software/emacs/"&gt;Emacs&lt;/a&gt; under &lt;a class="reference external" href="http://www.gnu.org/software/screen/"&gt;Screen&lt;/a&gt; it allows “non-modified single clicks” to
-work.  Normal mouse functionality is still available by holding the
-Shift key while clicking.  I use the &lt;a class="reference external" href="http://www.chiark.greenend.org.uk/~sgtatham/putty/"&gt;PuTTY&lt;/a&gt; ssh client for remote
-access to various servers, and this works well Emacs in Screen under
-PuTTY, too.&lt;/p&gt;</description><category>computer</category><category>emacs</category><category>screen</category><category>tools</category><guid>https://tkurtbond.github.io/posts/2008/12/11/mousing-in-emacs-under-screen/</guid><pubDate>Thu, 11 Dec 2008 17:46:02 GMT</pubDate></item></channel></rss>
+command did), things work (accidentally).&lt;/p&gt;&lt;/div&gt;</description><category>emacs</category><category>python</category><guid>https://tkurtbond.github.io/posts/2008/12/15/emacs-and-cygwin-python/</guid><pubDate>Mon, 15 Dec 2008 22:07:43 GMT</pubDate></item></channel></rss>

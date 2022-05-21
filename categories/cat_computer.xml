@@ -1,5 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity (Posts about computer)</title><link>https://tkurtbond.github.io/</link><description></description><atom:link href="https://tkurtbond.github.io/categories/cat_computer.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2022 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Mon, 21 Mar 2022 17:47:56 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>POISE DMS-PLus, a Description</title><link>https://tkurtbond.github.io/posts/2022/02/22/poise-dms-plus-a-description/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;Some time ago I &lt;a class="reference external" href="https://tkurtbond.github.io/posts/2014/11/23/poise-dms-plus/"&gt;linked&lt;/a&gt; to a description of the POISE DMS-Plus, a Data
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity (Posts about computer)</title><link>https://tkurtbond.github.io/</link><description></description><atom:link href="https://tkurtbond.github.io/categories/cat_computer.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2022 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Sat, 21 May 2022 15:01:45 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Recording the books I read with org-mode and org-capture</title><link>https://tkurtbond.github.io/posts/2022/05/21/recording-the-books-i-read-with-org-mode-and-org-capture/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;I used to record the books that I read on this &lt;a class="reference external" href="https://tkurtbond.github.io/categories/recent-reading/"&gt;blog&lt;/a&gt;, but that took
+too much &lt;a class="reference external" href="https://tkurtbond.github.io/posts/2010/07/21/reading-but-not-recording/"&gt;effort&lt;/a&gt;.  However, if I don't record the books I read, I
+sometimes can't remember whether I read a particular book or not,
+especially with Kindle Unlimited books.  (Was it the seventh book of
+the series that I read last, or the eighth?)&lt;/p&gt;
+&lt;p&gt;I record the books that I read in &lt;a class="reference external" href="https://www.gnu.org/software/emacs/"&gt;emacs&lt;/a&gt; using &lt;a class="reference external" href="https://orgmode.org/"&gt;org-mode&lt;/a&gt; and —
+since today — &lt;a class="reference external" href="ttps://orgmode.org/manual/Capture.html"&gt;org-capture&lt;/a&gt;.  Here's what the org file looks like:&lt;/p&gt;
+&lt;pre class="code text"&gt;&lt;a name="rest_code_2573659774f445c88f3c6006957980dc-1"&gt;&lt;/a&gt;* 2022
+&lt;a name="rest_code_2573659774f445c88f3c6006957980dc-2"&gt;&lt;/a&gt;** Read
+&lt;a name="rest_code_2573659774f445c88f3c6006957980dc-3"&gt;&lt;/a&gt;*** : Title of Book I Haven't Finished Reading -- https://www.amazon.com/amazon-book-link-if-it-exists
+&lt;a name="rest_code_2573659774f445c88f3c6006957980dc-4"&gt;&lt;/a&gt;...
+&lt;a name="rest_code_2573659774f445c88f3c6006957980dc-5"&gt;&lt;/a&gt;*** 2022-05-21: Title of Book I **Have** Finished Reading -- https://www.amazon.com/amazon-book-link-if-it-exists
+&lt;a name="rest_code_2573659774f445c88f3c6006957980dc-6"&gt;&lt;/a&gt;...
+&lt;a name="rest_code_2573659774f445c88f3c6006957980dc-7"&gt;&lt;/a&gt;** Did not finish
+&lt;a name="rest_code_2573659774f445c88f3c6006957980dc-8"&gt;&lt;/a&gt;*** : Title of Book I Won't Finish Reading -- https://www.amazon.com/amazon-book-link-if-it-exists
+&lt;a name="rest_code_2573659774f445c88f3c6006957980dc-9"&gt;&lt;/a&gt;...
+&lt;a name="rest_code_2573659774f445c88f3c6006957980dc-10"&gt;&lt;/a&gt;* 2021
+&lt;a name="rest_code_2573659774f445c88f3c6006957980dc-11"&gt;&lt;/a&gt;* Previously read, sometime
+&lt;a name="rest_code_2573659774f445c88f3c6006957980dc-12"&gt;&lt;/a&gt;** Title of Book I Finished Reading at some indeterminate date in the past -- https://www.amazon.com/amazon-book-link-if-it-exists
+&lt;a name="rest_code_2573659774f445c88f3c6006957980dc-13"&gt;&lt;/a&gt;...
+&lt;/pre&gt;&lt;p&gt;I keep the org file in a &lt;span class="app"&gt;git&lt;/span&gt; repository hosted online so I can
+edit it on whatever computer is close at hand, or on my cell phone.
+(Having a &lt;span class="app"&gt;git&lt;/span&gt; client with a simple editor on my phone is
+wonderful!)&lt;/p&gt;
+&lt;p&gt;When I start reading a book I create a new entry by selecting the
+title and author of the book on its Amazon page, use the Chrome
+extension Create Link to create a plain text link, which I then insert
+into the org file at the right heading level and with a &lt;code class="docutils literal"&gt;:␢&lt;/code&gt; (a
+colon followed by a blank space) after the asterisks of the heading
+and before the link.  When I'm done with reading the book I put the
+&lt;a class="reference external" href="https://en.wikipedia.org/wiki/ISO_8601"&gt;ISO 8601&lt;/a&gt; date (&lt;em&gt;YYYY-MM-DD&lt;/em&gt;) before the colon.&lt;/p&gt;
+&lt;p&gt;I wrote a script today to count how many books I've read so far this
+year:&lt;/p&gt;
+&lt;pre class="code bash"&gt;&lt;a name="rest_code_46a8e6a2deb94bad8b53181058565f8c-1"&gt;&lt;/a&gt;&lt;span class="ch"&gt;#! /usr/bin/env bash&lt;/span&gt;
+&lt;a name="rest_code_46a8e6a2deb94bad8b53181058565f8c-2"&gt;&lt;/a&gt;
+&lt;a name="rest_code_46a8e6a2deb94bad8b53181058565f8c-3"&gt;&lt;/a&gt;&lt;span class="nv"&gt;YEAR&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;date &lt;span class="s1"&gt;'+%Y'&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_46a8e6a2deb94bad8b53181058565f8c-4"&gt;&lt;/a&gt;&lt;span class="nv"&gt;LAST_YEAR&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;$((&lt;/span&gt;YEAR &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="k"&gt;))&lt;/span&gt;
+&lt;a name="rest_code_46a8e6a2deb94bad8b53181058565f8c-5"&gt;&lt;/a&gt;
+&lt;a name="rest_code_46a8e6a2deb94bad8b53181058565f8c-6"&gt;&lt;/a&gt;sed -E -n &lt;span class="s2"&gt;"/^\* &lt;/span&gt;&lt;span class="nv"&gt;$YEAR&lt;/span&gt;&lt;span class="s2"&gt;/,/^(\*\* Did not finish|\* &lt;/span&gt;&lt;span class="nv"&gt;$LAST_YEAR&lt;/span&gt;&lt;span class="s2"&gt;)/p"&lt;/span&gt; &lt;span class="nv"&gt;$READ_FILE&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;a name="rest_code_46a8e6a2deb94bad8b53181058565f8c-7"&gt;&lt;/a&gt;    sed -e &lt;span class="s2"&gt;"/^* &lt;/span&gt;&lt;span class="nv"&gt;$YEAR&lt;/span&gt;&lt;span class="s2"&gt;/d"&lt;/span&gt; -e &lt;span class="s2"&gt;"/^** Read/d"&lt;/span&gt; &lt;span class="se"&gt;\&lt;/span&gt;
+&lt;a name="rest_code_46a8e6a2deb94bad8b53181058565f8c-8"&gt;&lt;/a&gt;        -e &lt;span class="s2"&gt;"/^(\*\* Did not finish|\* &lt;/span&gt;&lt;span class="nv"&gt;$LAST_YEAR&lt;/span&gt;&lt;span class="s2"&gt;)/d"&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;a name="rest_code_46a8e6a2deb94bad8b53181058565f8c-9"&gt;&lt;/a&gt;    sed -E -n &lt;span class="s2"&gt;"/^\*\*\*[ \t]+[0-9]/p"&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;a name="rest_code_46a8e6a2deb94bad8b53181058565f8c-10"&gt;&lt;/a&gt;    wc -l
+&lt;/pre&gt;&lt;p&gt;This gets all the lines for this year, or just up to the ones that I did not finish, if there are any yet, then gets read of the leading&lt;/p&gt;
+&lt;p&gt;This works pretty well.&lt;/p&gt;
+&lt;p&gt;And so far I've read 227 books this year.&lt;/p&gt;
+&lt;p&gt;And then I got to thinking: I could probably use &lt;a class="reference external" href="ttps://orgmode.org/manual/Capture.html"&gt;org-capture&lt;/a&gt; to
+automate finding the file, finding the right place to insert the
+information, and then copying the link from the clipboard and
+inserting it along with the heading formation!&lt;/p&gt;
+&lt;p&gt;Here's the &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;org-capture-templates&lt;/span&gt;&lt;/code&gt; value I use for this:&lt;/p&gt;
+&lt;pre class="code emacs-lisp"&gt;&lt;a name="rest_code_bd9e60ee57f74d76b5f254de98dc3e24-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;setq&lt;/span&gt; &lt;span class="nv"&gt;org-capture-templates&lt;/span&gt;
+&lt;a name="rest_code_bd9e60ee57f74d76b5f254de98dc3e24-2"&gt;&lt;/a&gt;      &lt;span class="o"&gt;`&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="s"&gt;"b"&lt;/span&gt; &lt;span class="s"&gt;"Add book about to read"&lt;/span&gt; &lt;span class="nv"&gt;entry&lt;/span&gt;
+&lt;a name="rest_code_bd9e60ee57f74d76b5f254de98dc3e24-3"&gt;&lt;/a&gt;         &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;file+olp&lt;/span&gt; &lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;expand-file-name&lt;/span&gt; &lt;span class="s"&gt;"~/Repos/tkb-org/Books/read.org"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_bd9e60ee57f74d76b5f254de98dc3e24-4"&gt;&lt;/a&gt;                   &lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;format-time-string&lt;/span&gt; &lt;span class="s"&gt;"%Y"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="s"&gt;"Read"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_bd9e60ee57f74d76b5f254de98dc3e24-5"&gt;&lt;/a&gt;         &lt;span class="s"&gt;"*** : %c"&lt;/span&gt; &lt;span class="nb"&gt;:prepend&lt;/span&gt; &lt;span class="no"&gt;t&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+&lt;/pre&gt;&lt;p&gt;You'll want to read &lt;a class="reference external" href="https://orgmode.org/manual/Capture-templates.html"&gt;Capture templates&lt;/a&gt; to understand how this works.&lt;/p&gt;
+&lt;p&gt;Of course, then I thought: what if my &lt;span class="app"&gt;emacs&lt;/span&gt; session lasts from
+one year into the other, and I then add a new book?  It will have the
+wrong year!&lt;/p&gt;
+&lt;p&gt;And then I immediately thought of &lt;a class="reference external" href="https://www.gnu.org/software/emacs/manual/html_node/elisp/Advising-Functions.html"&gt;Advising Emacs Lisp Functions&lt;/a&gt;!
+(I feel old — it was the &lt;code class="docutils literal"&gt;defadvice&lt;/code&gt; function when I started using
+it.)&lt;/p&gt;
+&lt;p&gt;So I added the following code:&lt;/p&gt;
+&lt;pre class="code emacs-lisp"&gt;&lt;a name="rest_code_8fd2a0f6bfc84af882e55ec8f24ce656-1"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;defvar&lt;/span&gt; &lt;span class="nv"&gt;tkb-org-year&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;format-time-string&lt;/span&gt; &lt;span class="s"&gt;"%Y"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_8fd2a0f6bfc84af882e55ec8f24ce656-2"&gt;&lt;/a&gt;    &lt;span class="s"&gt;"The year the current emacs session was started, for use with org-capture."&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_8fd2a0f6bfc84af882e55ec8f24ce656-3"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;defun&lt;/span&gt; &lt;span class="nv"&gt;tkb-org-capture-advice-update-year&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;&amp;amp;optional&lt;/span&gt; &lt;span class="nv"&gt;goto&lt;/span&gt; &lt;span class="nv"&gt;keys&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_8fd2a0f6bfc84af882e55ec8f24ce656-4"&gt;&lt;/a&gt;    &lt;span class="s"&gt;"Update ‘tkb-org-year’ and update the entry for adding a book in&lt;/span&gt;
+&lt;a name="rest_code_8fd2a0f6bfc84af882e55ec8f24ce656-5"&gt;&lt;/a&gt;&lt;span class="s"&gt;‘org-capture-templates’ to use the new value."&lt;/span&gt;
+&lt;a name="rest_code_8fd2a0f6bfc84af882e55ec8f24ce656-6"&gt;&lt;/a&gt;    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;let&lt;/span&gt; &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nv"&gt;new-year&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;format-time-string&lt;/span&gt; &lt;span class="s"&gt;"%Y"&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+&lt;a name="rest_code_8fd2a0f6bfc84af882e55ec8f24ce656-7"&gt;&lt;/a&gt;      &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;unless&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;string-equal&lt;/span&gt; &lt;span class="nv"&gt;tkb-org-year&lt;/span&gt; &lt;span class="nv"&gt;new-year&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_8fd2a0f6bfc84af882e55ec8f24ce656-8"&gt;&lt;/a&gt;        &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;setf&lt;/span&gt; &lt;span class="nv"&gt;tkb-org-year&lt;/span&gt; &lt;span class="nv"&gt;new-year&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_8fd2a0f6bfc84af882e55ec8f24ce656-9"&gt;&lt;/a&gt;        &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;setf&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;--&amp;gt;&lt;/span&gt; &lt;span class="s"&gt;"b"&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;assoc&lt;/span&gt; &lt;span class="nv"&gt;it&lt;/span&gt; &lt;span class="nv"&gt;org-capture-templates&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_8fd2a0f6bfc84af882e55ec8f24ce656-10"&gt;&lt;/a&gt;                   &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;assoc&lt;/span&gt; &lt;span class="ss"&gt;'file+olp&lt;/span&gt; &lt;span class="nv"&gt;it&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;nth&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="nv"&gt;it&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;a name="rest_code_8fd2a0f6bfc84af882e55ec8f24ce656-11"&gt;&lt;/a&gt;              &lt;span class="nv"&gt;tkb-org-year&lt;/span&gt;&lt;span class="p"&gt;))))&lt;/span&gt;
+&lt;a name="rest_code_8fd2a0f6bfc84af882e55ec8f24ce656-12"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;advice-add&lt;/span&gt; &lt;span class="ss"&gt;'org-capture&lt;/span&gt; &lt;span class="nb"&gt;:before&lt;/span&gt; &lt;span class="nf"&gt;#'&lt;/span&gt;&lt;span class="nv"&gt;tkb-org-capture-advice-update-year&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;p&gt;I tested this by manually setting &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;tkb-org-year&lt;/span&gt;&lt;/code&gt; to &lt;code class="docutils literal"&gt;"2021"&lt;/code&gt; and
+capturing a new book.  It worked fine!&lt;/p&gt;&lt;/div&gt;</description><category>reading</category><guid>https://tkurtbond.github.io/posts/2022/05/21/recording-the-books-i-read-with-org-mode-and-org-capture/</guid><pubDate>Sat, 21 May 2022 11:17:18 GMT</pubDate></item><item><title>POISE DMS-PLus, a Description</title><link>https://tkurtbond.github.io/posts/2022/02/22/poise-dms-plus-a-description/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;Some time ago I &lt;a class="reference external" href="https://tkurtbond.github.io/posts/2014/11/23/poise-dms-plus/"&gt;linked&lt;/a&gt; to a description of the POISE DMS-Plus, a Data
 Management System that I've used extensively since the mid 1980s.
 Last time I knew it was owned by Jenzabar.  Since Jenzabar's
 description of it (as part of Jenzabar PX) has vanished from their web
@@ -592,130 +669,4 @@ time-stamp-format: "%Y-%02m-%02d %02H:%02M:%02S %Z"
 time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
 time-stamp-end: "\\*\\\\?\n"
 time-stamp-line-limit: -20
-End: --&gt;&lt;/div&gt;</description><category>fonts</category><category>groff</category><category>install-font.sh</category><category>mom</category><category>troff</category><guid>https://tkurtbond.github.io/posts/2021/07/17/groff-and-install-fontsh-and-installing-fonts-for-use-in-groff/</guid><pubDate>Sat, 17 Jul 2021 04:16:49 GMT</pubDate></item><item><title>Sorting words separated by commas</title><link>https://tkurtbond.github.io/posts/2021/07/16/sorting-words-separated-by-commas/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;I often have lists of "words", separated by commas, possibly on
-multiple lines, like this example from a &lt;span class="file"&gt;Makefile&lt;/span&gt;:&lt;/p&gt;
-&lt;pre class="code makefile"&gt;&lt;a name="rest_code_e64e051df37d48cb8b4c48d2ef9b5117-1"&gt;&lt;/a&gt;&lt;span class="c"&gt;#    bookman, schoolbook, palatino, times,&lt;/span&gt;
-&lt;a name="rest_code_e64e051df37d48cb8b4c48d2ef9b5117-2"&gt;&lt;/a&gt;&lt;span class="c"&gt;#    helvetica, helvetica-narrow, optima, cormorant-garamond,&lt;/span&gt;
-&lt;a name="rest_code_e64e051df37d48cb8b4c48d2ef9b5117-3"&gt;&lt;/a&gt;&lt;span class="c"&gt;#    or ebgaramond.&lt;/span&gt;
-&lt;/pre&gt;&lt;p&gt;I find these lists are always getting out of order, or they end up
-with some short lines and some long lines.  I want to be able to
-reformat them automatically, like this:&lt;/p&gt;
-&lt;pre class="code makefile"&gt;&lt;a name="rest_code_8c1788b67e8e4629af1455006ee71da3-1"&gt;&lt;/a&gt;&lt;span class="c"&gt;#    bookman, cormorant-garamond, ebgaramond, helvetica, helvetica-narrow,&lt;/span&gt;
-&lt;a name="rest_code_8c1788b67e8e4629af1455006ee71da3-2"&gt;&lt;/a&gt;&lt;span class="c"&gt;#    optima, palatino, schoolbook, or times.&lt;/span&gt;
-&lt;/pre&gt;&lt;p&gt;So, I wrote three scripts to deal with them,
-&lt;span class="command"&gt;sort-with-commas&lt;/span&gt;, &lt;span class="command"&gt;strip-leading-hash&lt;/span&gt; to get rid
-of the leading hashes and spaces, and &lt;span class="command"&gt;prefix&lt;/span&gt; to put the
-leading hashes and spaces back.&lt;/p&gt;
-&lt;p&gt;Now, above I said "words", because really it's anything separated by
-commas, so the "words" can contain space, etc.&lt;/p&gt;
-&lt;p&gt;Also, notice that the period after "ebgaramond" and the "or" before
-"ebgaramond"` in the original list disappear, and an "or " appears
-before the new end of the list, "times", and a period follows it.  And
-you can have have the same situation with "and".  So, the &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;-p&lt;/span&gt;&lt;/code&gt;
-option to &lt;span class="command"&gt;sort-with-commas&lt;/span&gt; adds a period after the last
-word, the &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;-a&lt;/span&gt;&lt;/code&gt; option adds and "and " before the last word, and the
-&lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;-o&lt;/span&gt;&lt;/code&gt; option adds an "or " before the last word.  If you are sorting
-only part of a list, you want to have a comma after the last "word",
-so there is the option &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;-f&lt;/span&gt;&lt;/code&gt; for that.  And to remove the the period
-from the original list, so it doesn't end up in the middle of the new
-list, or to remove "and " or "or ", there is the &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;-r&lt;/span&gt;&lt;/code&gt; option.&lt;/p&gt;
-&lt;p&gt;The default is to return the sorted list as one long line, but you can
-easily reformat it to multiple lines by running it through the Unix
-command &lt;span class="command"&gt;fmt&lt;/span&gt;.&lt;/p&gt;
-&lt;p&gt;Although in this case the list is prefixed with a "#" and some spaces
-because it comes from a comment in a Makefile, you have to remove
-those to sort the list.  I wrote the script
-&lt;span class="command"&gt;strip-leading-hash&lt;/span&gt; to do that, too, rather than having to
-remember the &lt;span class="command"&gt;sed&lt;/span&gt; command to so that all the time.&lt;/p&gt;
-&lt;p&gt;So, to sort the original list I'd run the command&lt;/p&gt;
-&lt;pre class="code bash"&gt;&lt;a name="rest_code_5c4723a023cd4b6aa4262ff162dcc5bd-1"&gt;&lt;/a&gt;strip-leading-hash &lt;span class="p"&gt;|&lt;/span&gt; sort-with-commas -r -p -o &lt;span class="p"&gt;|&lt;/span&gt; fmt &lt;span class="p"&gt;|&lt;/span&gt; prefix &lt;span class="s2"&gt;"#    "&lt;/span&gt;
-&lt;/pre&gt;&lt;p&gt;which means “strip the leading hashes and spaces, remove the trailing
-period and the "and " or "or ", add a final period after the last word,
-add an "or " before the final word, reformat as a paragraph, and
-prefix the lines with the hash and spaces.”&lt;/p&gt;
-&lt;p&gt;When I use this I'm usually in &lt;span class="app"&gt;emacs&lt;/span&gt; and using &lt;span class="key"&gt;M-|&lt;/span&gt; to
-run it on the region (the currently selected text), often with the
-&lt;span class="key"&gt;C-u&lt;/span&gt; to replace the region with results.&lt;/p&gt;
-&lt;p&gt;Here's the main script, &lt;span class="file"&gt;sort-with-commas&lt;/span&gt;:&lt;/p&gt;
-&lt;p&gt;&lt;a class="reference external" href="https://tkurtbond.github.io/listings/sort-with-commas.html"&gt;sort-with-commas&lt;/a&gt;  &lt;a class="reference external" href="https://tkurtbond.github.io/listings/sort-with-commas"&gt;(Source)&lt;/a&gt;&lt;/p&gt;
-&lt;pre class="code bash"&gt;&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-1"&gt;&lt;/a&gt;&lt;span class="ch"&gt;#! /usr/bin/env bash&lt;/span&gt;
-&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-2"&gt;&lt;/a&gt;&lt;span class="c1"&gt;###############################################################################&lt;/span&gt;
-&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-3"&gt;&lt;/a&gt;&lt;span class="c1"&gt;# Sort a list of words that are seperated by commas, optionally followed by&lt;/span&gt;
-&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-4"&gt;&lt;/a&gt;&lt;span class="c1"&gt;# a newline into a single line seperated by commas followed by spaces.&lt;/span&gt;
-&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-5"&gt;&lt;/a&gt;&lt;span class="c1"&gt;#&lt;/span&gt;
-&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-6"&gt;&lt;/a&gt;&lt;span class="c1"&gt;# For example: it translates (ignore the "# +" at the beginning of lines)&lt;/span&gt;
-&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-7"&gt;&lt;/a&gt;&lt;span class="c1"&gt;#    bookman, schoolbook,palatino,&lt;/span&gt;
-&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-8"&gt;&lt;/a&gt;&lt;span class="c1"&gt;#    times, helvetica, helvetica-narrow,&lt;/span&gt;
-&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-9"&gt;&lt;/a&gt;&lt;span class="c1"&gt;# to&lt;/span&gt;
-&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-10"&gt;&lt;/a&gt;&lt;span class="c1"&gt;#    bookman, helvetica, helvetica-narrow, palatino, schoolbook, times&lt;/span&gt;
-&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-11"&gt;&lt;/a&gt;&lt;span class="c1"&gt;###############################################################################&lt;/span&gt;
-&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-12"&gt;&lt;/a&gt;
-&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-13"&gt;&lt;/a&gt;&lt;span class="nv"&gt;AND_OPT&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;off                     &lt;span class="c1"&gt;# Insert "and " before last word.&lt;/span&gt;
-&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-14"&gt;&lt;/a&gt;&lt;span class="nv"&gt;FINAL_OPT&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;off                   &lt;span class="c1"&gt;# Leave "," after last word.&lt;/span&gt;
-&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-15"&gt;&lt;/a&gt;&lt;span class="nv"&gt;OR_OPT&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;off                      &lt;span class="c1"&gt;# Insert "or " before last word.&lt;/span&gt;
-&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-16"&gt;&lt;/a&gt;&lt;span class="nv"&gt;PERIOD_OPT&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;off                  &lt;span class="c1"&gt;# Insert a final period after last word.&lt;/span&gt;
-&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-17"&gt;&lt;/a&gt;&lt;span class="nv"&gt;REMOVE_AND_OR_PERIOD_OPT&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;off
-&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-18"&gt;&lt;/a&gt;
-&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-19"&gt;&lt;/a&gt;
-&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-20"&gt;&lt;/a&gt;&lt;span class="nb"&gt;let&lt;/span&gt; &lt;span class="nv"&gt;errors&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;
-&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-21"&gt;&lt;/a&gt;&lt;span class="k"&gt;while&lt;/span&gt; &lt;span class="nb"&gt;getopts&lt;/span&gt; &lt;span class="s2"&gt;"?afhopr"&lt;/span&gt; opt
-&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-22"&gt;&lt;/a&gt;&lt;span class="k"&gt;do&lt;/span&gt;
-&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-23"&gt;&lt;/a&gt;    &lt;span class="k"&gt;case&lt;/span&gt; &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$opt&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt; in
-&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-24"&gt;&lt;/a&gt;        &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="se"&gt;\?&lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;h&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="nb"&gt;let&lt;/span&gt; errors++ &lt;span class="p"&gt;;;&lt;/span&gt;
-&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-25"&gt;&lt;/a&gt;        &lt;span class="o"&gt;(&lt;/span&gt;a&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="nv"&gt;AND_OPT&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;on &lt;span class="p"&gt;;;&lt;/span&gt;
-&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-26"&gt;&lt;/a&gt;        &lt;span class="o"&gt;(&lt;/span&gt;f&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="nv"&gt;FINAL_OPT&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;on &lt;span class="p"&gt;;;&lt;/span&gt;
-&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-27"&gt;&lt;/a&gt;        &lt;span class="o"&gt;(&lt;/span&gt;o&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="nv"&gt;OR_OPT&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;on &lt;span class="p"&gt;;;&lt;/span&gt;
-&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-28"&gt;&lt;/a&gt;        &lt;span class="o"&gt;(&lt;/span&gt;p&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="nv"&gt;PERIOD_OPT&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;on &lt;span class="p"&gt;;;&lt;/span&gt;
-&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-29"&gt;&lt;/a&gt;        &lt;span class="o"&gt;(&lt;/span&gt;r&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="nv"&gt;REMOVE_AND_OR_PERIOD_OPT&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;on &lt;span class="p"&gt;;;&lt;/span&gt;
-&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-30"&gt;&lt;/a&gt;    &lt;span class="k"&gt;esac&lt;/span&gt;
-&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-31"&gt;&lt;/a&gt;&lt;span class="k"&gt;done&lt;/span&gt;
-&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-32"&gt;&lt;/a&gt;
-&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-33"&gt;&lt;/a&gt;&lt;span class="nb"&gt;shift&lt;/span&gt; &lt;span class="k"&gt;$((&lt;/span&gt;OPTIND-1&lt;span class="k"&gt;))&lt;/span&gt;
-&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-34"&gt;&lt;/a&gt;
-&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-35"&gt;&lt;/a&gt;&lt;span class="o"&gt;[[&lt;/span&gt; &lt;span class="nv"&gt;$#&lt;/span&gt; &amp;gt; &lt;span class="m"&gt;0&lt;/span&gt; &lt;span class="o"&gt;]]&lt;/span&gt; &lt;span class="o"&gt;||&lt;/span&gt; &lt;span class="o"&gt;[[&lt;/span&gt; &lt;span class="nv"&gt;$errors&lt;/span&gt; &amp;gt; &lt;span class="m"&gt;0&lt;/span&gt; &lt;span class="o"&gt;]]&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
-&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-36"&gt;&lt;/a&gt;    cat &lt;span class="s"&gt;&amp;lt;&amp;lt;EOF&lt;/span&gt;
-&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-37"&gt;&lt;/a&gt;&lt;span class="s"&gt;usage: sort-with-commas [OPTION]&lt;/span&gt;
-&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-38"&gt;&lt;/a&gt;
-&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-39"&gt;&lt;/a&gt;&lt;span class="s"&gt;This reads its standard input and sorts a line or multiple lines with&lt;/span&gt;
-&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-40"&gt;&lt;/a&gt;&lt;span class="s"&gt;"words" separated by commas, then reassembles the line, words&lt;/span&gt;
-&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-41"&gt;&lt;/a&gt;&lt;span class="s"&gt;separated by a comma and s space, optionally leaving a final comma&lt;/span&gt;
-&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-42"&gt;&lt;/a&gt;&lt;span class="s"&gt;after the last word, or a period, and optionally putting "and " or "or&lt;/span&gt;
-&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-43"&gt;&lt;/a&gt;&lt;span class="s"&gt;" before the last word.&lt;/span&gt;
-&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-44"&gt;&lt;/a&gt;
-&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-45"&gt;&lt;/a&gt;&lt;span class="s"&gt;Options&lt;/span&gt;
-&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-46"&gt;&lt;/a&gt;
-&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-47"&gt;&lt;/a&gt;&lt;span class="s"&gt;-? -h   This message.&lt;/span&gt;
-&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-48"&gt;&lt;/a&gt;&lt;span class="s"&gt;-a      Insert "and " before last word.&lt;/span&gt;
-&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-49"&gt;&lt;/a&gt;&lt;span class="s"&gt;-f      Leave final comma after last word.&lt;/span&gt;
-&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-50"&gt;&lt;/a&gt;&lt;span class="s"&gt;-o      Insert "or " before last word.&lt;/span&gt;
-&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-51"&gt;&lt;/a&gt;&lt;span class="s"&gt;-p      Insert a period after the last word.&lt;/span&gt;
-&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-52"&gt;&lt;/a&gt;&lt;span class="s"&gt;-r      Remove "and " or "or " that occur at the beginning of a "word" in the&lt;/span&gt;
-&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-53"&gt;&lt;/a&gt;&lt;span class="s"&gt;        original list.&lt;/span&gt;
-&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-54"&gt;&lt;/a&gt;
-&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-55"&gt;&lt;/a&gt;&lt;span class="s"&gt;Note that combining -a and -o, or -f and -p do what you say, but the results&lt;/span&gt;
-&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-56"&gt;&lt;/a&gt;&lt;span class="s"&gt;are silly.&lt;/span&gt;
-&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-57"&gt;&lt;/a&gt;&lt;span class="s"&gt;EOF&lt;/span&gt;
-&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-58"&gt;&lt;/a&gt;    &lt;span class="nb"&gt;exit&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;
-&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-59"&gt;&lt;/a&gt;&lt;span class="o"&gt;}&lt;/span&gt;
-&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-60"&gt;&lt;/a&gt;
-&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-61"&gt;&lt;/a&gt;tr &lt;span class="s1"&gt;','&lt;/span&gt; &lt;span class="s1"&gt;'\n'&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; sed -E -e &lt;span class="s1"&gt;'s/^[ \t]+//'&lt;/span&gt; -e &lt;span class="s1"&gt;'/^$/d'&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;
-&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-62"&gt;&lt;/a&gt;    &lt;span class="o"&gt;([[&lt;/span&gt; &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$REMOVE_AND_OR_PERIOD_OPT&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"on"&lt;/span&gt; &lt;span class="o"&gt;]]&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt;
-&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-63"&gt;&lt;/a&gt;         sed -E -e &lt;span class="s1"&gt;'s/^(and|or)[ \t]+//'&lt;/span&gt; -e &lt;span class="s1"&gt;'s/\.[ \t]*$//'&lt;/span&gt; &lt;span class="o"&gt;||&lt;/span&gt; cat&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;
-&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-64"&gt;&lt;/a&gt;    sort -u &lt;span class="p"&gt;|&lt;/span&gt;
-&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-65"&gt;&lt;/a&gt;    sed -E -e &lt;span class="s1"&gt;'s/$/,/'&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;
-&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-66"&gt;&lt;/a&gt;    &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[[&lt;/span&gt; &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$AND_OPT&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"on"&lt;/span&gt; &lt;span class="o"&gt;]]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt; sed -e &lt;span class="s1"&gt;'$s/^/and /'&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; cat&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;fi&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;
-&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-67"&gt;&lt;/a&gt;    &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[[&lt;/span&gt; &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$FINAL_OPT&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"on"&lt;/span&gt; &lt;span class="o"&gt;]]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt; cat&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; sed -e &lt;span class="s1"&gt;'$s/,//'&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;fi&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;
-&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-68"&gt;&lt;/a&gt;    &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[[&lt;/span&gt; &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$OR_OPT&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"on"&lt;/span&gt; &lt;span class="o"&gt;]]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt; sed -e &lt;span class="s1"&gt;'$s/^/or /'&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; cat&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;fi&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;
-&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-69"&gt;&lt;/a&gt;    &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[[&lt;/span&gt; &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$PERIOD_OPT&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"on"&lt;/span&gt; &lt;span class="o"&gt;]]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt; sed -e &lt;span class="s1"&gt;'$s/$/./'&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; cat&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;fi&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;
-&lt;a name="rest_code_3f549bedc0ea4e27b816ad2974aafb39-70"&gt;&lt;/a&gt;    tr &lt;span class="s1"&gt;'\n'&lt;/span&gt; &lt;span class="s1"&gt;' '&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; sed -E -e &lt;span class="s1"&gt;'s/[ ]$//'&lt;/span&gt;
-&lt;/pre&gt;&lt;p&gt;Here's &lt;span class="file"&gt;strip-leading-hash&lt;/span&gt;:&lt;/p&gt;
-&lt;p&gt;&lt;a class="reference external" href="https://tkurtbond.github.io/listings/strip-leading-hash.html"&gt;strip-leading-hash&lt;/a&gt;  &lt;a class="reference external" href="https://tkurtbond.github.io/listings/strip-leading-hash"&gt;(Source)&lt;/a&gt;&lt;/p&gt;
-&lt;pre class="code bash"&gt;&lt;a name="rest_code_0c0c34ba8d874575a14bacec94596314-1"&gt;&lt;/a&gt;&lt;span class="ch"&gt;#! /usr/bin/env bash&lt;/span&gt;
-&lt;a name="rest_code_0c0c34ba8d874575a14bacec94596314-2"&gt;&lt;/a&gt;
-&lt;a name="rest_code_0c0c34ba8d874575a14bacec94596314-3"&gt;&lt;/a&gt;sed -E -e &lt;span class="s1"&gt;'s/^#[ \t]*//'&lt;/span&gt;
-&lt;/pre&gt;&lt;p&gt;And here's &lt;span class="file"&gt;prefix&lt;/span&gt;:&lt;/p&gt;
-&lt;p&gt;&lt;a class="reference external" href="https://tkurtbond.github.io/listings/prefix.html"&gt;prefix&lt;/a&gt;  &lt;a class="reference external" href="https://tkurtbond.github.io/listings/prefix"&gt;(Source)&lt;/a&gt;&lt;/p&gt;
-&lt;pre class="code bash"&gt;&lt;a name="rest_code_43c6d092c63947afaa0aa33f8258e215-1"&gt;&lt;/a&gt;&lt;span class="ch"&gt;#! /usr/bin/env bash&lt;/span&gt;
-&lt;a name="rest_code_43c6d092c63947afaa0aa33f8258e215-2"&gt;&lt;/a&gt;
-&lt;a name="rest_code_43c6d092c63947afaa0aa33f8258e215-3"&gt;&lt;/a&gt;sed &lt;span class="s2"&gt;"s/^/&lt;/span&gt;&lt;span class="nv"&gt;$1&lt;/span&gt;&lt;span class="s2"&gt;/"&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</description><category>bash</category><category>emacs</category><category>script</category><category>shell</category><guid>https://tkurtbond.github.io/posts/2021/07/16/sorting-words-separated-by-commas/</guid><pubDate>Fri, 16 Jul 2021 17:05:09 GMT</pubDate></item></channel></rss>
+End: --&gt;&lt;/div&gt;</description><category>fonts</category><category>groff</category><category>install-font.sh</category><category>mom</category><category>troff</category><guid>https://tkurtbond.github.io/posts/2021/07/17/groff-and-install-fontsh-and-installing-fonts-for-use-in-groff/</guid><pubDate>Sat, 17 Jul 2021 04:16:49 GMT</pubDate></item></channel></rss>
