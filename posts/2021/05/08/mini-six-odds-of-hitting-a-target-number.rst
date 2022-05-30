@@ -1,7 +1,7 @@
 .. title: Mini Six Odds of Hitting a Target Number
 .. slug: mini-six-odds-of-hitting-a-target-number
 .. date: 2021-05-08 22:49:20 UTC-04:00
-.. tags: mini six,dice,odds,wild die,rpg,opend6
+.. tags: mini six,dice,odds,wild die,rpg,opend6,probability
 .. category: gaming/rpg
 .. link: 
 .. description: 
@@ -165,7 +165,7 @@ results in graph mode:
 (Right-clicking the image might give you the option to open the image
 in a new tab, where you'll see it at full size.)
 
-*Last edited: 2021-08-09 12:07:59 EDT*
+*Last edited: 2022-05-30 11:56:09 EDT*
 
 ..
    Local Variables:
