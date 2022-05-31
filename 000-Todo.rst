@@ -4,3 +4,4 @@
 • Get CSS for all things that are now: ..role:: [a-z]+(something)?
 • Rework CSS for the color blind.  Look at:
   https://venngage.com/blog/color-blind-friendly-palette/
+• Re-categorize gaming/actual-play to gaming/rpg/actual-play.
