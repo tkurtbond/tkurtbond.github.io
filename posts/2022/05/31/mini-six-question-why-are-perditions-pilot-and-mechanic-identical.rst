@@ -64,3 +64,12 @@ formats, for including in my documents.)
 .. _sm6troff-ms: https://github.com/tkurtbond/m6charcost/blob/main/sm6troff-ms.scm
 .. _T1: https://troff.org/
 .. _G1: https://www.gnu.org/software/groff/
+
+I've also posted this question at a few online forums: the
+`/r/OpenD6`_ and `/r/rpg`_ subreddits, the `RPG Pub`_, and `rpg.net`_,
+which I'm listing here so I can be reminded of them.
+
+.. _/r/OpenD6: https://www.reddit.com/r/OpenD6/comments/v1v572/mini_six_question_why_are_perditions_pilot_and/
+.. _/r/rpg: https://www.reddit.com/r/rpg/comments/v1va29/mini_six_question_why_are_perditions_pilot_and/
+.. _RPG Pub: https://www.rpgpub.com/threads/mini-six-question-why-are-perditions-pilot-and-mechanic-identical.7600/
+.. _rpg.net: https://forum.rpg.net/index.php?threads/mini-six-question-why-are-perditions-pilot-and-mechanic-identical.897842/
