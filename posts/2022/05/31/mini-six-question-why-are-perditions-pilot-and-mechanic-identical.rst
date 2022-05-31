@@ -47,16 +47,20 @@ better at it that default, so Pistol isn’t listed.
 
 What do you think?
 
-Interestingly, the Pilot and the Mechanic templates are built on 12D in
-attributes and 8D+2 in skills, instead of the standard 7D in skills, so
-I made this alternate version with the same amount. I haven’t checked
-the other templates. (I’ll probably do that at some point. Rather than
-do the counting manually, I’ll probably type them up as YAML and feed
-them through **sm6**, a
-`program <'https://github.com/tkurtbond/m6charcost'>`__ I wrote that
-counts the costs of all the dice and prints out a summary. I’ve got a
-couple other programs, **sm6rst** and **sm6troff** that can read that
-same YAML and produce output in
-`reStructuredText <'https://docutils.sourceforge.io/rst.html'>`__ or
-troff formats, for including in my documents.)
+Interestingly, the Pilot and the Mechanic templates are built on 12D
+in attributes and 8D+2 in skills, instead of the standard 7D in
+skills, so I made this alternate version with the same amount. I
+haven’t checked the other templates. (I’ll probably do that at some
+point. Rather than do the counting manually, I’ll probably type them
+up as YAML and feed them through sm6_, a program I wrote that counts
+the costs of all the dice and prints out a summary. I’ve got a couple
+other programs, sm6rst_ and `sm6troff-ms`_ that can read that same
+YAML and produce output in `reStructuredText
+<https://docutils.sourceforge.io/rst.html>`__ or troff (T1_, G1_)
+formats, for including in my documents.)
 
+.. _sm6: https://github.com/tkurtbond/m6charcost/blob/main/sm6.scm
+.. _sm6rst: https://github.com/tkurtbond/m6charcost/blob/main/sm6rst.scm
+.. _sm6troff-ms: https://github.com/tkurtbond/m6charcost/blob/main/sm6troff-ms.scm
+.. _T1: https://troff.org/
+.. _G1: https://www.gnu.org/software/groff/
