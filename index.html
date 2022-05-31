@@ -10,7 +10,7 @@
 <link rel="alternate" type="application/atom+xml" title="Atom" href="feed.atom">
 <link rel="canonical" href="https://tkurtbond.github.io/">
 <link rel="next" href="index-93.html" type="text/html">
-<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/2022/05/30/announcing-minimal-opend6-an-srd-for-mini-six/" type="text/html">
+<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/2022/05/31/mini-six-question-why-are-perditions-pilot-and-mechanic-identical/" type="text/html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400;1,700&amp;family=Lato:ital,wght@0,400;0,700;1,400;1,700&amp;family=Source+Code+Pro:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet">
@@ -55,7 +55,85 @@
         <div class="row">
             <div class="col-sm-8 blog-main">
 <div class="postindex">
-    <article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2022/05/30/announcing-minimal-opend6-an-srd-for-mini-six/" class="u-url">Announcing Minimal OpenD6, an SRD for Mini Six</a></h2>
+    <article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2022/05/31/mini-six-question-why-are-perditions-pilot-and-mechanic-identical/" class="u-url">Mini Six Question: Why are Perdition’s Pilot and Mechanic Identical?</a></h2>
+        <div class="metadata blog-post-meta">
+            <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
+            <p class="dateline"><a href="posts/2022/05/31/mini-six-question-why-are-perditions-pilot-and-mechanic-identical/" rel="bookmark"><time class="published dt-published" datetime="2022-05-31T14:41:21-04:00" title="2022-05-31 14:41">2022-05-31 14:41</time></a></p>
+                <p class="commentline">            <a href="posts/2022/05/31/mini-six-question-why-are-perditions-pilot-and-mechanic-identical/#disqus_thread" data-disqus-identifier="cache/posts/2022/05/31/mini-six-question-why-are-perditions-pilot-and-mechanic-identical.html">Comments</a>
+
+
+        </p>
+</div>
+    </header><div class="e-content entry-content">
+    <div>
+<p>As part of my work making an <a class="reference external" href="posts/2022/05/31/mini-six-question-why-are-perditions-pilot-and-mechanic-identical/'https:/github.com/tkurtbond/Minimal-OpenD6'">SRD for Mini
+Six</a> I was reminded
+that in the Perdition sample setting the character templates for the
+Pilot and the Mechanic are identical, which seems odd. Here, take a
+look:</p>
+<div class="figure">
+<img alt="Mini Six’s Pilot and Mechanic, from the Perdition sample setting" src="mini-six-perdition-pilot-and-mechanic.png"><p class="caption">Mini Six’s Pilot and Mechanic, from the Perdition sample setting</p>
+</div>
+<p>Here’s a version of the original Mechanic in text format:</p>
+<div class="line-block">
+<div class="line"><strong>Mechanic</strong></div>
+<div class="line"><strong>Might 2D+1</strong></div>
+<div class="line">
+<strong>Agility 3D+2</strong> — Dodge 5D+1, Pilot 5D+2</div>
+<div class="line">
+<strong>Wit 3D+1</strong> — Computer 4D, Navigation 5D+1, Repair 4D+1</div>
+<div class="line">
+<strong>Charm 2D+2</strong> — Diplomacy 4D</div>
+<div class="line">
+<strong>Static:</strong> Dodge 16, Block 7, Parry 7, Soak 7</div>
+<div class="line">
+<strong>Perks &amp; Comps:</strong> None</div>
+<div class="line">
+<strong>Gear:</strong> Light Pistol</div>
+</div>
+<p>Anyway, I thought something like this might be better for the Mechanic:</p>
+<div class="line-block">
+<div class="line"><strong>Alternate Mechanic</strong></div>
+<div class="line"><strong>Might 2D+1</strong></div>
+<div class="line">
+<strong>Agility 3D+1</strong> — Dodge 5D, Pilot 4D</div>
+<div class="line">
+<strong>Wit 3D+2</strong> — Computer 6D, Navigation 4D+1, Repair 6D+1</div>
+<div class="line">
+<strong>Charm 2D+2</strong> — Diplomacy 3D</div>
+<div class="line">
+<strong>Perks &amp; Comps:</strong> None</div>
+<div class="line">
+<strong>Gear:</strong> Light Pistol</div>
+<div class="line">
+<strong>Static:</strong> Dodge 15; Block 7; Parry 7; Soak 7</div>
+</div>
+<p>Still has some skill at Pilot and Navigation, but not as good at those
+as the Pilot. Better Computer and Repair skills. Probably willing to
+pick up a pistol and shoot it if really necessary, but also probably no
+better at it that default, so Pistol isn’t listed.</p>
+<p>What do you think?</p>
+<p>Interestingly, the Pilot and the Mechanic templates are built on 12D
+in attributes and 8D+2 in skills, instead of the standard 7D in
+skills, so I made this alternate version with the same amount. I
+haven’t checked the other templates. (I’ll probably do that at some
+point. Rather than do the counting manually, I’ll probably type them
+up as YAML and feed them through <a class="reference external" href="https://github.com/tkurtbond/m6charcost/blob/main/sm6.scm">sm6</a>, a program I wrote that counts
+the costs of all the dice and prints out a summary. I’ve got a couple
+other programs, <a class="reference external" href="https://github.com/tkurtbond/m6charcost/blob/main/sm6rst.scm">sm6rst</a> and <a class="reference external" href="https://github.com/tkurtbond/m6charcost/blob/main/sm6troff-ms.scm">sm6troff-ms</a> that can read that same
+YAML and produce output in <a class="reference external" href="https://docutils.sourceforge.io/rst.html">reStructuredText</a> or troff (<a class="reference external" href="https://troff.org/">T1</a>, <a class="reference external" href="https://www.gnu.org/software/groff/">G1</a>)
+formats, for including in my documents.)</p>
+</div>
+    <nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="categories/d6/" rel="tag">d6</a></li>
+            <li><a class="tag p-category" href="categories/mini-six/" rel="tag">mini six</a></li>
+            <li><a class="tag p-category" href="categories/opend6/" rel="tag">opend6</a></li>
+            <li><a class="tag p-category" href="categories/perdition/" rel="tag">perdition</a></li>
+            <li><a class="tag p-category" href="categories/rpg/" rel="tag">rpg</a></li>
+            <li><a class="tag p-category" href="categories/rpg-utilities/" rel="tag">rpg utilities</a></li>
+        </ul></nav>
+</div>
+    </article><article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2022/05/30/announcing-minimal-opend6-an-srd-for-mini-six/" class="u-url">Announcing Minimal OpenD6, an SRD for Mini Six</a></h2>
         <div class="metadata blog-post-meta">
             <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
             <p class="dateline"><a href="posts/2022/05/30/announcing-minimal-opend6-an-srd-for-mini-six/" rel="bookmark"><time class="published dt-published" datetime="2022-05-30T11:49:23-04:00" title="2022-05-30 11:49">2022-05-30 11:49</time></a></p>
@@ -850,77 +928,6 @@ Emacs Lisp (<a class="reference external" href="posts/2020/07/03/arrow-macros-in
             <li><a class="tag p-category" href="categories/common-lisp/" rel="tag">common lisp</a></li>
             <li><a class="tag p-category" href="categories/emacs/" rel="tag">emacs</a></li>
             <li><a class="tag p-category" href="categories/emacs-lisp/" rel="tag">emacs lisp</a></li>
-        </ul></nav>
-</div>
-    </article><article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2021/09/06/old-school-essentials-classic-fantasy-rules-tome/" class="u-url">Old-School Essentials Classic Fantasy Rules Tome</a></h2>
-        <div class="metadata blog-post-meta">
-            <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
-            <p class="dateline"><a href="posts/2021/09/06/old-school-essentials-classic-fantasy-rules-tome/" rel="bookmark"><time class="published dt-published" datetime="2021-09-06T16:04:34-04:00" title="2021-09-06 16:04">2021-09-06 16:04</time></a></p>
-                <p class="commentline">            <a href="posts/2021/09/06/old-school-essentials-classic-fantasy-rules-tome/#disqus_thread" data-disqus-identifier="cache/posts/2021/09/06/old-school-essentials-classic-fantasy-rules-tome.html">Comments</a>
-
-
-        </p>
-</div>
-    </header><div class="e-content entry-content">
-    <div>
-<p>[I actually finished reading this back on July 9, 2021, but forgot to
-finish this post, so it is appearing now.]</p>
-<p>I finished reading the <cite>Old-School Essentials Classic Fantasy Rules
-Tome</cite> from cover to cover and I am very impressed.</p>
-<p>As I say in my terse Goodreads review:</p>
-<a href="https://www.goodreads.com/book/show/49203328-old-school-essentials-classic-fantasy" style="float: left; padding-right: 20px"><img border="0" alt="Old-School Essentials Classic Fantasy: Rules Tome" src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1576056628l/49203328._SX98_.jpg"></a><a href="https://www.goodreads.com/book/show/49203328-old-school-essentials-classic-fantasy">Old-School Essentials Classic Fantasy: Rules Tome</a> by <a href="https://www.goodreads.com/author/show/16187767.Gavin_Norman">Gavin Norman</a><br>
-My rating: <a href="https://www.goodreads.com/review/show/4087725161">5 of 5 stars</a><br><br>
-Excellent restatement of the class Basic/Expert D&amp;D (B/X D&amp;D) rules from 1981. Exceptionally clear presentation in wording, typography, and layout. Excellent physical production quality. I liked the use of full page or 2 page spread color artwork, and the black and white art included on the other pages. Excellent range of artwork.
-<br><br><a href="https://www.goodreads.com/review/list/13454227-t-kurt">View all my reviews on Goodreads</a>
-<br><br><p>To expand on this:</p>
-<p>I've said <a class="reference external" href="pages/roleplaying-games/#how-i-got-started">elsewhere</a> that I started playing with first edition AD&amp;D.
-As far as I can remember, we often simplified things: I don't remember
-using segments, spell components, weapon speed factors, or armor class
-adjustments, and I'm not sure we used anything like the actual
-official combat sequence.<a class="footnote-reference brackets" href="posts/2021/09/06/old-school-essentials-classic-fantasy-rules-tome/#addict" id="id1">1</a> I never picked up the
-Moldvay/Cook/Marsh Basic/Expert Sets, unfortunately, since I foolishly
-thought “Advanced” meant better than “Basic”.</p>
-<p>I think <cite>Old-School Essentials Classic Fantasy</cite> is an wonderful way
-for someone to learn the rules of classic D&amp;D, and for running classic
-D&amp;D campaigns.  I wish it had been around when I started playing D&amp;D.
-I'd recommend it today for anyone learning to play, or anyone who
-prefers the classic rules.</p>
-<!-- See DMG p. 61, “Encounters, Combat, and Initiative”. -->
-<dl class="footnote brackets">
-<dt class="label" id="addict"><span class="brackets"><a class="fn-backref" href="posts/2021/09/06/old-school-essentials-classic-fantasy-rules-tome/#id1">1</a></span></dt>
-<dd>
-<p>The rules on Initiative on p. 62–63 of the Dungeon Master's Guide
-(DMG) sound simple, but there are further elaborations elsewhere in
-the DMG (“Simultaneous Initiative” on p. 66, for instance) and
-other AD&amp;D 1E rule books.</p>
-<p>It takes a 20 page document, <cite>Advanced Dungeons &amp; Dragons®
-Initiative and Combat Table</cite>, compiled by David M. Prata, (<a class="reference external" href="https://idiscepolidellamanticora.files.wordpress.com/2012/09/addict.pdf">I1</a> or
-<a class="reference external" href="http://knights-n-knaves.com/dmprata/ADDICT.pdf">I2</a>) to come anywhere near compiling and explaining the actual
-first edition AD&amp;D initiative and combat sequence.</p>
-<p>I'm not entirely convinced that there <strong>is</strong> a completely
-consistent interpretation of the rules, but people have spent a lot
-of time and effort trying to figure one out.</p>
-<p>Oh, here's a brief but clear discussion of the <a class="reference external" href="https://www.knights-n-knaves.com/phpbb3/viewtopic.php?f=8&amp;t=15891">AD&amp;D Initiative
-Controversy</a>, (<a class="reference external" href="https://web.archive.org/web/20210706181418/http://knights-n-knaves.com/phpbb3/viewtopic.php?f=8&amp;t=15891">mirror</a> on archive.org) describing both The
-A.D.D.I.C.T. Method and the OSRIC method.</p>
-</dd>
-</dl>
-<p><em>Last edited: 2021-09-13 17:13:50 EDT</em></p>
-<!-- Local Variables:
-time-stamp-format: "%Y-%02m-%02d %02H:%02M:%02S %Z"
-time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
-time-stamp-end: "\\*\\\\?\n"
-time-stamp-line-limit: -20
-End: -->
-</div>
-    <nav><ul itemprop="keywords" class="tags">
-<li><a class="tag p-category" href="categories/bx-dd/" rel="tag">b/x d&amp;d</a></li>
-            <li><a class="tag p-category" href="categories/basicexpert-dd/" rel="tag">basic/expert d&amp;d</a></li>
-            <li><a class="tag p-category" href="categories/classic-fantasy/" rel="tag">classic fantasy</a></li>
-            <li><a class="tag p-category" href="categories/dd/" rel="tag">d&amp;d</a></li>
-            <li><a class="tag p-category" href="categories/old-school-essentials/" rel="tag">old-school essentials</a></li>
-            <li><a class="tag p-category" href="categories/ose/" rel="tag">ose</a></li>
-            <li><a class="tag p-category" href="categories/rpg/" rel="tag">rpg</a></li>
         </ul></nav>
 </div>
     </article>
