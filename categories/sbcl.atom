@@ -3,7 +3,7 @@
 <feed xml:lang="en" xmlns="http://www.w3.org/2005/Atom">
   <title>Lacking Natural Simplicity (Posts about sbcl)</title>
   <id>https://tkurtbond.github.io/categories/sbcl.atom</id>
-  <updated>2021-06-10T18:16:49Z</updated>
+  <updated>2022-06-05T16:28:20Z</updated>
   <author>
     <name>T. Kurt Bond</name>
   </author>
@@ -19,16 +19,18 @@
       <name>T. Kurt Bond</name>
     </author>
     <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/posts/2020/04/24/binding-a-symbol-defined-with-defconstant-with-let-is-not-portable-in-common-lisp/"/>
-    <summary type="html">&lt;div&gt;&lt;p&gt;&lt;a class="reference external" href="http://www.sbcl.org/"&gt;SBCL&lt;/a&gt; and &lt;a class="reference external" href="https://ccl.clozure.com/"&gt;CCL&lt;/a&gt; and &lt;a class="reference external" href="https://clisp.sourceforge.io/"&gt;CLISP&lt;/a&gt; think binding a symbol defined with &lt;code class="docutils literal"&gt;defconstant&lt;/code&gt;
+    <summary type="html">&lt;p&gt;&lt;a class="reference external" href="http://www.sbcl.org/"&gt;SBCL&lt;/a&gt; and &lt;a class="reference external" href="https://ccl.clozure.com/"&gt;CCL&lt;/a&gt; and &lt;a class="reference external" href="https://clisp.sourceforge.io/"&gt;CLISP&lt;/a&gt; think binding a symbol defined with &lt;code class="docutils literal"&gt;defconstant&lt;/code&gt;
 is an error, so if you do&lt;/p&gt;
-&lt;pre class="code common-lisp"&gt;&lt;a name="rest_code_ad67f543d59f4ed4824dd151eb867da5-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;defconstant&lt;/span&gt; &lt;span class="nv"&gt;foo&lt;/span&gt; &lt;span class="s"&gt;"foo"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;a name="rest_code_ad67f543d59f4ed4824dd151eb867da5-2"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;let&lt;/span&gt; &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nv"&gt;foo&lt;/span&gt; &lt;span class="s"&gt;"bar"&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="nv"&gt;foo&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;p&gt;you get an error.  But in &lt;a class="reference external" href="https://abcl.org/"&gt;ABCL&lt;/a&gt; and &lt;a class="reference external" href="https://common-lisp.net/project/ecl/"&gt;ECL&lt;/a&gt; you don’t.&lt;/p&gt;
+&lt;div class="code"&gt;&lt;pre class="code common-lisp"&gt;&lt;a id="rest_code_554e4460028a4bd5b939a9c4b15be77e-1" name="rest_code_554e4460028a4bd5b939a9c4b15be77e-1" href="https://tkurtbond.github.io/posts/2020/04/24/binding-a-symbol-defined-with-defconstant-with-let-is-not-portable-in-common-lisp/#rest_code_554e4460028a4bd5b939a9c4b15be77e-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;defconstant&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;foo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;"foo"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;a id="rest_code_554e4460028a4bd5b939a9c4b15be77e-2" name="rest_code_554e4460028a4bd5b939a9c4b15be77e-2" href="https://tkurtbond.github.io/posts/2020/04/24/binding-a-symbol-defined-with-defconstant-with-let-is-not-portable-in-common-lisp/#rest_code_554e4460028a4bd5b939a9c4b15be77e-2"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;let&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nv"&gt;foo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;"bar"&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;foo&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;you get an error.  But in &lt;a class="reference external" href="https://abcl.org/"&gt;ABCL&lt;/a&gt; and &lt;a class="reference external" href="https://common-lisp.net/project/ecl/"&gt;ECL&lt;/a&gt; you don’t.&lt;/p&gt;
 &lt;p&gt;If you try&lt;/p&gt;
-&lt;pre class="code common-lisp"&gt;&lt;a name="rest_code_acbe60c93b5b4c1593ef37f79b38bffd-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;defun&lt;/span&gt; &lt;span class="nv"&gt;x&lt;/span&gt; &lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;let&lt;/span&gt; &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nv"&gt;foo&lt;/span&gt; &lt;span class="s"&gt;"bar"&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="nv"&gt;foo&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
-&lt;/pre&gt;&lt;p&gt;in SBCL and CCL you get an error when the function is compiled.
+&lt;div class="code"&gt;&lt;pre class="code common-lisp"&gt;&lt;a id="rest_code_0d65036d4b9d47cb99e406d268df1a30-1" name="rest_code_0d65036d4b9d47cb99e406d268df1a30-1" href="https://tkurtbond.github.io/posts/2020/04/24/binding-a-symbol-defined-with-defconstant-with-let-is-not-portable-in-common-lisp/#rest_code_0d65036d4b9d47cb99e406d268df1a30-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;defun&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;x&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;let&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nv"&gt;foo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;"bar"&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;foo&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;in SBCL and CCL you get an error when the function is compiled.
 In SBCL the function is defined, but always gives an error when run.
-In CCL the function does not get defined.&lt;/p&gt;&lt;/div&gt;</summary>
+In CCL the function does not get defined.&lt;/p&gt;</summary>
     <category term="abcl" label="abcl"/>
     <category term="ccl" label="ccl"/>
     <category term="clisp" label="clisp"/>
@@ -45,7 +47,7 @@ In CCL the function does not get defined.&lt;/p&gt;&lt;/div&gt;</summary>
       <name>T. Kurt Bond</name>
     </author>
     <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/posts/2003/11/22/2003-11-22-sbcl-author-of-the-century/"/>
-    <summary type="html">&lt;div&gt;&lt;div class="section" id="common-lisp-sbcl-and-clim"&gt;
+    <summary type="html">&lt;section id="common-lisp-sbcl-and-clim"&gt;
 &lt;h2&gt;Common Lisp, SBCL, and CLIM&lt;/h2&gt;
 &lt;p&gt;I finally took the time to figure out how to install &lt;a class="reference external" href="http://clim.mikemac.com/"&gt;McCLIM&lt;/a&gt; under FreeBSD.  The first thing to do was
 install &lt;a class="reference external" href="http://sbcl.sourceforge.net/"&gt;SBCL&lt;/a&gt; from scratch; the
@@ -57,8 +59,8 @@ proceeded with only one hitch: I needed a &lt;cite&gt;~/.sbcl/trusted-uids.lisp&
 for some reason.  Once that was done it was easy to build McCLIM for
 SBCL and run the demo applications.  Now that I know how to build
 McCLIM I'll be able to investigate CLIM.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="section" id="recent-reading"&gt;
+&lt;/section&gt;
+&lt;section id="recent-reading"&gt;
 &lt;h2&gt;Recent Reading&lt;/h2&gt;
 &lt;ul class="simple" id="author-of-the-century"&gt;
 &lt;li&gt;&lt;p&gt;&lt;cite&gt;J.R.R. Tolkien: Author of the Century&lt;/cite&gt;, by Tom Shippey.  I think I
@@ -81,7 +83,7 @@ Silmarillion&lt;/cite&gt; and &lt;cite&gt;Unfinished Tales of Númenor and Middl
 I've not read any of the twelve volume of &lt;cite&gt;The History of Middle
 Earth&lt;/cite&gt;, and I think after this it would be interesting to do so.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;/div&gt;&lt;/div&gt;</summary>
+&lt;/section&gt;</summary>
     <category term="clim" label="clim"/>
     <category term="common-lisp" label="common lisp"/>
     <category term="old-blog" label="old blog"/>

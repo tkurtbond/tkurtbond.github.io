@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <?xml-stylesheet href="https://tkurtbond.github.io/assets/xml/atom.xsl" type="text/xsl media="all"?>
 <feed xml:lang="en" xmlns="http://www.w3.org/2005/Atom">
-  <title>Lacking Natural Simplicity (Posts about c#)</title>
+  <title>Lacking Natural Simplicity (Posts about c)</title>
   <id>https://tkurtbond.github.io/categories/c.atom</id>
-  <updated>2021-06-10T18:16:49Z</updated>
+  <updated>2022-06-05T16:35:28Z</updated>
   <author>
     <name>T. Kurt Bond</name>
   </author>
@@ -11,25 +11,124 @@
   <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/categories/c/"/>
   <generator uri="https://getnikola.com/">Nikola</generator>
   <entry>
-    <title>Updating NetBSD pkgsrc: swig checks for mcs</title>
-    <id>https://tkurtbond.github.io/posts/2009/01/06/updating-netbsd-pkgsrc-swig-checks-for-mcs/</id>
-    <updated>2009-01-06T14:42:20-05:00</updated>
-    <published>2009-01-06T14:42:20-05:00</published>
+    <title>The criticisms of Pascal in “Why Pascal is Not My Favorite Programming Language” applied to Oberon</title>
+    <id>https://tkurtbond.github.io/posts/2022/06/05/the-criticisms-of-pascal-in-why-pascal-is-not-my-favorite-programming-language-applied-to-oberon/</id>
+    <updated>2022-06-05T12:29:05-04:00</updated>
+    <published>2022-06-05T12:29:05-04:00</published>
     <author>
       <name>T. Kurt Bond</name>
     </author>
-    <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/posts/2009/01/06/updating-netbsd-pkgsrc-swig-checks-for-mcs/"/>
-    <summary type="html">&lt;p&gt;It turns out that if you are upgrading your pkgsrc packages in a
-&lt;a class="reference external" href="http://diwp.blogspot.com/2006/09/manage-your-packages-in-sandbox-with.html"&gt;sandbox&lt;/a&gt; you really need to make sure that the home directory of the
-user you are using exists in the sandbox, if you use any packages that
-have a file:&lt;cite&gt;configure&lt;/cite&gt; script that checks for &lt;cite&gt;mcs&lt;/cite&gt;, since mono hangs
-if it can't use the home directory.  Ugh.&lt;/p&gt;</summary>
-    <category term="c" label="c#"/>
-    <category term="computer" label="computer"/>
-    <category term="mcs" label="mcs"/>
-    <category term="mono" label="mono"/>
-    <category term="netbsd" label="netbsd"/>
-    <category term="os" label="os"/>
-    <category term="swig" label="swig"/>
+    <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/posts/2022/06/05/the-criticisms-of-pascal-in-why-pascal-is-not-my-favorite-programming-language-applied-to-oberon/"/>
+    <summary type="html">&lt;p&gt;I reread Brian W. Kernighan’s famous paper “Why Pascal is Not My
+Favorite Programming Language”
+(&lt;a class="reference external" href="https://www.cs.virginia.edu/~evans/cs655/readings/bwk-on-pascal.html"&gt;HTML&lt;/a&gt;,
+&lt;a class="reference external" href="http://doc.cat-v.org/bell_labs/why_pascal/"&gt;PDF&lt;/a&gt;) to see if those or
+similar criticisms can still be applied to the Oberon family of
+languages,
+&lt;a class="reference external" href="https://en.wikipedia.org/wiki/Oberon_(programming_language)"&gt;Oberon&lt;/a&gt;,
+&lt;a class="reference external" href="https://en.wikipedia.org/wiki/Oberon-2"&gt;Oberon-2&lt;/a&gt;, and &lt;a class="reference external" href="https://people.inf.ethz.ch/wirth/Oberon/index.html"&gt;Revised
+Oberon&lt;/a&gt;. I found
+Oberon-2 to be particularly inspiring, but feel that both Oberon and
+Oberon-2 lack some of the practical aspects that made C such a
+revelation to me back in the 1980s when I first encountered it, after
+having programmed mostly in various BASICs, 6502 machine code, VAX
+MACRO, and Pascal.&lt;/p&gt;
+&lt;p&gt;So, here are Kernighan’s summary, nine criticisms, along with my
+comments.&lt;/p&gt;
+&lt;ol class="arabic"&gt;
+&lt;li&gt;&lt;p&gt;Since the size of an array is part of its type, it is not possible to
+write general-purpose routines, that is, to deal with arrays of
+different sizes. In particular, string handling is very difficult.&lt;/p&gt;
+&lt;p&gt;This is still a problem in the original Oberon, but Oberon-2
+introduced open arrays, which allows any size of array to be passed
+to a procedure. While you can’t return arrays of arbitrary sizes from
+a procedure, you can dynamically allocate any size array using
+&lt;code class="docutils literal"&gt;POINTER TO ARRAY&lt;/code&gt; and &lt;code class="docutils literal"&gt;NEW&lt;/code&gt;, and return the pointer. Revised
+Oberon adopted open arrays.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;The lack of static variables, initialization and a way to communicate
+non-hierarchically combine to destroy the “locality” of a program -
+variables require much more scope than they ought to.&lt;/p&gt;
+&lt;p&gt;This criticism still applies. None of the Oberon languages include
+static variables or initialization.&lt;/p&gt;
+&lt;p&gt;The lack of static variables is somewhat mitigated by the ability to
+divide things up using modules, since the tendency is to create a
+module for the shared variable and the procedures that depend on it,
+but is still clumsy if the only thing you need is a static variable
+in one procedure.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;The one-pass nature of the language forces procedures and functions
+to be presented in an unnatural order; the enforced separation of
+various declarations scatters program components that logically
+belong together.&lt;/p&gt;
+&lt;p&gt;Oberon and Oberon-2 allow mixing &lt;code class="docutils literal"&gt;CONST&lt;/code&gt;, &lt;code class="docutils literal"&gt;TYPE&lt;/code&gt; and &lt;code class="docutils literal"&gt;VAR&lt;/code&gt;
+declarations in any order and to appear multiple times, but still
+requires procedure and forward procedure declarations to come after
+all other declarations. In Revised Oberon &lt;code class="docutils literal"&gt;CONST&lt;/code&gt;, &lt;code class="docutils literal"&gt;TYPE&lt;/code&gt;, and
+&lt;code class="docutils literal"&gt;VAR&lt;/code&gt; declarations must occur and in that order, followed by
+procedure declarations, so the original criticism applies entirely
+again.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;The lack of separate compilation impedes the development of large
+programs and makes the use of libraries impossible.&lt;/p&gt;
+&lt;p&gt;Not a problem any more. All the Oberon languages use modules,
+introduced in Modula. Arguably, this is much superior to C’s model of
+separate compilation and using header files to ensure consistent
+function declarations are consistent across files.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;The order of logical expression evaluation cannot be controlled,
+which leads to convoluted code and extraneous variables.&lt;/p&gt;
+&lt;p&gt;This appears to not apply to the Oberon languages.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;The ‘case’ statement is emasculated because there is no default
+clause.&lt;/p&gt;
+&lt;p&gt;Original Oberon and Oberon-2 both have &lt;code class="docutils literal"&gt;ELSE&lt;/code&gt; clauses for &lt;code class="docutils literal"&gt;CASE&lt;/code&gt;
+statements. Revised Oberon does not.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;The standard I/O is defective. There is no sensible provision for
+dealing with files or program arguments as part of the standard
+language, and no extension mechanism.&lt;/p&gt;
+&lt;p&gt;IO in the Oberon family of languages is mostly defined by the
+procedures provided in the &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Oberon_(operating_system)"&gt;Oberon
+System&lt;/a&gt;,
+the operating system written in Oberon (and later in Oberon-2). It
+has good facilities for dealing with files, considered by some to be
+a better API than the familiar Unix/C API, for the functionality it
+provides.&lt;/p&gt;
+&lt;p&gt;None of the Oberon languages provide a standard method for access
+to program arguments in the Unix/C style, as the Oberon System used
+entirely different mechanisms.  Those Oberon[-2] implementations
+I've used outside of the Oberon System all provided some access to
+the program arguments, usually as a procedure returns the number of
+program arguments and another that returns a specific argument, but
+none of them used the same API.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;The language lacks most of the tools needed for assembling large
+programs, most notably file inclusion.&lt;/p&gt;
+&lt;p&gt;The addition of separately compiled modules that provide a defined
+interface mostly obviates this criticism and is superior to the
+kludge of separate complication and include files provided by C.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;There is no escape.&lt;/p&gt;
+&lt;p&gt;All the Oberon languages include the module &lt;code class="docutils literal"&gt;SYSTEM&lt;/code&gt;, which
+provides low level access to addresses of variables and to individual
+bits of memory, along with bit manipulation of integers. Revised
+Oberon adds access to sizes of types. Oberon and Oberon-2 provide a
+&lt;code class="docutils literal"&gt;VAL&lt;/code&gt; function that allows interpreting a variable of one type as a
+variable of another type. Revised Oberon does not.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;All the Oberon languages still have semicolon as separator instead of
+semicolon as terminator.   I much prefer semicolon as terminator.&lt;/p&gt;
+&lt;p&gt;All-in-all, I'm disappointed in Revised Oberon.  While I approve of a
+few of its changes, most of them seem to be a definite step backward.
+I think Wirth's minimalism does him a disservice here.&lt;/p&gt;</summary>
+    <category term="c" label="c"/>
+    <category term="oberon" label="oberon"/>
+    <category term="oberon-system" label="oberon system"/>
+    <category term="oberon-2" label="oberon-2"/>
+    <category term="pascal" label="pascal"/>
+    <category term="revised-oberon" label="revised oberon"/>
+    <category term="unix" label="unix"/>
   </entry>
 </feed>

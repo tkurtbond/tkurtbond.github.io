@@ -77,7 +77,7 @@ Macros.  If you read that far there is a bonus at the end.">
         <div class="metadata blog-post-meta">
             <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
             <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2021-07-15T15:57:09-04:00" itemprop="datePublished" title="2021-07-15 15:57">2021-07-15 15:57</time></a></p>
-                <p class="commentline">            <a href="#disqus_thread" data-disqus-identifier="cache/posts/2021/07/15/troff-memorandum-macros-documentation.html">Comments</a>
+                <p class="commentline">        <a href="#disqus_thread" data-disqus-identifier="cache/posts/2021/07/15/troff-memorandum-macros-documentation.html">Comments</a>
 
 
                     </p>
@@ -86,13 +86,12 @@ Macros.  If you read that far there is a bonus at the end.">
         </div>
         
     </header><div class="e-content entry-content" itemprop="articleBody text">
-    <div>
-<p><strong>TL;DR:</strong> Look <a class="reference external" href="../../../../../troff/mm-all.pdf">here</a> for documentation for the <span class="app">Documenter's Workbench</span> <span class="app">mm</span> Memorandum
+    <p><strong>TL;DR:</strong> Look <a class="reference external" href="../../../../../troff/mm-all.pdf">here</a> for documentation for the <span class="app">Documenter's Workbench</span> <span class="app">mm</span> Memorandum
 Macros for <span class="app">groff</span>, based on the original paper <cite>MM - Memorandum
 Macros</cite>.  If you read that far there is a <a class="reference internal" href="#bonus">bonus</a> at the end.</p>
 <p>When I learned <span class="app">troff</span> it was actually on a VAX running VMS (used
 by <a class="reference external" href="http://www.mpl.com/">MPL Corporation</a>) using a port of <span class="app">troff</span> called
-<span class="app">xroff</span> <a class="footnote-reference brackets" href="#who-produced-xroff" id="id1">1</a>, probably around 1986.  (The VAX
+<span class="app">xroff</span> <a class="footnote-reference brackets" href="#who-produced-xroff" id="footnote-reference-1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>, probably around 1986.  (The VAX
 also had TeX and LaTeX, and I used them too.  Both supported the DEC
 LNO3 laserprinter that MPL had.)  While I don't know who produced
 <span class="app">xroff</span> and can't find anything out about it on the Internet, it
@@ -108,7 +107,7 @@ package pretty well, in a user guide sort of way, teaching you how to
 use the features as it went along, rather than being a pure reference
 manual.  And I found <span class="app">mm</span> most comparable in features to LaTeX of the
 troff macro packages.  While configuring <span class="app">mm</span> documents is somewhat
-quirky <a class="footnote-reference brackets" href="#quirky" id="id2">2</a>, I felt that the added features over those found in
+quirky <a class="footnote-reference brackets" href="#quirky" id="footnote-reference-2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>, I felt that the added features over those found in
 <span class="app">me</span> and <span class="app">ms</span> made it worthwhile.  So I wrote a lot of
 documents using <span class="app">mm</span>.</p>
 <p>Years later when I first got access to <span class="app">groff</span> on Unix machines
@@ -141,48 +140,41 @@ posted a version that I built a while ago <a class="reference external" href="..
 outline/table-of-contents entries for sections in <span class="app">groff</span> <span class="app">mm</span>,
 using the <code class="docutils literal">HZ</code> user-defined heading exit macro (see
 <span class="man">groff_mm(7)</span>):</p>
-<pre class="code nroff"><a name="rest_code_df1dfa8657964e4c94c08a4449273cb0-1"></a><span class="p">.</span><span class="c">\" pdf outline fold level</span>
-<a name="rest_code_df1dfa8657964e4c94c08a4449273cb0-2"></a>.<span class="k">nr</span> <span class="s">PDFOUTLINE.FOLDLEVEL</span> <span class="m">3</span>
-<a name="rest_code_df1dfa8657964e4c94c08a4449273cb0-3"></a><span class="p">.</span><span class="c">\" start out in outline view</span>
-<a name="rest_code_df1dfa8657964e4c94c08a4449273cb0-4"></a>.<span class="k">pdfview</span> <span class="s">/PageMode</span> <span class="s">/UseOutlines</span>
-<a name="rest_code_df1dfa8657964e4c94c08a4449273cb0-5"></a>.<span class="k">de</span> <span class="s">HZ</span>
-<a name="rest_code_df1dfa8657964e4c94c08a4449273cb0-6"></a>.<span class="k">pdfhref</span> <span class="s">O</span> <span class="se">\\</span><span class="s">$2</span> <span class="se">\\</span><span class="s">*[}0]</span> <span class="se">\\</span><span class="s">$3</span>
-<a name="rest_code_df1dfa8657964e4c94c08a4449273cb0-7"></a><span class="p">.</span><span class="s">.</span>
-</pre>
+<div class="code"><pre class="code nroff"><a id="rest_code_74adfd24285d4e28ae724249cb6a2655-1" name="rest_code_74adfd24285d4e28ae724249cb6a2655-1" href="#rest_code_74adfd24285d4e28ae724249cb6a2655-1"></a><span class="p">.</span><span class="c">\" pdf outline fold level</span>
+<a id="rest_code_74adfd24285d4e28ae724249cb6a2655-2" name="rest_code_74adfd24285d4e28ae724249cb6a2655-2" href="#rest_code_74adfd24285d4e28ae724249cb6a2655-2"></a>.<span class="k">nr</span> <span class="s">PDFOUTLINE.FOLDLEVEL</span> <span class="m">3</span>
+<a id="rest_code_74adfd24285d4e28ae724249cb6a2655-3" name="rest_code_74adfd24285d4e28ae724249cb6a2655-3" href="#rest_code_74adfd24285d4e28ae724249cb6a2655-3"></a><span class="p">.</span><span class="c">\" start out in outline view</span>
+<a id="rest_code_74adfd24285d4e28ae724249cb6a2655-4" name="rest_code_74adfd24285d4e28ae724249cb6a2655-4" href="#rest_code_74adfd24285d4e28ae724249cb6a2655-4"></a>.<span class="k">pdfview</span> <span class="s">/PageMode</span> <span class="s">/UseOutlines</span>
+<a id="rest_code_74adfd24285d4e28ae724249cb6a2655-5" name="rest_code_74adfd24285d4e28ae724249cb6a2655-5" href="#rest_code_74adfd24285d4e28ae724249cb6a2655-5"></a>.<span class="k">de</span> <span class="s">HZ</span>
+<a id="rest_code_74adfd24285d4e28ae724249cb6a2655-6" name="rest_code_74adfd24285d4e28ae724249cb6a2655-6" href="#rest_code_74adfd24285d4e28ae724249cb6a2655-6"></a>.<span class="k">pdfhref</span> <span class="s">O</span> <span class="se">\\</span><span class="s">$2</span> <span class="se">\\</span><span class="s">*[}0]</span> <span class="se">\\</span><span class="s">$3</span>
+<a id="rest_code_74adfd24285d4e28ae724249cb6a2655-7" name="rest_code_74adfd24285d4e28ae724249cb6a2655-7" href="#rest_code_74adfd24285d4e28ae724249cb6a2655-7"></a><span class="p">.</span><span class="s">.</span>
+</pre></div>
 <p>And here's how to do it in <a class="reference external" href="http://n-t-roff.github.io/heirloom/doctools.html">Heirloom Docutils</a> <span class="app">troff</span>:</p>
-<pre class="code nroff"><a name="rest_code_35db5f339038467db0126c9c04977290-1"></a>.<span class="k">de</span> <span class="s">HY</span>
-<a name="rest_code_35db5f339038467db0126c9c04977290-2"></a>.<span class="k">nr</span> <span class="s">HYtmp</span> <span class="s">(\\$1-1)</span>
-<a name="rest_code_35db5f339038467db0126c9c04977290-3"></a><span class="se">\\</span>X'PDFMark: Bookmark <span class="se">\\</span>n[HYtmp] <span class="se">\\</span>$3'
-<a name="rest_code_35db5f339038467db0126c9c04977290-4"></a><span class="p">.</span><span class="s">.</span>
-</pre>
+<div class="code"><pre class="code nroff"><a id="rest_code_45b903ee779947279ff5bec339547d44-1" name="rest_code_45b903ee779947279ff5bec339547d44-1" href="#rest_code_45b903ee779947279ff5bec339547d44-1"></a>.<span class="k">de</span> <span class="s">HY</span>
+<a id="rest_code_45b903ee779947279ff5bec339547d44-2" name="rest_code_45b903ee779947279ff5bec339547d44-2" href="#rest_code_45b903ee779947279ff5bec339547d44-2"></a>.<span class="k">nr</span> <span class="s">HYtmp</span> <span class="s">(\\$1-1)</span>
+<a id="rest_code_45b903ee779947279ff5bec339547d44-3" name="rest_code_45b903ee779947279ff5bec339547d44-3" href="#rest_code_45b903ee779947279ff5bec339547d44-3"></a><span class="se">\\</span>X'PDFMark: Bookmark <span class="se">\\</span>n[HYtmp] <span class="se">\\</span>$3'
+<a id="rest_code_45b903ee779947279ff5bec339547d44-4" name="rest_code_45b903ee779947279ff5bec339547d44-4" href="#rest_code_45b903ee779947279ff5bec339547d44-4"></a><span class="p">.</span><span class="s">.</span>
+</pre></div>
 <p>This version uses the <code class="docutils literal">HY</code> user-defined heading exit macro and
 doesn't include the section numbers.</p>
 <p>I'm not sure why the two use different macros.  All I can say is that
 I wrote them at different times for slightly different purposes.</p>
-<dl class="footnote brackets">
-<dt class="label" id="who-produced-xroff"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd>
+<aside class="footnote brackets" id="who-produced-xroff" role="note"><span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#footnote-reference-1">1</a><span class="fn-bracket">]</span></span>
 <p>While I still maintain a descendant of the VAX I where I used
 <span class="app">xroff</span> (emulated using <a class="reference external" href="https://www.stromasys.com/solutions/charon-vax/">Charon-VAX</a>), sometime in the past the
 <span class="app">xroff</span> software disappeared from it.  I have no idea what
 happened to it.  I blame user PDL!</p>
-</dd>
-<dt class="label" id="quirky"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
-<dd>
+</aside><aside class="footnote brackets" id="quirky" role="note"><span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#footnote-reference-2">2</a><span class="fn-bracket">]</span></span>
 <p>The page offset, page width, and page length have to be set before
 the <span class="app">mm</span> macros were loaded, so while on Unix it is easy to set those
 values on the command line, on VMS due to oddities in its command line
 it was easiest to use <code class="docutils literal">.so</code> and load the macros directly</p>
-</dd>
-</dl>
-<p><em>Last edited: 2021-07-17 19:09:27 EDT</em></p>
+</aside><p><em>Last edited: 2021-07-17 19:09:27 EDT</em></p>
 <!-- Local Variables:
 time-stamp-format: "%Y-%02m-%02d %02H:%02M:%02S %Z"
 time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
 time-stamp-end: "\\*\\\\?\n"
 time-stamp-line-limit: -20
 End: -->
-</div>
     </div>
     <script>var pfHeaderImgUrl = '';var pfHeaderTagline = '';var pfdisableClickToDel = 0;var pfHideImages = 0;var pfImageDisplayStyle = 'right';var pfDisablePDF = 0;var pfDisableEmail = 0;var pfDisablePrint = 0;var pfCustomCSS = '';var pfBtVersion='2';(function(){var js,pf;pf=document.createElement('script');pf.type='text/javascript';pf.src='//cdn.printfriendly.com/printfriendly.js';document.getElementsByTagName('head')[0].appendChild(pf)})();</script><a href="https://www.printfriendly.com" style="color:#6D9F00;text-decoration:none;" class="printfriendly" onclick="window.print();return false;" title="Printer Friendly and PDF"><img style="border:none;-webkit-box-shadow:none;box-shadow:none;" src="//cdn.printfriendly.com/buttons/printfriendly-pdf-button.png" alt="Print Friendly and PDF"></a>    
     <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
@@ -204,7 +196,7 @@ End: -->
                 <a href="../../16/sorting-words-separated-by-commas/" rel="next" title="Sorting words separated by commas">Next post</a>
             </li>
         </ul></nav></aside><section class="comments hidden-print"><h2>Comments</h2>
-                        <div id="disqus_thread"></div>
+                    <div id="disqus_thread"></div>
         <script>
         var disqus_shortname ="lacking-natural-simplicity",
             disqus_url="https://tkurtbond.github.io/posts/2021/07/15/troff-memorandum-macros-documentation/",

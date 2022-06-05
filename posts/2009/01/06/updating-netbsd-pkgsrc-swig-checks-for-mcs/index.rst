@@ -1,7 +1,7 @@
 .. title: Updating NetBSD pkgsrc: swig checks for mcs
 .. slug: updating-netbsd-pkgsrc-swig-checks-for-mcs
 .. date: 2009-01-06 14:42:20 UTC-05:00
-.. tags: computer,os,netbsd,mono,c#,mcs,swig
+.. tags: computer,os,netbsd,mono,csharp,mcs,swig
 .. category: computer/os/bsd
 .. link: 
 .. description: 

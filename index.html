@@ -10,7 +10,7 @@
 <link rel="alternate" type="application/atom+xml" title="Atom" href="feed.atom">
 <link rel="canonical" href="https://tkurtbond.github.io/">
 <link rel="next" href="index-93.html" type="text/html">
-<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/2022/05/31/an-alien-creature-for-breachworld/" type="text/html">
+<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/2022/06/05/the-criticisms-of-pascal-in-why-pascal-is-not-my-favorite-programming-language-applied-to-oberon/" type="text/html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400;1,700&amp;family=Lato:ital,wght@0,400;0,700;1,400;1,700&amp;family=Source+Code+Pro:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet">
@@ -55,18 +55,150 @@
         <div class="row">
             <div class="col-sm-8 blog-main">
 <div class="postindex">
-    <article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2022/05/31/an-alien-creature-for-breachworld/" class="u-url">An Alien Creature for Breachworld</a></h2>
+    <article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2022/06/05/the-criticisms-of-pascal-in-why-pascal-is-not-my-favorite-programming-language-applied-to-oberon/" class="u-url">The criticisms of Pascal in “Why Pascal is Not My Favorite Programming Language” applied to Oberon</a></h2>
         <div class="metadata blog-post-meta">
             <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
-            <p class="dateline"><a href="posts/2022/05/31/an-alien-creature-for-breachworld/" rel="bookmark"><time class="published dt-published" datetime="2022-05-31T15:32:41-04:00" title="2022-05-31 15:32">2022-05-31 15:32</time></a></p>
-                <p class="commentline">            <a href="posts/2022/05/31/an-alien-creature-for-breachworld/#disqus_thread" data-disqus-identifier="cache/posts/2022/05/31/an-alien-creature-for-breachworld.html">Comments</a>
+            <p class="dateline"><a href="posts/2022/06/05/the-criticisms-of-pascal-in-why-pascal-is-not-my-favorite-programming-language-applied-to-oberon/" rel="bookmark"><time class="published dt-published" datetime="2022-06-05T12:29:05-04:00" title="2022-06-05 12:29">2022-06-05 12:29</time></a></p>
+                <p class="commentline">        <a href="posts/2022/06/05/the-criticisms-of-pascal-in-why-pascal-is-not-my-favorite-programming-language-applied-to-oberon/#disqus_thread" data-disqus-identifier="cache/posts/2022/06/05/the-criticisms-of-pascal-in-why-pascal-is-not-my-favorite-programming-language-applied-to-oberon.html">Comments</a>
 
 
         </p>
 </div>
     </header><div class="e-content entry-content">
-    <div>
-<p>Here's an alien creature that created to have come through a nearby
+    <p>I reread Brian W. Kernighan’s famous paper “Why Pascal is Not My
+Favorite Programming Language”
+(<a class="reference external" href="https://www.cs.virginia.edu/~evans/cs655/readings/bwk-on-pascal.html">HTML</a>,
+<a class="reference external" href="http://doc.cat-v.org/bell_labs/why_pascal/">PDF</a>) to see if those or
+similar criticisms can still be applied to the Oberon family of
+languages,
+<a class="reference external" href="https://en.wikipedia.org/wiki/Oberon_(programming_language)">Oberon</a>,
+<a class="reference external" href="https://en.wikipedia.org/wiki/Oberon-2">Oberon-2</a>, and <a class="reference external" href="https://people.inf.ethz.ch/wirth/Oberon/index.html">Revised
+Oberon</a>. I found
+Oberon-2 to be particularly inspiring, but feel that both Oberon and
+Oberon-2 lack some of the practical aspects that made C such a
+revelation to me back in the 1980s when I first encountered it, after
+having programmed mostly in various BASICs, 6502 machine code, VAX
+MACRO, and Pascal.</p>
+<p>So, here are Kernighan’s summary, nine criticisms, along with my
+comments.</p>
+<ol class="arabic">
+<li>
+<p>Since the size of an array is part of its type, it is not possible to
+write general-purpose routines, that is, to deal with arrays of
+different sizes. In particular, string handling is very difficult.</p>
+<p>This is still a problem in the original Oberon, but Oberon-2
+introduced open arrays, which allows any size of array to be passed
+to a procedure. While you can’t return arrays of arbitrary sizes from
+a procedure, you can dynamically allocate any size array using
+<code class="docutils literal">POINTER TO ARRAY</code> and <code class="docutils literal">NEW</code>, and return the pointer. Revised
+Oberon adopted open arrays.</p>
+</li>
+<li>
+<p>The lack of static variables, initialization and a way to communicate
+non-hierarchically combine to destroy the “locality” of a program -
+variables require much more scope than they ought to.</p>
+<p>This criticism still applies. None of the Oberon languages include
+static variables or initialization.</p>
+<p>The lack of static variables is somewhat mitigated by the ability to
+divide things up using modules, since the tendency is to create a
+module for the shared variable and the procedures that depend on it,
+but is still clumsy if the only thing you need is a static variable
+in one procedure.</p>
+</li>
+<li>
+<p>The one-pass nature of the language forces procedures and functions
+to be presented in an unnatural order; the enforced separation of
+various declarations scatters program components that logically
+belong together.</p>
+<p>Oberon and Oberon-2 allow mixing <code class="docutils literal">CONST</code>, <code class="docutils literal">TYPE</code> and <code class="docutils literal">VAR</code>
+declarations in any order and to appear multiple times, but still
+requires procedure and forward procedure declarations to come after
+all other declarations. In Revised Oberon <code class="docutils literal">CONST</code>, <code class="docutils literal">TYPE</code>, and
+<code class="docutils literal">VAR</code> declarations must occur and in that order, followed by
+procedure declarations, so the original criticism applies entirely
+again.</p>
+</li>
+<li>
+<p>The lack of separate compilation impedes the development of large
+programs and makes the use of libraries impossible.</p>
+<p>Not a problem any more. All the Oberon languages use modules,
+introduced in Modula. Arguably, this is much superior to C’s model of
+separate compilation and using header files to ensure consistent
+function declarations are consistent across files.</p>
+</li>
+<li>
+<p>The order of logical expression evaluation cannot be controlled,
+which leads to convoluted code and extraneous variables.</p>
+<p>This appears to not apply to the Oberon languages.</p>
+</li>
+<li>
+<p>The ‘case’ statement is emasculated because there is no default
+clause.</p>
+<p>Original Oberon and Oberon-2 both have <code class="docutils literal">ELSE</code> clauses for <code class="docutils literal">CASE</code>
+statements. Revised Oberon does not.</p>
+</li>
+<li>
+<p>The standard I/O is defective. There is no sensible provision for
+dealing with files or program arguments as part of the standard
+language, and no extension mechanism.</p>
+<p>IO in the Oberon family of languages is mostly defined by the
+procedures provided in the <a class="reference external" href="https://en.wikipedia.org/wiki/Oberon_(operating_system)">Oberon
+System</a>,
+the operating system written in Oberon (and later in Oberon-2). It
+has good facilities for dealing with files, considered by some to be
+a better API than the familiar Unix/C API, for the functionality it
+provides.</p>
+<p>None of the Oberon languages provide a standard method for access
+to program arguments in the Unix/C style, as the Oberon System used
+entirely different mechanisms.  Those Oberon[-2] implementations
+I've used outside of the Oberon System all provided some access to
+the program arguments, usually as a procedure returns the number of
+program arguments and another that returns a specific argument, but
+none of them used the same API.</p>
+</li>
+<li>
+<p>The language lacks most of the tools needed for assembling large
+programs, most notably file inclusion.</p>
+<p>The addition of separately compiled modules that provide a defined
+interface mostly obviates this criticism and is superior to the
+kludge of separate complication and include files provided by C.</p>
+</li>
+<li>
+<p>There is no escape.</p>
+<p>All the Oberon languages include the module <code class="docutils literal">SYSTEM</code>, which
+provides low level access to addresses of variables and to individual
+bits of memory, along with bit manipulation of integers. Revised
+Oberon adds access to sizes of types. Oberon and Oberon-2 provide a
+<code class="docutils literal">VAL</code> function that allows interpreting a variable of one type as a
+variable of another type. Revised Oberon does not.</p>
+</li>
+</ol>
+<p>All the Oberon languages still have semicolon as separator instead of
+semicolon as terminator.   I much prefer semicolon as terminator.</p>
+<p>All-in-all, I'm disappointed in Revised Oberon.  While I approve of a
+few of its changes, most of them seem to be a definite step backward.
+I think Wirth's minimalism does him a disservice here.</p>
+    <nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="categories/c/" rel="tag">c</a></li>
+            <li><a class="tag p-category" href="categories/oberon/" rel="tag">oberon</a></li>
+            <li><a class="tag p-category" href="categories/oberon-system/" rel="tag">oberon system</a></li>
+            <li><a class="tag p-category" href="categories/oberon-2/" rel="tag">oberon-2</a></li>
+            <li><a class="tag p-category" href="categories/pascal/" rel="tag">pascal</a></li>
+            <li><a class="tag p-category" href="categories/revised-oberon/" rel="tag">revised oberon</a></li>
+            <li><a class="tag p-category" href="categories/unix/" rel="tag">unix</a></li>
+        </ul></nav>
+</div>
+    </article><article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2022/05/31/an-alien-creature-for-breachworld/" class="u-url">An Alien Creature for Breachworld</a></h2>
+        <div class="metadata blog-post-meta">
+            <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
+            <p class="dateline"><a href="posts/2022/05/31/an-alien-creature-for-breachworld/" rel="bookmark"><time class="published dt-published" datetime="2022-05-31T15:32:41-04:00" title="2022-05-31 15:32">2022-05-31 15:32</time></a></p>
+                <p class="commentline">        <a href="posts/2022/05/31/an-alien-creature-for-breachworld/#disqus_thread" data-disqus-identifier="cache/posts/2022/05/31/an-alien-creature-for-breachworld.html">Comments</a>
+
+
+        </p>
+</div>
+    </header><div class="e-content entry-content">
+    <p>Here's an alien creature that created to have come through a nearby
 Breach in the <a class="reference external" href="https://www.drivethrurpg.com/product/175297/Breachworld-Adventure-Folio-1--The-Big-Score">Breachworld Adventure Folio #1 - The Big Score</a> for
 the <a class="reference external" href="https://www.drivethrurpg.com/product/141188/Breachworld-RPG">Breachworld RPG</a> from <a class="reference external" href="https://www.drivethrurpg.com/browse/pub/3447/Jason-Richards-Publishing">Jason Richards Publishing</a> when I ran
 that for my players.</p>
@@ -75,8 +207,7 @@ Role-Playing Games and Their Modern Simulacra</a> to get inspiration
 for the creature.  It wasn't hard to mung that into something for the
 <a class="reference external" href="https://www.drivethrurpg.com/product/141188/Breachworld-RPG">Breachworld RPG</a>, which uses <a class="reference external" href="https://www.drivethrurpg.com/product/144558/Mini-Six-Bare-Bones-Edition">Mini Six</a> as the base for its rules.
 It should be easy to convert to any other OpenD6 game.</p>
-<div class="section" id="dragonfly">
-<h2>Dragonfly</h2>
+<section id="dragonfly"><h2>Dragonfly</h2>
 <p>The creature is huge, as big as an elephant.  It is semi-humanoid, having the head and wings of a immense dragonfly, two pairs of arms, a pair of legs, and a segmented body part coming out of the base of its spine that ends in a long stinger.  It has three sets of mandibles for chewing.  It is covered by chitinous armor.  Its eyes glow blue, and its body is dark red on the head and torso, fading to a lighter red along its extremities.</p>
 <div class="line-block">
 <div class="line">
@@ -100,9 +231,7 @@ It should be easy to convert to any other OpenD6 game.</p>
 <div class="line">
 <strong>Special Defenses:</strong> Resistant to Lightning: ½ damage</div>
 </div>
-</div>
-</div>
-    <nav><ul itemprop="keywords" class="tags">
+</section><nav><ul itemprop="keywords" class="tags">
 <li><a class="tag p-category" href="categories/breachworld/" rel="tag">breachworld</a></li>
             <li><a class="tag p-category" href="categories/creature/" rel="tag">creature</a></li>
             <li><a class="tag p-category" href="categories/mini-six/" rel="tag">mini six</a></li>
@@ -115,22 +244,19 @@ It should be easy to convert to any other OpenD6 game.</p>
         <div class="metadata blog-post-meta">
             <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
             <p class="dateline"><a href="posts/2022/05/31/mini-six-question-why-are-perditions-pilot-and-mechanic-identical/" rel="bookmark"><time class="published dt-published" datetime="2022-05-31T14:41:21-04:00" title="2022-05-31 14:41">2022-05-31 14:41</time></a></p>
-                <p class="commentline">            <a href="posts/2022/05/31/mini-six-question-why-are-perditions-pilot-and-mechanic-identical/#disqus_thread" data-disqus-identifier="cache/posts/2022/05/31/mini-six-question-why-are-perditions-pilot-and-mechanic-identical.html">Comments</a>
+                <p class="commentline">        <a href="posts/2022/05/31/mini-six-question-why-are-perditions-pilot-and-mechanic-identical/#disqus_thread" data-disqus-identifier="cache/posts/2022/05/31/mini-six-question-why-are-perditions-pilot-and-mechanic-identical.html">Comments</a>
 
 
         </p>
 </div>
     </header><div class="e-content entry-content">
-    <div>
-<p>As part of my work making an <a class="reference external" href="posts/2022/05/31/mini-six-question-why-are-perditions-pilot-and-mechanic-identical/'https:/github.com/tkurtbond/Minimal-OpenD6'">SRD for Mini
+    <p>As part of my work making an <a class="reference external" href="posts/2022/05/31/mini-six-question-why-are-perditions-pilot-and-mechanic-identical/'https:/github.com/tkurtbond/Minimal-OpenD6'">SRD for Mini
 Six</a> I was reminded
 that in the Perdition sample setting the character templates for the
 Pilot and the Mechanic are identical, which seems odd. Here, take a
 look:</p>
-<div class="figure">
-<img alt="Mini Six’s Pilot and Mechanic, from the Perdition sample setting" src="mini-six-perdition-pilot-and-mechanic.png"><p class="caption">Mini Six’s Pilot and Mechanic, from the Perdition sample setting</p>
-</div>
-<p>Here’s a version of the original Mechanic in text format:</p>
+<figure><img alt="Mini Six’s Pilot and Mechanic, from the Perdition sample setting" src="mini-six-perdition-pilot-and-mechanic.png"><figcaption><p>Mini Six’s Pilot and Mechanic, from the Perdition sample setting</p>
+</figcaption></figure><p>Here’s a version of the original Mechanic in text format:</p>
 <div class="line-block">
 <div class="line"><strong>Mechanic</strong></div>
 <div class="line"><strong>Might 2D+1</strong></div>
@@ -182,7 +308,6 @@ formats, for including in my documents.)</p>
 <p>I've also posted this question at a few online forums: the
 <a class="reference external" href="https://www.reddit.com/r/OpenD6/comments/v1v572/mini_six_question_why_are_perditions_pilot_and/">/r/OpenD6</a> and <a class="reference external" href="https://www.reddit.com/r/rpg/comments/v1va29/mini_six_question_why_are_perditions_pilot_and/">/r/rpg</a> subreddits, the <a class="reference external" href="https://www.rpgpub.com/threads/mini-six-question-why-are-perditions-pilot-and-mechanic-identical.7600/">RPG Pub</a>, and <a class="reference external" href="https://forum.rpg.net/index.php?threads/mini-six-question-why-are-perditions-pilot-and-mechanic-identical.897842/">rpg.net</a>,
 which I'm listing here so I can be reminded of them.</p>
-</div>
     <nav><ul itemprop="keywords" class="tags">
 <li><a class="tag p-category" href="categories/d6/" rel="tag">d6</a></li>
             <li><a class="tag p-category" href="categories/mini-six/" rel="tag">mini six</a></li>
@@ -196,14 +321,13 @@ which I'm listing here so I can be reminded of them.</p>
         <div class="metadata blog-post-meta">
             <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
             <p class="dateline"><a href="posts/2022/05/30/announcing-minimal-opend6-an-srd-for-mini-six/" rel="bookmark"><time class="published dt-published" datetime="2022-05-30T11:49:23-04:00" title="2022-05-30 11:49">2022-05-30 11:49</time></a></p>
-                <p class="commentline">            <a href="posts/2022/05/30/announcing-minimal-opend6-an-srd-for-mini-six/#disqus_thread" data-disqus-identifier="cache/posts/2022/05/30/announcing-minimal-opend6-an-srd-for-mini-six.html">Comments</a>
+                <p class="commentline">        <a href="posts/2022/05/30/announcing-minimal-opend6-an-srd-for-mini-six/#disqus_thread" data-disqus-identifier="cache/posts/2022/05/30/announcing-minimal-opend6-an-srd-for-mini-six.html">Comments</a>
 
 
         </p>
 </div>
     </header><div class="e-content entry-content">
-    <div>
-<p>Anybody interested in an SRD for <em>Mini Six</em>? Since <em>Mini Six</em> is under
+    <p>Anybody interested in an SRD for <em>Mini Six</em>? Since <em>Mini Six</em> is under
 the Open Game License, I have created one for it, <a class="reference external" href="https://github.com/tkurtbond/Minimal-OpenD6">Minimal
 OpenD6</a>. (It does
 <strong>not</strong> include the Product Identity portions, of course.)</p>
@@ -229,7 +353,6 @@ Conversions to other formats are possible using
 them, look at the
 <a class="reference external" href="https://github.com/tkurtbond/Minimal-OpenD6/releases">releases</a> page
 in the repository for a zip file.</p>
-</div>
     <nav><ul itemprop="keywords" class="tags">
 <li><a class="tag p-category" href="categories/mini-six/" rel="tag">mini six</a></li>
             <li><a class="tag p-category" href="categories/minimal-opend6/" rel="tag">minimal opend6</a></li>
@@ -243,34 +366,33 @@ in the repository for a zip file.</p>
         <div class="metadata blog-post-meta">
             <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
             <p class="dateline"><a href="posts/2022/05/21/recording-the-books-i-read-with-org-mode-and-org-capture/" rel="bookmark"><time class="published dt-published" datetime="2022-05-21T07:17:18-04:00" title="2022-05-21 07:17">2022-05-21 07:17</time></a></p>
-                <p class="commentline">            <a href="posts/2022/05/21/recording-the-books-i-read-with-org-mode-and-org-capture/#disqus_thread" data-disqus-identifier="cache/posts/2022/05/21/recording-the-books-i-read-with-org-mode-and-org-capture.html">Comments</a>
+                <p class="commentline">        <a href="posts/2022/05/21/recording-the-books-i-read-with-org-mode-and-org-capture/#disqus_thread" data-disqus-identifier="cache/posts/2022/05/21/recording-the-books-i-read-with-org-mode-and-org-capture.html">Comments</a>
 
 
         </p>
 </div>
     </header><div class="e-content entry-content">
-    <div>
-<p>I used to record the books that I read on this <a class="reference external" href="categories/recent-reading/">blog</a>, but that took
+    <p>I used to record the books that I read on this <a class="reference external" href="categories/recent-reading/">blog</a>, but that took
 too much <a class="reference external" href="posts/2010/07/21/reading-but-not-recording/">effort</a>.  However, if I don't record the books I read, I
 sometimes can't remember whether I read a particular book or not,
 especially with Kindle Unlimited books.  (Was it the seventh book of
 the series that I read last, or the eighth?)</p>
 <p>I record the books that I read in <a class="reference external" href="https://www.gnu.org/software/emacs/">emacs</a> using <a class="reference external" href="https://orgmode.org/">org-mode</a> and —
 since today — <a class="reference external" href="ttps://orgmode.org/manual/Capture.html">org-capture</a>.  Here's what the org file looks like:</p>
-<pre class="code text"><a name="rest_code_2573659774f445c88f3c6006957980dc-1"></a>* 2022
-<a name="rest_code_2573659774f445c88f3c6006957980dc-2"></a>** Read
-<a name="rest_code_2573659774f445c88f3c6006957980dc-3"></a>*** : Title of Book I Haven't Finished Reading -- https://www.amazon.com/amazon-book-link-if-it-exists
-<a name="rest_code_2573659774f445c88f3c6006957980dc-4"></a>...
-<a name="rest_code_2573659774f445c88f3c6006957980dc-5"></a>*** 2022-05-21: Title of Book I **Have** Finished Reading -- https://www.amazon.com/amazon-book-link-if-it-exists
-<a name="rest_code_2573659774f445c88f3c6006957980dc-6"></a>...
-<a name="rest_code_2573659774f445c88f3c6006957980dc-7"></a>** Did not finish
-<a name="rest_code_2573659774f445c88f3c6006957980dc-8"></a>*** : Title of Book I Won't Finish Reading -- https://www.amazon.com/amazon-book-link-if-it-exists
-<a name="rest_code_2573659774f445c88f3c6006957980dc-9"></a>...
-<a name="rest_code_2573659774f445c88f3c6006957980dc-10"></a>* 2021
-<a name="rest_code_2573659774f445c88f3c6006957980dc-11"></a>* Previously read, sometime
-<a name="rest_code_2573659774f445c88f3c6006957980dc-12"></a>** Title of Book I Finished Reading at some indeterminate date in the past -- https://www.amazon.com/amazon-book-link-if-it-exists
-<a name="rest_code_2573659774f445c88f3c6006957980dc-13"></a>...
-</pre>
+<div class="code"><pre class="code text"><a id="rest_code_582e736d77f641a79c2f272bfa0db1a6-1" name="rest_code_582e736d77f641a79c2f272bfa0db1a6-1" href="posts/2022/05/21/recording-the-books-i-read-with-org-mode-and-org-capture/#rest_code_582e736d77f641a79c2f272bfa0db1a6-1"></a>* 2022
+<a id="rest_code_582e736d77f641a79c2f272bfa0db1a6-2" name="rest_code_582e736d77f641a79c2f272bfa0db1a6-2" href="posts/2022/05/21/recording-the-books-i-read-with-org-mode-and-org-capture/#rest_code_582e736d77f641a79c2f272bfa0db1a6-2"></a>** Read
+<a id="rest_code_582e736d77f641a79c2f272bfa0db1a6-3" name="rest_code_582e736d77f641a79c2f272bfa0db1a6-3" href="posts/2022/05/21/recording-the-books-i-read-with-org-mode-and-org-capture/#rest_code_582e736d77f641a79c2f272bfa0db1a6-3"></a>*** : Title of Book I Haven't Finished Reading -- https://www.amazon.com/amazon-book-link-if-it-exists
+<a id="rest_code_582e736d77f641a79c2f272bfa0db1a6-4" name="rest_code_582e736d77f641a79c2f272bfa0db1a6-4" href="posts/2022/05/21/recording-the-books-i-read-with-org-mode-and-org-capture/#rest_code_582e736d77f641a79c2f272bfa0db1a6-4"></a>...
+<a id="rest_code_582e736d77f641a79c2f272bfa0db1a6-5" name="rest_code_582e736d77f641a79c2f272bfa0db1a6-5" href="posts/2022/05/21/recording-the-books-i-read-with-org-mode-and-org-capture/#rest_code_582e736d77f641a79c2f272bfa0db1a6-5"></a>*** 2022-05-21: Title of Book I **Have** Finished Reading -- https://www.amazon.com/amazon-book-link-if-it-exists
+<a id="rest_code_582e736d77f641a79c2f272bfa0db1a6-6" name="rest_code_582e736d77f641a79c2f272bfa0db1a6-6" href="posts/2022/05/21/recording-the-books-i-read-with-org-mode-and-org-capture/#rest_code_582e736d77f641a79c2f272bfa0db1a6-6"></a>...
+<a id="rest_code_582e736d77f641a79c2f272bfa0db1a6-7" name="rest_code_582e736d77f641a79c2f272bfa0db1a6-7" href="posts/2022/05/21/recording-the-books-i-read-with-org-mode-and-org-capture/#rest_code_582e736d77f641a79c2f272bfa0db1a6-7"></a>** Did not finish
+<a id="rest_code_582e736d77f641a79c2f272bfa0db1a6-8" name="rest_code_582e736d77f641a79c2f272bfa0db1a6-8" href="posts/2022/05/21/recording-the-books-i-read-with-org-mode-and-org-capture/#rest_code_582e736d77f641a79c2f272bfa0db1a6-8"></a>*** : Title of Book I Won't Finish Reading -- https://www.amazon.com/amazon-book-link-if-it-exists
+<a id="rest_code_582e736d77f641a79c2f272bfa0db1a6-9" name="rest_code_582e736d77f641a79c2f272bfa0db1a6-9" href="posts/2022/05/21/recording-the-books-i-read-with-org-mode-and-org-capture/#rest_code_582e736d77f641a79c2f272bfa0db1a6-9"></a>...
+<a id="rest_code_582e736d77f641a79c2f272bfa0db1a6-10" name="rest_code_582e736d77f641a79c2f272bfa0db1a6-10" href="posts/2022/05/21/recording-the-books-i-read-with-org-mode-and-org-capture/#rest_code_582e736d77f641a79c2f272bfa0db1a6-10"></a>* 2021
+<a id="rest_code_582e736d77f641a79c2f272bfa0db1a6-11" name="rest_code_582e736d77f641a79c2f272bfa0db1a6-11" href="posts/2022/05/21/recording-the-books-i-read-with-org-mode-and-org-capture/#rest_code_582e736d77f641a79c2f272bfa0db1a6-11"></a>* Previously read, sometime
+<a id="rest_code_582e736d77f641a79c2f272bfa0db1a6-12" name="rest_code_582e736d77f641a79c2f272bfa0db1a6-12" href="posts/2022/05/21/recording-the-books-i-read-with-org-mode-and-org-capture/#rest_code_582e736d77f641a79c2f272bfa0db1a6-12"></a>** Title of Book I Finished Reading at some indeterminate date in the past -- https://www.amazon.com/amazon-book-link-if-it-exists
+<a id="rest_code_582e736d77f641a79c2f272bfa0db1a6-13" name="rest_code_582e736d77f641a79c2f272bfa0db1a6-13" href="posts/2022/05/21/recording-the-books-i-read-with-org-mode-and-org-capture/#rest_code_582e736d77f641a79c2f272bfa0db1a6-13"></a>...
+</pre></div>
 <p>I keep the org file in a <span class="app">git</span> repository hosted online so I can
 edit it on whatever computer is close at hand, or on my cell phone.
 (Having a <span class="app">git</span> client with a simple editor on my phone is
@@ -284,17 +406,17 @@ and before the link.  When I'm done with reading the book I put the
 <a class="reference external" href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> date (<em>YYYY-MM-DD</em>) before the colon.</p>
 <p>I wrote a script today to count how many books I've read so far this
 year:</p>
-<pre class="code bash"><a name="rest_code_46a8e6a2deb94bad8b53181058565f8c-1"></a><span class="ch">#! /usr/bin/env bash</span>
-<a name="rest_code_46a8e6a2deb94bad8b53181058565f8c-2"></a>
-<a name="rest_code_46a8e6a2deb94bad8b53181058565f8c-3"></a><span class="nv">YEAR</span><span class="o">=</span><span class="k">$(</span>date <span class="s1">'+%Y'</span><span class="k">)</span>
-<a name="rest_code_46a8e6a2deb94bad8b53181058565f8c-4"></a><span class="nv">LAST_YEAR</span><span class="o">=</span><span class="k">$((</span>YEAR <span class="o">-</span> <span class="m">1</span><span class="k">))</span>
-<a name="rest_code_46a8e6a2deb94bad8b53181058565f8c-5"></a>
-<a name="rest_code_46a8e6a2deb94bad8b53181058565f8c-6"></a>sed -E -n <span class="s2">"/^\* </span><span class="nv">$YEAR</span><span class="s2">/,/^(\*\* Did not finish|\* </span><span class="nv">$LAST_YEAR</span><span class="s2">)/p"</span> <span class="nv">$READ_FILE</span> <span class="p">|</span>
-<a name="rest_code_46a8e6a2deb94bad8b53181058565f8c-7"></a>    sed -e <span class="s2">"/^* </span><span class="nv">$YEAR</span><span class="s2">/d"</span> -e <span class="s2">"/^** Read/d"</span> <span class="se">\</span>
-<a name="rest_code_46a8e6a2deb94bad8b53181058565f8c-8"></a>        -e <span class="s2">"/^(\*\* Did not finish|\* </span><span class="nv">$LAST_YEAR</span><span class="s2">)/d"</span> <span class="p">|</span>
-<a name="rest_code_46a8e6a2deb94bad8b53181058565f8c-9"></a>    sed -E -n <span class="s2">"/^\*\*\*[ \t]+[0-9]/p"</span> <span class="p">|</span>
-<a name="rest_code_46a8e6a2deb94bad8b53181058565f8c-10"></a>    wc -l
-</pre>
+<div class="code"><pre class="code bash"><a id="rest_code_36a791095dfe4d6e89282a1df0d674df-1" name="rest_code_36a791095dfe4d6e89282a1df0d674df-1" href="posts/2022/05/21/recording-the-books-i-read-with-org-mode-and-org-capture/#rest_code_36a791095dfe4d6e89282a1df0d674df-1"></a><span class="ch">#! /usr/bin/env bash</span>
+<a id="rest_code_36a791095dfe4d6e89282a1df0d674df-2" name="rest_code_36a791095dfe4d6e89282a1df0d674df-2" href="posts/2022/05/21/recording-the-books-i-read-with-org-mode-and-org-capture/#rest_code_36a791095dfe4d6e89282a1df0d674df-2"></a>
+<a id="rest_code_36a791095dfe4d6e89282a1df0d674df-3" name="rest_code_36a791095dfe4d6e89282a1df0d674df-3" href="posts/2022/05/21/recording-the-books-i-read-with-org-mode-and-org-capture/#rest_code_36a791095dfe4d6e89282a1df0d674df-3"></a><span class="nv">YEAR</span><span class="o">=</span><span class="k">$(</span>date <span class="s1">'+%Y'</span><span class="k">)</span>
+<a id="rest_code_36a791095dfe4d6e89282a1df0d674df-4" name="rest_code_36a791095dfe4d6e89282a1df0d674df-4" href="posts/2022/05/21/recording-the-books-i-read-with-org-mode-and-org-capture/#rest_code_36a791095dfe4d6e89282a1df0d674df-4"></a><span class="nv">LAST_YEAR</span><span class="o">=</span><span class="k">$((</span>YEAR <span class="o">-</span> <span class="m">1</span><span class="k">))</span>
+<a id="rest_code_36a791095dfe4d6e89282a1df0d674df-5" name="rest_code_36a791095dfe4d6e89282a1df0d674df-5" href="posts/2022/05/21/recording-the-books-i-read-with-org-mode-and-org-capture/#rest_code_36a791095dfe4d6e89282a1df0d674df-5"></a>
+<a id="rest_code_36a791095dfe4d6e89282a1df0d674df-6" name="rest_code_36a791095dfe4d6e89282a1df0d674df-6" href="posts/2022/05/21/recording-the-books-i-read-with-org-mode-and-org-capture/#rest_code_36a791095dfe4d6e89282a1df0d674df-6"></a>sed -E -n <span class="s2">"/^\* </span><span class="nv">$YEAR</span><span class="s2">/,/^(\*\* Did not finish|\* </span><span class="nv">$LAST_YEAR</span><span class="s2">)/p"</span> <span class="nv">$READ_FILE</span> <span class="p">|</span>
+<a id="rest_code_36a791095dfe4d6e89282a1df0d674df-7" name="rest_code_36a791095dfe4d6e89282a1df0d674df-7" href="posts/2022/05/21/recording-the-books-i-read-with-org-mode-and-org-capture/#rest_code_36a791095dfe4d6e89282a1df0d674df-7"></a>    sed -e <span class="s2">"/^* </span><span class="nv">$YEAR</span><span class="s2">/d"</span> -e <span class="s2">"/^** Read/d"</span> <span class="se">\</span>
+<a id="rest_code_36a791095dfe4d6e89282a1df0d674df-8" name="rest_code_36a791095dfe4d6e89282a1df0d674df-8" href="posts/2022/05/21/recording-the-books-i-read-with-org-mode-and-org-capture/#rest_code_36a791095dfe4d6e89282a1df0d674df-8"></a>        -e <span class="s2">"/^(\*\* Did not finish|\* </span><span class="nv">$LAST_YEAR</span><span class="s2">)/d"</span> <span class="p">|</span>
+<a id="rest_code_36a791095dfe4d6e89282a1df0d674df-9" name="rest_code_36a791095dfe4d6e89282a1df0d674df-9" href="posts/2022/05/21/recording-the-books-i-read-with-org-mode-and-org-capture/#rest_code_36a791095dfe4d6e89282a1df0d674df-9"></a>    sed -E -n <span class="s2">"/^\*\*\*[ \t]+[0-9]/p"</span> <span class="p">|</span>
+<a id="rest_code_36a791095dfe4d6e89282a1df0d674df-10" name="rest_code_36a791095dfe4d6e89282a1df0d674df-10" href="posts/2022/05/21/recording-the-books-i-read-with-org-mode-and-org-capture/#rest_code_36a791095dfe4d6e89282a1df0d674df-10"></a>    wc -l
+</pre></div>
 <p>This gets all the lines for this year, or just up to the ones that I did not finish, if there are any yet, then gets read of the leading</p>
 <p>This works pretty well.</p>
 <p>And so far I've read 227 books this year.</p>
@@ -303,12 +425,12 @@ automate finding the file, finding the right place to insert the
 information, and then copying the link from the clipboard and
 inserting it along with the heading formation!</p>
 <p>Here's the <code class="docutils literal"><span class="pre">org-capture-templates</span></code> value I use for this:</p>
-<pre class="code emacs-lisp"><a name="rest_code_bd9e60ee57f74d76b5f254de98dc3e24-1"></a><span class="p">(</span><span class="k">setq</span> <span class="nv">org-capture-templates</span>
-<a name="rest_code_bd9e60ee57f74d76b5f254de98dc3e24-2"></a>      <span class="o">`</span><span class="p">((</span><span class="s">"b"</span> <span class="s">"Add book about to read"</span> <span class="nv">entry</span>
-<a name="rest_code_bd9e60ee57f74d76b5f254de98dc3e24-3"></a>         <span class="p">(</span><span class="nv">file+olp</span> <span class="o">,</span><span class="p">(</span><span class="nf">expand-file-name</span> <span class="s">"~/Repos/tkb-org/Books/read.org"</span><span class="p">)</span>
-<a name="rest_code_bd9e60ee57f74d76b5f254de98dc3e24-4"></a>                   <span class="o">,</span><span class="p">(</span><span class="nf">format-time-string</span> <span class="s">"%Y"</span><span class="p">)</span> <span class="s">"Read"</span><span class="p">)</span>
-<a name="rest_code_bd9e60ee57f74d76b5f254de98dc3e24-5"></a>         <span class="s">"*** : %c"</span> <span class="nb">:prepend</span> <span class="no">t</span><span class="p">)))</span>
-</pre>
+<div class="code"><pre class="code emacs-lisp"><a id="rest_code_fb2dad12504345a1b8a6e5d6120cecca-1" name="rest_code_fb2dad12504345a1b8a6e5d6120cecca-1" href="posts/2022/05/21/recording-the-books-i-read-with-org-mode-and-org-capture/#rest_code_fb2dad12504345a1b8a6e5d6120cecca-1"></a><span class="p">(</span><span class="k">setq</span><span class="w"> </span><span class="nv">org-capture-templates</span><span class="w"></span>
+<a id="rest_code_fb2dad12504345a1b8a6e5d6120cecca-2" name="rest_code_fb2dad12504345a1b8a6e5d6120cecca-2" href="posts/2022/05/21/recording-the-books-i-read-with-org-mode-and-org-capture/#rest_code_fb2dad12504345a1b8a6e5d6120cecca-2"></a><span class="w">      </span><span class="o">`</span><span class="p">((</span><span class="s">"b"</span><span class="w"> </span><span class="s">"Add book about to read"</span><span class="w"> </span><span class="nv">entry</span><span class="w"></span>
+<a id="rest_code_fb2dad12504345a1b8a6e5d6120cecca-3" name="rest_code_fb2dad12504345a1b8a6e5d6120cecca-3" href="posts/2022/05/21/recording-the-books-i-read-with-org-mode-and-org-capture/#rest_code_fb2dad12504345a1b8a6e5d6120cecca-3"></a><span class="w">         </span><span class="p">(</span><span class="nv">file+olp</span><span class="w"> </span><span class="o">,</span><span class="p">(</span><span class="nf">expand-file-name</span><span class="w"> </span><span class="s">"~/Repos/tkb-org/Books/read.org"</span><span class="p">)</span><span class="w"></span>
+<a id="rest_code_fb2dad12504345a1b8a6e5d6120cecca-4" name="rest_code_fb2dad12504345a1b8a6e5d6120cecca-4" href="posts/2022/05/21/recording-the-books-i-read-with-org-mode-and-org-capture/#rest_code_fb2dad12504345a1b8a6e5d6120cecca-4"></a><span class="w">                   </span><span class="o">,</span><span class="p">(</span><span class="nf">format-time-string</span><span class="w"> </span><span class="s">"%Y"</span><span class="p">)</span><span class="w"> </span><span class="s">"Read"</span><span class="p">)</span><span class="w"></span>
+<a id="rest_code_fb2dad12504345a1b8a6e5d6120cecca-5" name="rest_code_fb2dad12504345a1b8a6e5d6120cecca-5" href="posts/2022/05/21/recording-the-books-i-read-with-org-mode-and-org-capture/#rest_code_fb2dad12504345a1b8a6e5d6120cecca-5"></a><span class="w">         </span><span class="s">"*** : %c"</span><span class="w"> </span><span class="nb">:prepend</span><span class="w"> </span><span class="no">t</span><span class="p">)))</span><span class="w"></span>
+</pre></div>
 <p>You'll want to read <a class="reference external" href="https://orgmode.org/manual/Capture-templates.html">Capture templates</a> to understand how this works.</p>
 <p>Of course, then I thought: what if my <span class="app">emacs</span> session lasts from
 one year into the other, and I then add a new book?  It will have the
@@ -317,22 +439,21 @@ wrong year!</p>
 (I feel old — it was the <code class="docutils literal">defadvice</code> function when I started using
 it.)</p>
 <p>So I added the following code:</p>
-<pre class="code emacs-lisp"><a name="rest_code_8fd2a0f6bfc84af882e55ec8f24ce656-1"></a>  <span class="p">(</span><span class="k">defvar</span> <span class="nv">tkb-org-year</span> <span class="p">(</span><span class="nf">format-time-string</span> <span class="s">"%Y"</span><span class="p">)</span>
-<a name="rest_code_8fd2a0f6bfc84af882e55ec8f24ce656-2"></a>    <span class="s">"The year the current emacs session was started, for use with org-capture."</span><span class="p">)</span>
-<a name="rest_code_8fd2a0f6bfc84af882e55ec8f24ce656-3"></a>  <span class="p">(</span><span class="nb">defun</span> <span class="nv">tkb-org-capture-advice-update-year</span> <span class="p">(</span><span class="kp">&amp;optional</span> <span class="nv">goto</span> <span class="nv">keys</span><span class="p">)</span>
-<a name="rest_code_8fd2a0f6bfc84af882e55ec8f24ce656-4"></a>    <span class="s">"Update ‘tkb-org-year’ and update the entry for adding a book in</span>
-<a name="rest_code_8fd2a0f6bfc84af882e55ec8f24ce656-5"></a><span class="s">‘org-capture-templates’ to use the new value."</span>
-<a name="rest_code_8fd2a0f6bfc84af882e55ec8f24ce656-6"></a>    <span class="p">(</span><span class="k">let</span> <span class="p">((</span><span class="nv">new-year</span> <span class="p">(</span><span class="nf">format-time-string</span> <span class="s">"%Y"</span><span class="p">)))</span>
-<a name="rest_code_8fd2a0f6bfc84af882e55ec8f24ce656-7"></a>      <span class="p">(</span><span class="nb">unless</span> <span class="p">(</span><span class="nf">string-equal</span> <span class="nv">tkb-org-year</span> <span class="nv">new-year</span><span class="p">)</span>
-<a name="rest_code_8fd2a0f6bfc84af882e55ec8f24ce656-8"></a>        <span class="p">(</span><span class="nb">setf</span> <span class="nv">tkb-org-year</span> <span class="nv">new-year</span><span class="p">)</span>
-<a name="rest_code_8fd2a0f6bfc84af882e55ec8f24ce656-9"></a>        <span class="p">(</span><span class="nb">setf</span> <span class="p">(</span><span class="nv">--&gt;</span> <span class="s">"b"</span> <span class="p">(</span><span class="nf">assoc</span> <span class="nv">it</span> <span class="nv">org-capture-templates</span><span class="p">)</span>
-<a name="rest_code_8fd2a0f6bfc84af882e55ec8f24ce656-10"></a>                   <span class="p">(</span><span class="nf">assoc</span> <span class="ss">'file+olp</span> <span class="nv">it</span><span class="p">)</span> <span class="p">(</span><span class="nf">nth</span> <span class="mi">2</span> <span class="nv">it</span><span class="p">))</span>
-<a name="rest_code_8fd2a0f6bfc84af882e55ec8f24ce656-11"></a>              <span class="nv">tkb-org-year</span><span class="p">))))</span>
-<a name="rest_code_8fd2a0f6bfc84af882e55ec8f24ce656-12"></a>  <span class="p">(</span><span class="nv">advice-add</span> <span class="ss">'org-capture</span> <span class="nb">:before</span> <span class="nf">#'</span><span class="nv">tkb-org-capture-advice-update-year</span><span class="p">)</span>
-</pre>
+<div class="code"><pre class="code emacs-lisp"><a id="rest_code_fd3d78dc405346e888dc1caf7f4b923a-1" name="rest_code_fd3d78dc405346e888dc1caf7f4b923a-1" href="posts/2022/05/21/recording-the-books-i-read-with-org-mode-and-org-capture/#rest_code_fd3d78dc405346e888dc1caf7f4b923a-1"></a><span class="w">  </span><span class="p">(</span><span class="k">defvar</span><span class="w"> </span><span class="nv">tkb-org-year</span><span class="w"> </span><span class="p">(</span><span class="nf">format-time-string</span><span class="w"> </span><span class="s">"%Y"</span><span class="p">)</span><span class="w"></span>
+<a id="rest_code_fd3d78dc405346e888dc1caf7f4b923a-2" name="rest_code_fd3d78dc405346e888dc1caf7f4b923a-2" href="posts/2022/05/21/recording-the-books-i-read-with-org-mode-and-org-capture/#rest_code_fd3d78dc405346e888dc1caf7f4b923a-2"></a><span class="w">    </span><span class="s">"The year the current emacs session was started, for use with org-capture."</span><span class="p">)</span><span class="w"></span>
+<a id="rest_code_fd3d78dc405346e888dc1caf7f4b923a-3" name="rest_code_fd3d78dc405346e888dc1caf7f4b923a-3" href="posts/2022/05/21/recording-the-books-i-read-with-org-mode-and-org-capture/#rest_code_fd3d78dc405346e888dc1caf7f4b923a-3"></a><span class="w">  </span><span class="p">(</span><span class="nb">defun</span><span class="w"> </span><span class="nv">tkb-org-capture-advice-update-year</span><span class="w"> </span><span class="p">(</span><span class="kp">&amp;optional</span><span class="w"> </span><span class="nv">goto</span><span class="w"> </span><span class="nv">keys</span><span class="p">)</span><span class="w"></span>
+<a id="rest_code_fd3d78dc405346e888dc1caf7f4b923a-4" name="rest_code_fd3d78dc405346e888dc1caf7f4b923a-4" href="posts/2022/05/21/recording-the-books-i-read-with-org-mode-and-org-capture/#rest_code_fd3d78dc405346e888dc1caf7f4b923a-4"></a><span class="w">    </span><span class="s">"Update ‘tkb-org-year’ and update the entry for adding a book in</span>
+<a id="rest_code_fd3d78dc405346e888dc1caf7f4b923a-5" name="rest_code_fd3d78dc405346e888dc1caf7f4b923a-5" href="posts/2022/05/21/recording-the-books-i-read-with-org-mode-and-org-capture/#rest_code_fd3d78dc405346e888dc1caf7f4b923a-5"></a><span class="s">‘org-capture-templates’ to use the new value."</span><span class="w"></span>
+<a id="rest_code_fd3d78dc405346e888dc1caf7f4b923a-6" name="rest_code_fd3d78dc405346e888dc1caf7f4b923a-6" href="posts/2022/05/21/recording-the-books-i-read-with-org-mode-and-org-capture/#rest_code_fd3d78dc405346e888dc1caf7f4b923a-6"></a><span class="w">    </span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">((</span><span class="nv">new-year</span><span class="w"> </span><span class="p">(</span><span class="nf">format-time-string</span><span class="w"> </span><span class="s">"%Y"</span><span class="p">)))</span><span class="w"></span>
+<a id="rest_code_fd3d78dc405346e888dc1caf7f4b923a-7" name="rest_code_fd3d78dc405346e888dc1caf7f4b923a-7" href="posts/2022/05/21/recording-the-books-i-read-with-org-mode-and-org-capture/#rest_code_fd3d78dc405346e888dc1caf7f4b923a-7"></a><span class="w">      </span><span class="p">(</span><span class="nb">unless</span><span class="w"> </span><span class="p">(</span><span class="nf">string-equal</span><span class="w"> </span><span class="nv">tkb-org-year</span><span class="w"> </span><span class="nv">new-year</span><span class="p">)</span><span class="w"></span>
+<a id="rest_code_fd3d78dc405346e888dc1caf7f4b923a-8" name="rest_code_fd3d78dc405346e888dc1caf7f4b923a-8" href="posts/2022/05/21/recording-the-books-i-read-with-org-mode-and-org-capture/#rest_code_fd3d78dc405346e888dc1caf7f4b923a-8"></a><span class="w">        </span><span class="p">(</span><span class="nb">setf</span><span class="w"> </span><span class="nv">tkb-org-year</span><span class="w"> </span><span class="nv">new-year</span><span class="p">)</span><span class="w"></span>
+<a id="rest_code_fd3d78dc405346e888dc1caf7f4b923a-9" name="rest_code_fd3d78dc405346e888dc1caf7f4b923a-9" href="posts/2022/05/21/recording-the-books-i-read-with-org-mode-and-org-capture/#rest_code_fd3d78dc405346e888dc1caf7f4b923a-9"></a><span class="w">        </span><span class="p">(</span><span class="nb">setf</span><span class="w"> </span><span class="p">(</span><span class="nv">--&gt;</span><span class="w"> </span><span class="s">"b"</span><span class="w"> </span><span class="p">(</span><span class="nf">assoc</span><span class="w"> </span><span class="nv">it</span><span class="w"> </span><span class="nv">org-capture-templates</span><span class="p">)</span><span class="w"></span>
+<a id="rest_code_fd3d78dc405346e888dc1caf7f4b923a-10" name="rest_code_fd3d78dc405346e888dc1caf7f4b923a-10" href="posts/2022/05/21/recording-the-books-i-read-with-org-mode-and-org-capture/#rest_code_fd3d78dc405346e888dc1caf7f4b923a-10"></a><span class="w">                   </span><span class="p">(</span><span class="nf">assoc</span><span class="w"> </span><span class="ss">'file+olp</span><span class="w"> </span><span class="nv">it</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nf">nth</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="nv">it</span><span class="p">))</span><span class="w"></span>
+<a id="rest_code_fd3d78dc405346e888dc1caf7f4b923a-11" name="rest_code_fd3d78dc405346e888dc1caf7f4b923a-11" href="posts/2022/05/21/recording-the-books-i-read-with-org-mode-and-org-capture/#rest_code_fd3d78dc405346e888dc1caf7f4b923a-11"></a><span class="w">              </span><span class="nv">tkb-org-year</span><span class="p">))))</span><span class="w"></span>
+<a id="rest_code_fd3d78dc405346e888dc1caf7f4b923a-12" name="rest_code_fd3d78dc405346e888dc1caf7f4b923a-12" href="posts/2022/05/21/recording-the-books-i-read-with-org-mode-and-org-capture/#rest_code_fd3d78dc405346e888dc1caf7f4b923a-12"></a><span class="w">  </span><span class="p">(</span><span class="nv">advice-add</span><span class="w"> </span><span class="ss">'org-capture</span><span class="w"> </span><span class="nb">:before</span><span class="w"> </span><span class="nf">#'</span><span class="nv">tkb-org-capture-advice-update-year</span><span class="p">)</span><span class="w"></span>
+</pre></div>
 <p>I tested this by manually setting <code class="docutils literal"><span class="pre">tkb-org-year</span></code> to <code class="docutils literal">"2021"</code> and
 capturing a new book.  It worked fine!</p>
-</div>
     <nav><ul itemprop="keywords" class="tags">
 <li><a class="tag p-category" href="categories/reading/" rel="tag">reading</a></li>
         </ul></nav>
@@ -341,14 +462,13 @@ capturing a new book.  It worked fine!</p>
         <div class="metadata blog-post-meta">
             <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
             <p class="dateline"><a href="posts/2022/02/25/poise-dms-plus-another-description/" rel="bookmark"><time class="published dt-published" datetime="2022-02-25T10:19:37-05:00" title="2022-02-25 10:19">2022-02-25 10:19</time></a></p>
-                <p class="commentline">            <a href="posts/2022/02/25/poise-dms-plus-another-description/#disqus_thread" data-disqus-identifier="cache/posts/2022/02/25/poise-dms-plus-another-description.html">Comments</a>
+                <p class="commentline">        <a href="posts/2022/02/25/poise-dms-plus-another-description/#disqus_thread" data-disqus-identifier="cache/posts/2022/02/25/poise-dms-plus-another-description.html">Comments</a>
 
 
         </p>
 </div>
     </header><div class="e-content entry-content">
-    <div>
-<p>I found a better description of the POISE DMS-Plus; alas, the original
+    <p>I found a better description of the POISE DMS-Plus; alas, the original
 <a class="reference external" href="http://www2.esp-tulsa.com/featuredmsplus.htm">link</a> is broken now, but it is still accessible from <a class="reference external" href="https://web.archive.org/web/20180814152701/http://www2.esp-tulsa.com/featuredmsplus.htm">archive.org</a>
 <a class="reference external" href="https://web.archive.org/web/20180814152701/http://www2.esp-tulsa.com/featuredmsplus.htm">here</a>.  It is from the time when POISE was still owned by Campus
 America, but they seem to had added a Tulsa to the end of the name,
@@ -411,12 +531,7 @@ help of a programming staff. These tools include on -line help.</p>
 <p>The following is a list of the DMS-Plus functions with a brief
 description of each:</p>
 <div class="docutils container">
-<table>
-<colgroup>
-<col style="width: 16%">
-<col style="width: 84%">
-</colgroup>
-<tbody>
+<table><tbody>
 <tr>
 <td><p>ADD</p></td>
 <td><p>Enters new records into a new database</p></td>
@@ -530,8 +645,7 @@ ordering.</p></td>
 <td><p>XTAB</p></td>
 <td><p>Performs cross tabulations with field data.</p></td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 </div>
 <p>DMS-Plus provides a set of tools to establish databases and to
 manipulate the data within them. Simple steps for the use of DMS-Plus
@@ -605,7 +719,6 @@ is accurate as of the production date. Such information is subject
 to change without notice. Campus America is not responsible for
 inadvertent errors. ©1998 Campus America, Inc.</p>
 </blockquote>
-</div>
     <nav><ul itemprop="keywords" class="tags">
 <li><a class="tag p-category" href="categories/campus-america/" rel="tag">campus america</a></li>
             <li><a class="tag p-category" href="categories/dms-plus/" rel="tag">dms-plus</a></li>
@@ -618,14 +731,13 @@ inadvertent errors. ©1998 Campus America, Inc.</p>
         <div class="metadata blog-post-meta">
             <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
             <p class="dateline"><a href="posts/2022/02/22/poise-dms-plus-a-description/" rel="bookmark"><time class="published dt-published" datetime="2022-02-22T09:49:38-05:00" title="2022-02-22 09:49">2022-02-22 09:49</time></a></p>
-                <p class="commentline">            <a href="posts/2022/02/22/poise-dms-plus-a-description/#disqus_thread" data-disqus-identifier="cache/posts/2022/02/22/poise-dms-plus-a-description.html">Comments</a>
+                <p class="commentline">        <a href="posts/2022/02/22/poise-dms-plus-a-description/#disqus_thread" data-disqus-identifier="cache/posts/2022/02/22/poise-dms-plus-a-description.html">Comments</a>
 
 
         </p>
 </div>
     </header><div class="e-content entry-content">
-    <div>
-<p>Some time ago I <a class="reference external" href="posts/2014/11/23/poise-dms-plus/">linked</a> to a description of the POISE DMS-Plus, a Data
+    <p>Some time ago I <a class="reference external" href="posts/2014/11/23/poise-dms-plus/">linked</a> to a description of the POISE DMS-Plus, a Data
 Management System that I've used extensively since the mid 1980s.
 Last time I knew it was owned by Jenzabar.  Since Jenzabar's
 description of it (as part of Jenzabar PX) has vanished from their web
@@ -744,7 +856,6 @@ education administration, but it was a general purpose tool and I have
 worked on projects using it for many other areas, including local and
 state government, real estate sales management, oil and gas royalty
 management, and many others.</p>
-</div>
     <nav><ul itemprop="keywords" class="tags">
 <li><a class="tag p-category" href="categories/dms-plus/" rel="tag">dms-plus</a></li>
             <li><a class="tag p-category" href="categories/jenzabar-px/" rel="tag">jenzabar px</a></li>
@@ -757,14 +868,13 @@ management, and many others.</p>
         <div class="metadata blog-post-meta">
             <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
             <p class="dateline"><a href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/" rel="bookmark"><time class="published dt-published" datetime="2022-02-05T16:08:22-05:00" title="2022-02-05 16:08">2022-02-05 16:08</time></a></p>
-                <p class="commentline">            <a href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#disqus_thread" data-disqus-identifier="cache/posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited.html">Comments</a>
+                <p class="commentline">        <a href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#disqus_thread" data-disqus-identifier="cache/posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited.html">Comments</a>
 
 
         </p>
 </div>
     </header><div class="e-content entry-content">
-    <div>
-<p>I was working on a program on a VAX today, and needed to redimension
+    <p>I was working on a program on a VAX today, and needed to redimension
 dynamically allocated arrays that are passed to an external function.
 I've done this in the past (an <a class="reference external" href="https://groups.google.com/g/comp.os.vms/c/mVWznNVN17U/m/HE3L4N4nIJAJ">old USENET post</a>, and the <a class="reference external" href="posts/2003/05/08/2003-05-08-vms-code-from-the-past/">old blog
 post</a> that mentions it), but this time I managed to simplify my
@@ -774,92 +884,91 @@ types.  Here's the <a class="reference external" href="https://groups.google.com
 necromancy?)</p>
 <p>I'll include the code in this blog post, too, for ease of reference.
 Here's <span class="file">vax_redim_best.bas</span>:</p>
-<pre class="code text"><a name="rest_code_fe2a242171a54440b9680b2ad5688461-1"></a>program vax_redim_best
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-2"></a>    option type = explicit, constant type = integer, &amp;
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-3"></a>        size = integer long, size = real double
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-4"></a>    record rec
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-5"></a>        string s = 13
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-6"></a>        long   i
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-7"></a>    end record rec
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-8"></a>
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-9"></a>    ! Don't declare the parameters, and everything works, even passing
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-10"></a>    ! different types.
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-11"></a>    external sub redim
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-12"></a>
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-13"></a>    declare long stat, i
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-14"></a>    i = 1
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-15"></a>    dim rec rec(1 to i)
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-16"></a>    print "lbound (rec) at start: "; lbound (rec)
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-17"></a>    print "ubound (rec) at start: "; ubound (rec)
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-18"></a>    call redim (rec(), 3, 10)
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-19"></a>    print "lbound (rec) after redim: "; lbound (rec)
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-20"></a>    print "ubound (rec) after redim: "; ubound (rec)
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-21"></a>
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-22"></a>    dim string s(1 to i)
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-23"></a>    print "lbound (s) at start: "; lbound (s)
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-24"></a>    print "ubound (s) at start: "; ubound (s)
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-25"></a>    call redim (s(), 3, 10)
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-26"></a>    print "lbound (s) after redim: "; lbound (s)
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-27"></a>    print "ubound (s) after redim: "; ubound (s)
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-28"></a>
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-29"></a>    dim long l(1 to i)
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-30"></a>    print "lbound (l) at start: "; lbound (l)
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-31"></a>    print "ubound (l) at start: "; ubound (l)
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-32"></a>    call redim (l(), 3, 10)
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-33"></a>    print "lbound (l) after redim: "; lbound (l)
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-34"></a>    print "ubound (l) after redim: "; ubound (l)
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-35"></a>
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-36"></a>
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-37"></a>end program ! vax_redim_best
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-38"></a>
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-39"></a>function long redim (long s, long low, long high)
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-40"></a>    option type = explicit, constant type = integer, &amp;
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-41"></a>        size = integer long, size = real double
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-42"></a>    external long function bas$rt_dim_bounds (long by value, long by value, long by value)
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-43"></a>    declare long r
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-44"></a>    r = bas$rt_dim_bounds (loc (s), low, high)
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-45"></a>end function r ! redim
-</pre>
+<div class="code"><pre class="code text"><a id="rest_code_194e577179574eada012ec857d7c9cf6-1" name="rest_code_194e577179574eada012ec857d7c9cf6-1" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_194e577179574eada012ec857d7c9cf6-1"></a>program vax_redim_best
+<a id="rest_code_194e577179574eada012ec857d7c9cf6-2" name="rest_code_194e577179574eada012ec857d7c9cf6-2" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_194e577179574eada012ec857d7c9cf6-2"></a>    option type = explicit, constant type = integer, &amp;
+<a id="rest_code_194e577179574eada012ec857d7c9cf6-3" name="rest_code_194e577179574eada012ec857d7c9cf6-3" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_194e577179574eada012ec857d7c9cf6-3"></a>        size = integer long, size = real double
+<a id="rest_code_194e577179574eada012ec857d7c9cf6-4" name="rest_code_194e577179574eada012ec857d7c9cf6-4" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_194e577179574eada012ec857d7c9cf6-4"></a>    record rec
+<a id="rest_code_194e577179574eada012ec857d7c9cf6-5" name="rest_code_194e577179574eada012ec857d7c9cf6-5" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_194e577179574eada012ec857d7c9cf6-5"></a>        string s = 13
+<a id="rest_code_194e577179574eada012ec857d7c9cf6-6" name="rest_code_194e577179574eada012ec857d7c9cf6-6" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_194e577179574eada012ec857d7c9cf6-6"></a>        long   i
+<a id="rest_code_194e577179574eada012ec857d7c9cf6-7" name="rest_code_194e577179574eada012ec857d7c9cf6-7" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_194e577179574eada012ec857d7c9cf6-7"></a>    end record rec
+<a id="rest_code_194e577179574eada012ec857d7c9cf6-8" name="rest_code_194e577179574eada012ec857d7c9cf6-8" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_194e577179574eada012ec857d7c9cf6-8"></a>
+<a id="rest_code_194e577179574eada012ec857d7c9cf6-9" name="rest_code_194e577179574eada012ec857d7c9cf6-9" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_194e577179574eada012ec857d7c9cf6-9"></a>    ! Don't declare the parameters, and everything works, even passing
+<a id="rest_code_194e577179574eada012ec857d7c9cf6-10" name="rest_code_194e577179574eada012ec857d7c9cf6-10" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_194e577179574eada012ec857d7c9cf6-10"></a>    ! different types.
+<a id="rest_code_194e577179574eada012ec857d7c9cf6-11" name="rest_code_194e577179574eada012ec857d7c9cf6-11" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_194e577179574eada012ec857d7c9cf6-11"></a>    external sub redim
+<a id="rest_code_194e577179574eada012ec857d7c9cf6-12" name="rest_code_194e577179574eada012ec857d7c9cf6-12" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_194e577179574eada012ec857d7c9cf6-12"></a>
+<a id="rest_code_194e577179574eada012ec857d7c9cf6-13" name="rest_code_194e577179574eada012ec857d7c9cf6-13" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_194e577179574eada012ec857d7c9cf6-13"></a>    declare long stat, i
+<a id="rest_code_194e577179574eada012ec857d7c9cf6-14" name="rest_code_194e577179574eada012ec857d7c9cf6-14" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_194e577179574eada012ec857d7c9cf6-14"></a>    i = 1
+<a id="rest_code_194e577179574eada012ec857d7c9cf6-15" name="rest_code_194e577179574eada012ec857d7c9cf6-15" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_194e577179574eada012ec857d7c9cf6-15"></a>    dim rec rec(1 to i)
+<a id="rest_code_194e577179574eada012ec857d7c9cf6-16" name="rest_code_194e577179574eada012ec857d7c9cf6-16" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_194e577179574eada012ec857d7c9cf6-16"></a>    print "lbound (rec) at start: "; lbound (rec)
+<a id="rest_code_194e577179574eada012ec857d7c9cf6-17" name="rest_code_194e577179574eada012ec857d7c9cf6-17" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_194e577179574eada012ec857d7c9cf6-17"></a>    print "ubound (rec) at start: "; ubound (rec)
+<a id="rest_code_194e577179574eada012ec857d7c9cf6-18" name="rest_code_194e577179574eada012ec857d7c9cf6-18" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_194e577179574eada012ec857d7c9cf6-18"></a>    call redim (rec(), 3, 10)
+<a id="rest_code_194e577179574eada012ec857d7c9cf6-19" name="rest_code_194e577179574eada012ec857d7c9cf6-19" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_194e577179574eada012ec857d7c9cf6-19"></a>    print "lbound (rec) after redim: "; lbound (rec)
+<a id="rest_code_194e577179574eada012ec857d7c9cf6-20" name="rest_code_194e577179574eada012ec857d7c9cf6-20" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_194e577179574eada012ec857d7c9cf6-20"></a>    print "ubound (rec) after redim: "; ubound (rec)
+<a id="rest_code_194e577179574eada012ec857d7c9cf6-21" name="rest_code_194e577179574eada012ec857d7c9cf6-21" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_194e577179574eada012ec857d7c9cf6-21"></a>
+<a id="rest_code_194e577179574eada012ec857d7c9cf6-22" name="rest_code_194e577179574eada012ec857d7c9cf6-22" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_194e577179574eada012ec857d7c9cf6-22"></a>    dim string s(1 to i)
+<a id="rest_code_194e577179574eada012ec857d7c9cf6-23" name="rest_code_194e577179574eada012ec857d7c9cf6-23" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_194e577179574eada012ec857d7c9cf6-23"></a>    print "lbound (s) at start: "; lbound (s)
+<a id="rest_code_194e577179574eada012ec857d7c9cf6-24" name="rest_code_194e577179574eada012ec857d7c9cf6-24" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_194e577179574eada012ec857d7c9cf6-24"></a>    print "ubound (s) at start: "; ubound (s)
+<a id="rest_code_194e577179574eada012ec857d7c9cf6-25" name="rest_code_194e577179574eada012ec857d7c9cf6-25" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_194e577179574eada012ec857d7c9cf6-25"></a>    call redim (s(), 3, 10)
+<a id="rest_code_194e577179574eada012ec857d7c9cf6-26" name="rest_code_194e577179574eada012ec857d7c9cf6-26" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_194e577179574eada012ec857d7c9cf6-26"></a>    print "lbound (s) after redim: "; lbound (s)
+<a id="rest_code_194e577179574eada012ec857d7c9cf6-27" name="rest_code_194e577179574eada012ec857d7c9cf6-27" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_194e577179574eada012ec857d7c9cf6-27"></a>    print "ubound (s) after redim: "; ubound (s)
+<a id="rest_code_194e577179574eada012ec857d7c9cf6-28" name="rest_code_194e577179574eada012ec857d7c9cf6-28" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_194e577179574eada012ec857d7c9cf6-28"></a>
+<a id="rest_code_194e577179574eada012ec857d7c9cf6-29" name="rest_code_194e577179574eada012ec857d7c9cf6-29" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_194e577179574eada012ec857d7c9cf6-29"></a>    dim long l(1 to i)
+<a id="rest_code_194e577179574eada012ec857d7c9cf6-30" name="rest_code_194e577179574eada012ec857d7c9cf6-30" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_194e577179574eada012ec857d7c9cf6-30"></a>    print "lbound (l) at start: "; lbound (l)
+<a id="rest_code_194e577179574eada012ec857d7c9cf6-31" name="rest_code_194e577179574eada012ec857d7c9cf6-31" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_194e577179574eada012ec857d7c9cf6-31"></a>    print "ubound (l) at start: "; ubound (l)
+<a id="rest_code_194e577179574eada012ec857d7c9cf6-32" name="rest_code_194e577179574eada012ec857d7c9cf6-32" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_194e577179574eada012ec857d7c9cf6-32"></a>    call redim (l(), 3, 10)
+<a id="rest_code_194e577179574eada012ec857d7c9cf6-33" name="rest_code_194e577179574eada012ec857d7c9cf6-33" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_194e577179574eada012ec857d7c9cf6-33"></a>    print "lbound (l) after redim: "; lbound (l)
+<a id="rest_code_194e577179574eada012ec857d7c9cf6-34" name="rest_code_194e577179574eada012ec857d7c9cf6-34" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_194e577179574eada012ec857d7c9cf6-34"></a>    print "ubound (l) after redim: "; ubound (l)
+<a id="rest_code_194e577179574eada012ec857d7c9cf6-35" name="rest_code_194e577179574eada012ec857d7c9cf6-35" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_194e577179574eada012ec857d7c9cf6-35"></a>
+<a id="rest_code_194e577179574eada012ec857d7c9cf6-36" name="rest_code_194e577179574eada012ec857d7c9cf6-36" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_194e577179574eada012ec857d7c9cf6-36"></a>
+<a id="rest_code_194e577179574eada012ec857d7c9cf6-37" name="rest_code_194e577179574eada012ec857d7c9cf6-37" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_194e577179574eada012ec857d7c9cf6-37"></a>end program ! vax_redim_best
+<a id="rest_code_194e577179574eada012ec857d7c9cf6-38" name="rest_code_194e577179574eada012ec857d7c9cf6-38" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_194e577179574eada012ec857d7c9cf6-38"></a>
+<a id="rest_code_194e577179574eada012ec857d7c9cf6-39" name="rest_code_194e577179574eada012ec857d7c9cf6-39" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_194e577179574eada012ec857d7c9cf6-39"></a>function long redim (long s, long low, long high)
+<a id="rest_code_194e577179574eada012ec857d7c9cf6-40" name="rest_code_194e577179574eada012ec857d7c9cf6-40" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_194e577179574eada012ec857d7c9cf6-40"></a>    option type = explicit, constant type = integer, &amp;
+<a id="rest_code_194e577179574eada012ec857d7c9cf6-41" name="rest_code_194e577179574eada012ec857d7c9cf6-41" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_194e577179574eada012ec857d7c9cf6-41"></a>        size = integer long, size = real double
+<a id="rest_code_194e577179574eada012ec857d7c9cf6-42" name="rest_code_194e577179574eada012ec857d7c9cf6-42" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_194e577179574eada012ec857d7c9cf6-42"></a>    external long function bas$rt_dim_bounds (long by value, long by value, long by value)
+<a id="rest_code_194e577179574eada012ec857d7c9cf6-43" name="rest_code_194e577179574eada012ec857d7c9cf6-43" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_194e577179574eada012ec857d7c9cf6-43"></a>    declare long r
+<a id="rest_code_194e577179574eada012ec857d7c9cf6-44" name="rest_code_194e577179574eada012ec857d7c9cf6-44" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_194e577179574eada012ec857d7c9cf6-44"></a>    r = bas$rt_dim_bounds (loc (s), low, high)
+<a id="rest_code_194e577179574eada012ec857d7c9cf6-45" name="rest_code_194e577179574eada012ec857d7c9cf6-45" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_194e577179574eada012ec857d7c9cf6-45"></a>end function r ! redim
+</pre></div>
 <p>I'll just point out, which I failed to do in the <a class="reference external" href="https://groups.google.com/g/comp.os.vms/c/mVWznNVN17U/m/HE3L4N4nIJAJ">old USENET post</a> or
 the <a class="reference external" href="https://groups.google.com/g/comp.os.vms/c/mVWznNVN17U/m/yuOAmQtQBAAJ">new USENET post</a>, that you have to use a <strong>variable</strong> when using
 the VMS BASIC <code class="docutils literal">dim</code> statement or you get a fatal runtime error.  Ooops.</p>
 <p>So use:</p>
-<pre class="code text"><a name="rest_code_57b1896242a243a0b7226d5acce0209c-1"></a>declare long i
-<a name="rest_code_57b1896242a243a0b7226d5acce0209c-2"></a>i = 5
-<a name="rest_code_57b1896242a243a0b7226d5acce0209c-3"></a>dim string s(1 to i) ! Notice that last thing is the variable, i
-<a name="rest_code_57b1896242a243a0b7226d5acce0209c-4"></a>redim (s, 3, 10)
-</pre>
+<div class="code"><pre class="code text"><a id="rest_code_a6d4bad82878473fa7e757f86dc36872-1" name="rest_code_a6d4bad82878473fa7e757f86dc36872-1" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_a6d4bad82878473fa7e757f86dc36872-1"></a>declare long i
+<a id="rest_code_a6d4bad82878473fa7e757f86dc36872-2" name="rest_code_a6d4bad82878473fa7e757f86dc36872-2" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_a6d4bad82878473fa7e757f86dc36872-2"></a>i = 5
+<a id="rest_code_a6d4bad82878473fa7e757f86dc36872-3" name="rest_code_a6d4bad82878473fa7e757f86dc36872-3" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_a6d4bad82878473fa7e757f86dc36872-3"></a>dim string s(1 to i) ! Notice that last thing is the variable, i
+<a id="rest_code_a6d4bad82878473fa7e757f86dc36872-4" name="rest_code_a6d4bad82878473fa7e757f86dc36872-4" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_a6d4bad82878473fa7e757f86dc36872-4"></a>redim (s, 3, 10)
+</pre></div>
 <p>If you had said:</p>
-<pre class="code text"><a name="rest_code_d42051b1982a4d6ca5e876dcf280a30a-1"></a>dim string s(1 to 5) ! Notice that last thing is a constant, 5
-<a name="rest_code_d42051b1982a4d6ca5e876dcf280a30a-2"></a>redim (s, 3, 10)
-</pre>
+<div class="code"><pre class="code text"><a id="rest_code_313623919dba4b769b0e4eb383be927d-1" name="rest_code_313623919dba4b769b0e4eb383be927d-1" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_313623919dba4b769b0e4eb383be927d-1"></a>dim string s(1 to 5) ! Notice that last thing is a constant, 5
+<a id="rest_code_313623919dba4b769b0e4eb383be927d-2" name="rest_code_313623919dba4b769b0e4eb383be927d-2" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_313623919dba4b769b0e4eb383be927d-2"></a>redim (s, 3, 10)
+</pre></div>
 <p>You'd have gotten the following error:</p>
-<pre class="code text"><a name="rest_code_b6aad6d7f4c84129945145afac5f6327-1"></a>%BAS-F-PROLOSSOR, Internal error in VAX BASIC Run-Time Library.  Please submit an SPR
-<a name="rest_code_b6aad6d7f4c84129945145afac5f6327-2"></a>-BAS-I-FROFUN, In external function ALT_REDIM
-<a name="rest_code_b6aad6d7f4c84129945145afac5f6327-3"></a>-BAS-I-FROMOD, In module Y
-<a name="rest_code_b6aad6d7f4c84129945145afac5f6327-4"></a>%TRACE-F-TRACEBACK, symbolic stack dump follows
-<a name="rest_code_b6aad6d7f4c84129945145afac5f6327-5"></a>module name     routine name                     line       rel PC    abs PC
-<a name="rest_code_b6aad6d7f4c84129945145afac5f6327-6"></a>
-<a name="rest_code_b6aad6d7f4c84129945145afac5f6327-7"></a>                                                           0004B2AA  0004B2AA
-<a name="rest_code_b6aad6d7f4c84129945145afac5f6327-8"></a>----- above condition handler called with exception 001A833C:
-<a name="rest_code_b6aad6d7f4c84129945145afac5f6327-9"></a>%BAS-F-PROLOSSOR, Internal error in VAX BASIC Run-Time Library.  Please submit an SPR
-<a name="rest_code_b6aad6d7f4c84129945145afac5f6327-10"></a>-BAS-I-FROFUN, In external function ALT_REDIM
-<a name="rest_code_b6aad6d7f4c84129945145afac5f6327-11"></a>----- end of exception message
-<a name="rest_code_b6aad6d7f4c84129945145afac5f6327-12"></a>                                                           0004B2AA  0004B2AA
-<a name="rest_code_b6aad6d7f4c84129945145afac5f6327-13"></a>----- above condition handler called with exception 001A833C:
-<a name="rest_code_b6aad6d7f4c84129945145afac5f6327-14"></a>%BAS-F-PROLOSSOR, Internal error in VAX BASIC Run-Time Library.  Please submit an SPR
-<a name="rest_code_b6aad6d7f4c84129945145afac5f6327-15"></a>----- end of exception message
-<a name="rest_code_b6aad6d7f4c84129945145afac5f6327-16"></a>                                                           0004A352  0004A352
-<a name="rest_code_b6aad6d7f4c84129945145afac5f6327-17"></a>                                                           00054E37  00054E37
-<a name="rest_code_b6aad6d7f4c84129945145afac5f6327-18"></a>ALT_REDIM       ALT_REDIM                          43      0000002E  00000AC2
-<a name="rest_code_b6aad6d7f4c84129945145afac5f6327-19"></a>Y               Y                                  24      0000015D  0000095D
-</pre>
+<div class="code"><pre class="code text"><a id="rest_code_a8f042754b5940a19a8fea66e72c9abc-1" name="rest_code_a8f042754b5940a19a8fea66e72c9abc-1" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_a8f042754b5940a19a8fea66e72c9abc-1"></a>%BAS-F-PROLOSSOR, Internal error in VAX BASIC Run-Time Library.  Please submit an SPR
+<a id="rest_code_a8f042754b5940a19a8fea66e72c9abc-2" name="rest_code_a8f042754b5940a19a8fea66e72c9abc-2" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_a8f042754b5940a19a8fea66e72c9abc-2"></a>-BAS-I-FROFUN, In external function ALT_REDIM
+<a id="rest_code_a8f042754b5940a19a8fea66e72c9abc-3" name="rest_code_a8f042754b5940a19a8fea66e72c9abc-3" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_a8f042754b5940a19a8fea66e72c9abc-3"></a>-BAS-I-FROMOD, In module Y
+<a id="rest_code_a8f042754b5940a19a8fea66e72c9abc-4" name="rest_code_a8f042754b5940a19a8fea66e72c9abc-4" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_a8f042754b5940a19a8fea66e72c9abc-4"></a>%TRACE-F-TRACEBACK, symbolic stack dump follows
+<a id="rest_code_a8f042754b5940a19a8fea66e72c9abc-5" name="rest_code_a8f042754b5940a19a8fea66e72c9abc-5" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_a8f042754b5940a19a8fea66e72c9abc-5"></a>module name     routine name                     line       rel PC    abs PC
+<a id="rest_code_a8f042754b5940a19a8fea66e72c9abc-6" name="rest_code_a8f042754b5940a19a8fea66e72c9abc-6" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_a8f042754b5940a19a8fea66e72c9abc-6"></a>
+<a id="rest_code_a8f042754b5940a19a8fea66e72c9abc-7" name="rest_code_a8f042754b5940a19a8fea66e72c9abc-7" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_a8f042754b5940a19a8fea66e72c9abc-7"></a>                                                           0004B2AA  0004B2AA
+<a id="rest_code_a8f042754b5940a19a8fea66e72c9abc-8" name="rest_code_a8f042754b5940a19a8fea66e72c9abc-8" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_a8f042754b5940a19a8fea66e72c9abc-8"></a>----- above condition handler called with exception 001A833C:
+<a id="rest_code_a8f042754b5940a19a8fea66e72c9abc-9" name="rest_code_a8f042754b5940a19a8fea66e72c9abc-9" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_a8f042754b5940a19a8fea66e72c9abc-9"></a>%BAS-F-PROLOSSOR, Internal error in VAX BASIC Run-Time Library.  Please submit an SPR
+<a id="rest_code_a8f042754b5940a19a8fea66e72c9abc-10" name="rest_code_a8f042754b5940a19a8fea66e72c9abc-10" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_a8f042754b5940a19a8fea66e72c9abc-10"></a>-BAS-I-FROFUN, In external function ALT_REDIM
+<a id="rest_code_a8f042754b5940a19a8fea66e72c9abc-11" name="rest_code_a8f042754b5940a19a8fea66e72c9abc-11" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_a8f042754b5940a19a8fea66e72c9abc-11"></a>----- end of exception message
+<a id="rest_code_a8f042754b5940a19a8fea66e72c9abc-12" name="rest_code_a8f042754b5940a19a8fea66e72c9abc-12" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_a8f042754b5940a19a8fea66e72c9abc-12"></a>                                                           0004B2AA  0004B2AA
+<a id="rest_code_a8f042754b5940a19a8fea66e72c9abc-13" name="rest_code_a8f042754b5940a19a8fea66e72c9abc-13" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_a8f042754b5940a19a8fea66e72c9abc-13"></a>----- above condition handler called with exception 001A833C:
+<a id="rest_code_a8f042754b5940a19a8fea66e72c9abc-14" name="rest_code_a8f042754b5940a19a8fea66e72c9abc-14" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_a8f042754b5940a19a8fea66e72c9abc-14"></a>%BAS-F-PROLOSSOR, Internal error in VAX BASIC Run-Time Library.  Please submit an SPR
+<a id="rest_code_a8f042754b5940a19a8fea66e72c9abc-15" name="rest_code_a8f042754b5940a19a8fea66e72c9abc-15" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_a8f042754b5940a19a8fea66e72c9abc-15"></a>----- end of exception message
+<a id="rest_code_a8f042754b5940a19a8fea66e72c9abc-16" name="rest_code_a8f042754b5940a19a8fea66e72c9abc-16" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_a8f042754b5940a19a8fea66e72c9abc-16"></a>                                                           0004A352  0004A352
+<a id="rest_code_a8f042754b5940a19a8fea66e72c9abc-17" name="rest_code_a8f042754b5940a19a8fea66e72c9abc-17" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_a8f042754b5940a19a8fea66e72c9abc-17"></a>                                                           00054E37  00054E37
+<a id="rest_code_a8f042754b5940a19a8fea66e72c9abc-18" name="rest_code_a8f042754b5940a19a8fea66e72c9abc-18" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_a8f042754b5940a19a8fea66e72c9abc-18"></a>ALT_REDIM       ALT_REDIM                          43      0000002E  00000AC2
+<a id="rest_code_a8f042754b5940a19a8fea66e72c9abc-19" name="rest_code_a8f042754b5940a19a8fea66e72c9abc-19" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_a8f042754b5940a19a8fea66e72c9abc-19"></a>Y               Y                                  24      0000015D  0000095D
+</pre></div>
 <p>Don't actually submit an SPR, of course: you did it to yourself by
 using an undocumented VMS BASIC internal runtime function.</p>
 <p>Oh, I don't have access to an Alpha these days, so I haven't tried it
 there, but I imagine using something named <code class="docutils literal">DBASIC$RT_DIM_BOUNDS</code>
 instead of <code class="docutils literal">DBASIC$RT_DIM</code> would likely work there.</p>
-</div>
     <nav><ul itemprop="keywords" class="tags">
 <li><a class="tag p-category" href="categories/alpha/" rel="tag">alpha</a></li>
             <li><a class="tag p-category" href="categories/basic/" rel="tag">basic</a></li>
@@ -873,28 +982,26 @@ instead of <code class="docutils literal">DBASIC$RT_DIM</code> would likely work
         <div class="metadata blog-post-meta">
             <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
             <p class="dateline"><a href="posts/2021/09/13/getting-the-homebrew-chicken-scheme-sqlite3-egg-to-use-the-homebrew-installed-sqlite3-include-files-and-library-files/" rel="bookmark"><time class="published dt-published" datetime="2021-09-13T16:59:50-04:00" title="2021-09-13 16:59">2021-09-13 16:59</time></a></p>
-                <p class="commentline">            <a href="posts/2021/09/13/getting-the-homebrew-chicken-scheme-sqlite3-egg-to-use-the-homebrew-installed-sqlite3-include-files-and-library-files/#disqus_thread" data-disqus-identifier="cache/posts/2021/09/13/getting-the-homebrew-chicken-scheme-sqlite3-egg-to-use-the-homebrew-installed-sqlite3-include-files-and-library-files.html">Comments</a>
+                <p class="commentline">        <a href="posts/2021/09/13/getting-the-homebrew-chicken-scheme-sqlite3-egg-to-use-the-homebrew-installed-sqlite3-include-files-and-library-files/#disqus_thread" data-disqus-identifier="cache/posts/2021/09/13/getting-the-homebrew-chicken-scheme-sqlite3-egg-to-use-the-homebrew-installed-sqlite3-include-files-and-library-files.html">Comments</a>
 
 
         </p>
 </div>
     </header><div class="e-content entry-content">
-    <div>
-<p>To get the <a class="reference external" href="https://brew.sh/">Homebrew</a> installed <a class="reference external" href="http://call-cc.org">CHICKEN Scheme</a> (<a class="reference external" href="https://formulae.brew.sh/formula/chicken">HBCHICKEN</a>) to use
+    <p>To get the <a class="reference external" href="https://brew.sh/">Homebrew</a> installed <a class="reference external" href="http://call-cc.org">CHICKEN Scheme</a> (<a class="reference external" href="https://formulae.brew.sh/formula/chicken">HBCHICKEN</a>) to use
 the <a class="reference external" href="https://brew.sh/">Homebrew</a> installed version of <a class="reference external" href="https://www.sqlite.org/">sqlite3</a> (<a class="reference external" href="https://formulae.brew.sh/formula/sqlite">HBSQLITE3</a>) — because the
 one supplied by Apple in macOS is obsolete — for the <a class="reference external" href="http://wiki.call-cc.org/eggref/5/sqlite3">sqlite egg</a>,
 you need to set <code class="docutils literal">CSC_OPTIONS</code> properly:</p>
-<pre class="code bash"><a name="rest_code_cd7d55dbc96f430c9ef9e82b98731374-1"></a>$ <span class="nb">export</span> <span class="nv">CSC_OPTIONS</span><span class="o">=</span><span class="s2">"-I/usr/local/Cellar/sqlite/3.36.0/include -L/usr/local/Cellar/sqlite/3.36.0/lib"</span>
-<a name="rest_code_cd7d55dbc96f430c9ef9e82b98731374-2"></a>$ chicken-install sqlite3
-<a name="rest_code_cd7d55dbc96f430c9ef9e82b98731374-3"></a>building sqlite3
-<a name="rest_code_cd7d55dbc96f430c9ef9e82b98731374-4"></a>   /usr/local/Cellar/chicken/5.2.0/bin/csc -host -D compiling-extension -J -s -regenerate-import-libraries -setup-mode -I /Users/tkb/.cache/chicken-install/sqlite3 -C -I/Users/tkb/.cache/chicken-install/sqlite3 -O2 -d1 -L -lsqlite3 sqlite3.scm -o /Users/tkb/.cache/chicken-install/sqlite3/sqlite3.so
-<a name="rest_code_cd7d55dbc96f430c9ef9e82b98731374-5"></a>   /usr/local/Cellar/chicken/5.2.0/bin/csc -regenerate-import-libraries -M -setup-mode -static -I /Users/tkb/.cache/chicken-install/sqlite3 -emit-link-file /Users/tkb/.cache/chicken-install/sqlite3/sqlite3.link -host -D compiling-extension -c -unit sqlite3 -D compiling-static-extension -C -I/Users/tkb/.cache/chicken-install/sqlite3 -O2 -d1 sqlite3.scm -o /Users/tkb/.cache/chicken-install/sqlite3/sqlite3.static.o
-<a name="rest_code_cd7d55dbc96f430c9ef9e82b98731374-6"></a>   /usr/local/Cellar/chicken/5.2.0/bin/csc -setup-mode -s -host -I /Users/tkb/.cache/chicken-install/sqlite3 -C -I/Users/tkb/.cache/chicken-install/sqlite3 -O2 -d0 -L -lsqlite3 sqlite3.import.scm -o /Users/tkb/.cache/chicken-install/sqlite3/sqlite3.import.so
-<a name="rest_code_cd7d55dbc96f430c9ef9e82b98731374-7"></a>installing sqlite3
-</pre>
+<div class="code"><pre class="code bash"><a id="rest_code_1d903eb9c1e745a68d58c2b996fd9236-1" name="rest_code_1d903eb9c1e745a68d58c2b996fd9236-1" href="posts/2021/09/13/getting-the-homebrew-chicken-scheme-sqlite3-egg-to-use-the-homebrew-installed-sqlite3-include-files-and-library-files/#rest_code_1d903eb9c1e745a68d58c2b996fd9236-1"></a>$ <span class="nb">export</span> <span class="nv">CSC_OPTIONS</span><span class="o">=</span><span class="s2">"-I/usr/local/Cellar/sqlite/3.36.0/include -L/usr/local/Cellar/sqlite/3.36.0/lib"</span>
+<a id="rest_code_1d903eb9c1e745a68d58c2b996fd9236-2" name="rest_code_1d903eb9c1e745a68d58c2b996fd9236-2" href="posts/2021/09/13/getting-the-homebrew-chicken-scheme-sqlite3-egg-to-use-the-homebrew-installed-sqlite3-include-files-and-library-files/#rest_code_1d903eb9c1e745a68d58c2b996fd9236-2"></a>$ chicken-install sqlite3
+<a id="rest_code_1d903eb9c1e745a68d58c2b996fd9236-3" name="rest_code_1d903eb9c1e745a68d58c2b996fd9236-3" href="posts/2021/09/13/getting-the-homebrew-chicken-scheme-sqlite3-egg-to-use-the-homebrew-installed-sqlite3-include-files-and-library-files/#rest_code_1d903eb9c1e745a68d58c2b996fd9236-3"></a>building sqlite3
+<a id="rest_code_1d903eb9c1e745a68d58c2b996fd9236-4" name="rest_code_1d903eb9c1e745a68d58c2b996fd9236-4" href="posts/2021/09/13/getting-the-homebrew-chicken-scheme-sqlite3-egg-to-use-the-homebrew-installed-sqlite3-include-files-and-library-files/#rest_code_1d903eb9c1e745a68d58c2b996fd9236-4"></a>   /usr/local/Cellar/chicken/5.2.0/bin/csc -host -D compiling-extension -J -s -regenerate-import-libraries -setup-mode -I /Users/tkb/.cache/chicken-install/sqlite3 -C -I/Users/tkb/.cache/chicken-install/sqlite3 -O2 -d1 -L -lsqlite3 sqlite3.scm -o /Users/tkb/.cache/chicken-install/sqlite3/sqlite3.so
+<a id="rest_code_1d903eb9c1e745a68d58c2b996fd9236-5" name="rest_code_1d903eb9c1e745a68d58c2b996fd9236-5" href="posts/2021/09/13/getting-the-homebrew-chicken-scheme-sqlite3-egg-to-use-the-homebrew-installed-sqlite3-include-files-and-library-files/#rest_code_1d903eb9c1e745a68d58c2b996fd9236-5"></a>   /usr/local/Cellar/chicken/5.2.0/bin/csc -regenerate-import-libraries -M -setup-mode -static -I /Users/tkb/.cache/chicken-install/sqlite3 -emit-link-file /Users/tkb/.cache/chicken-install/sqlite3/sqlite3.link -host -D compiling-extension -c -unit sqlite3 -D compiling-static-extension -C -I/Users/tkb/.cache/chicken-install/sqlite3 -O2 -d1 sqlite3.scm -o /Users/tkb/.cache/chicken-install/sqlite3/sqlite3.static.o
+<a id="rest_code_1d903eb9c1e745a68d58c2b996fd9236-6" name="rest_code_1d903eb9c1e745a68d58c2b996fd9236-6" href="posts/2021/09/13/getting-the-homebrew-chicken-scheme-sqlite3-egg-to-use-the-homebrew-installed-sqlite3-include-files-and-library-files/#rest_code_1d903eb9c1e745a68d58c2b996fd9236-6"></a>   /usr/local/Cellar/chicken/5.2.0/bin/csc -setup-mode -s -host -I /Users/tkb/.cache/chicken-install/sqlite3 -C -I/Users/tkb/.cache/chicken-install/sqlite3 -O2 -d0 -L -lsqlite3 sqlite3.import.scm -o /Users/tkb/.cache/chicken-install/sqlite3/sqlite3.import.so
+<a id="rest_code_1d903eb9c1e745a68d58c2b996fd9236-7" name="rest_code_1d903eb9c1e745a68d58c2b996fd9236-7" href="posts/2021/09/13/getting-the-homebrew-chicken-scheme-sqlite3-egg-to-use-the-homebrew-installed-sqlite3-include-files-and-library-files/#rest_code_1d903eb9c1e745a68d58c2b996fd9236-7"></a>installing sqlite3
+</pre></div>
 <p>You'll probably need to adjust the version numbers in the pathnames
 for whatever version is installed on your computer.</p>
-</div>
     <nav><ul itemprop="keywords" class="tags">
 <li><a class="tag p-category" href="categories/chicken-scheme/" rel="tag">chicken scheme</a></li>
             <li><a class="tag p-category" href="categories/chicken-install/" rel="tag">chicken-install</a></li>
@@ -906,14 +1013,13 @@ for whatever version is installed on your computer.</p>
         <div class="metadata blog-post-meta">
             <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
             <p class="dateline"><a href="posts/2021/09/13/define-word-results-using-wordnik-stopped-working/" rel="bookmark"><time class="published dt-published" datetime="2021-09-13T15:48:30-04:00" title="2021-09-13 15:48">2021-09-13 15:48</time></a></p>
-                <p class="commentline">            <a href="posts/2021/09/13/define-word-results-using-wordnik-stopped-working/#disqus_thread" data-disqus-identifier="cache/posts/2021/09/13/define-word-results-using-wordnik-stopped-working.html">Comments</a>
+                <p class="commentline">        <a href="posts/2021/09/13/define-word-results-using-wordnik-stopped-working/#disqus_thread" data-disqus-identifier="cache/posts/2021/09/13/define-word-results-using-wordnik-stopped-working.html">Comments</a>
 
 
         </p>
 </div>
     </header><div class="e-content entry-content">
-    <div>
-<p>I use <a class="reference external" href="https://github.com/abo-abo/define-word">define-word</a>, a package from melpa (<a class="reference external" href="https://melpa.org/#/define-word">DWM</a>), that looks up the
+    <p>I use <a class="reference external" href="https://github.com/abo-abo/define-word">define-word</a>, a package from melpa (<a class="reference external" href="https://melpa.org/#/define-word">DWM</a>), that looks up the
 definition of a word online.  It uses <a class="reference external" href="http://wordnik.com/">wordnik.com</a> by default.
 Recently it stopped returning definitions.</p>
 <p>I did a little digging, and it turns out that it works when
@@ -921,8 +1027,8 @@ you visit the url with Chrome, but not if you just try to download it
 with curl, or <code class="docutils literal"><span class="pre">url-retrieve</span></code> in Emacs. Adding a
 “<code class="docutils literal"><span class="pre">User-Agent:</span> Mozilla/5.0 (Macintosh; Intel Mac OS X 11_5_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36</code>”
 with curl’s -H option made it work.</p>
-<pre class="code bash"><a name="rest_code_8e021d4077de40a491236cc3473877c7-1"></a>curl -i -H <span class="s1">'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 11_5_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36'</span> http://wordnik.com/words/importunate
-</pre>
+<div class="code"><pre class="code bash"><a id="rest_code_6640bc9d5a494b0ba32557ed6f06eb39-1" name="rest_code_6640bc9d5a494b0ba32557ed6f06eb39-1" href="posts/2021/09/13/define-word-results-using-wordnik-stopped-working/#rest_code_6640bc9d5a494b0ba32557ed6f06eb39-1"></a>curl -i -H <span class="s1">'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 11_5_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36'</span> http://wordnik.com/words/importunate
+</pre></div>
 <p>So I added a <code class="docutils literal">let</code> in my advice for <code class="docutils literal"><span class="pre">define-word</span></code> that binds
 <code class="docutils literal"><span class="pre">url-request-extra-headers</span></code> to an alist with <code class="docutils literal"><span class="pre">"User-Agent"</span></code> as the
 key and <code class="docutils literal">"Mozilla/5.0 (Macintosh; Intel Mac OS X 11_5_2)
@@ -930,43 +1036,19 @@ AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63
 Safari/537.36"</code> as the value, and it works again.</p>
 <p>My solution looks something like this (simplified from my actual advice,
 which does other things too):</p>
-<pre class="code emacs-lisp"><a name="rest_code_59b1eba96d3e495aa9d2b645073b3bda-1"></a><span class="p">(</span><span class="nb">defadvice</span> <span class="nv">define-word</span> <span class="p">(</span><span class="nv">around</span> <span class="nv">your-around-define-word</span> <span class="nv">activate</span><span class="p">)</span>
-<a name="rest_code_59b1eba96d3e495aa9d2b645073b3bda-2"></a>  <span class="s">"Dynamically bind tkb-define-word-word to the word passed in."</span>
-<a name="rest_code_59b1eba96d3e495aa9d2b645073b3bda-3"></a>  <span class="p">(</span><span class="k">let</span> <span class="p">((</span><span class="nv">url-request-extra-headers</span>
-<a name="rest_code_59b1eba96d3e495aa9d2b645073b3bda-4"></a>         <span class="o">'</span><span class="p">((</span><span class="s">"User-Agent"</span> <span class="o">.</span> <span class="s">"Mozilla/5.0 (Macintosh; Intel Mac OS X 11_5_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36"</span><span class="p">))))</span>
-<a name="rest_code_59b1eba96d3e495aa9d2b645073b3bda-5"></a>    <span class="nv">ad-do-it</span><span class="p">))</span>
-</pre>
+<div class="code"><pre class="code emacs-lisp"><a id="rest_code_66e3ba5329344b3c865489ccd6fcc74b-1" name="rest_code_66e3ba5329344b3c865489ccd6fcc74b-1" href="posts/2021/09/13/define-word-results-using-wordnik-stopped-working/#rest_code_66e3ba5329344b3c865489ccd6fcc74b-1"></a><span class="p">(</span><span class="nb">defadvice</span><span class="w"> </span><span class="nv">define-word</span><span class="w"> </span><span class="p">(</span><span class="nv">around</span><span class="w"> </span><span class="nv">your-around-define-word</span><span class="w"> </span><span class="nv">activate</span><span class="p">)</span><span class="w"></span>
+<a id="rest_code_66e3ba5329344b3c865489ccd6fcc74b-2" name="rest_code_66e3ba5329344b3c865489ccd6fcc74b-2" href="posts/2021/09/13/define-word-results-using-wordnik-stopped-working/#rest_code_66e3ba5329344b3c865489ccd6fcc74b-2"></a><span class="w">  </span><span class="s">"Dynamically bind tkb-define-word-word to the word passed in."</span><span class="w"></span>
+<a id="rest_code_66e3ba5329344b3c865489ccd6fcc74b-3" name="rest_code_66e3ba5329344b3c865489ccd6fcc74b-3" href="posts/2021/09/13/define-word-results-using-wordnik-stopped-working/#rest_code_66e3ba5329344b3c865489ccd6fcc74b-3"></a><span class="w">  </span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">((</span><span class="nv">url-request-extra-headers</span><span class="w"></span>
+<a id="rest_code_66e3ba5329344b3c865489ccd6fcc74b-4" name="rest_code_66e3ba5329344b3c865489ccd6fcc74b-4" href="posts/2021/09/13/define-word-results-using-wordnik-stopped-working/#rest_code_66e3ba5329344b3c865489ccd6fcc74b-4"></a><span class="w">         </span><span class="o">'</span><span class="p">((</span><span class="s">"User-Agent"</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="s">"Mozilla/5.0 (Macintosh; Intel Mac OS X 11_5_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36"</span><span class="p">))))</span><span class="w"></span>
+<a id="rest_code_66e3ba5329344b3c865489ccd6fcc74b-5" name="rest_code_66e3ba5329344b3c865489ccd6fcc74b-5" href="posts/2021/09/13/define-word-results-using-wordnik-stopped-working/#rest_code_66e3ba5329344b3c865489ccd6fcc74b-5"></a><span class="w">    </span><span class="nv">ad-do-it</span><span class="p">))</span><span class="w"></span>
+</pre></div>
 <p>I opened an <a class="reference external" href="https://github.com/abo-abo/define-word/issues/31">issue</a> on github, suggesting it might be a good idea to
 add a simpler way to add a <code class="docutils literal"><span class="pre">User-Agent:</span></code> header around
 <code class="docutils literal"><span class="pre">define-word--to-string</span></code>’s call to <code class="docutils literal"><span class="pre">url-retrieve-synchronously</span></code>.</p>
-</div>
     <nav><ul itemprop="keywords" class="tags">
 <li><a class="tag p-category" href="categories/define-word/" rel="tag">define-word</a></li>
             <li><a class="tag p-category" href="categories/emacs/" rel="tag">emacs</a></li>
             <li><a class="tag p-category" href="categories/wordnik/" rel="tag">wordnik</a></li>
-        </ul></nav>
-</div>
-    </article><article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2021/09/12/the-isle-of-the-plangent-mage/" class="u-url">The Isle of the Plangent Mage</a></h2>
-        <div class="metadata blog-post-meta">
-            <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
-            <p class="dateline"><a href="posts/2021/09/12/the-isle-of-the-plangent-mage/" rel="bookmark"><time class="published dt-published" datetime="2021-09-12T17:56:32-04:00" title="2021-09-12 17:56">2021-09-12 17:56</time></a></p>
-                <p class="commentline">            <a href="posts/2021/09/12/the-isle-of-the-plangent-mage/#disqus_thread" data-disqus-identifier="cache/posts/2021/09/12/the-isle-of-the-plangent-mage.html">Comments</a>
-
-
-        </p>
-</div>
-    </header><div class="e-content entry-content">
-    <span><a href="https://www.goodreads.com/book/show/58983217-the-isle-of-the-plangent-mage" style="float: left; padding-right: 20px"><img border="0" alt="The Isle of the Plangent Mage" src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1631483053l/58983217._SX98_.jpg"></a><a href="https://www.goodreads.com/book/show/58983217-the-isle-of-the-plangent-mage">The Isle of the Plangent Mage</a> by <a href="https://www.goodreads.com/author/show/19223417.Donn_Stroud">Donn Stroud</a><br>
-My rating: <a href="https://www.goodreads.com/review/show/4234102437">5 of 5 stars</a><br><br>
-This is an interesting adventure intertwining the sea, its creatures, and music. It describes a small area of coast with a village and inhabitants, a nearby island with several interesting locations, some inhabitants, and a dungeon with a good mix of monsters and interesting devices.<br><br>Another very good adventure from Necrotic Gnome.
-<br><br><a href="https://www.goodreads.com/review/list/13454227-t-kurt">View all my reviews on Goodreads</a>
-<br><br></span>
-    <nav><ul itemprop="keywords" class="tags">
-<li><a class="tag p-category" href="categories/donn-stroud/" rel="tag">donn stroud</a></li>
-            <li><a class="tag p-category" href="categories/necrotic-gnome/" rel="tag">necrotic gnome</a></li>
-            <li><a class="tag p-category" href="categories/old-school-essentials/" rel="tag">old-school essentials</a></li>
-            <li><a class="tag p-category" href="categories/ose/" rel="tag">ose</a></li>
-            <li><a class="tag p-category" href="categories/rpg/" rel="tag">rpg</a></li>
         </ul></nav>
 </div>
     </article>
