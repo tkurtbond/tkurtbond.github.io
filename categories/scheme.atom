@@ -3,7 +3,7 @@
 <feed xml:lang="en" xmlns="http://www.w3.org/2005/Atom">
   <title>Lacking Natural Simplicity (Posts about scheme)</title>
   <id>https://tkurtbond.github.io/categories/scheme.atom</id>
-  <updated>2022-06-05T16:28:23Z</updated>
+  <updated>2021-09-13T21:11:24Z</updated>
   <author>
     <name>T. Kurt Bond</name>
   </author>
@@ -19,20 +19,19 @@
       <name>T. Kurt Bond</name>
     </author>
     <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/posts/2021/09/13/getting-the-homebrew-chicken-scheme-sqlite3-egg-to-use-the-homebrew-installed-sqlite3-include-files-and-library-files/"/>
-    <summary type="html">&lt;p&gt;To get the &lt;a class="reference external" href="https://brew.sh/"&gt;Homebrew&lt;/a&gt; installed &lt;a class="reference external" href="http://call-cc.org"&gt;CHICKEN Scheme&lt;/a&gt; (&lt;a class="reference external" href="https://formulae.brew.sh/formula/chicken"&gt;HBCHICKEN&lt;/a&gt;) to use
+    <summary type="html">&lt;div&gt;&lt;p&gt;To get the &lt;a class="reference external" href="https://brew.sh/"&gt;Homebrew&lt;/a&gt; installed &lt;a class="reference external" href="http://call-cc.org"&gt;CHICKEN Scheme&lt;/a&gt; (&lt;a class="reference external" href="https://formulae.brew.sh/formula/chicken"&gt;HBCHICKEN&lt;/a&gt;) to use
 the &lt;a class="reference external" href="https://brew.sh/"&gt;Homebrew&lt;/a&gt; installed version of &lt;a class="reference external" href="https://www.sqlite.org/"&gt;sqlite3&lt;/a&gt; (&lt;a class="reference external" href="https://formulae.brew.sh/formula/sqlite"&gt;HBSQLITE3&lt;/a&gt;) — because the
 one supplied by Apple in macOS is obsolete — for the &lt;a class="reference external" href="http://wiki.call-cc.org/eggref/5/sqlite3"&gt;sqlite egg&lt;/a&gt;,
 you need to set &lt;code class="docutils literal"&gt;CSC_OPTIONS&lt;/code&gt; properly:&lt;/p&gt;
-&lt;div class="code"&gt;&lt;pre class="code bash"&gt;&lt;a id="rest_code_1d903eb9c1e745a68d58c2b996fd9236-1" name="rest_code_1d903eb9c1e745a68d58c2b996fd9236-1" href="https://tkurtbond.github.io/posts/2021/09/13/getting-the-homebrew-chicken-scheme-sqlite3-egg-to-use-the-homebrew-installed-sqlite3-include-files-and-library-files/#rest_code_1d903eb9c1e745a68d58c2b996fd9236-1"&gt;&lt;/a&gt;$ &lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;CSC_OPTIONS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"-I/usr/local/Cellar/sqlite/3.36.0/include -L/usr/local/Cellar/sqlite/3.36.0/lib"&lt;/span&gt;
-&lt;a id="rest_code_1d903eb9c1e745a68d58c2b996fd9236-2" name="rest_code_1d903eb9c1e745a68d58c2b996fd9236-2" href="https://tkurtbond.github.io/posts/2021/09/13/getting-the-homebrew-chicken-scheme-sqlite3-egg-to-use-the-homebrew-installed-sqlite3-include-files-and-library-files/#rest_code_1d903eb9c1e745a68d58c2b996fd9236-2"&gt;&lt;/a&gt;$ chicken-install sqlite3
-&lt;a id="rest_code_1d903eb9c1e745a68d58c2b996fd9236-3" name="rest_code_1d903eb9c1e745a68d58c2b996fd9236-3" href="https://tkurtbond.github.io/posts/2021/09/13/getting-the-homebrew-chicken-scheme-sqlite3-egg-to-use-the-homebrew-installed-sqlite3-include-files-and-library-files/#rest_code_1d903eb9c1e745a68d58c2b996fd9236-3"&gt;&lt;/a&gt;building sqlite3
-&lt;a id="rest_code_1d903eb9c1e745a68d58c2b996fd9236-4" name="rest_code_1d903eb9c1e745a68d58c2b996fd9236-4" href="https://tkurtbond.github.io/posts/2021/09/13/getting-the-homebrew-chicken-scheme-sqlite3-egg-to-use-the-homebrew-installed-sqlite3-include-files-and-library-files/#rest_code_1d903eb9c1e745a68d58c2b996fd9236-4"&gt;&lt;/a&gt;   /usr/local/Cellar/chicken/5.2.0/bin/csc -host -D compiling-extension -J -s -regenerate-import-libraries -setup-mode -I /Users/tkb/.cache/chicken-install/sqlite3 -C -I/Users/tkb/.cache/chicken-install/sqlite3 -O2 -d1 -L -lsqlite3 sqlite3.scm -o /Users/tkb/.cache/chicken-install/sqlite3/sqlite3.so
-&lt;a id="rest_code_1d903eb9c1e745a68d58c2b996fd9236-5" name="rest_code_1d903eb9c1e745a68d58c2b996fd9236-5" href="https://tkurtbond.github.io/posts/2021/09/13/getting-the-homebrew-chicken-scheme-sqlite3-egg-to-use-the-homebrew-installed-sqlite3-include-files-and-library-files/#rest_code_1d903eb9c1e745a68d58c2b996fd9236-5"&gt;&lt;/a&gt;   /usr/local/Cellar/chicken/5.2.0/bin/csc -regenerate-import-libraries -M -setup-mode -static -I /Users/tkb/.cache/chicken-install/sqlite3 -emit-link-file /Users/tkb/.cache/chicken-install/sqlite3/sqlite3.link -host -D compiling-extension -c -unit sqlite3 -D compiling-static-extension -C -I/Users/tkb/.cache/chicken-install/sqlite3 -O2 -d1 sqlite3.scm -o /Users/tkb/.cache/chicken-install/sqlite3/sqlite3.static.o
-&lt;a id="rest_code_1d903eb9c1e745a68d58c2b996fd9236-6" name="rest_code_1d903eb9c1e745a68d58c2b996fd9236-6" href="https://tkurtbond.github.io/posts/2021/09/13/getting-the-homebrew-chicken-scheme-sqlite3-egg-to-use-the-homebrew-installed-sqlite3-include-files-and-library-files/#rest_code_1d903eb9c1e745a68d58c2b996fd9236-6"&gt;&lt;/a&gt;   /usr/local/Cellar/chicken/5.2.0/bin/csc -setup-mode -s -host -I /Users/tkb/.cache/chicken-install/sqlite3 -C -I/Users/tkb/.cache/chicken-install/sqlite3 -O2 -d0 -L -lsqlite3 sqlite3.import.scm -o /Users/tkb/.cache/chicken-install/sqlite3/sqlite3.import.so
-&lt;a id="rest_code_1d903eb9c1e745a68d58c2b996fd9236-7" name="rest_code_1d903eb9c1e745a68d58c2b996fd9236-7" href="https://tkurtbond.github.io/posts/2021/09/13/getting-the-homebrew-chicken-scheme-sqlite3-egg-to-use-the-homebrew-installed-sqlite3-include-files-and-library-files/#rest_code_1d903eb9c1e745a68d58c2b996fd9236-7"&gt;&lt;/a&gt;installing sqlite3
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;You'll probably need to adjust the version numbers in the pathnames
-for whatever version is installed on your computer.&lt;/p&gt;</summary>
+&lt;pre class="code bash"&gt;&lt;a name="rest_code_cd7d55dbc96f430c9ef9e82b98731374-1"&gt;&lt;/a&gt;$ &lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;CSC_OPTIONS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"-I/usr/local/Cellar/sqlite/3.36.0/include -L/usr/local/Cellar/sqlite/3.36.0/lib"&lt;/span&gt;
+&lt;a name="rest_code_cd7d55dbc96f430c9ef9e82b98731374-2"&gt;&lt;/a&gt;$ chicken-install sqlite3
+&lt;a name="rest_code_cd7d55dbc96f430c9ef9e82b98731374-3"&gt;&lt;/a&gt;building sqlite3
+&lt;a name="rest_code_cd7d55dbc96f430c9ef9e82b98731374-4"&gt;&lt;/a&gt;   /usr/local/Cellar/chicken/5.2.0/bin/csc -host -D compiling-extension -J -s -regenerate-import-libraries -setup-mode -I /Users/tkb/.cache/chicken-install/sqlite3 -C -I/Users/tkb/.cache/chicken-install/sqlite3 -O2 -d1 -L -lsqlite3 sqlite3.scm -o /Users/tkb/.cache/chicken-install/sqlite3/sqlite3.so
+&lt;a name="rest_code_cd7d55dbc96f430c9ef9e82b98731374-5"&gt;&lt;/a&gt;   /usr/local/Cellar/chicken/5.2.0/bin/csc -regenerate-import-libraries -M -setup-mode -static -I /Users/tkb/.cache/chicken-install/sqlite3 -emit-link-file /Users/tkb/.cache/chicken-install/sqlite3/sqlite3.link -host -D compiling-extension -c -unit sqlite3 -D compiling-static-extension -C -I/Users/tkb/.cache/chicken-install/sqlite3 -O2 -d1 sqlite3.scm -o /Users/tkb/.cache/chicken-install/sqlite3/sqlite3.static.o
+&lt;a name="rest_code_cd7d55dbc96f430c9ef9e82b98731374-6"&gt;&lt;/a&gt;   /usr/local/Cellar/chicken/5.2.0/bin/csc -setup-mode -s -host -I /Users/tkb/.cache/chicken-install/sqlite3 -C -I/Users/tkb/.cache/chicken-install/sqlite3 -O2 -d0 -L -lsqlite3 sqlite3.import.scm -o /Users/tkb/.cache/chicken-install/sqlite3/sqlite3.import.so
+&lt;a name="rest_code_cd7d55dbc96f430c9ef9e82b98731374-7"&gt;&lt;/a&gt;installing sqlite3
+&lt;/pre&gt;&lt;p&gt;You'll probably need to adjust the version numbers in the pathnames
+for whatever version is installed on your computer.&lt;/p&gt;&lt;/div&gt;</summary>
     <category term="chicken-scheme" label="chicken scheme"/>
     <category term="chicken-install" label="chicken-install"/>
     <category term="csc" label="csc"/>
@@ -47,31 +46,30 @@ for whatever version is installed on your computer.&lt;/p&gt;</summary>
       <name>T. Kurt Bond</name>
     </author>
     <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/posts/2021/06/16/using-getnstr-from-chicken-scheme-ncurses-egg/"/>
-    <summary type="html">&lt;p&gt;The &lt;a class="reference external" href="https://www.call-cc.org/"&gt;Chicken Scheme&lt;/a&gt; documentation for the &lt;a class="reference external" href="http://wiki.call-cc.org/eggref/5/ncurses"&gt;ncurses egg&lt;/a&gt; says that
+    <summary type="html">&lt;div&gt;&lt;p&gt;The &lt;a class="reference external" href="https://www.call-cc.org/"&gt;Chicken Scheme&lt;/a&gt; documentation for the &lt;a class="reference external" href="http://wiki.call-cc.org/eggref/5/ncurses"&gt;ncurses egg&lt;/a&gt; says that
 you should pass a string to the &lt;code class="docutils literal"&gt;getnstr&lt;/code&gt;, function, but that doesn't
 actually work.&lt;/p&gt;
 &lt;p&gt;I finally found an &lt;a class="reference external" href="https://stackoverflow.com/a/45359136"&gt;example&lt;/a&gt;, and after looking at it and figuring out
 what imports are now required I have a working example of using
 getnstr from the chicken scheme ncurses egg!&lt;/p&gt;
-&lt;div class="code"&gt;&lt;pre class="code scheme"&gt;&lt;a id="rest_code_029ef4eec2b646fd80db4371b9627f4e-1" name="rest_code_029ef4eec2b646fd80db4371b9627f4e-1" href="https://tkurtbond.github.io/posts/2021/06/16/using-getnstr-from-chicken-scheme-ncurses-egg/#rest_code_029ef4eec2b646fd80db4371b9627f4e-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;import&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;ncurses&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;a id="rest_code_029ef4eec2b646fd80db4371b9627f4e-2" name="rest_code_029ef4eec2b646fd80db4371b9627f4e-2" href="https://tkurtbond.github.io/posts/2021/06/16/using-getnstr-from-chicken-scheme-ncurses-egg/#rest_code_029ef4eec2b646fd80db4371b9627f4e-2"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;import&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;chicken&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;locative&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;a id="rest_code_029ef4eec2b646fd80db4371b9627f4e-3" name="rest_code_029ef4eec2b646fd80db4371b9627f4e-3" href="https://tkurtbond.github.io/posts/2021/06/16/using-getnstr-from-chicken-scheme-ncurses-egg/#rest_code_029ef4eec2b646fd80db4371b9627f4e-3"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;import&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;chicken&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;string&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;a id="rest_code_029ef4eec2b646fd80db4371b9627f4e-4" name="rest_code_029ef4eec2b646fd80db4371b9627f4e-4" href="https://tkurtbond.github.io/posts/2021/06/16/using-getnstr-from-chicken-scheme-ncurses-egg/#rest_code_029ef4eec2b646fd80db4371b9627f4e-4"&gt;&lt;/a&gt;
-&lt;a id="rest_code_029ef4eec2b646fd80db4371b9627f4e-5" name="rest_code_029ef4eec2b646fd80db4371b9627f4e-5" href="https://tkurtbond.github.io/posts/2021/06/16/using-getnstr-from-chicken-scheme-ncurses-egg/#rest_code_029ef4eec2b646fd80db4371b9627f4e-5"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;define&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;get-string&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;max&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;a id="rest_code_029ef4eec2b646fd80db4371b9627f4e-6" name="rest_code_029ef4eec2b646fd80db4371b9627f4e-6" href="https://tkurtbond.github.io/posts/2021/06/16/using-getnstr-from-chicken-scheme-ncurses-egg/#rest_code_029ef4eec2b646fd80db4371b9627f4e-6"&gt;&lt;/a&gt;&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;let&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nf"&gt;buffer&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;make-string&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;max&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="sc"&gt;#\null&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;a id="rest_code_029ef4eec2b646fd80db4371b9627f4e-7" name="rest_code_029ef4eec2b646fd80db4371b9627f4e-7" href="https://tkurtbond.github.io/posts/2021/06/16/using-getnstr-from-chicken-scheme-ncurses-egg/#rest_code_029ef4eec2b646fd80db4371b9627f4e-7"&gt;&lt;/a&gt;&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;getnstr&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;make-locative&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;buffer&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;max&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;a id="rest_code_029ef4eec2b646fd80db4371b9627f4e-8" name="rest_code_029ef4eec2b646fd80db4371b9627f4e-8" href="https://tkurtbond.github.io/posts/2021/06/16/using-getnstr-from-chicken-scheme-ncurses-egg/#rest_code_029ef4eec2b646fd80db4371b9627f4e-8"&gt;&lt;/a&gt;&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="c1"&gt;;; Delete the #\null characters.&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;a id="rest_code_029ef4eec2b646fd80db4371b9627f4e-9" name="rest_code_029ef4eec2b646fd80db4371b9627f4e-9" href="https://tkurtbond.github.io/posts/2021/06/16/using-getnstr-from-chicken-scheme-ncurses-egg/#rest_code_029ef4eec2b646fd80db4371b9627f4e-9"&gt;&lt;/a&gt;&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;string-translate&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;buffer&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="sc"&gt;#\null&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;a id="rest_code_029ef4eec2b646fd80db4371b9627f4e-10" name="rest_code_029ef4eec2b646fd80db4371b9627f4e-10" href="https://tkurtbond.github.io/posts/2021/06/16/using-getnstr-from-chicken-scheme-ncurses-egg/#rest_code_029ef4eec2b646fd80db4371b9627f4e-10"&gt;&lt;/a&gt;
-&lt;a id="rest_code_029ef4eec2b646fd80db4371b9627f4e-11" name="rest_code_029ef4eec2b646fd80db4371b9627f4e-11" href="https://tkurtbond.github.io/posts/2021/06/16/using-getnstr-from-chicken-scheme-ncurses-egg/#rest_code_029ef4eec2b646fd80db4371b9627f4e-11"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;let&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nf"&gt;stdscr&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;initscr&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;a id="rest_code_029ef4eec2b646fd80db4371b9627f4e-12" name="rest_code_029ef4eec2b646fd80db4371b9627f4e-12" href="https://tkurtbond.github.io/posts/2021/06/16/using-getnstr-from-chicken-scheme-ncurses-egg/#rest_code_029ef4eec2b646fd80db4371b9627f4e-12"&gt;&lt;/a&gt;&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;str&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;get-string&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;a id="rest_code_029ef4eec2b646fd80db4371b9627f4e-13" name="rest_code_029ef4eec2b646fd80db4371b9627f4e-13" href="https://tkurtbond.github.io/posts/2021/06/16/using-getnstr-from-chicken-scheme-ncurses-egg/#rest_code_029ef4eec2b646fd80db4371b9627f4e-13"&gt;&lt;/a&gt;&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;addstr&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;str&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;a id="rest_code_029ef4eec2b646fd80db4371b9627f4e-14" name="rest_code_029ef4eec2b646fd80db4371b9627f4e-14" href="https://tkurtbond.github.io/posts/2021/06/16/using-getnstr-from-chicken-scheme-ncurses-egg/#rest_code_029ef4eec2b646fd80db4371b9627f4e-14"&gt;&lt;/a&gt;&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;getch&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;a id="rest_code_029ef4eec2b646fd80db4371b9627f4e-15" name="rest_code_029ef4eec2b646fd80db4371b9627f4e-15" href="https://tkurtbond.github.io/posts/2021/06/16/using-getnstr-from-chicken-scheme-ncurses-egg/#rest_code_029ef4eec2b646fd80db4371b9627f4e-15"&gt;&lt;/a&gt;&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;write&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;str&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;a id="rest_code_029ef4eec2b646fd80db4371b9627f4e-16" name="rest_code_029ef4eec2b646fd80db4371b9627f4e-16" href="https://tkurtbond.github.io/posts/2021/06/16/using-getnstr-from-chicken-scheme-ncurses-egg/#rest_code_029ef4eec2b646fd80db4371b9627f4e-16"&gt;&lt;/a&gt;&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;endwin&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Oh, and I added the example to the ncurses egg documentation: &lt;a class="reference external" href="http://wiki.call-cc.org/eggref/5/ncurses#getnstr-example"&gt;getnstr
-Example&lt;/a&gt;.&lt;/p&gt;</summary>
+&lt;pre class="code scheme"&gt;&lt;a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;import&lt;/span&gt; &lt;span class="nv"&gt;ncurses&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-2"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;import&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;chicken&lt;/span&gt; &lt;span class="nv"&gt;locative&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-3"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;import&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;chicken&lt;/span&gt; &lt;span class="nv"&gt;string&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-4"&gt;&lt;/a&gt;
+&lt;a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-5"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;define &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;get-string&lt;/span&gt; &lt;span class="nv"&gt;max&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-6"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;let &lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nf"&gt;buffer&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;make-string &lt;/span&gt;&lt;span class="nv"&gt;max&lt;/span&gt; &lt;span class="sc"&gt;#\null&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+&lt;a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-7"&gt;&lt;/a&gt;    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;getnstr&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;make-locative&lt;/span&gt; &lt;span class="nv"&gt;buffer&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="nv"&gt;max&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-8"&gt;&lt;/a&gt;    &lt;span class="c1"&gt;;; Delete the #\null characters.&lt;/span&gt;
+&lt;a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-9"&gt;&lt;/a&gt;    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;string-translate&lt;/span&gt; &lt;span class="nv"&gt;buffer&lt;/span&gt; &lt;span class="sc"&gt;#\null&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+&lt;a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-10"&gt;&lt;/a&gt;
+&lt;a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-11"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;let &lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nf"&gt;stdscr&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;initscr&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-12"&gt;&lt;/a&gt;      &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;str&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;get-string&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+&lt;a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-13"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;addstr&lt;/span&gt; &lt;span class="nv"&gt;str&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-14"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;getch&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-15"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;write &lt;/span&gt;&lt;span class="nv"&gt;str&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-16"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;endwin&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/pre&gt;&lt;p&gt;Oh, and I added the example to the ncurses egg documentation: &lt;a class="reference external" href="http://wiki.call-cc.org/eggref/5/ncurses#getnstr-example"&gt;getnstr
+Example&lt;/a&gt;.&lt;/p&gt;&lt;/div&gt;</summary>
     <category term="chicken-scheme" label="chicken scheme"/>
     <category term="scheme" label="scheme"/>
   </entry>
@@ -84,7 +82,7 @@ Example&lt;/a&gt;.&lt;/p&gt;</summary>
       <name>T. Kurt Bond</name>
     </author>
     <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/posts/2020/11/13/srfi-159-supersedes-alix-shinns-fmt-package/"/>
-    <summary type="html">&lt;p&gt;This is a note to help me remember to use &lt;a class="reference external" href="https://srfi.schemers.org/srfi-159/srfi-159.html"&gt;SRFI-159&lt;/a&gt; instead of &lt;a class="reference external" href="-http://wiki.call-cc.org/eggref/5/fmt"&gt;fmt&lt;/a&gt;
+    <summary type="html">&lt;div&gt;&lt;p&gt;This is a note to help me remember to use &lt;a class="reference external" href="https://srfi.schemers.org/srfi-159/srfi-159.html"&gt;SRFI-159&lt;/a&gt; instead of &lt;a class="reference external" href="-http://wiki.call-cc.org/eggref/5/fmt"&gt;fmt&lt;/a&gt;
 when I can.&lt;/p&gt;
 &lt;p&gt;The scheme &lt;a class="reference external" href="https://srfi.schemers.org/srfi-159/srfi-159.html"&gt;SRFI-159&lt;/a&gt; is similar to the &lt;a class="reference external" href="http://call-cc.org/"&gt;Chicken Scheme&lt;/a&gt; &lt;a class="reference external" href="-http://wiki.call-cc.org/eggref/5/fmt"&gt;fmt&lt;/a&gt; egg
 and is written by Alex Shinn and references his original &lt;a class="reference external" href="http://synthcode.com/scheme/fmt/"&gt;fmt -
@@ -92,7 +90,7 @@ Combinator Formating&lt;/a&gt; code on which the egg is based but it doesn’t
 seem to be implemented for Chicken Scheme.  It does explain why there
 isn’t a version of fmt for &lt;a class="reference external" href="https://github.com/ashinn/chibi-scheme"&gt;Chibi Scheme&lt;/a&gt;, since Chibi Scheme
 includes an &lt;a class="reference external" href="https://github.com/ashinn/chibi-scheme/tree/master/lib/srfi/159"&gt;implementation&lt;/a&gt; of SRFI-159 already.  There doesn't seem
-to be a &lt;a class="reference external" href="http://snow-fort.org/"&gt;Snow&lt;/a&gt; version either.&lt;/p&gt;</summary>
+to be a &lt;a class="reference external" href="http://snow-fort.org/"&gt;Snow&lt;/a&gt; version either.&lt;/p&gt;&lt;/div&gt;</summary>
     <category term="alex-shinn" label="Alex Shinn"/>
     <category term="fmt" label="fmt"/>
     <category term="scheme" label="scheme"/>
@@ -107,23 +105,19 @@ to be a &lt;a class="reference external" href="http://snow-fort.org/"&gt;Snow&lt
       <name>T. Kurt Bond</name>
     </author>
     <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/posts/2020/08/03/compiling-s7-scheme-on-macos/"/>
-    <summary type="html">&lt;p&gt;To compile &lt;a class="reference external" href="https://ccrma.stanford.edu/software/snd/snd/s7.html"&gt;s7 scheme&lt;/a&gt; with a standalone &lt;a class="reference external" href="https://tkurtbond.github.io/pages/computer-vocabulary/#REPL"&gt;REPL&lt;/a&gt;, s7's home page says to
+    <summary type="html">&lt;div&gt;&lt;p&gt;To compile &lt;a class="reference external" href="https://ccrma.stanford.edu/software/snd/snd/s7.html"&gt;s7 scheme&lt;/a&gt; with a standalone &lt;a class="reference external" href="https://tkurtbond.github.io/pages/computer-vocabulary/#REPL"&gt;REPL&lt;/a&gt;, s7's home page says to
 add the empty file &lt;span class="file"&gt;mus-config.h&lt;/span&gt; to the source directory, then
 (in Linux):&lt;/p&gt;
-&lt;div class="code"&gt;&lt;pre class="code bash"&gt;&lt;a id="rest_code_3151a8893a38421fb8a4294679484fed-1" name="rest_code_3151a8893a38421fb8a4294679484fed-1" href="https://tkurtbond.github.io/posts/2020/08/03/compiling-s7-scheme-on-macos/#rest_code_3151a8893a38421fb8a4294679484fed-1"&gt;&lt;/a&gt;gcc s7.c -o repl -DWITH_MAIN -I. -O2 -g -ldl -lm -Wl,-export-dynamic
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;It turns out that on macOS, whose &lt;span class="command"&gt;ld&lt;/span&gt; (from clang) doesn't
+&lt;pre class="code bash"&gt;&lt;a name="rest_code_faca3756ba70487da704627fa1afdcc4-1"&gt;&lt;/a&gt;gcc s7.c -o repl -DWITH_MAIN -I. -O2 -g -ldl -lm -Wl,-export-dynamic
+&lt;/pre&gt;&lt;p&gt;It turns out that on macOS, whose &lt;span class="command"&gt;ld&lt;/span&gt; (from clang) doesn't
 understand &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;-export-dynamic&lt;/span&gt;&lt;/code&gt;, you have to do&lt;/p&gt;
-&lt;div class="code"&gt;&lt;pre class="code bash"&gt;&lt;a id="rest_code_ab4ad2003ebe4dd1bec07d38a17f347c-1" name="rest_code_ab4ad2003ebe4dd1bec07d38a17f347c-1" href="https://tkurtbond.github.io/posts/2020/08/03/compiling-s7-scheme-on-macos/#rest_code_ab4ad2003ebe4dd1bec07d38a17f347c-1"&gt;&lt;/a&gt;gcc s7.c -o repl -DWITH_MAIN -I. -O2 -g -ldl -lm -Wl,-dynamic
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Then you need to do&lt;/p&gt;
-&lt;div class="code"&gt;&lt;pre class="code bash"&gt;&lt;a id="rest_code_c4c1ee1f22804e8bb8b70e40c9a56c4b-1" name="rest_code_c4c1ee1f22804e8bb8b70e40c9a56c4b-1" href="https://tkurtbond.github.io/posts/2020/08/03/compiling-s7-scheme-on-macos/#rest_code_c4c1ee1f22804e8bb8b70e40c9a56c4b-1"&gt;&lt;/a&gt;./repl libc.scm
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;which seems to generate &lt;span class="file"&gt;libc_s7.c&lt;/span&gt; and compile it into
+&lt;pre class="code bash"&gt;&lt;a name="rest_code_9f44ec775cae4f87b64137a09d220c1c-1"&gt;&lt;/a&gt;gcc s7.c -o repl -DWITH_MAIN -I. -O2 -g -ldl -lm -Wl,-dynamic
+&lt;/pre&gt;&lt;p&gt;Then you need to do&lt;/p&gt;
+&lt;pre class="code bash"&gt;&lt;a name="rest_code_476ea9b03b6c4faca81ba4e46b4b5b5b-1"&gt;&lt;/a&gt;./repl libc.scm
+&lt;/pre&gt;&lt;p&gt;which seems to generate &lt;span class="file"&gt;libc_s7.c&lt;/span&gt; and compile it into
 &lt;span class="file"&gt;libc_s.so&lt;/span&gt;.   Then you can run the &lt;a class="reference external" href="https://tkurtbond.github.io/pages/computer-vocabulary/#REPL"&gt;REPL&lt;/a&gt;:&lt;/p&gt;
-&lt;div class="code"&gt;&lt;pre class="code bash"&gt;&lt;a id="rest_code_71a5cc38c26b4655bf4a96892c277308-1" name="rest_code_71a5cc38c26b4655bf4a96892c277308-1" href="https://tkurtbond.github.io/posts/2020/08/03/compiling-s7-scheme-on-macos/#rest_code_71a5cc38c26b4655bf4a96892c277308-1"&gt;&lt;/a&gt;./repl
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;which, from looking at &lt;span class="file"&gt;s7.c&lt;/span&gt;, loads &lt;span class="file"&gt;repl.scm&lt;/span&gt;.
+&lt;pre class="code bash"&gt;&lt;a name="rest_code_e0688398b8f342468dec8fa6046bdf56-1"&gt;&lt;/a&gt;./repl
+&lt;/pre&gt;&lt;p&gt;which, from looking at &lt;span class="file"&gt;s7.c&lt;/span&gt;, loads &lt;span class="file"&gt;repl.scm&lt;/span&gt;.
 Unfortunately, I don't understand the repl commands, except for
 &lt;code class="docutils literal"&gt;pwd&lt;/code&gt; and &lt;code class="docutils literal"&gt;cd&lt;/code&gt;.  Oh, and &lt;code class="docutils literal"&gt;(exit)&lt;/code&gt; exits the repl.&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Last edited: 2020-08-03 16:03:57 EDT&lt;/em&gt;&lt;/p&gt;
@@ -132,7 +126,7 @@ time-stamp-format: "%04y-%02m-%02d %02H:%02M:%02S %Z"
 time-stamp-start: "Last edited:[ \t]+\\\\?"
 time-stamp-end: "\\*\\\\?\n"
 time-stamp-line-limit: -20
-End: --&gt;</summary>
+End: --&gt;&lt;/div&gt;</summary>
     <category term="ld" label="ld"/>
     <category term="macsos" label="macsOS"/>
     <category term="s7" label="s7"/>
@@ -147,14 +141,13 @@ End: --&gt;</summary>
       <name>T. Kurt Bond</name>
     </author>
     <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/posts/2009/09/03/chicken-410-on-cygwin/"/>
-    <summary type="html">&lt;p&gt;Weird: after compiling and installing &lt;a class="reference external" href="http://www.call-with-current-continuation.org/"&gt;chicken&lt;/a&gt; with:&lt;/p&gt;
-&lt;div class="code"&gt;&lt;pre class="code bash"&gt;&lt;a id="rest_code_7341c547a075490db4477b96df514f43-1" name="rest_code_7341c547a075490db4477b96df514f43-1" href="https://tkurtbond.github.io/posts/2009/09/03/chicken-410-on-cygwin/#rest_code_7341c547a075490db4477b96df514f43-1"&gt;&lt;/a&gt;make &lt;span class="nv"&gt;PLATFORM&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;cygwin &lt;span class="nv"&gt;PREFIX&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/sw/versions/cygwin/chicken/4.1.0
-&lt;a id="rest_code_7341c547a075490db4477b96df514f43-2" name="rest_code_7341c547a075490db4477b96df514f43-2" href="https://tkurtbond.github.io/posts/2009/09/03/chicken-410-on-cygwin/#rest_code_7341c547a075490db4477b96df514f43-2"&gt;&lt;/a&gt;make &lt;span class="nv"&gt;PLATFORM&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;cygwin &lt;span class="nv"&gt;PREFIX&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/sw/versions/cygwin/chicken/4.1.0 install
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;I had to copy &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;/sw/versions/cygwin/chicken/4.1.0/lib/*.a&lt;/span&gt;&lt;/code&gt; to
+    <summary type="html">&lt;div&gt;&lt;p&gt;Weird: after compiling and installing &lt;a class="reference external" href="http://www.call-with-current-continuation.org/"&gt;chicken&lt;/a&gt; with:&lt;/p&gt;
+&lt;pre class="code bash"&gt;&lt;a name="rest_code_9a2e7e6d74944d0d965b82ec82ccd0d8-1"&gt;&lt;/a&gt;make &lt;span class="nv"&gt;PLATFORM&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;cygwin &lt;span class="nv"&gt;PREFIX&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/sw/versions/cygwin/chicken/4.1.0
+&lt;a name="rest_code_9a2e7e6d74944d0d965b82ec82ccd0d8-2"&gt;&lt;/a&gt;make &lt;span class="nv"&gt;PLATFORM&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;cygwin &lt;span class="nv"&gt;PREFIX&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/sw/versions/cygwin/chicken/4.1.0 install
+&lt;/pre&gt;&lt;p&gt;I had to copy &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;/sw/versions/cygwin/chicken/4.1.0/lib/*.a&lt;/span&gt;&lt;/code&gt; to
 &lt;code class="docutils literal"&gt;/sw/versions/cygwin/chicken/4.1.0/bin&lt;/code&gt; before it could link things
 properly.  (I first noticed this while doing a
-&lt;code&gt;$ chicken-install ncurses&lt;/code&gt;.)&lt;/p&gt;</summary>
+&lt;code&gt;$ chicken-install ncurses&lt;/code&gt;.)&lt;/p&gt;&lt;/div&gt;</summary>
     <category term="chicken" label="chicken"/>
     <category term="cygwin" label="cygwin"/>
     <category term="scheme" label="scheme"/>
@@ -168,13 +161,13 @@ properly.  (I first noticed this while doing a
       <name>T. Kurt Bond</name>
     </author>
     <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/posts/2005/12/07/2005-12-07/"/>
-    <summary type="html">&lt;p&gt;To get Chicken version 2.207 to compile with MinGW I had to change the
+    <summary type="html">&lt;div&gt;&lt;p&gt;To get Chicken version 2.207 to compile with MinGW I had to change the
 line in configure that read&lt;/p&gt;
 &lt;pre class="literal-block"&gt;mingw_libdir=`mingw32-gcc -print-prog-name=ld | sed 's%/lib/gcc-lib/.*%/lib%'`&lt;/pre&gt;
 &lt;p&gt;with&lt;/p&gt;
 &lt;pre class="literal-block"&gt;mingw_libdir=`mingw32-gcc -print-prog-name=ld | sed 's%/lib/gcc/.*%/lib%'`&lt;/pre&gt;
 &lt;p&gt;and copy &lt;code class="docutils literal"&gt;posixwin.c&lt;/code&gt; over &lt;code class="docutils literal"&gt;posix.c&lt;/code&gt; and &lt;code class="docutils literal"&gt;uposixwin.c&lt;/code&gt; over
-&lt;code class="docutils literal"&gt;uposix.c&lt;/code&gt;.&lt;/p&gt;</summary>
+&lt;code class="docutils literal"&gt;uposix.c&lt;/code&gt;.&lt;/p&gt;&lt;/div&gt;</summary>
     <category term="chicken" label="chicken"/>
     <category term="mingw" label="mingw"/>
     <category term="old-blog" label="old blog"/>
@@ -189,11 +182,11 @@ line in configure that read&lt;/p&gt;
       <name>T. Kurt Bond</name>
     </author>
     <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/posts/2005/01/24/2005-01-24/"/>
-    <summary type="html">&lt;p&gt;Eli Barzilay has a couple of interesting &lt;a class="reference external" href="http://groups-beta.google.com/group/comp.lang.scheme/msg/b9328703efaa8219"&gt;USENET&lt;/a&gt; &lt;a class="reference external" href="http://groups-beta.google.com/group/comp.lang.scheme/msg/4301f80b6534a85"&gt;articles&lt;/a&gt; on his
+    <summary type="html">&lt;div&gt;&lt;p&gt;Eli Barzilay has a couple of interesting &lt;a class="reference external" href="http://groups-beta.google.com/group/comp.lang.scheme/msg/b9328703efaa8219"&gt;USENET&lt;/a&gt; &lt;a class="reference external" href="http://groups-beta.google.com/group/comp.lang.scheme/msg/4301f80b6534a85"&gt;articles&lt;/a&gt; on his
 experience changing from &lt;code class="docutils literal"&gt;defmacro&lt;/code&gt; to &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;syntax-case&lt;/span&gt;&lt;/code&gt;. Unfortunately, I
 didn't understand Shriram Krishnamurthi's &lt;a class="reference external" href="http://groups-beta.google.com/group/comp.lang.scheme/msg/f7f4e2373846759c"&gt;comments on hygiene&lt;/a&gt; at
 all.&lt;/p&gt;
-&lt;section id="additions-on-tuesday-21-april-2009"&gt;
+&lt;div class="section" id="additions-on-tuesday-21-april-2009"&gt;
 &lt;h2&gt;Additions on Tuesday, 21 April 2009&lt;/h2&gt;
 &lt;p&gt;I thought I'd better quote what he said:&lt;/p&gt;
 &lt;blockquote&gt;
@@ -217,7 +210,7 @@ really have to wonder.&lt;/p&gt;
 article comparing all the Lisp and Scheme macro systems and
 considering all the interactions with modules and pattern matching.  I
 think it's really needed.  [Do I say this somewhere else, too?]&lt;/p&gt;
-&lt;/section&gt;</summary>
+&lt;/div&gt;&lt;/div&gt;</summary>
     <category term="hygiene" label="hygiene"/>
     <category term="lisp" label="lisp"/>
     <category term="macros" label="macros"/>

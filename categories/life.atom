@@ -3,7 +3,7 @@
 <feed xml:lang="en" xmlns="http://www.w3.org/2005/Atom">
   <title>Lacking Natural Simplicity (Posts about life)</title>
   <id>https://tkurtbond.github.io/categories/life.atom</id>
-  <updated>2022-06-05T16:28:18Z</updated>
+  <updated>2021-06-10T18:16:39Z</updated>
   <author>
     <name>T. Kurt Bond</name>
   </author>
@@ -19,27 +19,25 @@
       <name>T. Kurt Bond</name>
     </author>
     <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/posts/2019/11/08/playing-with-hashlife/"/>
-    <summary type="html">&lt;p&gt;C.P. found &lt;a class="reference external" href="https://github.com/stylewarning"&gt;Robert Smith&lt;/a&gt;'s &lt;a class="reference external" href="https://github.com/stylewarning/lisp-random/tree/master/hashlife"&gt;implementation&lt;/a&gt; of Bill Gosper's HASHLIFE
+    <summary type="html">&lt;div&gt;&lt;p&gt;C.P. found &lt;a class="reference external" href="https://github.com/stylewarning"&gt;Robert Smith&lt;/a&gt;'s &lt;a class="reference external" href="https://github.com/stylewarning/lisp-random/tree/master/hashlife"&gt;implementation&lt;/a&gt; of Bill Gosper's HASHLIFE
 algorithm and wanted my help with running it.  I cloned the &lt;a class="reference external" href="https://github.com/stylewarning/lisp-random"&gt;repo&lt;/a&gt; it
 was in and ran &lt;code class="docutils literal"&gt;sbcl&lt;/code&gt; in the &lt;code class="docutils literal"&gt;hashlife&lt;/code&gt; directory.  Then I
 entered:&lt;/p&gt;
-&lt;div class="code"&gt;&lt;pre class="code lisp"&gt;&lt;a id="rest_code_ee4cb953d6294598914ef70996e7c745-1" name="rest_code_ee4cb953d6294598914ef70996e7c745-1" href="https://tkurtbond.github.io/posts/2019/11/08/playing-with-hashlife/#rest_code_ee4cb953d6294598914ef70996e7c745-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;asdf:operate&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ss"&gt;'asdf:load-op&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ss"&gt;'charmlife&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;That resulted in a &lt;code class="docutils literal"&gt;Component CHARMLIFE not found&lt;/code&gt; error in sbcl.  I
+&lt;pre class="code lisp"&gt;&lt;a name="rest_code_2667f7c48d5c4490b6b828a4c54ba716-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;asdf:operate&lt;/span&gt; &lt;span class="ss"&gt;'asdf:load-op&lt;/span&gt; &lt;span class="ss"&gt;'charmlife&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;p&gt;That resulted in a &lt;code class="docutils literal"&gt;Component CHARMLIFE not found&lt;/code&gt; error in sbcl.  I
 thought that was odd — it was right there in the current directory.  I
 looked at &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;asdf:*central-registry*&lt;/span&gt;&lt;/code&gt;, and the only thing in it was
 the quicklisp directory.  The ASDF &lt;a class="reference external" href="https://common-lisp.net/~mmommer/asdf-howto.shtml#sec11"&gt;howto&lt;/a&gt; showed an example of setting
 &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;asdf:*central-registry*&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
-&lt;div class="code"&gt;&lt;pre class="code lisp"&gt;&lt;a id="rest_code_c6d58f56de0d40839df418c987c3e680-1" name="rest_code_c6d58f56de0d40839df418c987c3e680-1" href="https://tkurtbond.github.io/posts/2019/11/08/playing-with-hashlife/#rest_code_c6d58f56de0d40839df418c987c3e680-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;setf&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;asdf:*central-registry*&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;a id="rest_code_c6d58f56de0d40839df418c987c3e680-2" name="rest_code_c6d58f56de0d40839df418c987c3e680-2" href="https://tkurtbond.github.io/posts/2019/11/08/playing-with-hashlife/#rest_code_c6d58f56de0d40839df418c987c3e680-2"&gt;&lt;/a&gt;&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="c1"&gt;;; Default directories, usually just the ``current directory''&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;a id="rest_code_c6d58f56de0d40839df418c987c3e680-3" name="rest_code_c6d58f56de0d40839df418c987c3e680-3" href="https://tkurtbond.github.io/posts/2019/11/08/playing-with-hashlife/#rest_code_c6d58f56de0d40839df418c987c3e680-3"&gt;&lt;/a&gt;&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="o"&gt;'&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="vg"&gt;*default-pathname-defaults*&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;a id="rest_code_c6d58f56de0d40839df418c987c3e680-4" name="rest_code_c6d58f56de0d40839df418c987c3e680-4" href="https://tkurtbond.github.io/posts/2019/11/08/playing-with-hashlife/#rest_code_c6d58f56de0d40839df418c987c3e680-4"&gt;&lt;/a&gt;
-&lt;a id="rest_code_c6d58f56de0d40839df418c987c3e680-5" name="rest_code_c6d58f56de0d40839df418c987c3e680-5" href="https://tkurtbond.github.io/posts/2019/11/08/playing-with-hashlife/#rest_code_c6d58f56de0d40839df418c987c3e680-5"&gt;&lt;/a&gt;&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="c1"&gt;;; Additional places where ASDF can find&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;a id="rest_code_c6d58f56de0d40839df418c987c3e680-6" name="rest_code_c6d58f56de0d40839df418c987c3e680-6" href="https://tkurtbond.github.io/posts/2019/11/08/playing-with-hashlife/#rest_code_c6d58f56de0d40839df418c987c3e680-6"&gt;&lt;/a&gt;&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="c1"&gt;;; system definition files&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;a id="rest_code_c6d58f56de0d40839df418c987c3e680-7" name="rest_code_c6d58f56de0d40839df418c987c3e680-7" href="https://tkurtbond.github.io/posts/2019/11/08/playing-with-hashlife/#rest_code_c6d58f56de0d40839df418c987c3e680-7"&gt;&lt;/a&gt;&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="l l-Other"&gt;#p"/home/foo/lisp/systems/"&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;a id="rest_code_c6d58f56de0d40839df418c987c3e680-8" name="rest_code_c6d58f56de0d40839df418c987c3e680-8" href="https://tkurtbond.github.io/posts/2019/11/08/playing-with-hashlife/#rest_code_c6d58f56de0d40839df418c987c3e680-8"&gt;&lt;/a&gt;&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="l l-Other"&gt;#p"/usr/share/common-lisp/systems/"&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Noticing that it had the symbol &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;*default-pathname-defaults*&lt;/span&gt;&lt;/code&gt; in the
+&lt;pre class="code lisp"&gt;&lt;a name="rest_code_56954bb37e0c46f29c1975da43b98ee9-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;setf&lt;/span&gt; &lt;span class="nv"&gt;asdf:*central-registry*&lt;/span&gt;
+&lt;a name="rest_code_56954bb37e0c46f29c1975da43b98ee9-2"&gt;&lt;/a&gt;  &lt;span class="c1"&gt;;; Default directories, usually just the ``current directory''&lt;/span&gt;
+&lt;a name="rest_code_56954bb37e0c46f29c1975da43b98ee9-3"&gt;&lt;/a&gt;  &lt;span class="o"&gt;'&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="vg"&gt;*default-pathname-defaults*&lt;/span&gt;
+&lt;a name="rest_code_56954bb37e0c46f29c1975da43b98ee9-4"&gt;&lt;/a&gt;
+&lt;a name="rest_code_56954bb37e0c46f29c1975da43b98ee9-5"&gt;&lt;/a&gt;    &lt;span class="c1"&gt;;; Additional places where ASDF can find&lt;/span&gt;
+&lt;a name="rest_code_56954bb37e0c46f29c1975da43b98ee9-6"&gt;&lt;/a&gt;    &lt;span class="c1"&gt;;; system definition files&lt;/span&gt;
+&lt;a name="rest_code_56954bb37e0c46f29c1975da43b98ee9-7"&gt;&lt;/a&gt;    &lt;span class="l l-Other"&gt;#p"/home/foo/lisp/systems/"&lt;/span&gt;
+&lt;a name="rest_code_56954bb37e0c46f29c1975da43b98ee9-8"&gt;&lt;/a&gt;    &lt;span class="l l-Other"&gt;#p"/usr/share/common-lisp/systems/"&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/pre&gt;&lt;p&gt;Noticing that it had the symbol &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;*default-pathname-defaults*&lt;/span&gt;&lt;/code&gt; in the
 new value, I guessed that it being missing from mine caused ASDF to
 not find the system in the current directory.  So I added it and tried
 again.  This time ASDF couldn't find &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;cl-charms&lt;/span&gt;&lt;/code&gt;.  I guessed and
@@ -47,12 +45,12 @@ used &lt;a class="reference external" href="https://www.quicklisp.org/"&gt;Quick
 &lt;code class="docutils literal"&gt;charmlife.lisp&lt;/code&gt; and looked at the &lt;code class="docutils literal"&gt;main&lt;/code&gt; function and figured out
 how to run it and how to interact with the program when it was running.&lt;/p&gt;
 &lt;p&gt;Here's what I had to do:&lt;/p&gt;
-&lt;div class="code"&gt;&lt;pre class="code lisp"&gt;&lt;a id="rest_code_cd0c3f8f1eeb4b9e856f6970fd61ce97-1" name="rest_code_cd0c3f8f1eeb4b9e856f6970fd61ce97-1" href="https://tkurtbond.github.io/posts/2019/11/08/playing-with-hashlife/#rest_code_cd0c3f8f1eeb4b9e856f6970fd61ce97-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;setf&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;asdf:*central-registry*&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;a id="rest_code_cd0c3f8f1eeb4b9e856f6970fd61ce97-2" name="rest_code_cd0c3f8f1eeb4b9e856f6970fd61ce97-2" href="https://tkurtbond.github.io/posts/2019/11/08/playing-with-hashlife/#rest_code_cd0c3f8f1eeb4b9e856f6970fd61ce97-2"&gt;&lt;/a&gt;&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;cons&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ss"&gt;'*default-pathname-defaults*&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;a id="rest_code_cd0c3f8f1eeb4b9e856f6970fd61ce97-3" name="rest_code_cd0c3f8f1eeb4b9e856f6970fd61ce97-3" href="https://tkurtbond.github.io/posts/2019/11/08/playing-with-hashlife/#rest_code_cd0c3f8f1eeb4b9e856f6970fd61ce97-3"&gt;&lt;/a&gt;&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="nv"&gt;asdf:*central-registry*&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;a id="rest_code_cd0c3f8f1eeb4b9e856f6970fd61ce97-4" name="rest_code_cd0c3f8f1eeb4b9e856f6970fd61ce97-4" href="https://tkurtbond.github.io/posts/2019/11/08/playing-with-hashlife/#rest_code_cd0c3f8f1eeb4b9e856f6970fd61ce97-4"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;ql:quickload&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;"cl-charms"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;a id="rest_code_cd0c3f8f1eeb4b9e856f6970fd61ce97-5" name="rest_code_cd0c3f8f1eeb4b9e856f6970fd61ce97-5" href="https://tkurtbond.github.io/posts/2019/11/08/playing-with-hashlife/#rest_code_cd0c3f8f1eeb4b9e856f6970fd61ce97-5"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;asdf:operate&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ss"&gt;'asdf:load-op&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ss"&gt;'charmlife&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;a id="rest_code_cd0c3f8f1eeb4b9e856f6970fd61ce97-6" name="rest_code_cd0c3f8f1eeb4b9e856f6970fd61ce97-6" href="https://tkurtbond.github.io/posts/2019/11/08/playing-with-hashlife/#rest_code_cd0c3f8f1eeb4b9e856f6970fd61ce97-6"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;charmlife:main&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;pre class="code lisp"&gt;&lt;a name="rest_code_839c426882a0468e8e54aa4dffeeb826-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;setf&lt;/span&gt; &lt;span class="nv"&gt;asdf:*central-registry*&lt;/span&gt;
+&lt;a name="rest_code_839c426882a0468e8e54aa4dffeeb826-2"&gt;&lt;/a&gt;      &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;cons&lt;/span&gt; &lt;span class="ss"&gt;'*default-pathname-defaults*&lt;/span&gt;
+&lt;a name="rest_code_839c426882a0468e8e54aa4dffeeb826-3"&gt;&lt;/a&gt;            &lt;span class="nv"&gt;asdf:*central-registry*&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;a name="rest_code_839c426882a0468e8e54aa4dffeeb826-4"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;ql:quickload&lt;/span&gt; &lt;span class="s"&gt;"cl-charms"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_839c426882a0468e8e54aa4dffeeb826-5"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;asdf:operate&lt;/span&gt; &lt;span class="ss"&gt;'asdf:load-op&lt;/span&gt; &lt;span class="ss"&gt;'charmlife&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_839c426882a0468e8e54aa4dffeeb826-6"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;charmlife:main&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;</summary>
     <category term="common-lisp" label="common lisp"/>
     <category term="hashlife" label="hashlife"/>
@@ -67,13 +65,13 @@ how to run it and how to interact with the program when it was running.&lt;/p&gt
       <name>T. Kurt Bond</name>
     </author>
     <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/posts/2008/08/10/what-do-i-want-in-a-house/"/>
-    <summary type="html">&lt;ul class="simple"&gt;
+    <summary type="html">&lt;div&gt;&lt;ul class="simple"&gt;
 &lt;li&gt;&lt;p&gt;A house that fits me.&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;A house were I can leave the windows open and not worry about rain coming in.&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;A house that's warm in the winter and cool in the summer.&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;A house that has enough room for my books.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;(More later.)&lt;/p&gt;</summary>
+&lt;p&gt;(More later.)&lt;/p&gt;&lt;/div&gt;</summary>
     <category term="building" label="building"/>
     <category term="house" label="house"/>
     <category term="life" label="life"/>

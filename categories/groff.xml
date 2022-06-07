@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity (Posts about groff)</title><link>https://tkurtbond.github.io/</link><description></description><atom:link href="https://tkurtbond.github.io/categories/groff.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2022 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Sun, 05 Jun 2022 16:28:25 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Making a newer version of groff work with man and emacs on macOS</title><link>https://tkurtbond.github.io/posts/2021/07/26/making-a-newer-version-of-groff-work-with-man-and-emacs-on-macos/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;p&gt;I'm posting this mostly to remind myself if I ever have to fiddle with
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity (Posts about groff)</title><link>https://tkurtbond.github.io/</link><description></description><atom:link href="https://tkurtbond.github.io/categories/groff.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2021 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Thu, 09 Sep 2021 14:11:33 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Making a newer version of groff work with man and emacs on macOS</title><link>https://tkurtbond.github.io/posts/2021/07/26/making-a-newer-version-of-groff-work-with-man-and-emacs-on-macos/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;I'm posting this mostly to remind myself if I ever have to fiddle with
 this again.&lt;/p&gt;
 &lt;p&gt;I use a version of &lt;span class="app"&gt;groff&lt;/span&gt; installed from &lt;span class="app"&gt;git&lt;/span&gt; because some
 of my documents depend on fixes that are coming out in the next
@@ -25,19 +25,17 @@ Boo!&lt;/p&gt;
 alternate configuration file (on macOS the default one is in
 &lt;span class="file"&gt;/private/etc/man.conf&lt;/span&gt;), so you can supply one that specifies
 the absolute path to the newer &lt;span class="app"&gt;groff&lt;/span&gt; you are using.  So I added&lt;/p&gt;
-&lt;div class="code"&gt;&lt;pre class="code bash"&gt;&lt;a id="rest_code_2ef498b826c24ba3abf2125ec09fe67a-1" name="rest_code_2ef498b826c24ba3abf2125ec09fe67a-1" href="https://tkurtbond.github.io/posts/2021/07/26/making-a-newer-version-of-groff-work-with-man-and-emacs-on-macos/#rest_code_2ef498b826c24ba3abf2125ec09fe67a-1"&gt;&lt;/a&gt;&lt;span class="nb"&gt;alias&lt;/span&gt; &lt;span class="nv"&gt;man&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'man -C ~/local/etc/man.conf'&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;to the appropriate shell startup file.  And I can add&lt;/p&gt;
-&lt;div class="code"&gt;&lt;pre class="code emacs-lisp"&gt;&lt;a id="rest_code_298b4628d24548a79c68a6d1fbc40d83-1" name="rest_code_298b4628d24548a79c68a6d1fbc40d83-1" href="https://tkurtbond.github.io/posts/2021/07/26/making-a-newer-version-of-groff-work-with-man-and-emacs-on-macos/#rest_code_298b4628d24548a79c68a6d1fbc40d83-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;setq&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;Man-switches&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;"-C ~/local/etc/man.conf"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;to my &lt;span class="app"&gt;emacs&lt;/span&gt; configuration so it uses the right version of
+&lt;pre class="code bash"&gt;&lt;a name="rest_code_7ae3946c1eff4097bf8a3740763a8804-1"&gt;&lt;/a&gt;&lt;span class="nb"&gt;alias&lt;/span&gt; &lt;span class="nv"&gt;man&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'man -C ~/local/etc/man.conf'&lt;/span&gt;
+&lt;/pre&gt;&lt;p&gt;to the appropriate shell startup file.  And I can add&lt;/p&gt;
+&lt;pre class="code emacs-lisp"&gt;&lt;a name="rest_code_d2b69487aefc4f5a9a9b50440170e14a-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;setq&lt;/span&gt; &lt;span class="nv"&gt;Man-switches&lt;/span&gt; &lt;span class="s"&gt;"-C ~/local/etc/man.conf"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;p&gt;to my &lt;span class="app"&gt;emacs&lt;/span&gt; configuration so it uses the right version of
 &lt;span class="app"&gt;groff&lt;/span&gt; too.&lt;/p&gt;
 &lt;p&gt;But a modern &lt;span class="app"&gt;groff&lt;/span&gt; produces ANSI escapes for bold and
 underline, rather than the older convention of over-striking via the
 backspace character with the same character for bold or with the
 underscore character for underlining.  My pager, &lt;span class="app"&gt;less&lt;/span&gt;, can deal
 with that, but something in &lt;span class="app"&gt;emacs&lt;/span&gt; doesn't like that, leaving
-the buffer with &lt;span class="man"&gt;groff_ms(7)&lt;/span&gt; with underlining on every line.&lt;a class="footnote-reference brackets" href="https://tkurtbond.github.io/posts/2021/07/26/making-a-newer-version-of-groff-work-with-man-and-emacs-on-macos/#manual" id="footnote-reference-1" role="doc-noteref"&gt;&lt;span class="fn-bracket"&gt;[&lt;/span&gt;1&lt;span class="fn-bracket"&gt;]&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+the buffer with &lt;span class="man"&gt;groff_ms(7)&lt;/span&gt; with underlining on every line.&lt;a class="footnote-reference brackets" href="https://tkurtbond.github.io/posts/2021/07/26/making-a-newer-version-of-groff-work-with-man-and-emacs-on-macos/#manual" id="id1"&gt;1&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Eventually I figured out that the old style over-striking via
 backspaces worked just fine with emacs, so I added the &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;-P-c&lt;/span&gt;&lt;/code&gt; option
 to the invocation of &lt;span class="app"&gt;groff&lt;/span&gt; in the NROFF definition in my
@@ -47,22 +45,22 @@ it to use old-style backspace over-striking.&lt;/p&gt;
 &lt;p&gt;This seems overly complicated.&lt;/p&gt;
 &lt;p&gt;I suspect I'll need to do something different on the Linux boxes I
 use.&lt;/p&gt;
-&lt;section id="later"&gt;
+&lt;div class="section" id="later"&gt;
 &lt;h2&gt;Later&lt;/h2&gt;
 &lt;p&gt;Aannnd I was right.  Fedora 33 has a similar problem, which I fixed by
 creating a &lt;span class="file"&gt;~/.manpath&lt;/span&gt; file with&lt;/p&gt;
-&lt;div class="code"&gt;&lt;pre class="code text"&gt;&lt;a id="rest_code_4501631dfd5d47c3acd557063505d8fe-1" name="rest_code_4501631dfd5d47c3acd557063505d8fe-1" href="https://tkurtbond.github.io/posts/2021/07/26/making-a-newer-version-of-groff-work-with-man-and-emacs-on-macos/#rest_code_4501631dfd5d47c3acd557063505d8fe-1"&gt;&lt;/a&gt;DEFINE       nroff   /sw/versions/groff/git/bin/nroff -mandoc -P-c
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;in it.  I found the information I needed in &lt;span class="man"&gt;manpath(5)&lt;/span&gt;, which
+&lt;pre class="code text"&gt;&lt;a name="rest_code_e6f83f57cc6c43fea46be03bf34c8827-1"&gt;&lt;/a&gt;DEFINE       nroff   /sw/versions/groff/git/bin/nroff -mandoc -P-c
+&lt;/pre&gt;&lt;p&gt;in it.  I found the information I needed in &lt;span class="man"&gt;manpath(5)&lt;/span&gt;, which
 documents the format of the &lt;span class="file"&gt;/etc/man_db.conf&lt;/span&gt; file.  (Why isn't
 it &lt;span class="man"&gt;man_db.conf(5)&lt;/span&gt;, then?)&lt;/p&gt;
-&lt;aside class="footnote brackets" id="manual" role="note"&gt;
-&lt;span class="label"&gt;&lt;span class="fn-bracket"&gt;[&lt;/span&gt;&lt;a role="doc-backlink" href="https://tkurtbond.github.io/posts/2021/07/26/making-a-newer-version-of-groff-work-with-man-and-emacs-on-macos/#footnote-reference-1"&gt;1&lt;/a&gt;&lt;span class="fn-bracket"&gt;]&lt;/span&gt;&lt;/span&gt;
-&lt;p&gt;Oddly, if I direct &lt;span class="app"&gt;man&lt;/span&gt;'s output to a file, visit that file in
+&lt;dl class="footnote brackets"&gt;
+&lt;dt class="label" id="manual"&gt;&lt;span class="brackets"&gt;&lt;a class="fn-backref" href="https://tkurtbond.github.io/posts/2021/07/26/making-a-newer-version-of-groff-work-with-man-and-emacs-on-macos/#id1"&gt;1&lt;/a&gt;&lt;/span&gt;&lt;/dt&gt;
+&lt;dd&gt;&lt;p&gt;Oddly, if I direct &lt;span class="app"&gt;man&lt;/span&gt;'s output to a file, visit that file in
 &lt;span class="app"&gt;emacs&lt;/span&gt;, and manually invoke the &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;Man-fontify-manpage&lt;/span&gt;&lt;/code&gt; function
 &lt;span class="app"&gt;emacs&lt;/span&gt; uses to fontify the man page, it &lt;em&gt;doesn't&lt;/em&gt; end up
 erroneously underlined.&lt;/p&gt;
-&lt;/aside&gt;
+&lt;/dd&gt;
+&lt;/dl&gt;
 &lt;p&gt;&lt;em&gt;Last edited: 2021-09-09 10:11:03 EDT&lt;/em&gt;&lt;/p&gt;
 &lt;!-- Local Variables:
 time-stamp-format: "%Y-%02m-%02d %02H:%02M:%02S %Z"
@@ -70,7 +68,7 @@ time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
 time-stamp-end: "\\*\\\\?\n"
 time-stamp-line-limit: -20
 End: --&gt;
-&lt;/section&gt;</description><category>groff</category><category>macos</category><category>troff</category><guid>https://tkurtbond.github.io/posts/2021/07/26/making-a-newer-version-of-groff-work-with-man-and-emacs-on-macos/</guid><pubDate>Mon, 26 Jul 2021 21:30:19 GMT</pubDate></item><item><title>install-font.sh - The simple approach</title><link>https://tkurtbond.github.io/posts/2021/07/17/install-fontsh-the-simple-approach/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;p&gt;The simple approach to using &lt;a class="reference external" href="https://www.schaffter.ca/mom/mom-05.html#install-font"&gt;install-font.sh&lt;/a&gt; to install fonts for
+&lt;/div&gt;&lt;/div&gt;</description><category>groff</category><category>macos</category><category>troff</category><guid>https://tkurtbond.github.io/posts/2021/07/26/making-a-newer-version-of-groff-work-with-man-and-emacs-on-macos/</guid><pubDate>Mon, 26 Jul 2021 21:30:19 GMT</pubDate></item><item><title>install-font.sh - The simple approach</title><link>https://tkurtbond.github.io/posts/2021/07/17/install-fontsh-the-simple-approach/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;The simple approach to using &lt;a class="reference external" href="https://www.schaffter.ca/mom/mom-05.html#install-font"&gt;install-font.sh&lt;/a&gt; to install fonts for
 &lt;span class="app"&gt;groff&lt;/span&gt; probably works for almost everybody.&lt;/p&gt;
 &lt;p&gt;First, make sure that &lt;a class="reference external" href="https://fontforge.org/"&gt;FontForge&lt;/a&gt; is installed; it is free and open
 source and available for installation in most distributions.  Second,
@@ -81,9 +79,8 @@ directories under &lt;span class="file"&gt;/usr/local/share/groff&lt;/span&gt;, 
 directories if necessary.  If you need to install into
 &lt;span class="file"&gt;/usr/share/groff&lt;/span&gt; you should specify the &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;-s&lt;/span&gt;&lt;/code&gt; option to the
 script.  For instance:&lt;/p&gt;
-&lt;div class="code"&gt;&lt;pre class="code text"&gt;&lt;a id="rest_code_69a63a3ecd37492ab2bc04dd78ff4d49-1" name="rest_code_69a63a3ecd37492ab2bc04dd78ff4d49-1" href="https://tkurtbond.github.io/posts/2021/07/17/install-fontsh-the-simple-approach/#rest_code_69a63a3ecd37492ab2bc04dd78ff4d49-1"&gt;&lt;/a&gt;$ install-font.sh Lora-Regular.ttf
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;will install the Regular variant of the font, leading you through four
+&lt;pre class="code text"&gt;&lt;a name="rest_code_fcd20ada2a444b6b9ef8a78217b4c9dc-1"&gt;&lt;/a&gt;$ install-font.sh Lora-Regular.ttf
+&lt;/pre&gt;&lt;p&gt;will install the Regular variant of the font, leading you through four
 prompts, for three of which you just need to take the default.&lt;/p&gt;
 &lt;p&gt;The only prompt where you need to do something other than accept the
 default is the prompt for the style.  For &lt;span class="file"&gt;Lora-Regular&lt;/span&gt; you'd
@@ -220,11 +217,11 @@ time-stamp-format: "%Y-%02m-%02d %02H:%02M:%02S %Z"
 time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
 time-stamp-end: "\\*\\\\?\n"
 time-stamp-line-limit: -20
-End: --&gt;</description><category>fonts</category><category>groff</category><category>install-font.sh</category><category>troff</category><guid>https://tkurtbond.github.io/posts/2021/07/17/install-fontsh-the-simple-approach/</guid><pubDate>Sat, 17 Jul 2021 19:36:43 GMT</pubDate></item><item><title>groff and install-font.sh and installing fonts for use in groff</title><link>https://tkurtbond.github.io/posts/2021/07/17/groff-and-install-fontsh-and-installing-fonts-for-use-in-groff/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;aside class="admonition note"&gt;
+End: --&gt;&lt;/div&gt;</description><category>fonts</category><category>groff</category><category>install-font.sh</category><category>troff</category><guid>https://tkurtbond.github.io/posts/2021/07/17/install-fontsh-the-simple-approach/</guid><pubDate>Sat, 17 Jul 2021 19:36:43 GMT</pubDate></item><item><title>groff and install-font.sh and installing fonts for use in groff</title><link>https://tkurtbond.github.io/posts/2021/07/17/groff-and-install-fontsh-and-installing-fonts-for-use-in-groff/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;div class="admonition note"&gt;
 &lt;p class="admonition-title"&gt;Note&lt;/p&gt;
 &lt;p&gt;This was originally a &lt;a class="reference external" href="https://lists.gnu.org/archive/html/groff/2021-07/msg00089.html"&gt;post&lt;/a&gt; to the &lt;a class="reference external" href="https://www.gnu.org/software/groff/"&gt;groff&lt;/a&gt; &lt;a class="reference external" href="https://lists.gnu.org/mailman/listinfo/groff/"&gt;mailing list&lt;/a&gt;.  It has
 been slightly modified.&lt;/p&gt;
-&lt;/aside&gt;
+&lt;/div&gt;
 &lt;p&gt;Currently &lt;span class="command"&gt;install-font.sh&lt;/span&gt; is not part of &lt;span class="app"&gt;groff&lt;/span&gt;.
 We've had some discussion on the list &lt;a class="reference external" href="https://lists.gnu.org/archive/html/groff/2021-07/msg00061.html"&gt;recently&lt;/a&gt; and in the past about
 integrating it into the &lt;span class="app"&gt;groff&lt;/span&gt; distribution, and in response to
@@ -265,9 +262,8 @@ files into proper places under &lt;span class="app"&gt;groff&lt;/span&gt;'s site
 &lt;p&gt;So, for instance, you'd cd to the directory that holds the &lt;span class="file"&gt;.ttf&lt;/span&gt; files
 you downloaded.  Then, to install the Regular variant of Cormorant
 Garamond you'd run the command&lt;/p&gt;
-&lt;div class="code"&gt;&lt;pre class="code bash"&gt;&lt;a id="rest_code_89b8005a5c194758bd10012685873e22-1" name="rest_code_89b8005a5c194758bd10012685873e22-1" href="https://tkurtbond.github.io/posts/2021/07/17/groff-and-install-fontsh-and-installing-fonts-for-use-in-groff/#rest_code_89b8005a5c194758bd10012685873e22-1"&gt;&lt;/a&gt;&lt;span class="k"&gt;$(&lt;/span&gt;IFDIR&lt;span class="k"&gt;)&lt;/span&gt;/install-font.sh -n -P &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$DEST&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt; -d -F CormorantGaramond -f +R CormorantGaramond-Regular.ttf
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;where &lt;code class="docutils literal"&gt;IFDIR&lt;/code&gt; is an environment variable indicating the directory
+&lt;pre class="code bash"&gt;&lt;a name="rest_code_2fd3a75bdcdc439eb9f8ee4929a83a00-1"&gt;&lt;/a&gt;&lt;span class="k"&gt;$(&lt;/span&gt;IFDIR&lt;span class="k"&gt;)&lt;/span&gt;/install-font.sh -n -P &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$DEST&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt; -d -F CormorantGaramond -f +R CormorantGaramond-Regular.ttf
+&lt;/pre&gt;&lt;p&gt;where &lt;code class="docutils literal"&gt;IFDIR&lt;/code&gt; is an environment variable indicating the directory
 where &lt;span class="command"&gt;install-font.sh&lt;/span&gt; is located and &lt;code class="docutils literal"&gt;DEST&lt;/code&gt; is an
 environment variable indicating the directory that contains
 &lt;span class="app"&gt;groff&lt;/span&gt;'s &lt;span class="file"&gt;site-font&lt;/span&gt; directory (not the actual
@@ -301,20 +297,18 @@ name of the &lt;span class="app"&gt;groff&lt;/span&gt; font and the &lt;span cla
 name of the Truetype or OpenType file you are converting.&lt;/p&gt;
 &lt;p&gt;To complete the example, here are the commands to install the Italic,
 Bold, and Bold Italic variants of Cormorant Garamond:&lt;/p&gt;
-&lt;div class="code"&gt;&lt;pre class="code bash"&gt;&lt;a id="rest_code_edd0015f5f144805ae9017e0ae6c0926-1" name="rest_code_edd0015f5f144805ae9017e0ae6c0926-1" href="https://tkurtbond.github.io/posts/2021/07/17/groff-and-install-fontsh-and-installing-fonts-for-use-in-groff/#rest_code_edd0015f5f144805ae9017e0ae6c0926-1"&gt;&lt;/a&gt;&lt;span class="k"&gt;$(&lt;/span&gt;IFDIR&lt;span class="k"&gt;)&lt;/span&gt;/install-font.sh -n -P &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$DEST&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt; -d -F CormorantGaramond -f +I CormorantGaramond-Italic.ttf
-&lt;a id="rest_code_edd0015f5f144805ae9017e0ae6c0926-2" name="rest_code_edd0015f5f144805ae9017e0ae6c0926-2" href="https://tkurtbond.github.io/posts/2021/07/17/groff-and-install-fontsh-and-installing-fonts-for-use-in-groff/#rest_code_edd0015f5f144805ae9017e0ae6c0926-2"&gt;&lt;/a&gt;&lt;span class="k"&gt;$(&lt;/span&gt;IFDIR&lt;span class="k"&gt;)&lt;/span&gt;/install-font.sh -n -P &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$DEST&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt; -d -F CormorantGaramond -f +B CormorantGaramond-Bold.ttf
-&lt;a id="rest_code_edd0015f5f144805ae9017e0ae6c0926-3" name="rest_code_edd0015f5f144805ae9017e0ae6c0926-3" href="https://tkurtbond.github.io/posts/2021/07/17/groff-and-install-fontsh-and-installing-fonts-for-use-in-groff/#rest_code_edd0015f5f144805ae9017e0ae6c0926-3"&gt;&lt;/a&gt;&lt;span class="k"&gt;$(&lt;/span&gt;IFDIR&lt;span class="k"&gt;)&lt;/span&gt;/install-font.sh -n -P &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$DEST&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt; -d -F CormorantGaramond -f +BI CormorantGaramond-BoldItalic.
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;As I said in an earlier email to the list, I tend to put all four
+&lt;pre class="code bash"&gt;&lt;a name="rest_code_19c244ff68784702b43727a817f61e6f-1"&gt;&lt;/a&gt;&lt;span class="k"&gt;$(&lt;/span&gt;IFDIR&lt;span class="k"&gt;)&lt;/span&gt;/install-font.sh -n -P &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$DEST&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt; -d -F CormorantGaramond -f +I CormorantGaramond-Italic.ttf
+&lt;a name="rest_code_19c244ff68784702b43727a817f61e6f-2"&gt;&lt;/a&gt;&lt;span class="k"&gt;$(&lt;/span&gt;IFDIR&lt;span class="k"&gt;)&lt;/span&gt;/install-font.sh -n -P &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$DEST&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt; -d -F CormorantGaramond -f +B CormorantGaramond-Bold.ttf
+&lt;a name="rest_code_19c244ff68784702b43727a817f61e6f-3"&gt;&lt;/a&gt;&lt;span class="k"&gt;$(&lt;/span&gt;IFDIR&lt;span class="k"&gt;)&lt;/span&gt;/install-font.sh -n -P &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$DEST&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt; -d -F CormorantGaramond -f +BI CormorantGaramond-BoldItalic.
+&lt;/pre&gt;&lt;p&gt;As I said in an earlier email to the list, I tend to put all four
 commands into a script so I can run them again if something goes wrong
 or when I need to install them on a new machine or in a new
 installation of &lt;span class="app"&gt;groff&lt;/span&gt;.  In the case of Cormorant Garamond I named the
 file &lt;span class="file"&gt;install-cormorant-garamond.sh&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Later:&lt;/strong&gt; Peter Schaffter &lt;a class="reference external" href="https://lists.gnu.org/archive/html/groff/2021-07/msg00090.html"&gt;pointed out&lt;/a&gt; that the &lt;em&gt;simple&lt;/em&gt; use of
 &lt;span class="command"&gt;install-font.sh&lt;/span&gt; is:&lt;/p&gt;
-&lt;div class="code"&gt;&lt;pre class="code bash"&gt;&lt;a id="rest_code_3286440d867a404aa1a0ae9a5641f89a-1" name="rest_code_3286440d867a404aa1a0ae9a5641f89a-1" href="https://tkurtbond.github.io/posts/2021/07/17/groff-and-install-fontsh-and-installing-fonts-for-use-in-groff/#rest_code_3286440d867a404aa1a0ae9a5641f89a-1"&gt;&lt;/a&gt;sudo install-font.sh fontfile
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;and then answer the questions the script asks.  He also pointed out
+&lt;pre class="code bash"&gt;&lt;a name="rest_code_26555d406f4042ad874f33fe54da22b9-1"&gt;&lt;/a&gt;sudo install-font.sh fontfile
+&lt;/pre&gt;&lt;p&gt;and then answer the questions the script asks.  He also pointed out
 that it creates the &lt;span class="file"&gt;site-font&lt;/span&gt; directory and necessary
 subdirectories if needed in, and here I quote: “the only two locations
 it's ever likely to be”.  Looking at &lt;span class="command"&gt;install-font.sh&lt;/span&gt; reveal
@@ -329,12 +323,12 @@ time-stamp-format: "%Y-%02m-%02d %02H:%02M:%02S %Z"
 time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
 time-stamp-end: "\\*\\\\?\n"
 time-stamp-line-limit: -20
-End: --&gt;</description><category>fonts</category><category>groff</category><category>install-font.sh</category><category>mom</category><category>troff</category><guid>https://tkurtbond.github.io/posts/2021/07/17/groff-and-install-fontsh-and-installing-fonts-for-use-in-groff/</guid><pubDate>Sat, 17 Jul 2021 04:16:49 GMT</pubDate></item><item><title>troff Memorandum Macros documentation</title><link>https://tkurtbond.github.io/posts/2021/07/15/troff-memorandum-macros-documentation/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;p&gt;&lt;strong&gt;TL;DR:&lt;/strong&gt; Look &lt;a class="reference external" href="https://tkurtbond.github.io/troff/mm-all.pdf"&gt;here&lt;/a&gt; for documentation for the &lt;span class="app"&gt;Documenter's Workbench&lt;/span&gt; &lt;span class="app"&gt;mm&lt;/span&gt; Memorandum
+End: --&gt;&lt;/div&gt;</description><category>fonts</category><category>groff</category><category>install-font.sh</category><category>mom</category><category>troff</category><guid>https://tkurtbond.github.io/posts/2021/07/17/groff-and-install-fontsh-and-installing-fonts-for-use-in-groff/</guid><pubDate>Sat, 17 Jul 2021 04:16:49 GMT</pubDate></item><item><title>troff Memorandum Macros documentation</title><link>https://tkurtbond.github.io/posts/2021/07/15/troff-memorandum-macros-documentation/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;strong&gt;TL;DR:&lt;/strong&gt; Look &lt;a class="reference external" href="https://tkurtbond.github.io/troff/mm-all.pdf"&gt;here&lt;/a&gt; for documentation for the &lt;span class="app"&gt;Documenter's Workbench&lt;/span&gt; &lt;span class="app"&gt;mm&lt;/span&gt; Memorandum
 Macros for &lt;span class="app"&gt;groff&lt;/span&gt;, based on the original paper &lt;cite&gt;MM - Memorandum
 Macros&lt;/cite&gt;.  If you read that far there is a &lt;a class="reference internal" href="https://tkurtbond.github.io/posts/2021/07/15/troff-memorandum-macros-documentation/#bonus"&gt;bonus&lt;/a&gt; at the end.&lt;/p&gt;
 &lt;p&gt;When I learned &lt;span class="app"&gt;troff&lt;/span&gt; it was actually on a VAX running VMS (used
 by &lt;a class="reference external" href="http://www.mpl.com/"&gt;MPL Corporation&lt;/a&gt;) using a port of &lt;span class="app"&gt;troff&lt;/span&gt; called
-&lt;span class="app"&gt;xroff&lt;/span&gt; &lt;a class="footnote-reference brackets" href="https://tkurtbond.github.io/posts/2021/07/15/troff-memorandum-macros-documentation/#who-produced-xroff" id="footnote-reference-1" role="doc-noteref"&gt;&lt;span class="fn-bracket"&gt;[&lt;/span&gt;1&lt;span class="fn-bracket"&gt;]&lt;/span&gt;&lt;/a&gt;, probably around 1986.  (The VAX
+&lt;span class="app"&gt;xroff&lt;/span&gt; &lt;a class="footnote-reference brackets" href="https://tkurtbond.github.io/posts/2021/07/15/troff-memorandum-macros-documentation/#who-produced-xroff" id="id1"&gt;1&lt;/a&gt;, probably around 1986.  (The VAX
 also had TeX and LaTeX, and I used them too.  Both supported the DEC
 LNO3 laserprinter that MPL had.)  While I don't know who produced
 &lt;span class="app"&gt;xroff&lt;/span&gt; and can't find anything out about it on the Internet, it
@@ -350,7 +344,7 @@ package pretty well, in a user guide sort of way, teaching you how to
 use the features as it went along, rather than being a pure reference
 manual.  And I found &lt;span class="app"&gt;mm&lt;/span&gt; most comparable in features to LaTeX of the
 troff macro packages.  While configuring &lt;span class="app"&gt;mm&lt;/span&gt; documents is somewhat
-quirky &lt;a class="footnote-reference brackets" href="https://tkurtbond.github.io/posts/2021/07/15/troff-memorandum-macros-documentation/#quirky" id="footnote-reference-2" role="doc-noteref"&gt;&lt;span class="fn-bracket"&gt;[&lt;/span&gt;2&lt;span class="fn-bracket"&gt;]&lt;/span&gt;&lt;/a&gt;, I felt that the added features over those found in
+quirky &lt;a class="footnote-reference brackets" href="https://tkurtbond.github.io/posts/2021/07/15/troff-memorandum-macros-documentation/#quirky" id="id2"&gt;2&lt;/a&gt;, I felt that the added features over those found in
 &lt;span class="app"&gt;me&lt;/span&gt; and &lt;span class="app"&gt;ms&lt;/span&gt; made it worthwhile.  So I wrote a lot of
 documents using &lt;span class="app"&gt;mm&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;Years later when I first got access to &lt;span class="app"&gt;groff&lt;/span&gt; on Unix machines
@@ -383,45 +377,43 @@ posted a version that I built a while ago &lt;a class="reference external" href=
 outline/table-of-contents entries for sections in &lt;span class="app"&gt;groff&lt;/span&gt; &lt;span class="app"&gt;mm&lt;/span&gt;,
 using the &lt;code class="docutils literal"&gt;HZ&lt;/code&gt; user-defined heading exit macro (see
 &lt;span class="man"&gt;groff_mm(7)&lt;/span&gt;):&lt;/p&gt;
-&lt;div class="code"&gt;&lt;pre class="code nroff"&gt;&lt;a id="rest_code_74adfd24285d4e28ae724249cb6a2655-1" name="rest_code_74adfd24285d4e28ae724249cb6a2655-1" href="https://tkurtbond.github.io/posts/2021/07/15/troff-memorandum-macros-documentation/#rest_code_74adfd24285d4e28ae724249cb6a2655-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="c"&gt;\" pdf outline fold level&lt;/span&gt;
-&lt;a id="rest_code_74adfd24285d4e28ae724249cb6a2655-2" name="rest_code_74adfd24285d4e28ae724249cb6a2655-2" href="https://tkurtbond.github.io/posts/2021/07/15/troff-memorandum-macros-documentation/#rest_code_74adfd24285d4e28ae724249cb6a2655-2"&gt;&lt;/a&gt;.&lt;span class="k"&gt;nr&lt;/span&gt; &lt;span class="s"&gt;PDFOUTLINE.FOLDLEVEL&lt;/span&gt; &lt;span class="m"&gt;3&lt;/span&gt;
-&lt;a id="rest_code_74adfd24285d4e28ae724249cb6a2655-3" name="rest_code_74adfd24285d4e28ae724249cb6a2655-3" href="https://tkurtbond.github.io/posts/2021/07/15/troff-memorandum-macros-documentation/#rest_code_74adfd24285d4e28ae724249cb6a2655-3"&gt;&lt;/a&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="c"&gt;\" start out in outline view&lt;/span&gt;
-&lt;a id="rest_code_74adfd24285d4e28ae724249cb6a2655-4" name="rest_code_74adfd24285d4e28ae724249cb6a2655-4" href="https://tkurtbond.github.io/posts/2021/07/15/troff-memorandum-macros-documentation/#rest_code_74adfd24285d4e28ae724249cb6a2655-4"&gt;&lt;/a&gt;.&lt;span class="k"&gt;pdfview&lt;/span&gt; &lt;span class="s"&gt;/PageMode&lt;/span&gt; &lt;span class="s"&gt;/UseOutlines&lt;/span&gt;
-&lt;a id="rest_code_74adfd24285d4e28ae724249cb6a2655-5" name="rest_code_74adfd24285d4e28ae724249cb6a2655-5" href="https://tkurtbond.github.io/posts/2021/07/15/troff-memorandum-macros-documentation/#rest_code_74adfd24285d4e28ae724249cb6a2655-5"&gt;&lt;/a&gt;.&lt;span class="k"&gt;de&lt;/span&gt; &lt;span class="s"&gt;HZ&lt;/span&gt;
-&lt;a id="rest_code_74adfd24285d4e28ae724249cb6a2655-6" name="rest_code_74adfd24285d4e28ae724249cb6a2655-6" href="https://tkurtbond.github.io/posts/2021/07/15/troff-memorandum-macros-documentation/#rest_code_74adfd24285d4e28ae724249cb6a2655-6"&gt;&lt;/a&gt;.&lt;span class="k"&gt;pdfhref&lt;/span&gt; &lt;span class="s"&gt;O&lt;/span&gt; &lt;span class="se"&gt;\\&lt;/span&gt;&lt;span class="s"&gt;$2&lt;/span&gt; &lt;span class="se"&gt;\\&lt;/span&gt;&lt;span class="s"&gt;*[}0]&lt;/span&gt; &lt;span class="se"&gt;\\&lt;/span&gt;&lt;span class="s"&gt;$3&lt;/span&gt;
-&lt;a id="rest_code_74adfd24285d4e28ae724249cb6a2655-7" name="rest_code_74adfd24285d4e28ae724249cb6a2655-7" href="https://tkurtbond.github.io/posts/2021/07/15/troff-memorandum-macros-documentation/#rest_code_74adfd24285d4e28ae724249cb6a2655-7"&gt;&lt;/a&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="s"&gt;.&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;And here's how to do it in &lt;a class="reference external" href="http://n-t-roff.github.io/heirloom/doctools.html"&gt;Heirloom Docutils&lt;/a&gt; &lt;span class="app"&gt;troff&lt;/span&gt;:&lt;/p&gt;
-&lt;div class="code"&gt;&lt;pre class="code nroff"&gt;&lt;a id="rest_code_45b903ee779947279ff5bec339547d44-1" name="rest_code_45b903ee779947279ff5bec339547d44-1" href="https://tkurtbond.github.io/posts/2021/07/15/troff-memorandum-macros-documentation/#rest_code_45b903ee779947279ff5bec339547d44-1"&gt;&lt;/a&gt;.&lt;span class="k"&gt;de&lt;/span&gt; &lt;span class="s"&gt;HY&lt;/span&gt;
-&lt;a id="rest_code_45b903ee779947279ff5bec339547d44-2" name="rest_code_45b903ee779947279ff5bec339547d44-2" href="https://tkurtbond.github.io/posts/2021/07/15/troff-memorandum-macros-documentation/#rest_code_45b903ee779947279ff5bec339547d44-2"&gt;&lt;/a&gt;.&lt;span class="k"&gt;nr&lt;/span&gt; &lt;span class="s"&gt;HYtmp&lt;/span&gt; &lt;span class="s"&gt;(\\$1-1)&lt;/span&gt;
-&lt;a id="rest_code_45b903ee779947279ff5bec339547d44-3" name="rest_code_45b903ee779947279ff5bec339547d44-3" href="https://tkurtbond.github.io/posts/2021/07/15/troff-memorandum-macros-documentation/#rest_code_45b903ee779947279ff5bec339547d44-3"&gt;&lt;/a&gt;&lt;span class="se"&gt;\\&lt;/span&gt;X'PDFMark: Bookmark &lt;span class="se"&gt;\\&lt;/span&gt;n[HYtmp] &lt;span class="se"&gt;\\&lt;/span&gt;$3'
-&lt;a id="rest_code_45b903ee779947279ff5bec339547d44-4" name="rest_code_45b903ee779947279ff5bec339547d44-4" href="https://tkurtbond.github.io/posts/2021/07/15/troff-memorandum-macros-documentation/#rest_code_45b903ee779947279ff5bec339547d44-4"&gt;&lt;/a&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="s"&gt;.&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;This version uses the &lt;code class="docutils literal"&gt;HY&lt;/code&gt; user-defined heading exit macro and
+&lt;pre class="code nroff"&gt;&lt;a name="rest_code_df1dfa8657964e4c94c08a4449273cb0-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="c"&gt;\" pdf outline fold level&lt;/span&gt;
+&lt;a name="rest_code_df1dfa8657964e4c94c08a4449273cb0-2"&gt;&lt;/a&gt;.&lt;span class="k"&gt;nr&lt;/span&gt; &lt;span class="s"&gt;PDFOUTLINE.FOLDLEVEL&lt;/span&gt; &lt;span class="m"&gt;3&lt;/span&gt;
+&lt;a name="rest_code_df1dfa8657964e4c94c08a4449273cb0-3"&gt;&lt;/a&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="c"&gt;\" start out in outline view&lt;/span&gt;
+&lt;a name="rest_code_df1dfa8657964e4c94c08a4449273cb0-4"&gt;&lt;/a&gt;.&lt;span class="k"&gt;pdfview&lt;/span&gt; &lt;span class="s"&gt;/PageMode&lt;/span&gt; &lt;span class="s"&gt;/UseOutlines&lt;/span&gt;
+&lt;a name="rest_code_df1dfa8657964e4c94c08a4449273cb0-5"&gt;&lt;/a&gt;.&lt;span class="k"&gt;de&lt;/span&gt; &lt;span class="s"&gt;HZ&lt;/span&gt;
+&lt;a name="rest_code_df1dfa8657964e4c94c08a4449273cb0-6"&gt;&lt;/a&gt;.&lt;span class="k"&gt;pdfhref&lt;/span&gt; &lt;span class="s"&gt;O&lt;/span&gt; &lt;span class="se"&gt;\\&lt;/span&gt;&lt;span class="s"&gt;$2&lt;/span&gt; &lt;span class="se"&gt;\\&lt;/span&gt;&lt;span class="s"&gt;*[}0]&lt;/span&gt; &lt;span class="se"&gt;\\&lt;/span&gt;&lt;span class="s"&gt;$3&lt;/span&gt;
+&lt;a name="rest_code_df1dfa8657964e4c94c08a4449273cb0-7"&gt;&lt;/a&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="s"&gt;.&lt;/span&gt;
+&lt;/pre&gt;&lt;p&gt;And here's how to do it in &lt;a class="reference external" href="http://n-t-roff.github.io/heirloom/doctools.html"&gt;Heirloom Docutils&lt;/a&gt; &lt;span class="app"&gt;troff&lt;/span&gt;:&lt;/p&gt;
+&lt;pre class="code nroff"&gt;&lt;a name="rest_code_35db5f339038467db0126c9c04977290-1"&gt;&lt;/a&gt;.&lt;span class="k"&gt;de&lt;/span&gt; &lt;span class="s"&gt;HY&lt;/span&gt;
+&lt;a name="rest_code_35db5f339038467db0126c9c04977290-2"&gt;&lt;/a&gt;.&lt;span class="k"&gt;nr&lt;/span&gt; &lt;span class="s"&gt;HYtmp&lt;/span&gt; &lt;span class="s"&gt;(\\$1-1)&lt;/span&gt;
+&lt;a name="rest_code_35db5f339038467db0126c9c04977290-3"&gt;&lt;/a&gt;&lt;span class="se"&gt;\\&lt;/span&gt;X'PDFMark: Bookmark &lt;span class="se"&gt;\\&lt;/span&gt;n[HYtmp] &lt;span class="se"&gt;\\&lt;/span&gt;$3'
+&lt;a name="rest_code_35db5f339038467db0126c9c04977290-4"&gt;&lt;/a&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="s"&gt;.&lt;/span&gt;
+&lt;/pre&gt;&lt;p&gt;This version uses the &lt;code class="docutils literal"&gt;HY&lt;/code&gt; user-defined heading exit macro and
 doesn't include the section numbers.&lt;/p&gt;
 &lt;p&gt;I'm not sure why the two use different macros.  All I can say is that
 I wrote them at different times for slightly different purposes.&lt;/p&gt;
-&lt;aside class="footnote brackets" id="who-produced-xroff" role="note"&gt;
-&lt;span class="label"&gt;&lt;span class="fn-bracket"&gt;[&lt;/span&gt;&lt;a role="doc-backlink" href="https://tkurtbond.github.io/posts/2021/07/15/troff-memorandum-macros-documentation/#footnote-reference-1"&gt;1&lt;/a&gt;&lt;span class="fn-bracket"&gt;]&lt;/span&gt;&lt;/span&gt;
-&lt;p&gt;While I still maintain a descendant of the VAX I where I used
+&lt;dl class="footnote brackets"&gt;
+&lt;dt class="label" id="who-produced-xroff"&gt;&lt;span class="brackets"&gt;&lt;a class="fn-backref" href="https://tkurtbond.github.io/posts/2021/07/15/troff-memorandum-macros-documentation/#id1"&gt;1&lt;/a&gt;&lt;/span&gt;&lt;/dt&gt;
+&lt;dd&gt;&lt;p&gt;While I still maintain a descendant of the VAX I where I used
 &lt;span class="app"&gt;xroff&lt;/span&gt; (emulated using &lt;a class="reference external" href="https://www.stromasys.com/solutions/charon-vax/"&gt;Charon-VAX&lt;/a&gt;), sometime in the past the
 &lt;span class="app"&gt;xroff&lt;/span&gt; software disappeared from it.  I have no idea what
 happened to it.  I blame user PDL!&lt;/p&gt;
-&lt;/aside&gt;
-&lt;aside class="footnote brackets" id="quirky" role="note"&gt;
-&lt;span class="label"&gt;&lt;span class="fn-bracket"&gt;[&lt;/span&gt;&lt;a role="doc-backlink" href="https://tkurtbond.github.io/posts/2021/07/15/troff-memorandum-macros-documentation/#footnote-reference-2"&gt;2&lt;/a&gt;&lt;span class="fn-bracket"&gt;]&lt;/span&gt;&lt;/span&gt;
-&lt;p&gt;The page offset, page width, and page length have to be set before
+&lt;/dd&gt;
+&lt;dt class="label" id="quirky"&gt;&lt;span class="brackets"&gt;&lt;a class="fn-backref" href="https://tkurtbond.github.io/posts/2021/07/15/troff-memorandum-macros-documentation/#id2"&gt;2&lt;/a&gt;&lt;/span&gt;&lt;/dt&gt;
+&lt;dd&gt;&lt;p&gt;The page offset, page width, and page length have to be set before
 the &lt;span class="app"&gt;mm&lt;/span&gt; macros were loaded, so while on Unix it is easy to set those
 values on the command line, on VMS due to oddities in its command line
 it was easiest to use &lt;code class="docutils literal"&gt;.so&lt;/code&gt; and load the macros directly&lt;/p&gt;
-&lt;/aside&gt;
+&lt;/dd&gt;
+&lt;/dl&gt;
 &lt;p&gt;&lt;em&gt;Last edited: 2021-07-17 19:09:27 EDT&lt;/em&gt;&lt;/p&gt;
 &lt;!-- Local Variables:
 time-stamp-format: "%Y-%02m-%02d %02H:%02M:%02S %Z"
 time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
 time-stamp-end: "\\*\\\\?\n"
 time-stamp-line-limit: -20
-End: --&gt;</description><category>charon-vax</category><category>documenter's workbench</category><category>dwb</category><category>groff</category><category>memorandum macros</category><category>mm</category><category>troff</category><category>vms</category><category>xroff</category><guid>https://tkurtbond.github.io/posts/2021/07/15/troff-memorandum-macros-documentation/</guid><pubDate>Thu, 15 Jul 2021 19:57:09 GMT</pubDate></item><item><title>Ted Harding's "A Guide to Typesetting Mathematics using GNU eqn"</title><link>https://tkurtbond.github.io/posts/2021/06/10/ted-hardings-a-guide-to-typesetting-mathematics-using-gnu-eqn/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;p&gt;For reference: The only place I've been able to find the PDF of Ted
+End: --&gt;&lt;/div&gt;</description><category>charon-vax</category><category>documenter's workbench</category><category>dwb</category><category>groff</category><category>memorandum macros</category><category>mm</category><category>troff</category><category>vms</category><category>xroff</category><guid>https://tkurtbond.github.io/posts/2021/07/15/troff-memorandum-macros-documentation/</guid><pubDate>Thu, 15 Jul 2021 19:57:09 GMT</pubDate></item><item><title>Ted Harding's "A Guide to Typesetting Mathematics using GNU eqn"</title><link>https://tkurtbond.github.io/posts/2021/06/10/ted-hardings-a-guide-to-typesetting-mathematics-using-gnu-eqn/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;For reference: The only place I've been able to find the PDF of Ted
 Harding's “A Guide to Typesetting Mathematics using GNU eqn” (the link
 from troff.org is broken) is in the &lt;a class="reference external" href="https://lists.gnu.org/archive/html/groff/"&gt;archives&lt;/a&gt; of the groff mailing
 list and archive.org (&lt;a class="reference external" href="https://lists.gnu.org/archive/cgi-bin/namazu.cgi?query=eqnguide&amp;amp;submit=Search%21&amp;amp;idxname=groff&amp;amp;max=20&amp;amp;result=normal&amp;amp;sort=score"&gt;search&lt;/a&gt; for “eqnguide”, since the file is named
@@ -432,7 +424,7 @@ list and archive.org (&lt;a class="reference external" href="https://lists.gnu.o
 &lt;/ul&gt;
 &lt;p&gt;The last was the most recent I found, labeled &lt;em&gt;“Last Revised 27
 October 2013”&lt;/em&gt;.  It is also available from &lt;a class="reference external" href="https://web.archive.org/web/20190921224956/https://lists.gnu.org/archive/html/groff/2013-10/pdfSVnF38sglo.pdf"&gt;archive.org&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Does anyone know of the source to this was ever released?&lt;/p&gt;</description><category>eqn</category><category>eqnguide</category><category>groff</category><category>ted harding</category><guid>https://tkurtbond.github.io/posts/2021/06/10/ted-hardings-a-guide-to-typesetting-mathematics-using-gnu-eqn/</guid><pubDate>Thu, 10 Jun 2021 15:46:55 GMT</pubDate></item><item><title>Paragraph Justification in groff and TeX</title><link>https://tkurtbond.github.io/posts/2020/07/31/paragraph-justification-in-groff-and-tex/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;p&gt;An interesting message thread developed on the groff &lt;a class="reference external" href="https://lists.gnu.org/archive/html/groff/"&gt;mailing list&lt;/a&gt;
+&lt;p&gt;Does anyone know of the source to this was ever released?&lt;/p&gt;&lt;/div&gt;</description><category>eqn</category><category>eqnguide</category><category>groff</category><category>ted harding</category><guid>https://tkurtbond.github.io/posts/2021/06/10/ted-hardings-a-guide-to-typesetting-mathematics-using-gnu-eqn/</guid><pubDate>Thu, 10 Jun 2021 15:46:55 GMT</pubDate></item><item><title>Paragraph Justification in groff and TeX</title><link>https://tkurtbond.github.io/posts/2020/07/31/paragraph-justification-in-groff-and-tex/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;p&gt;An interesting message thread developed on the groff &lt;a class="reference external" href="https://lists.gnu.org/archive/html/groff/"&gt;mailing list&lt;/a&gt;
 about various features of &lt;span class="app"&gt;Groff&lt;/span&gt; and &lt;span class="app"&gt;Heirloom Troff&lt;/span&gt;, with
 a mention of &lt;span class="app"&gt;neatroff&lt;/span&gt;.  In particular, Steve Izma's post (&lt;a class="reference external" href="https://lists.gnu.org/archive/html/groff/2020-07/msg00092.html"&gt;P1&lt;/a&gt;)
 discussed how he found &lt;span class="app"&gt;TeX&lt;/span&gt;'s paragraph-at-a-time justification
@@ -444,7 +436,7 @@ Line-Breaking Algorithm (&lt;a class="reference external" href="http://www.eprg.
 writing this post I ran across another paper, “Global multiple
 objective line breaking” by Alex Holkner (&lt;a class="reference external" href="https://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.585.8487"&gt;GMOLB1&lt;/a&gt;, &lt;a class="reference external" href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.585.8487&amp;amp;rep=rep1&amp;amp;type=pdf"&gt;GMOLB2&lt;/a&gt;) that explores
 another line breaking algorithm and references some of the other
-papers on the subject.&lt;/p&gt;</description><category>groff</category><category>heirloom troff</category><category>knuth-plass line-breaking algorithm</category><category>neatroff</category><category>tex</category><guid>https://tkurtbond.github.io/posts/2020/07/31/paragraph-justification-in-groff-and-tex/</guid><pubDate>Sat, 01 Aug 2020 02:42:15 GMT</pubDate></item><item><title>Text Subtleties</title><link>https://tkurtbond.github.io/posts/2020/07/07/text-subtleties/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;p&gt;I just noticed that when &lt;a class="reference external" href="https://www.gnu.org/software/wget/"&gt;wget&lt;/a&gt; tells you the filename of file it just
+papers on the subject.&lt;/p&gt;</description><category>groff</category><category>heirloom troff</category><category>knuth-plass line-breaking algorithm</category><category>neatroff</category><category>tex</category><guid>https://tkurtbond.github.io/posts/2020/07/31/paragraph-justification-in-groff-and-tex/</guid><pubDate>Sat, 01 Aug 2020 02:42:15 GMT</pubDate></item><item><title>Text Subtleties</title><link>https://tkurtbond.github.io/posts/2020/07/07/text-subtleties/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;I just noticed that when &lt;a class="reference external" href="https://www.gnu.org/software/wget/"&gt;wget&lt;/a&gt; tells you the filename of file it just
 saved, if your &lt;code class="docutils literal"&gt;LANG=C&lt;/code&gt; then it surrounds it with apostrophes ('), but
 if your &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;LANG=en_US.UTF-8&lt;/span&gt;&lt;/code&gt; then it surrounds it with &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Unicode"&gt;Unicode&lt;/a&gt; LEFT SINGLE
 QUOTATION MARK (‘)and RIGHT SINGLE QUOTATION MARK (’).  I appreciate
@@ -469,29 +461,28 @@ time-stamp-format: "%04y-%02m-%02d %02H:%02M:%02S %Z"
 time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
 time-stamp-end: "\\*\\\\?\n"
 time-stamp-line-limit: -20
-End: --&gt;</description><category>context</category><category>groff</category><category>heirloom troff</category><category>text</category><category>unicode</category><category>utf-8</category><category>xelatex</category><guid>https://tkurtbond.github.io/posts/2020/07/07/text-subtleties/</guid><pubDate>Tue, 07 Jul 2020 23:05:13 GMT</pubDate></item><item><title>Making digest-sized pages with pandoc and ms output</title><link>https://tkurtbond.github.io/posts/2020/03/13/making-digest-sized-pages-with-pandoc-and-ms-output/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;aside class="admonition note"&gt;
+End: --&gt;&lt;/div&gt;</description><category>context</category><category>groff</category><category>heirloom troff</category><category>text</category><category>unicode</category><category>utf-8</category><category>xelatex</category><guid>https://tkurtbond.github.io/posts/2020/07/07/text-subtleties/</guid><pubDate>Tue, 07 Jul 2020 23:05:13 GMT</pubDate></item><item><title>Making digest-sized pages with pandoc and ms output</title><link>https://tkurtbond.github.io/posts/2020/03/13/making-digest-sized-pages-with-pandoc-and-ms-output/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;div class="admonition note"&gt;
 &lt;p class="admonition-title"&gt;Note&lt;/p&gt;
 &lt;p&gt;After I wrote this post, I made a last minute check of the options
 to &lt;span class="app"&gt;pandoc&lt;/span&gt; and found that the &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;--pdf-engine-opt=&lt;/span&gt;&lt;/code&gt; option
 does exactly what I want.  How embarrassing.  So I changed this
 post, showing both the easy way and the hard way to do it.&lt;/p&gt;
-&lt;/aside&gt;
+&lt;/div&gt;
 &lt;p&gt;I use &lt;a class="reference external" href="https://pandoc.org/"&gt;pandoc&lt;/a&gt; to produce digest-sized pages (5½×8½ inches) in PDF
 documents from &lt;a class="reference external" href="https://en.wikipedia.org/wiki/ReStructuredText"&gt;ReStructuredText&lt;/a&gt;.  I have a &lt;span class="app"&gt;ms&lt;/span&gt; output template,
 &lt;span class="file"&gt;digest2.ms&lt;/span&gt; in &lt;span class="file"&gt;~/pandoc/templates&lt;/span&gt; that sets the page
 width and page height correctly.  Unfortunately, there is no way to
-set the papersize properly in the template. &lt;a class="footnote-reference brackets" href="https://tkurtbond.github.io/posts/2020/03/13/making-digest-sized-pages-with-pandoc-and-ms-output/#heirloomtroff" id="footnote-reference-1" role="doc-noteref"&gt;&lt;span class="fn-bracket"&gt;[&lt;/span&gt;1&lt;span class="fn-bracket"&gt;]&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+set the papersize properly in the template. &lt;a class="footnote-reference brackets" href="https://tkurtbond.github.io/posts/2020/03/13/making-digest-sized-pages-with-pandoc-and-ms-output/#heirloomtroff" id="id1"&gt;1&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Luckily, &lt;span class="app"&gt;pandoc&lt;/span&gt; has the &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;--pdf-engine-opt=&lt;/span&gt;&lt;/code&gt; option to pass
 options to the PDF engine that &lt;span class="app"&gt;pandoc&lt;/span&gt; is using, in this case
 &lt;span class="app"&gt;pdfroff&lt;/span&gt;.  In the case of &lt;span class="app"&gt;ms&lt;/span&gt; output the thing to do is
-pass the argument &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;--pdf-engine-opt=-P-p8.5i,5.5i&lt;/span&gt;&lt;/code&gt; &lt;a class="footnote-reference brackets" href="https://tkurtbond.github.io/posts/2020/03/13/making-digest-sized-pages-with-pandoc-and-ms-output/#recursively" id="footnote-reference-2" role="doc-noteref"&gt;&lt;span class="fn-bracket"&gt;[&lt;/span&gt;2&lt;span class="fn-bracket"&gt;]&lt;/span&gt;&lt;/a&gt;,
+pass the argument &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;--pdf-engine-opt=-P-p8.5i,5.5i&lt;/span&gt;&lt;/code&gt; &lt;a class="footnote-reference brackets" href="https://tkurtbond.github.io/posts/2020/03/13/making-digest-sized-pages-with-pandoc-and-ms-output/#recursively" id="id2"&gt;2&lt;/a&gt;,
 like below.&lt;/p&gt;
 &lt;p&gt;&lt;a class="reference external" href="https://tkurtbond.github.io/listings/GNUmakefile.pandoc-digest-pdf-engine-opt.html"&gt;GNUmakefile.pandoc-digest-pdf-engine-opt&lt;/a&gt;  &lt;a class="reference external" href="https://tkurtbond.github.io/listings/GNUmakefile.pandoc-digest-pdf-engine-opt"&gt;(Source)&lt;/a&gt;&lt;/p&gt;
-&lt;div class="code"&gt;&lt;pre class="code make"&gt;&lt;a id="rest_code_430b5ded2f514111b0f14825b092a51b-1" name="rest_code_430b5ded2f514111b0f14825b092a51b-1" href="https://tkurtbond.github.io/posts/2020/03/13/making-digest-sized-pages-with-pandoc-and-ms-output/#rest_code_430b5ded2f514111b0f14825b092a51b-1"&gt;&lt;/a&gt;&lt;span class="nf"&gt;%.digest.ms.pdf &lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; %.&lt;span class="n"&gt;rst&lt;/span&gt;
-&lt;a id="rest_code_430b5ded2f514111b0f14825b092a51b-2" name="rest_code_430b5ded2f514111b0f14825b092a51b-2" href="https://tkurtbond.github.io/posts/2020/03/13/making-digest-sized-pages-with-pandoc-and-ms-output/#rest_code_430b5ded2f514111b0f14825b092a51b-2"&gt;&lt;/a&gt;        pandoc -s -r rst -w ms --template&lt;span class="o"&gt;=&lt;/span&gt;digest2 &lt;span class="k"&gt;$(&lt;/span&gt;VARIABLES&lt;span class="k"&gt;)&lt;/span&gt; &lt;span class="se"&gt;\&lt;/span&gt;
-&lt;a id="rest_code_430b5ded2f514111b0f14825b092a51b-3" name="rest_code_430b5ded2f514111b0f14825b092a51b-3" href="https://tkurtbond.github.io/posts/2020/03/13/making-digest-sized-pages-with-pandoc-and-ms-output/#rest_code_430b5ded2f514111b0f14825b092a51b-3"&gt;&lt;/a&gt;                --output&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$@&lt;/span&gt; --pdf-engine-opt&lt;span class="o"&gt;=&lt;/span&gt;-P-p8.5i,5.5i $&amp;lt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Unfortunately when I originally had this need for digest pages I
+&lt;pre class="code make"&gt;&lt;a name="rest_code_8d76b135b72d43cca40c91681803edac-1"&gt;&lt;/a&gt;&lt;span class="nf"&gt;%.digest.ms.pdf &lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; %.&lt;span class="n"&gt;rst&lt;/span&gt;
+&lt;a name="rest_code_8d76b135b72d43cca40c91681803edac-2"&gt;&lt;/a&gt;        pandoc -s -r rst -w ms --template&lt;span class="o"&gt;=&lt;/span&gt;digest2 &lt;span class="k"&gt;$(&lt;/span&gt;VARIABLES&lt;span class="k"&gt;)&lt;/span&gt; &lt;span class="se"&gt;\&lt;/span&gt;
+&lt;a name="rest_code_8d76b135b72d43cca40c91681803edac-3"&gt;&lt;/a&gt;                --output&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$@&lt;/span&gt; --pdf-engine-opt&lt;span class="o"&gt;=&lt;/span&gt;-P-p8.5i,5.5i $&amp;lt;
+&lt;/pre&gt;&lt;p&gt;Unfortunately when I originally had this need for digest pages I
 hadn't realized that the &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;--pdf-engine-opt=&lt;/span&gt;&lt;/code&gt; option existed.&lt;/p&gt;
 &lt;p&gt;So I used &lt;code class="docutils literal"&gt;pandoc &lt;span class="pre"&gt;--verbose&lt;/span&gt;&lt;/code&gt; and found the &lt;span class="app"&gt;pdfroff&lt;/span&gt; invocation
 &lt;span class="app"&gt;pandoc&lt;/span&gt; uses, and made my &lt;span class="app"&gt;pandoc&lt;/span&gt; invocation output
@@ -499,48 +490,46 @@ hadn't realized that the &lt;code class="docutils literal"&gt;&lt;span class="pr
 command with the added &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;-P-p8.5i,5.5i&lt;/span&gt;&lt;/code&gt; argument.  Here's what I put
 in my &lt;span class="file"&gt;GNUmakefile&lt;/span&gt;:&lt;/p&gt;
 &lt;p&gt;&lt;a class="reference external" href="https://tkurtbond.github.io/listings/GNUmakefile.pandoc-digest-save-ms.html"&gt;GNUmakefile.pandoc-digest-save-ms&lt;/a&gt;  &lt;a class="reference external" href="https://tkurtbond.github.io/listings/GNUmakefile.pandoc-digest-save-ms"&gt;(Source)&lt;/a&gt;&lt;/p&gt;
-&lt;div class="code"&gt;&lt;pre class="code make"&gt;&lt;a id="rest_code_928faf82d79146bd806de93c2064ecdb-1" name="rest_code_928faf82d79146bd806de93c2064ecdb-1" href="https://tkurtbond.github.io/posts/2020/03/13/making-digest-sized-pages-with-pandoc-and-ms-output/#rest_code_928faf82d79146bd806de93c2064ecdb-1"&gt;&lt;/a&gt;&lt;span class="nf"&gt;%.digest.ms.pdf &lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; %.&lt;span class="n"&gt;rst&lt;/span&gt;
-&lt;a id="rest_code_928faf82d79146bd806de93c2064ecdb-2" name="rest_code_928faf82d79146bd806de93c2064ecdb-2" href="https://tkurtbond.github.io/posts/2020/03/13/making-digest-sized-pages-with-pandoc-and-ms-output/#rest_code_928faf82d79146bd806de93c2064ecdb-2"&gt;&lt;/a&gt;        pandoc -s -r rst -w ms -s --template&lt;span class="o"&gt;=&lt;/span&gt;digest2 &lt;span class="k"&gt;$(&lt;/span&gt;VARIABLES&lt;span class="k"&gt;)&lt;/span&gt; &lt;span class="se"&gt;\&lt;/span&gt;
-&lt;a id="rest_code_928faf82d79146bd806de93c2064ecdb-3" name="rest_code_928faf82d79146bd806de93c2064ecdb-3" href="https://tkurtbond.github.io/posts/2020/03/13/making-digest-sized-pages-with-pandoc-and-ms-output/#rest_code_928faf82d79146bd806de93c2064ecdb-3"&gt;&lt;/a&gt;               --output&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$*&lt;/span&gt;.ms $&amp;lt;
-&lt;a id="rest_code_928faf82d79146bd806de93c2064ecdb-4" name="rest_code_928faf82d79146bd806de93c2064ecdb-4" href="https://tkurtbond.github.io/posts/2020/03/13/making-digest-sized-pages-with-pandoc-and-ms-output/#rest_code_928faf82d79146bd806de93c2064ecdb-4"&gt;&lt;/a&gt;        pdfroff -ms -mpdfmark -e -t -k -KUTF-8 --no-toc-relocation &lt;span class="se"&gt;\&lt;/span&gt;
-&lt;a id="rest_code_928faf82d79146bd806de93c2064ecdb-5" name="rest_code_928faf82d79146bd806de93c2064ecdb-5" href="https://tkurtbond.github.io/posts/2020/03/13/making-digest-sized-pages-with-pandoc-and-ms-output/#rest_code_928faf82d79146bd806de93c2064ecdb-5"&gt;&lt;/a&gt;                -P-p8.5i,5.5i &lt;span class="nv"&gt;$*&lt;/span&gt;.ms &amp;gt; &lt;span class="nv"&gt;$@&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Or, if you don't care about having the &lt;span class="app"&gt;ms&lt;/span&gt; output for debugging,
+&lt;pre class="code make"&gt;&lt;a name="rest_code_84d2232ac0bf4cd197a58a6512998407-1"&gt;&lt;/a&gt;&lt;span class="nf"&gt;%.digest.ms.pdf &lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; %.&lt;span class="n"&gt;rst&lt;/span&gt;
+&lt;a name="rest_code_84d2232ac0bf4cd197a58a6512998407-2"&gt;&lt;/a&gt;        pandoc -s -r rst -w ms -s --template&lt;span class="o"&gt;=&lt;/span&gt;digest2 &lt;span class="k"&gt;$(&lt;/span&gt;VARIABLES&lt;span class="k"&gt;)&lt;/span&gt; &lt;span class="se"&gt;\&lt;/span&gt;
+&lt;a name="rest_code_84d2232ac0bf4cd197a58a6512998407-3"&gt;&lt;/a&gt;               --output&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$*&lt;/span&gt;.ms $&amp;lt;
+&lt;a name="rest_code_84d2232ac0bf4cd197a58a6512998407-4"&gt;&lt;/a&gt;        pdfroff -ms -mpdfmark -e -t -k -KUTF-8 --no-toc-relocation &lt;span class="se"&gt;\&lt;/span&gt;
+&lt;a name="rest_code_84d2232ac0bf4cd197a58a6512998407-5"&gt;&lt;/a&gt;                -P-p8.5i,5.5i &lt;span class="nv"&gt;$*&lt;/span&gt;.ms &amp;gt; &lt;span class="nv"&gt;$@&lt;/span&gt;
+&lt;/pre&gt;&lt;p&gt;Or, if you don't care about having the &lt;span class="app"&gt;ms&lt;/span&gt; output for debugging,
 you could do it as a pipeline:&lt;/p&gt;
 &lt;p&gt;&lt;a class="reference external" href="https://tkurtbond.github.io/listings/GNUmakefile.pandoc-digest-pipeline.html"&gt;GNUmakefile.pandoc-digest-pipeline&lt;/a&gt;  &lt;a class="reference external" href="https://tkurtbond.github.io/listings/GNUmakefile.pandoc-digest-pipeline"&gt;(Source)&lt;/a&gt;&lt;/p&gt;
-&lt;div class="code"&gt;&lt;pre class="code make"&gt;&lt;a id="rest_code_9aee01836cfc4c7a80d5b5116acab608-1" name="rest_code_9aee01836cfc4c7a80d5b5116acab608-1" href="https://tkurtbond.github.io/posts/2020/03/13/making-digest-sized-pages-with-pandoc-and-ms-output/#rest_code_9aee01836cfc4c7a80d5b5116acab608-1"&gt;&lt;/a&gt;&lt;span class="nf"&gt;%.digest.ms.pdf &lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; %.&lt;span class="n"&gt;rst&lt;/span&gt;
-&lt;a id="rest_code_9aee01836cfc4c7a80d5b5116acab608-2" name="rest_code_9aee01836cfc4c7a80d5b5116acab608-2" href="https://tkurtbond.github.io/posts/2020/03/13/making-digest-sized-pages-with-pandoc-and-ms-output/#rest_code_9aee01836cfc4c7a80d5b5116acab608-2"&gt;&lt;/a&gt;        pandoc -s -r rst -w ms -s --template&lt;span class="o"&gt;=&lt;/span&gt;digest2 &lt;span class="k"&gt;$(&lt;/span&gt;VARIABLES&lt;span class="k"&gt;)&lt;/span&gt; &lt;span class="se"&gt;\&lt;/span&gt;
-&lt;a id="rest_code_9aee01836cfc4c7a80d5b5116acab608-3" name="rest_code_9aee01836cfc4c7a80d5b5116acab608-3" href="https://tkurtbond.github.io/posts/2020/03/13/making-digest-sized-pages-with-pandoc-and-ms-output/#rest_code_9aee01836cfc4c7a80d5b5116acab608-3"&gt;&lt;/a&gt;               --output&lt;span class="o"&gt;=&lt;/span&gt;- $&amp;lt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="se"&gt;\&lt;/span&gt;
-&lt;a id="rest_code_9aee01836cfc4c7a80d5b5116acab608-4" name="rest_code_9aee01836cfc4c7a80d5b5116acab608-4" href="https://tkurtbond.github.io/posts/2020/03/13/making-digest-sized-pages-with-pandoc-and-ms-output/#rest_code_9aee01836cfc4c7a80d5b5116acab608-4"&gt;&lt;/a&gt;        pdfroff -ms -mpdfmark -e -t -k -KUTF-8 --no-toc-relocation &lt;span class="se"&gt;\&lt;/span&gt;
-&lt;a id="rest_code_9aee01836cfc4c7a80d5b5116acab608-5" name="rest_code_9aee01836cfc4c7a80d5b5116acab608-5" href="https://tkurtbond.github.io/posts/2020/03/13/making-digest-sized-pages-with-pandoc-and-ms-output/#rest_code_9aee01836cfc4c7a80d5b5116acab608-5"&gt;&lt;/a&gt;                -P-p8.5i,5.5i - &amp;gt;&lt;span class="nv"&gt;$@&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;There are still some instances where this technique of having
+&lt;pre class="code make"&gt;&lt;a name="rest_code_d7ca5558c86943e6b8c7a6745e77c726-1"&gt;&lt;/a&gt;&lt;span class="nf"&gt;%.digest.ms.pdf &lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; %.&lt;span class="n"&gt;rst&lt;/span&gt;
+&lt;a name="rest_code_d7ca5558c86943e6b8c7a6745e77c726-2"&gt;&lt;/a&gt;        pandoc -s -r rst -w ms -s --template&lt;span class="o"&gt;=&lt;/span&gt;digest2 &lt;span class="k"&gt;$(&lt;/span&gt;VARIABLES&lt;span class="k"&gt;)&lt;/span&gt; &lt;span class="se"&gt;\&lt;/span&gt;
+&lt;a name="rest_code_d7ca5558c86943e6b8c7a6745e77c726-3"&gt;&lt;/a&gt;               --output&lt;span class="o"&gt;=&lt;/span&gt;- $&amp;lt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="se"&gt;\&lt;/span&gt;
+&lt;a name="rest_code_d7ca5558c86943e6b8c7a6745e77c726-4"&gt;&lt;/a&gt;        pdfroff -ms -mpdfmark -e -t -k -KUTF-8 --no-toc-relocation &lt;span class="se"&gt;\&lt;/span&gt;
+&lt;a name="rest_code_d7ca5558c86943e6b8c7a6745e77c726-5"&gt;&lt;/a&gt;                -P-p8.5i,5.5i - &amp;gt;&lt;span class="nv"&gt;$@&lt;/span&gt;
+&lt;/pre&gt;&lt;p&gt;There are still some instances where this technique of having
 &lt;span class="app"&gt;pandoc&lt;/span&gt; output the &lt;span class="app"&gt;ms&lt;/span&gt; source directly and pass it through
 &lt;span class="app"&gt;pdfroff&lt;/span&gt; yourself.  For instance, if you have to do some
 massaging of the &lt;span class="app"&gt;ms&lt;/span&gt; source, like changing &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;.RS/.RE&lt;/span&gt;&lt;/code&gt; to
 &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;.QS/.QE&lt;/span&gt;&lt;/code&gt; to get around the problem with block quotes in &lt;span class="app"&gt;ms&lt;/span&gt;
 output in the current &lt;span class="app"&gt;pandoc&lt;/span&gt; release, discussed &lt;a class="reference external" href="https://tkurtbond.github.io/posts/2020/03/11/pandoc-discuss-post-can-the-rsre-macros-in-ms-output-be-replaced-with-qsqe/"&gt;here&lt;/a&gt;.&lt;/p&gt;
-&lt;aside class="footnote brackets" id="heirloomtroff" role="note"&gt;
-&lt;span class="label"&gt;&lt;span class="fn-bracket"&gt;[&lt;/span&gt;&lt;a role="doc-backlink" href="https://tkurtbond.github.io/posts/2020/03/13/making-digest-sized-pages-with-pandoc-and-ms-output/#footnote-reference-1"&gt;1&lt;/a&gt;&lt;span class="fn-bracket"&gt;]&lt;/span&gt;&lt;/span&gt;
-&lt;p&gt;Heirloom Troff (originally at &lt;a class="reference external" href="http://heirloom.sourceforge.net/doctools.html"&gt;H1&lt;/a&gt;, but now &lt;em&gt;I
+&lt;dl class="footnote brackets"&gt;
+&lt;dt class="label" id="heirloomtroff"&gt;&lt;span class="brackets"&gt;&lt;a class="fn-backref" href="https://tkurtbond.github.io/posts/2020/03/13/making-digest-sized-pages-with-pandoc-and-ms-output/#id1"&gt;1&lt;/a&gt;&lt;/span&gt;&lt;/dt&gt;
+&lt;dd&gt;&lt;p&gt;Heirloom Troff (originally at &lt;a class="reference external" href="http://heirloom.sourceforge.net/doctools.html"&gt;H1&lt;/a&gt;, but now &lt;em&gt;I
 think&lt;/em&gt; more up to date at &lt;a class="reference external" href="http://n-t-roff.github.io/heirloom/doctools.html"&gt;H2&lt;/a&gt; and &lt;a class="reference external" href="https://github.com/n-t-roff/heirloom-doctools"&gt;H3&lt;/a&gt;) has the &lt;code class="docutils literal"&gt;.mediasize&lt;/code&gt; and
 &lt;code class="docutils literal"&gt;.papersize&lt;/code&gt; commands for that.&lt;/p&gt;
-&lt;/aside&gt;
-&lt;aside class="footnote brackets" id="recursively" role="note"&gt;
-&lt;span class="label"&gt;&lt;span class="fn-bracket"&gt;[&lt;/span&gt;&lt;a role="doc-backlink" href="https://tkurtbond.github.io/posts/2020/03/13/making-digest-sized-pages-with-pandoc-and-ms-output/#footnote-reference-2"&gt;2&lt;/a&gt;&lt;span class="fn-bracket"&gt;]&lt;/span&gt;&lt;/span&gt;
-&lt;p&gt;Amusingly, &lt;span class="app"&gt;pandoc&lt;/span&gt; passes the
+&lt;/dd&gt;
+&lt;dt class="label" id="recursively"&gt;&lt;span class="brackets"&gt;&lt;a class="fn-backref" href="https://tkurtbond.github.io/posts/2020/03/13/making-digest-sized-pages-with-pandoc-and-ms-output/#id2"&gt;2&lt;/a&gt;&lt;/span&gt;&lt;/dt&gt;
+&lt;dd&gt;&lt;p&gt;Amusingly, &lt;span class="app"&gt;pandoc&lt;/span&gt; passes the
 &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;--pdf-engine-opt=-P-p8.5i,5.5i&lt;/span&gt;&lt;/code&gt; argument to &lt;span class="app"&gt;pdfroff&lt;/span&gt;,
 which passes the &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;-P-p8.5i,5.5i&lt;/span&gt;&lt;/code&gt; part to &lt;span class="app"&gt;groff&lt;/span&gt;, which
 passes the &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;-p8.5i,5.5i&lt;/span&gt;&lt;/code&gt; part to the (final) post processor — I'm
 not sure if &lt;em&gt;that&lt;/em&gt; is &lt;span class="app"&gt;grops&lt;/span&gt; or &lt;span class="app"&gt;gropdf&lt;/span&gt;.&lt;/p&gt;
-&lt;/aside&gt;</description><category>computer</category><category>digest</category><category>groff</category><category>make</category><category>ms macros</category><category>pandoc</category><category>pdfroff</category><category>text processing</category><guid>https://tkurtbond.github.io/posts/2020/03/13/making-digest-sized-pages-with-pandoc-and-ms-output/</guid><pubDate>Fri, 13 Mar 2020 18:01:10 GMT</pubDate></item><item><title>pandoc-discuss post: Can the .RS/.RE macros in ms output be replaced with .QS/.QE?</title><link>https://tkurtbond.github.io/posts/2020/03/11/pandoc-discuss-post-can-the-rsre-macros-in-ms-output-be-replaced-with-qsqe/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;p&gt;On March 9, 2020 I made a &lt;a class="reference external" href="https://groups.google.com/forum/#!topic/pandoc-discuss/zulmB6uujgc"&gt;post&lt;/a&gt; on the pandoc-discuss mailing list
+&lt;/dd&gt;
+&lt;/dl&gt;&lt;/div&gt;</description><category>computer</category><category>digest</category><category>groff</category><category>make</category><category>ms macros</category><category>pandoc</category><category>pdfroff</category><category>text processing</category><guid>https://tkurtbond.github.io/posts/2020/03/13/making-digest-sized-pages-with-pandoc-and-ms-output/</guid><pubDate>Fri, 13 Mar 2020 18:01:10 GMT</pubDate></item><item><title>pandoc-discuss post: Can the .RS/.RE macros in ms output be replaced with .QS/.QE?</title><link>https://tkurtbond.github.io/posts/2020/03/11/pandoc-discuss-post-can-the-rsre-macros-in-ms-output-be-replaced-with-qsqe/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;On March 9, 2020 I made a &lt;a class="reference external" href="https://groups.google.com/forum/#!topic/pandoc-discuss/zulmB6uujgc"&gt;post&lt;/a&gt; on the pandoc-discuss mailing list
 that explains some changes to pandoc to better handle block quotes in
 ms output, and a workaround for it until the version with changes
 comes out, but I forgot to mention it here.&lt;/p&gt;
 &lt;p&gt;In short, use a pipeline like this:&lt;/p&gt;
 &lt;p&gt;&lt;a class="reference external" href="https://tkurtbond.github.io/listings/GNUmakefile.change-RS-RE-to-QS-QE.html"&gt;GNUmakefile.change-RS-RE-to-QS-QE&lt;/a&gt;  &lt;a class="reference external" href="https://tkurtbond.github.io/listings/GNUmakefile.change-RS-RE-to-QS-QE"&gt;(Source)&lt;/a&gt;&lt;/p&gt;
-&lt;div class="code"&gt;&lt;pre class="code make"&gt;&lt;a id="rest_code_636d79983f4a4ae69ddf8917c2df282d-1" name="rest_code_636d79983f4a4ae69ddf8917c2df282d-1" href="https://tkurtbond.github.io/posts/2020/03/11/pandoc-discuss-post-can-the-rsre-macros-in-ms-output-be-replaced-with-qsqe/#rest_code_636d79983f4a4ae69ddf8917c2df282d-1"&gt;&lt;/a&gt;&lt;span class="nf"&gt;%.qs.ms.pdf &lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; %.&lt;span class="n"&gt;rst&lt;/span&gt;
-&lt;a id="rest_code_636d79983f4a4ae69ddf8917c2df282d-2" name="rest_code_636d79983f4a4ae69ddf8917c2df282d-2" href="https://tkurtbond.github.io/posts/2020/03/11/pandoc-discuss-post-can-the-rsre-macros-in-ms-output-be-replaced-with-qsqe/#rest_code_636d79983f4a4ae69ddf8917c2df282d-2"&gt;&lt;/a&gt;        pandoc --verbose -r rst -w ms &lt;span class="k"&gt;$(&lt;/span&gt;PANDOCOPTS&lt;span class="k"&gt;)&lt;/span&gt; &lt;span class="se"&gt;\&lt;/span&gt;
-&lt;a id="rest_code_636d79983f4a4ae69ddf8917c2df282d-3" name="rest_code_636d79983f4a4ae69ddf8917c2df282d-3" href="https://tkurtbond.github.io/posts/2020/03/11/pandoc-discuss-post-can-the-rsre-macros-in-ms-output-be-replaced-with-qsqe/#rest_code_636d79983f4a4ae69ddf8917c2df282d-3"&gt;&lt;/a&gt;                --output&lt;span class="o"&gt;=&lt;/span&gt;- $&amp;lt; &lt;span class="p"&gt;|&lt;/span&gt; gsed -e &lt;span class="s1"&gt;'s/^\.RS$$/.QS/'&lt;/span&gt; -e &lt;span class="s1"&gt;'s/^\.RE$$/.QE/'&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="se"&gt;\&lt;/span&gt;
-&lt;a id="rest_code_636d79983f4a4ae69ddf8917c2df282d-4" name="rest_code_636d79983f4a4ae69ddf8917c2df282d-4" href="https://tkurtbond.github.io/posts/2020/03/11/pandoc-discuss-post-can-the-rsre-macros-in-ms-output-be-replaced-with-qsqe/#rest_code_636d79983f4a4ae69ddf8917c2df282d-4"&gt;&lt;/a&gt;        pdfroff -ms -mpdfmark -e -t -k -KUTF-8 -i --no-toc-relocation &amp;gt;&lt;span class="nv"&gt;$@&lt;/span&gt;
+&lt;pre class="code make"&gt;&lt;a name="rest_code_65841705b4aa433681d88012d1a4cd28-1"&gt;&lt;/a&gt;&lt;span class="nf"&gt;%.qs.ms.pdf &lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; %.&lt;span class="n"&gt;rst&lt;/span&gt;
+&lt;a name="rest_code_65841705b4aa433681d88012d1a4cd28-2"&gt;&lt;/a&gt;        pandoc --verbose -r rst -w ms &lt;span class="k"&gt;$(&lt;/span&gt;PANDOCOPTS&lt;span class="k"&gt;)&lt;/span&gt; &lt;span class="se"&gt;\&lt;/span&gt;
+&lt;a name="rest_code_65841705b4aa433681d88012d1a4cd28-3"&gt;&lt;/a&gt;                --output&lt;span class="o"&gt;=&lt;/span&gt;- $&amp;lt; &lt;span class="p"&gt;|&lt;/span&gt; gsed -e &lt;span class="s1"&gt;'s/^\.RS$$/.QS/'&lt;/span&gt; -e &lt;span class="s1"&gt;'s/^\.RE$$/.QE/'&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="se"&gt;\&lt;/span&gt;
+&lt;a name="rest_code_65841705b4aa433681d88012d1a4cd28-4"&gt;&lt;/a&gt;        pdfroff -ms -mpdfmark -e -t -k -KUTF-8 -i --no-toc-relocation &amp;gt;&lt;span class="nv"&gt;$@&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;</description><category>.QS/.QE</category><category>.RS/.RE</category><category>block quotes</category><category>groff</category><category>ms macros</category><category>pandoc</category><guid>https://tkurtbond.github.io/posts/2020/03/11/pandoc-discuss-post-can-the-rsre-macros-in-ms-output-be-replaced-with-qsqe/</guid><pubDate>Thu, 12 Mar 2020 00:35:47 GMT</pubDate></item></channel></rss>

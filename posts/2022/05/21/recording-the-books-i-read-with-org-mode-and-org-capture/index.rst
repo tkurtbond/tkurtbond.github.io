@@ -1,7 +1,7 @@
 .. title: Recording the books I read with org-mode and org-capture
 .. slug: recording-the-books-i-read-with-org-mode-and-org-capture
 .. date: 2022-05-21 07:17:18 UTC-04:00
-.. tags: reading
+.. tags: reading,org-mode,emacs,org-capture,emacs advice,defadvice,advice-add
 .. category: computer/emacs
 .. link: 
 .. description: 
