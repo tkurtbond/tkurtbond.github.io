@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Installing a recent version of the A2 operatinng system on UNIX | Lacking Natural Simplicity</title>
+<link href="../../../../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../../../../rss.xml">
+<link rel="alternate" type="application/atom+xml" title="Atom" href="../../../../../feed.atom">
+<link rel="canonical" href="https://tkurtbond.github.io/posts/2022/06/10/installing-a-recent-version-of-the-a2-operatinng-system-on-unix/">
+<!--[if lt IE 9]><script src="../../../../../assets/js/html5.js"></script><![endif]--><meta name="author" content="T. Kurt Bond">
+<link rel="prev" href="../../05/the-criticisms-of-pascal-in-why-pascal-is-not-my-favorite-programming-language-applied-to-oberon/" title="The criticisms of Pascal in “Why Pascal is Not My Favorite Programming Language” applied to Oberon" type="text/html">
+<meta property="og:site_name" content="Lacking Natural Simplicity">
+<meta property="og:title" content="Installing a recent version of the A2 operatinng system on UNIX">
+<meta property="og:url" content="https://tkurtbond.github.io/posts/2022/06/10/installing-a-recent-version-of-the-a2-operatinng-system-on-unix/">
+<meta property="og:description" content="I recently ran across a document that explains how to install the A2
+operating system (formerly Bluebottle, formerly Aos) in the form of
+UnixAos hosted on macOS, in the process of explaining how to ma">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2022-06-10T11:28:40-04:00">
+<meta property="article:tag" content="a2">
+<meta property="article:tag" content="aos">
+<meta property="article:tag" content="bluebottle">
+<meta property="article:tag" content="macos">
+<meta property="article:tag" content="oberon">
+<meta property="article:tag" content="unix">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400;1,700&amp;family=Lato:ital,wght@0,400;0,700;1,400;1,700&amp;family=Source+Code+Pro:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<div class="blog-masthead">
+    <div class="container">
+<!-- This keeps the margins nice -->
+        <nav class="blog-nav" role="navigation"><a href="../../../../../index.html" class="blog-nav-item">Home</a>
+            <a href="../../../../../archive.html" class="blog-nav-item">Archives</a>
+            <a href="../../../../../categories/index.html" class="blog-nav-item">Tags &amp; Categories</a>
+            <a href="../../../../../rss.xml" class="blog-nav-item">RSS feed</a>
+            <a href="../../../../../feed.atom" class="blog-nav-item">Atom feed</a>
+
+            
+
+    <a href="index.rst" class="blog-nav-item blog-nav-item-aside" id="sourcelink">Source</a>
+                
+            
+        </nav>
+</div>
+<!-- /.container -->
+</div>
+<!-- End of Menubar -->
+
+<div class="container" id="content" role="main">
+    <div class="body-content">
+        <div class="blog-header">
+            <h1 class="blog-title">
+                <a href="https://tkurtbond.github.io/">
+
+                    <span id="blog-title">Lacking Natural Simplicity</span>
+                </a>
+            </h1>
+            <p class="lead blog-description">Random musings on books, code, and tabletop games.</p>
+            
+        </div>
+        <!--Body content-->
+        <div class="row">
+            <div class="col-sm-8 blog-main">
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h2 class="p-name entry-title blog-post-title" itemprop="headline name"><a href="." class="u-url">Installing a recent version of the A2 operatinng system on UNIX</a></h2>
+
+        <div class="metadata blog-post-meta">
+            <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
+            <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2022-06-10T11:28:40-04:00" itemprop="datePublished" title="2022-06-10 11:28">2022-06-10 11:28</time></a></p>
+                <p class="commentline">            <a href="#disqus_thread" data-disqus-identifier="cache/posts/2022/06/10/installing-a-recent-version-of-the-a2-operatinng-system-on-unix.html">Comments</a>
+
+
+                    </p>
+<p class="sourceline"><a href="index.rst" id="sourcelink">Source</a></p>
+
+        </div>
+        
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<p>I recently ran across a <a class="reference external" href="https://svn.inf.ethz.ch/svn/lecturers/a2/trunk/UnixAos/DarwinA2%20Installer/ReadMeFirst!.txt">document</a> that explains how to install the <a class="reference external" href="https://en.wikipedia.org/wiki/A2_(operating_system)">A2</a>
+operating system (formerly Bluebottle, formerly Aos) in the form of
+UnixAos hosted on macOS, in the process of explaining how to make a
+installer for macOS.  I think the same process will work for any
+supported Unix.</p>
+<p>I'll summarize what I did.</p>
+<p>I went to <a class="reference external" href="http://www.informatik.uni-bremen.de/~fld/UnixAos/">http://www.informatik.uni-bremen.de/~fld/UnixAos/</a> and
+selected the most recent revision, <a class="reference external" href="http://www.informatik.uni-bremen.de/~fld/UnixAos/rev.9799/">rev.9799</a> at the time of this
+writing.  There I downloaded the install script, <a class="reference external" href="http://www.informatik.uni-bremen.de/~fld/UnixAos/rev.9799/install.UnixA2">install.UnixA2</a> and
+the version for 64 bit macOS, <a class="reference external" href="http://www.informatik.uni-bremen.de/~fld/UnixAos/rev.9799/DarwinA2-64bit.tgz">DarwinA2-64bit.tgz</a>.  (There were also
+Linux and Solaris versions for 32 and 64 bit systems.)</p>
+<p>The install script assumes you are running as root, but I ran it first
+as my normal user, and since the directory I was installing it to was
+owned by me it seems to have worked ok.</p>
+<p>I installed to <span class="file">/usr/local/sw/versions/aos/rev.9799</span>, but I had
+to create that directory first.  And I installed the <span class="command">aos</span>
+command to a directory in my path.  Then when I issued the command
+<code class="docutils literal">aos</code> it started up and displayed a window with A2 running in it.
+This requires X Windows, so you'll need to install <a class="reference external" href="https://www.xquartz.org/">XQuartz</a>.</p>
+<p>Here's a screen shot:</p>
+<div class="figure">
+<img alt="Screenshot of A2 running under macOS" src="../../../../../a2-screenshot.png"><p class="caption">Screenshot of A2 running under macOS</p>
+</div>
+<p>I started it and it seems to work ok, though I haven't investigated
+very much.</p>
+</div>
+    </div>
+    <script>var pfHeaderImgUrl = '';var pfHeaderTagline = '';var pfdisableClickToDel = 0;var pfHideImages = 0;var pfImageDisplayStyle = 'right';var pfDisablePDF = 0;var pfDisableEmail = 0;var pfDisablePrint = 0;var pfCustomCSS = '';var pfBtVersion='2';(function(){var js,pf;pf=document.createElement('script');pf.type='text/javascript';pf.src='//cdn.printfriendly.com/printfriendly.js';document.getElementsByTagName('head')[0].appendChild(pf)})();</script><a href="https://www.printfriendly.com" style="color:#6D9F00;text-decoration:none;" class="printfriendly" onclick="window.print();return false;" title="Printer Friendly and PDF"><img style="border:none;-webkit-box-shadow:none;box-shadow:none;" src="//cdn.printfriendly.com/buttons/printfriendly-pdf-button.png" alt="Print Friendly and PDF"></a>    
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../../../../../categories/a2/" rel="tag">a2</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/aos/" rel="tag">aos</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/bluebottle/" rel="tag">bluebottle</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/macos/" rel="tag">macos</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/oberon/" rel="tag">oberon</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/unix/" rel="tag">unix</a></li>
+        </ul>
+<ul class="pager hidden-print">
+<li class="previous">
+                <a href="../../05/the-criticisms-of-pascal-in-why-pascal-is-not-my-favorite-programming-language-applied-to-oberon/" rel="prev" title="The criticisms of Pascal in “Why Pascal is Not My Favorite Programming Language” applied to Oberon">Previous post</a>
+            </li>
+        </ul></nav></aside><section class="comments hidden-print"><h2>Comments</h2>
+                        <div id="disqus_thread"></div>
+        <script>
+        var disqus_shortname ="lacking-natural-simplicity",
+            disqus_url="https://tkurtbond.github.io/posts/2022/06/10/installing-a-recent-version-of-the-a2-operatinng-system-on-unix/",
+        disqus_title="Installing a recent version of the A2 operatinng system on UNIX",
+        disqus_identifier="cache/posts/2022/06/10/installing-a-recent-version-of-the-a2-operatinng-system-on-unix.html",
+        disqus_config = function () {
+            this.language = "en";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.async = true;
+            dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script><noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+    <a href="https://disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+        </section></article><script>var disqus_shortname="lacking-natural-simplicity";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
+</div>
+            <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+                    <div class="sidebar-module sidebar-module-inset">
+      <h4>About</h4>
+      <p>Lacking Natural Simplicity is one, not particularly flattering, 
+         definition of sophisticated.  
+         This blog chronicles my journey through our at times too complicated 
+         and sophisticated world. </p>
+    </div>
+    <div class="sidebar-module">
+      <h4>Links</h4>
+      <ol class="list-unstyled">
+<li><a href="../../../../../pages/about-the-blog/index.html">About the Blog</a></li>
+        <li><a href="../../../../../pages/colophon/index.html">Colophon</a></li>
+        <li><a href="../../../../../pages/typographical-conventions/index.html">Typographical Conventions</a></li>
+        <li><a href="../../../../../pages/static-pages-index/index.html">Pages</a></li>
+        <li>
+<a href="http://tkb.tx0.org/">My other web page</a>
+            <p>    Mostly empty</p>
+        </li>
+      </ol>
+</div>
+    
+            </div>
+        <!--End of body content-->
+        </div>
+    </div>
+</div>
+
+<footer class="blog-footer" id="footer">
+    Contents © 2022         <a href="mailto:tkurtbond@gmail.com">T. Kurt Bond</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+    
+</footer><script src="../../../../../assets/js/all-nocdn.js"></script><!-- fancy dates --><script>
+    moment.locale("en");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates --><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element) {
+            return element.getElementsByTagName('img')[0].alt;
+    }});
+    </script>
+</body>
+</html>

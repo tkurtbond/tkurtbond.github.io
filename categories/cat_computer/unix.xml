@@ -1,5 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity (Posts about unix)</title><link>https://tkurtbond.github.io/</link><description></description><atom:link href="https://tkurtbond.github.io/categories/cat_computer/unix.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2021 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Fri, 09 Jul 2021 19:33:17 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Logging the output of long commands run multiple times</title><link>https://tkurtbond.github.io/posts/2021/07/07/logging-the-output-of-long-commands-run-multiple-times/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;I often run commands that produce a lot of output that needs to saved
+<?xml-stylesheet type="text/xsl" href="../../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity (Posts about unix)</title><link>https://tkurtbond.github.io/</link><description></description><atom:link href="https://tkurtbond.github.io/categories/cat_computer/unix.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2022 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Fri, 10 Jun 2022 16:21:20 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Installing a recent version of the A2 operatinng system on UNIX</title><link>https://tkurtbond.github.io/posts/2022/06/10/installing-a-recent-version-of-the-a2-operatinng-system-on-unix/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;I recently ran across a &lt;a class="reference external" href="https://svn.inf.ethz.ch/svn/lecturers/a2/trunk/UnixAos/DarwinA2%20Installer/ReadMeFirst!.txt"&gt;document&lt;/a&gt; that explains how to install the &lt;a class="reference external" href="https://en.wikipedia.org/wiki/A2_(operating_system)"&gt;A2&lt;/a&gt;
+operating system (formerly Bluebottle, formerly Aos) in the form of
+UnixAos hosted on macOS, in the process of explaining how to make a
+installer for macOS.  I think the same process will work for any
+supported Unix.&lt;/p&gt;
+&lt;p&gt;I'll summarize what I did.&lt;/p&gt;
+&lt;p&gt;I went to &lt;a class="reference external" href="http://www.informatik.uni-bremen.de/~fld/UnixAos/"&gt;http://www.informatik.uni-bremen.de/~fld/UnixAos/&lt;/a&gt; and
+selected the most recent revision, &lt;a class="reference external" href="http://www.informatik.uni-bremen.de/~fld/UnixAos/rev.9799/"&gt;rev.9799&lt;/a&gt; at the time of this
+writing.  There I downloaded the install script, &lt;a class="reference external" href="http://www.informatik.uni-bremen.de/~fld/UnixAos/rev.9799/install.UnixA2"&gt;install.UnixA2&lt;/a&gt; and
+the version for 64 bit macOS, &lt;a class="reference external" href="http://www.informatik.uni-bremen.de/~fld/UnixAos/rev.9799/DarwinA2-64bit.tgz"&gt;DarwinA2-64bit.tgz&lt;/a&gt;.  (There were also
+Linux and Solaris versions for 32 and 64 bit systems.)&lt;/p&gt;
+&lt;p&gt;The install script assumes you are running as root, but I ran it first
+as my normal user, and since the directory I was installing it to was
+owned by me it seems to have worked ok.&lt;/p&gt;
+&lt;p&gt;I installed to &lt;span class="file"&gt;/usr/local/sw/versions/aos/rev.9799&lt;/span&gt;, but I had
+to create that directory first.  And I installed the &lt;span class="command"&gt;aos&lt;/span&gt;
+command to a directory in my path.  Then when I issued the command
+&lt;code class="docutils literal"&gt;aos&lt;/code&gt; it started up and displayed a window with A2 running in it.
+This requires X Windows, so you'll need to install &lt;a class="reference external" href="https://www.xquartz.org/"&gt;XQuartz&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Here's a screen shot:&lt;/p&gt;
+&lt;div class="figure"&gt;
+&lt;img alt="Screenshot of A2 running under macOS" src="https://tkurtbond.github.io/a2-screenshot.png"&gt;
+&lt;p class="caption"&gt;Screenshot of A2 running under macOS&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;I started it and it seems to work ok, though I haven't investigated
+very much.&lt;/p&gt;&lt;/div&gt;</description><category>a2</category><category>aos</category><category>bluebottle</category><category>macos</category><category>oberon</category><category>unix</category><guid>https://tkurtbond.github.io/posts/2022/06/10/installing-a-recent-version-of-the-a2-operatinng-system-on-unix/</guid><pubDate>Fri, 10 Jun 2022 15:28:40 GMT</pubDate></item><item><title>Logging the output of long commands run multiple times</title><link>https://tkurtbond.github.io/posts/2021/07/07/logging-the-output-of-long-commands-run-multiple-times/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;I often run commands that produce a lot of output that needs to saved
 for debugging, and often the commands have to be repeated multiple
 times to get things to work.  For example, building software from
 source, often using the familiar &lt;code class="docutils literal"&gt;./configure; make; make install&lt;/code&gt;
