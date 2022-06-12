@@ -32,14 +32,12 @@ its damage than the mostly piercing spear.
 
 __ https://www.peginc.com/store/savage-worlds-adventure-edition-core-rules-pdf-swade/
 
-Last edited: 2021-08-09 12:19:35 EDT
+*Last edited: 2021-08-09 12:19:35 EDT*
 
 ..
    Local Variables:
    time-stamp-format: "%Y-%02m-%02d %02H:%02M:%02S %Z"
-   time-stamp-start: "Last edited:[ \t]+\\\\?"
-   time-stamp-end: "\\\\?\n"
+   time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
+   time-stamp-end: "\\*\\\\?\n"
    time-stamp-line-limit: -20
    End:
-
-
