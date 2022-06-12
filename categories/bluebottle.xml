@@ -1,27 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity (Posts about bluebottle)</title><link>https://tkurtbond.github.io/</link><description></description><atom:link href="https://tkurtbond.github.io/categories/bluebottle.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2022 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Fri, 10 Jun 2022 16:21:19 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Installing a recent version of the A2 operatinng system on UNIX</title><link>https://tkurtbond.github.io/posts/2022/06/10/installing-a-recent-version-of-the-a2-operatinng-system-on-unix/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div&gt;&lt;p&gt;I recently ran across a &lt;a class="reference external" href="https://svn.inf.ethz.ch/svn/lecturers/a2/trunk/UnixAos/DarwinA2%20Installer/ReadMeFirst!.txt"&gt;document&lt;/a&gt; that explains how to install the &lt;a class="reference external" href="https://en.wikipedia.org/wiki/A2_(operating_system)"&gt;A2&lt;/a&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity (Posts about bluebottle)</title><link>https://tkurtbond.github.io/</link><description></description><atom:link href="https://tkurtbond.github.io/categories/bluebottle.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2022 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Sun, 12 Jun 2022 19:40:02 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Installing a recent version of the A2 operatinng system on UNIX</title><link>https://tkurtbond.github.io/posts/2022/06/10/installing-a-recent-version-of-the-a2-operatinng-system-on-unix/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;p&gt;I recently ran across a &lt;a class="reference external" href="https://svn.inf.ethz.ch/svn/lecturers/a2/trunk/UnixAos/DarwinA2%20Installer/ReadMeFirst!.txt"&gt;document&lt;/a&gt; that explains how to install the &lt;a class="reference external" href="https://en.wikipedia.org/wiki/A2_(operating_system)"&gt;A2&lt;/a&gt;
 operating system (formerly Bluebottle, formerly Aos) in the form of
-UnixAos hosted on macOS, in the process of explaining how to make a
+UnixAos hosted on &lt;a class="reference external" href="https://en.wikipedia.org/wiki/MacOS"&gt;macOS&lt;/a&gt;, in the process of explaining how to make a
 installer for macOS.  I think the same process will work for any
-supported Unix.&lt;/p&gt;
+supported Unix.  [&lt;strong&gt;Later:&lt;/strong&gt; indeed, I used the &lt;a class="reference external" href="http://www.informatik.uni-bremen.de/~fld/UnixAos/rev.9799/LinuxA2-64bit.tgz"&gt;LinuxA2-64bit.tgz&lt;/a&gt; file
+and the same process worked fine on my &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Fedora_Linux"&gt;Fedora&lt;/a&gt; box.]&lt;/p&gt;
 &lt;p&gt;I'll summarize what I did.&lt;/p&gt;
 &lt;p&gt;I went to &lt;a class="reference external" href="http://www.informatik.uni-bremen.de/~fld/UnixAos/"&gt;http://www.informatik.uni-bremen.de/~fld/UnixAos/&lt;/a&gt; and
 selected the most recent revision, &lt;a class="reference external" href="http://www.informatik.uni-bremen.de/~fld/UnixAos/rev.9799/"&gt;rev.9799&lt;/a&gt; at the time of this
 writing.  There I downloaded the install script, &lt;a class="reference external" href="http://www.informatik.uni-bremen.de/~fld/UnixAos/rev.9799/install.UnixA2"&gt;install.UnixA2&lt;/a&gt; and
 the version for 64 bit macOS, &lt;a class="reference external" href="http://www.informatik.uni-bremen.de/~fld/UnixAos/rev.9799/DarwinA2-64bit.tgz"&gt;DarwinA2-64bit.tgz&lt;/a&gt;.  (There were also
 Linux and Solaris versions for 32 and 64 bit systems.)&lt;/p&gt;
+&lt;p&gt;Then I executed &lt;code class="docutils literal"&gt;chmod +x&lt;/code&gt;'ed the install script and ran it, passing
+the &lt;span class="file"&gt;.tgz&lt;/span&gt; file to it.&lt;/p&gt;
+&lt;p&gt;First, it asks for the installation directory, which should already
+exist.  It has a default, but I installed to the directory
+&lt;span class="file"&gt;/usr/local/sw/versions/aos/rev.9799&lt;/span&gt;.  Again, I had to create
+that directory first.  (I don't like to write into &lt;span class="file"&gt;/usr&lt;/span&gt; or
+&lt;span class="file"&gt;/usr/local&lt;/span&gt;, because those directory hierarchies are often
+under the systems control.  Nobody uses &lt;span class="file"&gt;/usr/local/sw&lt;/span&gt; for
+anything except me.)&lt;/p&gt;
+&lt;p&gt;Second, it asks for the file name to copy the &lt;span class="file"&gt;aos&lt;/span&gt; script to.
+I installed the &lt;span class="command"&gt;aos&lt;/span&gt; command to
+&lt;span class="file"&gt;/Users/tkb/local/rndbin&lt;/span&gt;, (&lt;span class="file"&gt;/home/tkb/local/rndbin&lt;/span&gt; on
+non-macOS systems) which is in my path.&lt;/p&gt;
 &lt;p&gt;The install script assumes you are running as root, but I ran it first
 as my normal user, and since the directory I was installing it to was
-owned by me it seems to have worked ok.&lt;/p&gt;
-&lt;p&gt;I installed to &lt;span class="file"&gt;/usr/local/sw/versions/aos/rev.9799&lt;/span&gt;, but I had
-to create that directory first.  And I installed the &lt;span class="command"&gt;aos&lt;/span&gt;
-command to a directory in my path.  Then when I issued the command
-&lt;code class="docutils literal"&gt;aos&lt;/code&gt; it started up and displayed a window with A2 running in it.
-This requires X Windows, so you'll need to install &lt;a class="reference external" href="https://www.xquartz.org/"&gt;XQuartz&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Here's a screen shot:&lt;/p&gt;
-&lt;div class="figure"&gt;
+owned by me it seems to have worked ok, even though it complained
+about &lt;span class="command"&gt;chgrp&lt;/span&gt; not being able to change the group of a &lt;em&gt;bunch&lt;/em&gt;
+of files.&lt;/p&gt;
+&lt;p&gt;Then when I issued the command &lt;code class="docutils literal"&gt;aos&lt;/code&gt; it started up and displayed a
+window with A2 running in it.  (This requires X Windows, so you'll need
+to install &lt;a class="reference external" href="https://www.xquartz.org/"&gt;XQuartz&lt;/a&gt; on macOS.)&lt;/p&gt;
+&lt;p&gt;Here's a screen shot from macOS:&lt;/p&gt;
+&lt;figure&gt;
 &lt;img alt="Screenshot of A2 running under macOS" src="https://tkurtbond.github.io/a2-screenshot.png"&gt;
-&lt;p class="caption"&gt;Screenshot of A2 running under macOS&lt;/p&gt;
-&lt;/div&gt;
-&lt;p&gt;I started it and it seems to work ok, though I haven't investigated
-very much.&lt;/p&gt;&lt;/div&gt;</description><category>a2</category><category>aos</category><category>bluebottle</category><category>macos</category><category>oberon</category><category>unix</category><guid>https://tkurtbond.github.io/posts/2022/06/10/installing-a-recent-version-of-the-a2-operatinng-system-on-unix/</guid><pubDate>Fri, 10 Jun 2022 15:28:40 GMT</pubDate></item></channel></rss>
+&lt;figcaption&gt;
+&lt;p&gt;Screenshot of A2 running under macOS&lt;/p&gt;
+&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;p&gt;It seems to work ok, both on macOS and Fedora, though I haven't
+investigated very much.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Last edited: 2022-06-12 15:39:49 EDT&lt;/em&gt;&lt;/p&gt;
+&lt;!-- Local Variables:
+time-stamp-format: "%Y-%02m-%02d %02H:%02M:%02S %Z"
+time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
+time-stamp-end: "\\*\\\\?\n"
+time-stamp-line-limit: -20
+End: --&gt;</description><category>a2</category><category>aos</category><category>bluebottle</category><category>fedora</category><category>macos</category><category>oberon</category><category>unix</category><guid>https://tkurtbond.github.io/posts/2022/06/10/installing-a-recent-version-of-the-a2-operatinng-system-on-unix/</guid><pubDate>Fri, 10 Jun 2022 15:28:40 GMT</pubDate></item></channel></rss>
