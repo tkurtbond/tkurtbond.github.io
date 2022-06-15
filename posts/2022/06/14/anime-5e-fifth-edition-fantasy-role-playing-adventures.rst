@@ -21,7 +21,7 @@ from `Dyskami Publishing Company`_ and `Mark C. MacKinnon`_ came
 today, and I have only had a chance to briefly skim the pocket edition,
 but I'm pleased at what they managed to fit into the small package of
 384 pages and a physical size of 12.5cm wide × 18.9cm tall × 2.25cm
-think (4 15/16in wide × 7 13/32in tall × 27/32in think) and still have
+thick (4 15/16in wide × 7 13/32in tall × 27/32in thick) and still have
 the text be large enough to read.
 
 .. _home page: http://www.dyskami.ca/anime5e.html
@@ -45,7 +45,7 @@ to comment on the art.
 Later: I just have to add: **OMG! Battle Cabbits!** (On p. 367.) So
 cute!
 
-*Last edited: 2022-06-15 02:15:09 EDT*
+*Last edited: 2022-06-15 02:17:55 EDT*
 
 ..
    Local Variables:
