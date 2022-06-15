@@ -3,13 +3,649 @@
 <feed xml:lang="en" xmlns="http://www.w3.org/2005/Atom">
   <title>Lacking Natural Simplicity (Posts about scheme)</title>
   <id>https://tkurtbond.github.io/categories/scheme.atom</id>
-  <updated>2022-06-05T16:28:23Z</updated>
+  <updated>2022-06-15T00:57:10Z</updated>
   <author>
     <name>T. Kurt Bond</name>
   </author>
   <link rel="self" type="application/atom+xml" href="https://tkurtbond.github.io/categories/scheme.atom"/>
   <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/categories/scheme/"/>
   <generator uri="https://getnikola.com/">Nikola</generator>
+  <entry>
+    <title>Lisp-style trampolines in Common Lisp, C, Ada, Oberon-2, and Revised Oberon</title>
+    <id>https://tkurtbond.github.io/posts/2022/06/14/lisp-style-trampolines-in-common-lisp-c-ada-oberon-2-and-revised-oberon/</id>
+    <updated>2022-06-14T15:49:55-04:00</updated>
+    <published>2022-06-14T15:49:55-04:00</published>
+    <author>
+      <name>T. Kurt Bond</name>
+    </author>
+    <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/posts/2022/06/14/lisp-style-trampolines-in-common-lisp-c-ada-oberon-2-and-revised-oberon/"/>
+    <summary type="html">&lt;div&gt;&lt;p&gt;Are you familiar with &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Trampoline_(computing)#High-level_programming"&gt;lisp-style trampolines&lt;/a&gt;?  A trampoline is a
+loop that iteratively invokes functions that return functions.  The
+previous link will lead you through &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Trampoline_(computing)#cite_note-Baker_1995-1"&gt;CONS Should Not CONS Its
+Arguments, Part II: Cheney on the M.T.A.&lt;/a&gt; (&lt;a class="reference external" href="https://dl.acm.org/doi/10.1145/214448.214454"&gt;PDF version&lt;/a&gt;; see p. 17
+in the original publication, but that is the first page of the PDF
+that link eventually leads to), which, while saying you should just go
+ahead and convert to &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Continuation-passing_style"&gt;Continuation-passing style&lt;/a&gt; form (CPS),
+mentions in passing &lt;a class="reference external" href="https://dl.acm.org/doi/10.1145/151333.151343"&gt;No assembly required: compiling standard ML to C&lt;/a&gt;,
+(see p. 168 in the original publication, which is the page 8 of the
+PDF that link eventually leads to) which leads you to &lt;a class="reference external" href="https://dspace.mit.edu/handle/1721.1/6913"&gt;RABBIT: A
+Compiler for SCHEME&lt;/a&gt;, where the concept is discussed under the name
+the "SCHEME UUO handler" (see p. 23–24).&lt;/p&gt;
+&lt;p&gt;Why is this useful?  It allows you to compile a language that requires
+proper &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Tail_call"&gt;tail call&lt;/a&gt; optimization to one that does not provide that.
+For instance, if you wanted to compile Scheme, which requires proper
+tail call optimization, to Common Lisp, which does not require proper
+tail call optimization, you can't just translate Scheme functions
+directly into Common Lisp functions, because tail calls allocate stack
+space, and eventually the stack will run out of space.&lt;/p&gt;
+&lt;p&gt;Here's an example that will run forever in any standard confirming
+Scheme, &lt;a class="reference external" href="https://tkurtbond.github.io/trampolines/forever.scm"&gt;forever.scm&lt;/a&gt;:&lt;/p&gt;
+&lt;pre class="code scheme"&gt;&lt;a name="rest_code_e731a77a9cf14ac1b1b705d00e35dedb-1"&gt;&lt;/a&gt;&lt;span class="c1"&gt;;;; Recurse forever, because with tail call optimization, the stack&lt;/span&gt;
+&lt;a name="rest_code_e731a77a9cf14ac1b1b705d00e35dedb-2"&gt;&lt;/a&gt;&lt;span class="c1"&gt;;;; never runs out!&lt;/span&gt;
+&lt;a name="rest_code_e731a77a9cf14ac1b1b705d00e35dedb-3"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;define &lt;/span&gt;&lt;span class="nv"&gt;i&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_e731a77a9cf14ac1b1b705d00e35dedb-4"&gt;&lt;/a&gt;
+&lt;a name="rest_code_e731a77a9cf14ac1b1b705d00e35dedb-5"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;define &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;f&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_e731a77a9cf14ac1b1b705d00e35dedb-6"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;set! &lt;/span&gt;&lt;span class="nv"&gt;i&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;+ &lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="nv"&gt;i&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;a name="rest_code_e731a77a9cf14ac1b1b705d00e35dedb-7"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;display &lt;/span&gt;&lt;span class="s"&gt;"call #"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;display &lt;/span&gt;&lt;span class="nv"&gt;i&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;newline&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_e731a77a9cf14ac1b1b705d00e35dedb-8"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;f&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;a name="rest_code_e731a77a9cf14ac1b1b705d00e35dedb-9"&gt;&lt;/a&gt;
+&lt;a name="rest_code_e731a77a9cf14ac1b1b705d00e35dedb-10"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;f&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;p&gt;Here's &lt;a class="reference external" href="https://tkurtbond.github.io/trampolines/common-lisp/not_forever.lisp"&gt;not_forever.lisp&lt;/a&gt;, the same thing in Common Lisp:&lt;/p&gt;
+&lt;pre class="code common-lisp"&gt;&lt;a name="rest_code_957c0c76b6234810aa60bd311eba3b72-1"&gt;&lt;/a&gt;&lt;span class="c1"&gt;;;; Recurse until the stack space runs out.&lt;/span&gt;
+&lt;a name="rest_code_957c0c76b6234810aa60bd311eba3b72-2"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;defparameter&lt;/span&gt; &lt;span class="nv"&gt;i&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_957c0c76b6234810aa60bd311eba3b72-3"&gt;&lt;/a&gt;
+&lt;a name="rest_code_957c0c76b6234810aa60bd311eba3b72-4"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;defun&lt;/span&gt; &lt;span class="nv"&gt;f&lt;/span&gt; &lt;span class="p"&gt;()&lt;/span&gt;
+&lt;a name="rest_code_957c0c76b6234810aa60bd311eba3b72-5"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;incf&lt;/span&gt; &lt;span class="nv"&gt;i&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_957c0c76b6234810aa60bd311eba3b72-6"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;format&lt;/span&gt; &lt;span class="no"&gt;t&lt;/span&gt; &lt;span class="s"&gt;"call #~d~%"&lt;/span&gt; &lt;span class="nv"&gt;i&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_957c0c76b6234810aa60bd311eba3b72-7"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;f&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;a name="rest_code_957c0c76b6234810aa60bd311eba3b72-8"&gt;&lt;/a&gt;
+&lt;a name="rest_code_957c0c76b6234810aa60bd311eba3b72-9"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;f&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;p&gt;Now, some Common Lisp implementations don't do tail call
+optimization, and some &lt;strong&gt;do&lt;/strong&gt;.  Some don't do tail call optimization
+unless you compile the functions in question.&lt;/p&gt;
+&lt;p&gt;So, for instance, if I load that file into GNU CLISP 2.49.92, the
+function executes about 4668 times and then &lt;span class="app"&gt;CLISP&lt;/span&gt; dies with the
+error message:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;*** - Lisp stack overflow. RESET&lt;/pre&gt;
+&lt;p&gt;However if I compile that file in &lt;span class="app"&gt;CLISP&lt;/span&gt; with the Common Lisp function
+&lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;compile-file&lt;/span&gt;&lt;/code&gt; and then load the resulting &lt;span class="file"&gt;.fas&lt;/span&gt; file into
+&lt;span class="app"&gt;CLISP&lt;/span&gt;, it will run forever, because &lt;span class="app"&gt;CLISP&lt;/span&gt; does tail call
+optimization when it compiles code.&lt;/p&gt;
+&lt;p&gt;Furthermore, if I load that file into &lt;span class="app"&gt;SBCL&lt;/span&gt; it will run forever,
+because &lt;span class="app"&gt;SBCL&lt;/span&gt; does tail call optimization by default.&lt;/p&gt;
+&lt;p&gt;&lt;span class="app"&gt;ECL&lt;/span&gt; is another Common Lisp system where if you load that file
+into  an interactive session it will die with stack overflow, but if
+you compile that file into an executable it will run forever.&lt;/p&gt;
+&lt;p&gt;So, suppose you wanted to translate the Scheme code into Common Lisp.
+You'd use a trampoline to make sure the stack doesn't overflow.&lt;/p&gt;
+&lt;p&gt;Here's &lt;a class="reference external" href="https://tkurtbond.github.io/trampolines/common-lisp/trampoline.lisp"&gt;trampoline.lisp&lt;/a&gt;, a trampoline in Common Lisp that runs
+through three functions and then stops, for simplicity:&lt;/p&gt;
+&lt;pre class="code common-lisp"&gt;&lt;a name="rest_code_ea2f34d5f9b647eaa394f5d2ff7a5333-1"&gt;&lt;/a&gt;&lt;span class="c1"&gt;;;; Demonstrate lisp-style trampolines.&lt;/span&gt;
+&lt;a name="rest_code_ea2f34d5f9b647eaa394f5d2ff7a5333-2"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;defun&lt;/span&gt; &lt;span class="nv"&gt;baz&lt;/span&gt; &lt;span class="p"&gt;()&lt;/span&gt;
+&lt;a name="rest_code_ea2f34d5f9b647eaa394f5d2ff7a5333-3"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;format&lt;/span&gt; &lt;span class="no"&gt;t&lt;/span&gt; &lt;span class="s"&gt;"baz~%"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_ea2f34d5f9b647eaa394f5d2ff7a5333-4"&gt;&lt;/a&gt;  &lt;span class="no"&gt;nil&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_ea2f34d5f9b647eaa394f5d2ff7a5333-5"&gt;&lt;/a&gt;
+&lt;a name="rest_code_ea2f34d5f9b647eaa394f5d2ff7a5333-6"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;defun&lt;/span&gt; &lt;span class="nv"&gt;bar&lt;/span&gt; &lt;span class="p"&gt;()&lt;/span&gt;
+&lt;a name="rest_code_ea2f34d5f9b647eaa394f5d2ff7a5333-7"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;format&lt;/span&gt; &lt;span class="no"&gt;t&lt;/span&gt; &lt;span class="s"&gt;"bar~%"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_ea2f34d5f9b647eaa394f5d2ff7a5333-8"&gt;&lt;/a&gt;  &lt;span class="nf"&gt;#'&lt;/span&gt;&lt;span class="nv"&gt;baz&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_ea2f34d5f9b647eaa394f5d2ff7a5333-9"&gt;&lt;/a&gt;
+&lt;a name="rest_code_ea2f34d5f9b647eaa394f5d2ff7a5333-10"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;defun&lt;/span&gt; &lt;span class="nv"&gt;foo&lt;/span&gt; &lt;span class="p"&gt;()&lt;/span&gt;
+&lt;a name="rest_code_ea2f34d5f9b647eaa394f5d2ff7a5333-11"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;format&lt;/span&gt; &lt;span class="no"&gt;t&lt;/span&gt; &lt;span class="s"&gt;"foo~%"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_ea2f34d5f9b647eaa394f5d2ff7a5333-12"&gt;&lt;/a&gt;  &lt;span class="nf"&gt;#'&lt;/span&gt;&lt;span class="nv"&gt;bar&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_ea2f34d5f9b647eaa394f5d2ff7a5333-13"&gt;&lt;/a&gt;
+&lt;a name="rest_code_ea2f34d5f9b647eaa394f5d2ff7a5333-14"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;let&lt;/span&gt; &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nv"&gt;f&lt;/span&gt; &lt;span class="nf"&gt;#'&lt;/span&gt;&lt;span class="nv"&gt;foo&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;a name="rest_code_ea2f34d5f9b647eaa394f5d2ff7a5333-15"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;loop&lt;/span&gt; &lt;span class="nv"&gt;for&lt;/span&gt; &lt;span class="nv"&gt;i&lt;/span&gt; &lt;span class="nv"&gt;from&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="nv"&gt;while&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;not&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;null&lt;/span&gt; &lt;span class="nv"&gt;f&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;a name="rest_code_ea2f34d5f9b647eaa394f5d2ff7a5333-16"&gt;&lt;/a&gt;        &lt;span class="nb"&gt;do&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;setf&lt;/span&gt; &lt;span class="nv"&gt;f&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;funcall&lt;/span&gt; &lt;span class="nv"&gt;f&lt;/span&gt;&lt;span class="p"&gt;))))&lt;/span&gt;
+&lt;/pre&gt;&lt;p&gt;Here's &lt;a class="reference external" href="https://tkurtbond.github.io/trampolines/common-lisp/trampoline_forever.lisp"&gt;trampoline_forever.lisp&lt;/a&gt;, a trampoline in Common Lisp that
+runs forever:&lt;/p&gt;
+&lt;pre class="code common-lisp"&gt;&lt;a name="rest_code_77b5e71e2f3e4330b57ebb5e558cdde7-1"&gt;&lt;/a&gt;&lt;span class="c1"&gt;;;; Recurse forever without running out of stack space.&lt;/span&gt;
+&lt;a name="rest_code_77b5e71e2f3e4330b57ebb5e558cdde7-2"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;defun&lt;/span&gt; &lt;span class="nv"&gt;baz&lt;/span&gt; &lt;span class="p"&gt;()&lt;/span&gt;
+&lt;a name="rest_code_77b5e71e2f3e4330b57ebb5e558cdde7-3"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;format&lt;/span&gt; &lt;span class="no"&gt;t&lt;/span&gt; &lt;span class="s"&gt;"baz~%"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_77b5e71e2f3e4330b57ebb5e558cdde7-4"&gt;&lt;/a&gt;  &lt;span class="nf"&gt;#'&lt;/span&gt;&lt;span class="nv"&gt;foo&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_77b5e71e2f3e4330b57ebb5e558cdde7-5"&gt;&lt;/a&gt;
+&lt;a name="rest_code_77b5e71e2f3e4330b57ebb5e558cdde7-6"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;defun&lt;/span&gt; &lt;span class="nv"&gt;bar&lt;/span&gt; &lt;span class="p"&gt;()&lt;/span&gt;
+&lt;a name="rest_code_77b5e71e2f3e4330b57ebb5e558cdde7-7"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;format&lt;/span&gt; &lt;span class="no"&gt;t&lt;/span&gt; &lt;span class="s"&gt;"bar~%"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_77b5e71e2f3e4330b57ebb5e558cdde7-8"&gt;&lt;/a&gt;  &lt;span class="nf"&gt;#'&lt;/span&gt;&lt;span class="nv"&gt;baz&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_77b5e71e2f3e4330b57ebb5e558cdde7-9"&gt;&lt;/a&gt;
+&lt;a name="rest_code_77b5e71e2f3e4330b57ebb5e558cdde7-10"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;defun&lt;/span&gt; &lt;span class="nv"&gt;foo&lt;/span&gt; &lt;span class="p"&gt;()&lt;/span&gt;
+&lt;a name="rest_code_77b5e71e2f3e4330b57ebb5e558cdde7-11"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;format&lt;/span&gt; &lt;span class="no"&gt;t&lt;/span&gt; &lt;span class="s"&gt;"foo~%"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_77b5e71e2f3e4330b57ebb5e558cdde7-12"&gt;&lt;/a&gt;  &lt;span class="nf"&gt;#'&lt;/span&gt;&lt;span class="nv"&gt;bar&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_77b5e71e2f3e4330b57ebb5e558cdde7-13"&gt;&lt;/a&gt;
+&lt;a name="rest_code_77b5e71e2f3e4330b57ebb5e558cdde7-14"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;let&lt;/span&gt; &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nv"&gt;f&lt;/span&gt; &lt;span class="nf"&gt;#'&lt;/span&gt;&lt;span class="nv"&gt;foo&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;a name="rest_code_77b5e71e2f3e4330b57ebb5e558cdde7-15"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;loop&lt;/span&gt; &lt;span class="nv"&gt;for&lt;/span&gt; &lt;span class="nv"&gt;i&lt;/span&gt; &lt;span class="nv"&gt;from&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="nv"&gt;while&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;not&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;null&lt;/span&gt; &lt;span class="nv"&gt;f&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;a name="rest_code_77b5e71e2f3e4330b57ebb5e558cdde7-16"&gt;&lt;/a&gt;        &lt;span class="nb"&gt;do&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;progn&lt;/span&gt;
+&lt;a name="rest_code_77b5e71e2f3e4330b57ebb5e558cdde7-17"&gt;&lt;/a&gt;             &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;format&lt;/span&gt; &lt;span class="no"&gt;t&lt;/span&gt; &lt;span class="s"&gt;"trampoline call #~s~%"&lt;/span&gt; &lt;span class="nv"&gt;i&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_77b5e71e2f3e4330b57ebb5e558cdde7-18"&gt;&lt;/a&gt;             &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;setf&lt;/span&gt; &lt;span class="nv"&gt;f&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;funcall&lt;/span&gt; &lt;span class="nv"&gt;f&lt;/span&gt;&lt;span class="p"&gt;)))))&lt;/span&gt;
+&lt;/pre&gt;&lt;p&gt;Of course, you can do the same things in C.  First, here's
+&lt;a class="reference external" href="https://tkurtbond.github.io/trampolines/c/not_forever.c"&gt;not_forever.c&lt;/a&gt;, a program in C that will (usually) die with a stack
+overflow:&lt;/p&gt;
+&lt;pre class="code c"&gt;&lt;a name="rest_code_9aebe3427947487ab841f6d2913ff547-1"&gt;&lt;/a&gt;&lt;span class="cm"&gt;/* Recurse until stack space runs out.&lt;/span&gt;
+&lt;a name="rest_code_9aebe3427947487ab841f6d2913ff547-2"&gt;&lt;/a&gt;&lt;span class="cm"&gt;   Unless the compiler does tail-call optimization. */&lt;/span&gt;
+&lt;a name="rest_code_9aebe3427947487ab841f6d2913ff547-3"&gt;&lt;/a&gt;&lt;span class="cp"&gt;#include&lt;/span&gt; &lt;span class="cpf"&gt;&amp;lt;stdio.h&amp;gt;&lt;/span&gt;&lt;span class="cp"&gt;&lt;/span&gt;
+&lt;a name="rest_code_9aebe3427947487ab841f6d2913ff547-4"&gt;&lt;/a&gt;
+&lt;a name="rest_code_9aebe3427947487ab841f6d2913ff547-5"&gt;&lt;/a&gt;&lt;span class="k"&gt;static&lt;/span&gt; &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;                 &lt;span class="cm"&gt;/* Number of times f has been called. */&lt;/span&gt;
+&lt;a name="rest_code_9aebe3427947487ab841f6d2913ff547-6"&gt;&lt;/a&gt;
+&lt;a name="rest_code_9aebe3427947487ab841f6d2913ff547-7"&gt;&lt;/a&gt;&lt;span class="kt"&gt;void&lt;/span&gt; &lt;span class="nf"&gt;f&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;void&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_9aebe3427947487ab841f6d2913ff547-8"&gt;&lt;/a&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;a name="rest_code_9aebe3427947487ab841f6d2913ff547-9"&gt;&lt;/a&gt;  &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;++&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_9aebe3427947487ab841f6d2913ff547-10"&gt;&lt;/a&gt;  &lt;span class="n"&gt;printf&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"call #%d&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s"&gt;"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;a name="rest_code_9aebe3427947487ab841f6d2913ff547-11"&gt;&lt;/a&gt;  &lt;span class="n"&gt;f&lt;/span&gt; &lt;span class="p"&gt;();&lt;/span&gt;
+&lt;a name="rest_code_9aebe3427947487ab841f6d2913ff547-12"&gt;&lt;/a&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;a name="rest_code_9aebe3427947487ab841f6d2913ff547-13"&gt;&lt;/a&gt;
+&lt;a name="rest_code_9aebe3427947487ab841f6d2913ff547-14"&gt;&lt;/a&gt;&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="nf"&gt;main&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;argc&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kt"&gt;char&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;argv&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_9aebe3427947487ab841f6d2913ff547-15"&gt;&lt;/a&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;a name="rest_code_9aebe3427947487ab841f6d2913ff547-16"&gt;&lt;/a&gt;  &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_9aebe3427947487ab841f6d2913ff547-17"&gt;&lt;/a&gt;  &lt;span class="n"&gt;f&lt;/span&gt; &lt;span class="p"&gt;();&lt;/span&gt;
+&lt;a name="rest_code_9aebe3427947487ab841f6d2913ff547-18"&gt;&lt;/a&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;p&gt;I say usually, because tail call optimization is not required by the
+standard, and many C compilers do not do it.  For instance, &lt;span class="app"&gt;gcc&lt;/span&gt;
+doesn't do tail call optimization &lt;strong&gt;unless&lt;/strong&gt; you specify
+&lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;-foptimize-sibling-calls&lt;/span&gt;&lt;/code&gt; or &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;-O2&lt;/span&gt;&lt;/code&gt;, &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;-O3&lt;/span&gt;&lt;/code&gt;, or &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;-Os&lt;/span&gt;&lt;/code&gt;.  If I
+don't specify any of those options, on my system that program dies
+with the error &lt;code class="docutils literal"&gt;Segmentation fault: 11&lt;/code&gt; after call #523932.&lt;/p&gt;
+&lt;p&gt;Here's &lt;a class="reference external" href="https://tkurtbond.github.io/trampolines/c/trampoline.c"&gt;trampoline.c&lt;/a&gt;, the limited trampoline in C:&lt;/p&gt;
+&lt;pre class="code c"&gt;&lt;a name="rest_code_089bd9efabad45c3b7a184bdd4710237-1"&gt;&lt;/a&gt;&lt;span class="cm"&gt;/* Demonstrate lisp-style trampolines. */&lt;/span&gt;
+&lt;a name="rest_code_089bd9efabad45c3b7a184bdd4710237-2"&gt;&lt;/a&gt;&lt;span class="cp"&gt;#include&lt;/span&gt; &lt;span class="cpf"&gt;&amp;lt;stdio.h&amp;gt;&lt;/span&gt;&lt;span class="cp"&gt;&lt;/span&gt;
+&lt;a name="rest_code_089bd9efabad45c3b7a184bdd4710237-3"&gt;&lt;/a&gt;
+&lt;a name="rest_code_089bd9efabad45c3b7a184bdd4710237-4"&gt;&lt;/a&gt;&lt;span class="k"&gt;typedef&lt;/span&gt; &lt;span class="kt"&gt;void&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;trampoline&lt;/span&gt;&lt;span class="p"&gt;)(&lt;/span&gt;&lt;span class="kt"&gt;void&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;a name="rest_code_089bd9efabad45c3b7a184bdd4710237-5"&gt;&lt;/a&gt;
+&lt;a name="rest_code_089bd9efabad45c3b7a184bdd4710237-6"&gt;&lt;/a&gt;&lt;span class="kt"&gt;void&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;
+&lt;a name="rest_code_089bd9efabad45c3b7a184bdd4710237-7"&gt;&lt;/a&gt;&lt;span class="nf"&gt;baz&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;void&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_089bd9efabad45c3b7a184bdd4710237-8"&gt;&lt;/a&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;a name="rest_code_089bd9efabad45c3b7a184bdd4710237-9"&gt;&lt;/a&gt;  &lt;span class="n"&gt;printf&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"baz&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s"&gt;"&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;a name="rest_code_089bd9efabad45c3b7a184bdd4710237-10"&gt;&lt;/a&gt;  &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nb"&gt;NULL&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_089bd9efabad45c3b7a184bdd4710237-11"&gt;&lt;/a&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;a name="rest_code_089bd9efabad45c3b7a184bdd4710237-12"&gt;&lt;/a&gt;
+&lt;a name="rest_code_089bd9efabad45c3b7a184bdd4710237-13"&gt;&lt;/a&gt;&lt;span class="kt"&gt;void&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;
+&lt;a name="rest_code_089bd9efabad45c3b7a184bdd4710237-14"&gt;&lt;/a&gt;&lt;span class="nf"&gt;bar&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;void&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_089bd9efabad45c3b7a184bdd4710237-15"&gt;&lt;/a&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;a name="rest_code_089bd9efabad45c3b7a184bdd4710237-16"&gt;&lt;/a&gt;  &lt;span class="n"&gt;printf&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"bar&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s"&gt;"&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;a name="rest_code_089bd9efabad45c3b7a184bdd4710237-17"&gt;&lt;/a&gt;  &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;baz&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_089bd9efabad45c3b7a184bdd4710237-18"&gt;&lt;/a&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;a name="rest_code_089bd9efabad45c3b7a184bdd4710237-19"&gt;&lt;/a&gt;
+&lt;a name="rest_code_089bd9efabad45c3b7a184bdd4710237-20"&gt;&lt;/a&gt;&lt;span class="kt"&gt;void&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;
+&lt;a name="rest_code_089bd9efabad45c3b7a184bdd4710237-21"&gt;&lt;/a&gt;&lt;span class="nf"&gt;foo&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;void&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_089bd9efabad45c3b7a184bdd4710237-22"&gt;&lt;/a&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;a name="rest_code_089bd9efabad45c3b7a184bdd4710237-23"&gt;&lt;/a&gt;  &lt;span class="n"&gt;printf&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"foo&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s"&gt;"&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;a name="rest_code_089bd9efabad45c3b7a184bdd4710237-24"&gt;&lt;/a&gt;  &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;bar&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_089bd9efabad45c3b7a184bdd4710237-25"&gt;&lt;/a&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;a name="rest_code_089bd9efabad45c3b7a184bdd4710237-26"&gt;&lt;/a&gt;
+&lt;a name="rest_code_089bd9efabad45c3b7a184bdd4710237-27"&gt;&lt;/a&gt;
+&lt;a name="rest_code_089bd9efabad45c3b7a184bdd4710237-28"&gt;&lt;/a&gt;&lt;span class="kt"&gt;int&lt;/span&gt;
+&lt;a name="rest_code_089bd9efabad45c3b7a184bdd4710237-29"&gt;&lt;/a&gt;&lt;span class="nf"&gt;main&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;argc&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kt"&gt;char&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;argv&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_089bd9efabad45c3b7a184bdd4710237-30"&gt;&lt;/a&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;a name="rest_code_089bd9efabad45c3b7a184bdd4710237-31"&gt;&lt;/a&gt;  &lt;span class="n"&gt;trampoline&lt;/span&gt; &lt;span class="n"&gt;t&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;foo&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_089bd9efabad45c3b7a184bdd4710237-32"&gt;&lt;/a&gt;  &lt;span class="k"&gt;while&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_089bd9efabad45c3b7a184bdd4710237-33"&gt;&lt;/a&gt;    &lt;span class="n"&gt;t&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;t&lt;/span&gt; &lt;span class="p"&gt;();&lt;/span&gt;
+&lt;a name="rest_code_089bd9efabad45c3b7a184bdd4710237-34"&gt;&lt;/a&gt;  &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_089bd9efabad45c3b7a184bdd4710237-35"&gt;&lt;/a&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;p&gt;Notice this works by converting pointers to functions to pointers to void
+— it doesn't even require any explicit casting!&lt;/p&gt;
+&lt;p&gt;And here's &lt;a class="reference external" href="https://tkurtbond.github.io/trampolines/c/trampoline_forever.c"&gt;trampoline_forever.c&lt;/a&gt;, the trampoline that runs forever:&lt;/p&gt;
+&lt;pre class="code c"&gt;&lt;a name="rest_code_2a12b804769e4b949fe09459299fe81e-1"&gt;&lt;/a&gt;&lt;span class="cm"&gt;/* Recurse forever without running out of stack spacc. */&lt;/span&gt;
+&lt;a name="rest_code_2a12b804769e4b949fe09459299fe81e-2"&gt;&lt;/a&gt;&lt;span class="cp"&gt;#include&lt;/span&gt; &lt;span class="cpf"&gt;&amp;lt;stdio.h&amp;gt;&lt;/span&gt;&lt;span class="cp"&gt;&lt;/span&gt;
+&lt;a name="rest_code_2a12b804769e4b949fe09459299fe81e-3"&gt;&lt;/a&gt;
+&lt;a name="rest_code_2a12b804769e4b949fe09459299fe81e-4"&gt;&lt;/a&gt;&lt;span class="k"&gt;typedef&lt;/span&gt; &lt;span class="kt"&gt;void&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;trampoline&lt;/span&gt;&lt;span class="p"&gt;)(&lt;/span&gt;&lt;span class="kt"&gt;void&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;a name="rest_code_2a12b804769e4b949fe09459299fe81e-5"&gt;&lt;/a&gt;
+&lt;a name="rest_code_2a12b804769e4b949fe09459299fe81e-6"&gt;&lt;/a&gt;&lt;span class="kt"&gt;void&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="nf"&gt;foo&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;void&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;               &lt;span class="cm"&gt;/* Forward declaration. */&lt;/span&gt;
+&lt;a name="rest_code_2a12b804769e4b949fe09459299fe81e-7"&gt;&lt;/a&gt;
+&lt;a name="rest_code_2a12b804769e4b949fe09459299fe81e-8"&gt;&lt;/a&gt;&lt;span class="kt"&gt;void&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;
+&lt;a name="rest_code_2a12b804769e4b949fe09459299fe81e-9"&gt;&lt;/a&gt;&lt;span class="nf"&gt;baz&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;void&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_2a12b804769e4b949fe09459299fe81e-10"&gt;&lt;/a&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;a name="rest_code_2a12b804769e4b949fe09459299fe81e-11"&gt;&lt;/a&gt;  &lt;span class="n"&gt;printf&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"baz&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s"&gt;"&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;a name="rest_code_2a12b804769e4b949fe09459299fe81e-12"&gt;&lt;/a&gt;  &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;foo&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_2a12b804769e4b949fe09459299fe81e-13"&gt;&lt;/a&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;a name="rest_code_2a12b804769e4b949fe09459299fe81e-14"&gt;&lt;/a&gt;
+&lt;a name="rest_code_2a12b804769e4b949fe09459299fe81e-15"&gt;&lt;/a&gt;&lt;span class="kt"&gt;void&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;
+&lt;a name="rest_code_2a12b804769e4b949fe09459299fe81e-16"&gt;&lt;/a&gt;&lt;span class="nf"&gt;bar&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;void&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_2a12b804769e4b949fe09459299fe81e-17"&gt;&lt;/a&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;a name="rest_code_2a12b804769e4b949fe09459299fe81e-18"&gt;&lt;/a&gt;  &lt;span class="n"&gt;printf&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"bar&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s"&gt;"&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;a name="rest_code_2a12b804769e4b949fe09459299fe81e-19"&gt;&lt;/a&gt;  &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;baz&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_2a12b804769e4b949fe09459299fe81e-20"&gt;&lt;/a&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;a name="rest_code_2a12b804769e4b949fe09459299fe81e-21"&gt;&lt;/a&gt;
+&lt;a name="rest_code_2a12b804769e4b949fe09459299fe81e-22"&gt;&lt;/a&gt;&lt;span class="kt"&gt;void&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;
+&lt;a name="rest_code_2a12b804769e4b949fe09459299fe81e-23"&gt;&lt;/a&gt;&lt;span class="nf"&gt;foo&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;void&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_2a12b804769e4b949fe09459299fe81e-24"&gt;&lt;/a&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;a name="rest_code_2a12b804769e4b949fe09459299fe81e-25"&gt;&lt;/a&gt;  &lt;span class="n"&gt;printf&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"foo&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s"&gt;"&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;a name="rest_code_2a12b804769e4b949fe09459299fe81e-26"&gt;&lt;/a&gt;  &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;bar&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_2a12b804769e4b949fe09459299fe81e-27"&gt;&lt;/a&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;a name="rest_code_2a12b804769e4b949fe09459299fe81e-28"&gt;&lt;/a&gt;
+&lt;a name="rest_code_2a12b804769e4b949fe09459299fe81e-29"&gt;&lt;/a&gt;
+&lt;a name="rest_code_2a12b804769e4b949fe09459299fe81e-30"&gt;&lt;/a&gt;&lt;span class="kt"&gt;int&lt;/span&gt;
+&lt;a name="rest_code_2a12b804769e4b949fe09459299fe81e-31"&gt;&lt;/a&gt;&lt;span class="nf"&gt;main&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;argc&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kt"&gt;char&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;argv&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_2a12b804769e4b949fe09459299fe81e-32"&gt;&lt;/a&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;a name="rest_code_2a12b804769e4b949fe09459299fe81e-33"&gt;&lt;/a&gt;  &lt;span class="n"&gt;trampoline&lt;/span&gt; &lt;span class="n"&gt;t&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;foo&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_2a12b804769e4b949fe09459299fe81e-34"&gt;&lt;/a&gt;  &lt;span class="k"&gt;while&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_2a12b804769e4b949fe09459299fe81e-35"&gt;&lt;/a&gt;    &lt;span class="n"&gt;t&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;t&lt;/span&gt; &lt;span class="p"&gt;();&lt;/span&gt;
+&lt;a name="rest_code_2a12b804769e4b949fe09459299fe81e-36"&gt;&lt;/a&gt;  &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_2a12b804769e4b949fe09459299fe81e-37"&gt;&lt;/a&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;p&gt;So, here's where C's weak typing lets it get away with things that
+more strongly typed languages don't.  Notice the declaration of the
+trampoline type:&lt;/p&gt;
+&lt;pre class="code c"&gt;&lt;a name="rest_code_310131c7e8df4d92ae69da9574897362-1"&gt;&lt;/a&gt;&lt;span class="n"&gt;type&lt;/span&gt; &lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="kt"&gt;void&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;trampoline&lt;/span&gt;&lt;span class="p"&gt;)(&lt;/span&gt;&lt;span class="kt"&gt;void&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/pre&gt;&lt;p id="mentioning-recursive-types"&gt;Notice how it returns a &lt;code class="docutils literal"&gt;void *&lt;/code&gt;, instead of something more
+specific?  That's because if it tried to return something more
+specific, it would have to a &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Recursive_data_type"&gt;recursive type&lt;/a&gt;: that is to say, while
+defining the type &lt;code class="docutils literal"&gt;trampoline&lt;/code&gt;, you would use a reference to the
+type while defining the type.  It would look something like this:&lt;/p&gt;
+&lt;pre class="code c"&gt;&lt;a name="rest_code_fa8423a6945c4f2b89c8e6f74445d527-1"&gt;&lt;/a&gt;&lt;span class="k"&gt;typedef&lt;/span&gt; &lt;span class="n"&gt;trampoline&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;trampoline&lt;/span&gt;&lt;span class="p"&gt;)(&lt;/span&gt;&lt;span class="kt"&gt;void&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/pre&gt;&lt;p&gt;and that results in the &lt;span class="app"&gt;gcc&lt;/span&gt; issuing the following error:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;error: unknown type name 'trampoline'&lt;/pre&gt;
+&lt;p&gt;Very few traditional programming languages allow this.  It isn't a
+problem in Scheme or Common Lisp because those languages use strong
+dynamic typing, where the types are checked at runtime.&lt;/p&gt;
+&lt;p&gt;So how do you do this in languages with strong static typing?&lt;/p&gt;
+&lt;p&gt;Well, let's try this in some of the &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Oberon_(programming_language)"&gt;Oberon&lt;/a&gt; programming language
+dialects.  &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Oberon_(programming_language)"&gt;Oberon&lt;/a&gt; was designed and implemented by Niklaus Wirth
+(&lt;a class="reference external" href="https://people.inf.ethz.ch/wirth/"&gt;NW1&lt;/a&gt;, &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Niklaus_Wirth"&gt;NW2&lt;/a&gt;) as a simplification and generalization of his earlier
+languages &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Pascal_(programming_language)"&gt;Pascal&lt;/a&gt;, &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Modula"&gt;Modula&lt;/a&gt;, and &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Modula-2"&gt;Modula-2&lt;/a&gt;.  I find the original Oberon
+admirable for its simplicity, strong typing, understandable syntax,
+and its introduction of &lt;a class="reference external" href="https://dl.acm.org/doi/abs/10.1145/42190.46167"&gt;Type Extensions&lt;/a&gt; (which organizes &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Record_(computer_science)"&gt;record
+types&lt;/a&gt; in a inheritance hierarchy, which with the use of procedure
+variables enables object oriented programming in a particularly
+straightforward and flexible way) but struggle with its minimalism and
+how its standard libraries differ in paradigm from the standard Unix
+libraries, since Oberon was used to implement a new operating system,
+the &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Oberon_(operating_system)"&gt;Oberon System&lt;/a&gt; with its own completely unique &lt;a class="reference external" href="https://en.wikipedia.org/wiki/API"&gt;API&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://en.wikipedia.org/wiki/Oberon_(programming_language)"&gt;Oberon&lt;/a&gt; has a number of dialects. I'm most fond of &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Oberon-2"&gt;Oberon-2&lt;/a&gt;, which
+was the second language in the &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Oberon_(programming_language)"&gt;Oberon&lt;/a&gt; family, developed by &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Hanspeter_M%C3%B6ssenb%C3%B6ck"&gt;Hanspeter
+Mössenböck&lt;/a&gt; and Niklaus Wirth.  It is a little less minimalist than
+&lt;a class="reference external" href="https://en.wikipedia.org/wiki/Oberon_(programming_language)"&gt;Oberon&lt;/a&gt;, and among a few other things adds type-bound procedures to
+the record hierarchy provided by &lt;a class="reference external" href="https://dl.acm.org/doi/abs/10.1145/42190.46167"&gt;Type Extensions&lt;/a&gt;, providing a
+appealingly simple and direct design for object-oriented programming
+that was later adopted by the &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Ada_(programming_language)"&gt;Ada&lt;/a&gt; programming language (in a more
+complicated and confusing manner, as might be expected by &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Ada_(programming_language)"&gt;Ada&lt;/a&gt;'s
+plethora of design goals and constraints).  Here's a copy of the
+Oberon-2 language report in PDF (&lt;a class="reference external" href="https://tkurtbond.github.io/Oberon-2/Oberon2.pdf"&gt;O2PDF&lt;/a&gt;) and HTML (&lt;a class="reference external" href="https://web.archive.org/web/20151104101932/https://cseweb.ucsd.edu/~wgg/CSE131B/oberon2.htm"&gt;O2HTML&lt;/a&gt;), for
+reference.&lt;/p&gt;
+&lt;p&gt;Anyway, &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Oberon-2"&gt;Oberon-2&lt;/a&gt; has procedure types and procedure variables, so one
+would think it would be simple to implement trampolines in &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Oberon-2"&gt;Oberon-2&lt;/a&gt;,
+without messing about with pointers.  It turns out to be more
+complicated than one would think.&lt;/p&gt;
+&lt;p&gt;I'm using &lt;a class="reference external" href="https://github.com/vishaps/voc"&gt;Vishap Oberon&lt;/a&gt;, a free and open source Oberon-2 compiler,
+by the way.&lt;/p&gt;
+&lt;p&gt;First, here's &lt;a class="reference external" href="https://tkurtbond.github.io/posts/2022/06/14/lisp-style-trampolines-in-common-lisp-c-ada-oberon-2-and-revised-oberon/trampolines/oberon-2/NotForever.Mod"&gt;NotForever.Mod&lt;/a&gt;, the standard program with a recursive
+function procedure that will overflow the stack.&lt;/p&gt;
+&lt;pre class="code modula2"&gt;&lt;a name="rest_code_5182d2b31d8c4963abc6ebd5876c1826-1"&gt;&lt;/a&gt;&lt;span class="kr"&gt;MODULE&lt;/span&gt; &lt;span class="n"&gt;NotForever&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;              &lt;span class="cm"&gt;(* Recurse until stack space runs out. *)&lt;/span&gt;
+&lt;a name="rest_code_5182d2b31d8c4963abc6ebd5876c1826-2"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;IMPORT&lt;/span&gt; &lt;span class="n"&gt;Out&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_5182d2b31d8c4963abc6ebd5876c1826-3"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;VAR&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;LONGINT&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;               &lt;span class="cm"&gt;(* Number of times f has been called. *)&lt;/span&gt;
+&lt;a name="rest_code_5182d2b31d8c4963abc6ebd5876c1826-4"&gt;&lt;/a&gt;
+&lt;a name="rest_code_5182d2b31d8c4963abc6ebd5876c1826-5"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;PROCEDURE&lt;/span&gt; &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_5182d2b31d8c4963abc6ebd5876c1826-6"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;BEGIN&lt;/span&gt;
+&lt;a name="rest_code_5182d2b31d8c4963abc6ebd5876c1826-7"&gt;&lt;/a&gt;    &lt;span class="nb"&gt;INC&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;a name="rest_code_5182d2b31d8c4963abc6ebd5876c1826-8"&gt;&lt;/a&gt;    &lt;span class="n"&gt;Out&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"call #"&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="n"&gt;Out&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Int&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="n"&gt;Out&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Ln&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_5182d2b31d8c4963abc6ebd5876c1826-9"&gt;&lt;/a&gt;    &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_5182d2b31d8c4963abc6ebd5876c1826-10"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;END&lt;/span&gt; &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_5182d2b31d8c4963abc6ebd5876c1826-11"&gt;&lt;/a&gt;
+&lt;a name="rest_code_5182d2b31d8c4963abc6ebd5876c1826-12"&gt;&lt;/a&gt;&lt;span class="kr"&gt;BEGIN&lt;/span&gt;
+&lt;a name="rest_code_5182d2b31d8c4963abc6ebd5876c1826-13"&gt;&lt;/a&gt;  &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_5182d2b31d8c4963abc6ebd5876c1826-14"&gt;&lt;/a&gt;  &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_5182d2b31d8c4963abc6ebd5876c1826-15"&gt;&lt;/a&gt;&lt;span class="kr"&gt;END&lt;/span&gt; &lt;span class="n"&gt;NotForever&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;/pre&gt;&lt;p&gt;On my system, this program dies with with the error &lt;code class="docutils literal"&gt;Segmentation
+fault: 11&lt;/code&gt; after call #524008.&lt;/p&gt;
+&lt;p&gt;Now on to trampolines.  In theory we should be able to declare a type
+that is a function procedure that returns other function procedures.
+Here's the first attempt at the limited trampoline,
+&lt;a class="reference external" href="https://tkurtbond.github.io/posts/2022/06/14/lisp-style-trampolines-in-common-lisp-c-ada-oberon-2-and-revised-oberon/trampolines/oberon-2/TrampolineBroken.Mod"&gt;TrampolineBroken.Mod&lt;/a&gt;.&lt;/p&gt;
+&lt;pre class="code modula2"&gt;&lt;a name="rest_code_a5f4fda7132e4d62b6355ba7f5f35f3a-1"&gt;&lt;/a&gt;&lt;span class="kr"&gt;MODULE&lt;/span&gt; &lt;span class="n"&gt;TrampolineBroken&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;              &lt;span class="cm"&gt;(* Fail to demonstrate lisp-style trampolines. *)&lt;/span&gt;
+&lt;a name="rest_code_a5f4fda7132e4d62b6355ba7f5f35f3a-2"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;IMPORT&lt;/span&gt; &lt;span class="n"&gt;Out&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_a5f4fda7132e4d62b6355ba7f5f35f3a-3"&gt;&lt;/a&gt;
+&lt;a name="rest_code_a5f4fda7132e4d62b6355ba7f5f35f3a-4"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;TYPE&lt;/span&gt; &lt;span class="n"&gt;Thunk&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kr"&gt;PROCEDURE&lt;/span&gt; &lt;span class="p"&gt;():&lt;/span&gt; &lt;span class="n"&gt;Thunk&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="cm"&gt;(* This is an error. *)&lt;/span&gt;
+&lt;a name="rest_code_a5f4fda7132e4d62b6355ba7f5f35f3a-5"&gt;&lt;/a&gt;
+&lt;a name="rest_code_a5f4fda7132e4d62b6355ba7f5f35f3a-6"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;VAR&lt;/span&gt; &lt;span class="n"&gt;next&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Thunk&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_a5f4fda7132e4d62b6355ba7f5f35f3a-7"&gt;&lt;/a&gt;
+&lt;a name="rest_code_a5f4fda7132e4d62b6355ba7f5f35f3a-8"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;PROCEDURE&lt;/span&gt; &lt;span class="n"&gt;baz&lt;/span&gt; &lt;span class="p"&gt;():&lt;/span&gt; &lt;span class="n"&gt;Thunk&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_a5f4fda7132e4d62b6355ba7f5f35f3a-9"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;BEGIN&lt;/span&gt;
+&lt;a name="rest_code_a5f4fda7132e4d62b6355ba7f5f35f3a-10"&gt;&lt;/a&gt;    &lt;span class="n"&gt;Out&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"baz"&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="n"&gt;Out&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Ln&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_a5f4fda7132e4d62b6355ba7f5f35f3a-11"&gt;&lt;/a&gt;    &lt;span class="n"&gt;next&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="nb"&gt;NIL&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_a5f4fda7132e4d62b6355ba7f5f35f3a-12"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;END&lt;/span&gt; &lt;span class="n"&gt;baz&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_a5f4fda7132e4d62b6355ba7f5f35f3a-13"&gt;&lt;/a&gt;
+&lt;a name="rest_code_a5f4fda7132e4d62b6355ba7f5f35f3a-14"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;PROCEDURE&lt;/span&gt; &lt;span class="n"&gt;bar&lt;/span&gt; &lt;span class="p"&gt;():&lt;/span&gt; &lt;span class="n"&gt;Thunk&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_a5f4fda7132e4d62b6355ba7f5f35f3a-15"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;BEGIN&lt;/span&gt;
+&lt;a name="rest_code_a5f4fda7132e4d62b6355ba7f5f35f3a-16"&gt;&lt;/a&gt;    &lt;span class="n"&gt;Out&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"bar"&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="n"&gt;Out&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Ln&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_a5f4fda7132e4d62b6355ba7f5f35f3a-17"&gt;&lt;/a&gt;    &lt;span class="n"&gt;next&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="n"&gt;baz&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_a5f4fda7132e4d62b6355ba7f5f35f3a-18"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;END&lt;/span&gt; &lt;span class="n"&gt;bar&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_a5f4fda7132e4d62b6355ba7f5f35f3a-19"&gt;&lt;/a&gt;
+&lt;a name="rest_code_a5f4fda7132e4d62b6355ba7f5f35f3a-20"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;PROCEDURE&lt;/span&gt; &lt;span class="n"&gt;foo&lt;/span&gt; &lt;span class="p"&gt;():&lt;/span&gt; &lt;span class="n"&gt;Thunk&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_a5f4fda7132e4d62b6355ba7f5f35f3a-21"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;BEGIN&lt;/span&gt;
+&lt;a name="rest_code_a5f4fda7132e4d62b6355ba7f5f35f3a-22"&gt;&lt;/a&gt;    &lt;span class="n"&gt;Out&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"foo"&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="n"&gt;Out&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Ln&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_a5f4fda7132e4d62b6355ba7f5f35f3a-23"&gt;&lt;/a&gt;    &lt;span class="n"&gt;next&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="n"&gt;bar&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_a5f4fda7132e4d62b6355ba7f5f35f3a-24"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;END&lt;/span&gt; &lt;span class="n"&gt;foo&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_a5f4fda7132e4d62b6355ba7f5f35f3a-25"&gt;&lt;/a&gt;
+&lt;a name="rest_code_a5f4fda7132e4d62b6355ba7f5f35f3a-26"&gt;&lt;/a&gt;&lt;span class="kr"&gt;BEGIN&lt;/span&gt;
+&lt;a name="rest_code_a5f4fda7132e4d62b6355ba7f5f35f3a-27"&gt;&lt;/a&gt;  &lt;span class="n"&gt;next&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="n"&gt;foo&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_a5f4fda7132e4d62b6355ba7f5f35f3a-28"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;WHILE&lt;/span&gt; &lt;span class="n"&gt;next&lt;/span&gt; &lt;span class="o"&gt;#&lt;/span&gt; &lt;span class="nb"&gt;NIL&lt;/span&gt; &lt;span class="kr"&gt;DO&lt;/span&gt;
+&lt;a name="rest_code_a5f4fda7132e4d62b6355ba7f5f35f3a-29"&gt;&lt;/a&gt;    &lt;span class="n"&gt;next&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="n"&gt;next&lt;/span&gt; &lt;span class="p"&gt;();&lt;/span&gt;
+&lt;a name="rest_code_a5f4fda7132e4d62b6355ba7f5f35f3a-30"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;END&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_a5f4fda7132e4d62b6355ba7f5f35f3a-31"&gt;&lt;/a&gt;&lt;span class="kr"&gt;END&lt;/span&gt; &lt;span class="n"&gt;TrampolineBroken&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;/pre&gt;&lt;p&gt;Unfortunately, trying to compile this dies with the following error
+message:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;TrampolineBroken.Mod  Compiling TrampolineBroken.
+
+   4:   TYPE Thunk = PROCEDURE (): Thunk;
+                             ^
+    pos   126  err 244  cyclic type definition not allowed
+
+Module compilation failed.&lt;/pre&gt;
+&lt;p&gt;As mentioned &lt;a class="reference external" href="https://tkurtbond.github.io/posts/2022/06/14/lisp-style-trampolines-in-common-lisp-c-ada-oberon-2-and-revised-oberon/#mentioning-recursive-types"&gt;above&lt;/a&gt;, this is a case of a &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Recursive_data_type"&gt;recursive type&lt;/a&gt;.  Well, drat.&lt;/p&gt;
+&lt;p&gt;At this point the immediate reaction is to look at the C version and
+try to hack up something analogous using functionality from
+&lt;a class="reference external" href="https://en.wikipedia.org/wiki/Oberon-2"&gt;Oberon-2&lt;/a&gt;'s &lt;code class="docutils literal"&gt;SYSTEM&lt;/code&gt; module, but that way lies madness, difficulty,
+and type errors.  Instead, you have to step back and think about
+things from another viewpoint.  The problem is that we can't declare a
+type for a function procedure that returns another function procedure
+of its type, because that is recursive.  Instead of trying for a
+&lt;a class="reference external" href="https://en.wikipedia.org/wiki/Recursive_data_type"&gt;recursive type&lt;/a&gt;, what if we switched to storing the next procedure
+to be run in a global variable, &lt;code class="docutils literal"&gt;next&lt;/code&gt;, and having each procedure in
+the chain set that to the procedure that should run next?  That should
+work!&lt;/p&gt;
+&lt;p&gt;Here's &lt;a class="reference external" href="https://tkurtbond.github.io/trampolines/oberon-2/Trampoline.Mod"&gt;Trampoline.Mod&lt;/a&gt;, a version that works!&lt;/p&gt;
+&lt;pre class="code modula2"&gt;&lt;a name="rest_code_96a8925a56b8496185cf2215ca1dc29a-1"&gt;&lt;/a&gt;&lt;span class="kr"&gt;MODULE&lt;/span&gt; &lt;span class="n"&gt;Trampoline&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;              &lt;span class="cm"&gt;(* Demonstrate lisp-style trampolines. *)&lt;/span&gt;
+&lt;a name="rest_code_96a8925a56b8496185cf2215ca1dc29a-2"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;IMPORT&lt;/span&gt; &lt;span class="n"&gt;Out&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_96a8925a56b8496185cf2215ca1dc29a-3"&gt;&lt;/a&gt;
+&lt;a name="rest_code_96a8925a56b8496185cf2215ca1dc29a-4"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;TYPE&lt;/span&gt; &lt;span class="n"&gt;Thunk&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kr"&gt;PROCEDURE&lt;/span&gt; &lt;span class="p"&gt;();&lt;/span&gt;
+&lt;a name="rest_code_96a8925a56b8496185cf2215ca1dc29a-5"&gt;&lt;/a&gt;
+&lt;a name="rest_code_96a8925a56b8496185cf2215ca1dc29a-6"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;VAR&lt;/span&gt; &lt;span class="n"&gt;next&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Thunk&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;              &lt;span class="cm"&gt;(* Next procedure to be called. *)&lt;/span&gt;
+&lt;a name="rest_code_96a8925a56b8496185cf2215ca1dc29a-7"&gt;&lt;/a&gt;
+&lt;a name="rest_code_96a8925a56b8496185cf2215ca1dc29a-8"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;PROCEDURE&lt;/span&gt; &lt;span class="n"&gt;baz&lt;/span&gt; &lt;span class="p"&gt;();&lt;/span&gt;
+&lt;a name="rest_code_96a8925a56b8496185cf2215ca1dc29a-9"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;BEGIN&lt;/span&gt;
+&lt;a name="rest_code_96a8925a56b8496185cf2215ca1dc29a-10"&gt;&lt;/a&gt;    &lt;span class="n"&gt;Out&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"baz"&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="n"&gt;Out&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Ln&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_96a8925a56b8496185cf2215ca1dc29a-11"&gt;&lt;/a&gt;    &lt;span class="n"&gt;next&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="nb"&gt;NIL&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_96a8925a56b8496185cf2215ca1dc29a-12"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;END&lt;/span&gt; &lt;span class="n"&gt;baz&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_96a8925a56b8496185cf2215ca1dc29a-13"&gt;&lt;/a&gt;
+&lt;a name="rest_code_96a8925a56b8496185cf2215ca1dc29a-14"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;PROCEDURE&lt;/span&gt; &lt;span class="n"&gt;bar&lt;/span&gt; &lt;span class="p"&gt;();&lt;/span&gt;
+&lt;a name="rest_code_96a8925a56b8496185cf2215ca1dc29a-15"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;BEGIN&lt;/span&gt;
+&lt;a name="rest_code_96a8925a56b8496185cf2215ca1dc29a-16"&gt;&lt;/a&gt;    &lt;span class="n"&gt;Out&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"bar"&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="n"&gt;Out&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Ln&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_96a8925a56b8496185cf2215ca1dc29a-17"&gt;&lt;/a&gt;    &lt;span class="n"&gt;next&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="n"&gt;baz&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_96a8925a56b8496185cf2215ca1dc29a-18"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;END&lt;/span&gt; &lt;span class="n"&gt;bar&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_96a8925a56b8496185cf2215ca1dc29a-19"&gt;&lt;/a&gt;
+&lt;a name="rest_code_96a8925a56b8496185cf2215ca1dc29a-20"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;PROCEDURE&lt;/span&gt; &lt;span class="n"&gt;foo&lt;/span&gt; &lt;span class="p"&gt;();&lt;/span&gt;
+&lt;a name="rest_code_96a8925a56b8496185cf2215ca1dc29a-21"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;BEGIN&lt;/span&gt;
+&lt;a name="rest_code_96a8925a56b8496185cf2215ca1dc29a-22"&gt;&lt;/a&gt;    &lt;span class="n"&gt;Out&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"foo"&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="n"&gt;Out&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Ln&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_96a8925a56b8496185cf2215ca1dc29a-23"&gt;&lt;/a&gt;    &lt;span class="n"&gt;next&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="n"&gt;bar&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_96a8925a56b8496185cf2215ca1dc29a-24"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;END&lt;/span&gt; &lt;span class="n"&gt;foo&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_96a8925a56b8496185cf2215ca1dc29a-25"&gt;&lt;/a&gt;
+&lt;a name="rest_code_96a8925a56b8496185cf2215ca1dc29a-26"&gt;&lt;/a&gt;&lt;span class="kr"&gt;BEGIN&lt;/span&gt;
+&lt;a name="rest_code_96a8925a56b8496185cf2215ca1dc29a-27"&gt;&lt;/a&gt;  &lt;span class="n"&gt;next&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="n"&gt;foo&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_96a8925a56b8496185cf2215ca1dc29a-28"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;WHILE&lt;/span&gt; &lt;span class="n"&gt;next&lt;/span&gt; &lt;span class="o"&gt;#&lt;/span&gt; &lt;span class="nb"&gt;NIL&lt;/span&gt; &lt;span class="kr"&gt;DO&lt;/span&gt;
+&lt;a name="rest_code_96a8925a56b8496185cf2215ca1dc29a-29"&gt;&lt;/a&gt;    &lt;span class="n"&gt;next&lt;/span&gt; &lt;span class="p"&gt;();&lt;/span&gt;
+&lt;a name="rest_code_96a8925a56b8496185cf2215ca1dc29a-30"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;END&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_96a8925a56b8496185cf2215ca1dc29a-31"&gt;&lt;/a&gt;&lt;span class="kr"&gt;END&lt;/span&gt; &lt;span class="n"&gt;Trampoline&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;/pre&gt;&lt;p&gt;And here's &lt;a class="reference external" href="https://tkurtbond.github.io/trampolines/oberon-2/TrampolineForever.Mod"&gt;TrampolineForever.Mod&lt;/a&gt;, which also works!&lt;/p&gt;
+&lt;pre class="code modula2"&gt;&lt;a name="rest_code_c80ad2b3f59e48629bb5362b0349b2e0-1"&gt;&lt;/a&gt;&lt;span class="kr"&gt;MODULE&lt;/span&gt; &lt;span class="n"&gt;TrampolineForever&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_c80ad2b3f59e48629bb5362b0349b2e0-2"&gt;&lt;/a&gt;  &lt;span class="cm"&gt;(* Recurse forever without running out of stack space.  *)&lt;/span&gt;
+&lt;a name="rest_code_c80ad2b3f59e48629bb5362b0349b2e0-3"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;IMPORT&lt;/span&gt; &lt;span class="n"&gt;Out&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_c80ad2b3f59e48629bb5362b0349b2e0-4"&gt;&lt;/a&gt;
+&lt;a name="rest_code_c80ad2b3f59e48629bb5362b0349b2e0-5"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;TYPE&lt;/span&gt; &lt;span class="n"&gt;Thunk&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kr"&gt;PROCEDURE&lt;/span&gt; &lt;span class="p"&gt;();&lt;/span&gt;
+&lt;a name="rest_code_c80ad2b3f59e48629bb5362b0349b2e0-6"&gt;&lt;/a&gt;
+&lt;a name="rest_code_c80ad2b3f59e48629bb5362b0349b2e0-7"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;VAR&lt;/span&gt;
+&lt;a name="rest_code_c80ad2b3f59e48629bb5362b0349b2e0-8"&gt;&lt;/a&gt;    &lt;span class="n"&gt;next&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Thunk&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;         &lt;span class="cm"&gt;(* Next procedure to be called. *)&lt;/span&gt;
+&lt;a name="rest_code_c80ad2b3f59e48629bb5362b0349b2e0-9"&gt;&lt;/a&gt;    &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;INTEGER&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;          &lt;span class="cm"&gt;(* Number of times through the trampoline. *)&lt;/span&gt;
+&lt;a name="rest_code_c80ad2b3f59e48629bb5362b0349b2e0-10"&gt;&lt;/a&gt;
+&lt;a name="rest_code_c80ad2b3f59e48629bb5362b0349b2e0-11"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;PROCEDURE&lt;/span&gt; &lt;span class="o"&gt;^&lt;/span&gt;&lt;span class="n"&gt;foo&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;        &lt;span class="cm"&gt;(* Forward declaration. *)&lt;/span&gt;
+&lt;a name="rest_code_c80ad2b3f59e48629bb5362b0349b2e0-12"&gt;&lt;/a&gt;
+&lt;a name="rest_code_c80ad2b3f59e48629bb5362b0349b2e0-13"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;PROCEDURE&lt;/span&gt; &lt;span class="n"&gt;baz&lt;/span&gt; &lt;span class="p"&gt;();&lt;/span&gt;
+&lt;a name="rest_code_c80ad2b3f59e48629bb5362b0349b2e0-14"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;BEGIN&lt;/span&gt;
+&lt;a name="rest_code_c80ad2b3f59e48629bb5362b0349b2e0-15"&gt;&lt;/a&gt;    &lt;span class="n"&gt;Out&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"baz"&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="n"&gt;Out&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Ln&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_c80ad2b3f59e48629bb5362b0349b2e0-16"&gt;&lt;/a&gt;    &lt;span class="n"&gt;next&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="n"&gt;foo&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_c80ad2b3f59e48629bb5362b0349b2e0-17"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;END&lt;/span&gt; &lt;span class="n"&gt;baz&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_c80ad2b3f59e48629bb5362b0349b2e0-18"&gt;&lt;/a&gt;
+&lt;a name="rest_code_c80ad2b3f59e48629bb5362b0349b2e0-19"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;PROCEDURE&lt;/span&gt; &lt;span class="n"&gt;bar&lt;/span&gt; &lt;span class="p"&gt;();&lt;/span&gt;
+&lt;a name="rest_code_c80ad2b3f59e48629bb5362b0349b2e0-20"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;BEGIN&lt;/span&gt;
+&lt;a name="rest_code_c80ad2b3f59e48629bb5362b0349b2e0-21"&gt;&lt;/a&gt;    &lt;span class="n"&gt;Out&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"bar"&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="n"&gt;Out&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Ln&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_c80ad2b3f59e48629bb5362b0349b2e0-22"&gt;&lt;/a&gt;    &lt;span class="n"&gt;next&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="n"&gt;baz&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_c80ad2b3f59e48629bb5362b0349b2e0-23"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;END&lt;/span&gt; &lt;span class="n"&gt;bar&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_c80ad2b3f59e48629bb5362b0349b2e0-24"&gt;&lt;/a&gt;
+&lt;a name="rest_code_c80ad2b3f59e48629bb5362b0349b2e0-25"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;PROCEDURE&lt;/span&gt; &lt;span class="n"&gt;foo&lt;/span&gt; &lt;span class="p"&gt;();&lt;/span&gt;
+&lt;a name="rest_code_c80ad2b3f59e48629bb5362b0349b2e0-26"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;BEGIN&lt;/span&gt;
+&lt;a name="rest_code_c80ad2b3f59e48629bb5362b0349b2e0-27"&gt;&lt;/a&gt;    &lt;span class="n"&gt;Out&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"foo"&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="n"&gt;Out&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Ln&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_c80ad2b3f59e48629bb5362b0349b2e0-28"&gt;&lt;/a&gt;    &lt;span class="n"&gt;next&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="n"&gt;bar&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_c80ad2b3f59e48629bb5362b0349b2e0-29"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;END&lt;/span&gt; &lt;span class="n"&gt;foo&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_c80ad2b3f59e48629bb5362b0349b2e0-30"&gt;&lt;/a&gt;
+&lt;a name="rest_code_c80ad2b3f59e48629bb5362b0349b2e0-31"&gt;&lt;/a&gt;&lt;span class="kr"&gt;BEGIN&lt;/span&gt;
+&lt;a name="rest_code_c80ad2b3f59e48629bb5362b0349b2e0-32"&gt;&lt;/a&gt;  &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_c80ad2b3f59e48629bb5362b0349b2e0-33"&gt;&lt;/a&gt;  &lt;span class="n"&gt;next&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="n"&gt;foo&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_c80ad2b3f59e48629bb5362b0349b2e0-34"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;WHILE&lt;/span&gt; &lt;span class="n"&gt;next&lt;/span&gt; &lt;span class="o"&gt;#&lt;/span&gt; &lt;span class="nb"&gt;NIL&lt;/span&gt; &lt;span class="kr"&gt;DO&lt;/span&gt;
+&lt;a name="rest_code_c80ad2b3f59e48629bb5362b0349b2e0-35"&gt;&lt;/a&gt;    &lt;span class="nb"&gt;INC&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;a name="rest_code_c80ad2b3f59e48629bb5362b0349b2e0-36"&gt;&lt;/a&gt;    &lt;span class="n"&gt;Out&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"call #"&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="n"&gt;Out&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Int&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="n"&gt;Out&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Ln&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_c80ad2b3f59e48629bb5362b0349b2e0-37"&gt;&lt;/a&gt;    &lt;span class="n"&gt;next&lt;/span&gt; &lt;span class="p"&gt;();&lt;/span&gt;
+&lt;a name="rest_code_c80ad2b3f59e48629bb5362b0349b2e0-38"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;END&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_c80ad2b3f59e48629bb5362b0349b2e0-39"&gt;&lt;/a&gt;&lt;span class="kr"&gt;END&lt;/span&gt; &lt;span class="n"&gt;TrampolineForever&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;/pre&gt;&lt;p&gt;Wirth has continued to work on Oberon, producing an even more
+minimalist revision, often know as Oberon-07, or &lt;a class="reference external" href="https://people.inf.ethz.ch/wirth/Oberon/index.html"&gt;Revised Oberon&lt;/a&gt;.
+Unfortunately, he removed forward declarations and the &lt;code class="docutils literal"&gt;LONGINT&lt;/code&gt;
+type, which means we have to make some minor changes.&lt;/p&gt;
+&lt;p&gt;I'm using OBNC (&lt;a class="reference external" href="https://miasap.se/obnc/"&gt;OBNC1&lt;/a&gt;, &lt;a class="reference external" href="https://github.com/GunterMueller/OBNC"&gt;OBNC2&lt;/a&gt;) for &lt;a class="reference external" href="https://people.inf.ethz.ch/wirth/Oberon/index.html"&gt;Revised Oberon&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Here's the &lt;a class="reference external" href="https://tkurtbond.github.io/trampolines/revised-oberon/NotForever.Mod"&gt;Revised Oberon NotForever.Mod&lt;/a&gt;:&lt;/p&gt;
+&lt;pre class="code modula2"&gt;&lt;a name="rest_code_8ac7888cc4a74ac0a8c673c79f1d2c00-1"&gt;&lt;/a&gt;&lt;span class="kr"&gt;MODULE&lt;/span&gt; &lt;span class="n"&gt;NotForever&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;           &lt;span class="cm"&gt;(* Recurse until stack space runs out. *)&lt;/span&gt;
+&lt;a name="rest_code_8ac7888cc4a74ac0a8c673c79f1d2c00-2"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;IMPORT&lt;/span&gt; &lt;span class="n"&gt;Out&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_8ac7888cc4a74ac0a8c673c79f1d2c00-3"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;VAR&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;INTEGER&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;            &lt;span class="cm"&gt;(* Number of times f has been called. *)&lt;/span&gt;
+&lt;a name="rest_code_8ac7888cc4a74ac0a8c673c79f1d2c00-4"&gt;&lt;/a&gt;    &lt;span class="cm"&gt;(* Alas, no more LONGINT. *)&lt;/span&gt;
+&lt;a name="rest_code_8ac7888cc4a74ac0a8c673c79f1d2c00-5"&gt;&lt;/a&gt;
+&lt;a name="rest_code_8ac7888cc4a74ac0a8c673c79f1d2c00-6"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;PROCEDURE&lt;/span&gt; &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_8ac7888cc4a74ac0a8c673c79f1d2c00-7"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;BEGIN&lt;/span&gt;
+&lt;a name="rest_code_8ac7888cc4a74ac0a8c673c79f1d2c00-8"&gt;&lt;/a&gt;    &lt;span class="nb"&gt;INC&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;a name="rest_code_8ac7888cc4a74ac0a8c673c79f1d2c00-9"&gt;&lt;/a&gt;    &lt;span class="n"&gt;Out&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"call #"&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="n"&gt;Out&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Int&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="n"&gt;Out&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Ln&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_8ac7888cc4a74ac0a8c673c79f1d2c00-10"&gt;&lt;/a&gt;    &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_8ac7888cc4a74ac0a8c673c79f1d2c00-11"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;END&lt;/span&gt; &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_8ac7888cc4a74ac0a8c673c79f1d2c00-12"&gt;&lt;/a&gt;
+&lt;a name="rest_code_8ac7888cc4a74ac0a8c673c79f1d2c00-13"&gt;&lt;/a&gt;&lt;span class="kr"&gt;BEGIN&lt;/span&gt;
+&lt;a name="rest_code_8ac7888cc4a74ac0a8c673c79f1d2c00-14"&gt;&lt;/a&gt;  &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_8ac7888cc4a74ac0a8c673c79f1d2c00-15"&gt;&lt;/a&gt;  &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_8ac7888cc4a74ac0a8c673c79f1d2c00-16"&gt;&lt;/a&gt;&lt;span class="kr"&gt;END&lt;/span&gt; &lt;span class="n"&gt;NotForever&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;/pre&gt;&lt;p&gt;Here's the &lt;a class="reference external" href="https://tkurtbond.github.io/trampolines/revised-oberon/Trampoline.Mod"&gt;Revised Oberon Trampoline.Mod&lt;/a&gt;:&lt;/p&gt;
+&lt;pre class="code modula2"&gt;&lt;a name="rest_code_2063e684b3a2452bac72adca8d497633-1"&gt;&lt;/a&gt;&lt;span class="kr"&gt;MODULE&lt;/span&gt; &lt;span class="n"&gt;Trampoline&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;              &lt;span class="cm"&gt;(* Demonstrate lisp-style trampolines. *)&lt;/span&gt;
+&lt;a name="rest_code_2063e684b3a2452bac72adca8d497633-2"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;IMPORT&lt;/span&gt; &lt;span class="n"&gt;Out&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_2063e684b3a2452bac72adca8d497633-3"&gt;&lt;/a&gt;
+&lt;a name="rest_code_2063e684b3a2452bac72adca8d497633-4"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;TYPE&lt;/span&gt; &lt;span class="n"&gt;Thunk&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kr"&gt;PROCEDURE&lt;/span&gt; &lt;span class="p"&gt;();&lt;/span&gt;
+&lt;a name="rest_code_2063e684b3a2452bac72adca8d497633-5"&gt;&lt;/a&gt;
+&lt;a name="rest_code_2063e684b3a2452bac72adca8d497633-6"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;VAR&lt;/span&gt; &lt;span class="n"&gt;next&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Thunk&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;              &lt;span class="cm"&gt;(* Next procedure to be called. *)&lt;/span&gt;
+&lt;a name="rest_code_2063e684b3a2452bac72adca8d497633-7"&gt;&lt;/a&gt;
+&lt;a name="rest_code_2063e684b3a2452bac72adca8d497633-8"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;PROCEDURE&lt;/span&gt; &lt;span class="n"&gt;baz&lt;/span&gt; &lt;span class="p"&gt;();&lt;/span&gt;
+&lt;a name="rest_code_2063e684b3a2452bac72adca8d497633-9"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;BEGIN&lt;/span&gt;
+&lt;a name="rest_code_2063e684b3a2452bac72adca8d497633-10"&gt;&lt;/a&gt;    &lt;span class="n"&gt;Out&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"baz"&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="n"&gt;Out&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Ln&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_2063e684b3a2452bac72adca8d497633-11"&gt;&lt;/a&gt;    &lt;span class="n"&gt;next&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="nb"&gt;NIL&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_2063e684b3a2452bac72adca8d497633-12"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;END&lt;/span&gt; &lt;span class="n"&gt;baz&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_2063e684b3a2452bac72adca8d497633-13"&gt;&lt;/a&gt;
+&lt;a name="rest_code_2063e684b3a2452bac72adca8d497633-14"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;PROCEDURE&lt;/span&gt; &lt;span class="n"&gt;bar&lt;/span&gt; &lt;span class="p"&gt;();&lt;/span&gt;
+&lt;a name="rest_code_2063e684b3a2452bac72adca8d497633-15"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;BEGIN&lt;/span&gt;
+&lt;a name="rest_code_2063e684b3a2452bac72adca8d497633-16"&gt;&lt;/a&gt;    &lt;span class="n"&gt;Out&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"bar"&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="n"&gt;Out&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Ln&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_2063e684b3a2452bac72adca8d497633-17"&gt;&lt;/a&gt;    &lt;span class="n"&gt;next&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="n"&gt;baz&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_2063e684b3a2452bac72adca8d497633-18"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;END&lt;/span&gt; &lt;span class="n"&gt;bar&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_2063e684b3a2452bac72adca8d497633-19"&gt;&lt;/a&gt;
+&lt;a name="rest_code_2063e684b3a2452bac72adca8d497633-20"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;PROCEDURE&lt;/span&gt; &lt;span class="n"&gt;foo&lt;/span&gt; &lt;span class="p"&gt;();&lt;/span&gt;
+&lt;a name="rest_code_2063e684b3a2452bac72adca8d497633-21"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;BEGIN&lt;/span&gt;
+&lt;a name="rest_code_2063e684b3a2452bac72adca8d497633-22"&gt;&lt;/a&gt;    &lt;span class="n"&gt;Out&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"foo"&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="n"&gt;Out&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Ln&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_2063e684b3a2452bac72adca8d497633-23"&gt;&lt;/a&gt;    &lt;span class="n"&gt;next&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="n"&gt;bar&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_2063e684b3a2452bac72adca8d497633-24"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;END&lt;/span&gt; &lt;span class="n"&gt;foo&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_2063e684b3a2452bac72adca8d497633-25"&gt;&lt;/a&gt;
+&lt;a name="rest_code_2063e684b3a2452bac72adca8d497633-26"&gt;&lt;/a&gt;&lt;span class="kr"&gt;BEGIN&lt;/span&gt;
+&lt;a name="rest_code_2063e684b3a2452bac72adca8d497633-27"&gt;&lt;/a&gt;  &lt;span class="n"&gt;next&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="n"&gt;foo&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_2063e684b3a2452bac72adca8d497633-28"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;WHILE&lt;/span&gt; &lt;span class="n"&gt;next&lt;/span&gt; &lt;span class="o"&gt;#&lt;/span&gt; &lt;span class="nb"&gt;NIL&lt;/span&gt; &lt;span class="kr"&gt;DO&lt;/span&gt;
+&lt;a name="rest_code_2063e684b3a2452bac72adca8d497633-29"&gt;&lt;/a&gt;    &lt;span class="n"&gt;next&lt;/span&gt; &lt;span class="p"&gt;();&lt;/span&gt;
+&lt;a name="rest_code_2063e684b3a2452bac72adca8d497633-30"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;END&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_2063e684b3a2452bac72adca8d497633-31"&gt;&lt;/a&gt;&lt;span class="kr"&gt;END&lt;/span&gt; &lt;span class="n"&gt;Trampoline&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;/pre&gt;&lt;p&gt;Note that with forward declarations removed, we just declare a
+procedure type and procedure variable, initialize it before starting
+the trampoline, and refer to it instead of &lt;code class="docutils literal"&gt;foo&lt;/code&gt; in procedure
+&lt;code class="docutils literal"&gt;baz&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Here's the &lt;a class="reference external" href="https://tkurtbond.github.io/trampolines/revised-oberon/TrampolineForever.Mod"&gt;Revised Oberon TrampolineForever.Mod&lt;/a&gt;&lt;/p&gt;
+&lt;pre class="code modula2"&gt;&lt;a name="rest_code_ffae2b54a1434404846656e3fff8d144-1"&gt;&lt;/a&gt;&lt;span class="kr"&gt;MODULE&lt;/span&gt; &lt;span class="n"&gt;TrampolineForever&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_ffae2b54a1434404846656e3fff8d144-2"&gt;&lt;/a&gt;  &lt;span class="cm"&gt;(* Recurse forever without running out of stack space.  *)&lt;/span&gt;
+&lt;a name="rest_code_ffae2b54a1434404846656e3fff8d144-3"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;IMPORT&lt;/span&gt; &lt;span class="n"&gt;Out&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_ffae2b54a1434404846656e3fff8d144-4"&gt;&lt;/a&gt;
+&lt;a name="rest_code_ffae2b54a1434404846656e3fff8d144-5"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;TYPE&lt;/span&gt; &lt;span class="n"&gt;Thunk&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kr"&gt;PROCEDURE&lt;/span&gt; &lt;span class="p"&gt;();&lt;/span&gt;
+&lt;a name="rest_code_ffae2b54a1434404846656e3fff8d144-6"&gt;&lt;/a&gt;
+&lt;a name="rest_code_ffae2b54a1434404846656e3fff8d144-7"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;VAR&lt;/span&gt;
+&lt;a name="rest_code_ffae2b54a1434404846656e3fff8d144-8"&gt;&lt;/a&gt;    &lt;span class="n"&gt;forward&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Thunk&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;      &lt;span class="cm"&gt;(* Forward declaration. *)&lt;/span&gt;
+&lt;a name="rest_code_ffae2b54a1434404846656e3fff8d144-9"&gt;&lt;/a&gt;    &lt;span class="n"&gt;next&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Thunk&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;         &lt;span class="cm"&gt;(* Next procedure to be called. *)&lt;/span&gt;
+&lt;a name="rest_code_ffae2b54a1434404846656e3fff8d144-10"&gt;&lt;/a&gt;    &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;INTEGER&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;          &lt;span class="cm"&gt;(* Number of times through the trampoline. *)&lt;/span&gt;
+&lt;a name="rest_code_ffae2b54a1434404846656e3fff8d144-11"&gt;&lt;/a&gt;
+&lt;a name="rest_code_ffae2b54a1434404846656e3fff8d144-12"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;PROCEDURE&lt;/span&gt; &lt;span class="n"&gt;baz&lt;/span&gt; &lt;span class="p"&gt;();&lt;/span&gt;
+&lt;a name="rest_code_ffae2b54a1434404846656e3fff8d144-13"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;BEGIN&lt;/span&gt;
+&lt;a name="rest_code_ffae2b54a1434404846656e3fff8d144-14"&gt;&lt;/a&gt;    &lt;span class="n"&gt;Out&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"baz"&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="n"&gt;Out&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Ln&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_ffae2b54a1434404846656e3fff8d144-15"&gt;&lt;/a&gt;    &lt;span class="n"&gt;next&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="n"&gt;forward&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_ffae2b54a1434404846656e3fff8d144-16"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;END&lt;/span&gt; &lt;span class="n"&gt;baz&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_ffae2b54a1434404846656e3fff8d144-17"&gt;&lt;/a&gt;
+&lt;a name="rest_code_ffae2b54a1434404846656e3fff8d144-18"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;PROCEDURE&lt;/span&gt; &lt;span class="n"&gt;bar&lt;/span&gt; &lt;span class="p"&gt;();&lt;/span&gt;
+&lt;a name="rest_code_ffae2b54a1434404846656e3fff8d144-19"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;BEGIN&lt;/span&gt;
+&lt;a name="rest_code_ffae2b54a1434404846656e3fff8d144-20"&gt;&lt;/a&gt;    &lt;span class="n"&gt;Out&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"bar"&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="n"&gt;Out&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Ln&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_ffae2b54a1434404846656e3fff8d144-21"&gt;&lt;/a&gt;    &lt;span class="n"&gt;next&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="n"&gt;baz&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_ffae2b54a1434404846656e3fff8d144-22"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;END&lt;/span&gt; &lt;span class="n"&gt;bar&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_ffae2b54a1434404846656e3fff8d144-23"&gt;&lt;/a&gt;
+&lt;a name="rest_code_ffae2b54a1434404846656e3fff8d144-24"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;PROCEDURE&lt;/span&gt; &lt;span class="n"&gt;foo&lt;/span&gt; &lt;span class="p"&gt;();&lt;/span&gt;
+&lt;a name="rest_code_ffae2b54a1434404846656e3fff8d144-25"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;BEGIN&lt;/span&gt;
+&lt;a name="rest_code_ffae2b54a1434404846656e3fff8d144-26"&gt;&lt;/a&gt;    &lt;span class="n"&gt;Out&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"foo"&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="n"&gt;Out&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Ln&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_ffae2b54a1434404846656e3fff8d144-27"&gt;&lt;/a&gt;    &lt;span class="n"&gt;next&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="n"&gt;bar&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_ffae2b54a1434404846656e3fff8d144-28"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;END&lt;/span&gt; &lt;span class="n"&gt;foo&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_ffae2b54a1434404846656e3fff8d144-29"&gt;&lt;/a&gt;
+&lt;a name="rest_code_ffae2b54a1434404846656e3fff8d144-30"&gt;&lt;/a&gt;&lt;span class="kr"&gt;BEGIN&lt;/span&gt;
+&lt;a name="rest_code_ffae2b54a1434404846656e3fff8d144-31"&gt;&lt;/a&gt;  &lt;span class="n"&gt;forward&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="n"&gt;foo&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_ffae2b54a1434404846656e3fff8d144-32"&gt;&lt;/a&gt;  &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_ffae2b54a1434404846656e3fff8d144-33"&gt;&lt;/a&gt;  &lt;span class="n"&gt;next&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="n"&gt;foo&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_ffae2b54a1434404846656e3fff8d144-34"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;WHILE&lt;/span&gt; &lt;span class="n"&gt;next&lt;/span&gt; &lt;span class="o"&gt;#&lt;/span&gt; &lt;span class="nb"&gt;NIL&lt;/span&gt; &lt;span class="kr"&gt;DO&lt;/span&gt;
+&lt;a name="rest_code_ffae2b54a1434404846656e3fff8d144-35"&gt;&lt;/a&gt;    &lt;span class="nb"&gt;INC&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;a name="rest_code_ffae2b54a1434404846656e3fff8d144-36"&gt;&lt;/a&gt;    &lt;span class="n"&gt;Out&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"call #"&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="n"&gt;Out&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Int&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="n"&gt;Out&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Ln&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_ffae2b54a1434404846656e3fff8d144-37"&gt;&lt;/a&gt;    &lt;span class="n"&gt;next&lt;/span&gt; &lt;span class="p"&gt;();&lt;/span&gt;
+&lt;a name="rest_code_ffae2b54a1434404846656e3fff8d144-38"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;END&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_ffae2b54a1434404846656e3fff8d144-39"&gt;&lt;/a&gt;&lt;span class="kr"&gt;END&lt;/span&gt; &lt;span class="n"&gt;TrampolineForever&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;/pre&gt;&lt;p&gt;And of course, since we mentioned &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Ada_(programming_language)"&gt;Ada&lt;/a&gt; above, we should do a version
+in that.  I'm using &lt;a class="reference external" href="https://en.wikipedia.org/wiki/GNAT"&gt;GNAT&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Here's &lt;a class="reference external" href="https://tkurtbond.github.io/trampolines/ada/not_forever.adb"&gt;not_forever.adb&lt;/a&gt;:&lt;/p&gt;
+&lt;pre class="code ada"&gt;&lt;a name="rest_code_0637b1874a0e493b95cb7aae437a4fc5-1"&gt;&lt;/a&gt;&lt;span class="kn"&gt;with&lt;/span&gt; &lt;span class="nn"&gt;Ada.Text_IO&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="kn"&gt;use&lt;/span&gt; &lt;span class="nn"&gt;Ada.Text_IO&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_0637b1874a0e493b95cb7aae437a4fc5-2"&gt;&lt;/a&gt;&lt;span class="kd"&gt;procedure&lt;/span&gt; &lt;span class="nf"&gt;not_forever&lt;/span&gt; &lt;span class="kr"&gt;is&lt;/span&gt;        &lt;span class="c1"&gt;-- recurse until stack space runs out.&lt;/span&gt;
+&lt;a name="rest_code_0637b1874a0e493b95cb7aae437a4fc5-3"&gt;&lt;/a&gt;  &lt;span class="kd"&gt;type&lt;/span&gt; &lt;span class="kt"&gt;Unsigned&lt;/span&gt; &lt;span class="kr"&gt;is&lt;/span&gt; &lt;span class="ow"&gt;mod&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="mi"&gt;64&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;   &lt;span class="c1"&gt;-- wrap to 0 when maximum value is execeeded.&lt;/span&gt;
+&lt;a name="rest_code_0637b1874a0e493b95cb7aae437a4fc5-4"&gt;&lt;/a&gt;  &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Unsigned&lt;/span&gt; &lt;span class="p"&gt;:=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;             &lt;span class="c1"&gt;-- Number of times f has been called.&lt;/span&gt;
+&lt;a name="rest_code_0637b1874a0e493b95cb7aae437a4fc5-5"&gt;&lt;/a&gt;
+&lt;a name="rest_code_0637b1874a0e493b95cb7aae437a4fc5-6"&gt;&lt;/a&gt;  &lt;span class="kd"&gt;procedure&lt;/span&gt; &lt;span class="nf"&gt;f&lt;/span&gt; &lt;span class="kr"&gt;is&lt;/span&gt;
+&lt;a name="rest_code_0637b1874a0e493b95cb7aae437a4fc5-7"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;begin&lt;/span&gt;
+&lt;a name="rest_code_0637b1874a0e493b95cb7aae437a4fc5-8"&gt;&lt;/a&gt;    &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="p"&gt;:=&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_0637b1874a0e493b95cb7aae437a4fc5-9"&gt;&lt;/a&gt;    &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_0637b1874a0e493b95cb7aae437a4fc5-10"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;end&lt;/span&gt; &lt;span class="nf"&gt;f&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_0637b1874a0e493b95cb7aae437a4fc5-11"&gt;&lt;/a&gt;
+&lt;a name="rest_code_0637b1874a0e493b95cb7aae437a4fc5-12"&gt;&lt;/a&gt;&lt;span class="kr"&gt;begin&lt;/span&gt;
+&lt;a name="rest_code_0637b1874a0e493b95cb7aae437a4fc5-13"&gt;&lt;/a&gt;  &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_0637b1874a0e493b95cb7aae437a4fc5-14"&gt;&lt;/a&gt;&lt;span class="kr"&gt;exception&lt;/span&gt;
+&lt;a name="rest_code_0637b1874a0e493b95cb7aae437a4fc5-15"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;when&lt;/span&gt; &lt;span class="n"&gt;STORAGE_ERROR&lt;/span&gt; &lt;span class="p"&gt;=&amp;gt;&lt;/span&gt;
+&lt;a name="rest_code_0637b1874a0e493b95cb7aae437a4fc5-16"&gt;&lt;/a&gt;  &lt;span class="n"&gt;Put&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"STORAGE_ERROR raised with i = "&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="n"&gt;Put&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;'&lt;/span&gt;&lt;span class="na"&gt;Image&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="n"&gt;New_Line&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_0637b1874a0e493b95cb7aae437a4fc5-17"&gt;&lt;/a&gt;&lt;span class="kr"&gt;end&lt;/span&gt; &lt;span class="nf"&gt;not_forever&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;p&gt;Again, &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Ada_(programming_language)"&gt;Ada&lt;/a&gt; would have the same problem with &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Recursive_data_type"&gt;recursive type&lt;/a&gt;s as
+the Oberon dialects.  Don't look at the C version and wander off into
+forest of &lt;code class="docutils literal"&gt;Ada.Unchecked_Conversion&lt;/code&gt; because that's unsafe, or the
+thicket of &lt;code class="docutils literal"&gt;System.Address_To_Access_Conversions&lt;/code&gt;, because that
+one's really unsafe (and didn't work, when I tried it).  Instead, do
+the same thing as we did in the Oberon dialects, and move to a global
+variable instead of returning the values from the functions.&lt;/p&gt;
+&lt;p&gt;Here's &lt;a class="reference external" href="https://tkurtbond.github.io/trampolines/ada/trampoline.adb"&gt;trampoline.adb&lt;/a&gt;:&lt;/p&gt;
+&lt;pre class="code ada"&gt;&lt;a name="rest_code_e90348b069f8437cba875391cce19fc9-1"&gt;&lt;/a&gt;&lt;span class="kn"&gt;with&lt;/span&gt; &lt;span class="nn"&gt;Ada.Text_IO&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="kn"&gt;use&lt;/span&gt; &lt;span class="nn"&gt;Ada.Text_IO&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_e90348b069f8437cba875391cce19fc9-2"&gt;&lt;/a&gt;&lt;span class="kd"&gt;procedure&lt;/span&gt; &lt;span class="nf"&gt;trampoline&lt;/span&gt; &lt;span class="kr"&gt;is&lt;/span&gt;         &lt;span class="c1"&gt;-- Demonstrate lisp-style trampolines.&lt;/span&gt;
+&lt;a name="rest_code_e90348b069f8437cba875391cce19fc9-3"&gt;&lt;/a&gt;    &lt;span class="kd"&gt;type&lt;/span&gt; &lt;span class="kt"&gt;Thunk&lt;/span&gt; &lt;span class="kr"&gt;is&lt;/span&gt; &lt;span class="kr"&gt;access&lt;/span&gt; &lt;span class="kd"&gt;procedure&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_e90348b069f8437cba875391cce19fc9-4"&gt;&lt;/a&gt;
+&lt;a name="rest_code_e90348b069f8437cba875391cce19fc9-5"&gt;&lt;/a&gt;    &lt;span class="n"&gt;Next&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Thunk&lt;/span&gt; &lt;span class="p"&gt;:=&lt;/span&gt; &lt;span class="kc"&gt;null&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;        &lt;span class="c1"&gt;-- Next procedure to be called.&lt;/span&gt;
+&lt;a name="rest_code_e90348b069f8437cba875391cce19fc9-6"&gt;&lt;/a&gt;
+&lt;a name="rest_code_e90348b069f8437cba875391cce19fc9-7"&gt;&lt;/a&gt;    &lt;span class="kd"&gt;procedure&lt;/span&gt; &lt;span class="nf"&gt;baz&lt;/span&gt; &lt;span class="kr"&gt;is&lt;/span&gt;
+&lt;a name="rest_code_e90348b069f8437cba875391cce19fc9-8"&gt;&lt;/a&gt;    &lt;span class="kr"&gt;begin&lt;/span&gt;
+&lt;a name="rest_code_e90348b069f8437cba875391cce19fc9-9"&gt;&lt;/a&gt;        &lt;span class="n"&gt;Put_Line&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"baz"&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;a name="rest_code_e90348b069f8437cba875391cce19fc9-10"&gt;&lt;/a&gt;        &lt;span class="n"&gt;Next&lt;/span&gt; &lt;span class="p"&gt;:=&lt;/span&gt; &lt;span class="kc"&gt;null&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_e90348b069f8437cba875391cce19fc9-11"&gt;&lt;/a&gt;    &lt;span class="kr"&gt;end&lt;/span&gt; &lt;span class="nf"&gt;baz&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_e90348b069f8437cba875391cce19fc9-12"&gt;&lt;/a&gt;
+&lt;a name="rest_code_e90348b069f8437cba875391cce19fc9-13"&gt;&lt;/a&gt;    &lt;span class="kd"&gt;procedure&lt;/span&gt; &lt;span class="nf"&gt;bar&lt;/span&gt; &lt;span class="kr"&gt;is&lt;/span&gt;
+&lt;a name="rest_code_e90348b069f8437cba875391cce19fc9-14"&gt;&lt;/a&gt;    &lt;span class="kr"&gt;begin&lt;/span&gt;
+&lt;a name="rest_code_e90348b069f8437cba875391cce19fc9-15"&gt;&lt;/a&gt;        &lt;span class="n"&gt;Put_Line&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"bar"&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;a name="rest_code_e90348b069f8437cba875391cce19fc9-16"&gt;&lt;/a&gt;        &lt;span class="n"&gt;Next&lt;/span&gt; &lt;span class="p"&gt;:=&lt;/span&gt; &lt;span class="n"&gt;baz&lt;/span&gt;&lt;span class="p"&gt;'&lt;/span&gt;&lt;span class="na"&gt;Access&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_e90348b069f8437cba875391cce19fc9-17"&gt;&lt;/a&gt;    &lt;span class="kr"&gt;end&lt;/span&gt; &lt;span class="nf"&gt;bar&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_e90348b069f8437cba875391cce19fc9-18"&gt;&lt;/a&gt;
+&lt;a name="rest_code_e90348b069f8437cba875391cce19fc9-19"&gt;&lt;/a&gt;    &lt;span class="kd"&gt;procedure&lt;/span&gt; &lt;span class="nf"&gt;foo&lt;/span&gt; &lt;span class="kr"&gt;is&lt;/span&gt;
+&lt;a name="rest_code_e90348b069f8437cba875391cce19fc9-20"&gt;&lt;/a&gt;    &lt;span class="kr"&gt;begin&lt;/span&gt;
+&lt;a name="rest_code_e90348b069f8437cba875391cce19fc9-21"&gt;&lt;/a&gt;        &lt;span class="n"&gt;Put_Line&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"foo"&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;a name="rest_code_e90348b069f8437cba875391cce19fc9-22"&gt;&lt;/a&gt;        &lt;span class="n"&gt;Next&lt;/span&gt; &lt;span class="p"&gt;:=&lt;/span&gt; &lt;span class="n"&gt;bar&lt;/span&gt;&lt;span class="p"&gt;'&lt;/span&gt;&lt;span class="na"&gt;Access&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_e90348b069f8437cba875391cce19fc9-23"&gt;&lt;/a&gt;    &lt;span class="kr"&gt;end&lt;/span&gt; &lt;span class="nf"&gt;foo&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_e90348b069f8437cba875391cce19fc9-24"&gt;&lt;/a&gt;
+&lt;a name="rest_code_e90348b069f8437cba875391cce19fc9-25"&gt;&lt;/a&gt;&lt;span class="kr"&gt;begin&lt;/span&gt;
+&lt;a name="rest_code_e90348b069f8437cba875391cce19fc9-26"&gt;&lt;/a&gt;    &lt;span class="n"&gt;next&lt;/span&gt; &lt;span class="p"&gt;:=&lt;/span&gt; &lt;span class="n"&gt;foo&lt;/span&gt;&lt;span class="p"&gt;'&lt;/span&gt;&lt;span class="na"&gt;Access&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_e90348b069f8437cba875391cce19fc9-27"&gt;&lt;/a&gt;    &lt;span class="kr"&gt;while&lt;/span&gt; &lt;span class="n"&gt;Next&lt;/span&gt; &lt;span class="o"&gt;/=&lt;/span&gt; &lt;span class="kc"&gt;null&lt;/span&gt; &lt;span class="kr"&gt;loop&lt;/span&gt;
+&lt;a name="rest_code_e90348b069f8437cba875391cce19fc9-28"&gt;&lt;/a&gt;        &lt;span class="n"&gt;Next&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="kr"&gt;all&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_e90348b069f8437cba875391cce19fc9-29"&gt;&lt;/a&gt;    &lt;span class="kr"&gt;end&lt;/span&gt; &lt;span class="kr"&gt;loop&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_e90348b069f8437cba875391cce19fc9-30"&gt;&lt;/a&gt;&lt;span class="kr"&gt;end&lt;/span&gt; &lt;span class="nf"&gt;trampoline&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;p&gt;And here's &lt;a class="reference external" href="https://tkurtbond.github.io/trampolines/ada/trampoline_forever.adb"&gt;trampoline_forever.adb&lt;/a&gt;:&lt;/p&gt;
+&lt;pre class="code ada"&gt;&lt;a name="rest_code_555276aa2e264440b943b97dcc060db4-1"&gt;&lt;/a&gt;&lt;span class="kn"&gt;with&lt;/span&gt; &lt;span class="nn"&gt;Ada.Text_IO&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="kn"&gt;use&lt;/span&gt; &lt;span class="nn"&gt;Ada.Text_IO&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_555276aa2e264440b943b97dcc060db4-2"&gt;&lt;/a&gt;&lt;span class="kd"&gt;procedure&lt;/span&gt; &lt;span class="nf"&gt;trampoline_forever&lt;/span&gt; &lt;span class="kr"&gt;is&lt;/span&gt;
+&lt;a name="rest_code_555276aa2e264440b943b97dcc060db4-3"&gt;&lt;/a&gt;  &lt;span class="c1"&gt;-- Recurse forever without running out of stack space.&lt;/span&gt;
+&lt;a name="rest_code_555276aa2e264440b943b97dcc060db4-4"&gt;&lt;/a&gt;  &lt;span class="kd"&gt;type&lt;/span&gt; &lt;span class="kt"&gt;Unsigned&lt;/span&gt; &lt;span class="kr"&gt;is&lt;/span&gt; &lt;span class="ow"&gt;mod&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="mi"&gt;64&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;   &lt;span class="c1"&gt;-- wrap to 0 when maximum value is execeeded.&lt;/span&gt;
+&lt;a name="rest_code_555276aa2e264440b943b97dcc060db4-5"&gt;&lt;/a&gt;  &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Unsigned&lt;/span&gt; &lt;span class="p"&gt;:=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;             &lt;span class="c1"&gt;-- Number of times through the trampoline.&lt;/span&gt;
+&lt;a name="rest_code_555276aa2e264440b943b97dcc060db4-6"&gt;&lt;/a&gt;
+&lt;a name="rest_code_555276aa2e264440b943b97dcc060db4-7"&gt;&lt;/a&gt;  &lt;span class="kd"&gt;type&lt;/span&gt; &lt;span class="kt"&gt;Thunk&lt;/span&gt; &lt;span class="kr"&gt;is&lt;/span&gt; &lt;span class="kr"&gt;access&lt;/span&gt; &lt;span class="kd"&gt;procedure&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_555276aa2e264440b943b97dcc060db4-8"&gt;&lt;/a&gt;
+&lt;a name="rest_code_555276aa2e264440b943b97dcc060db4-9"&gt;&lt;/a&gt;  &lt;span class="n"&gt;Next&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Thunk&lt;/span&gt; &lt;span class="p"&gt;:=&lt;/span&gt; &lt;span class="kc"&gt;null&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;          &lt;span class="c1"&gt;-- Next procedure to be called.&lt;/span&gt;
+&lt;a name="rest_code_555276aa2e264440b943b97dcc060db4-10"&gt;&lt;/a&gt;
+&lt;a name="rest_code_555276aa2e264440b943b97dcc060db4-11"&gt;&lt;/a&gt;  &lt;span class="kd"&gt;procedure&lt;/span&gt; &lt;span class="nf"&gt;foo&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;        &lt;span class="c1"&gt;-- forward declaration.&lt;/span&gt;
+&lt;a name="rest_code_555276aa2e264440b943b97dcc060db4-12"&gt;&lt;/a&gt;
+&lt;a name="rest_code_555276aa2e264440b943b97dcc060db4-13"&gt;&lt;/a&gt;  &lt;span class="kd"&gt;procedure&lt;/span&gt; &lt;span class="nf"&gt;baz&lt;/span&gt; &lt;span class="kr"&gt;is&lt;/span&gt;
+&lt;a name="rest_code_555276aa2e264440b943b97dcc060db4-14"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;begin&lt;/span&gt;
+&lt;a name="rest_code_555276aa2e264440b943b97dcc060db4-15"&gt;&lt;/a&gt;    &lt;span class="n"&gt;Put_Line&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"baz"&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;a name="rest_code_555276aa2e264440b943b97dcc060db4-16"&gt;&lt;/a&gt;    &lt;span class="n"&gt;Next&lt;/span&gt; &lt;span class="p"&gt;:=&lt;/span&gt; &lt;span class="n"&gt;foo&lt;/span&gt;&lt;span class="p"&gt;'&lt;/span&gt;&lt;span class="na"&gt;access&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_555276aa2e264440b943b97dcc060db4-17"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;end&lt;/span&gt; &lt;span class="nf"&gt;baz&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_555276aa2e264440b943b97dcc060db4-18"&gt;&lt;/a&gt;
+&lt;a name="rest_code_555276aa2e264440b943b97dcc060db4-19"&gt;&lt;/a&gt;  &lt;span class="kd"&gt;procedure&lt;/span&gt; &lt;span class="nf"&gt;bar&lt;/span&gt; &lt;span class="kr"&gt;is&lt;/span&gt;
+&lt;a name="rest_code_555276aa2e264440b943b97dcc060db4-20"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;begin&lt;/span&gt;
+&lt;a name="rest_code_555276aa2e264440b943b97dcc060db4-21"&gt;&lt;/a&gt;    &lt;span class="n"&gt;Put_Line&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"bar"&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;a name="rest_code_555276aa2e264440b943b97dcc060db4-22"&gt;&lt;/a&gt;    &lt;span class="n"&gt;Next&lt;/span&gt; &lt;span class="p"&gt;:=&lt;/span&gt; &lt;span class="n"&gt;baz&lt;/span&gt;&lt;span class="p"&gt;'&lt;/span&gt;&lt;span class="na"&gt;Access&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_555276aa2e264440b943b97dcc060db4-23"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;end&lt;/span&gt; &lt;span class="nf"&gt;bar&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_555276aa2e264440b943b97dcc060db4-24"&gt;&lt;/a&gt;
+&lt;a name="rest_code_555276aa2e264440b943b97dcc060db4-25"&gt;&lt;/a&gt;  &lt;span class="kd"&gt;procedure&lt;/span&gt; &lt;span class="nf"&gt;foo&lt;/span&gt; &lt;span class="kr"&gt;is&lt;/span&gt;
+&lt;a name="rest_code_555276aa2e264440b943b97dcc060db4-26"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;begin&lt;/span&gt;
+&lt;a name="rest_code_555276aa2e264440b943b97dcc060db4-27"&gt;&lt;/a&gt;    &lt;span class="n"&gt;Put_Line&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"foo"&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;a name="rest_code_555276aa2e264440b943b97dcc060db4-28"&gt;&lt;/a&gt;    &lt;span class="n"&gt;Next&lt;/span&gt; &lt;span class="p"&gt;:=&lt;/span&gt; &lt;span class="n"&gt;bar&lt;/span&gt;&lt;span class="p"&gt;'&lt;/span&gt;&lt;span class="na"&gt;Access&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_555276aa2e264440b943b97dcc060db4-29"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;end&lt;/span&gt; &lt;span class="nf"&gt;foo&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_555276aa2e264440b943b97dcc060db4-30"&gt;&lt;/a&gt;
+&lt;a name="rest_code_555276aa2e264440b943b97dcc060db4-31"&gt;&lt;/a&gt;&lt;span class="kr"&gt;begin&lt;/span&gt;
+&lt;a name="rest_code_555276aa2e264440b943b97dcc060db4-32"&gt;&lt;/a&gt;  &lt;span class="n"&gt;next&lt;/span&gt; &lt;span class="p"&gt;:=&lt;/span&gt; &lt;span class="n"&gt;foo&lt;/span&gt;&lt;span class="p"&gt;'&lt;/span&gt;&lt;span class="na"&gt;Access&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_555276aa2e264440b943b97dcc060db4-33"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;while&lt;/span&gt; &lt;span class="n"&gt;Next&lt;/span&gt; &lt;span class="o"&gt;/=&lt;/span&gt; &lt;span class="kc"&gt;null&lt;/span&gt; &lt;span class="kr"&gt;loop&lt;/span&gt;
+&lt;a name="rest_code_555276aa2e264440b943b97dcc060db4-34"&gt;&lt;/a&gt;    &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="p"&gt;:=&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_555276aa2e264440b943b97dcc060db4-35"&gt;&lt;/a&gt;    &lt;span class="n"&gt;Put&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"call #"&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="n"&gt;Put&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;'&lt;/span&gt;&lt;span class="na"&gt;Image&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="n"&gt;New_Line&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_555276aa2e264440b943b97dcc060db4-36"&gt;&lt;/a&gt;    &lt;span class="n"&gt;Next&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="kr"&gt;all&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_555276aa2e264440b943b97dcc060db4-37"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;end&lt;/span&gt; &lt;span class="kr"&gt;loop&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_555276aa2e264440b943b97dcc060db4-38"&gt;&lt;/a&gt;&lt;span class="kr"&gt;exception&lt;/span&gt;
+&lt;a name="rest_code_555276aa2e264440b943b97dcc060db4-39"&gt;&lt;/a&gt;  &lt;span class="kr"&gt;when&lt;/span&gt; &lt;span class="n"&gt;STORAGE_ERROR&lt;/span&gt; &lt;span class="p"&gt;=&amp;gt;&lt;/span&gt;
+&lt;a name="rest_code_555276aa2e264440b943b97dcc060db4-40"&gt;&lt;/a&gt;  &lt;span class="n"&gt;Put&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"STORAGE_ERROR raised with i = "&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="n"&gt;Put&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;'&lt;/span&gt;&lt;span class="na"&gt;Image&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="n"&gt;New_Line&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_555276aa2e264440b943b97dcc060db4-41"&gt;&lt;/a&gt;&lt;span class="kr"&gt;end&lt;/span&gt; &lt;span class="nf"&gt;trampoline_forever&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;hr class="docutils"&gt;
+&lt;p&gt;If you want to play around with this, the code is in a
+&lt;a class="reference external" href="https://github.com/tkurtbond/trampolines"&gt;repository&lt;/a&gt; at &lt;a class="reference external" href="https://github.com/"&gt;Github&lt;/a&gt;.&lt;/p&gt;&lt;/div&gt;</summary>
+    <category term="ada" label="ada"/>
+    <category term="c" label="c"/>
+    <category term="cheney-on-the-mta" label="cheney on the m.t.a."/>
+    <category term="clisp" label="clisp"/>
+    <category term="common-lisp" label="common lisp"/>
+    <category term="continuation-passing-style" label="continuation-passing style"/>
+    <category term="cps" label="cps"/>
+    <category term="ecl" label="ecl"/>
+    <category term="gcc" label="gcc"/>
+    <category term="github" label="github"/>
+    <category term="gnat" label="gnat"/>
+    <category term="hanspeter-mossenbock" label="hanspeter mössenböck"/>
+    <category term="lisp-style-trampolines" label="lisp-style trampolines"/>
+    <category term="modula" label="modula"/>
+    <category term="modula-2" label="modula-2"/>
+    <category term="niklaus-wirth" label="niklaus wirth"/>
+    <category term="no-assembly-required" label="no assembly required"/>
+    <category term="oberon-system" label="oberon system"/>
+    <category term="oberon-2" label="oberon-2"/>
+    <category term="oberon-07" label="oberon-07"/>
+    <category term="obnc" label="obnc"/>
+    <category term="pascal" label="pascal"/>
+    <category term="rabbit" label="rabbit"/>
+    <category term="record-types" label="record types"/>
+    <category term="revised-oberon" label="revised oberon"/>
+    <category term="sbcl" label="sbcl"/>
+    <category term="scheme" label="scheme"/>
+    <category term="tail-call" label="tail call"/>
+    <category term="tail-call-optimization" label="tail call optimization"/>
+    <category term="trampolines" label="trampolines"/>
+    <category term="type-extensions" label="type extensions"/>
+    <category term="uuo-handler" label="uuo handler"/>
+    <category term="vishap-oberon" label="vishap oberon"/>
+  </entry>
   <entry>
     <title>Getting the homebrew CHICKEN Scheme sqlite3 egg to use the homebrew-installed sqlite3 include files and library files</title>
     <id>https://tkurtbond.github.io/posts/2021/09/13/getting-the-homebrew-chicken-scheme-sqlite3-egg-to-use-the-homebrew-installed-sqlite3-include-files-and-library-files/</id>
@@ -19,20 +655,19 @@
       <name>T. Kurt Bond</name>
     </author>
     <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/posts/2021/09/13/getting-the-homebrew-chicken-scheme-sqlite3-egg-to-use-the-homebrew-installed-sqlite3-include-files-and-library-files/"/>
-    <summary type="html">&lt;p&gt;To get the &lt;a class="reference external" href="https://brew.sh/"&gt;Homebrew&lt;/a&gt; installed &lt;a class="reference external" href="http://call-cc.org"&gt;CHICKEN Scheme&lt;/a&gt; (&lt;a class="reference external" href="https://formulae.brew.sh/formula/chicken"&gt;HBCHICKEN&lt;/a&gt;) to use
+    <summary type="html">&lt;div&gt;&lt;p&gt;To get the &lt;a class="reference external" href="https://brew.sh/"&gt;Homebrew&lt;/a&gt; installed &lt;a class="reference external" href="http://call-cc.org"&gt;CHICKEN Scheme&lt;/a&gt; (&lt;a class="reference external" href="https://formulae.brew.sh/formula/chicken"&gt;HBCHICKEN&lt;/a&gt;) to use
 the &lt;a class="reference external" href="https://brew.sh/"&gt;Homebrew&lt;/a&gt; installed version of &lt;a class="reference external" href="https://www.sqlite.org/"&gt;sqlite3&lt;/a&gt; (&lt;a class="reference external" href="https://formulae.brew.sh/formula/sqlite"&gt;HBSQLITE3&lt;/a&gt;) — because the
 one supplied by Apple in macOS is obsolete — for the &lt;a class="reference external" href="http://wiki.call-cc.org/eggref/5/sqlite3"&gt;sqlite egg&lt;/a&gt;,
 you need to set &lt;code class="docutils literal"&gt;CSC_OPTIONS&lt;/code&gt; properly:&lt;/p&gt;
-&lt;div class="code"&gt;&lt;pre class="code bash"&gt;&lt;a id="rest_code_1d903eb9c1e745a68d58c2b996fd9236-1" name="rest_code_1d903eb9c1e745a68d58c2b996fd9236-1" href="https://tkurtbond.github.io/posts/2021/09/13/getting-the-homebrew-chicken-scheme-sqlite3-egg-to-use-the-homebrew-installed-sqlite3-include-files-and-library-files/#rest_code_1d903eb9c1e745a68d58c2b996fd9236-1"&gt;&lt;/a&gt;$ &lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;CSC_OPTIONS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"-I/usr/local/Cellar/sqlite/3.36.0/include -L/usr/local/Cellar/sqlite/3.36.0/lib"&lt;/span&gt;
-&lt;a id="rest_code_1d903eb9c1e745a68d58c2b996fd9236-2" name="rest_code_1d903eb9c1e745a68d58c2b996fd9236-2" href="https://tkurtbond.github.io/posts/2021/09/13/getting-the-homebrew-chicken-scheme-sqlite3-egg-to-use-the-homebrew-installed-sqlite3-include-files-and-library-files/#rest_code_1d903eb9c1e745a68d58c2b996fd9236-2"&gt;&lt;/a&gt;$ chicken-install sqlite3
-&lt;a id="rest_code_1d903eb9c1e745a68d58c2b996fd9236-3" name="rest_code_1d903eb9c1e745a68d58c2b996fd9236-3" href="https://tkurtbond.github.io/posts/2021/09/13/getting-the-homebrew-chicken-scheme-sqlite3-egg-to-use-the-homebrew-installed-sqlite3-include-files-and-library-files/#rest_code_1d903eb9c1e745a68d58c2b996fd9236-3"&gt;&lt;/a&gt;building sqlite3
-&lt;a id="rest_code_1d903eb9c1e745a68d58c2b996fd9236-4" name="rest_code_1d903eb9c1e745a68d58c2b996fd9236-4" href="https://tkurtbond.github.io/posts/2021/09/13/getting-the-homebrew-chicken-scheme-sqlite3-egg-to-use-the-homebrew-installed-sqlite3-include-files-and-library-files/#rest_code_1d903eb9c1e745a68d58c2b996fd9236-4"&gt;&lt;/a&gt;   /usr/local/Cellar/chicken/5.2.0/bin/csc -host -D compiling-extension -J -s -regenerate-import-libraries -setup-mode -I /Users/tkb/.cache/chicken-install/sqlite3 -C -I/Users/tkb/.cache/chicken-install/sqlite3 -O2 -d1 -L -lsqlite3 sqlite3.scm -o /Users/tkb/.cache/chicken-install/sqlite3/sqlite3.so
-&lt;a id="rest_code_1d903eb9c1e745a68d58c2b996fd9236-5" name="rest_code_1d903eb9c1e745a68d58c2b996fd9236-5" href="https://tkurtbond.github.io/posts/2021/09/13/getting-the-homebrew-chicken-scheme-sqlite3-egg-to-use-the-homebrew-installed-sqlite3-include-files-and-library-files/#rest_code_1d903eb9c1e745a68d58c2b996fd9236-5"&gt;&lt;/a&gt;   /usr/local/Cellar/chicken/5.2.0/bin/csc -regenerate-import-libraries -M -setup-mode -static -I /Users/tkb/.cache/chicken-install/sqlite3 -emit-link-file /Users/tkb/.cache/chicken-install/sqlite3/sqlite3.link -host -D compiling-extension -c -unit sqlite3 -D compiling-static-extension -C -I/Users/tkb/.cache/chicken-install/sqlite3 -O2 -d1 sqlite3.scm -o /Users/tkb/.cache/chicken-install/sqlite3/sqlite3.static.o
-&lt;a id="rest_code_1d903eb9c1e745a68d58c2b996fd9236-6" name="rest_code_1d903eb9c1e745a68d58c2b996fd9236-6" href="https://tkurtbond.github.io/posts/2021/09/13/getting-the-homebrew-chicken-scheme-sqlite3-egg-to-use-the-homebrew-installed-sqlite3-include-files-and-library-files/#rest_code_1d903eb9c1e745a68d58c2b996fd9236-6"&gt;&lt;/a&gt;   /usr/local/Cellar/chicken/5.2.0/bin/csc -setup-mode -s -host -I /Users/tkb/.cache/chicken-install/sqlite3 -C -I/Users/tkb/.cache/chicken-install/sqlite3 -O2 -d0 -L -lsqlite3 sqlite3.import.scm -o /Users/tkb/.cache/chicken-install/sqlite3/sqlite3.import.so
-&lt;a id="rest_code_1d903eb9c1e745a68d58c2b996fd9236-7" name="rest_code_1d903eb9c1e745a68d58c2b996fd9236-7" href="https://tkurtbond.github.io/posts/2021/09/13/getting-the-homebrew-chicken-scheme-sqlite3-egg-to-use-the-homebrew-installed-sqlite3-include-files-and-library-files/#rest_code_1d903eb9c1e745a68d58c2b996fd9236-7"&gt;&lt;/a&gt;installing sqlite3
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;You'll probably need to adjust the version numbers in the pathnames
-for whatever version is installed on your computer.&lt;/p&gt;</summary>
+&lt;pre class="code bash"&gt;&lt;a name="rest_code_cd7d55dbc96f430c9ef9e82b98731374-1"&gt;&lt;/a&gt;$ &lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;CSC_OPTIONS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"-I/usr/local/Cellar/sqlite/3.36.0/include -L/usr/local/Cellar/sqlite/3.36.0/lib"&lt;/span&gt;
+&lt;a name="rest_code_cd7d55dbc96f430c9ef9e82b98731374-2"&gt;&lt;/a&gt;$ chicken-install sqlite3
+&lt;a name="rest_code_cd7d55dbc96f430c9ef9e82b98731374-3"&gt;&lt;/a&gt;building sqlite3
+&lt;a name="rest_code_cd7d55dbc96f430c9ef9e82b98731374-4"&gt;&lt;/a&gt;   /usr/local/Cellar/chicken/5.2.0/bin/csc -host -D compiling-extension -J -s -regenerate-import-libraries -setup-mode -I /Users/tkb/.cache/chicken-install/sqlite3 -C -I/Users/tkb/.cache/chicken-install/sqlite3 -O2 -d1 -L -lsqlite3 sqlite3.scm -o /Users/tkb/.cache/chicken-install/sqlite3/sqlite3.so
+&lt;a name="rest_code_cd7d55dbc96f430c9ef9e82b98731374-5"&gt;&lt;/a&gt;   /usr/local/Cellar/chicken/5.2.0/bin/csc -regenerate-import-libraries -M -setup-mode -static -I /Users/tkb/.cache/chicken-install/sqlite3 -emit-link-file /Users/tkb/.cache/chicken-install/sqlite3/sqlite3.link -host -D compiling-extension -c -unit sqlite3 -D compiling-static-extension -C -I/Users/tkb/.cache/chicken-install/sqlite3 -O2 -d1 sqlite3.scm -o /Users/tkb/.cache/chicken-install/sqlite3/sqlite3.static.o
+&lt;a name="rest_code_cd7d55dbc96f430c9ef9e82b98731374-6"&gt;&lt;/a&gt;   /usr/local/Cellar/chicken/5.2.0/bin/csc -setup-mode -s -host -I /Users/tkb/.cache/chicken-install/sqlite3 -C -I/Users/tkb/.cache/chicken-install/sqlite3 -O2 -d0 -L -lsqlite3 sqlite3.import.scm -o /Users/tkb/.cache/chicken-install/sqlite3/sqlite3.import.so
+&lt;a name="rest_code_cd7d55dbc96f430c9ef9e82b98731374-7"&gt;&lt;/a&gt;installing sqlite3
+&lt;/pre&gt;&lt;p&gt;You'll probably need to adjust the version numbers in the pathnames
+for whatever version is installed on your computer.&lt;/p&gt;&lt;/div&gt;</summary>
     <category term="chicken-scheme" label="chicken scheme"/>
     <category term="chicken-install" label="chicken-install"/>
     <category term="csc" label="csc"/>
@@ -47,31 +682,30 @@ for whatever version is installed on your computer.&lt;/p&gt;</summary>
       <name>T. Kurt Bond</name>
     </author>
     <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/posts/2021/06/16/using-getnstr-from-chicken-scheme-ncurses-egg/"/>
-    <summary type="html">&lt;p&gt;The &lt;a class="reference external" href="https://www.call-cc.org/"&gt;Chicken Scheme&lt;/a&gt; documentation for the &lt;a class="reference external" href="http://wiki.call-cc.org/eggref/5/ncurses"&gt;ncurses egg&lt;/a&gt; says that
+    <summary type="html">&lt;div&gt;&lt;p&gt;The &lt;a class="reference external" href="https://www.call-cc.org/"&gt;Chicken Scheme&lt;/a&gt; documentation for the &lt;a class="reference external" href="http://wiki.call-cc.org/eggref/5/ncurses"&gt;ncurses egg&lt;/a&gt; says that
 you should pass a string to the &lt;code class="docutils literal"&gt;getnstr&lt;/code&gt;, function, but that doesn't
 actually work.&lt;/p&gt;
 &lt;p&gt;I finally found an &lt;a class="reference external" href="https://stackoverflow.com/a/45359136"&gt;example&lt;/a&gt;, and after looking at it and figuring out
 what imports are now required I have a working example of using
 getnstr from the chicken scheme ncurses egg!&lt;/p&gt;
-&lt;div class="code"&gt;&lt;pre class="code scheme"&gt;&lt;a id="rest_code_029ef4eec2b646fd80db4371b9627f4e-1" name="rest_code_029ef4eec2b646fd80db4371b9627f4e-1" href="https://tkurtbond.github.io/posts/2021/06/16/using-getnstr-from-chicken-scheme-ncurses-egg/#rest_code_029ef4eec2b646fd80db4371b9627f4e-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;import&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;ncurses&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;a id="rest_code_029ef4eec2b646fd80db4371b9627f4e-2" name="rest_code_029ef4eec2b646fd80db4371b9627f4e-2" href="https://tkurtbond.github.io/posts/2021/06/16/using-getnstr-from-chicken-scheme-ncurses-egg/#rest_code_029ef4eec2b646fd80db4371b9627f4e-2"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;import&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;chicken&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;locative&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;a id="rest_code_029ef4eec2b646fd80db4371b9627f4e-3" name="rest_code_029ef4eec2b646fd80db4371b9627f4e-3" href="https://tkurtbond.github.io/posts/2021/06/16/using-getnstr-from-chicken-scheme-ncurses-egg/#rest_code_029ef4eec2b646fd80db4371b9627f4e-3"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;import&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;chicken&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;string&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;a id="rest_code_029ef4eec2b646fd80db4371b9627f4e-4" name="rest_code_029ef4eec2b646fd80db4371b9627f4e-4" href="https://tkurtbond.github.io/posts/2021/06/16/using-getnstr-from-chicken-scheme-ncurses-egg/#rest_code_029ef4eec2b646fd80db4371b9627f4e-4"&gt;&lt;/a&gt;
-&lt;a id="rest_code_029ef4eec2b646fd80db4371b9627f4e-5" name="rest_code_029ef4eec2b646fd80db4371b9627f4e-5" href="https://tkurtbond.github.io/posts/2021/06/16/using-getnstr-from-chicken-scheme-ncurses-egg/#rest_code_029ef4eec2b646fd80db4371b9627f4e-5"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;define&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;get-string&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;max&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;a id="rest_code_029ef4eec2b646fd80db4371b9627f4e-6" name="rest_code_029ef4eec2b646fd80db4371b9627f4e-6" href="https://tkurtbond.github.io/posts/2021/06/16/using-getnstr-from-chicken-scheme-ncurses-egg/#rest_code_029ef4eec2b646fd80db4371b9627f4e-6"&gt;&lt;/a&gt;&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;let&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nf"&gt;buffer&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;make-string&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;max&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="sc"&gt;#\null&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;a id="rest_code_029ef4eec2b646fd80db4371b9627f4e-7" name="rest_code_029ef4eec2b646fd80db4371b9627f4e-7" href="https://tkurtbond.github.io/posts/2021/06/16/using-getnstr-from-chicken-scheme-ncurses-egg/#rest_code_029ef4eec2b646fd80db4371b9627f4e-7"&gt;&lt;/a&gt;&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;getnstr&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;make-locative&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;buffer&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;max&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;a id="rest_code_029ef4eec2b646fd80db4371b9627f4e-8" name="rest_code_029ef4eec2b646fd80db4371b9627f4e-8" href="https://tkurtbond.github.io/posts/2021/06/16/using-getnstr-from-chicken-scheme-ncurses-egg/#rest_code_029ef4eec2b646fd80db4371b9627f4e-8"&gt;&lt;/a&gt;&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="c1"&gt;;; Delete the #\null characters.&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;a id="rest_code_029ef4eec2b646fd80db4371b9627f4e-9" name="rest_code_029ef4eec2b646fd80db4371b9627f4e-9" href="https://tkurtbond.github.io/posts/2021/06/16/using-getnstr-from-chicken-scheme-ncurses-egg/#rest_code_029ef4eec2b646fd80db4371b9627f4e-9"&gt;&lt;/a&gt;&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;string-translate&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;buffer&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="sc"&gt;#\null&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;a id="rest_code_029ef4eec2b646fd80db4371b9627f4e-10" name="rest_code_029ef4eec2b646fd80db4371b9627f4e-10" href="https://tkurtbond.github.io/posts/2021/06/16/using-getnstr-from-chicken-scheme-ncurses-egg/#rest_code_029ef4eec2b646fd80db4371b9627f4e-10"&gt;&lt;/a&gt;
-&lt;a id="rest_code_029ef4eec2b646fd80db4371b9627f4e-11" name="rest_code_029ef4eec2b646fd80db4371b9627f4e-11" href="https://tkurtbond.github.io/posts/2021/06/16/using-getnstr-from-chicken-scheme-ncurses-egg/#rest_code_029ef4eec2b646fd80db4371b9627f4e-11"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;let&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nf"&gt;stdscr&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;initscr&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;a id="rest_code_029ef4eec2b646fd80db4371b9627f4e-12" name="rest_code_029ef4eec2b646fd80db4371b9627f4e-12" href="https://tkurtbond.github.io/posts/2021/06/16/using-getnstr-from-chicken-scheme-ncurses-egg/#rest_code_029ef4eec2b646fd80db4371b9627f4e-12"&gt;&lt;/a&gt;&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;str&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;get-string&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;a id="rest_code_029ef4eec2b646fd80db4371b9627f4e-13" name="rest_code_029ef4eec2b646fd80db4371b9627f4e-13" href="https://tkurtbond.github.io/posts/2021/06/16/using-getnstr-from-chicken-scheme-ncurses-egg/#rest_code_029ef4eec2b646fd80db4371b9627f4e-13"&gt;&lt;/a&gt;&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;addstr&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;str&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;a id="rest_code_029ef4eec2b646fd80db4371b9627f4e-14" name="rest_code_029ef4eec2b646fd80db4371b9627f4e-14" href="https://tkurtbond.github.io/posts/2021/06/16/using-getnstr-from-chicken-scheme-ncurses-egg/#rest_code_029ef4eec2b646fd80db4371b9627f4e-14"&gt;&lt;/a&gt;&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;getch&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;a id="rest_code_029ef4eec2b646fd80db4371b9627f4e-15" name="rest_code_029ef4eec2b646fd80db4371b9627f4e-15" href="https://tkurtbond.github.io/posts/2021/06/16/using-getnstr-from-chicken-scheme-ncurses-egg/#rest_code_029ef4eec2b646fd80db4371b9627f4e-15"&gt;&lt;/a&gt;&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;write&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;str&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;a id="rest_code_029ef4eec2b646fd80db4371b9627f4e-16" name="rest_code_029ef4eec2b646fd80db4371b9627f4e-16" href="https://tkurtbond.github.io/posts/2021/06/16/using-getnstr-from-chicken-scheme-ncurses-egg/#rest_code_029ef4eec2b646fd80db4371b9627f4e-16"&gt;&lt;/a&gt;&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;endwin&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Oh, and I added the example to the ncurses egg documentation: &lt;a class="reference external" href="http://wiki.call-cc.org/eggref/5/ncurses#getnstr-example"&gt;getnstr
-Example&lt;/a&gt;.&lt;/p&gt;</summary>
+&lt;pre class="code scheme"&gt;&lt;a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;import&lt;/span&gt; &lt;span class="nv"&gt;ncurses&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-2"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;import&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;chicken&lt;/span&gt; &lt;span class="nv"&gt;locative&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-3"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;import&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;chicken&lt;/span&gt; &lt;span class="nv"&gt;string&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-4"&gt;&lt;/a&gt;
+&lt;a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-5"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;define &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;get-string&lt;/span&gt; &lt;span class="nv"&gt;max&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-6"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;let &lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nf"&gt;buffer&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;make-string &lt;/span&gt;&lt;span class="nv"&gt;max&lt;/span&gt; &lt;span class="sc"&gt;#\null&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+&lt;a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-7"&gt;&lt;/a&gt;    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;getnstr&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;make-locative&lt;/span&gt; &lt;span class="nv"&gt;buffer&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="nv"&gt;max&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-8"&gt;&lt;/a&gt;    &lt;span class="c1"&gt;;; Delete the #\null characters.&lt;/span&gt;
+&lt;a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-9"&gt;&lt;/a&gt;    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;string-translate&lt;/span&gt; &lt;span class="nv"&gt;buffer&lt;/span&gt; &lt;span class="sc"&gt;#\null&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+&lt;a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-10"&gt;&lt;/a&gt;
+&lt;a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-11"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;let &lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nf"&gt;stdscr&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;initscr&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-12"&gt;&lt;/a&gt;      &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;str&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;get-string&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+&lt;a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-13"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;addstr&lt;/span&gt; &lt;span class="nv"&gt;str&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-14"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;getch&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-15"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;write &lt;/span&gt;&lt;span class="nv"&gt;str&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_ba444eac8ab340499654e8a11a35e9ee-16"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;endwin&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/pre&gt;&lt;p&gt;Oh, and I added the example to the ncurses egg documentation: &lt;a class="reference external" href="http://wiki.call-cc.org/eggref/5/ncurses#getnstr-example"&gt;getnstr
+Example&lt;/a&gt;.&lt;/p&gt;&lt;/div&gt;</summary>
     <category term="chicken-scheme" label="chicken scheme"/>
     <category term="scheme" label="scheme"/>
   </entry>
@@ -84,7 +718,7 @@ Example&lt;/a&gt;.&lt;/p&gt;</summary>
       <name>T. Kurt Bond</name>
     </author>
     <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/posts/2020/11/13/srfi-159-supersedes-alix-shinns-fmt-package/"/>
-    <summary type="html">&lt;p&gt;This is a note to help me remember to use &lt;a class="reference external" href="https://srfi.schemers.org/srfi-159/srfi-159.html"&gt;SRFI-159&lt;/a&gt; instead of &lt;a class="reference external" href="-http://wiki.call-cc.org/eggref/5/fmt"&gt;fmt&lt;/a&gt;
+    <summary type="html">&lt;div&gt;&lt;p&gt;This is a note to help me remember to use &lt;a class="reference external" href="https://srfi.schemers.org/srfi-159/srfi-159.html"&gt;SRFI-159&lt;/a&gt; instead of &lt;a class="reference external" href="-http://wiki.call-cc.org/eggref/5/fmt"&gt;fmt&lt;/a&gt;
 when I can.&lt;/p&gt;
 &lt;p&gt;The scheme &lt;a class="reference external" href="https://srfi.schemers.org/srfi-159/srfi-159.html"&gt;SRFI-159&lt;/a&gt; is similar to the &lt;a class="reference external" href="http://call-cc.org/"&gt;Chicken Scheme&lt;/a&gt; &lt;a class="reference external" href="-http://wiki.call-cc.org/eggref/5/fmt"&gt;fmt&lt;/a&gt; egg
 and is written by Alex Shinn and references his original &lt;a class="reference external" href="http://synthcode.com/scheme/fmt/"&gt;fmt -
@@ -92,7 +726,7 @@ Combinator Formating&lt;/a&gt; code on which the egg is based but it doesn’t
 seem to be implemented for Chicken Scheme.  It does explain why there
 isn’t a version of fmt for &lt;a class="reference external" href="https://github.com/ashinn/chibi-scheme"&gt;Chibi Scheme&lt;/a&gt;, since Chibi Scheme
 includes an &lt;a class="reference external" href="https://github.com/ashinn/chibi-scheme/tree/master/lib/srfi/159"&gt;implementation&lt;/a&gt; of SRFI-159 already.  There doesn't seem
-to be a &lt;a class="reference external" href="http://snow-fort.org/"&gt;Snow&lt;/a&gt; version either.&lt;/p&gt;</summary>
+to be a &lt;a class="reference external" href="http://snow-fort.org/"&gt;Snow&lt;/a&gt; version either.&lt;/p&gt;&lt;/div&gt;</summary>
     <category term="alex-shinn" label="Alex Shinn"/>
     <category term="fmt" label="fmt"/>
     <category term="scheme" label="scheme"/>
@@ -107,23 +741,19 @@ to be a &lt;a class="reference external" href="http://snow-fort.org/"&gt;Snow&lt
       <name>T. Kurt Bond</name>
     </author>
     <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/posts/2020/08/03/compiling-s7-scheme-on-macos/"/>
-    <summary type="html">&lt;p&gt;To compile &lt;a class="reference external" href="https://ccrma.stanford.edu/software/snd/snd/s7.html"&gt;s7 scheme&lt;/a&gt; with a standalone &lt;a class="reference external" href="https://tkurtbond.github.io/pages/computer-vocabulary/#REPL"&gt;REPL&lt;/a&gt;, s7's home page says to
+    <summary type="html">&lt;div&gt;&lt;p&gt;To compile &lt;a class="reference external" href="https://ccrma.stanford.edu/software/snd/snd/s7.html"&gt;s7 scheme&lt;/a&gt; with a standalone &lt;a class="reference external" href="https://tkurtbond.github.io/pages/computer-vocabulary/#REPL"&gt;REPL&lt;/a&gt;, s7's home page says to
 add the empty file &lt;span class="file"&gt;mus-config.h&lt;/span&gt; to the source directory, then
 (in Linux):&lt;/p&gt;
-&lt;div class="code"&gt;&lt;pre class="code bash"&gt;&lt;a id="rest_code_3151a8893a38421fb8a4294679484fed-1" name="rest_code_3151a8893a38421fb8a4294679484fed-1" href="https://tkurtbond.github.io/posts/2020/08/03/compiling-s7-scheme-on-macos/#rest_code_3151a8893a38421fb8a4294679484fed-1"&gt;&lt;/a&gt;gcc s7.c -o repl -DWITH_MAIN -I. -O2 -g -ldl -lm -Wl,-export-dynamic
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;It turns out that on macOS, whose &lt;span class="command"&gt;ld&lt;/span&gt; (from clang) doesn't
+&lt;pre class="code bash"&gt;&lt;a name="rest_code_faca3756ba70487da704627fa1afdcc4-1"&gt;&lt;/a&gt;gcc s7.c -o repl -DWITH_MAIN -I. -O2 -g -ldl -lm -Wl,-export-dynamic
+&lt;/pre&gt;&lt;p&gt;It turns out that on macOS, whose &lt;span class="command"&gt;ld&lt;/span&gt; (from clang) doesn't
 understand &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;-export-dynamic&lt;/span&gt;&lt;/code&gt;, you have to do&lt;/p&gt;
-&lt;div class="code"&gt;&lt;pre class="code bash"&gt;&lt;a id="rest_code_ab4ad2003ebe4dd1bec07d38a17f347c-1" name="rest_code_ab4ad2003ebe4dd1bec07d38a17f347c-1" href="https://tkurtbond.github.io/posts/2020/08/03/compiling-s7-scheme-on-macos/#rest_code_ab4ad2003ebe4dd1bec07d38a17f347c-1"&gt;&lt;/a&gt;gcc s7.c -o repl -DWITH_MAIN -I. -O2 -g -ldl -lm -Wl,-dynamic
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Then you need to do&lt;/p&gt;
-&lt;div class="code"&gt;&lt;pre class="code bash"&gt;&lt;a id="rest_code_c4c1ee1f22804e8bb8b70e40c9a56c4b-1" name="rest_code_c4c1ee1f22804e8bb8b70e40c9a56c4b-1" href="https://tkurtbond.github.io/posts/2020/08/03/compiling-s7-scheme-on-macos/#rest_code_c4c1ee1f22804e8bb8b70e40c9a56c4b-1"&gt;&lt;/a&gt;./repl libc.scm
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;which seems to generate &lt;span class="file"&gt;libc_s7.c&lt;/span&gt; and compile it into
+&lt;pre class="code bash"&gt;&lt;a name="rest_code_9f44ec775cae4f87b64137a09d220c1c-1"&gt;&lt;/a&gt;gcc s7.c -o repl -DWITH_MAIN -I. -O2 -g -ldl -lm -Wl,-dynamic
+&lt;/pre&gt;&lt;p&gt;Then you need to do&lt;/p&gt;
+&lt;pre class="code bash"&gt;&lt;a name="rest_code_476ea9b03b6c4faca81ba4e46b4b5b5b-1"&gt;&lt;/a&gt;./repl libc.scm
+&lt;/pre&gt;&lt;p&gt;which seems to generate &lt;span class="file"&gt;libc_s7.c&lt;/span&gt; and compile it into
 &lt;span class="file"&gt;libc_s.so&lt;/span&gt;.   Then you can run the &lt;a class="reference external" href="https://tkurtbond.github.io/pages/computer-vocabulary/#REPL"&gt;REPL&lt;/a&gt;:&lt;/p&gt;
-&lt;div class="code"&gt;&lt;pre class="code bash"&gt;&lt;a id="rest_code_71a5cc38c26b4655bf4a96892c277308-1" name="rest_code_71a5cc38c26b4655bf4a96892c277308-1" href="https://tkurtbond.github.io/posts/2020/08/03/compiling-s7-scheme-on-macos/#rest_code_71a5cc38c26b4655bf4a96892c277308-1"&gt;&lt;/a&gt;./repl
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;which, from looking at &lt;span class="file"&gt;s7.c&lt;/span&gt;, loads &lt;span class="file"&gt;repl.scm&lt;/span&gt;.
+&lt;pre class="code bash"&gt;&lt;a name="rest_code_e0688398b8f342468dec8fa6046bdf56-1"&gt;&lt;/a&gt;./repl
+&lt;/pre&gt;&lt;p&gt;which, from looking at &lt;span class="file"&gt;s7.c&lt;/span&gt;, loads &lt;span class="file"&gt;repl.scm&lt;/span&gt;.
 Unfortunately, I don't understand the repl commands, except for
 &lt;code class="docutils literal"&gt;pwd&lt;/code&gt; and &lt;code class="docutils literal"&gt;cd&lt;/code&gt;.  Oh, and &lt;code class="docutils literal"&gt;(exit)&lt;/code&gt; exits the repl.&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Last edited: 2020-08-03 16:03:57 EDT&lt;/em&gt;&lt;/p&gt;
@@ -132,7 +762,7 @@ time-stamp-format: "%04y-%02m-%02d %02H:%02M:%02S %Z"
 time-stamp-start: "Last edited:[ \t]+\\\\?"
 time-stamp-end: "\\*\\\\?\n"
 time-stamp-line-limit: -20
-End: --&gt;</summary>
+End: --&gt;&lt;/div&gt;</summary>
     <category term="ld" label="ld"/>
     <category term="macsos" label="macsOS"/>
     <category term="s7" label="s7"/>
@@ -147,14 +777,13 @@ End: --&gt;</summary>
       <name>T. Kurt Bond</name>
     </author>
     <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/posts/2009/09/03/chicken-410-on-cygwin/"/>
-    <summary type="html">&lt;p&gt;Weird: after compiling and installing &lt;a class="reference external" href="http://www.call-with-current-continuation.org/"&gt;chicken&lt;/a&gt; with:&lt;/p&gt;
-&lt;div class="code"&gt;&lt;pre class="code bash"&gt;&lt;a id="rest_code_7341c547a075490db4477b96df514f43-1" name="rest_code_7341c547a075490db4477b96df514f43-1" href="https://tkurtbond.github.io/posts/2009/09/03/chicken-410-on-cygwin/#rest_code_7341c547a075490db4477b96df514f43-1"&gt;&lt;/a&gt;make &lt;span class="nv"&gt;PLATFORM&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;cygwin &lt;span class="nv"&gt;PREFIX&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/sw/versions/cygwin/chicken/4.1.0
-&lt;a id="rest_code_7341c547a075490db4477b96df514f43-2" name="rest_code_7341c547a075490db4477b96df514f43-2" href="https://tkurtbond.github.io/posts/2009/09/03/chicken-410-on-cygwin/#rest_code_7341c547a075490db4477b96df514f43-2"&gt;&lt;/a&gt;make &lt;span class="nv"&gt;PLATFORM&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;cygwin &lt;span class="nv"&gt;PREFIX&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/sw/versions/cygwin/chicken/4.1.0 install
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;I had to copy &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;/sw/versions/cygwin/chicken/4.1.0/lib/*.a&lt;/span&gt;&lt;/code&gt; to
+    <summary type="html">&lt;div&gt;&lt;p&gt;Weird: after compiling and installing &lt;a class="reference external" href="http://www.call-with-current-continuation.org/"&gt;chicken&lt;/a&gt; with:&lt;/p&gt;
+&lt;pre class="code bash"&gt;&lt;a name="rest_code_9a2e7e6d74944d0d965b82ec82ccd0d8-1"&gt;&lt;/a&gt;make &lt;span class="nv"&gt;PLATFORM&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;cygwin &lt;span class="nv"&gt;PREFIX&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/sw/versions/cygwin/chicken/4.1.0
+&lt;a name="rest_code_9a2e7e6d74944d0d965b82ec82ccd0d8-2"&gt;&lt;/a&gt;make &lt;span class="nv"&gt;PLATFORM&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;cygwin &lt;span class="nv"&gt;PREFIX&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/sw/versions/cygwin/chicken/4.1.0 install
+&lt;/pre&gt;&lt;p&gt;I had to copy &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;/sw/versions/cygwin/chicken/4.1.0/lib/*.a&lt;/span&gt;&lt;/code&gt; to
 &lt;code class="docutils literal"&gt;/sw/versions/cygwin/chicken/4.1.0/bin&lt;/code&gt; before it could link things
 properly.  (I first noticed this while doing a
-&lt;code&gt;$ chicken-install ncurses&lt;/code&gt;.)&lt;/p&gt;</summary>
+&lt;code&gt;$ chicken-install ncurses&lt;/code&gt;.)&lt;/p&gt;&lt;/div&gt;</summary>
     <category term="chicken" label="chicken"/>
     <category term="cygwin" label="cygwin"/>
     <category term="scheme" label="scheme"/>
@@ -168,13 +797,13 @@ properly.  (I first noticed this while doing a
       <name>T. Kurt Bond</name>
     </author>
     <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/posts/2005/12/07/2005-12-07/"/>
-    <summary type="html">&lt;p&gt;To get Chicken version 2.207 to compile with MinGW I had to change the
+    <summary type="html">&lt;div&gt;&lt;p&gt;To get Chicken version 2.207 to compile with MinGW I had to change the
 line in configure that read&lt;/p&gt;
 &lt;pre class="literal-block"&gt;mingw_libdir=`mingw32-gcc -print-prog-name=ld | sed 's%/lib/gcc-lib/.*%/lib%'`&lt;/pre&gt;
 &lt;p&gt;with&lt;/p&gt;
 &lt;pre class="literal-block"&gt;mingw_libdir=`mingw32-gcc -print-prog-name=ld | sed 's%/lib/gcc/.*%/lib%'`&lt;/pre&gt;
 &lt;p&gt;and copy &lt;code class="docutils literal"&gt;posixwin.c&lt;/code&gt; over &lt;code class="docutils literal"&gt;posix.c&lt;/code&gt; and &lt;code class="docutils literal"&gt;uposixwin.c&lt;/code&gt; over
-&lt;code class="docutils literal"&gt;uposix.c&lt;/code&gt;.&lt;/p&gt;</summary>
+&lt;code class="docutils literal"&gt;uposix.c&lt;/code&gt;.&lt;/p&gt;&lt;/div&gt;</summary>
     <category term="chicken" label="chicken"/>
     <category term="mingw" label="mingw"/>
     <category term="old-blog" label="old blog"/>
@@ -189,11 +818,11 @@ line in configure that read&lt;/p&gt;
       <name>T. Kurt Bond</name>
     </author>
     <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/posts/2005/01/24/2005-01-24/"/>
-    <summary type="html">&lt;p&gt;Eli Barzilay has a couple of interesting &lt;a class="reference external" href="http://groups-beta.google.com/group/comp.lang.scheme/msg/b9328703efaa8219"&gt;USENET&lt;/a&gt; &lt;a class="reference external" href="http://groups-beta.google.com/group/comp.lang.scheme/msg/4301f80b6534a85"&gt;articles&lt;/a&gt; on his
+    <summary type="html">&lt;div&gt;&lt;p&gt;Eli Barzilay has a couple of interesting &lt;a class="reference external" href="http://groups-beta.google.com/group/comp.lang.scheme/msg/b9328703efaa8219"&gt;USENET&lt;/a&gt; &lt;a class="reference external" href="http://groups-beta.google.com/group/comp.lang.scheme/msg/4301f80b6534a85"&gt;articles&lt;/a&gt; on his
 experience changing from &lt;code class="docutils literal"&gt;defmacro&lt;/code&gt; to &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;syntax-case&lt;/span&gt;&lt;/code&gt;. Unfortunately, I
 didn't understand Shriram Krishnamurthi's &lt;a class="reference external" href="http://groups-beta.google.com/group/comp.lang.scheme/msg/f7f4e2373846759c"&gt;comments on hygiene&lt;/a&gt; at
 all.&lt;/p&gt;
-&lt;section id="additions-on-tuesday-21-april-2009"&gt;
+&lt;div class="section" id="additions-on-tuesday-21-april-2009"&gt;
 &lt;h2&gt;Additions on Tuesday, 21 April 2009&lt;/h2&gt;
 &lt;p&gt;I thought I'd better quote what he said:&lt;/p&gt;
 &lt;blockquote&gt;
@@ -217,7 +846,7 @@ really have to wonder.&lt;/p&gt;
 article comparing all the Lisp and Scheme macro systems and
 considering all the interactions with modules and pattern matching.  I
 think it's really needed.  [Do I say this somewhere else, too?]&lt;/p&gt;
-&lt;/section&gt;</summary>
+&lt;/div&gt;&lt;/div&gt;</summary>
     <category term="hygiene" label="hygiene"/>
     <category term="lisp" label="lisp"/>
     <category term="macros" label="macros"/>

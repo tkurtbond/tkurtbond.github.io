@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lisp-style trampolines in Common Lisp, C, Ada, Oberon-2, and Revised Oberon | Lacking Natural Simplicity</title>
+<link href="../../../../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../../../../rss.xml">
+<link rel="alternate" type="application/atom+xml" title="Atom" href="../../../../../feed.atom">
+<link rel="canonical" href="https://tkurtbond.github.io/posts/2022/06/14/lisp-style-trampolines-in-common-lisp-c-ada-oberon-2-and-revised-oberon/">
+<!--[if lt IE 9]><script src="../../../../../assets/js/html5.js"></script><![endif]--><meta name="author" content="T. Kurt Bond">
+<link rel="prev" href="../../10/installing-a-recent-version-of-the-a2-operatinng-system-on-unix/" title="Installing a recent version of the A2 operatinng system on UNIX" type="text/html">
+<meta property="og:site_name" content="Lacking Natural Simplicity">
+<meta property="og:title" content="Lisp-style trampolines in Common Lisp, C, Ada, Oberon-2, and Revised O">
+<meta property="og:url" content="https://tkurtbond.github.io/posts/2022/06/14/lisp-style-trampolines-in-common-lisp-c-ada-oberon-2-and-revised-oberon/">
+<meta property="og:description" content="Are you familiar with lisp-style trampolines?  A trampoline is a
+loop that iteratively invokes functions that return functions.  The
+previous link will lead you through CONS Should Not CONS Its
+Argume">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2022-06-14T15:49:55-04:00">
+<meta property="article:tag" content="ada">
+<meta property="article:tag" content="c">
+<meta property="article:tag" content="cheney on the m.t.a.">
+<meta property="article:tag" content="clisp">
+<meta property="article:tag" content="common lisp">
+<meta property="article:tag" content="continuation-passing style">
+<meta property="article:tag" content="cps">
+<meta property="article:tag" content="ecl">
+<meta property="article:tag" content="gcc">
+<meta property="article:tag" content="github">
+<meta property="article:tag" content="gnat">
+<meta property="article:tag" content="hanspeter mössenböck">
+<meta property="article:tag" content="lisp-style trampolines">
+<meta property="article:tag" content="modula">
+<meta property="article:tag" content="modula-2">
+<meta property="article:tag" content="niklaus wirth">
+<meta property="article:tag" content="no assembly required">
+<meta property="article:tag" content="oberon system">
+<meta property="article:tag" content="oberon-2">
+<meta property="article:tag" content="oberon-07">
+<meta property="article:tag" content="obnc">
+<meta property="article:tag" content="pascal">
+<meta property="article:tag" content="rabbit">
+<meta property="article:tag" content="record types">
+<meta property="article:tag" content="revised oberon">
+<meta property="article:tag" content="sbcl">
+<meta property="article:tag" content="scheme">
+<meta property="article:tag" content="tail call">
+<meta property="article:tag" content="tail call optimization">
+<meta property="article:tag" content="trampolines">
+<meta property="article:tag" content="type extensions">
+<meta property="article:tag" content="uuo handler">
+<meta property="article:tag" content="vishap oberon">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400;1,700&amp;family=Lato:ital,wght@0,400;0,700;1,400;1,700&amp;family=Source+Code+Pro:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<div class="blog-masthead">
+    <div class="container">
+<!-- This keeps the margins nice -->
+        <nav class="blog-nav" role="navigation"><a href="../../../../../index.html" class="blog-nav-item">Home</a>
+            <a href="../../../../../archive.html" class="blog-nav-item">Archives</a>
+            <a href="../../../../../categories/index.html" class="blog-nav-item">Tags &amp; Categories</a>
+            <a href="../../../../../rss.xml" class="blog-nav-item">RSS feed</a>
+            <a href="../../../../../feed.atom" class="blog-nav-item">Atom feed</a>
+
+            
+
+    <a href="index.rst" class="blog-nav-item blog-nav-item-aside" id="sourcelink">Source</a>
+                
+            
+        </nav>
+</div>
+<!-- /.container -->
+</div>
+<!-- End of Menubar -->
+
+<div class="container" id="content" role="main">
+    <div class="body-content">
+        <div class="blog-header">
+            <h1 class="blog-title">
+                <a href="https://tkurtbond.github.io/">
+
+                    <span id="blog-title">Lacking Natural Simplicity</span>
+                </a>
+            </h1>
+            <p class="lead blog-description">Random musings on books, code, and tabletop games.</p>
+            
+        </div>
+        <!--Body content-->
+        <div class="row">
+            <div class="col-sm-8 blog-main">
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h2 class="p-name entry-title blog-post-title" itemprop="headline name"><a href="." class="u-url">Lisp-style trampolines in Common Lisp, C, Ada, Oberon-2, and Revised Oberon</a></h2>
+
+        <div class="metadata blog-post-meta">
+            <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
+            <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2022-06-14T15:49:55-04:00" itemprop="datePublished" title="2022-06-14 15:49">2022-06-14 15:49</time></a></p>
+                <p class="commentline">            <a href="#disqus_thread" data-disqus-identifier="cache/posts/2022/06/14/lisp-style-trampolines-in-common-lisp-c-ada-oberon-2-and-revised-oberon.html">Comments</a>
+
+
+                    </p>
+<p class="sourceline"><a href="index.rst" id="sourcelink">Source</a></p>
+
+        </div>
+        
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<p>Are you familiar with <a class="reference external" href="https://en.wikipedia.org/wiki/Trampoline_(computing)#High-level_programming">lisp-style trampolines</a>?  A trampoline is a
+loop that iteratively invokes functions that return functions.  The
+previous link will lead you through <a class="reference external" href="https://en.wikipedia.org/wiki/Trampoline_(computing)#cite_note-Baker_1995-1">CONS Should Not CONS Its
+Arguments, Part II: Cheney on the M.T.A.</a> (<a class="reference external" href="https://dl.acm.org/doi/10.1145/214448.214454">PDF version</a>; see p. 17
+in the original publication, but that is the first page of the PDF
+that link eventually leads to), which, while saying you should just go
+ahead and convert to <a class="reference external" href="https://en.wikipedia.org/wiki/Continuation-passing_style">Continuation-passing style</a> form (CPS),
+mentions in passing <a class="reference external" href="https://dl.acm.org/doi/10.1145/151333.151343">No assembly required: compiling standard ML to C</a>,
+(see p. 168 in the original publication, which is the page 8 of the
+PDF that link eventually leads to) which leads you to <a class="reference external" href="https://dspace.mit.edu/handle/1721.1/6913">RABBIT: A
+Compiler for SCHEME</a>, where the concept is discussed under the name
+the "SCHEME UUO handler" (see p. 23–24).</p>
+<p>Why is this useful?  It allows you to compile a language that requires
+proper <a class="reference external" href="https://en.wikipedia.org/wiki/Tail_call">tail call</a> optimization to one that does not provide that.
+For instance, if you wanted to compile Scheme, which requires proper
+tail call optimization, to Common Lisp, which does not require proper
+tail call optimization, you can't just translate Scheme functions
+directly into Common Lisp functions, because tail calls allocate stack
+space, and eventually the stack will run out of space.</p>
+<p>Here's an example that will run forever in any standard confirming
+Scheme, <a class="reference external" href="../../../../../trampolines/forever.scm">forever.scm</a>:</p>
+<pre class="code scheme"><a name="rest_code_e731a77a9cf14ac1b1b705d00e35dedb-1"></a><span class="c1">;;; Recurse forever, because with tail call optimization, the stack</span>
+<a name="rest_code_e731a77a9cf14ac1b1b705d00e35dedb-2"></a><span class="c1">;;; never runs out!</span>
+<a name="rest_code_e731a77a9cf14ac1b1b705d00e35dedb-3"></a><span class="p">(</span><span class="k">define </span><span class="nv">i</span> <span class="mi">0</span><span class="p">)</span>
+<a name="rest_code_e731a77a9cf14ac1b1b705d00e35dedb-4"></a>
+<a name="rest_code_e731a77a9cf14ac1b1b705d00e35dedb-5"></a><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">f</span><span class="p">)</span>
+<a name="rest_code_e731a77a9cf14ac1b1b705d00e35dedb-6"></a>  <span class="p">(</span><span class="k">set! </span><span class="nv">i</span> <span class="p">(</span><span class="nb">+ </span><span class="mi">1</span> <span class="nv">i</span><span class="p">))</span>
+<a name="rest_code_e731a77a9cf14ac1b1b705d00e35dedb-7"></a>  <span class="p">(</span><span class="nb">display </span><span class="s">"call #"</span><span class="p">)</span> <span class="p">(</span><span class="nb">display </span><span class="nv">i</span><span class="p">)</span> <span class="p">(</span><span class="nf">newline</span><span class="p">)</span>
+<a name="rest_code_e731a77a9cf14ac1b1b705d00e35dedb-8"></a>  <span class="p">(</span><span class="nf">f</span><span class="p">))</span>
+<a name="rest_code_e731a77a9cf14ac1b1b705d00e35dedb-9"></a>
+<a name="rest_code_e731a77a9cf14ac1b1b705d00e35dedb-10"></a><span class="p">(</span><span class="nf">f</span><span class="p">)</span>
+</pre>
+<p>Here's <a class="reference external" href="../../../../../trampolines/common-lisp/not_forever.lisp">not_forever.lisp</a>, the same thing in Common Lisp:</p>
+<pre class="code common-lisp"><a name="rest_code_957c0c76b6234810aa60bd311eba3b72-1"></a><span class="c1">;;; Recurse until the stack space runs out.</span>
+<a name="rest_code_957c0c76b6234810aa60bd311eba3b72-2"></a><span class="p">(</span><span class="nb">defparameter</span> <span class="nv">i</span> <span class="mi">0</span><span class="p">)</span>
+<a name="rest_code_957c0c76b6234810aa60bd311eba3b72-3"></a>
+<a name="rest_code_957c0c76b6234810aa60bd311eba3b72-4"></a><span class="p">(</span><span class="nb">defun</span> <span class="nv">f</span> <span class="p">()</span>
+<a name="rest_code_957c0c76b6234810aa60bd311eba3b72-5"></a>  <span class="p">(</span><span class="nb">incf</span> <span class="nv">i</span><span class="p">)</span>
+<a name="rest_code_957c0c76b6234810aa60bd311eba3b72-6"></a>  <span class="p">(</span><span class="nb">format</span> <span class="no">t</span> <span class="s">"call #~d~%"</span> <span class="nv">i</span><span class="p">)</span>
+<a name="rest_code_957c0c76b6234810aa60bd311eba3b72-7"></a>  <span class="p">(</span><span class="nv">f</span><span class="p">))</span>
+<a name="rest_code_957c0c76b6234810aa60bd311eba3b72-8"></a>
+<a name="rest_code_957c0c76b6234810aa60bd311eba3b72-9"></a><span class="p">(</span><span class="nv">f</span><span class="p">)</span>
+</pre>
+<p>Now, some Common Lisp implementations don't do tail call
+optimization, and some <strong>do</strong>.  Some don't do tail call optimization
+unless you compile the functions in question.</p>
+<p>So, for instance, if I load that file into GNU CLISP 2.49.92, the
+function executes about 4668 times and then <span class="app">CLISP</span> dies with the
+error message:</p>
+<pre class="literal-block">*** - Lisp stack overflow. RESET</pre>
+<p>However if I compile that file in <span class="app">CLISP</span> with the Common Lisp function
+<code class="docutils literal"><span class="pre">compile-file</span></code> and then load the resulting <span class="file">.fas</span> file into
+<span class="app">CLISP</span>, it will run forever, because <span class="app">CLISP</span> does tail call
+optimization when it compiles code.</p>
+<p>Furthermore, if I load that file into <span class="app">SBCL</span> it will run forever,
+because <span class="app">SBCL</span> does tail call optimization by default.</p>
+<p><span class="app">ECL</span> is another Common Lisp system where if you load that file
+into  an interactive session it will die with stack overflow, but if
+you compile that file into an executable it will run forever.</p>
+<p>So, suppose you wanted to translate the Scheme code into Common Lisp.
+You'd use a trampoline to make sure the stack doesn't overflow.</p>
+<p>Here's <a class="reference external" href="../../../../../trampolines/common-lisp/trampoline.lisp">trampoline.lisp</a>, a trampoline in Common Lisp that runs
+through three functions and then stops, for simplicity:</p>
+<pre class="code common-lisp"><a name="rest_code_ea2f34d5f9b647eaa394f5d2ff7a5333-1"></a><span class="c1">;;; Demonstrate lisp-style trampolines.</span>
+<a name="rest_code_ea2f34d5f9b647eaa394f5d2ff7a5333-2"></a><span class="p">(</span><span class="nb">defun</span> <span class="nv">baz</span> <span class="p">()</span>
+<a name="rest_code_ea2f34d5f9b647eaa394f5d2ff7a5333-3"></a>  <span class="p">(</span><span class="nb">format</span> <span class="no">t</span> <span class="s">"baz~%"</span><span class="p">)</span>
+<a name="rest_code_ea2f34d5f9b647eaa394f5d2ff7a5333-4"></a>  <span class="no">nil</span><span class="p">)</span>
+<a name="rest_code_ea2f34d5f9b647eaa394f5d2ff7a5333-5"></a>
+<a name="rest_code_ea2f34d5f9b647eaa394f5d2ff7a5333-6"></a><span class="p">(</span><span class="nb">defun</span> <span class="nv">bar</span> <span class="p">()</span>
+<a name="rest_code_ea2f34d5f9b647eaa394f5d2ff7a5333-7"></a>  <span class="p">(</span><span class="nb">format</span> <span class="no">t</span> <span class="s">"bar~%"</span><span class="p">)</span>
+<a name="rest_code_ea2f34d5f9b647eaa394f5d2ff7a5333-8"></a>  <span class="nf">#'</span><span class="nv">baz</span><span class="p">)</span>
+<a name="rest_code_ea2f34d5f9b647eaa394f5d2ff7a5333-9"></a>
+<a name="rest_code_ea2f34d5f9b647eaa394f5d2ff7a5333-10"></a><span class="p">(</span><span class="nb">defun</span> <span class="nv">foo</span> <span class="p">()</span>
+<a name="rest_code_ea2f34d5f9b647eaa394f5d2ff7a5333-11"></a>  <span class="p">(</span><span class="nb">format</span> <span class="no">t</span> <span class="s">"foo~%"</span><span class="p">)</span>
+<a name="rest_code_ea2f34d5f9b647eaa394f5d2ff7a5333-12"></a>  <span class="nf">#'</span><span class="nv">bar</span><span class="p">)</span>
+<a name="rest_code_ea2f34d5f9b647eaa394f5d2ff7a5333-13"></a>
+<a name="rest_code_ea2f34d5f9b647eaa394f5d2ff7a5333-14"></a><span class="p">(</span><span class="k">let</span> <span class="p">((</span><span class="nv">f</span> <span class="nf">#'</span><span class="nv">foo</span><span class="p">))</span>
+<a name="rest_code_ea2f34d5f9b647eaa394f5d2ff7a5333-15"></a>  <span class="p">(</span><span class="nb">loop</span> <span class="nv">for</span> <span class="nv">i</span> <span class="nv">from</span> <span class="mi">1</span> <span class="nv">while</span> <span class="p">(</span><span class="nb">not</span> <span class="p">(</span><span class="nb">null</span> <span class="nv">f</span><span class="p">))</span>
+<a name="rest_code_ea2f34d5f9b647eaa394f5d2ff7a5333-16"></a>        <span class="nb">do</span> <span class="p">(</span><span class="nb">setf</span> <span class="nv">f</span> <span class="p">(</span><span class="nb">funcall</span> <span class="nv">f</span><span class="p">))))</span>
+</pre>
+<p>Here's <a class="reference external" href="../../../../../trampolines/common-lisp/trampoline_forever.lisp">trampoline_forever.lisp</a>, a trampoline in Common Lisp that
+runs forever:</p>
+<pre class="code common-lisp"><a name="rest_code_77b5e71e2f3e4330b57ebb5e558cdde7-1"></a><span class="c1">;;; Recurse forever without running out of stack space.</span>
+<a name="rest_code_77b5e71e2f3e4330b57ebb5e558cdde7-2"></a><span class="p">(</span><span class="nb">defun</span> <span class="nv">baz</span> <span class="p">()</span>
+<a name="rest_code_77b5e71e2f3e4330b57ebb5e558cdde7-3"></a>  <span class="p">(</span><span class="nb">format</span> <span class="no">t</span> <span class="s">"baz~%"</span><span class="p">)</span>
+<a name="rest_code_77b5e71e2f3e4330b57ebb5e558cdde7-4"></a>  <span class="nf">#'</span><span class="nv">foo</span><span class="p">)</span>
+<a name="rest_code_77b5e71e2f3e4330b57ebb5e558cdde7-5"></a>
+<a name="rest_code_77b5e71e2f3e4330b57ebb5e558cdde7-6"></a><span class="p">(</span><span class="nb">defun</span> <span class="nv">bar</span> <span class="p">()</span>
+<a name="rest_code_77b5e71e2f3e4330b57ebb5e558cdde7-7"></a>  <span class="p">(</span><span class="nb">format</span> <span class="no">t</span> <span class="s">"bar~%"</span><span class="p">)</span>
+<a name="rest_code_77b5e71e2f3e4330b57ebb5e558cdde7-8"></a>  <span class="nf">#'</span><span class="nv">baz</span><span class="p">)</span>
+<a name="rest_code_77b5e71e2f3e4330b57ebb5e558cdde7-9"></a>
+<a name="rest_code_77b5e71e2f3e4330b57ebb5e558cdde7-10"></a><span class="p">(</span><span class="nb">defun</span> <span class="nv">foo</span> <span class="p">()</span>
+<a name="rest_code_77b5e71e2f3e4330b57ebb5e558cdde7-11"></a>  <span class="p">(</span><span class="nb">format</span> <span class="no">t</span> <span class="s">"foo~%"</span><span class="p">)</span>
+<a name="rest_code_77b5e71e2f3e4330b57ebb5e558cdde7-12"></a>  <span class="nf">#'</span><span class="nv">bar</span><span class="p">)</span>
+<a name="rest_code_77b5e71e2f3e4330b57ebb5e558cdde7-13"></a>
+<a name="rest_code_77b5e71e2f3e4330b57ebb5e558cdde7-14"></a><span class="p">(</span><span class="k">let</span> <span class="p">((</span><span class="nv">f</span> <span class="nf">#'</span><span class="nv">foo</span><span class="p">))</span>
+<a name="rest_code_77b5e71e2f3e4330b57ebb5e558cdde7-15"></a>  <span class="p">(</span><span class="nb">loop</span> <span class="nv">for</span> <span class="nv">i</span> <span class="nv">from</span> <span class="mi">1</span> <span class="nv">while</span> <span class="p">(</span><span class="nb">not</span> <span class="p">(</span><span class="nb">null</span> <span class="nv">f</span><span class="p">))</span>
+<a name="rest_code_77b5e71e2f3e4330b57ebb5e558cdde7-16"></a>        <span class="nb">do</span> <span class="p">(</span><span class="k">progn</span>
+<a name="rest_code_77b5e71e2f3e4330b57ebb5e558cdde7-17"></a>             <span class="p">(</span><span class="nb">format</span> <span class="no">t</span> <span class="s">"trampoline call #~s~%"</span> <span class="nv">i</span><span class="p">)</span>
+<a name="rest_code_77b5e71e2f3e4330b57ebb5e558cdde7-18"></a>             <span class="p">(</span><span class="nb">setf</span> <span class="nv">f</span> <span class="p">(</span><span class="nb">funcall</span> <span class="nv">f</span><span class="p">)))))</span>
+</pre>
+<p>Of course, you can do the same things in C.  First, here's
+<a class="reference external" href="../../../../../trampolines/c/not_forever.c">not_forever.c</a>, a program in C that will (usually) die with a stack
+overflow:</p>
+<pre class="code c"><a name="rest_code_9aebe3427947487ab841f6d2913ff547-1"></a><span class="cm">/* Recurse until stack space runs out.</span>
+<a name="rest_code_9aebe3427947487ab841f6d2913ff547-2"></a><span class="cm">   Unless the compiler does tail-call optimization. */</span>
+<a name="rest_code_9aebe3427947487ab841f6d2913ff547-3"></a><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<a name="rest_code_9aebe3427947487ab841f6d2913ff547-4"></a>
+<a name="rest_code_9aebe3427947487ab841f6d2913ff547-5"></a><span class="k">static</span> <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>                 <span class="cm">/* Number of times f has been called. */</span>
+<a name="rest_code_9aebe3427947487ab841f6d2913ff547-6"></a>
+<a name="rest_code_9aebe3427947487ab841f6d2913ff547-7"></a><span class="kt">void</span> <span class="nf">f</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<a name="rest_code_9aebe3427947487ab841f6d2913ff547-8"></a><span class="p">{</span>
+<a name="rest_code_9aebe3427947487ab841f6d2913ff547-9"></a>  <span class="n">i</span><span class="o">++</span><span class="p">;</span>
+<a name="rest_code_9aebe3427947487ab841f6d2913ff547-10"></a>  <span class="n">printf</span> <span class="p">(</span><span class="s">"call #%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
+<a name="rest_code_9aebe3427947487ab841f6d2913ff547-11"></a>  <span class="n">f</span> <span class="p">();</span>
+<a name="rest_code_9aebe3427947487ab841f6d2913ff547-12"></a><span class="p">}</span>
+<a name="rest_code_9aebe3427947487ab841f6d2913ff547-13"></a>
+<a name="rest_code_9aebe3427947487ab841f6d2913ff547-14"></a><span class="kt">int</span> <span class="nf">main</span> <span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">)</span>
+<a name="rest_code_9aebe3427947487ab841f6d2913ff547-15"></a><span class="p">{</span>
+<a name="rest_code_9aebe3427947487ab841f6d2913ff547-16"></a>  <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<a name="rest_code_9aebe3427947487ab841f6d2913ff547-17"></a>  <span class="n">f</span> <span class="p">();</span>
+<a name="rest_code_9aebe3427947487ab841f6d2913ff547-18"></a><span class="p">}</span>
+</pre>
+<p>I say usually, because tail call optimization is not required by the
+standard, and many C compilers do not do it.  For instance, <span class="app">gcc</span>
+doesn't do tail call optimization <strong>unless</strong> you specify
+<code class="docutils literal"><span class="pre">-foptimize-sibling-calls</span></code> or <code class="docutils literal"><span class="pre">-O2</span></code>, <code class="docutils literal"><span class="pre">-O3</span></code>, or <code class="docutils literal"><span class="pre">-Os</span></code>.  If I
+don't specify any of those options, on my system that program dies
+with the error <code class="docutils literal">Segmentation fault: 11</code> after call #523932.</p>
+<p>Here's <a class="reference external" href="../../../../../trampolines/c/trampoline.c">trampoline.c</a>, the limited trampoline in C:</p>
+<pre class="code c"><a name="rest_code_089bd9efabad45c3b7a184bdd4710237-1"></a><span class="cm">/* Demonstrate lisp-style trampolines. */</span>
+<a name="rest_code_089bd9efabad45c3b7a184bdd4710237-2"></a><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<a name="rest_code_089bd9efabad45c3b7a184bdd4710237-3"></a>
+<a name="rest_code_089bd9efabad45c3b7a184bdd4710237-4"></a><span class="k">typedef</span> <span class="kt">void</span><span class="o">*</span> <span class="p">(</span><span class="o">*</span><span class="n">trampoline</span><span class="p">)(</span><span class="kt">void</span><span class="p">);</span>
+<a name="rest_code_089bd9efabad45c3b7a184bdd4710237-5"></a>
+<a name="rest_code_089bd9efabad45c3b7a184bdd4710237-6"></a><span class="kt">void</span> <span class="o">*</span>
+<a name="rest_code_089bd9efabad45c3b7a184bdd4710237-7"></a><span class="nf">baz</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<a name="rest_code_089bd9efabad45c3b7a184bdd4710237-8"></a><span class="p">{</span>
+<a name="rest_code_089bd9efabad45c3b7a184bdd4710237-9"></a>  <span class="n">printf</span> <span class="p">(</span><span class="s">"baz</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<a name="rest_code_089bd9efabad45c3b7a184bdd4710237-10"></a>  <span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span>
+<a name="rest_code_089bd9efabad45c3b7a184bdd4710237-11"></a><span class="p">}</span>
+<a name="rest_code_089bd9efabad45c3b7a184bdd4710237-12"></a>
+<a name="rest_code_089bd9efabad45c3b7a184bdd4710237-13"></a><span class="kt">void</span> <span class="o">*</span>
+<a name="rest_code_089bd9efabad45c3b7a184bdd4710237-14"></a><span class="nf">bar</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<a name="rest_code_089bd9efabad45c3b7a184bdd4710237-15"></a><span class="p">{</span>
+<a name="rest_code_089bd9efabad45c3b7a184bdd4710237-16"></a>  <span class="n">printf</span> <span class="p">(</span><span class="s">"bar</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<a name="rest_code_089bd9efabad45c3b7a184bdd4710237-17"></a>  <span class="k">return</span> <span class="n">baz</span><span class="p">;</span>
+<a name="rest_code_089bd9efabad45c3b7a184bdd4710237-18"></a><span class="p">}</span>
+<a name="rest_code_089bd9efabad45c3b7a184bdd4710237-19"></a>
+<a name="rest_code_089bd9efabad45c3b7a184bdd4710237-20"></a><span class="kt">void</span> <span class="o">*</span>
+<a name="rest_code_089bd9efabad45c3b7a184bdd4710237-21"></a><span class="nf">foo</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<a name="rest_code_089bd9efabad45c3b7a184bdd4710237-22"></a><span class="p">{</span>
+<a name="rest_code_089bd9efabad45c3b7a184bdd4710237-23"></a>  <span class="n">printf</span> <span class="p">(</span><span class="s">"foo</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<a name="rest_code_089bd9efabad45c3b7a184bdd4710237-24"></a>  <span class="k">return</span> <span class="n">bar</span><span class="p">;</span>
+<a name="rest_code_089bd9efabad45c3b7a184bdd4710237-25"></a><span class="p">}</span>
+<a name="rest_code_089bd9efabad45c3b7a184bdd4710237-26"></a>
+<a name="rest_code_089bd9efabad45c3b7a184bdd4710237-27"></a>
+<a name="rest_code_089bd9efabad45c3b7a184bdd4710237-28"></a><span class="kt">int</span>
+<a name="rest_code_089bd9efabad45c3b7a184bdd4710237-29"></a><span class="nf">main</span> <span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">)</span>
+<a name="rest_code_089bd9efabad45c3b7a184bdd4710237-30"></a><span class="p">{</span>
+<a name="rest_code_089bd9efabad45c3b7a184bdd4710237-31"></a>  <span class="n">trampoline</span> <span class="n">t</span> <span class="o">=</span> <span class="n">foo</span><span class="p">;</span>
+<a name="rest_code_089bd9efabad45c3b7a184bdd4710237-32"></a>  <span class="k">while</span> <span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<a name="rest_code_089bd9efabad45c3b7a184bdd4710237-33"></a>    <span class="n">t</span> <span class="o">=</span> <span class="n">t</span> <span class="p">();</span>
+<a name="rest_code_089bd9efabad45c3b7a184bdd4710237-34"></a>  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<a name="rest_code_089bd9efabad45c3b7a184bdd4710237-35"></a><span class="p">}</span>
+</pre>
+<p>Notice this works by converting pointers to functions to pointers to void
+— it doesn't even require any explicit casting!</p>
+<p>And here's <a class="reference external" href="../../../../../trampolines/c/trampoline_forever.c">trampoline_forever.c</a>, the trampoline that runs forever:</p>
+<pre class="code c"><a name="rest_code_2a12b804769e4b949fe09459299fe81e-1"></a><span class="cm">/* Recurse forever without running out of stack spacc. */</span>
+<a name="rest_code_2a12b804769e4b949fe09459299fe81e-2"></a><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<a name="rest_code_2a12b804769e4b949fe09459299fe81e-3"></a>
+<a name="rest_code_2a12b804769e4b949fe09459299fe81e-4"></a><span class="k">typedef</span> <span class="kt">void</span><span class="o">*</span> <span class="p">(</span><span class="o">*</span><span class="n">trampoline</span><span class="p">)(</span><span class="kt">void</span><span class="p">);</span>
+<a name="rest_code_2a12b804769e4b949fe09459299fe81e-5"></a>
+<a name="rest_code_2a12b804769e4b949fe09459299fe81e-6"></a><span class="kt">void</span> <span class="o">*</span><span class="nf">foo</span> <span class="p">(</span><span class="kt">void</span><span class="p">);</span>               <span class="cm">/* Forward declaration. */</span>
+<a name="rest_code_2a12b804769e4b949fe09459299fe81e-7"></a>
+<a name="rest_code_2a12b804769e4b949fe09459299fe81e-8"></a><span class="kt">void</span> <span class="o">*</span>
+<a name="rest_code_2a12b804769e4b949fe09459299fe81e-9"></a><span class="nf">baz</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<a name="rest_code_2a12b804769e4b949fe09459299fe81e-10"></a><span class="p">{</span>
+<a name="rest_code_2a12b804769e4b949fe09459299fe81e-11"></a>  <span class="n">printf</span> <span class="p">(</span><span class="s">"baz</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<a name="rest_code_2a12b804769e4b949fe09459299fe81e-12"></a>  <span class="k">return</span> <span class="n">foo</span><span class="p">;</span>
+<a name="rest_code_2a12b804769e4b949fe09459299fe81e-13"></a><span class="p">}</span>
+<a name="rest_code_2a12b804769e4b949fe09459299fe81e-14"></a>
+<a name="rest_code_2a12b804769e4b949fe09459299fe81e-15"></a><span class="kt">void</span> <span class="o">*</span>
+<a name="rest_code_2a12b804769e4b949fe09459299fe81e-16"></a><span class="nf">bar</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<a name="rest_code_2a12b804769e4b949fe09459299fe81e-17"></a><span class="p">{</span>
+<a name="rest_code_2a12b804769e4b949fe09459299fe81e-18"></a>  <span class="n">printf</span> <span class="p">(</span><span class="s">"bar</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<a name="rest_code_2a12b804769e4b949fe09459299fe81e-19"></a>  <span class="k">return</span> <span class="n">baz</span><span class="p">;</span>
+<a name="rest_code_2a12b804769e4b949fe09459299fe81e-20"></a><span class="p">}</span>
+<a name="rest_code_2a12b804769e4b949fe09459299fe81e-21"></a>
+<a name="rest_code_2a12b804769e4b949fe09459299fe81e-22"></a><span class="kt">void</span> <span class="o">*</span>
+<a name="rest_code_2a12b804769e4b949fe09459299fe81e-23"></a><span class="nf">foo</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<a name="rest_code_2a12b804769e4b949fe09459299fe81e-24"></a><span class="p">{</span>
+<a name="rest_code_2a12b804769e4b949fe09459299fe81e-25"></a>  <span class="n">printf</span> <span class="p">(</span><span class="s">"foo</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<a name="rest_code_2a12b804769e4b949fe09459299fe81e-26"></a>  <span class="k">return</span> <span class="n">bar</span><span class="p">;</span>
+<a name="rest_code_2a12b804769e4b949fe09459299fe81e-27"></a><span class="p">}</span>
+<a name="rest_code_2a12b804769e4b949fe09459299fe81e-28"></a>
+<a name="rest_code_2a12b804769e4b949fe09459299fe81e-29"></a>
+<a name="rest_code_2a12b804769e4b949fe09459299fe81e-30"></a><span class="kt">int</span>
+<a name="rest_code_2a12b804769e4b949fe09459299fe81e-31"></a><span class="nf">main</span> <span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">)</span>
+<a name="rest_code_2a12b804769e4b949fe09459299fe81e-32"></a><span class="p">{</span>
+<a name="rest_code_2a12b804769e4b949fe09459299fe81e-33"></a>  <span class="n">trampoline</span> <span class="n">t</span> <span class="o">=</span> <span class="n">foo</span><span class="p">;</span>
+<a name="rest_code_2a12b804769e4b949fe09459299fe81e-34"></a>  <span class="k">while</span> <span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<a name="rest_code_2a12b804769e4b949fe09459299fe81e-35"></a>    <span class="n">t</span> <span class="o">=</span> <span class="n">t</span> <span class="p">();</span>
+<a name="rest_code_2a12b804769e4b949fe09459299fe81e-36"></a>  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<a name="rest_code_2a12b804769e4b949fe09459299fe81e-37"></a><span class="p">}</span>
+</pre>
+<p>So, here's where C's weak typing lets it get away with things that
+more strongly typed languages don't.  Notice the declaration of the
+trampoline type:</p>
+<pre class="code c"><a name="rest_code_310131c7e8df4d92ae69da9574897362-1"></a><span class="n">type</span> <span class="n">def</span> <span class="kt">void</span><span class="o">*</span> <span class="p">(</span><span class="o">*</span><span class="n">trampoline</span><span class="p">)(</span><span class="kt">void</span><span class="p">);</span>
+</pre>
+<p id="mentioning-recursive-types">Notice how it returns a <code class="docutils literal">void *</code>, instead of something more
+specific?  That's because if it tried to return something more
+specific, it would have to a <a class="reference external" href="https://en.wikipedia.org/wiki/Recursive_data_type">recursive type</a>: that is to say, while
+defining the type <code class="docutils literal">trampoline</code>, you would use a reference to the
+type while defining the type.  It would look something like this:</p>
+<pre class="code c"><a name="rest_code_fa8423a6945c4f2b89c8e6f74445d527-1"></a><span class="k">typedef</span> <span class="n">trampoline</span><span class="o">*</span> <span class="p">(</span><span class="o">*</span><span class="n">trampoline</span><span class="p">)(</span><span class="kt">void</span><span class="p">);</span>
+</pre>
+<p>and that results in the <span class="app">gcc</span> issuing the following error:</p>
+<pre class="literal-block">error: unknown type name 'trampoline'</pre>
+<p>Very few traditional programming languages allow this.  It isn't a
+problem in Scheme or Common Lisp because those languages use strong
+dynamic typing, where the types are checked at runtime.</p>
+<p>So how do you do this in languages with strong static typing?</p>
+<p>Well, let's try this in some of the <a class="reference external" href="https://en.wikipedia.org/wiki/Oberon_(programming_language)">Oberon</a> programming language
+dialects.  <a class="reference external" href="https://en.wikipedia.org/wiki/Oberon_(programming_language)">Oberon</a> was designed and implemented by Niklaus Wirth
+(<a class="reference external" href="https://people.inf.ethz.ch/wirth/">NW1</a>, <a class="reference external" href="https://en.wikipedia.org/wiki/Niklaus_Wirth">NW2</a>) as a simplification and generalization of his earlier
+languages <a class="reference external" href="https://en.wikipedia.org/wiki/Pascal_(programming_language)">Pascal</a>, <a class="reference external" href="https://en.wikipedia.org/wiki/Modula">Modula</a>, and <a class="reference external" href="https://en.wikipedia.org/wiki/Modula-2">Modula-2</a>.  I find the original Oberon
+admirable for its simplicity, strong typing, understandable syntax,
+and its introduction of <a class="reference external" href="https://dl.acm.org/doi/abs/10.1145/42190.46167">Type Extensions</a> (which organizes <a class="reference external" href="https://en.wikipedia.org/wiki/Record_(computer_science)">record
+types</a> in a inheritance hierarchy, which with the use of procedure
+variables enables object oriented programming in a particularly
+straightforward and flexible way) but struggle with its minimalism and
+how its standard libraries differ in paradigm from the standard Unix
+libraries, since Oberon was used to implement a new operating system,
+the <a class="reference external" href="https://en.wikipedia.org/wiki/Oberon_(operating_system)">Oberon System</a> with its own completely unique <a class="reference external" href="https://en.wikipedia.org/wiki/API">API</a>.</p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Oberon_(programming_language)">Oberon</a> has a number of dialects. I'm most fond of <a class="reference external" href="https://en.wikipedia.org/wiki/Oberon-2">Oberon-2</a>, which
+was the second language in the <a class="reference external" href="https://en.wikipedia.org/wiki/Oberon_(programming_language)">Oberon</a> family, developed by <a class="reference external" href="https://en.wikipedia.org/wiki/Hanspeter_M%C3%B6ssenb%C3%B6ck">Hanspeter
+Mössenböck</a> and Niklaus Wirth.  It is a little less minimalist than
+<a class="reference external" href="https://en.wikipedia.org/wiki/Oberon_(programming_language)">Oberon</a>, and among a few other things adds type-bound procedures to
+the record hierarchy provided by <a class="reference external" href="https://dl.acm.org/doi/abs/10.1145/42190.46167">Type Extensions</a>, providing a
+appealingly simple and direct design for object-oriented programming
+that was later adopted by the <a class="reference external" href="https://en.wikipedia.org/wiki/Ada_(programming_language)">Ada</a> programming language (in a more
+complicated and confusing manner, as might be expected by <a class="reference external" href="https://en.wikipedia.org/wiki/Ada_(programming_language)">Ada</a>'s
+plethora of design goals and constraints).  Here's a copy of the
+Oberon-2 language report in PDF (<a class="reference external" href="../../../../../Oberon-2/Oberon2.pdf">O2PDF</a>) and HTML (<a class="reference external" href="https://web.archive.org/web/20151104101932/https://cseweb.ucsd.edu/~wgg/CSE131B/oberon2.htm">O2HTML</a>), for
+reference.</p>
+<p>Anyway, <a class="reference external" href="https://en.wikipedia.org/wiki/Oberon-2">Oberon-2</a> has procedure types and procedure variables, so one
+would think it would be simple to implement trampolines in <a class="reference external" href="https://en.wikipedia.org/wiki/Oberon-2">Oberon-2</a>,
+without messing about with pointers.  It turns out to be more
+complicated than one would think.</p>
+<p>I'm using <a class="reference external" href="https://github.com/vishaps/voc">Vishap Oberon</a>, a free and open source Oberon-2 compiler,
+by the way.</p>
+<p>First, here's <a class="reference external" href="trampolines/oberon-2/NotForever.Mod">NotForever.Mod</a>, the standard program with a recursive
+function procedure that will overflow the stack.</p>
+<pre class="code modula2"><a name="rest_code_5182d2b31d8c4963abc6ebd5876c1826-1"></a><span class="kr">MODULE</span> <span class="n">NotForever</span><span class="p">;</span>              <span class="cm">(* Recurse until stack space runs out. *)</span>
+<a name="rest_code_5182d2b31d8c4963abc6ebd5876c1826-2"></a>  <span class="kr">IMPORT</span> <span class="n">Out</span><span class="p">;</span>
+<a name="rest_code_5182d2b31d8c4963abc6ebd5876c1826-3"></a>  <span class="kr">VAR</span> <span class="n">i</span><span class="p">:</span> <span class="nb">LONGINT</span><span class="p">;</span>               <span class="cm">(* Number of times f has been called. *)</span>
+<a name="rest_code_5182d2b31d8c4963abc6ebd5876c1826-4"></a>
+<a name="rest_code_5182d2b31d8c4963abc6ebd5876c1826-5"></a>  <span class="kr">PROCEDURE</span> <span class="n">f</span><span class="p">;</span>
+<a name="rest_code_5182d2b31d8c4963abc6ebd5876c1826-6"></a>  <span class="kr">BEGIN</span>
+<a name="rest_code_5182d2b31d8c4963abc6ebd5876c1826-7"></a>    <span class="nb">INC</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+<a name="rest_code_5182d2b31d8c4963abc6ebd5876c1826-8"></a>    <span class="n">Out</span><span class="p">.</span><span class="n">String</span> <span class="p">(</span><span class="s">"call #"</span><span class="p">);</span> <span class="n">Out</span><span class="p">.</span><span class="n">Int</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span> <span class="n">Out</span><span class="p">.</span><span class="n">Ln</span><span class="p">;</span>
+<a name="rest_code_5182d2b31d8c4963abc6ebd5876c1826-9"></a>    <span class="n">f</span><span class="p">;</span>
+<a name="rest_code_5182d2b31d8c4963abc6ebd5876c1826-10"></a>  <span class="kr">END</span> <span class="n">f</span><span class="p">;</span>
+<a name="rest_code_5182d2b31d8c4963abc6ebd5876c1826-11"></a>
+<a name="rest_code_5182d2b31d8c4963abc6ebd5876c1826-12"></a><span class="kr">BEGIN</span>
+<a name="rest_code_5182d2b31d8c4963abc6ebd5876c1826-13"></a>  <span class="n">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span>
+<a name="rest_code_5182d2b31d8c4963abc6ebd5876c1826-14"></a>  <span class="n">f</span><span class="p">;</span>
+<a name="rest_code_5182d2b31d8c4963abc6ebd5876c1826-15"></a><span class="kr">END</span> <span class="n">NotForever</span><span class="p">.</span>
+</pre>
+<p>On my system, this program dies with with the error <code class="docutils literal">Segmentation
+fault: 11</code> after call #524008.</p>
+<p>Now on to trampolines.  In theory we should be able to declare a type
+that is a function procedure that returns other function procedures.
+Here's the first attempt at the limited trampoline,
+<a class="reference external" href="trampolines/oberon-2/TrampolineBroken.Mod">TrampolineBroken.Mod</a>.</p>
+<pre class="code modula2"><a name="rest_code_a5f4fda7132e4d62b6355ba7f5f35f3a-1"></a><span class="kr">MODULE</span> <span class="n">TrampolineBroken</span><span class="p">;</span>              <span class="cm">(* Fail to demonstrate lisp-style trampolines. *)</span>
+<a name="rest_code_a5f4fda7132e4d62b6355ba7f5f35f3a-2"></a>  <span class="kr">IMPORT</span> <span class="n">Out</span><span class="p">;</span>
+<a name="rest_code_a5f4fda7132e4d62b6355ba7f5f35f3a-3"></a>
+<a name="rest_code_a5f4fda7132e4d62b6355ba7f5f35f3a-4"></a>  <span class="kr">TYPE</span> <span class="n">Thunk</span> <span class="o">=</span> <span class="kr">PROCEDURE</span> <span class="p">():</span> <span class="n">Thunk</span><span class="p">;</span> <span class="cm">(* This is an error. *)</span>
+<a name="rest_code_a5f4fda7132e4d62b6355ba7f5f35f3a-5"></a>
+<a name="rest_code_a5f4fda7132e4d62b6355ba7f5f35f3a-6"></a>  <span class="kr">VAR</span> <span class="n">next</span><span class="p">:</span> <span class="n">Thunk</span><span class="p">;</span>
+<a name="rest_code_a5f4fda7132e4d62b6355ba7f5f35f3a-7"></a>
+<a name="rest_code_a5f4fda7132e4d62b6355ba7f5f35f3a-8"></a>  <span class="kr">PROCEDURE</span> <span class="n">baz</span> <span class="p">():</span> <span class="n">Thunk</span><span class="p">;</span>
+<a name="rest_code_a5f4fda7132e4d62b6355ba7f5f35f3a-9"></a>  <span class="kr">BEGIN</span>
+<a name="rest_code_a5f4fda7132e4d62b6355ba7f5f35f3a-10"></a>    <span class="n">Out</span><span class="p">.</span><span class="n">String</span> <span class="p">(</span><span class="s">"baz"</span><span class="p">);</span> <span class="n">Out</span><span class="p">.</span><span class="n">Ln</span><span class="p">;</span>
+<a name="rest_code_a5f4fda7132e4d62b6355ba7f5f35f3a-11"></a>    <span class="n">next</span> <span class="o">:=</span> <span class="nb">NIL</span><span class="p">;</span>
+<a name="rest_code_a5f4fda7132e4d62b6355ba7f5f35f3a-12"></a>  <span class="kr">END</span> <span class="n">baz</span><span class="p">;</span>
+<a name="rest_code_a5f4fda7132e4d62b6355ba7f5f35f3a-13"></a>
+<a name="rest_code_a5f4fda7132e4d62b6355ba7f5f35f3a-14"></a>  <span class="kr">PROCEDURE</span> <span class="n">bar</span> <span class="p">():</span> <span class="n">Thunk</span><span class="p">;</span>
+<a name="rest_code_a5f4fda7132e4d62b6355ba7f5f35f3a-15"></a>  <span class="kr">BEGIN</span>
+<a name="rest_code_a5f4fda7132e4d62b6355ba7f5f35f3a-16"></a>    <span class="n">Out</span><span class="p">.</span><span class="n">String</span> <span class="p">(</span><span class="s">"bar"</span><span class="p">);</span> <span class="n">Out</span><span class="p">.</span><span class="n">Ln</span><span class="p">;</span>
+<a name="rest_code_a5f4fda7132e4d62b6355ba7f5f35f3a-17"></a>    <span class="n">next</span> <span class="o">:=</span> <span class="n">baz</span><span class="p">;</span>
+<a name="rest_code_a5f4fda7132e4d62b6355ba7f5f35f3a-18"></a>  <span class="kr">END</span> <span class="n">bar</span><span class="p">;</span>
+<a name="rest_code_a5f4fda7132e4d62b6355ba7f5f35f3a-19"></a>
+<a name="rest_code_a5f4fda7132e4d62b6355ba7f5f35f3a-20"></a>  <span class="kr">PROCEDURE</span> <span class="n">foo</span> <span class="p">():</span> <span class="n">Thunk</span><span class="p">;</span>
+<a name="rest_code_a5f4fda7132e4d62b6355ba7f5f35f3a-21"></a>  <span class="kr">BEGIN</span>
+<a name="rest_code_a5f4fda7132e4d62b6355ba7f5f35f3a-22"></a>    <span class="n">Out</span><span class="p">.</span><span class="n">String</span> <span class="p">(</span><span class="s">"foo"</span><span class="p">);</span> <span class="n">Out</span><span class="p">.</span><span class="n">Ln</span><span class="p">;</span>
+<a name="rest_code_a5f4fda7132e4d62b6355ba7f5f35f3a-23"></a>    <span class="n">next</span> <span class="o">:=</span> <span class="n">bar</span><span class="p">;</span>
+<a name="rest_code_a5f4fda7132e4d62b6355ba7f5f35f3a-24"></a>  <span class="kr">END</span> <span class="n">foo</span><span class="p">;</span>
+<a name="rest_code_a5f4fda7132e4d62b6355ba7f5f35f3a-25"></a>
+<a name="rest_code_a5f4fda7132e4d62b6355ba7f5f35f3a-26"></a><span class="kr">BEGIN</span>
+<a name="rest_code_a5f4fda7132e4d62b6355ba7f5f35f3a-27"></a>  <span class="n">next</span> <span class="o">:=</span> <span class="n">foo</span><span class="p">;</span>
+<a name="rest_code_a5f4fda7132e4d62b6355ba7f5f35f3a-28"></a>  <span class="kr">WHILE</span> <span class="n">next</span> <span class="o">#</span> <span class="nb">NIL</span> <span class="kr">DO</span>
+<a name="rest_code_a5f4fda7132e4d62b6355ba7f5f35f3a-29"></a>    <span class="n">next</span> <span class="o">:=</span> <span class="n">next</span> <span class="p">();</span>
+<a name="rest_code_a5f4fda7132e4d62b6355ba7f5f35f3a-30"></a>  <span class="kr">END</span><span class="p">;</span>
+<a name="rest_code_a5f4fda7132e4d62b6355ba7f5f35f3a-31"></a><span class="kr">END</span> <span class="n">TrampolineBroken</span><span class="p">.</span>
+</pre>
+<p>Unfortunately, trying to compile this dies with the following error
+message:</p>
+<pre class="literal-block">TrampolineBroken.Mod  Compiling TrampolineBroken.
+
+   4:   TYPE Thunk = PROCEDURE (): Thunk;
+                             ^
+    pos   126  err 244  cyclic type definition not allowed
+
+Module compilation failed.</pre>
+<p>As mentioned <a class="reference external" href="#mentioning-recursive-types">above</a>, this is a case of a <a class="reference external" href="https://en.wikipedia.org/wiki/Recursive_data_type">recursive type</a>.  Well, drat.</p>
+<p>At this point the immediate reaction is to look at the C version and
+try to hack up something analogous using functionality from
+<a class="reference external" href="https://en.wikipedia.org/wiki/Oberon-2">Oberon-2</a>'s <code class="docutils literal">SYSTEM</code> module, but that way lies madness, difficulty,
+and type errors.  Instead, you have to step back and think about
+things from another viewpoint.  The problem is that we can't declare a
+type for a function procedure that returns another function procedure
+of its type, because that is recursive.  Instead of trying for a
+<a class="reference external" href="https://en.wikipedia.org/wiki/Recursive_data_type">recursive type</a>, what if we switched to storing the next procedure
+to be run in a global variable, <code class="docutils literal">next</code>, and having each procedure in
+the chain set that to the procedure that should run next?  That should
+work!</p>
+<p>Here's <a class="reference external" href="../../../../../trampolines/oberon-2/Trampoline.Mod">Trampoline.Mod</a>, a version that works!</p>
+<pre class="code modula2"><a name="rest_code_96a8925a56b8496185cf2215ca1dc29a-1"></a><span class="kr">MODULE</span> <span class="n">Trampoline</span><span class="p">;</span>              <span class="cm">(* Demonstrate lisp-style trampolines. *)</span>
+<a name="rest_code_96a8925a56b8496185cf2215ca1dc29a-2"></a>  <span class="kr">IMPORT</span> <span class="n">Out</span><span class="p">;</span>
+<a name="rest_code_96a8925a56b8496185cf2215ca1dc29a-3"></a>
+<a name="rest_code_96a8925a56b8496185cf2215ca1dc29a-4"></a>  <span class="kr">TYPE</span> <span class="n">Thunk</span> <span class="o">=</span> <span class="kr">PROCEDURE</span> <span class="p">();</span>
+<a name="rest_code_96a8925a56b8496185cf2215ca1dc29a-5"></a>
+<a name="rest_code_96a8925a56b8496185cf2215ca1dc29a-6"></a>  <span class="kr">VAR</span> <span class="n">next</span><span class="p">:</span> <span class="n">Thunk</span><span class="p">;</span>              <span class="cm">(* Next procedure to be called. *)</span>
+<a name="rest_code_96a8925a56b8496185cf2215ca1dc29a-7"></a>
+<a name="rest_code_96a8925a56b8496185cf2215ca1dc29a-8"></a>  <span class="kr">PROCEDURE</span> <span class="n">baz</span> <span class="p">();</span>
+<a name="rest_code_96a8925a56b8496185cf2215ca1dc29a-9"></a>  <span class="kr">BEGIN</span>
+<a name="rest_code_96a8925a56b8496185cf2215ca1dc29a-10"></a>    <span class="n">Out</span><span class="p">.</span><span class="n">String</span> <span class="p">(</span><span class="s">"baz"</span><span class="p">);</span> <span class="n">Out</span><span class="p">.</span><span class="n">Ln</span><span class="p">;</span>
+<a name="rest_code_96a8925a56b8496185cf2215ca1dc29a-11"></a>    <span class="n">next</span> <span class="o">:=</span> <span class="nb">NIL</span><span class="p">;</span>
+<a name="rest_code_96a8925a56b8496185cf2215ca1dc29a-12"></a>  <span class="kr">END</span> <span class="n">baz</span><span class="p">;</span>
+<a name="rest_code_96a8925a56b8496185cf2215ca1dc29a-13"></a>
+<a name="rest_code_96a8925a56b8496185cf2215ca1dc29a-14"></a>  <span class="kr">PROCEDURE</span> <span class="n">bar</span> <span class="p">();</span>
+<a name="rest_code_96a8925a56b8496185cf2215ca1dc29a-15"></a>  <span class="kr">BEGIN</span>
+<a name="rest_code_96a8925a56b8496185cf2215ca1dc29a-16"></a>    <span class="n">Out</span><span class="p">.</span><span class="n">String</span> <span class="p">(</span><span class="s">"bar"</span><span class="p">);</span> <span class="n">Out</span><span class="p">.</span><span class="n">Ln</span><span class="p">;</span>
+<a name="rest_code_96a8925a56b8496185cf2215ca1dc29a-17"></a>    <span class="n">next</span> <span class="o">:=</span> <span class="n">baz</span><span class="p">;</span>
+<a name="rest_code_96a8925a56b8496185cf2215ca1dc29a-18"></a>  <span class="kr">END</span> <span class="n">bar</span><span class="p">;</span>
+<a name="rest_code_96a8925a56b8496185cf2215ca1dc29a-19"></a>
+<a name="rest_code_96a8925a56b8496185cf2215ca1dc29a-20"></a>  <span class="kr">PROCEDURE</span> <span class="n">foo</span> <span class="p">();</span>
+<a name="rest_code_96a8925a56b8496185cf2215ca1dc29a-21"></a>  <span class="kr">BEGIN</span>
+<a name="rest_code_96a8925a56b8496185cf2215ca1dc29a-22"></a>    <span class="n">Out</span><span class="p">.</span><span class="n">String</span> <span class="p">(</span><span class="s">"foo"</span><span class="p">);</span> <span class="n">Out</span><span class="p">.</span><span class="n">Ln</span><span class="p">;</span>
+<a name="rest_code_96a8925a56b8496185cf2215ca1dc29a-23"></a>    <span class="n">next</span> <span class="o">:=</span> <span class="n">bar</span><span class="p">;</span>
+<a name="rest_code_96a8925a56b8496185cf2215ca1dc29a-24"></a>  <span class="kr">END</span> <span class="n">foo</span><span class="p">;</span>
+<a name="rest_code_96a8925a56b8496185cf2215ca1dc29a-25"></a>
+<a name="rest_code_96a8925a56b8496185cf2215ca1dc29a-26"></a><span class="kr">BEGIN</span>
+<a name="rest_code_96a8925a56b8496185cf2215ca1dc29a-27"></a>  <span class="n">next</span> <span class="o">:=</span> <span class="n">foo</span><span class="p">;</span>
+<a name="rest_code_96a8925a56b8496185cf2215ca1dc29a-28"></a>  <span class="kr">WHILE</span> <span class="n">next</span> <span class="o">#</span> <span class="nb">NIL</span> <span class="kr">DO</span>
+<a name="rest_code_96a8925a56b8496185cf2215ca1dc29a-29"></a>    <span class="n">next</span> <span class="p">();</span>
+<a name="rest_code_96a8925a56b8496185cf2215ca1dc29a-30"></a>  <span class="kr">END</span><span class="p">;</span>
+<a name="rest_code_96a8925a56b8496185cf2215ca1dc29a-31"></a><span class="kr">END</span> <span class="n">Trampoline</span><span class="p">.</span>
+</pre>
+<p>And here's <a class="reference external" href="../../../../../trampolines/oberon-2/TrampolineForever.Mod">TrampolineForever.Mod</a>, which also works!</p>
+<pre class="code modula2"><a name="rest_code_c80ad2b3f59e48629bb5362b0349b2e0-1"></a><span class="kr">MODULE</span> <span class="n">TrampolineForever</span><span class="p">;</span>
+<a name="rest_code_c80ad2b3f59e48629bb5362b0349b2e0-2"></a>  <span class="cm">(* Recurse forever without running out of stack space.  *)</span>
+<a name="rest_code_c80ad2b3f59e48629bb5362b0349b2e0-3"></a>  <span class="kr">IMPORT</span> <span class="n">Out</span><span class="p">;</span>
+<a name="rest_code_c80ad2b3f59e48629bb5362b0349b2e0-4"></a>
+<a name="rest_code_c80ad2b3f59e48629bb5362b0349b2e0-5"></a>  <span class="kr">TYPE</span> <span class="n">Thunk</span> <span class="o">=</span> <span class="kr">PROCEDURE</span> <span class="p">();</span>
+<a name="rest_code_c80ad2b3f59e48629bb5362b0349b2e0-6"></a>
+<a name="rest_code_c80ad2b3f59e48629bb5362b0349b2e0-7"></a>  <span class="kr">VAR</span>
+<a name="rest_code_c80ad2b3f59e48629bb5362b0349b2e0-8"></a>    <span class="n">next</span><span class="p">:</span> <span class="n">Thunk</span><span class="p">;</span>         <span class="cm">(* Next procedure to be called. *)</span>
+<a name="rest_code_c80ad2b3f59e48629bb5362b0349b2e0-9"></a>    <span class="n">i</span><span class="p">:</span> <span class="nb">INTEGER</span><span class="p">;</span>          <span class="cm">(* Number of times through the trampoline. *)</span>
+<a name="rest_code_c80ad2b3f59e48629bb5362b0349b2e0-10"></a>
+<a name="rest_code_c80ad2b3f59e48629bb5362b0349b2e0-11"></a>  <span class="kr">PROCEDURE</span> <span class="o">^</span><span class="n">foo</span><span class="p">;</span>        <span class="cm">(* Forward declaration. *)</span>
+<a name="rest_code_c80ad2b3f59e48629bb5362b0349b2e0-12"></a>
+<a name="rest_code_c80ad2b3f59e48629bb5362b0349b2e0-13"></a>  <span class="kr">PROCEDURE</span> <span class="n">baz</span> <span class="p">();</span>
+<a name="rest_code_c80ad2b3f59e48629bb5362b0349b2e0-14"></a>  <span class="kr">BEGIN</span>
+<a name="rest_code_c80ad2b3f59e48629bb5362b0349b2e0-15"></a>    <span class="n">Out</span><span class="p">.</span><span class="n">String</span> <span class="p">(</span><span class="s">"baz"</span><span class="p">);</span> <span class="n">Out</span><span class="p">.</span><span class="n">Ln</span><span class="p">;</span>
+<a name="rest_code_c80ad2b3f59e48629bb5362b0349b2e0-16"></a>    <span class="n">next</span> <span class="o">:=</span> <span class="n">foo</span><span class="p">;</span>
+<a name="rest_code_c80ad2b3f59e48629bb5362b0349b2e0-17"></a>  <span class="kr">END</span> <span class="n">baz</span><span class="p">;</span>
+<a name="rest_code_c80ad2b3f59e48629bb5362b0349b2e0-18"></a>
+<a name="rest_code_c80ad2b3f59e48629bb5362b0349b2e0-19"></a>  <span class="kr">PROCEDURE</span> <span class="n">bar</span> <span class="p">();</span>
+<a name="rest_code_c80ad2b3f59e48629bb5362b0349b2e0-20"></a>  <span class="kr">BEGIN</span>
+<a name="rest_code_c80ad2b3f59e48629bb5362b0349b2e0-21"></a>    <span class="n">Out</span><span class="p">.</span><span class="n">String</span> <span class="p">(</span><span class="s">"bar"</span><span class="p">);</span> <span class="n">Out</span><span class="p">.</span><span class="n">Ln</span><span class="p">;</span>
+<a name="rest_code_c80ad2b3f59e48629bb5362b0349b2e0-22"></a>    <span class="n">next</span> <span class="o">:=</span> <span class="n">baz</span><span class="p">;</span>
+<a name="rest_code_c80ad2b3f59e48629bb5362b0349b2e0-23"></a>  <span class="kr">END</span> <span class="n">bar</span><span class="p">;</span>
+<a name="rest_code_c80ad2b3f59e48629bb5362b0349b2e0-24"></a>
+<a name="rest_code_c80ad2b3f59e48629bb5362b0349b2e0-25"></a>  <span class="kr">PROCEDURE</span> <span class="n">foo</span> <span class="p">();</span>
+<a name="rest_code_c80ad2b3f59e48629bb5362b0349b2e0-26"></a>  <span class="kr">BEGIN</span>
+<a name="rest_code_c80ad2b3f59e48629bb5362b0349b2e0-27"></a>    <span class="n">Out</span><span class="p">.</span><span class="n">String</span> <span class="p">(</span><span class="s">"foo"</span><span class="p">);</span> <span class="n">Out</span><span class="p">.</span><span class="n">Ln</span><span class="p">;</span>
+<a name="rest_code_c80ad2b3f59e48629bb5362b0349b2e0-28"></a>    <span class="n">next</span> <span class="o">:=</span> <span class="n">bar</span><span class="p">;</span>
+<a name="rest_code_c80ad2b3f59e48629bb5362b0349b2e0-29"></a>  <span class="kr">END</span> <span class="n">foo</span><span class="p">;</span>
+<a name="rest_code_c80ad2b3f59e48629bb5362b0349b2e0-30"></a>
+<a name="rest_code_c80ad2b3f59e48629bb5362b0349b2e0-31"></a><span class="kr">BEGIN</span>
+<a name="rest_code_c80ad2b3f59e48629bb5362b0349b2e0-32"></a>  <span class="n">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span>
+<a name="rest_code_c80ad2b3f59e48629bb5362b0349b2e0-33"></a>  <span class="n">next</span> <span class="o">:=</span> <span class="n">foo</span><span class="p">;</span>
+<a name="rest_code_c80ad2b3f59e48629bb5362b0349b2e0-34"></a>  <span class="kr">WHILE</span> <span class="n">next</span> <span class="o">#</span> <span class="nb">NIL</span> <span class="kr">DO</span>
+<a name="rest_code_c80ad2b3f59e48629bb5362b0349b2e0-35"></a>    <span class="nb">INC</span> <span class="p">(</span><span class="n">i</span><span class="p">);</span>
+<a name="rest_code_c80ad2b3f59e48629bb5362b0349b2e0-36"></a>    <span class="n">Out</span><span class="p">.</span><span class="n">String</span> <span class="p">(</span><span class="s">"call #"</span><span class="p">);</span> <span class="n">Out</span><span class="p">.</span><span class="n">Int</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span> <span class="n">Out</span><span class="p">.</span><span class="n">Ln</span><span class="p">;</span>
+<a name="rest_code_c80ad2b3f59e48629bb5362b0349b2e0-37"></a>    <span class="n">next</span> <span class="p">();</span>
+<a name="rest_code_c80ad2b3f59e48629bb5362b0349b2e0-38"></a>  <span class="kr">END</span><span class="p">;</span>
+<a name="rest_code_c80ad2b3f59e48629bb5362b0349b2e0-39"></a><span class="kr">END</span> <span class="n">TrampolineForever</span><span class="p">.</span>
+</pre>
+<p>Wirth has continued to work on Oberon, producing an even more
+minimalist revision, often know as Oberon-07, or <a class="reference external" href="https://people.inf.ethz.ch/wirth/Oberon/index.html">Revised Oberon</a>.
+Unfortunately, he removed forward declarations and the <code class="docutils literal">LONGINT</code>
+type, which means we have to make some minor changes.</p>
+<p>I'm using OBNC (<a class="reference external" href="https://miasap.se/obnc/">OBNC1</a>, <a class="reference external" href="https://github.com/GunterMueller/OBNC">OBNC2</a>) for <a class="reference external" href="https://people.inf.ethz.ch/wirth/Oberon/index.html">Revised Oberon</a>.</p>
+<p>Here's the <a class="reference external" href="../../../../../trampolines/revised-oberon/NotForever.Mod">Revised Oberon NotForever.Mod</a>:</p>
+<pre class="code modula2"><a name="rest_code_8ac7888cc4a74ac0a8c673c79f1d2c00-1"></a><span class="kr">MODULE</span> <span class="n">NotForever</span><span class="p">;</span>           <span class="cm">(* Recurse until stack space runs out. *)</span>
+<a name="rest_code_8ac7888cc4a74ac0a8c673c79f1d2c00-2"></a>  <span class="kr">IMPORT</span> <span class="n">Out</span><span class="p">;</span>
+<a name="rest_code_8ac7888cc4a74ac0a8c673c79f1d2c00-3"></a>  <span class="kr">VAR</span> <span class="n">i</span><span class="p">:</span> <span class="nb">INTEGER</span><span class="p">;</span>            <span class="cm">(* Number of times f has been called. *)</span>
+<a name="rest_code_8ac7888cc4a74ac0a8c673c79f1d2c00-4"></a>    <span class="cm">(* Alas, no more LONGINT. *)</span>
+<a name="rest_code_8ac7888cc4a74ac0a8c673c79f1d2c00-5"></a>
+<a name="rest_code_8ac7888cc4a74ac0a8c673c79f1d2c00-6"></a>  <span class="kr">PROCEDURE</span> <span class="n">f</span><span class="p">;</span>
+<a name="rest_code_8ac7888cc4a74ac0a8c673c79f1d2c00-7"></a>  <span class="kr">BEGIN</span>
+<a name="rest_code_8ac7888cc4a74ac0a8c673c79f1d2c00-8"></a>    <span class="nb">INC</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+<a name="rest_code_8ac7888cc4a74ac0a8c673c79f1d2c00-9"></a>    <span class="n">Out</span><span class="p">.</span><span class="n">String</span> <span class="p">(</span><span class="s">"call #"</span><span class="p">);</span> <span class="n">Out</span><span class="p">.</span><span class="n">Int</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span> <span class="n">Out</span><span class="p">.</span><span class="n">Ln</span><span class="p">;</span>
+<a name="rest_code_8ac7888cc4a74ac0a8c673c79f1d2c00-10"></a>    <span class="n">f</span><span class="p">;</span>
+<a name="rest_code_8ac7888cc4a74ac0a8c673c79f1d2c00-11"></a>  <span class="kr">END</span> <span class="n">f</span><span class="p">;</span>
+<a name="rest_code_8ac7888cc4a74ac0a8c673c79f1d2c00-12"></a>
+<a name="rest_code_8ac7888cc4a74ac0a8c673c79f1d2c00-13"></a><span class="kr">BEGIN</span>
+<a name="rest_code_8ac7888cc4a74ac0a8c673c79f1d2c00-14"></a>  <span class="n">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span>
+<a name="rest_code_8ac7888cc4a74ac0a8c673c79f1d2c00-15"></a>  <span class="n">f</span><span class="p">;</span>
+<a name="rest_code_8ac7888cc4a74ac0a8c673c79f1d2c00-16"></a><span class="kr">END</span> <span class="n">NotForever</span><span class="p">.</span>
+</pre>
+<p>Here's the <a class="reference external" href="../../../../../trampolines/revised-oberon/Trampoline.Mod">Revised Oberon Trampoline.Mod</a>:</p>
+<pre class="code modula2"><a name="rest_code_2063e684b3a2452bac72adca8d497633-1"></a><span class="kr">MODULE</span> <span class="n">Trampoline</span><span class="p">;</span>              <span class="cm">(* Demonstrate lisp-style trampolines. *)</span>
+<a name="rest_code_2063e684b3a2452bac72adca8d497633-2"></a>  <span class="kr">IMPORT</span> <span class="n">Out</span><span class="p">;</span>
+<a name="rest_code_2063e684b3a2452bac72adca8d497633-3"></a>
+<a name="rest_code_2063e684b3a2452bac72adca8d497633-4"></a>  <span class="kr">TYPE</span> <span class="n">Thunk</span> <span class="o">=</span> <span class="kr">PROCEDURE</span> <span class="p">();</span>
+<a name="rest_code_2063e684b3a2452bac72adca8d497633-5"></a>
+<a name="rest_code_2063e684b3a2452bac72adca8d497633-6"></a>  <span class="kr">VAR</span> <span class="n">next</span><span class="p">:</span> <span class="n">Thunk</span><span class="p">;</span>              <span class="cm">(* Next procedure to be called. *)</span>
+<a name="rest_code_2063e684b3a2452bac72adca8d497633-7"></a>
+<a name="rest_code_2063e684b3a2452bac72adca8d497633-8"></a>  <span class="kr">PROCEDURE</span> <span class="n">baz</span> <span class="p">();</span>
+<a name="rest_code_2063e684b3a2452bac72adca8d497633-9"></a>  <span class="kr">BEGIN</span>
+<a name="rest_code_2063e684b3a2452bac72adca8d497633-10"></a>    <span class="n">Out</span><span class="p">.</span><span class="n">String</span> <span class="p">(</span><span class="s">"baz"</span><span class="p">);</span> <span class="n">Out</span><span class="p">.</span><span class="n">Ln</span><span class="p">;</span>
+<a name="rest_code_2063e684b3a2452bac72adca8d497633-11"></a>    <span class="n">next</span> <span class="o">:=</span> <span class="nb">NIL</span><span class="p">;</span>
+<a name="rest_code_2063e684b3a2452bac72adca8d497633-12"></a>  <span class="kr">END</span> <span class="n">baz</span><span class="p">;</span>
+<a name="rest_code_2063e684b3a2452bac72adca8d497633-13"></a>
+<a name="rest_code_2063e684b3a2452bac72adca8d497633-14"></a>  <span class="kr">PROCEDURE</span> <span class="n">bar</span> <span class="p">();</span>
+<a name="rest_code_2063e684b3a2452bac72adca8d497633-15"></a>  <span class="kr">BEGIN</span>
+<a name="rest_code_2063e684b3a2452bac72adca8d497633-16"></a>    <span class="n">Out</span><span class="p">.</span><span class="n">String</span> <span class="p">(</span><span class="s">"bar"</span><span class="p">);</span> <span class="n">Out</span><span class="p">.</span><span class="n">Ln</span><span class="p">;</span>
+<a name="rest_code_2063e684b3a2452bac72adca8d497633-17"></a>    <span class="n">next</span> <span class="o">:=</span> <span class="n">baz</span><span class="p">;</span>
+<a name="rest_code_2063e684b3a2452bac72adca8d497633-18"></a>  <span class="kr">END</span> <span class="n">bar</span><span class="p">;</span>
+<a name="rest_code_2063e684b3a2452bac72adca8d497633-19"></a>
+<a name="rest_code_2063e684b3a2452bac72adca8d497633-20"></a>  <span class="kr">PROCEDURE</span> <span class="n">foo</span> <span class="p">();</span>
+<a name="rest_code_2063e684b3a2452bac72adca8d497633-21"></a>  <span class="kr">BEGIN</span>
+<a name="rest_code_2063e684b3a2452bac72adca8d497633-22"></a>    <span class="n">Out</span><span class="p">.</span><span class="n">String</span> <span class="p">(</span><span class="s">"foo"</span><span class="p">);</span> <span class="n">Out</span><span class="p">.</span><span class="n">Ln</span><span class="p">;</span>
+<a name="rest_code_2063e684b3a2452bac72adca8d497633-23"></a>    <span class="n">next</span> <span class="o">:=</span> <span class="n">bar</span><span class="p">;</span>
+<a name="rest_code_2063e684b3a2452bac72adca8d497633-24"></a>  <span class="kr">END</span> <span class="n">foo</span><span class="p">;</span>
+<a name="rest_code_2063e684b3a2452bac72adca8d497633-25"></a>
+<a name="rest_code_2063e684b3a2452bac72adca8d497633-26"></a><span class="kr">BEGIN</span>
+<a name="rest_code_2063e684b3a2452bac72adca8d497633-27"></a>  <span class="n">next</span> <span class="o">:=</span> <span class="n">foo</span><span class="p">;</span>
+<a name="rest_code_2063e684b3a2452bac72adca8d497633-28"></a>  <span class="kr">WHILE</span> <span class="n">next</span> <span class="o">#</span> <span class="nb">NIL</span> <span class="kr">DO</span>
+<a name="rest_code_2063e684b3a2452bac72adca8d497633-29"></a>    <span class="n">next</span> <span class="p">();</span>
+<a name="rest_code_2063e684b3a2452bac72adca8d497633-30"></a>  <span class="kr">END</span><span class="p">;</span>
+<a name="rest_code_2063e684b3a2452bac72adca8d497633-31"></a><span class="kr">END</span> <span class="n">Trampoline</span><span class="p">.</span>
+</pre>
+<p>Note that with forward declarations removed, we just declare a
+procedure type and procedure variable, initialize it before starting
+the trampoline, and refer to it instead of <code class="docutils literal">foo</code> in procedure
+<code class="docutils literal">baz</code>.</p>
+<p>Here's the <a class="reference external" href="../../../../../trampolines/revised-oberon/TrampolineForever.Mod">Revised Oberon TrampolineForever.Mod</a></p>
+<pre class="code modula2"><a name="rest_code_ffae2b54a1434404846656e3fff8d144-1"></a><span class="kr">MODULE</span> <span class="n">TrampolineForever</span><span class="p">;</span>
+<a name="rest_code_ffae2b54a1434404846656e3fff8d144-2"></a>  <span class="cm">(* Recurse forever without running out of stack space.  *)</span>
+<a name="rest_code_ffae2b54a1434404846656e3fff8d144-3"></a>  <span class="kr">IMPORT</span> <span class="n">Out</span><span class="p">;</span>
+<a name="rest_code_ffae2b54a1434404846656e3fff8d144-4"></a>
+<a name="rest_code_ffae2b54a1434404846656e3fff8d144-5"></a>  <span class="kr">TYPE</span> <span class="n">Thunk</span> <span class="o">=</span> <span class="kr">PROCEDURE</span> <span class="p">();</span>
+<a name="rest_code_ffae2b54a1434404846656e3fff8d144-6"></a>
+<a name="rest_code_ffae2b54a1434404846656e3fff8d144-7"></a>  <span class="kr">VAR</span>
+<a name="rest_code_ffae2b54a1434404846656e3fff8d144-8"></a>    <span class="n">forward</span><span class="p">:</span> <span class="n">Thunk</span><span class="p">;</span>      <span class="cm">(* Forward declaration. *)</span>
+<a name="rest_code_ffae2b54a1434404846656e3fff8d144-9"></a>    <span class="n">next</span><span class="p">:</span> <span class="n">Thunk</span><span class="p">;</span>         <span class="cm">(* Next procedure to be called. *)</span>
+<a name="rest_code_ffae2b54a1434404846656e3fff8d144-10"></a>    <span class="n">i</span><span class="p">:</span> <span class="nb">INTEGER</span><span class="p">;</span>          <span class="cm">(* Number of times through the trampoline. *)</span>
+<a name="rest_code_ffae2b54a1434404846656e3fff8d144-11"></a>
+<a name="rest_code_ffae2b54a1434404846656e3fff8d144-12"></a>  <span class="kr">PROCEDURE</span> <span class="n">baz</span> <span class="p">();</span>
+<a name="rest_code_ffae2b54a1434404846656e3fff8d144-13"></a>  <span class="kr">BEGIN</span>
+<a name="rest_code_ffae2b54a1434404846656e3fff8d144-14"></a>    <span class="n">Out</span><span class="p">.</span><span class="n">String</span> <span class="p">(</span><span class="s">"baz"</span><span class="p">);</span> <span class="n">Out</span><span class="p">.</span><span class="n">Ln</span><span class="p">;</span>
+<a name="rest_code_ffae2b54a1434404846656e3fff8d144-15"></a>    <span class="n">next</span> <span class="o">:=</span> <span class="n">forward</span><span class="p">;</span>
+<a name="rest_code_ffae2b54a1434404846656e3fff8d144-16"></a>  <span class="kr">END</span> <span class="n">baz</span><span class="p">;</span>
+<a name="rest_code_ffae2b54a1434404846656e3fff8d144-17"></a>
+<a name="rest_code_ffae2b54a1434404846656e3fff8d144-18"></a>  <span class="kr">PROCEDURE</span> <span class="n">bar</span> <span class="p">();</span>
+<a name="rest_code_ffae2b54a1434404846656e3fff8d144-19"></a>  <span class="kr">BEGIN</span>
+<a name="rest_code_ffae2b54a1434404846656e3fff8d144-20"></a>    <span class="n">Out</span><span class="p">.</span><span class="n">String</span> <span class="p">(</span><span class="s">"bar"</span><span class="p">);</span> <span class="n">Out</span><span class="p">.</span><span class="n">Ln</span><span class="p">;</span>
+<a name="rest_code_ffae2b54a1434404846656e3fff8d144-21"></a>    <span class="n">next</span> <span class="o">:=</span> <span class="n">baz</span><span class="p">;</span>
+<a name="rest_code_ffae2b54a1434404846656e3fff8d144-22"></a>  <span class="kr">END</span> <span class="n">bar</span><span class="p">;</span>
+<a name="rest_code_ffae2b54a1434404846656e3fff8d144-23"></a>
+<a name="rest_code_ffae2b54a1434404846656e3fff8d144-24"></a>  <span class="kr">PROCEDURE</span> <span class="n">foo</span> <span class="p">();</span>
+<a name="rest_code_ffae2b54a1434404846656e3fff8d144-25"></a>  <span class="kr">BEGIN</span>
+<a name="rest_code_ffae2b54a1434404846656e3fff8d144-26"></a>    <span class="n">Out</span><span class="p">.</span><span class="n">String</span> <span class="p">(</span><span class="s">"foo"</span><span class="p">);</span> <span class="n">Out</span><span class="p">.</span><span class="n">Ln</span><span class="p">;</span>
+<a name="rest_code_ffae2b54a1434404846656e3fff8d144-27"></a>    <span class="n">next</span> <span class="o">:=</span> <span class="n">bar</span><span class="p">;</span>
+<a name="rest_code_ffae2b54a1434404846656e3fff8d144-28"></a>  <span class="kr">END</span> <span class="n">foo</span><span class="p">;</span>
+<a name="rest_code_ffae2b54a1434404846656e3fff8d144-29"></a>
+<a name="rest_code_ffae2b54a1434404846656e3fff8d144-30"></a><span class="kr">BEGIN</span>
+<a name="rest_code_ffae2b54a1434404846656e3fff8d144-31"></a>  <span class="n">forward</span> <span class="o">:=</span> <span class="n">foo</span><span class="p">;</span>
+<a name="rest_code_ffae2b54a1434404846656e3fff8d144-32"></a>  <span class="n">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span>
+<a name="rest_code_ffae2b54a1434404846656e3fff8d144-33"></a>  <span class="n">next</span> <span class="o">:=</span> <span class="n">foo</span><span class="p">;</span>
+<a name="rest_code_ffae2b54a1434404846656e3fff8d144-34"></a>  <span class="kr">WHILE</span> <span class="n">next</span> <span class="o">#</span> <span class="nb">NIL</span> <span class="kr">DO</span>
+<a name="rest_code_ffae2b54a1434404846656e3fff8d144-35"></a>    <span class="nb">INC</span> <span class="p">(</span><span class="n">i</span><span class="p">);</span>
+<a name="rest_code_ffae2b54a1434404846656e3fff8d144-36"></a>    <span class="n">Out</span><span class="p">.</span><span class="n">String</span> <span class="p">(</span><span class="s">"call #"</span><span class="p">);</span> <span class="n">Out</span><span class="p">.</span><span class="n">Int</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span> <span class="n">Out</span><span class="p">.</span><span class="n">Ln</span><span class="p">;</span>
+<a name="rest_code_ffae2b54a1434404846656e3fff8d144-37"></a>    <span class="n">next</span> <span class="p">();</span>
+<a name="rest_code_ffae2b54a1434404846656e3fff8d144-38"></a>  <span class="kr">END</span><span class="p">;</span>
+<a name="rest_code_ffae2b54a1434404846656e3fff8d144-39"></a><span class="kr">END</span> <span class="n">TrampolineForever</span><span class="p">.</span>
+</pre>
+<p>And of course, since we mentioned <a class="reference external" href="https://en.wikipedia.org/wiki/Ada_(programming_language)">Ada</a> above, we should do a version
+in that.  I'm using <a class="reference external" href="https://en.wikipedia.org/wiki/GNAT">GNAT</a>.</p>
+<p>Here's <a class="reference external" href="../../../../../trampolines/ada/not_forever.adb">not_forever.adb</a>:</p>
+<pre class="code ada"><a name="rest_code_0637b1874a0e493b95cb7aae437a4fc5-1"></a><span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+<a name="rest_code_0637b1874a0e493b95cb7aae437a4fc5-2"></a><span class="kd">procedure</span> <span class="nf">not_forever</span> <span class="kr">is</span>        <span class="c1">-- recurse until stack space runs out.</span>
+<a name="rest_code_0637b1874a0e493b95cb7aae437a4fc5-3"></a>  <span class="kd">type</span> <span class="kt">Unsigned</span> <span class="kr">is</span> <span class="ow">mod</span> <span class="mi">2</span><span class="o">**</span><span class="mi">64</span><span class="p">;</span>   <span class="c1">-- wrap to 0 when maximum value is execeeded.</span>
+<a name="rest_code_0637b1874a0e493b95cb7aae437a4fc5-4"></a>  <span class="n">i</span><span class="p">:</span> <span class="n">Unsigned</span> <span class="p">:=</span> <span class="mi">0</span><span class="p">;</span>             <span class="c1">-- Number of times f has been called.</span>
+<a name="rest_code_0637b1874a0e493b95cb7aae437a4fc5-5"></a>
+<a name="rest_code_0637b1874a0e493b95cb7aae437a4fc5-6"></a>  <span class="kd">procedure</span> <span class="nf">f</span> <span class="kr">is</span>
+<a name="rest_code_0637b1874a0e493b95cb7aae437a4fc5-7"></a>  <span class="kr">begin</span>
+<a name="rest_code_0637b1874a0e493b95cb7aae437a4fc5-8"></a>    <span class="n">i</span> <span class="p">:=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+<a name="rest_code_0637b1874a0e493b95cb7aae437a4fc5-9"></a>    <span class="n">f</span><span class="p">;</span>
+<a name="rest_code_0637b1874a0e493b95cb7aae437a4fc5-10"></a>  <span class="kr">end</span> <span class="nf">f</span><span class="p">;</span>
+<a name="rest_code_0637b1874a0e493b95cb7aae437a4fc5-11"></a>
+<a name="rest_code_0637b1874a0e493b95cb7aae437a4fc5-12"></a><span class="kr">begin</span>
+<a name="rest_code_0637b1874a0e493b95cb7aae437a4fc5-13"></a>  <span class="n">f</span><span class="p">;</span>
+<a name="rest_code_0637b1874a0e493b95cb7aae437a4fc5-14"></a><span class="kr">exception</span>
+<a name="rest_code_0637b1874a0e493b95cb7aae437a4fc5-15"></a>  <span class="kr">when</span> <span class="n">STORAGE_ERROR</span> <span class="p">=&gt;</span>
+<a name="rest_code_0637b1874a0e493b95cb7aae437a4fc5-16"></a>  <span class="n">Put</span> <span class="p">(</span><span class="s">"STORAGE_ERROR raised with i = "</span><span class="p">);</span> <span class="n">Put</span> <span class="p">(</span><span class="n">i</span><span class="p">'</span><span class="na">Image</span><span class="p">);</span> <span class="n">New_Line</span><span class="p">;</span>
+<a name="rest_code_0637b1874a0e493b95cb7aae437a4fc5-17"></a><span class="kr">end</span> <span class="nf">not_forever</span><span class="p">;</span>
+</pre>
+<p>Again, <a class="reference external" href="https://en.wikipedia.org/wiki/Ada_(programming_language)">Ada</a> would have the same problem with <a class="reference external" href="https://en.wikipedia.org/wiki/Recursive_data_type">recursive type</a>s as
+the Oberon dialects.  Don't look at the C version and wander off into
+forest of <code class="docutils literal">Ada.Unchecked_Conversion</code> because that's unsafe, or the
+thicket of <code class="docutils literal">System.Address_To_Access_Conversions</code>, because that
+one's really unsafe (and didn't work, when I tried it).  Instead, do
+the same thing as we did in the Oberon dialects, and move to a global
+variable instead of returning the values from the functions.</p>
+<p>Here's <a class="reference external" href="../../../../../trampolines/ada/trampoline.adb">trampoline.adb</a>:</p>
+<pre class="code ada"><a name="rest_code_e90348b069f8437cba875391cce19fc9-1"></a><span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+<a name="rest_code_e90348b069f8437cba875391cce19fc9-2"></a><span class="kd">procedure</span> <span class="nf">trampoline</span> <span class="kr">is</span>         <span class="c1">-- Demonstrate lisp-style trampolines.</span>
+<a name="rest_code_e90348b069f8437cba875391cce19fc9-3"></a>    <span class="kd">type</span> <span class="kt">Thunk</span> <span class="kr">is</span> <span class="kr">access</span> <span class="kd">procedure</span><span class="p">;</span>
+<a name="rest_code_e90348b069f8437cba875391cce19fc9-4"></a>
+<a name="rest_code_e90348b069f8437cba875391cce19fc9-5"></a>    <span class="n">Next</span><span class="p">:</span> <span class="n">Thunk</span> <span class="p">:=</span> <span class="kc">null</span><span class="p">;</span>        <span class="c1">-- Next procedure to be called.</span>
+<a name="rest_code_e90348b069f8437cba875391cce19fc9-6"></a>
+<a name="rest_code_e90348b069f8437cba875391cce19fc9-7"></a>    <span class="kd">procedure</span> <span class="nf">baz</span> <span class="kr">is</span>
+<a name="rest_code_e90348b069f8437cba875391cce19fc9-8"></a>    <span class="kr">begin</span>
+<a name="rest_code_e90348b069f8437cba875391cce19fc9-9"></a>        <span class="n">Put_Line</span> <span class="p">(</span><span class="s">"baz"</span><span class="p">);</span>
+<a name="rest_code_e90348b069f8437cba875391cce19fc9-10"></a>        <span class="n">Next</span> <span class="p">:=</span> <span class="kc">null</span><span class="p">;</span>
+<a name="rest_code_e90348b069f8437cba875391cce19fc9-11"></a>    <span class="kr">end</span> <span class="nf">baz</span><span class="p">;</span>
+<a name="rest_code_e90348b069f8437cba875391cce19fc9-12"></a>
+<a name="rest_code_e90348b069f8437cba875391cce19fc9-13"></a>    <span class="kd">procedure</span> <span class="nf">bar</span> <span class="kr">is</span>
+<a name="rest_code_e90348b069f8437cba875391cce19fc9-14"></a>    <span class="kr">begin</span>
+<a name="rest_code_e90348b069f8437cba875391cce19fc9-15"></a>        <span class="n">Put_Line</span> <span class="p">(</span><span class="s">"bar"</span><span class="p">);</span>
+<a name="rest_code_e90348b069f8437cba875391cce19fc9-16"></a>        <span class="n">Next</span> <span class="p">:=</span> <span class="n">baz</span><span class="p">'</span><span class="na">Access</span><span class="p">;</span>
+<a name="rest_code_e90348b069f8437cba875391cce19fc9-17"></a>    <span class="kr">end</span> <span class="nf">bar</span><span class="p">;</span>
+<a name="rest_code_e90348b069f8437cba875391cce19fc9-18"></a>
+<a name="rest_code_e90348b069f8437cba875391cce19fc9-19"></a>    <span class="kd">procedure</span> <span class="nf">foo</span> <span class="kr">is</span>
+<a name="rest_code_e90348b069f8437cba875391cce19fc9-20"></a>    <span class="kr">begin</span>
+<a name="rest_code_e90348b069f8437cba875391cce19fc9-21"></a>        <span class="n">Put_Line</span> <span class="p">(</span><span class="s">"foo"</span><span class="p">);</span>
+<a name="rest_code_e90348b069f8437cba875391cce19fc9-22"></a>        <span class="n">Next</span> <span class="p">:=</span> <span class="n">bar</span><span class="p">'</span><span class="na">Access</span><span class="p">;</span>
+<a name="rest_code_e90348b069f8437cba875391cce19fc9-23"></a>    <span class="kr">end</span> <span class="nf">foo</span><span class="p">;</span>
+<a name="rest_code_e90348b069f8437cba875391cce19fc9-24"></a>
+<a name="rest_code_e90348b069f8437cba875391cce19fc9-25"></a><span class="kr">begin</span>
+<a name="rest_code_e90348b069f8437cba875391cce19fc9-26"></a>    <span class="n">next</span> <span class="p">:=</span> <span class="n">foo</span><span class="p">'</span><span class="na">Access</span><span class="p">;</span>
+<a name="rest_code_e90348b069f8437cba875391cce19fc9-27"></a>    <span class="kr">while</span> <span class="n">Next</span> <span class="o">/=</span> <span class="kc">null</span> <span class="kr">loop</span>
+<a name="rest_code_e90348b069f8437cba875391cce19fc9-28"></a>        <span class="n">Next</span><span class="p">.</span><span class="kr">all</span><span class="p">;</span>
+<a name="rest_code_e90348b069f8437cba875391cce19fc9-29"></a>    <span class="kr">end</span> <span class="kr">loop</span><span class="p">;</span>
+<a name="rest_code_e90348b069f8437cba875391cce19fc9-30"></a><span class="kr">end</span> <span class="nf">trampoline</span><span class="p">;</span>
+</pre>
+<p>And here's <a class="reference external" href="../../../../../trampolines/ada/trampoline_forever.adb">trampoline_forever.adb</a>:</p>
+<pre class="code ada"><a name="rest_code_555276aa2e264440b943b97dcc060db4-1"></a><span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+<a name="rest_code_555276aa2e264440b943b97dcc060db4-2"></a><span class="kd">procedure</span> <span class="nf">trampoline_forever</span> <span class="kr">is</span>
+<a name="rest_code_555276aa2e264440b943b97dcc060db4-3"></a>  <span class="c1">-- Recurse forever without running out of stack space.</span>
+<a name="rest_code_555276aa2e264440b943b97dcc060db4-4"></a>  <span class="kd">type</span> <span class="kt">Unsigned</span> <span class="kr">is</span> <span class="ow">mod</span> <span class="mi">2</span><span class="o">**</span><span class="mi">64</span><span class="p">;</span>   <span class="c1">-- wrap to 0 when maximum value is execeeded.</span>
+<a name="rest_code_555276aa2e264440b943b97dcc060db4-5"></a>  <span class="n">i</span><span class="p">:</span> <span class="n">Unsigned</span> <span class="p">:=</span> <span class="mi">0</span><span class="p">;</span>             <span class="c1">-- Number of times through the trampoline.</span>
+<a name="rest_code_555276aa2e264440b943b97dcc060db4-6"></a>
+<a name="rest_code_555276aa2e264440b943b97dcc060db4-7"></a>  <span class="kd">type</span> <span class="kt">Thunk</span> <span class="kr">is</span> <span class="kr">access</span> <span class="kd">procedure</span><span class="p">;</span>
+<a name="rest_code_555276aa2e264440b943b97dcc060db4-8"></a>
+<a name="rest_code_555276aa2e264440b943b97dcc060db4-9"></a>  <span class="n">Next</span><span class="p">:</span> <span class="n">Thunk</span> <span class="p">:=</span> <span class="kc">null</span><span class="p">;</span>          <span class="c1">-- Next procedure to be called.</span>
+<a name="rest_code_555276aa2e264440b943b97dcc060db4-10"></a>
+<a name="rest_code_555276aa2e264440b943b97dcc060db4-11"></a>  <span class="kd">procedure</span> <span class="nf">foo</span><span class="p">;</span>        <span class="c1">-- forward declaration.</span>
+<a name="rest_code_555276aa2e264440b943b97dcc060db4-12"></a>
+<a name="rest_code_555276aa2e264440b943b97dcc060db4-13"></a>  <span class="kd">procedure</span> <span class="nf">baz</span> <span class="kr">is</span>
+<a name="rest_code_555276aa2e264440b943b97dcc060db4-14"></a>  <span class="kr">begin</span>
+<a name="rest_code_555276aa2e264440b943b97dcc060db4-15"></a>    <span class="n">Put_Line</span> <span class="p">(</span><span class="s">"baz"</span><span class="p">);</span>
+<a name="rest_code_555276aa2e264440b943b97dcc060db4-16"></a>    <span class="n">Next</span> <span class="p">:=</span> <span class="n">foo</span><span class="p">'</span><span class="na">access</span><span class="p">;</span>
+<a name="rest_code_555276aa2e264440b943b97dcc060db4-17"></a>  <span class="kr">end</span> <span class="nf">baz</span><span class="p">;</span>
+<a name="rest_code_555276aa2e264440b943b97dcc060db4-18"></a>
+<a name="rest_code_555276aa2e264440b943b97dcc060db4-19"></a>  <span class="kd">procedure</span> <span class="nf">bar</span> <span class="kr">is</span>
+<a name="rest_code_555276aa2e264440b943b97dcc060db4-20"></a>  <span class="kr">begin</span>
+<a name="rest_code_555276aa2e264440b943b97dcc060db4-21"></a>    <span class="n">Put_Line</span> <span class="p">(</span><span class="s">"bar"</span><span class="p">);</span>
+<a name="rest_code_555276aa2e264440b943b97dcc060db4-22"></a>    <span class="n">Next</span> <span class="p">:=</span> <span class="n">baz</span><span class="p">'</span><span class="na">Access</span><span class="p">;</span>
+<a name="rest_code_555276aa2e264440b943b97dcc060db4-23"></a>  <span class="kr">end</span> <span class="nf">bar</span><span class="p">;</span>
+<a name="rest_code_555276aa2e264440b943b97dcc060db4-24"></a>
+<a name="rest_code_555276aa2e264440b943b97dcc060db4-25"></a>  <span class="kd">procedure</span> <span class="nf">foo</span> <span class="kr">is</span>
+<a name="rest_code_555276aa2e264440b943b97dcc060db4-26"></a>  <span class="kr">begin</span>
+<a name="rest_code_555276aa2e264440b943b97dcc060db4-27"></a>    <span class="n">Put_Line</span> <span class="p">(</span><span class="s">"foo"</span><span class="p">);</span>
+<a name="rest_code_555276aa2e264440b943b97dcc060db4-28"></a>    <span class="n">Next</span> <span class="p">:=</span> <span class="n">bar</span><span class="p">'</span><span class="na">Access</span><span class="p">;</span>
+<a name="rest_code_555276aa2e264440b943b97dcc060db4-29"></a>  <span class="kr">end</span> <span class="nf">foo</span><span class="p">;</span>
+<a name="rest_code_555276aa2e264440b943b97dcc060db4-30"></a>
+<a name="rest_code_555276aa2e264440b943b97dcc060db4-31"></a><span class="kr">begin</span>
+<a name="rest_code_555276aa2e264440b943b97dcc060db4-32"></a>  <span class="n">next</span> <span class="p">:=</span> <span class="n">foo</span><span class="p">'</span><span class="na">Access</span><span class="p">;</span>
+<a name="rest_code_555276aa2e264440b943b97dcc060db4-33"></a>  <span class="kr">while</span> <span class="n">Next</span> <span class="o">/=</span> <span class="kc">null</span> <span class="kr">loop</span>
+<a name="rest_code_555276aa2e264440b943b97dcc060db4-34"></a>    <span class="n">i</span> <span class="p">:=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+<a name="rest_code_555276aa2e264440b943b97dcc060db4-35"></a>    <span class="n">Put</span> <span class="p">(</span><span class="s">"call #"</span><span class="p">);</span> <span class="n">Put</span> <span class="p">(</span><span class="n">i</span><span class="p">'</span><span class="na">Image</span><span class="p">);</span> <span class="n">New_Line</span><span class="p">;</span>
+<a name="rest_code_555276aa2e264440b943b97dcc060db4-36"></a>    <span class="n">Next</span><span class="p">.</span><span class="kr">all</span><span class="p">;</span>
+<a name="rest_code_555276aa2e264440b943b97dcc060db4-37"></a>  <span class="kr">end</span> <span class="kr">loop</span><span class="p">;</span>
+<a name="rest_code_555276aa2e264440b943b97dcc060db4-38"></a><span class="kr">exception</span>
+<a name="rest_code_555276aa2e264440b943b97dcc060db4-39"></a>  <span class="kr">when</span> <span class="n">STORAGE_ERROR</span> <span class="p">=&gt;</span>
+<a name="rest_code_555276aa2e264440b943b97dcc060db4-40"></a>  <span class="n">Put</span> <span class="p">(</span><span class="s">"STORAGE_ERROR raised with i = "</span><span class="p">);</span> <span class="n">Put</span> <span class="p">(</span><span class="n">i</span><span class="p">'</span><span class="na">Image</span><span class="p">);</span> <span class="n">New_Line</span><span class="p">;</span>
+<a name="rest_code_555276aa2e264440b943b97dcc060db4-41"></a><span class="kr">end</span> <span class="nf">trampoline_forever</span><span class="p">;</span>
+</pre>
+<hr class="docutils">
+<p>If you want to play around with this, the code is in a
+<a class="reference external" href="https://github.com/tkurtbond/trampolines">repository</a> at <a class="reference external" href="https://github.com/">Github</a>.</p>
+</div>
+    </div>
+    <script>var pfHeaderImgUrl = '';var pfHeaderTagline = '';var pfdisableClickToDel = 0;var pfHideImages = 0;var pfImageDisplayStyle = 'right';var pfDisablePDF = 0;var pfDisableEmail = 0;var pfDisablePrint = 0;var pfCustomCSS = '';var pfBtVersion='2';(function(){var js,pf;pf=document.createElement('script');pf.type='text/javascript';pf.src='//cdn.printfriendly.com/printfriendly.js';document.getElementsByTagName('head')[0].appendChild(pf)})();</script><a href="https://www.printfriendly.com" style="color:#6D9F00;text-decoration:none;" class="printfriendly" onclick="window.print();return false;" title="Printer Friendly and PDF"><img style="border:none;-webkit-box-shadow:none;box-shadow:none;" src="//cdn.printfriendly.com/buttons/printfriendly-pdf-button.png" alt="Print Friendly and PDF"></a>    
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../../../../../categories/ada/" rel="tag">ada</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/c/" rel="tag">c</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/cheney-on-the-mta/" rel="tag">cheney on the m.t.a.</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/clisp/" rel="tag">clisp</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/common-lisp/" rel="tag">common lisp</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/continuation-passing-style/" rel="tag">continuation-passing style</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/cps/" rel="tag">cps</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/ecl/" rel="tag">ecl</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/gcc/" rel="tag">gcc</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/github/" rel="tag">github</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/gnat/" rel="tag">gnat</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/hanspeter-mossenbock/" rel="tag">hanspeter mössenböck</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/lisp-style-trampolines/" rel="tag">lisp-style trampolines</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/modula/" rel="tag">modula</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/modula-2/" rel="tag">modula-2</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/niklaus-wirth/" rel="tag">niklaus wirth</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/no-assembly-required/" rel="tag">no assembly required</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/oberon-system/" rel="tag">oberon system</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/oberon-2/" rel="tag">oberon-2</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/oberon-07/" rel="tag">oberon-07</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/obnc/" rel="tag">obnc</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/pascal/" rel="tag">pascal</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/rabbit/" rel="tag">rabbit</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/record-types/" rel="tag">record types</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/revised-oberon/" rel="tag">revised oberon</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/sbcl/" rel="tag">sbcl</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/scheme/" rel="tag">scheme</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/tail-call/" rel="tag">tail call</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/tail-call-optimization/" rel="tag">tail call optimization</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/trampolines/" rel="tag">trampolines</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/type-extensions/" rel="tag">type extensions</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/uuo-handler/" rel="tag">uuo handler</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/vishap-oberon/" rel="tag">vishap oberon</a></li>
+        </ul>
+<ul class="pager hidden-print">
+<li class="previous">
+                <a href="../../10/installing-a-recent-version-of-the-a2-operatinng-system-on-unix/" rel="prev" title="Installing a recent version of the A2 operatinng system on UNIX">Previous post</a>
+            </li>
+        </ul></nav></aside><section class="comments hidden-print"><h2>Comments</h2>
+                        <div id="disqus_thread"></div>
+        <script>
+        var disqus_shortname ="lacking-natural-simplicity",
+            disqus_url="https://tkurtbond.github.io/posts/2022/06/14/lisp-style-trampolines-in-common-lisp-c-ada-oberon-2-and-revised-oberon/",
+        disqus_title="Lisp-style trampolines in Common Lisp, C, Ada, Oberon-2, and Revised Oberon",
+        disqus_identifier="cache/posts/2022/06/14/lisp-style-trampolines-in-common-lisp-c-ada-oberon-2-and-revised-oberon.html",
+        disqus_config = function () {
+            this.language = "en";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.async = true;
+            dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script><noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+    <a href="https://disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+        </section></article><script>var disqus_shortname="lacking-natural-simplicity";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
+</div>
+            <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+                    <div class="sidebar-module sidebar-module-inset">
+      <h4>About</h4>
+      <p>Lacking Natural Simplicity is one, not particularly flattering, 
+         definition of sophisticated.  
+         This blog chronicles my journey through our at times too complicated 
+         and sophisticated world. </p>
+    </div>
+    <div class="sidebar-module">
+      <h4>Links</h4>
+      <ol class="list-unstyled">
+<li><a href="../../../../../pages/about-the-blog/index.html">About the Blog</a></li>
+        <li><a href="../../../../../pages/colophon/index.html">Colophon</a></li>
+        <li><a href="../../../../../pages/typographical-conventions/index.html">Typographical Conventions</a></li>
+        <li><a href="../../../../../pages/static-pages-index/index.html">Pages</a></li>
+        <li>
+<a href="http://tkb.tx0.org/">My other web page</a>
+            <p>    Mostly empty</p>
+        </li>
+      </ol>
+</div>
+    
+            </div>
+        <!--End of body content-->
+        </div>
+    </div>
+</div>
+
+<footer class="blog-footer" id="footer">
+    Contents © 2022         <a href="mailto:tkurtbond@gmail.com">T. Kurt Bond</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+    
+</footer><script src="../../../../../assets/js/all-nocdn.js"></script><!-- fancy dates --><script>
+    moment.locale("en");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates --><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element) {
+            return element.getElementsByTagName('img')[0].alt;
+    }});
+    </script>
+</body>
+</html>
