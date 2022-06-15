@@ -1,7 +1,7 @@
 .. title: Lisp-style trampolines in Common Lisp, C, Ada, Oberon-2, and Revised Oberon
 .. slug: lisp-style-trampolines-in-common-lisp-c-ada-oberon-2-and-revised-oberon
 .. date: 2022-06-14 15:49:55 UTC-04:00
-.. tags: ada,c,common lisp,oberon-07,oberon-2,trampolines,tail call optimization,lisp-style trampolines,cheney on the m.t.a.,cps,continuation-passing style,no assembly required,scheme,rabbit,uuo handler,tail call,clisp,sbcl,ecl,gcc,revised oberon,pascal,modula,modula-2,type extensions,record types,oberon system,niklaus wirth,hanspeter mössenböck,vishap oberon,obnc,gnat,github
+.. tags: ada,c,common lisp,oberon-07,oberon-2,trampolines,tail call optimization,lisp-style trampolines,cheney on the m.t.a.,cps,continuation-passing style,no assembly required,scheme,rabbit,uuo handler,tail call,clisp,sbcl,ecl,gcc,revised oberon,pascal,modula,modula-2,type extensions,record types,oberon system,niklaus wirth,hanspeter mössenböck,vishap oberon,obnc,gnat,github,ocaml
 .. category: computer/languages
 .. link:
 .. description:
@@ -149,7 +149,7 @@ type while defining the type.  It would look something like this:
 
    typedef trampoline* (*trampoline)(void);
 
-and that results in the :app:`gcc` issuing the following error::
+and that results in :app:`gcc` issuing the following error::
 
    error: unknown type name 'trampoline'
 
@@ -162,13 +162,15 @@ So how do you do this in languages with strong static typing?
 Well, let's try this in some of the Oberon_ programming language
 dialects.  Oberon_ was designed and implemented by Niklaus Wirth
 (NW1_, NW2_) as a simplification and generalization of his earlier
-languages Pascal_, Modula_, and Modula-2_.  I find the original Oberon
-admirable for its simplicity, strong typing, understandable syntax,
-and its introduction of `Type Extensions`_ (which organizes `record
-types`_ in a inheritance hierarchy, which with the use of procedure
-variables enables object oriented programming in a particularly
-straightforward and flexible way) but struggle with its minimalism and
-how its standard libraries differ in paradigm from the standard Unix
+languages Pascal_, Modula_, and Modula-2_.  (Here's `The Programming
+Language Oberon (1990)`__, the original Oberon language report, in PDF
+for reference.)  I find the original Oberon admirable for its
+simplicity, strong typing, understandable syntax, and its introduction
+of `Type Extensions`_ (which organizes `record types`_ in a
+inheritance hierarchy, which with the use of procedure variables
+enables object oriented programming in a particularly straightforward
+and flexible way) but struggle with its minimalism and how its
+standard libraries differ in paradigm from the standard Unix
 libraries, since Oberon was used to implement a new operating system,
 the `Oberon System`_ with its own completely unique API_.
 
@@ -178,6 +180,7 @@ the `Oberon System`_ with its own completely unique API_.
 .. _Pascal: https://en.wikipedia.org/wiki/Pascal_(programming_language)
 .. _Modula: https://en.wikipedia.org/wiki/Modula
 .. _Modula-2: https://en.wikipedia.org/wiki/Modula-2
+__ https://people.inf.ethz.ch/wirth/Oberon/Oberon.Report.pdf
 .. _Type Extensions: https://dl.acm.org/doi/abs/10.1145/42190.46167
 .. _Oberon System: https://en.wikipedia.org/wiki/Oberon_(operating_system)
 .. _API: https://en.wikipedia.org/wiki/API
@@ -191,13 +194,24 @@ the record hierarchy provided by `Type Extensions`_, providing a
 appealingly simple and direct design for object-oriented programming
 that was later adopted by the Ada_ programming language (in a more
 complicated and confusing manner, as might be expected by Ada_'s
-plethora of design goals and constraints).  Here's a copy of the
-Oberon-2 language report in PDF (O2PDF_) and HTML (O2HTML_), for
-reference.
+plethora of design goals and constraints.  Here's a couple of papers
+that talk about it: `Object-oriented programming through type
+extension in Ada 9X`__ (ADAOO1PDF_) and `Integrating Object-Oriented
+Programming and Protected Objects in Ada 95`__ (ADAOO2PDF_).  (I wish
+I knew of a reference that discussed explicitly the process of
+choosing `Type Extensions`_ for Ada_ and how they were adopted and
+adapted in Ada_.)
+
+Here's a copy of the Oberon-2 language report in PDF (O2PDF_) and HTML
+(O2HTML_), for reference.
 
 .. _Oberon-2: https://en.wikipedia.org/wiki/Oberon-2
 .. _Hanspeter Mössenböck: https://en.wikipedia.org/wiki/Hanspeter_M%C3%B6ssenb%C3%B6ck
 .. _Ada: https://en.wikipedia.org/wiki/Ada_(programming_language)
+__ https://dl.acm.org/doi/10.1145/122028.122033
+.. _ADAOO1PDF: https://dl.acm.org/doi/pdf/10.1145/122028.122033
+__ http://citeseer.ist.psu.edu/viewdoc/summary?doi=10.1.1.167.7445&rank=1
+.. _ADAOO2PDF: http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.167.7445&rep=rep1&type=pdf
 .. _O2PDF: /Oberon-2/Oberon2.pdf
 .. _O2HTML: https://web.archive.org/web/20151104101932/https://cseweb.ucsd.edu/~wgg/CSE131B/oberon2.htm
 
@@ -276,17 +290,21 @@ And here's `TrampolineForever.Mod`_, which also works!
 
 Wirth has continued to work on Oberon, producing an even more
 minimalist revision, often know as Oberon-07, or `Revised Oberon`_.
-Unfortunately, he removed forward declarations and the ``LONGINT``
-type, which means we have to make some minor changes.
+(Here's the `The Programming Language Oberon-07 (Revised Oberon)`__ in
+PDF, for reference.)  Unfortunately, he removed forward declarations
+and the ``LONGINT`` type, which means we have to make some minor
+changes.
 
 .. _Revised Oberon: https://people.inf.ethz.ch/wirth/Oberon/index.html
+__ https://people.inf.ethz.ch/wirth/Oberon/Oberon07.Report.pdf
 
 I'm using OBNC (OBNC1_, OBNC2_) for `Revised Oberon`_.
 
 .. _OBNC1: https://miasap.se/obnc/
 .. _OBNC2: https://github.com/GunterMueller/OBNC
 
-Here's the `Revised Oberon NotForever.Mod`_:
+Here's the `Revised Oberon NotForever.Mod`_, with ``LONGINT`` replaced
+by ``INTEGER``:
 
 .. _Revised Oberon NotForever.Mod: /trampolines/revised-oberon/NotForever.Mod
 
@@ -300,17 +318,19 @@ Here's the `Revised Oberon Trampoline.Mod`_:
 .. include:: files/trampolines/revised-oberon/Trampoline.Mod
    :code: modula2
 
-Note that with forward declarations removed, we just declare a
-procedure type and procedure variable, initialize it before starting
-the trampoline, and refer to it instead of ``foo`` in procedure
-``baz``.
-
-Here's the `Revised Oberon TrampolineForever.Mod`_
+Here's the `Revised Oberon TrampolineForever.Mod`_, with a workaround
+for the removal of forward declarations of procedures:
 
 .. _Revised Oberon TrampolineForever.Mod: /trampolines/revised-oberon/TrampolineForever.Mod
 
 .. include:: files/trampolines/revised-oberon/TrampolineForever.Mod
    :code: modula2
+
+Note that with forward declarations removed, we just declare a
+procedure variable, ``forward``, initialize it before starting the
+trampoline, and refer to it instead of ``foo`` in procedure ``baz``.
+
+
 
 And of course, since we mentioned Ada_ above, we should do a version
 in that.  I'm using GNAT_.
@@ -324,13 +344,19 @@ Here's `not_forever.adb`_:
 .. include:: files/trampolines/ada/not_forever.adb
    :code: ada
 
+Since Ada_ has exceptions, we actually catch the exception that
+happens when the stack runs out of space::
+
+  STORAGE_ERROR raised with i =  262002
+
 Again, Ada_ would have the same problem with `recursive type`_\s as
 the Oberon dialects.  Don't look at the C version and wander off into
 forest of ``Ada.Unchecked_Conversion`` because that's unsafe, or the
 thicket of ``System.Address_To_Access_Conversions``, because that
-one's really unsafe (and didn't work, when I tried it).  Instead, do
-the same thing as we did in the Oberon dialects, and move to a global
-variable instead of returning the values from the functions.
+one's also unsafe and more complicated (and the simple approach didn't
+work, when I tried it).  Instead, do the same thing as we did in the
+Oberon dialects, and move to a global variable instead of returning
+the values from the functions.
 
 Here's `trampoline.adb`_:
 
@@ -345,6 +371,16 @@ And here's `trampoline_forever.adb`_:
 
 .. include:: files/trampolines/ada/trampoline_forever.adb
    :code: ada
+
+********
+
+Of course, languages with more sophisticated type systems have other
+ways of dealing with things, but I haven't investigated them.  I did
+stumble across an example_ in OCaml (OCAML1_, OCAML2_).
+
+.. _example: https://gist.github.com/rapha/119788
+.. _OCAML1: https://en.wikipedia.org/wiki/OCaml
+.. _OCAML2: https://ocaml.org/
 
 ********
 
