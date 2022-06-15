@@ -195,7 +195,7 @@ appealingly simple and direct design for object-oriented programming
 that was later adopted by the Ada_ programming language in a more
 complicated and confusing manner, as might be expected by Ada_'s
 plethora of design goals and constraints.  (Here's a couple of papers
-that talk about it: `Object-oriented programming through type
+that mention it: `Object-oriented programming through type
 extension in Ada 9X`__ (ADAOO1PDF_) and `Integrating Object-Oriented
 Programming and Protected Objects in Ada 95`__ (ADAOO2PDF_).  I wish I
 knew of a reference that discussed explicitly the process of choosing
