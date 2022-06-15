@@ -348,8 +348,8 @@ And here's `trampoline_forever.adb`_:
 
 ********
 
-If you want to play around with this, the code is in a Github_
-repository_.
+If you want to play around with this, the code is in a 
+repository_ at Github_.
 
 .. _GitHub: https://github.com/
 .. _repository: https://github.com/tkurtbond/trampolines
