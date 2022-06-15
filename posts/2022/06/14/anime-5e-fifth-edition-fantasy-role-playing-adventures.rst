@@ -1,7 +1,7 @@
 .. title: Anime 5E: Fifth Edition Fantasy Role-Playing Adventures
 .. slug: anime-5e-fifth-edition-fantasy-role-playing-adventures
 .. date: 2022-06-14 23:34:40 UTC-04:00
-.. tags: anime,anime 5e,5e,pocket edition,dyskami,mark mackinnon,besm
+.. tags: anime,anime 5e,5e,pocket edition,dyskami,mark mackinnon,besm,cabbit
 .. category: gaming/rpg
 .. link: 
 .. description: 
@@ -41,3 +41,16 @@ which I've seen used very well in BESM (BESM1_, BESM2_).
 
 I'll have to wait until I get a chance to peruse the hardback version
 to comment on the art.
+
+Later: I just have to add: **OMG! Battle Cabbits!** (On p. 367.) So
+cute!
+
+*Last edited: 2022-06-15 02:15:09 EDT*
+
+..
+   Local Variables:
+   time-stamp-format: "%Y-%02m-%02d %02H:%02M:%02S %Z"
+   time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
+   time-stamp-end: "\\*\\\\?\n"
+   time-stamp-line-limit: -20
+   End:
