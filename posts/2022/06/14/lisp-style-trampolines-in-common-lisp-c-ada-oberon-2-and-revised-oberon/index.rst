@@ -192,15 +192,15 @@ Mössenböck`_ and Niklaus Wirth.  It is a little less minimalist than
 Oberon_, and among a few other things adds type-bound procedures to
 the record hierarchy provided by `Type Extensions`_, providing a
 appealingly simple and direct design for object-oriented programming
-that was later adopted by the Ada_ programming language (in a more
+that was later adopted by the Ada_ programming language in a more
 complicated and confusing manner, as might be expected by Ada_'s
-plethora of design goals and constraints.  Here's a couple of papers
-that talk about it: `Object-oriented programming through type
+plethora of design goals and constraints.  (Here's a couple of papers
+that mention it: `Object-oriented programming through type
 extension in Ada 9X`__ (ADAOO1PDF_) and `Integrating Object-Oriented
-Programming and Protected Objects in Ada 95`__ (ADAOO2PDF_).  (I wish
-I knew of a reference that discussed explicitly the process of
-choosing `Type Extensions`_ for Ada_ and how they were adopted and
-adapted in Ada_.))
+Programming and Protected Objects in Ada 95`__ (ADAOO2PDF_).  I wish I
+knew of a reference that discussed explicitly the process of choosing
+`Type Extensions`_ for Ada_ and how they were adopted and adapted in
+Ada_.)
 
 Here's a copy of the Oberon-2 language report in PDF (O2PDF_) and HTML
 (O2HTML_), for reference.
