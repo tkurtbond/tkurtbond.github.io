@@ -76,7 +76,7 @@ We've had some discussion on the list recently and in the pa">
         <div class="metadata blog-post-meta">
             <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
             <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2021-07-17T00:16:49-04:00" itemprop="datePublished" title="2021-07-17 00:16">2021-07-17 00:16</time></a></p>
-                <p class="commentline">        <a href="#disqus_thread" data-disqus-identifier="cache/posts/2021/07/17/groff-and-install-fontsh-and-installing-fonts-for-use-in-groff.html">Comments</a>
+                <p class="commentline">            <a href="#disqus_thread" data-disqus-identifier="cache/posts/2021/07/17/groff-and-install-fontsh-and-installing-fonts-for-use-in-groff.html">Comments</a>
 
 
                     </p>
@@ -85,10 +85,13 @@ We've had some discussion on the list recently and in the pa">
         </div>
         
     </header><div class="e-content entry-content" itemprop="articleBody text">
-    <aside class="admonition note"><p class="admonition-title">Note</p>
+    <div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
 <p>This was originally a <a class="reference external" href="https://lists.gnu.org/archive/html/groff/2021-07/msg00089.html">post</a> to the <a class="reference external" href="https://www.gnu.org/software/groff/">groff</a> <a class="reference external" href="https://lists.gnu.org/mailman/listinfo/groff/">mailing list</a>.  It has
 been slightly modified.</p>
-</aside><p>Currently <span class="command">install-font.sh</span> is not part of <span class="app">groff</span>.
+</div>
+<p>Currently <span class="command">install-font.sh</span> is not part of <span class="app">groff</span>.
 We've had some discussion on the list <a class="reference external" href="https://lists.gnu.org/archive/html/groff/2021-07/msg00061.html">recently</a> and in the past about
 integrating it into the <span class="app">groff</span> distribution, and in response to
 recent <a class="reference external" href="https://lists.gnu.org/archive/html/groff/2021-07/msg00054.html">discussion</a> there is a new bug, <a class="reference external" href="https://savannah.gnu.org/bugs/index.php?60930">#60930</a>, requesting
@@ -128,8 +131,8 @@ files into proper places under <span class="app">groff</span>'s site-font direct
 <p>So, for instance, you'd cd to the directory that holds the <span class="file">.ttf</span> files
 you downloaded.  Then, to install the Regular variant of Cormorant
 Garamond you'd run the command</p>
-<div class="code"><pre class="code bash"><a id="rest_code_89b8005a5c194758bd10012685873e22-1" name="rest_code_89b8005a5c194758bd10012685873e22-1" href="#rest_code_89b8005a5c194758bd10012685873e22-1"></a><span class="k">$(</span>IFDIR<span class="k">)</span>/install-font.sh -n -P <span class="s2">"</span><span class="nv">$DEST</span><span class="s2">"</span> -d -F CormorantGaramond -f +R CormorantGaramond-Regular.ttf
-</pre></div>
+<pre class="code bash"><a name="rest_code_2fd3a75bdcdc439eb9f8ee4929a83a00-1"></a><span class="k">$(</span>IFDIR<span class="k">)</span>/install-font.sh -n -P <span class="s2">"</span><span class="nv">$DEST</span><span class="s2">"</span> -d -F CormorantGaramond -f +R CormorantGaramond-Regular.ttf
+</pre>
 <p>where <code class="docutils literal">IFDIR</code> is an environment variable indicating the directory
 where <span class="command">install-font.sh</span> is located and <code class="docutils literal">DEST</code> is an
 environment variable indicating the directory that contains
@@ -164,10 +167,10 @@ name of the <span class="app">groff</span> font and the <span class="app">groff<
 name of the Truetype or OpenType file you are converting.</p>
 <p>To complete the example, here are the commands to install the Italic,
 Bold, and Bold Italic variants of Cormorant Garamond:</p>
-<div class="code"><pre class="code bash"><a id="rest_code_edd0015f5f144805ae9017e0ae6c0926-1" name="rest_code_edd0015f5f144805ae9017e0ae6c0926-1" href="#rest_code_edd0015f5f144805ae9017e0ae6c0926-1"></a><span class="k">$(</span>IFDIR<span class="k">)</span>/install-font.sh -n -P <span class="s2">"</span><span class="nv">$DEST</span><span class="s2">"</span> -d -F CormorantGaramond -f +I CormorantGaramond-Italic.ttf
-<a id="rest_code_edd0015f5f144805ae9017e0ae6c0926-2" name="rest_code_edd0015f5f144805ae9017e0ae6c0926-2" href="#rest_code_edd0015f5f144805ae9017e0ae6c0926-2"></a><span class="k">$(</span>IFDIR<span class="k">)</span>/install-font.sh -n -P <span class="s2">"</span><span class="nv">$DEST</span><span class="s2">"</span> -d -F CormorantGaramond -f +B CormorantGaramond-Bold.ttf
-<a id="rest_code_edd0015f5f144805ae9017e0ae6c0926-3" name="rest_code_edd0015f5f144805ae9017e0ae6c0926-3" href="#rest_code_edd0015f5f144805ae9017e0ae6c0926-3"></a><span class="k">$(</span>IFDIR<span class="k">)</span>/install-font.sh -n -P <span class="s2">"</span><span class="nv">$DEST</span><span class="s2">"</span> -d -F CormorantGaramond -f +BI CormorantGaramond-BoldItalic.
-</pre></div>
+<pre class="code bash"><a name="rest_code_19c244ff68784702b43727a817f61e6f-1"></a><span class="k">$(</span>IFDIR<span class="k">)</span>/install-font.sh -n -P <span class="s2">"</span><span class="nv">$DEST</span><span class="s2">"</span> -d -F CormorantGaramond -f +I CormorantGaramond-Italic.ttf
+<a name="rest_code_19c244ff68784702b43727a817f61e6f-2"></a><span class="k">$(</span>IFDIR<span class="k">)</span>/install-font.sh -n -P <span class="s2">"</span><span class="nv">$DEST</span><span class="s2">"</span> -d -F CormorantGaramond -f +B CormorantGaramond-Bold.ttf
+<a name="rest_code_19c244ff68784702b43727a817f61e6f-3"></a><span class="k">$(</span>IFDIR<span class="k">)</span>/install-font.sh -n -P <span class="s2">"</span><span class="nv">$DEST</span><span class="s2">"</span> -d -F CormorantGaramond -f +BI CormorantGaramond-BoldItalic.
+</pre>
 <p>As I said in an earlier email to the list, I tend to put all four
 commands into a script so I can run them again if something goes wrong
 or when I need to install them on a new machine or in a new
@@ -175,8 +178,8 @@ installation of <span class="app">groff</span>.  In the case of Cormorant Garamo
 file <span class="file">install-cormorant-garamond.sh</span>.</p>
 <p><strong>Later:</strong> Peter Schaffter <a class="reference external" href="https://lists.gnu.org/archive/html/groff/2021-07/msg00090.html">pointed out</a> that the <em>simple</em> use of
 <span class="command">install-font.sh</span> is:</p>
-<div class="code"><pre class="code bash"><a id="rest_code_3286440d867a404aa1a0ae9a5641f89a-1" name="rest_code_3286440d867a404aa1a0ae9a5641f89a-1" href="#rest_code_3286440d867a404aa1a0ae9a5641f89a-1"></a>sudo install-font.sh fontfile
-</pre></div>
+<pre class="code bash"><a name="rest_code_26555d406f4042ad874f33fe54da22b9-1"></a>sudo install-font.sh fontfile
+</pre>
 <p>and then answer the questions the script asks.  He also pointed out
 that it creates the <span class="file">site-font</span> directory and necessary
 subdirectories if needed in, and here I quote: “the only two locations
@@ -193,6 +196,7 @@ time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
 time-stamp-end: "\\*\\\\?\n"
 time-stamp-line-limit: -20
 End: -->
+</div>
     </div>
     <script>var pfHeaderImgUrl = '';var pfHeaderTagline = '';var pfdisableClickToDel = 0;var pfHideImages = 0;var pfImageDisplayStyle = 'right';var pfDisablePDF = 0;var pfDisableEmail = 0;var pfDisablePrint = 0;var pfCustomCSS = '';var pfBtVersion='2';(function(){var js,pf;pf=document.createElement('script');pf.type='text/javascript';pf.src='//cdn.printfriendly.com/printfriendly.js';document.getElementsByTagName('head')[0].appendChild(pf)})();</script><a href="https://www.printfriendly.com" style="color:#6D9F00;text-decoration:none;" class="printfriendly" onclick="window.print();return false;" title="Printer Friendly and PDF"><img style="border:none;-webkit-box-shadow:none;box-shadow:none;" src="//cdn.printfriendly.com/buttons/printfriendly-pdf-button.png" alt="Print Friendly and PDF"></a>    
     <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
@@ -210,7 +214,7 @@ End: -->
                 <a href="../install-fontsh-the-simple-approach/" rel="next" title="install-font.sh - The simple approach">Next post</a>
             </li>
         </ul></nav></aside><section class="comments hidden-print"><h2>Comments</h2>
-                    <div id="disqus_thread"></div>
+                        <div id="disqus_thread"></div>
         <script>
         var disqus_shortname ="lacking-natural-simplicity",
             disqus_url="https://tkurtbond.github.io/posts/2021/07/17/groff-and-install-fontsh-and-installing-fonts-for-use-in-groff/",
