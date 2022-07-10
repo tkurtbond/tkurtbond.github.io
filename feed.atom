@@ -3,7 +3,7 @@
 <feed xml:lang="en" xmlns="http://www.w3.org/2005/Atom">
   <title>Lacking Natural Simplicity</title>
   <id>https://tkurtbond.github.io/feed.atom</id>
-  <updated>2022-07-10T03:11:24Z</updated>
+  <updated>2022-07-10T17:58:32Z</updated>
   <author>
     <name>T. Kurt Bond</name>
   </author>
@@ -21,36 +21,93 @@
     <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/posts/2022/07/09/using-the-old-version-of-ada-mode-for-emacs/"/>
     <summary type="html">&lt;p&gt;There are a lot of things to like about the &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Ada_(programming_language)"&gt;Ada&lt;/a&gt; programming language;
 it seems to have a solid core of users, enough to support multiple
-commercial implementations and an implementation that is part of the
-&lt;a class="reference external" href="https://gcc.gnu.org/"&gt;GNU Compiler Collection&lt;/a&gt;.  I occasionally use it myself.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;However:&lt;/strong&gt; I'm sure that the current version of &lt;a class="reference external" href="https://www.nongnu.org/ada-mode/"&gt;Ada Mode&lt;/a&gt; for &lt;a class="reference external" href="https://www.gnu.org/software/emacs/"&gt;Emacs&lt;/a&gt;
-(available as an &lt;a class="reference external" href="https://elpa.gnu.org/"&gt;ELPA&lt;/a&gt; &lt;a class="reference external" href="https://elpa.gnu.org/packages/ada-mode.html"&gt;package&lt;/a&gt;, and thus not included in &lt;span class="app"&gt;Emacs&lt;/span&gt;
-itself), which provides smart editing for the &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Ada_(programming_language)"&gt;Ada&lt;/a&gt; programming
-language, and uses an external parser for the indentation,
-fontification, and navigation engine, is wonderful if you can get it
-working, but I have &lt;strong&gt;never&lt;/strong&gt; been able to get it to work.  My most
-recent try was today on Fedora 36 using GNAT 12.1.1 20220507 (Red Hat
-12.1.1-1).  Sigh.  Without the external parser the current &lt;a class="reference external" href="https://www.nongnu.org/ada-mode/"&gt;Ada Mode&lt;/a&gt;
-is completely unworkable.&lt;/p&gt;
-&lt;p&gt;However, when I did some Ada work a number of years ago, I was quite
-happy with the version that used to be in &lt;span class="app"&gt;Emacs&lt;/span&gt; itself.  So I
-dug it out of the &lt;a class="reference external" href="https://savannah.gnu.org/git/?group=emacs"&gt;Emacs git repository&lt;/a&gt; at &lt;a class="reference external" href="https://savannah.gnu.org"&gt;savannah.gnu.org&lt;/a&gt;.
-Basically, cloned the git repository and then figured out what commit
-it was deleted in by doing:&lt;/p&gt;
+commercial implementations and a &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Free_software"&gt;free/libre software&lt;/a&gt; implementation
+that is part of the &lt;a class="reference external" href="https://gcc.gnu.org/"&gt;GNU Compiler Collection&lt;/a&gt;.  I occasionally use it
+myself.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;However:&lt;/strong&gt; I'm sure that the current version of &lt;a class="reference external" href="https://www.nongnu.org/ada-mode/"&gt;Ada Mode&lt;/a&gt; for
+&lt;a class="reference external" href="https://www.gnu.org/software/emacs/"&gt;Emacs&lt;/a&gt; (available as an &lt;a class="reference external" href="https://elpa.gnu.org/"&gt;ELPA&lt;/a&gt; &lt;a class="reference external" href="https://elpa.gnu.org/packages/ada-mode.html"&gt;package&lt;/a&gt;, and thus not included in
+&lt;span class="app"&gt;Emacs&lt;/span&gt; itself), which provides smart editing for the &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Ada_(programming_language)"&gt;Ada&lt;/a&gt;
+programming language, and uses an external parser for the indentation,
+fontification&lt;a class="footnote-reference brackets" href="https://tkurtbond.github.io/posts/2022/07/09/using-the-old-version-of-ada-mode-for-emacs/#fontification" id="footnote-reference-1" role="doc-noteref"&gt;&lt;span class="fn-bracket"&gt;[&lt;/span&gt;1&lt;span class="fn-bracket"&gt;]&lt;/span&gt;&lt;/a&gt;, and navigation engine, is wonderful
+if you can get it working, but I have &lt;strong&gt;never&lt;/strong&gt; been able to get it to
+work.  My most recent try was today on Fedora 36 using GNAT 12.1.1
+20220507 (Red Hat 12.1.1-1).&lt;/p&gt;
+&lt;p&gt;Here's what happened when I tried to build the Ada code for the
+parser, which is supplied as part of the &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;ada-mode&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;$ ./build.sh
+ada_mode_wisi_parse.gpr:44:26: warning: object directory "obj" not found
+Setup
+   [mkdir]        object directory for project Ada_Mode_Wisi_Parse
+Compile
+   [Ada]          ada_mode_wisi_lalr_parse.ads
+   [Ada]          ada_mode_wisi_lr1_parse.ads
+   [Ada]          run_ada_lalr_parse.ads
+   [Ada]          run_ada_lr1_parse.ads
+   [Ada]          gpr_mode_wisi_parse.ads
+   [Ada]          run_gpr_parse.ads
+   [Ada]          gpr_query.adb
+   [C]            wisitoken_grammar_re2c.c
+   [C]            ada_re2c.c
+   [C]            gpr_re2c.c
+   [Ada]          ada_process_actions.adb
+   [Ada]          ada_process_lr1_main.adb
+   [Ada]          gen_run_wisi_lr_text_rep_parse.adb
+   [Ada]          run_wisi_common_parse.adb
+   [Ada]          wisi.adb
+gnatcoll-sql.adb:742:07: error: ambiguous expression (cannot resolve "Append")
+gnatcoll-sql.adb:742:07: error: possible interpretation at a-coinve.ads:280, instance at gnatcoll-sql.ads:1109
+gnatcoll-sql.adb:742:07: error: possible interpretation at a-coinve.ads:270, instance at gnatcoll-sql.ads:1109
+
+   compilation of gpr_query.adb failed
+
+gprbuild: *** compilation phase failed&lt;/pre&gt;
+&lt;p&gt;Sigh.  Without the external parser the current &lt;a class="reference external" href="https://www.nongnu.org/ada-mode/"&gt;Ada Mode&lt;/a&gt; is
+completely unworkable: it doesn't even do indentation correctly, much
+less do fontification.&lt;/p&gt;
+&lt;p&gt;However, when I did some Ada work a number of years ago, I was ok
+with the version that used to be in &lt;span class="app"&gt;Emacs&lt;/span&gt; itself.  So I dug it
+out of the &lt;a class="reference external" href="https://savannah.gnu.org/git/?group=emacs"&gt;Emacs git repository&lt;/a&gt; at &lt;a class="reference external" href="https://savannah.gnu.org"&gt;savannah.gnu.org&lt;/a&gt;.  Basically,
+I cloned the git repository and then figured out what commit it was
+deleted in by doing:&lt;/p&gt;
 &lt;pre class="literal-block"&gt;$ git rev-list HEAD -n 1 -- lisp/progmodes/ada-mode.el
 a13c64204c8ead966789abf8efe176e4f2d4f599&lt;/pre&gt;
 &lt;p&gt;Then I checked out the files involved:&lt;/p&gt;
 &lt;pre class="literal-block"&gt;$ git checkout a13c64204c8ead966789abf8efe176e4f2d4f599^ lisp/progmodes/ada-mode.el lisp/progmodes/ada-prj.el lisp/progmodes/ada-stmt.el lisp/progmodes/ada-xref.el doc/misc/ada-mode.texi&lt;/pre&gt;
 &lt;p&gt;The &lt;code class="docutils literal"&gt;^&lt;/code&gt; at the end of the commit hash says to get the previous
 commit.&lt;/p&gt;
+&lt;p&gt;You'll also need &lt;span class="file"&gt;doc/docstyle.texi&lt;/span&gt; and
+&lt;span class="file"&gt;doc/docstyle.texi&lt;/span&gt; if you want to build documentation from
+&lt;span class="file"&gt;ada-mode.texi&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;And I've put the files in a &lt;a class="reference external" href="https://tkurtbond.github.io/emacs/old-ada-mode.zip"&gt;zip file&lt;/a&gt; for anybody who is in the same
-situation as I was.&lt;/p&gt;
+situation as I was, along with the generated documentation files
+&lt;span class="file"&gt;.info&lt;/span&gt;, &lt;span class="file"&gt;.html&lt;/span&gt;, and &lt;span class="file"&gt;.pdf&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;Just put them somewhere on your &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;load-path&lt;/span&gt;&lt;/code&gt; and add &lt;code class="docutils literal"&gt;(autoload
-&lt;span class="pre"&gt;'ada-mode&lt;/span&gt; &lt;span class="pre"&gt;"ada-mode")&lt;/span&gt;&lt;/code&gt; to your emacs config file.&lt;/p&gt;</summary>
+&lt;span class="pre"&gt;'ada-mode&lt;/span&gt; &lt;span class="pre"&gt;"ada-mode")&lt;/span&gt;&lt;/code&gt; to your emacs config file.&lt;/p&gt;
+&lt;p&gt;I'm sure the current &lt;a class="reference external" href="https://www.nongnu.org/ada-mode/"&gt;Ada Mode&lt;/a&gt; has a lot more useful features, and
+I'd love to use it, but
+this at least lets me edit with automatic indentation, formatting, and
+fontification.&lt;/p&gt;
+&lt;aside class="footnote brackets" id="fontification" role="note"&gt;
+&lt;span class="label"&gt;&lt;span class="fn-bracket"&gt;[&lt;/span&gt;&lt;a role="doc-backlink" href="https://tkurtbond.github.io/posts/2022/07/09/using-the-old-version-of-ada-mode-for-emacs/#footnote-reference-1"&gt;1&lt;/a&gt;&lt;span class="fn-bracket"&gt;]&lt;/span&gt;&lt;/span&gt;
+&lt;p&gt;‘Fontification’ is the process of displaying source code with
+different font properties (such as color and typeface) for
+differing syntactic roles.  &lt;a class="reference external" href="https://www.gnu.org/software/emacs/"&gt;Emacs&lt;/a&gt; and many other editors do this
+to make it easier to distinguish different parts of the source
+code, to help prevent errors.&lt;/p&gt;
+&lt;/aside&gt;
+&lt;!--  --&gt;
+&lt;p&gt;&lt;em&gt;Last edited: 2022-07-10 13:57:32 EDT&lt;/em&gt;&lt;/p&gt;
+&lt;!-- Local Variables:
+time-stamp-format: "%Y-%02m-%02d %02H:%02M:%02S %Z"
+time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
+time-stamp-end: "\\*\\\\?\n"
+time-stamp-line-limit: -20
+End: --&gt;</summary>
     <category term="ada" label="ada"/>
     <category term="ada-mode" label="ada-mode"/>
     <category term="ada-modeel" label="ada-mode.el"/>
     <category term="emacs" label="emacs"/>
+    <category term="freelibre-software" label="free/libre software"/>
   </entry>
   <entry>
     <title>The School of Niklaus Wirth: The Art of Simplicity</title>
