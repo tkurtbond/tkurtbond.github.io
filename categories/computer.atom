@@ -3,7 +3,7 @@
 <feed xml:lang="en" xmlns="http://www.w3.org/2005/Atom">
   <title>Lacking Natural Simplicity (Posts about computer)</title>
   <id>https://tkurtbond.github.io/categories/computer.atom</id>
-  <updated>2021-06-10T18:16:36Z</updated>
+  <updated>2022-06-05T16:28:22Z</updated>
   <author>
     <name>T. Kurt Bond</name>
   </author>
@@ -19,28 +19,29 @@
       <name>T. Kurt Bond</name>
     </author>
     <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/posts/2020/03/13/making-digest-sized-pages-with-pandoc-and-ms-output/"/>
-    <summary type="html">&lt;div&gt;&lt;div class="admonition note"&gt;
+    <summary type="html">&lt;aside class="admonition note"&gt;
 &lt;p class="admonition-title"&gt;Note&lt;/p&gt;
 &lt;p&gt;After I wrote this post, I made a last minute check of the options
 to &lt;span class="app"&gt;pandoc&lt;/span&gt; and found that the &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;--pdf-engine-opt=&lt;/span&gt;&lt;/code&gt; option
 does exactly what I want.  How embarrassing.  So I changed this
 post, showing both the easy way and the hard way to do it.&lt;/p&gt;
-&lt;/div&gt;
+&lt;/aside&gt;
 &lt;p&gt;I use &lt;a class="reference external" href="https://pandoc.org/"&gt;pandoc&lt;/a&gt; to produce digest-sized pages (5½×8½ inches) in PDF
 documents from &lt;a class="reference external" href="https://en.wikipedia.org/wiki/ReStructuredText"&gt;ReStructuredText&lt;/a&gt;.  I have a &lt;span class="app"&gt;ms&lt;/span&gt; output template,
 &lt;span class="file"&gt;digest2.ms&lt;/span&gt; in &lt;span class="file"&gt;~/pandoc/templates&lt;/span&gt; that sets the page
 width and page height correctly.  Unfortunately, there is no way to
-set the papersize properly in the template. &lt;a class="footnote-reference brackets" href="https://tkurtbond.github.io/posts/2020/03/13/making-digest-sized-pages-with-pandoc-and-ms-output/#heirloomtroff" id="id1"&gt;1&lt;/a&gt;&lt;/p&gt;
+set the papersize properly in the template. &lt;a class="footnote-reference brackets" href="https://tkurtbond.github.io/posts/2020/03/13/making-digest-sized-pages-with-pandoc-and-ms-output/#heirloomtroff" id="footnote-reference-1" role="doc-noteref"&gt;&lt;span class="fn-bracket"&gt;[&lt;/span&gt;1&lt;span class="fn-bracket"&gt;]&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Luckily, &lt;span class="app"&gt;pandoc&lt;/span&gt; has the &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;--pdf-engine-opt=&lt;/span&gt;&lt;/code&gt; option to pass
 options to the PDF engine that &lt;span class="app"&gt;pandoc&lt;/span&gt; is using, in this case
 &lt;span class="app"&gt;pdfroff&lt;/span&gt;.  In the case of &lt;span class="app"&gt;ms&lt;/span&gt; output the thing to do is
-pass the argument &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;--pdf-engine-opt=-P-p8.5i,5.5i&lt;/span&gt;&lt;/code&gt; &lt;a class="footnote-reference brackets" href="https://tkurtbond.github.io/posts/2020/03/13/making-digest-sized-pages-with-pandoc-and-ms-output/#recursively" id="id2"&gt;2&lt;/a&gt;,
+pass the argument &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;--pdf-engine-opt=-P-p8.5i,5.5i&lt;/span&gt;&lt;/code&gt; &lt;a class="footnote-reference brackets" href="https://tkurtbond.github.io/posts/2020/03/13/making-digest-sized-pages-with-pandoc-and-ms-output/#recursively" id="footnote-reference-2" role="doc-noteref"&gt;&lt;span class="fn-bracket"&gt;[&lt;/span&gt;2&lt;span class="fn-bracket"&gt;]&lt;/span&gt;&lt;/a&gt;,
 like below.&lt;/p&gt;
 &lt;p&gt;&lt;a class="reference external" href="https://tkurtbond.github.io/listings/GNUmakefile.pandoc-digest-pdf-engine-opt.html"&gt;GNUmakefile.pandoc-digest-pdf-engine-opt&lt;/a&gt;  &lt;a class="reference external" href="https://tkurtbond.github.io/listings/GNUmakefile.pandoc-digest-pdf-engine-opt"&gt;(Source)&lt;/a&gt;&lt;/p&gt;
-&lt;pre class="code make"&gt;&lt;a name="rest_code_8d76b135b72d43cca40c91681803edac-1"&gt;&lt;/a&gt;&lt;span class="nf"&gt;%.digest.ms.pdf &lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; %.&lt;span class="n"&gt;rst&lt;/span&gt;
-&lt;a name="rest_code_8d76b135b72d43cca40c91681803edac-2"&gt;&lt;/a&gt;        pandoc -s -r rst -w ms --template&lt;span class="o"&gt;=&lt;/span&gt;digest2 &lt;span class="k"&gt;$(&lt;/span&gt;VARIABLES&lt;span class="k"&gt;)&lt;/span&gt; &lt;span class="se"&gt;\&lt;/span&gt;
-&lt;a name="rest_code_8d76b135b72d43cca40c91681803edac-3"&gt;&lt;/a&gt;                --output&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$@&lt;/span&gt; --pdf-engine-opt&lt;span class="o"&gt;=&lt;/span&gt;-P-p8.5i,5.5i $&amp;lt;
-&lt;/pre&gt;&lt;p&gt;Unfortunately when I originally had this need for digest pages I
+&lt;div class="code"&gt;&lt;pre class="code make"&gt;&lt;a id="rest_code_430b5ded2f514111b0f14825b092a51b-1" name="rest_code_430b5ded2f514111b0f14825b092a51b-1" href="https://tkurtbond.github.io/posts/2020/03/13/making-digest-sized-pages-with-pandoc-and-ms-output/#rest_code_430b5ded2f514111b0f14825b092a51b-1"&gt;&lt;/a&gt;&lt;span class="nf"&gt;%.digest.ms.pdf &lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; %.&lt;span class="n"&gt;rst&lt;/span&gt;
+&lt;a id="rest_code_430b5ded2f514111b0f14825b092a51b-2" name="rest_code_430b5ded2f514111b0f14825b092a51b-2" href="https://tkurtbond.github.io/posts/2020/03/13/making-digest-sized-pages-with-pandoc-and-ms-output/#rest_code_430b5ded2f514111b0f14825b092a51b-2"&gt;&lt;/a&gt;        pandoc -s -r rst -w ms --template&lt;span class="o"&gt;=&lt;/span&gt;digest2 &lt;span class="k"&gt;$(&lt;/span&gt;VARIABLES&lt;span class="k"&gt;)&lt;/span&gt; &lt;span class="se"&gt;\&lt;/span&gt;
+&lt;a id="rest_code_430b5ded2f514111b0f14825b092a51b-3" name="rest_code_430b5ded2f514111b0f14825b092a51b-3" href="https://tkurtbond.github.io/posts/2020/03/13/making-digest-sized-pages-with-pandoc-and-ms-output/#rest_code_430b5ded2f514111b0f14825b092a51b-3"&gt;&lt;/a&gt;                --output&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$@&lt;/span&gt; --pdf-engine-opt&lt;span class="o"&gt;=&lt;/span&gt;-P-p8.5i,5.5i $&amp;lt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Unfortunately when I originally had this need for digest pages I
 hadn't realized that the &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;--pdf-engine-opt=&lt;/span&gt;&lt;/code&gt; option existed.&lt;/p&gt;
 &lt;p&gt;So I used &lt;code class="docutils literal"&gt;pandoc &lt;span class="pre"&gt;--verbose&lt;/span&gt;&lt;/code&gt; and found the &lt;span class="app"&gt;pdfroff&lt;/span&gt; invocation
 &lt;span class="app"&gt;pandoc&lt;/span&gt; uses, and made my &lt;span class="app"&gt;pandoc&lt;/span&gt; invocation output
@@ -48,39 +49,41 @@ hadn't realized that the &lt;code class="docutils literal"&gt;&lt;span class="pr
 command with the added &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;-P-p8.5i,5.5i&lt;/span&gt;&lt;/code&gt; argument.  Here's what I put
 in my &lt;span class="file"&gt;GNUmakefile&lt;/span&gt;:&lt;/p&gt;
 &lt;p&gt;&lt;a class="reference external" href="https://tkurtbond.github.io/listings/GNUmakefile.pandoc-digest-save-ms.html"&gt;GNUmakefile.pandoc-digest-save-ms&lt;/a&gt;  &lt;a class="reference external" href="https://tkurtbond.github.io/listings/GNUmakefile.pandoc-digest-save-ms"&gt;(Source)&lt;/a&gt;&lt;/p&gt;
-&lt;pre class="code make"&gt;&lt;a name="rest_code_84d2232ac0bf4cd197a58a6512998407-1"&gt;&lt;/a&gt;&lt;span class="nf"&gt;%.digest.ms.pdf &lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; %.&lt;span class="n"&gt;rst&lt;/span&gt;
-&lt;a name="rest_code_84d2232ac0bf4cd197a58a6512998407-2"&gt;&lt;/a&gt;        pandoc -s -r rst -w ms -s --template&lt;span class="o"&gt;=&lt;/span&gt;digest2 &lt;span class="k"&gt;$(&lt;/span&gt;VARIABLES&lt;span class="k"&gt;)&lt;/span&gt; &lt;span class="se"&gt;\&lt;/span&gt;
-&lt;a name="rest_code_84d2232ac0bf4cd197a58a6512998407-3"&gt;&lt;/a&gt;               --output&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$*&lt;/span&gt;.ms $&amp;lt;
-&lt;a name="rest_code_84d2232ac0bf4cd197a58a6512998407-4"&gt;&lt;/a&gt;        pdfroff -ms -mpdfmark -e -t -k -KUTF-8 --no-toc-relocation &lt;span class="se"&gt;\&lt;/span&gt;
-&lt;a name="rest_code_84d2232ac0bf4cd197a58a6512998407-5"&gt;&lt;/a&gt;                -P-p8.5i,5.5i &lt;span class="nv"&gt;$*&lt;/span&gt;.ms &amp;gt; &lt;span class="nv"&gt;$@&lt;/span&gt;
-&lt;/pre&gt;&lt;p&gt;Or, if you don't care about having the &lt;span class="app"&gt;ms&lt;/span&gt; output for debugging,
+&lt;div class="code"&gt;&lt;pre class="code make"&gt;&lt;a id="rest_code_928faf82d79146bd806de93c2064ecdb-1" name="rest_code_928faf82d79146bd806de93c2064ecdb-1" href="https://tkurtbond.github.io/posts/2020/03/13/making-digest-sized-pages-with-pandoc-and-ms-output/#rest_code_928faf82d79146bd806de93c2064ecdb-1"&gt;&lt;/a&gt;&lt;span class="nf"&gt;%.digest.ms.pdf &lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; %.&lt;span class="n"&gt;rst&lt;/span&gt;
+&lt;a id="rest_code_928faf82d79146bd806de93c2064ecdb-2" name="rest_code_928faf82d79146bd806de93c2064ecdb-2" href="https://tkurtbond.github.io/posts/2020/03/13/making-digest-sized-pages-with-pandoc-and-ms-output/#rest_code_928faf82d79146bd806de93c2064ecdb-2"&gt;&lt;/a&gt;        pandoc -s -r rst -w ms -s --template&lt;span class="o"&gt;=&lt;/span&gt;digest2 &lt;span class="k"&gt;$(&lt;/span&gt;VARIABLES&lt;span class="k"&gt;)&lt;/span&gt; &lt;span class="se"&gt;\&lt;/span&gt;
+&lt;a id="rest_code_928faf82d79146bd806de93c2064ecdb-3" name="rest_code_928faf82d79146bd806de93c2064ecdb-3" href="https://tkurtbond.github.io/posts/2020/03/13/making-digest-sized-pages-with-pandoc-and-ms-output/#rest_code_928faf82d79146bd806de93c2064ecdb-3"&gt;&lt;/a&gt;               --output&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$*&lt;/span&gt;.ms $&amp;lt;
+&lt;a id="rest_code_928faf82d79146bd806de93c2064ecdb-4" name="rest_code_928faf82d79146bd806de93c2064ecdb-4" href="https://tkurtbond.github.io/posts/2020/03/13/making-digest-sized-pages-with-pandoc-and-ms-output/#rest_code_928faf82d79146bd806de93c2064ecdb-4"&gt;&lt;/a&gt;        pdfroff -ms -mpdfmark -e -t -k -KUTF-8 --no-toc-relocation &lt;span class="se"&gt;\&lt;/span&gt;
+&lt;a id="rest_code_928faf82d79146bd806de93c2064ecdb-5" name="rest_code_928faf82d79146bd806de93c2064ecdb-5" href="https://tkurtbond.github.io/posts/2020/03/13/making-digest-sized-pages-with-pandoc-and-ms-output/#rest_code_928faf82d79146bd806de93c2064ecdb-5"&gt;&lt;/a&gt;                -P-p8.5i,5.5i &lt;span class="nv"&gt;$*&lt;/span&gt;.ms &amp;gt; &lt;span class="nv"&gt;$@&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Or, if you don't care about having the &lt;span class="app"&gt;ms&lt;/span&gt; output for debugging,
 you could do it as a pipeline:&lt;/p&gt;
 &lt;p&gt;&lt;a class="reference external" href="https://tkurtbond.github.io/listings/GNUmakefile.pandoc-digest-pipeline.html"&gt;GNUmakefile.pandoc-digest-pipeline&lt;/a&gt;  &lt;a class="reference external" href="https://tkurtbond.github.io/listings/GNUmakefile.pandoc-digest-pipeline"&gt;(Source)&lt;/a&gt;&lt;/p&gt;
-&lt;pre class="code make"&gt;&lt;a name="rest_code_d7ca5558c86943e6b8c7a6745e77c726-1"&gt;&lt;/a&gt;&lt;span class="nf"&gt;%.digest.ms.pdf &lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; %.&lt;span class="n"&gt;rst&lt;/span&gt;
-&lt;a name="rest_code_d7ca5558c86943e6b8c7a6745e77c726-2"&gt;&lt;/a&gt;        pandoc -s -r rst -w ms -s --template&lt;span class="o"&gt;=&lt;/span&gt;digest2 &lt;span class="k"&gt;$(&lt;/span&gt;VARIABLES&lt;span class="k"&gt;)&lt;/span&gt; &lt;span class="se"&gt;\&lt;/span&gt;
-&lt;a name="rest_code_d7ca5558c86943e6b8c7a6745e77c726-3"&gt;&lt;/a&gt;               --output&lt;span class="o"&gt;=&lt;/span&gt;- $&amp;lt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="se"&gt;\&lt;/span&gt;
-&lt;a name="rest_code_d7ca5558c86943e6b8c7a6745e77c726-4"&gt;&lt;/a&gt;        pdfroff -ms -mpdfmark -e -t -k -KUTF-8 --no-toc-relocation &lt;span class="se"&gt;\&lt;/span&gt;
-&lt;a name="rest_code_d7ca5558c86943e6b8c7a6745e77c726-5"&gt;&lt;/a&gt;                -P-p8.5i,5.5i - &amp;gt;&lt;span class="nv"&gt;$@&lt;/span&gt;
-&lt;/pre&gt;&lt;p&gt;There are still some instances where this technique of having
+&lt;div class="code"&gt;&lt;pre class="code make"&gt;&lt;a id="rest_code_9aee01836cfc4c7a80d5b5116acab608-1" name="rest_code_9aee01836cfc4c7a80d5b5116acab608-1" href="https://tkurtbond.github.io/posts/2020/03/13/making-digest-sized-pages-with-pandoc-and-ms-output/#rest_code_9aee01836cfc4c7a80d5b5116acab608-1"&gt;&lt;/a&gt;&lt;span class="nf"&gt;%.digest.ms.pdf &lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; %.&lt;span class="n"&gt;rst&lt;/span&gt;
+&lt;a id="rest_code_9aee01836cfc4c7a80d5b5116acab608-2" name="rest_code_9aee01836cfc4c7a80d5b5116acab608-2" href="https://tkurtbond.github.io/posts/2020/03/13/making-digest-sized-pages-with-pandoc-and-ms-output/#rest_code_9aee01836cfc4c7a80d5b5116acab608-2"&gt;&lt;/a&gt;        pandoc -s -r rst -w ms -s --template&lt;span class="o"&gt;=&lt;/span&gt;digest2 &lt;span class="k"&gt;$(&lt;/span&gt;VARIABLES&lt;span class="k"&gt;)&lt;/span&gt; &lt;span class="se"&gt;\&lt;/span&gt;
+&lt;a id="rest_code_9aee01836cfc4c7a80d5b5116acab608-3" name="rest_code_9aee01836cfc4c7a80d5b5116acab608-3" href="https://tkurtbond.github.io/posts/2020/03/13/making-digest-sized-pages-with-pandoc-and-ms-output/#rest_code_9aee01836cfc4c7a80d5b5116acab608-3"&gt;&lt;/a&gt;               --output&lt;span class="o"&gt;=&lt;/span&gt;- $&amp;lt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="se"&gt;\&lt;/span&gt;
+&lt;a id="rest_code_9aee01836cfc4c7a80d5b5116acab608-4" name="rest_code_9aee01836cfc4c7a80d5b5116acab608-4" href="https://tkurtbond.github.io/posts/2020/03/13/making-digest-sized-pages-with-pandoc-and-ms-output/#rest_code_9aee01836cfc4c7a80d5b5116acab608-4"&gt;&lt;/a&gt;        pdfroff -ms -mpdfmark -e -t -k -KUTF-8 --no-toc-relocation &lt;span class="se"&gt;\&lt;/span&gt;
+&lt;a id="rest_code_9aee01836cfc4c7a80d5b5116acab608-5" name="rest_code_9aee01836cfc4c7a80d5b5116acab608-5" href="https://tkurtbond.github.io/posts/2020/03/13/making-digest-sized-pages-with-pandoc-and-ms-output/#rest_code_9aee01836cfc4c7a80d5b5116acab608-5"&gt;&lt;/a&gt;                -P-p8.5i,5.5i - &amp;gt;&lt;span class="nv"&gt;$@&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;There are still some instances where this technique of having
 &lt;span class="app"&gt;pandoc&lt;/span&gt; output the &lt;span class="app"&gt;ms&lt;/span&gt; source directly and pass it through
 &lt;span class="app"&gt;pdfroff&lt;/span&gt; yourself.  For instance, if you have to do some
 massaging of the &lt;span class="app"&gt;ms&lt;/span&gt; source, like changing &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;.RS/.RE&lt;/span&gt;&lt;/code&gt; to
 &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;.QS/.QE&lt;/span&gt;&lt;/code&gt; to get around the problem with block quotes in &lt;span class="app"&gt;ms&lt;/span&gt;
 output in the current &lt;span class="app"&gt;pandoc&lt;/span&gt; release, discussed &lt;a class="reference external" href="https://tkurtbond.github.io/posts/2020/03/11/pandoc-discuss-post-can-the-rsre-macros-in-ms-output-be-replaced-with-qsqe/"&gt;here&lt;/a&gt;.&lt;/p&gt;
-&lt;dl class="footnote brackets"&gt;
-&lt;dt class="label" id="heirloomtroff"&gt;&lt;span class="brackets"&gt;&lt;a class="fn-backref" href="https://tkurtbond.github.io/posts/2020/03/13/making-digest-sized-pages-with-pandoc-and-ms-output/#id1"&gt;1&lt;/a&gt;&lt;/span&gt;&lt;/dt&gt;
-&lt;dd&gt;&lt;p&gt;Heirloom Troff (originally at &lt;a class="reference external" href="http://heirloom.sourceforge.net/doctools.html"&gt;H1&lt;/a&gt;, but now &lt;em&gt;I
+&lt;aside class="footnote brackets" id="heirloomtroff" role="note"&gt;
+&lt;span class="label"&gt;&lt;span class="fn-bracket"&gt;[&lt;/span&gt;&lt;a role="doc-backlink" href="https://tkurtbond.github.io/posts/2020/03/13/making-digest-sized-pages-with-pandoc-and-ms-output/#footnote-reference-1"&gt;1&lt;/a&gt;&lt;span class="fn-bracket"&gt;]&lt;/span&gt;&lt;/span&gt;
+&lt;p&gt;Heirloom Troff (originally at &lt;a class="reference external" href="http://heirloom.sourceforge.net/doctools.html"&gt;H1&lt;/a&gt;, but now &lt;em&gt;I
 think&lt;/em&gt; more up to date at &lt;a class="reference external" href="http://n-t-roff.github.io/heirloom/doctools.html"&gt;H2&lt;/a&gt; and &lt;a class="reference external" href="https://github.com/n-t-roff/heirloom-doctools"&gt;H3&lt;/a&gt;) has the &lt;code class="docutils literal"&gt;.mediasize&lt;/code&gt; and
 &lt;code class="docutils literal"&gt;.papersize&lt;/code&gt; commands for that.&lt;/p&gt;
-&lt;/dd&gt;
-&lt;dt class="label" id="recursively"&gt;&lt;span class="brackets"&gt;&lt;a class="fn-backref" href="https://tkurtbond.github.io/posts/2020/03/13/making-digest-sized-pages-with-pandoc-and-ms-output/#id2"&gt;2&lt;/a&gt;&lt;/span&gt;&lt;/dt&gt;
-&lt;dd&gt;&lt;p&gt;Amusingly, &lt;span class="app"&gt;pandoc&lt;/span&gt; passes the
+&lt;/aside&gt;
+&lt;aside class="footnote brackets" id="recursively" role="note"&gt;
+&lt;span class="label"&gt;&lt;span class="fn-bracket"&gt;[&lt;/span&gt;&lt;a role="doc-backlink" href="https://tkurtbond.github.io/posts/2020/03/13/making-digest-sized-pages-with-pandoc-and-ms-output/#footnote-reference-2"&gt;2&lt;/a&gt;&lt;span class="fn-bracket"&gt;]&lt;/span&gt;&lt;/span&gt;
+&lt;p&gt;Amusingly, &lt;span class="app"&gt;pandoc&lt;/span&gt; passes the
 &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;--pdf-engine-opt=-P-p8.5i,5.5i&lt;/span&gt;&lt;/code&gt; argument to &lt;span class="app"&gt;pdfroff&lt;/span&gt;,
 which passes the &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;-P-p8.5i,5.5i&lt;/span&gt;&lt;/code&gt; part to &lt;span class="app"&gt;groff&lt;/span&gt;, which
 passes the &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;-p8.5i,5.5i&lt;/span&gt;&lt;/code&gt; part to the (final) post processor — I'm
 not sure if &lt;em&gt;that&lt;/em&gt; is &lt;span class="app"&gt;grops&lt;/span&gt; or &lt;span class="app"&gt;gropdf&lt;/span&gt;.&lt;/p&gt;
-&lt;/dd&gt;
-&lt;/dl&gt;&lt;/div&gt;</summary>
+&lt;/aside&gt;</summary>
     <category term="computer" label="computer"/>
     <category term="digest" label="digest"/>
     <category term="groff" label="groff"/>
@@ -115,7 +118,7 @@ got to video chat with her a good bit.  It really made my day.&lt;/p&gt;</summar
       <name>T. Kurt Bond</name>
     </author>
     <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/posts/2009/04/28/pdf-xchange-viewer/"/>
-    <summary type="html">&lt;div&gt;&lt;p&gt;I like to stick to Free/Libre (as in freedom) and Open Source Software
+    <summary type="html">&lt;p&gt;I like to stick to Free/Libre (as in freedom) and Open Source Software
 as much as I can, but I haven't found a open source program that lets
 me add text on existing PDF documents yet, so I use a commercial but
 free (as in costs nothing for personal use) program
@@ -128,7 +131,7 @@ documents that don't have electric form fields, which is very useful on
 long forms.&lt;/p&gt;
 &lt;p&gt;It's not perfect — I've had trouble with it on a few PDFs that seemed
 to have pathological defects — but overall it works well.&lt;/p&gt;
-&lt;p&gt;I'd still rather have a Free/Libre or Open Source program, though.&lt;/p&gt;&lt;/div&gt;</summary>
+&lt;p&gt;I'd still rather have a Free/Libre or Open Source program, though.&lt;/p&gt;</summary>
     <category term="computer" label="computer"/>
     <category term="pdf" label="pdf"/>
     <category term="tools" label="tools"/>
@@ -142,17 +145,20 @@ to have pathological defects — but overall it works well.&lt;/p&gt;
       <name>T. Kurt Bond</name>
     </author>
     <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/posts/2009/04/24/case-insenstive-filename-completion-with-bash-and-emacs/"/>
-    <summary type="html">&lt;div&gt;&lt;p&gt;It's strange, I know, that while I like case sensitive filenames, I
+    <summary type="html">&lt;p&gt;It's strange, I know, that while I like case sensitive filenames, I
 don't actually want to be bothered matching the case exactly when I'm
 using tab completion.  Fortunately, &lt;span class="program"&gt;emacs&lt;/span&gt; and
 &lt;span class="program"&gt;bash&lt;/span&gt; both accommodate my whims.  For bash, add&lt;/p&gt;
-&lt;pre class="code bash"&gt;&lt;a name="rest_code_72ba77b4d9974ae38b09ba4dd0410832-1"&gt;&lt;/a&gt;&lt;span class="nb"&gt;set&lt;/span&gt; completion-ignore-case on
-&lt;/pre&gt;&lt;p&gt;to your &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;~/.inputrc&lt;/span&gt;&lt;/code&gt; file.  For emacs, add&lt;/p&gt;
-&lt;pre class="code emacs-lisp"&gt;&lt;a name="rest_code_72220a4f231342d591b8a1aadc5e4629-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;read-file-name-completion-ignore-case&lt;/span&gt; &lt;span class="no"&gt;t&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;p&gt;to your emacs initialization files.  Of course, if want to get rid of
+&lt;div class="code"&gt;&lt;pre class="code bash"&gt;&lt;a id="rest_code_5b49a0b0b0ef4abfacd7fbaf723f03d2-1" name="rest_code_5b49a0b0b0ef4abfacd7fbaf723f03d2-1" href="https://tkurtbond.github.io/posts/2009/04/24/case-insenstive-filename-completion-with-bash-and-emacs/#rest_code_5b49a0b0b0ef4abfacd7fbaf723f03d2-1"&gt;&lt;/a&gt;&lt;span class="nb"&gt;set&lt;/span&gt; completion-ignore-case on
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;to your &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;~/.inputrc&lt;/span&gt;&lt;/code&gt; file.  For emacs, add&lt;/p&gt;
+&lt;div class="code"&gt;&lt;pre class="code emacs-lisp"&gt;&lt;a id="rest_code_d0b12420204348cdb51509bc9ea29dfb-1" name="rest_code_d0b12420204348cdb51509bc9ea29dfb-1" href="https://tkurtbond.github.io/posts/2009/04/24/case-insenstive-filename-completion-with-bash-and-emacs/#rest_code_d0b12420204348cdb51509bc9ea29dfb-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;read-file-name-completion-ignore-case&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="no"&gt;t&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;to your emacs initialization files.  Of course, if want to get rid of
 all completion case sensitivity, you need&lt;/p&gt;
-&lt;pre class="code emacs-lisp"&gt;&lt;a name="rest_code_46483600b85c4aee991e1a36ab4b7ad1-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;setq&lt;/span&gt; &lt;span class="nv"&gt;completion-ignore-case&lt;/span&gt; &lt;span class="no"&gt;t&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;p&gt;too.&lt;/p&gt;&lt;/div&gt;</summary>
+&lt;div class="code"&gt;&lt;pre class="code emacs-lisp"&gt;&lt;a id="rest_code_ad2032065e4448ba916fd39c85d1bf30-1" name="rest_code_ad2032065e4448ba916fd39c85d1bf30-1" href="https://tkurtbond.github.io/posts/2009/04/24/case-insenstive-filename-completion-with-bash-and-emacs/#rest_code_ad2032065e4448ba916fd39c85d1bf30-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;setq&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;completion-ignore-case&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="no"&gt;t&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;too.&lt;/p&gt;</summary>
     <category term="bash" label="bash"/>
     <category term="computer" label="computer"/>
     <category term="emacs" label="emacs"/>
@@ -209,7 +215,7 @@ PuTTY, too.&lt;/p&gt;</summary>
       <name>T. Kurt Bond</name>
     </author>
     <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/posts/2008/12/06/str-micro-string-api-for-c/"/>
-    <summary type="html">&lt;div&gt;&lt;p&gt;I was very pleased to discover large parts of &lt;a class="reference external" href="http://www.and.org/ustr/"&gt;µstr&lt;/a&gt; compile and seem
+    <summary type="html">&lt;p&gt;I was very pleased to discover large parts of &lt;a class="reference external" href="http://www.and.org/ustr/"&gt;µstr&lt;/a&gt; compile and seem
 to work under VMS v5.5-2 with GCC 2.7.1, which is almost the only
 compiler available to me on that machine.  The other is VAX BASIC,
 which has adequate simple string handling, but lacks advanced string
@@ -217,7 +223,7 @@ handling and has only very painful facilities for dynamically
 allocating complex data structures and working with them.&lt;/p&gt;
 &lt;p&gt;[2019-11-09: I was writing a program to get e-mails from VMS Mail
 using the callable interface, then parse the body of the email into a
-form that could be further processed by POISE DMS programs.]&lt;/p&gt;&lt;/div&gt;</summary>
+form that could be further processed by POISE DMS programs.]&lt;/p&gt;</summary>
     <category term="computer" label="computer"/>
   </entry>
   <entry>
@@ -229,14 +235,14 @@ form that could be further processed by POISE DMS programs.]&lt;/p&gt;&lt;/div&g
       <name>T. Kurt Bond</name>
     </author>
     <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/posts/2008/12/03/2gb-windows-xp-hibernation-problem/"/>
-    <summary type="html">&lt;div&gt;&lt;p&gt;&lt;a class="reference external" href="http://www.codinghorror.com/blog/archives/000555.html"&gt;Coding Horror&lt;/a&gt; points out the hotfix for the:&lt;/p&gt;
+    <summary type="html">&lt;p&gt;&lt;a class="reference external" href="http://www.codinghorror.com/blog/archives/000555.html"&gt;Coding Horror&lt;/a&gt; points out the hotfix for the:&lt;/p&gt;
 &lt;pre class="literal-block"&gt;⚠ Windows - System Error
 Insufficient system resources exist to complete the API.&lt;/pre&gt;
 &lt;p&gt;error when trying to suspend a Windows XP machine with 2 gibibytes.
 The hotfix is hosted by &lt;a class="reference external" href="http://www.u-g-h.com/2006/03/14/insufficient-system-resources-exist-to-complete-the-api-solived/"&gt;Owen Cutajar&lt;/a&gt; and is from &lt;a class="reference external" href="http://support.microsoft.com/?kbid=909095"&gt;Microsoft
 KB909095&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Update: 2008-12-11: Unfortunately, it doesn't always work.  Even after
-applying the hotfix, one of my laptops still won't hibernate.&lt;/p&gt;&lt;/div&gt;</summary>
+applying the hotfix, one of my laptops still won't hibernate.&lt;/p&gt;</summary>
     <category term="computer" label="computer"/>
     <category term="ms-windows" label="ms windows"/>
   </entry>
@@ -249,13 +255,13 @@ applying the hotfix, one of my laptops still won't hibernate.&lt;/p&gt;&lt;/div&
       <name>T. Kurt Bond</name>
     </author>
     <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/posts/2008/11/26/cygwin-setup-crashes-updating-bash/"/>
-    <summary type="html">&lt;div&gt;&lt;p&gt;Thanks to the wonders of Google and &lt;a class="reference external" href="http://rubenlaguna.com/wp/2007/11/05/cygwin-setupexe-crashes-whem-upgrading-packages/"&gt;Ruben&lt;/a&gt; I finally found the answer:
+    <summary type="html">&lt;p&gt;Thanks to the wonders of Google and &lt;a class="reference external" href="http://rubenlaguna.com/wp/2007/11/05/cygwin-setupexe-crashes-whem-upgrading-packages/"&gt;Ruben&lt;/a&gt; I finally found the answer:
 remove (you'll want to make a backup copy before you remove it,
 though) &lt;code class="docutils literal"&gt;/etc/setup/bash.lst.gz&lt;/code&gt; which apparently had become
 corrupted.&lt;/p&gt;
 &lt;p&gt;According to a comment on that post, running &lt;code class="docutils literal"&gt;gunzip &lt;span class="pre"&gt;-t&lt;/span&gt;&lt;/code&gt; on all
 files in &lt;code class="docutils literal"&gt;/etc/setup&lt;/code&gt; will tell you which setup files have been
-corrupted.&lt;/p&gt;&lt;/div&gt;</summary>
+corrupted.&lt;/p&gt;</summary>
     <category term="bash" label="bash"/>
     <category term="computer" label="computer"/>
     <category term="corrupted" label="corrupted"/>
@@ -273,7 +279,7 @@ corrupted.&lt;/p&gt;&lt;/div&gt;</summary>
       <name>T. Kurt Bond</name>
     </author>
     <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/posts/2008/09/14/ancient-history-and-hardware-repurposed-with-netbsd-40/"/>
-    <summary type="html">&lt;div&gt;&lt;p&gt;For some odd reason I decided to power on my old Gateway 2000 486DX/33
+    <summary type="html">&lt;p&gt;For some odd reason I decided to power on my old Gateway 2000 486DX/33
 and do something with it.  It hadn't been on since Wednesday, May
 25th, 2005, if I can believe the BIOS date.  (I was pleasantly
 surprised the settings hadn't gotten corrupted.)  Up to the point I turned it
@@ -321,7 +327,7 @@ http://intelligent-peripheral.com/manuals/quantum_ucg.pdf
 
  5. step-by-step-confirmation
 
- http://bsdsupport.org/2007/01/netbsd-pxe-boot-install-without-nfs/ --&gt;&lt;/div&gt;</summary>
+ http://bsdsupport.org/2007/01/netbsd-pxe-boot-install-without-nfs/ --&gt;</summary>
     <category term="computer" label="computer"/>
     <category term="i486" label="i486"/>
     <category term="netbsd" label="netbsd"/>

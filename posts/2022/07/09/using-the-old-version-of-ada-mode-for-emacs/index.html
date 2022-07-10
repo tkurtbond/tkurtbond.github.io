@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Using the old version of Ada Mode for Emacs | Lacking Natural Simplicity</title>
+<link href="../../../../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../../../../rss.xml">
+<link rel="alternate" type="application/atom+xml" title="Atom" href="../../../../../feed.atom">
+<link rel="canonical" href="https://tkurtbond.github.io/posts/2022/07/09/using-the-old-version-of-ada-mode-for-emacs/">
+<!--[if lt IE 9]><script src="../../../../../assets/js/html5.js"></script><![endif]--><meta name="author" content="T. Kurt Bond">
+<link rel="prev" href="../../04/the-school-of-niklaus-wirth-the-art-of-simplicity/" title="The School of Niklaus Wirth: The Art of Simplicity" type="text/html">
+<meta property="og:site_name" content="Lacking Natural Simplicity">
+<meta property="og:title" content="Using the old version of Ada Mode for Emacs">
+<meta property="og:url" content="https://tkurtbond.github.io/posts/2022/07/09/using-the-old-version-of-ada-mode-for-emacs/">
+<meta property="og:description" content="There are a lot of things to like about the Ada programming language;
+it seems to have a solid core of users, enough to support multiple
+commercial implementations and an implementation that is part o">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2022-07-09T22:20:40-04:00">
+<meta property="article:tag" content="ada">
+<meta property="article:tag" content="ada-mode">
+<meta property="article:tag" content="ada-mode.el">
+<meta property="article:tag" content="emacs">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400;1,700&amp;family=Lato:ital,wght@0,400;0,700;1,400;1,700&amp;family=Source+Code+Pro:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<div class="blog-masthead">
+    <div class="container">
+<!-- This keeps the margins nice -->
+        <nav class="blog-nav" role="navigation"><a href="../../../../../index.html" class="blog-nav-item">Home</a>
+            <a href="../../../../../archive.html" class="blog-nav-item">Archives</a>
+            <a href="../../../../../categories/index.html" class="blog-nav-item">Tags &amp; Categories</a>
+            <a href="../../../../../rss.xml" class="blog-nav-item">RSS feed</a>
+            <a href="../../../../../feed.atom" class="blog-nav-item">Atom feed</a>
+
+            
+
+    <a href="index.rst" class="blog-nav-item blog-nav-item-aside" id="sourcelink">Source</a>
+                
+            
+        </nav>
+</div>
+<!-- /.container -->
+</div>
+<!-- End of Menubar -->
+
+<div class="container" id="content" role="main">
+    <div class="body-content">
+        <div class="blog-header">
+            <h1 class="blog-title">
+                <a href="https://tkurtbond.github.io/">
+
+                    <span id="blog-title">Lacking Natural Simplicity</span>
+                </a>
+            </h1>
+            <p class="lead blog-description">Random musings on books, code, and tabletop games.</p>
+            
+        </div>
+        <!--Body content-->
+        <div class="row">
+            <div class="col-sm-8 blog-main">
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h2 class="p-name entry-title blog-post-title" itemprop="headline name"><a href="." class="u-url">Using the old version of Ada Mode for Emacs</a></h2>
+
+        <div class="metadata blog-post-meta">
+            <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
+            <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2022-07-09T22:20:40-04:00" itemprop="datePublished" title="2022-07-09 22:20">2022-07-09 22:20</time></a></p>
+                <p class="commentline">        <a href="#disqus_thread" data-disqus-identifier="cache/posts/2022/07/09/using-the-old-version-of-ada-mode-for-emacs.html">Comments</a>
+
+
+                    </p>
+<p class="sourceline"><a href="index.rst" id="sourcelink">Source</a></p>
+
+        </div>
+        
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <p>There are a lot of things to like about the <a class="reference external" href="https://en.wikipedia.org/wiki/Ada_(programming_language)">Ada</a> programming language;
+it seems to have a solid core of users, enough to support multiple
+commercial implementations and an implementation that is part of the
+<a class="reference external" href="https://gcc.gnu.org/">GNU Compiler Collection</a>.  I occasionally use it myself.</p>
+<p><strong>However:</strong> I'm sure that the current version of <a class="reference external" href="https://www.nongnu.org/ada-mode/">Ada Mode</a> for <a class="reference external" href="https://www.gnu.org/software/emacs/">Emacs</a>
+(available as an <a class="reference external" href="https://elpa.gnu.org/">ELPA</a> <a class="reference external" href="https://elpa.gnu.org/packages/ada-mode.html">package</a>, and thus not included in <span class="app">Emacs</span>
+itself), which provides smart editing for the <a class="reference external" href="https://en.wikipedia.org/wiki/Ada_(programming_language)">Ada</a> programming
+language, and uses an external parser for the indentation,
+fontification, and navigation engine, is wonderful if you can get it
+working, but I have <strong>never</strong> been able to get it to work.  My most
+recent try was today on Fedora 36 using GNAT 12.1.1 20220507 (Red Hat
+12.1.1-1).  Sigh.  Without the external parser the current <a class="reference external" href="https://www.nongnu.org/ada-mode/">Ada Mode</a>
+is completely unworkable.</p>
+<p>However, when I did some Ada work a number of years ago, I was quite
+happy with the version that used to be in <span class="app">Emacs</span> itself.  So I
+dug it out of the <a class="reference external" href="https://savannah.gnu.org/git/?group=emacs">Emacs git repository</a> at <a class="reference external" href="https://savannah.gnu.org">savannah.gnu.org</a>.
+Basically, cloned the git repository and then figured out what commit
+it was deleted in by doing:</p>
+<pre class="literal-block">$ git rev-list HEAD -n 1 -- lisp/progmodes/ada-mode.el
+a13c64204c8ead966789abf8efe176e4f2d4f599</pre>
+<p>Then I checked out the files involved:</p>
+<pre class="literal-block">$ git checkout a13c64204c8ead966789abf8efe176e4f2d4f599^ lisp/progmodes/ada-mode.el lisp/progmodes/ada-prj.el lisp/progmodes/ada-stmt.el lisp/progmodes/ada-xref.el doc/misc/ada-mode.texi</pre>
+<p>The <code class="docutils literal">^</code> at the end of the commit hash says to get the previous
+commit.</p>
+<p>And I've put the files in a <a class="reference external" href="../../../../../emacs/old-ada-mode.zip">zip file</a> for anybody who is in the same
+situation as I was.</p>
+<p>Just put them somewhere on your <code class="docutils literal"><span class="pre">load-path</span></code> and add <code class="docutils literal">(autoload
+<span class="pre">'ada-mode</span> <span class="pre">"ada-mode")</span></code> to your emacs config file.</p>
+    </div>
+    <script>var pfHeaderImgUrl = '';var pfHeaderTagline = '';var pfdisableClickToDel = 0;var pfHideImages = 0;var pfImageDisplayStyle = 'right';var pfDisablePDF = 0;var pfDisableEmail = 0;var pfDisablePrint = 0;var pfCustomCSS = '';var pfBtVersion='2';(function(){var js,pf;pf=document.createElement('script');pf.type='text/javascript';pf.src='//cdn.printfriendly.com/printfriendly.js';document.getElementsByTagName('head')[0].appendChild(pf)})();</script><a href="https://www.printfriendly.com" style="color:#6D9F00;text-decoration:none;" class="printfriendly" onclick="window.print();return false;" title="Printer Friendly and PDF"><img style="border:none;-webkit-box-shadow:none;box-shadow:none;" src="//cdn.printfriendly.com/buttons/printfriendly-pdf-button.png" alt="Print Friendly and PDF"></a>    
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../../../../../categories/ada/" rel="tag">ada</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/ada-mode/" rel="tag">ada-mode</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/ada-modeel/" rel="tag">ada-mode.el</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/emacs/" rel="tag">emacs</a></li>
+        </ul>
+<ul class="pager hidden-print">
+<li class="previous">
+                <a href="../../04/the-school-of-niklaus-wirth-the-art-of-simplicity/" rel="prev" title="The School of Niklaus Wirth: The Art of Simplicity">Previous post</a>
+            </li>
+        </ul></nav></aside><section class="comments hidden-print"><h2>Comments</h2>
+                    <div id="disqus_thread"></div>
+        <script>
+        var disqus_shortname ="lacking-natural-simplicity",
+            disqus_url="https://tkurtbond.github.io/posts/2022/07/09/using-the-old-version-of-ada-mode-for-emacs/",
+        disqus_title="Using the old version of Ada Mode for Emacs",
+        disqus_identifier="cache/posts/2022/07/09/using-the-old-version-of-ada-mode-for-emacs.html",
+        disqus_config = function () {
+            this.language = "en";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.async = true;
+            dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script><noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+    <a href="https://disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+        </section></article><script>var disqus_shortname="lacking-natural-simplicity";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
+</div>
+            <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+                    <div class="sidebar-module sidebar-module-inset">
+      <h4>About</h4>
+      <p>Lacking Natural Simplicity is one, not particularly flattering, 
+         definition of sophisticated.  
+         This blog chronicles my journey through our at times too complicated 
+         and sophisticated world. </p>
+    </div>
+    <div class="sidebar-module">
+      <h4>Links</h4>
+      <ol class="list-unstyled">
+<li><a href="../../../../../pages/about-the-blog/index.html">About the Blog</a></li>
+        <li><a href="../../../../../pages/colophon/index.html">Colophon</a></li>
+        <li><a href="../../../../../pages/typographical-conventions/index.html">Typographical Conventions</a></li>
+        <li><a href="../../../../../pages/static-pages-index/index.html">Pages</a></li>
+        <li>
+<a href="http://tkb.tx0.org/">My other web page</a>
+            <p>    Mostly empty</p>
+        </li>
+      </ol>
+</div>
+    
+            </div>
+        <!--End of body content-->
+        </div>
+    </div>
+</div>
+
+<footer class="blog-footer" id="footer">
+    Contents © 2022         <a href="mailto:tkurtbond@gmail.com">T. Kurt Bond</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+    
+</footer><script src="../../../../../assets/js/all-nocdn.js"></script><!-- fancy dates --><script>
+    moment.locale("en");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates --><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element) {
+            return element.getElementsByTagName('img')[0].alt;
+    }});
+    </script>
+</body>
+</html>
