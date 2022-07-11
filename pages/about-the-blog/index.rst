@@ -18,23 +18,16 @@ Tools I use to write
 
 All the text is written using Emacs_ in reStructuredText_ and
 formatted by Docutils_.  The blog software used to be PyBloxsom_, but
-after a hiatus, I've moved everything to Nikola_.
+after a hiatus, I moved everything to Nikola_.  The Colophon_ has more
+details.
+
+.. _Colophon: /pages/colophon/
 
 * Emacs_ is still the best editor that I've found.  
 
 * reStructuredText_ hits the sweet spot between simple text markup on
   the one hand and well structured and good looking output in a
   multitude of formats on the other hand.
-
-* PyBloxsom_ worked well enough for my needs, but it was a little
-  slow, probably the fault of how I had set it up.  When I stopped
-  maintaining a webhost on the Internet I went into hiatus.
-
-* I've moved on to Nikola_, a static site generator.  All the text is
-  still written in reStructuredText, and all the posts and pages from
-  the first blog are again available.  I'm hosting it on `Github
-  Pages`_, but since it's a static site I could easily move it
-  elsewhere if it becomes necessary.
 
 .. _Emacs: http://www.gnu.org/software/emacs/
 .. _reStructuredText: http://docutils.sourceforge.net/rst.html

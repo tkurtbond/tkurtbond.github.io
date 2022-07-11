@@ -26,8 +26,7 @@ conventions.)
 • The names and section numbers of :app:`man` pages are in a
   monospaced italic font :man:`groff_ms(7)`.
 • **Inline literal or code** text is a red monospaced font with a gray
-  background with a hint of red (``#f9f2f4`` to be precise): ``rm -rfv
-  *``.
+  background with a hint of red (``#f9f2f4`` to be precise): ``rm -rfv *``.
 • **Key strokes** are in an orange monospaced font with a gray background
   with a hint of red (``#f9f2f4`` again): :key:`C-x C-s`. They are
   notated with the :app:`Emacs` conventions: ``M-`` indicates the Meta
