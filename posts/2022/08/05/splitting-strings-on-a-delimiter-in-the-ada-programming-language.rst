@@ -26,7 +26,15 @@ However, those are all a little complicated, so it might be
 appropriate to show a simpler implementation.
 
 The ``String`` type in Ada is a array of characters.  Once
-declared, ``String`` variable always has the same length.
+declared, a ``String`` variable always has the same length.  That
+means that all the strings in an array of strings have to be the same
+length.  However, you an ``access`` (Ada's version of a 
+pointer) to a ``String`` can point to a string of any length, so for
+this version we'll return an array of pointers to ``String``.
+
+Operations on ``String`` are defined in `Ada.Strings.Fixed`_.
+
+.. _Ada.Strings.Fixed: http://www.ada-auth.org/standards/rm12_w_tc1/html/RM-A-4-3.html
 
 .. include:: files/ada/split/split_fixed.adb
    :code: ada
@@ -42,6 +50,11 @@ maximum capacity that you want, producing a different type for each.
 You can assign any string smaller than or equal to the maximum length,
 and the current length is recorded.
 
+Operations on ``Bounded_String`` are defined in
+`Ada.Strings.Bounded`_.
+
+.. _Ada.Strings.Bounded: http://www.ada-auth.org/standards/rm12_w_tc1/html/RM-A-4-4.html
+
 .. include:: files/ada/split/split_bounded.adb
    :code: ada
 
@@ -51,7 +64,16 @@ Here's the output:
    :literal:
 
 The ``Unbounded_String`` type in Ada grows dynamically as needed,
-but is not as time efficient as fixed strings or bounded strings. 
+but is not as time efficient as fixed strings or bounded strings.
+For this version, we'll use `Ada.Containers.Vectors`_ for a
+dynamically expending vector, rather than a fixed size vector.
+
+Operations on ``Unbounded_String`` are defined in
+`Ada.Strings.Unbounded`_.
+
+.. _Ada.Strings.Unbounded: http://www.ada-auth.org/standards/rm12_w_tc1/html/RM-A-4-5.html
+
+.. _Ada.Containers.Vectors: http://www.ada-auth.org/standards/rm12_w_tc1/html/RM-A-18-2.html
 
 .. include:: files/ada/split/split_unbounded.adb
    :code: ada
