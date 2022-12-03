@@ -1,0 +1,30 @@
+<!--
+.. title: Demonicity, a Tri-Stat boxed game by Dyskami
+.. slug: demonicity-a-tri-stat-boxed-game-by-dyskami
+.. date: 2022-12-02 22:54:07 UTC-05:00
+.. tags: rpg,dyskami,tri-stat,demonicity
+.. category: gaming/rpg
+.. link: 
+.. description: 
+.. type: text
+-->
+
+I finished reading Dyskami Publishing’s *Demonicity* tonight ([PDF](https://www.drivethrurpg.com/product/369442/Demonicity-RolePlaying-Adventures-TriStat-System)).  I liked the document design and found it easy to read, except the “Demon City” two page spread which I found a pain to read because of the body font.  I liked the artwork; it was not particularly anime or manga like, unlike *BESM Fourth Edition*.  There were a few typos, missing words, and other minor mistakes, but there was only one that hindered comprehension, and that one I figured out eventually from the context.  The rules are easy to understand.
+
+The setting of *Demonicity* is the titular “Demon City”, a city that is the location of an attack by demons from an different world/dimension.  It is obviously inspired by their earlier licensed RPG, *Demon City Shinjuku*, which I quite liked.
+
+*Demonicity* has a very interesting stripped down version of the Tri-Stat system that makes character generation and play much simpler.  In some ways it reminds me of *BESM First Edition*, though it is even simpler. The three Stats are Body, Mind, and Soul, of course, so that’s the same.  There are also Attributes, which are the special things a character can do.  Stats can be determined randomly or assigned by the player, and they and Attributes always cost points.  And there are some Derived Values: Combat, Health, Sanity.
+
+You roll 2d6 and add a stat or a derived value (like Combat), plus optionally an Attribue’s level, and compare the result to a target number or an opposed roll.  Things that make something easier are Edges: you get an extra die or two on your dice roll, and you keep the highest two.  Things that make something harder, like trying to use two weapons at once without training, gives you Obstacles: an extra die or two on your dice roll, but you keep the two *lowest* rolls.  Edges cancel out Obstacles and vice versa.  Combat is theater of the mind.
+
+*Demoicity*’s version of *BESM*’s Attributes are quite stripped down.  There are only nine: Adaptability, Damage, Demonicity, Fighting, Knacks, Movement, Resistance, Resources, and Skills.  These are bought in levels as usual, but associated with each are a number of Foci (as many as one has levels in the Attribute), which gives the character a special ability.  Demonicity is the Attribute that allows a character to do most of the more impressive supernatural things, for instance.  A few of its Foci are Healing, Meld (mere with inanimate objects), and Shadow Form.  The Fighting Attribute makes a character more proficient at combat than their Stats would suggest, and it’s Foci specify which kinds of Fighting you are better at (Melee or Ranged), or makes it easier to do certain things in combat (Blind Fighting, Two Weapons).  Generally, an Attribute’s level adds to dice rolls for things associated with it, while having an appropriate Foci means that you get an Edge.  After every session characters get a few points to increase their Stats and Attributes.
+
+The rulebook is only 32 pages long and has a thicker card stock cover.  It is accompanied by six one page adventures with related art on the back and by six pre-generated characters with an image of the character on the back, all on card stock.  There are also four six-sided dice.  The box everything comes in seems sturdy.  In general the production values are quite good.
+
+People who are confident with their improvisation skills can probably run the adventures easily, but those who like more details will probably want to do a bit more preparation. The adventures appear designed to be easily linked into a six episode mini-campaign, or can form the backbone of a longer campaign if the GM writes their own adventures.
+
+I like the inclusion of the pre-generated characters and the one page adventures.  They allow a gaming group to pick the game and start playing with little or no preparation.  And the simplified rules make it easy to learn the game, and to create characters if the gaming group doesn't want to use the pre-generated characters.  I think this makes it an excellent pick-up-and-play game.
+
+I would like to have seen something like the adventure generators from various Savage Worlds setting books or Toon and its supplements.  They allow the GM who is stuck for ideas to come up with something quickly when inspiration is lacking. But it would have been difficult to fit in the constraints of the product.  Perhaps on another sheet of card stock, since I can’t see deleting anything from the rulebook?  BESM and Tri-Stat generally have very little procedural support for coming up with NPCs, scenes, adventures, etc., and I think an adventure generator would be a useful addition. Of course, having the example adventures to give an idea of what *Demonicity* adventures would be like is very useful.
+
+All in all, I quite like *Demonicity* and hope to play it soon.  My only reservations are about the price of this game and the other two Tri-Stat boxed games, *Pixies* and *Wyrms*.  Forty-five retail dollars Canadian for the [physical product](http://dyskami.ca/tristat.html) seems like a lot.  The [PDF](https://www.drivethrurpg.com/product/369442/Demonicity-RolePlaying-Adventures-TriStat-System) seems more reasonable at 15 dollars.
