@@ -7,6 +7,8 @@
 .. description: 
 .. type: text
 
+*Last edited: 2022-12-03 11:21:48 EST*
+
 When I did a search for “splitting strings on a delimiter in the Ada
 programming language” recently I did not get many useful results.
 Eventually I stumbled over `GNAT.String_Split`_ which is an
@@ -28,7 +30,7 @@ appropriate to show a simpler implementation.
 The ``String`` type in Ada is a array of characters.  Once
 declared, a ``String`` variable always has the same length.  That
 means that all the strings in an array of strings have to be the same
-length.  However, you an ``access`` (Ada's version of a 
+length.  However, an ``access`` (Ada's version of a 
 pointer) to a ``String`` can point to a string of any length, so for
 this version we'll return an array of pointers to ``String``.
 
@@ -83,8 +85,10 @@ Here's the output:
 .. include:: files/ada/split/split_bounded.txt
    :literal:
 
-      
-
-
-
+..
+   Local Variables:
+   time-stamp-format: "%Y-%02m-%02d %02H:%02M:%02S %Z"
+   time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
+   time-stamp-end: "\\*\\\\?\n"
+   End:
 
