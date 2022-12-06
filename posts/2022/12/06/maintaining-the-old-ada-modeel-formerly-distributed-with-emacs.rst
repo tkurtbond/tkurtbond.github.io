@@ -23,7 +23,7 @@ Well, this morning when I pulled up an Ada file in :app:`Emacs` version
 
 #.  The information to invoke ada-mode on Ada files was not in the
     ``auto-mode-alist`` variable in :app:`Emacs`.  That was easy
-    enough to fix: add :file:`.ada`, :file:`.ads`, and :file:`.adb`to
+    enough to fix: add :file:`.ada`, :file:`.ads`, and :file:`.adb` to
     ``auto-mode-alist``
 
     .. code:: emacs-lisp
