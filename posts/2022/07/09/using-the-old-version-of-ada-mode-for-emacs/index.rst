@@ -2,13 +2,15 @@
 .. slug: using-the-old-version-of-ada-mode-for-emacs
 .. date: 2022-07-09 22:20:40 UTC-04:00
 .. tags: ada,ada-mode,ada-mode.el,emacs,free/libre software
-.. category: 
+.. category: computer/ada
 .. link: 
 .. description: 
 .. type: text
 
 .. role:: app
 .. role:: file
+
+*Last edited: 2022-12-06 14:33:55 EST*
 
 There are a lot of things to like about the Ada_ programming language;
 it seems to have a solid core of users, enough to support multiple
@@ -86,7 +88,7 @@ The ``^`` at the end of the commit hash says to get the previous
 commit.
 
 You'll also need :file:`doc/docstyle.texi` and
-:file:`doc/docstyle.texi` if you want to build documentation from
+:file:`doc/doclicense.texi` if you want to build documentation from
 :file:`ada-mode.texi`.
 
 And I've put the files in a `zip file`_ for anybody who is in the same
@@ -114,12 +116,9 @@ fontification.
    code, to help prevent errors.
 .. 
 
-*Last edited: 2022-07-10 19:23:02 EDT*
-
 ..
    Local Variables:
    time-stamp-format: "%Y-%02m-%02d %02H:%02M:%02S %Z"
    time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
    time-stamp-end: "\\*\\\\?\n"
-   time-stamp-line-limit: -20
    End:

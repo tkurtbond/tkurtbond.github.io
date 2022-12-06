@@ -1,13 +1,13 @@
 .. title: Splitting Strings on a Delimiter in the Ada Programming Language
 .. slug: splitting-strings-on-a-delimiter-in-the-ada-programming-language
 .. date: 2022-08-05 11:10:39 UTC-04:00
-.. tags: ada,programming,splitting strings
+.. tags: ada,programming,splitting strings,splitting strings in ada
 .. category: computer/ada
 .. link: 
 .. description: 
 .. type: text
 
-*Last edited: 2022-12-03 11:21:48 EST*
+*Last edited: 2022-12-06 13:30:34 EST*
 
 When I did a search for “splitting strings on a delimiter in the Ada
 programming language” recently I did not get many useful results.

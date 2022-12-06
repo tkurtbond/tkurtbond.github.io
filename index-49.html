@@ -122,15 +122,15 @@ the youngest kids.]</p>
 don't actually want to be bothered matching the case exactly when I'm
 using tab completion.  Fortunately, <span class="program">emacs</span> and
 <span class="program">bash</span> both accommodate my whims.  For bash, add</p>
-<div class="code"><pre class="code bash"><a id="rest_code_5b49a0b0b0ef4abfacd7fbaf723f03d2-1" name="rest_code_5b49a0b0b0ef4abfacd7fbaf723f03d2-1" href="posts/2009/04/24/case-insenstive-filename-completion-with-bash-and-emacs/#rest_code_5b49a0b0b0ef4abfacd7fbaf723f03d2-1"></a><span class="nb">set</span> completion-ignore-case on
-</pre></div>
+<pre class="code bash"><a name="rest_code_72ba77b4d9974ae38b09ba4dd0410832-1"></a><span class="nb">set</span> completion-ignore-case on
+</pre>
 <p>to your <code class="docutils literal"><span class="pre">~/.inputrc</span></code> file.  For emacs, add</p>
-<div class="code"><pre class="code emacs-lisp"><a id="rest_code_d0b12420204348cdb51509bc9ea29dfb-1" name="rest_code_d0b12420204348cdb51509bc9ea29dfb-1" href="posts/2009/04/24/case-insenstive-filename-completion-with-bash-and-emacs/#rest_code_d0b12420204348cdb51509bc9ea29dfb-1"></a><span class="p">(</span><span class="nv">read-file-name-completion-ignore-case</span><span class="w"> </span><span class="no">t</span><span class="p">)</span><span class="w"></span>
-</pre></div>
+<pre class="code emacs-lisp"><a name="rest_code_72220a4f231342d591b8a1aadc5e4629-1"></a><span class="p">(</span><span class="nv">read-file-name-completion-ignore-case</span> <span class="no">t</span><span class="p">)</span>
+</pre>
 <p>to your emacs initialization files.  Of course, if want to get rid of
 all completion case sensitivity, you need</p>
-<div class="code"><pre class="code emacs-lisp"><a id="rest_code_ad2032065e4448ba916fd39c85d1bf30-1" name="rest_code_ad2032065e4448ba916fd39c85d1bf30-1" href="posts/2009/04/24/case-insenstive-filename-completion-with-bash-and-emacs/#rest_code_ad2032065e4448ba916fd39c85d1bf30-1"></a><span class="p">(</span><span class="k">setq</span><span class="w"> </span><span class="nv">completion-ignore-case</span><span class="w"> </span><span class="no">t</span><span class="p">)</span><span class="w"></span>
-</pre></div>
+<pre class="code emacs-lisp"><a name="rest_code_46483600b85c4aee991e1a36ab4b7ad1-1"></a><span class="p">(</span><span class="k">setq</span> <span class="nv">completion-ignore-case</span> <span class="no">t</span><span class="p">)</span>
+</pre>
 <p>too.</p>
     <nav><ul itemprop="keywords" class="tags">
 <li><a class="tag p-category" href="categories/bash/" rel="tag">bash</a></li>
@@ -224,15 +224,21 @@ about this already, but if so I've lost it.  Sigh.]</p>
 </div>
     </header><div class="e-content entry-content">
     <p>I really like how easy reStructuredText makes adding custom
-interpreted text roles <a class="footnote-reference brackets" href="posts/2009/04/23/restructuredtext-custom-interpreted-text-roles/#role-customization" id="footnote-reference-1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> <a class="footnote-reference brackets" href="posts/2009/04/23/restructuredtext-custom-interpreted-text-roles/#role-directive" id="footnote-reference-2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>.  I
+interpreted text roles <a class="footnote-reference brackets" href="posts/2009/04/23/restructuredtext-custom-interpreted-text-roles/#role-customization" id="id1">1</a> <a class="footnote-reference brackets" href="posts/2009/04/23/restructuredtext-custom-interpreted-text-roles/#role-directive" id="id2">2</a>.  I
 do a fair bit for writing for the RPGs campaigns I run or play, and
 the custom roles are useful for mark specific things, like spell names
 or skill names.</p>
-<aside class="footnote brackets" id="role-customization" role="note"><span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="posts/2009/04/23/restructuredtext-custom-interpreted-text-roles/#footnote-reference-1">1</a><span class="fn-bracket">]</span></span>
+<dl class="footnote brackets">
+<dt class="label" id="role-customization"><span class="brackets"><a class="fn-backref" href="posts/2009/04/23/restructuredtext-custom-interpreted-text-roles/#id1">1</a></span></dt>
+<dd>
 <p><a class="reference external" href="http://docutils.sourceforge.net/docs/ref/rst/roles.html#customization">http://docutils.sourceforge.net/docs/ref/rst/roles.html#customization</a></p>
-</aside><aside class="footnote brackets" id="role-directive" role="note"><span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="posts/2009/04/23/restructuredtext-custom-interpreted-text-roles/#footnote-reference-2">2</a><span class="fn-bracket">]</span></span>
+</dd>
+<dt class="label" id="role-directive"><span class="brackets"><a class="fn-backref" href="posts/2009/04/23/restructuredtext-custom-interpreted-text-roles/#id2">2</a></span></dt>
+<dd>
 <p><a class="reference external" href="http://docutils.sourceforge.net/docs/ref/rst/directives.html#role">http://docutils.sourceforge.net/docs/ref/rst/directives.html#role</a></p>
-</aside><nav><ul itemprop="keywords" class="tags">
+</dd>
+</dl>
+<nav><ul itemprop="keywords" class="tags">
 <li><a class="tag p-category" href="categories/restructuredtext/" rel="tag">restructuredtext</a></li>
         </ul></nav>
 </div>
@@ -270,11 +276,12 @@ easier I'm much more likely to actually do so.</p>
         </p>
 </div>
     </header><div class="e-content entry-content">
-    <section id="rushing-valley-d-d-session-5"><h2>Rushing Valley D&amp;D, Session #5</h2>
-<section id="wednesday-15-april-2009"><h3>Wednesday, 15 April 2009</h3>
+    <div class="section" id="rushing-valley-d-d-session-5">
+<h2>Rushing Valley D&amp;D, Session #5</h2>
+<div class="section" id="wednesday-15-april-2009">
+<h3>Wednesday, 15 April 2009</h3>
 <dl class="field-list simple">
-<dt>version<span class="colon">:</span>
-</dt>
+<dt>version</dt>
 <dd>
 <p>2021-08-09 11:50:57</p>
 </dd>
@@ -283,13 +290,16 @@ easier I'm much more likely to actually do so.</p>
 and Dragons</em> campaign.  These actual play reports are available in
 <a class="reference external" href="categories/cat_gaming/actual-play/wvhtf/rushing-valley/">html</a>  from T.K.B.'s blog and from P.D.F.'s
 <a class="reference external" href="http://pdf-rpg.motion-forum.net/forum.htm">RPG forum</a>'s <a class="reference external" href="http://pdf-rpg.motion-forum.net/rushing-valley-campaign-c1/">Rushing Valley Campaign</a> <a class="reference external" href="http://pdf-rpg.motion-forum.net/history-f2/">History forum</a>.</p>
-<aside class="admonition note"><p class="admonition-title">Note</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
 <p>Sometimes when I write these sessions up, I attribute
 actions to other folks' characters that may not have <em>actually</em>
 occurred during play, but which I think were <em>implied</em>.  Or just
 amusing.  So, if you spot something you don't think your character
 would have done, just let me know.</p>
-</aside><section id="attending"><h4>Attending</h4>
+</div>
+<div class="section" id="attending">
+<h4>Attending</h4>
 <p>Clockwise round the table, starting with the DM at 9 o'clock:</p>
 <ul class="simple">
 <li><p>P.D.F. as DM</p></li>
@@ -298,7 +308,10 @@ would have done, just let me know.</p>
 <li><p>T.K.B. playing Droston a'Seamus</p></li>
 <li><p>M.A.F. playing Bartha</p></li>
 <li><p>C.A.H. playing Onchu</p></li>
-</ul></section><section id="introduction"><h4>Introduction</h4>
+</ul>
+</div>
+<div class="section" id="introduction">
+<h4>Introduction</h4>
 <p>This adventure started July 25th, Sunday evening.  The next day,
 Monday, will be the first day of the <span class="company">Wolf-banes</span> 2nd patrol tour
 of duty.</p>
@@ -312,15 +325,21 @@ town, and everybody who can stays as close to town as possible.</p>
 that fell to earth in the south-east that Coll will take him on as an
 apprentice.</p>
 <p>Mrs. McVoy had accepted Droston's apology, so he was very relieved.</p>
-<section id="income"><h5>Income</h5>
+<div class="section" id="income">
+<h5>Income</h5>
 <ul class="simple">
 <li><p>Bartha: 8 c.p.</p></li>
 <li><p>Eirnin: 5 s.p.</p></li>
 <li><p>Polonius: 5 c.p.  Did various odd jobs around the village.</p></li>
 <li><p>Droston: 5 c.p.  Hunting has been pretty difficult of late.</p></li>
 <li><p>Onchu: 8 s.p.</p></li>
-</ul></section></section><section id="actual-play-1"><h4>Actual Play</h4>
-<section id="relaxing-at-the-pub-and-then-off-to-bed"><h5>Relaxing At The Pub, And Then Off To Bed!</h5>
+</ul>
+</div>
+</div>
+<div class="section" id="id1">
+<h4>Actual Play</h4>
+<div class="section" id="relaxing-at-the-pub-and-then-off-to-bed">
+<h5>Relaxing At The Pub, And Then Off To Bed!</h5>
 <p>We started out in the <em>Broken Stone</em>, the local tavern, and it was
 getting close to the last round of drinks for the evening.</p>
 <p>Droston and Bartha spent 7 c.p. each trying to find out about, in
@@ -330,7 +349,9 @@ somewhere in the swamp near Riverton.   Unfortunately, nobody knew
 anything about either of them.</p>
 <p><span class="comment">[And the continuing confusion over what's north and what's south of
 Masonburg was introduced.]</span></p>
-</section><section id="or-not"><h5>… Or Not!</h5>
+</div>
+<div class="section" id="or-not">
+<h5>… Or Not!</h5>
 <p>As we were leaving the tavern, Onchu, Bartha, and Droston noticed what
 looked like a child's body floating in a pool in the river.  Wading
 out and turning it over revealed it to be a dead goblin, with a
@@ -352,7 +373,9 @@ way to Riverton?  North!  No, south!  No, north!”), our company, the
 <span class="company">Wolf-banes</span> was assigned to scout towards the mines (“Which way are
 the mines?  South?  North?  South?”), and the <span class="company">Axe &amp; Bow</span> company was
 tasked to look for creatures across the river.</p>
-</section><section id="all-this-in-the-dark"><h5>All This In The Dark</h5>
+</div>
+<div class="section" id="all-this-in-the-dark">
+<h5>All This In The Dark</h5>
 <p>As they were scouting quietly Bartha and Droston heard something
 crawling towards them, and Droston told Bartha to hang back while he
 takes the torch up to see what it is.  It is Evan, one of the members
@@ -370,7 +393,9 @@ this happened in the morning, right?]</span> His leather armor showed that
 he'd been very badly beaten by some blunt object.  He was also very
 scratched up, as if he'd been running blindly through the woods.  He
 had his pack, but not his weapon, a big mason's hammer.</p>
-</section><section id="scouting-for-trouble"><h5>Scouting For Trouble</h5>
+</div>
+<div class="section" id="scouting-for-trouble">
+<h5>Scouting For Trouble</h5>
 <p>In the morning, Droston and Bartha tracked him a mile past the close
 mine — it looks like he missed the mines running through the woods and
 ran until he fell down, then crawled another one-half mile.  We followed the
@@ -398,7 +423,9 @@ bad, with blood and gore on the beds.  The barracks had been looted.
 Footprints lead to both the mine and to the road south-east, and there
 were prints of wagon wheels headed south as well, though some effort
 had been made to obfuscate the tracks.</p>
-</section><section id="i-told-you-to-be-careful"><h5>I Told You To Be Careful!</h5>
+</div>
+<div class="section" id="i-told-you-to-be-careful">
+<h5>I Told You To Be Careful!</h5>
 <p>After some discussion, we decided we should check the mine for
 survivors before we go further south-east along the road.  We lit some
 torches and headed into the mine.  After about 30 feet we came to the
@@ -433,7 +460,9 @@ Brock off at his fortified domicile and warn whoever is there.  Turns
 out that there is only the mayor and a skeleton force <span class="comment">[I think this
 is when this happened, right???]</span>, and they all headed back to town
 with us.</p>
-</section><section id="dismay-and-disorder"><h5>Dismay And Disorder</h5>
+</div>
+<div class="section" id="dismay-and-disorder">
+<h5>Dismay And Disorder</h5>
 <p>In Masonburg the mayor, who was even more disturbed by the news of the
 missing miners, called a town meeting for that evening, July 26th.
 The <span class="company">Axe &amp; Bow</span> militia company had returned from searching across the
@@ -452,7 +481,9 @@ continue south-east along the road, scouting and, if possible,
 mount a rescue of the missing miners and militiamen.  After that we
 retired for the evening to the first sleep we've had in — what? 48
 hours? — and slept like the dead.</p>
-</section><section id="hope-and-preparations"><h5>Hope And Preparations</h5>
+</div>
+<div class="section" id="hope-and-preparations">
+<h5>Hope And Preparations</h5>
 <p>The next morning the mayor gave us a bullseye lantern from his days
 working in the mines.  Bartha came up with the excellent idea of
 making rye whiskey firebombs, and after an initial experiment with
@@ -464,7 +495,9 @@ and after seeing our blank stares, explains that tindertwigs are a
 technology perfected by the drwarves for easily and quickly lighting
 fires.  Of course, when Bartha inquired if he could make us some, he
 said he would be too busy building defenses.</p>
-</section><section id="headed-for-trouble"><h5>Headed For Trouble</h5>
+</div>
+<div class="section" id="headed-for-trouble">
+<h5>Headed For Trouble</h5>
 <p>We headed out, and are soon traveling south-east along the old road
 beyond the new mine.  After many hours of travel, Bartha and Droston
 decided that there's going to be a summer thunderstorm in an hour or
@@ -476,7 +509,9 @@ away, we decided (with Bartha grumbling about how if we'd stopped when
 out the storm.  We eventually ended up under the 2nd dwarven bridge,
 which is still in reasonably good shape, and there we sat through the
 night in the dark without a fire.  The rain stopped at midnight.</p>
-</section><section id="oh-yummy"><h5>Oh, Yummy!</h5>
+</div>
+<div class="section" id="oh-yummy">
+<h5>Oh, Yummy!</h5>
 <p>On Polonius's watch he heard a large creature heading slowly down the
 ravine towards us.  He woke us up and Bartha started struggling with
 flint and steel to light a torch.  In the mean while the rest of us
@@ -490,7 +525,9 @@ stepped forward yelling and waving the torch in the bear's face.  The
 bear fled.  Bartha tended to Onchu's wound, and we spent the rest of
 the night in cold silence.  We figured the bear was probably after
 some of the tasty-smelling jerky Bartha always keeps with her.</p>
-</section><section id="back-to-town"><h5>Back To Town…?</h5>
+</div>
+<div class="section" id="back-to-town">
+<h5>Back To Town…?</h5>
 <p>In the morning we headed back to Masonburg to get Onchu some more
 medical attention.  On the way back Onchu and Bartha noticed what
 looked like a lightning strike off to the side of the road.
@@ -502,7 +539,9 @@ size of a basketball.  Bartha and Droston figured out that a cart or
 wagon came up out of the crater, to the road, and away from town,
 headed south-east along the road.  Polonius spent the next few mines
 moaning about his bad luck.</p>
-</section><section id="not-yet"><h5>…Not Yet!</h5>
+</div>
+<div class="section" id="not-yet">
+<h5>…Not Yet!</h5>
 <p>When we got to the new mine, everybody but Polonius was halfway
 expecting trouble. Polonius, still moaning about the missing meteor,
 was therefore the only one surprised when three goblins, two
@@ -549,16 +588,22 @@ quality), 3 suits of bad goblin leather armor, two sets of
 hobgoblin-sized studded leather armor, a light wooden shield, and a
 small morning star, 12 sp, 35 cp, and in an evil-smelling bag, two
 heads of folks we recognize as belonging to the <span class="company">Serpents</span> militia
-company. <a class="footnote-reference brackets" href="posts/2009/04/15/s005-rv-2009-04-15/#hobgoblin-weapons" id="footnote-reference-1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> Everybody takes 2 sp each, with Droston
+company. <a class="footnote-reference brackets" href="posts/2009/04/15/s005-rv-2009-04-15/#hobgoblin-weapons" id="id2">1</a> Everybody takes 2 sp each, with Droston
 taking the left over 2 sp, and everybody takes 7 cp each.  Bartha
 forgives Droston for hitting her, and tells him she can clean up and
 repair the studded leather armor for him and <span class="comment">[…I can't remember who
 else was going to get the studded leather armor…]</span> and he apologized
 for accidentally hitting her.</p>
-<aside class="footnote brackets" id="hobgoblin-weapons" role="note"><span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="posts/2009/04/15/s005-rv-2009-04-15/#footnote-reference-1">1</a><span class="fn-bracket">]</span></span>
+<dl class="footnote brackets">
+<dt class="label" id="hobgoblin-weapons"><span class="brackets"><a class="fn-backref" href="posts/2009/04/15/s005-rv-2009-04-15/#id2">1</a></span></dt>
+<dd>
 <p>P.D.F. said that he thought the hobgoblins had
 morningstars of average quality.</p>
-</aside></section><section id="finally-back-to-town"><h5>Finally Back to Town!</h5>
+</dd>
+</dl>
+</div>
+<div class="section" id="finally-back-to-town">
+<h5>Finally Back to Town!</h5>
 <p>When we got to the old mine and quarry complex near the village the
 only person left there was old Gertie, who pretty much does whatever
 she wants.  She tended to Onchu's wounds, and we continued to the
@@ -573,11 +618,18 @@ the best thing to do was melt them down and reforge them, and that
 there was about enough for a long sword. “I've never made a long sword
 before, but I'm willing to give it a try.”  Droston said go ahead.
 Polonius begged and pleaded and Coll eventually relented enough to let
-Polonius watch Coll working on the blade. <a class="footnote-reference brackets" href="posts/2009/04/15/s005-rv-2009-04-15/#skill-points" id="footnote-reference-2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a></p>
-<aside class="footnote brackets" id="skill-points" role="note"><span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="posts/2009/04/15/s005-rv-2009-04-15/#footnote-reference-2">2</a><span class="fn-bracket">]</span></span>
+Polonius watch Coll working on the blade. <a class="footnote-reference brackets" href="posts/2009/04/15/s005-rv-2009-04-15/#skill-points" id="id3">2</a></p>
+<dl class="footnote brackets">
+<dt class="label" id="skill-points"><span class="brackets"><a class="fn-backref" href="posts/2009/04/15/s005-rv-2009-04-15/#id3">2</a></span></dt>
+<dd>
 <p>IIRC, P.D.F said this will let B.MC. spend one
 skill point on a related skill when he levels Polonius next.</p>
-</aside></section></section><section id="aftermath"><h4>Aftermath</h4>
+</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="aftermath">
+<h4>Aftermath</h4>
 <p>We each got <strong>500 XP</strong>.</p>
 <p>E-mail after the session revealed that of the militia companies, the
 <span class="company">Serpents</span> had 7 members originally, the <span class="company">Axe &amp; Bow</span>
@@ -588,7 +640,10 @@ members originally.</p>
 <!-- time-stamp-start: ":version:[        ]+\\\\?" -->
 <!-- time-stamp-end: "\\\\?\n" -->
 <!-- End: -->
-</section></section></section><nav><ul itemprop="keywords" class="tags">
+</div>
+</div>
+</div>
+    <nav><ul itemprop="keywords" class="tags">
 <li><a class="tag p-category" href="categories/actual-play/" rel="tag">actual-play</a></li>
             <li><a class="tag p-category" href="categories/dd/" rel="tag">d&amp;d</a></li>
             <li><a class="tag p-category" href="categories/rpg/" rel="tag">rpg</a></li>
@@ -606,9 +661,12 @@ members originally.</p>
         </p>
 </div>
     </header><div class="e-content entry-content">
-    <aside class="admonition admonition-spoilers"><p class="admonition-title">Spoilers!</p>
+    <div class="admonition admonition-spoilers">
+<p class="admonition-title">Spoilers!</p>
 <p><em>GURPS Bunnies &amp; Burrows</em>, “The Herbmaster's Plea”, p. 94.</p>
-</aside><section id="introduction"><h2>Introduction</h2>
+</div>
+<div class="section" id="introduction">
+<h2>Introduction</h2>
 <p><a class="reference external" href="http://www.fudgerpg.com/">Fudge</a> <a class="reference external" href="http://www.sjgames.com/gurps/books/bunnies/">Bunnies &amp; Burrows</a> is the first RPG that I played with any of
 the <a class="reference external" href="categories/cat_gaming/actual-play/the-kids/">kids</a>, and was probably the first RPG that I played with most of
 them.  It's ideal for introducing kids to RPGs: bunnies are familiar
@@ -625,15 +683,20 @@ Several of the players had probably played this scenario before, but
 it was enough years ago that they'd forgotten it, and I changed things
 around a bit.  I still had the map I drew of the barn from the farm
 from “The Herbmaster's Plea” for a <em>B&amp;B</em> game on 2003/01/18 with
-B.B. &amp; T.A. <a class="footnote-reference brackets" href="posts/2009/04/11/new-bunnies-and-burrows/#barn-map" id="footnote-reference-1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>, so I could reuse that.</p>
-</section><section id="attending"><h2>Attending</h2>
+B.B. &amp; T.A. <a class="footnote-reference brackets" href="posts/2009/04/11/new-bunnies-and-burrows/#barn-map" id="id1">1</a>, so I could reuse that.</p>
+</div>
+<div class="section" id="attending">
+<h2>Attending</h2>
 <ul class="simple">
 <li><p>M.B. &amp; C.P.B, jointly playing Chamomile, a bunny with healing powers</p></li>
 <li><p>L.B., playing Raspbery, a storytelling, risk-taking bunny</p></li>
 <li><p>T.A., playing Stripe, a capable young King's Scout bunny</p></li>
 <li><p>D.B., playing Oakroot, a solid and reliable, very strong but
 somewhat dim member of the Owsla.</p></li>
-</ul></section><section id="actual-play"><h2>Actual Play</h2>
+</ul>
+</div>
+<div class="section" id="actual-play">
+<h2>Actual Play</h2>
 <p>They went through the forest on the way to the farm, and were attacked
 by mongooses.  In evading the mongooses they ran off separately and
 all of them but Stripe got lost.  Oakroot and Raspberry eventually got
@@ -669,7 +732,9 @@ supernormal power to calm them down by telling them a story about
 Elharairah and convince them to come along quietly.</p>
 <p>They eluded the rats and all made it back safe to the warren, which
 welcomed the new rabbits joyfully.</p>
-<aside class="footnote brackets" id="barn-map" role="note"><span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="posts/2009/04/11/new-bunnies-and-burrows/#footnote-reference-1">1</a><span class="fn-bracket">]</span></span>
+<dl class="footnote brackets">
+<dt class="label" id="barn-map"><span class="brackets"><a class="fn-backref" href="posts/2009/04/11/new-bunnies-and-burrows/#id1">1</a></span></dt>
+<dd>
 <p>That earlier session was “The Missing Kit”.  It had the
 same PC bunnies as an earlier game that used “The Herbmaster's
 Plea”, so it was natural for the farm to be an important part of
@@ -677,7 +742,10 @@ the scenario again.  For “The Missing Kit” I drew a map for the
 barn that was very loosely based on a barn that was on my
 grandmother's farm that I spent a lot of time in as a child and
 teenager, first playing and then working bringing in the hay.</p>
-</aside></section><nav><ul itemprop="keywords" class="tags">
+</dd>
+</dl>
+</div>
+    <nav><ul itemprop="keywords" class="tags">
 <li><a class="tag p-category" href="categories/bb/" rel="tag">b&amp;b</a></li>
             <li><a class="tag p-category" href="categories/bunnies-burrows/" rel="tag">bunnies &amp; burrows</a></li>
             <li><a class="tag p-category" href="categories/fudge/" rel="tag">fudge</a></li>

@@ -1,24 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity (Posts about old blog)</title><link>https://tkurtbond.github.io/</link><description></description><atom:link href="https://tkurtbond.github.io/categories/old-blog.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2022 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Sun, 10 Jul 2022 22:45:30 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Converting my old log entries to blog entries</title><link>https://tkurtbond.github.io/posts/2014/11/04/convert-my-old-log-entries-to-blog-entries/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;p&gt;I converted my old log entries, which originated from my original
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity (Posts about old blog)</title><link>https://tkurtbond.github.io/</link><description></description><atom:link href="https://tkurtbond.github.io/categories/old-blog.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2022 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Tue, 06 Dec 2022 16:09:34 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Converting my old log entries to blog entries</title><link>https://tkurtbond.github.io/posts/2014/11/04/convert-my-old-log-entries-to-blog-entries/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;p&gt;I converted my old log entries, which originated from my original
 Docbook-based website, and were presently part of my static
 Sphinx-based website, over to my current PyBlosxom blog tonight,
 using the following script:&lt;/p&gt;
-&lt;div class="code"&gt;&lt;pre class="code text"&gt;&lt;a id="rest_code_3f9abe5c07f34df3b9be0590198c1d06-1" name="rest_code_3f9abe5c07f34df3b9be0590198c1d06-1" href="https://tkurtbond.github.io/posts/2014/11/04/convert-my-old-log-entries-to-blog-entries/#rest_code_3f9abe5c07f34df3b9be0590198c1d06-1"&gt;&lt;/a&gt;#! /usr/bin/env bash
-&lt;a id="rest_code_3f9abe5c07f34df3b9be0590198c1d06-2" name="rest_code_3f9abe5c07f34df3b9be0590198c1d06-2" href="https://tkurtbond.github.io/posts/2014/11/04/convert-my-old-log-entries-to-blog-entries/#rest_code_3f9abe5c07f34df3b9be0590198c1d06-2"&gt;&lt;/a&gt;find 200? -type f ! -name \*~ ! -name \*-idx-*.rst |
-&lt;a id="rest_code_3f9abe5c07f34df3b9be0590198c1d06-3" name="rest_code_3f9abe5c07f34df3b9be0590198c1d06-3" href="https://tkurtbond.github.io/posts/2014/11/04/convert-my-old-log-entries-to-blog-entries/#rest_code_3f9abe5c07f34df3b9be0590198c1d06-3"&gt;&lt;/a&gt;while read filename
-&lt;a id="rest_code_3f9abe5c07f34df3b9be0590198c1d06-4" name="rest_code_3f9abe5c07f34df3b9be0590198c1d06-4" href="https://tkurtbond.github.io/posts/2014/11/04/convert-my-old-log-entries-to-blog-entries/#rest_code_3f9abe5c07f34df3b9be0590198c1d06-4"&gt;&lt;/a&gt;do
-&lt;a id="rest_code_3f9abe5c07f34df3b9be0590198c1d06-5" name="rest_code_3f9abe5c07f34df3b9be0590198c1d06-5" href="https://tkurtbond.github.io/posts/2014/11/04/convert-my-old-log-entries-to-blog-entries/#rest_code_3f9abe5c07f34df3b9be0590198c1d06-5"&gt;&lt;/a&gt;    newname="$(echo $filename | sed 's#/#-#g')"
-&lt;a id="rest_code_3f9abe5c07f34df3b9be0590198c1d06-6" name="rest_code_3f9abe5c07f34df3b9be0590198c1d06-6" href="https://tkurtbond.github.io/posts/2014/11/04/convert-my-old-log-entries-to-blog-entries/#rest_code_3f9abe5c07f34df3b9be0590198c1d06-6"&gt;&lt;/a&gt;    date="$(basename $newname .rst)"
-&lt;a id="rest_code_3f9abe5c07f34df3b9be0590198c1d06-7" name="rest_code_3f9abe5c07f34df3b9be0590198c1d06-7" href="https://tkurtbond.github.io/posts/2014/11/04/convert-my-old-log-entries-to-blog-entries/#rest_code_3f9abe5c07f34df3b9be0590198c1d06-7"&gt;&lt;/a&gt;    (echo $date; echo "#published $date 00:00:00"; echo "#tags Old Blog";
-&lt;a id="rest_code_3f9abe5c07f34df3b9be0590198c1d06-8" name="rest_code_3f9abe5c07f34df3b9be0590198c1d06-8" href="https://tkurtbond.github.io/posts/2014/11/04/convert-my-old-log-entries-to-blog-entries/#rest_code_3f9abe5c07f34df3b9be0590198c1d06-8"&gt;&lt;/a&gt;        cat $filename) &amp;gt;/home/tkb/myblog/entries/oldblog/$newname
-&lt;a id="rest_code_3f9abe5c07f34df3b9be0590198c1d06-9" name="rest_code_3f9abe5c07f34df3b9be0590198c1d06-9" href="https://tkurtbond.github.io/posts/2014/11/04/convert-my-old-log-entries-to-blog-entries/#rest_code_3f9abe5c07f34df3b9be0590198c1d06-9"&gt;&lt;/a&gt;done
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;I'll have to go through and fix uses of Sphinx-specific RST
+&lt;pre class="code text"&gt;&lt;a name="rest_code_de2e0b4b02c640979b6e7ad5cf430647-1"&gt;&lt;/a&gt;#! /usr/bin/env bash
+&lt;a name="rest_code_de2e0b4b02c640979b6e7ad5cf430647-2"&gt;&lt;/a&gt;find 200? -type f ! -name \*~ ! -name \*-idx-*.rst |
+&lt;a name="rest_code_de2e0b4b02c640979b6e7ad5cf430647-3"&gt;&lt;/a&gt;while read filename
+&lt;a name="rest_code_de2e0b4b02c640979b6e7ad5cf430647-4"&gt;&lt;/a&gt;do
+&lt;a name="rest_code_de2e0b4b02c640979b6e7ad5cf430647-5"&gt;&lt;/a&gt;    newname="$(echo $filename | sed 's#/#-#g')"
+&lt;a name="rest_code_de2e0b4b02c640979b6e7ad5cf430647-6"&gt;&lt;/a&gt;    date="$(basename $newname .rst)"
+&lt;a name="rest_code_de2e0b4b02c640979b6e7ad5cf430647-7"&gt;&lt;/a&gt;    (echo $date; echo "#published $date 00:00:00"; echo "#tags Old Blog";
+&lt;a name="rest_code_de2e0b4b02c640979b6e7ad5cf430647-8"&gt;&lt;/a&gt;        cat $filename) &amp;gt;/home/tkb/myblog/entries/oldblog/$newname
+&lt;a name="rest_code_de2e0b4b02c640979b6e7ad5cf430647-9"&gt;&lt;/a&gt;done
+&lt;/pre&gt;&lt;p&gt;I'll have to go through and fix uses of Sphinx-specific RST
 extensions, and I'll probably add real entry titles as I do so; in the
 meanwhile, if the blog entry title is a date I haven't updated the
-entry.  I think this was pretty good for a ½ hour's work.&lt;/p&gt;</description><category>old blog</category><guid>https://tkurtbond.github.io/posts/2014/11/04/convert-my-old-log-entries-to-blog-entries/</guid><pubDate>Tue, 04 Nov 2014 05:31:38 GMT</pubDate></item><item><title>Recent Reading; Log moves to new Blog</title><link>https://tkurtbond.github.io/posts/2008/05/17/2008-05-17/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;section id="saturday-17-may-2008"&gt;
+entry.  I think this was pretty good for a ½ hour's work.&lt;/p&gt;</description><category>old blog</category><guid>https://tkurtbond.github.io/posts/2014/11/04/convert-my-old-log-entries-to-blog-entries/</guid><pubDate>Tue, 04 Nov 2014 05:31:38 GMT</pubDate></item><item><title>Recent Reading; Log moves to new Blog</title><link>https://tkurtbond.github.io/posts/2008/05/17/2008-05-17/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div class="section" id="saturday-17-may-2008"&gt;
 &lt;h2&gt;Saturday, 17 May 2008&lt;/h2&gt;
-&lt;section id="recent-reading"&gt;
+&lt;div class="section" id="recent-reading"&gt;
 &lt;h3&gt;Recent Reading&lt;/h3&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;&lt;p&gt;&lt;em&gt;Usagi Yojimbo&lt;/em&gt;, &lt;em&gt;Book 7&lt;/em&gt;, by Stan Sakai, copyright 1992, 1993,
@@ -28,14 +27,14 @@ entry.  I think this was pretty good for a ½ hour's work.&lt;/p&gt;</descriptio
 1993, 1994, 1997; Dark Horse Comics, copyright 1997, first edition
 September 1997; ISBN: 1-56971-259-X.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;/section&gt;
-&lt;section id="log-moves-to-new-blog"&gt;
+&lt;/div&gt;
+&lt;div class="section" id="log-moves-to-new-blog"&gt;
 &lt;h3&gt;Log moves to new Blog&lt;/h3&gt;
 &lt;p&gt;At some point after this date I moved from my old log, maintained as
 an DocBook document translated to a website, to my new blog running
 &lt;a class="reference external" href="https://pyblosxom.github.io/"&gt;pyBloxsom&lt;/a&gt;.&lt;/p&gt;
-&lt;/section&gt;
-&lt;/section&gt;</description><category>old blog</category><guid>https://tkurtbond.github.io/posts/2008/05/17/2008-05-17/</guid><pubDate>Sat, 17 May 2008 05:00:00 GMT</pubDate></item><item><title>Recent Reading and Viewing</title><link>https://tkurtbond.github.io/posts/2008/05/15/2008-05-15/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;section id="recent-reading"&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description><category>old blog</category><guid>https://tkurtbond.github.io/posts/2008/05/17/2008-05-17/</guid><pubDate>Sat, 17 May 2008 05:00:00 GMT</pubDate></item><item><title>Recent Reading and Viewing</title><link>https://tkurtbond.github.io/posts/2008/05/15/2008-05-15/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;div class="section" id="recent-reading"&gt;
 &lt;h2&gt;Recent Reading&lt;/h2&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;&lt;p&gt;&lt;em&gt;Judgement of Tears&lt;/em&gt;, &lt;em&gt;Anno Dracula 1959&lt;/em&gt;, also known as &lt;em&gt;The
@@ -43,13 +42,13 @@ Dracula Cha Cha Cha&lt;/em&gt;, by Kim Newman, copyright 1998; Avon Books Inc.,
 October 1999; ISBN: 0-380-73229-7. Another entertaining entry in
 Newman's &lt;em&gt;Anno Dracula&lt;/em&gt; series.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;/section&gt;
-&lt;section id="recent-viewing"&gt;
+&lt;/div&gt;
+&lt;div class="section" id="recent-viewing"&gt;
 &lt;h2&gt;Recent Viewing&lt;/h2&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;&lt;p&gt;&lt;a class="reference external" href="http://www.imdb.com/title/tt0308827/"&gt;Ronin-Gai&lt;/a&gt;, 1990.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;/section&gt;</description><category>old blog</category><category>recent reading</category><category>recent viewing</category><guid>https://tkurtbond.github.io/posts/2008/05/15/2008-05-15/</guid><pubDate>Thu, 15 May 2008 05:00:00 GMT</pubDate></item><item><title>Recent Reading</title><link>https://tkurtbond.github.io/posts/2008/05/14/2008-05-14/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;ul class="simple"&gt;
+&lt;/div&gt;</description><category>old blog</category><category>recent reading</category><category>recent viewing</category><guid>https://tkurtbond.github.io/posts/2008/05/15/2008-05-15/</guid><pubDate>Thu, 15 May 2008 05:00:00 GMT</pubDate></item><item><title>Recent Reading</title><link>https://tkurtbond.github.io/posts/2008/05/14/2008-05-14/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;ul class="simple"&gt;
 &lt;li&gt;&lt;p&gt;&lt;em&gt;Usagi Yojimbo&lt;/em&gt;, &lt;em&gt;Book 9: Daisho&lt;/em&gt;, by Stan Sakai, copyright 1994,
 1995, 1998; Dark Horse Books, copyright 1998; first edition September
 1998, 6th printing; ISBN-10: 1-56971-292-1, ISBN-13:

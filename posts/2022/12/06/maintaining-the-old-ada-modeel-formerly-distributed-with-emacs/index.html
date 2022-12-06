@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Maintaining the old ada-mode.el formerly distributed with Emacs | Lacking Natural Simplicity</title>
+<link href="../../../../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../../../../rss.xml">
+<link rel="alternate" type="application/atom+xml" title="Atom" href="../../../../../feed.atom">
+<link rel="canonical" href="https://tkurtbond.github.io/posts/2022/12/06/maintaining-the-old-ada-modeel-formerly-distributed-with-emacs/">
+<!--[if lt IE 9]><script src="../../../../../assets/js/html5.js"></script><![endif]--><meta name="author" content="T. Kurt Bond">
+<link rel="prev" href="../../02/demonicity-a-tri-stat-boxed-game-by-dyskami/" title="Demonicity, a Tri-Stat boxed game by Dyskami" type="text/html">
+<meta property="og:site_name" content="Lacking Natural Simplicity">
+<meta property="og:title" content="Maintaining the old ada-mode.el formerly distributed with Emacs">
+<meta property="og:url" content="https://tkurtbond.github.io/posts/2022/12/06/maintaining-the-old-ada-modeel-formerly-distributed-with-emacs/">
+<meta property="og:description" content="I wrote a post about using the old ada-mode.el that used to be
+distributed with Emacs because I couldn't get the newer,
+separate package version to work for me.
+Well, this morning when I pulled up an ">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2022-12-06T13:28:59-05:00">
+<meta property="article:tag" content="ada">
+<meta property="article:tag" content="ada-mode">
+<meta property="article:tag" content="ada-mode.el">
+<meta property="article:tag" content="emacs">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400;1,700&amp;family=Lato:ital,wght@0,400;0,700;1,400;1,700&amp;family=Source+Code+Pro:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<div class="blog-masthead">
+    <div class="container">
+<!-- This keeps the margins nice -->
+        <nav class="blog-nav" role="navigation"><a href="../../../../../index.html" class="blog-nav-item">Home</a>
+            <a href="../../../../../archive.html" class="blog-nav-item">Archives</a>
+            <a href="../../../../../categories/index.html" class="blog-nav-item">Tags &amp; Categories</a>
+            <a href="../../../../../rss.xml" class="blog-nav-item">RSS feed</a>
+            <a href="../../../../../feed.atom" class="blog-nav-item">Atom feed</a>
+
+            
+
+    <a href="index.rst" class="blog-nav-item blog-nav-item-aside" id="sourcelink">Source</a>
+                
+            
+        </nav>
+</div>
+<!-- /.container -->
+</div>
+<!-- End of Menubar -->
+
+<div class="container" id="content" role="main">
+    <div class="body-content">
+        <div class="blog-header">
+            <h1 class="blog-title">
+                <a href="https://tkurtbond.github.io/">
+
+                    <span id="blog-title">Lacking Natural Simplicity</span>
+                </a>
+            </h1>
+            <p class="lead blog-description">Random musings on books, code, and tabletop games.</p>
+            
+        </div>
+        <!--Body content-->
+        <div class="row">
+            <div class="col-sm-8 blog-main">
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h2 class="p-name entry-title blog-post-title" itemprop="headline name"><a href="." class="u-url">Maintaining the old ada-mode.el formerly distributed with Emacs</a></h2>
+
+        <div class="metadata blog-post-meta">
+            <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
+            <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2022-12-06T13:28:59-05:00" itemprop="datePublished" title="2022-12-06 13:28">2022-12-06 13:28</time></a></p>
+                <p class="commentline">        <a href="#disqus_thread" data-disqus-identifier="cache/posts/2022/12/06/maintaining-the-old-ada-modeel-formerly-distributed-with-emacs.html">Comments</a>
+
+
+                    </p>
+<p class="sourceline"><a href="index.rst" id="sourcelink">Source</a></p>
+
+        </div>
+        
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <p>I wrote a <a class="reference external" href="../../../07/09/using-the-old-version-of-ada-mode-for-emacs/">post</a> about using the old ada-mode.el that used to be
+distributed with <span class="app">Emacs</span> because I couldn't get the newer,
+separate package <a class="reference external" href="https://www.gnu.org/software/emacs/manual/html_mono/ada-mode.html">version</a> to work for me.</p>
+<p>Well, this morning when I pulled up an Ada file in <span class="app">Emacs</span> version
+28 there were two problems:</p>
+<ol class="arabic">
+<li>
+<p>The information to invoke ada-mode on Ada files was not in the
+<code class="docutils literal"><span class="pre">auto-mode-alist</span></code> variable in <span class="app">Emacs</span>.  That was easy
+enough to fix: add <span class="file">.ada</span>, <span class="file">.ads</span>, and <span class="file">.adb`to
+``auto-mode-alist`</span></p>
+<div class="code"><pre class="code emacs-lisp"><a id="rest_code_b65d144fd90d46bbafd01753761df4fc-1" name="rest_code_b65d144fd90d46bbafd01753761df4fc-1" href="#rest_code_b65d144fd90d46bbafd01753761df4fc-1"></a><span class="p">(</span><span class="nb">cl-loop</span><span class="w"> </span><span class="nv">for</span><span class="w"> </span><span class="nv">ext</span><span class="w"> </span><span class="nv">in</span><span class="w"> </span><span class="o">'</span><span class="p">(</span><span class="s">"\\.gpr$"</span><span class="w"> </span><span class="s">"\\.ada$"</span><span class="w"> </span><span class="s">"\\.ads$"</span><span class="w"> </span><span class="s">"\\.adb$"</span><span class="p">)</span><span class="w"></span>
+<a id="rest_code_b65d144fd90d46bbafd01753761df4fc-2" name="rest_code_b65d144fd90d46bbafd01753761df4fc-2" href="#rest_code_b65d144fd90d46bbafd01753761df4fc-2"></a><span class="w">    </span><span class="nb">do</span><span class="w"> </span><span class="p">(</span><span class="nv">add-to-list</span><span class="w"> </span><span class="ss">'auto-mode-alist</span><span class="w"> </span><span class="p">(</span><span class="nf">cons</span><span class="w"> </span><span class="nv">ext</span><span class="w"> </span><span class="ss">'ada-mode</span><span class="p">)))</span><span class="w"></span>
+</pre></div>
+<p>That was easy enough.</p>
+</li>
+<li><p>When I tried to do any indentation <span class="cmd">emacs</span> reported an error,
+with the error message “End position is smaller than start
+position”.  Eventually I tracked this down to a call to
+<code class="docutils literal"><span class="pre">parse-partial-sexp</span></code> in <code class="docutils literal"><span class="pre">ada-in-open-paren-p</span></code>.  It turns out
+that somewhere after <span class="app">Emacs</span> version 27.2 was released the
+<span class="app">Emacs</span> developers added a check to <code class="docutils literal"><span class="pre">parse-partial-sexp</span></code> to
+ensure that the <code class="docutils literal">FROM</code> argument (which indicates where in the
+buffer to start parsing) was less than the <code class="docutils literal">TO</code> argument (which
+indicates where in the buffer to <strong>stop</strong> parsing).</p></li>
+</ol>
+<p>Drat.  Drat.  Drat.  Well, looking at the code it was clear that
+since <code class="docutils literal"><span class="pre">ada-in-open-paren-p</span></code> is explicitly searching backwards
+that <code class="docutils literal">TO</code> would <strong>always</strong> be smaller than <code class="docutils literal">FROM</code>.  So I could
+just transpose the s-expressions that found those two values.  I
+tried it, and it worked!</p>
+<p>At that point I realized that I had committed to maintain the old
+version of ada-mode, at least for myself, and that I'd already talked
+about it on my blog and it was small step from there to setting up a
+GitHub <a class="reference external" href="https://github.com/tkurtbond/old-ada-mode">repository</a> with the old code, adding an <a class="reference external" href="https://github.com/tkurtbond/old-ada-mode/issues/1">issue</a> describing the
+problem, adding a <a class="reference external" href="https://github.com/tkurtbond/old-ada-mode/commit/7ee6fe55862ec615c7fe23d881adfee2d0094770">commit</a> with the fix, and then writing this blog
+post.</p>
+<p>Somewhere, someone is laughing and enjoying the schadenfreude.  Maybe
+this will help someone else.</p>
+<p>And since I already have a GitHub <a class="reference external" href="https://github.com/tkurtbond/old-ada-mode">repository</a>, I ought to document the
+first <a class="reference external" href="https://github.com/tkurtbond/old-ada-mode/issues/2">problem</a> and since it is a documentation problem, put a mention
+in the <a class="reference external" href="https://github.com/tkurtbond/old-ada-mode/commit/67a79caacd851120fee2bca4704938a2f27e1bba">README</a>.</p>
+    </div>
+    <script>var pfHeaderImgUrl = '';var pfHeaderTagline = '';var pfdisableClickToDel = 0;var pfHideImages = 0;var pfImageDisplayStyle = 'right';var pfDisablePDF = 0;var pfDisableEmail = 0;var pfDisablePrint = 0;var pfCustomCSS = '';var pfBtVersion='2';(function(){var js,pf;pf=document.createElement('script');pf.type='text/javascript';pf.src='//cdn.printfriendly.com/printfriendly.js';document.getElementsByTagName('head')[0].appendChild(pf)})();</script><a href="https://www.printfriendly.com" style="color:#6D9F00;text-decoration:none;" class="printfriendly" onclick="window.print();return false;" title="Printer Friendly and PDF"><img style="border:none;-webkit-box-shadow:none;box-shadow:none;" src="//cdn.printfriendly.com/buttons/printfriendly-pdf-button.png" alt="Print Friendly and PDF"></a>    
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../../../../../categories/ada/" rel="tag">ada</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/ada-mode/" rel="tag">ada-mode</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/ada-modeel/" rel="tag">ada-mode.el</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/emacs/" rel="tag">emacs</a></li>
+        </ul>
+<ul class="pager hidden-print">
+<li class="previous">
+                <a href="../../02/demonicity-a-tri-stat-boxed-game-by-dyskami/" rel="prev" title="Demonicity, a Tri-Stat boxed game by Dyskami">Previous post</a>
+            </li>
+        </ul></nav></aside><section class="comments hidden-print"><h2>Comments</h2>
+                    <div id="disqus_thread"></div>
+        <script>
+        var disqus_shortname ="lacking-natural-simplicity",
+            disqus_url="https://tkurtbond.github.io/posts/2022/12/06/maintaining-the-old-ada-modeel-formerly-distributed-with-emacs/",
+        disqus_title="Maintaining the old ada-mode.el formerly distributed with Emacs",
+        disqus_identifier="cache/posts/2022/12/06/maintaining-the-old-ada-modeel-formerly-distributed-with-emacs.html",
+        disqus_config = function () {
+            this.language = "en";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.async = true;
+            dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script><noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+    <a href="https://disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+        </section></article><script>var disqus_shortname="lacking-natural-simplicity";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
+</div>
+            <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+                    <div class="sidebar-module sidebar-module-inset">
+      <h4>About</h4>
+      <p>Lacking Natural Simplicity is one, not particularly flattering, 
+         definition of sophisticated.  
+         This blog chronicles my journey through our at times too complicated 
+         and sophisticated world. </p>
+    </div>
+    <div class="sidebar-module">
+      <h4>Links</h4>
+      <ol class="list-unstyled">
+<li><a href="../../../../../pages/about-the-blog/index.html">About the Blog</a></li>
+        <li><a href="../../../../../pages/colophon/index.html">Colophon</a></li>
+        <li><a href="../../../../../pages/typographical-conventions/index.html">Typographical Conventions</a></li>
+        <li><a href="../../../../../pages/static-pages-index/index.html">Pages</a></li>
+        <li>
+<a href="http://tkb.tx0.org/">My other web page</a>
+            <p>    Mostly empty</p>
+        </li>
+      </ol>
+</div>
+    
+            </div>
+        <!--End of body content-->
+        </div>
+    </div>
+</div>
+
+<footer class="blog-footer" id="footer">
+    Contents © 2022         <a href="mailto:tkurtbond@gmail.com">T. Kurt Bond</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+    
+</footer><script src="../../../../../assets/js/all-nocdn.js"></script><!-- fancy dates --><script>
+    moment.locale("en");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates --><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element) {
+            return element.getElementsByTagName('img')[0].alt;
+    }});
+    </script>
+</body>
+</html>

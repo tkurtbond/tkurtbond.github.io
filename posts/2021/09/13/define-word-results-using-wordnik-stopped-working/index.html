@@ -89,8 +89,8 @@ you visit the url with Chrome, but not if you just try to download it
 with curl, or <code class="docutils literal"><span class="pre">url-retrieve</span></code> in Emacs. Adding a
 “<code class="docutils literal"><span class="pre">User-Agent:</span> Mozilla/5.0 (Macintosh; Intel Mac OS X 11_5_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36</code>”
 with curl’s -H option made it work.</p>
-<div class="code"><pre class="code bash"><a id="rest_code_6640bc9d5a494b0ba32557ed6f06eb39-1" name="rest_code_6640bc9d5a494b0ba32557ed6f06eb39-1" href="#rest_code_6640bc9d5a494b0ba32557ed6f06eb39-1"></a>curl -i -H <span class="s1">'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 11_5_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36'</span> http://wordnik.com/words/importunate
-</pre></div>
+<pre class="code bash"><a name="rest_code_8e021d4077de40a491236cc3473877c7-1"></a>curl -i -H <span class="s1">'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 11_5_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36'</span> http://wordnik.com/words/importunate
+</pre>
 <p>So I added a <code class="docutils literal">let</code> in my advice for <code class="docutils literal"><span class="pre">define-word</span></code> that binds
 <code class="docutils literal"><span class="pre">url-request-extra-headers</span></code> to an alist with <code class="docutils literal"><span class="pre">"User-Agent"</span></code> as the
 key and <code class="docutils literal">"Mozilla/5.0 (Macintosh; Intel Mac OS X 11_5_2)
@@ -98,12 +98,12 @@ AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63
 Safari/537.36"</code> as the value, and it works again.</p>
 <p>My solution looks something like this (simplified from my actual advice,
 which does other things too):</p>
-<div class="code"><pre class="code emacs-lisp"><a id="rest_code_66e3ba5329344b3c865489ccd6fcc74b-1" name="rest_code_66e3ba5329344b3c865489ccd6fcc74b-1" href="#rest_code_66e3ba5329344b3c865489ccd6fcc74b-1"></a><span class="p">(</span><span class="nb">defadvice</span><span class="w"> </span><span class="nv">define-word</span><span class="w"> </span><span class="p">(</span><span class="nv">around</span><span class="w"> </span><span class="nv">your-around-define-word</span><span class="w"> </span><span class="nv">activate</span><span class="p">)</span><span class="w"></span>
-<a id="rest_code_66e3ba5329344b3c865489ccd6fcc74b-2" name="rest_code_66e3ba5329344b3c865489ccd6fcc74b-2" href="#rest_code_66e3ba5329344b3c865489ccd6fcc74b-2"></a><span class="w">  </span><span class="s">"Dynamically bind tkb-define-word-word to the word passed in."</span><span class="w"></span>
-<a id="rest_code_66e3ba5329344b3c865489ccd6fcc74b-3" name="rest_code_66e3ba5329344b3c865489ccd6fcc74b-3" href="#rest_code_66e3ba5329344b3c865489ccd6fcc74b-3"></a><span class="w">  </span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">((</span><span class="nv">url-request-extra-headers</span><span class="w"></span>
-<a id="rest_code_66e3ba5329344b3c865489ccd6fcc74b-4" name="rest_code_66e3ba5329344b3c865489ccd6fcc74b-4" href="#rest_code_66e3ba5329344b3c865489ccd6fcc74b-4"></a><span class="w">         </span><span class="o">'</span><span class="p">((</span><span class="s">"User-Agent"</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="s">"Mozilla/5.0 (Macintosh; Intel Mac OS X 11_5_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36"</span><span class="p">))))</span><span class="w"></span>
-<a id="rest_code_66e3ba5329344b3c865489ccd6fcc74b-5" name="rest_code_66e3ba5329344b3c865489ccd6fcc74b-5" href="#rest_code_66e3ba5329344b3c865489ccd6fcc74b-5"></a><span class="w">    </span><span class="nv">ad-do-it</span><span class="p">))</span><span class="w"></span>
-</pre></div>
+<pre class="code emacs-lisp"><a name="rest_code_59b1eba96d3e495aa9d2b645073b3bda-1"></a><span class="p">(</span><span class="nb">defadvice</span> <span class="nv">define-word</span> <span class="p">(</span><span class="nv">around</span> <span class="nv">your-around-define-word</span> <span class="nv">activate</span><span class="p">)</span>
+<a name="rest_code_59b1eba96d3e495aa9d2b645073b3bda-2"></a>  <span class="s">"Dynamically bind tkb-define-word-word to the word passed in."</span>
+<a name="rest_code_59b1eba96d3e495aa9d2b645073b3bda-3"></a>  <span class="p">(</span><span class="k">let</span> <span class="p">((</span><span class="nv">url-request-extra-headers</span>
+<a name="rest_code_59b1eba96d3e495aa9d2b645073b3bda-4"></a>         <span class="o">'</span><span class="p">((</span><span class="s">"User-Agent"</span> <span class="o">.</span> <span class="s">"Mozilla/5.0 (Macintosh; Intel Mac OS X 11_5_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36"</span><span class="p">))))</span>
+<a name="rest_code_59b1eba96d3e495aa9d2b645073b3bda-5"></a>    <span class="nv">ad-do-it</span><span class="p">))</span>
+</pre>
 <p>I opened an <a class="reference external" href="https://github.com/abo-abo/define-word/issues/31">issue</a> on github, suggesting it might be a good idea to
 add a simpler way to add a <code class="docutils literal"><span class="pre">User-Agent:</span></code> header around
 <code class="docutils literal"><span class="pre">define-word--to-string</span></code>’s call to <code class="docutils literal"><span class="pre">url-retrieve-synchronously</span></code>.</p>

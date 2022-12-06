@@ -3,13 +3,68 @@
 <feed xml:lang="en" xmlns="http://www.w3.org/2005/Atom">
   <title>Lacking Natural Simplicity (Posts about ada-mode.el)</title>
   <id>https://tkurtbond.github.io/categories/ada-modeel.atom</id>
-  <updated>2022-07-10T23:23:21Z</updated>
+  <updated>2022-12-06T19:37:05Z</updated>
   <author>
     <name>T. Kurt Bond</name>
   </author>
   <link rel="self" type="application/atom+xml" href="https://tkurtbond.github.io/categories/ada-modeel.atom"/>
   <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/categories/ada-modeel/"/>
   <generator uri="https://getnikola.com/">Nikola</generator>
+  <entry>
+    <title>Maintaining the old ada-mode.el formerly distributed with Emacs</title>
+    <id>https://tkurtbond.github.io/posts/2022/12/06/maintaining-the-old-ada-modeel-formerly-distributed-with-emacs/</id>
+    <updated>2022-12-06T13:28:59-05:00</updated>
+    <published>2022-12-06T13:28:59-05:00</published>
+    <author>
+      <name>T. Kurt Bond</name>
+    </author>
+    <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/posts/2022/12/06/maintaining-the-old-ada-modeel-formerly-distributed-with-emacs/"/>
+    <summary type="html">&lt;p&gt;I wrote a &lt;a class="reference external" href="https://tkurtbond.github.io/posts/2022/07/09/using-the-old-version-of-ada-mode-for-emacs/"&gt;post&lt;/a&gt; about using the old ada-mode.el that used to be
+distributed with &lt;span class="app"&gt;Emacs&lt;/span&gt; because I couldn't get the newer,
+separate package &lt;a class="reference external" href="https://www.gnu.org/software/emacs/manual/html_mono/ada-mode.html"&gt;version&lt;/a&gt; to work for me.&lt;/p&gt;
+&lt;p&gt;Well, this morning when I pulled up an Ada file in &lt;span class="app"&gt;Emacs&lt;/span&gt; version
+28 there were two problems:&lt;/p&gt;
+&lt;ol class="arabic"&gt;
+&lt;li&gt;&lt;p&gt;The information to invoke ada-mode on Ada files was not in the
+&lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;auto-mode-alist&lt;/span&gt;&lt;/code&gt; variable in &lt;span class="app"&gt;Emacs&lt;/span&gt;.  That was easy
+enough to fix: add &lt;span class="file"&gt;.ada&lt;/span&gt;, &lt;span class="file"&gt;.ads&lt;/span&gt;, and &lt;span class="file"&gt;.adb`to
+``auto-mode-alist`&lt;/span&gt;&lt;/p&gt;
+&lt;div class="code"&gt;&lt;pre class="code emacs-lisp"&gt;&lt;a id="rest_code_b65d144fd90d46bbafd01753761df4fc-1" name="rest_code_b65d144fd90d46bbafd01753761df4fc-1" href="https://tkurtbond.github.io/posts/2022/12/06/maintaining-the-old-ada-modeel-formerly-distributed-with-emacs/#rest_code_b65d144fd90d46bbafd01753761df4fc-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;cl-loop&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;for&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;ext&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;in&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;'&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"\\.gpr$"&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;"\\.ada$"&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;"\\.ads$"&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;"\\.adb$"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;a id="rest_code_b65d144fd90d46bbafd01753761df4fc-2" name="rest_code_b65d144fd90d46bbafd01753761df4fc-2" href="https://tkurtbond.github.io/posts/2022/12/06/maintaining-the-old-ada-modeel-formerly-distributed-with-emacs/#rest_code_b65d144fd90d46bbafd01753761df4fc-2"&gt;&lt;/a&gt;&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nb"&gt;do&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;add-to-list&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ss"&gt;'auto-mode-alist&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;cons&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;ext&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ss"&gt;'ada-mode&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;That was easy enough.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;When I tried to do any indentation &lt;span class="cmd"&gt;emacs&lt;/span&gt; reported an error,
+with the error message “End position is smaller than start
+position”.  Eventually I tracked this down to a call to
+&lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;parse-partial-sexp&lt;/span&gt;&lt;/code&gt; in &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;ada-in-open-paren-p&lt;/span&gt;&lt;/code&gt;.  It turns out
+that somewhere after &lt;span class="app"&gt;Emacs&lt;/span&gt; version 27.2 was released the
+&lt;span class="app"&gt;Emacs&lt;/span&gt; developers added a check to &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;parse-partial-sexp&lt;/span&gt;&lt;/code&gt; to
+ensure that the &lt;code class="docutils literal"&gt;FROM&lt;/code&gt; argument (which indicates where in the
+buffer to start parsing) was less than the &lt;code class="docutils literal"&gt;TO&lt;/code&gt; argument (which
+indicates where in the buffer to &lt;strong&gt;stop&lt;/strong&gt; parsing).&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Drat.  Drat.  Drat.  Well, looking at the code it was clear that
+since &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;ada-in-open-paren-p&lt;/span&gt;&lt;/code&gt; is explicitly searching backwards
+that &lt;code class="docutils literal"&gt;TO&lt;/code&gt; would &lt;strong&gt;always&lt;/strong&gt; be smaller than &lt;code class="docutils literal"&gt;FROM&lt;/code&gt;.  So I could
+just transpose the s-expressions that found those two values.  I
+tried it, and it worked!&lt;/p&gt;
+&lt;p&gt;At that point I realized that I had committed to maintain the old
+version of ada-mode, at least for myself, and that I'd already talked
+about it on my blog and it was small step from there to setting up a
+GitHub &lt;a class="reference external" href="https://github.com/tkurtbond/old-ada-mode"&gt;repository&lt;/a&gt; with the old code, adding an &lt;a class="reference external" href="https://github.com/tkurtbond/old-ada-mode/issues/1"&gt;issue&lt;/a&gt; describing the
+problem, adding a &lt;a class="reference external" href="https://github.com/tkurtbond/old-ada-mode/commit/7ee6fe55862ec615c7fe23d881adfee2d0094770"&gt;commit&lt;/a&gt; with the fix, and then writing this blog
+post.&lt;/p&gt;
+&lt;p&gt;Somewhere, someone is laughing and enjoying the schadenfreude.  Maybe
+this will help someone else.&lt;/p&gt;
+&lt;p&gt;And since I already have a GitHub &lt;a class="reference external" href="https://github.com/tkurtbond/old-ada-mode"&gt;repository&lt;/a&gt;, I ought to document the
+first &lt;a class="reference external" href="https://github.com/tkurtbond/old-ada-mode/issues/2"&gt;problem&lt;/a&gt; and since it is a documentation problem, put a mention
+in the &lt;a class="reference external" href="https://github.com/tkurtbond/old-ada-mode/commit/67a79caacd851120fee2bca4704938a2f27e1bba"&gt;README&lt;/a&gt;.&lt;/p&gt;</summary>
+    <category term="ada" label="ada"/>
+    <category term="ada-mode" label="ada-mode"/>
+    <category term="ada-modeel" label="ada-mode.el"/>
+    <category term="emacs" label="emacs"/>
+  </entry>
   <entry>
     <title>Using the old version of Ada Mode for Emacs</title>
     <id>https://tkurtbond.github.io/posts/2022/07/09/using-the-old-version-of-ada-mode-for-emacs/</id>
@@ -19,7 +74,8 @@
       <name>T. Kurt Bond</name>
     </author>
     <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/posts/2022/07/09/using-the-old-version-of-ada-mode-for-emacs/"/>
-    <summary type="html">&lt;p&gt;There are a lot of things to like about the &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Ada_(programming_language)"&gt;Ada&lt;/a&gt; programming language;
+    <summary type="html">&lt;p&gt;&lt;em&gt;Last edited: 2022-12-06 14:33:55 EST&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;There are a lot of things to like about the &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Ada_(programming_language)"&gt;Ada&lt;/a&gt; programming language;
 it seems to have a solid core of users, enough to support multiple
 commercial implementations and a &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Free_software"&gt;free/libre software&lt;/a&gt; implementation
 that is part of the &lt;a class="reference external" href="https://gcc.gnu.org/"&gt;GNU Compiler Collection&lt;/a&gt;.  I occasionally use it
@@ -76,7 +132,7 @@ a13c64204c8ead966789abf8efe176e4f2d4f599&lt;/pre&gt;
 &lt;p&gt;The &lt;code class="docutils literal"&gt;^&lt;/code&gt; at the end of the commit hash says to get the previous
 commit.&lt;/p&gt;
 &lt;p&gt;You'll also need &lt;span class="file"&gt;doc/docstyle.texi&lt;/span&gt; and
-&lt;span class="file"&gt;doc/docstyle.texi&lt;/span&gt; if you want to build documentation from
+&lt;span class="file"&gt;doc/doclicense.texi&lt;/span&gt; if you want to build documentation from
 &lt;span class="file"&gt;ada-mode.texi&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;And I've put the files in a &lt;a class="reference external" href="https://tkurtbond.github.io/emacs/old-ada-mode.zip"&gt;zip file&lt;/a&gt; for anybody who is in the same
 situation as I was, along with the generated documentation files
@@ -87,6 +143,7 @@ situation as I was, along with the generated documentation files
 I'd love to use it, but
 this at least lets me edit with automatic indentation, formatting, and
 fontification.&lt;/p&gt;
+&lt;aside class="footnote-list brackets"&gt;
 &lt;aside class="footnote brackets" id="fontification" role="note"&gt;
 &lt;span class="label"&gt;&lt;span class="fn-bracket"&gt;[&lt;/span&gt;&lt;a role="doc-backlink" href="https://tkurtbond.github.io/posts/2022/07/09/using-the-old-version-of-ada-mode-for-emacs/#footnote-reference-1"&gt;1&lt;/a&gt;&lt;span class="fn-bracket"&gt;]&lt;/span&gt;&lt;/span&gt;
 &lt;p&gt;‘Fontification’ is the process of displaying source code with
@@ -95,13 +152,12 @@ differing syntactic roles.  &lt;a class="reference external" href="https://www.g
 to make it easier to distinguish different parts of the source
 code, to help prevent errors.&lt;/p&gt;
 &lt;/aside&gt;
+&lt;/aside&gt;
 &lt;!--  --&gt;
-&lt;p&gt;&lt;em&gt;Last edited: 2022-07-10 19:23:02 EDT&lt;/em&gt;&lt;/p&gt;
 &lt;!-- Local Variables:
 time-stamp-format: "%Y-%02m-%02d %02H:%02M:%02S %Z"
 time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
 time-stamp-end: "\\*\\\\?\n"
-time-stamp-line-limit: -20
 End: --&gt;</summary>
     <category term="ada" label="ada"/>
     <category term="ada-mode" label="ada-mode"/>
