@@ -24,8 +24,8 @@ Well, this morning when I pulled up an Ada file in :app:`Emacs` version
 #.  The information to invoke ada-mode on Ada files was not in the
     ``auto-mode-alist`` variable in :app:`Emacs`.  That was easy
     enough to fix: add :file:`.ada`, :file:`.ads`, and :file:`.adb` to
-    ``auto-mode-alist``
-
+    ``auto-mode-alist`` (and :file:`.gpr`, too, since Ada mode works
+    for :app:`gprbuild` files as well)::
     .. code:: emacs-lisp
 
        (cl-loop for ext in '("\\.gpr$" "\\.ada$" "\\.ads$" "\\.adb$")
