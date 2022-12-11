@@ -18,8 +18,9 @@
 is an error, so if you do
 (defconstant foo "foo")
 (let ((foo "bar")) foo)
+
 you get an error.  But in ABCL and ECL you don’t.
-If yo'>
+If y'>
 <meta property="og:type" content="article">
 <meta property="article:published_time" content="2020-04-24T23:46:39-04:00">
 <meta property="article:tag" content="abcl">
@@ -88,13 +89,13 @@ If yo'>
     </header><div class="e-content entry-content" itemprop="articleBody text">
     <p><a class="reference external" href="http://www.sbcl.org/">SBCL</a> and <a class="reference external" href="https://ccl.clozure.com/">CCL</a> and <a class="reference external" href="https://clisp.sourceforge.io/">CLISP</a> think binding a symbol defined with <code class="docutils literal">defconstant</code>
 is an error, so if you do</p>
-<pre class="code common-lisp"><a name="rest_code_ad67f543d59f4ed4824dd151eb867da5-1"></a><span class="p">(</span><span class="nb">defconstant</span> <span class="nv">foo</span> <span class="s">"foo"</span><span class="p">)</span>
-<a name="rest_code_ad67f543d59f4ed4824dd151eb867da5-2"></a><span class="p">(</span><span class="k">let</span> <span class="p">((</span><span class="nv">foo</span> <span class="s">"bar"</span><span class="p">))</span> <span class="nv">foo</span><span class="p">)</span>
-</pre>
+<div class="code"><pre class="code common-lisp"><a id="rest_code_554e4460028a4bd5b939a9c4b15be77e-1" name="rest_code_554e4460028a4bd5b939a9c4b15be77e-1" href="#rest_code_554e4460028a4bd5b939a9c4b15be77e-1"></a><span class="p">(</span><span class="nb">defconstant</span><span class="w"> </span><span class="nv">foo</span><span class="w"> </span><span class="s">"foo"</span><span class="p">)</span><span class="w"></span>
+<a id="rest_code_554e4460028a4bd5b939a9c4b15be77e-2" name="rest_code_554e4460028a4bd5b939a9c4b15be77e-2" href="#rest_code_554e4460028a4bd5b939a9c4b15be77e-2"></a><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">((</span><span class="nv">foo</span><span class="w"> </span><span class="s">"bar"</span><span class="p">))</span><span class="w"> </span><span class="nv">foo</span><span class="p">)</span><span class="w"></span>
+</pre></div>
 <p>you get an error.  But in <a class="reference external" href="https://abcl.org/">ABCL</a> and <a class="reference external" href="https://common-lisp.net/project/ecl/">ECL</a> you don’t.</p>
 <p>If you try</p>
-<pre class="code common-lisp"><a name="rest_code_acbe60c93b5b4c1593ef37f79b38bffd-1"></a><span class="p">(</span><span class="nb">defun</span> <span class="nv">x</span> <span class="p">()</span> <span class="p">(</span><span class="k">let</span> <span class="p">((</span><span class="nv">foo</span> <span class="s">"bar"</span><span class="p">))</span> <span class="nv">foo</span><span class="p">))</span>
-</pre>
+<div class="code"><pre class="code common-lisp"><a id="rest_code_0d65036d4b9d47cb99e406d268df1a30-1" name="rest_code_0d65036d4b9d47cb99e406d268df1a30-1" href="#rest_code_0d65036d4b9d47cb99e406d268df1a30-1"></a><span class="p">(</span><span class="nb">defun</span><span class="w"> </span><span class="nv">x</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">((</span><span class="nv">foo</span><span class="w"> </span><span class="s">"bar"</span><span class="p">))</span><span class="w"> </span><span class="nv">foo</span><span class="p">))</span><span class="w"></span>
+</pre></div>
 <p>in SBCL and CCL you get an error when the function is compiled.
 In SBCL the function is defined, but always gives an error when run.
 In CCL the function does not get defined.</p>

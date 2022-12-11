@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity (Posts about wanderlust)</title><link>https://tkurtbond.github.io/</link><description></description><atom:link href="https://tkurtbond.github.io/categories/wanderlust.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2022 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Tue, 06 Dec 2022 16:09:40 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>MIME and Gmail vs other mailers</title><link>https://tkurtbond.github.io/posts/2020/12/11/mime-and-gmail-vs-other-mailers/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;p&gt;I composed a carefully constructed &lt;a class="reference external" href="https://en.wikipedia.org/wiki/MIME"&gt;MIME&lt;/a&gt; message using &lt;a class="reference external" href="http://www.mew.org/"&gt;Mew&lt;/a&gt;, which has
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity (Posts about wanderlust)</title><link>https://tkurtbond.github.io/</link><description></description><atom:link href="https://tkurtbond.github.io/categories/wanderlust.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2022 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Sun, 10 Jul 2022 22:45:17 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>MIME and Gmail vs other mailers</title><link>https://tkurtbond.github.io/posts/2020/12/11/mime-and-gmail-vs-other-mailers/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;p&gt;I composed a carefully constructed &lt;a class="reference external" href="https://en.wikipedia.org/wiki/MIME"&gt;MIME&lt;/a&gt; message using &lt;a class="reference external" href="http://www.mew.org/"&gt;Mew&lt;/a&gt;, which has
 a nice way to build &lt;a class="reference external" href="https://en.wikipedia.org/wiki/MIME"&gt;MIME&lt;/a&gt; messages, but Gmail doesn’t know that if you
 have a multipart &lt;a class="reference external" href="https://en.wikipedia.org/wiki/MIME"&gt;MIME&lt;/a&gt; message that has a text part, then an image,
 then a text part, then an image, then a text part then what you want
@@ -16,15 +16,16 @@ messages correctly.&lt;/p&gt;
 &lt;code class="docutils literal"&gt;multipart/related&lt;/code&gt; (which I didn’t even know about before looking
 at one of their messages using &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;wl-summary-reedit&lt;/span&gt;&lt;/code&gt; in &lt;a class="reference external" href="https://www.emacswiki.org/emacs/WanderLust"&gt;Wanderlust&lt;/a&gt;,
 which pulls it up in the &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;mime-edit-mode&lt;/span&gt;&lt;/code&gt; &lt;a class="reference external" href="https://en.wikipedia.org/wiki/MIME"&gt;MIME&lt;/a&gt; composition mode
-&lt;a class="footnote-reference brackets" href="https://tkurtbond.github.io/posts/2020/12/11/mime-and-gmail-vs-other-mailers/#mime-edit-mode" id="id1"&gt;1&lt;/a&gt;, which revealed all the details), but I wish they’d
+&lt;a class="footnote-reference brackets" href="https://tkurtbond.github.io/posts/2020/12/11/mime-and-gmail-vs-other-mailers/#mime-edit-mode" id="footnote-reference-1" role="doc-noteref"&gt;&lt;span class="fn-bracket"&gt;[&lt;/span&gt;1&lt;span class="fn-bracket"&gt;]&lt;/span&gt;&lt;/a&gt;, which revealed all the details), but I wish they’d
 get the simpler &lt;code class="docutils literal"&gt;multipart/mixed&lt;/code&gt; version right.  Instead, they
 don’t display the inline attachments (regardless of whether they are
 images or text) and put them all at the end of the display as
 attachments, and display the other text parts smushed together.&lt;/p&gt;
 &lt;p&gt;Interestingly, if a text part it has a &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;Content-Type:&lt;/span&gt; Text/Plain&lt;/code&gt;
 &lt;a class="reference external" href="https://en.wikipedia.org/wiki/MIME"&gt;MIME&lt;/a&gt; header field it is displayed inline in Gmail, unless it has a&lt;/p&gt;
-&lt;pre class="code text"&gt;&lt;a name="rest_code_53568cd90c084212baf4a2a6db92ed05-1"&gt;&lt;/a&gt;Content-Disposition: inline; filename="JRandomFilename.txt"
-&lt;/pre&gt;&lt;p&gt;&lt;a class="reference external" href="https://en.wikipedia.org/wiki/MIME"&gt;MIME&lt;/a&gt; header field, and then it &lt;strong&gt;doesn’t&lt;/strong&gt; display it inline,
+&lt;div class="code"&gt;&lt;pre class="code text"&gt;&lt;a id="rest_code_c85a87b95ce04237acbd931ba5680adf-1" name="rest_code_c85a87b95ce04237acbd931ba5680adf-1" href="https://tkurtbond.github.io/posts/2020/12/11/mime-and-gmail-vs-other-mailers/#rest_code_c85a87b95ce04237acbd931ba5680adf-1"&gt;&lt;/a&gt;Content-Disposition: inline; filename="JRandomFilename.txt"
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://en.wikipedia.org/wiki/MIME"&gt;MIME&lt;/a&gt; header field, and then it &lt;strong&gt;doesn’t&lt;/strong&gt; display it inline,
 unlike all the other mail readers I tried: &lt;a class="reference external" href="https://www.emacswiki.org/emacs/WanderLust"&gt;Wanderlust&lt;/a&gt;, &lt;a class="reference external" href="http://www.mew.org/"&gt;Mew&lt;/a&gt;, &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Alpine_(email_client)"&gt;Alpine&lt;/a&gt;,
 &lt;a class="reference external" href="https://www.thunderbird.ne"&gt;Thunderbird&lt;/a&gt; (had to have a pure GUI client for comparison), and &lt;a class="reference external" href="http://www.mutt.org/"&gt;mutt&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Interestingly, &lt;a class="reference external" href="https://www.emacswiki.org/emacs/WanderLust"&gt;Wanderlust&lt;/a&gt; displays Gmail’s &lt;code class="docutils literal"&gt;multipart/related&lt;/code&gt;
@@ -97,19 +98,18 @@ still use &lt;a class="reference external" href="https://www.emacswiki.org/emacs
 very well.  Now if only Google didn't make it harder to use them:
 Gmail declares IMAP-over-SSL is a “less secure” application, and turns
 &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Internet_Message_Access_Protocol"&gt;IMAP&lt;/a&gt; access off if you don't use it regularly.&lt;/p&gt;
-&lt;dl class="footnote brackets"&gt;
-&lt;dt class="label" id="mime-edit-mode"&gt;&lt;span class="brackets"&gt;&lt;a class="fn-backref" href="https://tkurtbond.github.io/posts/2020/12/11/mime-and-gmail-vs-other-mailers/#id1"&gt;1&lt;/a&gt;&lt;/span&gt;&lt;/dt&gt;
-&lt;dd&gt;&lt;p&gt;This is provided by &lt;a class="reference external" href="https://www.emacswiki.org/emacs/SemiIsEmacsMimeInterface"&gt;SEMI&lt;/a&gt;, an Emacs Lisp package,
+&lt;aside class="footnote brackets" id="mime-edit-mode" role="note"&gt;
+&lt;span class="label"&gt;&lt;span class="fn-bracket"&gt;[&lt;/span&gt;&lt;a role="doc-backlink" href="https://tkurtbond.github.io/posts/2020/12/11/mime-and-gmail-vs-other-mailers/#footnote-reference-1"&gt;1&lt;/a&gt;&lt;span class="fn-bracket"&gt;]&lt;/span&gt;&lt;/span&gt;
+&lt;p&gt;This is provided by &lt;a class="reference external" href="https://www.emacswiki.org/emacs/SemiIsEmacsMimeInterface"&gt;SEMI&lt;/a&gt;, an Emacs Lisp package,
 and it has a GitHub repo (&lt;a class="reference external" href="https://github.com/wanderlust/semi"&gt;SEMIGH&lt;/a&gt;), last commit 27 days ago as of
 the time of this writing.&lt;/p&gt;
-&lt;/dd&gt;
-&lt;/dl&gt;</description><category>alpine</category><category>e-mail</category><category>gmail</category><category>mew</category><category>mime</category><category>mutt</category><category>thunderbird</category><category>wanderlust</category><guid>https://tkurtbond.github.io/posts/2020/12/11/mime-and-gmail-vs-other-mailers/</guid><pubDate>Fri, 11 Dec 2020 14:12:17 GMT</pubDate></item><item><title>Emacs 23.1 and Wanderlust</title><link>https://tkurtbond.github.io/posts/2009/09/25/emacs-23.1-and-wanderlust/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;p&gt;To get UTF-8 to work when sending drafted messages  in &lt;a class="reference external" href="http://www.gohome.org/wl/"&gt;Wanderlust&lt;/a&gt; with
+&lt;/aside&gt;</description><category>alpine</category><category>e-mail</category><category>gmail</category><category>mew</category><category>mime</category><category>mutt</category><category>thunderbird</category><category>wanderlust</category><guid>https://tkurtbond.github.io/posts/2020/12/11/mime-and-gmail-vs-other-mailers/</guid><pubDate>Fri, 11 Dec 2020 14:12:17 GMT</pubDate></item><item><title>Emacs 23.1 and Wanderlust</title><link>https://tkurtbond.github.io/posts/2009/09/25/emacs-23.1-and-wanderlust/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;p&gt;To get UTF-8 to work when sending drafted messages  in &lt;a class="reference external" href="http://www.gohome.org/wl/"&gt;Wanderlust&lt;/a&gt; with
 Emacs 23.1 I had to apply this &lt;a class="reference external" href="http://article.gmane.org/gmane.mail.wanderlust.general.japanese/5978"&gt;patch&lt;/a&gt; to FLIM.&lt;/p&gt;
 &lt;p&gt;I also checked out the wl-2_15_6-vtl branch in the wanderlust
 repository and the semi-1_14-vtl branch in the semi repository.
 (See &lt;a class="reference external" href="https://tkurtbond.github.io/posts/2009/09/02/wanderlust-apel-semi-and-flim-development/"&gt;repos&lt;/a&gt; for info about the repositories.)&lt;/p&gt;</description><category>emacs</category><category>wanderlust</category><guid>https://tkurtbond.github.io/posts/2009/09/25/emacs-23.1-and-wanderlust/</guid><pubDate>Fri, 25 Sep 2009 19:34:41 GMT</pubDate></item><item><title>Wanderlust, APEL, FLIM, and SEMI development</title><link>https://tkurtbond.github.io/posts/2009/09/02/wanderlust-apel-semi-and-flim-development/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;p&gt;Someone once said something along the lines that to those in the
 Western world who don't speak Japanese there is an alternate
-universe of FOSS &lt;a class="footnote-reference brackets" href="https://tkurtbond.github.io/posts/2009/09/02/wanderlust-apel-semi-and-flim-development/#foss" id="id1"&gt;1&lt;/a&gt; development in Japan &lt;a class="footnote-reference brackets" href="https://tkurtbond.github.io/posts/2009/09/02/wanderlust-apel-semi-and-flim-development/#china" id="id2"&gt;2&lt;/a&gt;, and every so
+universe of FOSS &lt;a class="footnote-reference brackets" href="https://tkurtbond.github.io/posts/2009/09/02/wanderlust-apel-semi-and-flim-development/#foss" id="footnote-reference-1" role="doc-noteref"&gt;&lt;span class="fn-bracket"&gt;[&lt;/span&gt;1&lt;span class="fn-bracket"&gt;]&lt;/span&gt;&lt;/a&gt; development in Japan &lt;a class="footnote-reference brackets" href="https://tkurtbond.github.io/posts/2009/09/02/wanderlust-apel-semi-and-flim-development/#china" id="footnote-reference-2" role="doc-noteref"&gt;&lt;span class="fn-bracket"&gt;[&lt;/span&gt;2&lt;span class="fn-bracket"&gt;]&lt;/span&gt;&lt;/a&gt;, and every so
 often things from that universe just appear in the Western FOSS
 universe as mysterious foreign objects.  Ruby seems to have made a
 solid connection between the universes, but many others are less
@@ -149,26 +149,27 @@ contents to &lt;a class="reference external" href="mailto:emacs-mime-en-ctl@m17n
 &lt;a class="reference external" href="mailto:emacs-mime-ja-ctl@m17n.org"&gt;emacs-mime-ja-ctl@m17n.org&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;So, here are the CVS commands I just used to check the various
 packages out:&lt;/p&gt;
-&lt;pre class="code bash"&gt;&lt;a name="rest_code_c92fae50ea234b68a7e1eb7a46cfb169-1"&gt;&lt;/a&gt;cvs -d :pserver:anonymous@cvs.m17n.org:/cvs/root checkout wanderlust
-&lt;a name="rest_code_c92fae50ea234b68a7e1eb7a46cfb169-2"&gt;&lt;/a&gt;cvs -z9 -d :pserver:anonymous@cvs.m17n.org:/cvs/root checkout apel
-&lt;a name="rest_code_c92fae50ea234b68a7e1eb7a46cfb169-3"&gt;&lt;/a&gt;cvs -z9 -d :pserver:anonymous@cvs.m17n.org:/cvs/root checkout -r flim-1_14 flim
-&lt;a name="rest_code_c92fae50ea234b68a7e1eb7a46cfb169-4"&gt;&lt;/a&gt;cvs -z9 -d :pserver:anonymous@cvs.m17n.org:/cvs/root checkout -r semi-1_14 semi
-&lt;/pre&gt;&lt;p&gt;Here are the browse-able CVS web interfaces:&lt;/p&gt;
+&lt;div class="code"&gt;&lt;pre class="code bash"&gt;&lt;a id="rest_code_5ebd0ec6789a4cd49eb950415908821b-1" name="rest_code_5ebd0ec6789a4cd49eb950415908821b-1" href="https://tkurtbond.github.io/posts/2009/09/02/wanderlust-apel-semi-and-flim-development/#rest_code_5ebd0ec6789a4cd49eb950415908821b-1"&gt;&lt;/a&gt;cvs -d :pserver:anonymous@cvs.m17n.org:/cvs/root checkout wanderlust
+&lt;a id="rest_code_5ebd0ec6789a4cd49eb950415908821b-2" name="rest_code_5ebd0ec6789a4cd49eb950415908821b-2" href="https://tkurtbond.github.io/posts/2009/09/02/wanderlust-apel-semi-and-flim-development/#rest_code_5ebd0ec6789a4cd49eb950415908821b-2"&gt;&lt;/a&gt;cvs -z9 -d :pserver:anonymous@cvs.m17n.org:/cvs/root checkout apel
+&lt;a id="rest_code_5ebd0ec6789a4cd49eb950415908821b-3" name="rest_code_5ebd0ec6789a4cd49eb950415908821b-3" href="https://tkurtbond.github.io/posts/2009/09/02/wanderlust-apel-semi-and-flim-development/#rest_code_5ebd0ec6789a4cd49eb950415908821b-3"&gt;&lt;/a&gt;cvs -z9 -d :pserver:anonymous@cvs.m17n.org:/cvs/root checkout -r flim-1_14 flim
+&lt;a id="rest_code_5ebd0ec6789a4cd49eb950415908821b-4" name="rest_code_5ebd0ec6789a4cd49eb950415908821b-4" href="https://tkurtbond.github.io/posts/2009/09/02/wanderlust-apel-semi-and-flim-development/#rest_code_5ebd0ec6789a4cd49eb950415908821b-4"&gt;&lt;/a&gt;cvs -z9 -d :pserver:anonymous@cvs.m17n.org:/cvs/root checkout -r semi-1_14 semi
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Here are the browse-able CVS web interfaces:&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;&lt;p&gt;&lt;a class="reference external" href="http://cvs.m17n.org/viewcvs/root/wanderlust/"&gt;http://cvs.m17n.org/viewcvs/root/wanderlust/&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;&lt;a class="reference external" href="http://cvs.m17n.org/viewcvs/root/apel/"&gt;http://cvs.m17n.org/viewcvs/root/apel/&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;&lt;a class="reference external" href="http://cvs.m17n.org/viewcvs/root/flim/"&gt;http://cvs.m17n.org/viewcvs/root/flim/&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;&lt;a class="reference external" href="http://cvs.m17n.org/viewcvs/root/semi/"&gt;http://cvs.m17n.org/viewcvs/root/semi/&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;dl class="footnote brackets"&gt;
-&lt;dt class="label" id="foss"&gt;&lt;span class="brackets"&gt;&lt;a class="fn-backref" href="https://tkurtbond.github.io/posts/2009/09/02/wanderlust-apel-semi-and-flim-development/#id1"&gt;1&lt;/a&gt;&lt;/span&gt;&lt;/dt&gt;
-&lt;dd&gt;&lt;p&gt;&lt;strong&gt;F&lt;/strong&gt;ree or &lt;strong&gt;O&lt;/strong&gt;pen &lt;strong&gt;S&lt;/strong&gt;ource &lt;strong&gt;S&lt;/strong&gt;oftware.&lt;/p&gt;
-&lt;/dd&gt;
-&lt;dt class="label" id="china"&gt;&lt;span class="brackets"&gt;&lt;a class="fn-backref" href="https://tkurtbond.github.io/posts/2009/09/02/wanderlust-apel-semi-and-flim-development/#id2"&gt;2&lt;/a&gt;&lt;/span&gt;&lt;/dt&gt;
-&lt;dd&gt;&lt;p&gt;I wonder if there is a Chinese alternate universe of FOSS,
+&lt;aside class="footnote brackets" id="foss" role="note"&gt;
+&lt;span class="label"&gt;&lt;span class="fn-bracket"&gt;[&lt;/span&gt;&lt;a role="doc-backlink" href="https://tkurtbond.github.io/posts/2009/09/02/wanderlust-apel-semi-and-flim-development/#footnote-reference-1"&gt;1&lt;/a&gt;&lt;span class="fn-bracket"&gt;]&lt;/span&gt;&lt;/span&gt;
+&lt;p&gt;&lt;strong&gt;F&lt;/strong&gt;ree or &lt;strong&gt;O&lt;/strong&gt;pen &lt;strong&gt;S&lt;/strong&gt;ource &lt;strong&gt;S&lt;/strong&gt;oftware.&lt;/p&gt;
+&lt;/aside&gt;
+&lt;aside class="footnote brackets" id="china" role="note"&gt;
+&lt;span class="label"&gt;&lt;span class="fn-bracket"&gt;[&lt;/span&gt;&lt;a role="doc-backlink" href="https://tkurtbond.github.io/posts/2009/09/02/wanderlust-apel-semi-and-flim-development/#footnote-reference-2"&gt;2&lt;/a&gt;&lt;span class="fn-bracket"&gt;]&lt;/span&gt;&lt;/span&gt;
+&lt;p&gt;I wonder if there is a Chinese alternate universe of FOSS,
 too?&lt;/p&gt;
-&lt;/dd&gt;
-&lt;/dl&gt;</description><category>apel</category><category>e-mail</category><category>flim</category><category>semi</category><category>wanderlust</category><guid>https://tkurtbond.github.io/posts/2009/09/02/wanderlust-apel-semi-and-flim-development/</guid><pubDate>Wed, 02 Sep 2009 14:01:26 GMT</pubDate></item><item><title>multipart/alternative</title><link>https://tkurtbond.github.io/posts/2009/04/24/multipartalternative/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;p&gt;Oddly enough, both &lt;span class="program"&gt;gmail&lt;/span&gt; and &lt;span class="program"&gt;Lotus Notes&lt;/span&gt; prefer
+&lt;/aside&gt;</description><category>apel</category><category>e-mail</category><category>flim</category><category>semi</category><category>wanderlust</category><guid>https://tkurtbond.github.io/posts/2009/09/02/wanderlust-apel-semi-and-flim-development/</guid><pubDate>Wed, 02 Sep 2009 14:01:26 GMT</pubDate></item><item><title>multipart/alternative</title><link>https://tkurtbond.github.io/posts/2009/04/24/multipartalternative/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;p&gt;Oddly enough, both &lt;span class="program"&gt;gmail&lt;/span&gt; and &lt;span class="program"&gt;Lotus Notes&lt;/span&gt; prefer
 the &lt;em&gt;last&lt;/em&gt; displayable alternative in a multipart/alternative section.
 In other words, I sent a multipart/alternative e-mail with once with
 html, text and pdf alternatives, and once with the same parts, but in
