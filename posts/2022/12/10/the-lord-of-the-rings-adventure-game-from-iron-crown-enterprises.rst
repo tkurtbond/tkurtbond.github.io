@@ -7,7 +7,7 @@
 .. description: 
 .. type: text
 
-*Last edited: 2022-12-14 11:19:06 EST*
+*Last edited: 2022-12-14 11:36:33 EST*
 
 I got an interesting game yesterday, and finished reading it today:
 the 1991 *Lord of the Rings Adventure Game* from `Iron Crown
@@ -70,13 +70,14 @@ Human Bard, and Elf Bard), which sets your equipment and capability
 values and starting skill values, and then you have six +1 bonuses to
 add to your skills as you choose, no more than +3 to any one skill.
 If you have +1 or more in magic you get two spells per +1 bonus.  Some
-of your equipment gives bonuses to your stats.  You roll 2d6 plus a
-stat bonus versus a target number or an opponent’s roll.  Meet or
-exceed an unopposed roll to succeed, while you can tie on opposed
-rolls.  In combat take the attacker’s Offensive Bonus minus the
-defenders Defensive Bonus and roll 2d6 and look the result up in a
-chart to see how much damage is done and whether the defender is
-knocked unconscious or killed outright.
+of your equipment gives bonuses to your stats.  I'll note that your
+character type doesn't restrict what you can do: if you want your
+Warrior to be able to use magic, put some of your starting skill
+bonuses into Magical!  And they don't really have much to do with what
+your characters occupation is: someone who takes one of the Warrior
+character types can be a merchant, someone who takes one of the Scout
+character types can be a healer.  It is all in how you assign your
+starting skill bonuses.
 
 Your character type sets your Endurance (basically your hit points),
 with the dwarf warrior having the most at 60 points and the elf bard
@@ -92,6 +93,13 @@ stat, or let you do something you couldn’t before.
 Maneuvers are how you use your stats.  Some, like climbing a tree have
 a set difficulty.  Others the GM sets the difficulty, from Routine (4)
 to Absurd (18).
+
+You roll 2d6 plus a stat bonus versus a target number or an opponent’s
+roll.  Meet or exceed an unopposed roll to succeed, while you can tie
+on opposed rolls.  In combat you take the attacker’s Offensive Bonus
+minus the defenders Defensive Bonus and roll 2d6 and look the result
+up in a chart to see how much damage is done and whether the defender
+is knocked unconscious or killed outright.
 
 Activities are things that are normally automatically successful if
 you have the equipment and time (tying up a captive, setting up camp,
