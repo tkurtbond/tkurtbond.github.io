@@ -25,11 +25,12 @@ Well, this morning when I pulled up an Ada file in :app:`Emacs` version
     ``auto-mode-alist`` variable in :app:`Emacs`.  That was easy
     enough to fix: add :file:`.ada`, :file:`.ads`, and :file:`.adb` to
     ``auto-mode-alist`` (and :file:`.gpr`, too, since Ada mode works
-    for :app:`gprbuild` files as well)::
+    for :app:`gprbuild` files as well):
+
     .. code:: emacs-lisp
 
        (cl-loop for ext in '("\\.gpr$" "\\.ada$" "\\.ads$" "\\.adb$")
-           do (add-to-list 'auto-mode-alist (cons ext 'ada-mode)))
+         do (add-to-list 'auto-mode-alist (cons ext 'ada-mode)))
 
     That was easy enough.
 
