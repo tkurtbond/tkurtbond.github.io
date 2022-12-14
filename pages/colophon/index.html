@@ -12,12 +12,7 @@
 <meta property="og:site_name" content="Lacking Natural Simplicity">
 <meta property="og:title" content="Colophon">
 <meta property="og:url" content="https://tkurtbond.github.io/pages/colophon/">
-<meta property="og:description" content="Colophon
-(Formerly “About TKB's Home Page”.)
-
-The Really Distant Past
-I used to build this collection of pages largely from a single
-SGML/XML document (expressed as several separate files) using Jade ">
+<meta property="og:description" content="h   t   m   l   &gt;">
 <meta property="og:type" content="article">
 <meta property="article:published_time" content="2019-11-06T12:02:03-05:00">
 <meta property="article:tag" content="docbook">
@@ -74,96 +69,8 @@ SGML/XML document (expressed as several separate files) using Jade ">
 
         
     </header><div class="e-content entry-content" itemprop="articleBody text">
-    <section id="colophon-1"><span id="colophon"></span><h2>Colophon</h2>
-<p>(Formerly “About TKB's Home Page”.)</p>
-<section id="the-really-distant-past"><h3>The Really Distant Past</h3>
-<p>I used to build this collection of pages largely from a single
-SGML/XML document (expressed as several separate files) using <a class="reference external" href="http://www.jclark.com/jade/">Jade</a> and <a class="reference external" href="http://nwalsh.com/">Norm Walsh</a>'s <a class="reference external" href="http://nwalsh.com/website/">Website DTD</a>
-and his <a class="reference external" href="http://nwalsh.com/website/dsssl/">Website Stylesheet</a>, a
-customization of the DSSSL <a class="reference external" href="http://nwalsh.com/docbook/dsssl/">DocBook Stylesheet</a> for HTML.  (Alas, the specific
-links above have vanished from the Web, not to be resurrected by <a class="reference external" href="http://archive.org">The
-Internet Archive</a>) There were a few links to legacy HTML pages.</p>
-<p>I liked building these pages from XML using DSSSL for a number of
-reasons:</p>
-<ol class="arabic simple">
-<li><p>It ensured that all the internal links are correct.</p></li>
-<li><p>It automatically built navigation tools and a site map.</p></li>
-<li><p>It was a good excuse to use XML &amp; DSSSL.</p></li>
-</ol>
-<p>I used DSSSL long after the DSSSL stylesheets for the Website DTDs
-were no longer maintained because the build process was considerably
-simpler than that of the XML/XSLT replacement.  Unfortunately, the
-setup I was using stopped working properly when I moved from FreeBSD
-4.11 to FreeBSD 6.2 (so probably in 2007), and at the time I didn't
-have the patience to figure out what had gone wrong with the variety
-of FreeBSD pacakges I was using to build the site.</p>
-<p>I had a primitive sort-of blog that was part of the site, which I made
-by just having SGML/XML pages in a log directory, named by YYYY-MM-DD.</p>
-</section><section id="the-distant-past-to-2007-07-31"><h3>The Distant Past (??? to 2007-07-31?)</h3>
-<p>Reluctantly I turned to the currently supported Website DTD and XSL
-stylesheets, along with the DocBook DTD and XSL stylesheets they build
-upon, along with an XSL processor, <span class="program">xsltproc</span>.  There had
-been a number of changes to the DTD, which required many changes to my
-website XML files.  Most annoying was that at some point during the
-development of the XSL stylesheets for the Website DTD the
-organization as a single XML document had been abandoned, and replaced
-by a multiple document model that required processing each XML file
-separately and maintaining a separate multiple-document database of
-linking information.  This meant that instead of including my entities
-once in the original master file I had to include them in each and
-every XML file.  This also meant that all the internal links I had
-used previously had to be replaced with interdocument links using
-olink .  Unfortunately, I found that FreeBSD's ports of the Website
-DTD and XSL stylesheets and the DocBook XSL Stylesheets were each a
-revision behind, which caused linking between documents to not work.
-After downloading and installing current copies of these I finally got
-things to work.</p>
-<p>Alas, I found that, at least using <span class="program">xsltproc</span>, the
-new process using XSL was <em>much</em> slower and more resource intensive:
-the old DSSSL-based process took about 2.5 minutes and never exceed 40
-megabytes of resident memory, while the new XSL-based process took 20
-minutes (on a faster machine) and used 70 or more megabytes of
-resident memory for each file, and during processing the interdocument
-link database reaches over 300 megabytes of resident storage.
-Admittedly, some of this was due to the change in the Website DTD from
-the one document model to the multiple document model, but still it
-seemed excessive.</p>
-</section><section id="the-past-2009-04-17-to-2015"><span id="sphinx-built"></span><h3>The Past (2009-04-17 to 2015?)</h3>
-<p>Eventually I moved the source for my website over to
-<a class="reference external" href="http://docutils.sourceforge.io/rst.html">ReStructuredText</a> (ReST) built using <a class="reference external" href="http://www.sphinx-doc.org/">Sphinx</a> It was much simpler
-than DocBook.  I missed the more structured DocBook approach, and the
-checking of cross-references, but ReST had enough structure to be
-useful, without having an complicated syntax, and the tools used to
-process it were considerably simpler, faster, and more approachable.
-I just wish ReST had nested interpreted text roles and easier
-subscripts and superscripts.  I actually used Sphinx to build the
-website, as you could see at the bottom of each page of this version.
-I was very happy with how simple it was to maintain.</p>
-<p>I also had a <a class="reference external" href="https://pyblosxom.github.io/">pyBloxsom</a> blog, writing the posts in reStructuredText,
-too, with a link to the blog on the front page of my website.</p>
-<p>Eventually, the computer that I used to host my web site and blog went
-away, and I didn't have a web site and blog for several years.</p>
-</section><section id="the-present-2019-11-06-onward"><h3>The Present (2019-11-06 onward)</h3>
-<p>I've <a class="reference external" href="../../posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/">switched</a>
-over to using <a class="reference external" href="https://getnikola.com/">Nikola</a> to generate the site and blog, and hosted it at
-<a class="reference external" href="https://tkurtbond.github.io">GitHub</a>.  I wrote a script to convert
-my pybloxsom blog <code class="docutils literal">*.rst</code> files to the format that Nikola uses,
-which took a couple hours though the script ended up fairly short, and
-then spent much more time manually fixing broken internal links. 😀 I
-converted some of the web pages from my website over to static pages
-on the new Nikola-built blog.</p>
-<p>Nikola has much more functionality than I'm currently using, but it
-has some nice clean themes and they are simple enough that I can make
-simple changes to them.  I'm enjoying blogging again.</p>
-<p><em>Last edited: 2020-08-03 15:57:13 EDT</em></p>
-<!-- Local Variables:
-time-stamp-format: "%04y-%02m-%02d %02H:%02M:%02S %Z"
-time-stamp-start: "Last edited:[ \t]+\\\\?"
-time-stamp-end: "\\*\\\\?\n"
-time-stamp-line-limit: -20
-End: -->
-</section></section>
-</div>
+    <p>h   t   m   l   &gt;   </p>
+    </div>
     
 </article>
 </div>

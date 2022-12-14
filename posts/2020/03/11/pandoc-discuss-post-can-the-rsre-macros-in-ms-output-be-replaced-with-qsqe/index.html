@@ -89,11 +89,11 @@ ms output, and a workaround for it until the version with changes
 comes out, but I forgot to mention it here.</p>
 <p>In short, use a pipeline like this:</p>
 <p><a class="reference external" href="../../../../../listings/GNUmakefile.change-RS-RE-to-QS-QE.html">GNUmakefile.change-RS-RE-to-QS-QE</a>  <a class="reference external" href="../../../../../listings/GNUmakefile.change-RS-RE-to-QS-QE">(Source)</a></p>
-<div class="code"><pre class="code make"><a id="rest_code_636d79983f4a4ae69ddf8917c2df282d-1" name="rest_code_636d79983f4a4ae69ddf8917c2df282d-1" href="#rest_code_636d79983f4a4ae69ddf8917c2df282d-1"></a><span class="nf">%.qs.ms.pdf </span><span class="o">:</span> %.<span class="n">rst</span>
-<a id="rest_code_636d79983f4a4ae69ddf8917c2df282d-2" name="rest_code_636d79983f4a4ae69ddf8917c2df282d-2" href="#rest_code_636d79983f4a4ae69ddf8917c2df282d-2"></a>        pandoc --verbose -r rst -w ms <span class="k">$(</span>PANDOCOPTS<span class="k">)</span> <span class="se">\</span>
-<a id="rest_code_636d79983f4a4ae69ddf8917c2df282d-3" name="rest_code_636d79983f4a4ae69ddf8917c2df282d-3" href="#rest_code_636d79983f4a4ae69ddf8917c2df282d-3"></a>                --output<span class="o">=</span>- $&lt; <span class="p">|</span> gsed -e <span class="s1">'s/^\.RS$$/.QS/'</span> -e <span class="s1">'s/^\.RE$$/.QE/'</span> <span class="p">|</span> <span class="se">\</span>
-<a id="rest_code_636d79983f4a4ae69ddf8917c2df282d-4" name="rest_code_636d79983f4a4ae69ddf8917c2df282d-4" href="#rest_code_636d79983f4a4ae69ddf8917c2df282d-4"></a>        pdfroff -ms -mpdfmark -e -t -k -KUTF-8 -i --no-toc-relocation &gt;<span class="nv">$@</span>
-</pre></div>
+<pre class="code make"><a name="rest_code_65841705b4aa433681d88012d1a4cd28-1"></a><span class="nf">%.qs.ms.pdf </span><span class="o">:</span> %.<span class="n">rst</span>
+<a name="rest_code_65841705b4aa433681d88012d1a4cd28-2"></a>        pandoc --verbose -r rst -w ms <span class="k">$(</span>PANDOCOPTS<span class="k">)</span> <span class="se">\</span>
+<a name="rest_code_65841705b4aa433681d88012d1a4cd28-3"></a>                --output<span class="o">=</span>- $&lt; <span class="p">|</span> gsed -e <span class="s1">'s/^\.RS$$/.QS/'</span> -e <span class="s1">'s/^\.RE$$/.QE/'</span> <span class="p">|</span> <span class="se">\</span>
+<a name="rest_code_65841705b4aa433681d88012d1a4cd28-4"></a>        pdfroff -ms -mpdfmark -e -t -k -KUTF-8 -i --no-toc-relocation &gt;<span class="nv">$@</span>
+</pre>
     </div>
     <script>var pfHeaderImgUrl = '';var pfHeaderTagline = '';var pfdisableClickToDel = 0;var pfHideImages = 0;var pfImageDisplayStyle = 'right';var pfDisablePDF = 0;var pfDisableEmail = 0;var pfDisablePrint = 0;var pfCustomCSS = '';var pfBtVersion='2';(function(){var js,pf;pf=document.createElement('script');pf.type='text/javascript';pf.src='//cdn.printfriendly.com/printfriendly.js';document.getElementsByTagName('head')[0].appendChild(pf)})();</script><a href="https://www.printfriendly.com" style="color:#6D9F00;text-decoration:none;" class="printfriendly" onclick="window.print();return false;" title="Printer Friendly and PDF"><img style="border:none;-webkit-box-shadow:none;box-shadow:none;" src="//cdn.printfriendly.com/buttons/printfriendly-pdf-button.png" alt="Print Friendly and PDF"></a>    
     <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">

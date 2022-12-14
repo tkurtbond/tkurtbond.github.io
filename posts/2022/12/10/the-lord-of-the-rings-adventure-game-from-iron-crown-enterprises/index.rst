@@ -7,6 +7,8 @@
 .. description: 
 .. type: text
 
+*Last edited: 2022-12-14 11:19:06 EST*
+
 I got an interesting game yesterday, and finished reading it today:
 the 1991 *Lord of the Rings Adventure Game* from `Iron Crown
 Enterprises`__, which was the first holder of the Tolkien franchise
@@ -23,7 +25,7 @@ subtracted for low, continuing infinitely in either direction.
 ICE then got the Tolkien franchise and developed `Middle-Earth Role
 Playing`__ (MERP) as a slightly simplified RPG for those who wanted to
 play in Middle Earth, but did not want all the complexities of the
-full Rolemaster system.  The adventures were stated in such a way that
+full Rolemaster system.  The adventures were written in such a way that
 you could play them either with Rolemaster or MERP, and had some short
 guidelines to help the GM adapt them for other games.  They had a lot
 of success and their Middle Earth products were extensive and highly
@@ -35,7 +37,7 @@ __ https://en.wikipedia.org/wiki/Middle-earth_Role_Playing
 Lots of folk used them with other RPG systems.  (I bought several for
 the ideas.)
 
-Late in their run, ICE wanted to tap the larger Tolkien readership and
+Later in their run, ICE wanted to tap the larger Tolkien readership and
 so wrote the `Lord of the Ring Adventure Game`__ as a much simpler
 game that they hoped would draw interested readers and the viewers of
 the animated Hobbit and Lord of the Rings.
@@ -76,8 +78,9 @@ defenders Defensive Bonus and roll 2d6 and look the result up in a
 chart to see how much damage is done and whether the defender is
 knocked unconscious or killed outright.
 
-Your character type sets your Endurance, with the dwarf warrior
-having the most at 60 points and the elf bard the least at 30 points.
+Your character type sets your Endurance (basically your hit points),
+with the dwarf warrior having the most at 60 points and the elf bard
+the least at 30 points.
 
 There are 15 spells, all very in keeping with the magic seen in the
 novels, which is to say not tremendously powerful (Strength, Shield,
@@ -86,23 +89,15 @@ Clairvoyance, Healing, Luck, Protection from Magic, Sustenance, Calm,
 Charm Animal, and Fire Bolt).  Magic items typically add a plus to a
 stat, or let you do something you couldn’t before.
 
-You get Experience Points (EP) for every stat roll (remember, that’s
-capabilities and skills) depending on how hard the target number was,
-for every point of damage inflicted, with unconsciousness and killed
-results worth more, and for every point of damage the caster of a
-spell takes to cast the spell.  (Every spell costs the caster Damage
-to cast!). You also get EP for good ideas and for the group
-accomplishing significant goals.
-
 Maneuvers are how you use your stats.  Some, like climbing a tree have
 a set difficulty.  Others the GM sets the difficulty, from Routine (4)
 to Absurd (18).
 
-Activities are normally automatically successful if you have the
-equipment and time (tying up a captive, setting up camp, digging a
-ditch), but turn into GM moderated maneuvers if you don’t have the
-time or equipment (digging a ditch to hide in before the opponents you
-want to ambush show up).
+Activities are things that are normally automatically successful if
+you have the equipment and time (tying up a captive, setting up camp,
+digging a ditch), but turn into GM moderated maneuvers if you don’t
+have the time or equipment (digging a ditch to hide in before the
+opponents you want to ambush show up).
 
 There are 14 action sequences.  These things like combat (one of the
 action sequences) where there is a general sequence you follow to do
@@ -116,6 +111,13 @@ they encourage you to make up your own.  You might make one up for
 when someone is wanting to convince a crowd of something.  They are
 multi-step procedures for doing something.  I think they would be
 quite useful.
+
+You get Experience Points (EP) for successful maneuvers depending on
+how hard the target number was, for every point of damage inflicted,
+with unconsciousness and killed results worth more, and for every
+point of damage the caster of a spell takes to cast the spell.  (Every
+spell costs the caster Damage to cast!). You also get EP for good
+ideas and for the group accomplishing significant goals.
 
 The included adventure is a mix of programmed sequences to help the
 new GM and players learn the system, where the choices the players
@@ -156,3 +158,12 @@ expansion, and thus a little more complicated, but it doesn't look
 *too* complicated.  I'll read it and report what I think of it.
 
 __ https://sites.google.com/site/ambarquenta/home/the-offical-games/meag
+
+
+..
+   Local Variables:
+   time-stamp-format: "%Y-%02m-%02d %02H:%02M:%02S %Z"
+   time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
+   time-stamp-end: "\\*\\\\?\n"
+   End:
+
