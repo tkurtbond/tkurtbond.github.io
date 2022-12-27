@@ -3,7 +3,7 @@
 <feed xml:lang="en" xmlns="http://www.w3.org/2005/Atom">
   <title>Lacking Natural Simplicity (Posts about s7)</title>
   <id>https://tkurtbond.github.io/categories/s7.atom</id>
-  <updated>2022-12-06T16:09:42Z</updated>
+  <updated>2022-12-27T03:31:07Z</updated>
   <author>
     <name>T. Kurt Bond</name>
   </author>
@@ -22,16 +22,20 @@
     <summary type="html">&lt;p&gt;To compile &lt;a class="reference external" href="https://ccrma.stanford.edu/software/snd/snd/s7.html"&gt;s7 scheme&lt;/a&gt; with a standalone &lt;a class="reference external" href="https://tkurtbond.github.io/pages/computer-vocabulary/#REPL"&gt;REPL&lt;/a&gt;, s7's home page says to
 add the empty file &lt;span class="file"&gt;mus-config.h&lt;/span&gt; to the source directory, then
 (in Linux):&lt;/p&gt;
-&lt;pre class="code bash"&gt;&lt;a name="rest_code_faca3756ba70487da704627fa1afdcc4-1"&gt;&lt;/a&gt;gcc s7.c -o repl -DWITH_MAIN -I. -O2 -g -ldl -lm -Wl,-export-dynamic
-&lt;/pre&gt;&lt;p&gt;It turns out that on macOS, whose &lt;span class="command"&gt;ld&lt;/span&gt; (from clang) doesn't
+&lt;div class="code"&gt;&lt;pre class="code bash"&gt;&lt;a id="rest_code_7e456c0c9e8a4a42b730d2d1f862960c-1" name="rest_code_7e456c0c9e8a4a42b730d2d1f862960c-1" href="https://tkurtbond.github.io/posts/2020/08/03/compiling-s7-scheme-on-macos/#rest_code_7e456c0c9e8a4a42b730d2d1f862960c-1"&gt;&lt;/a&gt;gcc s7.c -o repl -DWITH_MAIN -I. -O2 -g -ldl -lm -Wl,-export-dynamic
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;It turns out that on macOS, whose &lt;span class="command"&gt;ld&lt;/span&gt; (from clang) doesn't
 understand &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;-export-dynamic&lt;/span&gt;&lt;/code&gt;, you have to do&lt;/p&gt;
-&lt;pre class="code bash"&gt;&lt;a name="rest_code_9f44ec775cae4f87b64137a09d220c1c-1"&gt;&lt;/a&gt;gcc s7.c -o repl -DWITH_MAIN -I. -O2 -g -ldl -lm -Wl,-dynamic
-&lt;/pre&gt;&lt;p&gt;Then you need to do&lt;/p&gt;
-&lt;pre class="code bash"&gt;&lt;a name="rest_code_476ea9b03b6c4faca81ba4e46b4b5b5b-1"&gt;&lt;/a&gt;./repl libc.scm
-&lt;/pre&gt;&lt;p&gt;which seems to generate &lt;span class="file"&gt;libc_s7.c&lt;/span&gt; and compile it into
+&lt;div class="code"&gt;&lt;pre class="code bash"&gt;&lt;a id="rest_code_952e9c7b18dc45d5a7d7d0437212f7d0-1" name="rest_code_952e9c7b18dc45d5a7d7d0437212f7d0-1" href="https://tkurtbond.github.io/posts/2020/08/03/compiling-s7-scheme-on-macos/#rest_code_952e9c7b18dc45d5a7d7d0437212f7d0-1"&gt;&lt;/a&gt;gcc s7.c -o repl -DWITH_MAIN -I. -O2 -g -ldl -lm -Wl,-dynamic
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Then you need to do&lt;/p&gt;
+&lt;div class="code"&gt;&lt;pre class="code bash"&gt;&lt;a id="rest_code_bab18278f6024f27bd706b4471fc8ec0-1" name="rest_code_bab18278f6024f27bd706b4471fc8ec0-1" href="https://tkurtbond.github.io/posts/2020/08/03/compiling-s7-scheme-on-macos/#rest_code_bab18278f6024f27bd706b4471fc8ec0-1"&gt;&lt;/a&gt;./repl libc.scm
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;which seems to generate &lt;span class="file"&gt;libc_s7.c&lt;/span&gt; and compile it into
 &lt;span class="file"&gt;libc_s.so&lt;/span&gt;.   Then you can run the &lt;a class="reference external" href="https://tkurtbond.github.io/pages/computer-vocabulary/#REPL"&gt;REPL&lt;/a&gt;:&lt;/p&gt;
-&lt;pre class="code bash"&gt;&lt;a name="rest_code_e0688398b8f342468dec8fa6046bdf56-1"&gt;&lt;/a&gt;./repl
-&lt;/pre&gt;&lt;p&gt;which, from looking at &lt;span class="file"&gt;s7.c&lt;/span&gt;, loads &lt;span class="file"&gt;repl.scm&lt;/span&gt;.
+&lt;div class="code"&gt;&lt;pre class="code bash"&gt;&lt;a id="rest_code_e6446d783d3b44a9980f2450902f1104-1" name="rest_code_e6446d783d3b44a9980f2450902f1104-1" href="https://tkurtbond.github.io/posts/2020/08/03/compiling-s7-scheme-on-macos/#rest_code_e6446d783d3b44a9980f2450902f1104-1"&gt;&lt;/a&gt;./repl
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;which, from looking at &lt;span class="file"&gt;s7.c&lt;/span&gt;, loads &lt;span class="file"&gt;repl.scm&lt;/span&gt;.
 Unfortunately, I don't understand the repl commands, except for
 &lt;code class="docutils literal"&gt;pwd&lt;/code&gt; and &lt;code class="docutils literal"&gt;cd&lt;/code&gt;.  Oh, and &lt;code class="docutils literal"&gt;(exit)&lt;/code&gt; exits the repl.&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Last edited: 2020-08-03 16:03:57 EDT&lt;/em&gt;&lt;/p&gt;

@@ -7,7 +7,7 @@
 .. description: 
 .. type: text
 
-*Last edited: 2022-12-14 11:36:33 EST*
+*Last edited: 2022-12-26 22:43:46 EST*
 
 I got an interesting game yesterday, and finished reading it today:
 the 1991 *Lord of the Rings Adventure Game* from `Iron Crown
@@ -83,12 +83,14 @@ Your character type sets your Endurance (basically your hit points),
 with the dwarf warrior having the most at 60 points and the elf bard
 the least at 30 points.
 
-There are 15 spells, all very in keeping with the magic seen in the
-novels, which is to say not tremendously powerful (Strength, Shield,
-Speed, Balance, Camouflage, Concentration, Item Analysis,
-Clairvoyance, Healing, Luck, Protection from Magic, Sustenance, Calm,
-Charm Animal, and Fire Bolt).  Magic items typically add a plus to a
-stat, or let you do something you couldn’t before.
+There are 15 spells, all with a fairly reasonable balance between
+keeping with the magic seen in the novels, which is to say not
+tremendously powerful, and what one would expect from a fantasy RPG.
+The spells are Strength, Shield, Speed, Balance, Camouflage,
+Concentration, Item Analysis, Clairvoyance, Healing, Luck, Protection
+from Magic, Sustenance, Calm, Charm Animal, and Fire Bolt.  Magic
+items typically add a plus to a stat, or let you do something you
+couldn’t before.
 
 Maneuvers are how you use your stats.  Some, like climbing a tree have
 a set difficulty.  Others the GM sets the difficulty, from Routine (4)

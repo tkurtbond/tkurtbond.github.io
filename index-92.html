@@ -156,25 +156,25 @@ for his Nordlond campaign setting.</p>
 <p>I have a directory, with two files in it, <span class="file">ab.txt</span> and
 <span class="file">a-c.txt</span>.  Which sorts first when I do a <span class="command">ls</span>?  It
 depends on what locale is set.  Like this:</p>
-<pre class="code bash"><a name="rest_code_f13f70d55e524ee19f1799175652ebca-1"></a>$ <span class="nv">LANG</span><span class="o">=</span>en_US.UTF-8 ls
-<a name="rest_code_f13f70d55e524ee19f1799175652ebca-2"></a>ab.txt       a-c.txt
-<a name="rest_code_f13f70d55e524ee19f1799175652ebca-3"></a>$ <span class="nv">LANG</span><span class="o">=</span>C ls
-<a name="rest_code_f13f70d55e524ee19f1799175652ebca-4"></a>a-c.txt  ab.txt
-</pre>
+<div class="code"><pre class="code bash"><a id="rest_code_b44c90d0331a458e8a3d6f05c91c1330-1" name="rest_code_b44c90d0331a458e8a3d6f05c91c1330-1" href="posts/2021/07/28/sorting-differs-between-langc-and-langen_usutf-8-even-in-ls/#rest_code_b44c90d0331a458e8a3d6f05c91c1330-1"></a>$ <span class="nv">LANG</span><span class="o">=</span>en_US.UTF-8 ls
+<a id="rest_code_b44c90d0331a458e8a3d6f05c91c1330-2" name="rest_code_b44c90d0331a458e8a3d6f05c91c1330-2" href="posts/2021/07/28/sorting-differs-between-langc-and-langen_usutf-8-even-in-ls/#rest_code_b44c90d0331a458e8a3d6f05c91c1330-2"></a>ab.txt       a-c.txt
+<a id="rest_code_b44c90d0331a458e8a3d6f05c91c1330-3" name="rest_code_b44c90d0331a458e8a3d6f05c91c1330-3" href="posts/2021/07/28/sorting-differs-between-langc-and-langen_usutf-8-even-in-ls/#rest_code_b44c90d0331a458e8a3d6f05c91c1330-3"></a>$ <span class="nv">LANG</span><span class="o">=</span>C ls
+<a id="rest_code_b44c90d0331a458e8a3d6f05c91c1330-4" name="rest_code_b44c90d0331a458e8a3d6f05c91c1330-4" href="posts/2021/07/28/sorting-differs-between-langc-and-langen_usutf-8-even-in-ls/#rest_code_b44c90d0331a458e8a3d6f05c91c1330-4"></a>a-c.txt  ab.txt
+</pre></div>
 <p>Same thing happens with the <span class="command">sort</span> command:</p>
-<pre class="code bash"><a name="rest_code_6e65117ca6494d2cae9f87f7ac82cefd-1"></a>$ cat &gt;a-c-first.txt
-<a name="rest_code_6e65117ca6494d2cae9f87f7ac82cefd-2"></a>a-c.txt
-<a name="rest_code_6e65117ca6494d2cae9f87f7ac82cefd-3"></a>ab.txt
-<a name="rest_code_6e65117ca6494d2cae9f87f7ac82cefd-4"></a>$ cat &gt;ab-first.txt
-<a name="rest_code_6e65117ca6494d2cae9f87f7ac82cefd-5"></a>ab.txt
-<a name="rest_code_6e65117ca6494d2cae9f87f7ac82cefd-6"></a>a-c.txt
-<a name="rest_code_6e65117ca6494d2cae9f87f7ac82cefd-7"></a>$ <span class="nv">LANG</span><span class="o">=</span>C sort ab-first.txt
-<a name="rest_code_6e65117ca6494d2cae9f87f7ac82cefd-8"></a>a-c.txt
-<a name="rest_code_6e65117ca6494d2cae9f87f7ac82cefd-9"></a>ab.txt
-<a name="rest_code_6e65117ca6494d2cae9f87f7ac82cefd-10"></a>$ <span class="nv">LANG</span><span class="o">=</span>en_US.UTF-8 sort a-c-first.txt
-<a name="rest_code_6e65117ca6494d2cae9f87f7ac82cefd-11"></a>ab.txt
-<a name="rest_code_6e65117ca6494d2cae9f87f7ac82cefd-12"></a>a-c.txt
-</pre>
+<div class="code"><pre class="code bash"><a id="rest_code_9e95137bfe8c4e51af5f909b089c81e6-1" name="rest_code_9e95137bfe8c4e51af5f909b089c81e6-1" href="posts/2021/07/28/sorting-differs-between-langc-and-langen_usutf-8-even-in-ls/#rest_code_9e95137bfe8c4e51af5f909b089c81e6-1"></a>$ cat &gt;a-c-first.txt
+<a id="rest_code_9e95137bfe8c4e51af5f909b089c81e6-2" name="rest_code_9e95137bfe8c4e51af5f909b089c81e6-2" href="posts/2021/07/28/sorting-differs-between-langc-and-langen_usutf-8-even-in-ls/#rest_code_9e95137bfe8c4e51af5f909b089c81e6-2"></a>a-c.txt
+<a id="rest_code_9e95137bfe8c4e51af5f909b089c81e6-3" name="rest_code_9e95137bfe8c4e51af5f909b089c81e6-3" href="posts/2021/07/28/sorting-differs-between-langc-and-langen_usutf-8-even-in-ls/#rest_code_9e95137bfe8c4e51af5f909b089c81e6-3"></a>ab.txt
+<a id="rest_code_9e95137bfe8c4e51af5f909b089c81e6-4" name="rest_code_9e95137bfe8c4e51af5f909b089c81e6-4" href="posts/2021/07/28/sorting-differs-between-langc-and-langen_usutf-8-even-in-ls/#rest_code_9e95137bfe8c4e51af5f909b089c81e6-4"></a>$ cat &gt;ab-first.txt
+<a id="rest_code_9e95137bfe8c4e51af5f909b089c81e6-5" name="rest_code_9e95137bfe8c4e51af5f909b089c81e6-5" href="posts/2021/07/28/sorting-differs-between-langc-and-langen_usutf-8-even-in-ls/#rest_code_9e95137bfe8c4e51af5f909b089c81e6-5"></a>ab.txt
+<a id="rest_code_9e95137bfe8c4e51af5f909b089c81e6-6" name="rest_code_9e95137bfe8c4e51af5f909b089c81e6-6" href="posts/2021/07/28/sorting-differs-between-langc-and-langen_usutf-8-even-in-ls/#rest_code_9e95137bfe8c4e51af5f909b089c81e6-6"></a>a-c.txt
+<a id="rest_code_9e95137bfe8c4e51af5f909b089c81e6-7" name="rest_code_9e95137bfe8c4e51af5f909b089c81e6-7" href="posts/2021/07/28/sorting-differs-between-langc-and-langen_usutf-8-even-in-ls/#rest_code_9e95137bfe8c4e51af5f909b089c81e6-7"></a>$ <span class="nv">LANG</span><span class="o">=</span>C sort ab-first.txt
+<a id="rest_code_9e95137bfe8c4e51af5f909b089c81e6-8" name="rest_code_9e95137bfe8c4e51af5f909b089c81e6-8" href="posts/2021/07/28/sorting-differs-between-langc-and-langen_usutf-8-even-in-ls/#rest_code_9e95137bfe8c4e51af5f909b089c81e6-8"></a>a-c.txt
+<a id="rest_code_9e95137bfe8c4e51af5f909b089c81e6-9" name="rest_code_9e95137bfe8c4e51af5f909b089c81e6-9" href="posts/2021/07/28/sorting-differs-between-langc-and-langen_usutf-8-even-in-ls/#rest_code_9e95137bfe8c4e51af5f909b089c81e6-9"></a>ab.txt
+<a id="rest_code_9e95137bfe8c4e51af5f909b089c81e6-10" name="rest_code_9e95137bfe8c4e51af5f909b089c81e6-10" href="posts/2021/07/28/sorting-differs-between-langc-and-langen_usutf-8-even-in-ls/#rest_code_9e95137bfe8c4e51af5f909b089c81e6-10"></a>$ <span class="nv">LANG</span><span class="o">=</span>en_US.UTF-8 sort a-c-first.txt
+<a id="rest_code_9e95137bfe8c4e51af5f909b089c81e6-11" name="rest_code_9e95137bfe8c4e51af5f909b089c81e6-11" href="posts/2021/07/28/sorting-differs-between-langc-and-langen_usutf-8-even-in-ls/#rest_code_9e95137bfe8c4e51af5f909b089c81e6-11"></a>ab.txt
+<a id="rest_code_9e95137bfe8c4e51af5f909b089c81e6-12" name="rest_code_9e95137bfe8c4e51af5f909b089c81e6-12" href="posts/2021/07/28/sorting-differs-between-langc-and-langen_usutf-8-even-in-ls/#rest_code_9e95137bfe8c4e51af5f909b089c81e6-12"></a>a-c.txt
+</pre></div>
 <p>I found this surprising when it first broke some code I was using,
 since I'd spent so much of my existence in LANG=C (I'm still surprised
 that Unicode has existed for more than half my life), but once I set
@@ -223,11 +223,11 @@ Boo!</p>
 alternate configuration file (on macOS the default one is in
 <span class="file">/private/etc/man.conf</span>), so you can supply one that specifies
 the absolute path to the newer <span class="app">groff</span> you are using.  So I added</p>
-<pre class="code bash"><a name="rest_code_7ae3946c1eff4097bf8a3740763a8804-1"></a><span class="nb">alias</span> <span class="nv">man</span><span class="o">=</span><span class="s1">'man -C ~/local/etc/man.conf'</span>
-</pre>
+<div class="code"><pre class="code bash"><a id="rest_code_4d9eef2ca46c488f8543dc80d2333335-1" name="rest_code_4d9eef2ca46c488f8543dc80d2333335-1" href="posts/2021/07/26/making-a-newer-version-of-groff-work-with-man-and-emacs-on-macos/#rest_code_4d9eef2ca46c488f8543dc80d2333335-1"></a><span class="nb">alias</span> <span class="nv">man</span><span class="o">=</span><span class="s1">'man -C ~/local/etc/man.conf'</span>
+</pre></div>
 <p>to the appropriate shell startup file.  And I can add</p>
-<pre class="code emacs-lisp"><a name="rest_code_d2b69487aefc4f5a9a9b50440170e14a-1"></a><span class="p">(</span><span class="k">setq</span> <span class="nv">Man-switches</span> <span class="s">"-C ~/local/etc/man.conf"</span><span class="p">)</span>
-</pre>
+<div class="code"><pre class="code emacs-lisp"><a id="rest_code_62162e2647754dabbd38b695dda708f7-1" name="rest_code_62162e2647754dabbd38b695dda708f7-1" href="posts/2021/07/26/making-a-newer-version-of-groff-work-with-man-and-emacs-on-macos/#rest_code_62162e2647754dabbd38b695dda708f7-1"></a><span class="p">(</span><span class="k">setq</span><span class="w"> </span><span class="nv">Man-switches</span><span class="w"> </span><span class="s">"-C ~/local/etc/man.conf"</span><span class="p">)</span><span class="w"></span>
+</pre></div>
 <p>to my <span class="app">emacs</span> configuration so it uses the right version of
 <span class="app">groff</span> too.</p>
 <p>But a modern <span class="app">groff</span> produces ANSI escapes for bold and
@@ -235,7 +235,7 @@ underline, rather than the older convention of over-striking via the
 backspace character with the same character for bold or with the
 underscore character for underlining.  My pager, <span class="app">less</span>, can deal
 with that, but something in <span class="app">emacs</span> doesn't like that, leaving
-the buffer with <span class="man">groff_ms(7)</span> with underlining on every line.<a class="footnote-reference brackets" href="posts/2021/07/26/making-a-newer-version-of-groff-work-with-man-and-emacs-on-macos/#manual" id="id1">1</a></p>
+the buffer with <span class="man">groff_ms(7)</span> with underlining on every line.<a class="footnote-reference brackets" href="posts/2021/07/26/making-a-newer-version-of-groff-work-with-man-and-emacs-on-macos/#manual" id="footnote-reference-1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
 <p>Eventually I figured out that the old style over-striking via
 backspaces worked just fine with emacs, so I added the <code class="docutils literal"><span class="pre">-P-c</span></code> option
 to the invocation of <span class="app">groff</span> in the NROFF definition in my
@@ -245,33 +245,27 @@ it to use old-style backspace over-striking.</p>
 <p>This seems overly complicated.</p>
 <p>I suspect I'll need to do something different on the Linux boxes I
 use.</p>
-<div class="section" id="later">
-<h2>Later</h2>
+<section id="later"><h2>Later</h2>
 <p>Aannnd I was right.  Fedora 33 has a similar problem, which I fixed by
 creating a <span class="file">~/.manpath</span> file with</p>
-<pre class="code text"><a name="rest_code_e6f83f57cc6c43fea46be03bf34c8827-1"></a>DEFINE       nroff   /sw/versions/groff/git/bin/nroff -mandoc -P-c
-</pre>
+<div class="code"><pre class="code text"><a id="rest_code_74744e8ce9494bbfb7ac1481b8d7928b-1" name="rest_code_74744e8ce9494bbfb7ac1481b8d7928b-1" href="posts/2021/07/26/making-a-newer-version-of-groff-work-with-man-and-emacs-on-macos/#rest_code_74744e8ce9494bbfb7ac1481b8d7928b-1"></a>DEFINE       nroff   /sw/versions/groff/git/bin/nroff -mandoc -P-c
+</pre></div>
 <p>in it.  I found the information I needed in <span class="man">manpath(5)</span>, which
 documents the format of the <span class="file">/etc/man_db.conf</span> file.  (Why isn't
 it <span class="man">man_db.conf(5)</span>, then?)</p>
-<dl class="footnote brackets">
-<dt class="label" id="manual"><span class="brackets"><a class="fn-backref" href="posts/2021/07/26/making-a-newer-version-of-groff-work-with-man-and-emacs-on-macos/#id1">1</a></span></dt>
-<dd>
+<aside class="footnote-list brackets"><aside class="footnote brackets" id="manual" role="note"><span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="posts/2021/07/26/making-a-newer-version-of-groff-work-with-man-and-emacs-on-macos/#footnote-reference-1">1</a><span class="fn-bracket">]</span></span>
 <p>Oddly, if I direct <span class="app">man</span>'s output to a file, visit that file in
 <span class="app">emacs</span>, and manually invoke the <code class="docutils literal"><span class="pre">Man-fontify-manpage</span></code> function
 <span class="app">emacs</span> uses to fontify the man page, it <em>doesn't</em> end up
 erroneously underlined.</p>
-</dd>
-</dl>
-<p><em>Last edited: 2021-09-09 10:11:03 EDT</em></p>
+</aside></aside><p><em>Last edited: 2021-09-09 10:11:03 EDT</em></p>
 <!-- Local Variables:
 time-stamp-format: "%Y-%02m-%02d %02H:%02M:%02S %Z"
 time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
 time-stamp-end: "\\*\\\\?\n"
 time-stamp-line-limit: -20
 End: -->
-</div>
-    <nav><ul itemprop="keywords" class="tags">
+</section><nav><ul itemprop="keywords" class="tags">
 <li><a class="tag p-category" href="categories/groff/" rel="tag">groff</a></li>
             <li><a class="tag p-category" href="categories/macos/" rel="tag">macos</a></li>
             <li><a class="tag p-category" href="categories/troff/" rel="tag">troff</a></li>

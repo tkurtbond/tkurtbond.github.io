@@ -128,12 +128,7 @@ help of a programming staff. These tools include on -line help.</p>
 <p>The following is a list of the DMS-Plus functions with a brief
 description of each:</p>
 <div class="docutils container">
-<table>
-<colgroup>
-<col style="width: 16%">
-<col style="width: 84%">
-</colgroup>
-<tbody>
+<table><tbody>
 <tr>
 <td><p>ADD</p></td>
 <td><p>Enters new records into a new database</p></td>
@@ -247,8 +242,7 @@ ordering.</p></td>
 <td><p>XTAB</p></td>
 <td><p>Performs cross tabulations with field data.</p></td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 </div>
 <p>DMS-Plus provides a set of tools to establish databases and to
 manipulate the data within them. Simple steps for the use of DMS-Plus
@@ -487,86 +481,86 @@ types.  Here's the <a class="reference external" href="https://groups.google.com
 necromancy?)</p>
 <p>I'll include the code in this blog post, too, for ease of reference.
 Here's <span class="file">vax_redim_best.bas</span>:</p>
-<pre class="code text"><a name="rest_code_fe2a242171a54440b9680b2ad5688461-1"></a>program vax_redim_best
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-2"></a>    option type = explicit, constant type = integer, &amp;
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-3"></a>        size = integer long, size = real double
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-4"></a>    record rec
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-5"></a>        string s = 13
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-6"></a>        long   i
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-7"></a>    end record rec
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-8"></a>
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-9"></a>    ! Don't declare the parameters, and everything works, even passing
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-10"></a>    ! different types.
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-11"></a>    external sub redim
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-12"></a>
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-13"></a>    declare long stat, i
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-14"></a>    i = 1
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-15"></a>    dim rec rec(1 to i)
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-16"></a>    print "lbound (rec) at start: "; lbound (rec)
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-17"></a>    print "ubound (rec) at start: "; ubound (rec)
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-18"></a>    call redim (rec(), 3, 10)
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-19"></a>    print "lbound (rec) after redim: "; lbound (rec)
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-20"></a>    print "ubound (rec) after redim: "; ubound (rec)
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-21"></a>
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-22"></a>    dim string s(1 to i)
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-23"></a>    print "lbound (s) at start: "; lbound (s)
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-24"></a>    print "ubound (s) at start: "; ubound (s)
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-25"></a>    call redim (s(), 3, 10)
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-26"></a>    print "lbound (s) after redim: "; lbound (s)
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-27"></a>    print "ubound (s) after redim: "; ubound (s)
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-28"></a>
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-29"></a>    dim long l(1 to i)
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-30"></a>    print "lbound (l) at start: "; lbound (l)
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-31"></a>    print "ubound (l) at start: "; ubound (l)
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-32"></a>    call redim (l(), 3, 10)
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-33"></a>    print "lbound (l) after redim: "; lbound (l)
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-34"></a>    print "ubound (l) after redim: "; ubound (l)
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-35"></a>
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-36"></a>
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-37"></a>end program ! vax_redim_best
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-38"></a>
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-39"></a>function long redim (long s, long low, long high)
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-40"></a>    option type = explicit, constant type = integer, &amp;
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-41"></a>        size = integer long, size = real double
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-42"></a>    external long function bas$rt_dim_bounds (long by value, long by value, long by value)
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-43"></a>    declare long r
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-44"></a>    r = bas$rt_dim_bounds (loc (s), low, high)
-<a name="rest_code_fe2a242171a54440b9680b2ad5688461-45"></a>end function r ! redim
-</pre>
+<div class="code"><pre class="code text"><a id="rest_code_3eb86c6a2bb543fab6e136afb1823214-1" name="rest_code_3eb86c6a2bb543fab6e136afb1823214-1" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_3eb86c6a2bb543fab6e136afb1823214-1"></a>program vax_redim_best
+<a id="rest_code_3eb86c6a2bb543fab6e136afb1823214-2" name="rest_code_3eb86c6a2bb543fab6e136afb1823214-2" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_3eb86c6a2bb543fab6e136afb1823214-2"></a>    option type = explicit, constant type = integer, &amp;
+<a id="rest_code_3eb86c6a2bb543fab6e136afb1823214-3" name="rest_code_3eb86c6a2bb543fab6e136afb1823214-3" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_3eb86c6a2bb543fab6e136afb1823214-3"></a>        size = integer long, size = real double
+<a id="rest_code_3eb86c6a2bb543fab6e136afb1823214-4" name="rest_code_3eb86c6a2bb543fab6e136afb1823214-4" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_3eb86c6a2bb543fab6e136afb1823214-4"></a>    record rec
+<a id="rest_code_3eb86c6a2bb543fab6e136afb1823214-5" name="rest_code_3eb86c6a2bb543fab6e136afb1823214-5" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_3eb86c6a2bb543fab6e136afb1823214-5"></a>        string s = 13
+<a id="rest_code_3eb86c6a2bb543fab6e136afb1823214-6" name="rest_code_3eb86c6a2bb543fab6e136afb1823214-6" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_3eb86c6a2bb543fab6e136afb1823214-6"></a>        long   i
+<a id="rest_code_3eb86c6a2bb543fab6e136afb1823214-7" name="rest_code_3eb86c6a2bb543fab6e136afb1823214-7" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_3eb86c6a2bb543fab6e136afb1823214-7"></a>    end record rec
+<a id="rest_code_3eb86c6a2bb543fab6e136afb1823214-8" name="rest_code_3eb86c6a2bb543fab6e136afb1823214-8" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_3eb86c6a2bb543fab6e136afb1823214-8"></a>
+<a id="rest_code_3eb86c6a2bb543fab6e136afb1823214-9" name="rest_code_3eb86c6a2bb543fab6e136afb1823214-9" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_3eb86c6a2bb543fab6e136afb1823214-9"></a>    ! Don't declare the parameters, and everything works, even passing
+<a id="rest_code_3eb86c6a2bb543fab6e136afb1823214-10" name="rest_code_3eb86c6a2bb543fab6e136afb1823214-10" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_3eb86c6a2bb543fab6e136afb1823214-10"></a>    ! different types.
+<a id="rest_code_3eb86c6a2bb543fab6e136afb1823214-11" name="rest_code_3eb86c6a2bb543fab6e136afb1823214-11" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_3eb86c6a2bb543fab6e136afb1823214-11"></a>    external sub redim
+<a id="rest_code_3eb86c6a2bb543fab6e136afb1823214-12" name="rest_code_3eb86c6a2bb543fab6e136afb1823214-12" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_3eb86c6a2bb543fab6e136afb1823214-12"></a>
+<a id="rest_code_3eb86c6a2bb543fab6e136afb1823214-13" name="rest_code_3eb86c6a2bb543fab6e136afb1823214-13" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_3eb86c6a2bb543fab6e136afb1823214-13"></a>    declare long stat, i
+<a id="rest_code_3eb86c6a2bb543fab6e136afb1823214-14" name="rest_code_3eb86c6a2bb543fab6e136afb1823214-14" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_3eb86c6a2bb543fab6e136afb1823214-14"></a>    i = 1
+<a id="rest_code_3eb86c6a2bb543fab6e136afb1823214-15" name="rest_code_3eb86c6a2bb543fab6e136afb1823214-15" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_3eb86c6a2bb543fab6e136afb1823214-15"></a>    dim rec rec(1 to i)
+<a id="rest_code_3eb86c6a2bb543fab6e136afb1823214-16" name="rest_code_3eb86c6a2bb543fab6e136afb1823214-16" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_3eb86c6a2bb543fab6e136afb1823214-16"></a>    print "lbound (rec) at start: "; lbound (rec)
+<a id="rest_code_3eb86c6a2bb543fab6e136afb1823214-17" name="rest_code_3eb86c6a2bb543fab6e136afb1823214-17" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_3eb86c6a2bb543fab6e136afb1823214-17"></a>    print "ubound (rec) at start: "; ubound (rec)
+<a id="rest_code_3eb86c6a2bb543fab6e136afb1823214-18" name="rest_code_3eb86c6a2bb543fab6e136afb1823214-18" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_3eb86c6a2bb543fab6e136afb1823214-18"></a>    call redim (rec(), 3, 10)
+<a id="rest_code_3eb86c6a2bb543fab6e136afb1823214-19" name="rest_code_3eb86c6a2bb543fab6e136afb1823214-19" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_3eb86c6a2bb543fab6e136afb1823214-19"></a>    print "lbound (rec) after redim: "; lbound (rec)
+<a id="rest_code_3eb86c6a2bb543fab6e136afb1823214-20" name="rest_code_3eb86c6a2bb543fab6e136afb1823214-20" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_3eb86c6a2bb543fab6e136afb1823214-20"></a>    print "ubound (rec) after redim: "; ubound (rec)
+<a id="rest_code_3eb86c6a2bb543fab6e136afb1823214-21" name="rest_code_3eb86c6a2bb543fab6e136afb1823214-21" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_3eb86c6a2bb543fab6e136afb1823214-21"></a>
+<a id="rest_code_3eb86c6a2bb543fab6e136afb1823214-22" name="rest_code_3eb86c6a2bb543fab6e136afb1823214-22" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_3eb86c6a2bb543fab6e136afb1823214-22"></a>    dim string s(1 to i)
+<a id="rest_code_3eb86c6a2bb543fab6e136afb1823214-23" name="rest_code_3eb86c6a2bb543fab6e136afb1823214-23" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_3eb86c6a2bb543fab6e136afb1823214-23"></a>    print "lbound (s) at start: "; lbound (s)
+<a id="rest_code_3eb86c6a2bb543fab6e136afb1823214-24" name="rest_code_3eb86c6a2bb543fab6e136afb1823214-24" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_3eb86c6a2bb543fab6e136afb1823214-24"></a>    print "ubound (s) at start: "; ubound (s)
+<a id="rest_code_3eb86c6a2bb543fab6e136afb1823214-25" name="rest_code_3eb86c6a2bb543fab6e136afb1823214-25" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_3eb86c6a2bb543fab6e136afb1823214-25"></a>    call redim (s(), 3, 10)
+<a id="rest_code_3eb86c6a2bb543fab6e136afb1823214-26" name="rest_code_3eb86c6a2bb543fab6e136afb1823214-26" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_3eb86c6a2bb543fab6e136afb1823214-26"></a>    print "lbound (s) after redim: "; lbound (s)
+<a id="rest_code_3eb86c6a2bb543fab6e136afb1823214-27" name="rest_code_3eb86c6a2bb543fab6e136afb1823214-27" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_3eb86c6a2bb543fab6e136afb1823214-27"></a>    print "ubound (s) after redim: "; ubound (s)
+<a id="rest_code_3eb86c6a2bb543fab6e136afb1823214-28" name="rest_code_3eb86c6a2bb543fab6e136afb1823214-28" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_3eb86c6a2bb543fab6e136afb1823214-28"></a>
+<a id="rest_code_3eb86c6a2bb543fab6e136afb1823214-29" name="rest_code_3eb86c6a2bb543fab6e136afb1823214-29" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_3eb86c6a2bb543fab6e136afb1823214-29"></a>    dim long l(1 to i)
+<a id="rest_code_3eb86c6a2bb543fab6e136afb1823214-30" name="rest_code_3eb86c6a2bb543fab6e136afb1823214-30" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_3eb86c6a2bb543fab6e136afb1823214-30"></a>    print "lbound (l) at start: "; lbound (l)
+<a id="rest_code_3eb86c6a2bb543fab6e136afb1823214-31" name="rest_code_3eb86c6a2bb543fab6e136afb1823214-31" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_3eb86c6a2bb543fab6e136afb1823214-31"></a>    print "ubound (l) at start: "; ubound (l)
+<a id="rest_code_3eb86c6a2bb543fab6e136afb1823214-32" name="rest_code_3eb86c6a2bb543fab6e136afb1823214-32" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_3eb86c6a2bb543fab6e136afb1823214-32"></a>    call redim (l(), 3, 10)
+<a id="rest_code_3eb86c6a2bb543fab6e136afb1823214-33" name="rest_code_3eb86c6a2bb543fab6e136afb1823214-33" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_3eb86c6a2bb543fab6e136afb1823214-33"></a>    print "lbound (l) after redim: "; lbound (l)
+<a id="rest_code_3eb86c6a2bb543fab6e136afb1823214-34" name="rest_code_3eb86c6a2bb543fab6e136afb1823214-34" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_3eb86c6a2bb543fab6e136afb1823214-34"></a>    print "ubound (l) after redim: "; ubound (l)
+<a id="rest_code_3eb86c6a2bb543fab6e136afb1823214-35" name="rest_code_3eb86c6a2bb543fab6e136afb1823214-35" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_3eb86c6a2bb543fab6e136afb1823214-35"></a>
+<a id="rest_code_3eb86c6a2bb543fab6e136afb1823214-36" name="rest_code_3eb86c6a2bb543fab6e136afb1823214-36" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_3eb86c6a2bb543fab6e136afb1823214-36"></a>
+<a id="rest_code_3eb86c6a2bb543fab6e136afb1823214-37" name="rest_code_3eb86c6a2bb543fab6e136afb1823214-37" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_3eb86c6a2bb543fab6e136afb1823214-37"></a>end program ! vax_redim_best
+<a id="rest_code_3eb86c6a2bb543fab6e136afb1823214-38" name="rest_code_3eb86c6a2bb543fab6e136afb1823214-38" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_3eb86c6a2bb543fab6e136afb1823214-38"></a>
+<a id="rest_code_3eb86c6a2bb543fab6e136afb1823214-39" name="rest_code_3eb86c6a2bb543fab6e136afb1823214-39" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_3eb86c6a2bb543fab6e136afb1823214-39"></a>function long redim (long s, long low, long high)
+<a id="rest_code_3eb86c6a2bb543fab6e136afb1823214-40" name="rest_code_3eb86c6a2bb543fab6e136afb1823214-40" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_3eb86c6a2bb543fab6e136afb1823214-40"></a>    option type = explicit, constant type = integer, &amp;
+<a id="rest_code_3eb86c6a2bb543fab6e136afb1823214-41" name="rest_code_3eb86c6a2bb543fab6e136afb1823214-41" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_3eb86c6a2bb543fab6e136afb1823214-41"></a>        size = integer long, size = real double
+<a id="rest_code_3eb86c6a2bb543fab6e136afb1823214-42" name="rest_code_3eb86c6a2bb543fab6e136afb1823214-42" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_3eb86c6a2bb543fab6e136afb1823214-42"></a>    external long function bas$rt_dim_bounds (long by value, long by value, long by value)
+<a id="rest_code_3eb86c6a2bb543fab6e136afb1823214-43" name="rest_code_3eb86c6a2bb543fab6e136afb1823214-43" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_3eb86c6a2bb543fab6e136afb1823214-43"></a>    declare long r
+<a id="rest_code_3eb86c6a2bb543fab6e136afb1823214-44" name="rest_code_3eb86c6a2bb543fab6e136afb1823214-44" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_3eb86c6a2bb543fab6e136afb1823214-44"></a>    r = bas$rt_dim_bounds (loc (s), low, high)
+<a id="rest_code_3eb86c6a2bb543fab6e136afb1823214-45" name="rest_code_3eb86c6a2bb543fab6e136afb1823214-45" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_3eb86c6a2bb543fab6e136afb1823214-45"></a>end function r ! redim
+</pre></div>
 <p>I'll just point out, which I failed to do in the <a class="reference external" href="https://groups.google.com/g/comp.os.vms/c/mVWznNVN17U/m/HE3L4N4nIJAJ">old USENET post</a> or
 the <a class="reference external" href="https://groups.google.com/g/comp.os.vms/c/mVWznNVN17U/m/yuOAmQtQBAAJ">new USENET post</a>, that you have to use a <strong>variable</strong> when using
 the VMS BASIC <code class="docutils literal">dim</code> statement or you get a fatal runtime error.  Ooops.</p>
 <p>So use:</p>
-<pre class="code text"><a name="rest_code_57b1896242a243a0b7226d5acce0209c-1"></a>declare long i
-<a name="rest_code_57b1896242a243a0b7226d5acce0209c-2"></a>i = 5
-<a name="rest_code_57b1896242a243a0b7226d5acce0209c-3"></a>dim string s(1 to i) ! Notice that last thing is the variable, i
-<a name="rest_code_57b1896242a243a0b7226d5acce0209c-4"></a>redim (s, 3, 10)
-</pre>
+<div class="code"><pre class="code text"><a id="rest_code_8c6d7b05e16541eab0b67c5dbb3742c4-1" name="rest_code_8c6d7b05e16541eab0b67c5dbb3742c4-1" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_8c6d7b05e16541eab0b67c5dbb3742c4-1"></a>declare long i
+<a id="rest_code_8c6d7b05e16541eab0b67c5dbb3742c4-2" name="rest_code_8c6d7b05e16541eab0b67c5dbb3742c4-2" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_8c6d7b05e16541eab0b67c5dbb3742c4-2"></a>i = 5
+<a id="rest_code_8c6d7b05e16541eab0b67c5dbb3742c4-3" name="rest_code_8c6d7b05e16541eab0b67c5dbb3742c4-3" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_8c6d7b05e16541eab0b67c5dbb3742c4-3"></a>dim string s(1 to i) ! Notice that last thing is the variable, i
+<a id="rest_code_8c6d7b05e16541eab0b67c5dbb3742c4-4" name="rest_code_8c6d7b05e16541eab0b67c5dbb3742c4-4" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_8c6d7b05e16541eab0b67c5dbb3742c4-4"></a>redim (s, 3, 10)
+</pre></div>
 <p>If you had said:</p>
-<pre class="code text"><a name="rest_code_d42051b1982a4d6ca5e876dcf280a30a-1"></a>dim string s(1 to 5) ! Notice that last thing is a constant, 5
-<a name="rest_code_d42051b1982a4d6ca5e876dcf280a30a-2"></a>redim (s, 3, 10)
-</pre>
+<div class="code"><pre class="code text"><a id="rest_code_b944683781a84c7183efd7074c7a4afd-1" name="rest_code_b944683781a84c7183efd7074c7a4afd-1" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_b944683781a84c7183efd7074c7a4afd-1"></a>dim string s(1 to 5) ! Notice that last thing is a constant, 5
+<a id="rest_code_b944683781a84c7183efd7074c7a4afd-2" name="rest_code_b944683781a84c7183efd7074c7a4afd-2" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_b944683781a84c7183efd7074c7a4afd-2"></a>redim (s, 3, 10)
+</pre></div>
 <p>You'd have gotten the following error:</p>
-<pre class="code text"><a name="rest_code_b6aad6d7f4c84129945145afac5f6327-1"></a>%BAS-F-PROLOSSOR, Internal error in VAX BASIC Run-Time Library.  Please submit an SPR
-<a name="rest_code_b6aad6d7f4c84129945145afac5f6327-2"></a>-BAS-I-FROFUN, In external function ALT_REDIM
-<a name="rest_code_b6aad6d7f4c84129945145afac5f6327-3"></a>-BAS-I-FROMOD, In module Y
-<a name="rest_code_b6aad6d7f4c84129945145afac5f6327-4"></a>%TRACE-F-TRACEBACK, symbolic stack dump follows
-<a name="rest_code_b6aad6d7f4c84129945145afac5f6327-5"></a>module name     routine name                     line       rel PC    abs PC
-<a name="rest_code_b6aad6d7f4c84129945145afac5f6327-6"></a>
-<a name="rest_code_b6aad6d7f4c84129945145afac5f6327-7"></a>                                                           0004B2AA  0004B2AA
-<a name="rest_code_b6aad6d7f4c84129945145afac5f6327-8"></a>----- above condition handler called with exception 001A833C:
-<a name="rest_code_b6aad6d7f4c84129945145afac5f6327-9"></a>%BAS-F-PROLOSSOR, Internal error in VAX BASIC Run-Time Library.  Please submit an SPR
-<a name="rest_code_b6aad6d7f4c84129945145afac5f6327-10"></a>-BAS-I-FROFUN, In external function ALT_REDIM
-<a name="rest_code_b6aad6d7f4c84129945145afac5f6327-11"></a>----- end of exception message
-<a name="rest_code_b6aad6d7f4c84129945145afac5f6327-12"></a>                                                           0004B2AA  0004B2AA
-<a name="rest_code_b6aad6d7f4c84129945145afac5f6327-13"></a>----- above condition handler called with exception 001A833C:
-<a name="rest_code_b6aad6d7f4c84129945145afac5f6327-14"></a>%BAS-F-PROLOSSOR, Internal error in VAX BASIC Run-Time Library.  Please submit an SPR
-<a name="rest_code_b6aad6d7f4c84129945145afac5f6327-15"></a>----- end of exception message
-<a name="rest_code_b6aad6d7f4c84129945145afac5f6327-16"></a>                                                           0004A352  0004A352
-<a name="rest_code_b6aad6d7f4c84129945145afac5f6327-17"></a>                                                           00054E37  00054E37
-<a name="rest_code_b6aad6d7f4c84129945145afac5f6327-18"></a>ALT_REDIM       ALT_REDIM                          43      0000002E  00000AC2
-<a name="rest_code_b6aad6d7f4c84129945145afac5f6327-19"></a>Y               Y                                  24      0000015D  0000095D
-</pre>
+<div class="code"><pre class="code text"><a id="rest_code_a15b991e6be941f7bc0c1a54d8ea3b81-1" name="rest_code_a15b991e6be941f7bc0c1a54d8ea3b81-1" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_a15b991e6be941f7bc0c1a54d8ea3b81-1"></a>%BAS-F-PROLOSSOR, Internal error in VAX BASIC Run-Time Library.  Please submit an SPR
+<a id="rest_code_a15b991e6be941f7bc0c1a54d8ea3b81-2" name="rest_code_a15b991e6be941f7bc0c1a54d8ea3b81-2" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_a15b991e6be941f7bc0c1a54d8ea3b81-2"></a>-BAS-I-FROFUN, In external function ALT_REDIM
+<a id="rest_code_a15b991e6be941f7bc0c1a54d8ea3b81-3" name="rest_code_a15b991e6be941f7bc0c1a54d8ea3b81-3" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_a15b991e6be941f7bc0c1a54d8ea3b81-3"></a>-BAS-I-FROMOD, In module Y
+<a id="rest_code_a15b991e6be941f7bc0c1a54d8ea3b81-4" name="rest_code_a15b991e6be941f7bc0c1a54d8ea3b81-4" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_a15b991e6be941f7bc0c1a54d8ea3b81-4"></a>%TRACE-F-TRACEBACK, symbolic stack dump follows
+<a id="rest_code_a15b991e6be941f7bc0c1a54d8ea3b81-5" name="rest_code_a15b991e6be941f7bc0c1a54d8ea3b81-5" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_a15b991e6be941f7bc0c1a54d8ea3b81-5"></a>module name     routine name                     line       rel PC    abs PC
+<a id="rest_code_a15b991e6be941f7bc0c1a54d8ea3b81-6" name="rest_code_a15b991e6be941f7bc0c1a54d8ea3b81-6" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_a15b991e6be941f7bc0c1a54d8ea3b81-6"></a>
+<a id="rest_code_a15b991e6be941f7bc0c1a54d8ea3b81-7" name="rest_code_a15b991e6be941f7bc0c1a54d8ea3b81-7" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_a15b991e6be941f7bc0c1a54d8ea3b81-7"></a>                                                           0004B2AA  0004B2AA
+<a id="rest_code_a15b991e6be941f7bc0c1a54d8ea3b81-8" name="rest_code_a15b991e6be941f7bc0c1a54d8ea3b81-8" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_a15b991e6be941f7bc0c1a54d8ea3b81-8"></a>----- above condition handler called with exception 001A833C:
+<a id="rest_code_a15b991e6be941f7bc0c1a54d8ea3b81-9" name="rest_code_a15b991e6be941f7bc0c1a54d8ea3b81-9" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_a15b991e6be941f7bc0c1a54d8ea3b81-9"></a>%BAS-F-PROLOSSOR, Internal error in VAX BASIC Run-Time Library.  Please submit an SPR
+<a id="rest_code_a15b991e6be941f7bc0c1a54d8ea3b81-10" name="rest_code_a15b991e6be941f7bc0c1a54d8ea3b81-10" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_a15b991e6be941f7bc0c1a54d8ea3b81-10"></a>-BAS-I-FROFUN, In external function ALT_REDIM
+<a id="rest_code_a15b991e6be941f7bc0c1a54d8ea3b81-11" name="rest_code_a15b991e6be941f7bc0c1a54d8ea3b81-11" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_a15b991e6be941f7bc0c1a54d8ea3b81-11"></a>----- end of exception message
+<a id="rest_code_a15b991e6be941f7bc0c1a54d8ea3b81-12" name="rest_code_a15b991e6be941f7bc0c1a54d8ea3b81-12" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_a15b991e6be941f7bc0c1a54d8ea3b81-12"></a>                                                           0004B2AA  0004B2AA
+<a id="rest_code_a15b991e6be941f7bc0c1a54d8ea3b81-13" name="rest_code_a15b991e6be941f7bc0c1a54d8ea3b81-13" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_a15b991e6be941f7bc0c1a54d8ea3b81-13"></a>----- above condition handler called with exception 001A833C:
+<a id="rest_code_a15b991e6be941f7bc0c1a54d8ea3b81-14" name="rest_code_a15b991e6be941f7bc0c1a54d8ea3b81-14" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_a15b991e6be941f7bc0c1a54d8ea3b81-14"></a>%BAS-F-PROLOSSOR, Internal error in VAX BASIC Run-Time Library.  Please submit an SPR
+<a id="rest_code_a15b991e6be941f7bc0c1a54d8ea3b81-15" name="rest_code_a15b991e6be941f7bc0c1a54d8ea3b81-15" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_a15b991e6be941f7bc0c1a54d8ea3b81-15"></a>----- end of exception message
+<a id="rest_code_a15b991e6be941f7bc0c1a54d8ea3b81-16" name="rest_code_a15b991e6be941f7bc0c1a54d8ea3b81-16" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_a15b991e6be941f7bc0c1a54d8ea3b81-16"></a>                                                           0004A352  0004A352
+<a id="rest_code_a15b991e6be941f7bc0c1a54d8ea3b81-17" name="rest_code_a15b991e6be941f7bc0c1a54d8ea3b81-17" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_a15b991e6be941f7bc0c1a54d8ea3b81-17"></a>                                                           00054E37  00054E37
+<a id="rest_code_a15b991e6be941f7bc0c1a54d8ea3b81-18" name="rest_code_a15b991e6be941f7bc0c1a54d8ea3b81-18" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_a15b991e6be941f7bc0c1a54d8ea3b81-18"></a>ALT_REDIM       ALT_REDIM                          43      0000002E  00000AC2
+<a id="rest_code_a15b991e6be941f7bc0c1a54d8ea3b81-19" name="rest_code_a15b991e6be941f7bc0c1a54d8ea3b81-19" href="posts/2022/02/05/redimensioning-formal-parameter-arrays-in-openvms-basic-revisited/#rest_code_a15b991e6be941f7bc0c1a54d8ea3b81-19"></a>Y               Y                                  24      0000015D  0000095D
+</pre></div>
 <p>Don't actually submit an SPR, of course: you did it to yourself by
 using an undocumented VMS BASIC internal runtime function.</p>
 <p>Oh, I don't have access to an Alpha these days, so I haven't tried it
@@ -595,14 +589,14 @@ instead of <code class="docutils literal">DBASIC$RT_DIM</code> would likely work
 the <a class="reference external" href="https://brew.sh/">Homebrew</a> installed version of <a class="reference external" href="https://www.sqlite.org/">sqlite3</a> (<a class="reference external" href="https://formulae.brew.sh/formula/sqlite">HBSQLITE3</a>) — because the
 one supplied by Apple in macOS is obsolete — for the <a class="reference external" href="http://wiki.call-cc.org/eggref/5/sqlite3">sqlite egg</a>,
 you need to set <code class="docutils literal">CSC_OPTIONS</code> properly:</p>
-<pre class="code bash"><a name="rest_code_cd7d55dbc96f430c9ef9e82b98731374-1"></a>$ <span class="nb">export</span> <span class="nv">CSC_OPTIONS</span><span class="o">=</span><span class="s2">"-I/usr/local/Cellar/sqlite/3.36.0/include -L/usr/local/Cellar/sqlite/3.36.0/lib"</span>
-<a name="rest_code_cd7d55dbc96f430c9ef9e82b98731374-2"></a>$ chicken-install sqlite3
-<a name="rest_code_cd7d55dbc96f430c9ef9e82b98731374-3"></a>building sqlite3
-<a name="rest_code_cd7d55dbc96f430c9ef9e82b98731374-4"></a>   /usr/local/Cellar/chicken/5.2.0/bin/csc -host -D compiling-extension -J -s -regenerate-import-libraries -setup-mode -I /Users/tkb/.cache/chicken-install/sqlite3 -C -I/Users/tkb/.cache/chicken-install/sqlite3 -O2 -d1 -L -lsqlite3 sqlite3.scm -o /Users/tkb/.cache/chicken-install/sqlite3/sqlite3.so
-<a name="rest_code_cd7d55dbc96f430c9ef9e82b98731374-5"></a>   /usr/local/Cellar/chicken/5.2.0/bin/csc -regenerate-import-libraries -M -setup-mode -static -I /Users/tkb/.cache/chicken-install/sqlite3 -emit-link-file /Users/tkb/.cache/chicken-install/sqlite3/sqlite3.link -host -D compiling-extension -c -unit sqlite3 -D compiling-static-extension -C -I/Users/tkb/.cache/chicken-install/sqlite3 -O2 -d1 sqlite3.scm -o /Users/tkb/.cache/chicken-install/sqlite3/sqlite3.static.o
-<a name="rest_code_cd7d55dbc96f430c9ef9e82b98731374-6"></a>   /usr/local/Cellar/chicken/5.2.0/bin/csc -setup-mode -s -host -I /Users/tkb/.cache/chicken-install/sqlite3 -C -I/Users/tkb/.cache/chicken-install/sqlite3 -O2 -d0 -L -lsqlite3 sqlite3.import.scm -o /Users/tkb/.cache/chicken-install/sqlite3/sqlite3.import.so
-<a name="rest_code_cd7d55dbc96f430c9ef9e82b98731374-7"></a>installing sqlite3
-</pre>
+<div class="code"><pre class="code bash"><a id="rest_code_259ba3515afe4f2c87b15be0ee96b16e-1" name="rest_code_259ba3515afe4f2c87b15be0ee96b16e-1" href="posts/2021/09/13/getting-the-homebrew-chicken-scheme-sqlite3-egg-to-use-the-homebrew-installed-sqlite3-include-files-and-library-files/#rest_code_259ba3515afe4f2c87b15be0ee96b16e-1"></a>$ <span class="nb">export</span> <span class="nv">CSC_OPTIONS</span><span class="o">=</span><span class="s2">"-I/usr/local/Cellar/sqlite/3.36.0/include -L/usr/local/Cellar/sqlite/3.36.0/lib"</span>
+<a id="rest_code_259ba3515afe4f2c87b15be0ee96b16e-2" name="rest_code_259ba3515afe4f2c87b15be0ee96b16e-2" href="posts/2021/09/13/getting-the-homebrew-chicken-scheme-sqlite3-egg-to-use-the-homebrew-installed-sqlite3-include-files-and-library-files/#rest_code_259ba3515afe4f2c87b15be0ee96b16e-2"></a>$ chicken-install sqlite3
+<a id="rest_code_259ba3515afe4f2c87b15be0ee96b16e-3" name="rest_code_259ba3515afe4f2c87b15be0ee96b16e-3" href="posts/2021/09/13/getting-the-homebrew-chicken-scheme-sqlite3-egg-to-use-the-homebrew-installed-sqlite3-include-files-and-library-files/#rest_code_259ba3515afe4f2c87b15be0ee96b16e-3"></a>building sqlite3
+<a id="rest_code_259ba3515afe4f2c87b15be0ee96b16e-4" name="rest_code_259ba3515afe4f2c87b15be0ee96b16e-4" href="posts/2021/09/13/getting-the-homebrew-chicken-scheme-sqlite3-egg-to-use-the-homebrew-installed-sqlite3-include-files-and-library-files/#rest_code_259ba3515afe4f2c87b15be0ee96b16e-4"></a>   /usr/local/Cellar/chicken/5.2.0/bin/csc -host -D compiling-extension -J -s -regenerate-import-libraries -setup-mode -I /Users/tkb/.cache/chicken-install/sqlite3 -C -I/Users/tkb/.cache/chicken-install/sqlite3 -O2 -d1 -L -lsqlite3 sqlite3.scm -o /Users/tkb/.cache/chicken-install/sqlite3/sqlite3.so
+<a id="rest_code_259ba3515afe4f2c87b15be0ee96b16e-5" name="rest_code_259ba3515afe4f2c87b15be0ee96b16e-5" href="posts/2021/09/13/getting-the-homebrew-chicken-scheme-sqlite3-egg-to-use-the-homebrew-installed-sqlite3-include-files-and-library-files/#rest_code_259ba3515afe4f2c87b15be0ee96b16e-5"></a>   /usr/local/Cellar/chicken/5.2.0/bin/csc -regenerate-import-libraries -M -setup-mode -static -I /Users/tkb/.cache/chicken-install/sqlite3 -emit-link-file /Users/tkb/.cache/chicken-install/sqlite3/sqlite3.link -host -D compiling-extension -c -unit sqlite3 -D compiling-static-extension -C -I/Users/tkb/.cache/chicken-install/sqlite3 -O2 -d1 sqlite3.scm -o /Users/tkb/.cache/chicken-install/sqlite3/sqlite3.static.o
+<a id="rest_code_259ba3515afe4f2c87b15be0ee96b16e-6" name="rest_code_259ba3515afe4f2c87b15be0ee96b16e-6" href="posts/2021/09/13/getting-the-homebrew-chicken-scheme-sqlite3-egg-to-use-the-homebrew-installed-sqlite3-include-files-and-library-files/#rest_code_259ba3515afe4f2c87b15be0ee96b16e-6"></a>   /usr/local/Cellar/chicken/5.2.0/bin/csc -setup-mode -s -host -I /Users/tkb/.cache/chicken-install/sqlite3 -C -I/Users/tkb/.cache/chicken-install/sqlite3 -O2 -d0 -L -lsqlite3 sqlite3.import.scm -o /Users/tkb/.cache/chicken-install/sqlite3/sqlite3.import.so
+<a id="rest_code_259ba3515afe4f2c87b15be0ee96b16e-7" name="rest_code_259ba3515afe4f2c87b15be0ee96b16e-7" href="posts/2021/09/13/getting-the-homebrew-chicken-scheme-sqlite3-egg-to-use-the-homebrew-installed-sqlite3-include-files-and-library-files/#rest_code_259ba3515afe4f2c87b15be0ee96b16e-7"></a>installing sqlite3
+</pre></div>
 <p>You'll probably need to adjust the version numbers in the pathnames
 for whatever version is installed on your computer.</p>
     <nav><ul itemprop="keywords" class="tags">
@@ -630,8 +624,8 @@ you visit the url with Chrome, but not if you just try to download it
 with curl, or <code class="docutils literal"><span class="pre">url-retrieve</span></code> in Emacs. Adding a
 “<code class="docutils literal"><span class="pre">User-Agent:</span> Mozilla/5.0 (Macintosh; Intel Mac OS X 11_5_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36</code>”
 with curl’s -H option made it work.</p>
-<pre class="code bash"><a name="rest_code_8e021d4077de40a491236cc3473877c7-1"></a>curl -i -H <span class="s1">'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 11_5_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36'</span> http://wordnik.com/words/importunate
-</pre>
+<div class="code"><pre class="code bash"><a id="rest_code_b4fb28589b1d41b989be140b86ff6f22-1" name="rest_code_b4fb28589b1d41b989be140b86ff6f22-1" href="posts/2021/09/13/define-word-results-using-wordnik-stopped-working/#rest_code_b4fb28589b1d41b989be140b86ff6f22-1"></a>curl -i -H <span class="s1">'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 11_5_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36'</span> http://wordnik.com/words/importunate
+</pre></div>
 <p>So I added a <code class="docutils literal">let</code> in my advice for <code class="docutils literal"><span class="pre">define-word</span></code> that binds
 <code class="docutils literal"><span class="pre">url-request-extra-headers</span></code> to an alist with <code class="docutils literal"><span class="pre">"User-Agent"</span></code> as the
 key and <code class="docutils literal">"Mozilla/5.0 (Macintosh; Intel Mac OS X 11_5_2)
@@ -639,12 +633,12 @@ AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63
 Safari/537.36"</code> as the value, and it works again.</p>
 <p>My solution looks something like this (simplified from my actual advice,
 which does other things too):</p>
-<pre class="code emacs-lisp"><a name="rest_code_59b1eba96d3e495aa9d2b645073b3bda-1"></a><span class="p">(</span><span class="nb">defadvice</span> <span class="nv">define-word</span> <span class="p">(</span><span class="nv">around</span> <span class="nv">your-around-define-word</span> <span class="nv">activate</span><span class="p">)</span>
-<a name="rest_code_59b1eba96d3e495aa9d2b645073b3bda-2"></a>  <span class="s">"Dynamically bind tkb-define-word-word to the word passed in."</span>
-<a name="rest_code_59b1eba96d3e495aa9d2b645073b3bda-3"></a>  <span class="p">(</span><span class="k">let</span> <span class="p">((</span><span class="nv">url-request-extra-headers</span>
-<a name="rest_code_59b1eba96d3e495aa9d2b645073b3bda-4"></a>         <span class="o">'</span><span class="p">((</span><span class="s">"User-Agent"</span> <span class="o">.</span> <span class="s">"Mozilla/5.0 (Macintosh; Intel Mac OS X 11_5_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36"</span><span class="p">))))</span>
-<a name="rest_code_59b1eba96d3e495aa9d2b645073b3bda-5"></a>    <span class="nv">ad-do-it</span><span class="p">))</span>
-</pre>
+<div class="code"><pre class="code emacs-lisp"><a id="rest_code_d224d04f300548c184be6076a0bc3433-1" name="rest_code_d224d04f300548c184be6076a0bc3433-1" href="posts/2021/09/13/define-word-results-using-wordnik-stopped-working/#rest_code_d224d04f300548c184be6076a0bc3433-1"></a><span class="p">(</span><span class="nb">defadvice</span><span class="w"> </span><span class="nv">define-word</span><span class="w"> </span><span class="p">(</span><span class="nv">around</span><span class="w"> </span><span class="nv">your-around-define-word</span><span class="w"> </span><span class="nv">activate</span><span class="p">)</span><span class="w"></span>
+<a id="rest_code_d224d04f300548c184be6076a0bc3433-2" name="rest_code_d224d04f300548c184be6076a0bc3433-2" href="posts/2021/09/13/define-word-results-using-wordnik-stopped-working/#rest_code_d224d04f300548c184be6076a0bc3433-2"></a><span class="w">  </span><span class="s">"Dynamically bind tkb-define-word-word to the word passed in."</span><span class="w"></span>
+<a id="rest_code_d224d04f300548c184be6076a0bc3433-3" name="rest_code_d224d04f300548c184be6076a0bc3433-3" href="posts/2021/09/13/define-word-results-using-wordnik-stopped-working/#rest_code_d224d04f300548c184be6076a0bc3433-3"></a><span class="w">  </span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">((</span><span class="nv">url-request-extra-headers</span><span class="w"></span>
+<a id="rest_code_d224d04f300548c184be6076a0bc3433-4" name="rest_code_d224d04f300548c184be6076a0bc3433-4" href="posts/2021/09/13/define-word-results-using-wordnik-stopped-working/#rest_code_d224d04f300548c184be6076a0bc3433-4"></a><span class="w">         </span><span class="o">'</span><span class="p">((</span><span class="s">"User-Agent"</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="s">"Mozilla/5.0 (Macintosh; Intel Mac OS X 11_5_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36"</span><span class="p">))))</span><span class="w"></span>
+<a id="rest_code_d224d04f300548c184be6076a0bc3433-5" name="rest_code_d224d04f300548c184be6076a0bc3433-5" href="posts/2021/09/13/define-word-results-using-wordnik-stopped-working/#rest_code_d224d04f300548c184be6076a0bc3433-5"></a><span class="w">    </span><span class="nv">ad-do-it</span><span class="p">))</span><span class="w"></span>
+</pre></div>
 <p>I opened an <a class="reference external" href="https://github.com/abo-abo/define-word/issues/31">issue</a> on github, suggesting it might be a good idea to
 add a simpler way to add a <code class="docutils literal"><span class="pre">User-Agent:</span></code> header around
 <code class="docutils literal"><span class="pre">define-word--to-string</span></code>’s call to <code class="docutils literal"><span class="pre">url-retrieve-synchronously</span></code>.</p>
@@ -720,7 +714,7 @@ Excellent restatement of the class Basic/Expert D&amp;D (B/X D&amp;D) rules from
 As far as I can remember, we often simplified things: I don't remember
 using segments, spell components, weapon speed factors, or armor class
 adjustments, and I'm not sure we used anything like the actual
-official combat sequence.<a class="footnote-reference brackets" href="posts/2021/09/06/old-school-essentials-classic-fantasy-rules-tome/#addict" id="id1">1</a> I never picked up the
+official combat sequence.<a class="footnote-reference brackets" href="posts/2021/09/06/old-school-essentials-classic-fantasy-rules-tome/#addict" id="footnote-reference-1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> I never picked up the
 Moldvay/Cook/Marsh Basic/Expert Sets, unfortunately, since I foolishly
 thought “Advanced” meant better than “Basic”.</p>
 <p>I think <cite>Old-School Essentials Classic Fantasy</cite> is an wonderful way
@@ -729,9 +723,7 @@ D&amp;D campaigns.  I wish it had been around when I started playing D&amp;D.
 I'd recommend it today for anyone learning to play, or anyone who
 prefers the classic rules.</p>
 <!-- See DMG p. 61, “Encounters, Combat, and Initiative”. -->
-<dl class="footnote brackets">
-<dt class="label" id="addict"><span class="brackets"><a class="fn-backref" href="posts/2021/09/06/old-school-essentials-classic-fantasy-rules-tome/#id1">1</a></span></dt>
-<dd>
+<aside class="footnote-list brackets"><aside class="footnote brackets" id="addict" role="note"><span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="posts/2021/09/06/old-school-essentials-classic-fantasy-rules-tome/#footnote-reference-1">1</a><span class="fn-bracket">]</span></span>
 <p>The rules on Initiative on p. 62–63 of the Dungeon Master's Guide
 (DMG) sound simple, but there are further elaborations elsewhere in
 the DMG (“Simultaneous Initiative” on p. 66, for instance) and
@@ -746,9 +738,7 @@ of time and effort trying to figure one out.</p>
 <p>Oh, here's a brief but clear discussion of the <a class="reference external" href="https://www.knights-n-knaves.com/phpbb3/viewtopic.php?f=8&amp;t=15891">AD&amp;D Initiative
 Controversy</a>, (<a class="reference external" href="https://web.archive.org/web/20210706181418/http://knights-n-knaves.com/phpbb3/viewtopic.php?f=8&amp;t=15891">mirror</a> on archive.org) describing both The
 A.D.D.I.C.T. Method and the OSRIC method.</p>
-</dd>
-</dl>
-<p><em>Last edited: 2021-09-13 17:13:50 EDT</em></p>
+</aside></aside><p><em>Last edited: 2021-09-13 17:13:50 EDT</em></p>
 <!-- Local Variables:
 time-stamp-format: "%Y-%02m-%02d %02H:%02M:%02S %Z"
 time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
