@@ -1377,8 +1377,11 @@ GLOBAL_CONTEXT = {'blog_sidebar': """\
         <li><a href="/pages/colophon/index.html">Colophon</a></li>
         <li><a href="/pages/typographical-conventions/index.html">Typographical Conventions</a></li>
         <li><a href="/pages/static-pages-index/index.html">Pages</a></li>
-        <li><a href="http://tkb.tx0.org/">My other web page</a>
-            <p>&nbsp;&nbsp;&nbsp;&nbsp;Mostly empty</p>
+        <li><a href="http://tkb.tx0.org/">My tx0.org web page</a>
+            <br/>&nbsp;&nbsp;&nbsp;&nbsp;Mostly empty
+        </li>
+        <li><a href="http://consp.org/">consp.org</a>
+            <br/>&nbsp;&nbsp;&nbsp;&nbsp;Rises from the dead!
         </li>
       </ol>
     </div>
