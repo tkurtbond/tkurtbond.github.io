@@ -1,7 +1,7 @@
 .. title: Overcoming reST's limited table control by including raw groff TBL
 .. slug: overcoming-rests-limited-table-control-by-including-raw-groff-tbl
 .. date: 2023-02-03 08:31:34 UTC-05:00
-.. tags: rest,restructuredtext,docutils,groff,pandoc,context,html,yaml
+.. tags: rest,restructuredtext,docutils,groff,pandoc,context,html,yaml,rpg,besm 4e,big eyes small mouth,besm
 .. category: computer/markup-and-formatting
 .. link: 
 .. description: 
@@ -9,6 +9,7 @@
 
 .. role:: app
 .. role:: series
+.. role:: title
 
 So.  I have a CHICKEN Scheme program that converts `Big Eyes Small
 Mouth 4E`__ characters from a YAML definition into reStructuredText_
@@ -138,13 +139,27 @@ things.
 Well, it took me longer that I expected, 4¼ hours.  After the first 2
 hours I was fried (it had been a long day): if I had stopped then I
 probably could have finished it the next day in an hour.  Oh well.
+The new output routine and its new supporting routines were 208 lines
+long.
 
 Here's an image of the page produced using the new output routine:
 
 ..
    image:: /images/
 
+And for reference, here is the YAML version of Enyon Boase:
 
+.. include:: files/markup-and-formatting/enyon-boase.yaml
+   :code: yaml
+
+And here is the YAML version of his FV2021 Coleopteran:
+
+.. include:: files/markup-and-formatting/FV2021-Coleopteran.yaml
+   :code: yaml
+
+Enyon Boase is a pregenerated character that I came up for the
+:title:`BESM 4E` rewrite of the :title:`BESM 1E` adventure “Red
+Planet, Blue Helmets”, from :title:`Big Robots, Cool Starships`.
 
 .. [#xeksil]
 
