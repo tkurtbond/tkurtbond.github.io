@@ -67,7 +67,8 @@ versions of the tables adapt to the width of the columns.  With the
 narrower widths of the first two table columns the third table column
 is wide enough that I can use pages with two columns.
 
-CPB (who I talked about this with earlier) commented: The data is in YAML now right?  Why not just generate troff?
+CPB (who I talked about this with earlier) commented: The data is in
+YAML now right?  Why not just generate troff?
 
 Because when I write the actual text of things, I prefer :app:`reST`.
 So, for instance, the description of the character or entity I write
