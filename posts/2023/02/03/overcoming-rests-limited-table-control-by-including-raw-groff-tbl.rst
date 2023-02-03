@@ -166,10 +166,20 @@ Enyon Boase is a pregenerated character that I came up for the
 Planet, Blue Helmets”, from :title:`Big Robots, Cool Starships`.  The
 FV2021 Coleopteran is also from that adventure.
 
-.. [#xeksil]
-
-   Xeksil has the “Dimension Walk” attribute.  In the backstory in my
-   head he's the son of a woman from the Courts of Chaos (from
-   Zelazny's :series:`Amber Chronicles`) and a man that at least
-   *looks* human (but may not be; I haven't decided yet), so for
+.. [#xeksil] Xeksil has the “Dimension Walk” attribute.  In the
+   backstory in my head he's the son of a woman from the Courts of
+   Chaos (from Zelazny's :series:`Amber Chronicles`) and a man that at
+   least *looks* human (but may not be; I haven't decided yet), so for
    Xeksil this ability is “Shadow Shifting”.
+
+..
+   Why does the footnote in this link
+
+       http://0.0.0.0:8000/posts/2023/02/03/overcoming-rests-limited-table-control-by-including-raw-groff-tbl/#xeksil
+
+   have the square brackets around it and is a span element before a p
+   element, while the one in
+
+       http://0.0.0.0:8000/posts/2020/11/29/looking-at-the-mini-six-rpg-and-related-games/#id1
+
+   doesn't and is in a dl element?
