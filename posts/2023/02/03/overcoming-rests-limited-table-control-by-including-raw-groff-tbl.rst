@@ -61,9 +61,11 @@ I think this looks much better.
 Note that the first example is on 5.5” by 8.5” page (which I use for
 things I’m going to look at on the screen a lot, because it takes up
 less space) and the second example is on 8.5” by 11” paper and in two
-columns.  It was essentially impossible to have :app:`pandoc` (and I’m sure
-docutils) produce 2 column output and have the :app:`reST` versions of
-the tables adapt to the width of the columns.
+columns.  It was essentially impossible to have :app:`pandoc` (and I’m
+sure docutils) produce 2 column output and have the :app:`reST`
+versions of the tables adapt to the width of the columns.  With the
+narrower widths of the first two table columns the third table column
+is wide enough that I can use pages with two columns.
 
 CPB (who I talked about this with earlier) commented: The data is in YAML now right?  Why not just generate troff?
 
