@@ -157,9 +157,14 @@ And here is the YAML version of his FV2021 Coleopteran:
 .. include:: files/markup-and-formatting/FV2021-Coleopteran.yaml
    :code: yaml
 
+The git repo with this program and some test data is on github_.
+
+.. _github: https://github.com/tkurtbond/besm-tools
+          
 Enyon Boase is a pregenerated character that I came up for the
 :title:`BESM 4E` rewrite of the :title:`BESM 1E` adventure “Red
-Planet, Blue Helmets”, from :title:`Big Robots, Cool Starships`.
+Planet, Blue Helmets”, from :title:`Big Robots, Cool Starships`.  The
+FV2021 Coleopteran is also from that adventure.
 
 .. [#xeksil]
 
