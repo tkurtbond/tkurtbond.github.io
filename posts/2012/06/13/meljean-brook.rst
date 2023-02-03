@@ -18,7 +18,7 @@
   + `Heart of Steel`, by Meljean Brook; copyright 2011 by Melissa
     Kahn; ISB 978-0-425-24330-5.
 
-    From the front cover: «“Meljean Brook has brilliantly defined he
+    From the front cover: «“Meljean Brook has brilliantly defined the
     new genre of steampunk romance.” — Jayne Ann Krentz, `New York
     Times` bestselling author».
 
@@ -33,7 +33,7 @@
   Love Hellhounds`, `Burning Up`, and `Angels of Darkness`.
 
   ..
-     Explicit sex: clit, cock
+     Explicit sex.
 
 .. [#pr-section] The local library I frequent most often has a
    separate section for paranormal romance now, though these were
