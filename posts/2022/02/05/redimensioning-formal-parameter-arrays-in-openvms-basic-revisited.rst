@@ -19,7 +19,7 @@ types.  Here's the `new USENET post`_.  (How's that for thread
 necromancy?)
 
 .. _old USENET post: https://groups.google.com/g/comp.os.vms/c/mVWznNVN17U/m/HE3L4N4nIJAJ
-.. _old blog post: link://slug/2003-05-08-vms-code-from-the-past
+.. _old blog post: link://slug/vms-code-from-the-past
 .. _new USENET post: https://groups.google.com/g/comp.os.vms/c/mVWznNVN17U/m/yuOAmQtQBAAJ
 
 I'll include the code in this blog post, too, for ease of reference.
