@@ -1382,6 +1382,7 @@ GLOBAL_CONTEXT = {'blog_sidebar': """\
         </li>
         <li><a href="http://consp.org/">consp.org</a>
             <br/>&nbsp;&nbsp;&nbsp;&nbsp;Rises from the dead!
+            <br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://consp.org/blog/blog.html">microblog</a>
         </li>
       </ol>
     </div>
