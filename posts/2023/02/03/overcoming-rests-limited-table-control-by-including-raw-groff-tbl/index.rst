@@ -12,6 +12,8 @@
 .. role:: title
 .. role:: command
 
+*Last edited: 2023-02-03 20:00:46 EST*
+
 So.  I have a CHICKEN Scheme program that converts `Big Eyes Small
 Mouth 4E`__ characters from a YAML definition into reStructuredText_
 (reST).
@@ -19,15 +21,15 @@ Mouth 4E`__ characters from a YAML definition into reStructuredText_
 __ http://dyskami.ca/besm.html
 .. _reStructuredText: https://docutils.sourceforge.io/rst.html
 
-Unfortunately, pandoc_’s  (and probably the orginal python docutils_’),
-formatting of tables is limited and doesn’t let me do what I need to
-do.
+Unfortunately, pandoc_’s (and probably the orginal python docutils_’),
+formatting of tables from :app:`reST` is limited and doesn’t let me do
+what I need to do.\ [#markdown]_
 
 .. _pandoc: https://pandoc.org/
 .. _docutils: https://docutils.sourceforge.io/
 
 Here’s an image of the BESM 4E character, Xeksil [#xeksil]_, I played
-last night:
+Wednesday night:
 
 .. image:: /images/xeksil-plain-rst-version.png
    :alt: Original charactersheet for Xeksil in :app:`reST` using grid tables
@@ -171,6 +173,12 @@ Enyon Boase is a pregenerated character that I came up for the
 Planet, Blue Helmets”, from :title:`Big Robots, Cool Starships`.  The
 FV2021 Coleopteran is also from that adventure.
 
+.. [#markdown] It's a little better coming from one of :app:`pandoc`'s
+   variants of Markdown, because you can specify alignment of columns
+   in some forms of tables, but you still have too little control over
+   the appearance of the table, and to make tables easy to read you
+   need more control than you have.
+
 .. [#xeksil] Xeksil has the “Dimension Walk” attribute.  In the
    backstory in my head he's the son of a woman from the Courts of
    Chaos (from Zelazny's :series:`Amber Chronicles`) and a man that at
@@ -188,3 +196,11 @@ FV2021 Coleopteran is also from that adventure.
        http://0.0.0.0:8000/posts/2020/11/29/looking-at-the-mini-six-rpg-and-related-games/#id1
 
    doesn't and is in a dl element?
+
+..
+   Local Variables:
+   time-stamp-format: "%Y-%02m-%02d %02H:%02M:%02S %Z"
+   time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
+   time-stamp-end: "\\*\\\\?\n"
+   End:
+
