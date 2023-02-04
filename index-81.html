@@ -249,15 +249,15 @@ mail today.  It looks good to my quick scan.</p>
 Docbook-based website, and were presently part of my static
 Sphinx-based website, over to my current PyBlosxom blog tonight,
 using the following script:</p>
-<div class="code"><pre class="code text"><a id="rest_code_1dbc16eb8ca1459c9906e1361bce2d46-1" name="rest_code_1dbc16eb8ca1459c9906e1361bce2d46-1" href="posts/2014/11/04/convert-my-old-log-entries-to-blog-entries/#rest_code_1dbc16eb8ca1459c9906e1361bce2d46-1"></a>#! /usr/bin/env bash
-<a id="rest_code_1dbc16eb8ca1459c9906e1361bce2d46-2" name="rest_code_1dbc16eb8ca1459c9906e1361bce2d46-2" href="posts/2014/11/04/convert-my-old-log-entries-to-blog-entries/#rest_code_1dbc16eb8ca1459c9906e1361bce2d46-2"></a>find 200? -type f ! -name \*~ ! -name \*-idx-*.rst |
-<a id="rest_code_1dbc16eb8ca1459c9906e1361bce2d46-3" name="rest_code_1dbc16eb8ca1459c9906e1361bce2d46-3" href="posts/2014/11/04/convert-my-old-log-entries-to-blog-entries/#rest_code_1dbc16eb8ca1459c9906e1361bce2d46-3"></a>while read filename
-<a id="rest_code_1dbc16eb8ca1459c9906e1361bce2d46-4" name="rest_code_1dbc16eb8ca1459c9906e1361bce2d46-4" href="posts/2014/11/04/convert-my-old-log-entries-to-blog-entries/#rest_code_1dbc16eb8ca1459c9906e1361bce2d46-4"></a>do
-<a id="rest_code_1dbc16eb8ca1459c9906e1361bce2d46-5" name="rest_code_1dbc16eb8ca1459c9906e1361bce2d46-5" href="posts/2014/11/04/convert-my-old-log-entries-to-blog-entries/#rest_code_1dbc16eb8ca1459c9906e1361bce2d46-5"></a>    newname="$(echo $filename | sed 's#/#-#g')"
-<a id="rest_code_1dbc16eb8ca1459c9906e1361bce2d46-6" name="rest_code_1dbc16eb8ca1459c9906e1361bce2d46-6" href="posts/2014/11/04/convert-my-old-log-entries-to-blog-entries/#rest_code_1dbc16eb8ca1459c9906e1361bce2d46-6"></a>    date="$(basename $newname .rst)"
-<a id="rest_code_1dbc16eb8ca1459c9906e1361bce2d46-7" name="rest_code_1dbc16eb8ca1459c9906e1361bce2d46-7" href="posts/2014/11/04/convert-my-old-log-entries-to-blog-entries/#rest_code_1dbc16eb8ca1459c9906e1361bce2d46-7"></a>    (echo $date; echo "#published $date 00:00:00"; echo "#tags Old Blog";
-<a id="rest_code_1dbc16eb8ca1459c9906e1361bce2d46-8" name="rest_code_1dbc16eb8ca1459c9906e1361bce2d46-8" href="posts/2014/11/04/convert-my-old-log-entries-to-blog-entries/#rest_code_1dbc16eb8ca1459c9906e1361bce2d46-8"></a>        cat $filename) &gt;/home/tkb/myblog/entries/oldblog/$newname
-<a id="rest_code_1dbc16eb8ca1459c9906e1361bce2d46-9" name="rest_code_1dbc16eb8ca1459c9906e1361bce2d46-9" href="posts/2014/11/04/convert-my-old-log-entries-to-blog-entries/#rest_code_1dbc16eb8ca1459c9906e1361bce2d46-9"></a>done
+<div class="code"><pre class="code text"><a id="rest_code_f549b67cb8534c988c786378b49c87eb-1" name="rest_code_f549b67cb8534c988c786378b49c87eb-1" href="posts/2014/11/04/convert-my-old-log-entries-to-blog-entries/#rest_code_f549b67cb8534c988c786378b49c87eb-1"></a>#! /usr/bin/env bash
+<a id="rest_code_f549b67cb8534c988c786378b49c87eb-2" name="rest_code_f549b67cb8534c988c786378b49c87eb-2" href="posts/2014/11/04/convert-my-old-log-entries-to-blog-entries/#rest_code_f549b67cb8534c988c786378b49c87eb-2"></a>find 200? -type f ! -name \*~ ! -name \*-idx-*.rst |
+<a id="rest_code_f549b67cb8534c988c786378b49c87eb-3" name="rest_code_f549b67cb8534c988c786378b49c87eb-3" href="posts/2014/11/04/convert-my-old-log-entries-to-blog-entries/#rest_code_f549b67cb8534c988c786378b49c87eb-3"></a>while read filename
+<a id="rest_code_f549b67cb8534c988c786378b49c87eb-4" name="rest_code_f549b67cb8534c988c786378b49c87eb-4" href="posts/2014/11/04/convert-my-old-log-entries-to-blog-entries/#rest_code_f549b67cb8534c988c786378b49c87eb-4"></a>do
+<a id="rest_code_f549b67cb8534c988c786378b49c87eb-5" name="rest_code_f549b67cb8534c988c786378b49c87eb-5" href="posts/2014/11/04/convert-my-old-log-entries-to-blog-entries/#rest_code_f549b67cb8534c988c786378b49c87eb-5"></a>    newname="$(echo $filename | sed 's#/#-#g')"
+<a id="rest_code_f549b67cb8534c988c786378b49c87eb-6" name="rest_code_f549b67cb8534c988c786378b49c87eb-6" href="posts/2014/11/04/convert-my-old-log-entries-to-blog-entries/#rest_code_f549b67cb8534c988c786378b49c87eb-6"></a>    date="$(basename $newname .rst)"
+<a id="rest_code_f549b67cb8534c988c786378b49c87eb-7" name="rest_code_f549b67cb8534c988c786378b49c87eb-7" href="posts/2014/11/04/convert-my-old-log-entries-to-blog-entries/#rest_code_f549b67cb8534c988c786378b49c87eb-7"></a>    (echo $date; echo "#published $date 00:00:00"; echo "#tags Old Blog";
+<a id="rest_code_f549b67cb8534c988c786378b49c87eb-8" name="rest_code_f549b67cb8534c988c786378b49c87eb-8" href="posts/2014/11/04/convert-my-old-log-entries-to-blog-entries/#rest_code_f549b67cb8534c988c786378b49c87eb-8"></a>        cat $filename) &gt;/home/tkb/myblog/entries/oldblog/$newname
+<a id="rest_code_f549b67cb8534c988c786378b49c87eb-9" name="rest_code_f549b67cb8534c988c786378b49c87eb-9" href="posts/2014/11/04/convert-my-old-log-entries-to-blog-entries/#rest_code_f549b67cb8534c988c786378b49c87eb-9"></a>done
 </pre></div>
 <p>I'll have to go through and fix uses of Sphinx-specific RST
 extensions, and I'll probably add real entry titles as I do so; in the
@@ -465,8 +465,13 @@ playing right outside the temple.</p>
         <li><a href="pages/typographical-conventions/index.html">Typographical Conventions</a></li>
         <li><a href="pages/static-pages-index/index.html">Pages</a></li>
         <li>
-<a href="http://tkb.tx0.org/">My other web page</a>
-            <p>    Mostly empty</p>
+<a href="http://tkb.tx0.org/">My tx0.org web page</a>
+            <br>    Mostly empty
+        </li>
+        <li>
+<a href="http://consp.org/">consp.org</a>
+            <br>    Rises from the dead!
+            <br>    <a href="http://consp.org/blog/blog.html">microblog</a>
         </li>
       </ol>
 </div>
@@ -478,7 +483,7 @@ playing right outside the temple.</p>
 </div>
 
 <footer class="blog-footer" id="footer">
-    Contents © 2022         <a href="mailto:tkurtbond@gmail.com">T. Kurt Bond</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+    Contents © 2023         <a href="mailto:tkurtbond@gmail.com">T. Kurt Bond</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
     
 </footer><script src="assets/js/all-nocdn.js"></script><!-- fancy dates --><script>
     moment.locale("en");

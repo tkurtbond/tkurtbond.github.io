@@ -86,24 +86,24 @@ depends on what locale is set.">
 <p>I have a directory, with two files in it, <span class="file">ab.txt</span> and
 <span class="file">a-c.txt</span>.  Which sorts first when I do a <span class="command">ls</span>?  It
 depends on what locale is set.  Like this:</p>
-<div class="code"><pre class="code bash"><a id="rest_code_b44c90d0331a458e8a3d6f05c91c1330-1" name="rest_code_b44c90d0331a458e8a3d6f05c91c1330-1" href="#rest_code_b44c90d0331a458e8a3d6f05c91c1330-1"></a>$ <span class="nv">LANG</span><span class="o">=</span>en_US.UTF-8 ls
-<a id="rest_code_b44c90d0331a458e8a3d6f05c91c1330-2" name="rest_code_b44c90d0331a458e8a3d6f05c91c1330-2" href="#rest_code_b44c90d0331a458e8a3d6f05c91c1330-2"></a>ab.txt       a-c.txt
-<a id="rest_code_b44c90d0331a458e8a3d6f05c91c1330-3" name="rest_code_b44c90d0331a458e8a3d6f05c91c1330-3" href="#rest_code_b44c90d0331a458e8a3d6f05c91c1330-3"></a>$ <span class="nv">LANG</span><span class="o">=</span>C ls
-<a id="rest_code_b44c90d0331a458e8a3d6f05c91c1330-4" name="rest_code_b44c90d0331a458e8a3d6f05c91c1330-4" href="#rest_code_b44c90d0331a458e8a3d6f05c91c1330-4"></a>a-c.txt  ab.txt
+<div class="code"><pre class="code bash"><a id="rest_code_29a6cebfb27f48cfbcf6d531d1a1b475-1" name="rest_code_29a6cebfb27f48cfbcf6d531d1a1b475-1" href="#rest_code_29a6cebfb27f48cfbcf6d531d1a1b475-1"></a>$<span class="w"> </span><span class="nv">LANG</span><span class="o">=</span>en_US.UTF-8<span class="w"> </span>ls
+<a id="rest_code_29a6cebfb27f48cfbcf6d531d1a1b475-2" name="rest_code_29a6cebfb27f48cfbcf6d531d1a1b475-2" href="#rest_code_29a6cebfb27f48cfbcf6d531d1a1b475-2"></a>ab.txt<span class="w">       </span>a-c.txt
+<a id="rest_code_29a6cebfb27f48cfbcf6d531d1a1b475-3" name="rest_code_29a6cebfb27f48cfbcf6d531d1a1b475-3" href="#rest_code_29a6cebfb27f48cfbcf6d531d1a1b475-3"></a>$<span class="w"> </span><span class="nv">LANG</span><span class="o">=</span>C<span class="w"> </span>ls
+<a id="rest_code_29a6cebfb27f48cfbcf6d531d1a1b475-4" name="rest_code_29a6cebfb27f48cfbcf6d531d1a1b475-4" href="#rest_code_29a6cebfb27f48cfbcf6d531d1a1b475-4"></a>a-c.txt<span class="w">  </span>ab.txt
 </pre></div>
 <p>Same thing happens with the <span class="command">sort</span> command:</p>
-<div class="code"><pre class="code bash"><a id="rest_code_9e95137bfe8c4e51af5f909b089c81e6-1" name="rest_code_9e95137bfe8c4e51af5f909b089c81e6-1" href="#rest_code_9e95137bfe8c4e51af5f909b089c81e6-1"></a>$ cat &gt;a-c-first.txt
-<a id="rest_code_9e95137bfe8c4e51af5f909b089c81e6-2" name="rest_code_9e95137bfe8c4e51af5f909b089c81e6-2" href="#rest_code_9e95137bfe8c4e51af5f909b089c81e6-2"></a>a-c.txt
-<a id="rest_code_9e95137bfe8c4e51af5f909b089c81e6-3" name="rest_code_9e95137bfe8c4e51af5f909b089c81e6-3" href="#rest_code_9e95137bfe8c4e51af5f909b089c81e6-3"></a>ab.txt
-<a id="rest_code_9e95137bfe8c4e51af5f909b089c81e6-4" name="rest_code_9e95137bfe8c4e51af5f909b089c81e6-4" href="#rest_code_9e95137bfe8c4e51af5f909b089c81e6-4"></a>$ cat &gt;ab-first.txt
-<a id="rest_code_9e95137bfe8c4e51af5f909b089c81e6-5" name="rest_code_9e95137bfe8c4e51af5f909b089c81e6-5" href="#rest_code_9e95137bfe8c4e51af5f909b089c81e6-5"></a>ab.txt
-<a id="rest_code_9e95137bfe8c4e51af5f909b089c81e6-6" name="rest_code_9e95137bfe8c4e51af5f909b089c81e6-6" href="#rest_code_9e95137bfe8c4e51af5f909b089c81e6-6"></a>a-c.txt
-<a id="rest_code_9e95137bfe8c4e51af5f909b089c81e6-7" name="rest_code_9e95137bfe8c4e51af5f909b089c81e6-7" href="#rest_code_9e95137bfe8c4e51af5f909b089c81e6-7"></a>$ <span class="nv">LANG</span><span class="o">=</span>C sort ab-first.txt
-<a id="rest_code_9e95137bfe8c4e51af5f909b089c81e6-8" name="rest_code_9e95137bfe8c4e51af5f909b089c81e6-8" href="#rest_code_9e95137bfe8c4e51af5f909b089c81e6-8"></a>a-c.txt
-<a id="rest_code_9e95137bfe8c4e51af5f909b089c81e6-9" name="rest_code_9e95137bfe8c4e51af5f909b089c81e6-9" href="#rest_code_9e95137bfe8c4e51af5f909b089c81e6-9"></a>ab.txt
-<a id="rest_code_9e95137bfe8c4e51af5f909b089c81e6-10" name="rest_code_9e95137bfe8c4e51af5f909b089c81e6-10" href="#rest_code_9e95137bfe8c4e51af5f909b089c81e6-10"></a>$ <span class="nv">LANG</span><span class="o">=</span>en_US.UTF-8 sort a-c-first.txt
-<a id="rest_code_9e95137bfe8c4e51af5f909b089c81e6-11" name="rest_code_9e95137bfe8c4e51af5f909b089c81e6-11" href="#rest_code_9e95137bfe8c4e51af5f909b089c81e6-11"></a>ab.txt
-<a id="rest_code_9e95137bfe8c4e51af5f909b089c81e6-12" name="rest_code_9e95137bfe8c4e51af5f909b089c81e6-12" href="#rest_code_9e95137bfe8c4e51af5f909b089c81e6-12"></a>a-c.txt
+<div class="code"><pre class="code bash"><a id="rest_code_048a4f532c624508bfebd985e0b6894c-1" name="rest_code_048a4f532c624508bfebd985e0b6894c-1" href="#rest_code_048a4f532c624508bfebd985e0b6894c-1"></a>$<span class="w"> </span>cat<span class="w"> </span>&gt;a-c-first.txt
+<a id="rest_code_048a4f532c624508bfebd985e0b6894c-2" name="rest_code_048a4f532c624508bfebd985e0b6894c-2" href="#rest_code_048a4f532c624508bfebd985e0b6894c-2"></a>a-c.txt
+<a id="rest_code_048a4f532c624508bfebd985e0b6894c-3" name="rest_code_048a4f532c624508bfebd985e0b6894c-3" href="#rest_code_048a4f532c624508bfebd985e0b6894c-3"></a>ab.txt
+<a id="rest_code_048a4f532c624508bfebd985e0b6894c-4" name="rest_code_048a4f532c624508bfebd985e0b6894c-4" href="#rest_code_048a4f532c624508bfebd985e0b6894c-4"></a>$<span class="w"> </span>cat<span class="w"> </span>&gt;ab-first.txt
+<a id="rest_code_048a4f532c624508bfebd985e0b6894c-5" name="rest_code_048a4f532c624508bfebd985e0b6894c-5" href="#rest_code_048a4f532c624508bfebd985e0b6894c-5"></a>ab.txt
+<a id="rest_code_048a4f532c624508bfebd985e0b6894c-6" name="rest_code_048a4f532c624508bfebd985e0b6894c-6" href="#rest_code_048a4f532c624508bfebd985e0b6894c-6"></a>a-c.txt
+<a id="rest_code_048a4f532c624508bfebd985e0b6894c-7" name="rest_code_048a4f532c624508bfebd985e0b6894c-7" href="#rest_code_048a4f532c624508bfebd985e0b6894c-7"></a>$<span class="w"> </span><span class="nv">LANG</span><span class="o">=</span>C<span class="w"> </span>sort<span class="w"> </span>ab-first.txt
+<a id="rest_code_048a4f532c624508bfebd985e0b6894c-8" name="rest_code_048a4f532c624508bfebd985e0b6894c-8" href="#rest_code_048a4f532c624508bfebd985e0b6894c-8"></a>a-c.txt
+<a id="rest_code_048a4f532c624508bfebd985e0b6894c-9" name="rest_code_048a4f532c624508bfebd985e0b6894c-9" href="#rest_code_048a4f532c624508bfebd985e0b6894c-9"></a>ab.txt
+<a id="rest_code_048a4f532c624508bfebd985e0b6894c-10" name="rest_code_048a4f532c624508bfebd985e0b6894c-10" href="#rest_code_048a4f532c624508bfebd985e0b6894c-10"></a>$<span class="w"> </span><span class="nv">LANG</span><span class="o">=</span>en_US.UTF-8<span class="w"> </span>sort<span class="w"> </span>a-c-first.txt
+<a id="rest_code_048a4f532c624508bfebd985e0b6894c-11" name="rest_code_048a4f532c624508bfebd985e0b6894c-11" href="#rest_code_048a4f532c624508bfebd985e0b6894c-11"></a>ab.txt
+<a id="rest_code_048a4f532c624508bfebd985e0b6894c-12" name="rest_code_048a4f532c624508bfebd985e0b6894c-12" href="#rest_code_048a4f532c624508bfebd985e0b6894c-12"></a>a-c.txt
 </pre></div>
 <p>I found this surprising when it first broke some code I was using,
 since I'd spent so much of my existence in LANG=C (I'm still surprised
@@ -163,8 +163,13 @@ I found I was in a different (sorting) world.</p>
         <li><a href="../../../../../pages/typographical-conventions/index.html">Typographical Conventions</a></li>
         <li><a href="../../../../../pages/static-pages-index/index.html">Pages</a></li>
         <li>
-<a href="http://tkb.tx0.org/">My other web page</a>
-            <p>    Mostly empty</p>
+<a href="http://tkb.tx0.org/">My tx0.org web page</a>
+            <br>    Mostly empty
+        </li>
+        <li>
+<a href="http://consp.org/">consp.org</a>
+            <br>    Rises from the dead!
+            <br>    <a href="http://consp.org/blog/blog.html">microblog</a>
         </li>
       </ol>
 </div>
@@ -176,7 +181,7 @@ I found I was in a different (sorting) world.</p>
 </div>
 
 <footer class="blog-footer" id="footer">
-    Contents © 2022         <a href="mailto:tkurtbond@gmail.com">T. Kurt Bond</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+    Contents © 2023         <a href="mailto:tkurtbond@gmail.com">T. Kurt Bond</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
     
 </footer><script src="../../../../../assets/js/all-nocdn.js"></script><!-- fancy dates --><script>
     moment.locale("en");

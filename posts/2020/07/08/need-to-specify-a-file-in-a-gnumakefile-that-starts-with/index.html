@@ -90,25 +90,25 @@ sets the path.  It doesn't do “Tilde Expansion” on each part of the
 PATH when it goes looking things up in the path.  So, you have to get
 that expansion done manually if you set it in a GNUmakefile.</p>
 <p>Anyway, This ugly hack works:</p>
-<div class="code"><pre class="code makefile"><a id="rest_code_32262ee0f9aa45e8a2d341465744ea24-1" name="rest_code_32262ee0f9aa45e8a2d341465744ea24-1" href="#rest_code_32262ee0f9aa45e8a2d341465744ea24-1"></a><span class="k">export </span><span class="nv">PATH</span> <span class="o">:=</span> <span class="k">$(</span>shell <span class="nb">eval</span> <span class="nv">dir</span><span class="o">=</span><span class="s1">'~/sw/versions/heirloom-doctools/git/ucb'</span><span class="p">;</span><span class="se">\</span>
-<a id="rest_code_32262ee0f9aa45e8a2d341465744ea24-2" name="rest_code_32262ee0f9aa45e8a2d341465744ea24-2" href="#rest_code_32262ee0f9aa45e8a2d341465744ea24-2"></a>                 <span class="nb">echo</span> <span class="nv">$$</span>dir<span class="o">)</span>:<span class="k">$(</span>PATH<span class="k">)</span>
-<a id="rest_code_32262ee0f9aa45e8a2d341465744ea24-3" name="rest_code_32262ee0f9aa45e8a2d341465744ea24-3" href="#rest_code_32262ee0f9aa45e8a2d341465744ea24-3"></a><span class="k">export </span><span class="nv">TROFFFONTS</span> <span class="o">:=</span> <span class="k">$(</span>shell <span class="nb">eval</span> <span class="nv">dir</span><span class="o">=</span><span class="s1">'~/Library/Fonts'</span><span class="p">;</span><span class="se">\</span>
-<a id="rest_code_32262ee0f9aa45e8a2d341465744ea24-4" name="rest_code_32262ee0f9aa45e8a2d341465744ea24-4" href="#rest_code_32262ee0f9aa45e8a2d341465744ea24-4"></a>        <span class="nb">echo</span> <span class="nv">$$</span>dir<span class="o">)</span>:/Library/Fonts
-<a id="rest_code_32262ee0f9aa45e8a2d341465744ea24-5" name="rest_code_32262ee0f9aa45e8a2d341465744ea24-5" href="#rest_code_32262ee0f9aa45e8a2d341465744ea24-5"></a>
-<a id="rest_code_32262ee0f9aa45e8a2d341465744ea24-6" name="rest_code_32262ee0f9aa45e8a2d341465744ea24-6" href="#rest_code_32262ee0f9aa45e8a2d341465744ea24-6"></a><span class="nf">all</span><span class="o">:</span>
-<a id="rest_code_32262ee0f9aa45e8a2d341465744ea24-7" name="rest_code_32262ee0f9aa45e8a2d341465744ea24-7" href="#rest_code_32262ee0f9aa45e8a2d341465744ea24-7"></a>        @echo <span class="nv">PATH</span><span class="o">=</span><span class="si">${</span><span class="nv">PATH</span><span class="si">}</span>
-<a id="rest_code_32262ee0f9aa45e8a2d341465744ea24-8" name="rest_code_32262ee0f9aa45e8a2d341465744ea24-8" href="#rest_code_32262ee0f9aa45e8a2d341465744ea24-8"></a>        @echo
-<a id="rest_code_32262ee0f9aa45e8a2d341465744ea24-9" name="rest_code_32262ee0f9aa45e8a2d341465744ea24-9" href="#rest_code_32262ee0f9aa45e8a2d341465744ea24-9"></a>        @echo <span class="nv">TROFFFONTS</span><span class="o">=</span><span class="si">${</span><span class="nv">TROFFFONTS</span><span class="si">}</span>
-<a id="rest_code_32262ee0f9aa45e8a2d341465744ea24-10" name="rest_code_32262ee0f9aa45e8a2d341465744ea24-10" href="#rest_code_32262ee0f9aa45e8a2d341465744ea24-10"></a>        @echo
-<a id="rest_code_32262ee0f9aa45e8a2d341465744ea24-11" name="rest_code_32262ee0f9aa45e8a2d341465744ea24-11" href="#rest_code_32262ee0f9aa45e8a2d341465744ea24-11"></a>        @echo -n <span class="s1">'"type troff" returns '</span>
-<a id="rest_code_32262ee0f9aa45e8a2d341465744ea24-12" name="rest_code_32262ee0f9aa45e8a2d341465744ea24-12" href="#rest_code_32262ee0f9aa45e8a2d341465744ea24-12"></a>        @type troff
+<div class="code"><pre class="code makefile"><a id="rest_code_68433691c46945cc9eda7ab68d1990d9-1" name="rest_code_68433691c46945cc9eda7ab68d1990d9-1" href="#rest_code_68433691c46945cc9eda7ab68d1990d9-1"></a><span class="k">export </span><span class="nv">PATH</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">$(</span>shell<span class="w"> </span><span class="nb">eval</span><span class="w"> </span><span class="nv">dir</span><span class="o">=</span><span class="s1">'~/sw/versions/heirloom-doctools/git/ucb'</span><span class="p">;</span><span class="se">\</span>
+<a id="rest_code_68433691c46945cc9eda7ab68d1990d9-2" name="rest_code_68433691c46945cc9eda7ab68d1990d9-2" href="#rest_code_68433691c46945cc9eda7ab68d1990d9-2"></a><span class="w">                 </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$$</span>dir<span class="o">)</span>:<span class="k">$(</span>PATH<span class="k">)</span>
+<a id="rest_code_68433691c46945cc9eda7ab68d1990d9-3" name="rest_code_68433691c46945cc9eda7ab68d1990d9-3" href="#rest_code_68433691c46945cc9eda7ab68d1990d9-3"></a><span class="k">export </span><span class="nv">TROFFFONTS</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">$(</span>shell<span class="w"> </span><span class="nb">eval</span><span class="w"> </span><span class="nv">dir</span><span class="o">=</span><span class="s1">'~/Library/Fonts'</span><span class="p">;</span><span class="se">\</span>
+<a id="rest_code_68433691c46945cc9eda7ab68d1990d9-4" name="rest_code_68433691c46945cc9eda7ab68d1990d9-4" href="#rest_code_68433691c46945cc9eda7ab68d1990d9-4"></a><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$$</span>dir<span class="o">)</span>:/Library/Fonts
+<a id="rest_code_68433691c46945cc9eda7ab68d1990d9-5" name="rest_code_68433691c46945cc9eda7ab68d1990d9-5" href="#rest_code_68433691c46945cc9eda7ab68d1990d9-5"></a>
+<a id="rest_code_68433691c46945cc9eda7ab68d1990d9-6" name="rest_code_68433691c46945cc9eda7ab68d1990d9-6" href="#rest_code_68433691c46945cc9eda7ab68d1990d9-6"></a><span class="nf">all</span><span class="o">:</span>
+<a id="rest_code_68433691c46945cc9eda7ab68d1990d9-7" name="rest_code_68433691c46945cc9eda7ab68d1990d9-7" href="#rest_code_68433691c46945cc9eda7ab68d1990d9-7"></a><span class="w">        </span>@echo<span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="si">${</span><span class="nv">PATH</span><span class="si">}</span>
+<a id="rest_code_68433691c46945cc9eda7ab68d1990d9-8" name="rest_code_68433691c46945cc9eda7ab68d1990d9-8" href="#rest_code_68433691c46945cc9eda7ab68d1990d9-8"></a><span class="w">        </span>@echo
+<a id="rest_code_68433691c46945cc9eda7ab68d1990d9-9" name="rest_code_68433691c46945cc9eda7ab68d1990d9-9" href="#rest_code_68433691c46945cc9eda7ab68d1990d9-9"></a><span class="w">        </span>@echo<span class="w"> </span><span class="nv">TROFFFONTS</span><span class="o">=</span><span class="si">${</span><span class="nv">TROFFFONTS</span><span class="si">}</span>
+<a id="rest_code_68433691c46945cc9eda7ab68d1990d9-10" name="rest_code_68433691c46945cc9eda7ab68d1990d9-10" href="#rest_code_68433691c46945cc9eda7ab68d1990d9-10"></a><span class="w">        </span>@echo
+<a id="rest_code_68433691c46945cc9eda7ab68d1990d9-11" name="rest_code_68433691c46945cc9eda7ab68d1990d9-11" href="#rest_code_68433691c46945cc9eda7ab68d1990d9-11"></a><span class="w">        </span>@echo<span class="w"> </span>-n<span class="w"> </span><span class="s1">'"type troff" returns '</span>
+<a id="rest_code_68433691c46945cc9eda7ab68d1990d9-12" name="rest_code_68433691c46945cc9eda7ab68d1990d9-12" href="#rest_code_68433691c46945cc9eda7ab68d1990d9-12"></a><span class="w">        </span>@type<span class="w"> </span>troff
 </pre></div>
 <p>Put this in a file somewhere and invoke <span class="app">GNU make</span> on it and it prints:</p>
-<div class="code"><pre class="code text"><a id="rest_code_dc76381032404182a161151c014d7448-1" name="rest_code_dc76381032404182a161151c014d7448-1" href="#rest_code_dc76381032404182a161151c014d7448-1"></a>PATH=/Users/tkb/sw/versions/heirloom-doctools/git/ucb:/Users/tkb/local/rndbin:/Users/tkb/.cargo/bin:/Users/tkb/.nimble/bin:/usr/local/opt/libxslt/bin:/usr/local/opt/libxml2/bin:/Users/tkb/sw/versions/mew/git/bin:/Users/tkb/sw/versions/groff-git/bin:/Users/tkb/sw/versions/chibi-scheme/git/bin:/usr/local/opt/tcl-tk/bin:/usr/local/opt/expat/bin:/Users/tkb/.opam/default/bin:/usr/local/opt/texinfo/bin:/usr/local/opt/gnu-sed/libexec/gnubin:/usr/local/opt/findutils/libexec/gnubin:/usr/local/opt/curl/bin:/usr/local/opt/coreutils/libexec/gnubin:/Users/tkb/.local/bin:/Users/tkb/context-osx-64/tex/texmf-osx-64/bin:/Applications/Emacs.app/Contents/MacOS/bin:/Users/tkb/local/unix/bin:/Users/tkb/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:/opt/X11/bin:/Users/tkb/local/unix/rndbin:/Applications/Racket v7.5/bin:/Users/tkb/go/bin:/Applications/Emacs.app/Contents/MacOS/bin-x86_64-10_14:/Applications/Emacs.app/Contents/MacOS/libexec-x86_64-10_14
-<a id="rest_code_dc76381032404182a161151c014d7448-2" name="rest_code_dc76381032404182a161151c014d7448-2" href="#rest_code_dc76381032404182a161151c014d7448-2"></a>
-<a id="rest_code_dc76381032404182a161151c014d7448-3" name="rest_code_dc76381032404182a161151c014d7448-3" href="#rest_code_dc76381032404182a161151c014d7448-3"></a>TROFFFONTS=/Users/tkb/Library/Fonts:/Library/Fonts
-<a id="rest_code_dc76381032404182a161151c014d7448-4" name="rest_code_dc76381032404182a161151c014d7448-4" href="#rest_code_dc76381032404182a161151c014d7448-4"></a>
-<a id="rest_code_dc76381032404182a161151c014d7448-5" name="rest_code_dc76381032404182a161151c014d7448-5" href="#rest_code_dc76381032404182a161151c014d7448-5"></a>"type troff" returns troff is /Users/tkb/sw/versions/heirloom-doctools/git/ucb/troff
+<div class="code"><pre class="code text"><a id="rest_code_6a74b68c052d4c89be04a80b7350bf12-1" name="rest_code_6a74b68c052d4c89be04a80b7350bf12-1" href="#rest_code_6a74b68c052d4c89be04a80b7350bf12-1"></a>PATH=/Users/tkb/sw/versions/heirloom-doctools/git/ucb:/Users/tkb/local/rndbin:/Users/tkb/.cargo/bin:/Users/tkb/.nimble/bin:/usr/local/opt/libxslt/bin:/usr/local/opt/libxml2/bin:/Users/tkb/sw/versions/mew/git/bin:/Users/tkb/sw/versions/groff-git/bin:/Users/tkb/sw/versions/chibi-scheme/git/bin:/usr/local/opt/tcl-tk/bin:/usr/local/opt/expat/bin:/Users/tkb/.opam/default/bin:/usr/local/opt/texinfo/bin:/usr/local/opt/gnu-sed/libexec/gnubin:/usr/local/opt/findutils/libexec/gnubin:/usr/local/opt/curl/bin:/usr/local/opt/coreutils/libexec/gnubin:/Users/tkb/.local/bin:/Users/tkb/context-osx-64/tex/texmf-osx-64/bin:/Applications/Emacs.app/Contents/MacOS/bin:/Users/tkb/local/unix/bin:/Users/tkb/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:/opt/X11/bin:/Users/tkb/local/unix/rndbin:/Applications/Racket v7.5/bin:/Users/tkb/go/bin:/Applications/Emacs.app/Contents/MacOS/bin-x86_64-10_14:/Applications/Emacs.app/Contents/MacOS/libexec-x86_64-10_14
+<a id="rest_code_6a74b68c052d4c89be04a80b7350bf12-2" name="rest_code_6a74b68c052d4c89be04a80b7350bf12-2" href="#rest_code_6a74b68c052d4c89be04a80b7350bf12-2"></a>
+<a id="rest_code_6a74b68c052d4c89be04a80b7350bf12-3" name="rest_code_6a74b68c052d4c89be04a80b7350bf12-3" href="#rest_code_6a74b68c052d4c89be04a80b7350bf12-3"></a>TROFFFONTS=/Users/tkb/Library/Fonts:/Library/Fonts
+<a id="rest_code_6a74b68c052d4c89be04a80b7350bf12-4" name="rest_code_6a74b68c052d4c89be04a80b7350bf12-4" href="#rest_code_6a74b68c052d4c89be04a80b7350bf12-4"></a>
+<a id="rest_code_6a74b68c052d4c89be04a80b7350bf12-5" name="rest_code_6a74b68c052d4c89be04a80b7350bf12-5" href="#rest_code_6a74b68c052d4c89be04a80b7350bf12-5"></a>"type troff" returns troff is /Users/tkb/sw/versions/heirloom-doctools/git/ucb/troff
 </pre></div>
 <p>(Yes, my path may be a little excessive.)</p>
 <p>Unfortunately I haven't figured out how to do this with the <span class="app">BSD make</span>s.</p>
@@ -170,8 +170,13 @@ End: -->
         <li><a href="../../../../../pages/typographical-conventions/index.html">Typographical Conventions</a></li>
         <li><a href="../../../../../pages/static-pages-index/index.html">Pages</a></li>
         <li>
-<a href="http://tkb.tx0.org/">My other web page</a>
-            <p>    Mostly empty</p>
+<a href="http://tkb.tx0.org/">My tx0.org web page</a>
+            <br>    Mostly empty
+        </li>
+        <li>
+<a href="http://consp.org/">consp.org</a>
+            <br>    Rises from the dead!
+            <br>    <a href="http://consp.org/blog/blog.html">microblog</a>
         </li>
       </ol>
 </div>
@@ -183,7 +188,7 @@ End: -->
 </div>
 
 <footer class="blog-footer" id="footer">
-    Contents © 2022         <a href="mailto:tkurtbond@gmail.com">T. Kurt Bond</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+    Contents © 2023         <a href="mailto:tkurtbond@gmail.com">T. Kurt Bond</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
     
 </footer><script src="../../../../../assets/js/all-nocdn.js"></script><!-- fancy dates --><script>
     moment.locale("en");

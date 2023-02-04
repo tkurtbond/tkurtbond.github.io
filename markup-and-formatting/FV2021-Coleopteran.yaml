@@ -1,0 +1,113 @@
+---
+- name: FV2021 Coleopteran
+  page: BRCS, p. 94=95
+  description: |
+    A three-metre talk British-built humanoid combat walker used by
+    the Canadians on Mars.  They use a new “mind-interface”
+    neuro-helmet that makes the mecha very agile.  However, if a
+    different pilot wants to use the mecha, the neuro-helmet must be
+    “retuned” to their brain waves — this takes a full day; until
+    then, halve the Defence Mastery and Combat Technique: Lightning
+    Reflexes Attribute bonuses.  The mecha are painted standard
+    colours: UN white, with sky-blue helmets.
+  derived:
+    - name: Health Points
+      value: 80
+  attributes:
+    - name: Features
+      level: 1
+      points: 1
+      details: "Radio, Inertial Naviagion"
+    - name: Ground Speed
+      level: 3
+      points: 3
+      details: Up to 50 kph
+    - name: Armour
+      level: 3
+      effective: 4
+      points: 6
+      limiters:
+        - "Unique Limiter: Partial: Thin"
+      details: |
+        Hit thin area with called shot for half Armour Rating; 20 AR;
+        20 Health Points
+    - name: Combat Technique
+      level: 2
+      points: 2
+      details: "Lightning Reflexes: major edge on Initiative rolls"
+    - name: Defence Mastery
+      level: 2
+      points: 2
+      details: +2 to Defense Combat Value
+    - name: Resilient
+      level: 6
+      points: 12
+      details: |
+        Space: low pressure, high pressure, intense cold, intense
+        heat, radiation, lack of air
+    - name: Supersense
+      level: 4
+      points: 4
+      details: Sensors, range 10 km
+    - name: Superstrength
+      level: 2
+      points: 8
+      details: |
+        Lift 500 kg (a horse); +10 Unarmed Combat Damage;
+        +2 Muscle Weapons Damage
+    - name: Tough
+      level: 6
+      points: 6
+      details: +60 Health Points
+    - name: "Weapon: Railgun"
+      level: 12
+      effective: 9
+      points: 24
+      details: |
+        Damage Modifier × 9; Range 10 km; fails and cannot be used
+        again on natural 2 or 3
+      enhancements:
+        - [Range, 5]
+      limiters:
+        - [Unreliable, 2]
+    - name: "Weapon: Rocket Pod"
+      level: 14
+      effective: 9
+      points: 14
+      details: |
+        Damage Modifier × 9; Autofire: 1 hit if attack exceeds defence
+        by 0–3, 2 hits if it exceeds by 4–6, 3 hits if it exceeds by
+        >7–9, etc.; Area 3m radius; Range 1 km; 3 shots; Can be
+        deflected or destroyed for 1 round; Alternate attack: cost
+        halved
+      enhancements:
+        - [Autofire, 3]
+        - Area
+        - [Range, 4]
+      limiters:
+        - [Charges, 2]
+        - Stoppable
+    - name: "Weapon: Plasma Fist"
+      level: 11
+      effective: 12
+      points: 11
+      details: |
+        Damage Modifier × 12; Muscle Weapon; 6 shots; Alternate attack:
+        cost halved
+      limiters:
+        - Charges
+  defects:
+    - name: Awkward Size
+      rank: 2
+      points: -4
+      details: |
+        Size 2: Medium: +2 to be hit for every size attacker is
+        smaller, −2 to be hit for every size attack is larger, 1.5–8
+        tonnes, big horse to bigger than an elephant
+    - name: Conditional Ownership
+      rank: 1
+      points: -1
+      details: UN Army ownership
+    - name: "Special Requirement: Frequent maintenance"
+      rank: 1
+      points: -3

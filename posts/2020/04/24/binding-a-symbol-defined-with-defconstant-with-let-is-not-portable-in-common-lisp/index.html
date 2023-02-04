@@ -89,12 +89,12 @@ If y'>
     </header><div class="e-content entry-content" itemprop="articleBody text">
     <p><a class="reference external" href="http://www.sbcl.org/">SBCL</a> and <a class="reference external" href="https://ccl.clozure.com/">CCL</a> and <a class="reference external" href="https://clisp.sourceforge.io/">CLISP</a> think binding a symbol defined with <code class="docutils literal">defconstant</code>
 is an error, so if you do</p>
-<div class="code"><pre class="code common-lisp"><a id="rest_code_a7e68905177341bcae301219508fa11d-1" name="rest_code_a7e68905177341bcae301219508fa11d-1" href="#rest_code_a7e68905177341bcae301219508fa11d-1"></a><span class="p">(</span><span class="nb">defconstant</span><span class="w"> </span><span class="nv">foo</span><span class="w"> </span><span class="s">"foo"</span><span class="p">)</span><span class="w"></span>
-<a id="rest_code_a7e68905177341bcae301219508fa11d-2" name="rest_code_a7e68905177341bcae301219508fa11d-2" href="#rest_code_a7e68905177341bcae301219508fa11d-2"></a><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">((</span><span class="nv">foo</span><span class="w"> </span><span class="s">"bar"</span><span class="p">))</span><span class="w"> </span><span class="nv">foo</span><span class="p">)</span><span class="w"></span>
+<div class="code"><pre class="code common-lisp"><a id="rest_code_99ee419acb4e435b8b3a2abf618a8f96-1" name="rest_code_99ee419acb4e435b8b3a2abf618a8f96-1" href="#rest_code_99ee419acb4e435b8b3a2abf618a8f96-1"></a><span class="p">(</span><span class="nb">defconstant</span><span class="w"> </span><span class="nv">foo</span><span class="w"> </span><span class="s">"foo"</span><span class="p">)</span>
+<a id="rest_code_99ee419acb4e435b8b3a2abf618a8f96-2" name="rest_code_99ee419acb4e435b8b3a2abf618a8f96-2" href="#rest_code_99ee419acb4e435b8b3a2abf618a8f96-2"></a><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">((</span><span class="nv">foo</span><span class="w"> </span><span class="s">"bar"</span><span class="p">))</span><span class="w"> </span><span class="nv">foo</span><span class="p">)</span>
 </pre></div>
 <p>you get an error.  But in <a class="reference external" href="https://abcl.org/">ABCL</a> and <a class="reference external" href="https://common-lisp.net/project/ecl/">ECL</a> you don’t.</p>
 <p>If you try</p>
-<div class="code"><pre class="code common-lisp"><a id="rest_code_332251eb8d3d4fe0a980b2deea55f408-1" name="rest_code_332251eb8d3d4fe0a980b2deea55f408-1" href="#rest_code_332251eb8d3d4fe0a980b2deea55f408-1"></a><span class="p">(</span><span class="nb">defun</span><span class="w"> </span><span class="nv">x</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">((</span><span class="nv">foo</span><span class="w"> </span><span class="s">"bar"</span><span class="p">))</span><span class="w"> </span><span class="nv">foo</span><span class="p">))</span><span class="w"></span>
+<div class="code"><pre class="code common-lisp"><a id="rest_code_6bb2832e253044e5bfe462b9292c7bde-1" name="rest_code_6bb2832e253044e5bfe462b9292c7bde-1" href="#rest_code_6bb2832e253044e5bfe462b9292c7bde-1"></a><span class="p">(</span><span class="nb">defun</span><span class="w"> </span><span class="nv">x</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">((</span><span class="nv">foo</span><span class="w"> </span><span class="s">"bar"</span><span class="p">))</span><span class="w"> </span><span class="nv">foo</span><span class="p">))</span>
 </pre></div>
 <p>in SBCL and CCL you get an error when the function is compiled.
 In SBCL the function is defined, but always gives an error when run.
@@ -154,8 +154,13 @@ In CCL the function does not get defined.</p>
         <li><a href="../../../../../pages/typographical-conventions/index.html">Typographical Conventions</a></li>
         <li><a href="../../../../../pages/static-pages-index/index.html">Pages</a></li>
         <li>
-<a href="http://tkb.tx0.org/">My other web page</a>
-            <p>    Mostly empty</p>
+<a href="http://tkb.tx0.org/">My tx0.org web page</a>
+            <br>    Mostly empty
+        </li>
+        <li>
+<a href="http://consp.org/">consp.org</a>
+            <br>    Rises from the dead!
+            <br>    <a href="http://consp.org/blog/blog.html">microblog</a>
         </li>
       </ol>
 </div>
@@ -167,7 +172,7 @@ In CCL the function does not get defined.</p>
 </div>
 
 <footer class="blog-footer" id="footer">
-    Contents © 2022         <a href="mailto:tkurtbond@gmail.com">T. Kurt Bond</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+    Contents © 2023         <a href="mailto:tkurtbond@gmail.com">T. Kurt Bond</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
     
 </footer><script src="../../../../../assets/js/all-nocdn.js"></script><!-- fancy dates --><script>
     moment.locale("en");

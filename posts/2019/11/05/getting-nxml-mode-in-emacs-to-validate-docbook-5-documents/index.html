@@ -103,16 +103,16 @@ look up the translation for the URI for the RELAX NG compiled schema
 file and generate the <code class="docutils literal">schemas.xml</code> file and substitute the translation
 into the file:</p>
 <p><a class="reference external" href="../../../../../listings/generate-schemas-xml.html">generate-schemas-xml</a>  <a class="reference external" href="../../../../../listings/generate-schemas-xml">(Source)</a></p>
-<div class="code"><pre class="code bash"><a id="rest_code_bd927bc3f77145cc8ab434c44ecd433b-1" name="rest_code_bd927bc3f77145cc8ab434c44ecd433b-1" href="#rest_code_bd927bc3f77145cc8ab434c44ecd433b-1"></a><span class="ch">#! /usr/bin/env bash</span>
-<a id="rest_code_bd927bc3f77145cc8ab434c44ecd433b-2" name="rest_code_bd927bc3f77145cc8ab434c44ecd433b-2" href="#rest_code_bd927bc3f77145cc8ab434c44ecd433b-2"></a>
-<a id="rest_code_bd927bc3f77145cc8ab434c44ecd433b-3" name="rest_code_bd927bc3f77145cc8ab434c44ecd433b-3" href="#rest_code_bd927bc3f77145cc8ab434c44ecd433b-3"></a><span class="nv">schema_location</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span>xmlcatalog <span class="s2">""</span> <span class="s2">"http://docbook.org/xml/5.0/rng/docbookxi.rnc"</span> <span class="p">|</span>
-<a id="rest_code_bd927bc3f77145cc8ab434c44ecd433b-4" name="rest_code_bd927bc3f77145cc8ab434c44ecd433b-4" href="#rest_code_bd927bc3f77145cc8ab434c44ecd433b-4"></a>    grep <span class="s2">"^file:///"</span> <span class="p">|</span> sed <span class="s1">'s#^file://##'</span><span class="k">)</span><span class="s2">"</span>
-<a id="rest_code_bd927bc3f77145cc8ab434c44ecd433b-5" name="rest_code_bd927bc3f77145cc8ab434c44ecd433b-5" href="#rest_code_bd927bc3f77145cc8ab434c44ecd433b-5"></a>
-<a id="rest_code_bd927bc3f77145cc8ab434c44ecd433b-6" name="rest_code_bd927bc3f77145cc8ab434c44ecd433b-6" href="#rest_code_bd927bc3f77145cc8ab434c44ecd433b-6"></a>cat &gt;schemas.xml <span class="s">&lt;&lt;EOF</span>
-<a id="rest_code_bd927bc3f77145cc8ab434c44ecd433b-7" name="rest_code_bd927bc3f77145cc8ab434c44ecd433b-7" href="#rest_code_bd927bc3f77145cc8ab434c44ecd433b-7"></a><span class="s">&lt;locatingRules xmlns="http://thaiopensource.com/ns/locating-rules/1.0"&gt;</span>
-<a id="rest_code_bd927bc3f77145cc8ab434c44ecd433b-8" name="rest_code_bd927bc3f77145cc8ab434c44ecd433b-8" href="#rest_code_bd927bc3f77145cc8ab434c44ecd433b-8"></a><span class="s">&lt;namespace ns="http://docbook.org/ns/docbook" uri="$schema_location"/&gt;</span>
-<a id="rest_code_bd927bc3f77145cc8ab434c44ecd433b-9" name="rest_code_bd927bc3f77145cc8ab434c44ecd433b-9" href="#rest_code_bd927bc3f77145cc8ab434c44ecd433b-9"></a><span class="s">&lt;/locatingRules&gt;</span>
-<a id="rest_code_bd927bc3f77145cc8ab434c44ecd433b-10" name="rest_code_bd927bc3f77145cc8ab434c44ecd433b-10" href="#rest_code_bd927bc3f77145cc8ab434c44ecd433b-10"></a><span class="s">EOF</span>
+<div class="code"><pre class="code bash"><a id="rest_code_3ccb71276adc494199fc8b9b0487ee54-1" name="rest_code_3ccb71276adc494199fc8b9b0487ee54-1" href="#rest_code_3ccb71276adc494199fc8b9b0487ee54-1"></a><span class="ch">#! /usr/bin/env bash</span>
+<a id="rest_code_3ccb71276adc494199fc8b9b0487ee54-2" name="rest_code_3ccb71276adc494199fc8b9b0487ee54-2" href="#rest_code_3ccb71276adc494199fc8b9b0487ee54-2"></a>
+<a id="rest_code_3ccb71276adc494199fc8b9b0487ee54-3" name="rest_code_3ccb71276adc494199fc8b9b0487ee54-3" href="#rest_code_3ccb71276adc494199fc8b9b0487ee54-3"></a><span class="nv">schema_location</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span>xmlcatalog<span class="w"> </span><span class="s2">""</span><span class="w"> </span><span class="s2">"http://docbook.org/xml/5.0/rng/docbookxi.rnc"</span><span class="w"> </span><span class="p">|</span>
+<a id="rest_code_3ccb71276adc494199fc8b9b0487ee54-4" name="rest_code_3ccb71276adc494199fc8b9b0487ee54-4" href="#rest_code_3ccb71276adc494199fc8b9b0487ee54-4"></a><span class="w">    </span>grep<span class="w"> </span><span class="s2">"^file:///"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span><span class="s1">'s#^file://##'</span><span class="k">)</span><span class="s2">"</span>
+<a id="rest_code_3ccb71276adc494199fc8b9b0487ee54-5" name="rest_code_3ccb71276adc494199fc8b9b0487ee54-5" href="#rest_code_3ccb71276adc494199fc8b9b0487ee54-5"></a>
+<a id="rest_code_3ccb71276adc494199fc8b9b0487ee54-6" name="rest_code_3ccb71276adc494199fc8b9b0487ee54-6" href="#rest_code_3ccb71276adc494199fc8b9b0487ee54-6"></a>cat<span class="w"> </span>&gt;schemas.xml<span class="w"> </span><span class="s">&lt;&lt;EOF</span>
+<a id="rest_code_3ccb71276adc494199fc8b9b0487ee54-7" name="rest_code_3ccb71276adc494199fc8b9b0487ee54-7" href="#rest_code_3ccb71276adc494199fc8b9b0487ee54-7"></a><span class="s">&lt;locatingRules xmlns="http://thaiopensource.com/ns/locating-rules/1.0"&gt;</span>
+<a id="rest_code_3ccb71276adc494199fc8b9b0487ee54-8" name="rest_code_3ccb71276adc494199fc8b9b0487ee54-8" href="#rest_code_3ccb71276adc494199fc8b9b0487ee54-8"></a><span class="s">&lt;namespace ns="http://docbook.org/ns/docbook" uri="$schema_location"/&gt;</span>
+<a id="rest_code_3ccb71276adc494199fc8b9b0487ee54-9" name="rest_code_3ccb71276adc494199fc8b9b0487ee54-9" href="#rest_code_3ccb71276adc494199fc8b9b0487ee54-9"></a><span class="s">&lt;/locatingRules&gt;</span>
+<a id="rest_code_3ccb71276adc494199fc8b9b0487ee54-10" name="rest_code_3ccb71276adc494199fc8b9b0487ee54-10" href="#rest_code_3ccb71276adc494199fc8b9b0487ee54-10"></a><span class="s">EOF</span>
 </pre></div>
 <p>Then I had my Makefile generate the <code class="docutils literal">schemas.xml</code> file if it was missing.</p>
 <p>It was more complicated that I'd have liked, but it does work.</p>
@@ -169,8 +169,13 @@ into the file:</p>
         <li><a href="../../../../../pages/typographical-conventions/index.html">Typographical Conventions</a></li>
         <li><a href="../../../../../pages/static-pages-index/index.html">Pages</a></li>
         <li>
-<a href="http://tkb.tx0.org/">My other web page</a>
-            <p>    Mostly empty</p>
+<a href="http://tkb.tx0.org/">My tx0.org web page</a>
+            <br>    Mostly empty
+        </li>
+        <li>
+<a href="http://consp.org/">consp.org</a>
+            <br>    Rises from the dead!
+            <br>    <a href="http://consp.org/blog/blog.html">microblog</a>
         </li>
       </ol>
 </div>
@@ -182,7 +187,7 @@ into the file:</p>
 </div>
 
 <footer class="blog-footer" id="footer">
-    Contents © 2022         <a href="mailto:tkurtbond@gmail.com">T. Kurt Bond</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+    Contents © 2023         <a href="mailto:tkurtbond@gmail.com">T. Kurt Bond</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
     
 </footer><script src="../../../../../assets/js/all-nocdn.js"></script><!-- fancy dates --><script>
     moment.locale("en");

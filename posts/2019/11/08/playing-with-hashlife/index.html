@@ -86,21 +86,21 @@ entered:
 algorithm and wanted my help with running it.  I cloned the <a class="reference external" href="https://github.com/stylewarning/lisp-random">repo</a> it
 was in and ran <code class="docutils literal">sbcl</code> in the <code class="docutils literal">hashlife</code> directory.  Then I
 entered:</p>
-<div class="code"><pre class="code lisp"><a id="rest_code_4fa59ebb56f140d28aff12b4d5d56c17-1" name="rest_code_4fa59ebb56f140d28aff12b4d5d56c17-1" href="#rest_code_4fa59ebb56f140d28aff12b4d5d56c17-1"></a><span class="p">(</span><span class="nv">asdf:operate</span><span class="w"> </span><span class="ss">'asdf:load-op</span><span class="w"> </span><span class="ss">'charmlife</span><span class="p">)</span><span class="w"></span>
+<div class="code"><pre class="code lisp"><a id="rest_code_a376971004874ff3bc6086860fbaa717-1" name="rest_code_a376971004874ff3bc6086860fbaa717-1" href="#rest_code_a376971004874ff3bc6086860fbaa717-1"></a><span class="p">(</span><span class="nv">asdf:operate</span><span class="w"> </span><span class="ss">'asdf:load-op</span><span class="w"> </span><span class="ss">'charmlife</span><span class="p">)</span>
 </pre></div>
 <p>That resulted in a <code class="docutils literal">Component CHARMLIFE not found</code> error in sbcl.  I
 thought that was odd — it was right there in the current directory.  I
 looked at <code class="docutils literal"><span class="pre">asdf:*central-registry*</span></code>, and the only thing in it was
 the quicklisp directory.  The ASDF <a class="reference external" href="https://common-lisp.net/~mmommer/asdf-howto.shtml#sec11">howto</a> showed an example of setting
 <code class="docutils literal"><span class="pre">asdf:*central-registry*</span></code>:</p>
-<div class="code"><pre class="code lisp"><a id="rest_code_1bdd5d205da14f0b839e69f011fcc3eb-1" name="rest_code_1bdd5d205da14f0b839e69f011fcc3eb-1" href="#rest_code_1bdd5d205da14f0b839e69f011fcc3eb-1"></a><span class="p">(</span><span class="nb">setf</span><span class="w"> </span><span class="nv">asdf:*central-registry*</span><span class="w"></span>
-<a id="rest_code_1bdd5d205da14f0b839e69f011fcc3eb-2" name="rest_code_1bdd5d205da14f0b839e69f011fcc3eb-2" href="#rest_code_1bdd5d205da14f0b839e69f011fcc3eb-2"></a><span class="w">  </span><span class="c1">;; Default directories, usually just the ``current directory''</span><span class="w"></span>
-<a id="rest_code_1bdd5d205da14f0b839e69f011fcc3eb-3" name="rest_code_1bdd5d205da14f0b839e69f011fcc3eb-3" href="#rest_code_1bdd5d205da14f0b839e69f011fcc3eb-3"></a><span class="w">  </span><span class="o">'</span><span class="p">(</span><span class="vg">*default-pathname-defaults*</span><span class="w"></span>
-<a id="rest_code_1bdd5d205da14f0b839e69f011fcc3eb-4" name="rest_code_1bdd5d205da14f0b839e69f011fcc3eb-4" href="#rest_code_1bdd5d205da14f0b839e69f011fcc3eb-4"></a>
-<a id="rest_code_1bdd5d205da14f0b839e69f011fcc3eb-5" name="rest_code_1bdd5d205da14f0b839e69f011fcc3eb-5" href="#rest_code_1bdd5d205da14f0b839e69f011fcc3eb-5"></a><span class="w">    </span><span class="c1">;; Additional places where ASDF can find</span><span class="w"></span>
-<a id="rest_code_1bdd5d205da14f0b839e69f011fcc3eb-6" name="rest_code_1bdd5d205da14f0b839e69f011fcc3eb-6" href="#rest_code_1bdd5d205da14f0b839e69f011fcc3eb-6"></a><span class="w">    </span><span class="c1">;; system definition files</span><span class="w"></span>
-<a id="rest_code_1bdd5d205da14f0b839e69f011fcc3eb-7" name="rest_code_1bdd5d205da14f0b839e69f011fcc3eb-7" href="#rest_code_1bdd5d205da14f0b839e69f011fcc3eb-7"></a><span class="w">    </span><span class="l l-Other">#p"/home/foo/lisp/systems/"</span><span class="w"></span>
-<a id="rest_code_1bdd5d205da14f0b839e69f011fcc3eb-8" name="rest_code_1bdd5d205da14f0b839e69f011fcc3eb-8" href="#rest_code_1bdd5d205da14f0b839e69f011fcc3eb-8"></a><span class="w">    </span><span class="l l-Other">#p"/usr/share/common-lisp/systems/"</span><span class="p">))</span><span class="w"></span>
+<div class="code"><pre class="code lisp"><a id="rest_code_da48fbe244d146a2a4cc095841576ab8-1" name="rest_code_da48fbe244d146a2a4cc095841576ab8-1" href="#rest_code_da48fbe244d146a2a4cc095841576ab8-1"></a><span class="p">(</span><span class="nb">setf</span><span class="w"> </span><span class="nv">asdf:*central-registry*</span>
+<a id="rest_code_da48fbe244d146a2a4cc095841576ab8-2" name="rest_code_da48fbe244d146a2a4cc095841576ab8-2" href="#rest_code_da48fbe244d146a2a4cc095841576ab8-2"></a><span class="w">  </span><span class="c1">;; Default directories, usually just the ``current directory''</span>
+<a id="rest_code_da48fbe244d146a2a4cc095841576ab8-3" name="rest_code_da48fbe244d146a2a4cc095841576ab8-3" href="#rest_code_da48fbe244d146a2a4cc095841576ab8-3"></a><span class="w">  </span><span class="o">'</span><span class="p">(</span><span class="vg">*default-pathname-defaults*</span>
+<a id="rest_code_da48fbe244d146a2a4cc095841576ab8-4" name="rest_code_da48fbe244d146a2a4cc095841576ab8-4" href="#rest_code_da48fbe244d146a2a4cc095841576ab8-4"></a>
+<a id="rest_code_da48fbe244d146a2a4cc095841576ab8-5" name="rest_code_da48fbe244d146a2a4cc095841576ab8-5" href="#rest_code_da48fbe244d146a2a4cc095841576ab8-5"></a><span class="w">    </span><span class="c1">;; Additional places where ASDF can find</span>
+<a id="rest_code_da48fbe244d146a2a4cc095841576ab8-6" name="rest_code_da48fbe244d146a2a4cc095841576ab8-6" href="#rest_code_da48fbe244d146a2a4cc095841576ab8-6"></a><span class="w">    </span><span class="c1">;; system definition files</span>
+<a id="rest_code_da48fbe244d146a2a4cc095841576ab8-7" name="rest_code_da48fbe244d146a2a4cc095841576ab8-7" href="#rest_code_da48fbe244d146a2a4cc095841576ab8-7"></a><span class="w">    </span><span class="l l-Other">#p"/home/foo/lisp/systems/"</span>
+<a id="rest_code_da48fbe244d146a2a4cc095841576ab8-8" name="rest_code_da48fbe244d146a2a4cc095841576ab8-8" href="#rest_code_da48fbe244d146a2a4cc095841576ab8-8"></a><span class="w">    </span><span class="l l-Other">#p"/usr/share/common-lisp/systems/"</span><span class="p">))</span>
 </pre></div>
 <p>Noticing that it had the symbol <code class="docutils literal"><span class="pre">*default-pathname-defaults*</span></code> in the
 new value, I guessed that it being missing from mine caused ASDF to
@@ -110,12 +110,12 @@ used <a class="reference external" href="https://www.quicklisp.org/">Quicklisp</
 <code class="docutils literal">charmlife.lisp</code> and looked at the <code class="docutils literal">main</code> function and figured out
 how to run it and how to interact with the program when it was running.</p>
 <p>Here's what I had to do:</p>
-<div class="code"><pre class="code lisp"><a id="rest_code_6f963a6836294b0099003dabcbd12f2e-1" name="rest_code_6f963a6836294b0099003dabcbd12f2e-1" href="#rest_code_6f963a6836294b0099003dabcbd12f2e-1"></a><span class="p">(</span><span class="nb">setf</span><span class="w"> </span><span class="nv">asdf:*central-registry*</span><span class="w"></span>
-<a id="rest_code_6f963a6836294b0099003dabcbd12f2e-2" name="rest_code_6f963a6836294b0099003dabcbd12f2e-2" href="#rest_code_6f963a6836294b0099003dabcbd12f2e-2"></a><span class="w">      </span><span class="p">(</span><span class="nb">cons</span><span class="w"> </span><span class="ss">'*default-pathname-defaults*</span><span class="w"></span>
-<a id="rest_code_6f963a6836294b0099003dabcbd12f2e-3" name="rest_code_6f963a6836294b0099003dabcbd12f2e-3" href="#rest_code_6f963a6836294b0099003dabcbd12f2e-3"></a><span class="w">            </span><span class="nv">asdf:*central-registry*</span><span class="p">))</span><span class="w"></span>
-<a id="rest_code_6f963a6836294b0099003dabcbd12f2e-4" name="rest_code_6f963a6836294b0099003dabcbd12f2e-4" href="#rest_code_6f963a6836294b0099003dabcbd12f2e-4"></a><span class="p">(</span><span class="nv">ql:quickload</span><span class="w"> </span><span class="s">"cl-charms"</span><span class="p">)</span><span class="w"></span>
-<a id="rest_code_6f963a6836294b0099003dabcbd12f2e-5" name="rest_code_6f963a6836294b0099003dabcbd12f2e-5" href="#rest_code_6f963a6836294b0099003dabcbd12f2e-5"></a><span class="p">(</span><span class="nv">asdf:operate</span><span class="w"> </span><span class="ss">'asdf:load-op</span><span class="w"> </span><span class="ss">'charmlife</span><span class="p">)</span><span class="w"></span>
-<a id="rest_code_6f963a6836294b0099003dabcbd12f2e-6" name="rest_code_6f963a6836294b0099003dabcbd12f2e-6" href="#rest_code_6f963a6836294b0099003dabcbd12f2e-6"></a><span class="p">(</span><span class="nv">charmlife:main</span><span class="p">)</span><span class="w"></span>
+<div class="code"><pre class="code lisp"><a id="rest_code_a47539296f4e426a92f04d81fc0afc3e-1" name="rest_code_a47539296f4e426a92f04d81fc0afc3e-1" href="#rest_code_a47539296f4e426a92f04d81fc0afc3e-1"></a><span class="p">(</span><span class="nb">setf</span><span class="w"> </span><span class="nv">asdf:*central-registry*</span>
+<a id="rest_code_a47539296f4e426a92f04d81fc0afc3e-2" name="rest_code_a47539296f4e426a92f04d81fc0afc3e-2" href="#rest_code_a47539296f4e426a92f04d81fc0afc3e-2"></a><span class="w">      </span><span class="p">(</span><span class="nb">cons</span><span class="w"> </span><span class="ss">'*default-pathname-defaults*</span>
+<a id="rest_code_a47539296f4e426a92f04d81fc0afc3e-3" name="rest_code_a47539296f4e426a92f04d81fc0afc3e-3" href="#rest_code_a47539296f4e426a92f04d81fc0afc3e-3"></a><span class="w">            </span><span class="nv">asdf:*central-registry*</span><span class="p">))</span>
+<a id="rest_code_a47539296f4e426a92f04d81fc0afc3e-4" name="rest_code_a47539296f4e426a92f04d81fc0afc3e-4" href="#rest_code_a47539296f4e426a92f04d81fc0afc3e-4"></a><span class="p">(</span><span class="nv">ql:quickload</span><span class="w"> </span><span class="s">"cl-charms"</span><span class="p">)</span>
+<a id="rest_code_a47539296f4e426a92f04d81fc0afc3e-5" name="rest_code_a47539296f4e426a92f04d81fc0afc3e-5" href="#rest_code_a47539296f4e426a92f04d81fc0afc3e-5"></a><span class="p">(</span><span class="nv">asdf:operate</span><span class="w"> </span><span class="ss">'asdf:load-op</span><span class="w"> </span><span class="ss">'charmlife</span><span class="p">)</span>
+<a id="rest_code_a47539296f4e426a92f04d81fc0afc3e-6" name="rest_code_a47539296f4e426a92f04d81fc0afc3e-6" href="#rest_code_a47539296f4e426a92f04d81fc0afc3e-6"></a><span class="p">(</span><span class="nv">charmlife:main</span><span class="p">)</span>
 </pre></div>
     </div>
     <script>var pfHeaderImgUrl = '';var pfHeaderTagline = '';var pfdisableClickToDel = 0;var pfHideImages = 0;var pfImageDisplayStyle = 'right';var pfDisablePDF = 0;var pfDisableEmail = 0;var pfDisablePrint = 0;var pfCustomCSS = '';var pfBtVersion='2';(function(){var js,pf;pf=document.createElement('script');pf.type='text/javascript';pf.src='//cdn.printfriendly.com/printfriendly.js';document.getElementsByTagName('head')[0].appendChild(pf)})();</script><a href="https://www.printfriendly.com" style="color:#6D9F00;text-decoration:none;" class="printfriendly" onclick="window.print();return false;" title="Printer Friendly and PDF"><img style="border:none;-webkit-box-shadow:none;box-shadow:none;" src="//cdn.printfriendly.com/buttons/printfriendly-pdf-button.png" alt="Print Friendly and PDF"></a>    
@@ -169,8 +169,13 @@ how to run it and how to interact with the program when it was running.</p>
         <li><a href="../../../../../pages/typographical-conventions/index.html">Typographical Conventions</a></li>
         <li><a href="../../../../../pages/static-pages-index/index.html">Pages</a></li>
         <li>
-<a href="http://tkb.tx0.org/">My other web page</a>
-            <p>    Mostly empty</p>
+<a href="http://tkb.tx0.org/">My tx0.org web page</a>
+            <br>    Mostly empty
+        </li>
+        <li>
+<a href="http://consp.org/">consp.org</a>
+            <br>    Rises from the dead!
+            <br>    <a href="http://consp.org/blog/blog.html">microblog</a>
         </li>
       </ol>
 </div>
@@ -182,7 +187,7 @@ how to run it and how to interact with the program when it was running.</p>
 </div>
 
 <footer class="blog-footer" id="footer">
-    Contents © 2022         <a href="mailto:tkurtbond@gmail.com">T. Kurt Bond</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+    Contents © 2023         <a href="mailto:tkurtbond@gmail.com">T. Kurt Bond</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
     
 </footer><script src="../../../../../assets/js/all-nocdn.js"></script><!-- fancy dates --><script>
     moment.locale("en");

@@ -86,13 +86,13 @@ you">
 the <a class="reference external" href="https://brew.sh/">Homebrew</a> installed version of <a class="reference external" href="https://www.sqlite.org/">sqlite3</a> (<a class="reference external" href="https://formulae.brew.sh/formula/sqlite">HBSQLITE3</a>) — because the
 one supplied by Apple in macOS is obsolete — for the <a class="reference external" href="http://wiki.call-cc.org/eggref/5/sqlite3">sqlite egg</a>,
 you need to set <code class="docutils literal">CSC_OPTIONS</code> properly:</p>
-<div class="code"><pre class="code bash"><a id="rest_code_259ba3515afe4f2c87b15be0ee96b16e-1" name="rest_code_259ba3515afe4f2c87b15be0ee96b16e-1" href="#rest_code_259ba3515afe4f2c87b15be0ee96b16e-1"></a>$ <span class="nb">export</span> <span class="nv">CSC_OPTIONS</span><span class="o">=</span><span class="s2">"-I/usr/local/Cellar/sqlite/3.36.0/include -L/usr/local/Cellar/sqlite/3.36.0/lib"</span>
-<a id="rest_code_259ba3515afe4f2c87b15be0ee96b16e-2" name="rest_code_259ba3515afe4f2c87b15be0ee96b16e-2" href="#rest_code_259ba3515afe4f2c87b15be0ee96b16e-2"></a>$ chicken-install sqlite3
-<a id="rest_code_259ba3515afe4f2c87b15be0ee96b16e-3" name="rest_code_259ba3515afe4f2c87b15be0ee96b16e-3" href="#rest_code_259ba3515afe4f2c87b15be0ee96b16e-3"></a>building sqlite3
-<a id="rest_code_259ba3515afe4f2c87b15be0ee96b16e-4" name="rest_code_259ba3515afe4f2c87b15be0ee96b16e-4" href="#rest_code_259ba3515afe4f2c87b15be0ee96b16e-4"></a>   /usr/local/Cellar/chicken/5.2.0/bin/csc -host -D compiling-extension -J -s -regenerate-import-libraries -setup-mode -I /Users/tkb/.cache/chicken-install/sqlite3 -C -I/Users/tkb/.cache/chicken-install/sqlite3 -O2 -d1 -L -lsqlite3 sqlite3.scm -o /Users/tkb/.cache/chicken-install/sqlite3/sqlite3.so
-<a id="rest_code_259ba3515afe4f2c87b15be0ee96b16e-5" name="rest_code_259ba3515afe4f2c87b15be0ee96b16e-5" href="#rest_code_259ba3515afe4f2c87b15be0ee96b16e-5"></a>   /usr/local/Cellar/chicken/5.2.0/bin/csc -regenerate-import-libraries -M -setup-mode -static -I /Users/tkb/.cache/chicken-install/sqlite3 -emit-link-file /Users/tkb/.cache/chicken-install/sqlite3/sqlite3.link -host -D compiling-extension -c -unit sqlite3 -D compiling-static-extension -C -I/Users/tkb/.cache/chicken-install/sqlite3 -O2 -d1 sqlite3.scm -o /Users/tkb/.cache/chicken-install/sqlite3/sqlite3.static.o
-<a id="rest_code_259ba3515afe4f2c87b15be0ee96b16e-6" name="rest_code_259ba3515afe4f2c87b15be0ee96b16e-6" href="#rest_code_259ba3515afe4f2c87b15be0ee96b16e-6"></a>   /usr/local/Cellar/chicken/5.2.0/bin/csc -setup-mode -s -host -I /Users/tkb/.cache/chicken-install/sqlite3 -C -I/Users/tkb/.cache/chicken-install/sqlite3 -O2 -d0 -L -lsqlite3 sqlite3.import.scm -o /Users/tkb/.cache/chicken-install/sqlite3/sqlite3.import.so
-<a id="rest_code_259ba3515afe4f2c87b15be0ee96b16e-7" name="rest_code_259ba3515afe4f2c87b15be0ee96b16e-7" href="#rest_code_259ba3515afe4f2c87b15be0ee96b16e-7"></a>installing sqlite3
+<div class="code"><pre class="code bash"><a id="rest_code_9249a0cc616e4ad0a804fde01cc127c4-1" name="rest_code_9249a0cc616e4ad0a804fde01cc127c4-1" href="#rest_code_9249a0cc616e4ad0a804fde01cc127c4-1"></a>$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">CSC_OPTIONS</span><span class="o">=</span><span class="s2">"-I/usr/local/Cellar/sqlite/3.36.0/include -L/usr/local/Cellar/sqlite/3.36.0/lib"</span>
+<a id="rest_code_9249a0cc616e4ad0a804fde01cc127c4-2" name="rest_code_9249a0cc616e4ad0a804fde01cc127c4-2" href="#rest_code_9249a0cc616e4ad0a804fde01cc127c4-2"></a>$<span class="w"> </span>chicken-install<span class="w"> </span>sqlite3
+<a id="rest_code_9249a0cc616e4ad0a804fde01cc127c4-3" name="rest_code_9249a0cc616e4ad0a804fde01cc127c4-3" href="#rest_code_9249a0cc616e4ad0a804fde01cc127c4-3"></a>building<span class="w"> </span>sqlite3
+<a id="rest_code_9249a0cc616e4ad0a804fde01cc127c4-4" name="rest_code_9249a0cc616e4ad0a804fde01cc127c4-4" href="#rest_code_9249a0cc616e4ad0a804fde01cc127c4-4"></a><span class="w">   </span>/usr/local/Cellar/chicken/5.2.0/bin/csc<span class="w"> </span>-host<span class="w"> </span>-D<span class="w"> </span>compiling-extension<span class="w"> </span>-J<span class="w"> </span>-s<span class="w"> </span>-regenerate-import-libraries<span class="w"> </span>-setup-mode<span class="w"> </span>-I<span class="w"> </span>/Users/tkb/.cache/chicken-install/sqlite3<span class="w"> </span>-C<span class="w"> </span>-I/Users/tkb/.cache/chicken-install/sqlite3<span class="w"> </span>-O2<span class="w"> </span>-d1<span class="w"> </span>-L<span class="w"> </span>-lsqlite3<span class="w"> </span>sqlite3.scm<span class="w"> </span>-o<span class="w"> </span>/Users/tkb/.cache/chicken-install/sqlite3/sqlite3.so
+<a id="rest_code_9249a0cc616e4ad0a804fde01cc127c4-5" name="rest_code_9249a0cc616e4ad0a804fde01cc127c4-5" href="#rest_code_9249a0cc616e4ad0a804fde01cc127c4-5"></a><span class="w">   </span>/usr/local/Cellar/chicken/5.2.0/bin/csc<span class="w"> </span>-regenerate-import-libraries<span class="w"> </span>-M<span class="w"> </span>-setup-mode<span class="w"> </span>-static<span class="w"> </span>-I<span class="w"> </span>/Users/tkb/.cache/chicken-install/sqlite3<span class="w"> </span>-emit-link-file<span class="w"> </span>/Users/tkb/.cache/chicken-install/sqlite3/sqlite3.link<span class="w"> </span>-host<span class="w"> </span>-D<span class="w"> </span>compiling-extension<span class="w"> </span>-c<span class="w"> </span>-unit<span class="w"> </span>sqlite3<span class="w"> </span>-D<span class="w"> </span>compiling-static-extension<span class="w"> </span>-C<span class="w"> </span>-I/Users/tkb/.cache/chicken-install/sqlite3<span class="w"> </span>-O2<span class="w"> </span>-d1<span class="w"> </span>sqlite3.scm<span class="w"> </span>-o<span class="w"> </span>/Users/tkb/.cache/chicken-install/sqlite3/sqlite3.static.o
+<a id="rest_code_9249a0cc616e4ad0a804fde01cc127c4-6" name="rest_code_9249a0cc616e4ad0a804fde01cc127c4-6" href="#rest_code_9249a0cc616e4ad0a804fde01cc127c4-6"></a><span class="w">   </span>/usr/local/Cellar/chicken/5.2.0/bin/csc<span class="w"> </span>-setup-mode<span class="w"> </span>-s<span class="w"> </span>-host<span class="w"> </span>-I<span class="w"> </span>/Users/tkb/.cache/chicken-install/sqlite3<span class="w"> </span>-C<span class="w"> </span>-I/Users/tkb/.cache/chicken-install/sqlite3<span class="w"> </span>-O2<span class="w"> </span>-d0<span class="w"> </span>-L<span class="w"> </span>-lsqlite3<span class="w"> </span>sqlite3.import.scm<span class="w"> </span>-o<span class="w"> </span>/Users/tkb/.cache/chicken-install/sqlite3/sqlite3.import.so
+<a id="rest_code_9249a0cc616e4ad0a804fde01cc127c4-7" name="rest_code_9249a0cc616e4ad0a804fde01cc127c4-7" href="#rest_code_9249a0cc616e4ad0a804fde01cc127c4-7"></a>installing<span class="w"> </span>sqlite3
 </pre></div>
 <p>You'll probably need to adjust the version numbers in the pathnames
 for whatever version is installed on your computer.</p>
@@ -149,8 +149,13 @@ for whatever version is installed on your computer.</p>
         <li><a href="../../../../../pages/typographical-conventions/index.html">Typographical Conventions</a></li>
         <li><a href="../../../../../pages/static-pages-index/index.html">Pages</a></li>
         <li>
-<a href="http://tkb.tx0.org/">My other web page</a>
-            <p>    Mostly empty</p>
+<a href="http://tkb.tx0.org/">My tx0.org web page</a>
+            <br>    Mostly empty
+        </li>
+        <li>
+<a href="http://consp.org/">consp.org</a>
+            <br>    Rises from the dead!
+            <br>    <a href="http://consp.org/blog/blog.html">microblog</a>
         </li>
       </ol>
 </div>
@@ -162,7 +167,7 @@ for whatever version is installed on your computer.</p>
 </div>
 
 <footer class="blog-footer" id="footer">
-    Contents © 2022         <a href="mailto:tkurtbond@gmail.com">T. Kurt Bond</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+    Contents © 2023         <a href="mailto:tkurtbond@gmail.com">T. Kurt Bond</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
     
 </footer><script src="../../../../../assets/js/all-nocdn.js"></script><!-- fancy dates --><script>
     moment.locale("en");

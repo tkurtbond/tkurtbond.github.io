@@ -503,18 +503,53 @@ aside.footnote span.label {
     padding: 0;
     color: #333;
     font-weight: bold;
+/* This moves the footnote label/backlink outside the left margin.
+   But I dont' need that any more.  See aside.footnote.brackets span.label
+   below.
+    position: relative;
+    left: -4ex;
+    top: 3ex;
+*/
 }
+
+aside.footnote.brackets p {
+    margin-left: 4ex;
+}
+
+
+/* This moves the label down, unfortunately leaving an unsightly gap. */
+aside.footnote.brackets span.label {
+    position: relative;
+    top: 3ex;
+    left: 0ex;
+}
+a.fn-backref:before { content: "["; }
+a.fn-backref:after { content: "]"; }
 
 a.footnote-reference.brackets {
     font-size: 100%;
     vertical-align: baseline;
 }    
-a.footnote-reference.brackets:before {
-    content: "";
-}
-a.footnote-reference.brackets:after {
-    content: "";
-}
+a.footnote-reference.brackets:before { content: "["; }
+a.footnote-reference.brackets:after { content: "]"; }
+
+/* This did it!!!!  Fixed the issue of the double brackets ("[[1]]")
+   around footnote references.
+
+   See:
+       http://0.0.0.0:8000/posts/2023/02/03/overcoming-rests-limited-table-control-by-including-raw-groff-tbl
+   and compare to:
+       http://0.0.0.0:8000/posts/2009/04/26/p001-ll-attack-in-the-dark/#posts
+
+   Oh, the old posts were rendered by an older version of docutils...
+   ``nikola build -a`` to the rescue.
+*/
+a span.fn-bracket { display: none; }
+
+/* This didn't work:
+a[role="doc-notef"]:before { content: ""; }
+a[role="doc-notef"]:after { content: ""; }
+*/
 
 .blog-title {
     font-weight: bold;
