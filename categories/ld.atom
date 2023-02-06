@@ -3,7 +3,7 @@
 <feed xml:lang="en" xmlns="http://www.w3.org/2005/Atom">
   <title>Lacking Natural Simplicity (Posts about ld)</title>
   <id>https://tkurtbond.github.io/categories/ld.atom</id>
-  <updated>2023-02-04T00:36:20Z</updated>
+  <updated>2023-02-06T15:22:05Z</updated>
   <author>
     <name>T. Kurt Bond</name>
   </author>
@@ -22,18 +22,18 @@
     <summary type="html">&lt;p&gt;To compile &lt;a class="reference external" href="https://ccrma.stanford.edu/software/snd/snd/s7.html"&gt;s7 scheme&lt;/a&gt; with a standalone &lt;a class="reference external" href="https://tkurtbond.github.io/pages/computer-vocabulary/#REPL"&gt;REPL&lt;/a&gt;, s7's home page says to
 add the empty file &lt;span class="file"&gt;mus-config.h&lt;/span&gt; to the source directory, then
 (in Linux):&lt;/p&gt;
-&lt;div class="code"&gt;&lt;pre class="code bash"&gt;&lt;a id="rest_code_f186f3897b3c42cd8c65dab7c053ff4c-1" name="rest_code_f186f3897b3c42cd8c65dab7c053ff4c-1" href="https://tkurtbond.github.io/posts/2020/08/03/compiling-s7-scheme-on-macos/#rest_code_f186f3897b3c42cd8c65dab7c053ff4c-1"&gt;&lt;/a&gt;gcc&lt;span class="w"&gt; &lt;/span&gt;s7.c&lt;span class="w"&gt; &lt;/span&gt;-o&lt;span class="w"&gt; &lt;/span&gt;repl&lt;span class="w"&gt; &lt;/span&gt;-DWITH_MAIN&lt;span class="w"&gt; &lt;/span&gt;-I.&lt;span class="w"&gt; &lt;/span&gt;-O2&lt;span class="w"&gt; &lt;/span&gt;-g&lt;span class="w"&gt; &lt;/span&gt;-ldl&lt;span class="w"&gt; &lt;/span&gt;-lm&lt;span class="w"&gt; &lt;/span&gt;-Wl,-export-dynamic
+&lt;div class="code"&gt;&lt;pre class="code bash"&gt;&lt;a id="rest_code_7ae8a880e2e4464d9e031049335c377b-1" name="rest_code_7ae8a880e2e4464d9e031049335c377b-1" href="https://tkurtbond.github.io/posts/2020/08/03/compiling-s7-scheme-on-macos/#rest_code_7ae8a880e2e4464d9e031049335c377b-1"&gt;&lt;/a&gt;gcc s7.c -o repl -DWITH_MAIN -I. -O2 -g -ldl -lm -Wl,-export-dynamic
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;It turns out that on macOS, whose &lt;span class="command"&gt;ld&lt;/span&gt; (from clang) doesn't
 understand &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;-export-dynamic&lt;/span&gt;&lt;/code&gt;, you have to do&lt;/p&gt;
-&lt;div class="code"&gt;&lt;pre class="code bash"&gt;&lt;a id="rest_code_f568a6bc37154ca59359506cb8a9f433-1" name="rest_code_f568a6bc37154ca59359506cb8a9f433-1" href="https://tkurtbond.github.io/posts/2020/08/03/compiling-s7-scheme-on-macos/#rest_code_f568a6bc37154ca59359506cb8a9f433-1"&gt;&lt;/a&gt;gcc&lt;span class="w"&gt; &lt;/span&gt;s7.c&lt;span class="w"&gt; &lt;/span&gt;-o&lt;span class="w"&gt; &lt;/span&gt;repl&lt;span class="w"&gt; &lt;/span&gt;-DWITH_MAIN&lt;span class="w"&gt; &lt;/span&gt;-I.&lt;span class="w"&gt; &lt;/span&gt;-O2&lt;span class="w"&gt; &lt;/span&gt;-g&lt;span class="w"&gt; &lt;/span&gt;-ldl&lt;span class="w"&gt; &lt;/span&gt;-lm&lt;span class="w"&gt; &lt;/span&gt;-Wl,-dynamic
+&lt;div class="code"&gt;&lt;pre class="code bash"&gt;&lt;a id="rest_code_6163910342004a3fb1b22a223e7bc468-1" name="rest_code_6163910342004a3fb1b22a223e7bc468-1" href="https://tkurtbond.github.io/posts/2020/08/03/compiling-s7-scheme-on-macos/#rest_code_6163910342004a3fb1b22a223e7bc468-1"&gt;&lt;/a&gt;gcc s7.c -o repl -DWITH_MAIN -I. -O2 -g -ldl -lm -Wl,-dynamic
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Then you need to do&lt;/p&gt;
-&lt;div class="code"&gt;&lt;pre class="code bash"&gt;&lt;a id="rest_code_488827bfce3444e0870abff671b02407-1" name="rest_code_488827bfce3444e0870abff671b02407-1" href="https://tkurtbond.github.io/posts/2020/08/03/compiling-s7-scheme-on-macos/#rest_code_488827bfce3444e0870abff671b02407-1"&gt;&lt;/a&gt;./repl&lt;span class="w"&gt; &lt;/span&gt;libc.scm
+&lt;div class="code"&gt;&lt;pre class="code bash"&gt;&lt;a id="rest_code_5c55ef0d30724089bab725ccc724462c-1" name="rest_code_5c55ef0d30724089bab725ccc724462c-1" href="https://tkurtbond.github.io/posts/2020/08/03/compiling-s7-scheme-on-macos/#rest_code_5c55ef0d30724089bab725ccc724462c-1"&gt;&lt;/a&gt;./repl libc.scm
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;which seems to generate &lt;span class="file"&gt;libc_s7.c&lt;/span&gt; and compile it into
 &lt;span class="file"&gt;libc_s.so&lt;/span&gt;.   Then you can run the &lt;a class="reference external" href="https://tkurtbond.github.io/pages/computer-vocabulary/#REPL"&gt;REPL&lt;/a&gt;:&lt;/p&gt;
-&lt;div class="code"&gt;&lt;pre class="code bash"&gt;&lt;a id="rest_code_fc43eb84b6874cff86c5d1797c13e463-1" name="rest_code_fc43eb84b6874cff86c5d1797c13e463-1" href="https://tkurtbond.github.io/posts/2020/08/03/compiling-s7-scheme-on-macos/#rest_code_fc43eb84b6874cff86c5d1797c13e463-1"&gt;&lt;/a&gt;./repl
+&lt;div class="code"&gt;&lt;pre class="code bash"&gt;&lt;a id="rest_code_fb1a947435484367a313237c9e54e083-1" name="rest_code_fb1a947435484367a313237c9e54e083-1" href="https://tkurtbond.github.io/posts/2020/08/03/compiling-s7-scheme-on-macos/#rest_code_fb1a947435484367a313237c9e54e083-1"&gt;&lt;/a&gt;./repl
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;which, from looking at &lt;span class="file"&gt;s7.c&lt;/span&gt;, loads &lt;span class="file"&gt;repl.scm&lt;/span&gt;.
 Unfortunately, I don't understand the repl commands, except for

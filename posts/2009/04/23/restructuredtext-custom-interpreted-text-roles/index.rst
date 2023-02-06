@@ -11,7 +11,7 @@
 I really like how easy reStructuredText makes adding custom
 interpreted text roles [#role-customization]_ [#role-directive]_.  I
 do a fair bit for writing for the RPGs campaigns I run or play, and
-the custom roles are useful for mark specific things, like spell names
+the custom roles are useful to mark specific things, like spell names
 or skill names.
 
 .. [#role-customization] http://docutils.sourceforge.net/docs/ref/rst/roles.html#customization

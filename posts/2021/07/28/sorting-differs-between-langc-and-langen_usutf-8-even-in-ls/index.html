@@ -86,24 +86,24 @@ depends on what locale is set.">
 <p>I have a directory, with two files in it, <span class="file">ab.txt</span> and
 <span class="file">a-c.txt</span>.  Which sorts first when I do a <span class="command">ls</span>?  It
 depends on what locale is set.  Like this:</p>
-<div class="code"><pre class="code bash"><a id="rest_code_29a6cebfb27f48cfbcf6d531d1a1b475-1" name="rest_code_29a6cebfb27f48cfbcf6d531d1a1b475-1" href="#rest_code_29a6cebfb27f48cfbcf6d531d1a1b475-1"></a>$<span class="w"> </span><span class="nv">LANG</span><span class="o">=</span>en_US.UTF-8<span class="w"> </span>ls
-<a id="rest_code_29a6cebfb27f48cfbcf6d531d1a1b475-2" name="rest_code_29a6cebfb27f48cfbcf6d531d1a1b475-2" href="#rest_code_29a6cebfb27f48cfbcf6d531d1a1b475-2"></a>ab.txt<span class="w">       </span>a-c.txt
-<a id="rest_code_29a6cebfb27f48cfbcf6d531d1a1b475-3" name="rest_code_29a6cebfb27f48cfbcf6d531d1a1b475-3" href="#rest_code_29a6cebfb27f48cfbcf6d531d1a1b475-3"></a>$<span class="w"> </span><span class="nv">LANG</span><span class="o">=</span>C<span class="w"> </span>ls
-<a id="rest_code_29a6cebfb27f48cfbcf6d531d1a1b475-4" name="rest_code_29a6cebfb27f48cfbcf6d531d1a1b475-4" href="#rest_code_29a6cebfb27f48cfbcf6d531d1a1b475-4"></a>a-c.txt<span class="w">  </span>ab.txt
+<div class="code"><pre class="code bash"><a id="rest_code_bc2ef0be3e3340debecae04a4ba5df12-1" name="rest_code_bc2ef0be3e3340debecae04a4ba5df12-1" href="#rest_code_bc2ef0be3e3340debecae04a4ba5df12-1"></a>$ <span class="nv">LANG</span><span class="o">=</span>en_US.UTF-8 ls
+<a id="rest_code_bc2ef0be3e3340debecae04a4ba5df12-2" name="rest_code_bc2ef0be3e3340debecae04a4ba5df12-2" href="#rest_code_bc2ef0be3e3340debecae04a4ba5df12-2"></a>ab.txt       a-c.txt
+<a id="rest_code_bc2ef0be3e3340debecae04a4ba5df12-3" name="rest_code_bc2ef0be3e3340debecae04a4ba5df12-3" href="#rest_code_bc2ef0be3e3340debecae04a4ba5df12-3"></a>$ <span class="nv">LANG</span><span class="o">=</span>C ls
+<a id="rest_code_bc2ef0be3e3340debecae04a4ba5df12-4" name="rest_code_bc2ef0be3e3340debecae04a4ba5df12-4" href="#rest_code_bc2ef0be3e3340debecae04a4ba5df12-4"></a>a-c.txt  ab.txt
 </pre></div>
 <p>Same thing happens with the <span class="command">sort</span> command:</p>
-<div class="code"><pre class="code bash"><a id="rest_code_048a4f532c624508bfebd985e0b6894c-1" name="rest_code_048a4f532c624508bfebd985e0b6894c-1" href="#rest_code_048a4f532c624508bfebd985e0b6894c-1"></a>$<span class="w"> </span>cat<span class="w"> </span>&gt;a-c-first.txt
-<a id="rest_code_048a4f532c624508bfebd985e0b6894c-2" name="rest_code_048a4f532c624508bfebd985e0b6894c-2" href="#rest_code_048a4f532c624508bfebd985e0b6894c-2"></a>a-c.txt
-<a id="rest_code_048a4f532c624508bfebd985e0b6894c-3" name="rest_code_048a4f532c624508bfebd985e0b6894c-3" href="#rest_code_048a4f532c624508bfebd985e0b6894c-3"></a>ab.txt
-<a id="rest_code_048a4f532c624508bfebd985e0b6894c-4" name="rest_code_048a4f532c624508bfebd985e0b6894c-4" href="#rest_code_048a4f532c624508bfebd985e0b6894c-4"></a>$<span class="w"> </span>cat<span class="w"> </span>&gt;ab-first.txt
-<a id="rest_code_048a4f532c624508bfebd985e0b6894c-5" name="rest_code_048a4f532c624508bfebd985e0b6894c-5" href="#rest_code_048a4f532c624508bfebd985e0b6894c-5"></a>ab.txt
-<a id="rest_code_048a4f532c624508bfebd985e0b6894c-6" name="rest_code_048a4f532c624508bfebd985e0b6894c-6" href="#rest_code_048a4f532c624508bfebd985e0b6894c-6"></a>a-c.txt
-<a id="rest_code_048a4f532c624508bfebd985e0b6894c-7" name="rest_code_048a4f532c624508bfebd985e0b6894c-7" href="#rest_code_048a4f532c624508bfebd985e0b6894c-7"></a>$<span class="w"> </span><span class="nv">LANG</span><span class="o">=</span>C<span class="w"> </span>sort<span class="w"> </span>ab-first.txt
-<a id="rest_code_048a4f532c624508bfebd985e0b6894c-8" name="rest_code_048a4f532c624508bfebd985e0b6894c-8" href="#rest_code_048a4f532c624508bfebd985e0b6894c-8"></a>a-c.txt
-<a id="rest_code_048a4f532c624508bfebd985e0b6894c-9" name="rest_code_048a4f532c624508bfebd985e0b6894c-9" href="#rest_code_048a4f532c624508bfebd985e0b6894c-9"></a>ab.txt
-<a id="rest_code_048a4f532c624508bfebd985e0b6894c-10" name="rest_code_048a4f532c624508bfebd985e0b6894c-10" href="#rest_code_048a4f532c624508bfebd985e0b6894c-10"></a>$<span class="w"> </span><span class="nv">LANG</span><span class="o">=</span>en_US.UTF-8<span class="w"> </span>sort<span class="w"> </span>a-c-first.txt
-<a id="rest_code_048a4f532c624508bfebd985e0b6894c-11" name="rest_code_048a4f532c624508bfebd985e0b6894c-11" href="#rest_code_048a4f532c624508bfebd985e0b6894c-11"></a>ab.txt
-<a id="rest_code_048a4f532c624508bfebd985e0b6894c-12" name="rest_code_048a4f532c624508bfebd985e0b6894c-12" href="#rest_code_048a4f532c624508bfebd985e0b6894c-12"></a>a-c.txt
+<div class="code"><pre class="code bash"><a id="rest_code_5663cb27da7c4987a9ddf3231d5073f7-1" name="rest_code_5663cb27da7c4987a9ddf3231d5073f7-1" href="#rest_code_5663cb27da7c4987a9ddf3231d5073f7-1"></a>$ cat &gt;a-c-first.txt
+<a id="rest_code_5663cb27da7c4987a9ddf3231d5073f7-2" name="rest_code_5663cb27da7c4987a9ddf3231d5073f7-2" href="#rest_code_5663cb27da7c4987a9ddf3231d5073f7-2"></a>a-c.txt
+<a id="rest_code_5663cb27da7c4987a9ddf3231d5073f7-3" name="rest_code_5663cb27da7c4987a9ddf3231d5073f7-3" href="#rest_code_5663cb27da7c4987a9ddf3231d5073f7-3"></a>ab.txt
+<a id="rest_code_5663cb27da7c4987a9ddf3231d5073f7-4" name="rest_code_5663cb27da7c4987a9ddf3231d5073f7-4" href="#rest_code_5663cb27da7c4987a9ddf3231d5073f7-4"></a>$ cat &gt;ab-first.txt
+<a id="rest_code_5663cb27da7c4987a9ddf3231d5073f7-5" name="rest_code_5663cb27da7c4987a9ddf3231d5073f7-5" href="#rest_code_5663cb27da7c4987a9ddf3231d5073f7-5"></a>ab.txt
+<a id="rest_code_5663cb27da7c4987a9ddf3231d5073f7-6" name="rest_code_5663cb27da7c4987a9ddf3231d5073f7-6" href="#rest_code_5663cb27da7c4987a9ddf3231d5073f7-6"></a>a-c.txt
+<a id="rest_code_5663cb27da7c4987a9ddf3231d5073f7-7" name="rest_code_5663cb27da7c4987a9ddf3231d5073f7-7" href="#rest_code_5663cb27da7c4987a9ddf3231d5073f7-7"></a>$ <span class="nv">LANG</span><span class="o">=</span>C sort ab-first.txt
+<a id="rest_code_5663cb27da7c4987a9ddf3231d5073f7-8" name="rest_code_5663cb27da7c4987a9ddf3231d5073f7-8" href="#rest_code_5663cb27da7c4987a9ddf3231d5073f7-8"></a>a-c.txt
+<a id="rest_code_5663cb27da7c4987a9ddf3231d5073f7-9" name="rest_code_5663cb27da7c4987a9ddf3231d5073f7-9" href="#rest_code_5663cb27da7c4987a9ddf3231d5073f7-9"></a>ab.txt
+<a id="rest_code_5663cb27da7c4987a9ddf3231d5073f7-10" name="rest_code_5663cb27da7c4987a9ddf3231d5073f7-10" href="#rest_code_5663cb27da7c4987a9ddf3231d5073f7-10"></a>$ <span class="nv">LANG</span><span class="o">=</span>en_US.UTF-8 sort a-c-first.txt
+<a id="rest_code_5663cb27da7c4987a9ddf3231d5073f7-11" name="rest_code_5663cb27da7c4987a9ddf3231d5073f7-11" href="#rest_code_5663cb27da7c4987a9ddf3231d5073f7-11"></a>ab.txt
+<a id="rest_code_5663cb27da7c4987a9ddf3231d5073f7-12" name="rest_code_5663cb27da7c4987a9ddf3231d5073f7-12" href="#rest_code_5663cb27da7c4987a9ddf3231d5073f7-12"></a>a-c.txt
 </pre></div>
 <p>I found this surprising when it first broke some code I was using,
 since I'd spent so much of my existence in LANG=C (I'm still surprised
