@@ -12,7 +12,7 @@
 .. role:: title
 .. role:: command
 
-*Last edited: 2023-02-03 20:00:46 EST*
+*Last edited: 2023-02-14 07:06:18 EST*
 
 So.  I have a CHICKEN Scheme program that converts `Big Eyes Small
 Mouth 4E`__ characters from a YAML definition into reStructuredText_
@@ -35,7 +35,7 @@ Wednesday night:
    :alt: Original charactersheet for Xeksil in :app:`reST` using grid tables
 
 As you can see, it doesn’t fully fill the width of the page, and the
-first two columns are two wide for the information they contain.
+first two columns are too wide for the information they contain.
 
 I’m contemplating changing the program so that the actual tables are
 in groff_ :app:`tbl` format directly, and insert them into the
@@ -130,7 +130,11 @@ CPB commented: CSS supports printing.
 
 Yes, there is actually at least one commercial document formatting
 system that uses CSS for sophisticated print output, much more
-elaborate than what the browsers support, I think.
+elaborate than what the browsers support, I think.  And there is at
+least one open source solution, weasyprint_, that uses CSS to produce
+PDF.
+
+.. _weasyprint: https://weasyprint.org/
 
 But I know :app:`tbl` better than CSS. 😉
 
@@ -147,7 +151,7 @@ long.
 
 Here's an image of the page produced (probably from same YAML file; I
 have a couple, since one of them was an early test file for
-:command:`besm-rst`.)  using the new output routine, with :app:`reST`
+:command:`besm-rst`) using the new output routine, with :app:`reST`
 output with :app:`tbl` output in ``.. raw:: ms``, pulled from the
 document with all the pregenerated characters:
 
@@ -168,7 +172,7 @@ The git repo with this program and some test data is on github_.
 
 .. _github: https://github.com/tkurtbond/besm-tools
           
-Enyon Boase is a pregenerated character that I came up for the
+Enyon Boase is a pregenerated character that I came up for my
 :title:`BESM 4E` rewrite of the :title:`BESM 1E` adventure “Red
 Planet, Blue Helmets”, from :title:`Big Robots, Cool Starships`.  The
 FV2021 Coleopteran is also from that adventure.
@@ -184,18 +188,6 @@ FV2021 Coleopteran is also from that adventure.
    Chaos (from Zelazny's :series:`Amber Chronicles`) and a man that at
    least *looks* human (but may not be; I haven't decided yet), so for
    Xeksil this ability is “Shadow Shifting”.
-
-..
-   Why does the footnote in this link
-
-       http://0.0.0.0:8000/posts/2023/02/03/overcoming-rests-limited-table-control-by-including-raw-groff-tbl/#xeksil
-
-   have the square brackets around it and is a span element before a p
-   element, while the one in
-
-       http://0.0.0.0:8000/posts/2020/11/29/looking-at-the-mini-six-rpg-and-related-games/#id1
-
-   doesn't and is in a dl element?
 
 ..
    Local Variables:

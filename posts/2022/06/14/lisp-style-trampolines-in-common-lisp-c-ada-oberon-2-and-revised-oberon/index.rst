@@ -10,6 +10,8 @@
 .. role:: app
 .. role:: file
 
+*Last edited: 2023-02-14 06:33:58 EST*
+
 Are you familiar with `lisp-style trampolines`__?  A trampoline is a
 loop that iteratively invokes functions that return functions.  The
 previous link will lead you through `CONS Should Not CONS Its
@@ -77,8 +79,9 @@ because :app:`SBCL` does tail call optimization by default.
 into  an interactive session it will die with stack overflow, but if
 you compile that file into an executable it will run forever.
 
-So, suppose you wanted to translate the Scheme code into Common Lisp.
-You'd use a trampoline to make sure the stack doesn't overflow.
+So, suppose you wanted to translate the Scheme code into Common Lisp,
+for an implementation that does not do tail call optimization.  You'd
+use a trampoline to make sure the stack doesn't overflow.
 
 Here's `trampoline.lisp`_, a trampoline in Common Lisp that runs
 through three functions and then stops, for simplicity:
@@ -193,7 +196,7 @@ Oberon_, and among a few other things adds type-bound procedures to
 the record hierarchy provided by `Type Extensions`_, providing a
 appealingly simple and direct design for object-oriented programming
 that was later adopted by the Ada_ programming language in a more
-complicated and confusing manner, as might be expected by Ada_'s
+complicated and subtle version, as might be expected by Ada_'s
 plethora of design goals and constraints.  (Here's a couple of papers
 that mention it: `Object-oriented programming through type
 extension in Ada 9X`__ (ADAOO1PDF_) and `Integrating Object-Oriented
@@ -389,3 +392,11 @@ repository_ at Github_.
 
 .. _GitHub: https://github.com/
 .. _repository: https://github.com/tkurtbond/trampolines
+
+..
+   Local Variables:
+   time-stamp-format: "%Y-%02m-%02d %02H:%02M:%02S %Z"
+   time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
+   time-stamp-end: "\\*\\\\?\n"
+   End:
+
