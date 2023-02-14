@@ -12,7 +12,7 @@
 .. role:: title
 .. role:: command
 
-*Last edited: 2023-02-14 07:00:49 EST*
+*Last edited: 2023-02-14 07:06:18 EST*
 
 So.  I have a CHICKEN Scheme program that converts `Big Eyes Small
 Mouth 4E`__ characters from a YAML definition into reStructuredText_
@@ -151,7 +151,7 @@ long.
 
 Here's an image of the page produced (probably from same YAML file; I
 have a couple, since one of them was an early test file for
-:command:`besm-rst`.)  using the new output routine, with :app:`reST`
+:command:`besm-rst`) using the new output routine, with :app:`reST`
 output with :app:`tbl` output in ``.. raw:: ms``, pulled from the
 document with all the pregenerated characters:
 
