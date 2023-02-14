@@ -7,6 +7,8 @@
 .. description: 
 .. type: text
 
+*Last edited: 2023-02-14 06:27:01 EST*
+
 I reread Brian W. Kernighan’s famous paper “Why Pascal is Not My
 Favorite Programming Language”
 (`HTML <https://www.cs.virginia.edu/~evans/cs655/readings/bwk-on-pascal.html>`__,
@@ -66,9 +68,9 @@ comments.
    programs and makes the use of libraries impossible.
 
    Not a problem any more. All the Oberon languages use modules,
-   introduced in Modula. Arguably, this is much superior to C’s model of
-   separate compilation and using header files to ensure consistent
-   function declarations are consistent across files.
+   introduced in Modula. Arguably, this is much superior to C’s model
+   of separate compilation and using header files to ensure function
+   and external variable declarations are consistent across files.
 
 5. The order of logical expression evaluation cannot be controlled,
    which leads to convoluted code and extraneous variables.
@@ -97,9 +99,9 @@ comments.
    to program arguments in the Unix/C style, as the Oberon System used
    entirely different mechanisms.  Those Oberon[-2] implementations
    I've used outside of the Oberon System all provided some access to
-   the program arguments, usually as a procedure returns the number of
-   program arguments and another that returns a specific argument, but
-   none of them used the same API.
+   the program arguments, usually as a procedure that returns the
+   number of program arguments and another that returns a specific
+   argument, but none of them used the same API.
 
 8. The language lacks most of the tools needed for assembling large
    programs, most notably file inclusion.
@@ -123,4 +125,11 @@ semicolon as terminator.   I much prefer semicolon as terminator.
 All-in-all, I'm disappointed in Revised Oberon.  While I approve of a
 few of its changes, most of them seem to be a definite step backward.
 I think Wirth's minimalism does him a disservice here.
+
+..
+   Local Variables:
+   time-stamp-format: "%Y-%02m-%02d %02H:%02M:%02S %Z"
+   time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
+   time-stamp-end: "\\*\\\\?\n"
+   End:
 
