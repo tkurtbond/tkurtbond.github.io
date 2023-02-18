@@ -484,8 +484,11 @@ a much more narrowed focus than earlier editions.
 Tunnels & Trolls
 ................
 
-`Tunnels & Trolls`, also know as `T&T` is another early RPG that is
-a lot of fun.
+`Tunnels & Trolls`, also known as `T&T`, is another early RPG that is
+a lot of fun.  I think it is best described as “Ken St. Andre took a
+look at D&D and decided to write a game that made more sense to him”,
+and ended up with a game that shares the same themes but uses
+considerably simpler mechanics.
 
 Hero
 ....
@@ -514,14 +517,44 @@ creating everything from scratch is a bit of a drawback.  `Wizards &
 Warriors`, while useful, doesn't really provide enough to eliminate
 the prep work.
 
+OVA: The Anime Role-Playing Game
+................................
+
+OVA_ is another Anime inspired game.  Like BESM it is actually very
+flexible and could be used for non-Anime games, as well.  The core
+mechanic is to start with two six sided dice, add dice to the sum of
+the levels of abilities that apply in the situation, subtract dice to
+the sum of the levels of weaknesses that apply, and roll the dice and
+take the highest single die, or the highest sum of matching dice.  If
+the number of dice you should roll is zero, roll two dice and take the
+lowest.  If the number of dice you should roll is negative, roll that
+many dice and take the lowest.  (Matches don't matter in that case.)
+You are rolling against either a target number set by the GM or an
+opposed roll.
+
+Compared to BESM its character generation is somewhat simpler: where
+in BESM you would spend a certain number of character points to get a
+particular attribute at a specific level which would provide either a
+bonus to relevant rolls, add to a stat or derived value, or provide
+one or more specific abilities, in OVA there are no character points,
+you pick the level of the ability you want directly, and this
+*usually* applies directly as a bonus to the number of dice you use in
+relevant rolls, or in a few cases adds a certain amount to derived
+values such as Health, Endurance, or DX (damage multiplier).  There
+are fewer steps to go through to determine the end result.  Also,
+where there several attributes in BESM, like Flight, where the levels
+translate to a real-world measure (how fast you can fly in kilometers
+per hour), in OVA, as far as I can tell, levels in abilities *never*
+translate to real-world measures, just into how well you do in the
+game (bonuses to dice rolls).  I think OVA tends to be more fast and
+loose than BESM (even though there are places where BESM is fast and
+loose: Dynamic Powers, in particular).
+
+.. _OVA: https://www.wiseturtle.com/games.html
+
 
 Ramblings
 ---------
-
-For a list of other roleplaying games that I'm interested in you can
-look at my `Access Denied <http://www.accessdenied.net/>`_ `profile
-<http://www.accessdenied.net/cgi-bin/profile?198>`_; my handle there
-is “T. Kurt Bond”.
 
 As time has gone by, I've noticed that my tastes in roleplaying games
 have broadened from the relatively complicated (`GURPS`) to the
