@@ -22,8 +22,9 @@ GMs.
 
 
 Associated Pages or Posts
--------------------------
+=========================
 
+* `RPG Downloads <link://slug/rpg-downloads>`_
 * `D&D Dungeon Masters Guide, Appendix N <link://slug/dnd-dmg-appendix-n>`_
 * `DragonQuest <link://slug/dragonquest-and-i>`_
 * `Gaming in the World of Elric <link://slug/gaming-in-the-world-of-elric>`_
@@ -42,7 +43,7 @@ Associated Pages or Posts
 
 
 What are Roleplaying Games?
----------------------------
+===========================
 
 If you've wandered into the conversation in the middle, and are
 wondering what roleplaying games are, here is a good `introduction
@@ -51,7 +52,7 @@ wondering what roleplaying games are, here is a good `introduction
 
 
 How I got started
------------------
+=================
 
 My introduction to roleplaying games was the Christmas present from my
 parents of the Holmes Basic `D&D` boxed set. Soon thereafter I was
@@ -82,13 +83,13 @@ groups and the Internet years later.
 
 
 Some Interesting Roleplaying Games
-----------------------------------
+==================================
 
 Some RPGs I enjoy are the following (in no particular order):
 
 
 Prince Valiant
-..............
+--------------
 
 `Prince Valiant`, Greg Stafford's 1989 game from chaosium based on
 Hal Foster's legendary Sunday cartoon strips, is the idea game for
@@ -102,7 +103,7 @@ wonderful game for the confirmed gamer, but doesn't serve as well as
 an introductory game.
 
 GURPS
-.....
+-----
 
 `GURPS <http://www.sjgames.com/gurps/>`_, by `Steve Jackson
 Games <http://www.sjgames.com>`_, the Generic Universal
@@ -121,7 +122,7 @@ and it prompted an interest in GURPS 4th Edition.  I now have the
 Basic Set, and several of the other books.  DFRPG looks good.
 
 Bunnies & Burrows
-.................
+-----------------
 
 I had never seen the original `Bunnies & Burrows` game, but I bought
 the GURPS version, written by Steffan O'Sullivan, and absolutely loved
@@ -131,7 +132,7 @@ by Steffan O'Sullivan.  I was finally able to buy a PDF of the
 original `Bunnies & Burrows` game over the Internet in 2011.
 
 CORPS
-.....
+-----
 
 `CORPS <http://www.btrc.net/html/catalog/catmain.html#CORPS>`_,
 the Complete Omniversal Roleplaying System by `BTRC
@@ -139,7 +140,7 @@ the Complete Omniversal Roleplaying System by `BTRC
 system.
 
 Elric! & Stormbringer
-.....................
+---------------------
 
 `Elric! <http://www.chaosium.com/elric/index.shtml>`_ by
 `Chaosium <http://www.chaosium.com/>`_ (and `Stormbringer`, its
@@ -150,7 +151,7 @@ Here's some thoughts on why to `game <elric-gaming.html>`_ in the
 `world <elric-books.html>`_ of `Elric`.
 
 Fudge
-.....
+-----
 
 `Fudge <http://www.fudgerpg.com/>`_, written by `Steffan
 O'Sullivan <http://www.panix.com/~sos/>`_ and a host of USENET
@@ -167,7 +168,7 @@ has his `own Fudge page <http://www.panix.com/~sos/fudge.html>`_ with
 a lot of designer notes and links to other Fudge pages.
 
 Epiphany
-........
+--------
 
 `Epiphany
 <http://www.btrc.net/html/catalog/catmain.html#Epiphany>`_ by `BTRC
@@ -176,24 +177,24 @@ roleplaying game. (I have a short `description of epiphany <epiphany.html>`_ of
 it).
 
 Call of Cthulhu
-...............
+---------------
 
 `Call of Cthulhu <http://www.chaosium.com/cthulhu/index.shtml>`_
 by `Chaosium <http://www.chaosium.com/>`_, is a classic horror
 roleplaying game set in the worlds of H.P. Lovecraft's stories.
 
 WFRP
-....
+----
 
 `WFRP <wfrp.html>`_
 
 DragonQuest
-...........
+-----------
 
 `DragonQuest <link://slug/dragonquest-and-i>`_, originally published by SPI.
 
 Space: 1889
-...........
+-----------
 
 `Space: 1889 <http://www.heliograph.com/space-1889/>`_, by Frank
 Chadwick, the original steampunk roleplaying game, was originally
@@ -202,7 +203,7 @@ published by Games Designers Workshop and has been republished by
 `description of Space 1889 <space-1889.html>`_).
 
 Big Eyes, Small Mouth
-.....................
+---------------------
 
 `BESM <http://www.guardiansorder.on.ca/>`_ (`Big Eyes, Small Mouth`)
 from `Guardians of Order`_, an anime RPG, is a good game even for
@@ -261,9 +262,9 @@ Order`_) Mark C. Mackinnon made the `corrections
 available on my site (BESM3Errata_), along with the two pages (P154_, P168_)
 that were horribly misprinted.)
 
-.. _BESM3Errata: /BESM3/BESM3E_errata.pdf
-.. _P154: /BESM3/BESM3_page154.pdf
-.. _P168: /BESM3/BESM3_page168.pdf
+.. _BESM3Errata: /BESM3E/BESM3E_errata.pdf
+.. _P154: /BESM3E/BESM3_page154.pdf
+.. _P168: /BESM3E/BESM3_page168.pdf
 
 
 BESM 4E
@@ -283,7 +284,7 @@ looks like it will be a lot of fun.
 
 
 Story Engine
-............
+------------
 
 `Story Engine
 <http://www.hubrisgames.com/html/storyengbook.html>`_, 2nd Edition by
@@ -305,14 +306,14 @@ Engine <http://www.hubrisgames.com/html/storyengbook.html>`_ and
 `Maelstrom Storytelling` lines. Yay!
 
 Castle Falkenstein
-..................
+------------------
 
 `Castle Falkenstein <http://www.talsorian.com/cfindex.shtml>`_
 by R. Talsorian Games (and the `GURPS version
 <http://www.sjgames.com/gurps/books/castlefalkenstein/>`_).
 
 Glorantha, HeroQuest
-....................
+--------------------
 
 `Issaries, Inc.'s <http://www.glorantha.com/inc/>`_ `Glorantha
 <http://www.glorantha.com/>`_ products, including the RPG
@@ -320,7 +321,7 @@ Glorantha, HeroQuest
 and it's predecessor `Hero Wars`.
 
 Tékumel
-.......
+-------
 
 Professor M.A.R. Barker's complex science-fantasy world, `Tékumel
 <http://www.tekumel.com/>`_, while heavily influenced by non-European
@@ -337,7 +338,7 @@ Order`_ finally released its
 February of 2005, and it is *good*.
 
 The Dying Earth
-...............
+---------------
 
 `The Dying Earth <http://www.dyingearth.com/>`_ RPG, based on the
 :series:`Dying Earth` novels by Jack Vance and published by Pelgrane Press
@@ -346,7 +347,7 @@ perfectly.  Alas, Pelgrane decided to stop publishing the game in
 April 2009.
 
 Skyrealms of Jorune
-...................
+-------------------
 
 `Skyrealms of Jorune <http://www.jorune.org/>`_, created by
 Andrew Leker and Miles Teves in the early 1980s, was an extremely
@@ -356,7 +357,7 @@ editions and sadly is currently out of print. It used the slogan
 <http://groups.yahoo.com/group/jorune/>`_
 
 Talislanta
-..........
+----------
 
 `Talislanta <http://www.talislanta.com/>`_, created by Stephan
 Michael Sechi in 1987, is an exotic, quirky, fantasy roleplaying game
@@ -374,7 +375,7 @@ A fifth edition was published by `Morrigan Press <http://en.wikipedia.org/wiki/M
 
 
 Nobilis
-.......
+-------
 
 `Nobilis` is R. Sean Borgstrom's roleplaying game of Sovereign Powers,
 the personfications of aspects of reality, such as Pain, Love, Nights,
@@ -385,7 +386,7 @@ edition is now now published by `Guardians of Order`_, which hopes to
 publish additional supplements for it in the future.
 
 Savage Worlds
-.............
+-------------
 
 `Savage Worlds` is `Pinnacle Entertainment Group
 <http://www.peginc.com/>`_'s “Fast! Furious! Fun!” generic RPG.
@@ -395,7 +396,6 @@ Savage Worlds <http://forum.rpg.net/showthread.php?t=207839>`_ of
 2005-07-26 on rpg.net. I got the revised version in late 2005 and was
 delighted by its mix of simplicity, versatility, and moderate tactical
 detail. 
-
 
 `Savage Worlds` is designed for folks who want something that is easy to
 prepare for and easy and fast to run, and I think it suceeds at these
@@ -412,7 +412,6 @@ fantasy, 1930s, TV parody, Kids in Idyllic England), and there are
 third-party publishers who also produce for it, as well as a sizable
 fan community. 
 
-
 I've been playing `Savage Worlds` with my daughter and her cousins
 (occasionally with my brothers mixed in) and it has gone very well. I
 started out by playing a lot of short adventures, then ran
@@ -428,7 +427,7 @@ gaming group, when the regular D&D game couldn't run for one reason or
 another.
 
 Dungeons and Dragons
-....................
+--------------------
 
 `D&D` is where I got my start, but I moved away from it during the
 ending of the `AD&D` years. At that time I was looking for something
@@ -482,7 +481,7 @@ while it is fun for the type of game for which it was designed, it has
 a much more narrowed focus than earlier editions.
 
 Tunnels & Trolls
-................
+----------------
 
 `Tunnels & Trolls`, also known as `T&T`, is another early RPG that is
 a lot of fun.  I think it is best described as “Ken St. Andre took a
@@ -491,7 +490,7 @@ and ended up with a game that shares the same themes but uses
 considerably simpler mechanics.
 
 Hero
-....
+----
 
 I bought a number of `Hero` books in the 4th edition days, and have
 the 5th edition `Sidekick` (a marvelous distillation of the system),
@@ -501,7 +500,7 @@ keep thinking I should pick up the main core rulebook and some of the
 genre books, but haven't got around to it yet.
 
 Mutants & Masterminds, 2E and True20
-....................................
+------------------------------------
 
 Two of the many good things to come out of the D20 era are Green
 Ronin's OGL game `Mutants & Masterminds` and it's cousin `True20` .  I
@@ -518,7 +517,7 @@ Warriors`, while useful, doesn't really provide enough to eliminate
 the prep work.
 
 OVA: The Anime Role-Playing Game
-................................
+--------------------------------
 
 OVA_ is another Anime inspired game.  Like BESM it is actually very
 flexible and could be used for non-Anime games, as well.  The core
@@ -554,7 +553,7 @@ loose: Dynamic Powers, in particular).
 
 
 Ramblings
----------
+=========
 
 As time has gone by, I've noticed that my tastes in roleplaying games
 have broadened from the relatively complicated (`GURPS`) to the
@@ -574,9 +573,9 @@ Worlds`.
 
 
 Some things I've done
----------------------
+=====================
 
-I've made some `roleplaying game materials <rpg-materials.html>`_
+I've made some `roleplaying game downloads <link://slug/rpg-downloads>`_
 from my campaigns available.
 
 I used to run a Swiki for my local gaming group to use for discussions
@@ -584,23 +583,23 @@ and records, and a mailing list that was mostly used for scheduling
 games.
 
 I have written down some `incoherent thoughts on various matters`__
-pertaining to roleplaying games.
+pertaining to roleplaying games, unfortunately unavailable right now.
 
 __ rpg-debates.html
 
 
 
 Some Things Others Have Done
-----------------------------
+============================
 
-I've got some `archives <rpg-archive.html>`_ of material that was
+I had some `archives <rpg-archive.html>`_ of material that was
 available for download elsewhere, but has unfortunately disappeared
-from the web.
+from the web, but these are unfortunately unavailable right now.
 
 
 
 Some Resources
---------------
+==============
 
 The following are some roleplaying game resources that I particularly
 recommend.
@@ -647,12 +646,18 @@ recommend.
 + Online Magazines
 
   + Steve Jackson Games' `Pyramid <http://pyramid.sjgames.com/login/>`_
-    is the best on-line gaming magazine I've found, and it's well worth
-    the yearly subscription. It's a weekly magazine that covers all of
-    Steve Jackson's games, but also has a good selection of articles for
-    other games and for non-game-specific roleplaying. It also has a very
-    high quality set of web forums that are (*Joy!*) also available as
+    was the best on-line gaming magazine I've found, and it was well worth
+    the yearly subscription. It was a weekly magazine that covers all of
+    Steve Jackson's games, but also had a good selection of articles for
+    other games and for non-game-specific roleplaying. It also had a very
+    high quality set of web forums that were (*Joy!*) also available as
     newsgroups for NNTP access.
+
+    The online version of Pyramid was replaced by a `PDF version`_,
+    but that has also come to an end, alas.  The back issues are still
+    available.
+
+    .. _PDF version: http://www.sjgames.com/pyramid/
   + `Places to Go, People to Be <http://ptgptb.org/>`_ always has an
     interesting slant on roleplaying.
 
