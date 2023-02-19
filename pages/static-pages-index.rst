@@ -14,9 +14,12 @@ Housekeeping
 * `Colophon <link://slug/colophon>`_
 * `Typographical Conventions <link://slug/typographical-conventions>`_
 
-Other Pages
-===========
+Roleplaying Games
+=================
 
+* `Roleplaying Games <link://slug/roleplaying-games>`_
+* `RPG Vocabulary <link://slug/rpg-vocabulary>`_
+* `RPG Downloads <link://slug/rpg-vocabulary>`_
 * `Kid's Mini Six Middle Sea Links
   <link://slug/kids-mini-six-middle-sea-links>`_
 * `RPGs played with the kids
@@ -25,10 +28,12 @@ Other Pages
   <link://slug/adventurer-conqueror-king-system-srd-in-html>`_ in
   HTML.
 * `Alusia Campaign <link://slug/alusia-campaign>`_
+
+Other Pages
+===========
+
 * `Books, 2006–2007 <link://slug/books-2006-2007>`_
 * `Doris Piserchia <link://slug/doris-piserchia>`_
 * `Notes <link://slug/notes>`_
-* `Roleplaying Games <link://slug/roleplaying-games>`_
-* `RPG Vocabulary <link://slug/rpg-vocabulary>`_
 
 
