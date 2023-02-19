@@ -35,3 +35,10 @@ BESM Fourth Edition
 
 • `Fourth Edition Attributes, Enhancements, Limiters, and Defects
   Summary </BESM4E/4E-ref.pdf>`_
+
+  
+OVA: The Anime Role-Playing Game
+================================
+
+• `OVA Reference </OVA/ova-ref.pdf>`_ — Index of page numbers for OVA
+  Abilities, Weaknesses, Perks, and Flaws.
