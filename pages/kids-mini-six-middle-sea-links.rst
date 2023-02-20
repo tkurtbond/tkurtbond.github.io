@@ -24,4 +24,6 @@
 #. `Mini Six
    Reference <https://drive.google.com/drive/folders/1MpX6o-FKYlQC5d4kKeQGWIflBKllUNAE>`__.
 
-#. `Mini Six Middle Sea Blog <http://consp.org/blog/blog-middle-sea.html>`__.
+#. `Mini Six Middle Sea Blog
+   <http://consp.org/blog/blog-middle-sea.html>`__.  Has short session
+   summaries.
