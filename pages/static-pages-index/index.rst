@@ -19,7 +19,7 @@ Roleplaying Games
 
 * `Roleplaying Games <link://slug/roleplaying-games>`_
 * `RPG Vocabulary <link://slug/rpg-vocabulary>`_
-* `RPG Downloads <link://slug/rpg-vocabulary>`_
+* `RPG Downloads <link://slug/rpg-downloads>`_
 * `Kid's Mini Six Middle Sea Links
   <link://slug/kids-mini-six-middle-sea-links>`_
 * `RPGs played with the kids
