@@ -42,3 +42,9 @@ OVA: The Anime Role-Playing Game
 
 • `OVA Reference </OVA/ova-ref.pdf>`_ — Index of page numbers for OVA
   Abilities, Weaknesses, Perks, and Flaws.
+• `OVA Character Sheet spreadsheet </OVA/OVA-Character-Sheet.ods>`_ —
+  Brutally simple LibreOffice spreadsheet.
+• `OVA Character Sheet PDF </OVA/OVA-Character-Sheet.pdf>`_ — PDF of
+  the above for when you need a quick paper character sheet to write
+  on with more space than the (much nicer looking) standard OVA
+  character sheet.
