@@ -7,10 +7,11 @@
 .. description: 
 .. type: text
 
-I added a brutally simple character sheet for the OVA_ RPG to my `RPG
-Downloads`_ page.  It is for LibreOffice Calc.  There is also a
-brutally simple PDF generated from it as well.
+I added a brutally simple character sheet for `OVA: The Anime
+Role-Playing Game`_ to my `RPG Downloads`_ page.  It is for
+LibreOffice Calc.  There is also a brutally simple PDF generated from
+it as well.
 
-.. _OVA: https://www.wiseturtle.com/games.html
+.. _OVA\: The Anime Role-Playing Game: https://www.wiseturtle.com/games.html
 .. _RPG Downloads: link://slug/rpg-downloads
 
