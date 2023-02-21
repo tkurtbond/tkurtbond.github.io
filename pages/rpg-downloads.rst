@@ -39,7 +39,7 @@ BESM Fourth Edition
 OVA: The Anime Role-Playing Game
 ================================
 
-• `OVA Reference </OVA/ova-ref.pdf>`_ — Index of page numbers for OVA
+• `OVA Reference Sheet </OVA/ova-ref.pdf>`_ — Index of page numbers for OVA
   Abilities, Weaknesses, Perks, and Flaws on the first page and useful
   tables and reminders for play on the second.
 • `OVA Character Sheet spreadsheet </OVA/OVA-Character-Sheet.ods>`_ —
