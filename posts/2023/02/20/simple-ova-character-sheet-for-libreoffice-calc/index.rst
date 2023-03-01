@@ -1,7 +1,7 @@
 .. title: Simple OVA Character Sheet for LibreOffice Calc
 .. slug: simple-ova-character-sheet-for-libreoffice-calc
 .. date: 2023-02-20 22:26:47 UTC-05:00
-.. tags: rpg,ova,character sheet,libreoffice,libreoffice calc
+.. tags: rpg,ova,character sheet,libreoffice,libreoffice calc,pdf
 .. category: gaming/rpg
 .. link: 
 .. description: 

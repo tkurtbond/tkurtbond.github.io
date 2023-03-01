@@ -1,4 +1,4 @@
-.. title: RPG Downloads
+.. title: RPG Downloads and Links
 .. slug: rpg-downloads
 .. date: 2023-02-19 13:22:49 UTC-05:00
 .. tags: rpg,besm,besm2er,besm3e,besm4e,downloads,big eyes small mouth
@@ -7,7 +7,7 @@
 .. description: 
 .. type: text
 
-Here are some downloads for various RPGs.
+Here are some downloads and links for various RPGs.
 
 Big Eyes, Small Mouth
 =====================
@@ -49,3 +49,12 @@ OVA: The Anime Role-Playing Game
   the above for when you need a quick paper character sheet to write
   on with more space than the (much nicer looking) standard OVA
   character sheet.
+• `Google Sheets OVA Character Sheet Template
+  <https://docs.google.com/spreadsheets/d/1xsJ1qUruEqumiRa_M8Sm_2N7vuiSJYAuNdFf7f_N6G4/edit?usp=share_link>`_
+  — This is a Google Sheets version of an OVA Character Sheet.  It
+  calculates total levels of Abilities and Weaknesses and the sum of
+  both.  It prints on two pages when using narrow margins.
+• `Google Sheets OVA Character Sheet Template PDF
+  </OVA/OVA-Charsheet-Template-Google-Sheets.pdf>`_ — PDF of the
+  above.  I think the design of this sheet is a bit better than the
+  LibreOffice spreadsheet.
