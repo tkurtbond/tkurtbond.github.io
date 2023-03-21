@@ -7,6 +7,8 @@
 .. description: 
 .. type: text
 
+*Last edited: 2023-03-21 03:51:21 EDT*
+
 .. role:: series(title-reference)
 
 
@@ -297,13 +299,18 @@ games.html#local-story-bones>`_, used to be available for `download
 <http://www.hubrisgames.com/pdf/bones.pdf>`_ at their giveway `page
 <http://www.hubrisgames.com/html/giv.html>`_ along with a lot of
 other Maelstrom/Story Engine material, but the Hubris Games site
-unfortunately disappeared some time in 2003. I make some of those
-materials, including Story Bones, available `here <hubris-games.html>`_.
-`Precis Intermedia Gaming <http://www.pigames.net/>`_
-now sells `PDFs and physical books
+unfortunately disappeared some time in 2003. I used make some of those
+materials, including Story Bones, available on an earlier incarnation of this site, but time moves on and change is constant.
+
+Luckily `Precis Intermedia Gaming <http://www.pigames.net/>`_ now
+sells `PDFs and physical books
 <http://www.pigames.net/store/default.php?cPath=62>`_ of the `Story
 Engine <http://www.hubrisgames.com/html/storyengbook.html>`_ and
-`Maelstrom Storytelling` lines. Yay!
+`Maelstrom Storytelling` lines. Yay!  They've even got all 5 issues of
+The Tempest, the zine of Maelstrom/Story Engine!  (Not four, as their
+page says; the fifth is in the zip file with the rest!)  They don't
+have a PDF of Tales from the Empire, but they had a few softcover
+versions left in 2023.
 
 Castle Falkenstein
 ------------------
@@ -749,3 +756,11 @@ occasion.
 .. [3] Not to be confused with the popular board game `Heroquest`.
 
 .. _`Guardians of Order`: http://www.guardiansorder.com
+
+
+..
+   Local Variables:
+   time-stamp-format: "%Y-%02m-%02d %02H:%02M:%02S %Z"
+   time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
+   time-stamp-end: "\\*\\\\?\n"
+   End:
