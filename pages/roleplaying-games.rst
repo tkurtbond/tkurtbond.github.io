@@ -7,7 +7,7 @@
 .. description: 
 .. type: text
 
-*Last edited: 2023-03-21 03:51:21 EDT*
+*Last edited: 2023-03-21 04:07:40 EDT*
 
 .. role:: series(title-reference)
 
@@ -288,19 +288,21 @@ looks like it will be a lot of fun.
 Story Engine
 ------------
 
-`Story Engine
-<http://www.hubrisgames.com/html/storyengbook.html>`_, 2nd Edition by
-`Hubris Games <http://www.hubrisgames.com/>`_, used for their science
-fantasy setting `Maelstrom`. The game is dice and mechanics light and,
-as you might expect from the title, focuses more on the dramatic
-aspects of roleplaying than the simulationist or gamist aspects.  The
-stripped-down but complete [2]_ version, `Story Bones <hubris-
-games.html#local-story-bones>`_, used to be available for `download
-<http://www.hubrisgames.com/pdf/bones.pdf>`_ at their giveway `page
-<http://www.hubrisgames.com/html/giv.html>`_ along with a lot of
-other Maelstrom/Story Engine material, but the Hubris Games site
-unfortunately disappeared some time in 2003. I used make some of those
-materials, including Story Bones, available on an earlier incarnation of this site, but time moves on and change is constant.
+`Story Engine <http://www.hubrisgames.com/html/storyengbook.html>`_,
+2nd Edition by `Hubris Games <http://www.hubrisgames.com/>`_, used for
+their science fantasy setting `Maelstrom`. The game is dice and
+mechanics light and, as you might expect from the title, focuses more
+on the dramatic aspects of roleplaying than the simulationist or
+gamist aspects.  The stripped-down but complete [2]_ version, `Story
+Bones <hubris- games.html#local-story-bones>`_, used to be available
+for `download <http://www.hubrisgames.com/pdf/bones.pdf>`_ at their
+giveway `page <http://www.hubrisgames.com/html/giv.html>`_ along with
+a lot of other Maelstrom/Story Engine material, but the Hubris Games
+site unfortunately disappeared some time in 2003. I used make some of
+those materials, including Story Bones, available on an earlier
+incarnation of this site, you can only reach that version through the
+`Internet Archive
+<https://web.archive.org/web/20100127163623/http://tkb.mpl.com/~tkb/hubris-games.html>`_.
 
 Luckily `Precis Intermedia Gaming <http://www.pigames.net/>`_ now
 sells `PDFs and physical books
