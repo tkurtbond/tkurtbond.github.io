@@ -55,7 +55,104 @@
         <div class="row">
             <div class="col-sm-8 blog-main">
 <div class="postindex">
-    <article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2022/07/04/the-school-of-niklaus-wirth-the-art-of-simplicity/" class="u-url">The School of Niklaus Wirth: The Art of Simplicity</a></h2>
+    <article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2022/07/09/using-the-old-version-of-ada-mode-for-emacs/" class="u-url">Using the old version of Ada Mode for Emacs</a></h2>
+        <div class="metadata blog-post-meta">
+            <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
+            <p class="dateline"><a href="posts/2022/07/09/using-the-old-version-of-ada-mode-for-emacs/" rel="bookmark"><time class="published dt-published" datetime="2022-07-09T22:20:40-04:00" title="2022-07-09 22:20">2022-07-09 22:20</time></a></p>
+                <p class="commentline">        <a href="posts/2022/07/09/using-the-old-version-of-ada-mode-for-emacs/#disqus_thread" data-disqus-identifier="cache/posts/2022/07/09/using-the-old-version-of-ada-mode-for-emacs.html">Comments</a>
+
+
+        </p>
+</div>
+    </header><div class="e-content entry-content">
+    <p><em>Last edited: 2022-12-06 14:33:55 EST</em></p>
+<p>There are a lot of things to like about the <a class="reference external" href="https://en.wikipedia.org/wiki/Ada_(programming_language)">Ada</a> programming language;
+it seems to have a solid core of users, enough to support multiple
+commercial implementations and a <a class="reference external" href="https://en.wikipedia.org/wiki/Free_software">free/libre software</a> implementation
+that is part of the <a class="reference external" href="https://gcc.gnu.org/">GNU Compiler Collection</a>.  I occasionally use it
+myself.</p>
+<p><strong>However:</strong> I'm sure that the current version of <a class="reference external" href="https://www.nongnu.org/ada-mode/">Ada Mode</a> for
+<a class="reference external" href="https://www.gnu.org/software/emacs/">Emacs</a> (available as an <a class="reference external" href="https://elpa.gnu.org/">ELPA</a> <a class="reference external" href="https://elpa.gnu.org/packages/ada-mode.html">package</a>, and thus not included in
+<span class="app">Emacs</span> itself), which provides smart editing for the <a class="reference external" href="https://en.wikipedia.org/wiki/Ada_(programming_language)">Ada</a>
+programming language, and uses an external parser for the indentation,
+fontification<a class="footnote-reference brackets" href="posts/2022/07/09/using-the-old-version-of-ada-mode-for-emacs/#fontification" id="footnote-reference-1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>, and navigation engine, is wonderful
+if you can get it working, but I have <strong>never</strong> been able to get it to
+work.  My most recent try was today on Fedora 36 using GNAT 12.1.1
+20220507 (Red Hat 12.1.1-1).</p>
+<p>Here's what happened when I tried to build the Ada code for the
+parser, which is supplied as part of the <code class="docutils literal"><span class="pre">ada-mode</span></code>:</p>
+<pre class="literal-block">$ ./build.sh
+ada_mode_wisi_parse.gpr:44:26: warning: object directory "obj" not found
+Setup
+   [mkdir]        object directory for project Ada_Mode_Wisi_Parse
+Compile
+   [Ada]          ada_mode_wisi_lalr_parse.ads
+   [Ada]          ada_mode_wisi_lr1_parse.ads
+   [Ada]          run_ada_lalr_parse.ads
+   [Ada]          run_ada_lr1_parse.ads
+   [Ada]          gpr_mode_wisi_parse.ads
+   [Ada]          run_gpr_parse.ads
+   [Ada]          gpr_query.adb
+   [C]            wisitoken_grammar_re2c.c
+   [C]            ada_re2c.c
+   [C]            gpr_re2c.c
+   [Ada]          ada_process_actions.adb
+   [Ada]          ada_process_lr1_main.adb
+   [Ada]          gen_run_wisi_lr_text_rep_parse.adb
+   [Ada]          run_wisi_common_parse.adb
+   [Ada]          wisi.adb
+gnatcoll-sql.adb:742:07: error: ambiguous expression (cannot resolve "Append")
+gnatcoll-sql.adb:742:07: error: possible interpretation at a-coinve.ads:280, instance at gnatcoll-sql.ads:1109
+gnatcoll-sql.adb:742:07: error: possible interpretation at a-coinve.ads:270, instance at gnatcoll-sql.ads:1109
+
+   compilation of gpr_query.adb failed
+
+gprbuild: *** compilation phase failed</pre>
+<p>Sigh.  Without the external parser the current <a class="reference external" href="https://www.nongnu.org/ada-mode/">Ada Mode</a> is
+completely unworkable: it doesn't even do indentation correctly, much
+less do fontification.</p>
+<p>However, when I did some Ada work a number of years ago, I was ok
+with the version that used to be in <span class="app">Emacs</span> itself.  So I dug it
+out of the <a class="reference external" href="https://savannah.gnu.org/git/?group=emacs">Emacs git repository</a> at <a class="reference external" href="https://savannah.gnu.org">savannah.gnu.org</a>.  Basically,
+I cloned the git repository and then figured out what commit it was
+deleted in by doing:</p>
+<pre class="literal-block">$ git rev-list HEAD -n 1 -- lisp/progmodes/ada-mode.el
+a13c64204c8ead966789abf8efe176e4f2d4f599</pre>
+<p>Then I checked out the files involved:</p>
+<pre class="literal-block">$ git checkout a13c64204c8ead966789abf8efe176e4f2d4f599^ lisp/progmodes/ada-mode.el lisp/progmodes/ada-prj.el lisp/progmodes/ada-stmt.el lisp/progmodes/ada-xref.el doc/misc/ada-mode.texi</pre>
+<p>The <code class="docutils literal">^</code> at the end of the commit hash says to get the previous
+commit.</p>
+<p>You'll also need <span class="file">doc/docstyle.texi</span> and
+<span class="file">doc/doclicense.texi</span> if you want to build documentation from
+<span class="file">ada-mode.texi</span>.</p>
+<p>And I've put the files in a <a class="reference external" href="emacs/old-ada-mode.zip">zip file</a> for anybody who is in the same
+situation as I was, along with the generated documentation files
+<span class="file">.info</span>, <span class="file">.html</span>, and <span class="file">.pdf</span>.</p>
+<p>Just put them somewhere on your <code class="docutils literal"><span class="pre">load-path</span></code> and add <code class="docutils literal">(autoload
+<span class="pre">'ada-mode</span> <span class="pre">"ada-mode")</span></code> to your emacs config file.</p>
+<p>I'm sure the current <a class="reference external" href="https://www.nongnu.org/ada-mode/">Ada Mode</a> has a lot more useful features, and
+I'd love to use it, but
+this at least lets me edit with automatic indentation, formatting, and
+fontification.</p>
+<aside class="footnote-list brackets"><aside class="footnote brackets" id="fontification" role="note"><span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="posts/2022/07/09/using-the-old-version-of-ada-mode-for-emacs/#footnote-reference-1">1</a><span class="fn-bracket">]</span></span>
+<p>‘Fontification’ is the process of displaying source code with
+different font properties (such as color and typeface) for
+differing syntactic roles.  <a class="reference external" href="https://www.gnu.org/software/emacs/">Emacs</a> and many other editors do this
+to make it easier to distinguish different parts of the source
+code, to help prevent errors.</p>
+</aside></aside><!--  --><!-- Local Variables:
+time-stamp-format: "%Y-%02m-%02d %02H:%02M:%02S %Z"
+time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
+time-stamp-end: "\\*\\\\?\n"
+End: --><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="categories/ada/" rel="tag">ada</a></li>
+            <li><a class="tag p-category" href="categories/ada-mode/" rel="tag">ada-mode</a></li>
+            <li><a class="tag p-category" href="categories/ada-modeel/" rel="tag">ada-mode.el</a></li>
+            <li><a class="tag p-category" href="categories/emacs/" rel="tag">emacs</a></li>
+            <li><a class="tag p-category" href="categories/freelibre-software/" rel="tag">free/libre software</a></li>
+        </ul></nav>
+</div>
+    </article><article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2022/07/04/the-school-of-niklaus-wirth-the-art-of-simplicity/" class="u-url">The School of Niklaus Wirth: The Art of Simplicity</a></h2>
         <div class="metadata blog-post-meta">
             <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
             <p class="dateline"><a href="posts/2022/07/04/the-school-of-niklaus-wirth-the-art-of-simplicity/" rel="bookmark"><time class="published dt-published" datetime="2022-07-04T11:33:38-04:00" title="2022-07-04 11:33">2022-07-04 11:33</time></a></p>
