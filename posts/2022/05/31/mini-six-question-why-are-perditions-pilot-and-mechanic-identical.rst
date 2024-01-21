@@ -8,7 +8,7 @@
 .. type: text
 
 As part of my work making an `SRD for Mini
-Six <'https://github.com/tkurtbond/Minimal-OpenD6'>`__ I was reminded
+Six <https://github.com/tkurtbond/Minimal-OpenD6>`__ I was reminded
 that in the Perdition sample setting the character templates for the
 Pilot and the Mechanic are identical, which seems odd. Here, take a
 look:
