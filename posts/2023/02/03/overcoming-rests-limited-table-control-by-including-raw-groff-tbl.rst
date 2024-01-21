@@ -12,7 +12,7 @@
 .. role:: title
 .. role:: command
 
-*Last edited: 2023-02-14 07:06:18 EST*
+*Last edited: 2024-01-21 15:55:09 EST*
 
 So.  I have a CHICKEN Scheme program that converts `Big Eyes Small
 Mouth 4E`__ characters from a YAML definition into reStructuredText_
@@ -143,14 +143,15 @@ program: so I can put it on my blog!  It would be better than images
 in cases where I’m not actually comparing the PDF output of various
 things.
 
-Well, it took me longer that I expected, 4¼ hours.  After the first 2
-hours I was fried (it had been a long day): if I had stopped then I
-probably could have finished it the next day in an hour.  Oh well.
-The new output routine and its new supporting routines were 208 lines
-long.
+Well, it took me longer than I expected to write the new version of
+the output routines for embedded :app:`tbl` in rst: 4¼ hours.  After
+the first 2 hours I was fried (it had already been a long day): if I
+had stopped then I probably could have finished it the next day in an
+hour.  Oh well.  The new output routine and its new supporting
+routines were 208 lines long.
 
-Here's an image of the page produced (probably from same YAML file; I
-have a couple, since one of them was an early test file for
+Here's an image of the page produced (probably from the same YAML
+file; I have a couple, since one of them was an early test file for
 :command:`besm-rst`) using the new output routine, with :app:`reST`
 output with :app:`tbl` output in ``.. raw:: ms``, pulled from the
 document with all the pregenerated characters:
@@ -173,9 +174,10 @@ The git repo with this program and some test data is on github_.
 .. _github: https://github.com/tkurtbond/besm-tools
           
 Enyon Boase is a pregenerated character that I came up for my
-:title:`BESM 4E` rewrite of the :title:`BESM 1E` adventure “Red
-Planet, Blue Helmets”, from :title:`Big Robots, Cool Starships`.  The
-FV2021 Coleopteran is also from that adventure.
+:title:`BESM 2ER` rewrite of the :title:`BESM 1E` adventure “Red
+Planet, Blue Helmets”, from :title:`Big Robots, Cool Starships`, which
+I'm now converting to :title:`BESM 4E`.  The FV2021 Coleopteran is
+also from that adventure.
 
 .. [#markdown] It's a little better coming from one of :app:`pandoc`'s
    variants of Markdown, because you can specify alignment of columns
