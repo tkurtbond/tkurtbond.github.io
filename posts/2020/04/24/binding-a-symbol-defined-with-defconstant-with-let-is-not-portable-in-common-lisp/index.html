@@ -31,7 +31,7 @@ If y'>
 <meta property="article:tag" content="sbcl">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400;1,700&amp;family=Lato:ital,wght@0,400;0,700;1,400;1,700&amp;family=Source+Code+Pro:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Text&amp;family=Lato&amp;family=IBM+Plex+Mono" rel="stylesheet">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
@@ -89,12 +89,12 @@ If y'>
     </header><div class="e-content entry-content" itemprop="articleBody text">
     <p><a class="reference external" href="http://www.sbcl.org/">SBCL</a> and <a class="reference external" href="https://ccl.clozure.com/">CCL</a> and <a class="reference external" href="https://clisp.sourceforge.io/">CLISP</a> think binding a symbol defined with <code class="docutils literal">defconstant</code>
 is an error, so if you do</p>
-<div class="code"><pre class="code common-lisp"><a id="rest_code_99ee419acb4e435b8b3a2abf618a8f96-1" name="rest_code_99ee419acb4e435b8b3a2abf618a8f96-1" href="#rest_code_99ee419acb4e435b8b3a2abf618a8f96-1"></a><span class="p">(</span><span class="nb">defconstant</span><span class="w"> </span><span class="nv">foo</span><span class="w"> </span><span class="s">"foo"</span><span class="p">)</span>
-<a id="rest_code_99ee419acb4e435b8b3a2abf618a8f96-2" name="rest_code_99ee419acb4e435b8b3a2abf618a8f96-2" href="#rest_code_99ee419acb4e435b8b3a2abf618a8f96-2"></a><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">((</span><span class="nv">foo</span><span class="w"> </span><span class="s">"bar"</span><span class="p">))</span><span class="w"> </span><span class="nv">foo</span><span class="p">)</span>
+<div class="code"><pre class="code common-lisp"><a id="rest_code_2623d20c254d46578e471298bf0d56dc-1" name="rest_code_2623d20c254d46578e471298bf0d56dc-1" href="#rest_code_2623d20c254d46578e471298bf0d56dc-1"></a><span class="p">(</span><span class="nb">defconstant</span><span class="w"> </span><span class="nv">foo</span><span class="w"> </span><span class="s">"foo"</span><span class="p">)</span>
+<a id="rest_code_2623d20c254d46578e471298bf0d56dc-2" name="rest_code_2623d20c254d46578e471298bf0d56dc-2" href="#rest_code_2623d20c254d46578e471298bf0d56dc-2"></a><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">((</span><span class="nv">foo</span><span class="w"> </span><span class="s">"bar"</span><span class="p">))</span><span class="w"> </span><span class="nv">foo</span><span class="p">)</span>
 </pre></div>
 <p>you get an error.  But in <a class="reference external" href="https://abcl.org/">ABCL</a> and <a class="reference external" href="https://common-lisp.net/project/ecl/">ECL</a> you don’t.</p>
 <p>If you try</p>
-<div class="code"><pre class="code common-lisp"><a id="rest_code_6bb2832e253044e5bfe462b9292c7bde-1" name="rest_code_6bb2832e253044e5bfe462b9292c7bde-1" href="#rest_code_6bb2832e253044e5bfe462b9292c7bde-1"></a><span class="p">(</span><span class="nb">defun</span><span class="w"> </span><span class="nv">x</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">((</span><span class="nv">foo</span><span class="w"> </span><span class="s">"bar"</span><span class="p">))</span><span class="w"> </span><span class="nv">foo</span><span class="p">))</span>
+<div class="code"><pre class="code common-lisp"><a id="rest_code_d1ca20bfb0cc42cbb81aa1a9b9b46da7-1" name="rest_code_d1ca20bfb0cc42cbb81aa1a9b9b46da7-1" href="#rest_code_d1ca20bfb0cc42cbb81aa1a9b9b46da7-1"></a><span class="p">(</span><span class="nb">defun</span><span class="w"> </span><span class="nv">x</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">((</span><span class="nv">foo</span><span class="w"> </span><span class="s">"bar"</span><span class="p">))</span><span class="w"> </span><span class="nv">foo</span><span class="p">))</span>
 </pre></div>
 <p>in SBCL and CCL you get an error when the function is compiled.
 In SBCL the function is defined, but always gives an error when run.

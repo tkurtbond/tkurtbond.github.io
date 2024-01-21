@@ -20,7 +20,7 @@ to be a Snow_ version either.
 
 .. _Chicken Scheme: http://call-cc.org/
 .. _SRFI-159: https://srfi.schemers.org/srfi-159/srfi-159.html
-.. _fmt:  - http://wiki.call-cc.org/eggref/5/fmt
+.. _fmt: http://wiki.call-cc.org/eggref/5/fmt
 __ http://synthcode.com/scheme/fmt/
 .. _Chibi Scheme: https://github.com/ashinn/chibi-scheme
 .. _implementation: https://github.com/ashinn/chibi-scheme/tree/master/lib/srfi/159

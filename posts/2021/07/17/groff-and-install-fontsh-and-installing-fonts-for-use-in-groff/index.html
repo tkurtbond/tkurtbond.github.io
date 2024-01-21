@@ -29,7 +29,7 @@ We've had some discussion on the list recently and in the pa">
 <meta property="article:tag" content="troff">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400;1,700&amp;family=Lato:ital,wght@0,400;0,700;1,400;1,700&amp;family=Source+Code+Pro:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Text&amp;family=Lato&amp;family=IBM+Plex+Mono" rel="stylesheet">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
@@ -128,7 +128,7 @@ files into proper places under <span class="app">groff</span>'s site-font direct
 <p>So, for instance, you'd cd to the directory that holds the <span class="file">.ttf</span> files
 you downloaded.  Then, to install the Regular variant of Cormorant
 Garamond you'd run the command</p>
-<div class="code"><pre class="code bash"><a id="rest_code_5c5f4823ae384d418c9f3bedf8b9cb7c-1" name="rest_code_5c5f4823ae384d418c9f3bedf8b9cb7c-1" href="#rest_code_5c5f4823ae384d418c9f3bedf8b9cb7c-1"></a><span class="k">$(</span>IFDIR<span class="k">)</span>/install-font.sh<span class="w"> </span>-n<span class="w"> </span>-P<span class="w"> </span><span class="s2">"</span><span class="nv">$DEST</span><span class="s2">"</span><span class="w"> </span>-d<span class="w"> </span>-F<span class="w"> </span>CormorantGaramond<span class="w"> </span>-f<span class="w"> </span>+R<span class="w"> </span>CormorantGaramond-Regular.ttf
+<div class="code"><pre class="code bash"><a id="rest_code_f45a23e15e504c1283402c37a9272349-1" name="rest_code_f45a23e15e504c1283402c37a9272349-1" href="#rest_code_f45a23e15e504c1283402c37a9272349-1"></a><span class="k">$(</span>IFDIR<span class="k">)</span>/install-font.sh<span class="w"> </span>-n<span class="w"> </span>-P<span class="w"> </span><span class="s2">"</span><span class="nv">$DEST</span><span class="s2">"</span><span class="w"> </span>-d<span class="w"> </span>-F<span class="w"> </span>CormorantGaramond<span class="w"> </span>-f<span class="w"> </span>+R<span class="w"> </span>CormorantGaramond-Regular.ttf
 </pre></div>
 <p>where <code class="docutils literal">IFDIR</code> is an environment variable indicating the directory
 where <span class="command">install-font.sh</span> is located and <code class="docutils literal">DEST</code> is an
@@ -164,9 +164,9 @@ name of the <span class="app">groff</span> font and the <span class="app">groff<
 name of the Truetype or OpenType file you are converting.</p>
 <p>To complete the example, here are the commands to install the Italic,
 Bold, and Bold Italic variants of Cormorant Garamond:</p>
-<div class="code"><pre class="code bash"><a id="rest_code_b2eb705abd6840fcae268afe05b8ee9b-1" name="rest_code_b2eb705abd6840fcae268afe05b8ee9b-1" href="#rest_code_b2eb705abd6840fcae268afe05b8ee9b-1"></a><span class="k">$(</span>IFDIR<span class="k">)</span>/install-font.sh<span class="w"> </span>-n<span class="w"> </span>-P<span class="w"> </span><span class="s2">"</span><span class="nv">$DEST</span><span class="s2">"</span><span class="w"> </span>-d<span class="w"> </span>-F<span class="w"> </span>CormorantGaramond<span class="w"> </span>-f<span class="w"> </span>+I<span class="w"> </span>CormorantGaramond-Italic.ttf
-<a id="rest_code_b2eb705abd6840fcae268afe05b8ee9b-2" name="rest_code_b2eb705abd6840fcae268afe05b8ee9b-2" href="#rest_code_b2eb705abd6840fcae268afe05b8ee9b-2"></a><span class="k">$(</span>IFDIR<span class="k">)</span>/install-font.sh<span class="w"> </span>-n<span class="w"> </span>-P<span class="w"> </span><span class="s2">"</span><span class="nv">$DEST</span><span class="s2">"</span><span class="w"> </span>-d<span class="w"> </span>-F<span class="w"> </span>CormorantGaramond<span class="w"> </span>-f<span class="w"> </span>+B<span class="w"> </span>CormorantGaramond-Bold.ttf
-<a id="rest_code_b2eb705abd6840fcae268afe05b8ee9b-3" name="rest_code_b2eb705abd6840fcae268afe05b8ee9b-3" href="#rest_code_b2eb705abd6840fcae268afe05b8ee9b-3"></a><span class="k">$(</span>IFDIR<span class="k">)</span>/install-font.sh<span class="w"> </span>-n<span class="w"> </span>-P<span class="w"> </span><span class="s2">"</span><span class="nv">$DEST</span><span class="s2">"</span><span class="w"> </span>-d<span class="w"> </span>-F<span class="w"> </span>CormorantGaramond<span class="w"> </span>-f<span class="w"> </span>+BI<span class="w"> </span>CormorantGaramond-BoldItalic.
+<div class="code"><pre class="code bash"><a id="rest_code_09f40db3df3f488e84fdcfa1b32fcb77-1" name="rest_code_09f40db3df3f488e84fdcfa1b32fcb77-1" href="#rest_code_09f40db3df3f488e84fdcfa1b32fcb77-1"></a><span class="k">$(</span>IFDIR<span class="k">)</span>/install-font.sh<span class="w"> </span>-n<span class="w"> </span>-P<span class="w"> </span><span class="s2">"</span><span class="nv">$DEST</span><span class="s2">"</span><span class="w"> </span>-d<span class="w"> </span>-F<span class="w"> </span>CormorantGaramond<span class="w"> </span>-f<span class="w"> </span>+I<span class="w"> </span>CormorantGaramond-Italic.ttf
+<a id="rest_code_09f40db3df3f488e84fdcfa1b32fcb77-2" name="rest_code_09f40db3df3f488e84fdcfa1b32fcb77-2" href="#rest_code_09f40db3df3f488e84fdcfa1b32fcb77-2"></a><span class="k">$(</span>IFDIR<span class="k">)</span>/install-font.sh<span class="w"> </span>-n<span class="w"> </span>-P<span class="w"> </span><span class="s2">"</span><span class="nv">$DEST</span><span class="s2">"</span><span class="w"> </span>-d<span class="w"> </span>-F<span class="w"> </span>CormorantGaramond<span class="w"> </span>-f<span class="w"> </span>+B<span class="w"> </span>CormorantGaramond-Bold.ttf
+<a id="rest_code_09f40db3df3f488e84fdcfa1b32fcb77-3" name="rest_code_09f40db3df3f488e84fdcfa1b32fcb77-3" href="#rest_code_09f40db3df3f488e84fdcfa1b32fcb77-3"></a><span class="k">$(</span>IFDIR<span class="k">)</span>/install-font.sh<span class="w"> </span>-n<span class="w"> </span>-P<span class="w"> </span><span class="s2">"</span><span class="nv">$DEST</span><span class="s2">"</span><span class="w"> </span>-d<span class="w"> </span>-F<span class="w"> </span>CormorantGaramond<span class="w"> </span>-f<span class="w"> </span>+BI<span class="w"> </span>CormorantGaramond-BoldItalic.
 </pre></div>
 <p>As I said in an earlier email to the list, I tend to put all four
 commands into a script so I can run them again if something goes wrong
@@ -175,7 +175,7 @@ installation of <span class="app">groff</span>.  In the case of Cormorant Garamo
 file <span class="file">install-cormorant-garamond.sh</span>.</p>
 <p><strong>Later:</strong> Peter Schaffter <a class="reference external" href="https://lists.gnu.org/archive/html/groff/2021-07/msg00090.html">pointed out</a> that the <em>simple</em> use of
 <span class="command">install-font.sh</span> is:</p>
-<div class="code"><pre class="code bash"><a id="rest_code_d0e9c6f2d2d94b2dae3512d81a3a5ca4-1" name="rest_code_d0e9c6f2d2d94b2dae3512d81a3a5ca4-1" href="#rest_code_d0e9c6f2d2d94b2dae3512d81a3a5ca4-1"></a>sudo<span class="w"> </span>install-font.sh<span class="w"> </span>fontfile
+<div class="code"><pre class="code bash"><a id="rest_code_cb8c93dd7346441991739e9833d767b1-1" name="rest_code_cb8c93dd7346441991739e9833d767b1-1" href="#rest_code_cb8c93dd7346441991739e9833d767b1-1"></a>sudo<span class="w"> </span>install-font.sh<span class="w"> </span>fontfile
 </pre></div>
 <p>and then answer the questions the script asks.  He also pointed out
 that it creates the <span class="file">site-font</span> directory and necessary

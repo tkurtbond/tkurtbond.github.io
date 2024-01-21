@@ -10,7 +10,7 @@
 .. role:: app
 .. role:: file
 
-*Last edited: 2023-02-14 06:33:58 EST*
+*Last edited: 2024-01-21 11:32:05 EST*
 
 Are you familiar with `lisp-style trampolines`__?  A trampoline is a
 loop that iteratively invokes functions that return functions.  The
@@ -231,7 +231,7 @@ by the way.
 First, here's `NotForever.Mod`_, the standard program with a recursive
 function procedure that will overflow the stack.
 
-.. _NotForever.Mod: trampolines/oberon-2/NotForever.Mod
+.. _NotForever.Mod: /trampolines/oberon-2/NotForever.Mod
 
 .. include:: files/trampolines/oberon-2/NotForever.Mod
    :code: modula2
@@ -244,7 +244,7 @@ that is a function procedure that returns other function procedures.
 Here's the first attempt at the limited trampoline,
 `TrampolineBroken.Mod`_.
 
-.. _TrampolineBroken.Mod: trampolines/oberon-2/TrampolineBroken.Mod
+.. _TrampolineBroken.Mod: /trampolines/oberon-2/TrampolineBroken.Mod
 
 .. include:: files/trampolines/oberon-2/TrampolineBroken.Mod
    :code: modula2
