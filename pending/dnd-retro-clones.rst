@@ -277,13 +277,13 @@ well as a free PDF of the `Usherwood Publishing`_ `OSRIC Pocket SRD`_
 version) but was more interested in `Basic/Expert D&D`_ retroclones at
 the time.  I think it is a well written, organized, and presented
 restatement of AD&D 1E.  The `Black Blade Publishing`_ print edition
-is a very nice offset printed, sewn spine, volume.  The `Usherwood
+is a very nice offset printed volume with a sewn spine.  The `Usherwood
 Publishing`_ `OSRIC Pocket SRD`_ (PDF, POD) is quite affordable.  I
 just wish OSRIC wasn't missing some of the classes.  (I miss the Monk
 in particular.)  I was also surprised by how many of the little quirks
 and restrictions of AD&D 1E have been ironed out, although many
 remain.  `Usherwood Publishing`_ has some supplements that add some of
-the missing classes, though.
+the missing classes, though I'm not sure I like all their versions.
 
 .. _OSRICKnK: http://www.knights-n-knaves.com/osric/
 .. _OSRIC PDF: http://www.knights-n-knaves.com/osric/download.html
