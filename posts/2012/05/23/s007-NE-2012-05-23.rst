@@ -14,7 +14,7 @@ WVHTCF Necessary Evil, Session #7: RoboRally Trap!
 Or, Anvil Looses His Grip!
 ##########################
 :date: 2012-05-23
-:version: 2021-08-09 10:47:45
+:version: 2024-01-21 11:53:28
 
 
 .. role:: pc
@@ -133,7 +133,7 @@ and finds a `RoboRally-like trap room!`_.
 
 .. _roborally-trap:
 
-.. figure:: s007-NE-roborally-like-encounter.jpg
+.. figure:: /s007-NE-roborally-like-encounter.jpg
    :alt: RoboRally-like trap at Mechno-Man's headquarters
    :width: 100%
    :name: RoboRally-like trap room!
