@@ -14,3 +14,11 @@ the repository and and switch to the ``src`` branch do either::
   git clone --branch src --single-branch git@github.com:tkurtbond/tkurtbond.github.io.git
 
 .. _Nikola: https://getnikola.com/
+
+
+Notes
+=====
+
+Fonts are in: ``/home/tkb/Repos/tkurtbond.github.io/themes/bootblog-jinja/templates/base.tmpl`` although that's probably not a great place for them.
+
+
