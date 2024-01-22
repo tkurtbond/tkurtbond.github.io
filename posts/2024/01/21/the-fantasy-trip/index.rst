@@ -2,7 +2,7 @@
 .. slug: the-fantasy-trip
 .. date: 2024-01-21 17:31:57 UTC-05:00
 .. tags: tft,the fantasy trip,melee,wizard,metagaming,steve jackson games,sjg,tft helper,ios,android
-.. category: 
+.. category: gaming/rpg
 .. link: 
 .. description: 
 .. type: text

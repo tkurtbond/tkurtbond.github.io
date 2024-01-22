@@ -2,7 +2,7 @@
 .. slug: dnd-retro-clones-and-neo-clones
 .. date: 2024-01-21 13:43:21 UTC-05:00
 .. tags: retro-clone,neo-clone,ose,old-school essentials,labyrinth lord,ll,advanced edition companion,aec,acks,adventurer conqueror king system,fmc,fantastic medieval campaigns
-.. category: gaming/rpg
+.. category: gaming/rpg/dnd
 .. link: 
 .. description: 
 .. type: text

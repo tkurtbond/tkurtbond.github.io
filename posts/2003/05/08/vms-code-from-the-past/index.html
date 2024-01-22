@@ -165,51 +165,51 @@ and is probably bad style.  However, are there any <em>practical</em>
 reasons why this wouldn't work safely?  Are there any
 conditions under which this hack would fail to work?</p>
 <p>Here is an example program:</p>
-<div class="code"><pre class="code text"><a id="rest_code_ebd578cc2a6043eca7d1572a0cefad07-1" name="rest_code_ebd578cc2a6043eca7d1572a0cefad07-1" href="#rest_code_ebd578cc2a6043eca7d1572a0cefad07-1"></a>program redim
-<a id="rest_code_ebd578cc2a6043eca7d1572a0cefad07-2" name="rest_code_ebd578cc2a6043eca7d1572a0cefad07-2" href="#rest_code_ebd578cc2a6043eca7d1572a0cefad07-2"></a>    option type = explicit, constant type = integer, &amp;
-<a id="rest_code_ebd578cc2a6043eca7d1572a0cefad07-3" name="rest_code_ebd578cc2a6043eca7d1572a0cefad07-3" href="#rest_code_ebd578cc2a6043eca7d1572a0cefad07-3"></a>        size = integer long, size = real double
-<a id="rest_code_ebd578cc2a6043eca7d1572a0cefad07-4" name="rest_code_ebd578cc2a6043eca7d1572a0cefad07-4" href="#rest_code_ebd578cc2a6043eca7d1572a0cefad07-4"></a>
-<a id="rest_code_ebd578cc2a6043eca7d1572a0cefad07-5" name="rest_code_ebd578cc2a6043eca7d1572a0cefad07-5" href="#rest_code_ebd578cc2a6043eca7d1572a0cefad07-5"></a>    external sub redim_in_sub (string dim())
-<a id="rest_code_ebd578cc2a6043eca7d1572a0cefad07-6" name="rest_code_ebd578cc2a6043eca7d1572a0cefad07-6" href="#rest_code_ebd578cc2a6043eca7d1572a0cefad07-6"></a>    external long function my_redim (string dim(), long)
-<a id="rest_code_ebd578cc2a6043eca7d1572a0cefad07-7" name="rest_code_ebd578cc2a6043eca7d1572a0cefad07-7" href="#rest_code_ebd578cc2a6043eca7d1572a0cefad07-7"></a>
-<a id="rest_code_ebd578cc2a6043eca7d1572a0cefad07-8" name="rest_code_ebd578cc2a6043eca7d1572a0cefad07-8" href="#rest_code_ebd578cc2a6043eca7d1572a0cefad07-8"></a>    declare long i, r
-<a id="rest_code_ebd578cc2a6043eca7d1572a0cefad07-9" name="rest_code_ebd578cc2a6043eca7d1572a0cefad07-9" href="#rest_code_ebd578cc2a6043eca7d1572a0cefad07-9"></a>
-<a id="rest_code_ebd578cc2a6043eca7d1572a0cefad07-10" name="rest_code_ebd578cc2a6043eca7d1572a0cefad07-10" href="#rest_code_ebd578cc2a6043eca7d1572a0cefad07-10"></a>    i = 10
-<a id="rest_code_ebd578cc2a6043eca7d1572a0cefad07-11" name="rest_code_ebd578cc2a6043eca7d1572a0cefad07-11" href="#rest_code_ebd578cc2a6043eca7d1572a0cefad07-11"></a>    dim string vs(i) ! has to be a variable to make it an executable dim.
-<a id="rest_code_ebd578cc2a6043eca7d1572a0cefad07-12" name="rest_code_ebd578cc2a6043eca7d1572a0cefad07-12" href="#rest_code_ebd578cc2a6043eca7d1572a0cefad07-12"></a>
-<a id="rest_code_ebd578cc2a6043eca7d1572a0cefad07-13" name="rest_code_ebd578cc2a6043eca7d1572a0cefad07-13" href="#rest_code_ebd578cc2a6043eca7d1572a0cefad07-13"></a>    r = my_redim (vs(), 30)
-<a id="rest_code_ebd578cc2a6043eca7d1572a0cefad07-14" name="rest_code_ebd578cc2a6043eca7d1572a0cefad07-14" href="#rest_code_ebd578cc2a6043eca7d1572a0cefad07-14"></a>    print "ubound(vs):"; ubound(vs)
-<a id="rest_code_ebd578cc2a6043eca7d1572a0cefad07-15" name="rest_code_ebd578cc2a6043eca7d1572a0cefad07-15" href="#rest_code_ebd578cc2a6043eca7d1572a0cefad07-15"></a>    for i = lbound(vs) to ubound(vs) \ vs(i) = "vs 30-" + num1$(i) \ next i
-<a id="rest_code_ebd578cc2a6043eca7d1572a0cefad07-16" name="rest_code_ebd578cc2a6043eca7d1572a0cefad07-16" href="#rest_code_ebd578cc2a6043eca7d1572a0cefad07-16"></a>    gosub print_vs
-<a id="rest_code_ebd578cc2a6043eca7d1572a0cefad07-17" name="rest_code_ebd578cc2a6043eca7d1572a0cefad07-17" href="#rest_code_ebd578cc2a6043eca7d1572a0cefad07-17"></a>
-<a id="rest_code_ebd578cc2a6043eca7d1572a0cefad07-18" name="rest_code_ebd578cc2a6043eca7d1572a0cefad07-18" href="#rest_code_ebd578cc2a6043eca7d1572a0cefad07-18"></a>    call redim_in_sub (vs())
-<a id="rest_code_ebd578cc2a6043eca7d1572a0cefad07-19" name="rest_code_ebd578cc2a6043eca7d1572a0cefad07-19" href="#rest_code_ebd578cc2a6043eca7d1572a0cefad07-19"></a>    print "ubound(vs):"; ubound(vs)
-<a id="rest_code_ebd578cc2a6043eca7d1572a0cefad07-20" name="rest_code_ebd578cc2a6043eca7d1572a0cefad07-20" href="#rest_code_ebd578cc2a6043eca7d1572a0cefad07-20"></a>    gosub print_Vs
-<a id="rest_code_ebd578cc2a6043eca7d1572a0cefad07-21" name="rest_code_ebd578cc2a6043eca7d1572a0cefad07-21" href="#rest_code_ebd578cc2a6043eca7d1572a0cefad07-21"></a>
-<a id="rest_code_ebd578cc2a6043eca7d1572a0cefad07-22" name="rest_code_ebd578cc2a6043eca7d1572a0cefad07-22" href="#rest_code_ebd578cc2a6043eca7d1572a0cefad07-22"></a>    exit program
-<a id="rest_code_ebd578cc2a6043eca7d1572a0cefad07-23" name="rest_code_ebd578cc2a6043eca7d1572a0cefad07-23" href="#rest_code_ebd578cc2a6043eca7d1572a0cefad07-23"></a>
-<a id="rest_code_ebd578cc2a6043eca7d1572a0cefad07-24" name="rest_code_ebd578cc2a6043eca7d1572a0cefad07-24" href="#rest_code_ebd578cc2a6043eca7d1572a0cefad07-24"></a>print_vs:
-<a id="rest_code_ebd578cc2a6043eca7d1572a0cefad07-25" name="rest_code_ebd578cc2a6043eca7d1572a0cefad07-25" href="#rest_code_ebd578cc2a6043eca7d1572a0cefad07-25"></a>    for i = lbound(vs) to ubound(vs) \ print i; ": "; vs(i) \ next i
-<a id="rest_code_ebd578cc2a6043eca7d1572a0cefad07-26" name="rest_code_ebd578cc2a6043eca7d1572a0cefad07-26" href="#rest_code_ebd578cc2a6043eca7d1572a0cefad07-26"></a>    return ! from print_vs
-<a id="rest_code_ebd578cc2a6043eca7d1572a0cefad07-27" name="rest_code_ebd578cc2a6043eca7d1572a0cefad07-27" href="#rest_code_ebd578cc2a6043eca7d1572a0cefad07-27"></a>
-<a id="rest_code_ebd578cc2a6043eca7d1572a0cefad07-28" name="rest_code_ebd578cc2a6043eca7d1572a0cefad07-28" href="#rest_code_ebd578cc2a6043eca7d1572a0cefad07-28"></a>end program ! redim
-<a id="rest_code_ebd578cc2a6043eca7d1572a0cefad07-29" name="rest_code_ebd578cc2a6043eca7d1572a0cefad07-29" href="#rest_code_ebd578cc2a6043eca7d1572a0cefad07-29"></a>
-<a id="rest_code_ebd578cc2a6043eca7d1572a0cefad07-30" name="rest_code_ebd578cc2a6043eca7d1572a0cefad07-30" href="#rest_code_ebd578cc2a6043eca7d1572a0cefad07-30"></a>function long my_redim (long s by value, long n)
-<a id="rest_code_ebd578cc2a6043eca7d1572a0cefad07-31" name="rest_code_ebd578cc2a6043eca7d1572a0cefad07-31" href="#rest_code_ebd578cc2a6043eca7d1572a0cefad07-31"></a>    option type = explicit, constant type = integer, &amp;
-<a id="rest_code_ebd578cc2a6043eca7d1572a0cefad07-32" name="rest_code_ebd578cc2a6043eca7d1572a0cefad07-32" href="#rest_code_ebd578cc2a6043eca7d1572a0cefad07-32"></a>        size = integer long, size = real double
-<a id="rest_code_ebd578cc2a6043eca7d1572a0cefad07-33" name="rest_code_ebd578cc2a6043eca7d1572a0cefad07-33" href="#rest_code_ebd578cc2a6043eca7d1572a0cefad07-33"></a>    declare long r
-<a id="rest_code_ebd578cc2a6043eca7d1572a0cefad07-34" name="rest_code_ebd578cc2a6043eca7d1572a0cefad07-34" href="#rest_code_ebd578cc2a6043eca7d1572a0cefad07-34"></a>    external long function dbasic$rt_dim (long by value, long by value)
-<a id="rest_code_ebd578cc2a6043eca7d1572a0cefad07-35" name="rest_code_ebd578cc2a6043eca7d1572a0cefad07-35" href="#rest_code_ebd578cc2a6043eca7d1572a0cefad07-35"></a>    r = dbasic$rt_dim (s, n)
-<a id="rest_code_ebd578cc2a6043eca7d1572a0cefad07-36" name="rest_code_ebd578cc2a6043eca7d1572a0cefad07-36" href="#rest_code_ebd578cc2a6043eca7d1572a0cefad07-36"></a>end function r ! my_redim
-<a id="rest_code_ebd578cc2a6043eca7d1572a0cefad07-37" name="rest_code_ebd578cc2a6043eca7d1572a0cefad07-37" href="#rest_code_ebd578cc2a6043eca7d1572a0cefad07-37"></a>
-<a id="rest_code_ebd578cc2a6043eca7d1572a0cefad07-38" name="rest_code_ebd578cc2a6043eca7d1572a0cefad07-38" href="#rest_code_ebd578cc2a6043eca7d1572a0cefad07-38"></a>sub redim_in_sub (string s())
-<a id="rest_code_ebd578cc2a6043eca7d1572a0cefad07-39" name="rest_code_ebd578cc2a6043eca7d1572a0cefad07-39" href="#rest_code_ebd578cc2a6043eca7d1572a0cefad07-39"></a>    option type = explicit, constant type = integer, &amp;
-<a id="rest_code_ebd578cc2a6043eca7d1572a0cefad07-40" name="rest_code_ebd578cc2a6043eca7d1572a0cefad07-40" href="#rest_code_ebd578cc2a6043eca7d1572a0cefad07-40"></a>        size = integer long, size = real double
-<a id="rest_code_ebd578cc2a6043eca7d1572a0cefad07-41" name="rest_code_ebd578cc2a6043eca7d1572a0cefad07-41" href="#rest_code_ebd578cc2a6043eca7d1572a0cefad07-41"></a>    external sub set_strings (string dim(), string)
-<a id="rest_code_ebd578cc2a6043eca7d1572a0cefad07-42" name="rest_code_ebd578cc2a6043eca7d1572a0cefad07-42" href="#rest_code_ebd578cc2a6043eca7d1572a0cefad07-42"></a>    declare long i
-<a id="rest_code_ebd578cc2a6043eca7d1572a0cefad07-43" name="rest_code_ebd578cc2a6043eca7d1572a0cefad07-43" href="#rest_code_ebd578cc2a6043eca7d1572a0cefad07-43"></a>    call my_redim (s(), 40)
-<a id="rest_code_ebd578cc2a6043eca7d1572a0cefad07-44" name="rest_code_ebd578cc2a6043eca7d1572a0cefad07-44" href="#rest_code_ebd578cc2a6043eca7d1572a0cefad07-44"></a>    for i = 0 to 40 \ s(i) = "redim in sub " + num1$(i) \ next i
-<a id="rest_code_ebd578cc2a6043eca7d1572a0cefad07-45" name="rest_code_ebd578cc2a6043eca7d1572a0cefad07-45" href="#rest_code_ebd578cc2a6043eca7d1572a0cefad07-45"></a>end sub ! redim_in_sub
+<div class="code"><pre class="code text"><a id="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-1" name="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-1" href="#rest_code_151c936840bc4c899bbcb19bf1d5cfa2-1"></a>program redim
+<a id="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-2" name="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-2" href="#rest_code_151c936840bc4c899bbcb19bf1d5cfa2-2"></a>    option type = explicit, constant type = integer, &amp;
+<a id="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-3" name="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-3" href="#rest_code_151c936840bc4c899bbcb19bf1d5cfa2-3"></a>        size = integer long, size = real double
+<a id="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-4" name="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-4" href="#rest_code_151c936840bc4c899bbcb19bf1d5cfa2-4"></a>
+<a id="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-5" name="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-5" href="#rest_code_151c936840bc4c899bbcb19bf1d5cfa2-5"></a>    external sub redim_in_sub (string dim())
+<a id="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-6" name="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-6" href="#rest_code_151c936840bc4c899bbcb19bf1d5cfa2-6"></a>    external long function my_redim (string dim(), long)
+<a id="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-7" name="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-7" href="#rest_code_151c936840bc4c899bbcb19bf1d5cfa2-7"></a>
+<a id="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-8" name="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-8" href="#rest_code_151c936840bc4c899bbcb19bf1d5cfa2-8"></a>    declare long i, r
+<a id="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-9" name="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-9" href="#rest_code_151c936840bc4c899bbcb19bf1d5cfa2-9"></a>
+<a id="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-10" name="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-10" href="#rest_code_151c936840bc4c899bbcb19bf1d5cfa2-10"></a>    i = 10
+<a id="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-11" name="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-11" href="#rest_code_151c936840bc4c899bbcb19bf1d5cfa2-11"></a>    dim string vs(i) ! has to be a variable to make it an executable dim.
+<a id="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-12" name="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-12" href="#rest_code_151c936840bc4c899bbcb19bf1d5cfa2-12"></a>
+<a id="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-13" name="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-13" href="#rest_code_151c936840bc4c899bbcb19bf1d5cfa2-13"></a>    r = my_redim (vs(), 30)
+<a id="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-14" name="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-14" href="#rest_code_151c936840bc4c899bbcb19bf1d5cfa2-14"></a>    print "ubound(vs):"; ubound(vs)
+<a id="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-15" name="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-15" href="#rest_code_151c936840bc4c899bbcb19bf1d5cfa2-15"></a>    for i = lbound(vs) to ubound(vs) \ vs(i) = "vs 30-" + num1$(i) \ next i
+<a id="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-16" name="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-16" href="#rest_code_151c936840bc4c899bbcb19bf1d5cfa2-16"></a>    gosub print_vs
+<a id="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-17" name="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-17" href="#rest_code_151c936840bc4c899bbcb19bf1d5cfa2-17"></a>
+<a id="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-18" name="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-18" href="#rest_code_151c936840bc4c899bbcb19bf1d5cfa2-18"></a>    call redim_in_sub (vs())
+<a id="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-19" name="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-19" href="#rest_code_151c936840bc4c899bbcb19bf1d5cfa2-19"></a>    print "ubound(vs):"; ubound(vs)
+<a id="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-20" name="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-20" href="#rest_code_151c936840bc4c899bbcb19bf1d5cfa2-20"></a>    gosub print_Vs
+<a id="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-21" name="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-21" href="#rest_code_151c936840bc4c899bbcb19bf1d5cfa2-21"></a>
+<a id="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-22" name="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-22" href="#rest_code_151c936840bc4c899bbcb19bf1d5cfa2-22"></a>    exit program
+<a id="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-23" name="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-23" href="#rest_code_151c936840bc4c899bbcb19bf1d5cfa2-23"></a>
+<a id="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-24" name="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-24" href="#rest_code_151c936840bc4c899bbcb19bf1d5cfa2-24"></a>print_vs:
+<a id="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-25" name="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-25" href="#rest_code_151c936840bc4c899bbcb19bf1d5cfa2-25"></a>    for i = lbound(vs) to ubound(vs) \ print i; ": "; vs(i) \ next i
+<a id="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-26" name="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-26" href="#rest_code_151c936840bc4c899bbcb19bf1d5cfa2-26"></a>    return ! from print_vs
+<a id="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-27" name="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-27" href="#rest_code_151c936840bc4c899bbcb19bf1d5cfa2-27"></a>
+<a id="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-28" name="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-28" href="#rest_code_151c936840bc4c899bbcb19bf1d5cfa2-28"></a>end program ! redim
+<a id="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-29" name="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-29" href="#rest_code_151c936840bc4c899bbcb19bf1d5cfa2-29"></a>
+<a id="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-30" name="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-30" href="#rest_code_151c936840bc4c899bbcb19bf1d5cfa2-30"></a>function long my_redim (long s by value, long n)
+<a id="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-31" name="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-31" href="#rest_code_151c936840bc4c899bbcb19bf1d5cfa2-31"></a>    option type = explicit, constant type = integer, &amp;
+<a id="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-32" name="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-32" href="#rest_code_151c936840bc4c899bbcb19bf1d5cfa2-32"></a>        size = integer long, size = real double
+<a id="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-33" name="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-33" href="#rest_code_151c936840bc4c899bbcb19bf1d5cfa2-33"></a>    declare long r
+<a id="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-34" name="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-34" href="#rest_code_151c936840bc4c899bbcb19bf1d5cfa2-34"></a>    external long function dbasic$rt_dim (long by value, long by value)
+<a id="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-35" name="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-35" href="#rest_code_151c936840bc4c899bbcb19bf1d5cfa2-35"></a>    r = dbasic$rt_dim (s, n)
+<a id="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-36" name="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-36" href="#rest_code_151c936840bc4c899bbcb19bf1d5cfa2-36"></a>end function r ! my_redim
+<a id="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-37" name="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-37" href="#rest_code_151c936840bc4c899bbcb19bf1d5cfa2-37"></a>
+<a id="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-38" name="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-38" href="#rest_code_151c936840bc4c899bbcb19bf1d5cfa2-38"></a>sub redim_in_sub (string s())
+<a id="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-39" name="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-39" href="#rest_code_151c936840bc4c899bbcb19bf1d5cfa2-39"></a>    option type = explicit, constant type = integer, &amp;
+<a id="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-40" name="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-40" href="#rest_code_151c936840bc4c899bbcb19bf1d5cfa2-40"></a>        size = integer long, size = real double
+<a id="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-41" name="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-41" href="#rest_code_151c936840bc4c899bbcb19bf1d5cfa2-41"></a>    external sub set_strings (string dim(), string)
+<a id="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-42" name="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-42" href="#rest_code_151c936840bc4c899bbcb19bf1d5cfa2-42"></a>    declare long i
+<a id="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-43" name="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-43" href="#rest_code_151c936840bc4c899bbcb19bf1d5cfa2-43"></a>    call my_redim (s(), 40)
+<a id="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-44" name="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-44" href="#rest_code_151c936840bc4c899bbcb19bf1d5cfa2-44"></a>    for i = 0 to 40 \ s(i) = "redim in sub " + num1$(i) \ next i
+<a id="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-45" name="rest_code_151c936840bc4c899bbcb19bf1d5cfa2-45" href="#rest_code_151c936840bc4c899bbcb19bf1d5cfa2-45"></a>end sub ! redim_in_sub
 </pre></div>
 <p>(Interestingly, a slightly different approach was necessary using VAX
 BASIC V3.5 under VMS V5.5-2: using BY VALUE in function
