@@ -2,7 +2,7 @@
 .. slug: an-alien-creature-for-breachworld
 .. date: 2022-05-31 15:32:41 UTC-04:00
 .. tags: rpg,mini six,breachworld,opend6,minimal opend6,creature
-.. category: games/rpg
+.. category: gaming/rpg
 .. link: 
 .. description: 
 .. type: text
