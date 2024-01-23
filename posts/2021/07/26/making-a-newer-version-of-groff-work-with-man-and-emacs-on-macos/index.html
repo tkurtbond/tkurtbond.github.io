@@ -107,10 +107,10 @@ Boo!</p>
 alternate configuration file (on macOS the default one is in
 <span class="file">/private/etc/man.conf</span>), so you can supply one that specifies
 the absolute path to the newer <span class="app">groff</span> you are using.  So I added</p>
-<div class="code"><pre class="code bash"><a id="rest_code_3577bdc691de46f1891ce046984f7a47-1" name="rest_code_3577bdc691de46f1891ce046984f7a47-1" href="#rest_code_3577bdc691de46f1891ce046984f7a47-1"></a><span class="nb">alias</span><span class="w"> </span><span class="nv">man</span><span class="o">=</span><span class="s1">'man -C ~/local/etc/man.conf'</span>
+<div class="code"><pre class="code bash"><a id="rest_code_851e14d3a02c4dd7a736a273ddbe42e2-1" name="rest_code_851e14d3a02c4dd7a736a273ddbe42e2-1" href="#rest_code_851e14d3a02c4dd7a736a273ddbe42e2-1"></a><span class="nb">alias</span><span class="w"> </span><span class="nv">man</span><span class="o">=</span><span class="s1">'man -C ~/local/etc/man.conf'</span>
 </pre></div>
 <p>to the appropriate shell startup file.  And I can add</p>
-<div class="code"><pre class="code emacs-lisp"><a id="rest_code_e28a51f7f1d6499892e6fcb78ec4e7eb-1" name="rest_code_e28a51f7f1d6499892e6fcb78ec4e7eb-1" href="#rest_code_e28a51f7f1d6499892e6fcb78ec4e7eb-1"></a><span class="p">(</span><span class="k">setq</span><span class="w"> </span><span class="nv">Man-switches</span><span class="w"> </span><span class="s">"-C ~/local/etc/man.conf"</span><span class="p">)</span>
+<div class="code"><pre class="code emacs-lisp"><a id="rest_code_8f849fcacf0846c9b551d4ad7e460931-1" name="rest_code_8f849fcacf0846c9b551d4ad7e460931-1" href="#rest_code_8f849fcacf0846c9b551d4ad7e460931-1"></a><span class="p">(</span><span class="k">setq</span><span class="w"> </span><span class="nv">Man-switches</span><span class="w"> </span><span class="s">"-C ~/local/etc/man.conf"</span><span class="p">)</span>
 </pre></div>
 <p>to my <span class="app">emacs</span> configuration so it uses the right version of
 <span class="app">groff</span> too.</p>
@@ -132,7 +132,7 @@ use.</p>
 <section id="later"><h2>Later</h2>
 <p>Aannnd I was right.  Fedora 33 has a similar problem, which I fixed by
 creating a <span class="file">~/.manpath</span> file with</p>
-<div class="code"><pre class="code text"><a id="rest_code_d5fbaddc5056442eb9f5f58a61dc940b-1" name="rest_code_d5fbaddc5056442eb9f5f58a61dc940b-1" href="#rest_code_d5fbaddc5056442eb9f5f58a61dc940b-1"></a>DEFINE       nroff   /sw/versions/groff/git/bin/nroff -mandoc -P-c
+<div class="code"><pre class="code text"><a id="rest_code_f83308077979451395b0a2625ab902b4-1" name="rest_code_f83308077979451395b0a2625ab902b4-1" href="#rest_code_f83308077979451395b0a2625ab902b4-1"></a>DEFINE       nroff   /sw/versions/groff/git/bin/nroff -mandoc -P-c
 </pre></div>
 <p>in it.  I found the information I needed in <span class="man">manpath(5)</span>, which
 documents the format of the <span class="file">/etc/man_db.conf</span> file.  (Why isn't

@@ -84,7 +84,7 @@ dnf -y system-upgrade download">
     <p>Fedora 31 is out, and fool that I am I'm upgrading to it.
 Unfortunately, my DSL connection is slow and my DSL modem router is flaky.
 With over 3000 packages to download,</p>
-<div class="code"><pre class="code bash"><a id="rest_code_73d6af064b464e069d377184e4408b81-1" name="rest_code_73d6af064b464e069d377184e4408b81-1" href="#rest_code_73d6af064b464e069d377184e4408b81-1"></a>dnf<span class="w"> </span>-y<span class="w"> </span>system-upgrade<span class="w"> </span>download<span class="w"> </span>--refresh<span class="w"> </span>--releasever<span class="o">=</span><span class="m">31</span>
+<div class="code"><pre class="code bash"><a id="rest_code_71f5c85201994bd49d5142bd9700ec92-1" name="rest_code_71f5c85201994bd49d5142bd9700ec92-1" href="#rest_code_71f5c85201994bd49d5142bd9700ec92-1"></a>dnf<span class="w"> </span>-y<span class="w"> </span>system-upgrade<span class="w"> </span>download<span class="w"> </span>--refresh<span class="w"> </span>--releasever<span class="o">=</span><span class="m">31</span>
 </pre></div>
 <p>is bound to die in the middle at least once, if not multiple times,
 and with more than 6 hours estimated for the download to run I can't
@@ -97,73 +97,73 @@ over again before I could C-c the shell.</p>
 <p><a class="reference external" href="../../../../../listings/tryfedoraupdate.html">tryfedoraupdate</a>  <a class="reference external" href="../../../../../listings/tryfedoraupdate">(Source)</a></p>
 <div class="code"><table class="codetable">
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_4d0e9568e0f14643837777596a035cd8-1"><code data-line-number=" 1"></code></a></td>
-<td class="code"><code><a id="rest_code_4d0e9568e0f14643837777596a035cd8-1" name="rest_code_4d0e9568e0f14643837777596a035cd8-1"></a><span class="ch">#! /usr/bin/bash</span>
+<td class="linenos linenodiv"><a href="#rest_code_272e24b44d4d46f397a9cd947a7817c9-1"><code data-line-number=" 1"></code></a></td>
+<td class="code"><code><a id="rest_code_272e24b44d4d46f397a9cd947a7817c9-1" name="rest_code_272e24b44d4d46f397a9cd947a7817c9-1"></a><span class="ch">#! /usr/bin/bash</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_4d0e9568e0f14643837777596a035cd8-2"><code data-line-number=" 2"></code></a></td>
-<td class="code"><code><a id="rest_code_4d0e9568e0f14643837777596a035cd8-2" name="rest_code_4d0e9568e0f14643837777596a035cd8-2"></a>
+<td class="linenos linenodiv"><a href="#rest_code_272e24b44d4d46f397a9cd947a7817c9-2"><code data-line-number=" 2"></code></a></td>
+<td class="code"><code><a id="rest_code_272e24b44d4d46f397a9cd947a7817c9-2" name="rest_code_272e24b44d4d46f397a9cd947a7817c9-2"></a>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_4d0e9568e0f14643837777596a035cd8-3"><code data-line-number=" 3"></code></a></td>
-<td class="code"><code><a id="rest_code_4d0e9568e0f14643837777596a035cd8-3" name="rest_code_4d0e9568e0f14643837777596a035cd8-3"></a><span class="k">while</span><span class="w"> </span>!<span class="w"> </span>dnf<span class="w"> </span>-y<span class="w"> </span>system-upgrade<span class="w"> </span>download<span class="w"> </span>--refresh<span class="w"> </span>--releasever<span class="o">=</span><span class="m">31</span>
+<td class="linenos linenodiv"><a href="#rest_code_272e24b44d4d46f397a9cd947a7817c9-3"><code data-line-number=" 3"></code></a></td>
+<td class="code"><code><a id="rest_code_272e24b44d4d46f397a9cd947a7817c9-3" name="rest_code_272e24b44d4d46f397a9cd947a7817c9-3"></a><span class="k">while</span><span class="w"> </span>!<span class="w"> </span>dnf<span class="w"> </span>-y<span class="w"> </span>system-upgrade<span class="w"> </span>download<span class="w"> </span>--refresh<span class="w"> </span>--releasever<span class="o">=</span><span class="m">31</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_4d0e9568e0f14643837777596a035cd8-4"><code data-line-number=" 4"></code></a></td>
-<td class="code"><code><a id="rest_code_4d0e9568e0f14643837777596a035cd8-4" name="rest_code_4d0e9568e0f14643837777596a035cd8-4"></a><span class="k">do</span>
+<td class="linenos linenodiv"><a href="#rest_code_272e24b44d4d46f397a9cd947a7817c9-4"><code data-line-number=" 4"></code></a></td>
+<td class="code"><code><a id="rest_code_272e24b44d4d46f397a9cd947a7817c9-4" name="rest_code_272e24b44d4d46f397a9cd947a7817c9-4"></a><span class="k">do</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_4d0e9568e0f14643837777596a035cd8-5"><code data-line-number=" 5"></code></a></td>
-<td class="code"><code><a id="rest_code_4d0e9568e0f14643837777596a035cd8-5" name="rest_code_4d0e9568e0f14643837777596a035cd8-5"></a><span class="w">    </span><span class="nb">read</span><span class="w"> </span>-t<span class="w"> </span><span class="m">30</span><span class="w"> </span>-p<span class="w"> </span><span class="s2">"Continue? (y/n) "</span><span class="w"> </span>reply
+<td class="linenos linenodiv"><a href="#rest_code_272e24b44d4d46f397a9cd947a7817c9-5"><code data-line-number=" 5"></code></a></td>
+<td class="code"><code><a id="rest_code_272e24b44d4d46f397a9cd947a7817c9-5" name="rest_code_272e24b44d4d46f397a9cd947a7817c9-5"></a><span class="w">    </span><span class="nb">read</span><span class="w"> </span>-t<span class="w"> </span><span class="m">30</span><span class="w"> </span>-p<span class="w"> </span><span class="s2">"Continue? (y/n) "</span><span class="w"> </span>reply
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_4d0e9568e0f14643837777596a035cd8-6"><code data-line-number=" 6"></code></a></td>
-<td class="code"><code><a id="rest_code_4d0e9568e0f14643837777596a035cd8-6" name="rest_code_4d0e9568e0f14643837777596a035cd8-6"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">((</span><span class="nv">$?</span>&gt;128<span class="o">))</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<td class="linenos linenodiv"><a href="#rest_code_272e24b44d4d46f397a9cd947a7817c9-6"><code data-line-number=" 6"></code></a></td>
+<td class="code"><code><a id="rest_code_272e24b44d4d46f397a9cd947a7817c9-6" name="rest_code_272e24b44d4d46f397a9cd947a7817c9-6"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">((</span><span class="nv">$?</span>&gt;128<span class="o">))</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_4d0e9568e0f14643837777596a035cd8-7"><code data-line-number=" 7"></code></a></td>
-<td class="code"><code><a id="rest_code_4d0e9568e0f14643837777596a035cd8-7" name="rest_code_4d0e9568e0f14643837777596a035cd8-7"></a><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"timed out, continuing..."</span>
+<td class="linenos linenodiv"><a href="#rest_code_272e24b44d4d46f397a9cd947a7817c9-7"><code data-line-number=" 7"></code></a></td>
+<td class="code"><code><a id="rest_code_272e24b44d4d46f397a9cd947a7817c9-7" name="rest_code_272e24b44d4d46f397a9cd947a7817c9-7"></a><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"timed out, continuing..."</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_4d0e9568e0f14643837777596a035cd8-8"><code data-line-number=" 8"></code></a></td>
-<td class="code"><code><a id="rest_code_4d0e9568e0f14643837777596a035cd8-8" name="rest_code_4d0e9568e0f14643837777596a035cd8-8"></a><span class="w">    </span><span class="k">elif</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="s2">"</span><span class="nv">$reply</span><span class="s2">"</span><span class="w"> </span><span class="o">=</span>~<span class="w"> </span><span class="o">[</span>Nn<span class="o">]</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<td class="linenos linenodiv"><a href="#rest_code_272e24b44d4d46f397a9cd947a7817c9-8"><code data-line-number=" 8"></code></a></td>
+<td class="code"><code><a id="rest_code_272e24b44d4d46f397a9cd947a7817c9-8" name="rest_code_272e24b44d4d46f397a9cd947a7817c9-8"></a><span class="w">    </span><span class="k">elif</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="s2">"</span><span class="nv">$reply</span><span class="s2">"</span><span class="w"> </span><span class="o">=</span>~<span class="w"> </span><span class="o">[</span>Nn<span class="o">]</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_4d0e9568e0f14643837777596a035cd8-9"><code data-line-number=" 9"></code></a></td>
-<td class="code"><code><a id="rest_code_4d0e9568e0f14643837777596a035cd8-9" name="rest_code_4d0e9568e0f14643837777596a035cd8-9"></a><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Exiting..."</span>
+<td class="linenos linenodiv"><a href="#rest_code_272e24b44d4d46f397a9cd947a7817c9-9"><code data-line-number=" 9"></code></a></td>
+<td class="code"><code><a id="rest_code_272e24b44d4d46f397a9cd947a7817c9-9" name="rest_code_272e24b44d4d46f397a9cd947a7817c9-9"></a><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Exiting..."</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_4d0e9568e0f14643837777596a035cd8-10"><code data-line-number="10"></code></a></td>
-<td class="code"><code><a id="rest_code_4d0e9568e0f14643837777596a035cd8-10" name="rest_code_4d0e9568e0f14643837777596a035cd8-10"></a><span class="w">        </span><span class="nb">exit</span>
+<td class="linenos linenodiv"><a href="#rest_code_272e24b44d4d46f397a9cd947a7817c9-10"><code data-line-number="10"></code></a></td>
+<td class="code"><code><a id="rest_code_272e24b44d4d46f397a9cd947a7817c9-10" name="rest_code_272e24b44d4d46f397a9cd947a7817c9-10"></a><span class="w">        </span><span class="nb">exit</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_4d0e9568e0f14643837777596a035cd8-11"><code data-line-number="11"></code></a></td>
-<td class="code"><code><a id="rest_code_4d0e9568e0f14643837777596a035cd8-11" name="rest_code_4d0e9568e0f14643837777596a035cd8-11"></a><span class="w">    </span><span class="k">else</span>
+<td class="linenos linenodiv"><a href="#rest_code_272e24b44d4d46f397a9cd947a7817c9-11"><code data-line-number="11"></code></a></td>
+<td class="code"><code><a id="rest_code_272e24b44d4d46f397a9cd947a7817c9-11" name="rest_code_272e24b44d4d46f397a9cd947a7817c9-11"></a><span class="w">    </span><span class="k">else</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_4d0e9568e0f14643837777596a035cd8-12"><code data-line-number="12"></code></a></td>
-<td class="code"><code><a id="rest_code_4d0e9568e0f14643837777596a035cd8-12" name="rest_code_4d0e9568e0f14643837777596a035cd8-12"></a><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Continuing..."</span>
+<td class="linenos linenodiv"><a href="#rest_code_272e24b44d4d46f397a9cd947a7817c9-12"><code data-line-number="12"></code></a></td>
+<td class="code"><code><a id="rest_code_272e24b44d4d46f397a9cd947a7817c9-12" name="rest_code_272e24b44d4d46f397a9cd947a7817c9-12"></a><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Continuing..."</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_4d0e9568e0f14643837777596a035cd8-13"><code data-line-number="13"></code></a></td>
-<td class="code"><code><a id="rest_code_4d0e9568e0f14643837777596a035cd8-13" name="rest_code_4d0e9568e0f14643837777596a035cd8-13"></a><span class="w">    </span><span class="k">fi</span>
+<td class="linenos linenodiv"><a href="#rest_code_272e24b44d4d46f397a9cd947a7817c9-13"><code data-line-number="13"></code></a></td>
+<td class="code"><code><a id="rest_code_272e24b44d4d46f397a9cd947a7817c9-13" name="rest_code_272e24b44d4d46f397a9cd947a7817c9-13"></a><span class="w">    </span><span class="k">fi</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_4d0e9568e0f14643837777596a035cd8-14"><code data-line-number="14"></code></a></td>
-<td class="code"><code><a id="rest_code_4d0e9568e0f14643837777596a035cd8-14" name="rest_code_4d0e9568e0f14643837777596a035cd8-14"></a><span class="k">done</span>
+<td class="linenos linenodiv"><a href="#rest_code_272e24b44d4d46f397a9cd947a7817c9-14"><code data-line-number="14"></code></a></td>
+<td class="code"><code><a id="rest_code_272e24b44d4d46f397a9cd947a7817c9-14" name="rest_code_272e24b44d4d46f397a9cd947a7817c9-14"></a><span class="k">done</span>
 </code></td>
 </tr>
 </table></div>
