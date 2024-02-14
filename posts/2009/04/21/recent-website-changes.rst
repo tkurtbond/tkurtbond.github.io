@@ -7,10 +7,11 @@
 .. description: 
 .. type: text
 
+*Last edited: 2024-02-14 10:39:36 EST*
 
 .. role:: app
 
-I've recently changed_ the way I build my website_, from using DocBook
+I've recently changed_ the way I build my website, from using DocBook
 source and the DocBook XSL Stylesheets to convert it to HTML, over to
 reStructuredText source and Sphinx_ to convert it over to HTML.
 :app:`Sphinx` is much faster and less resource intensive for the
@@ -23,5 +24,14 @@ easier I'm much more likely to actually do so.
 .. _website: http://consp.org/~tkb
 .. _Sphinx: https://www.sphinx-doc.org/
 
+.. I left the consp.org address in for the wayback machine.
+   2024-02-14: took out the ~/tkb address because google search
+   console complains.
+
 ..
-   I left the consp.org address in for the wayback machine.
+   Local Variables:
+   time-stamp-format: "%Y-%02m-%02d %02H:%02M:%02S %Z"
+   time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
+   time-stamp-end: "\\*\\\\?\n"
+   End:
+
