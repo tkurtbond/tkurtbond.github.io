@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How the LBL Software Tools system organized its source files | Lacking Natural Simplicity</title>
+<link href="../../../../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../../../../rss.xml">
+<link rel="alternate" type="application/atom+xml" title="Atom" href="../../../../../feed.atom">
+<link rel="canonical" href="https://tkurtbond.github.io/posts/2024/07/03/how-the-lbl-software-tools-system-organized-its-source-files/">
+<!--[if lt IE 9]><script src="../../../../../assets/js/html5.js"></script><![endif]--><meta name="author" content="T. Kurt Bond">
+<link rel="prev" href="../software-tools/" title="Software Tools" type="text/html">
+<meta property="og:site_name" content="Lacking Natural Simplicity">
+<meta property="og:title" content="How the LBL Software Tools system organized its source files">
+<meta property="og:url" content="https://tkurtbond.github.io/posts/2024/07/03/how-the-lbl-software-tools-system-organized-its-source-files/">
+<meta property="og:description" content="One of the things I've always found interesting about the LBL Software
+Tools VOS was how its source files were structured.  I'll include here
+page 10 of the release notes from the release on the DECUS">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2024-07-03T16:20:40-04:00">
+<meta property="article:tag" content="decus">
+<meta property="article:tag" content="lbltools">
+<meta property="article:tag" content="lt86 tape">
+<meta property="article:tag" content="source file structure">
+<meta property="article:tag" content="swtools">
+<meta property="article:tag" content="vax">
+<meta property="article:tag" content="vms">
+<meta property="article:tag" content="vos">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Text&amp;family=Lato&amp;family=IBM+Plex+Mono" rel="stylesheet">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<div class="blog-masthead">
+    <div class="container">
+<!-- This keeps the margins nice -->
+        <nav class="blog-nav" role="navigation"><a href="../../../../../index.html" class="blog-nav-item">Home</a>
+            <a href="../../../../../archive.html" class="blog-nav-item">Archives</a>
+            <a href="../../../../../categories/index.html" class="blog-nav-item">Tags &amp; Categories</a>
+            <a href="../../../../../rss.xml" class="blog-nav-item">RSS feed</a>
+            <a href="../../../../../feed.atom" class="blog-nav-item">Atom feed</a>
+
+            
+
+    <a href="index.rst" class="blog-nav-item blog-nav-item-aside" id="sourcelink">Source</a>
+                
+            
+        </nav>
+</div>
+<!-- /.container -->
+</div>
+<!-- End of Menubar -->
+
+<div class="container" id="content" role="main">
+    <div class="body-content">
+        <div class="blog-header">
+            <h1 class="blog-title">
+                <a href="https://tkurtbond.github.io/">
+
+                    <span id="blog-title">Lacking Natural Simplicity</span>
+                </a>
+            </h1>
+            <p class="lead blog-description">Random musings on books, code, and tabletop games.</p>
+            
+        </div>
+        <!--Body content-->
+        <div class="row">
+            <div class="col-sm-8 blog-main">
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h2 class="p-name entry-title blog-post-title" itemprop="headline name"><a href="." class="u-url">How the LBL Software Tools system organized its source files</a></h2>
+
+        <div class="metadata blog-post-meta">
+            <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
+            <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2024-07-03T16:20:40-04:00" itemprop="datePublished" title="2024-07-03 16:20">2024-07-03 16:20</time></a></p>
+                <p class="commentline">        <a href="#disqus_thread" data-disqus-identifier="cache/posts/2024/07/03/how-the-lbl-software-tools-system-organized-its-source-files.html">Comments</a>
+
+
+                    </p>
+<p class="sourceline"><a href="index.rst" id="sourcelink">Source</a></p>
+
+        </div>
+        
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <p>One of the things I've always found interesting about the LBL Software
+Tools VOS was how its source files were structured.  I'll include here
+page 10 of the release notes from the release on the DECUS LT86 tape:</p>
+<div class="code"><pre class="code text"><a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-1" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-1" href="#rest_code_b5e3f7a573dc49b38ce35cacb0006751-1"></a>                            Release Notes
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-2" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-2" href="#rest_code_b5e3f7a573dc49b38ce35cacb0006751-2"></a>
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-3" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-3" href="#rest_code_b5e3f7a573dc49b38ce35cacb0006751-3"></a>
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-4" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-4" href="#rest_code_b5e3f7a573dc49b38ce35cacb0006751-4"></a>                        Source File Structure
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-5" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-5" href="#rest_code_b5e3f7a573dc49b38ce35cacb0006751-5"></a>
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-6" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-6" href="#rest_code_b5e3f7a573dc49b38ce35cacb0006751-6"></a>The  source  code  for  `tool' is contained in a file [...SRC]tool.tcs
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-7" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-7" href="#rest_code_b5e3f7a573dc49b38ce35cacb0006751-7"></a>(if   the   tool   is   portable   across   operating   systems)    or
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-8" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-8" href="#rest_code_b5e3f7a573dc49b38ce35cacb0006751-8"></a>[...VMS]tool.tcs  (if  it  is  an VMS-specific tool).  This TCS source
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-9" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-9" href="#rest_code_b5e3f7a573dc49b38ce35cacb0006751-9"></a>file contains an edit history of all changes made to the source.   The
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-10" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-10" href="#rest_code_b5e3f7a573dc49b38ce35cacb0006751-10"></a>output  of  the  `get' utility operating on a `.tcs' file results in a
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-11" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-11" href="#rest_code_b5e3f7a573dc49b38ce35cacb0006751-11"></a>file (tool.w) which is all of the  environment  necessary  to  rebuild
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-12" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-12" href="#rest_code_b5e3f7a573dc49b38ce35cacb0006751-12"></a>the  tool,  provided  that the VOS is operational.  The tool.w file is
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-13" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-13" href="#rest_code_b5e3f7a573dc49b38ce35cacb0006751-13"></a>an archive containing:
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-14" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-14" href="#rest_code_b5e3f7a573dc49b38ce35cacb0006751-14"></a>
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-15" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-15" href="#rest_code_b5e3f7a573dc49b38ce35cacb0006751-15"></a>  1. All of the files "included" by the ratfor source code.
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-16" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-16" href="#rest_code_b5e3f7a573dc49b38ce35cacb0006751-16"></a>  2. The ratfor source file, tool.r.
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-17" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-17" href="#rest_code_b5e3f7a573dc49b38ce35cacb0006751-17"></a>  3. The format input for the manual entry, tool.fmt.
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-18" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-18" href="#rest_code_b5e3f7a573dc49b38ce35cacb0006751-18"></a>  4. And optionally,  any  extra  definition  files  needed  to  build
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-19" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-19" href="#rest_code_b5e3f7a573dc49b38ce35cacb0006751-19"></a>     alternate versions of the tool (eg. sh =&gt; hsh).
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-20" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-20" href="#rest_code_b5e3f7a573dc49b38ce35cacb0006751-20"></a>
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-21" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-21" href="#rest_code_b5e3f7a573dc49b38ce35cacb0006751-21"></a>As  an  example,  suppose  that  you  wish  to  change  the subroutine
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-22" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-22" href="#rest_code_b5e3f7a573dc49b38ce35cacb0006751-22"></a>"module" in "tool".  The suggested scenario is as follows:
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-23" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-23" href="#rest_code_b5e3f7a573dc49b38ce35cacb0006751-23"></a>
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-24" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-24" href="#rest_code_b5e3f7a573dc49b38ce35cacb0006751-24"></a>   $ !Fetch the file tool.tcs from the appropriate directory in the container
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-25" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-25" href="#rest_code_b5e3f7a573dc49b38ce35cacb0006751-25"></a>   $ !file on tape into st_src
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-26" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-26" href="#rest_code_b5e3f7a573dc49b38ce35cacb0006751-26"></a>   $ hsh
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-27" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-27" href="#rest_code_b5e3f7a573dc49b38ce35cacb0006751-27"></a>   % get ~src/tool.tcs tool.w
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-28" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-28" href="#rest_code_b5e3f7a573dc49b38ce35cacb0006751-28"></a>   % ar xv tool.w
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-29" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-29" href="#rest_code_b5e3f7a573dc49b38ce35cacb0006751-29"></a>   % ar xv tool.r module
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-30" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-30" href="#rest_code_b5e3f7a573dc49b38ce35cacb0006751-30"></a>   % ed module
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-31" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-31" href="#rest_code_b5e3f7a573dc49b38ce35cacb0006751-31"></a>   (make changes and write file)
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-32" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-32" href="#rest_code_b5e3f7a573dc49b38ce35cacb0006751-32"></a>   % ar uv tool.r module
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-33" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-33" href="#rest_code_b5e3f7a573dc49b38ce35cacb0006751-33"></a>   % rc -v tool.r
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-34" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-34" href="#rest_code_b5e3f7a573dc49b38ce35cacb0006751-34"></a>   % (test out new tool.  repeat last three steps until satisfied.)
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-35" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-35" href="#rest_code_b5e3f7a573dc49b38ce35cacb0006751-35"></a>   % ed tool.fmt
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-36" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-36" href="#rest_code_b5e3f7a573dc49b38ce35cacb0006751-36"></a>   (modify writeup to reflect changes)
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-37" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-37" href="#rest_code_b5e3f7a573dc49b38ce35cacb0006751-37"></a>   % ar uv tool.w tool.r tool.fmt
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-38" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-38" href="#rest_code_b5e3f7a573dc49b38ce35cacb0006751-38"></a>   % cp tool.exe ~usr/tool.exe
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-39" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-39" href="#rest_code_b5e3f7a573dc49b38ce35cacb0006751-39"></a>   % delta tool.w ~src/tool.tcs
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-40" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-40" href="#rest_code_b5e3f7a573dc49b38ce35cacb0006751-40"></a>   (Identify in the comments the reason for the changes,
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-41" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-41" href="#rest_code_b5e3f7a573dc49b38ce35cacb0006751-41"></a>   and which modules changed.)
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-42" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-42" href="#rest_code_b5e3f7a573dc49b38ce35cacb0006751-42"></a>   % format tool.fmt &gt;tool
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-43" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-43" href="#rest_code_b5e3f7a573dc49b38ce35cacb0006751-43"></a>   % ar uv ~man/s1 tool
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-44" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-44" href="#rest_code_b5e3f7a573dc49b38ce35cacb0006751-44"></a>   % asam &lt;~man/s1 | sort &gt;~man/i1
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-45" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-45" href="#rest_code_b5e3f7a573dc49b38ce35cacb0006751-45"></a>
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-46" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-46" href="#rest_code_b5e3f7a573dc49b38ce35cacb0006751-46"></a>Placing tool.exe in ~usr  causes  the  shell  to  find  your  modified
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-47" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-47" href="#rest_code_b5e3f7a573dc49b38ce35cacb0006751-47"></a>version  of  "tool"  rather  than  the  distributed one.  The last two
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-48" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-48" href="#rest_code_b5e3f7a573dc49b38ce35cacb0006751-48"></a>commands  above  cause  the  manual  entry  for  `tool'  to  correctly
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-49" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-49" href="#rest_code_b5e3f7a573dc49b38ce35cacb0006751-49"></a>correspond to the utility itself.
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-50" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-50" href="#rest_code_b5e3f7a573dc49b38ce35cacb0006751-50"></a>
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-51" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-51" href="#rest_code_b5e3f7a573dc49b38ce35cacb0006751-51"></a>
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-52" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-52" href="#rest_code_b5e3f7a573dc49b38ce35cacb0006751-52"></a>
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-53" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-53" href="#rest_code_b5e3f7a573dc49b38ce35cacb0006751-53"></a>
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-54" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-54" href="#rest_code_b5e3f7a573dc49b38ce35cacb0006751-54"></a>
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-55" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-55" href="#rest_code_b5e3f7a573dc49b38ce35cacb0006751-55"></a>
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-56" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-56" href="#rest_code_b5e3f7a573dc49b38ce35cacb0006751-56"></a>                                 -10-
+</pre></div>
+<p>(It should be <code>% get ~src/tool.tcs &gt;tool.w</code> with a “&gt;”
+before <code class="file docutils literal">tool.w</code> in the above procedure.  Otherwise the contents
+are echoed to the terminal instead of being written to <code class="file docutils literal">tool.w</code>.)</p>
+<p>So, all the source files (source code <em>and</em> documentation) are stored
+in an archive file, which contains another archive file that has just
+the ratfor source, from which you extract the modules you want to work
+on, and at the end update the archives in the reverse order!  This
+made organizing all the source much simpler, especially considering
+some of the porting targets for this software didn't have hierarchical
+directory structures, only flat directories.  So when moving around
+parts of the system, like when you were preparing the distribution,
+you normally only dealt with the top level archives, the <code class="file docutils literal">.TCS</code>
+files, and only worked directly with the files that were contained
+within that archive and its child archives if you had to make a change
+to the source files.  Very clever!</p>
+<img alt="Nesting Russian Matroshka dolls" src="../../../../../images/Russian-Matroshka.jpg"><p>(<a class="reference external" href="https://en.wikipedia.org/wiki/Matryoshka_doll#/media/File:Russian-Matroshka.jpg">Source 1</a>)</p>
+<img alt="Nesting Russian Matroshka dolls, opened" src="../../../../../images/Russian-Matroshka-opened.jpg"><p>(<a class="reference external" href="https://en.wikipedia.org/wiki/Matryoshka_doll#/media/File:Matryoshka_transparent.png">Source 2</a>)</p>
+    </div>
+    <script>var pfHeaderImgUrl = '';var pfHeaderTagline = '';var pfdisableClickToDel = 0;var pfHideImages = 0;var pfImageDisplayStyle = 'right';var pfDisablePDF = 0;var pfDisableEmail = 0;var pfDisablePrint = 0;var pfCustomCSS = '';var pfBtVersion='2';(function(){var js,pf;pf=document.createElement('script');pf.type='text/javascript';pf.src='//cdn.printfriendly.com/printfriendly.js';document.getElementsByTagName('head')[0].appendChild(pf)})();</script><a href="https://www.printfriendly.com" style="color:#6D9F00;text-decoration:none;" class="printfriendly" onclick="window.print();return false;" title="Printer Friendly and PDF"><img style="border:none;-webkit-box-shadow:none;box-shadow:none;" src="//cdn.printfriendly.com/buttons/printfriendly-pdf-button.png" alt="Print Friendly and PDF"></a>    
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../../../../../categories/decus/" rel="tag">decus</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/lbltools/" rel="tag">lbltools</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/lt86-tape/" rel="tag">lt86 tape</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/source-file-structure/" rel="tag">source file structure</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/swtools/" rel="tag">swtools</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/vax/" rel="tag">vax</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/vms/" rel="tag">vms</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/vos/" rel="tag">vos</a></li>
+        </ul>
+<ul class="pager hidden-print">
+<li class="previous">
+                <a href="../software-tools/" rel="prev" title="Software Tools">Previous post</a>
+            </li>
+        </ul></nav></aside><section class="comments hidden-print"><h2>Comments</h2>
+                    <div id="disqus_thread"></div>
+        <script>
+        var disqus_shortname ="lacking-natural-simplicity",
+            disqus_url="https://tkurtbond.github.io/posts/2024/07/03/how-the-lbl-software-tools-system-organized-its-source-files/",
+        disqus_title="How the LBL Software Tools system organized its source files",
+        disqus_identifier="cache/posts/2024/07/03/how-the-lbl-software-tools-system-organized-its-source-files.html",
+        disqus_config = function () {
+            this.language = "en";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.async = true;
+            dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script><noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+    <a href="https://disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+        </section></article><script>var disqus_shortname="lacking-natural-simplicity";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
+</div>
+            <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+                    <div class="sidebar-module sidebar-module-inset">
+      <h4>About</h4>
+      <p>Lacking Natural Simplicity is one, not particularly flattering, 
+         definition of sophisticated.  
+         This blog chronicles my journey through our at times too complicated 
+         and sophisticated world. </p>
+    </div>
+    <div class="sidebar-module">
+      <p>This site uses no cookies directly, but I expect the <a href="https://disqus.com/">Disqus</a> comments use cookies at disqus.com.</p>
+      <h4>Links</h4>
+      <ol class="list-unstyled">
+<li><a href="../../../../../pages/about-the-blog/index.html">About the Blog</a></li>
+        <li><a href="../../../../../pages/colophon/index.html">Colophon</a></li>
+        <li><a href="../../../../../pages/typographical-conventions/index.html">Typographical Conventions</a></li>
+        <li><a href="../../../../../pages/static-pages-index/index.html">Pages</a></li>
+        <li>
+<a href="http://tkb.tx0.org/">My tx0.org web page</a>
+            <br>    Mostly empty
+        </li>
+        <li>
+<a href="http://consp.org/">consp.org</a>
+            <br>    Rises from the dead!
+            <br>    <a href="http://consp.org/blog/blog.html">microblog</a>
+        </li>
+      </ol>
+</div>
+    
+            </div>
+        <!--End of body content-->
+        </div>
+    </div>
+</div>
+
+<footer class="blog-footer" id="footer">
+    Contents © 2024         <a href="mailto:tkurtbond@gmail.com">T. Kurt Bond</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+    
+</footer><script src="../../../../../assets/js/all-nocdn.js"></script><!-- fancy dates --><script>
+    moment.locale("en");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates --><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element) {
+            return element.getElementsByTagName('img')[0].alt;
+    }});
+    </script>
+</body>
+</html>

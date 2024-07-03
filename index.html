@@ -10,7 +10,7 @@
 <link rel="alternate" type="application/atom+xml" title="Atom" href="feed.atom">
 <link rel="canonical" href="https://tkurtbond.github.io/">
 <link rel="next" href="index-95.html" type="text/html">
-<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/2024/07/03/software-tools/" type="text/html">
+<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/2024/07/03/how-the-lbl-software-tools-system-organized-its-source-files/" type="text/html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Crimson+Text&amp;family=Lato&amp;family=IBM+Plex+Mono" rel="stylesheet">
@@ -55,7 +55,105 @@
         <div class="row">
             <div class="col-sm-8 blog-main">
 <div class="postindex">
-    <article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2024/07/03/software-tools/" class="u-url">Software Tools</a></h2>
+    <article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2024/07/03/how-the-lbl-software-tools-system-organized-its-source-files/" class="u-url">How the LBL Software Tools system organized its source files</a></h2>
+        <div class="metadata blog-post-meta">
+            <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
+            <p class="dateline"><a href="posts/2024/07/03/how-the-lbl-software-tools-system-organized-its-source-files/" rel="bookmark"><time class="published dt-published" datetime="2024-07-03T16:20:40-04:00" title="2024-07-03 16:20">2024-07-03 16:20</time></a></p>
+                <p class="commentline">        <a href="posts/2024/07/03/how-the-lbl-software-tools-system-organized-its-source-files/#disqus_thread" data-disqus-identifier="cache/posts/2024/07/03/how-the-lbl-software-tools-system-organized-its-source-files.html">Comments</a>
+
+
+        </p>
+</div>
+    </header><div class="e-content entry-content">
+    <p>One of the things I've always found interesting about the LBL Software
+Tools VOS was how its source files were structured.  I'll include here
+page 10 of the release notes from the release on the DECUS LT86 tape:</p>
+<div class="code"><pre class="code text"><a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-1" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-1" href="posts/2024/07/03/how-the-lbl-software-tools-system-organized-its-source-files/#rest_code_b5e3f7a573dc49b38ce35cacb0006751-1"></a>                            Release Notes
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-2" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-2" href="posts/2024/07/03/how-the-lbl-software-tools-system-organized-its-source-files/#rest_code_b5e3f7a573dc49b38ce35cacb0006751-2"></a>
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-3" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-3" href="posts/2024/07/03/how-the-lbl-software-tools-system-organized-its-source-files/#rest_code_b5e3f7a573dc49b38ce35cacb0006751-3"></a>
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-4" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-4" href="posts/2024/07/03/how-the-lbl-software-tools-system-organized-its-source-files/#rest_code_b5e3f7a573dc49b38ce35cacb0006751-4"></a>                        Source File Structure
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-5" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-5" href="posts/2024/07/03/how-the-lbl-software-tools-system-organized-its-source-files/#rest_code_b5e3f7a573dc49b38ce35cacb0006751-5"></a>
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-6" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-6" href="posts/2024/07/03/how-the-lbl-software-tools-system-organized-its-source-files/#rest_code_b5e3f7a573dc49b38ce35cacb0006751-6"></a>The  source  code  for  `tool' is contained in a file [...SRC]tool.tcs
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-7" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-7" href="posts/2024/07/03/how-the-lbl-software-tools-system-organized-its-source-files/#rest_code_b5e3f7a573dc49b38ce35cacb0006751-7"></a>(if   the   tool   is   portable   across   operating   systems)    or
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-8" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-8" href="posts/2024/07/03/how-the-lbl-software-tools-system-organized-its-source-files/#rest_code_b5e3f7a573dc49b38ce35cacb0006751-8"></a>[...VMS]tool.tcs  (if  it  is  an VMS-specific tool).  This TCS source
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-9" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-9" href="posts/2024/07/03/how-the-lbl-software-tools-system-organized-its-source-files/#rest_code_b5e3f7a573dc49b38ce35cacb0006751-9"></a>file contains an edit history of all changes made to the source.   The
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-10" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-10" href="posts/2024/07/03/how-the-lbl-software-tools-system-organized-its-source-files/#rest_code_b5e3f7a573dc49b38ce35cacb0006751-10"></a>output  of  the  `get' utility operating on a `.tcs' file results in a
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-11" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-11" href="posts/2024/07/03/how-the-lbl-software-tools-system-organized-its-source-files/#rest_code_b5e3f7a573dc49b38ce35cacb0006751-11"></a>file (tool.w) which is all of the  environment  necessary  to  rebuild
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-12" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-12" href="posts/2024/07/03/how-the-lbl-software-tools-system-organized-its-source-files/#rest_code_b5e3f7a573dc49b38ce35cacb0006751-12"></a>the  tool,  provided  that the VOS is operational.  The tool.w file is
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-13" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-13" href="posts/2024/07/03/how-the-lbl-software-tools-system-organized-its-source-files/#rest_code_b5e3f7a573dc49b38ce35cacb0006751-13"></a>an archive containing:
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-14" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-14" href="posts/2024/07/03/how-the-lbl-software-tools-system-organized-its-source-files/#rest_code_b5e3f7a573dc49b38ce35cacb0006751-14"></a>
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-15" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-15" href="posts/2024/07/03/how-the-lbl-software-tools-system-organized-its-source-files/#rest_code_b5e3f7a573dc49b38ce35cacb0006751-15"></a>  1. All of the files "included" by the ratfor source code.
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-16" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-16" href="posts/2024/07/03/how-the-lbl-software-tools-system-organized-its-source-files/#rest_code_b5e3f7a573dc49b38ce35cacb0006751-16"></a>  2. The ratfor source file, tool.r.
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-17" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-17" href="posts/2024/07/03/how-the-lbl-software-tools-system-organized-its-source-files/#rest_code_b5e3f7a573dc49b38ce35cacb0006751-17"></a>  3. The format input for the manual entry, tool.fmt.
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-18" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-18" href="posts/2024/07/03/how-the-lbl-software-tools-system-organized-its-source-files/#rest_code_b5e3f7a573dc49b38ce35cacb0006751-18"></a>  4. And optionally,  any  extra  definition  files  needed  to  build
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-19" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-19" href="posts/2024/07/03/how-the-lbl-software-tools-system-organized-its-source-files/#rest_code_b5e3f7a573dc49b38ce35cacb0006751-19"></a>     alternate versions of the tool (eg. sh =&gt; hsh).
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-20" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-20" href="posts/2024/07/03/how-the-lbl-software-tools-system-organized-its-source-files/#rest_code_b5e3f7a573dc49b38ce35cacb0006751-20"></a>
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-21" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-21" href="posts/2024/07/03/how-the-lbl-software-tools-system-organized-its-source-files/#rest_code_b5e3f7a573dc49b38ce35cacb0006751-21"></a>As  an  example,  suppose  that  you  wish  to  change  the subroutine
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-22" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-22" href="posts/2024/07/03/how-the-lbl-software-tools-system-organized-its-source-files/#rest_code_b5e3f7a573dc49b38ce35cacb0006751-22"></a>"module" in "tool".  The suggested scenario is as follows:
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-23" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-23" href="posts/2024/07/03/how-the-lbl-software-tools-system-organized-its-source-files/#rest_code_b5e3f7a573dc49b38ce35cacb0006751-23"></a>
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-24" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-24" href="posts/2024/07/03/how-the-lbl-software-tools-system-organized-its-source-files/#rest_code_b5e3f7a573dc49b38ce35cacb0006751-24"></a>   $ !Fetch the file tool.tcs from the appropriate directory in the container
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-25" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-25" href="posts/2024/07/03/how-the-lbl-software-tools-system-organized-its-source-files/#rest_code_b5e3f7a573dc49b38ce35cacb0006751-25"></a>   $ !file on tape into st_src
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-26" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-26" href="posts/2024/07/03/how-the-lbl-software-tools-system-organized-its-source-files/#rest_code_b5e3f7a573dc49b38ce35cacb0006751-26"></a>   $ hsh
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-27" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-27" href="posts/2024/07/03/how-the-lbl-software-tools-system-organized-its-source-files/#rest_code_b5e3f7a573dc49b38ce35cacb0006751-27"></a>   % get ~src/tool.tcs tool.w
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-28" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-28" href="posts/2024/07/03/how-the-lbl-software-tools-system-organized-its-source-files/#rest_code_b5e3f7a573dc49b38ce35cacb0006751-28"></a>   % ar xv tool.w
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-29" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-29" href="posts/2024/07/03/how-the-lbl-software-tools-system-organized-its-source-files/#rest_code_b5e3f7a573dc49b38ce35cacb0006751-29"></a>   % ar xv tool.r module
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-30" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-30" href="posts/2024/07/03/how-the-lbl-software-tools-system-organized-its-source-files/#rest_code_b5e3f7a573dc49b38ce35cacb0006751-30"></a>   % ed module
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-31" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-31" href="posts/2024/07/03/how-the-lbl-software-tools-system-organized-its-source-files/#rest_code_b5e3f7a573dc49b38ce35cacb0006751-31"></a>   (make changes and write file)
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-32" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-32" href="posts/2024/07/03/how-the-lbl-software-tools-system-organized-its-source-files/#rest_code_b5e3f7a573dc49b38ce35cacb0006751-32"></a>   % ar uv tool.r module
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-33" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-33" href="posts/2024/07/03/how-the-lbl-software-tools-system-organized-its-source-files/#rest_code_b5e3f7a573dc49b38ce35cacb0006751-33"></a>   % rc -v tool.r
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-34" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-34" href="posts/2024/07/03/how-the-lbl-software-tools-system-organized-its-source-files/#rest_code_b5e3f7a573dc49b38ce35cacb0006751-34"></a>   % (test out new tool.  repeat last three steps until satisfied.)
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-35" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-35" href="posts/2024/07/03/how-the-lbl-software-tools-system-organized-its-source-files/#rest_code_b5e3f7a573dc49b38ce35cacb0006751-35"></a>   % ed tool.fmt
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-36" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-36" href="posts/2024/07/03/how-the-lbl-software-tools-system-organized-its-source-files/#rest_code_b5e3f7a573dc49b38ce35cacb0006751-36"></a>   (modify writeup to reflect changes)
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-37" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-37" href="posts/2024/07/03/how-the-lbl-software-tools-system-organized-its-source-files/#rest_code_b5e3f7a573dc49b38ce35cacb0006751-37"></a>   % ar uv tool.w tool.r tool.fmt
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-38" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-38" href="posts/2024/07/03/how-the-lbl-software-tools-system-organized-its-source-files/#rest_code_b5e3f7a573dc49b38ce35cacb0006751-38"></a>   % cp tool.exe ~usr/tool.exe
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-39" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-39" href="posts/2024/07/03/how-the-lbl-software-tools-system-organized-its-source-files/#rest_code_b5e3f7a573dc49b38ce35cacb0006751-39"></a>   % delta tool.w ~src/tool.tcs
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-40" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-40" href="posts/2024/07/03/how-the-lbl-software-tools-system-organized-its-source-files/#rest_code_b5e3f7a573dc49b38ce35cacb0006751-40"></a>   (Identify in the comments the reason for the changes,
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-41" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-41" href="posts/2024/07/03/how-the-lbl-software-tools-system-organized-its-source-files/#rest_code_b5e3f7a573dc49b38ce35cacb0006751-41"></a>   and which modules changed.)
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-42" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-42" href="posts/2024/07/03/how-the-lbl-software-tools-system-organized-its-source-files/#rest_code_b5e3f7a573dc49b38ce35cacb0006751-42"></a>   % format tool.fmt &gt;tool
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-43" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-43" href="posts/2024/07/03/how-the-lbl-software-tools-system-organized-its-source-files/#rest_code_b5e3f7a573dc49b38ce35cacb0006751-43"></a>   % ar uv ~man/s1 tool
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-44" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-44" href="posts/2024/07/03/how-the-lbl-software-tools-system-organized-its-source-files/#rest_code_b5e3f7a573dc49b38ce35cacb0006751-44"></a>   % asam &lt;~man/s1 | sort &gt;~man/i1
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-45" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-45" href="posts/2024/07/03/how-the-lbl-software-tools-system-organized-its-source-files/#rest_code_b5e3f7a573dc49b38ce35cacb0006751-45"></a>
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-46" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-46" href="posts/2024/07/03/how-the-lbl-software-tools-system-organized-its-source-files/#rest_code_b5e3f7a573dc49b38ce35cacb0006751-46"></a>Placing tool.exe in ~usr  causes  the  shell  to  find  your  modified
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-47" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-47" href="posts/2024/07/03/how-the-lbl-software-tools-system-organized-its-source-files/#rest_code_b5e3f7a573dc49b38ce35cacb0006751-47"></a>version  of  "tool"  rather  than  the  distributed one.  The last two
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-48" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-48" href="posts/2024/07/03/how-the-lbl-software-tools-system-organized-its-source-files/#rest_code_b5e3f7a573dc49b38ce35cacb0006751-48"></a>commands  above  cause  the  manual  entry  for  `tool'  to  correctly
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-49" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-49" href="posts/2024/07/03/how-the-lbl-software-tools-system-organized-its-source-files/#rest_code_b5e3f7a573dc49b38ce35cacb0006751-49"></a>correspond to the utility itself.
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-50" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-50" href="posts/2024/07/03/how-the-lbl-software-tools-system-organized-its-source-files/#rest_code_b5e3f7a573dc49b38ce35cacb0006751-50"></a>
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-51" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-51" href="posts/2024/07/03/how-the-lbl-software-tools-system-organized-its-source-files/#rest_code_b5e3f7a573dc49b38ce35cacb0006751-51"></a>
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-52" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-52" href="posts/2024/07/03/how-the-lbl-software-tools-system-organized-its-source-files/#rest_code_b5e3f7a573dc49b38ce35cacb0006751-52"></a>
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-53" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-53" href="posts/2024/07/03/how-the-lbl-software-tools-system-organized-its-source-files/#rest_code_b5e3f7a573dc49b38ce35cacb0006751-53"></a>
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-54" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-54" href="posts/2024/07/03/how-the-lbl-software-tools-system-organized-its-source-files/#rest_code_b5e3f7a573dc49b38ce35cacb0006751-54"></a>
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-55" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-55" href="posts/2024/07/03/how-the-lbl-software-tools-system-organized-its-source-files/#rest_code_b5e3f7a573dc49b38ce35cacb0006751-55"></a>
+<a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-56" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-56" href="posts/2024/07/03/how-the-lbl-software-tools-system-organized-its-source-files/#rest_code_b5e3f7a573dc49b38ce35cacb0006751-56"></a>                                 -10-
+</pre></div>
+<p>(It should be <code>% get ~src/tool.tcs &gt;tool.w</code> with a “&gt;”
+before <code class="file docutils literal">tool.w</code> in the above procedure.  Otherwise the contents
+are echoed to the terminal instead of being written to <code class="file docutils literal">tool.w</code>.)</p>
+<p>So, all the source files (source code <em>and</em> documentation) are stored
+in an archive file, which contains another archive file that has just
+the ratfor source, from which you extract the modules you want to work
+on, and at the end update the archives in the reverse order!  This
+made organizing all the source much simpler, especially considering
+some of the porting targets for this software didn't have hierarchical
+directory structures, only flat directories.  So when moving around
+parts of the system, like when you were preparing the distribution,
+you normally only dealt with the top level archives, the <code class="file docutils literal">.TCS</code>
+files, and only worked directly with the files that were contained
+within that archive and its child archives if you had to make a change
+to the source files.  Very clever!</p>
+<img alt="Nesting Russian Matroshka dolls" src="images/Russian-Matroshka.jpg"><p>(<a class="reference external" href="https://en.wikipedia.org/wiki/Matryoshka_doll#/media/File:Russian-Matroshka.jpg">Source 1</a>)</p>
+<img alt="Nesting Russian Matroshka dolls, opened" src="images/Russian-Matroshka-opened.jpg"><p>(<a class="reference external" href="https://en.wikipedia.org/wiki/Matryoshka_doll#/media/File:Matryoshka_transparent.png">Source 2</a>)</p>
+    <nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="categories/decus/" rel="tag">decus</a></li>
+            <li><a class="tag p-category" href="categories/lbltools/" rel="tag">lbltools</a></li>
+            <li><a class="tag p-category" href="categories/lt86-tape/" rel="tag">lt86 tape</a></li>
+            <li><a class="tag p-category" href="categories/source-file-structure/" rel="tag">source file structure</a></li>
+            <li><a class="tag p-category" href="categories/swtools/" rel="tag">swtools</a></li>
+            <li><a class="tag p-category" href="categories/vax/" rel="tag">vax</a></li>
+            <li><a class="tag p-category" href="categories/vms/" rel="tag">vms</a></li>
+            <li><a class="tag p-category" href="categories/vos/" rel="tag">vos</a></li>
+        </ul></nav>
+</div>
+    </article><article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2024/07/03/software-tools/" class="u-url">Software Tools</a></h2>
         <div class="metadata blog-post-meta">
             <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
             <p class="dateline"><a href="posts/2024/07/03/software-tools/" rel="bookmark"><time class="published dt-published" datetime="2024-07-03T09:59:31-04:00" title="2024-07-03 09:59">2024-07-03 09:59</time></a></p>
@@ -117,13 +215,18 @@ I thought my world was larger after reading it.” — C. Paul Bond</p>
 </blockquote>
     <nav><ul itemprop="keywords" class="tags">
 <li><a class="tag p-category" href="categories/brian-w-kernighan/" rel="tag">brian w. kernighan</a></li>
+            <li><a class="tag p-category" href="categories/decus/" rel="tag">decus</a></li>
             <li><a class="tag p-category" href="categories/fortran/" rel="tag">fortran</a></li>
             <li><a class="tag p-category" href="categories/lbltools/" rel="tag">lbltools</a></li>
+            <li><a class="tag p-category" href="categories/lt86-tape/" rel="tag">lt86 tape</a></li>
             <li><a class="tag p-category" href="categories/pj-plauger/" rel="tag">p.j. plauger</a></li>
             <li><a class="tag p-category" href="categories/pascal/" rel="tag">pascal</a></li>
             <li><a class="tag p-category" href="categories/ratfor/" rel="tag">ratfor</a></li>
             <li><a class="tag p-category" href="categories/software-tools/" rel="tag">software tools</a></li>
             <li><a class="tag p-category" href="categories/swtools/" rel="tag">swtools</a></li>
+            <li><a class="tag p-category" href="categories/vax/" rel="tag">vax</a></li>
+            <li><a class="tag p-category" href="categories/vms/" rel="tag">vms</a></li>
+            <li><a class="tag p-category" href="categories/vos/" rel="tag">vos</a></li>
         </ul></nav>
 </div>
     </article><article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2024/01/21/fantastic-medieval-campaigns/" class="u-url">Fantastic Medieval Campaigns</a></h2>
@@ -906,30 +1009,6 @@ it as well.</p>
             <li><a class="tag p-category" href="categories/libreoffice-calc/" rel="tag">libreoffice calc</a></li>
             <li><a class="tag p-category" href="categories/ova/" rel="tag">ova</a></li>
             <li><a class="tag p-category" href="categories/pdf/" rel="tag">pdf</a></li>
-            <li><a class="tag p-category" href="categories/rpg/" rel="tag">rpg</a></li>
-        </ul></nav>
-</div>
-    </article><article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2023/02/19/downloads-for-various-rpgs/" class="u-url">Downloads for various RPGs</a></h2>
-        <div class="metadata blog-post-meta">
-            <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
-            <p class="dateline"><a href="posts/2023/02/19/downloads-for-various-rpgs/" rel="bookmark"><time class="published dt-published" datetime="2023-02-19T14:10:02-05:00" title="2023-02-19 14:10">2023-02-19 14:10</time></a></p>
-                <p class="commentline">        <a href="posts/2023/02/19/downloads-for-various-rpgs/#disqus_thread" data-disqus-identifier="cache/posts/2023/02/19/rpg-downloads.html">Comments</a>
-
-
-        </p>
-</div>
-    </header><div class="e-content entry-content">
-    <p>I've made some stuff that I've used for some RPGs available for
-<a class="reference external" href="pages/rpg-downloads/">download</a>.  Right now it has reference sheets for several editions of
-<em>Big Eyes, Small Mouth</em> (Second Edition Revised, Third Edition, and
-Fourth edition) and for <em>OVA: The Anime Role-playing Game</em>.</p>
-    <nav><ul itemprop="keywords" class="tags">
-<li><a class="tag p-category" href="categories/besm/" rel="tag">besm</a></li>
-            <li><a class="tag p-category" href="categories/besm2er/" rel="tag">besm2er</a></li>
-            <li><a class="tag p-category" href="categories/besm3e/" rel="tag">besm3e</a></li>
-            <li><a class="tag p-category" href="categories/besm4e/" rel="tag">besm4e</a></li>
-            <li><a class="tag p-category" href="categories/gaming/" rel="tag">gaming</a></li>
-            <li><a class="tag p-category" href="categories/ova/" rel="tag">ova</a></li>
             <li><a class="tag p-category" href="categories/rpg/" rel="tag">rpg</a></li>
         </ul></nav>
 </div>

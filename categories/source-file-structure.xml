@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity (Posts about swtools)</title><link>https://tkurtbond.github.io/</link><description></description><atom:link href="https://tkurtbond.github.io/categories/swtools.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2024 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Wed, 03 Jul 2024 21:08:51 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>How the LBL Software Tools system organized its source files</title><link>https://tkurtbond.github.io/posts/2024/07/03/how-the-lbl-software-tools-system-organized-its-source-files/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;p&gt;One of the things I've always found interesting about the LBL Software
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity (Posts about source file structure)</title><link>https://tkurtbond.github.io/</link><description></description><atom:link href="https://tkurtbond.github.io/categories/source-file-structure.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2024 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Wed, 03 Jul 2024 21:08:51 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>How the LBL Software Tools system organized its source files</title><link>https://tkurtbond.github.io/posts/2024/07/03/how-the-lbl-software-tools-system-organized-its-source-files/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;p&gt;One of the things I've always found interesting about the LBL Software
 Tools VOS was how its source files were structured.  I'll include here
 page 10 of the release notes from the release on the DECUS LT86 tape:&lt;/p&gt;
 &lt;div class="code"&gt;&lt;pre class="code text"&gt;&lt;a id="rest_code_b5e3f7a573dc49b38ce35cacb0006751-1" name="rest_code_b5e3f7a573dc49b38ce35cacb0006751-1" href="https://tkurtbond.github.io/posts/2024/07/03/how-the-lbl-software-tools-system-organized-its-source-files/#rest_code_b5e3f7a573dc49b38ce35cacb0006751-1"&gt;&lt;/a&gt;                            Release Notes
@@ -77,54 +77,4 @@ to the source files.  Very clever!&lt;/p&gt;
 &lt;img alt="Nesting Russian Matroshka dolls" src="https://tkurtbond.github.io/images/Russian-Matroshka.jpg"&gt;
 &lt;p&gt;(&lt;a class="reference external" href="https://en.wikipedia.org/wiki/Matryoshka_doll#/media/File:Russian-Matroshka.jpg"&gt;Source 1&lt;/a&gt;)&lt;/p&gt;
 &lt;img alt="Nesting Russian Matroshka dolls, opened" src="https://tkurtbond.github.io/images/Russian-Matroshka-opened.jpg"&gt;
-&lt;p&gt;(&lt;a class="reference external" href="https://en.wikipedia.org/wiki/Matryoshka_doll#/media/File:Matryoshka_transparent.png"&gt;Source 2&lt;/a&gt;)&lt;/p&gt;</description><category>decus</category><category>lbltools</category><category>lt86 tape</category><category>source file structure</category><category>swtools</category><category>vax</category><category>vms</category><category>vos</category><guid>https://tkurtbond.github.io/posts/2024/07/03/how-the-lbl-software-tools-system-organized-its-source-files/</guid><pubDate>Wed, 03 Jul 2024 20:20:40 GMT</pubDate></item><item><title>Software Tools</title><link>https://tkurtbond.github.io/posts/2024/07/03/software-tools/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;p&gt;When I was in college in the 1980s the school I was at used Digital
-Equipment Corporation VAXes running VMS, and didn't have any Unix
-machines.  I was quite interested in Unix and the Unix philosophy, but
-was frustrated by my lack of access to Unix machines.  However,
-Brian W. Kernighan and P. J. Plauger wrote a couple of books about
-writing tools in the Unix style: &lt;cite&gt;Software Tools&lt;/cite&gt; was in
-published in 1976 and used Fortran as its portable implementation
-language, while &lt;cite&gt;Software Tools in Pascal&lt;/cite&gt; was published in
-1981 and used Pascal.&lt;/p&gt;
-&lt;img alt="/images/swtools.jpeg" src="https://tkurtbond.github.io/images/swtools.jpeg"&gt;
-&lt;p&gt;Here is a quote repeated on each book's cover:&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Good Programming is not learned from generalities, but by seeing
-how significant programs can be made clean, easy to read, easy to
-maintain and modify, human-engineered, efficient, and reliable, by
-the application of common sense and good programming practices.
-Careful study and imitation of good programs leads to better
-writing.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Both books worked through writing software tools that were simpler but
-still useful versions of many of the standard Unix tools.&lt;/p&gt;
-&lt;p&gt;I got &lt;cite&gt;Software Tools in Pascal&lt;/cite&gt; because I knew Pascal better
-than Fortran and worked through implementing each of the programs on
-the college's VAX, which taught me a lot about programming and was
-significant influence on me.  I later got &lt;cite&gt;Software Tools&lt;/cite&gt;
-because I wanted to read the section on implementing the ratfor
-processor which that book used to add additional control structures
-unavailable in the Fortran of the day.&lt;/p&gt;
-&lt;p&gt;I was not the only person who was influenced by these books.
-Deborah K. Scherrer, Dennis E. Hall, and Joseph S. Sventek at Lawrence
-Berkeley National Laboratory with help from others greatly expanded
-the set of programs from the book into an entire Virtual Operating
-System (VOS), and founded the &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Software_Tools_Users_Group"&gt;Software Tools Users Group&lt;/a&gt; in 1976
-to distribute it, eventually leading to ports on over 50 operating
-systems.&lt;/p&gt;
-&lt;p&gt;Luckily for me VAX/VMS was one of those operating systems, and the
-port appeared on various tapes distributed by DECUS, the Digital
-Equipment Computer Users' Society.  Luckily MPL Corporation, where I
-worked at the time, always got the DECUS tapes and had a Fortran
-compiler, so I could install it there.  I found it a very useful and
-usable computing environment.&lt;/p&gt;
-&lt;p&gt;Anyway, I retain a fondness for that software, known variously as
-LBLTOOLS, LBL SWTOOLS, and LBL VOS, and have begun using the version
-from the &lt;a class="reference external" href="https://www.digiater.nl/openvms/decus/zips_vms_attributes/lt86a.zip"&gt;DECUS VAX Languages &amp;amp; Tools SIG tape from 1986&lt;/a&gt;
-again on the (emulated) VAX I maintain at work.  This gave me the
-opportunity create a &lt;a class="reference external" href="https://tkurtbond.github.io/swtoolsman.pdf"&gt;PDF with the documentation&lt;/a&gt;
-for that version, which I'm making available here for the curious.&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;“I really enjoyed that book.  The first computer book I read where
-I thought my world was larger after reading it.” — C. Paul Bond&lt;/p&gt;
-&lt;/blockquote&gt;</description><category>brian w. kernighan</category><category>decus</category><category>fortran</category><category>lbltools</category><category>lt86 tape</category><category>p.j. plauger</category><category>pascal</category><category>ratfor</category><category>software tools</category><category>swtools</category><category>vax</category><category>vms</category><category>vos</category><guid>https://tkurtbond.github.io/posts/2024/07/03/software-tools/</guid><pubDate>Wed, 03 Jul 2024 13:59:31 GMT</pubDate></item></channel></rss>
+&lt;p&gt;(&lt;a class="reference external" href="https://en.wikipedia.org/wiki/Matryoshka_doll#/media/File:Matryoshka_transparent.png"&gt;Source 2&lt;/a&gt;)&lt;/p&gt;</description><category>decus</category><category>lbltools</category><category>lt86 tape</category><category>source file structure</category><category>swtools</category><category>vax</category><category>vms</category><category>vos</category><guid>https://tkurtbond.github.io/posts/2024/07/03/how-the-lbl-software-tools-system-organized-its-source-files/</guid><pubDate>Wed, 03 Jul 2024 20:20:40 GMT</pubDate></item></channel></rss>
