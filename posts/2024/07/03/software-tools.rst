@@ -1,7 +1,7 @@
 .. title: Software Tools
 .. slug: software-tools
 .. date: 2024-07-03 09:59:31 UTC-04:00
-.. tags: ratfor,pascal,swtools,software tools,p.j. plauger,brian w. kernighan,lbltools,fortran
+.. tags: ratfor,pascal,swtools,software tools,p.j. plauger,brian w. kernighan,lbltools,fortran,vos
 .. category: computer
 .. link: 
 .. description: 
