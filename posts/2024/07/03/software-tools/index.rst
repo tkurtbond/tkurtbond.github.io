@@ -60,3 +60,6 @@ from the `DECUS VAX Languages & Tools SIG tape from 1986
 again on the (emulated) VAX I maintain at work.  This gave me the
 opportunity create a `PDF with the documentation </swtoolsman.pdf>`_
 for that version, which I'm making available here for the curious.
+
+    “I really enjoyed that book.  The first computer book I read where
+    I thought my world was larger after reading it.” — C. Paul Bond
