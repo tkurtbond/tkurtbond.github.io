@@ -17,6 +17,8 @@ published in 1976 and used Fortran as its portable implementation
 language, while :title:`Software Tools in Pascal` was published in
 1981 and used Pascal.
 
+.. image:: /images/swtools.jpeg
+
 Here is a quote repeated on each book's cover:
 
     Good Programming is not learned from generalities, but by seeing
