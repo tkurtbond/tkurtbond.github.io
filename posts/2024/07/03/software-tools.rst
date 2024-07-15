@@ -2,7 +2,7 @@
 .. slug: software-tools
 .. date: 2024-07-03 09:59:31 UTC-04:00
 .. tags: ratfor,pascal,swtools,software tools,p.j. plauger,brian w. kernighan,lbltools,fortran,vos,decus,vax,vms,lt86 tape
-.. category: computer
+.. category: computer/software-tools
 .. link: 
 .. description: 
 .. type: text
@@ -56,7 +56,7 @@ compiler, so I could install it there.  I found it a very useful and
 usable computing environment.
 
 Anyway, I retain a fondness for that software, known variously as
-LBLTOOLS, LBL SWTOOLS, and LBL VOS, and have begun using the version
+LBLTOOLS, LBL SWTOOLS, and SWTOOLS VOS, and have begun using the version
 from the `DECUS VAX Languages & Tools SIG tape from 1986
 <https://www.digiater.nl/openvms/decus/zips_vms_attributes/lt86a.zip>`_
 again on the (emulated) VAX I maintain at work.  This gave me the
@@ -66,7 +66,7 @@ for that version, which I'm making available here for the curious.
     “I really enjoyed that book.  The first computer book I read where
     I thought my world was larger after reading it.” — C. Paul Bond
 
-*Last edited: 2024-07-05 14:57:16 EDT*
+*Last edited: 2024-07-15 14:25:36 EDT*
 
 ..
    Local Variables:

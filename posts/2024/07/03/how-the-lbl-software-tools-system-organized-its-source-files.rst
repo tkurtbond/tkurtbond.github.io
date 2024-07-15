@@ -2,7 +2,7 @@
 .. slug: how-the-lbl-software-tools-system-organized-its-source-files
 .. date: 2024-07-03 16:20:40 UTC-04:00
 .. tags: swtools,lbltools,vos,source file structure,decus,vax,vms,lt86 tape
-.. category: computing
+.. category: computer/software-tools
 .. link: 
 .. description: 
 .. type: text
