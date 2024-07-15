@@ -9,7 +9,7 @@
 
 .. role:: file
 .. role:: app
-.. role:: cmd
+.. role:: command
 
 I wrote a post_ about using the old ada-mode.el that used to be
 distributed with :app:`Emacs` because I couldn't get the newer,
@@ -34,7 +34,7 @@ Well, this morning when I pulled up an Ada file in :app:`Emacs` version
 
     That was easy enough.
 
-#.  When I tried to do any indentation :cmd:`emacs` reported an error,
+#.  When I tried to do any indentation :command:`emacs` reported an error,
     with the error message “End position is smaller than start
     position”.  Eventually I tracked this down to a call to
     ``parse-partial-sexp`` in ``ada-in-open-paren-p``.  It turns out
