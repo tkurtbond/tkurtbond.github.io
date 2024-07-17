@@ -224,7 +224,7 @@ with ASCII, so any character should fit in in one byte.  Lets take a look:
    DOCOM\BUF[19]:  00000173
    DBG> 
 
-Oh dear.  That's hexadecimal 1732, which is decimal 371.  No wonder we
+Oh dear.  That's hexadecimal 173, which is decimal 371.  No wonder we
 got an arithmetic trap, integer overflow.
 
 If I look for occurrences of ``buf`` in :file:`sedit.r` (using emacs
