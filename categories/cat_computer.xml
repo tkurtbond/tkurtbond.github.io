@@ -1,5 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity (Posts about computer)</title><link>https://tkurtbond.github.io/</link><description></description><atom:link href="https://tkurtbond.github.io/categories/cat_computer.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2024 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Wed, 17 Jul 2024 12:30:46 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Fixing a 41 year old bug in the SWTOOLS VOS SEDIT commmand</title><link>https://tkurtbond.github.io/posts/2024/07/15/fixing-a-41-year-old-bug-in-the-swtools-vos-sedit-commmand/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;p&gt;Today I fixed a 41 year old bug in the SWTOOLS VOS &lt;span class="command"&gt;sedit&lt;/span&gt; commmand!&lt;/p&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity (Posts about computer)</title><link>https://tkurtbond.github.io/</link><description></description><atom:link href="https://tkurtbond.github.io/categories/cat_computer.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2024 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Thu, 18 Jul 2024 20:21:11 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>My first program using SWTOOLS VOS</title><link>https://tkurtbond.github.io/posts/2024/07/18/my-first-program-using-swtools-vos/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;p&gt;So, I finished by first program using SWTOOLS.  It is a simple
+directory lister, called l, that interprets all its arguments as as
+file specifications to search for using normal RMS wildcards, or used
+&lt;span class="file"&gt;*.*&lt;/span&gt; if not arguments are specified.  It only returns the files with
+the highest version number, does not include the device, directory, or
+version number in the output, and converts the filenames to lower
+case.  It should only be used to list files in the current directory.
+I needed it because I do things like&lt;/p&gt;
+&lt;div class="code"&gt;&lt;pre class="code shell"&gt;&lt;a id="rest_code_45a470de98c648f5aa3ab9627eb05b10-1" name="rest_code_45a470de98c648f5aa3ab9627eb05b10-1" href="https://tkurtbond.github.io/posts/2024/07/18/my-first-program-using-swtools-vos/#rest_code_45a470de98c648f5aa3ab9627eb05b10-1"&gt;&lt;/a&gt;l&lt;span class="w"&gt; &lt;/span&gt;*.sdcl&lt;span class="w"&gt; &lt;/span&gt;*.for&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;sedit&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;'s/{?+}$/ar uv src.ar $1'&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;and I don't want any version numbers to end up in the names of the
+archive members, and so on.&lt;/p&gt;
+&lt;p&gt;Rafor &lt;em&gt;is&lt;/em&gt; much better than Fortran 77.  And Fortran has even more
+footguns than C when it comes to using separately compiled functions
+and subroutines, with no notices that I'd passed things with the wrong
+type until I actually ran the program and got a register dump because
+of an access violation.&lt;/p&gt;
+&lt;p&gt;I was not able to include things from
+&lt;span class="file"&gt;SYS$LIBRARY:FORSYSDEF.TLB&lt;/span&gt; using the Fortran &lt;code class="docutils literal"&gt;INCLUDE&lt;/code&gt;
+statement in ratfor, since it has its own include keyword , so I
+separated that part of the program into its own Fortran source file.
+Because that file wasn't run through ratfor I couldn't use the
+standard macro definitions, like STDERR, so when I wanted to output
+the filesnames, I just wrote a ratfor subroutine that would print them
+and called that from the fortran routine.  A little clunky, but it
+worked.&lt;/p&gt;
+&lt;p&gt;Annoying, the &lt;span class="command"&gt;fc&lt;/span&gt; command (which compiles &lt;span class="file"&gt;*.f&lt;/span&gt; files to
+objects) doesn't work when run under &lt;span class="command"&gt;mmk&lt;/span&gt;, so I had to write
+a command procedure &lt;span class="file"&gt;dommk&lt;/span&gt; that does &lt;code class="docutils literal"&gt;mmk/noact/out=tmp.com&lt;/code&gt;
+and &lt;code class="docutils literal"&gt;@tmp.com&lt;/code&gt; to do the build.  (I think this was somehow due to
+having multiple levels of subprocesses: &lt;span class="command"&gt;mmk&lt;/span&gt;'s and
+&lt;span class="command"&gt;rc&lt;/span&gt;'s.)&lt;/p&gt;
+&lt;p&gt;Anyway, the program ended up 48 lines of ratfor in three files and 84
+lines of Fortran.  The C program I started with was 170 lines (in one
+file), but doesn't work with the SWTOOLS shell's notions of I/O
+redirection.&lt;/p&gt;</description><category>fortran</category><category>swtools ratfor</category><category>swtools vos</category><category>vax/vms</category><guid>https://tkurtbond.github.io/posts/2024/07/18/my-first-program-using-swtools-vos/</guid><pubDate>Thu, 18 Jul 2024 20:10:56 GMT</pubDate></item><item><title>Fixing a 41 year old bug in the SWTOOLS VOS SEDIT commmand</title><link>https://tkurtbond.github.io/posts/2024/07/15/fixing-a-41-year-old-bug-in-the-swtools-vos-sedit-commmand/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;p&gt;Today I fixed a 41 year old bug in the SWTOOLS VOS &lt;span class="command"&gt;sedit&lt;/span&gt; commmand!&lt;/p&gt;
 &lt;p&gt;At work part of my job is to maintain an emulated VAX/VMS 5.5-2 system
 for one of our clients.  I have been using the SWTOOLS Virtual
 Operating System &lt;a class="reference external" href="https://tkurtbond.github.io/posts/2024/07/03/software-tools/"&gt;recently&lt;/a&gt; (Unix style
@@ -1894,113 +1929,4 @@ time-stamp-format: "%Y-%02m-%02d %02H:%02M:%02S %Z"
 time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
 time-stamp-end: "\\*\\\\?\n"
 time-stamp-line-limit: -20
-End: --&gt;</description><category>a2</category><category>aos</category><category>bluebottle</category><category>fedora</category><category>macos</category><category>oberon</category><category>unix</category><guid>https://tkurtbond.github.io/posts/2022/06/10/installing-a-recent-version-of-the-a2-operatinng-system-on-unix/</guid><pubDate>Fri, 10 Jun 2022 15:28:40 GMT</pubDate></item><item><title>The criticisms of Pascal in “Why Pascal is Not My Favorite Programming Language” applied to Oberon</title><link>https://tkurtbond.github.io/posts/2022/06/05/the-criticisms-of-pascal-in-why-pascal-is-not-my-favorite-programming-language-applied-to-oberon/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;p&gt;&lt;em&gt;Last edited: 2023-02-14 06:27:01 EST&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;I reread Brian W. Kernighan’s famous paper “Why Pascal is Not My
-Favorite Programming Language”
-(&lt;a class="reference external" href="https://www.cs.virginia.edu/~evans/cs655/readings/bwk-on-pascal.html"&gt;HTML&lt;/a&gt;,
-&lt;a class="reference external" href="http://doc.cat-v.org/bell_labs/why_pascal/"&gt;PDF&lt;/a&gt;) to see if those or
-similar criticisms can still be applied to the Oberon family of
-languages,
-&lt;a class="reference external" href="https://en.wikipedia.org/wiki/Oberon_(programming_language)"&gt;Oberon&lt;/a&gt;,
-&lt;a class="reference external" href="https://en.wikipedia.org/wiki/Oberon-2"&gt;Oberon-2&lt;/a&gt;, and &lt;a class="reference external" href="https://people.inf.ethz.ch/wirth/Oberon/index.html"&gt;Revised
-Oberon&lt;/a&gt;. I found
-Oberon-2 to be particularly inspiring, but feel that both Oberon and
-Oberon-2 lack some of the practical aspects that made C such a
-revelation to me back in the 1980s when I first encountered it, after
-having programmed mostly in various BASICs, 6502 machine code, VAX
-MACRO, and Pascal.&lt;/p&gt;
-&lt;p&gt;So, here are Kernighan’s summary, nine criticisms, along with my
-comments.&lt;/p&gt;
-&lt;ol class="arabic"&gt;
-&lt;li&gt;&lt;p&gt;Since the size of an array is part of its type, it is not possible to
-write general-purpose routines, that is, to deal with arrays of
-different sizes. In particular, string handling is very difficult.&lt;/p&gt;
-&lt;p&gt;This is still a problem in the original Oberon, but Oberon-2
-introduced open arrays, which allows any size of array to be passed
-to a procedure. While you can’t return arrays of arbitrary sizes from
-a procedure, you can dynamically allocate any size array using
-&lt;code class="docutils literal"&gt;POINTER TO ARRAY&lt;/code&gt; and &lt;code class="docutils literal"&gt;NEW&lt;/code&gt;, and return the pointer. Revised
-Oberon adopted open arrays.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;The lack of static variables, initialization and a way to communicate
-non-hierarchically combine to destroy the “locality” of a program -
-variables require much more scope than they ought to.&lt;/p&gt;
-&lt;p&gt;This criticism still applies. None of the Oberon languages include
-static variables or initialization.&lt;/p&gt;
-&lt;p&gt;The lack of static variables is somewhat mitigated by the ability to
-divide things up using modules, since the tendency is to create a
-module for the shared variable and the procedures that depend on it,
-but is still clumsy if the only thing you need is a static variable
-in one procedure.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;The one-pass nature of the language forces procedures and functions
-to be presented in an unnatural order; the enforced separation of
-various declarations scatters program components that logically
-belong together.&lt;/p&gt;
-&lt;p&gt;Oberon and Oberon-2 allow mixing &lt;code class="docutils literal"&gt;CONST&lt;/code&gt;, &lt;code class="docutils literal"&gt;TYPE&lt;/code&gt; and &lt;code class="docutils literal"&gt;VAR&lt;/code&gt;
-declarations in any order and to appear multiple times, but still
-requires procedure and forward procedure declarations to come after
-all other declarations. In Revised Oberon &lt;code class="docutils literal"&gt;CONST&lt;/code&gt;, &lt;code class="docutils literal"&gt;TYPE&lt;/code&gt;, and
-&lt;code class="docutils literal"&gt;VAR&lt;/code&gt; declarations must occur and in that order, followed by
-procedure declarations, so the original criticism applies entirely
-again.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;The lack of separate compilation impedes the development of large
-programs and makes the use of libraries impossible.&lt;/p&gt;
-&lt;p&gt;Not a problem any more. All the Oberon languages use modules,
-introduced in Modula. Arguably, this is much superior to C’s model
-of separate compilation and using header files to ensure function
-and external variable declarations are consistent across files.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;The order of logical expression evaluation cannot be controlled,
-which leads to convoluted code and extraneous variables.&lt;/p&gt;
-&lt;p&gt;This appears to not apply to the Oberon languages.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;The ‘case’ statement is emasculated because there is no default
-clause.&lt;/p&gt;
-&lt;p&gt;Original Oberon and Oberon-2 both have &lt;code class="docutils literal"&gt;ELSE&lt;/code&gt; clauses for &lt;code class="docutils literal"&gt;CASE&lt;/code&gt;
-statements. Revised Oberon does not.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;The standard I/O is defective. There is no sensible provision for
-dealing with files or program arguments as part of the standard
-language, and no extension mechanism.&lt;/p&gt;
-&lt;p&gt;IO in the Oberon family of languages is mostly defined by the
-procedures provided in the &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Oberon_(operating_system)"&gt;Oberon
-System&lt;/a&gt;,
-the operating system written in Oberon (and later in Oberon-2). It
-has good facilities for dealing with files, considered by some to be
-a better API than the familiar Unix/C API, for the functionality it
-provides.&lt;/p&gt;
-&lt;p&gt;None of the Oberon languages provide a standard method for access
-to program arguments in the Unix/C style, as the Oberon System used
-entirely different mechanisms.  Those Oberon[-2] implementations
-I've used outside of the Oberon System all provided some access to
-the program arguments, usually as a procedure that returns the
-number of program arguments and another that returns a specific
-argument, but none of them used the same API.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;The language lacks most of the tools needed for assembling large
-programs, most notably file inclusion.&lt;/p&gt;
-&lt;p&gt;The addition of separately compiled modules that provide a defined
-interface mostly obviates this criticism and is superior to the
-kludge of separate complication and include files provided by C.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;There is no escape.&lt;/p&gt;
-&lt;p&gt;All the Oberon languages include the module &lt;code class="docutils literal"&gt;SYSTEM&lt;/code&gt;, which
-provides low level access to addresses of variables and to individual
-bits of memory, along with bit manipulation of integers. Revised
-Oberon adds access to sizes of types. Oberon and Oberon-2 provide a
-&lt;code class="docutils literal"&gt;VAL&lt;/code&gt; function that allows interpreting a variable of one type as a
-variable of another type. Revised Oberon does not.&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;All the Oberon languages still have semicolon as separator instead of
-semicolon as terminator.   I much prefer semicolon as terminator.&lt;/p&gt;
-&lt;p&gt;All-in-all, I'm disappointed in Revised Oberon.  While I approve of a
-few of its changes, most of them seem to be a definite step backward.
-I think Wirth's minimalism does him a disservice here.&lt;/p&gt;
-&lt;!-- Local Variables:
-time-stamp-format: "%Y-%02m-%02d %02H:%02M:%02S %Z"
-time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
-time-stamp-end: "\\*\\\\?\n"
-End: --&gt;</description><category>c</category><category>oberon</category><category>oberon system</category><category>oberon-2</category><category>pascal</category><category>revised oberon</category><category>unix</category><guid>https://tkurtbond.github.io/posts/2022/06/05/the-criticisms-of-pascal-in-why-pascal-is-not-my-favorite-programming-language-applied-to-oberon/</guid><pubDate>Sun, 05 Jun 2022 16:29:05 GMT</pubDate></item></channel></rss>
+End: --&gt;</description><category>a2</category><category>aos</category><category>bluebottle</category><category>fedora</category><category>macos</category><category>oberon</category><category>unix</category><guid>https://tkurtbond.github.io/posts/2022/06/10/installing-a-recent-version-of-the-a2-operatinng-system-on-unix/</guid><pubDate>Fri, 10 Jun 2022 15:28:40 GMT</pubDate></item></channel></rss>

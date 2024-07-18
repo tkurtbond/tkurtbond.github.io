@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?xml-stylesheet href="https://tkurtbond.github.io/assets/xml/atom.xsl" type="text/xsl media="all"?>
+<feed xml:lang="en" xmlns="http://www.w3.org/2005/Atom">
+  <title>Lacking Natural Simplicity (Posts about vax/vms)</title>
+  <id>https://tkurtbond.github.io/categories/vaxvms.atom</id>
+  <updated>2024-07-18T20:21:12Z</updated>
+  <author>
+    <name>T. Kurt Bond</name>
+  </author>
+  <link rel="self" type="application/atom+xml" href="https://tkurtbond.github.io/categories/vaxvms.atom"/>
+  <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/categories/vaxvms/"/>
+  <generator uri="https://getnikola.com/">Nikola</generator>
+  <entry>
+    <title>My first program using SWTOOLS VOS</title>
+    <id>https://tkurtbond.github.io/posts/2024/07/18/my-first-program-using-swtools-vos/</id>
+    <updated>2024-07-18T16:10:56-04:00</updated>
+    <published>2024-07-18T16:10:56-04:00</published>
+    <author>
+      <name>T. Kurt Bond</name>
+    </author>
+    <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/posts/2024/07/18/my-first-program-using-swtools-vos/"/>
+    <summary type="html">&lt;p&gt;So, I finished by first program using SWTOOLS.  It is a simple
+directory lister, called l, that interprets all its arguments as as
+file specifications to search for using normal RMS wildcards, or used
+&lt;span class="file"&gt;*.*&lt;/span&gt; if not arguments are specified.  It only returns the files with
+the highest version number, does not include the device, directory, or
+version number in the output, and converts the filenames to lower
+case.  It should only be used to list files in the current directory.
+I needed it because I do things like&lt;/p&gt;
+&lt;div class="code"&gt;&lt;pre class="code shell"&gt;&lt;a id="rest_code_45a470de98c648f5aa3ab9627eb05b10-1" name="rest_code_45a470de98c648f5aa3ab9627eb05b10-1" href="https://tkurtbond.github.io/posts/2024/07/18/my-first-program-using-swtools-vos/#rest_code_45a470de98c648f5aa3ab9627eb05b10-1"&gt;&lt;/a&gt;l&lt;span class="w"&gt; &lt;/span&gt;*.sdcl&lt;span class="w"&gt; &lt;/span&gt;*.for&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;sedit&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;'s/{?+}$/ar uv src.ar $1'&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;and I don't want any version numbers to end up in the names of the
+archive members, and so on.&lt;/p&gt;
+&lt;p&gt;Rafor &lt;em&gt;is&lt;/em&gt; much better than Fortran 77.  And Fortran has even more
+footguns than C when it comes to using separately compiled functions
+and subroutines, with no notices that I'd passed things with the wrong
+type until I actually ran the program and got a register dump because
+of an access violation.&lt;/p&gt;
+&lt;p&gt;I was not able to include things from
+&lt;span class="file"&gt;SYS$LIBRARY:FORSYSDEF.TLB&lt;/span&gt; using the Fortran &lt;code class="docutils literal"&gt;INCLUDE&lt;/code&gt;
+statement in ratfor, since it has its own include keyword , so I
+separated that part of the program into its own Fortran source file.
+Because that file wasn't run through ratfor I couldn't use the
+standard macro definitions, like STDERR, so when I wanted to output
+the filesnames, I just wrote a ratfor subroutine that would print them
+and called that from the fortran routine.  A little clunky, but it
+worked.&lt;/p&gt;
+&lt;p&gt;Annoying, the &lt;span class="command"&gt;fc&lt;/span&gt; command (which compiles &lt;span class="file"&gt;*.f&lt;/span&gt; files to
+objects) doesn't work when run under &lt;span class="command"&gt;mmk&lt;/span&gt;, so I had to write
+a command procedure &lt;span class="file"&gt;dommk&lt;/span&gt; that does &lt;code class="docutils literal"&gt;mmk/noact/out=tmp.com&lt;/code&gt;
+and &lt;code class="docutils literal"&gt;@tmp.com&lt;/code&gt; to do the build.  (I think this was somehow due to
+having multiple levels of subprocesses: &lt;span class="command"&gt;mmk&lt;/span&gt;'s and
+&lt;span class="command"&gt;rc&lt;/span&gt;'s.)&lt;/p&gt;
+&lt;p&gt;Anyway, the program ended up 48 lines of ratfor in three files and 84
+lines of Fortran.  The C program I started with was 170 lines (in one
+file), but doesn't work with the SWTOOLS shell's notions of I/O
+redirection.&lt;/p&gt;</summary>
+    <category term="fortran" label="fortran"/>
+    <category term="swtools-ratfor" label="swtools ratfor"/>
+    <category term="swtools-vos" label="swtools vos"/>
+    <category term="vaxvms" label="vax/vms"/>
+  </entry>
+</feed>

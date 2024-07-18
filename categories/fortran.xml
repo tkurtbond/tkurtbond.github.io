@@ -1,5 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity (Posts about fortran)</title><link>https://tkurtbond.github.io/</link><description></description><atom:link href="https://tkurtbond.github.io/categories/fortran.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2024 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Wed, 17 Jul 2024 12:30:47 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Fixing a 41 year old bug in the SWTOOLS VOS SEDIT commmand</title><link>https://tkurtbond.github.io/posts/2024/07/15/fixing-a-41-year-old-bug-in-the-swtools-vos-sedit-commmand/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;p&gt;Today I fixed a 41 year old bug in the SWTOOLS VOS &lt;span class="command"&gt;sedit&lt;/span&gt; commmand!&lt;/p&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity (Posts about fortran)</title><link>https://tkurtbond.github.io/</link><description></description><atom:link href="https://tkurtbond.github.io/categories/fortran.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2024 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Thu, 18 Jul 2024 20:21:12 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>My first program using SWTOOLS VOS</title><link>https://tkurtbond.github.io/posts/2024/07/18/my-first-program-using-swtools-vos/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;p&gt;So, I finished by first program using SWTOOLS.  It is a simple
+directory lister, called l, that interprets all its arguments as as
+file specifications to search for using normal RMS wildcards, or used
+&lt;span class="file"&gt;*.*&lt;/span&gt; if not arguments are specified.  It only returns the files with
+the highest version number, does not include the device, directory, or
+version number in the output, and converts the filenames to lower
+case.  It should only be used to list files in the current directory.
+I needed it because I do things like&lt;/p&gt;
+&lt;div class="code"&gt;&lt;pre class="code shell"&gt;&lt;a id="rest_code_45a470de98c648f5aa3ab9627eb05b10-1" name="rest_code_45a470de98c648f5aa3ab9627eb05b10-1" href="https://tkurtbond.github.io/posts/2024/07/18/my-first-program-using-swtools-vos/#rest_code_45a470de98c648f5aa3ab9627eb05b10-1"&gt;&lt;/a&gt;l&lt;span class="w"&gt; &lt;/span&gt;*.sdcl&lt;span class="w"&gt; &lt;/span&gt;*.for&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;sedit&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;'s/{?+}$/ar uv src.ar $1'&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;and I don't want any version numbers to end up in the names of the
+archive members, and so on.&lt;/p&gt;
+&lt;p&gt;Rafor &lt;em&gt;is&lt;/em&gt; much better than Fortran 77.  And Fortran has even more
+footguns than C when it comes to using separately compiled functions
+and subroutines, with no notices that I'd passed things with the wrong
+type until I actually ran the program and got a register dump because
+of an access violation.&lt;/p&gt;
+&lt;p&gt;I was not able to include things from
+&lt;span class="file"&gt;SYS$LIBRARY:FORSYSDEF.TLB&lt;/span&gt; using the Fortran &lt;code class="docutils literal"&gt;INCLUDE&lt;/code&gt;
+statement in ratfor, since it has its own include keyword , so I
+separated that part of the program into its own Fortran source file.
+Because that file wasn't run through ratfor I couldn't use the
+standard macro definitions, like STDERR, so when I wanted to output
+the filesnames, I just wrote a ratfor subroutine that would print them
+and called that from the fortran routine.  A little clunky, but it
+worked.&lt;/p&gt;
+&lt;p&gt;Annoying, the &lt;span class="command"&gt;fc&lt;/span&gt; command (which compiles &lt;span class="file"&gt;*.f&lt;/span&gt; files to
+objects) doesn't work when run under &lt;span class="command"&gt;mmk&lt;/span&gt;, so I had to write
+a command procedure &lt;span class="file"&gt;dommk&lt;/span&gt; that does &lt;code class="docutils literal"&gt;mmk/noact/out=tmp.com&lt;/code&gt;
+and &lt;code class="docutils literal"&gt;@tmp.com&lt;/code&gt; to do the build.  (I think this was somehow due to
+having multiple levels of subprocesses: &lt;span class="command"&gt;mmk&lt;/span&gt;'s and
+&lt;span class="command"&gt;rc&lt;/span&gt;'s.)&lt;/p&gt;
+&lt;p&gt;Anyway, the program ended up 48 lines of ratfor in three files and 84
+lines of Fortran.  The C program I started with was 170 lines (in one
+file), but doesn't work with the SWTOOLS shell's notions of I/O
+redirection.&lt;/p&gt;</description><category>fortran</category><category>swtools ratfor</category><category>swtools vos</category><category>vax/vms</category><guid>https://tkurtbond.github.io/posts/2024/07/18/my-first-program-using-swtools-vos/</guid><pubDate>Thu, 18 Jul 2024 20:10:56 GMT</pubDate></item><item><title>Fixing a 41 year old bug in the SWTOOLS VOS SEDIT commmand</title><link>https://tkurtbond.github.io/posts/2024/07/15/fixing-a-41-year-old-bug-in-the-swtools-vos-sedit-commmand/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;p&gt;Today I fixed a 41 year old bug in the SWTOOLS VOS &lt;span class="command"&gt;sedit&lt;/span&gt; commmand!&lt;/p&gt;
 &lt;p&gt;At work part of my job is to maintain an emulated VAX/VMS 5.5-2 system
 for one of our clients.  I have been using the SWTOOLS Virtual
 Operating System &lt;a class="reference external" href="https://tkurtbond.github.io/posts/2024/07/03/software-tools/"&gt;recently&lt;/a&gt; (Unix style

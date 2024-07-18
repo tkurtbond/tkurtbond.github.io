@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My first program using SWTOOLS VOS | Lacking Natural Simplicity</title>
+<link href="../../../../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../../../../rss.xml">
+<link rel="alternate" type="application/atom+xml" title="Atom" href="../../../../../feed.atom">
+<link rel="canonical" href="https://tkurtbond.github.io/posts/2024/07/18/my-first-program-using-swtools-vos/">
+<!--[if lt IE 9]><script src="../../../../../assets/js/html5.js"></script><![endif]--><meta name="author" content="T. Kurt Bond">
+<link rel="prev" href="../../15/fixing-a-41-year-old-bug-in-the-swtools-vos-sedit-commmand/" title="Fixing a 41 year old bug in the SWTOOLS VOS SEDIT commmand" type="text/html">
+<meta property="og:site_name" content="Lacking Natural Simplicity">
+<meta property="og:title" content="My first program using SWTOOLS VOS">
+<meta property="og:url" content="https://tkurtbond.github.io/posts/2024/07/18/my-first-program-using-swtools-vos/">
+<meta property="og:description" content="So, I finished by first program using SWTOOLS.  It is a simple
+directory lister, called l, that interprets all its arguments as as
+file specifications to search for using normal RMS wildcards, or used">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2024-07-18T16:10:56-04:00">
+<meta property="article:tag" content="fortran">
+<meta property="article:tag" content="swtools ratfor">
+<meta property="article:tag" content="swtools vos">
+<meta property="article:tag" content="vax/vms">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Text&amp;family=Lato&amp;family=IBM+Plex+Mono" rel="stylesheet">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<div class="blog-masthead">
+    <div class="container">
+<!-- This keeps the margins nice -->
+        <nav class="blog-nav" role="navigation"><a href="../../../../../index.html" class="blog-nav-item">Home</a>
+            <a href="../../../../../archive.html" class="blog-nav-item">Archives</a>
+            <a href="../../../../../categories/index.html" class="blog-nav-item">Tags &amp; Categories</a>
+            <a href="../../../../../rss.xml" class="blog-nav-item">RSS feed</a>
+            <a href="../../../../../feed.atom" class="blog-nav-item">Atom feed</a>
+
+            
+
+    <a href="index.rst" class="blog-nav-item blog-nav-item-aside" id="sourcelink">Source</a>
+                
+            
+        </nav>
+</div>
+<!-- /.container -->
+</div>
+<!-- End of Menubar -->
+
+<div class="container" id="content" role="main">
+    <div class="body-content">
+        <div class="blog-header">
+            <h1 class="blog-title">
+                <a href="https://tkurtbond.github.io/">
+
+                    <span id="blog-title">Lacking Natural Simplicity</span>
+                </a>
+            </h1>
+            <p class="lead blog-description">Random musings on books, code, and tabletop games.</p>
+            
+        </div>
+        <!--Body content-->
+        <div class="row">
+            <div class="col-sm-8 blog-main">
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h2 class="p-name entry-title blog-post-title" itemprop="headline name"><a href="." class="u-url">My first program using SWTOOLS VOS</a></h2>
+
+        <div class="metadata blog-post-meta">
+            <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
+            <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2024-07-18T16:10:56-04:00" itemprop="datePublished" title="2024-07-18 16:10">2024-07-18 16:10</time></a></p>
+                <p class="commentline">        <a href="#disqus_thread" data-disqus-identifier="cache/posts/2024/07/18/my-first-program-using-swtools-vos.html">Comments</a>
+
+
+                    </p>
+<p class="sourceline"><a href="index.rst" id="sourcelink">Source</a></p>
+
+        </div>
+        
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <p>So, I finished by first program using SWTOOLS.  It is a simple
+directory lister, called l, that interprets all its arguments as as
+file specifications to search for using normal RMS wildcards, or used
+<span class="file">*.*</span> if not arguments are specified.  It only returns the files with
+the highest version number, does not include the device, directory, or
+version number in the output, and converts the filenames to lower
+case.  It should only be used to list files in the current directory.
+I needed it because I do things like</p>
+<div class="code"><pre class="code shell"><a id="rest_code_45a470de98c648f5aa3ab9627eb05b10-1" name="rest_code_45a470de98c648f5aa3ab9627eb05b10-1" href="#rest_code_45a470de98c648f5aa3ab9627eb05b10-1"></a>l<span class="w"> </span>*.sdcl<span class="w"> </span>*.for<span class="w"> </span><span class="p">|</span><span class="w"> </span>sedit<span class="w"> </span><span class="s1">'s/{?+}$/ar uv src.ar $1'</span>
+</pre></div>
+<p>and I don't want any version numbers to end up in the names of the
+archive members, and so on.</p>
+<p>Rafor <em>is</em> much better than Fortran 77.  And Fortran has even more
+footguns than C when it comes to using separately compiled functions
+and subroutines, with no notices that I'd passed things with the wrong
+type until I actually ran the program and got a register dump because
+of an access violation.</p>
+<p>I was not able to include things from
+<span class="file">SYS$LIBRARY:FORSYSDEF.TLB</span> using the Fortran <code class="docutils literal">INCLUDE</code>
+statement in ratfor, since it has its own include keyword , so I
+separated that part of the program into its own Fortran source file.
+Because that file wasn't run through ratfor I couldn't use the
+standard macro definitions, like STDERR, so when I wanted to output
+the filesnames, I just wrote a ratfor subroutine that would print them
+and called that from the fortran routine.  A little clunky, but it
+worked.</p>
+<p>Annoying, the <span class="command">fc</span> command (which compiles <span class="file">*.f</span> files to
+objects) doesn't work when run under <span class="command">mmk</span>, so I had to write
+a command procedure <span class="file">dommk</span> that does <code class="docutils literal">mmk/noact/out=tmp.com</code>
+and <code class="docutils literal">@tmp.com</code> to do the build.  (I think this was somehow due to
+having multiple levels of subprocesses: <span class="command">mmk</span>'s and
+<span class="command">rc</span>'s.)</p>
+<p>Anyway, the program ended up 48 lines of ratfor in three files and 84
+lines of Fortran.  The C program I started with was 170 lines (in one
+file), but doesn't work with the SWTOOLS shell's notions of I/O
+redirection.</p>
+    </div>
+    <script>var pfHeaderImgUrl = '';var pfHeaderTagline = '';var pfdisableClickToDel = 0;var pfHideImages = 0;var pfImageDisplayStyle = 'right';var pfDisablePDF = 0;var pfDisableEmail = 0;var pfDisablePrint = 0;var pfCustomCSS = '';var pfBtVersion='2';(function(){var js,pf;pf=document.createElement('script');pf.type='text/javascript';pf.src='//cdn.printfriendly.com/printfriendly.js';document.getElementsByTagName('head')[0].appendChild(pf)})();</script><a href="https://www.printfriendly.com" style="color:#6D9F00;text-decoration:none;" class="printfriendly" onclick="window.print();return false;" title="Printer Friendly and PDF"><img style="border:none;-webkit-box-shadow:none;box-shadow:none;" src="//cdn.printfriendly.com/buttons/printfriendly-pdf-button.png" alt="Print Friendly and PDF"></a>    
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../../../../../categories/fortran/" rel="tag">fortran</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/swtools-ratfor/" rel="tag">swtools ratfor</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/swtools-vos/" rel="tag">swtools vos</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/vaxvms/" rel="tag">vax/vms</a></li>
+        </ul>
+<ul class="pager hidden-print">
+<li class="previous">
+                <a href="../../15/fixing-a-41-year-old-bug-in-the-swtools-vos-sedit-commmand/" rel="prev" title="Fixing a 41 year old bug in the SWTOOLS VOS SEDIT commmand">Previous post</a>
+            </li>
+        </ul></nav></aside><section class="comments hidden-print"><h2>Comments</h2>
+                    <div id="disqus_thread"></div>
+        <script>
+        var disqus_shortname ="lacking-natural-simplicity",
+            disqus_url="https://tkurtbond.github.io/posts/2024/07/18/my-first-program-using-swtools-vos/",
+        disqus_title="My first program using SWTOOLS VOS",
+        disqus_identifier="cache/posts/2024/07/18/my-first-program-using-swtools-vos.html",
+        disqus_config = function () {
+            this.language = "en";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.async = true;
+            dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script><noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+    <a href="https://disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+        </section></article><script>var disqus_shortname="lacking-natural-simplicity";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
+</div>
+            <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+                    <div class="sidebar-module sidebar-module-inset">
+      <h4>About</h4>
+      <p>Lacking Natural Simplicity is one, not particularly flattering, 
+         definition of sophisticated.  
+         This blog chronicles my journey through our at times too complicated 
+         and sophisticated world. </p>
+    </div>
+    <div class="sidebar-module">
+      <p>This site uses no cookies directly, but I expect the <a href="https://disqus.com/">Disqus</a> comments use cookies at disqus.com.</p>
+      <h4>Links</h4>
+      <ol class="list-unstyled">
+<li><a href="../../../../../pages/about-the-blog/index.html">About the Blog</a></li>
+        <li><a href="../../../../../pages/colophon/index.html">Colophon</a></li>
+        <li><a href="../../../../../pages/typographical-conventions/index.html">Typographical Conventions</a></li>
+        <li><a href="../../../../../pages/static-pages-index/index.html">Pages</a></li>
+        <li>
+<a href="http://tkb.tx0.org/">My tx0.org web page</a>
+            <br>    Mostly empty
+        </li>
+        <li>
+<a href="http://consp.org/">consp.org</a>
+            <br>    Rises from the dead!
+            <br>    <a href="http://consp.org/blog/blog.html">microblog</a>
+        </li>
+      </ol>
+</div>
+    
+            </div>
+        <!--End of body content-->
+        </div>
+    </div>
+</div>
+
+<footer class="blog-footer" id="footer">
+    Contents © 2024         <a href="mailto:tkurtbond@gmail.com">T. Kurt Bond</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+    
+</footer><script src="../../../../../assets/js/all-nocdn.js"></script><!-- fancy dates --><script>
+    moment.locale("en");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates --><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element) {
+            return element.getElementsByTagName('img')[0].alt;
+    }});
+    </script>
+</body>
+</html>
