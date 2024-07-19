@@ -39,7 +39,7 @@ separated that part of the program into its own Fortran source file.
 Because that file wasn't run through ratfor I couldn't use the
 standard macro definitions, like STDERR, so when I wanted to output
 the filesnames, I just wrote a ratfor subroutine that would print them
-and called that from the fortran routine.  A little clunky, but it
+and called that from the Fortran subroutine.  A little clunky, but it
 worked.
 
 Annoying, the :command:`fc` command (which compiles :file:`*.f` files to
