@@ -3,7 +3,7 @@
 <feed xml:lang="en" xmlns="http://www.w3.org/2005/Atom">
   <title>Lacking Natural Simplicity (Posts about swtools ratfor)</title>
   <id>https://tkurtbond.github.io/categories/swtools-ratfor.atom</id>
-  <updated>2024-07-19T16:24:51Z</updated>
+  <updated>2024-07-19T16:45:23Z</updated>
   <author>
     <name>T. Kurt Bond</name>
   </author>
@@ -45,7 +45,8 @@ as well.&lt;/p&gt;</summary>
       <name>T. Kurt Bond</name>
     </author>
     <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/posts/2024/07/18/my-first-program-using-swtools-vos/"/>
-    <summary type="html">&lt;p&gt;So, I finished by first program using SWTOOLS.  It is a simple
+    <summary type="html">&lt;p&gt;Well, it's my first program using SWTOOLS VOS &lt;strong&gt;this time around&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;So, I finished by first program using SWTOOLS.  It is a simple
 directory lister, called l, that interprets all its arguments as as
 file specifications to search for using normal RMS wildcards, or used
 &lt;span class="file"&gt;*.*&lt;/span&gt; if not arguments are specified.  It only returns the files with
@@ -53,7 +54,7 @@ the highest version number, does not include the device, directory, or
 version number in the output, and converts the filenames to lower
 case.  It should only be used to list files in the current directory.
 I needed it because I do things like&lt;/p&gt;
-&lt;div class="code"&gt;&lt;pre class="code shell"&gt;&lt;a id="rest_code_9741aef0212e4739afd344a785b38703-1" name="rest_code_9741aef0212e4739afd344a785b38703-1" href="https://tkurtbond.github.io/posts/2024/07/18/my-first-program-using-swtools-vos/#rest_code_9741aef0212e4739afd344a785b38703-1"&gt;&lt;/a&gt;l&lt;span class="w"&gt; &lt;/span&gt;*.sdcl&lt;span class="w"&gt; &lt;/span&gt;*.for&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;sedit&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;'s/{?+}$/ar uv src.ar $1'&lt;/span&gt;
+&lt;div class="code"&gt;&lt;pre class="code shell"&gt;&lt;a id="rest_code_0212f92d774d4b39935bf22416f3d83f-1" name="rest_code_0212f92d774d4b39935bf22416f3d83f-1" href="https://tkurtbond.github.io/posts/2024/07/18/my-first-program-using-swtools-vos/#rest_code_0212f92d774d4b39935bf22416f3d83f-1"&gt;&lt;/a&gt;l&lt;span class="w"&gt; &lt;/span&gt;*.sdcl&lt;span class="w"&gt; &lt;/span&gt;*.for&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;sedit&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;'s/{?+}$/ar uv src.ar $1'&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;and I don't want any version numbers to end up in the names of the
 archive members, and so on.&lt;/p&gt;
@@ -80,7 +81,14 @@ having multiple levels of subprocesses: &lt;span class="command"&gt;mmk&lt;/span
 &lt;p&gt;Anyway, the program ended up 48 lines of ratfor in three files and 84
 lines of Fortran.  The C program I started with was 170 lines (in one
 file), but doesn't work with the SWTOOLS shell's notions of I/O
-redirection.&lt;/p&gt;</summary>
+redirection.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Last edited: 2024-07-19 12:44:44 EDT&lt;/em&gt;&lt;/p&gt;
+&lt;!-- Local Variables:
+time-stamp-format: "%Y-%02m-%02d %02H:%02M:%02S %Z"
+time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
+time-stamp-end: "\\*\\\\?\n"
+time-stamp-line-limit: -20
+End: --&gt;</summary>
     <category term="fortran" label="fortran"/>
     <category term="swtools-ratfor" label="swtools ratfor"/>
     <category term="swtools-vos" label="swtools vos"/>
