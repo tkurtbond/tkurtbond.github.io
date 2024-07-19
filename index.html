@@ -10,7 +10,7 @@
 <link rel="alternate" type="application/atom+xml" title="Atom" href="feed.atom">
 <link rel="canonical" href="https://tkurtbond.github.io/">
 <link rel="next" href="index-95.html" type="text/html">
-<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/2024/07/18/my-first-program-using-swtools-vos/" type="text/html">
+<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/2024/07/19/swtools-vos-shells-need-grpnam-as-well-as-cmexec-and-detach-for-subshells/" type="text/html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Crimson+Text&amp;family=Lato&amp;family=IBM+Plex+Mono" rel="stylesheet">
@@ -55,7 +55,36 @@
         <div class="row">
             <div class="col-sm-8 blog-main">
 <div class="postindex">
-    <article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2024/07/18/my-first-program-using-swtools-vos/" class="u-url">My first program using SWTOOLS VOS</a></h2>
+    <article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2024/07/19/swtools-vos-shells-need-grpnam-as-well-as-cmexec-and-detach-for-subshells/" class="u-url">SWTOOLS VOS shells need GRPNAM as well as CMEXEC and DETACH for subshells</a></h2>
+        <div class="metadata blog-post-meta">
+            <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
+            <p class="dateline"><a href="posts/2024/07/19/swtools-vos-shells-need-grpnam-as-well-as-cmexec-and-detach-for-subshells/" rel="bookmark"><time class="published dt-published" datetime="2024-07-19T12:03:19-04:00" title="2024-07-19 12:03">2024-07-19 12:03</time></a></p>
+                <p class="commentline">        <a href="posts/2024/07/19/swtools-vos-shells-need-grpnam-as-well-as-cmexec-and-detach-for-subshells/#disqus_thread" data-disqus-identifier="cache/posts/2024/07/19/swtools-vos-shells-need-grpnam-as-well-as-cmexec-and-detach-for-subshells.html">Comments</a>
+
+
+        </p>
+</div>
+    </header><div class="e-content entry-content">
+    <p>The SWTOOLS VOS provides three shells, <span class="command">sh</span>, <span class="command">hsh</span>
+(which adds a history mechanism), and <span class="command">esh</span> (which adds
+<span class="command">ed</span>-style editing of the history).  The release notes state
+that the shells need the privileges <code class="docutils literal">DETACH</code> and <code class="docutils literal">CMEXEC</code>, but
+under VMS 5.5-2 it turns out that they need the <code class="docutils literal">GRPNAM</code> privilege
+as well.</p>
+    <nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="categories/cmexec/" rel="tag">cmexec</a></li>
+            <li><a class="tag p-category" href="categories/detach/" rel="tag">detach</a></li>
+            <li><a class="tag p-category" href="categories/esh/" rel="tag">esh</a></li>
+            <li><a class="tag p-category" href="categories/fortran/" rel="tag">fortran</a></li>
+            <li><a class="tag p-category" href="categories/grpnam/" rel="tag">grpnam</a></li>
+            <li><a class="tag p-category" href="categories/hsh/" rel="tag">hsh</a></li>
+            <li><a class="tag p-category" href="categories/sh/" rel="tag">sh</a></li>
+            <li><a class="tag p-category" href="categories/swtools-ratfor/" rel="tag">swtools ratfor</a></li>
+            <li><a class="tag p-category" href="categories/swtools-vos/" rel="tag">swtools vos</a></li>
+            <li><a class="tag p-category" href="categories/vaxvms/" rel="tag">vax/vms</a></li>
+        </ul></nav>
+</div>
+    </article><article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2024/07/18/my-first-program-using-swtools-vos/" class="u-url">My first program using SWTOOLS VOS</a></h2>
         <div class="metadata blog-post-meta">
             <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
             <p class="dateline"><a href="posts/2024/07/18/my-first-program-using-swtools-vos/" rel="bookmark"><time class="published dt-published" datetime="2024-07-18T16:10:56-04:00" title="2024-07-18 16:10">2024-07-18 16:10</time></a></p>
@@ -73,7 +102,7 @@ the highest version number, does not include the device, directory, or
 version number in the output, and converts the filenames to lower
 case.  It should only be used to list files in the current directory.
 I needed it because I do things like</p>
-<div class="code"><pre class="code shell"><a id="rest_code_45a470de98c648f5aa3ab9627eb05b10-1" name="rest_code_45a470de98c648f5aa3ab9627eb05b10-1" href="posts/2024/07/18/my-first-program-using-swtools-vos/#rest_code_45a470de98c648f5aa3ab9627eb05b10-1"></a>l<span class="w"> </span>*.sdcl<span class="w"> </span>*.for<span class="w"> </span><span class="p">|</span><span class="w"> </span>sedit<span class="w"> </span><span class="s1">'s/{?+}$/ar uv src.ar $1'</span>
+<div class="code"><pre class="code shell"><a id="rest_code_9741aef0212e4739afd344a785b38703-1" name="rest_code_9741aef0212e4739afd344a785b38703-1" href="posts/2024/07/18/my-first-program-using-swtools-vos/#rest_code_9741aef0212e4739afd344a785b38703-1"></a>l<span class="w"> </span>*.sdcl<span class="w"> </span>*.for<span class="w"> </span><span class="p">|</span><span class="w"> </span>sedit<span class="w"> </span><span class="s1">'s/{?+}$/ar uv src.ar $1'</span>
 </pre></div>
 <p>and I don't want any version numbers to end up in the names of the
 archive members, and so on.</p>
@@ -89,7 +118,7 @@ separated that part of the program into its own Fortran source file.
 Because that file wasn't run through ratfor I couldn't use the
 standard macro definitions, like STDERR, so when I wanted to output
 the filesnames, I just wrote a ratfor subroutine that would print them
-and called that from the fortran routine.  A little clunky, but it
+and called that from the Fortran subroutine.  A little clunky, but it
 worked.</p>
 <p>Annoying, the <span class="command">fc</span> command (which compiles <span class="file">*.f</span> files to
 objects) doesn't work when run under <span class="command">mmk</span>, so I had to write
@@ -1292,81 +1321,6 @@ been way, way down.  Such are the vagaries of life, I suppose.</p>
     <nav><ul itemprop="keywords" class="tags">
 <li><a class="tag p-category" href="categories/mia/" rel="tag">mia</a></li>
             <li><a class="tag p-category" href="categories/missing-in-action/" rel="tag">missing in action</a></li>
-        </ul></nav>
-</div>
-    </article><article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2023/03/24/ova-galactic-rangers-session-1/" class="u-url">OVA: Galactic Rangers — Session 1</a></h2>
-        <div class="metadata blog-post-meta">
-            <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
-            <p class="dateline"><a href="posts/2023/03/24/ova-galactic-rangers-session-1/" rel="bookmark"><time class="published dt-published" datetime="2023-03-24T21:08:07-04:00" title="2023-03-24 21:08">2023-03-24 21:08</time></a></p>
-                <p class="commentline">        <a href="posts/2023/03/24/ova-galactic-rangers-session-1/#disqus_thread" data-disqus-identifier="cache/posts/2023/03/24/ova-galactic-rangers-session-1.html">Comments</a>
-
-
-        </p>
-</div>
-    </header><div class="e-content entry-content">
-    <aside class="admonition note"><p class="admonition-title">Note</p>
-<p>Text in <code class="docutils literal">{</code> and <code class="docutils literal">}</code> are out of game explanations.  Text in
-<code class="docutils literal">[</code> and <code class="docutils literal">]</code> are out of character comments from the players and
-GM.</p>
-</aside><p><strong>Player Characters</strong></p>
-<ul class="simple">
-<li><p>Strazin Kostra, tigerman Galactic Ranger!</p></li>
-<li><p>Yin, a shapechanging Galactic Ranger!</p></li>
-</ul>
-<p>Strazin fights Gary from Accounting (who looks like a humanoid
-dragon), his boss, on his first day at work!  {This was just a
-training exercise.} He defeats him in one blow!  But Gary says “You
-may have beaten me, but Cheryl from HR is the <em>real</em> challenge…” (Dun
-dun dun!)</p>
-<p>Gary sends us out after four criminal bosses: the Turtle does
-protection, the Tiger does gambling, the Bird does illegal information
-gathering and trading, and the Dragon does drugs.</p>
-<p>We decide to go after the Bird later.  We'd have go off planet to the
-satellite controlling space station around the planet of the bird
-people.  On paper it is a telecommunication booster, but he uses it to
-steal data.  Anyway, he's the hardest to approach, and we need
-somebody smart, which is not playing to either of our strengths.</p>
-<p>We need to gather hard evidence of crimes, so they can be put away
-for ever.</p>
-<p>We decide to go after the Tiger.  We are going to a casino with
-associated brothel, Alpha Blue, under cover.  We are offered a hit of
-a mild (and legal) drug at registration.</p>
-<p>{Drugs are not illegal unless really special: moon sugar, super
-cocaine, etc. Crimes: illegal pit fighting where people die, contests
-where people are expected to die, etc.}</p>
-<p>Yin goes straight to the tables, and breaks even, then gets the
-feeling there is a disturbance in the force.</p>
-<p>Strazin gets a mental image of a guy going back and to the left
-through a secret passage to one of the arenas.  Strazin tells Yin
-telepathically and they follow the guy to a death match.  They've got
-five guys going over beams over a death drop, and they're betting on
-who survives.  We end up in a lower box with the betters.  We've got a
-martial arts guy, Fister, and Loud Strike, a wanted gun runner, who is
-also wanted. {We are wired with audio and video.}  Fister and Loud
-Strike are talking about going to the private suite of the Tiger to
-get the winnings after the match.</p>
-<p>The Contestants are: Red &amp; Blue tied for first, then Green &amp; Black
-tied, and trailing Yellow.  Yin and then Strazin bets on Yellow; none
-of the betters can believe it.  Then Strazin uses Psychic to assist
-Yellow, pushing twice then Green pushed black off in frustration and
-lost his balance and fell.</p>
-<p>We win the jackpot, and Fister and the other guy take us up to the
-Tigers office, where we see <strong>a</strong> tiger (not <strong>The Tiger</strong>), who is
-very rotund, not at all fit, Fat Tony, who asks if we want blue bucks
-(the casino money) or to cash it out now.  We keep the blue bucks, for
-later, and when he goes to pays recognizes Yin as infamous across the
-Galaxy, and a fight breaks out.  It turns against us and we flee, Yin
-uses <em class="ability">Shape-Shifter</em> to go down through the vents in the
-floor and Strazin uses <em class="ability">Psychic</em> to read their weapon
-patterns and to jump out the window and time it to catch the elevator
-on the way down.  Yin says “We will never talk about this!”</p>
-<p>We got <strong class="xp">2 XP</strong> each, and each get a bonus <strong class="xp">1 XP</strong>, for meta
-reasons.</p>
-    <nav><ul itemprop="keywords" class="tags">
-<li><a class="tag p-category" href="categories/ova/" rel="tag">ova</a></li>
-            <li><a class="tag p-category" href="categories/ova-galactic-rangers/" rel="tag">ova galactic rangers</a></li>
-            <li><a class="tag p-category" href="categories/rpg/" rel="tag">rpg</a></li>
-            <li><a class="tag p-category" href="categories/session-logs/" rel="tag">session logs</a></li>
         </ul></nav>
 </div>
     </article>

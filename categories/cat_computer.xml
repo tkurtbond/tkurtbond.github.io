@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity (Posts about computer)</title><link>https://tkurtbond.github.io/</link><description></description><atom:link href="https://tkurtbond.github.io/categories/cat_computer.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2024 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Thu, 18 Jul 2024 20:21:11 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>My first program using SWTOOLS VOS</title><link>https://tkurtbond.github.io/posts/2024/07/18/my-first-program-using-swtools-vos/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;p&gt;So, I finished by first program using SWTOOLS.  It is a simple
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity (Posts about computer)</title><link>https://tkurtbond.github.io/</link><description></description><atom:link href="https://tkurtbond.github.io/categories/cat_computer.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2024 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Fri, 19 Jul 2024 16:24:51 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>SWTOOLS VOS shells need GRPNAM as well as CMEXEC and DETACH for subshells</title><link>https://tkurtbond.github.io/posts/2024/07/19/swtools-vos-shells-need-grpnam-as-well-as-cmexec-and-detach-for-subshells/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;p&gt;The SWTOOLS VOS provides three shells, &lt;span class="command"&gt;sh&lt;/span&gt;, &lt;span class="command"&gt;hsh&lt;/span&gt;
+(which adds a history mechanism), and &lt;span class="command"&gt;esh&lt;/span&gt; (which adds
+&lt;span class="command"&gt;ed&lt;/span&gt;-style editing of the history).  The release notes state
+that the shells need the privileges &lt;code class="docutils literal"&gt;DETACH&lt;/code&gt; and &lt;code class="docutils literal"&gt;CMEXEC&lt;/code&gt;, but
+under VMS 5.5-2 it turns out that they need the &lt;code class="docutils literal"&gt;GRPNAM&lt;/code&gt; privilege
+as well.&lt;/p&gt;</description><category>cmexec</category><category>detach</category><category>esh</category><category>fortran</category><category>grpnam</category><category>hsh</category><category>sh</category><category>swtools ratfor</category><category>swtools vos</category><category>vax/vms</category><guid>https://tkurtbond.github.io/posts/2024/07/19/swtools-vos-shells-need-grpnam-as-well-as-cmexec-and-detach-for-subshells/</guid><pubDate>Fri, 19 Jul 2024 16:03:19 GMT</pubDate></item><item><title>My first program using SWTOOLS VOS</title><link>https://tkurtbond.github.io/posts/2024/07/18/my-first-program-using-swtools-vos/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;p&gt;So, I finished by first program using SWTOOLS.  It is a simple
 directory lister, called l, that interprets all its arguments as as
 file specifications to search for using normal RMS wildcards, or used
 &lt;span class="file"&gt;*.*&lt;/span&gt; if not arguments are specified.  It only returns the files with
@@ -7,7 +12,7 @@ the highest version number, does not include the device, directory, or
 version number in the output, and converts the filenames to lower
 case.  It should only be used to list files in the current directory.
 I needed it because I do things like&lt;/p&gt;
-&lt;div class="code"&gt;&lt;pre class="code shell"&gt;&lt;a id="rest_code_45a470de98c648f5aa3ab9627eb05b10-1" name="rest_code_45a470de98c648f5aa3ab9627eb05b10-1" href="https://tkurtbond.github.io/posts/2024/07/18/my-first-program-using-swtools-vos/#rest_code_45a470de98c648f5aa3ab9627eb05b10-1"&gt;&lt;/a&gt;l&lt;span class="w"&gt; &lt;/span&gt;*.sdcl&lt;span class="w"&gt; &lt;/span&gt;*.for&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;sedit&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;'s/{?+}$/ar uv src.ar $1'&lt;/span&gt;
+&lt;div class="code"&gt;&lt;pre class="code shell"&gt;&lt;a id="rest_code_9741aef0212e4739afd344a785b38703-1" name="rest_code_9741aef0212e4739afd344a785b38703-1" href="https://tkurtbond.github.io/posts/2024/07/18/my-first-program-using-swtools-vos/#rest_code_9741aef0212e4739afd344a785b38703-1"&gt;&lt;/a&gt;l&lt;span class="w"&gt; &lt;/span&gt;*.sdcl&lt;span class="w"&gt; &lt;/span&gt;*.for&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;sedit&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;'s/{?+}$/ar uv src.ar $1'&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;and I don't want any version numbers to end up in the names of the
 archive members, and so on.&lt;/p&gt;
@@ -23,7 +28,7 @@ separated that part of the program into its own Fortran source file.
 Because that file wasn't run through ratfor I couldn't use the
 standard macro definitions, like STDERR, so when I wanted to output
 the filesnames, I just wrote a ratfor subroutine that would print them
-and called that from the fortran routine.  A little clunky, but it
+and called that from the Fortran subroutine.  A little clunky, but it
 worked.&lt;/p&gt;
 &lt;p&gt;Annoying, the &lt;span class="command"&gt;fc&lt;/span&gt; command (which compiles &lt;span class="file"&gt;*.f&lt;/span&gt; files to
 objects) doesn't work when run under &lt;span class="command"&gt;mmk&lt;/span&gt;, so I had to write
@@ -1881,52 +1886,4 @@ stumble across an &lt;a class="reference external" href="https://gist.github.com
 time-stamp-format: "%Y-%02m-%02d %02H:%02M:%02S %Z"
 time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
 time-stamp-end: "\\*\\\\?\n"
-End: --&gt;</description><category>ada</category><category>c</category><category>cheney on the m.t.a.</category><category>clisp</category><category>common lisp</category><category>continuation-passing style</category><category>cps</category><category>ecl</category><category>gcc</category><category>github</category><category>gnat</category><category>hanspeter mössenböck</category><category>lisp-style trampolines</category><category>modula</category><category>modula-2</category><category>niklaus wirth</category><category>no assembly required</category><category>oberon system</category><category>oberon-2</category><category>oberon-07</category><category>obnc</category><category>ocaml</category><category>pascal</category><category>rabbit</category><category>record types</category><category>revised oberon</category><category>sbcl</category><category>scheme</category><category>tail call</category><category>tail call optimization</category><category>trampolines</category><category>type extensions</category><category>uuo handler</category><category>vishap oberon</category><guid>https://tkurtbond.github.io/posts/2022/06/14/lisp-style-trampolines-in-common-lisp-c-ada-oberon-2-and-revised-oberon/</guid><pubDate>Tue, 14 Jun 2022 19:49:55 GMT</pubDate></item><item><title>Installing a recent version of the A2 operatinng system on UNIX</title><link>https://tkurtbond.github.io/posts/2022/06/10/installing-a-recent-version-of-the-a2-operatinng-system-on-unix/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;p&gt;I recently ran across a &lt;a class="reference external" href="https://svn.inf.ethz.ch/svn/lecturers/a2/trunk/UnixAos/DarwinA2%20Installer/ReadMeFirst!.txt"&gt;document&lt;/a&gt; that explains how to install the &lt;a class="reference external" href="https://en.wikipedia.org/wiki/A2_(operating_system)"&gt;A2&lt;/a&gt;
-operating system (formerly Bluebottle, formerly Aos) in the form of
-UnixAos hosted on &lt;a class="reference external" href="https://en.wikipedia.org/wiki/MacOS"&gt;macOS&lt;/a&gt;, in the process of explaining how to make a
-installer for macOS.  I think the same process will work for any
-supported Unix.  [&lt;strong&gt;Later:&lt;/strong&gt; indeed, I used the &lt;a class="reference external" href="http://www.informatik.uni-bremen.de/~fld/UnixAos/rev.9799/LinuxA2-64bit.tgz"&gt;LinuxA2-64bit.tgz&lt;/a&gt; file
-and the same process worked fine on my &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Fedora_Linux"&gt;Fedora&lt;/a&gt; box.]&lt;/p&gt;
-&lt;p&gt;I'll summarize what I did.&lt;/p&gt;
-&lt;p&gt;I went to &lt;a class="reference external" href="http://www.informatik.uni-bremen.de/~fld/UnixAos/"&gt;http://www.informatik.uni-bremen.de/~fld/UnixAos/&lt;/a&gt; and
-selected the most recent revision, &lt;a class="reference external" href="http://www.informatik.uni-bremen.de/~fld/UnixAos/rev.9799/"&gt;rev.9799&lt;/a&gt; at the time of this
-writing.  There I downloaded the install script, &lt;a class="reference external" href="http://www.informatik.uni-bremen.de/~fld/UnixAos/rev.9799/install.UnixA2"&gt;install.UnixA2&lt;/a&gt; and
-the version for 64 bit macOS, &lt;a class="reference external" href="http://www.informatik.uni-bremen.de/~fld/UnixAos/rev.9799/DarwinA2-64bit.tgz"&gt;DarwinA2-64bit.tgz&lt;/a&gt;.  (There were also
-Linux and Solaris versions for 32 and 64 bit systems.)&lt;/p&gt;
-&lt;p&gt;Then I executed &lt;code class="docutils literal"&gt;chmod +x&lt;/code&gt;'ed the install script and ran it, passing
-the &lt;span class="file"&gt;.tgz&lt;/span&gt; file to it.&lt;/p&gt;
-&lt;p&gt;First, it asks for the installation directory, which should already
-exist.  It has a default, but I installed to the directory
-&lt;span class="file"&gt;/usr/local/sw/versions/aos/rev.9799&lt;/span&gt;.  Again, I had to create
-that directory first.  (I don't like to write into &lt;span class="file"&gt;/usr&lt;/span&gt; or
-&lt;span class="file"&gt;/usr/local&lt;/span&gt;, because those directory hierarchies are often
-under the systems control.  Nobody uses &lt;span class="file"&gt;/usr/local/sw&lt;/span&gt; for
-anything except me.)&lt;/p&gt;
-&lt;p&gt;Second, it asks for the file name to copy the &lt;span class="file"&gt;aos&lt;/span&gt; script to.
-I installed the &lt;span class="command"&gt;aos&lt;/span&gt; command to
-&lt;span class="file"&gt;/Users/tkb/local/rndbin&lt;/span&gt;, (&lt;span class="file"&gt;/home/tkb/local/rndbin&lt;/span&gt; on
-non-macOS systems) which is in my path.&lt;/p&gt;
-&lt;p&gt;The install script assumes you are running as root, but I ran it first
-as my normal user, and since the directory I was installing it to was
-owned by me it seems to have worked ok, even though it complained
-about &lt;span class="command"&gt;chgrp&lt;/span&gt; not being able to change the group of a &lt;em&gt;bunch&lt;/em&gt;
-of files.&lt;/p&gt;
-&lt;p&gt;Then when I issued the command &lt;code class="docutils literal"&gt;aos&lt;/code&gt; it started up and displayed a
-window with A2 running in it.  (This requires X Windows, so you'll need
-to install &lt;a class="reference external" href="https://www.xquartz.org/"&gt;XQuartz&lt;/a&gt; on macOS.)&lt;/p&gt;
-&lt;p&gt;Here's a screen shot from macOS:&lt;/p&gt;
-&lt;figure&gt;
-&lt;img alt="Screenshot of A2 running under macOS" src="https://tkurtbond.github.io/a2-screenshot.png"&gt;
-&lt;figcaption&gt;
-&lt;p&gt;Screenshot of A2 running under macOS&lt;/p&gt;
-&lt;/figcaption&gt;
-&lt;/figure&gt;
-&lt;p&gt;It seems to work ok, both on macOS and Fedora, though I haven't
-investigated very much.&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Last edited: 2022-06-12 15:39:49 EDT&lt;/em&gt;&lt;/p&gt;
-&lt;!-- Local Variables:
-time-stamp-format: "%Y-%02m-%02d %02H:%02M:%02S %Z"
-time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
-time-stamp-end: "\\*\\\\?\n"
-time-stamp-line-limit: -20
-End: --&gt;</description><category>a2</category><category>aos</category><category>bluebottle</category><category>fedora</category><category>macos</category><category>oberon</category><category>unix</category><guid>https://tkurtbond.github.io/posts/2022/06/10/installing-a-recent-version-of-the-a2-operatinng-system-on-unix/</guid><pubDate>Fri, 10 Jun 2022 15:28:40 GMT</pubDate></item></channel></rss>
+End: --&gt;</description><category>ada</category><category>c</category><category>cheney on the m.t.a.</category><category>clisp</category><category>common lisp</category><category>continuation-passing style</category><category>cps</category><category>ecl</category><category>gcc</category><category>github</category><category>gnat</category><category>hanspeter mössenböck</category><category>lisp-style trampolines</category><category>modula</category><category>modula-2</category><category>niklaus wirth</category><category>no assembly required</category><category>oberon system</category><category>oberon-2</category><category>oberon-07</category><category>obnc</category><category>ocaml</category><category>pascal</category><category>rabbit</category><category>record types</category><category>revised oberon</category><category>sbcl</category><category>scheme</category><category>tail call</category><category>tail call optimization</category><category>trampolines</category><category>type extensions</category><category>uuo handler</category><category>vishap oberon</category><guid>https://tkurtbond.github.io/posts/2022/06/14/lisp-style-trampolines-in-common-lisp-c-ada-oberon-2-and-revised-oberon/</guid><pubDate>Tue, 14 Jun 2022 19:49:55 GMT</pubDate></item></channel></rss>
