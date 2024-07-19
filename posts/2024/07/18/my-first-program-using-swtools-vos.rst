@@ -10,6 +10,8 @@
 .. role:: file
 .. role:: command
 
+Well, it's my first program using SWTOOLS VOS **this time around**.
+
 So, I finished by first program using SWTOOLS.  It is a simple
 directory lister, called l, that interprets all its arguments as as
 file specifications to search for using normal RMS wildcards, or used
@@ -53,3 +55,13 @@ Anyway, the program ended up 48 lines of ratfor in three files and 84
 lines of Fortran.  The C program I started with was 170 lines (in one
 file), but doesn't work with the SWTOOLS shell's notions of I/O
 redirection.
+
+*Last edited: 2024-07-19 12:44:44 EDT*
+
+..
+   Local Variables:
+   time-stamp-format: "%Y-%02m-%02d %02H:%02M:%02S %Z"
+   time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
+   time-stamp-end: "\\*\\\\?\n"
+   time-stamp-line-limit: -20
+   End:
