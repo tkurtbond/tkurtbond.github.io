@@ -336,6 +336,9 @@ And here is the current source code of :file:`TCS.SDCL`:
    //      specify an empty string for FILESPEC.
        exit 2 .or. QUIET
 
+I decided to leave my :file:``tcsdiff.sdcl`` program separate for the
+time being, since it was easy to convert to use with :app:`TCS` files
+in :file:`[.TCS]`.
 
 I found it amusing when I recently was working on some
 :command:`ratfor` code soon after revising my :command:`SDCL`
