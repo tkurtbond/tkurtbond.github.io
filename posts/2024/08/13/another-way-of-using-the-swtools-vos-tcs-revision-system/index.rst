@@ -90,7 +90,7 @@ for the normal :app:`TCS` commands.  Here's an example from running
          If one needs to specified IGNOREDTYPES but not FILESPEC just
          specify an empty string for FILESPEC.   
 
-And here is the current source code of :file:`TCS.SDCL`\ :
+And here is the current source code of :file:`TCS.SDCL`:
 
 .. code::
 
@@ -336,7 +336,7 @@ And here is the current source code of :file:`TCS.SDCL`\ :
    //      specify an empty string for FILESPEC.
        exit 2 .or. QUIET
 
-I decided to leave my :file:``tcsdiff.sdcl`` program separate for the
+I decided to leave my :file:`tcsdiff.sdcl` program separate for the
 time being, since it was easy to convert to use with :app:`TCS` files
 in :file:`[.TCS]`.
 
