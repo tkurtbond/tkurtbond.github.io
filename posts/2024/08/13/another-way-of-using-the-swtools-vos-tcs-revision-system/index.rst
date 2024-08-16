@@ -90,7 +90,7 @@ for the normal :app:`TCS` commands.  Here's an example from running
          If one needs to specified IGNOREDTYPES but not FILESPEC just
          specify an empty string for FILESPEC.   
 
-And here is the current source code of :file:`TCS.SDCL`:
+And here is the current source code of :file:`TCS.SDCL`\ :
 
 .. code::
 
