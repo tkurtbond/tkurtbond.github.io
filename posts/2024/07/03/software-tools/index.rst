@@ -66,7 +66,8 @@ for that version, which I'm making available here for the curious.
     “I really enjoyed that book.  The first computer book I read where
     I thought my world was larger after reading it.” — C. Paul Bond
 
-*Last edited: 2024-07-15 14:25:36 EDT*
+*Last edited: 2024-10-21 15:59:04 EDT*
+\— Updated PDF with slight changes to structure and better bookmarks.
 
 ..
    Local Variables:

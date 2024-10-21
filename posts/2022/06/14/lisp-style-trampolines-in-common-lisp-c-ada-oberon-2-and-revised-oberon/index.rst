@@ -10,7 +10,7 @@
 .. role:: app
 .. role:: file
 
-*Last edited: 2024-01-21 11:32:05 EST*
+*Last edited: 2024-05-29 15:13:15 EDT*
 
 Are you familiar with `lisp-style trampolines`__?  A trampoline is a
 loop that iteratively invokes functions that return functions.  The
@@ -144,7 +144,7 @@ trampoline type:
 
 Notice how it returns a ``void *``, instead of something more
 specific?  That's because if it tried to return something more
-specific, it would have to a `recursive type`_: that is to say, while
+specific, it would have to have a `recursive type`_: that is to say, while
 defining the type ``trampoline``, you would use a reference to the
 type while defining the type.  It would look something like this:
 
@@ -160,7 +160,8 @@ Very few traditional programming languages allow this.  It isn't a
 problem in Scheme or Common Lisp because those languages use strong
 dynamic typing, where the types are checked at runtime.
 
-So how do you do this in languages with strong static typing?
+So how do you do this in languages with strong static typing, where
+the types are checked at compile time?
 
 Well, let's try this in some of the Oberon_ programming language
 dialects.  Oberon_ was designed and implemented by Niklaus Wirth
@@ -267,8 +268,8 @@ As mentioned above_, this is a case of a `recursive type`_.  Well, drat.
 
 At this point the immediate reaction is to look at the C version and
 try to hack up something analogous using functionality from
-Oberon-2_'s ``SYSTEM`` module, but that way lies madness, difficulty,
-and type errors.  Instead, you have to step back and think about
+Oberon-2_'s ``SYSTEM`` module, but that way lies difficulty,
+type errors, and madness.  Instead, you have to step back and think about
 things from another viewpoint.  The problem is that we can't declare a
 type for a function procedure that returns another function procedure
 of its type, because that is recursive.  Instead of trying for a
