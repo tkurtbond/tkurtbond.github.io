@@ -7,7 +7,8 @@
 .. description: 
 .. type: text
 
-.. role:: file   
+.. role:: file
+.. role:: app
 
 The :title:`Ada Quality and Style: Guidelines for Professional
 Programmers` is available on the web_, but I don't think that there is
@@ -26,6 +27,10 @@ into a temporary directory and then ran the shell script
 
 .. include:: files/83style/make-83style-pdf.sh
    :code: bash
+
+Note the :app:`qpdf` command?  That pulls out the first three pages
+of covers.pdf, because the other pages duplicate stuff that is in
+the other :file:`.pdf` files.
 
 Then I read through the PDF and made a `bookmarks file`_ for use with
 jpdfbookmarks_ (I use one of the releases from this github repo_):
