@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ada Quality and Style: Guidelines for Professional Programmers | Lacking Natural Simplicity</title>
+<link href="../../../../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../../../../rss.xml">
+<link rel="alternate" type="application/atom+xml" title="Atom" href="../../../../../feed.atom">
+<link rel="canonical" href="https://tkurtbond.github.io/posts/2024/11/22/ada-quality-and-style-guidelines-for-professional-programmers/">
+<!--[if lt IE 9]><script src="../../../../../assets/js/html5.js"></script><![endif]--><meta name="author" content="T. Kurt Bond">
+<link rel="prev" href="../../../08/13/another-way-of-using-the-swtools-vos-tcs-revision-system/" title="Another way of using the SWTOOLS VOS TCS revision system" type="text/html">
+<meta property="og:site_name" content="Lacking Natural Simplicity">
+<meta property="og:title" content="Ada Quality and Style: Guidelines for Professional Programmers">
+<meta property="og:url" content="https://tkurtbond.github.io/posts/2024/11/22/ada-quality-and-style-guidelines-for-professional-programmers/">
+<meta property="og:description" content="The Ada Quality and Style: Guidelines for Professional
+Programmers is available on the web, but I don't think that there is
+a PDF copy anywhere easily found, so I'm making a copy available
+here.  This">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2024-11-22T11:49:59-05:00">
+<meta property="article:tag" content="ada">
+<meta property="article:tag" content="ada 83">
+<meta property="article:tag" content="style guide">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Text&amp;family=Lato&amp;family=IBM+Plex+Mono" rel="stylesheet">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<div class="blog-masthead">
+    <div class="container">
+<!-- This keeps the margins nice -->
+        <nav class="blog-nav" role="navigation"><a href="../../../../../index.html" class="blog-nav-item">Home</a>
+            <a href="../../../../../archive.html" class="blog-nav-item">Archives</a>
+            <a href="../../../../../categories/index.html" class="blog-nav-item">Tags &amp; Categories</a>
+            <a href="../../../../../rss.xml" class="blog-nav-item">RSS feed</a>
+            <a href="../../../../../feed.atom" class="blog-nav-item">Atom feed</a>
+
+            
+
+    <a href="index.rst" class="blog-nav-item blog-nav-item-aside" id="sourcelink">Source</a>
+                
+            
+        </nav>
+</div>
+<!-- /.container -->
+</div>
+<!-- End of Menubar -->
+
+<div class="container" id="content" role="main">
+    <div class="body-content">
+        <div class="blog-header">
+            <h1 class="blog-title">
+                <a href="https://tkurtbond.github.io/">
+
+                    <span id="blog-title">Lacking Natural Simplicity</span>
+                </a>
+            </h1>
+            <p class="lead blog-description">Random musings on books, code, and tabletop games.</p>
+            
+        </div>
+        <!--Body content-->
+        <div class="row">
+            <div class="col-sm-8 blog-main">
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h2 class="p-name entry-title blog-post-title" itemprop="headline name"><a href="." class="u-url">Ada Quality and Style: Guidelines for Professional Programmers</a></h2>
+
+        <div class="metadata blog-post-meta">
+            <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
+            <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2024-11-22T11:49:59-05:00" itemprop="datePublished" title="2024-11-22 11:49">2024-11-22 11:49</time></a></p>
+                <p class="commentline">        <a href="#disqus_thread" data-disqus-identifier="cache/posts/2024/11/22/ada-quality-and-style-guidelines-for-professional-programmers.html">Comments</a>
+
+
+                    </p>
+<p class="sourceline"><a href="index.rst" id="sourcelink">Source</a></p>
+
+        </div>
+        
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <p>The <cite>Ada Quality and Style: Guidelines for Professional
+Programmers</cite> is available on the <a class="reference external" href="http://archive.adaic.com/docs/style-guide/83style/html/">web</a>, but I don't think that there is
+a PDF copy anywhere easily found, so I'm making a copy available
+<a class="reference external" href="../../../../../83style/83style.pdf">here</a>.  This is the style guide for Ada 83, by the way.  I got it from
+the <a class="reference external" href="http://archive.adaic.com/docs/style-guide/83style/">Ada Information Clearinghouse</a>.  I downloaded the file
+<a class="reference external" href="http://archive.adaic.com/docs/style-guide/83style/style-ps.zip">style-ps.zip</a>
+into a temporary directory and then ran the shell script
+<a class="reference external" href="../../../../../83style/make-83style-pdf.sh">make-83style-pdf.sh</a> to create the PDF file:</p>
+<div class="code"><pre class="code bash"><a id="rest_code_8acdea7fe8284c60a4bed6ee4e77dd7a-1" name="rest_code_8acdea7fe8284c60a4bed6ee4e77dd7a-1" href="#rest_code_8acdea7fe8284c60a4bed6ee4e77dd7a-1"></a><span class="ch">#! /usr/bin/env bash</span>
+<a id="rest_code_8acdea7fe8284c60a4bed6ee4e77dd7a-2" name="rest_code_8acdea7fe8284c60a4bed6ee4e77dd7a-2" href="#rest_code_8acdea7fe8284c60a4bed6ee4e77dd7a-2"></a><span class="c1"># First, unzip style-ps.zip.  Then, in another directory, unzip all six of</span>
+<a id="rest_code_8acdea7fe8284c60a4bed6ee4e77dd7a-3" name="rest_code_8acdea7fe8284c60a4bed6ee4e77dd7a-3" href="#rest_code_8acdea7fe8284c60a4bed6ee4e77dd7a-3"></a><span class="c1"># those zip files.  Then do the following:</span>
+<a id="rest_code_8acdea7fe8284c60a4bed6ee4e77dd7a-4" name="rest_code_8acdea7fe8284c60a4bed6ee4e77dd7a-4" href="#rest_code_8acdea7fe8284c60a4bed6ee4e77dd7a-4"></a><span class="nb">set</span><span class="w"> </span>-x
+<a id="rest_code_8acdea7fe8284c60a4bed6ee4e77dd7a-5" name="rest_code_8acdea7fe8284c60a4bed6ee4e77dd7a-5" href="#rest_code_8acdea7fe8284c60a4bed6ee4e77dd7a-5"></a>mkdir<span class="w"> </span>tmp<span class="w"> </span><span class="o">&amp;&amp;</span>
+<a id="rest_code_8acdea7fe8284c60a4bed6ee4e77dd7a-6" name="rest_code_8acdea7fe8284c60a4bed6ee4e77dd7a-6" href="#rest_code_8acdea7fe8284c60a4bed6ee4e77dd7a-6"></a><span class="w">    </span><span class="nb">cd</span><span class="w"> </span>tmp<span class="w"> </span><span class="o">&amp;&amp;</span>
+<a id="rest_code_8acdea7fe8284c60a4bed6ee4e77dd7a-7" name="rest_code_8acdea7fe8284c60a4bed6ee4e77dd7a-7" href="#rest_code_8acdea7fe8284c60a4bed6ee4e77dd7a-7"></a><span class="w">    </span>unzip<span class="w"> </span>-L<span class="w"> </span>../style-ps.zip<span class="w"> </span><span class="o">&amp;&amp;</span>
+<a id="rest_code_8acdea7fe8284c60a4bed6ee4e77dd7a-8" name="rest_code_8acdea7fe8284c60a4bed6ee4e77dd7a-8" href="#rest_code_8acdea7fe8284c60a4bed6ee4e77dd7a-8"></a><span class="w">    </span>mkdir<span class="w"> </span>tmp<span class="w"> </span><span class="o">&amp;&amp;</span>
+<a id="rest_code_8acdea7fe8284c60a4bed6ee4e77dd7a-9" name="rest_code_8acdea7fe8284c60a4bed6ee4e77dd7a-9" href="#rest_code_8acdea7fe8284c60a4bed6ee4e77dd7a-9"></a><span class="w">    </span><span class="nb">cd</span><span class="w"> </span>tmp<span class="w"> </span><span class="o">&amp;&amp;</span>
+<a id="rest_code_8acdea7fe8284c60a4bed6ee4e77dd7a-10" name="rest_code_8acdea7fe8284c60a4bed6ee4e77dd7a-10" href="#rest_code_8acdea7fe8284c60a4bed6ee4e77dd7a-10"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span>../*.zip<span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span>unzip<span class="w"> </span>-L<span class="w"> </span><span class="nv">$i</span><span class="p">;</span><span class="w"> </span><span class="k">done</span><span class="w">  </span><span class="o">&amp;&amp;</span>
+<a id="rest_code_8acdea7fe8284c60a4bed6ee4e77dd7a-11" name="rest_code_8acdea7fe8284c60a4bed6ee4e77dd7a-11" href="#rest_code_8acdea7fe8284c60a4bed6ee4e77dd7a-11"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span>*.ps<span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span>ps2pdf<span class="w"> </span><span class="nv">$i</span><span class="w"> </span><span class="k">$(</span>basename<span class="w"> </span><span class="nv">$i</span><span class="w"> </span>.ps<span class="k">)</span>.pdf<span class="p">;</span><span class="w"> </span><span class="k">done</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+<a id="rest_code_8acdea7fe8284c60a4bed6ee4e77dd7a-12" name="rest_code_8acdea7fe8284c60a4bed6ee4e77dd7a-12" href="#rest_code_8acdea7fe8284c60a4bed6ee4e77dd7a-12"></a><span class="w">    </span>qpdf<span class="w"> </span>--empty<span class="w"> </span>-pages<span class="w"> </span>covers.pdf<span class="w"> </span><span class="m">1</span>-3<span class="w"> </span>--<span class="w"> </span>covers_fixed.pdf<span class="w"> </span><span class="o">&amp;&amp;</span>
+<a id="rest_code_8acdea7fe8284c60a4bed6ee4e77dd7a-13" name="rest_code_8acdea7fe8284c60a4bed6ee4e77dd7a-13" href="#rest_code_8acdea7fe8284c60a4bed6ee4e77dd7a-13"></a><span class="w">    </span>pdfunite<span class="w"> </span>covers_fixed.pdf<span class="w"> </span>preface.pdf<span class="w"> </span>ack.pdf<span class="w"> </span>toc.pdf<span class="w"> </span>intro.pdf<span class="w"> </span>source_c.pdf<span class="w"> </span>readabil.pdf<span class="w"> </span>prog_str.pdf<span class="w"> </span>prog_pra.pdf<span class="w"> </span>concurr.pdf<span class="w"> </span>portabil.pdf<span class="w"> </span>reuse.pdf<span class="w"> </span>performa.pdf<span class="w"> </span>complete.pdf<span class="w"> </span>appendix.pdf<span class="w"> </span>ref.pdf<span class="w"> </span>bib_0188.pdf<span class="w"> </span>index.pdf<span class="w"> </span>83style.pdf
+</pre></div>
+<p>Then I read through the PDF and made a <a class="reference external" href="../../../../../83style/83style.bookmarks">bookmarks file</a> for use with
+<a class="reference external" href="https://sourceforge.net/projects/jpdfbookmarks/">jpdfbookmarks</a> (I use one of the releases from this github <a class="reference external" href="https://github.com/life888888/JPdfBookmarks">repo</a>):</p>
+<pre class="literal-block">Ada Quality and Style/1
+        Cover 1/1
+        Cover 2/2
+        Preface/4
+        Authors and Acknowledgements/6
+        Contents/8
+        Chapter 1: Introduction/10
+                1.1 How to use this book/11
+                1.2 To the new Ada programmer/11
+                1.3 To the experienced Ada programmer/12
+                1.4 To the software project manager/12
+                1.5 to contracting agencies and standards organizations/13
+        Chapter 2: Source Code Presentation/14
+                2.1 Code formatting/14
+                        2.1.1 Horizontal spacing/14
+                        2.1.2 Indentation/15
+                        2.1.3 Alignment of operators/18
+                        2.1.4 Alignment of declarations/19
+                        2.1.5 More on alignmeent/20
+                        2.1.6 Blank lines/21
+                        2.1.7 Pagination/22
+                        2.1.8 Number of statements per line/23
+                        2.1.9 Source code line length/24
+                2.2 Summary/24
+        Chapter 3: Readability/26
+                3.1 Spelling/26
+                        3.1.1 Use of underscores/26
+                        3.1.2 Numbers/26
+                        3.1.3 Capitalization/27
+                        3.1.4 Abbreviations/28
+                3.2 Naming conventions/29
+                        3.2.1 Names/29
+                        3.2.2 Type names/29
+                        3.2.3 Object names/30
+                        3.2.4 Program unit names/31
+                        3.2.5 Constants and named numbers/32
+                3.3 Comments/33
+                        3.3.1 General comments/34
+                        3.3.2 File headers/35
+                        3.3.3 Program unit specification header/35
+                        3.3.4 Program unit body header/38
+                        3.3.5 Data comments/39
+                        3.3.6 Statement comments/41
+                        3.3.7 Marker comments/43
+                3.4 Using types/44
+                        3.4.1 Declaring types/44
+                        3.4.2 Enumeration types/45
+                3.5 Summary/46
+        Chapter 4: Program Structure/50
+                4.1 High level structure/50
+                        4.1.1 Separate compilation capabilities/50
+                        4.1.2 Subprograms/51
+                        4.1.3 Functions/52
+                        4.1.4 Packages/53
+                        4.1.5 Cohesion/53
+                        4.1.6 Data coupling/54
+                        4.1.7 Tasks/54
+                4.2 Visibility/55
+                        4.2.1 Minimization of interfaces/55
+                        4.2.2 Nested packages/56
+                        4.2.3 Restricting visibility/56
+                        4.2.4 Hiding tasks/57
+                4.3 Exceptions/59
+                        4.3.1 Using exceptions to help define an abstraction/59
+                4.4 Summary/61
+        Chapter 5: Programming Practices/64
+                5.1 Optional parts of the syntax/64
+                        5.1.1 Loop names/64
+                        5.1.2 Block names/65
+                        5.1.3 Exit statements/66
+                        5.1.4 Naming end statemnts/66
+                5.2 Parameter lists/67
+                        5.2.1 Formal parameters/67
+                        5.2.2 Named association/67
+                        5.2.33 Default parameters/68
+                        5.2.4 Mode indication/69
+                5.3 Types/69
+                        5.3.1 Derived types and subtypes/69
+                        5.3.2 Anonymous types/71
+                        5.3.3 Private types/71
+                5.4 Data structures/72
+                        5.4.1 Heeterogeneous data/72
+                        5.4.2 Nested records/73
+                        5.4.3 Dynamic data/74
+                5.5 Expressions/75
+                        5.5.1 Range values/75
+                        5.5.2 Array attributes/76
+                        5.5.3 Parenthetical expressions/76
+                        5.5.4 Positive forms of logic/77
+                        5.5.5 Short circuit forms of the logical operators/77
+                        5.5.6 Accuracy of operations with real operands/78
+                5.6 Statements/78
+                        5.6.1 Nesting/78
+                        5.6.2 Slices/80
+                        5.6.3 Case statements/80
+                        5.6.4 Loops/81
+                        5.6.5 Exit statements/82
+                        5.6.6 Recursion and iteration bounds/83
+                        5.6.8 Return statements/84
+                        5.6.9 Blocks/85
+                        5.6.10 Aggregates/86
+                5.7 Visibility/86
+                        5.7.1 The use clause/87
+                        5.7.2 The renames clause/88
+                        5.7.3 Overloaded subprograms/88
+                        5.7.4 Overloaded operators/89
+                        5.7.5 Overloading the equality operator/89
+                5.8 Using exceptions/89
+                        5.8.1 Handling versus avoiding exceptions/90
+                        5.8.2 Handlers for others/90
+                        5.8.3 Propagation/91
+                        5.8.4 Localizing the causes of an exception/91
+                5.9 Erroneous Execution/92
+                        5.9.1 Unchecked conversion/92
+                        5.9.2 Unchecked deallocation/93
+                        5.9.3 Dependeence on parameter passing mechanism/93
+                        5.9.4 Multiple address clauses/94
+                        5.9.5 Suppression of exception check/94
+                        5.9.6 Initialization/94
+                        5.9.7 Direct_IO and Sequential_IO/95
+                        5.9.8 Incorrect order dependencies/96
+                5.10 Summary/96
+        Chapter 6: Concurrency/100
+                6.1 Tasking/100
+                        6.1.1 Tasks/100
+                        6.1.2 Anonymous task types/101
+                        6.1.3 Dynamic tasks/102
+                        6.1.4 Prioritis/103
+                        6.1.5 Delay statements/104
+                6.2 Commmunication/105
+                        6.2.1 Effecient task communications/105
+                        6.2.2 Defensive task communication/106
+                        6.2.3 Attributes 'Count, 'Callable, and 'Terminated/108
+                        6.2.4 Shared variables/109
+                        6.2.5 Tenative rendezvous constructs/111
+                        6.2.6 Commmunication complexity/112
+                6.3 Termination/113
+                        6.1.1 Avoiding termination/113
+                        6.3.2 Normal termination/114
+                        6.3.3 The abort statement/115
+                        6.3.4 Abnormal termination/115
+                6.4 Summary/116
+        Chapter 7: Portability/118
+                7.1 Fundamentals/119
+                        7.1.1 Global assumptions/119
+                        7.1.2 Actual limits/120
+                        7.1.3 Comments/120
+                        7.1.4 Main subprogram/121
+                        7.1.5 Encapsulating implementation dependencies/121
+                        7.1.6 Implementation-added features/122
+                7.2 Numeric types and expressions/122
+                        7.2.1 Predefined numeric types/122
+                        7.2.2 Ada model/123
+                        7.2.3 Analysis/123
+                        7.2.4 Accuracy Constraints/124
+                        7.2.5 Comments/124
+                        7.2.6 Precision of constants/124
+                        7.2.7 Subexpression evaluation/124
+                        7.2.8 Relational tests/124
+                7.3 Storage control/125
+                        7.3.1 Representation clause/125
+                7.4 Tasking/126
+                        7.4.1 Task activation order/126
+                        7.4.2 Delay statements/126
+                        7.4.3 Package Calendar, type Duration, and System.Tick/126
+                        7.4.4 Select statement evaluation ordr/126
+                        7.4.5 Task scheduling algorithm/127
+                        7.4.6 Abort/127
+                        7.4.7 Shared variables and pragma shared/127
+                7.5 Exceptions/127
+                        7.5.1 Predefined exceptions/127
+                        7.5.2 Constraint_Error and Numeric_Error/128
+                        7.5.3 Implementation-defined exceptions/128
+                7.6 Representationi clauses and implementation dependent features/128
+                        7.6.1 Representation clauses/129
+                        7.6.2 Package System/129
+                        7.6.3 Machine code inserts/129
+                        7.6.4 Interfacing Foreign Languages/130
+                        7.6.5 Implementation-defined pragmas and attributes/130
+                        7.6.6 Unchecked deallocation/130
+                        7.6.7 Unchecked conversion/131
+                7.7 Input/output/131
+                        7.7.1 Name and Form parameters/132
+                        7.7.2 File closing/132
+                        7.7.3 I/O on access types/132
+                        7.7.4 Package Low_Level_IO/132
+                7.8 Summmary/133
+        Chapter 8: Reusability/136
+                8.1 Understanding and clarity/137
+                        8.1.1 Application-independent naming/137
+                        8.1.2 Abbreviations/138
+                        8.1.3 Generic formal parameters/139
+                8.2 Robustness/139
+                        8.2.1 Named numbers/139
+                        8.2.2 Unconstrained arrays/140
+                        8.2.3 Assumptions/140
+                        8.2.4 Subtypes in generic specifications/141
+                        8.2.5 Overloading in generic units/143
+                        8.2.6 Hidden tasks/143
+                        8.2.7 Exceptions/143
+                8.3 Adaptability/145
+                        8.3.1 Complete functionality/145
+                        8.3.2 Generic units/146
+                        8.3.3 Using generic units to encapsulate algorithms/146
+                        8.3.4 Using generic units for abstract data types/148
+                        8.3.5 Iterators/151
+                        8.3.6 Private and limited private types/154
+                8.4 Independence/156
+                        8.4.1 Using generic parameters to reduce coupling/156
+                        8.4.2 Coupling due to pragmas/157
+                        8.4.3 Part families/158
+                        8.4.4 Conditional compilation/158
+                        8.4.5 Table-driven programming/159
+                8.5 Summary/160
+        Chapter 9: Performance/162
+                9.1 Improving exception speed/162
+                        9.1.1 Pragma inline/162
+                        9.1.2 Blocks/163
+                        9.1.3 Arrays/163
+                        9.1.4 Mod and rem operators/164
+                        9.1.5 Constraint checking/164
+                9.2 Summmary/165
+        Chapter 10: Complete Examples/166
+                10.1 Menu-driven user interface/166
+                10.2 Line-oriented portablee dining philosophers example/174
+                10.3 Window-oriented portable dining philosophers example/179
+        Appendix A: Map from Ada Language Referencee Manual to Guidelines/188
+        References/194
+        Bibliography/198
+        Index/202
+</pre>
+<p>Then I ran another shell script, <a class="reference external" href="../../../../../83style/build-bookmarks.sh">build-bookmarks.sh</a>:</p>
+<div class="code"><pre class="code bash"><a id="rest_code_7e526fe316ea4fcbac639fec9b9d1a16-1" name="rest_code_7e526fe316ea4fcbac639fec9b9d1a16-1" href="#rest_code_7e526fe316ea4fcbac639fec9b9d1a16-1"></a><span class="ch">#! /usr/bin/env bash</span>
+<a id="rest_code_7e526fe316ea4fcbac639fec9b9d1a16-2" name="rest_code_7e526fe316ea4fcbac639fec9b9d1a16-2" href="#rest_code_7e526fe316ea4fcbac639fec9b9d1a16-2"></a>
+<a id="rest_code_7e526fe316ea4fcbac639fec9b9d1a16-3" name="rest_code_7e526fe316ea4fcbac639fec9b9d1a16-3" href="#rest_code_7e526fe316ea4fcbac639fec9b9d1a16-3"></a>jpdfbookmarks<span class="w"> </span>-f<span class="w"> </span>tmp/tmp/83style.pdf<span class="w"> </span>--apply<span class="w"> </span>83style.bookmarks<span class="w"> </span>--out<span class="w"> </span>83style.pdf
+</pre></div>
+<p>There is a PDF of the style guide for <a class="reference external" href="https://www.adaic.org/resources/add_content/docs/95style/95style.pdf">Ada 95</a> online, but the links to the other formats listed on the <a class="reference external" href="https://www.adaic.org/ada-resources/standards/ada-95-documents/">Ada 95 Documents</a> page have bit rotted, alas.</p>
+    </div>
+    <script>var pfHeaderImgUrl = '';var pfHeaderTagline = '';var pfdisableClickToDel = 0;var pfHideImages = 0;var pfImageDisplayStyle = 'right';var pfDisablePDF = 0;var pfDisableEmail = 0;var pfDisablePrint = 0;var pfCustomCSS = '';var pfBtVersion='2';(function(){var js,pf;pf=document.createElement('script');pf.type='text/javascript';pf.src='//cdn.printfriendly.com/printfriendly.js';document.getElementsByTagName('head')[0].appendChild(pf)})();</script><a href="https://www.printfriendly.com" style="color:#6D9F00;text-decoration:none;" class="printfriendly" onclick="window.print();return false;" title="Printer Friendly and PDF"><img style="border:none;-webkit-box-shadow:none;box-shadow:none;" src="//cdn.printfriendly.com/buttons/printfriendly-pdf-button.png" alt="Print Friendly and PDF"></a>    
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../../../../../categories/ada/" rel="tag">ada</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/ada-83/" rel="tag">ada 83</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/style-guide/" rel="tag">style guide</a></li>
+        </ul>
+<ul class="pager hidden-print">
+<li class="previous">
+                <a href="../../../08/13/another-way-of-using-the-swtools-vos-tcs-revision-system/" rel="prev" title="Another way of using the SWTOOLS VOS TCS revision system">Previous post</a>
+            </li>
+        </ul></nav></aside><section class="comments hidden-print"><h2>Comments</h2>
+                    <div id="disqus_thread"></div>
+        <script>
+        var disqus_shortname ="lacking-natural-simplicity",
+            disqus_url="https://tkurtbond.github.io/posts/2024/11/22/ada-quality-and-style-guidelines-for-professional-programmers/",
+        disqus_title="Ada Quality and Style: Guidelines for Professional Programmers",
+        disqus_identifier="cache/posts/2024/11/22/ada-quality-and-style-guidelines-for-professional-programmers.html",
+        disqus_config = function () {
+            this.language = "en";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.async = true;
+            dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script><noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+    <a href="https://disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+        </section></article><script>var disqus_shortname="lacking-natural-simplicity";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
+</div>
+            <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+                    <div class="sidebar-module sidebar-module-inset">
+      <h4>About</h4>
+      <p>Lacking Natural Simplicity is one, not particularly flattering, 
+         definition of sophisticated.  
+         This blog chronicles my journey through our at times too complicated 
+         and sophisticated world. </p>
+    </div>
+    <div class="sidebar-module">
+      <p>This site uses no cookies directly, but I expect the <a href="https://disqus.com/">Disqus</a> comments use cookies at disqus.com.</p>
+      <h4>Links</h4>
+      <ol class="list-unstyled">
+<li><a href="../../../../../pages/about-the-blog/index.html">About the Blog</a></li>
+        <li><a href="../../../../../pages/colophon/index.html">Colophon</a></li>
+        <li><a href="../../../../../pages/typographical-conventions/index.html">Typographical Conventions</a></li>
+        <li><a href="../../../../../pages/static-pages-index/index.html">Pages</a></li>
+        <li>
+<a href="http://tkb.tx0.org/">My tx0.org web page</a>
+            <br>    Mostly empty
+        </li>
+        <li>
+<a href="http://consp.org/">consp.org</a>
+            <br>    Rises from the dead!
+            <br>    <a href="http://consp.org/blog/blog.html">microblog</a>
+        </li>
+      </ol>
+</div>
+    
+            </div>
+        <!--End of body content-->
+        </div>
+    </div>
+</div>
+
+<footer class="blog-footer" id="footer">
+    Contents © 2024         <a href="mailto:tkurtbond@gmail.com">T. Kurt Bond</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+    
+</footer><script src="../../../../../assets/js/all-nocdn.js"></script><!-- fancy dates --><script>
+    moment.locale("en");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates --><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element) {
+            return element.getElementsByTagName('img')[0].alt;
+    }});
+    </script>
+</body>
+</html>
