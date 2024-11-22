@@ -2,7 +2,7 @@
 .. slug: maintaining-the-old-ada-modeel-formerly-distributed-with-emacs
 .. date: 2022-12-06 13:28:59 UTC-05:00
 .. tags: ada,ada-mode,ada-mode.el,emacs
-.. category: computer/ada
+.. category: computer/languages/ada
 .. link: 
 .. description: 
 .. type: text
