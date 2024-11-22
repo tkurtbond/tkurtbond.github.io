@@ -1,5 +1,306 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity (Posts about splitting strings in ada)</title><link>https://tkurtbond.github.io/</link><description></description><atom:link href="https://tkurtbond.github.io/categories/splitting-strings-in-ada.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2024 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Fri, 22 Nov 2024 21:11:45 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Splitting Strings on a Delimiter in the Ada Programming Language</title><link>https://tkurtbond.github.io/posts/2022/08/05/splitting-strings-on-a-delimiter-in-the-ada-programming-language/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;p&gt;&lt;em&gt;Last edited: 2024-11-22 16:10:42 EST&lt;/em&gt;&lt;/p&gt;
+<?xml-stylesheet type="text/xsl" href="../../../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity (Posts about ada)</title><link>https://tkurtbond.github.io/</link><description></description><atom:link href="https://tkurtbond.github.io/categories/cat_computer/languages/ada.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2024 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Fri, 22 Nov 2024 21:11:44 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Ada Quality and Style: Guidelines for Professional Programmers</title><link>https://tkurtbond.github.io/posts/2024/11/22/ada-quality-and-style-guidelines-for-professional-programmers/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;p&gt;The &lt;cite&gt;Ada Quality and Style: Guidelines for Professional
+Programmers&lt;/cite&gt; is available on the &lt;a class="reference external" href="http://archive.adaic.com/docs/style-guide/83style/html/"&gt;web&lt;/a&gt;, but I don't think that there is
+a PDF copy anywhere easily found, so I'm making a copy available
+&lt;a class="reference external" href="https://tkurtbond.github.io/83style/83style.pdf"&gt;here&lt;/a&gt;.  This is the style guide for Ada 83, by the way.  I got it from
+the &lt;a class="reference external" href="http://archive.adaic.com/docs/style-guide/83style/"&gt;Ada Information Clearinghouse&lt;/a&gt;.  I downloaded the file
+&lt;a class="reference external" href="http://archive.adaic.com/docs/style-guide/83style/style-ps.zip"&gt;style-ps.zip&lt;/a&gt;
+into a temporary directory and then ran the shell script
+&lt;a class="reference external" href="https://tkurtbond.github.io/83style/make-83style-pdf.sh"&gt;make-83style-pdf.sh&lt;/a&gt; to create the PDF file:&lt;/p&gt;
+&lt;div class="code"&gt;&lt;pre class="code bash"&gt;&lt;a id="rest_code_6f4c756a887f4505a5f4222ceb74f99a-1" name="rest_code_6f4c756a887f4505a5f4222ceb74f99a-1" href="https://tkurtbond.github.io/posts/2024/11/22/ada-quality-and-style-guidelines-for-professional-programmers/#rest_code_6f4c756a887f4505a5f4222ceb74f99a-1"&gt;&lt;/a&gt;&lt;span class="ch"&gt;#! /usr/bin/env bash&lt;/span&gt;
+&lt;a id="rest_code_6f4c756a887f4505a5f4222ceb74f99a-2" name="rest_code_6f4c756a887f4505a5f4222ceb74f99a-2" href="https://tkurtbond.github.io/posts/2024/11/22/ada-quality-and-style-guidelines-for-professional-programmers/#rest_code_6f4c756a887f4505a5f4222ceb74f99a-2"&gt;&lt;/a&gt;&lt;span class="c1"&gt;# First, unzip style-ps.zip.  Then, in another directory, unzip all six of&lt;/span&gt;
+&lt;a id="rest_code_6f4c756a887f4505a5f4222ceb74f99a-3" name="rest_code_6f4c756a887f4505a5f4222ceb74f99a-3" href="https://tkurtbond.github.io/posts/2024/11/22/ada-quality-and-style-guidelines-for-professional-programmers/#rest_code_6f4c756a887f4505a5f4222ceb74f99a-3"&gt;&lt;/a&gt;&lt;span class="c1"&gt;# those zip files.  Then do the following:&lt;/span&gt;
+&lt;a id="rest_code_6f4c756a887f4505a5f4222ceb74f99a-4" name="rest_code_6f4c756a887f4505a5f4222ceb74f99a-4" href="https://tkurtbond.github.io/posts/2024/11/22/ada-quality-and-style-guidelines-for-professional-programmers/#rest_code_6f4c756a887f4505a5f4222ceb74f99a-4"&gt;&lt;/a&gt;&lt;span class="nb"&gt;set&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;-x
+&lt;a id="rest_code_6f4c756a887f4505a5f4222ceb74f99a-5" name="rest_code_6f4c756a887f4505a5f4222ceb74f99a-5" href="https://tkurtbond.github.io/posts/2024/11/22/ada-quality-and-style-guidelines-for-professional-programmers/#rest_code_6f4c756a887f4505a5f4222ceb74f99a-5"&gt;&lt;/a&gt;mkdir&lt;span class="w"&gt; &lt;/span&gt;tmp&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt;
+&lt;a id="rest_code_6f4c756a887f4505a5f4222ceb74f99a-6" name="rest_code_6f4c756a887f4505a5f4222ceb74f99a-6" href="https://tkurtbond.github.io/posts/2024/11/22/ada-quality-and-style-guidelines-for-professional-programmers/#rest_code_6f4c756a887f4505a5f4222ceb74f99a-6"&gt;&lt;/a&gt;&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nb"&gt;cd&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;tmp&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt;
+&lt;a id="rest_code_6f4c756a887f4505a5f4222ceb74f99a-7" name="rest_code_6f4c756a887f4505a5f4222ceb74f99a-7" href="https://tkurtbond.github.io/posts/2024/11/22/ada-quality-and-style-guidelines-for-professional-programmers/#rest_code_6f4c756a887f4505a5f4222ceb74f99a-7"&gt;&lt;/a&gt;&lt;span class="w"&gt;    &lt;/span&gt;unzip&lt;span class="w"&gt; &lt;/span&gt;-L&lt;span class="w"&gt; &lt;/span&gt;../style-ps.zip&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt;
+&lt;a id="rest_code_6f4c756a887f4505a5f4222ceb74f99a-8" name="rest_code_6f4c756a887f4505a5f4222ceb74f99a-8" href="https://tkurtbond.github.io/posts/2024/11/22/ada-quality-and-style-guidelines-for-professional-programmers/#rest_code_6f4c756a887f4505a5f4222ceb74f99a-8"&gt;&lt;/a&gt;&lt;span class="w"&gt;    &lt;/span&gt;mkdir&lt;span class="w"&gt; &lt;/span&gt;tmp&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt;
+&lt;a id="rest_code_6f4c756a887f4505a5f4222ceb74f99a-9" name="rest_code_6f4c756a887f4505a5f4222ceb74f99a-9" href="https://tkurtbond.github.io/posts/2024/11/22/ada-quality-and-style-guidelines-for-professional-programmers/#rest_code_6f4c756a887f4505a5f4222ceb74f99a-9"&gt;&lt;/a&gt;&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nb"&gt;cd&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;tmp&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt;
+&lt;a id="rest_code_6f4c756a887f4505a5f4222ceb74f99a-10" name="rest_code_6f4c756a887f4505a5f4222ceb74f99a-10" href="https://tkurtbond.github.io/posts/2024/11/22/ada-quality-and-style-guidelines-for-professional-programmers/#rest_code_6f4c756a887f4505a5f4222ceb74f99a-10"&gt;&lt;/a&gt;&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;i&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;in&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;../*.zip&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;do&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;unzip&lt;span class="w"&gt; &lt;/span&gt;-L&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$i&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;done&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt;
+&lt;a id="rest_code_6f4c756a887f4505a5f4222ceb74f99a-11" name="rest_code_6f4c756a887f4505a5f4222ceb74f99a-11" href="https://tkurtbond.github.io/posts/2024/11/22/ada-quality-and-style-guidelines-for-professional-programmers/#rest_code_6f4c756a887f4505a5f4222ceb74f99a-11"&gt;&lt;/a&gt;&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;i&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;in&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;*.ps&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;do&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;ps2pdf&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$i&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;basename&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$i&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;.ps&lt;span class="k"&gt;)&lt;/span&gt;.pdf&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;done&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt;
+&lt;a id="rest_code_6f4c756a887f4505a5f4222ceb74f99a-12" name="rest_code_6f4c756a887f4505a5f4222ceb74f99a-12" href="https://tkurtbond.github.io/posts/2024/11/22/ada-quality-and-style-guidelines-for-professional-programmers/#rest_code_6f4c756a887f4505a5f4222ceb74f99a-12"&gt;&lt;/a&gt;&lt;span class="w"&gt;    &lt;/span&gt;qpdf&lt;span class="w"&gt; &lt;/span&gt;--empty&lt;span class="w"&gt; &lt;/span&gt;-pages&lt;span class="w"&gt; &lt;/span&gt;covers.pdf&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;-3&lt;span class="w"&gt; &lt;/span&gt;--&lt;span class="w"&gt; &lt;/span&gt;covers_fixed.pdf&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt;
+&lt;a id="rest_code_6f4c756a887f4505a5f4222ceb74f99a-13" name="rest_code_6f4c756a887f4505a5f4222ceb74f99a-13" href="https://tkurtbond.github.io/posts/2024/11/22/ada-quality-and-style-guidelines-for-professional-programmers/#rest_code_6f4c756a887f4505a5f4222ceb74f99a-13"&gt;&lt;/a&gt;&lt;span class="w"&gt;    &lt;/span&gt;pdfunite&lt;span class="w"&gt; &lt;/span&gt;covers_fixed.pdf&lt;span class="w"&gt; &lt;/span&gt;preface.pdf&lt;span class="w"&gt; &lt;/span&gt;ack.pdf&lt;span class="w"&gt; &lt;/span&gt;toc.pdf&lt;span class="w"&gt; &lt;/span&gt;intro.pdf&lt;span class="w"&gt; &lt;/span&gt;source_c.pdf&lt;span class="w"&gt; &lt;/span&gt;readabil.pdf&lt;span class="w"&gt; &lt;/span&gt;prog_str.pdf&lt;span class="w"&gt; &lt;/span&gt;prog_pra.pdf&lt;span class="w"&gt; &lt;/span&gt;concurr.pdf&lt;span class="w"&gt; &lt;/span&gt;portabil.pdf&lt;span class="w"&gt; &lt;/span&gt;reuse.pdf&lt;span class="w"&gt; &lt;/span&gt;performa.pdf&lt;span class="w"&gt; &lt;/span&gt;complete.pdf&lt;span class="w"&gt; &lt;/span&gt;appendix.pdf&lt;span class="w"&gt; &lt;/span&gt;ref.pdf&lt;span class="w"&gt; &lt;/span&gt;bib_0188.pdf&lt;span class="w"&gt; &lt;/span&gt;index.pdf&lt;span class="w"&gt; &lt;/span&gt;83style.pdf
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Then I read through the PDF and made a &lt;a class="reference external" href="https://tkurtbond.github.io/83style/83style.bookmarks"&gt;bookmarks file&lt;/a&gt; for use with
+&lt;a class="reference external" href="https://sourceforge.net/projects/jpdfbookmarks/"&gt;jpdfbookmarks&lt;/a&gt; (I use one of the releases from this github &lt;a class="reference external" href="https://github.com/life888888/JPdfBookmarks"&gt;repo&lt;/a&gt;):&lt;/p&gt;
+&lt;pre class="literal-block"&gt;Ada Quality and Style/1
+        Cover 1/1
+        Cover 2/2
+        Preface/4
+        Authors and Acknowledgements/6
+        Contents/8
+        Chapter 1: Introduction/10
+                1.1 How to use this book/11
+                1.2 To the new Ada programmer/11
+                1.3 To the experienced Ada programmer/12
+                1.4 To the software project manager/12
+                1.5 to contracting agencies and standards organizations/13
+        Chapter 2: Source Code Presentation/14
+                2.1 Code formatting/14
+                        2.1.1 Horizontal spacing/14
+                        2.1.2 Indentation/15
+                        2.1.3 Alignment of operators/18
+                        2.1.4 Alignment of declarations/19
+                        2.1.5 More on alignmeent/20
+                        2.1.6 Blank lines/21
+                        2.1.7 Pagination/22
+                        2.1.8 Number of statements per line/23
+                        2.1.9 Source code line length/24
+                2.2 Summary/24
+        Chapter 3: Readability/26
+                3.1 Spelling/26
+                        3.1.1 Use of underscores/26
+                        3.1.2 Numbers/26
+                        3.1.3 Capitalization/27
+                        3.1.4 Abbreviations/28
+                3.2 Naming conventions/29
+                        3.2.1 Names/29
+                        3.2.2 Type names/29
+                        3.2.3 Object names/30
+                        3.2.4 Program unit names/31
+                        3.2.5 Constants and named numbers/32
+                3.3 Comments/33
+                        3.3.1 General comments/34
+                        3.3.2 File headers/35
+                        3.3.3 Program unit specification header/35
+                        3.3.4 Program unit body header/38
+                        3.3.5 Data comments/39
+                        3.3.6 Statement comments/41
+                        3.3.7 Marker comments/43
+                3.4 Using types/44
+                        3.4.1 Declaring types/44
+                        3.4.2 Enumeration types/45
+                3.5 Summary/46
+        Chapter 4: Program Structure/50
+                4.1 High level structure/50
+                        4.1.1 Separate compilation capabilities/50
+                        4.1.2 Subprograms/51
+                        4.1.3 Functions/52
+                        4.1.4 Packages/53
+                        4.1.5 Cohesion/53
+                        4.1.6 Data coupling/54
+                        4.1.7 Tasks/54
+                4.2 Visibility/55
+                        4.2.1 Minimization of interfaces/55
+                        4.2.2 Nested packages/56
+                        4.2.3 Restricting visibility/56
+                        4.2.4 Hiding tasks/57
+                4.3 Exceptions/59
+                        4.3.1 Using exceptions to help define an abstraction/59
+                4.4 Summary/61
+        Chapter 5: Programming Practices/64
+                5.1 Optional parts of the syntax/64
+                        5.1.1 Loop names/64
+                        5.1.2 Block names/65
+                        5.1.3 Exit statements/66
+                        5.1.4 Naming end statemnts/66
+                5.2 Parameter lists/67
+                        5.2.1 Formal parameters/67
+                        5.2.2 Named association/67
+                        5.2.33 Default parameters/68
+                        5.2.4 Mode indication/69
+                5.3 Types/69
+                        5.3.1 Derived types and subtypes/69
+                        5.3.2 Anonymous types/71
+                        5.3.3 Private types/71
+                5.4 Data structures/72
+                        5.4.1 Heeterogeneous data/72
+                        5.4.2 Nested records/73
+                        5.4.3 Dynamic data/74
+                5.5 Expressions/75
+                        5.5.1 Range values/75
+                        5.5.2 Array attributes/76
+                        5.5.3 Parenthetical expressions/76
+                        5.5.4 Positive forms of logic/77
+                        5.5.5 Short circuit forms of the logical operators/77
+                        5.5.6 Accuracy of operations with real operands/78
+                5.6 Statements/78
+                        5.6.1 Nesting/78
+                        5.6.2 Slices/80
+                        5.6.3 Case statements/80
+                        5.6.4 Loops/81
+                        5.6.5 Exit statements/82
+                        5.6.6 Recursion and iteration bounds/83
+                        5.6.8 Return statements/84
+                        5.6.9 Blocks/85
+                        5.6.10 Aggregates/86
+                5.7 Visibility/86
+                        5.7.1 The use clause/87
+                        5.7.2 The renames clause/88
+                        5.7.3 Overloaded subprograms/88
+                        5.7.4 Overloaded operators/89
+                        5.7.5 Overloading the equality operator/89
+                5.8 Using exceptions/89
+                        5.8.1 Handling versus avoiding exceptions/90
+                        5.8.2 Handlers for others/90
+                        5.8.3 Propagation/91
+                        5.8.4 Localizing the causes of an exception/91
+                5.9 Erroneous Execution/92
+                        5.9.1 Unchecked conversion/92
+                        5.9.2 Unchecked deallocation/93
+                        5.9.3 Dependeence on parameter passing mechanism/93
+                        5.9.4 Multiple address clauses/94
+                        5.9.5 Suppression of exception check/94
+                        5.9.6 Initialization/94
+                        5.9.7 Direct_IO and Sequential_IO/95
+                        5.9.8 Incorrect order dependencies/96
+                5.10 Summary/96
+        Chapter 6: Concurrency/100
+                6.1 Tasking/100
+                        6.1.1 Tasks/100
+                        6.1.2 Anonymous task types/101
+                        6.1.3 Dynamic tasks/102
+                        6.1.4 Prioritis/103
+                        6.1.5 Delay statements/104
+                6.2 Commmunication/105
+                        6.2.1 Effecient task communications/105
+                        6.2.2 Defensive task communication/106
+                        6.2.3 Attributes 'Count, 'Callable, and 'Terminated/108
+                        6.2.4 Shared variables/109
+                        6.2.5 Tenative rendezvous constructs/111
+                        6.2.6 Commmunication complexity/112
+                6.3 Termination/113
+                        6.1.1 Avoiding termination/113
+                        6.3.2 Normal termination/114
+                        6.3.3 The abort statement/115
+                        6.3.4 Abnormal termination/115
+                6.4 Summary/116
+        Chapter 7: Portability/118
+                7.1 Fundamentals/119
+                        7.1.1 Global assumptions/119
+                        7.1.2 Actual limits/120
+                        7.1.3 Comments/120
+                        7.1.4 Main subprogram/121
+                        7.1.5 Encapsulating implementation dependencies/121
+                        7.1.6 Implementation-added features/122
+                7.2 Numeric types and expressions/122
+                        7.2.1 Predefined numeric types/122
+                        7.2.2 Ada model/123
+                        7.2.3 Analysis/123
+                        7.2.4 Accuracy Constraints/124
+                        7.2.5 Comments/124
+                        7.2.6 Precision of constants/124
+                        7.2.7 Subexpression evaluation/124
+                        7.2.8 Relational tests/124
+                7.3 Storage control/125
+                        7.3.1 Representation clause/125
+                7.4 Tasking/126
+                        7.4.1 Task activation order/126
+                        7.4.2 Delay statements/126
+                        7.4.3 Package Calendar, type Duration, and System.Tick/126
+                        7.4.4 Select statement evaluation ordr/126
+                        7.4.5 Task scheduling algorithm/127
+                        7.4.6 Abort/127
+                        7.4.7 Shared variables and pragma shared/127
+                7.5 Exceptions/127
+                        7.5.1 Predefined exceptions/127
+                        7.5.2 Constraint_Error and Numeric_Error/128
+                        7.5.3 Implementation-defined exceptions/128
+                7.6 Representationi clauses and implementation dependent features/128
+                        7.6.1 Representation clauses/129
+                        7.6.2 Package System/129
+                        7.6.3 Machine code inserts/129
+                        7.6.4 Interfacing Foreign Languages/130
+                        7.6.5 Implementation-defined pragmas and attributes/130
+                        7.6.6 Unchecked deallocation/130
+                        7.6.7 Unchecked conversion/131
+                7.7 Input/output/131
+                        7.7.1 Name and Form parameters/132
+                        7.7.2 File closing/132
+                        7.7.3 I/O on access types/132
+                        7.7.4 Package Low_Level_IO/132
+                7.8 Summmary/133
+        Chapter 8: Reusability/136
+                8.1 Understanding and clarity/137
+                        8.1.1 Application-independent naming/137
+                        8.1.2 Abbreviations/138
+                        8.1.3 Generic formal parameters/139
+                8.2 Robustness/139
+                        8.2.1 Named numbers/139
+                        8.2.2 Unconstrained arrays/140
+                        8.2.3 Assumptions/140
+                        8.2.4 Subtypes in generic specifications/141
+                        8.2.5 Overloading in generic units/143
+                        8.2.6 Hidden tasks/143
+                        8.2.7 Exceptions/143
+                8.3 Adaptability/145
+                        8.3.1 Complete functionality/145
+                        8.3.2 Generic units/146
+                        8.3.3 Using generic units to encapsulate algorithms/146
+                        8.3.4 Using generic units for abstract data types/148
+                        8.3.5 Iterators/151
+                        8.3.6 Private and limited private types/154
+                8.4 Independence/156
+                        8.4.1 Using generic parameters to reduce coupling/156
+                        8.4.2 Coupling due to pragmas/157
+                        8.4.3 Part families/158
+                        8.4.4 Conditional compilation/158
+                        8.4.5 Table-driven programming/159
+                8.5 Summary/160
+        Chapter 9: Performance/162
+                9.1 Improving exception speed/162
+                        9.1.1 Pragma inline/162
+                        9.1.2 Blocks/163
+                        9.1.3 Arrays/163
+                        9.1.4 Mod and rem operators/164
+                        9.1.5 Constraint checking/164
+                9.2 Summmary/165
+        Chapter 10: Complete Examples/166
+                10.1 Menu-driven user interface/166
+                10.2 Line-oriented portablee dining philosophers example/174
+                10.3 Window-oriented portable dining philosophers example/179
+        Appendix A: Map from Ada Language Referencee Manual to Guidelines/188
+        References/194
+        Bibliography/198
+        Index/202
+&lt;/pre&gt;
+&lt;p&gt;Then I ran another shell script, &lt;a class="reference external" href="https://tkurtbond.github.io/83style/build-bookmarks.sh"&gt;build-bookmarks.sh&lt;/a&gt;:&lt;/p&gt;
+&lt;div class="code"&gt;&lt;pre class="code bash"&gt;&lt;a id="rest_code_ce77a7a7134746329ad3c4143ed46c3d-1" name="rest_code_ce77a7a7134746329ad3c4143ed46c3d-1" href="https://tkurtbond.github.io/posts/2024/11/22/ada-quality-and-style-guidelines-for-professional-programmers/#rest_code_ce77a7a7134746329ad3c4143ed46c3d-1"&gt;&lt;/a&gt;&lt;span class="ch"&gt;#! /usr/bin/env bash&lt;/span&gt;
+&lt;a id="rest_code_ce77a7a7134746329ad3c4143ed46c3d-2" name="rest_code_ce77a7a7134746329ad3c4143ed46c3d-2" href="https://tkurtbond.github.io/posts/2024/11/22/ada-quality-and-style-guidelines-for-professional-programmers/#rest_code_ce77a7a7134746329ad3c4143ed46c3d-2"&gt;&lt;/a&gt;
+&lt;a id="rest_code_ce77a7a7134746329ad3c4143ed46c3d-3" name="rest_code_ce77a7a7134746329ad3c4143ed46c3d-3" href="https://tkurtbond.github.io/posts/2024/11/22/ada-quality-and-style-guidelines-for-professional-programmers/#rest_code_ce77a7a7134746329ad3c4143ed46c3d-3"&gt;&lt;/a&gt;jpdfbookmarks&lt;span class="w"&gt; &lt;/span&gt;-f&lt;span class="w"&gt; &lt;/span&gt;tmp/tmp/83style.pdf&lt;span class="w"&gt; &lt;/span&gt;--apply&lt;span class="w"&gt; &lt;/span&gt;83style.bookmarks&lt;span class="w"&gt; &lt;/span&gt;--out&lt;span class="w"&gt; &lt;/span&gt;83style.pdf
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;There is a PDF of the style guide for &lt;a class="reference external" href="https://www.adaic.org/resources/add_content/docs/95style/95style.pdf"&gt;Ada 95&lt;/a&gt; online, but the links to the other formats listed on the &lt;a class="reference external" href="https://www.adaic.org/ada-resources/standards/ada-95-documents/"&gt;Ada 95 Documents&lt;/a&gt; page have bit rotted, alas.&lt;/p&gt;</description><category>ada</category><category>ada 83</category><category>style guide</category><guid>https://tkurtbond.github.io/posts/2024/11/22/ada-quality-and-style-guidelines-for-professional-programmers/</guid><pubDate>Fri, 22 Nov 2024 16:49:59 GMT</pubDate></item><item><title>Maintaining the old ada-mode.el formerly distributed with Emacs</title><link>https://tkurtbond.github.io/posts/2022/12/06/maintaining-the-old-ada-modeel-formerly-distributed-with-emacs/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;p&gt;I wrote a &lt;a class="reference external" href="https://tkurtbond.github.io/posts/2022/07/09/using-the-old-version-of-ada-mode-for-emacs/"&gt;post&lt;/a&gt; about using the old ada-mode.el that used to be
+distributed with &lt;span class="app"&gt;Emacs&lt;/span&gt; because I couldn't get the newer,
+separate package &lt;a class="reference external" href="https://www.gnu.org/software/emacs/manual/html_mono/ada-mode.html"&gt;version&lt;/a&gt; to work for me.&lt;/p&gt;
+&lt;p&gt;Well, this morning when I pulled up an Ada file in &lt;span class="app"&gt;Emacs&lt;/span&gt; version
+28 there were two problems:&lt;/p&gt;
+&lt;ol class="arabic"&gt;
+&lt;li&gt;&lt;p&gt;The information to invoke ada-mode on Ada files was not in the
+&lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;auto-mode-alist&lt;/span&gt;&lt;/code&gt; variable in &lt;span class="app"&gt;Emacs&lt;/span&gt;.  That was easy
+enough to fix: add &lt;span class="file"&gt;.ada&lt;/span&gt;, &lt;span class="file"&gt;.ads&lt;/span&gt;, and &lt;span class="file"&gt;.adb&lt;/span&gt; to
+&lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;auto-mode-alist&lt;/span&gt;&lt;/code&gt; (and &lt;span class="file"&gt;.gpr&lt;/span&gt;, too, since Ada mode works
+for &lt;span class="app"&gt;gprbuild&lt;/span&gt; files as well):&lt;/p&gt;
+&lt;div class="code"&gt;&lt;pre class="code emacs-lisp"&gt;&lt;a id="rest_code_8215dc1856a143eca834891ecc7ab224-1" name="rest_code_8215dc1856a143eca834891ecc7ab224-1" href="https://tkurtbond.github.io/posts/2022/12/06/maintaining-the-old-ada-modeel-formerly-distributed-with-emacs/#rest_code_8215dc1856a143eca834891ecc7ab224-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;cl-loop&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;for&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;ext&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;in&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;'&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"\\.gpr$"&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;"\\.ada$"&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;"\\.ads$"&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;"\\.adb$"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a id="rest_code_8215dc1856a143eca834891ecc7ab224-2" name="rest_code_8215dc1856a143eca834891ecc7ab224-2" href="https://tkurtbond.github.io/posts/2022/12/06/maintaining-the-old-ada-modeel-formerly-distributed-with-emacs/#rest_code_8215dc1856a143eca834891ecc7ab224-2"&gt;&lt;/a&gt;&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nb"&gt;do&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;add-to-list&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ss"&gt;'auto-mode-alist&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;cons&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;ext&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ss"&gt;'ada-mode&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;That was easy enough.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;When I tried to do any indentation &lt;span class="command"&gt;emacs&lt;/span&gt; reported an error,
+with the error message “End position is smaller than start
+position”.  Eventually I tracked this down to a call to
+&lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;parse-partial-sexp&lt;/span&gt;&lt;/code&gt; in &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;ada-in-open-paren-p&lt;/span&gt;&lt;/code&gt;.  It turns out
+that somewhere after &lt;span class="app"&gt;Emacs&lt;/span&gt; version 27.2 was released the
+&lt;span class="app"&gt;Emacs&lt;/span&gt; developers added a check to &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;parse-partial-sexp&lt;/span&gt;&lt;/code&gt; to
+ensure that the &lt;code class="docutils literal"&gt;FROM&lt;/code&gt; argument (which indicates where in the
+buffer to start parsing) was less than the &lt;code class="docutils literal"&gt;TO&lt;/code&gt; argument (which
+indicates where in the buffer to &lt;strong&gt;stop&lt;/strong&gt; parsing).&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Drat.  Drat.  Drat.  Well, looking at the code it was clear that
+since &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;ada-in-open-paren-p&lt;/span&gt;&lt;/code&gt; is explicitly searching backwards
+that &lt;code class="docutils literal"&gt;TO&lt;/code&gt; would &lt;strong&gt;always&lt;/strong&gt; be smaller than &lt;code class="docutils literal"&gt;FROM&lt;/code&gt;.  So I could
+just transpose the s-expressions that found those two values.  I
+tried it, and it worked!&lt;/p&gt;
+&lt;p&gt;At that point I realized that I had committed to maintain the old
+version of ada-mode, at least for myself, and that I'd already talked
+about it on my blog and it was small step from there to setting up a
+GitHub &lt;a class="reference external" href="https://github.com/tkurtbond/old-ada-mode"&gt;repository&lt;/a&gt; with the old code, adding an &lt;a class="reference external" href="https://github.com/tkurtbond/old-ada-mode/issues/1"&gt;issue&lt;/a&gt; describing the
+problem, adding a &lt;a class="reference external" href="https://github.com/tkurtbond/old-ada-mode/commit/7ee6fe55862ec615c7fe23d881adfee2d0094770"&gt;commit&lt;/a&gt; with the fix, and then writing this blog
+post.&lt;/p&gt;
+&lt;p&gt;Somewhere, someone is laughing and enjoying the schadenfreude.  Maybe
+this will help someone else.&lt;/p&gt;
+&lt;p&gt;And since I already have a GitHub &lt;a class="reference external" href="https://github.com/tkurtbond/old-ada-mode"&gt;repository&lt;/a&gt;, I ought to document the
+first &lt;a class="reference external" href="https://github.com/tkurtbond/old-ada-mode/issues/2"&gt;problem&lt;/a&gt; and since it is a documentation problem, put a mention
+in the &lt;a class="reference external" href="https://github.com/tkurtbond/old-ada-mode/commit/67a79caacd851120fee2bca4704938a2f27e1bba"&gt;README&lt;/a&gt;.&lt;/p&gt;</description><category>ada</category><category>ada-mode</category><category>ada-mode.el</category><category>emacs</category><guid>https://tkurtbond.github.io/posts/2022/12/06/maintaining-the-old-ada-modeel-formerly-distributed-with-emacs/</guid><pubDate>Tue, 06 Dec 2022 18:28:59 GMT</pubDate></item><item><title>Splitting Strings on a Delimiter in the Ada Programming Language</title><link>https://tkurtbond.github.io/posts/2022/08/05/splitting-strings-on-a-delimiter-in-the-ada-programming-language/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;p&gt;&lt;em&gt;Last edited: 2024-11-22 16:10:42 EST&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;When I did a search for “splitting strings on a delimiter in the Ada
 programming language” recently I did not get many useful results.
 Eventually I stumbled over &lt;a class="reference external" href="https://gcc.gnu.org/onlinedocs/gcc-12.1.0/gnat_rm/GNAT-String_005fSplit-g-strspl-ads.html#GNAT-String_005fSplit-g-strspl-ads"&gt;GNAT.String_Split&lt;/a&gt; which is an
@@ -310,4 +611,88 @@ S6: "foo&amp;lt;=&amp;gt;bar"
 time-stamp-format: "%Y-%02m-%02d %02H:%02M:%02S %Z"
 time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
 time-stamp-end: "\\*\\\\?\n"
-End: --&gt;</description><category>ada</category><category>programming</category><category>splitting strings</category><category>splitting strings in ada</category><guid>https://tkurtbond.github.io/posts/2022/08/05/splitting-strings-on-a-delimiter-in-the-ada-programming-language/</guid><pubDate>Fri, 05 Aug 2022 15:10:39 GMT</pubDate></item></channel></rss>
+End: --&gt;</description><category>ada</category><category>programming</category><category>splitting strings</category><category>splitting strings in ada</category><guid>https://tkurtbond.github.io/posts/2022/08/05/splitting-strings-on-a-delimiter-in-the-ada-programming-language/</guid><pubDate>Fri, 05 Aug 2022 15:10:39 GMT</pubDate></item><item><title>Using the old version of Ada Mode for Emacs</title><link>https://tkurtbond.github.io/posts/2022/07/09/using-the-old-version-of-ada-mode-for-emacs/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;p&gt;&lt;em&gt;Last edited: 2024-11-22 16:10:47 EST&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;There are a lot of things to like about the &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Ada_(programming_language)"&gt;Ada&lt;/a&gt; programming language;
+it seems to have a solid core of users, enough to support multiple
+commercial implementations and a &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Free_software"&gt;free/libre software&lt;/a&gt; implementation
+that is part of the &lt;a class="reference external" href="https://gcc.gnu.org/"&gt;GNU Compiler Collection&lt;/a&gt;.  I occasionally use it
+myself.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;However:&lt;/strong&gt; I'm sure that the current version of &lt;a class="reference external" href="https://www.nongnu.org/ada-mode/"&gt;Ada Mode&lt;/a&gt; for
+&lt;a class="reference external" href="https://www.gnu.org/software/emacs/"&gt;Emacs&lt;/a&gt; (available as an &lt;a class="reference external" href="https://elpa.gnu.org/"&gt;ELPA&lt;/a&gt; &lt;a class="reference external" href="https://elpa.gnu.org/packages/ada-mode.html"&gt;package&lt;/a&gt;, and thus not included in
+&lt;span class="app"&gt;Emacs&lt;/span&gt; itself), which provides smart editing for the &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Ada_(programming_language)"&gt;Ada&lt;/a&gt;
+programming language, and uses an external parser for the indentation,
+fontification&lt;a class="footnote-reference brackets" href="https://tkurtbond.github.io/posts/2022/07/09/using-the-old-version-of-ada-mode-for-emacs/#fontification" id="footnote-reference-1" role="doc-noteref"&gt;&lt;span class="fn-bracket"&gt;[&lt;/span&gt;1&lt;span class="fn-bracket"&gt;]&lt;/span&gt;&lt;/a&gt;, and navigation engine, is wonderful
+if you can get it working, but I have &lt;strong&gt;never&lt;/strong&gt; been able to get it to
+work.  My most recent try was today on Fedora 36 using GNAT 12.1.1
+20220507 (Red Hat 12.1.1-1).&lt;/p&gt;
+&lt;p&gt;Here's what happened when I tried to build the Ada code for the
+parser, which is supplied as part of the &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;ada-mode&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;$ ./build.sh
+ada_mode_wisi_parse.gpr:44:26: warning: object directory "obj" not found
+Setup
+   [mkdir]        object directory for project Ada_Mode_Wisi_Parse
+Compile
+   [Ada]          ada_mode_wisi_lalr_parse.ads
+   [Ada]          ada_mode_wisi_lr1_parse.ads
+   [Ada]          run_ada_lalr_parse.ads
+   [Ada]          run_ada_lr1_parse.ads
+   [Ada]          gpr_mode_wisi_parse.ads
+   [Ada]          run_gpr_parse.ads
+   [Ada]          gpr_query.adb
+   [C]            wisitoken_grammar_re2c.c
+   [C]            ada_re2c.c
+   [C]            gpr_re2c.c
+   [Ada]          ada_process_actions.adb
+   [Ada]          ada_process_lr1_main.adb
+   [Ada]          gen_run_wisi_lr_text_rep_parse.adb
+   [Ada]          run_wisi_common_parse.adb
+   [Ada]          wisi.adb
+gnatcoll-sql.adb:742:07: error: ambiguous expression (cannot resolve "Append")
+gnatcoll-sql.adb:742:07: error: possible interpretation at a-coinve.ads:280, instance at gnatcoll-sql.ads:1109
+gnatcoll-sql.adb:742:07: error: possible interpretation at a-coinve.ads:270, instance at gnatcoll-sql.ads:1109
+
+   compilation of gpr_query.adb failed
+
+gprbuild: *** compilation phase failed&lt;/pre&gt;
+&lt;p&gt;Sigh.  Without the external parser the current &lt;a class="reference external" href="https://www.nongnu.org/ada-mode/"&gt;Ada Mode&lt;/a&gt; is
+completely unworkable: it doesn't even do indentation correctly, much
+less do fontification.&lt;/p&gt;
+&lt;p&gt;However, when I did some Ada work a number of years ago, I was ok
+with the version that used to be in &lt;span class="app"&gt;Emacs&lt;/span&gt; itself.  So I dug it
+out of the &lt;a class="reference external" href="https://savannah.gnu.org/git/?group=emacs"&gt;Emacs git repository&lt;/a&gt; at &lt;a class="reference external" href="https://savannah.gnu.org"&gt;savannah.gnu.org&lt;/a&gt;.  Basically,
+I cloned the git repository and then figured out what commit it was
+deleted in by doing:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;$ git rev-list HEAD -n 1 -- lisp/progmodes/ada-mode.el
+a13c64204c8ead966789abf8efe176e4f2d4f599&lt;/pre&gt;
+&lt;p&gt;Then I checked out the files involved:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;$ git checkout a13c64204c8ead966789abf8efe176e4f2d4f599^ lisp/progmodes/ada-mode.el lisp/progmodes/ada-prj.el lisp/progmodes/ada-stmt.el lisp/progmodes/ada-xref.el doc/misc/ada-mode.texi&lt;/pre&gt;
+&lt;p&gt;The &lt;code class="docutils literal"&gt;^&lt;/code&gt; at the end of the commit hash says to get the previous
+commit.&lt;/p&gt;
+&lt;p&gt;You'll also need &lt;span class="file"&gt;doc/docstyle.texi&lt;/span&gt; and
+&lt;span class="file"&gt;doc/doclicense.texi&lt;/span&gt; if you want to build documentation from
+&lt;span class="file"&gt;ada-mode.texi&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;And I've put the files in a &lt;a class="reference external" href="https://tkurtbond.github.io/emacs/old-ada-mode.zip"&gt;zip file&lt;/a&gt; for anybody who is in the same
+situation as I was, along with the generated documentation files
+&lt;span class="file"&gt;.info&lt;/span&gt;, &lt;span class="file"&gt;.html&lt;/span&gt;, and &lt;span class="file"&gt;.pdf&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Just put them somewhere on your &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;load-path&lt;/span&gt;&lt;/code&gt; and add &lt;code class="docutils literal"&gt;(autoload
+&lt;span class="pre"&gt;'ada-mode&lt;/span&gt; &lt;span class="pre"&gt;"ada-mode")&lt;/span&gt;&lt;/code&gt; to your emacs config file.&lt;/p&gt;
+&lt;p&gt;I'm sure the current &lt;a class="reference external" href="https://www.nongnu.org/ada-mode/"&gt;Ada Mode&lt;/a&gt; has a lot more useful features, and
+I'd love to use it, but
+this at least lets me edit with automatic indentation, formatting, and
+fontification.&lt;/p&gt;
+&lt;aside class="footnote-list brackets"&gt;
+&lt;aside class="footnote brackets" id="fontification" role="doc-footnote"&gt;
+&lt;span class="label"&gt;&lt;span class="fn-bracket"&gt;[&lt;/span&gt;&lt;a role="doc-backlink" href="https://tkurtbond.github.io/posts/2022/07/09/using-the-old-version-of-ada-mode-for-emacs/#footnote-reference-1"&gt;1&lt;/a&gt;&lt;span class="fn-bracket"&gt;]&lt;/span&gt;&lt;/span&gt;
+&lt;p&gt;‘Fontification’ is the process of displaying source code with
+different font properties (such as color and typeface) for
+differing syntactic roles.  &lt;a class="reference external" href="https://www.gnu.org/software/emacs/"&gt;Emacs&lt;/a&gt; and many other editors do this
+to make it easier to distinguish different parts of the source
+code, to help prevent errors.&lt;/p&gt;
+&lt;/aside&gt;
+&lt;/aside&gt;
+&lt;!--  --&gt;
+&lt;!-- Local Variables:
+time-stamp-format: "%Y-%02m-%02d %02H:%02M:%02S %Z"
+time-stamp-start: "\\*Last edited:[ \t]+\\\\?"
+time-stamp-end: "\\*\\\\?\n"
+End: --&gt;</description><category>ada</category><category>ada-mode</category><category>ada-mode.el</category><category>emacs</category><category>free/libre software</category><guid>https://tkurtbond.github.io/posts/2022/07/09/using-the-old-version-of-ada-mode-for-emacs/</guid><pubDate>Sun, 10 Jul 2022 02:20:40 GMT</pubDate></item></channel></rss>

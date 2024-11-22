@@ -2,7 +2,7 @@
 .. slug: using-the-old-version-of-ada-mode-for-emacs
 .. date: 2022-07-09 22:20:40 UTC-04:00
 .. tags: ada,ada-mode,ada-mode.el,emacs,free/libre software
-.. category: computer/ada
+.. category: computer/languages/ada
 .. link: 
 .. description: 
 .. type: text
@@ -10,7 +10,7 @@
 .. role:: app
 .. role:: file
 
-*Last edited: 2022-12-06 14:33:55 EST*
+*Last edited: 2024-11-22 16:10:47 EST*
 
 There are a lot of things to like about the Ada_ programming language;
 it seems to have a solid core of users, enough to support multiple

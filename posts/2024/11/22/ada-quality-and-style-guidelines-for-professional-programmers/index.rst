@@ -2,7 +2,7 @@
 .. slug: ada-quality-and-style-guidelines-for-professional-programmers
 .. date: 2024-11-22 11:49:59 UTC-05:00
 .. tags: ada,style guide,ada 83
-.. category: computer
+.. category: computer/languages/ada
 .. link: 
 .. description: 
 .. type: text
