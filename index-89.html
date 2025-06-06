@@ -247,11 +247,11 @@ highest die rolled or causes a complication, depending on what the GM
 wants.</p>
 <p>I much prefer the Mini Six Wild Die.</p>
 <p>So I went off to <a class="reference external" href="https://anydice.com">Anydice.com</a> and came up with the following <a class="reference external" href="https://anydice.com/program/2212d/at_least">code</a>:</p>
-<div class="code"><pre class="code text"><a id="rest_code_6ba9081391f8473a813aabe0ec5484f4-1" name="rest_code_6ba9081391f8473a813aabe0ec5484f4-1" href="posts/2021/05/08/mini-six-odds-of-hitting-a-target-number/#rest_code_6ba9081391f8473a813aabe0ec5484f4-1"></a>output [explode d6] named "1M"
-<a id="rest_code_6ba9081391f8473a813aabe0ec5484f4-2" name="rest_code_6ba9081391f8473a813aabe0ec5484f4-2" href="posts/2021/05/08/mini-six-odds-of-hitting-a-target-number/#rest_code_6ba9081391f8473a813aabe0ec5484f4-2"></a>loop N over {1..11} {
-<a id="rest_code_6ba9081391f8473a813aabe0ec5484f4-3" name="rest_code_6ba9081391f8473a813aabe0ec5484f4-3" href="posts/2021/05/08/mini-six-odds-of-hitting-a-target-number/#rest_code_6ba9081391f8473a813aabe0ec5484f4-3"></a>  X: N+1
-<a id="rest_code_6ba9081391f8473a813aabe0ec5484f4-4" name="rest_code_6ba9081391f8473a813aabe0ec5484f4-4" href="posts/2021/05/08/mini-six-odds-of-hitting-a-target-number/#rest_code_6ba9081391f8473a813aabe0ec5484f4-4"></a>  output [explode d6] + Nd6 named "[X]M"
-<a id="rest_code_6ba9081391f8473a813aabe0ec5484f4-5" name="rest_code_6ba9081391f8473a813aabe0ec5484f4-5" href="posts/2021/05/08/mini-six-odds-of-hitting-a-target-number/#rest_code_6ba9081391f8473a813aabe0ec5484f4-5"></a>}
+<div class="code"><pre class="code text"><a id="rest_code_8eafd0d3bc534b3baa2333b304add36a-1" name="rest_code_8eafd0d3bc534b3baa2333b304add36a-1" href="posts/2021/05/08/mini-six-odds-of-hitting-a-target-number/#rest_code_8eafd0d3bc534b3baa2333b304add36a-1"></a>output [explode d6] named "1M"
+<a id="rest_code_8eafd0d3bc534b3baa2333b304add36a-2" name="rest_code_8eafd0d3bc534b3baa2333b304add36a-2" href="posts/2021/05/08/mini-six-odds-of-hitting-a-target-number/#rest_code_8eafd0d3bc534b3baa2333b304add36a-2"></a>loop N over {1..11} {
+<a id="rest_code_8eafd0d3bc534b3baa2333b304add36a-3" name="rest_code_8eafd0d3bc534b3baa2333b304add36a-3" href="posts/2021/05/08/mini-six-odds-of-hitting-a-target-number/#rest_code_8eafd0d3bc534b3baa2333b304add36a-3"></a>  X: N+1
+<a id="rest_code_8eafd0d3bc534b3baa2333b304add36a-4" name="rest_code_8eafd0d3bc534b3baa2333b304add36a-4" href="posts/2021/05/08/mini-six-odds-of-hitting-a-target-number/#rest_code_8eafd0d3bc534b3baa2333b304add36a-4"></a>  output [explode d6] + Nd6 named "[X]M"
+<a id="rest_code_8eafd0d3bc534b3baa2333b304add36a-5" name="rest_code_8eafd0d3bc534b3baa2333b304add36a-5" href="posts/2021/05/08/mini-six-odds-of-hitting-a-target-number/#rest_code_8eafd0d3bc534b3baa2333b304add36a-5"></a>}
 </pre></div>
 <p>If you enter this manually instead of following the “code” link above,
 remember to click “At Least” to get the right results!</p>
@@ -1432,14 +1432,14 @@ messages correctly.</p>
 <code class="docutils literal">multipart/related</code> (which I didn’t even know about before looking
 at one of their messages using <code class="docutils literal"><span class="pre">wl-summary-reedit</span></code> in <a class="reference external" href="https://www.emacswiki.org/emacs/WanderLust">Wanderlust</a>,
 which pulls it up in the <code class="docutils literal"><span class="pre">mime-edit-mode</span></code> <a class="reference external" href="https://en.wikipedia.org/wiki/MIME">MIME</a> composition mode
-<a class="footnote-reference brackets" href="posts/2020/12/11/mime-and-gmail-vs-other-mailers/#mime-edit-mode" id="footnote-reference-1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>, which revealed all the details), but I wish they’d
+<a class="brackets" href="posts/2020/12/11/mime-and-gmail-vs-other-mailers/#mime-edit-mode" id="footnote-reference-1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>, which revealed all the details), but I wish they’d
 get the simpler <code class="docutils literal">multipart/mixed</code> version right.  Instead, they
 don’t display the inline attachments (regardless of whether they are
 images or text) and put them all at the end of the display as
 attachments, and display the other text parts smushed together.</p>
 <p>Interestingly, if a text part it has a <code class="docutils literal"><span class="pre">Content-Type:</span> Text/Plain</code>
 <a class="reference external" href="https://en.wikipedia.org/wiki/MIME">MIME</a> header field it is displayed inline in Gmail, unless it has a</p>
-<div class="code"><pre class="code text"><a id="rest_code_473ea9e246bf45398c212e334ca957ef-1" name="rest_code_473ea9e246bf45398c212e334ca957ef-1" href="posts/2020/12/11/mime-and-gmail-vs-other-mailers/#rest_code_473ea9e246bf45398c212e334ca957ef-1"></a>Content-Disposition: inline; filename="JRandomFilename.txt"
+<div class="code"><pre class="code text"><a id="rest_code_e35fe88042a54abc8676662237f0cf06-1" name="rest_code_e35fe88042a54abc8676662237f0cf06-1" href="posts/2020/12/11/mime-and-gmail-vs-other-mailers/#rest_code_e35fe88042a54abc8676662237f0cf06-1"></a>Content-Disposition: inline; filename="JRandomFilename.txt"
 </pre></div>
 <p><a class="reference external" href="https://en.wikipedia.org/wiki/MIME">MIME</a> header field, and then it <strong>doesn’t</strong> display it inline,
 unlike all the other mail readers I tried: <a class="reference external" href="https://www.emacswiki.org/emacs/WanderLust">Wanderlust</a>, <a class="reference external" href="http://www.mew.org/">Mew</a>, <a class="reference external" href="https://en.wikipedia.org/wiki/Alpine_(email_client)">Alpine</a>,
@@ -1593,22 +1593,22 @@ admit this combines some of my more geeky interests and thus may be of
 less interest to all of you, or for Howard and Paul, for that matter):</p>
 <p>I actually figured out how to make ebooks (to a limited degree)
 because I wanted to try an ebook I made of an RPG adventure I wrote
-for a currently on hiatus<a class="footnote-reference brackets" href="posts/2020/12/01/epub-files-markup-languages-and-briefly-unix/#footnote-1" id="footnote-reference-1" role="doc-noteref"><span class="fn-bracket">[</span>0<span class="fn-bracket">]</span></a> fantasy <a class="reference external" href="https://en.wikipedia.org/wiki/Savage_Worlds">Savage Worlds</a> roleplaying game
+for a currently on hiatus<a class="brackets" href="posts/2020/12/01/epub-files-markup-languages-and-briefly-unix/#footnote-1" id="footnote-reference-1" role="doc-noteref"><span class="fn-bracket">[</span>0<span class="fn-bracket">]</span></a> fantasy <a class="reference external" href="https://en.wikipedia.org/wiki/Savage_Worlds">Savage Worlds</a> roleplaying game
 campaign for my daughter <a class="reference external" href="https://www.facebook.com/lily.bond.31">Lily</a> and my <a class="reference external" href="https://www.facebook.com/eva.atha.7">niece</a> and nephews (<a class="reference external" href="https://www.facebook.com/mason.atha.7">N1</a>). I originally wrote the
-adventure<a class="footnote-reference brackets" href="posts/2020/12/01/epub-files-markup-languages-and-briefly-unix/#footnote-2" id="footnote-reference-2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> in three typesetting systems which use <a class="reference external" href="https://en.wikipedia.org/wiki/Markup_language">markup
-languages</a>, <a class="reference external" href="https://en.wikipedia.org/wiki/LaTeX">LaTeX</a>, <a class="reference external" href="https://en.wikipedia.org/wiki/ConTeXt">ConTeXt</a>, and <a class="reference external" href="https://troff.org/">troff</a><a class="footnote-reference brackets" href="posts/2020/12/01/epub-files-markup-languages-and-briefly-unix/#footnote-3" id="footnote-reference-3" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> (which I usually use in its guise as
+adventure<a class="brackets" href="posts/2020/12/01/epub-files-markup-languages-and-briefly-unix/#footnote-2" id="footnote-reference-2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> in three typesetting systems which use <a class="reference external" href="https://en.wikipedia.org/wiki/Markup_language">markup
+languages</a>, <a class="reference external" href="https://en.wikipedia.org/wiki/LaTeX">LaTeX</a>, <a class="reference external" href="https://en.wikipedia.org/wiki/ConTeXt">ConTeXt</a>, and <a class="reference external" href="https://troff.org/">troff</a><a class="brackets" href="posts/2020/12/01/epub-files-markup-languages-and-briefly-unix/#footnote-3" id="footnote-reference-3" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> (which I usually use in its guise as
 <a class="reference external" href="https://en.wikipedia.org/wiki/GNU">GNU</a> <a class="reference external" href="https://www.gnu.org/software/groff/">groff</a>, but this time I
 used <span class="app">Heirloom troff</span>, part of the <a class="reference external" href="http://n-t-roff.github.io/heirloom/doctools.html">Heirloom Documentation
 Tools</a>, for its easy access to modern fonts) to compare the markup
 languages and their PDF output to decide which one I prefered to
 use. Later I converted it to <a class="reference external" href="https://docutils.sourceforge.io/rst.html">ReStructuredText</a>, a lightweight markup
-language<a class="footnote-reference brackets" href="posts/2020/12/01/epub-files-markup-languages-and-briefly-unix/#footnote-4" id="footnote-reference-4" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a> that I use, to compare it to the other markup
+language<a class="brackets" href="posts/2020/12/01/epub-files-markup-languages-and-briefly-unix/#footnote-4" id="footnote-reference-4" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a> that I use, to compare it to the other markup
 languages.</p>
 <p>I have used ReStructuredText on and off for many years, but the main
 drawbacks to it was that (1) the output produced by its original
 <a class="reference external" href="https://docutils.sourceforge.io/">docutils</a> implementation was
 excessively stark and difficult to customize to have a nicer
-appearance, and (2) its workflow was somewhat difficult,<a class="footnote-reference brackets" href="posts/2020/12/01/epub-files-markup-languages-and-briefly-unix/#footnote-5" id="footnote-reference-5" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a> Some
+appearance, and (2) its workflow was somewhat difficult,<a class="brackets" href="posts/2020/12/01/epub-files-markup-languages-and-briefly-unix/#footnote-5" id="footnote-reference-5" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a> Some
 time ago I discovered <a class="reference external" href="https://pandoc.org/">Pandoc</a>, a “universal
 document converter” which can read many input sources, including
 ReStructuredText, and produce output in many output formats, including
@@ -1621,7 +1621,7 @@ intermediate steps and cleans up any temporary files needed). It
 turned out that the abilities to read multiple input formats and to
 more easily customize the output was important to me as well.</p>
 <p>So, having converted the adventure over to ReStructuredTexT for
-comparison<a class="footnote-reference brackets" href="posts/2020/12/01/epub-files-markup-languages-and-briefly-unix/#footnote-6" id="footnote-reference-6" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a> and at first using PDF through <span class="app">Pandoc</span>'s
+comparison<a class="brackets" href="posts/2020/12/01/epub-files-markup-languages-and-briefly-unix/#footnote-6" id="footnote-reference-6" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a> and at first using PDF through <span class="app">Pandoc</span>'s
 <code class="docutils literal">troff <span class="pre">-ms</span></code> output, I soon decided to take a look at <span class="app">Pandoc</span>'s other
 output formats. I started with <span class="app">LaTeX</span> and <span class="app">ConTeXt</span>, and decided that the
 PDF output via <span class="app">LaTeX</span> was not of much interest to me, but the PDF
@@ -1640,8 +1640,8 @@ makes sense to figure out how to get it onto my Kindle! First I used
 generate a reasonably attractive cover. Then wrote a small config file
 for <span class="app">Pandoc</span>.  Then I generated the EPUB output. Then I figured out how
 to convert that over to MOBI, one of the formats that the Kindle can
-use.<a class="footnote-reference brackets" href="posts/2020/12/01/epub-files-markup-languages-and-briefly-unix/#footnote-7" id="footnote-reference-7" role="doc-noteref"><span class="fn-bracket">[</span>6<span class="fn-bracket">]</span></a> Then I mailed it to my Kindle's email, and it looked
-reasonably good!<a class="footnote-reference brackets" href="posts/2020/12/01/epub-files-markup-languages-and-briefly-unix/#footnote-8" id="footnote-reference-8" role="doc-noteref"><span class="fn-bracket">[</span>7<span class="fn-bracket">]</span></a></p>
+use.<a class="brackets" href="posts/2020/12/01/epub-files-markup-languages-and-briefly-unix/#footnote-7" id="footnote-reference-7" role="doc-noteref"><span class="fn-bracket">[</span>6<span class="fn-bracket">]</span></a> Then I mailed it to my Kindle's email, and it looked
+reasonably good!<a class="brackets" href="posts/2020/12/01/epub-files-markup-languages-and-briefly-unix/#footnote-8" id="footnote-reference-8" role="doc-noteref"><span class="fn-bracket">[</span>7<span class="fn-bracket">]</span></a></p>
 <p>I hope you've enjoyed this twisty maze of passages, all different!</p>
 <p>And with a <a class="reference external" href="https://en.wikipedia.org/wiki/Zork">Zork</a> reference I
 really must end this email!</p>
@@ -2197,11 +2197,11 @@ light on detail.</p>
 I like it for many reasons:</p>
 <ul class="simple">
 <li><p>The base mechanics are easy to learn, and only take up a few pages.</p></li>
-<li><p>Only D6s are used.<a class="footnote-reference brackets" href="posts/2020/11/29/looking-at-the-mini-six-rpg-and-related-games/#simpledice" id="footnote-reference-1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p></li>
+<li><p>Only D6s are used.<a class="brackets" href="posts/2020/11/29/looking-at-the-mini-six-rpg-and-related-games/#simpledice" id="footnote-reference-1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p></li>
 <li><p>Characters are easy to create.</p></li>
-<li><p>Characters are relatively terse.<a class="footnote-reference brackets" href="posts/2020/11/29/looking-at-the-mini-six-rpg-and-related-games/#havan" id="footnote-reference-2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a></p></li>
+<li><p>Characters are relatively terse.<a class="brackets" href="posts/2020/11/29/looking-at-the-mini-six-rpg-and-related-games/#havan" id="footnote-reference-2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a></p></li>
 <li><p>Characters start out reasonably competent.</p></li>
-<li><p>It has a metacurrency<a class="footnote-reference brackets" href="posts/2020/11/29/looking-at-the-mini-six-rpg-and-related-games/#metacurrency" id="footnote-reference-3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>, Hero Points.</p></li>
+<li><p>It has a metacurrency<a class="brackets" href="posts/2020/11/29/looking-at-the-mini-six-rpg-and-related-games/#metacurrency" id="footnote-reference-3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>, Hero Points.</p></li>
 <li><p>It includes enough as is to run Historical, Modern, Sci-Fi, and
 Fantasy games, including a simple Magic/Power system.</p></li>
 <li><p>Attributes, Skills, and Damage are rated by the number of D6s one
@@ -2217,11 +2217,11 @@ use, suitable for games where the characters are competent.</p></li>
 is easy to customize for a particular game or genre.</p></li>
 <li><p>Since the rules (but not all the settings) are Open Content you can
 easily base a new game on it and release it for free or sell it.
-There are several <cite>Mini Six</cite>-based games on DriveThruRPG.com.<a class="footnote-reference brackets" href="posts/2020/11/29/looking-at-the-mini-six-rpg-and-related-games/#games" id="footnote-reference-4" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a></p></li>
+There are several <cite>Mini Six</cite>-based games on DriveThruRPG.com.<a class="brackets" href="posts/2020/11/29/looking-at-the-mini-six-rpg-and-related-games/#games" id="footnote-reference-4" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a></p></li>
 <li><p>There is a royalty-free <a class="reference external" href="http://www.antipaladingames.com/p/license.html">Mini Six Trademark License</a> that allows
 you to indicate that products you make are compatible with <cite>Mini
 Six</cite>, and you can sell those products.  There are a few <cite>Mini Six</cite>
-adventures<a class="footnote-reference brackets" href="posts/2020/11/29/looking-at-the-mini-six-rpg-and-related-games/#adventures" id="footnote-reference-5" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a> for sale on DriveThruRPG.com.</p></li>
+adventures<a class="brackets" href="posts/2020/11/29/looking-at-the-mini-six-rpg-and-related-games/#adventures" id="footnote-reference-5" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a> for sale on DriveThruRPG.com.</p></li>
 </ul>
 <p>I think that several of those reason make it idea for one shots and
 pickup games.</p>
@@ -2275,7 +2275,7 @@ supernatural forest),</p></li>
 and occultists in the modern day world),</p></li>
 <li><p>† <a class="reference external" href="https://www.drivethrurpg.com/product/141188/Breachworld-RPG">Breachworld RPG</a> (a global catastrophe made rips in space and
 time through which unwanted monsters, aliens, and otherworldly
-environments continue to pour) <a class="footnote-reference brackets" href="posts/2020/11/29/looking-at-the-mini-six-rpg-and-related-games/#breachworld-adventure" id="footnote-reference-6" role="doc-noteref"><span class="fn-bracket">[</span>6<span class="fn-bracket">]</span></a>,</p></li>
+environments continue to pour) <a class="brackets" href="posts/2020/11/29/looking-at-the-mini-six-rpg-and-related-games/#breachworld-adventure" id="footnote-reference-6" role="doc-noteref"><span class="fn-bracket">[</span>6<span class="fn-bracket">]</span></a>,</p></li>
 <li><p>† <a class="reference external" href="https://www.drivethrurpg.com/product/110331/Heavens-Shadow">Heaven's Shadow</a> (a game of faith and assassination of the
 evil Nephilim in the service of God, set in the modern world),</p></li>
 <li><p><a class="reference external" href="https://www.drivethrurpg.com/product/123949/The-Mighty-Six">The Mighty Six</a> (superheros),</p></li>
@@ -2367,7 +2367,7 @@ End: -->
 </div>
 
 <footer class="blog-footer" id="footer">
-    Contents © 2024         <a href="mailto:tkurtbond@gmail.com">T. Kurt Bond</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+    Contents © 2025         <a href="mailto:tkurtbond@gmail.com">T. Kurt Bond</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
     
 </footer><script src="assets/js/all-nocdn.js"></script><!-- fancy dates --><script>
     moment.locale("en");

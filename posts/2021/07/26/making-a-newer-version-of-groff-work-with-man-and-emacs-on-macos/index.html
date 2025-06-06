@@ -107,10 +107,10 @@ Boo!</p>
 alternate configuration file (on macOS the default one is in
 <span class="file">/private/etc/man.conf</span>), so you can supply one that specifies
 the absolute path to the newer <span class="app">groff</span> you are using.  So I added</p>
-<div class="code"><pre class="code bash"><a id="rest_code_851e14d3a02c4dd7a736a273ddbe42e2-1" name="rest_code_851e14d3a02c4dd7a736a273ddbe42e2-1" href="#rest_code_851e14d3a02c4dd7a736a273ddbe42e2-1"></a><span class="nb">alias</span><span class="w"> </span><span class="nv">man</span><span class="o">=</span><span class="s1">'man -C ~/local/etc/man.conf'</span>
+<div class="code"><pre class="code bash"><a id="rest_code_c13c1e2d529c43348ffeee426c3cbc14-1" name="rest_code_c13c1e2d529c43348ffeee426c3cbc14-1" href="#rest_code_c13c1e2d529c43348ffeee426c3cbc14-1"></a><span class="nb">alias</span><span class="w"> </span><span class="nv">man</span><span class="o">=</span><span class="s1">'man -C ~/local/etc/man.conf'</span>
 </pre></div>
 <p>to the appropriate shell startup file.  And I can add</p>
-<div class="code"><pre class="code emacs-lisp"><a id="rest_code_8f849fcacf0846c9b551d4ad7e460931-1" name="rest_code_8f849fcacf0846c9b551d4ad7e460931-1" href="#rest_code_8f849fcacf0846c9b551d4ad7e460931-1"></a><span class="p">(</span><span class="k">setq</span><span class="w"> </span><span class="nv">Man-switches</span><span class="w"> </span><span class="s">"-C ~/local/etc/man.conf"</span><span class="p">)</span>
+<div class="code"><pre class="code emacs-lisp"><a id="rest_code_bcbfa6478d2645079548f1497b156391-1" name="rest_code_bcbfa6478d2645079548f1497b156391-1" href="#rest_code_bcbfa6478d2645079548f1497b156391-1"></a><span class="p">(</span><span class="k">setq</span><span class="w"> </span><span class="nv">Man-switches</span><span class="w"> </span><span class="s">"-C ~/local/etc/man.conf"</span><span class="p">)</span>
 </pre></div>
 <p>to my <span class="app">emacs</span> configuration so it uses the right version of
 <span class="app">groff</span> too.</p>
@@ -119,7 +119,7 @@ underline, rather than the older convention of over-striking via the
 backspace character with the same character for bold or with the
 underscore character for underlining.  My pager, <span class="app">less</span>, can deal
 with that, but something in <span class="app">emacs</span> doesn't like that, leaving
-the buffer with <span class="man">groff_ms(7)</span> with underlining on every line.<a class="footnote-reference brackets" href="#manual" id="footnote-reference-1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
+the buffer with <span class="man">groff_ms(7)</span> with underlining on every line.<a class="brackets" href="#manual" id="footnote-reference-1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
 <p>Eventually I figured out that the old style over-striking via
 backspaces worked just fine with emacs, so I added the <code class="docutils literal"><span class="pre">-P-c</span></code> option
 to the invocation of <span class="app">groff</span> in the NROFF definition in my
@@ -132,7 +132,7 @@ use.</p>
 <section id="later"><h2>Later</h2>
 <p>Aannnd I was right.  Fedora 33 has a similar problem, which I fixed by
 creating a <span class="file">~/.manpath</span> file with</p>
-<div class="code"><pre class="code text"><a id="rest_code_f83308077979451395b0a2625ab902b4-1" name="rest_code_f83308077979451395b0a2625ab902b4-1" href="#rest_code_f83308077979451395b0a2625ab902b4-1"></a>DEFINE       nroff   /sw/versions/groff/git/bin/nroff -mandoc -P-c
+<div class="code"><pre class="code text"><a id="rest_code_962f1e69aa514739a27cd48ac5504d50-1" name="rest_code_962f1e69aa514739a27cd48ac5504d50-1" href="#rest_code_962f1e69aa514739a27cd48ac5504d50-1"></a>DEFINE       nroff   /sw/versions/groff/git/bin/nroff -mandoc -P-c
 </pre></div>
 <p>in it.  I found the information I needed in <span class="man">manpath(5)</span>, which
 documents the format of the <span class="file">/etc/man_db.conf</span> file.  (Why isn't
@@ -221,7 +221,7 @@ End: -->
 </div>
 
 <footer class="blog-footer" id="footer">
-    Contents © 2024         <a href="mailto:tkurtbond@gmail.com">T. Kurt Bond</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+    Contents © 2025         <a href="mailto:tkurtbond@gmail.com">T. Kurt Bond</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
     
 </footer><script src="../../../../../assets/js/all-nocdn.js"></script><!-- fancy dates --><script>
     moment.locale("en");
