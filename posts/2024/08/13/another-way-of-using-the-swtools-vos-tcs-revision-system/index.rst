@@ -25,7 +25,7 @@ program or another closely related collection of information.  But
 what if you are working on a collection of individual or nearly
 individual programs?  Or what if your program is large enough that
 putting all its source in a single archive runs up against size limits
-in the SWTOOLS programs?  Remember, they were ment to run on the 16
+in the SWTOOLS programs?  Remember, they were meant to run on the 16
 bit minicomputers of the day, as well as the 32 bit minicomputers that
 showed up soon after the SWTOOLS VOS was written, so there is a limit
 on the number of lines in a file that these can handle somewhere

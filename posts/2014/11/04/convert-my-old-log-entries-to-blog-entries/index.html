@@ -83,15 +83,15 @@ using the">
 Docbook-based website, and were presently part of my static
 Sphinx-based website, over to my current PyBlosxom blog tonight,
 using the following script:</p>
-<div class="code"><pre class="code text"><a id="rest_code_7b623ef262bc451f8fad5c9267972fb4-1" name="rest_code_7b623ef262bc451f8fad5c9267972fb4-1" href="#rest_code_7b623ef262bc451f8fad5c9267972fb4-1"></a>#! /usr/bin/env bash
-<a id="rest_code_7b623ef262bc451f8fad5c9267972fb4-2" name="rest_code_7b623ef262bc451f8fad5c9267972fb4-2" href="#rest_code_7b623ef262bc451f8fad5c9267972fb4-2"></a>find 200? -type f ! -name \*~ ! -name \*-idx-*.rst |
-<a id="rest_code_7b623ef262bc451f8fad5c9267972fb4-3" name="rest_code_7b623ef262bc451f8fad5c9267972fb4-3" href="#rest_code_7b623ef262bc451f8fad5c9267972fb4-3"></a>while read filename
-<a id="rest_code_7b623ef262bc451f8fad5c9267972fb4-4" name="rest_code_7b623ef262bc451f8fad5c9267972fb4-4" href="#rest_code_7b623ef262bc451f8fad5c9267972fb4-4"></a>do
-<a id="rest_code_7b623ef262bc451f8fad5c9267972fb4-5" name="rest_code_7b623ef262bc451f8fad5c9267972fb4-5" href="#rest_code_7b623ef262bc451f8fad5c9267972fb4-5"></a>    newname="$(echo $filename | sed 's#/#-#g')"
-<a id="rest_code_7b623ef262bc451f8fad5c9267972fb4-6" name="rest_code_7b623ef262bc451f8fad5c9267972fb4-6" href="#rest_code_7b623ef262bc451f8fad5c9267972fb4-6"></a>    date="$(basename $newname .rst)"
-<a id="rest_code_7b623ef262bc451f8fad5c9267972fb4-7" name="rest_code_7b623ef262bc451f8fad5c9267972fb4-7" href="#rest_code_7b623ef262bc451f8fad5c9267972fb4-7"></a>    (echo $date; echo "#published $date 00:00:00"; echo "#tags Old Blog";
-<a id="rest_code_7b623ef262bc451f8fad5c9267972fb4-8" name="rest_code_7b623ef262bc451f8fad5c9267972fb4-8" href="#rest_code_7b623ef262bc451f8fad5c9267972fb4-8"></a>        cat $filename) &gt;/home/tkb/myblog/entries/oldblog/$newname
-<a id="rest_code_7b623ef262bc451f8fad5c9267972fb4-9" name="rest_code_7b623ef262bc451f8fad5c9267972fb4-9" href="#rest_code_7b623ef262bc451f8fad5c9267972fb4-9"></a>done
+<div class="code"><pre class="code text"><a id="rest_code_d3c2c527a34d471bbc999774d0f582dd-1" name="rest_code_d3c2c527a34d471bbc999774d0f582dd-1" href="#rest_code_d3c2c527a34d471bbc999774d0f582dd-1"></a>#! /usr/bin/env bash
+<a id="rest_code_d3c2c527a34d471bbc999774d0f582dd-2" name="rest_code_d3c2c527a34d471bbc999774d0f582dd-2" href="#rest_code_d3c2c527a34d471bbc999774d0f582dd-2"></a>find 200? -type f ! -name \*~ ! -name \*-idx-*.rst |
+<a id="rest_code_d3c2c527a34d471bbc999774d0f582dd-3" name="rest_code_d3c2c527a34d471bbc999774d0f582dd-3" href="#rest_code_d3c2c527a34d471bbc999774d0f582dd-3"></a>while read filename
+<a id="rest_code_d3c2c527a34d471bbc999774d0f582dd-4" name="rest_code_d3c2c527a34d471bbc999774d0f582dd-4" href="#rest_code_d3c2c527a34d471bbc999774d0f582dd-4"></a>do
+<a id="rest_code_d3c2c527a34d471bbc999774d0f582dd-5" name="rest_code_d3c2c527a34d471bbc999774d0f582dd-5" href="#rest_code_d3c2c527a34d471bbc999774d0f582dd-5"></a>    newname="$(echo $filename | sed 's#/#-#g')"
+<a id="rest_code_d3c2c527a34d471bbc999774d0f582dd-6" name="rest_code_d3c2c527a34d471bbc999774d0f582dd-6" href="#rest_code_d3c2c527a34d471bbc999774d0f582dd-6"></a>    date="$(basename $newname .rst)"
+<a id="rest_code_d3c2c527a34d471bbc999774d0f582dd-7" name="rest_code_d3c2c527a34d471bbc999774d0f582dd-7" href="#rest_code_d3c2c527a34d471bbc999774d0f582dd-7"></a>    (echo $date; echo "#published $date 00:00:00"; echo "#tags Old Blog";
+<a id="rest_code_d3c2c527a34d471bbc999774d0f582dd-8" name="rest_code_d3c2c527a34d471bbc999774d0f582dd-8" href="#rest_code_d3c2c527a34d471bbc999774d0f582dd-8"></a>        cat $filename) &gt;/home/tkb/myblog/entries/oldblog/$newname
+<a id="rest_code_d3c2c527a34d471bbc999774d0f582dd-9" name="rest_code_d3c2c527a34d471bbc999774d0f582dd-9" href="#rest_code_d3c2c527a34d471bbc999774d0f582dd-9"></a>done
 </pre></div>
 <p>I'll have to go through and fix uses of Sphinx-specific RST
 extensions, and I'll probably add real entry titles as I do so; in the

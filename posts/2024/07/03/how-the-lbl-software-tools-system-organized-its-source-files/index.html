@@ -88,62 +88,62 @@ page 10 of the release notes from the release on the DECUS">
     <p>One of the things I've always found interesting about the LBL Software
 Tools VOS was how its source files were structured.  I'll include here
 page 10 of the release notes from the release on the DECUS LT86 tape:</p>
-<div class="code"><pre class="code text"><a id="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-1" name="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-1" href="#rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-1"></a>                            Release Notes
-<a id="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-2" name="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-2" href="#rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-2"></a>
-<a id="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-3" name="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-3" href="#rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-3"></a>
-<a id="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-4" name="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-4" href="#rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-4"></a>                        Source File Structure
-<a id="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-5" name="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-5" href="#rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-5"></a>
-<a id="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-6" name="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-6" href="#rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-6"></a>The  source  code  for  `tool' is contained in a file [...SRC]tool.tcs
-<a id="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-7" name="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-7" href="#rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-7"></a>(if   the   tool   is   portable   across   operating   systems)    or
-<a id="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-8" name="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-8" href="#rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-8"></a>[...VMS]tool.tcs  (if  it  is  an VMS-specific tool).  This TCS source
-<a id="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-9" name="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-9" href="#rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-9"></a>file contains an edit history of all changes made to the source.   The
-<a id="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-10" name="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-10" href="#rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-10"></a>output  of  the  `get' utility operating on a `.tcs' file results in a
-<a id="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-11" name="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-11" href="#rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-11"></a>file (tool.w) which is all of the  environment  necessary  to  rebuild
-<a id="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-12" name="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-12" href="#rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-12"></a>the  tool,  provided  that the VOS is operational.  The tool.w file is
-<a id="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-13" name="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-13" href="#rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-13"></a>an archive containing:
-<a id="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-14" name="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-14" href="#rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-14"></a>
-<a id="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-15" name="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-15" href="#rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-15"></a>  1. All of the files "included" by the ratfor source code.
-<a id="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-16" name="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-16" href="#rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-16"></a>  2. The ratfor source file, tool.r.
-<a id="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-17" name="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-17" href="#rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-17"></a>  3. The format input for the manual entry, tool.fmt.
-<a id="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-18" name="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-18" href="#rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-18"></a>  4. And optionally,  any  extra  definition  files  needed  to  build
-<a id="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-19" name="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-19" href="#rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-19"></a>     alternate versions of the tool (eg. sh =&gt; hsh).
-<a id="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-20" name="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-20" href="#rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-20"></a>
-<a id="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-21" name="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-21" href="#rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-21"></a>As  an  example,  suppose  that  you  wish  to  change  the subroutine
-<a id="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-22" name="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-22" href="#rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-22"></a>"module" in "tool".  The suggested scenario is as follows:
-<a id="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-23" name="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-23" href="#rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-23"></a>
-<a id="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-24" name="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-24" href="#rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-24"></a>   $ !Fetch the file tool.tcs from the appropriate directory in the container
-<a id="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-25" name="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-25" href="#rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-25"></a>   $ !file on tape into st_src
-<a id="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-26" name="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-26" href="#rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-26"></a>   $ hsh
-<a id="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-27" name="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-27" href="#rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-27"></a>   % get ~src/tool.tcs tool.w
-<a id="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-28" name="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-28" href="#rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-28"></a>   % ar xv tool.w
-<a id="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-29" name="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-29" href="#rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-29"></a>   % ar xv tool.r module
-<a id="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-30" name="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-30" href="#rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-30"></a>   % ed module
-<a id="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-31" name="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-31" href="#rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-31"></a>   (make changes and write file)
-<a id="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-32" name="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-32" href="#rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-32"></a>   % ar uv tool.r module
-<a id="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-33" name="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-33" href="#rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-33"></a>   % rc -v tool.r
-<a id="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-34" name="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-34" href="#rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-34"></a>   % (test out new tool.  repeat last three steps until satisfied.)
-<a id="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-35" name="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-35" href="#rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-35"></a>   % ed tool.fmt
-<a id="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-36" name="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-36" href="#rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-36"></a>   (modify writeup to reflect changes)
-<a id="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-37" name="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-37" href="#rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-37"></a>   % ar uv tool.w tool.r tool.fmt
-<a id="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-38" name="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-38" href="#rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-38"></a>   % cp tool.exe ~usr/tool.exe
-<a id="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-39" name="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-39" href="#rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-39"></a>   % delta tool.w ~src/tool.tcs
-<a id="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-40" name="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-40" href="#rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-40"></a>   (Identify in the comments the reason for the changes,
-<a id="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-41" name="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-41" href="#rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-41"></a>   and which modules changed.)
-<a id="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-42" name="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-42" href="#rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-42"></a>   % format tool.fmt &gt;tool
-<a id="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-43" name="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-43" href="#rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-43"></a>   % ar uv ~man/s1 tool
-<a id="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-44" name="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-44" href="#rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-44"></a>   % asam &lt;~man/s1 | sort &gt;~man/i1
-<a id="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-45" name="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-45" href="#rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-45"></a>
-<a id="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-46" name="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-46" href="#rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-46"></a>Placing tool.exe in ~usr  causes  the  shell  to  find  your  modified
-<a id="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-47" name="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-47" href="#rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-47"></a>version  of  "tool"  rather  than  the  distributed one.  The last two
-<a id="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-48" name="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-48" href="#rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-48"></a>commands  above  cause  the  manual  entry  for  `tool'  to  correctly
-<a id="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-49" name="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-49" href="#rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-49"></a>correspond to the utility itself.
-<a id="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-50" name="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-50" href="#rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-50"></a>
-<a id="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-51" name="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-51" href="#rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-51"></a>
-<a id="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-52" name="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-52" href="#rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-52"></a>
-<a id="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-53" name="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-53" href="#rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-53"></a>
-<a id="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-54" name="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-54" href="#rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-54"></a>
-<a id="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-55" name="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-55" href="#rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-55"></a>
-<a id="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-56" name="rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-56" href="#rest_code_6f41d35c10ee4d1aaf9cea2d1c532124-56"></a>                                 -10-
+<div class="code"><pre class="code text"><a id="rest_code_4e1e1c2b0ce74383adf282f92af98218-1" name="rest_code_4e1e1c2b0ce74383adf282f92af98218-1" href="#rest_code_4e1e1c2b0ce74383adf282f92af98218-1"></a>                            Release Notes
+<a id="rest_code_4e1e1c2b0ce74383adf282f92af98218-2" name="rest_code_4e1e1c2b0ce74383adf282f92af98218-2" href="#rest_code_4e1e1c2b0ce74383adf282f92af98218-2"></a>
+<a id="rest_code_4e1e1c2b0ce74383adf282f92af98218-3" name="rest_code_4e1e1c2b0ce74383adf282f92af98218-3" href="#rest_code_4e1e1c2b0ce74383adf282f92af98218-3"></a>
+<a id="rest_code_4e1e1c2b0ce74383adf282f92af98218-4" name="rest_code_4e1e1c2b0ce74383adf282f92af98218-4" href="#rest_code_4e1e1c2b0ce74383adf282f92af98218-4"></a>                        Source File Structure
+<a id="rest_code_4e1e1c2b0ce74383adf282f92af98218-5" name="rest_code_4e1e1c2b0ce74383adf282f92af98218-5" href="#rest_code_4e1e1c2b0ce74383adf282f92af98218-5"></a>
+<a id="rest_code_4e1e1c2b0ce74383adf282f92af98218-6" name="rest_code_4e1e1c2b0ce74383adf282f92af98218-6" href="#rest_code_4e1e1c2b0ce74383adf282f92af98218-6"></a>The  source  code  for  `tool' is contained in a file [...SRC]tool.tcs
+<a id="rest_code_4e1e1c2b0ce74383adf282f92af98218-7" name="rest_code_4e1e1c2b0ce74383adf282f92af98218-7" href="#rest_code_4e1e1c2b0ce74383adf282f92af98218-7"></a>(if   the   tool   is   portable   across   operating   systems)    or
+<a id="rest_code_4e1e1c2b0ce74383adf282f92af98218-8" name="rest_code_4e1e1c2b0ce74383adf282f92af98218-8" href="#rest_code_4e1e1c2b0ce74383adf282f92af98218-8"></a>[...VMS]tool.tcs  (if  it  is  an VMS-specific tool).  This TCS source
+<a id="rest_code_4e1e1c2b0ce74383adf282f92af98218-9" name="rest_code_4e1e1c2b0ce74383adf282f92af98218-9" href="#rest_code_4e1e1c2b0ce74383adf282f92af98218-9"></a>file contains an edit history of all changes made to the source.   The
+<a id="rest_code_4e1e1c2b0ce74383adf282f92af98218-10" name="rest_code_4e1e1c2b0ce74383adf282f92af98218-10" href="#rest_code_4e1e1c2b0ce74383adf282f92af98218-10"></a>output  of  the  `get' utility operating on a `.tcs' file results in a
+<a id="rest_code_4e1e1c2b0ce74383adf282f92af98218-11" name="rest_code_4e1e1c2b0ce74383adf282f92af98218-11" href="#rest_code_4e1e1c2b0ce74383adf282f92af98218-11"></a>file (tool.w) which is all of the  environment  necessary  to  rebuild
+<a id="rest_code_4e1e1c2b0ce74383adf282f92af98218-12" name="rest_code_4e1e1c2b0ce74383adf282f92af98218-12" href="#rest_code_4e1e1c2b0ce74383adf282f92af98218-12"></a>the  tool,  provided  that the VOS is operational.  The tool.w file is
+<a id="rest_code_4e1e1c2b0ce74383adf282f92af98218-13" name="rest_code_4e1e1c2b0ce74383adf282f92af98218-13" href="#rest_code_4e1e1c2b0ce74383adf282f92af98218-13"></a>an archive containing:
+<a id="rest_code_4e1e1c2b0ce74383adf282f92af98218-14" name="rest_code_4e1e1c2b0ce74383adf282f92af98218-14" href="#rest_code_4e1e1c2b0ce74383adf282f92af98218-14"></a>
+<a id="rest_code_4e1e1c2b0ce74383adf282f92af98218-15" name="rest_code_4e1e1c2b0ce74383adf282f92af98218-15" href="#rest_code_4e1e1c2b0ce74383adf282f92af98218-15"></a>  1. All of the files "included" by the ratfor source code.
+<a id="rest_code_4e1e1c2b0ce74383adf282f92af98218-16" name="rest_code_4e1e1c2b0ce74383adf282f92af98218-16" href="#rest_code_4e1e1c2b0ce74383adf282f92af98218-16"></a>  2. The ratfor source file, tool.r.
+<a id="rest_code_4e1e1c2b0ce74383adf282f92af98218-17" name="rest_code_4e1e1c2b0ce74383adf282f92af98218-17" href="#rest_code_4e1e1c2b0ce74383adf282f92af98218-17"></a>  3. The format input for the manual entry, tool.fmt.
+<a id="rest_code_4e1e1c2b0ce74383adf282f92af98218-18" name="rest_code_4e1e1c2b0ce74383adf282f92af98218-18" href="#rest_code_4e1e1c2b0ce74383adf282f92af98218-18"></a>  4. And optionally,  any  extra  definition  files  needed  to  build
+<a id="rest_code_4e1e1c2b0ce74383adf282f92af98218-19" name="rest_code_4e1e1c2b0ce74383adf282f92af98218-19" href="#rest_code_4e1e1c2b0ce74383adf282f92af98218-19"></a>     alternate versions of the tool (eg. sh =&gt; hsh).
+<a id="rest_code_4e1e1c2b0ce74383adf282f92af98218-20" name="rest_code_4e1e1c2b0ce74383adf282f92af98218-20" href="#rest_code_4e1e1c2b0ce74383adf282f92af98218-20"></a>
+<a id="rest_code_4e1e1c2b0ce74383adf282f92af98218-21" name="rest_code_4e1e1c2b0ce74383adf282f92af98218-21" href="#rest_code_4e1e1c2b0ce74383adf282f92af98218-21"></a>As  an  example,  suppose  that  you  wish  to  change  the subroutine
+<a id="rest_code_4e1e1c2b0ce74383adf282f92af98218-22" name="rest_code_4e1e1c2b0ce74383adf282f92af98218-22" href="#rest_code_4e1e1c2b0ce74383adf282f92af98218-22"></a>"module" in "tool".  The suggested scenario is as follows:
+<a id="rest_code_4e1e1c2b0ce74383adf282f92af98218-23" name="rest_code_4e1e1c2b0ce74383adf282f92af98218-23" href="#rest_code_4e1e1c2b0ce74383adf282f92af98218-23"></a>
+<a id="rest_code_4e1e1c2b0ce74383adf282f92af98218-24" name="rest_code_4e1e1c2b0ce74383adf282f92af98218-24" href="#rest_code_4e1e1c2b0ce74383adf282f92af98218-24"></a>   $ !Fetch the file tool.tcs from the appropriate directory in the container
+<a id="rest_code_4e1e1c2b0ce74383adf282f92af98218-25" name="rest_code_4e1e1c2b0ce74383adf282f92af98218-25" href="#rest_code_4e1e1c2b0ce74383adf282f92af98218-25"></a>   $ !file on tape into st_src
+<a id="rest_code_4e1e1c2b0ce74383adf282f92af98218-26" name="rest_code_4e1e1c2b0ce74383adf282f92af98218-26" href="#rest_code_4e1e1c2b0ce74383adf282f92af98218-26"></a>   $ hsh
+<a id="rest_code_4e1e1c2b0ce74383adf282f92af98218-27" name="rest_code_4e1e1c2b0ce74383adf282f92af98218-27" href="#rest_code_4e1e1c2b0ce74383adf282f92af98218-27"></a>   % get ~src/tool.tcs tool.w
+<a id="rest_code_4e1e1c2b0ce74383adf282f92af98218-28" name="rest_code_4e1e1c2b0ce74383adf282f92af98218-28" href="#rest_code_4e1e1c2b0ce74383adf282f92af98218-28"></a>   % ar xv tool.w
+<a id="rest_code_4e1e1c2b0ce74383adf282f92af98218-29" name="rest_code_4e1e1c2b0ce74383adf282f92af98218-29" href="#rest_code_4e1e1c2b0ce74383adf282f92af98218-29"></a>   % ar xv tool.r module
+<a id="rest_code_4e1e1c2b0ce74383adf282f92af98218-30" name="rest_code_4e1e1c2b0ce74383adf282f92af98218-30" href="#rest_code_4e1e1c2b0ce74383adf282f92af98218-30"></a>   % ed module
+<a id="rest_code_4e1e1c2b0ce74383adf282f92af98218-31" name="rest_code_4e1e1c2b0ce74383adf282f92af98218-31" href="#rest_code_4e1e1c2b0ce74383adf282f92af98218-31"></a>   (make changes and write file)
+<a id="rest_code_4e1e1c2b0ce74383adf282f92af98218-32" name="rest_code_4e1e1c2b0ce74383adf282f92af98218-32" href="#rest_code_4e1e1c2b0ce74383adf282f92af98218-32"></a>   % ar uv tool.r module
+<a id="rest_code_4e1e1c2b0ce74383adf282f92af98218-33" name="rest_code_4e1e1c2b0ce74383adf282f92af98218-33" href="#rest_code_4e1e1c2b0ce74383adf282f92af98218-33"></a>   % rc -v tool.r
+<a id="rest_code_4e1e1c2b0ce74383adf282f92af98218-34" name="rest_code_4e1e1c2b0ce74383adf282f92af98218-34" href="#rest_code_4e1e1c2b0ce74383adf282f92af98218-34"></a>   % (test out new tool.  repeat last three steps until satisfied.)
+<a id="rest_code_4e1e1c2b0ce74383adf282f92af98218-35" name="rest_code_4e1e1c2b0ce74383adf282f92af98218-35" href="#rest_code_4e1e1c2b0ce74383adf282f92af98218-35"></a>   % ed tool.fmt
+<a id="rest_code_4e1e1c2b0ce74383adf282f92af98218-36" name="rest_code_4e1e1c2b0ce74383adf282f92af98218-36" href="#rest_code_4e1e1c2b0ce74383adf282f92af98218-36"></a>   (modify writeup to reflect changes)
+<a id="rest_code_4e1e1c2b0ce74383adf282f92af98218-37" name="rest_code_4e1e1c2b0ce74383adf282f92af98218-37" href="#rest_code_4e1e1c2b0ce74383adf282f92af98218-37"></a>   % ar uv tool.w tool.r tool.fmt
+<a id="rest_code_4e1e1c2b0ce74383adf282f92af98218-38" name="rest_code_4e1e1c2b0ce74383adf282f92af98218-38" href="#rest_code_4e1e1c2b0ce74383adf282f92af98218-38"></a>   % cp tool.exe ~usr/tool.exe
+<a id="rest_code_4e1e1c2b0ce74383adf282f92af98218-39" name="rest_code_4e1e1c2b0ce74383adf282f92af98218-39" href="#rest_code_4e1e1c2b0ce74383adf282f92af98218-39"></a>   % delta tool.w ~src/tool.tcs
+<a id="rest_code_4e1e1c2b0ce74383adf282f92af98218-40" name="rest_code_4e1e1c2b0ce74383adf282f92af98218-40" href="#rest_code_4e1e1c2b0ce74383adf282f92af98218-40"></a>   (Identify in the comments the reason for the changes,
+<a id="rest_code_4e1e1c2b0ce74383adf282f92af98218-41" name="rest_code_4e1e1c2b0ce74383adf282f92af98218-41" href="#rest_code_4e1e1c2b0ce74383adf282f92af98218-41"></a>   and which modules changed.)
+<a id="rest_code_4e1e1c2b0ce74383adf282f92af98218-42" name="rest_code_4e1e1c2b0ce74383adf282f92af98218-42" href="#rest_code_4e1e1c2b0ce74383adf282f92af98218-42"></a>   % format tool.fmt &gt;tool
+<a id="rest_code_4e1e1c2b0ce74383adf282f92af98218-43" name="rest_code_4e1e1c2b0ce74383adf282f92af98218-43" href="#rest_code_4e1e1c2b0ce74383adf282f92af98218-43"></a>   % ar uv ~man/s1 tool
+<a id="rest_code_4e1e1c2b0ce74383adf282f92af98218-44" name="rest_code_4e1e1c2b0ce74383adf282f92af98218-44" href="#rest_code_4e1e1c2b0ce74383adf282f92af98218-44"></a>   % asam &lt;~man/s1 | sort &gt;~man/i1
+<a id="rest_code_4e1e1c2b0ce74383adf282f92af98218-45" name="rest_code_4e1e1c2b0ce74383adf282f92af98218-45" href="#rest_code_4e1e1c2b0ce74383adf282f92af98218-45"></a>
+<a id="rest_code_4e1e1c2b0ce74383adf282f92af98218-46" name="rest_code_4e1e1c2b0ce74383adf282f92af98218-46" href="#rest_code_4e1e1c2b0ce74383adf282f92af98218-46"></a>Placing tool.exe in ~usr  causes  the  shell  to  find  your  modified
+<a id="rest_code_4e1e1c2b0ce74383adf282f92af98218-47" name="rest_code_4e1e1c2b0ce74383adf282f92af98218-47" href="#rest_code_4e1e1c2b0ce74383adf282f92af98218-47"></a>version  of  "tool"  rather  than  the  distributed one.  The last two
+<a id="rest_code_4e1e1c2b0ce74383adf282f92af98218-48" name="rest_code_4e1e1c2b0ce74383adf282f92af98218-48" href="#rest_code_4e1e1c2b0ce74383adf282f92af98218-48"></a>commands  above  cause  the  manual  entry  for  `tool'  to  correctly
+<a id="rest_code_4e1e1c2b0ce74383adf282f92af98218-49" name="rest_code_4e1e1c2b0ce74383adf282f92af98218-49" href="#rest_code_4e1e1c2b0ce74383adf282f92af98218-49"></a>correspond to the utility itself.
+<a id="rest_code_4e1e1c2b0ce74383adf282f92af98218-50" name="rest_code_4e1e1c2b0ce74383adf282f92af98218-50" href="#rest_code_4e1e1c2b0ce74383adf282f92af98218-50"></a>
+<a id="rest_code_4e1e1c2b0ce74383adf282f92af98218-51" name="rest_code_4e1e1c2b0ce74383adf282f92af98218-51" href="#rest_code_4e1e1c2b0ce74383adf282f92af98218-51"></a>
+<a id="rest_code_4e1e1c2b0ce74383adf282f92af98218-52" name="rest_code_4e1e1c2b0ce74383adf282f92af98218-52" href="#rest_code_4e1e1c2b0ce74383adf282f92af98218-52"></a>
+<a id="rest_code_4e1e1c2b0ce74383adf282f92af98218-53" name="rest_code_4e1e1c2b0ce74383adf282f92af98218-53" href="#rest_code_4e1e1c2b0ce74383adf282f92af98218-53"></a>
+<a id="rest_code_4e1e1c2b0ce74383adf282f92af98218-54" name="rest_code_4e1e1c2b0ce74383adf282f92af98218-54" href="#rest_code_4e1e1c2b0ce74383adf282f92af98218-54"></a>
+<a id="rest_code_4e1e1c2b0ce74383adf282f92af98218-55" name="rest_code_4e1e1c2b0ce74383adf282f92af98218-55" href="#rest_code_4e1e1c2b0ce74383adf282f92af98218-55"></a>
+<a id="rest_code_4e1e1c2b0ce74383adf282f92af98218-56" name="rest_code_4e1e1c2b0ce74383adf282f92af98218-56" href="#rest_code_4e1e1c2b0ce74383adf282f92af98218-56"></a>                                 -10-
 </pre></div>
 <p>(It should be <code>% get ~src/tool.tcs &gt;tool.w</code> with a “&gt;”
 before <code class="file docutils literal">tool.w</code> in the above procedure.  Otherwise the contents
