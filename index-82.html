@@ -154,7 +154,7 @@ typos. I think the blog is in pretty good shape now, though.</p>
 terribly insecure, but I only use it inside our firewall to access one
 legacy computer system.  I was glad <a class="reference external" href="https://brew.sh/">brew</a> had <a class="reference external" href="https://lftp.yar.ru/">LFTP</a>, and I figured out
 how to use active mode in <code class="docutils literal">LFTP</code>:</p>
-<div class="code"><pre class="code bash"><a id="rest_code_0875e21f10284da2a214424699b3e475-1" name="rest_code_0875e21f10284da2a214424699b3e475-1" href="posts/2019/11/09/macos-catalina-doesnt-have-a-ftp-client/#rest_code_0875e21f10284da2a214424699b3e475-1"></a><span class="nb">set</span><span class="w"> </span>ftp:passive-mode<span class="w"> </span>off
+<div class="code"><pre class="code bash"><a id="rest_code_c3c57b950d5f42c4b47bf41a4e3cad84-1" name="rest_code_c3c57b950d5f42c4b47bf41a4e3cad84-1" href="posts/2019/11/09/macos-catalina-doesnt-have-a-ftp-client/#rest_code_c3c57b950d5f42c4b47bf41a4e3cad84-1"></a><span class="nb">set</span><span class="w"> </span>ftp:passive-mode<span class="w"> </span>off
 </pre></div>
 <p>because that machine's FTP server only works with active mode.</p>
     <nav><ul itemprop="keywords" class="tags">
@@ -252,21 +252,21 @@ in the title.</p>
 algorithm and wanted my help with running it.  I cloned the <a class="reference external" href="https://github.com/stylewarning/lisp-random">repo</a> it
 was in and ran <code class="docutils literal">sbcl</code> in the <code class="docutils literal">hashlife</code> directory.  Then I
 entered:</p>
-<div class="code"><pre class="code lisp"><a id="rest_code_83e36bd2acdf4424a5e86068a172c90f-1" name="rest_code_83e36bd2acdf4424a5e86068a172c90f-1" href="posts/2019/11/08/playing-with-hashlife/#rest_code_83e36bd2acdf4424a5e86068a172c90f-1"></a><span class="p">(</span><span class="nv">asdf:operate</span><span class="w"> </span><span class="ss">'asdf:load-op</span><span class="w"> </span><span class="ss">'charmlife</span><span class="p">)</span>
+<div class="code"><pre class="code lisp"><a id="rest_code_8ca2e51512b54c0ba8a75c756cac3f04-1" name="rest_code_8ca2e51512b54c0ba8a75c756cac3f04-1" href="posts/2019/11/08/playing-with-hashlife/#rest_code_8ca2e51512b54c0ba8a75c756cac3f04-1"></a><span class="p">(</span><span class="nv">asdf:operate</span><span class="w"> </span><span class="ss">'asdf:load-op</span><span class="w"> </span><span class="ss">'charmlife</span><span class="p">)</span>
 </pre></div>
 <p>That resulted in a <code class="docutils literal">Component CHARMLIFE not found</code> error in sbcl.  I
 thought that was odd — it was right there in the current directory.  I
 looked at <code class="docutils literal"><span class="pre">asdf:*central-registry*</span></code>, and the only thing in it was
 the quicklisp directory.  The ASDF <a class="reference external" href="https://common-lisp.net/~mmommer/asdf-howto.shtml#sec11">howto</a> showed an example of setting
 <code class="docutils literal"><span class="pre">asdf:*central-registry*</span></code>:</p>
-<div class="code"><pre class="code lisp"><a id="rest_code_87feb85b6cd44289b49d25b08eb317c6-1" name="rest_code_87feb85b6cd44289b49d25b08eb317c6-1" href="posts/2019/11/08/playing-with-hashlife/#rest_code_87feb85b6cd44289b49d25b08eb317c6-1"></a><span class="p">(</span><span class="nb">setf</span><span class="w"> </span><span class="nv">asdf:*central-registry*</span>
-<a id="rest_code_87feb85b6cd44289b49d25b08eb317c6-2" name="rest_code_87feb85b6cd44289b49d25b08eb317c6-2" href="posts/2019/11/08/playing-with-hashlife/#rest_code_87feb85b6cd44289b49d25b08eb317c6-2"></a><span class="w">  </span><span class="c1">;; Default directories, usually just the ``current directory''</span>
-<a id="rest_code_87feb85b6cd44289b49d25b08eb317c6-3" name="rest_code_87feb85b6cd44289b49d25b08eb317c6-3" href="posts/2019/11/08/playing-with-hashlife/#rest_code_87feb85b6cd44289b49d25b08eb317c6-3"></a><span class="w">  </span><span class="o">'</span><span class="p">(</span><span class="vg">*default-pathname-defaults*</span>
-<a id="rest_code_87feb85b6cd44289b49d25b08eb317c6-4" name="rest_code_87feb85b6cd44289b49d25b08eb317c6-4" href="posts/2019/11/08/playing-with-hashlife/#rest_code_87feb85b6cd44289b49d25b08eb317c6-4"></a>
-<a id="rest_code_87feb85b6cd44289b49d25b08eb317c6-5" name="rest_code_87feb85b6cd44289b49d25b08eb317c6-5" href="posts/2019/11/08/playing-with-hashlife/#rest_code_87feb85b6cd44289b49d25b08eb317c6-5"></a><span class="w">    </span><span class="c1">;; Additional places where ASDF can find</span>
-<a id="rest_code_87feb85b6cd44289b49d25b08eb317c6-6" name="rest_code_87feb85b6cd44289b49d25b08eb317c6-6" href="posts/2019/11/08/playing-with-hashlife/#rest_code_87feb85b6cd44289b49d25b08eb317c6-6"></a><span class="w">    </span><span class="c1">;; system definition files</span>
-<a id="rest_code_87feb85b6cd44289b49d25b08eb317c6-7" name="rest_code_87feb85b6cd44289b49d25b08eb317c6-7" href="posts/2019/11/08/playing-with-hashlife/#rest_code_87feb85b6cd44289b49d25b08eb317c6-7"></a><span class="w">    </span><span class="l l-Other">#p"/home/foo/lisp/systems/"</span>
-<a id="rest_code_87feb85b6cd44289b49d25b08eb317c6-8" name="rest_code_87feb85b6cd44289b49d25b08eb317c6-8" href="posts/2019/11/08/playing-with-hashlife/#rest_code_87feb85b6cd44289b49d25b08eb317c6-8"></a><span class="w">    </span><span class="l l-Other">#p"/usr/share/common-lisp/systems/"</span><span class="p">))</span>
+<div class="code"><pre class="code lisp"><a id="rest_code_7e4f6984814f43e4a021dadaae123987-1" name="rest_code_7e4f6984814f43e4a021dadaae123987-1" href="posts/2019/11/08/playing-with-hashlife/#rest_code_7e4f6984814f43e4a021dadaae123987-1"></a><span class="p">(</span><span class="nb">setf</span><span class="w"> </span><span class="nv">asdf:*central-registry*</span>
+<a id="rest_code_7e4f6984814f43e4a021dadaae123987-2" name="rest_code_7e4f6984814f43e4a021dadaae123987-2" href="posts/2019/11/08/playing-with-hashlife/#rest_code_7e4f6984814f43e4a021dadaae123987-2"></a><span class="w">  </span><span class="c1">;; Default directories, usually just the ``current directory''</span>
+<a id="rest_code_7e4f6984814f43e4a021dadaae123987-3" name="rest_code_7e4f6984814f43e4a021dadaae123987-3" href="posts/2019/11/08/playing-with-hashlife/#rest_code_7e4f6984814f43e4a021dadaae123987-3"></a><span class="w">  </span><span class="o">'</span><span class="p">(</span><span class="vg">*default-pathname-defaults*</span>
+<a id="rest_code_7e4f6984814f43e4a021dadaae123987-4" name="rest_code_7e4f6984814f43e4a021dadaae123987-4" href="posts/2019/11/08/playing-with-hashlife/#rest_code_7e4f6984814f43e4a021dadaae123987-4"></a>
+<a id="rest_code_7e4f6984814f43e4a021dadaae123987-5" name="rest_code_7e4f6984814f43e4a021dadaae123987-5" href="posts/2019/11/08/playing-with-hashlife/#rest_code_7e4f6984814f43e4a021dadaae123987-5"></a><span class="w">    </span><span class="c1">;; Additional places where ASDF can find</span>
+<a id="rest_code_7e4f6984814f43e4a021dadaae123987-6" name="rest_code_7e4f6984814f43e4a021dadaae123987-6" href="posts/2019/11/08/playing-with-hashlife/#rest_code_7e4f6984814f43e4a021dadaae123987-6"></a><span class="w">    </span><span class="c1">;; system definition files</span>
+<a id="rest_code_7e4f6984814f43e4a021dadaae123987-7" name="rest_code_7e4f6984814f43e4a021dadaae123987-7" href="posts/2019/11/08/playing-with-hashlife/#rest_code_7e4f6984814f43e4a021dadaae123987-7"></a><span class="w">    </span><span class="l l-Other">#p"/home/foo/lisp/systems/"</span>
+<a id="rest_code_7e4f6984814f43e4a021dadaae123987-8" name="rest_code_7e4f6984814f43e4a021dadaae123987-8" href="posts/2019/11/08/playing-with-hashlife/#rest_code_7e4f6984814f43e4a021dadaae123987-8"></a><span class="w">    </span><span class="l l-Other">#p"/usr/share/common-lisp/systems/"</span><span class="p">))</span>
 </pre></div>
 <p>Noticing that it had the symbol <code class="docutils literal"><span class="pre">*default-pathname-defaults*</span></code> in the
 new value, I guessed that it being missing from mine caused ASDF to
@@ -276,12 +276,12 @@ used <a class="reference external" href="https://www.quicklisp.org/">Quicklisp</
 <code class="docutils literal">charmlife.lisp</code> and looked at the <code class="docutils literal">main</code> function and figured out
 how to run it and how to interact with the program when it was running.</p>
 <p>Here's what I had to do:</p>
-<div class="code"><pre class="code lisp"><a id="rest_code_0ae08567109c49e995f8afe549977063-1" name="rest_code_0ae08567109c49e995f8afe549977063-1" href="posts/2019/11/08/playing-with-hashlife/#rest_code_0ae08567109c49e995f8afe549977063-1"></a><span class="p">(</span><span class="nb">setf</span><span class="w"> </span><span class="nv">asdf:*central-registry*</span>
-<a id="rest_code_0ae08567109c49e995f8afe549977063-2" name="rest_code_0ae08567109c49e995f8afe549977063-2" href="posts/2019/11/08/playing-with-hashlife/#rest_code_0ae08567109c49e995f8afe549977063-2"></a><span class="w">      </span><span class="p">(</span><span class="nb">cons</span><span class="w"> </span><span class="ss">'*default-pathname-defaults*</span>
-<a id="rest_code_0ae08567109c49e995f8afe549977063-3" name="rest_code_0ae08567109c49e995f8afe549977063-3" href="posts/2019/11/08/playing-with-hashlife/#rest_code_0ae08567109c49e995f8afe549977063-3"></a><span class="w">            </span><span class="nv">asdf:*central-registry*</span><span class="p">))</span>
-<a id="rest_code_0ae08567109c49e995f8afe549977063-4" name="rest_code_0ae08567109c49e995f8afe549977063-4" href="posts/2019/11/08/playing-with-hashlife/#rest_code_0ae08567109c49e995f8afe549977063-4"></a><span class="p">(</span><span class="nv">ql:quickload</span><span class="w"> </span><span class="s">"cl-charms"</span><span class="p">)</span>
-<a id="rest_code_0ae08567109c49e995f8afe549977063-5" name="rest_code_0ae08567109c49e995f8afe549977063-5" href="posts/2019/11/08/playing-with-hashlife/#rest_code_0ae08567109c49e995f8afe549977063-5"></a><span class="p">(</span><span class="nv">asdf:operate</span><span class="w"> </span><span class="ss">'asdf:load-op</span><span class="w"> </span><span class="ss">'charmlife</span><span class="p">)</span>
-<a id="rest_code_0ae08567109c49e995f8afe549977063-6" name="rest_code_0ae08567109c49e995f8afe549977063-6" href="posts/2019/11/08/playing-with-hashlife/#rest_code_0ae08567109c49e995f8afe549977063-6"></a><span class="p">(</span><span class="nv">charmlife:main</span><span class="p">)</span>
+<div class="code"><pre class="code lisp"><a id="rest_code_8457832971a04cc0b06c54c287cfd6ea-1" name="rest_code_8457832971a04cc0b06c54c287cfd6ea-1" href="posts/2019/11/08/playing-with-hashlife/#rest_code_8457832971a04cc0b06c54c287cfd6ea-1"></a><span class="p">(</span><span class="nb">setf</span><span class="w"> </span><span class="nv">asdf:*central-registry*</span>
+<a id="rest_code_8457832971a04cc0b06c54c287cfd6ea-2" name="rest_code_8457832971a04cc0b06c54c287cfd6ea-2" href="posts/2019/11/08/playing-with-hashlife/#rest_code_8457832971a04cc0b06c54c287cfd6ea-2"></a><span class="w">      </span><span class="p">(</span><span class="nb">cons</span><span class="w"> </span><span class="ss">'*default-pathname-defaults*</span>
+<a id="rest_code_8457832971a04cc0b06c54c287cfd6ea-3" name="rest_code_8457832971a04cc0b06c54c287cfd6ea-3" href="posts/2019/11/08/playing-with-hashlife/#rest_code_8457832971a04cc0b06c54c287cfd6ea-3"></a><span class="w">            </span><span class="nv">asdf:*central-registry*</span><span class="p">))</span>
+<a id="rest_code_8457832971a04cc0b06c54c287cfd6ea-4" name="rest_code_8457832971a04cc0b06c54c287cfd6ea-4" href="posts/2019/11/08/playing-with-hashlife/#rest_code_8457832971a04cc0b06c54c287cfd6ea-4"></a><span class="p">(</span><span class="nv">ql:quickload</span><span class="w"> </span><span class="s">"cl-charms"</span><span class="p">)</span>
+<a id="rest_code_8457832971a04cc0b06c54c287cfd6ea-5" name="rest_code_8457832971a04cc0b06c54c287cfd6ea-5" href="posts/2019/11/08/playing-with-hashlife/#rest_code_8457832971a04cc0b06c54c287cfd6ea-5"></a><span class="p">(</span><span class="nv">asdf:operate</span><span class="w"> </span><span class="ss">'asdf:load-op</span><span class="w"> </span><span class="ss">'charmlife</span><span class="p">)</span>
+<a id="rest_code_8457832971a04cc0b06c54c287cfd6ea-6" name="rest_code_8457832971a04cc0b06c54c287cfd6ea-6" href="posts/2019/11/08/playing-with-hashlife/#rest_code_8457832971a04cc0b06c54c287cfd6ea-6"></a><span class="p">(</span><span class="nv">charmlife:main</span><span class="p">)</span>
 </pre></div>
     <nav><ul itemprop="keywords" class="tags">
 <li><a class="tag p-category" href="categories/common-lisp/" rel="tag">common lisp</a></li>
@@ -302,7 +302,7 @@ how to run it and how to interact with the program when it was running.</p>
     <p>Fedora 31 is out, and fool that I am I'm upgrading to it.
 Unfortunately, my DSL connection is slow and my DSL modem router is flaky.
 With over 3000 packages to download,</p>
-<div class="code"><pre class="code bash"><a id="rest_code_0dd211c09f0641439b23785d147ff546-1" name="rest_code_0dd211c09f0641439b23785d147ff546-1" href="posts/2019/11/07/looping-on-dnf-y-system-upgrade-download-until-it-succeeds/#rest_code_0dd211c09f0641439b23785d147ff546-1"></a>dnf<span class="w"> </span>-y<span class="w"> </span>system-upgrade<span class="w"> </span>download<span class="w"> </span>--refresh<span class="w"> </span>--releasever<span class="o">=</span><span class="m">31</span>
+<div class="code"><pre class="code bash"><a id="rest_code_9132eeb2ce8642e69724c58efeed7d5e-1" name="rest_code_9132eeb2ce8642e69724c58efeed7d5e-1" href="posts/2019/11/07/looping-on-dnf-y-system-upgrade-download-until-it-succeeds/#rest_code_9132eeb2ce8642e69724c58efeed7d5e-1"></a>dnf<span class="w"> </span>-y<span class="w"> </span>system-upgrade<span class="w"> </span>download<span class="w"> </span>--refresh<span class="w"> </span>--releasever<span class="o">=</span><span class="m">31</span>
 </pre></div>
 <p>is bound to die in the middle at least once, if not multiple times,
 and with more than 6 hours estimated for the download to run I can't
@@ -315,78 +315,78 @@ over again before I could C-c the shell.</p>
 <p><a class="reference external" href="listings/tryfedoraupdate.html">tryfedoraupdate</a>  <a class="reference external" href="listings/tryfedoraupdate">(Source)</a></p>
 <div class="code"><table class="codetable">
 <tr>
-<td class="linenos linenodiv"><a href="posts/2019/11/07/looping-on-dnf-y-system-upgrade-download-until-it-succeeds/#rest_code_ec4b2c5ddf5f4b41a28104d2a6642b77-1"><code data-line-number=" 1"></code></a></td>
-<td class="code"><code><a id="rest_code_ec4b2c5ddf5f4b41a28104d2a6642b77-1" name="rest_code_ec4b2c5ddf5f4b41a28104d2a6642b77-1"></a><span class="ch">#! /usr/bin/bash</span>
+<td class="linenos linenodiv"><a href="posts/2019/11/07/looping-on-dnf-y-system-upgrade-download-until-it-succeeds/#rest_code_37687150ec104a039b6eb988cee06224-1"><code data-line-number=" 1"></code></a></td>
+<td class="code"><code><a id="rest_code_37687150ec104a039b6eb988cee06224-1" name="rest_code_37687150ec104a039b6eb988cee06224-1"></a><span class="ch">#! /usr/bin/bash</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="posts/2019/11/07/looping-on-dnf-y-system-upgrade-download-until-it-succeeds/#rest_code_ec4b2c5ddf5f4b41a28104d2a6642b77-2"><code data-line-number=" 2"></code></a></td>
-<td class="code"><code><a id="rest_code_ec4b2c5ddf5f4b41a28104d2a6642b77-2" name="rest_code_ec4b2c5ddf5f4b41a28104d2a6642b77-2"></a>
+<td class="linenos linenodiv"><a href="posts/2019/11/07/looping-on-dnf-y-system-upgrade-download-until-it-succeeds/#rest_code_37687150ec104a039b6eb988cee06224-2"><code data-line-number=" 2"></code></a></td>
+<td class="code"><code><a id="rest_code_37687150ec104a039b6eb988cee06224-2" name="rest_code_37687150ec104a039b6eb988cee06224-2"></a>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="posts/2019/11/07/looping-on-dnf-y-system-upgrade-download-until-it-succeeds/#rest_code_ec4b2c5ddf5f4b41a28104d2a6642b77-3"><code data-line-number=" 3"></code></a></td>
-<td class="code"><code><a id="rest_code_ec4b2c5ddf5f4b41a28104d2a6642b77-3" name="rest_code_ec4b2c5ddf5f4b41a28104d2a6642b77-3"></a><span class="k">while</span><span class="w"> </span>!<span class="w"> </span>dnf<span class="w"> </span>-y<span class="w"> </span>system-upgrade<span class="w"> </span>download<span class="w"> </span>--refresh<span class="w"> </span>--releasever<span class="o">=</span><span class="m">31</span>
+<td class="linenos linenodiv"><a href="posts/2019/11/07/looping-on-dnf-y-system-upgrade-download-until-it-succeeds/#rest_code_37687150ec104a039b6eb988cee06224-3"><code data-line-number=" 3"></code></a></td>
+<td class="code"><code><a id="rest_code_37687150ec104a039b6eb988cee06224-3" name="rest_code_37687150ec104a039b6eb988cee06224-3"></a><span class="k">while</span><span class="w"> </span>!<span class="w"> </span>dnf<span class="w"> </span>-y<span class="w"> </span>system-upgrade<span class="w"> </span>download<span class="w"> </span>--refresh<span class="w"> </span>--releasever<span class="o">=</span><span class="m">31</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="posts/2019/11/07/looping-on-dnf-y-system-upgrade-download-until-it-succeeds/#rest_code_ec4b2c5ddf5f4b41a28104d2a6642b77-4"><code data-line-number=" 4"></code></a></td>
-<td class="code"><code><a id="rest_code_ec4b2c5ddf5f4b41a28104d2a6642b77-4" name="rest_code_ec4b2c5ddf5f4b41a28104d2a6642b77-4"></a><span class="k">do</span>
+<td class="linenos linenodiv"><a href="posts/2019/11/07/looping-on-dnf-y-system-upgrade-download-until-it-succeeds/#rest_code_37687150ec104a039b6eb988cee06224-4"><code data-line-number=" 4"></code></a></td>
+<td class="code"><code><a id="rest_code_37687150ec104a039b6eb988cee06224-4" name="rest_code_37687150ec104a039b6eb988cee06224-4"></a><span class="k">do</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="posts/2019/11/07/looping-on-dnf-y-system-upgrade-download-until-it-succeeds/#rest_code_ec4b2c5ddf5f4b41a28104d2a6642b77-5"><code data-line-number=" 5"></code></a></td>
-<td class="code"><code><a id="rest_code_ec4b2c5ddf5f4b41a28104d2a6642b77-5" name="rest_code_ec4b2c5ddf5f4b41a28104d2a6642b77-5"></a><span class="w">    </span><span class="nb">read</span><span class="w"> </span>-t<span class="w"> </span><span class="m">30</span><span class="w"> </span>-p<span class="w"> </span><span class="s2">"Continue? (y/n) "</span><span class="w"> </span>reply
+<td class="linenos linenodiv"><a href="posts/2019/11/07/looping-on-dnf-y-system-upgrade-download-until-it-succeeds/#rest_code_37687150ec104a039b6eb988cee06224-5"><code data-line-number=" 5"></code></a></td>
+<td class="code"><code><a id="rest_code_37687150ec104a039b6eb988cee06224-5" name="rest_code_37687150ec104a039b6eb988cee06224-5"></a><span class="w">    </span><span class="nb">read</span><span class="w"> </span>-t<span class="w"> </span><span class="m">30</span><span class="w"> </span>-p<span class="w"> </span><span class="s2">"Continue? (y/n) "</span><span class="w"> </span>reply
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="posts/2019/11/07/looping-on-dnf-y-system-upgrade-download-until-it-succeeds/#rest_code_ec4b2c5ddf5f4b41a28104d2a6642b77-6"><code data-line-number=" 6"></code></a></td>
-<td class="code"><code><a id="rest_code_ec4b2c5ddf5f4b41a28104d2a6642b77-6" name="rest_code_ec4b2c5ddf5f4b41a28104d2a6642b77-6"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">((</span><span class="nv">$?</span>&gt;128<span class="o">))</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<td class="linenos linenodiv"><a href="posts/2019/11/07/looping-on-dnf-y-system-upgrade-download-until-it-succeeds/#rest_code_37687150ec104a039b6eb988cee06224-6"><code data-line-number=" 6"></code></a></td>
+<td class="code"><code><a id="rest_code_37687150ec104a039b6eb988cee06224-6" name="rest_code_37687150ec104a039b6eb988cee06224-6"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">((</span><span class="nv">$?</span>&gt;128<span class="o">))</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="posts/2019/11/07/looping-on-dnf-y-system-upgrade-download-until-it-succeeds/#rest_code_ec4b2c5ddf5f4b41a28104d2a6642b77-7"><code data-line-number=" 7"></code></a></td>
-<td class="code"><code><a id="rest_code_ec4b2c5ddf5f4b41a28104d2a6642b77-7" name="rest_code_ec4b2c5ddf5f4b41a28104d2a6642b77-7"></a><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"timed out, continuing..."</span>
+<td class="linenos linenodiv"><a href="posts/2019/11/07/looping-on-dnf-y-system-upgrade-download-until-it-succeeds/#rest_code_37687150ec104a039b6eb988cee06224-7"><code data-line-number=" 7"></code></a></td>
+<td class="code"><code><a id="rest_code_37687150ec104a039b6eb988cee06224-7" name="rest_code_37687150ec104a039b6eb988cee06224-7"></a><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"timed out, continuing..."</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="posts/2019/11/07/looping-on-dnf-y-system-upgrade-download-until-it-succeeds/#rest_code_ec4b2c5ddf5f4b41a28104d2a6642b77-8"><code data-line-number=" 8"></code></a></td>
-<td class="code"><code><a id="rest_code_ec4b2c5ddf5f4b41a28104d2a6642b77-8" name="rest_code_ec4b2c5ddf5f4b41a28104d2a6642b77-8"></a><span class="w">    </span><span class="k">elif</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="s2">"</span><span class="nv">$reply</span><span class="s2">"</span><span class="w"> </span><span class="o">=</span>~<span class="w"> </span><span class="o">[</span>Nn<span class="o">]</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<td class="linenos linenodiv"><a href="posts/2019/11/07/looping-on-dnf-y-system-upgrade-download-until-it-succeeds/#rest_code_37687150ec104a039b6eb988cee06224-8"><code data-line-number=" 8"></code></a></td>
+<td class="code"><code><a id="rest_code_37687150ec104a039b6eb988cee06224-8" name="rest_code_37687150ec104a039b6eb988cee06224-8"></a><span class="w">    </span><span class="k">elif</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="s2">"</span><span class="nv">$reply</span><span class="s2">"</span><span class="w"> </span><span class="o">=</span>~<span class="w"> </span><span class="o">[</span>Nn<span class="o">]</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="posts/2019/11/07/looping-on-dnf-y-system-upgrade-download-until-it-succeeds/#rest_code_ec4b2c5ddf5f4b41a28104d2a6642b77-9"><code data-line-number=" 9"></code></a></td>
-<td class="code"><code><a id="rest_code_ec4b2c5ddf5f4b41a28104d2a6642b77-9" name="rest_code_ec4b2c5ddf5f4b41a28104d2a6642b77-9"></a><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Exiting..."</span>
+<td class="linenos linenodiv"><a href="posts/2019/11/07/looping-on-dnf-y-system-upgrade-download-until-it-succeeds/#rest_code_37687150ec104a039b6eb988cee06224-9"><code data-line-number=" 9"></code></a></td>
+<td class="code"><code><a id="rest_code_37687150ec104a039b6eb988cee06224-9" name="rest_code_37687150ec104a039b6eb988cee06224-9"></a><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Exiting..."</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="posts/2019/11/07/looping-on-dnf-y-system-upgrade-download-until-it-succeeds/#rest_code_ec4b2c5ddf5f4b41a28104d2a6642b77-10"><code data-line-number="10"></code></a></td>
-<td class="code"><code><a id="rest_code_ec4b2c5ddf5f4b41a28104d2a6642b77-10" name="rest_code_ec4b2c5ddf5f4b41a28104d2a6642b77-10"></a><span class="w">        </span><span class="nb">exit</span>
+<td class="linenos linenodiv"><a href="posts/2019/11/07/looping-on-dnf-y-system-upgrade-download-until-it-succeeds/#rest_code_37687150ec104a039b6eb988cee06224-10"><code data-line-number="10"></code></a></td>
+<td class="code"><code><a id="rest_code_37687150ec104a039b6eb988cee06224-10" name="rest_code_37687150ec104a039b6eb988cee06224-10"></a><span class="w">        </span><span class="nb">exit</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="posts/2019/11/07/looping-on-dnf-y-system-upgrade-download-until-it-succeeds/#rest_code_ec4b2c5ddf5f4b41a28104d2a6642b77-11"><code data-line-number="11"></code></a></td>
-<td class="code"><code><a id="rest_code_ec4b2c5ddf5f4b41a28104d2a6642b77-11" name="rest_code_ec4b2c5ddf5f4b41a28104d2a6642b77-11"></a><span class="w">    </span><span class="k">else</span>
+<td class="linenos linenodiv"><a href="posts/2019/11/07/looping-on-dnf-y-system-upgrade-download-until-it-succeeds/#rest_code_37687150ec104a039b6eb988cee06224-11"><code data-line-number="11"></code></a></td>
+<td class="code"><code><a id="rest_code_37687150ec104a039b6eb988cee06224-11" name="rest_code_37687150ec104a039b6eb988cee06224-11"></a><span class="w">    </span><span class="k">else</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="posts/2019/11/07/looping-on-dnf-y-system-upgrade-download-until-it-succeeds/#rest_code_ec4b2c5ddf5f4b41a28104d2a6642b77-12"><code data-line-number="12"></code></a></td>
-<td class="code"><code><a id="rest_code_ec4b2c5ddf5f4b41a28104d2a6642b77-12" name="rest_code_ec4b2c5ddf5f4b41a28104d2a6642b77-12"></a><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Continuing..."</span>
+<td class="linenos linenodiv"><a href="posts/2019/11/07/looping-on-dnf-y-system-upgrade-download-until-it-succeeds/#rest_code_37687150ec104a039b6eb988cee06224-12"><code data-line-number="12"></code></a></td>
+<td class="code"><code><a id="rest_code_37687150ec104a039b6eb988cee06224-12" name="rest_code_37687150ec104a039b6eb988cee06224-12"></a><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Continuing..."</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="posts/2019/11/07/looping-on-dnf-y-system-upgrade-download-until-it-succeeds/#rest_code_ec4b2c5ddf5f4b41a28104d2a6642b77-13"><code data-line-number="13"></code></a></td>
-<td class="code"><code><a id="rest_code_ec4b2c5ddf5f4b41a28104d2a6642b77-13" name="rest_code_ec4b2c5ddf5f4b41a28104d2a6642b77-13"></a><span class="w">    </span><span class="k">fi</span>
+<td class="linenos linenodiv"><a href="posts/2019/11/07/looping-on-dnf-y-system-upgrade-download-until-it-succeeds/#rest_code_37687150ec104a039b6eb988cee06224-13"><code data-line-number="13"></code></a></td>
+<td class="code"><code><a id="rest_code_37687150ec104a039b6eb988cee06224-13" name="rest_code_37687150ec104a039b6eb988cee06224-13"></a><span class="w">    </span><span class="k">fi</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="posts/2019/11/07/looping-on-dnf-y-system-upgrade-download-until-it-succeeds/#rest_code_ec4b2c5ddf5f4b41a28104d2a6642b77-14"><code data-line-number="14"></code></a></td>
-<td class="code"><code><a id="rest_code_ec4b2c5ddf5f4b41a28104d2a6642b77-14" name="rest_code_ec4b2c5ddf5f4b41a28104d2a6642b77-14"></a><span class="k">done</span>
+<td class="linenos linenodiv"><a href="posts/2019/11/07/looping-on-dnf-y-system-upgrade-download-until-it-succeeds/#rest_code_37687150ec104a039b6eb988cee06224-14"><code data-line-number="14"></code></a></td>
+<td class="code"><code><a id="rest_code_37687150ec104a039b6eb988cee06224-14" name="rest_code_37687150ec104a039b6eb988cee06224-14"></a><span class="k">done</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="posts/2019/11/07/looping-on-dnf-y-system-upgrade-download-until-it-succeeds/#rest_code_ec4b2c5ddf5f4b41a28104d2a6642b77-15"><code data-line-number="15"></code></a></td>
-<td class="code"><code><a id="rest_code_ec4b2c5ddf5f4b41a28104d2a6642b77-15" name="rest_code_ec4b2c5ddf5f4b41a28104d2a6642b77-15"></a><span class="w">    </span>
+<td class="linenos linenodiv"><a href="posts/2019/11/07/looping-on-dnf-y-system-upgrade-download-until-it-succeeds/#rest_code_37687150ec104a039b6eb988cee06224-15"><code data-line-number="15"></code></a></td>
+<td class="code"><code><a id="rest_code_37687150ec104a039b6eb988cee06224-15" name="rest_code_37687150ec104a039b6eb988cee06224-15"></a><span class="w">    </span>
 </code></td>
 </tr>
 </table></div>
@@ -452,348 +452,348 @@ Along the way I made sure the files all had <code class="docutils literal">#publ
 <code class="docutils literal">#tags</code> lines, in that order, immediately following the title line.</p>
 <p>Here's the shell script:</p>
 <p><a class="reference external" href="listings/drive-pyblox-to-nikola.html">drive-pyblox-to-nikola</a>  <a class="reference external" href="listings/drive-pyblox-to-nikola">(Source)</a></p>
-<div class="code"><pre class="code bash"><a id="rest_code_cc7e933ef0744e449fff2ad362924f84-1" name="rest_code_cc7e933ef0744e449fff2ad362924f84-1" href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_cc7e933ef0744e449fff2ad362924f84-1"></a><span class="ch">#! /usr/bin/env bash</span>
-<a id="rest_code_cc7e933ef0744e449fff2ad362924f84-2" name="rest_code_cc7e933ef0744e449fff2ad362924f84-2" href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_cc7e933ef0744e449fff2ad362924f84-2"></a>
-<a id="rest_code_cc7e933ef0744e449fff2ad362924f84-3" name="rest_code_cc7e933ef0744e449fff2ad362924f84-3" href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_cc7e933ef0744e449fff2ad362924f84-3"></a><span class="o">(</span><span class="nb">cd</span><span class="w"> </span>~/myblog<span class="w"> </span><span class="o">&amp;&amp;</span>
-<a id="rest_code_cc7e933ef0744e449fff2ad362924f84-4" name="rest_code_cc7e933ef0744e449fff2ad362924f84-4" href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_cc7e933ef0744e449fff2ad362924f84-4"></a><span class="w">     </span>find<span class="w"> </span>notentries/<span class="w"> </span>entries/<span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-name<span class="w"> </span><span class="se">\*</span>.rst<span class="w"> </span><span class="p">|</span>
-<a id="rest_code_cc7e933ef0744e449fff2ad362924f84-5" name="rest_code_cc7e933ef0744e449fff2ad362924f84-5" href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_cc7e933ef0744e449fff2ad362924f84-5"></a><span class="w">         </span>~/comp/tkbtools/Scripts/pyblox-to-nikola<span class="o">)</span>
+<div class="code"><pre class="code bash"><a id="rest_code_c2b62a3e7d7a4d3bbb3e6ff2043a089e-1" name="rest_code_c2b62a3e7d7a4d3bbb3e6ff2043a089e-1" href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_c2b62a3e7d7a4d3bbb3e6ff2043a089e-1"></a><span class="ch">#! /usr/bin/env bash</span>
+<a id="rest_code_c2b62a3e7d7a4d3bbb3e6ff2043a089e-2" name="rest_code_c2b62a3e7d7a4d3bbb3e6ff2043a089e-2" href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_c2b62a3e7d7a4d3bbb3e6ff2043a089e-2"></a>
+<a id="rest_code_c2b62a3e7d7a4d3bbb3e6ff2043a089e-3" name="rest_code_c2b62a3e7d7a4d3bbb3e6ff2043a089e-3" href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_c2b62a3e7d7a4d3bbb3e6ff2043a089e-3"></a><span class="o">(</span><span class="nb">cd</span><span class="w"> </span>~/myblog<span class="w"> </span><span class="o">&amp;&amp;</span>
+<a id="rest_code_c2b62a3e7d7a4d3bbb3e6ff2043a089e-4" name="rest_code_c2b62a3e7d7a4d3bbb3e6ff2043a089e-4" href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_c2b62a3e7d7a4d3bbb3e6ff2043a089e-4"></a><span class="w">     </span>find<span class="w"> </span>notentries/<span class="w"> </span>entries/<span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-name<span class="w"> </span><span class="se">\*</span>.rst<span class="w"> </span><span class="p">|</span>
+<a id="rest_code_c2b62a3e7d7a4d3bbb3e6ff2043a089e-5" name="rest_code_c2b62a3e7d7a4d3bbb3e6ff2043a089e-5" href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_c2b62a3e7d7a4d3bbb3e6ff2043a089e-5"></a><span class="w">         </span>~/comp/tkbtools/Scripts/pyblox-to-nikola<span class="o">)</span>
 </pre></div>
 <p>Here's the python script:</p>
 <p><a class="reference external" href="listings/pyblox-to-nikola.html">pyblox-to-nikola</a>  <a class="reference external" href="listings/pyblox-to-nikola">(Source)</a></p>
 <div class="code"><table class="codetable">
 <tr>
-<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_0efa903f10574fa294aa0c309c3d9509-1"><code data-line-number=" 1"></code></a></td>
-<td class="code"><code><a id="rest_code_0efa903f10574fa294aa0c309c3d9509-1" name="rest_code_0efa903f10574fa294aa0c309c3d9509-1"></a><span class="ch">#! /usr/bin/env python3.7</span>
+<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_cada1b826c1e4609a7a487ee2a37f2fa-1"><code data-line-number=" 1"></code></a></td>
+<td class="code"><code><a id="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-1" name="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-1"></a><span class="ch">#! /usr/bin/env python3.7</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_0efa903f10574fa294aa0c309c3d9509-2"><code data-line-number=" 2"></code></a></td>
-<td class="code"><code><a id="rest_code_0efa903f10574fa294aa0c309c3d9509-2" name="rest_code_0efa903f10574fa294aa0c309c3d9509-2"></a>
+<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_cada1b826c1e4609a7a487ee2a37f2fa-2"><code data-line-number=" 2"></code></a></td>
+<td class="code"><code><a id="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-2" name="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-2"></a>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_0efa903f10574fa294aa0c309c3d9509-3"><code data-line-number=" 3"></code></a></td>
-<td class="code"><code><a id="rest_code_0efa903f10574fa294aa0c309c3d9509-3" name="rest_code_0efa903f10574fa294aa0c309c3d9509-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_cada1b826c1e4609a7a487ee2a37f2fa-3"><code data-line-number=" 3"></code></a></td>
+<td class="code"><code><a id="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-3" name="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_0efa903f10574fa294aa0c309c3d9509-4"><code data-line-number=" 4"></code></a></td>
-<td class="code"><code><a id="rest_code_0efa903f10574fa294aa0c309c3d9509-4" name="rest_code_0efa903f10574fa294aa0c309c3d9509-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">os.path</span>
+<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_cada1b826c1e4609a7a487ee2a37f2fa-4"><code data-line-number=" 4"></code></a></td>
+<td class="code"><code><a id="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-4" name="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">os.path</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_0efa903f10574fa294aa0c309c3d9509-5"><code data-line-number=" 5"></code></a></td>
-<td class="code"><code><a id="rest_code_0efa903f10574fa294aa0c309c3d9509-5" name="rest_code_0efa903f10574fa294aa0c309c3d9509-5"></a><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_cada1b826c1e4609a7a487ee2a37f2fa-5"><code data-line-number=" 5"></code></a></td>
+<td class="code"><code><a id="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-5" name="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-5"></a><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_0efa903f10574fa294aa0c309c3d9509-6"><code data-line-number=" 6"></code></a></td>
-<td class="code"><code><a id="rest_code_0efa903f10574fa294aa0c309c3d9509-6" name="rest_code_0efa903f10574fa294aa0c309c3d9509-6"></a><span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
+<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_cada1b826c1e4609a7a487ee2a37f2fa-6"><code data-line-number=" 6"></code></a></td>
+<td class="code"><code><a id="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-6" name="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-6"></a><span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_0efa903f10574fa294aa0c309c3d9509-7"><code data-line-number=" 7"></code></a></td>
-<td class="code"><code><a id="rest_code_0efa903f10574fa294aa0c309c3d9509-7" name="rest_code_0efa903f10574fa294aa0c309c3d9509-7"></a>
+<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_cada1b826c1e4609a7a487ee2a37f2fa-7"><code data-line-number=" 7"></code></a></td>
+<td class="code"><code><a id="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-7" name="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-7"></a>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_0efa903f10574fa294aa0c309c3d9509-8"><code data-line-number=" 8"></code></a></td>
-<td class="code"><code><a id="rest_code_0efa903f10574fa294aa0c309c3d9509-8" name="rest_code_0efa903f10574fa294aa0c309c3d9509-8"></a><span class="c1"># datetime.strptime ('2019-11-05 20:32:24', '%Y-%m-%d %H:%M:%S')</span>
+<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_cada1b826c1e4609a7a487ee2a37f2fa-8"><code data-line-number=" 8"></code></a></td>
+<td class="code"><code><a id="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-8" name="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-8"></a><span class="c1"># datetime.strptime ('2019-11-05 20:32:24', '%Y-%m-%d %H:%M:%S')</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_0efa903f10574fa294aa0c309c3d9509-9"><code data-line-number=" 9"></code></a></td>
-<td class="code"><code><a id="rest_code_0efa903f10574fa294aa0c309c3d9509-9" name="rest_code_0efa903f10574fa294aa0c309c3d9509-9"></a><span class="c1"># dt.strftime ('%Y-%m-%d %H:%M:%S UTC-05:00')</span>
+<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_cada1b826c1e4609a7a487ee2a37f2fa-9"><code data-line-number=" 9"></code></a></td>
+<td class="code"><code><a id="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-9" name="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-9"></a><span class="c1"># dt.strftime ('%Y-%m-%d %H:%M:%S UTC-05:00')</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_0efa903f10574fa294aa0c309c3d9509-10"><code data-line-number="10"></code></a></td>
-<td class="code"><code><a id="rest_code_0efa903f10574fa294aa0c309c3d9509-10" name="rest_code_0efa903f10574fa294aa0c309c3d9509-10"></a>
+<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_cada1b826c1e4609a7a487ee2a37f2fa-10"><code data-line-number="10"></code></a></td>
+<td class="code"><code><a id="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-10" name="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-10"></a>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_0efa903f10574fa294aa0c309c3d9509-11"><code data-line-number="11"></code></a></td>
-<td class="code"><code><a id="rest_code_0efa903f10574fa294aa0c309c3d9509-11" name="rest_code_0efa903f10574fa294aa0c309c3d9509-11"></a><span class="n">entries_prefix</span> <span class="o">=</span> <span class="s1">'entries/'</span>
+<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_cada1b826c1e4609a7a487ee2a37f2fa-11"><code data-line-number="11"></code></a></td>
+<td class="code"><code><a id="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-11" name="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-11"></a><span class="n">entries_prefix</span> <span class="o">=</span> <span class="s1">'entries/'</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_0efa903f10574fa294aa0c309c3d9509-12"><code data-line-number="12"></code></a></td>
-<td class="code"><code><a id="rest_code_0efa903f10574fa294aa0c309c3d9509-12" name="rest_code_0efa903f10574fa294aa0c309c3d9509-12"></a><span class="n">notentries_prefix</span> <span class="o">=</span> <span class="s1">'notentries/'</span>
+<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_cada1b826c1e4609a7a487ee2a37f2fa-12"><code data-line-number="12"></code></a></td>
+<td class="code"><code><a id="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-12" name="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-12"></a><span class="n">notentries_prefix</span> <span class="o">=</span> <span class="s1">'notentries/'</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_0efa903f10574fa294aa0c309c3d9509-13"><code data-line-number="13"></code></a></td>
-<td class="code"><code><a id="rest_code_0efa903f10574fa294aa0c309c3d9509-13" name="rest_code_0efa903f10574fa294aa0c309c3d9509-13"></a><span class="n">published_prefix</span> <span class="o">=</span> <span class="s1">'#published '</span>
+<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_cada1b826c1e4609a7a487ee2a37f2fa-13"><code data-line-number="13"></code></a></td>
+<td class="code"><code><a id="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-13" name="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-13"></a><span class="n">published_prefix</span> <span class="o">=</span> <span class="s1">'#published '</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_0efa903f10574fa294aa0c309c3d9509-14"><code data-line-number="14"></code></a></td>
-<td class="code"><code><a id="rest_code_0efa903f10574fa294aa0c309c3d9509-14" name="rest_code_0efa903f10574fa294aa0c309c3d9509-14"></a><span class="n">tags_prefix</span> <span class="o">=</span> <span class="s1">'#tags '</span>
+<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_cada1b826c1e4609a7a487ee2a37f2fa-14"><code data-line-number="14"></code></a></td>
+<td class="code"><code><a id="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-14" name="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-14"></a><span class="n">tags_prefix</span> <span class="o">=</span> <span class="s1">'#tags '</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_0efa903f10574fa294aa0c309c3d9509-15"><code data-line-number="15"></code></a></td>
-<td class="code"><code><a id="rest_code_0efa903f10574fa294aa0c309c3d9509-15" name="rest_code_0efa903f10574fa294aa0c309c3d9509-15"></a>
+<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_cada1b826c1e4609a7a487ee2a37f2fa-15"><code data-line-number="15"></code></a></td>
+<td class="code"><code><a id="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-15" name="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-15"></a>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_0efa903f10574fa294aa0c309c3d9509-16"><code data-line-number="16"></code></a></td>
-<td class="code"><code><a id="rest_code_0efa903f10574fa294aa0c309c3d9509-16" name="rest_code_0efa903f10574fa294aa0c309c3d9509-16"></a><span class="n">files_read</span> <span class="o">=</span> <span class="mi">0</span>
+<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_cada1b826c1e4609a7a487ee2a37f2fa-16"><code data-line-number="16"></code></a></td>
+<td class="code"><code><a id="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-16" name="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-16"></a><span class="n">files_read</span> <span class="o">=</span> <span class="mi">0</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_0efa903f10574fa294aa0c309c3d9509-17"><code data-line-number="17"></code></a></td>
-<td class="code"><code><a id="rest_code_0efa903f10574fa294aa0c309c3d9509-17" name="rest_code_0efa903f10574fa294aa0c309c3d9509-17"></a><span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdin</span><span class="p">:</span>
+<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_cada1b826c1e4609a7a487ee2a37f2fa-17"><code data-line-number="17"></code></a></td>
+<td class="code"><code><a id="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-17" name="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-17"></a><span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdin</span><span class="p">:</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_0efa903f10574fa294aa0c309c3d9509-18"><code data-line-number="18"></code></a></td>
-<td class="code"><code><a id="rest_code_0efa903f10574fa294aa0c309c3d9509-18" name="rest_code_0efa903f10574fa294aa0c309c3d9509-18"></a>    <span class="n">filename</span> <span class="o">=</span> <span class="n">filename</span><span class="o">.</span><span class="n">rstrip</span> <span class="p">()</span>
+<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_cada1b826c1e4609a7a487ee2a37f2fa-18"><code data-line-number="18"></code></a></td>
+<td class="code"><code><a id="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-18" name="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-18"></a>    <span class="n">filename</span> <span class="o">=</span> <span class="n">filename</span><span class="o">.</span><span class="n">rstrip</span> <span class="p">()</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_0efa903f10574fa294aa0c309c3d9509-19"><code data-line-number="19"></code></a></td>
-<td class="code"><code><a id="rest_code_0efa903f10574fa294aa0c309c3d9509-19" name="rest_code_0efa903f10574fa294aa0c309c3d9509-19"></a>    <span class="n">basename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span>  <span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_cada1b826c1e4609a7a487ee2a37f2fa-19"><code data-line-number="19"></code></a></td>
+<td class="code"><code><a id="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-19" name="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-19"></a>    <span class="n">basename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span>  <span class="p">(</span><span class="n">filename</span><span class="p">)</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_0efa903f10574fa294aa0c309c3d9509-20"><code data-line-number="20"></code></a></td>
-<td class="code"><code><a id="rest_code_0efa903f10574fa294aa0c309c3d9509-20" name="rest_code_0efa903f10574fa294aa0c309c3d9509-20"></a>    <span class="n">dirname</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span> <span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_cada1b826c1e4609a7a487ee2a37f2fa-20"><code data-line-number="20"></code></a></td>
+<td class="code"><code><a id="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-20" name="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-20"></a>    <span class="n">dirname</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span> <span class="p">(</span><span class="n">filename</span><span class="p">)</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_0efa903f10574fa294aa0c309c3d9509-21"><code data-line-number="21"></code></a></td>
-<td class="code"><code><a id="rest_code_0efa903f10574fa294aa0c309c3d9509-21" name="rest_code_0efa903f10574fa294aa0c309c3d9509-21"></a>    <span class="k">if</span> <span class="n">dirname</span><span class="o">.</span><span class="n">startswith</span> <span class="p">(</span><span class="n">entries_prefix</span><span class="p">):</span>
+<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_cada1b826c1e4609a7a487ee2a37f2fa-21"><code data-line-number="21"></code></a></td>
+<td class="code"><code><a id="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-21" name="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-21"></a>    <span class="k">if</span> <span class="n">dirname</span><span class="o">.</span><span class="n">startswith</span> <span class="p">(</span><span class="n">entries_prefix</span><span class="p">):</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_0efa903f10574fa294aa0c309c3d9509-22"><code data-line-number="22"></code></a></td>
-<td class="code"><code><a id="rest_code_0efa903f10574fa294aa0c309c3d9509-22" name="rest_code_0efa903f10574fa294aa0c309c3d9509-22"></a>        <span class="n">category</span> <span class="o">=</span> <span class="n">dirname</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">entries_prefix</span><span class="p">):]</span>
+<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_cada1b826c1e4609a7a487ee2a37f2fa-22"><code data-line-number="22"></code></a></td>
+<td class="code"><code><a id="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-22" name="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-22"></a>        <span class="n">category</span> <span class="o">=</span> <span class="n">dirname</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">entries_prefix</span><span class="p">):]</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_0efa903f10574fa294aa0c309c3d9509-23"><code data-line-number="23"></code></a></td>
-<td class="code"><code><a id="rest_code_0efa903f10574fa294aa0c309c3d9509-23" name="rest_code_0efa903f10574fa294aa0c309c3d9509-23"></a>    <span class="k">elif</span> <span class="n">dirname</span><span class="o">.</span><span class="n">startswith</span> <span class="p">(</span><span class="n">notentries_prefix</span><span class="p">):</span>
+<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_cada1b826c1e4609a7a487ee2a37f2fa-23"><code data-line-number="23"></code></a></td>
+<td class="code"><code><a id="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-23" name="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-23"></a>    <span class="k">elif</span> <span class="n">dirname</span><span class="o">.</span><span class="n">startswith</span> <span class="p">(</span><span class="n">notentries_prefix</span><span class="p">):</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_0efa903f10574fa294aa0c309c3d9509-24"><code data-line-number="24"></code></a></td>
-<td class="code"><code><a id="rest_code_0efa903f10574fa294aa0c309c3d9509-24" name="rest_code_0efa903f10574fa294aa0c309c3d9509-24"></a>        <span class="n">category</span> <span class="o">=</span> <span class="n">dirname</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">notentries_prefix</span><span class="p">):]</span>
+<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_cada1b826c1e4609a7a487ee2a37f2fa-24"><code data-line-number="24"></code></a></td>
+<td class="code"><code><a id="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-24" name="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-24"></a>        <span class="n">category</span> <span class="o">=</span> <span class="n">dirname</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">notentries_prefix</span><span class="p">):]</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_0efa903f10574fa294aa0c309c3d9509-25"><code data-line-number="25"></code></a></td>
-<td class="code"><code><a id="rest_code_0efa903f10574fa294aa0c309c3d9509-25" name="rest_code_0efa903f10574fa294aa0c309c3d9509-25"></a>    <span class="k">else</span><span class="p">:</span>
+<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_cada1b826c1e4609a7a487ee2a37f2fa-25"><code data-line-number="25"></code></a></td>
+<td class="code"><code><a id="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-25" name="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-25"></a>    <span class="k">else</span><span class="p">:</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_0efa903f10574fa294aa0c309c3d9509-26"><code data-line-number="26"></code></a></td>
-<td class="code"><code><a id="rest_code_0efa903f10574fa294aa0c309c3d9509-26" name="rest_code_0efa903f10574fa294aa0c309c3d9509-26"></a>        <span class="n">category</span> <span class="o">=</span> <span class="s1">''</span>
+<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_cada1b826c1e4609a7a487ee2a37f2fa-26"><code data-line-number="26"></code></a></td>
+<td class="code"><code><a id="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-26" name="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-26"></a>        <span class="n">category</span> <span class="o">=</span> <span class="s1">''</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_0efa903f10574fa294aa0c309c3d9509-27"><code data-line-number="27"></code></a></td>
-<td class="code"><code><a id="rest_code_0efa903f10574fa294aa0c309c3d9509-27" name="rest_code_0efa903f10574fa294aa0c309c3d9509-27"></a>    <span class="p">(</span><span class="n">slug</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span> <span class="p">(</span><span class="n">basename</span><span class="p">)</span>
+<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_cada1b826c1e4609a7a487ee2a37f2fa-27"><code data-line-number="27"></code></a></td>
+<td class="code"><code><a id="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-27" name="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-27"></a>    <span class="p">(</span><span class="n">slug</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span> <span class="p">(</span><span class="n">basename</span><span class="p">)</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_0efa903f10574fa294aa0c309c3d9509-28"><code data-line-number="28"></code></a></td>
-<td class="code"><code><a id="rest_code_0efa903f10574fa294aa0c309c3d9509-28" name="rest_code_0efa903f10574fa294aa0c309c3d9509-28"></a>    <span class="nb">print</span> <span class="p">(</span><span class="s1">'filename: </span><span class="si">%s</span><span class="se">\n</span><span class="s1">basename: </span><span class="si">%s</span><span class="se">\n</span><span class="s1">dirname: </span><span class="si">%s</span><span class="se">\n</span><span class="s1">category: </span><span class="si">%s</span><span class="se">\n</span><span class="s1">slug: </span><span class="si">%s</span><span class="s1">'</span> <span class="o">%</span>
+<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_cada1b826c1e4609a7a487ee2a37f2fa-28"><code data-line-number="28"></code></a></td>
+<td class="code"><code><a id="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-28" name="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-28"></a>    <span class="nb">print</span> <span class="p">(</span><span class="s1">'filename: </span><span class="si">%s</span><span class="se">\n</span><span class="s1">basename: </span><span class="si">%s</span><span class="se">\n</span><span class="s1">dirname: </span><span class="si">%s</span><span class="se">\n</span><span class="s1">category: </span><span class="si">%s</span><span class="se">\n</span><span class="s1">slug: </span><span class="si">%s</span><span class="s1">'</span> <span class="o">%</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_0efa903f10574fa294aa0c309c3d9509-29"><code data-line-number="29"></code></a></td>
-<td class="code"><code><a id="rest_code_0efa903f10574fa294aa0c309c3d9509-29" name="rest_code_0efa903f10574fa294aa0c309c3d9509-29"></a>           <span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">basename</span><span class="p">,</span> <span class="n">dirname</span><span class="p">,</span> <span class="n">category</span><span class="p">,</span> <span class="n">slug</span><span class="p">))</span>
+<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_cada1b826c1e4609a7a487ee2a37f2fa-29"><code data-line-number="29"></code></a></td>
+<td class="code"><code><a id="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-29" name="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-29"></a>           <span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">basename</span><span class="p">,</span> <span class="n">dirname</span><span class="p">,</span> <span class="n">category</span><span class="p">,</span> <span class="n">slug</span><span class="p">))</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_0efa903f10574fa294aa0c309c3d9509-30"><code data-line-number="30"></code></a></td>
-<td class="code"><code><a id="rest_code_0efa903f10574fa294aa0c309c3d9509-30" name="rest_code_0efa903f10574fa294aa0c309c3d9509-30"></a>    <span class="n">inf</span> <span class="o">=</span> <span class="nb">open</span> <span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">)</span>
+<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_cada1b826c1e4609a7a487ee2a37f2fa-30"><code data-line-number="30"></code></a></td>
+<td class="code"><code><a id="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-30" name="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-30"></a>    <span class="n">inf</span> <span class="o">=</span> <span class="nb">open</span> <span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">)</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_0efa903f10574fa294aa0c309c3d9509-31"><code data-line-number="31"></code></a></td>
-<td class="code"><code><a id="rest_code_0efa903f10574fa294aa0c309c3d9509-31" name="rest_code_0efa903f10574fa294aa0c309c3d9509-31"></a>    <span class="n">files_read</span> <span class="o">=</span> <span class="n">files_read</span> <span class="o">+</span> <span class="mi">1</span>
+<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_cada1b826c1e4609a7a487ee2a37f2fa-31"><code data-line-number="31"></code></a></td>
+<td class="code"><code><a id="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-31" name="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-31"></a>    <span class="n">files_read</span> <span class="o">=</span> <span class="n">files_read</span> <span class="o">+</span> <span class="mi">1</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_0efa903f10574fa294aa0c309c3d9509-32"><code data-line-number="32"></code></a></td>
-<td class="code"><code><a id="rest_code_0efa903f10574fa294aa0c309c3d9509-32" name="rest_code_0efa903f10574fa294aa0c309c3d9509-32"></a>    <span class="n">title</span> <span class="o">=</span> <span class="n">inf</span><span class="o">.</span><span class="n">readline</span> <span class="p">()</span>
+<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_cada1b826c1e4609a7a487ee2a37f2fa-32"><code data-line-number="32"></code></a></td>
+<td class="code"><code><a id="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-32" name="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-32"></a>    <span class="n">title</span> <span class="o">=</span> <span class="n">inf</span><span class="o">.</span><span class="n">readline</span> <span class="p">()</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_0efa903f10574fa294aa0c309c3d9509-33"><code data-line-number="33"></code></a></td>
-<td class="code"><code><a id="rest_code_0efa903f10574fa294aa0c309c3d9509-33" name="rest_code_0efa903f10574fa294aa0c309c3d9509-33"></a>    <span class="n">title</span> <span class="o">=</span> <span class="n">title</span><span class="o">.</span><span class="n">rstrip</span> <span class="p">()</span>
+<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_cada1b826c1e4609a7a487ee2a37f2fa-33"><code data-line-number="33"></code></a></td>
+<td class="code"><code><a id="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-33" name="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-33"></a>    <span class="n">title</span> <span class="o">=</span> <span class="n">title</span><span class="o">.</span><span class="n">rstrip</span> <span class="p">()</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_0efa903f10574fa294aa0c309c3d9509-34"><code data-line-number="34"></code></a></td>
-<td class="code"><code><a id="rest_code_0efa903f10574fa294aa0c309c3d9509-34" name="rest_code_0efa903f10574fa294aa0c309c3d9509-34"></a>    <span class="n">published</span> <span class="o">=</span> <span class="n">inf</span><span class="o">.</span><span class="n">readline</span> <span class="p">()</span>
+<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_cada1b826c1e4609a7a487ee2a37f2fa-34"><code data-line-number="34"></code></a></td>
+<td class="code"><code><a id="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-34" name="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-34"></a>    <span class="n">published</span> <span class="o">=</span> <span class="n">inf</span><span class="o">.</span><span class="n">readline</span> <span class="p">()</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_0efa903f10574fa294aa0c309c3d9509-35"><code data-line-number="35"></code></a></td>
-<td class="code"><code><a id="rest_code_0efa903f10574fa294aa0c309c3d9509-35" name="rest_code_0efa903f10574fa294aa0c309c3d9509-35"></a>    <span class="n">published</span> <span class="o">=</span> <span class="n">published</span><span class="o">.</span><span class="n">strip</span> <span class="p">()</span>
+<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_cada1b826c1e4609a7a487ee2a37f2fa-35"><code data-line-number="35"></code></a></td>
+<td class="code"><code><a id="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-35" name="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-35"></a>    <span class="n">published</span> <span class="o">=</span> <span class="n">published</span><span class="o">.</span><span class="n">strip</span> <span class="p">()</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_0efa903f10574fa294aa0c309c3d9509-36"><code data-line-number="36"></code></a></td>
-<td class="code"><code><a id="rest_code_0efa903f10574fa294aa0c309c3d9509-36" name="rest_code_0efa903f10574fa294aa0c309c3d9509-36"></a>    <span class="k">if</span> <span class="n">published</span><span class="o">.</span><span class="n">startswith</span> <span class="p">(</span><span class="n">published_prefix</span><span class="p">):</span>
+<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_cada1b826c1e4609a7a487ee2a37f2fa-36"><code data-line-number="36"></code></a></td>
+<td class="code"><code><a id="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-36" name="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-36"></a>    <span class="k">if</span> <span class="n">published</span><span class="o">.</span><span class="n">startswith</span> <span class="p">(</span><span class="n">published_prefix</span><span class="p">):</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_0efa903f10574fa294aa0c309c3d9509-37"><code data-line-number="37"></code></a></td>
-<td class="code"><code><a id="rest_code_0efa903f10574fa294aa0c309c3d9509-37" name="rest_code_0efa903f10574fa294aa0c309c3d9509-37"></a>        <span class="n">published</span> <span class="o">=</span> <span class="n">published</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">published_prefix</span><span class="p">):]</span>
+<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_cada1b826c1e4609a7a487ee2a37f2fa-37"><code data-line-number="37"></code></a></td>
+<td class="code"><code><a id="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-37" name="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-37"></a>        <span class="n">published</span> <span class="o">=</span> <span class="n">published</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">published_prefix</span><span class="p">):]</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_0efa903f10574fa294aa0c309c3d9509-38"><code data-line-number="38"></code></a></td>
-<td class="code"><code><a id="rest_code_0efa903f10574fa294aa0c309c3d9509-38" name="rest_code_0efa903f10574fa294aa0c309c3d9509-38"></a>    <span class="k">else</span><span class="p">:</span>
+<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_cada1b826c1e4609a7a487ee2a37f2fa-38"><code data-line-number="38"></code></a></td>
+<td class="code"><code><a id="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-38" name="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-38"></a>    <span class="k">else</span><span class="p">:</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_0efa903f10574fa294aa0c309c3d9509-39"><code data-line-number="39"></code></a></td>
-<td class="code"><code><a id="rest_code_0efa903f10574fa294aa0c309c3d9509-39" name="rest_code_0efa903f10574fa294aa0c309c3d9509-39"></a>        <span class="k">raise</span> <span class="p">(</span><span class="s1">'Unknown line should be #published'</span><span class="p">,</span> <span class="n">published</span><span class="p">)</span>
+<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_cada1b826c1e4609a7a487ee2a37f2fa-39"><code data-line-number="39"></code></a></td>
+<td class="code"><code><a id="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-39" name="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-39"></a>        <span class="k">raise</span> <span class="p">(</span><span class="s1">'Unknown line should be #published'</span><span class="p">,</span> <span class="n">published</span><span class="p">)</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_0efa903f10574fa294aa0c309c3d9509-40"><code data-line-number="40"></code></a></td>
-<td class="code"><code><a id="rest_code_0efa903f10574fa294aa0c309c3d9509-40" name="rest_code_0efa903f10574fa294aa0c309c3d9509-40"></a>    <span class="n">published_date</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span> <span class="p">(</span><span class="n">published</span><span class="p">,</span> <span class="s1">'%Y-%m-</span><span class="si">%d</span><span class="s1"> %H:%M:%S'</span><span class="p">)</span>
+<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_cada1b826c1e4609a7a487ee2a37f2fa-40"><code data-line-number="40"></code></a></td>
+<td class="code"><code><a id="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-40" name="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-40"></a>    <span class="n">published_date</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span> <span class="p">(</span><span class="n">published</span><span class="p">,</span> <span class="s1">'%Y-%m-</span><span class="si">%d</span><span class="s1"> %H:%M:%S'</span><span class="p">)</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_0efa903f10574fa294aa0c309c3d9509-41"><code data-line-number="41"></code></a></td>
-<td class="code"><code><a id="rest_code_0efa903f10574fa294aa0c309c3d9509-41" name="rest_code_0efa903f10574fa294aa0c309c3d9509-41"></a>    <span class="n">nikola_date</span> <span class="o">=</span> <span class="n">published_date</span><span class="o">.</span><span class="n">strftime</span> <span class="p">(</span><span class="s1">'%Y-%m-</span><span class="si">%d</span><span class="s1"> %H:%M:%S UTC-05:00'</span><span class="p">)</span>
+<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_cada1b826c1e4609a7a487ee2a37f2fa-41"><code data-line-number="41"></code></a></td>
+<td class="code"><code><a id="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-41" name="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-41"></a>    <span class="n">nikola_date</span> <span class="o">=</span> <span class="n">published_date</span><span class="o">.</span><span class="n">strftime</span> <span class="p">(</span><span class="s1">'%Y-%m-</span><span class="si">%d</span><span class="s1"> %H:%M:%S UTC-05:00'</span><span class="p">)</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_0efa903f10574fa294aa0c309c3d9509-42"><code data-line-number="42"></code></a></td>
-<td class="code"><code><a id="rest_code_0efa903f10574fa294aa0c309c3d9509-42" name="rest_code_0efa903f10574fa294aa0c309c3d9509-42"></a>    <span class="n">datepath</span> <span class="o">=</span> <span class="n">published_date</span><span class="o">.</span><span class="n">strftime</span> <span class="p">(</span><span class="s1">'%Y/%m/</span><span class="si">%d</span><span class="s1">'</span><span class="p">)</span>
+<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_cada1b826c1e4609a7a487ee2a37f2fa-42"><code data-line-number="42"></code></a></td>
+<td class="code"><code><a id="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-42" name="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-42"></a>    <span class="n">datepath</span> <span class="o">=</span> <span class="n">published_date</span><span class="o">.</span><span class="n">strftime</span> <span class="p">(</span><span class="s1">'%Y/%m/</span><span class="si">%d</span><span class="s1">'</span><span class="p">)</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_0efa903f10574fa294aa0c309c3d9509-43"><code data-line-number="43"></code></a></td>
-<td class="code"><code><a id="rest_code_0efa903f10574fa294aa0c309c3d9509-43" name="rest_code_0efa903f10574fa294aa0c309c3d9509-43"></a>    <span class="n">newdir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span> <span class="p">(</span><span class="s1">'/Users/tkb/nikola/newblog/posts'</span><span class="p">,</span> <span class="n">datepath</span><span class="p">)</span> 
+<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_cada1b826c1e4609a7a487ee2a37f2fa-43"><code data-line-number="43"></code></a></td>
+<td class="code"><code><a id="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-43" name="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-43"></a>    <span class="n">newdir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span> <span class="p">(</span><span class="s1">'/Users/tkb/nikola/newblog/posts'</span><span class="p">,</span> <span class="n">datepath</span><span class="p">)</span> 
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_0efa903f10574fa294aa0c309c3d9509-44"><code data-line-number="44"></code></a></td>
-<td class="code"><code><a id="rest_code_0efa903f10574fa294aa0c309c3d9509-44" name="rest_code_0efa903f10574fa294aa0c309c3d9509-44"></a>    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span> <span class="p">(</span><span class="n">newdir</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_cada1b826c1e4609a7a487ee2a37f2fa-44"><code data-line-number="44"></code></a></td>
+<td class="code"><code><a id="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-44" name="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-44"></a>    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span> <span class="p">(</span><span class="n">newdir</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_0efa903f10574fa294aa0c309c3d9509-45"><code data-line-number="45"></code></a></td>
-<td class="code"><code><a id="rest_code_0efa903f10574fa294aa0c309c3d9509-45" name="rest_code_0efa903f10574fa294aa0c309c3d9509-45"></a>    <span class="n">tags</span> <span class="o">=</span> <span class="n">inf</span><span class="o">.</span><span class="n">readline</span> <span class="p">()</span>
+<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_cada1b826c1e4609a7a487ee2a37f2fa-45"><code data-line-number="45"></code></a></td>
+<td class="code"><code><a id="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-45" name="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-45"></a>    <span class="n">tags</span> <span class="o">=</span> <span class="n">inf</span><span class="o">.</span><span class="n">readline</span> <span class="p">()</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_0efa903f10574fa294aa0c309c3d9509-46"><code data-line-number="46"></code></a></td>
-<td class="code"><code><a id="rest_code_0efa903f10574fa294aa0c309c3d9509-46" name="rest_code_0efa903f10574fa294aa0c309c3d9509-46"></a>    <span class="n">tags</span> <span class="o">=</span> <span class="n">tags</span><span class="o">.</span><span class="n">rstrip</span> <span class="p">()</span>
+<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_cada1b826c1e4609a7a487ee2a37f2fa-46"><code data-line-number="46"></code></a></td>
+<td class="code"><code><a id="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-46" name="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-46"></a>    <span class="n">tags</span> <span class="o">=</span> <span class="n">tags</span><span class="o">.</span><span class="n">rstrip</span> <span class="p">()</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_0efa903f10574fa294aa0c309c3d9509-47"><code data-line-number="47"></code></a></td>
-<td class="code"><code><a id="rest_code_0efa903f10574fa294aa0c309c3d9509-47" name="rest_code_0efa903f10574fa294aa0c309c3d9509-47"></a>    <span class="k">if</span> <span class="n">tags</span><span class="o">.</span><span class="n">startswith</span> <span class="p">(</span><span class="n">tags_prefix</span><span class="p">):</span>
+<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_cada1b826c1e4609a7a487ee2a37f2fa-47"><code data-line-number="47"></code></a></td>
+<td class="code"><code><a id="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-47" name="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-47"></a>    <span class="k">if</span> <span class="n">tags</span><span class="o">.</span><span class="n">startswith</span> <span class="p">(</span><span class="n">tags_prefix</span><span class="p">):</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_0efa903f10574fa294aa0c309c3d9509-48"><code data-line-number="48"></code></a></td>
-<td class="code"><code><a id="rest_code_0efa903f10574fa294aa0c309c3d9509-48" name="rest_code_0efa903f10574fa294aa0c309c3d9509-48"></a>        <span class="n">tags</span> <span class="o">=</span> <span class="n">tags</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">tags_prefix</span><span class="p">):]</span>
+<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_cada1b826c1e4609a7a487ee2a37f2fa-48"><code data-line-number="48"></code></a></td>
+<td class="code"><code><a id="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-48" name="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-48"></a>        <span class="n">tags</span> <span class="o">=</span> <span class="n">tags</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">tags_prefix</span><span class="p">):]</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_0efa903f10574fa294aa0c309c3d9509-49"><code data-line-number="49"></code></a></td>
-<td class="code"><code><a id="rest_code_0efa903f10574fa294aa0c309c3d9509-49" name="rest_code_0efa903f10574fa294aa0c309c3d9509-49"></a>    <span class="k">else</span><span class="p">:</span>
+<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_cada1b826c1e4609a7a487ee2a37f2fa-49"><code data-line-number="49"></code></a></td>
+<td class="code"><code><a id="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-49" name="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-49"></a>    <span class="k">else</span><span class="p">:</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_0efa903f10574fa294aa0c309c3d9509-50"><code data-line-number="50"></code></a></td>
-<td class="code"><code><a id="rest_code_0efa903f10574fa294aa0c309c3d9509-50" name="rest_code_0efa903f10574fa294aa0c309c3d9509-50"></a>        <span class="k">raise</span> <span class="p">(</span><span class="s1">'Unknown line should be #tags'</span><span class="p">,</span> <span class="n">tags</span><span class="p">)</span>
+<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_cada1b826c1e4609a7a487ee2a37f2fa-50"><code data-line-number="50"></code></a></td>
+<td class="code"><code><a id="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-50" name="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-50"></a>        <span class="k">raise</span> <span class="p">(</span><span class="s1">'Unknown line should be #tags'</span><span class="p">,</span> <span class="n">tags</span><span class="p">)</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_0efa903f10574fa294aa0c309c3d9509-51"><code data-line-number="51"></code></a></td>
-<td class="code"><code><a id="rest_code_0efa903f10574fa294aa0c309c3d9509-51" name="rest_code_0efa903f10574fa294aa0c309c3d9509-51"></a>    <span class="n">tags</span> <span class="o">=</span> <span class="n">tags</span><span class="o">.</span><span class="n">lower</span> <span class="p">()</span>
+<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_cada1b826c1e4609a7a487ee2a37f2fa-51"><code data-line-number="51"></code></a></td>
+<td class="code"><code><a id="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-51" name="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-51"></a>    <span class="n">tags</span> <span class="o">=</span> <span class="n">tags</span><span class="o">.</span><span class="n">lower</span> <span class="p">()</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_0efa903f10574fa294aa0c309c3d9509-52"><code data-line-number="52"></code></a></td>
-<td class="code"><code><a id="rest_code_0efa903f10574fa294aa0c309c3d9509-52" name="rest_code_0efa903f10574fa294aa0c309c3d9509-52"></a>    <span class="n">outfname</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span> <span class="p">(</span><span class="n">newdir</span><span class="p">,</span> <span class="n">basename</span><span class="p">)</span>
+<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_cada1b826c1e4609a7a487ee2a37f2fa-52"><code data-line-number="52"></code></a></td>
+<td class="code"><code><a id="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-52" name="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-52"></a>    <span class="n">outfname</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span> <span class="p">(</span><span class="n">newdir</span><span class="p">,</span> <span class="n">basename</span><span class="p">)</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_0efa903f10574fa294aa0c309c3d9509-53"><code data-line-number="53"></code></a></td>
-<td class="code"><code><a id="rest_code_0efa903f10574fa294aa0c309c3d9509-53" name="rest_code_0efa903f10574fa294aa0c309c3d9509-53"></a>    <span class="nb">print</span> <span class="p">(</span><span class="s1">'outfname: </span><span class="si">%s</span><span class="s1">'</span> <span class="o">%</span> <span class="n">outfname</span><span class="p">)</span>
+<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_cada1b826c1e4609a7a487ee2a37f2fa-53"><code data-line-number="53"></code></a></td>
+<td class="code"><code><a id="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-53" name="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-53"></a>    <span class="nb">print</span> <span class="p">(</span><span class="s1">'outfname: </span><span class="si">%s</span><span class="s1">'</span> <span class="o">%</span> <span class="n">outfname</span><span class="p">)</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_0efa903f10574fa294aa0c309c3d9509-54"><code data-line-number="54"></code></a></td>
-<td class="code"><code><a id="rest_code_0efa903f10574fa294aa0c309c3d9509-54" name="rest_code_0efa903f10574fa294aa0c309c3d9509-54"></a>    <span class="n">outf</span> <span class="o">=</span> <span class="nb">open</span> <span class="p">(</span><span class="n">outfname</span><span class="p">,</span> <span class="s1">'w'</span><span class="p">)</span>
+<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_cada1b826c1e4609a7a487ee2a37f2fa-54"><code data-line-number="54"></code></a></td>
+<td class="code"><code><a id="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-54" name="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-54"></a>    <span class="n">outf</span> <span class="o">=</span> <span class="nb">open</span> <span class="p">(</span><span class="n">outfname</span><span class="p">,</span> <span class="s1">'w'</span><span class="p">)</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_0efa903f10574fa294aa0c309c3d9509-55"><code data-line-number="55"></code></a></td>
-<td class="code"><code><a id="rest_code_0efa903f10574fa294aa0c309c3d9509-55" name="rest_code_0efa903f10574fa294aa0c309c3d9509-55"></a>    <span class="n">outf</span><span class="o">.</span><span class="n">write</span> <span class="p">(</span><span class="s1">'.. title: </span><span class="si">%s</span><span class="se">\n</span><span class="s1">'</span> <span class="o">%</span> <span class="n">title</span><span class="p">)</span>
+<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_cada1b826c1e4609a7a487ee2a37f2fa-55"><code data-line-number="55"></code></a></td>
+<td class="code"><code><a id="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-55" name="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-55"></a>    <span class="n">outf</span><span class="o">.</span><span class="n">write</span> <span class="p">(</span><span class="s1">'.. title: </span><span class="si">%s</span><span class="se">\n</span><span class="s1">'</span> <span class="o">%</span> <span class="n">title</span><span class="p">)</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_0efa903f10574fa294aa0c309c3d9509-56"><code data-line-number="56"></code></a></td>
-<td class="code"><code><a id="rest_code_0efa903f10574fa294aa0c309c3d9509-56" name="rest_code_0efa903f10574fa294aa0c309c3d9509-56"></a>    <span class="n">outf</span><span class="o">.</span><span class="n">write</span> <span class="p">(</span><span class="s1">'.. slug: </span><span class="si">%s</span><span class="se">\n</span><span class="s1">'</span> <span class="o">%</span> <span class="n">slug</span><span class="p">)</span>
+<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_cada1b826c1e4609a7a487ee2a37f2fa-56"><code data-line-number="56"></code></a></td>
+<td class="code"><code><a id="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-56" name="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-56"></a>    <span class="n">outf</span><span class="o">.</span><span class="n">write</span> <span class="p">(</span><span class="s1">'.. slug: </span><span class="si">%s</span><span class="se">\n</span><span class="s1">'</span> <span class="o">%</span> <span class="n">slug</span><span class="p">)</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_0efa903f10574fa294aa0c309c3d9509-57"><code data-line-number="57"></code></a></td>
-<td class="code"><code><a id="rest_code_0efa903f10574fa294aa0c309c3d9509-57" name="rest_code_0efa903f10574fa294aa0c309c3d9509-57"></a>    <span class="n">outf</span><span class="o">.</span><span class="n">write</span> <span class="p">(</span><span class="s1">'.. date: </span><span class="si">%s</span><span class="se">\n</span><span class="s1">'</span> <span class="o">%</span> <span class="n">nikola_date</span><span class="p">)</span>
+<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_cada1b826c1e4609a7a487ee2a37f2fa-57"><code data-line-number="57"></code></a></td>
+<td class="code"><code><a id="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-57" name="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-57"></a>    <span class="n">outf</span><span class="o">.</span><span class="n">write</span> <span class="p">(</span><span class="s1">'.. date: </span><span class="si">%s</span><span class="se">\n</span><span class="s1">'</span> <span class="o">%</span> <span class="n">nikola_date</span><span class="p">)</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_0efa903f10574fa294aa0c309c3d9509-58"><code data-line-number="58"></code></a></td>
-<td class="code"><code><a id="rest_code_0efa903f10574fa294aa0c309c3d9509-58" name="rest_code_0efa903f10574fa294aa0c309c3d9509-58"></a>    <span class="n">outf</span><span class="o">.</span><span class="n">write</span> <span class="p">(</span><span class="s1">'.. tags: </span><span class="si">%s</span><span class="se">\n</span><span class="s1">'</span> <span class="o">%</span> <span class="n">tags</span><span class="p">)</span>
+<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_cada1b826c1e4609a7a487ee2a37f2fa-58"><code data-line-number="58"></code></a></td>
+<td class="code"><code><a id="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-58" name="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-58"></a>    <span class="n">outf</span><span class="o">.</span><span class="n">write</span> <span class="p">(</span><span class="s1">'.. tags: </span><span class="si">%s</span><span class="se">\n</span><span class="s1">'</span> <span class="o">%</span> <span class="n">tags</span><span class="p">)</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_0efa903f10574fa294aa0c309c3d9509-59"><code data-line-number="59"></code></a></td>
-<td class="code"><code><a id="rest_code_0efa903f10574fa294aa0c309c3d9509-59" name="rest_code_0efa903f10574fa294aa0c309c3d9509-59"></a>    <span class="n">outf</span><span class="o">.</span><span class="n">write</span> <span class="p">(</span><span class="s1">'.. category: </span><span class="si">%s</span><span class="se">\n</span><span class="s1">'</span> <span class="o">%</span> <span class="n">category</span><span class="p">)</span>
+<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_cada1b826c1e4609a7a487ee2a37f2fa-59"><code data-line-number="59"></code></a></td>
+<td class="code"><code><a id="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-59" name="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-59"></a>    <span class="n">outf</span><span class="o">.</span><span class="n">write</span> <span class="p">(</span><span class="s1">'.. category: </span><span class="si">%s</span><span class="se">\n</span><span class="s1">'</span> <span class="o">%</span> <span class="n">category</span><span class="p">)</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_0efa903f10574fa294aa0c309c3d9509-60"><code data-line-number="60"></code></a></td>
-<td class="code"><code><a id="rest_code_0efa903f10574fa294aa0c309c3d9509-60" name="rest_code_0efa903f10574fa294aa0c309c3d9509-60"></a>    <span class="n">outf</span><span class="o">.</span><span class="n">write</span> <span class="p">(</span><span class="s1">'.. link: </span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
+<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_cada1b826c1e4609a7a487ee2a37f2fa-60"><code data-line-number="60"></code></a></td>
+<td class="code"><code><a id="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-60" name="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-60"></a>    <span class="n">outf</span><span class="o">.</span><span class="n">write</span> <span class="p">(</span><span class="s1">'.. link: </span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_0efa903f10574fa294aa0c309c3d9509-61"><code data-line-number="61"></code></a></td>
-<td class="code"><code><a id="rest_code_0efa903f10574fa294aa0c309c3d9509-61" name="rest_code_0efa903f10574fa294aa0c309c3d9509-61"></a>    <span class="n">outf</span><span class="o">.</span><span class="n">write</span> <span class="p">(</span><span class="s1">'.. description: </span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
+<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_cada1b826c1e4609a7a487ee2a37f2fa-61"><code data-line-number="61"></code></a></td>
+<td class="code"><code><a id="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-61" name="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-61"></a>    <span class="n">outf</span><span class="o">.</span><span class="n">write</span> <span class="p">(</span><span class="s1">'.. description: </span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_0efa903f10574fa294aa0c309c3d9509-62"><code data-line-number="62"></code></a></td>
-<td class="code"><code><a id="rest_code_0efa903f10574fa294aa0c309c3d9509-62" name="rest_code_0efa903f10574fa294aa0c309c3d9509-62"></a>    <span class="n">outf</span><span class="o">.</span><span class="n">write</span> <span class="p">(</span><span class="s1">'.. type: text</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
+<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_cada1b826c1e4609a7a487ee2a37f2fa-62"><code data-line-number="62"></code></a></td>
+<td class="code"><code><a id="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-62" name="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-62"></a>    <span class="n">outf</span><span class="o">.</span><span class="n">write</span> <span class="p">(</span><span class="s1">'.. type: text</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_0efa903f10574fa294aa0c309c3d9509-63"><code data-line-number="63"></code></a></td>
-<td class="code"><code><a id="rest_code_0efa903f10574fa294aa0c309c3d9509-63" name="rest_code_0efa903f10574fa294aa0c309c3d9509-63"></a>    <span class="n">outf</span><span class="o">.</span><span class="n">write</span> <span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
+<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_cada1b826c1e4609a7a487ee2a37f2fa-63"><code data-line-number="63"></code></a></td>
+<td class="code"><code><a id="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-63" name="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-63"></a>    <span class="n">outf</span><span class="o">.</span><span class="n">write</span> <span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_0efa903f10574fa294aa0c309c3d9509-64"><code data-line-number="64"></code></a></td>
-<td class="code"><code><a id="rest_code_0efa903f10574fa294aa0c309c3d9509-64" name="rest_code_0efa903f10574fa294aa0c309c3d9509-64"></a>    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">inf</span><span class="p">:</span>
+<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_cada1b826c1e4609a7a487ee2a37f2fa-64"><code data-line-number="64"></code></a></td>
+<td class="code"><code><a id="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-64" name="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-64"></a>    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">inf</span><span class="p">:</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_0efa903f10574fa294aa0c309c3d9509-65"><code data-line-number="65"></code></a></td>
-<td class="code"><code><a id="rest_code_0efa903f10574fa294aa0c309c3d9509-65" name="rest_code_0efa903f10574fa294aa0c309c3d9509-65"></a>        <span class="n">outf</span><span class="o">.</span><span class="n">write</span> <span class="p">(</span><span class="n">line</span><span class="p">)</span>
+<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_cada1b826c1e4609a7a487ee2a37f2fa-65"><code data-line-number="65"></code></a></td>
+<td class="code"><code><a id="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-65" name="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-65"></a>        <span class="n">outf</span><span class="o">.</span><span class="n">write</span> <span class="p">(</span><span class="n">line</span><span class="p">)</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_0efa903f10574fa294aa0c309c3d9509-66"><code data-line-number="66"></code></a></td>
-<td class="code"><code><a id="rest_code_0efa903f10574fa294aa0c309c3d9509-66" name="rest_code_0efa903f10574fa294aa0c309c3d9509-66"></a>    <span class="n">inf</span><span class="o">.</span><span class="n">close</span> <span class="p">()</span>
+<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_cada1b826c1e4609a7a487ee2a37f2fa-66"><code data-line-number="66"></code></a></td>
+<td class="code"><code><a id="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-66" name="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-66"></a>    <span class="n">inf</span><span class="o">.</span><span class="n">close</span> <span class="p">()</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_0efa903f10574fa294aa0c309c3d9509-67"><code data-line-number="67"></code></a></td>
-<td class="code"><code><a id="rest_code_0efa903f10574fa294aa0c309c3d9509-67" name="rest_code_0efa903f10574fa294aa0c309c3d9509-67"></a><span class="nb">print</span> <span class="p">(</span><span class="s1">'</span><span class="se">\n\n</span><span class="s1">Files Read: </span><span class="si">%d</span><span class="s1">'</span> <span class="o">%</span> <span class="n">files_read</span><span class="p">)</span>
+<td class="linenos linenodiv"><a href="posts/2019/11/06/converting-my-pybloxsom-blog-into-a-nikola-blog/#rest_code_cada1b826c1e4609a7a487ee2a37f2fa-67"><code data-line-number="67"></code></a></td>
+<td class="code"><code><a id="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-67" name="rest_code_cada1b826c1e4609a7a487ee2a37f2fa-67"></a><span class="nb">print</span> <span class="p">(</span><span class="s1">'</span><span class="se">\n\n</span><span class="s1">Files Read: </span><span class="si">%d</span><span class="s1">'</span> <span class="o">%</span> <span class="n">files_read</span><span class="p">)</span>
 </code></td>
 </tr>
 </table></div>
@@ -843,16 +843,16 @@ look up the translation for the URI for the RELAX NG compiled schema
 file and generate the <code class="docutils literal">schemas.xml</code> file and substitute the translation
 into the file:</p>
 <p><a class="reference external" href="listings/generate-schemas-xml.html">generate-schemas-xml</a>  <a class="reference external" href="listings/generate-schemas-xml">(Source)</a></p>
-<div class="code"><pre class="code bash"><a id="rest_code_bf809aa3d95a4e17b6e8f974e5e1bad5-1" name="rest_code_bf809aa3d95a4e17b6e8f974e5e1bad5-1" href="posts/2019/11/05/getting-nxml-mode-in-emacs-to-validate-docbook-5-documents/#rest_code_bf809aa3d95a4e17b6e8f974e5e1bad5-1"></a><span class="ch">#! /usr/bin/env bash</span>
-<a id="rest_code_bf809aa3d95a4e17b6e8f974e5e1bad5-2" name="rest_code_bf809aa3d95a4e17b6e8f974e5e1bad5-2" href="posts/2019/11/05/getting-nxml-mode-in-emacs-to-validate-docbook-5-documents/#rest_code_bf809aa3d95a4e17b6e8f974e5e1bad5-2"></a>
-<a id="rest_code_bf809aa3d95a4e17b6e8f974e5e1bad5-3" name="rest_code_bf809aa3d95a4e17b6e8f974e5e1bad5-3" href="posts/2019/11/05/getting-nxml-mode-in-emacs-to-validate-docbook-5-documents/#rest_code_bf809aa3d95a4e17b6e8f974e5e1bad5-3"></a><span class="nv">schema_location</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span>xmlcatalog<span class="w"> </span><span class="s2">""</span><span class="w"> </span><span class="s2">"http://docbook.org/xml/5.0/rng/docbookxi.rnc"</span><span class="w"> </span><span class="p">|</span>
-<a id="rest_code_bf809aa3d95a4e17b6e8f974e5e1bad5-4" name="rest_code_bf809aa3d95a4e17b6e8f974e5e1bad5-4" href="posts/2019/11/05/getting-nxml-mode-in-emacs-to-validate-docbook-5-documents/#rest_code_bf809aa3d95a4e17b6e8f974e5e1bad5-4"></a><span class="w">    </span>grep<span class="w"> </span><span class="s2">"^file:///"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span><span class="s1">'s#^file://##'</span><span class="k">)</span><span class="s2">"</span>
-<a id="rest_code_bf809aa3d95a4e17b6e8f974e5e1bad5-5" name="rest_code_bf809aa3d95a4e17b6e8f974e5e1bad5-5" href="posts/2019/11/05/getting-nxml-mode-in-emacs-to-validate-docbook-5-documents/#rest_code_bf809aa3d95a4e17b6e8f974e5e1bad5-5"></a>
-<a id="rest_code_bf809aa3d95a4e17b6e8f974e5e1bad5-6" name="rest_code_bf809aa3d95a4e17b6e8f974e5e1bad5-6" href="posts/2019/11/05/getting-nxml-mode-in-emacs-to-validate-docbook-5-documents/#rest_code_bf809aa3d95a4e17b6e8f974e5e1bad5-6"></a>cat<span class="w"> </span>&gt;schemas.xml<span class="w"> </span><span class="s">&lt;&lt;EOF</span>
-<a id="rest_code_bf809aa3d95a4e17b6e8f974e5e1bad5-7" name="rest_code_bf809aa3d95a4e17b6e8f974e5e1bad5-7" href="posts/2019/11/05/getting-nxml-mode-in-emacs-to-validate-docbook-5-documents/#rest_code_bf809aa3d95a4e17b6e8f974e5e1bad5-7"></a><span class="s">&lt;locatingRules xmlns="http://thaiopensource.com/ns/locating-rules/1.0"&gt;</span>
-<a id="rest_code_bf809aa3d95a4e17b6e8f974e5e1bad5-8" name="rest_code_bf809aa3d95a4e17b6e8f974e5e1bad5-8" href="posts/2019/11/05/getting-nxml-mode-in-emacs-to-validate-docbook-5-documents/#rest_code_bf809aa3d95a4e17b6e8f974e5e1bad5-8"></a><span class="s">&lt;namespace ns="http://docbook.org/ns/docbook" uri="$schema_location"/&gt;</span>
-<a id="rest_code_bf809aa3d95a4e17b6e8f974e5e1bad5-9" name="rest_code_bf809aa3d95a4e17b6e8f974e5e1bad5-9" href="posts/2019/11/05/getting-nxml-mode-in-emacs-to-validate-docbook-5-documents/#rest_code_bf809aa3d95a4e17b6e8f974e5e1bad5-9"></a><span class="s">&lt;/locatingRules&gt;</span>
-<a id="rest_code_bf809aa3d95a4e17b6e8f974e5e1bad5-10" name="rest_code_bf809aa3d95a4e17b6e8f974e5e1bad5-10" href="posts/2019/11/05/getting-nxml-mode-in-emacs-to-validate-docbook-5-documents/#rest_code_bf809aa3d95a4e17b6e8f974e5e1bad5-10"></a><span class="s">EOF</span>
+<div class="code"><pre class="code bash"><a id="rest_code_c89e1f97b1c041d2a688079eaaa098ab-1" name="rest_code_c89e1f97b1c041d2a688079eaaa098ab-1" href="posts/2019/11/05/getting-nxml-mode-in-emacs-to-validate-docbook-5-documents/#rest_code_c89e1f97b1c041d2a688079eaaa098ab-1"></a><span class="ch">#! /usr/bin/env bash</span>
+<a id="rest_code_c89e1f97b1c041d2a688079eaaa098ab-2" name="rest_code_c89e1f97b1c041d2a688079eaaa098ab-2" href="posts/2019/11/05/getting-nxml-mode-in-emacs-to-validate-docbook-5-documents/#rest_code_c89e1f97b1c041d2a688079eaaa098ab-2"></a>
+<a id="rest_code_c89e1f97b1c041d2a688079eaaa098ab-3" name="rest_code_c89e1f97b1c041d2a688079eaaa098ab-3" href="posts/2019/11/05/getting-nxml-mode-in-emacs-to-validate-docbook-5-documents/#rest_code_c89e1f97b1c041d2a688079eaaa098ab-3"></a><span class="nv">schema_location</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span>xmlcatalog<span class="w"> </span><span class="s2">""</span><span class="w"> </span><span class="s2">"http://docbook.org/xml/5.0/rng/docbookxi.rnc"</span><span class="w"> </span><span class="p">|</span>
+<a id="rest_code_c89e1f97b1c041d2a688079eaaa098ab-4" name="rest_code_c89e1f97b1c041d2a688079eaaa098ab-4" href="posts/2019/11/05/getting-nxml-mode-in-emacs-to-validate-docbook-5-documents/#rest_code_c89e1f97b1c041d2a688079eaaa098ab-4"></a><span class="w">    </span>grep<span class="w"> </span><span class="s2">"^file:///"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span><span class="s1">'s#^file://##'</span><span class="k">)</span><span class="s2">"</span>
+<a id="rest_code_c89e1f97b1c041d2a688079eaaa098ab-5" name="rest_code_c89e1f97b1c041d2a688079eaaa098ab-5" href="posts/2019/11/05/getting-nxml-mode-in-emacs-to-validate-docbook-5-documents/#rest_code_c89e1f97b1c041d2a688079eaaa098ab-5"></a>
+<a id="rest_code_c89e1f97b1c041d2a688079eaaa098ab-6" name="rest_code_c89e1f97b1c041d2a688079eaaa098ab-6" href="posts/2019/11/05/getting-nxml-mode-in-emacs-to-validate-docbook-5-documents/#rest_code_c89e1f97b1c041d2a688079eaaa098ab-6"></a>cat<span class="w"> </span>&gt;schemas.xml<span class="w"> </span><span class="s">&lt;&lt;EOF</span>
+<a id="rest_code_c89e1f97b1c041d2a688079eaaa098ab-7" name="rest_code_c89e1f97b1c041d2a688079eaaa098ab-7" href="posts/2019/11/05/getting-nxml-mode-in-emacs-to-validate-docbook-5-documents/#rest_code_c89e1f97b1c041d2a688079eaaa098ab-7"></a><span class="s">&lt;locatingRules xmlns="http://thaiopensource.com/ns/locating-rules/1.0"&gt;</span>
+<a id="rest_code_c89e1f97b1c041d2a688079eaaa098ab-8" name="rest_code_c89e1f97b1c041d2a688079eaaa098ab-8" href="posts/2019/11/05/getting-nxml-mode-in-emacs-to-validate-docbook-5-documents/#rest_code_c89e1f97b1c041d2a688079eaaa098ab-8"></a><span class="s">&lt;namespace ns="http://docbook.org/ns/docbook" uri="$schema_location"/&gt;</span>
+<a id="rest_code_c89e1f97b1c041d2a688079eaaa098ab-9" name="rest_code_c89e1f97b1c041d2a688079eaaa098ab-9" href="posts/2019/11/05/getting-nxml-mode-in-emacs-to-validate-docbook-5-documents/#rest_code_c89e1f97b1c041d2a688079eaaa098ab-9"></a><span class="s">&lt;/locatingRules&gt;</span>
+<a id="rest_code_c89e1f97b1c041d2a688079eaaa098ab-10" name="rest_code_c89e1f97b1c041d2a688079eaaa098ab-10" href="posts/2019/11/05/getting-nxml-mode-in-emacs-to-validate-docbook-5-documents/#rest_code_c89e1f97b1c041d2a688079eaaa098ab-10"></a><span class="s">EOF</span>
 </pre></div>
 <p>Then I had my Makefile generate the <code class="docutils literal">schemas.xml</code> file if it was missing.</p>
 <p>It was more complicated that I'd have liked, but it does work.</p>
@@ -909,7 +909,7 @@ into the file:</p>
 </div>
 
 <footer class="blog-footer" id="footer">
-    Contents © 2025         <a href="mailto:tkurtbond@gmail.com">T. Kurt Bond</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+    Contents © 2026         <a href="mailto:tkurtbond@gmail.com">T. Kurt Bond</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
     
 </footer><script src="assets/js/all-nocdn.js"></script><!-- fancy dates --><script>
     moment.locale("en");

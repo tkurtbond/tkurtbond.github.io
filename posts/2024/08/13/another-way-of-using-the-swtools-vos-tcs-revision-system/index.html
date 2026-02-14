@@ -105,292 +105,292 @@ version in a <span class="app">TCS</span> revision  file.  Hmm.</p>
 <p>Anyway, I went on to write the <span class="command">tcs</span> command as a front end
 for the normal <span class="app">TCS</span> commands.  Here's an example from running
 <code class="docutils literal">TCS HELP</code></p>
-<div class="code"><pre class="code text"><a id="rest_code_1b0423d31fca4fe19d38422b64d2bf36-1" name="rest_code_1b0423d31fca4fe19d38422b64d2bf36-1" href="#rest_code_1b0423d31fca4fe19d38422b64d2bf36-1"></a>$ tcs help
-<a id="rest_code_1b0423d31fca4fe19d38422b64d2bf36-2" name="rest_code_1b0423d31fca4fe19d38422b64d2bf36-2" href="#rest_code_1b0423d31fca4fe19d38422b64d2bf36-2"></a>usage:
-<a id="rest_code_1b0423d31fca4fe19d38422b64d2bf36-3" name="rest_code_1b0423d31fca4fe19d38422b64d2bf36-3" href="#rest_code_1b0423d31fca4fe19d38422b64d2bf36-3"></a>tcs [ help | -h | -help | -? ]
-<a id="rest_code_1b0423d31fca4fe19d38422b64d2bf36-4" name="rest_code_1b0423d31fca4fe19d38422b64d2bf36-4" href="#rest_code_1b0423d31fca4fe19d38422b64d2bf36-4"></a>      Output this help message.
-<a id="rest_code_1b0423d31fca4fe19d38422b64d2bf36-5" name="rest_code_1b0423d31fca4fe19d38422b64d2bf36-5" href="#rest_code_1b0423d31fca4fe19d38422b64d2bf36-5"></a>
-<a id="rest_code_1b0423d31fca4fe19d38422b64d2bf36-6" name="rest_code_1b0423d31fca4fe19d38422b64d2bf36-6" href="#rest_code_1b0423d31fca4fe19d38422b64d2bf36-6"></a>tcs admin FILE
-<a id="rest_code_1b0423d31fca4fe19d38422b64d2bf36-7" name="rest_code_1b0423d31fca4fe19d38422b64d2bf36-7" href="#rest_code_1b0423d31fca4fe19d38422b64d2bf36-7"></a>
-<a id="rest_code_1b0423d31fca4fe19d38422b64d2bf36-8" name="rest_code_1b0423d31fca4fe19d38422b64d2bf36-8" href="#rest_code_1b0423d31fca4fe19d38422b64d2bf36-8"></a>      Initialize TCS file [.TCS]FILE from FILE.
-<a id="rest_code_1b0423d31fca4fe19d38422b64d2bf36-9" name="rest_code_1b0423d31fca4fe19d38422b64d2bf36-9" href="#rest_code_1b0423d31fca4fe19d38422b64d2bf36-9"></a>
-<a id="rest_code_1b0423d31fca4fe19d38422b64d2bf36-10" name="rest_code_1b0423d31fca4fe19d38422b64d2bf36-10" href="#rest_code_1b0423d31fca4fe19d38422b64d2bf36-10"></a>tcs get [-oOUTFILE] [-h] [-rM.N] FILE
-<a id="rest_code_1b0423d31fca4fe19d38422b64d2bf36-11" name="rest_code_1b0423d31fca4fe19d38422b64d2bf36-11" href="#rest_code_1b0423d31fca4fe19d38422b64d2bf36-11"></a>
-<a id="rest_code_1b0423d31fca4fe19d38422b64d2bf36-12" name="rest_code_1b0423d31fca4fe19d38422b64d2bf36-12" href="#rest_code_1b0423d31fca4fe19d38422b64d2bf36-12"></a>      Get a revision of FILE from TCS file [.TCS]FILE.
-<a id="rest_code_1b0423d31fca4fe19d38422b64d2bf36-13" name="rest_code_1b0423d31fca4fe19d38422b64d2bf36-13" href="#rest_code_1b0423d31fca4fe19d38422b64d2bf36-13"></a>
-<a id="rest_code_1b0423d31fca4fe19d38422b64d2bf36-14" name="rest_code_1b0423d31fca4fe19d38422b64d2bf36-14" href="#rest_code_1b0423d31fca4fe19d38422b64d2bf36-14"></a>          -oOUTFILE writes the output to OUTFILE.
-<a id="rest_code_1b0423d31fca4fe19d38422b64d2bf36-15" name="rest_code_1b0423d31fca4fe19d38422b64d2bf36-15" href="#rest_code_1b0423d31fca4fe19d38422b64d2bf36-15"></a>              If -o is not specifed the output goes to standard output.
-<a id="rest_code_1b0423d31fca4fe19d38422b64d2bf36-16" name="rest_code_1b0423d31fca4fe19d38422b64d2bf36-16" href="#rest_code_1b0423d31fca4fe19d38422b64d2bf36-16"></a>
-<a id="rest_code_1b0423d31fca4fe19d38422b64d2bf36-17" name="rest_code_1b0423d31fca4fe19d38422b64d2bf36-17" href="#rest_code_1b0423d31fca4fe19d38422b64d2bf36-17"></a>          -h Output history information instead of a revision.
-<a id="rest_code_1b0423d31fca4fe19d38422b64d2bf36-18" name="rest_code_1b0423d31fca4fe19d38422b64d2bf36-18" href="#rest_code_1b0423d31fca4fe19d38422b64d2bf36-18"></a>
-<a id="rest_code_1b0423d31fca4fe19d38422b64d2bf36-19" name="rest_code_1b0423d31fca4fe19d38422b64d2bf36-19" href="#rest_code_1b0423d31fca4fe19d38422b64d2bf36-19"></a>          -rM.N Output revision M.N.
-<a id="rest_code_1b0423d31fca4fe19d38422b64d2bf36-20" name="rest_code_1b0423d31fca4fe19d38422b64d2bf36-20" href="#rest_code_1b0423d31fca4fe19d38422b64d2bf36-20"></a>
-<a id="rest_code_1b0423d31fca4fe19d38422b64d2bf36-21" name="rest_code_1b0423d31fca4fe19d38422b64d2bf36-21" href="#rest_code_1b0423d31fca4fe19d38422b64d2bf36-21"></a>tcs delta FILE
-<a id="rest_code_1b0423d31fca4fe19d38422b64d2bf36-22" name="rest_code_1b0423d31fca4fe19d38422b64d2bf36-22" href="#rest_code_1b0423d31fca4fe19d38422b64d2bf36-22"></a>
-<a id="rest_code_1b0423d31fca4fe19d38422b64d2bf36-23" name="rest_code_1b0423d31fca4fe19d38422b64d2bf36-23" href="#rest_code_1b0423d31fca4fe19d38422b64d2bf36-23"></a>      Add a new version to TCS file [.TCS]FILE from FILE.
-<a id="rest_code_1b0423d31fca4fe19d38422b64d2bf36-24" name="rest_code_1b0423d31fca4fe19d38422b64d2bf36-24" href="#rest_code_1b0423d31fca4fe19d38422b64d2bf36-24"></a>
-<a id="rest_code_1b0423d31fca4fe19d38422b64d2bf36-25" name="rest_code_1b0423d31fca4fe19d38422b64d2bf36-25" href="#rest_code_1b0423d31fca4fe19d38422b64d2bf36-25"></a>tcs outdated
-<a id="rest_code_1b0423d31fca4fe19d38422b64d2bf36-26" name="rest_code_1b0423d31fca4fe19d38422b64d2bf36-26" href="#rest_code_1b0423d31fca4fe19d38422b64d2bf36-26"></a>
-<a id="rest_code_1b0423d31fca4fe19d38422b64d2bf36-27" name="rest_code_1b0423d31fca4fe19d38422b64d2bf36-27" href="#rest_code_1b0423d31fca4fe19d38422b64d2bf36-27"></a>      List all the source files that are newer than their corresponding
-<a id="rest_code_1b0423d31fca4fe19d38422b64d2bf36-28" name="rest_code_1b0423d31fca4fe19d38422b64d2bf36-28" href="#rest_code_1b0423d31fca4fe19d38422b64d2bf36-28"></a>      TCS file in [.TCS]
-<a id="rest_code_1b0423d31fca4fe19d38422b64d2bf36-29" name="rest_code_1b0423d31fca4fe19d38422b64d2bf36-29" href="#rest_code_1b0423d31fca4fe19d38422b64d2bf36-29"></a>
-<a id="rest_code_1b0423d31fca4fe19d38422b64d2bf36-30" name="rest_code_1b0423d31fca4fe19d38422b64d2bf36-30" href="#rest_code_1b0423d31fca4fe19d38422b64d2bf36-30"></a>tcs uncovered [FILESPEC] [IGNOREDTYPES]
-<a id="rest_code_1b0423d31fca4fe19d38422b64d2bf36-31" name="rest_code_1b0423d31fca4fe19d38422b64d2bf36-31" href="#rest_code_1b0423d31fca4fe19d38422b64d2bf36-31"></a>
-<a id="rest_code_1b0423d31fca4fe19d38422b64d2bf36-32" name="rest_code_1b0423d31fca4fe19d38422b64d2bf36-32" href="#rest_code_1b0423d31fca4fe19d38422b64d2bf36-32"></a>      List all the files in the current directory that do not have
-<a id="rest_code_1b0423d31fca4fe19d38422b64d2bf36-33" name="rest_code_1b0423d31fca4fe19d38422b64d2bf36-33" href="#rest_code_1b0423d31fca4fe19d38422b64d2bf36-33"></a>      corresponding files in [.TCS].
-<a id="rest_code_1b0423d31fca4fe19d38422b64d2bf36-34" name="rest_code_1b0423d31fca4fe19d38422b64d2bf36-34" href="#rest_code_1b0423d31fca4fe19d38422b64d2bf36-34"></a>
-<a id="rest_code_1b0423d31fca4fe19d38422b64d2bf36-35" name="rest_code_1b0423d31fca4fe19d38422b64d2bf36-35" href="#rest_code_1b0423d31fca4fe19d38422b64d2bf36-35"></a>      If FILEPSEC is specified it should be a VMS wildcard that
-<a id="rest_code_1b0423d31fca4fe19d38422b64d2bf36-36" name="rest_code_1b0423d31fca4fe19d38422b64d2bf36-36" href="#rest_code_1b0423d31fca4fe19d38422b64d2bf36-36"></a>      will be applied to the current directory for matching.
-<a id="rest_code_1b0423d31fca4fe19d38422b64d2bf36-37" name="rest_code_1b0423d31fca4fe19d38422b64d2bf36-37" href="#rest_code_1b0423d31fca4fe19d38422b64d2bf36-37"></a>
-<a id="rest_code_1b0423d31fca4fe19d38422b64d2bf36-38" name="rest_code_1b0423d31fca4fe19d38422b64d2bf36-38" href="#rest_code_1b0423d31fca4fe19d38422b64d2bf36-38"></a>      If IGNOREDTYPES is specified it should be a single file type
-<a id="rest_code_1b0423d31fca4fe19d38422b64d2bf36-39" name="rest_code_1b0423d31fca4fe19d38422b64d2bf36-39" href="#rest_code_1b0423d31fca4fe19d38422b64d2bf36-39"></a>      (without the ".") or a comma separated list of file types
-<a id="rest_code_1b0423d31fca4fe19d38422b64d2bf36-40" name="rest_code_1b0423d31fca4fe19d38422b64d2bf36-40" href="#rest_code_1b0423d31fca4fe19d38422b64d2bf36-40"></a>      to be ignored.
-<a id="rest_code_1b0423d31fca4fe19d38422b64d2bf36-41" name="rest_code_1b0423d31fca4fe19d38422b64d2bf36-41" href="#rest_code_1b0423d31fca4fe19d38422b64d2bf36-41"></a>
-<a id="rest_code_1b0423d31fca4fe19d38422b64d2bf36-42" name="rest_code_1b0423d31fca4fe19d38422b64d2bf36-42" href="#rest_code_1b0423d31fca4fe19d38422b64d2bf36-42"></a>      If one needs to specified IGNOREDTYPES but not FILESPEC just
-<a id="rest_code_1b0423d31fca4fe19d38422b64d2bf36-43" name="rest_code_1b0423d31fca4fe19d38422b64d2bf36-43" href="#rest_code_1b0423d31fca4fe19d38422b64d2bf36-43"></a>      specify an empty string for FILESPEC.
+<div class="code"><pre class="code text"><a id="rest_code_a51eecbd8738489fa60f0d8ad3409f55-1" name="rest_code_a51eecbd8738489fa60f0d8ad3409f55-1" href="#rest_code_a51eecbd8738489fa60f0d8ad3409f55-1"></a>$ tcs help
+<a id="rest_code_a51eecbd8738489fa60f0d8ad3409f55-2" name="rest_code_a51eecbd8738489fa60f0d8ad3409f55-2" href="#rest_code_a51eecbd8738489fa60f0d8ad3409f55-2"></a>usage:
+<a id="rest_code_a51eecbd8738489fa60f0d8ad3409f55-3" name="rest_code_a51eecbd8738489fa60f0d8ad3409f55-3" href="#rest_code_a51eecbd8738489fa60f0d8ad3409f55-3"></a>tcs [ help | -h | -help | -? ]
+<a id="rest_code_a51eecbd8738489fa60f0d8ad3409f55-4" name="rest_code_a51eecbd8738489fa60f0d8ad3409f55-4" href="#rest_code_a51eecbd8738489fa60f0d8ad3409f55-4"></a>      Output this help message.
+<a id="rest_code_a51eecbd8738489fa60f0d8ad3409f55-5" name="rest_code_a51eecbd8738489fa60f0d8ad3409f55-5" href="#rest_code_a51eecbd8738489fa60f0d8ad3409f55-5"></a>
+<a id="rest_code_a51eecbd8738489fa60f0d8ad3409f55-6" name="rest_code_a51eecbd8738489fa60f0d8ad3409f55-6" href="#rest_code_a51eecbd8738489fa60f0d8ad3409f55-6"></a>tcs admin FILE
+<a id="rest_code_a51eecbd8738489fa60f0d8ad3409f55-7" name="rest_code_a51eecbd8738489fa60f0d8ad3409f55-7" href="#rest_code_a51eecbd8738489fa60f0d8ad3409f55-7"></a>
+<a id="rest_code_a51eecbd8738489fa60f0d8ad3409f55-8" name="rest_code_a51eecbd8738489fa60f0d8ad3409f55-8" href="#rest_code_a51eecbd8738489fa60f0d8ad3409f55-8"></a>      Initialize TCS file [.TCS]FILE from FILE.
+<a id="rest_code_a51eecbd8738489fa60f0d8ad3409f55-9" name="rest_code_a51eecbd8738489fa60f0d8ad3409f55-9" href="#rest_code_a51eecbd8738489fa60f0d8ad3409f55-9"></a>
+<a id="rest_code_a51eecbd8738489fa60f0d8ad3409f55-10" name="rest_code_a51eecbd8738489fa60f0d8ad3409f55-10" href="#rest_code_a51eecbd8738489fa60f0d8ad3409f55-10"></a>tcs get [-oOUTFILE] [-h] [-rM.N] FILE
+<a id="rest_code_a51eecbd8738489fa60f0d8ad3409f55-11" name="rest_code_a51eecbd8738489fa60f0d8ad3409f55-11" href="#rest_code_a51eecbd8738489fa60f0d8ad3409f55-11"></a>
+<a id="rest_code_a51eecbd8738489fa60f0d8ad3409f55-12" name="rest_code_a51eecbd8738489fa60f0d8ad3409f55-12" href="#rest_code_a51eecbd8738489fa60f0d8ad3409f55-12"></a>      Get a revision of FILE from TCS file [.TCS]FILE.
+<a id="rest_code_a51eecbd8738489fa60f0d8ad3409f55-13" name="rest_code_a51eecbd8738489fa60f0d8ad3409f55-13" href="#rest_code_a51eecbd8738489fa60f0d8ad3409f55-13"></a>
+<a id="rest_code_a51eecbd8738489fa60f0d8ad3409f55-14" name="rest_code_a51eecbd8738489fa60f0d8ad3409f55-14" href="#rest_code_a51eecbd8738489fa60f0d8ad3409f55-14"></a>          -oOUTFILE writes the output to OUTFILE.
+<a id="rest_code_a51eecbd8738489fa60f0d8ad3409f55-15" name="rest_code_a51eecbd8738489fa60f0d8ad3409f55-15" href="#rest_code_a51eecbd8738489fa60f0d8ad3409f55-15"></a>              If -o is not specifed the output goes to standard output.
+<a id="rest_code_a51eecbd8738489fa60f0d8ad3409f55-16" name="rest_code_a51eecbd8738489fa60f0d8ad3409f55-16" href="#rest_code_a51eecbd8738489fa60f0d8ad3409f55-16"></a>
+<a id="rest_code_a51eecbd8738489fa60f0d8ad3409f55-17" name="rest_code_a51eecbd8738489fa60f0d8ad3409f55-17" href="#rest_code_a51eecbd8738489fa60f0d8ad3409f55-17"></a>          -h Output history information instead of a revision.
+<a id="rest_code_a51eecbd8738489fa60f0d8ad3409f55-18" name="rest_code_a51eecbd8738489fa60f0d8ad3409f55-18" href="#rest_code_a51eecbd8738489fa60f0d8ad3409f55-18"></a>
+<a id="rest_code_a51eecbd8738489fa60f0d8ad3409f55-19" name="rest_code_a51eecbd8738489fa60f0d8ad3409f55-19" href="#rest_code_a51eecbd8738489fa60f0d8ad3409f55-19"></a>          -rM.N Output revision M.N.
+<a id="rest_code_a51eecbd8738489fa60f0d8ad3409f55-20" name="rest_code_a51eecbd8738489fa60f0d8ad3409f55-20" href="#rest_code_a51eecbd8738489fa60f0d8ad3409f55-20"></a>
+<a id="rest_code_a51eecbd8738489fa60f0d8ad3409f55-21" name="rest_code_a51eecbd8738489fa60f0d8ad3409f55-21" href="#rest_code_a51eecbd8738489fa60f0d8ad3409f55-21"></a>tcs delta FILE
+<a id="rest_code_a51eecbd8738489fa60f0d8ad3409f55-22" name="rest_code_a51eecbd8738489fa60f0d8ad3409f55-22" href="#rest_code_a51eecbd8738489fa60f0d8ad3409f55-22"></a>
+<a id="rest_code_a51eecbd8738489fa60f0d8ad3409f55-23" name="rest_code_a51eecbd8738489fa60f0d8ad3409f55-23" href="#rest_code_a51eecbd8738489fa60f0d8ad3409f55-23"></a>      Add a new version to TCS file [.TCS]FILE from FILE.
+<a id="rest_code_a51eecbd8738489fa60f0d8ad3409f55-24" name="rest_code_a51eecbd8738489fa60f0d8ad3409f55-24" href="#rest_code_a51eecbd8738489fa60f0d8ad3409f55-24"></a>
+<a id="rest_code_a51eecbd8738489fa60f0d8ad3409f55-25" name="rest_code_a51eecbd8738489fa60f0d8ad3409f55-25" href="#rest_code_a51eecbd8738489fa60f0d8ad3409f55-25"></a>tcs outdated
+<a id="rest_code_a51eecbd8738489fa60f0d8ad3409f55-26" name="rest_code_a51eecbd8738489fa60f0d8ad3409f55-26" href="#rest_code_a51eecbd8738489fa60f0d8ad3409f55-26"></a>
+<a id="rest_code_a51eecbd8738489fa60f0d8ad3409f55-27" name="rest_code_a51eecbd8738489fa60f0d8ad3409f55-27" href="#rest_code_a51eecbd8738489fa60f0d8ad3409f55-27"></a>      List all the source files that are newer than their corresponding
+<a id="rest_code_a51eecbd8738489fa60f0d8ad3409f55-28" name="rest_code_a51eecbd8738489fa60f0d8ad3409f55-28" href="#rest_code_a51eecbd8738489fa60f0d8ad3409f55-28"></a>      TCS file in [.TCS]
+<a id="rest_code_a51eecbd8738489fa60f0d8ad3409f55-29" name="rest_code_a51eecbd8738489fa60f0d8ad3409f55-29" href="#rest_code_a51eecbd8738489fa60f0d8ad3409f55-29"></a>
+<a id="rest_code_a51eecbd8738489fa60f0d8ad3409f55-30" name="rest_code_a51eecbd8738489fa60f0d8ad3409f55-30" href="#rest_code_a51eecbd8738489fa60f0d8ad3409f55-30"></a>tcs uncovered [FILESPEC] [IGNOREDTYPES]
+<a id="rest_code_a51eecbd8738489fa60f0d8ad3409f55-31" name="rest_code_a51eecbd8738489fa60f0d8ad3409f55-31" href="#rest_code_a51eecbd8738489fa60f0d8ad3409f55-31"></a>
+<a id="rest_code_a51eecbd8738489fa60f0d8ad3409f55-32" name="rest_code_a51eecbd8738489fa60f0d8ad3409f55-32" href="#rest_code_a51eecbd8738489fa60f0d8ad3409f55-32"></a>      List all the files in the current directory that do not have
+<a id="rest_code_a51eecbd8738489fa60f0d8ad3409f55-33" name="rest_code_a51eecbd8738489fa60f0d8ad3409f55-33" href="#rest_code_a51eecbd8738489fa60f0d8ad3409f55-33"></a>      corresponding files in [.TCS].
+<a id="rest_code_a51eecbd8738489fa60f0d8ad3409f55-34" name="rest_code_a51eecbd8738489fa60f0d8ad3409f55-34" href="#rest_code_a51eecbd8738489fa60f0d8ad3409f55-34"></a>
+<a id="rest_code_a51eecbd8738489fa60f0d8ad3409f55-35" name="rest_code_a51eecbd8738489fa60f0d8ad3409f55-35" href="#rest_code_a51eecbd8738489fa60f0d8ad3409f55-35"></a>      If FILEPSEC is specified it should be a VMS wildcard that
+<a id="rest_code_a51eecbd8738489fa60f0d8ad3409f55-36" name="rest_code_a51eecbd8738489fa60f0d8ad3409f55-36" href="#rest_code_a51eecbd8738489fa60f0d8ad3409f55-36"></a>      will be applied to the current directory for matching.
+<a id="rest_code_a51eecbd8738489fa60f0d8ad3409f55-37" name="rest_code_a51eecbd8738489fa60f0d8ad3409f55-37" href="#rest_code_a51eecbd8738489fa60f0d8ad3409f55-37"></a>
+<a id="rest_code_a51eecbd8738489fa60f0d8ad3409f55-38" name="rest_code_a51eecbd8738489fa60f0d8ad3409f55-38" href="#rest_code_a51eecbd8738489fa60f0d8ad3409f55-38"></a>      If IGNOREDTYPES is specified it should be a single file type
+<a id="rest_code_a51eecbd8738489fa60f0d8ad3409f55-39" name="rest_code_a51eecbd8738489fa60f0d8ad3409f55-39" href="#rest_code_a51eecbd8738489fa60f0d8ad3409f55-39"></a>      (without the ".") or a comma separated list of file types
+<a id="rest_code_a51eecbd8738489fa60f0d8ad3409f55-40" name="rest_code_a51eecbd8738489fa60f0d8ad3409f55-40" href="#rest_code_a51eecbd8738489fa60f0d8ad3409f55-40"></a>      to be ignored.
+<a id="rest_code_a51eecbd8738489fa60f0d8ad3409f55-41" name="rest_code_a51eecbd8738489fa60f0d8ad3409f55-41" href="#rest_code_a51eecbd8738489fa60f0d8ad3409f55-41"></a>
+<a id="rest_code_a51eecbd8738489fa60f0d8ad3409f55-42" name="rest_code_a51eecbd8738489fa60f0d8ad3409f55-42" href="#rest_code_a51eecbd8738489fa60f0d8ad3409f55-42"></a>      If one needs to specified IGNOREDTYPES but not FILESPEC just
+<a id="rest_code_a51eecbd8738489fa60f0d8ad3409f55-43" name="rest_code_a51eecbd8738489fa60f0d8ad3409f55-43" href="#rest_code_a51eecbd8738489fa60f0d8ad3409f55-43"></a>      specify an empty string for FILESPEC.
 </pre></div>
 <p>And here is the current source code of <span class="file">TCS.SDCL</span>:</p>
-<div class="code"><pre class="code text"><a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-1" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-1" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-1"></a>!&gt; TCS.SDCL -- TCS frontend.
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-2" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-2" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-2"></a>##############################################################################
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-3" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-3" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-3"></a>###
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-4" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-4" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-4"></a>### tcs [ help | -h | -help | -? ]
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-5" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-5" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-5"></a>### tcs admin FILE
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-6" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-6" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-6"></a>### tcs get [-ooutfile] [-h] [-rM.N] FILE
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-7" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-7" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-7"></a>### tcs delta FILE
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-8" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-8" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-8"></a>### tcs outdated
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-9" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-9" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-9"></a>### tcs uncovered [FILESPEC] [IGNOREDTYPES]
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-10" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-10" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-10"></a>###
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-11" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-11" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-11"></a>##############################################################################
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-12" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-12" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-12"></a>    wso :== write sys$output
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-13" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-13" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-13"></a>    wse :== write sys$error
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-14" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-14" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-14"></a>    TRUE = 1 .eq. 1
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-15" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-15" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-15"></a>    FALSE = 1 .ne. 1
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-16" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-16" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-16"></a>    QUIET = %x10000000
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-17" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-17" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-17"></a>
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-18" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-18" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-18"></a>    months_jan = "01"
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-19" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-19" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-19"></a>    months_feb = "02"
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-20" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-20" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-20"></a>    months_mar = "03"
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-21" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-21" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-21"></a>    months_apr = "04"
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-22" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-22" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-22"></a>    months_may = "05"
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-23" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-23" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-23"></a>    months_jun = "06"
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-24" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-24" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-24"></a>    months_jul = "07"
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-25" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-25" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-25"></a>    months_aug = "08"
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-26" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-26" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-26"></a>    months_sep = "09"
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-27" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-27" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-27"></a>    months_oct = "10"
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-28" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-28" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-28"></a>    months_nov = "11"
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-29" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-29" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-29"></a>    months_dec = "12"
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-30" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-30" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-30"></a>
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-31" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-31" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-31"></a>    debugging = f$type (tcs_debugging) .nes. ""
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-32" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-32" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-32"></a>    verbose = FALSE
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-33" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-33" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-33"></a>
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-34" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-34" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-34"></a>    command = p1
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-35" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-35" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-35"></a>
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-36" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-36" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-36"></a>    if (command .eqs. "HELP" .or.
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-37" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-37" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-37"></a>        command .eqs. "-H" .or.
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-38" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-38" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-38"></a>        command .eqs. "-HELP" .or.
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-39" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-39" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-39"></a>        command .eqs. "-?")
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-40" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-40" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-40"></a>    {
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-41" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-41" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-41"></a>        goto usage
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-42" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-42" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-42"></a>    }
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-43" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-43" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-43"></a>
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-44" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-44" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-44"></a>    if ((command .eqs. "") .or.
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-45" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-45" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-45"></a>        .not. (command .eqs. "ADMIN" .or.
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-46" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-46" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-46"></a>               command .eqs. "GET" .or.
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-47" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-47" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-47"></a>               command .eqs. "DELTA" .or.
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-48" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-48" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-48"></a>               command .eqs. "OUTDATED" .or.
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-49" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-49" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-49"></a>               command .eqs. "UNCOVERED"))
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-50" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-50" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-50"></a>    {
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-51" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-51" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-51"></a>        wse "tcs: unrecognized TCS command: """, command, """"
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-52" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-52" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-52"></a>        exit 2
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-53" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-53" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-53"></a>    }
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-54" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-54" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-54"></a>
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-55" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-55" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-55"></a>    param_idx = 2
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-56" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-56" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-56"></a>    num_options = 0
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-57" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-57" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-57"></a>    outfile = ""
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-58" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-58" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-58"></a>    while (f$extract (0, 1, p'param_idx') .eqs. "-") {
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-59" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-59" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-59"></a>         ## Remember, DCL upcases everything!
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-60" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-60" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-60"></a>        if (f$extract (0, 2, p'param_idx') .eqs. "-O") {
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-61" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-61" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-61"></a>            outfile = f$extract (2, f$length (p'param_idx'), p'param_idx')
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-62" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-62" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-62"></a>        } else {
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-63" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-63" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-63"></a>            num_options = num_options + 1
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-64" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-64" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-64"></a>            options_'num_options' = p'param_idx'
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-65" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-65" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-65"></a>        }
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-66" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-66" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-66"></a>        param_idx = param_idx + 1
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-67" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-67" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-67"></a>    }
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-68" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-68" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-68"></a>
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-69" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-69" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-69"></a>    file = p'param_idx'                         # Can be blank
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-70" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-70" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-70"></a>    dirname = f$search ("TCS.DIR")
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-71" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-71" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-71"></a>    if (dirname .eqs. "") {             # No [.TCS] directory.
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-72" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-72" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-72"></a>        create/dir [.TCS]
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-73" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-73" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-73"></a>    }
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-74" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-74" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-74"></a>
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-75" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-75" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-75"></a>    tcsfile = "[.tcs]" + file + "-TCS"  # Not used by some commands.
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-76" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-76" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-76"></a>
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-77" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-77" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-77"></a>    if (debugging) {
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-78" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-78" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-78"></a>        wso "command: ", command, " file: ", file, " tcsfile: ", tcsfile
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-79" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-79" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-79"></a>        wso "outfile: """, outfile, """"
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-80" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-80" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-80"></a>    }
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-81" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-81" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-81"></a>
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-82" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-82" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-82"></a>    if (command .eqs. "ADMIN") {
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-83" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-83" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-83"></a>        goto do_admin
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-84" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-84" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-84"></a>    } else if (command .eqs. "GET") {
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-85" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-85" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-85"></a>        goto do_get
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-86" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-86" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-86"></a>    } else if (command .eqs. "DELTA") {
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-87" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-87" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-87"></a>        goto do_delta
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-88" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-88" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-88"></a>    } else if (command .eqs. "OUTDATED") {
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-89" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-89" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-89"></a>        goto do_outdated
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-90" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-90" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-90"></a>    } else if (command .eqs. "UNCOVERED") {
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-91" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-91" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-91"></a>        goto do_uncovered
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-92" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-92" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-92"></a>    }
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-93" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-93" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-93"></a>    wso "tcs: This should be impossible, so somebody screwed up.  Exiting."
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-94" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-94" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-94"></a>    exit 2 .or. QUIET
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-95" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-95" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-95"></a>
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-96" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-96" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-96"></a>
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-97" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-97" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-97"></a>do_admin:
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-98" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-98" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-98"></a>    result = f$search (tcsfile)
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-99" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-99" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-99"></a>    if (result .nes. "") {
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-100" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-100" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-100"></a>        wse "tcs: TCS file ", tcsfile, " already exists, exiting."
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-101" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-101" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-101"></a>        exit 2
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-102" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-102" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-102"></a>    }
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-103" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-103" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-103"></a>    file = f$edit (file, "LOWERCASE")
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-104" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-104" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-104"></a>    dclcmd = "admin ""-i''file'"" ''tcsfile'"
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-105" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-105" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-105"></a>    wso "Executing ", dclcmd
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-106" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-106" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-106"></a>    define/user sys$input sys$command
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-107" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-107" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-107"></a>    'dclcmd'
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-108" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-108" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-108"></a>    exit
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-109" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-109" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-109"></a>
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-110" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-110" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-110"></a>
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-111" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-111" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-111"></a>do_get:
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-112" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-112" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-112"></a>    if (outfile .eqs. "") {
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-113" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-113" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-113"></a>        get 'options_1' 'options_2' 'options_3' 'options_4' 'tcsfile'
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-114" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-114" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-114"></a>    } else {
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-115" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-115" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-115"></a>        get 'options_1' 'options_2' 'options_3' 'options_4' 'tcsfile' &gt;'outfile'
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-116" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-116" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-116"></a>    }
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-117" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-117" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-117"></a>    exit
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-118" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-118" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-118"></a>
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-119" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-119" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-119"></a>do_delta:
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-120" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-120" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-120"></a>    result = f$search (tcsfile)
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-121" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-121" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-121"></a>    if (result .eqs. "") {
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-122" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-122" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-122"></a>        wse "tcs: TCS file ", tcsfile, " does not exist, exiting."
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-123" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-123" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-123"></a>        exit 2
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-124" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-124" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-124"></a>    }
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-125" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-125" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-125"></a>    define/user sys$input sys$command
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-126" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-126" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-126"></a>    delta 'file' 'tcsfile'
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-127" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-127" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-127"></a>    exit
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-128" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-128" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-128"></a>
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-129" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-129" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-129"></a>
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-130" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-130" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-130"></a>do_outdated:
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-131" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-131" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-131"></a>    filespec = "[.tcs]*.*-tcs"
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-132" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-132" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-132"></a>    repeat {
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-133" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-133" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-133"></a>        tcsfile = f$search (filespec)
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-134" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-134" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-134"></a>        if (tcsfile .eqs. "") break
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-135" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-135" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-135"></a>        tcsrdt = f$file (tcsfile, "RDT")
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-136" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-136" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-136"></a>        tcs_day     = f$extract (00, 02, tcsrdt)
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-137" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-137" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-137"></a>        tcs_monname = f$extract (03, 03, tcsrdt)
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-138" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-138" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-138"></a>        tcs_year    = f$extract (07, 04, tcsrdt)
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-139" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-139" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-139"></a>        tcs_rest    = f$extract (11, 12, tcsrdt)
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-140" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-140" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-140"></a>        tcs_monnum  = months_'tcs_monname'
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-141" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-141" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-141"></a>        tcs_cmpdate = tcs_year + tcs_monnum + tcs_day + tcs_rest
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-142" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-142" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-142"></a>        if (debugging .and. verbose) wso "tcs_cmpdate: ", tcs_cmpdate
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-143" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-143" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-143"></a>        dirname = f$parse (tcsfile,,, "DIRECTORY") - ".TCS]" + "]"
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-144" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-144" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-144"></a>        filename = f$parse (tcsfile,,, "NAME")
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-145" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-145" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-145"></a>        filetype = f$parse (tcsfile,,, "TYPE") - "-TCS"
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-146" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-146" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-146"></a>        srcfile = filename + filetype
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-147" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-147" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-147"></a>        srcrdt = f$file (srcfile, "RDT")
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-148" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-148" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-148"></a>        src_day     = f$extract (00, 02, srcrdt)
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-149" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-149" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-149"></a>        src_monname = f$extract (03, 03, srcrdt)
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-150" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-150" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-150"></a>        src_year    = f$extract (07, 04, srcrdt)
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-151" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-151" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-151"></a>        src_rest    = f$extract (11, 12, srcrdt)
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-152" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-152" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-152"></a>        src_monnum  = months_'src_monname'
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-153" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-153" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-153"></a>        src_cmpdate = src_year + src_monnum + src_day + src_rest
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-154" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-154" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-154"></a>        if (debugging .and. verbose) wso "src_cmpdate: ", src_cmpdate
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-155" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-155" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-155"></a>        if (src_cmpdate .gts. tcs_cmpdate) wso srcfile, " is newer than ", tcsfile
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-156" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-156" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-156"></a>    }
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-157" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-157" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-157"></a>    exit
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-158" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-158" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-158"></a>
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-159" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-159" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-159"></a>
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-160" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-160" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-160"></a>do_uncovered:
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-161" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-161" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-161"></a>    i = param_idx + 1
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-162" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-162" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-162"></a>    ignoredtypes = p'i'
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-163" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-163" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-163"></a>    if (ignoredtypes .nes. "") ignoredtypes = "," + ignoredtypes
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-164" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-164" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-164"></a>    if (debugging) wse "ignoredtypes: ", ignoredtypes
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-165" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-165" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-165"></a>    ignoredtypes_len = f$length (ignoredtypes)
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-166" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-166" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-166"></a>    if (file .eqs. "") filespec = "*.*"
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-167" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-167" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-167"></a>    else filespec = file
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-168" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-168" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-168"></a>    if (debugging) wse "filespec: ", filespec
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-169" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-169" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-169"></a>    old_result = ""
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-170" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-170" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-170"></a>    repeat {
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-171" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-171" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-171"></a>        result = f$search (filespec, 1)
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-172" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-172" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-172"></a>        if (debugging) wso "result: ", result
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-173" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-173" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-173"></a>        # No more results
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-174" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-174" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-174"></a>        if (result .eqs. "") break
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-175" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-175" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-175"></a>        # No wildcard specified
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-176" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-176" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-176"></a>        if (result .eqs. old_result) break
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-177" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-177" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-177"></a>        old_result = result
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-178" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-178" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-178"></a>        filename = f$parse (result,,, "NAME")
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-179" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-179" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-179"></a>        filetype = f$parse (result,,, "TYPE")
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-180" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-180" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-180"></a>        file = filename + filetype
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-181" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-181" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-181"></a>        # Ignore directories
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-182" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-182" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-182"></a>        if (filetype .eqs. ".DIR") next
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-183" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-183" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-183"></a>        # Skip the ignored file types.
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-184" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-184" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-184"></a>        skip = "," + (filetype - ".")
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-185" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-185" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-185"></a>        if (debugging) wse "skip: ", skip, " ignoredtypes: ", ignoredtypes
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-186" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-186" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-186"></a>        if (f$locate (skip, ignoredtypes) .ne. ignoredtypes_len) {
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-187" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-187" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-187"></a>            if (debugging) wse "Skipping ", file
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-188" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-188" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-188"></a>            next
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-189" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-189" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-189"></a>        }
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-190" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-190" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-190"></a>        tcsfile = "[.TCS]" + file + "-TCS"
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-191" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-191" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-191"></a>        if (f$search (tcsfile) .eqs. "")
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-192" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-192" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-192"></a>            wso file, " does not have a ", tcsfile
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-193" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-193" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-193"></a>    }
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-194" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-194" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-194"></a>    exit
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-195" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-195" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-195"></a>
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-196" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-196" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-196"></a>
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-197" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-197" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-197"></a>usage:
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-198" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-198" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-198"></a>    copy sys$input sys$output
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-199" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-199" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-199"></a>//usage:
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-200" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-200" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-200"></a>//tcs [ help | -h | -help | -? ]
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-201" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-201" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-201"></a>//      Output this help message.
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-202" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-202" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-202"></a>//
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-203" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-203" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-203"></a>//tcs admin FILE
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-204" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-204" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-204"></a>//
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-205" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-205" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-205"></a>//      Initialize TCS file [.TCS]FILE from FILE.
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-206" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-206" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-206"></a>//
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-207" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-207" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-207"></a>//tcs get [-oOUTFILE] [-h] [-rM.N] FILE
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-208" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-208" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-208"></a>//
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-209" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-209" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-209"></a>//      Get a revision of FILE from TCS file [.TCS]FILE.
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-210" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-210" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-210"></a>//
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-211" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-211" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-211"></a>//          -oOUTFILE writes the output to OUTFILE.
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-212" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-212" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-212"></a>//              If -o is not specifed the output goes to standard output.
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-213" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-213" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-213"></a>//
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-214" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-214" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-214"></a>//          -h Output history information instead of a revision.
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-215" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-215" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-215"></a>//
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-216" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-216" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-216"></a>//          -rM.N Output revision M.N.
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-217" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-217" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-217"></a>//
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-218" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-218" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-218"></a>//tcs delta FILE
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-219" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-219" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-219"></a>//
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-220" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-220" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-220"></a>//      Add a new version to TCS file [.TCS]FILE from FILE.
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-221" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-221" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-221"></a>//
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-222" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-222" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-222"></a>//tcs outdated
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-223" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-223" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-223"></a>//
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-224" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-224" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-224"></a>//      List all the source files that are newer than their corresponding
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-225" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-225" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-225"></a>//      TCS file in [.TCS]
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-226" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-226" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-226"></a>//
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-227" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-227" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-227"></a>//tcs uncovered [FILESPEC] [IGNOREDTYPES]
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-228" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-228" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-228"></a>//
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-229" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-229" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-229"></a>//      List all the files in the current directory that do not have
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-230" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-230" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-230"></a>//      corresponding files in [.TCS].
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-231" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-231" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-231"></a>//
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-232" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-232" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-232"></a>//      If FILEPSEC is specified it should be a VMS wildcard that
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-233" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-233" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-233"></a>//      will be applied to the current directory for matching.
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-234" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-234" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-234"></a>//
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-235" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-235" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-235"></a>//      If IGNOREDTYPES is specified it should be a single file type
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-236" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-236" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-236"></a>//      (without the ".") or a comma separated list of file types
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-237" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-237" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-237"></a>//      to be ignored.
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-238" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-238" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-238"></a>//
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-239" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-239" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-239"></a>//      If one needs to specified IGNOREDTYPES but not FILESPEC just
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-240" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-240" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-240"></a>//      specify an empty string for FILESPEC.
-<a id="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-241" name="rest_code_6ecced2735cf42a68d4edbad69f2bd4e-241" href="#rest_code_6ecced2735cf42a68d4edbad69f2bd4e-241"></a>    exit 2 .or. QUIET
+<div class="code"><pre class="code text"><a id="rest_code_e41e584ebba74878a8b60c7970eb7467-1" name="rest_code_e41e584ebba74878a8b60c7970eb7467-1" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-1"></a>!&gt; TCS.SDCL -- TCS frontend.
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-2" name="rest_code_e41e584ebba74878a8b60c7970eb7467-2" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-2"></a>##############################################################################
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-3" name="rest_code_e41e584ebba74878a8b60c7970eb7467-3" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-3"></a>###
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-4" name="rest_code_e41e584ebba74878a8b60c7970eb7467-4" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-4"></a>### tcs [ help | -h | -help | -? ]
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-5" name="rest_code_e41e584ebba74878a8b60c7970eb7467-5" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-5"></a>### tcs admin FILE
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-6" name="rest_code_e41e584ebba74878a8b60c7970eb7467-6" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-6"></a>### tcs get [-ooutfile] [-h] [-rM.N] FILE
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-7" name="rest_code_e41e584ebba74878a8b60c7970eb7467-7" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-7"></a>### tcs delta FILE
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-8" name="rest_code_e41e584ebba74878a8b60c7970eb7467-8" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-8"></a>### tcs outdated
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-9" name="rest_code_e41e584ebba74878a8b60c7970eb7467-9" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-9"></a>### tcs uncovered [FILESPEC] [IGNOREDTYPES]
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-10" name="rest_code_e41e584ebba74878a8b60c7970eb7467-10" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-10"></a>###
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-11" name="rest_code_e41e584ebba74878a8b60c7970eb7467-11" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-11"></a>##############################################################################
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-12" name="rest_code_e41e584ebba74878a8b60c7970eb7467-12" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-12"></a>    wso :== write sys$output
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-13" name="rest_code_e41e584ebba74878a8b60c7970eb7467-13" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-13"></a>    wse :== write sys$error
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-14" name="rest_code_e41e584ebba74878a8b60c7970eb7467-14" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-14"></a>    TRUE = 1 .eq. 1
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-15" name="rest_code_e41e584ebba74878a8b60c7970eb7467-15" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-15"></a>    FALSE = 1 .ne. 1
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-16" name="rest_code_e41e584ebba74878a8b60c7970eb7467-16" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-16"></a>    QUIET = %x10000000
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-17" name="rest_code_e41e584ebba74878a8b60c7970eb7467-17" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-17"></a>
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-18" name="rest_code_e41e584ebba74878a8b60c7970eb7467-18" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-18"></a>    months_jan = "01"
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-19" name="rest_code_e41e584ebba74878a8b60c7970eb7467-19" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-19"></a>    months_feb = "02"
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-20" name="rest_code_e41e584ebba74878a8b60c7970eb7467-20" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-20"></a>    months_mar = "03"
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-21" name="rest_code_e41e584ebba74878a8b60c7970eb7467-21" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-21"></a>    months_apr = "04"
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-22" name="rest_code_e41e584ebba74878a8b60c7970eb7467-22" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-22"></a>    months_may = "05"
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-23" name="rest_code_e41e584ebba74878a8b60c7970eb7467-23" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-23"></a>    months_jun = "06"
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-24" name="rest_code_e41e584ebba74878a8b60c7970eb7467-24" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-24"></a>    months_jul = "07"
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-25" name="rest_code_e41e584ebba74878a8b60c7970eb7467-25" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-25"></a>    months_aug = "08"
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-26" name="rest_code_e41e584ebba74878a8b60c7970eb7467-26" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-26"></a>    months_sep = "09"
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-27" name="rest_code_e41e584ebba74878a8b60c7970eb7467-27" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-27"></a>    months_oct = "10"
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-28" name="rest_code_e41e584ebba74878a8b60c7970eb7467-28" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-28"></a>    months_nov = "11"
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-29" name="rest_code_e41e584ebba74878a8b60c7970eb7467-29" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-29"></a>    months_dec = "12"
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-30" name="rest_code_e41e584ebba74878a8b60c7970eb7467-30" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-30"></a>
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-31" name="rest_code_e41e584ebba74878a8b60c7970eb7467-31" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-31"></a>    debugging = f$type (tcs_debugging) .nes. ""
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-32" name="rest_code_e41e584ebba74878a8b60c7970eb7467-32" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-32"></a>    verbose = FALSE
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-33" name="rest_code_e41e584ebba74878a8b60c7970eb7467-33" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-33"></a>
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-34" name="rest_code_e41e584ebba74878a8b60c7970eb7467-34" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-34"></a>    command = p1
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-35" name="rest_code_e41e584ebba74878a8b60c7970eb7467-35" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-35"></a>
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-36" name="rest_code_e41e584ebba74878a8b60c7970eb7467-36" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-36"></a>    if (command .eqs. "HELP" .or.
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-37" name="rest_code_e41e584ebba74878a8b60c7970eb7467-37" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-37"></a>        command .eqs. "-H" .or.
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-38" name="rest_code_e41e584ebba74878a8b60c7970eb7467-38" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-38"></a>        command .eqs. "-HELP" .or.
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-39" name="rest_code_e41e584ebba74878a8b60c7970eb7467-39" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-39"></a>        command .eqs. "-?")
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-40" name="rest_code_e41e584ebba74878a8b60c7970eb7467-40" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-40"></a>    {
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-41" name="rest_code_e41e584ebba74878a8b60c7970eb7467-41" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-41"></a>        goto usage
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-42" name="rest_code_e41e584ebba74878a8b60c7970eb7467-42" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-42"></a>    }
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-43" name="rest_code_e41e584ebba74878a8b60c7970eb7467-43" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-43"></a>
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-44" name="rest_code_e41e584ebba74878a8b60c7970eb7467-44" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-44"></a>    if ((command .eqs. "") .or.
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-45" name="rest_code_e41e584ebba74878a8b60c7970eb7467-45" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-45"></a>        .not. (command .eqs. "ADMIN" .or.
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-46" name="rest_code_e41e584ebba74878a8b60c7970eb7467-46" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-46"></a>               command .eqs. "GET" .or.
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-47" name="rest_code_e41e584ebba74878a8b60c7970eb7467-47" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-47"></a>               command .eqs. "DELTA" .or.
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-48" name="rest_code_e41e584ebba74878a8b60c7970eb7467-48" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-48"></a>               command .eqs. "OUTDATED" .or.
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-49" name="rest_code_e41e584ebba74878a8b60c7970eb7467-49" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-49"></a>               command .eqs. "UNCOVERED"))
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-50" name="rest_code_e41e584ebba74878a8b60c7970eb7467-50" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-50"></a>    {
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-51" name="rest_code_e41e584ebba74878a8b60c7970eb7467-51" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-51"></a>        wse "tcs: unrecognized TCS command: """, command, """"
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-52" name="rest_code_e41e584ebba74878a8b60c7970eb7467-52" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-52"></a>        exit 2
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-53" name="rest_code_e41e584ebba74878a8b60c7970eb7467-53" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-53"></a>    }
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-54" name="rest_code_e41e584ebba74878a8b60c7970eb7467-54" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-54"></a>
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-55" name="rest_code_e41e584ebba74878a8b60c7970eb7467-55" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-55"></a>    param_idx = 2
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-56" name="rest_code_e41e584ebba74878a8b60c7970eb7467-56" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-56"></a>    num_options = 0
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-57" name="rest_code_e41e584ebba74878a8b60c7970eb7467-57" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-57"></a>    outfile = ""
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-58" name="rest_code_e41e584ebba74878a8b60c7970eb7467-58" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-58"></a>    while (f$extract (0, 1, p'param_idx') .eqs. "-") {
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-59" name="rest_code_e41e584ebba74878a8b60c7970eb7467-59" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-59"></a>         ## Remember, DCL upcases everything!
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-60" name="rest_code_e41e584ebba74878a8b60c7970eb7467-60" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-60"></a>        if (f$extract (0, 2, p'param_idx') .eqs. "-O") {
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-61" name="rest_code_e41e584ebba74878a8b60c7970eb7467-61" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-61"></a>            outfile = f$extract (2, f$length (p'param_idx'), p'param_idx')
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-62" name="rest_code_e41e584ebba74878a8b60c7970eb7467-62" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-62"></a>        } else {
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-63" name="rest_code_e41e584ebba74878a8b60c7970eb7467-63" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-63"></a>            num_options = num_options + 1
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-64" name="rest_code_e41e584ebba74878a8b60c7970eb7467-64" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-64"></a>            options_'num_options' = p'param_idx'
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-65" name="rest_code_e41e584ebba74878a8b60c7970eb7467-65" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-65"></a>        }
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-66" name="rest_code_e41e584ebba74878a8b60c7970eb7467-66" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-66"></a>        param_idx = param_idx + 1
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-67" name="rest_code_e41e584ebba74878a8b60c7970eb7467-67" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-67"></a>    }
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-68" name="rest_code_e41e584ebba74878a8b60c7970eb7467-68" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-68"></a>
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-69" name="rest_code_e41e584ebba74878a8b60c7970eb7467-69" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-69"></a>    file = p'param_idx'                         # Can be blank
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-70" name="rest_code_e41e584ebba74878a8b60c7970eb7467-70" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-70"></a>    dirname = f$search ("TCS.DIR")
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-71" name="rest_code_e41e584ebba74878a8b60c7970eb7467-71" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-71"></a>    if (dirname .eqs. "") {             # No [.TCS] directory.
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-72" name="rest_code_e41e584ebba74878a8b60c7970eb7467-72" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-72"></a>        create/dir [.TCS]
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-73" name="rest_code_e41e584ebba74878a8b60c7970eb7467-73" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-73"></a>    }
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-74" name="rest_code_e41e584ebba74878a8b60c7970eb7467-74" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-74"></a>
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-75" name="rest_code_e41e584ebba74878a8b60c7970eb7467-75" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-75"></a>    tcsfile = "[.tcs]" + file + "-TCS"  # Not used by some commands.
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-76" name="rest_code_e41e584ebba74878a8b60c7970eb7467-76" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-76"></a>
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-77" name="rest_code_e41e584ebba74878a8b60c7970eb7467-77" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-77"></a>    if (debugging) {
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-78" name="rest_code_e41e584ebba74878a8b60c7970eb7467-78" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-78"></a>        wso "command: ", command, " file: ", file, " tcsfile: ", tcsfile
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-79" name="rest_code_e41e584ebba74878a8b60c7970eb7467-79" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-79"></a>        wso "outfile: """, outfile, """"
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-80" name="rest_code_e41e584ebba74878a8b60c7970eb7467-80" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-80"></a>    }
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-81" name="rest_code_e41e584ebba74878a8b60c7970eb7467-81" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-81"></a>
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-82" name="rest_code_e41e584ebba74878a8b60c7970eb7467-82" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-82"></a>    if (command .eqs. "ADMIN") {
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-83" name="rest_code_e41e584ebba74878a8b60c7970eb7467-83" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-83"></a>        goto do_admin
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-84" name="rest_code_e41e584ebba74878a8b60c7970eb7467-84" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-84"></a>    } else if (command .eqs. "GET") {
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-85" name="rest_code_e41e584ebba74878a8b60c7970eb7467-85" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-85"></a>        goto do_get
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-86" name="rest_code_e41e584ebba74878a8b60c7970eb7467-86" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-86"></a>    } else if (command .eqs. "DELTA") {
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-87" name="rest_code_e41e584ebba74878a8b60c7970eb7467-87" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-87"></a>        goto do_delta
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-88" name="rest_code_e41e584ebba74878a8b60c7970eb7467-88" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-88"></a>    } else if (command .eqs. "OUTDATED") {
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-89" name="rest_code_e41e584ebba74878a8b60c7970eb7467-89" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-89"></a>        goto do_outdated
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-90" name="rest_code_e41e584ebba74878a8b60c7970eb7467-90" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-90"></a>    } else if (command .eqs. "UNCOVERED") {
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-91" name="rest_code_e41e584ebba74878a8b60c7970eb7467-91" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-91"></a>        goto do_uncovered
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-92" name="rest_code_e41e584ebba74878a8b60c7970eb7467-92" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-92"></a>    }
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-93" name="rest_code_e41e584ebba74878a8b60c7970eb7467-93" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-93"></a>    wso "tcs: This should be impossible, so somebody screwed up.  Exiting."
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-94" name="rest_code_e41e584ebba74878a8b60c7970eb7467-94" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-94"></a>    exit 2 .or. QUIET
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-95" name="rest_code_e41e584ebba74878a8b60c7970eb7467-95" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-95"></a>
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-96" name="rest_code_e41e584ebba74878a8b60c7970eb7467-96" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-96"></a>
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-97" name="rest_code_e41e584ebba74878a8b60c7970eb7467-97" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-97"></a>do_admin:
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-98" name="rest_code_e41e584ebba74878a8b60c7970eb7467-98" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-98"></a>    result = f$search (tcsfile)
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-99" name="rest_code_e41e584ebba74878a8b60c7970eb7467-99" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-99"></a>    if (result .nes. "") {
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-100" name="rest_code_e41e584ebba74878a8b60c7970eb7467-100" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-100"></a>        wse "tcs: TCS file ", tcsfile, " already exists, exiting."
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-101" name="rest_code_e41e584ebba74878a8b60c7970eb7467-101" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-101"></a>        exit 2
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-102" name="rest_code_e41e584ebba74878a8b60c7970eb7467-102" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-102"></a>    }
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-103" name="rest_code_e41e584ebba74878a8b60c7970eb7467-103" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-103"></a>    file = f$edit (file, "LOWERCASE")
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-104" name="rest_code_e41e584ebba74878a8b60c7970eb7467-104" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-104"></a>    dclcmd = "admin ""-i''file'"" ''tcsfile'"
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-105" name="rest_code_e41e584ebba74878a8b60c7970eb7467-105" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-105"></a>    wso "Executing ", dclcmd
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-106" name="rest_code_e41e584ebba74878a8b60c7970eb7467-106" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-106"></a>    define/user sys$input sys$command
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-107" name="rest_code_e41e584ebba74878a8b60c7970eb7467-107" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-107"></a>    'dclcmd'
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-108" name="rest_code_e41e584ebba74878a8b60c7970eb7467-108" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-108"></a>    exit
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-109" name="rest_code_e41e584ebba74878a8b60c7970eb7467-109" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-109"></a>
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-110" name="rest_code_e41e584ebba74878a8b60c7970eb7467-110" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-110"></a>
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-111" name="rest_code_e41e584ebba74878a8b60c7970eb7467-111" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-111"></a>do_get:
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-112" name="rest_code_e41e584ebba74878a8b60c7970eb7467-112" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-112"></a>    if (outfile .eqs. "") {
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-113" name="rest_code_e41e584ebba74878a8b60c7970eb7467-113" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-113"></a>        get 'options_1' 'options_2' 'options_3' 'options_4' 'tcsfile'
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-114" name="rest_code_e41e584ebba74878a8b60c7970eb7467-114" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-114"></a>    } else {
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-115" name="rest_code_e41e584ebba74878a8b60c7970eb7467-115" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-115"></a>        get 'options_1' 'options_2' 'options_3' 'options_4' 'tcsfile' &gt;'outfile'
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-116" name="rest_code_e41e584ebba74878a8b60c7970eb7467-116" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-116"></a>    }
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-117" name="rest_code_e41e584ebba74878a8b60c7970eb7467-117" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-117"></a>    exit
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-118" name="rest_code_e41e584ebba74878a8b60c7970eb7467-118" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-118"></a>
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-119" name="rest_code_e41e584ebba74878a8b60c7970eb7467-119" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-119"></a>do_delta:
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-120" name="rest_code_e41e584ebba74878a8b60c7970eb7467-120" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-120"></a>    result = f$search (tcsfile)
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-121" name="rest_code_e41e584ebba74878a8b60c7970eb7467-121" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-121"></a>    if (result .eqs. "") {
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-122" name="rest_code_e41e584ebba74878a8b60c7970eb7467-122" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-122"></a>        wse "tcs: TCS file ", tcsfile, " does not exist, exiting."
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-123" name="rest_code_e41e584ebba74878a8b60c7970eb7467-123" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-123"></a>        exit 2
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-124" name="rest_code_e41e584ebba74878a8b60c7970eb7467-124" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-124"></a>    }
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-125" name="rest_code_e41e584ebba74878a8b60c7970eb7467-125" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-125"></a>    define/user sys$input sys$command
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-126" name="rest_code_e41e584ebba74878a8b60c7970eb7467-126" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-126"></a>    delta 'file' 'tcsfile'
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-127" name="rest_code_e41e584ebba74878a8b60c7970eb7467-127" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-127"></a>    exit
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-128" name="rest_code_e41e584ebba74878a8b60c7970eb7467-128" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-128"></a>
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-129" name="rest_code_e41e584ebba74878a8b60c7970eb7467-129" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-129"></a>
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-130" name="rest_code_e41e584ebba74878a8b60c7970eb7467-130" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-130"></a>do_outdated:
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-131" name="rest_code_e41e584ebba74878a8b60c7970eb7467-131" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-131"></a>    filespec = "[.tcs]*.*-tcs"
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-132" name="rest_code_e41e584ebba74878a8b60c7970eb7467-132" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-132"></a>    repeat {
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-133" name="rest_code_e41e584ebba74878a8b60c7970eb7467-133" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-133"></a>        tcsfile = f$search (filespec)
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-134" name="rest_code_e41e584ebba74878a8b60c7970eb7467-134" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-134"></a>        if (tcsfile .eqs. "") break
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-135" name="rest_code_e41e584ebba74878a8b60c7970eb7467-135" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-135"></a>        tcsrdt = f$file (tcsfile, "RDT")
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-136" name="rest_code_e41e584ebba74878a8b60c7970eb7467-136" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-136"></a>        tcs_day     = f$extract (00, 02, tcsrdt)
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-137" name="rest_code_e41e584ebba74878a8b60c7970eb7467-137" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-137"></a>        tcs_monname = f$extract (03, 03, tcsrdt)
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-138" name="rest_code_e41e584ebba74878a8b60c7970eb7467-138" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-138"></a>        tcs_year    = f$extract (07, 04, tcsrdt)
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-139" name="rest_code_e41e584ebba74878a8b60c7970eb7467-139" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-139"></a>        tcs_rest    = f$extract (11, 12, tcsrdt)
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-140" name="rest_code_e41e584ebba74878a8b60c7970eb7467-140" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-140"></a>        tcs_monnum  = months_'tcs_monname'
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-141" name="rest_code_e41e584ebba74878a8b60c7970eb7467-141" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-141"></a>        tcs_cmpdate = tcs_year + tcs_monnum + tcs_day + tcs_rest
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-142" name="rest_code_e41e584ebba74878a8b60c7970eb7467-142" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-142"></a>        if (debugging .and. verbose) wso "tcs_cmpdate: ", tcs_cmpdate
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-143" name="rest_code_e41e584ebba74878a8b60c7970eb7467-143" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-143"></a>        dirname = f$parse (tcsfile,,, "DIRECTORY") - ".TCS]" + "]"
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-144" name="rest_code_e41e584ebba74878a8b60c7970eb7467-144" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-144"></a>        filename = f$parse (tcsfile,,, "NAME")
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-145" name="rest_code_e41e584ebba74878a8b60c7970eb7467-145" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-145"></a>        filetype = f$parse (tcsfile,,, "TYPE") - "-TCS"
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-146" name="rest_code_e41e584ebba74878a8b60c7970eb7467-146" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-146"></a>        srcfile = filename + filetype
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-147" name="rest_code_e41e584ebba74878a8b60c7970eb7467-147" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-147"></a>        srcrdt = f$file (srcfile, "RDT")
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-148" name="rest_code_e41e584ebba74878a8b60c7970eb7467-148" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-148"></a>        src_day     = f$extract (00, 02, srcrdt)
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-149" name="rest_code_e41e584ebba74878a8b60c7970eb7467-149" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-149"></a>        src_monname = f$extract (03, 03, srcrdt)
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-150" name="rest_code_e41e584ebba74878a8b60c7970eb7467-150" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-150"></a>        src_year    = f$extract (07, 04, srcrdt)
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-151" name="rest_code_e41e584ebba74878a8b60c7970eb7467-151" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-151"></a>        src_rest    = f$extract (11, 12, srcrdt)
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-152" name="rest_code_e41e584ebba74878a8b60c7970eb7467-152" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-152"></a>        src_monnum  = months_'src_monname'
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-153" name="rest_code_e41e584ebba74878a8b60c7970eb7467-153" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-153"></a>        src_cmpdate = src_year + src_monnum + src_day + src_rest
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-154" name="rest_code_e41e584ebba74878a8b60c7970eb7467-154" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-154"></a>        if (debugging .and. verbose) wso "src_cmpdate: ", src_cmpdate
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-155" name="rest_code_e41e584ebba74878a8b60c7970eb7467-155" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-155"></a>        if (src_cmpdate .gts. tcs_cmpdate) wso srcfile, " is newer than ", tcsfile
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-156" name="rest_code_e41e584ebba74878a8b60c7970eb7467-156" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-156"></a>    }
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-157" name="rest_code_e41e584ebba74878a8b60c7970eb7467-157" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-157"></a>    exit
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-158" name="rest_code_e41e584ebba74878a8b60c7970eb7467-158" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-158"></a>
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-159" name="rest_code_e41e584ebba74878a8b60c7970eb7467-159" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-159"></a>
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-160" name="rest_code_e41e584ebba74878a8b60c7970eb7467-160" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-160"></a>do_uncovered:
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-161" name="rest_code_e41e584ebba74878a8b60c7970eb7467-161" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-161"></a>    i = param_idx + 1
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-162" name="rest_code_e41e584ebba74878a8b60c7970eb7467-162" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-162"></a>    ignoredtypes = p'i'
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-163" name="rest_code_e41e584ebba74878a8b60c7970eb7467-163" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-163"></a>    if (ignoredtypes .nes. "") ignoredtypes = "," + ignoredtypes
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-164" name="rest_code_e41e584ebba74878a8b60c7970eb7467-164" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-164"></a>    if (debugging) wse "ignoredtypes: ", ignoredtypes
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-165" name="rest_code_e41e584ebba74878a8b60c7970eb7467-165" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-165"></a>    ignoredtypes_len = f$length (ignoredtypes)
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-166" name="rest_code_e41e584ebba74878a8b60c7970eb7467-166" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-166"></a>    if (file .eqs. "") filespec = "*.*"
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-167" name="rest_code_e41e584ebba74878a8b60c7970eb7467-167" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-167"></a>    else filespec = file
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-168" name="rest_code_e41e584ebba74878a8b60c7970eb7467-168" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-168"></a>    if (debugging) wse "filespec: ", filespec
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-169" name="rest_code_e41e584ebba74878a8b60c7970eb7467-169" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-169"></a>    old_result = ""
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-170" name="rest_code_e41e584ebba74878a8b60c7970eb7467-170" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-170"></a>    repeat {
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-171" name="rest_code_e41e584ebba74878a8b60c7970eb7467-171" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-171"></a>        result = f$search (filespec, 1)
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-172" name="rest_code_e41e584ebba74878a8b60c7970eb7467-172" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-172"></a>        if (debugging) wso "result: ", result
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-173" name="rest_code_e41e584ebba74878a8b60c7970eb7467-173" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-173"></a>        # No more results
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-174" name="rest_code_e41e584ebba74878a8b60c7970eb7467-174" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-174"></a>        if (result .eqs. "") break
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-175" name="rest_code_e41e584ebba74878a8b60c7970eb7467-175" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-175"></a>        # No wildcard specified
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-176" name="rest_code_e41e584ebba74878a8b60c7970eb7467-176" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-176"></a>        if (result .eqs. old_result) break
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-177" name="rest_code_e41e584ebba74878a8b60c7970eb7467-177" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-177"></a>        old_result = result
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-178" name="rest_code_e41e584ebba74878a8b60c7970eb7467-178" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-178"></a>        filename = f$parse (result,,, "NAME")
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-179" name="rest_code_e41e584ebba74878a8b60c7970eb7467-179" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-179"></a>        filetype = f$parse (result,,, "TYPE")
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-180" name="rest_code_e41e584ebba74878a8b60c7970eb7467-180" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-180"></a>        file = filename + filetype
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-181" name="rest_code_e41e584ebba74878a8b60c7970eb7467-181" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-181"></a>        # Ignore directories
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-182" name="rest_code_e41e584ebba74878a8b60c7970eb7467-182" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-182"></a>        if (filetype .eqs. ".DIR") next
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-183" name="rest_code_e41e584ebba74878a8b60c7970eb7467-183" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-183"></a>        # Skip the ignored file types.
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-184" name="rest_code_e41e584ebba74878a8b60c7970eb7467-184" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-184"></a>        skip = "," + (filetype - ".")
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-185" name="rest_code_e41e584ebba74878a8b60c7970eb7467-185" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-185"></a>        if (debugging) wse "skip: ", skip, " ignoredtypes: ", ignoredtypes
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-186" name="rest_code_e41e584ebba74878a8b60c7970eb7467-186" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-186"></a>        if (f$locate (skip, ignoredtypes) .ne. ignoredtypes_len) {
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-187" name="rest_code_e41e584ebba74878a8b60c7970eb7467-187" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-187"></a>            if (debugging) wse "Skipping ", file
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-188" name="rest_code_e41e584ebba74878a8b60c7970eb7467-188" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-188"></a>            next
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-189" name="rest_code_e41e584ebba74878a8b60c7970eb7467-189" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-189"></a>        }
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-190" name="rest_code_e41e584ebba74878a8b60c7970eb7467-190" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-190"></a>        tcsfile = "[.TCS]" + file + "-TCS"
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-191" name="rest_code_e41e584ebba74878a8b60c7970eb7467-191" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-191"></a>        if (f$search (tcsfile) .eqs. "")
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-192" name="rest_code_e41e584ebba74878a8b60c7970eb7467-192" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-192"></a>            wso file, " does not have a ", tcsfile
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-193" name="rest_code_e41e584ebba74878a8b60c7970eb7467-193" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-193"></a>    }
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-194" name="rest_code_e41e584ebba74878a8b60c7970eb7467-194" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-194"></a>    exit
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-195" name="rest_code_e41e584ebba74878a8b60c7970eb7467-195" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-195"></a>
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-196" name="rest_code_e41e584ebba74878a8b60c7970eb7467-196" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-196"></a>
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-197" name="rest_code_e41e584ebba74878a8b60c7970eb7467-197" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-197"></a>usage:
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-198" name="rest_code_e41e584ebba74878a8b60c7970eb7467-198" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-198"></a>    copy sys$input sys$output
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-199" name="rest_code_e41e584ebba74878a8b60c7970eb7467-199" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-199"></a>//usage:
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-200" name="rest_code_e41e584ebba74878a8b60c7970eb7467-200" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-200"></a>//tcs [ help | -h | -help | -? ]
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-201" name="rest_code_e41e584ebba74878a8b60c7970eb7467-201" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-201"></a>//      Output this help message.
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-202" name="rest_code_e41e584ebba74878a8b60c7970eb7467-202" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-202"></a>//
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-203" name="rest_code_e41e584ebba74878a8b60c7970eb7467-203" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-203"></a>//tcs admin FILE
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-204" name="rest_code_e41e584ebba74878a8b60c7970eb7467-204" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-204"></a>//
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-205" name="rest_code_e41e584ebba74878a8b60c7970eb7467-205" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-205"></a>//      Initialize TCS file [.TCS]FILE from FILE.
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-206" name="rest_code_e41e584ebba74878a8b60c7970eb7467-206" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-206"></a>//
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-207" name="rest_code_e41e584ebba74878a8b60c7970eb7467-207" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-207"></a>//tcs get [-oOUTFILE] [-h] [-rM.N] FILE
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-208" name="rest_code_e41e584ebba74878a8b60c7970eb7467-208" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-208"></a>//
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-209" name="rest_code_e41e584ebba74878a8b60c7970eb7467-209" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-209"></a>//      Get a revision of FILE from TCS file [.TCS]FILE.
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-210" name="rest_code_e41e584ebba74878a8b60c7970eb7467-210" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-210"></a>//
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-211" name="rest_code_e41e584ebba74878a8b60c7970eb7467-211" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-211"></a>//          -oOUTFILE writes the output to OUTFILE.
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-212" name="rest_code_e41e584ebba74878a8b60c7970eb7467-212" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-212"></a>//              If -o is not specifed the output goes to standard output.
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-213" name="rest_code_e41e584ebba74878a8b60c7970eb7467-213" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-213"></a>//
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-214" name="rest_code_e41e584ebba74878a8b60c7970eb7467-214" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-214"></a>//          -h Output history information instead of a revision.
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-215" name="rest_code_e41e584ebba74878a8b60c7970eb7467-215" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-215"></a>//
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-216" name="rest_code_e41e584ebba74878a8b60c7970eb7467-216" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-216"></a>//          -rM.N Output revision M.N.
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-217" name="rest_code_e41e584ebba74878a8b60c7970eb7467-217" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-217"></a>//
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-218" name="rest_code_e41e584ebba74878a8b60c7970eb7467-218" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-218"></a>//tcs delta FILE
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-219" name="rest_code_e41e584ebba74878a8b60c7970eb7467-219" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-219"></a>//
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-220" name="rest_code_e41e584ebba74878a8b60c7970eb7467-220" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-220"></a>//      Add a new version to TCS file [.TCS]FILE from FILE.
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-221" name="rest_code_e41e584ebba74878a8b60c7970eb7467-221" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-221"></a>//
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-222" name="rest_code_e41e584ebba74878a8b60c7970eb7467-222" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-222"></a>//tcs outdated
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-223" name="rest_code_e41e584ebba74878a8b60c7970eb7467-223" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-223"></a>//
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-224" name="rest_code_e41e584ebba74878a8b60c7970eb7467-224" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-224"></a>//      List all the source files that are newer than their corresponding
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-225" name="rest_code_e41e584ebba74878a8b60c7970eb7467-225" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-225"></a>//      TCS file in [.TCS]
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-226" name="rest_code_e41e584ebba74878a8b60c7970eb7467-226" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-226"></a>//
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-227" name="rest_code_e41e584ebba74878a8b60c7970eb7467-227" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-227"></a>//tcs uncovered [FILESPEC] [IGNOREDTYPES]
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-228" name="rest_code_e41e584ebba74878a8b60c7970eb7467-228" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-228"></a>//
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-229" name="rest_code_e41e584ebba74878a8b60c7970eb7467-229" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-229"></a>//      List all the files in the current directory that do not have
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-230" name="rest_code_e41e584ebba74878a8b60c7970eb7467-230" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-230"></a>//      corresponding files in [.TCS].
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-231" name="rest_code_e41e584ebba74878a8b60c7970eb7467-231" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-231"></a>//
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-232" name="rest_code_e41e584ebba74878a8b60c7970eb7467-232" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-232"></a>//      If FILEPSEC is specified it should be a VMS wildcard that
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-233" name="rest_code_e41e584ebba74878a8b60c7970eb7467-233" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-233"></a>//      will be applied to the current directory for matching.
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-234" name="rest_code_e41e584ebba74878a8b60c7970eb7467-234" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-234"></a>//
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-235" name="rest_code_e41e584ebba74878a8b60c7970eb7467-235" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-235"></a>//      If IGNOREDTYPES is specified it should be a single file type
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-236" name="rest_code_e41e584ebba74878a8b60c7970eb7467-236" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-236"></a>//      (without the ".") or a comma separated list of file types
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-237" name="rest_code_e41e584ebba74878a8b60c7970eb7467-237" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-237"></a>//      to be ignored.
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-238" name="rest_code_e41e584ebba74878a8b60c7970eb7467-238" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-238"></a>//
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-239" name="rest_code_e41e584ebba74878a8b60c7970eb7467-239" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-239"></a>//      If one needs to specified IGNOREDTYPES but not FILESPEC just
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-240" name="rest_code_e41e584ebba74878a8b60c7970eb7467-240" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-240"></a>//      specify an empty string for FILESPEC.
+<a id="rest_code_e41e584ebba74878a8b60c7970eb7467-241" name="rest_code_e41e584ebba74878a8b60c7970eb7467-241" href="#rest_code_e41e584ebba74878a8b60c7970eb7467-241"></a>    exit 2 .or. QUIET
 </pre></div>
 <p>I decided to leave my <span class="file">tcsdiff.sdcl</span> program separate for the
 time being, since it was easy to convert to use with <span class="app">TCS</span> files
@@ -470,7 +470,7 @@ at Colorado Springs, and from there to my version of <span class="command">SDCL<
 </div>
 
 <footer class="blog-footer" id="footer">
-    Contents © 2025         <a href="mailto:tkurtbond@gmail.com">T. Kurt Bond</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+    Contents © 2026         <a href="mailto:tkurtbond@gmail.com">T. Kurt Bond</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
     
 </footer><script src="../../../../../assets/js/all-nocdn.js"></script><!-- fancy dates --><script>
     moment.locale("en");

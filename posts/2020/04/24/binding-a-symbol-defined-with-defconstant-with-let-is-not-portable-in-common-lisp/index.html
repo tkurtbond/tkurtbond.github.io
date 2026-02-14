@@ -89,12 +89,12 @@ If y'>
     </header><div class="e-content entry-content" itemprop="articleBody text">
     <p><a class="reference external" href="http://www.sbcl.org/">SBCL</a> and <a class="reference external" href="https://ccl.clozure.com/">CCL</a> and <a class="reference external" href="https://clisp.sourceforge.io/">CLISP</a> think binding a symbol defined with <code class="docutils literal">defconstant</code>
 is an error, so if you do</p>
-<div class="code"><pre class="code common-lisp"><a id="rest_code_b3c2462956f4494e82ca97fc735c30e4-1" name="rest_code_b3c2462956f4494e82ca97fc735c30e4-1" href="#rest_code_b3c2462956f4494e82ca97fc735c30e4-1"></a><span class="p">(</span><span class="nb">defconstant</span><span class="w"> </span><span class="nv">foo</span><span class="w"> </span><span class="s">"foo"</span><span class="p">)</span>
-<a id="rest_code_b3c2462956f4494e82ca97fc735c30e4-2" name="rest_code_b3c2462956f4494e82ca97fc735c30e4-2" href="#rest_code_b3c2462956f4494e82ca97fc735c30e4-2"></a><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">((</span><span class="nv">foo</span><span class="w"> </span><span class="s">"bar"</span><span class="p">))</span><span class="w"> </span><span class="nv">foo</span><span class="p">)</span>
+<div class="code"><pre class="code common-lisp"><a id="rest_code_6a4cbfa9160b4c239dc9be0212d4516f-1" name="rest_code_6a4cbfa9160b4c239dc9be0212d4516f-1" href="#rest_code_6a4cbfa9160b4c239dc9be0212d4516f-1"></a><span class="p">(</span><span class="nb">defconstant</span><span class="w"> </span><span class="nv">foo</span><span class="w"> </span><span class="s">"foo"</span><span class="p">)</span>
+<a id="rest_code_6a4cbfa9160b4c239dc9be0212d4516f-2" name="rest_code_6a4cbfa9160b4c239dc9be0212d4516f-2" href="#rest_code_6a4cbfa9160b4c239dc9be0212d4516f-2"></a><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">((</span><span class="nv">foo</span><span class="w"> </span><span class="s">"bar"</span><span class="p">))</span><span class="w"> </span><span class="nv">foo</span><span class="p">)</span>
 </pre></div>
 <p>you get an error.  But in <a class="reference external" href="https://abcl.org/">ABCL</a> and <a class="reference external" href="https://common-lisp.net/project/ecl/">ECL</a> you don’t.</p>
 <p>If you try</p>
-<div class="code"><pre class="code common-lisp"><a id="rest_code_fcc28ecbf78447aa91b9c1296c72520e-1" name="rest_code_fcc28ecbf78447aa91b9c1296c72520e-1" href="#rest_code_fcc28ecbf78447aa91b9c1296c72520e-1"></a><span class="p">(</span><span class="nb">defun</span><span class="w"> </span><span class="nv">x</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">((</span><span class="nv">foo</span><span class="w"> </span><span class="s">"bar"</span><span class="p">))</span><span class="w"> </span><span class="nv">foo</span><span class="p">))</span>
+<div class="code"><pre class="code common-lisp"><a id="rest_code_03db100c81d143d785b6b6a429d68537-1" name="rest_code_03db100c81d143d785b6b6a429d68537-1" href="#rest_code_03db100c81d143d785b6b6a429d68537-1"></a><span class="p">(</span><span class="nb">defun</span><span class="w"> </span><span class="nv">x</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">((</span><span class="nv">foo</span><span class="w"> </span><span class="s">"bar"</span><span class="p">))</span><span class="w"> </span><span class="nv">foo</span><span class="p">))</span>
 </pre></div>
 <p>in SBCL and CCL you get an error when the function is compiled.
 In SBCL the function is defined, but always gives an error when run.
@@ -173,7 +173,7 @@ In CCL the function does not get defined.</p>
 </div>
 
 <footer class="blog-footer" id="footer">
-    Contents © 2025         <a href="mailto:tkurtbond@gmail.com">T. Kurt Bond</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+    Contents © 2026         <a href="mailto:tkurtbond@gmail.com">T. Kurt Bond</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
     
 </footer><script src="../../../../../assets/js/all-nocdn.js"></script><!-- fancy dates --><script>
     moment.locale("en");
