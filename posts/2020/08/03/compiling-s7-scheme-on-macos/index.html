@@ -85,18 +85,18 @@ gcc s7.c -o repl -DWITH_MAIN -I. -O2 -g -ldl -lm -Wl,-expo">
     <p>To compile <a class="reference external" href="https://ccrma.stanford.edu/software/snd/snd/s7.html">s7 scheme</a> with a standalone <a class="reference external" href="../../../../../pages/computer-vocabulary/#REPL">REPL</a>, s7's home page says to
 add the empty file <span class="file">mus-config.h</span> to the source directory, then
 (in Linux):</p>
-<div class="code"><pre class="code bash"><a id="rest_code_135fb22a57ac4867a1369b2344ea3ae0-1" name="rest_code_135fb22a57ac4867a1369b2344ea3ae0-1" href="#rest_code_135fb22a57ac4867a1369b2344ea3ae0-1"></a>gcc<span class="w"> </span>s7.c<span class="w"> </span>-o<span class="w"> </span>repl<span class="w"> </span>-DWITH_MAIN<span class="w"> </span>-I.<span class="w"> </span>-O2<span class="w"> </span>-g<span class="w"> </span>-ldl<span class="w"> </span>-lm<span class="w"> </span>-Wl,-export-dynamic
+<div class="code"><pre class="code bash"><a id="rest_code_eb8bb73fdf5844338197e73eacfbe967-1" name="rest_code_eb8bb73fdf5844338197e73eacfbe967-1" href="#rest_code_eb8bb73fdf5844338197e73eacfbe967-1"></a>gcc<span class="w"> </span>s7.c<span class="w"> </span>-o<span class="w"> </span>repl<span class="w"> </span>-DWITH_MAIN<span class="w"> </span>-I.<span class="w"> </span>-O2<span class="w"> </span>-g<span class="w"> </span>-ldl<span class="w"> </span>-lm<span class="w"> </span>-Wl,-export-dynamic
 </pre></div>
 <p>It turns out that on macOS, whose <span class="command">ld</span> (from clang) doesn't
 understand <code class="docutils literal"><span class="pre">-export-dynamic</span></code>, you have to do</p>
-<div class="code"><pre class="code bash"><a id="rest_code_a0f1da52c120466ba187ddbe97435a98-1" name="rest_code_a0f1da52c120466ba187ddbe97435a98-1" href="#rest_code_a0f1da52c120466ba187ddbe97435a98-1"></a>gcc<span class="w"> </span>s7.c<span class="w"> </span>-o<span class="w"> </span>repl<span class="w"> </span>-DWITH_MAIN<span class="w"> </span>-I.<span class="w"> </span>-O2<span class="w"> </span>-g<span class="w"> </span>-ldl<span class="w"> </span>-lm<span class="w"> </span>-Wl,-dynamic
+<div class="code"><pre class="code bash"><a id="rest_code_62569ae1d527413f8fb6885dd682a603-1" name="rest_code_62569ae1d527413f8fb6885dd682a603-1" href="#rest_code_62569ae1d527413f8fb6885dd682a603-1"></a>gcc<span class="w"> </span>s7.c<span class="w"> </span>-o<span class="w"> </span>repl<span class="w"> </span>-DWITH_MAIN<span class="w"> </span>-I.<span class="w"> </span>-O2<span class="w"> </span>-g<span class="w"> </span>-ldl<span class="w"> </span>-lm<span class="w"> </span>-Wl,-dynamic
 </pre></div>
 <p>Then you need to do</p>
-<div class="code"><pre class="code bash"><a id="rest_code_661894aa4ac3492a89b7cfc682278c5f-1" name="rest_code_661894aa4ac3492a89b7cfc682278c5f-1" href="#rest_code_661894aa4ac3492a89b7cfc682278c5f-1"></a>./repl<span class="w"> </span>libc.scm
+<div class="code"><pre class="code bash"><a id="rest_code_fe16c9433ec14f3b9871e0b06953af9d-1" name="rest_code_fe16c9433ec14f3b9871e0b06953af9d-1" href="#rest_code_fe16c9433ec14f3b9871e0b06953af9d-1"></a>./repl<span class="w"> </span>libc.scm
 </pre></div>
 <p>which seems to generate <span class="file">libc_s7.c</span> and compile it into
 <span class="file">libc_s.so</span>.   Then you can run the <a class="reference external" href="../../../../../pages/computer-vocabulary/#REPL">REPL</a>:</p>
-<div class="code"><pre class="code bash"><a id="rest_code_5da09551ca034766a25df09623c7a90f-1" name="rest_code_5da09551ca034766a25df09623c7a90f-1" href="#rest_code_5da09551ca034766a25df09623c7a90f-1"></a>./repl
+<div class="code"><pre class="code bash"><a id="rest_code_80a5a181273b43068b816224d41b5c8f-1" name="rest_code_80a5a181273b43068b816224d41b5c8f-1" href="#rest_code_80a5a181273b43068b816224d41b5c8f-1"></a>./repl
 </pre></div>
 <p>which, from looking at <span class="file">s7.c</span>, loads <span class="file">repl.scm</span>.
 Unfortunately, I don't understand the repl commands, except for
