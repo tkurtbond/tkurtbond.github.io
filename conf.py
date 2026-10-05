@@ -1371,6 +1371,7 @@ GLOBAL_CONTEXT = {'blog_sidebar': """\
          and sophisticated world. </p>
     </div>
     <div class="sidebar-module">
+      <p>My <a href="/tkurtbond-at-gmail-com.pub">PGP/GPG Key</a>.
       <p>This site uses no cookies directly, but I expect the <a href="https://disqus.com/">Disqus</a> comments use cookies at disqus.com.</p>
       <h4>Links</h4>
       <ol class="list-unstyled">
