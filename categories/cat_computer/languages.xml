@@ -1,5 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity (Posts about languages)</title><link>https://tkurtbond.github.io/</link><description></description><atom:link href="https://tkurtbond.github.io/categories/cat_computer/languages.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2026 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Wed, 10 Jun 2026 15:57:08 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>NCURSES PROGRAMMING HOWTO Updated for modern C compilers</title><link>https://tkurtbond.github.io/posts/2026/02/13/ncurses-howto-updated-for-modern-c-compilers/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;p&gt;I updated the &lt;a class="reference external" href="https://tldp.org/HOWTO/NCURSES-Programming-HOWTO/index.html"&gt;NCURSES PROGRAMMING HOWTO&lt;/a&gt; from
+<?xml-stylesheet type="text/xsl" href="../../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity (Posts about languages)</title><link>https://tkurtbond.github.io/</link><description></description><atom:link href="https://tkurtbond.github.io/categories/cat_computer/languages.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2026 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Tue, 17 Nov 2026 21:58:25 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Announcing Peaseblossom: an Oberon-2 compiler, and libraries and programs for it and for voc</title><link>https://tkurtbond.github.io/posts/2026/11/17/announcing-peaseblossom-an-oberon-2-compiler-and-libraries-and-programs-for-it-and-for-voc/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;p&gt;This software was developed with the aid of AI.&lt;/p&gt;
+&lt;p&gt;I'm announcing a set of Oberon-2 projects: a compiler, libraries, and
+programs built with them. All are on GitHub, and the software is under
+the BSD 3-Clause License.&lt;/p&gt;
+&lt;section id="for-voc-vishap-oberon"&gt;
+&lt;h2&gt;For voc (Vishap Oberon)&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class="reference external" href="https://github.com/tkurtbond/olibfyaml"&gt;olibfyaml&lt;/a&gt;: a binding to &lt;a class="reference external" href="https://github.com/pantoniou/libfyaml"&gt;libfyaml&lt;/a&gt;, the YAML 1.2 parser and
+emitter. It covers parsing, navigation, typed values, building and
+emitting YAML or JSON, anchors, tags and source locations. Errors in
+the input come back as values with &lt;code class="docutils literal"&gt;file:line:column&lt;/code&gt; messages.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/section&gt;
+&lt;section id="for-both-voc-and-poc"&gt;
+&lt;h2&gt;For both voc and poc&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class="reference external" href="https://github.com/tkurtbond/opp"&gt;opp&lt;/a&gt;: the Oberon pretty printer. It reformats modules within a
+maximum line length and keeps every comment. It handles both
+compilers' language extensions. Before writing, it checks that its
+output has exactly the tokens and comments of its input.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class="reference external" href="https://github.com/tkurtbond/oberon-ropes"&gt;Ropes&lt;/a&gt;: ropes, strings represented as trees of pieces, with a
+self-test and a command-line demo.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class="reference external" href="https://github.com/tkurtbond/oberon-argparser"&gt;ArgParser&lt;/a&gt;: command-line parsing: long and short options,
+clustered short options, option values, commands, and usage messages.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/section&gt;
+&lt;section id="peaseblossom"&gt;
+&lt;h2&gt;Peaseblossom&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class="reference external" href="https://github.com/tkurtbond/peaseblossom"&gt;poc&lt;/a&gt;, the Peaseblossom Oberon Compiler: an Oberon-2 compiler with
+an LLVM backend for Linux, FreeBSD, OpenBSD and NetBSD, and a VAX
+backend for VAX/VMS 5.5-2. It was motivated in large part by my wish
+for a more modern language than the limited ones available on the VAX
+system I maintain. A release tarball needs only clang and GNU make,
+or it can be bootstrapped using Vishap Oberon. Packages are available
+for Fedora, Debian, FreeBSD, OpenBSD and NetBSD. It comes with a
+User's Guide and a Reference Guide.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class="reference external" href="https://github.com/tkurtbond/polibfyaml"&gt;polibfyaml&lt;/a&gt;: olibfyaml for poc, with the same API, tests and
+examples.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class="reference external" href="https://github.com/tkurtbond/ova_fmt_po"&gt;ova_fmt_po&lt;/a&gt;, an example program using polibfyaml: it formats
+characters for the OVA tabletop RPG from YAML as reStructuredText,
+gemtext, Markdown and more.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class="reference external" href="https://github.com/tkurtbond/pofltk"&gt;pofltk&lt;/a&gt;: a thick binding to &lt;a class="reference external" href="https://www.fltk.org"&gt;FLTK&lt;/a&gt; 1.4. FLTK's classes are record
+types a program extends, and &lt;code class="docutils literal"&gt;draw()&lt;/code&gt; and &lt;code class="docutils literal"&gt;handle()&lt;/code&gt; are
+type-bound procedures it overrides. Coverage includes widgets, layout
+(flex and grid), menus, dialogs, text editors, browsers, trees,
+tables, images, the clipboard and preferences. &lt;code class="docutils literal"&gt;FlTest&lt;/code&gt; drives a
+program's windows in tests on Xvfb or a headless compositor. Many of
+FLTK's test programs are ported as examples.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class="reference external" href="https://github.com/tkurtbond/ova_cg_po"&gt;ova_cg_po&lt;/a&gt;, an example program using pofltk: a character
+generator for OVA. It's a complete program with a menu bar, tabs,
+grids, file choosers, preferences and window tests. Its &lt;a class="reference external" href="https://github.com/tkurtbond/ova_cg_po/blob/main/doc/pofltk-tour.md"&gt;tour for
+pofltk readers&lt;/a&gt; says where in its code each technique is.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class="reference external" href="https://github.com/tkurtbond/poDateTime"&gt;poDateTime&lt;/a&gt;: dates, times, durations and time zones. It has
+instants, the proleptic Gregorian calendar, clocks, POSIX &lt;code class="docutils literal"&gt;TZ&lt;/code&gt; rules
+and tz database files, ISO 8601, RFC 3339 and &lt;code class="docutils literal"&gt;strftime&lt;/code&gt; formats. It
+runs on the four Unixes and on VAX/VMS.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class="reference external" href="https://github.com/tkurtbond/pounix"&gt;pounix&lt;/a&gt;: Unix services that poc's runtime doesn't provide:
+dropping root for good, file descriptors and directories, running
+child processes with an argument list (no shell), and &lt;code class="docutils literal"&gt;errno&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class="reference external" href="https://github.com/tkurtbond/posockets"&gt;posockets&lt;/a&gt;: TCP (IPv4 and IPv6) and Unix-domain sockets. It works
+with poc's cooperative &lt;code class="docutils literal"&gt;Tasks&lt;/code&gt;, so one thread can serve many
+connections, with deadlines.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class="reference external" href="https://github.com/tkurtbond/polibtls"&gt;polibtls&lt;/a&gt;: a binding to libtls (LibreTLS on Linux, FreeBSD and
+NetBSD; OpenBSD's own). It supports server contexts with several key
+pairs, client certificates, and non-blocking I/O with &lt;code class="docutils literal"&gt;Tasks&lt;/code&gt;. It's
+tested against openssl, gnutls-cli and Go's TLS.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class="reference external" href="https://github.com/tkurtbond/pogemini"&gt;pogemini&lt;/a&gt;: a &lt;a class="reference external" href="https://geminiprotocol.net/"&gt;Gemini&lt;/a&gt; server built on the four libraries above. It
+serves several capsules by host name, each with its own certificate,
+and can require client certificates for parts of a capsule. Every
+connection runs in a task in one thread.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class="reference external" href="https://github.com/tkurtbond/poDB"&gt;poDB&lt;/a&gt;: a database-independent SQL interface, with drivers for
+SQLite and PostgreSQL. A program moves from one to the other by
+changing its connection URL and the driver it imports.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Comments, bug reports and patches are welcome. Many of the poc
+libraries are early in their lives; polibfyaml and pofltk have had the
+most use.&lt;/p&gt;
+&lt;/section&gt;</description><category>computer</category><category>computer programming</category><category>FLTK</category><category>oberon</category><category>oberon-2</category><category>peaseblossom oberon</category><category>poc</category><category>vishap oberon</category><category>voc</category><category>yaml</category><guid>https://tkurtbond.github.io/posts/2026/11/17/announcing-peaseblossom-an-oberon-2-compiler-and-libraries-and-programs-for-it-and-for-voc/</guid><pubDate>Tue, 17 Nov 2026 21:48:47 GMT</pubDate></item><item><title>NCURSES PROGRAMMING HOWTO Updated for modern C compilers</title><link>https://tkurtbond.github.io/posts/2026/02/13/ncurses-howto-updated-for-modern-c-compilers/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;p&gt;I updated the &lt;a class="reference external" href="https://tldp.org/HOWTO/NCURSES-Programming-HOWTO/index.html"&gt;NCURSES PROGRAMMING HOWTO&lt;/a&gt; from
 &lt;a class="reference external" href="https://tldp.org/"&gt;The Linux Documentation Project&lt;/a&gt;
 slightly so the example programs would compile with modern compilers
 and my pull request was accepted in January 2025, but unfortunately
@@ -1491,29 +1575,4 @@ getnstr from the chicken scheme ncurses egg!&lt;/p&gt;
 &lt;a id="rest_code_67fda9879f524407a88e2ef993cf3955-16" name="rest_code_67fda9879f524407a88e2ef993cf3955-16" href="https://tkurtbond.github.io/posts/2021/06/16/using-getnstr-from-chicken-scheme-ncurses-egg/#rest_code_67fda9879f524407a88e2ef993cf3955-16"&gt;&lt;/a&gt;&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;endwin&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Oh, and I added the example to the ncurses egg documentation: &lt;a class="reference external" href="http://wiki.call-cc.org/eggref/5/ncurses#getnstr-example"&gt;getnstr
-Example&lt;/a&gt;.&lt;/p&gt;</description><category>chicken scheme</category><category>scheme</category><guid>https://tkurtbond.github.io/posts/2021/06/16/using-getnstr-from-chicken-scheme-ncurses-egg/</guid><pubDate>Wed, 16 Jun 2021 18:57:28 GMT</pubDate></item><item><title>Cobol and Fortran</title><link>https://tkurtbond.github.io/posts/2020/12/10/cobol-and-fortran/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;p&gt;I know &lt;a class="reference external" href="https://en.wikipedia.org/wiki/COBOL"&gt;Cobol&lt;/a&gt;, and have written it for work, but not for a long time,
-maybe 30 years? No, I lie, I did some a decade or two ago.  It was not
-my favorite programming language, but knowing it helped pay the
-bills.  At my college in the mid-80s it was taught by the Business
-department rather than the Computer Science department!&lt;/p&gt;
-&lt;p&gt;One of my Cobol jobs was porting code from the IBM mainframes to VMS
-on a Digital Equipment Corporation mini-computer, the VAX.  A more
-recent one was fixing bugs and making enhancements to some student
-management software at a nearby college.&lt;/p&gt;
-&lt;p&gt;What little Fortran I've written was in the &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Ratfor"&gt;ratfor&lt;/a&gt; (Rational Fortran)
-dialect, on VMS, using the Software Tools package written at Lawrence
-Berkeley Labs, which ported a lot of Unix tools to VMS (and IBM
-mainframes) using ratfor (a dialect that was first invented on Unix to
-add modern control structures to Fortran 66, and implemented
-as a preprocessor).&lt;/p&gt;
-&lt;p&gt;One of my favorite programming books is &lt;a class="reference external" href="https://www.amazon.com/Software-Tools-Brian-W-Kernighan/dp/020103669X/ref=sr_1_3"&gt;Software Tools&lt;/a&gt; by Brian
-Kernighan and P.J. Plauger (I first read the &lt;a class="reference external" href="https://www.amazon.com/Software-Tools-Pascal-Brian-Kernighan/dp/0201103427/ref=sr_1_4"&gt;Software Tools in
-Pascal&lt;/a&gt; version), which showed how to write Unix like tools
-in Ratfor (because at the time Fortran was more portable than C!).  It
-was the inspiration for the LBL Software tools package.  I wish I
-still had the LBL Software Tools on the VAX I maintain (running on a
-software emulator on Intel hardware, at much faster speeds than the
-original VAX), but it was deleted to save space long ago in an era of
-expensive hard drives, a decision I've long regretted!  I can find the
-source online, but I can't find a binary distribution, and that VAX
-doesn't have a Fortran compiler anymore, alas.&lt;/p&gt;</description><category>cobol</category><category>fortran</category><category>ratfor</category><guid>https://tkurtbond.github.io/posts/2020/12/10/cobol-and-fortran/</guid><pubDate>Thu, 10 Dec 2020 16:06:20 GMT</pubDate></item></channel></rss>
+Example&lt;/a&gt;.&lt;/p&gt;</description><category>chicken scheme</category><category>scheme</category><guid>https://tkurtbond.github.io/posts/2021/06/16/using-getnstr-from-chicken-scheme-ncurses-egg/</guid><pubDate>Wed, 16 Jun 2021 18:57:28 GMT</pubDate></item></channel></rss>

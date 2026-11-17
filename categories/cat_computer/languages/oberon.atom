@@ -3,13 +3,118 @@
 <feed xml:lang="en" xmlns="http://www.w3.org/2005/Atom">
   <title>Lacking Natural Simplicity (Posts about oberon)</title>
   <id>https://tkurtbond.github.io/categories/cat_computer/languages/oberon.atom</id>
-  <updated>2024-01-23T18:49:45Z</updated>
+  <updated>2026-11-17T21:58:25Z</updated>
   <author>
     <name>T. Kurt Bond</name>
   </author>
   <link rel="self" type="application/atom+xml" href="https://tkurtbond.github.io/categories/cat_computer/languages/oberon.atom"/>
   <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/categories/cat_computer/languages/oberon/"/>
   <generator uri="https://getnikola.com/">Nikola</generator>
+  <entry>
+    <title>Announcing Peaseblossom: an Oberon-2 compiler, and libraries and programs for it and for voc</title>
+    <id>https://tkurtbond.github.io/posts/2026/11/17/announcing-peaseblossom-an-oberon-2-compiler-and-libraries-and-programs-for-it-and-for-voc/</id>
+    <updated>2026-11-17T16:48:47-05:00</updated>
+    <published>2026-11-17T16:48:47-05:00</published>
+    <author>
+      <name>T. Kurt Bond</name>
+    </author>
+    <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/posts/2026/11/17/announcing-peaseblossom-an-oberon-2-compiler-and-libraries-and-programs-for-it-and-for-voc/"/>
+    <summary type="html">&lt;p&gt;This software was developed with the aid of AI.&lt;/p&gt;
+&lt;p&gt;I'm announcing a set of Oberon-2 projects: a compiler, libraries, and
+programs built with them. All are on GitHub, and the software is under
+the BSD 3-Clause License.&lt;/p&gt;
+&lt;section id="for-voc-vishap-oberon"&gt;
+&lt;h2&gt;For voc (Vishap Oberon)&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class="reference external" href="https://github.com/tkurtbond/olibfyaml"&gt;olibfyaml&lt;/a&gt;: a binding to &lt;a class="reference external" href="https://github.com/pantoniou/libfyaml"&gt;libfyaml&lt;/a&gt;, the YAML 1.2 parser and
+emitter. It covers parsing, navigation, typed values, building and
+emitting YAML or JSON, anchors, tags and source locations. Errors in
+the input come back as values with &lt;code class="docutils literal"&gt;file:line:column&lt;/code&gt; messages.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/section&gt;
+&lt;section id="for-both-voc-and-poc"&gt;
+&lt;h2&gt;For both voc and poc&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class="reference external" href="https://github.com/tkurtbond/opp"&gt;opp&lt;/a&gt;: the Oberon pretty printer. It reformats modules within a
+maximum line length and keeps every comment. It handles both
+compilers' language extensions. Before writing, it checks that its
+output has exactly the tokens and comments of its input.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class="reference external" href="https://github.com/tkurtbond/oberon-ropes"&gt;Ropes&lt;/a&gt;: ropes, strings represented as trees of pieces, with a
+self-test and a command-line demo.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class="reference external" href="https://github.com/tkurtbond/oberon-argparser"&gt;ArgParser&lt;/a&gt;: command-line parsing: long and short options,
+clustered short options, option values, commands, and usage messages.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/section&gt;
+&lt;section id="peaseblossom"&gt;
+&lt;h2&gt;Peaseblossom&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class="reference external" href="https://github.com/tkurtbond/peaseblossom"&gt;poc&lt;/a&gt;, the Peaseblossom Oberon Compiler: an Oberon-2 compiler with
+an LLVM backend for Linux, FreeBSD, OpenBSD and NetBSD, and a VAX
+backend for VAX/VMS 5.5-2. It was motivated in large part by my wish
+for a more modern language than the limited ones available on the VAX
+system I maintain. A release tarball needs only clang and GNU make,
+or it can be bootstrapped using Vishap Oberon. Packages are available
+for Fedora, Debian, FreeBSD, OpenBSD and NetBSD. It comes with a
+User's Guide and a Reference Guide.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class="reference external" href="https://github.com/tkurtbond/polibfyaml"&gt;polibfyaml&lt;/a&gt;: olibfyaml for poc, with the same API, tests and
+examples.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class="reference external" href="https://github.com/tkurtbond/ova_fmt_po"&gt;ova_fmt_po&lt;/a&gt;, an example program using polibfyaml: it formats
+characters for the OVA tabletop RPG from YAML as reStructuredText,
+gemtext, Markdown and more.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class="reference external" href="https://github.com/tkurtbond/pofltk"&gt;pofltk&lt;/a&gt;: a thick binding to &lt;a class="reference external" href="https://www.fltk.org"&gt;FLTK&lt;/a&gt; 1.4. FLTK's classes are record
+types a program extends, and &lt;code class="docutils literal"&gt;draw()&lt;/code&gt; and &lt;code class="docutils literal"&gt;handle()&lt;/code&gt; are
+type-bound procedures it overrides. Coverage includes widgets, layout
+(flex and grid), menus, dialogs, text editors, browsers, trees,
+tables, images, the clipboard and preferences. &lt;code class="docutils literal"&gt;FlTest&lt;/code&gt; drives a
+program's windows in tests on Xvfb or a headless compositor. Many of
+FLTK's test programs are ported as examples.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class="reference external" href="https://github.com/tkurtbond/ova_cg_po"&gt;ova_cg_po&lt;/a&gt;, an example program using pofltk: a character
+generator for OVA. It's a complete program with a menu bar, tabs,
+grids, file choosers, preferences and window tests. Its &lt;a class="reference external" href="https://github.com/tkurtbond/ova_cg_po/blob/main/doc/pofltk-tour.md"&gt;tour for
+pofltk readers&lt;/a&gt; says where in its code each technique is.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class="reference external" href="https://github.com/tkurtbond/poDateTime"&gt;poDateTime&lt;/a&gt;: dates, times, durations and time zones. It has
+instants, the proleptic Gregorian calendar, clocks, POSIX &lt;code class="docutils literal"&gt;TZ&lt;/code&gt; rules
+and tz database files, ISO 8601, RFC 3339 and &lt;code class="docutils literal"&gt;strftime&lt;/code&gt; formats. It
+runs on the four Unixes and on VAX/VMS.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class="reference external" href="https://github.com/tkurtbond/pounix"&gt;pounix&lt;/a&gt;: Unix services that poc's runtime doesn't provide:
+dropping root for good, file descriptors and directories, running
+child processes with an argument list (no shell), and &lt;code class="docutils literal"&gt;errno&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class="reference external" href="https://github.com/tkurtbond/posockets"&gt;posockets&lt;/a&gt;: TCP (IPv4 and IPv6) and Unix-domain sockets. It works
+with poc's cooperative &lt;code class="docutils literal"&gt;Tasks&lt;/code&gt;, so one thread can serve many
+connections, with deadlines.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class="reference external" href="https://github.com/tkurtbond/polibtls"&gt;polibtls&lt;/a&gt;: a binding to libtls (LibreTLS on Linux, FreeBSD and
+NetBSD; OpenBSD's own). It supports server contexts with several key
+pairs, client certificates, and non-blocking I/O with &lt;code class="docutils literal"&gt;Tasks&lt;/code&gt;. It's
+tested against openssl, gnutls-cli and Go's TLS.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class="reference external" href="https://github.com/tkurtbond/pogemini"&gt;pogemini&lt;/a&gt;: a &lt;a class="reference external" href="https://geminiprotocol.net/"&gt;Gemini&lt;/a&gt; server built on the four libraries above. It
+serves several capsules by host name, each with its own certificate,
+and can require client certificates for parts of a capsule. Every
+connection runs in a task in one thread.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class="reference external" href="https://github.com/tkurtbond/poDB"&gt;poDB&lt;/a&gt;: a database-independent SQL interface, with drivers for
+SQLite and PostgreSQL. A program moves from one to the other by
+changing its connection URL and the driver it imports.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Comments, bug reports and patches are welcome. Many of the poc
+libraries are early in their lives; polibfyaml and pofltk have had the
+most use.&lt;/p&gt;
+&lt;/section&gt;</summary>
+    <category term="computer" label="computer"/>
+    <category term="computer-programming" label="computer programming"/>
+    <category term="fltk" label="FLTK"/>
+    <category term="oberon" label="oberon"/>
+    <category term="oberon-2" label="oberon-2"/>
+    <category term="peaseblossom-oberon" label="peaseblossom oberon"/>
+    <category term="poc" label="poc"/>
+    <category term="vishap-oberon" label="vishap oberon"/>
+    <category term="voc" label="voc"/>
+    <category term="yaml" label="yaml"/>
+  </entry>
   <entry>
     <title>The criticisms of Pascal in “Why Pascal is Not My Favorite Programming Language” applied to Oberon</title>
     <id>https://tkurtbond.github.io/posts/2022/06/05/the-criticisms-of-pascal-in-why-pascal-is-not-my-favorite-programming-language-applied-to-oberon/</id>

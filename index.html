@@ -10,7 +10,7 @@
 <link rel="alternate" type="application/atom+xml" title="Atom" href="feed.atom">
 <link rel="canonical" href="https://tkurtbond.github.io/">
 <link rel="next" href="index-96.html" type="text/html">
-<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/2026/08/07/mini-six-odds-of-hitting-a-target-number-colorized/" type="text/html">
+<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/2026/11/17/announcing-peaseblossom-an-oberon-2-compiler-and-libraries-and-programs-for-it-and-for-voc/" type="text/html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Crimson+Text&amp;family=Lato&amp;family=IBM+Plex+Mono" rel="stylesheet">
@@ -55,7 +55,109 @@
         <div class="row">
             <div class="col-sm-8 blog-main">
 <div class="postindex">
-    <article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2026/08/07/mini-six-odds-of-hitting-a-target-number-colorized/" class="u-url">Mini Six - Odds of Hitting a Target Number (colorized)</a></h2>
+    <article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2026/11/17/announcing-peaseblossom-an-oberon-2-compiler-and-libraries-and-programs-for-it-and-for-voc/" class="u-url">Announcing Peaseblossom: an Oberon-2 compiler, and libraries and programs for it and for voc</a></h2>
+        <div class="metadata blog-post-meta">
+            <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
+            <p class="dateline"><a href="posts/2026/11/17/announcing-peaseblossom-an-oberon-2-compiler-and-libraries-and-programs-for-it-and-for-voc/" rel="bookmark"><time class="published dt-published" datetime="2026-11-17T16:48:47-05:00" title="2026-11-17 16:48">2026-11-17 16:48</time></a></p>
+                <p class="commentline">        <a href="posts/2026/11/17/announcing-peaseblossom-an-oberon-2-compiler-and-libraries-and-programs-for-it-and-for-voc/#disqus_thread" data-disqus-identifier="cache/posts/2026/11/17/announcing-peaseblossom-an-oberon-2-compiler-and-libraries-and-programs-for-it-and-for-voc.html">Comments</a>
+
+
+        </p>
+</div>
+    </header><div class="e-content entry-content">
+    <p>This software was developed with the aid of AI.</p>
+<p>I'm announcing a set of Oberon-2 projects: a compiler, libraries, and
+programs built with them. All are on GitHub, and the software is under
+the BSD 3-Clause License.</p>
+<section id="for-voc-vishap-oberon"><h2>For voc (Vishap Oberon)</h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/tkurtbond/olibfyaml">olibfyaml</a>: a binding to <a class="reference external" href="https://github.com/pantoniou/libfyaml">libfyaml</a>, the YAML 1.2 parser and
+emitter. It covers parsing, navigation, typed values, building and
+emitting YAML or JSON, anchors, tags and source locations. Errors in
+the input come back as values with <code class="docutils literal">file:line:column</code> messages.</p></li>
+</ul></section><section id="for-both-voc-and-poc"><h2>For both voc and poc</h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/tkurtbond/opp">opp</a>: the Oberon pretty printer. It reformats modules within a
+maximum line length and keeps every comment. It handles both
+compilers' language extensions. Before writing, it checks that its
+output has exactly the tokens and comments of its input.</p></li>
+<li><p><a class="reference external" href="https://github.com/tkurtbond/oberon-ropes">Ropes</a>: ropes, strings represented as trees of pieces, with a
+self-test and a command-line demo.</p></li>
+<li><p><a class="reference external" href="https://github.com/tkurtbond/oberon-argparser">ArgParser</a>: command-line parsing: long and short options,
+clustered short options, option values, commands, and usage messages.</p></li>
+</ul></section><section id="peaseblossom"><h2>Peaseblossom</h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/tkurtbond/peaseblossom">poc</a>, the Peaseblossom Oberon Compiler: an Oberon-2 compiler with
+an LLVM backend for Linux, FreeBSD, OpenBSD and NetBSD, and a VAX
+backend for VAX/VMS 5.5-2. It was motivated in large part by my wish
+for a more modern language than the limited ones available on the VAX
+system I maintain. A release tarball needs only clang and GNU make,
+or it can be bootstrapped using Vishap Oberon. Packages are available
+for Fedora, Debian, FreeBSD, OpenBSD and NetBSD. It comes with a
+User's Guide and a Reference Guide.</p></li>
+<li>
+<p><a class="reference external" href="https://github.com/tkurtbond/polibfyaml">polibfyaml</a>: olibfyaml for poc, with the same API, tests and
+examples.</p>
+<ul>
+<li><p><a class="reference external" href="https://github.com/tkurtbond/ova_fmt_po">ova_fmt_po</a>, an example program using polibfyaml: it formats
+characters for the OVA tabletop RPG from YAML as reStructuredText,
+gemtext, Markdown and more.</p></li>
+</ul>
+</li>
+<li>
+<p><a class="reference external" href="https://github.com/tkurtbond/pofltk">pofltk</a>: a thick binding to <a class="reference external" href="https://www.fltk.org">FLTK</a> 1.4. FLTK's classes are record
+types a program extends, and <code class="docutils literal">draw()</code> and <code class="docutils literal">handle()</code> are
+type-bound procedures it overrides. Coverage includes widgets, layout
+(flex and grid), menus, dialogs, text editors, browsers, trees,
+tables, images, the clipboard and preferences. <code class="docutils literal">FlTest</code> drives a
+program's windows in tests on Xvfb or a headless compositor. Many of
+FLTK's test programs are ported as examples.</p>
+<ul>
+<li><p><a class="reference external" href="https://github.com/tkurtbond/ova_cg_po">ova_cg_po</a>, an example program using pofltk: a character
+generator for OVA. It's a complete program with a menu bar, tabs,
+grids, file choosers, preferences and window tests. Its <a class="reference external" href="https://github.com/tkurtbond/ova_cg_po/blob/main/doc/pofltk-tour.md">tour for
+pofltk readers</a> says where in its code each technique is.</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://github.com/tkurtbond/poDateTime">poDateTime</a>: dates, times, durations and time zones. It has
+instants, the proleptic Gregorian calendar, clocks, POSIX <code class="docutils literal">TZ</code> rules
+and tz database files, ISO 8601, RFC 3339 and <code class="docutils literal">strftime</code> formats. It
+runs on the four Unixes and on VAX/VMS.</p></li>
+<li><p><a class="reference external" href="https://github.com/tkurtbond/pounix">pounix</a>: Unix services that poc's runtime doesn't provide:
+dropping root for good, file descriptors and directories, running
+child processes with an argument list (no shell), and <code class="docutils literal">errno</code>.</p></li>
+<li><p><a class="reference external" href="https://github.com/tkurtbond/posockets">posockets</a>: TCP (IPv4 and IPv6) and Unix-domain sockets. It works
+with poc's cooperative <code class="docutils literal">Tasks</code>, so one thread can serve many
+connections, with deadlines.</p></li>
+<li><p><a class="reference external" href="https://github.com/tkurtbond/polibtls">polibtls</a>: a binding to libtls (LibreTLS on Linux, FreeBSD and
+NetBSD; OpenBSD's own). It supports server contexts with several key
+pairs, client certificates, and non-blocking I/O with <code class="docutils literal">Tasks</code>. It's
+tested against openssl, gnutls-cli and Go's TLS.</p></li>
+<li><p><a class="reference external" href="https://github.com/tkurtbond/pogemini">pogemini</a>: a <a class="reference external" href="https://geminiprotocol.net/">Gemini</a> server built on the four libraries above. It
+serves several capsules by host name, each with its own certificate,
+and can require client certificates for parts of a capsule. Every
+connection runs in a task in one thread.</p></li>
+<li><p><a class="reference external" href="https://github.com/tkurtbond/poDB">poDB</a>: a database-independent SQL interface, with drivers for
+SQLite and PostgreSQL. A program moves from one to the other by
+changing its connection URL and the driver it imports.</p></li>
+</ul>
+<p>Comments, bug reports and patches are welcome. Many of the poc
+libraries are early in their lives; polibfyaml and pofltk have had the
+most use.</p>
+</section><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="categories/computer/" rel="tag">computer</a></li>
+            <li><a class="tag p-category" href="categories/computer-programming/" rel="tag">computer programming</a></li>
+            <li><a class="tag p-category" href="categories/fltk/" rel="tag">FLTK</a></li>
+            <li><a class="tag p-category" href="categories/oberon/" rel="tag">oberon</a></li>
+            <li><a class="tag p-category" href="categories/oberon-2/" rel="tag">oberon-2</a></li>
+            <li><a class="tag p-category" href="categories/peaseblossom-oberon/" rel="tag">peaseblossom oberon</a></li>
+            <li><a class="tag p-category" href="categories/poc/" rel="tag">poc</a></li>
+            <li><a class="tag p-category" href="categories/vishap-oberon/" rel="tag">vishap oberon</a></li>
+            <li><a class="tag p-category" href="categories/voc/" rel="tag">voc</a></li>
+            <li><a class="tag p-category" href="categories/yaml/" rel="tag">yaml</a></li>
+        </ul></nav>
+</div>
+    </article><article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2026/08/07/mini-six-odds-of-hitting-a-target-number-colorized/" class="u-url">Mini Six - Odds of Hitting a Target Number (colorized)</a></h2>
         <div class="metadata blog-post-meta">
             <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
             <p class="dateline"><a href="posts/2026/08/07/mini-six-odds-of-hitting-a-target-number-colorized/" rel="bookmark"><time class="published dt-published" datetime="2026-08-07T11:06:37-04:00" title="2026-08-07 11:06">2026-08-07 11:06</time></a></p>
@@ -1329,88 +1431,6 @@ End: -->
             <li><a class="tag p-category" href="categories/vax/" rel="tag">vax</a></li>
             <li><a class="tag p-category" href="categories/vms/" rel="tag">vms</a></li>
             <li><a class="tag p-category" href="categories/vos/" rel="tag">vos</a></li>
-        </ul></nav>
-</div>
-    </article><article class="blog-post h-entry post-text"><header><h2 class="p-name entry-title blog-post-title"><a href="posts/2024/01/21/fantastic-medieval-campaigns/" class="u-url">Fantastic Medieval Campaigns</a></h2>
-        <div class="metadata blog-post-meta">
-            <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
-            <p class="dateline"><a href="posts/2024/01/21/fantastic-medieval-campaigns/" rel="bookmark"><time class="published dt-published" datetime="2024-01-21T23:13:27-05:00" title="2024-01-21 23:13">2024-01-21 23:13</time></a></p>
-                <p class="commentline">        <a href="posts/2024/01/21/fantastic-medieval-campaigns/#disqus_thread" data-disqus-identifier="cache/posts/2024/01/21/fantastic-medieval-campaigns.html">Comments</a>
-
-
-        </p>
-</div>
-    </header><div class="e-content entry-content">
-    <p><a class="reference external" href="https://traversefantasy.itch.io/fmc">Fantastic Medieval Campaigns</a> (FMC) by Marcia B. is a great
-retroclone and restatement of Original D&amp;D: it's clearly written, well
-organized, contains a table of contents for the book and then a table
-of contents in each section, has a glossary and indices for monsters,
-spells, and tables, and uses the color backgrounds of the pages well
-to make finding the different sections easy.  The art is charming and
-appropriate for a OD&amp;D retroclone, and the layout is clean.  It
-includes a retroclone of Chainmail, which is rare.  I like it very
-much.  And the PDF is free!  I got the hardback color book and read it
-and want to run at least two campaigns with it, the first using its
-Chainmail retroclone, “Chain of Command”, and the next with the d20
-based combat system.</p>
-<p>But, but, but!  The back cover text says “problematize our
-preconceptions of a text (or even a whole genre)” and mentions
-“falsehood”.  And the contents of the last page of the text,
-which is labeled “This Page Intentionally Left Blank.”, are certainly
-not blank, and expresses opinions of D&amp;D that must surely
-offend many D&amp;D players.  I'll quote it here:</p>
-<blockquote>
-<p>Fantastic Medieval Campaigns is a recreation of what is at best a
-deeply reactionary work of art—if not a fascist one altogether.
-We recognize now that the authors, as well as some who were in
-their circle, thought quite badly of women, indigenous people, and
-others.  However, we should let the text speak for itself because
-it speaks loudly.  The book is a guide to fantastic war game
-campaigns, where the players take on the roles of
-sword-and-sorcery adventurers seeking greatness.  They will begin
-in the Underworld simply slaying monsters and retrieving treasure
-in the form of gold, legal tender ready to be exchanged on the
-open market.  As characters accumulate treasure, they acquire
-superhuman abilities and political power to boot.  Heroes,
-Thaumaturgists, and Bishops emerge from their colonial katabasis
-conquering land by which to become Lords, Wizards, and Patriarchs.
-They will establish sanctuaries and, with their vast armies, turn
-the tide against the forces of evil chaos they have always
-‘resisted' thus far.  The setting in general is one where might
-makes right, where the violent extraction of resources is central
-to the protagonists activity, and where participation in these
-things is rewarded with not only political power bu the sort of
-physiological and supernatural power which colonizers and fascists
-imagined themselves to have.  It is a mirror to the desires and
-fantasies of its original authors, a bunch of white, straight,
-cissexual men in the Midwest, just as it is a reflection of boys'
-pulp literature at the height of American culture about crushing
-one's enemies and driving them before oneself and hearing the
-lamentations of their women.  All in all, this work was not
-written in a vacuum nor did it spring fully formed from the heads
-of its creators.  You can use this book however you like or even
-attempt to play it with the mindset of a midcentury American  man,
-but do not delude yourself with regards to its content or to the
-fantasy which it encodes.  That being said, as the author, I offer
-up this work for analysis, critique, and reflection.</p>
-</blockquote>
-<p>Well, that certainly put the coyote in the chicken house!  It is
-definitely controversial in OSR circles.  Honestly, though, I'm not
-sure <em>that</em> furor was worth following.</p>
-<p>I just want to point out that, whatever the author's opinions of D&amp;D,
-they wrote FMC so they could more easily understand the rules, so
-they could better play D&amp;D with their friends, and according to a
-<a class="reference external" href="https://www.paperspencils.com/fantastic-medieval-campaigns/">friend of theirs</a> they spent over a year working on it.</p>
-<p>Regardless of whether I agree with their views or not, FMC is a well
-written game and its author should be proud of it.  It can be used to
-run some great games.  If you don't agree with the author's views, just
-ignore them and <strong>play the game</strong>.</p>
-    <nav><ul itemprop="keywords" class="tags">
-<li><a class="tag p-category" href="categories/controversy/" rel="tag">controversy</a></li>
-            <li><a class="tag p-category" href="categories/dnd/" rel="tag">dnd</a></li>
-            <li><a class="tag p-category" href="categories/fantastic-medieval-campaigns/" rel="tag">fantastic medieval campaigns</a></li>
-            <li><a class="tag p-category" href="categories/fmc/" rel="tag">fmc</a></li>
-            <li><a class="tag p-category" href="categories/odnd/" rel="tag">odnd</a></li>
         </ul></nav>
 </div>
     </article>
