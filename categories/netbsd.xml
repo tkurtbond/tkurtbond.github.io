@@ -1,5 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity (Posts about netbsd)</title><link>https://tkurtbond.github.io/</link><description></description><atom:link href="https://tkurtbond.github.io/categories/netbsd.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2024 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Tue, 23 Jan 2024 18:49:38 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>NetBSD: pkg_add: Error: package `emacs-24.0.50.20110821' was built with a newer pkg_install version</title><link>https://tkurtbond.github.io/posts/2012/05/17/netbsd-pkgadd-error-package-pkgname-was-built-with-a-newer-pkginstall-version/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;p&gt;I did a fresh install of NetBSD 5.1.2 and tried to install emacs:&lt;/p&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lacking Natural Simplicity (Posts about netbsd)</title><link>https://tkurtbond.github.io/</link><description></description><atom:link href="https://tkurtbond.github.io/categories/netbsd.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2026 &lt;a href="mailto:tkurtbond@gmail.com"&gt;T. Kurt Bond&lt;/a&gt; </copyright><lastBuildDate>Tue, 17 Nov 2026 23:13:59 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Announcing oo2c 2.2.4: a revived fork of the Optimizing Oberon-2 Compiler</title><link>https://tkurtbond.github.io/posts/2026/11/17/announcing-oo2c-224-a-revived-fork-of-the-optimizing-oberon-2-compiler/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;p&gt;This software was developed with the aid of AI.&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://github.com/tkurtbond/oo2c"&gt;oo2c&lt;/a&gt; is the Optimizing Oberon-2 Compiler from the OOC project: an
+Oberon-2 to C translator with an optimizer built on GSA (guarded
+single-assignment form), a large standard library, and tools such as
+the &lt;code class="docutils literal"&gt;oocdoc&lt;/code&gt; documentation generator. Its development stopped with
+release 2.1.11 in 2011, and that release no longer builds on current
+systems.&lt;/p&gt;
+&lt;p&gt;My fork brings it back. Version 2.2.4 builds, runs and passes its tests
+on:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;p&gt;Linux with current gcc and Boehm gc: Fedora 44 and 45 and Ubuntu
+26.04, on x86-64, aarch64 and i386;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;FreeBSD 15.1 (x86-64 and aarch64);&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;OpenBSD 7.9 and NetBSD 11.0, both 64-bit (amd64) and 32-bit (i386),
+and NetBSD 11.1.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;GitHub's CI builds, self-hosts and tests it on Linux and in FreeBSD,
+OpenBSD and NetBSD virtual machines. A release tarball bootstraps with
+no oo2c installed: &lt;code class="docutils literal"&gt;./configure &amp;amp;&amp;amp; make &amp;amp;&amp;amp; make install&lt;/code&gt;. There is
+&lt;code class="docutils literal"&gt;oo2c_64&lt;/code&gt; for 64-bit systems and &lt;code class="docutils literal"&gt;oo2c_32&lt;/code&gt; for 32-bit ones, signed,
+with SHA-256 sums.&lt;/p&gt;
+&lt;section id="what-changed-since-2-1-11"&gt;
+&lt;h2&gt;What changed since 2.1.11&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;The language.&lt;/strong&gt; Using a nested procedure as a procedure value is
+now an error, as the Oberon-2 report requires; the generated C would
+have needed an executable stack. Programs that did this must be
+changed. A &lt;code class="docutils literal"&gt;POINTER [CSTRING] TO ARRAY OF CHAR&lt;/code&gt; no longer allows
+&lt;code class="docutils literal"&gt;LEN(p^)&lt;/code&gt;, which read memory before the string.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;The generated C&lt;/strong&gt; compiles with gcc 16 with no warnings, and the
+compiler and library build with no warnings.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Checking.&lt;/strong&gt; &lt;code class="docutils literal"&gt;make &lt;span class="pre"&gt;test-valgrind&lt;/span&gt;&lt;/code&gt; and &lt;code class="docutils literal"&gt;make &lt;span class="pre"&gt;test-asan&lt;/span&gt;&lt;/code&gt; run the
+test programs under valgrind, and under AddressSanitizer and
+UndefinedBehaviorSanitizer. Undefined behaviour they found in
+&lt;code class="docutils literal"&gt;ASH&lt;/code&gt;, &lt;code class="docutils literal"&gt;SYSTEM.ROT&lt;/code&gt;, empty open arrays and the hash functions is
+fixed.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Threads&lt;/strong&gt; (&lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;--enable-threads=pthreads&lt;/span&gt;&lt;/code&gt;) work on Linux and the
+three BSDs.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;The build&lt;/strong&gt; works with autoconf 2.72 and libtool 2.5, and &lt;code class="docutils literal"&gt;make
+dist&lt;/code&gt; and &lt;code class="docutils literal"&gt;make dist32&lt;/code&gt; work again.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://github.com/tkurtbond/oo2c/blob/master/NEWS"&gt;NEWS&lt;/a&gt; lists every change, release by release, and &lt;a class="reference external" href="https://github.com/tkurtbond/oo2c/blob/master/INSTALL"&gt;INSTALL&lt;/a&gt; the
+packages and &lt;code class="docutils literal"&gt;configure&lt;/code&gt; settings for each system.&lt;/p&gt;
+&lt;p&gt;oo2c is licensed as upstream: the compiler under the GNU GPL version 2,
+the library under the GNU LGPL.&lt;/p&gt;
+&lt;p&gt;oo2c sits beside my own Oberon-2 compiler, &lt;a class="reference external" href="https://github.com/tkurtbond/peaseblossom"&gt;Peaseblossom&lt;/a&gt;, which I
+announced earlier today.&lt;/p&gt;
+&lt;p&gt;Releases, bug reports and the source are on &lt;a class="reference external" href="https://github.com/tkurtbond/oo2c/releases"&gt;GitHub&lt;/a&gt;. Comments, bug
+reports and patches are welcome.&lt;/p&gt;
+&lt;/section&gt;</description><category>32 bit</category><category>64 bit</category><category>fedora</category><category>fork</category><category>freebsd</category><category>linux</category><category>netbsd</category><category>oberon</category><category>oberon-2</category><category>oo2c</category><category>openbsd</category><category>ubuntu</category><guid>https://tkurtbond.github.io/posts/2026/11/17/announcing-oo2c-224-a-revived-fork-of-the-optimizing-oberon-2-compiler/</guid><pubDate>Tue, 17 Nov 2026 23:11:11 GMT</pubDate></item><item><title>NetBSD: pkg_add: Error: package `emacs-24.0.50.20110821' was built with a newer pkg_install version</title><link>https://tkurtbond.github.io/posts/2012/05/17/netbsd-pkgadd-error-package-pkgname-was-built-with-a-newer-pkginstall-version/</link><dc:creator>T. Kurt Bond</dc:creator><description>&lt;p&gt;I did a fresh install of NetBSD 5.1.2 and tried to install emacs:&lt;/p&gt;
 &lt;pre class="literal-block"&gt;# pkg_add emacs
 pkg_add: Error: package `emacs-24.0.50.20110821' was built with a newer pkg_install version
 pkg_add: 1 package addition failed&lt;/pre&gt;

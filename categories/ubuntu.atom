@@ -3,13 +3,85 @@
 <feed xml:lang="en" xmlns="http://www.w3.org/2005/Atom">
   <title>Lacking Natural Simplicity (Posts about ubuntu)</title>
   <id>https://tkurtbond.github.io/categories/ubuntu.atom</id>
-  <updated>2024-01-23T18:49:42Z</updated>
+  <updated>2026-11-17T23:13:59Z</updated>
   <author>
     <name>T. Kurt Bond</name>
   </author>
   <link rel="self" type="application/atom+xml" href="https://tkurtbond.github.io/categories/ubuntu.atom"/>
   <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/categories/ubuntu/"/>
   <generator uri="https://getnikola.com/">Nikola</generator>
+  <entry>
+    <title>Announcing oo2c 2.2.4: a revived fork of the Optimizing Oberon-2 Compiler</title>
+    <id>https://tkurtbond.github.io/posts/2026/11/17/announcing-oo2c-224-a-revived-fork-of-the-optimizing-oberon-2-compiler/</id>
+    <updated>2026-11-17T18:11:11-05:00</updated>
+    <published>2026-11-17T18:11:11-05:00</published>
+    <author>
+      <name>T. Kurt Bond</name>
+    </author>
+    <link rel="alternate" type="text/html" href="https://tkurtbond.github.io/posts/2026/11/17/announcing-oo2c-224-a-revived-fork-of-the-optimizing-oberon-2-compiler/"/>
+    <summary type="html">&lt;p&gt;This software was developed with the aid of AI.&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://github.com/tkurtbond/oo2c"&gt;oo2c&lt;/a&gt; is the Optimizing Oberon-2 Compiler from the OOC project: an
+Oberon-2 to C translator with an optimizer built on GSA (guarded
+single-assignment form), a large standard library, and tools such as
+the &lt;code class="docutils literal"&gt;oocdoc&lt;/code&gt; documentation generator. Its development stopped with
+release 2.1.11 in 2011, and that release no longer builds on current
+systems.&lt;/p&gt;
+&lt;p&gt;My fork brings it back. Version 2.2.4 builds, runs and passes its tests
+on:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;p&gt;Linux with current gcc and Boehm gc: Fedora 44 and 45 and Ubuntu
+26.04, on x86-64, aarch64 and i386;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;FreeBSD 15.1 (x86-64 and aarch64);&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;OpenBSD 7.9 and NetBSD 11.0, both 64-bit (amd64) and 32-bit (i386),
+and NetBSD 11.1.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;GitHub's CI builds, self-hosts and tests it on Linux and in FreeBSD,
+OpenBSD and NetBSD virtual machines. A release tarball bootstraps with
+no oo2c installed: &lt;code class="docutils literal"&gt;./configure &amp;amp;&amp;amp; make &amp;amp;&amp;amp; make install&lt;/code&gt;. There is
+&lt;code class="docutils literal"&gt;oo2c_64&lt;/code&gt; for 64-bit systems and &lt;code class="docutils literal"&gt;oo2c_32&lt;/code&gt; for 32-bit ones, signed,
+with SHA-256 sums.&lt;/p&gt;
+&lt;section id="what-changed-since-2-1-11"&gt;
+&lt;h2&gt;What changed since 2.1.11&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;The language.&lt;/strong&gt; Using a nested procedure as a procedure value is
+now an error, as the Oberon-2 report requires; the generated C would
+have needed an executable stack. Programs that did this must be
+changed. A &lt;code class="docutils literal"&gt;POINTER [CSTRING] TO ARRAY OF CHAR&lt;/code&gt; no longer allows
+&lt;code class="docutils literal"&gt;LEN(p^)&lt;/code&gt;, which read memory before the string.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;The generated C&lt;/strong&gt; compiles with gcc 16 with no warnings, and the
+compiler and library build with no warnings.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Checking.&lt;/strong&gt; &lt;code class="docutils literal"&gt;make &lt;span class="pre"&gt;test-valgrind&lt;/span&gt;&lt;/code&gt; and &lt;code class="docutils literal"&gt;make &lt;span class="pre"&gt;test-asan&lt;/span&gt;&lt;/code&gt; run the
+test programs under valgrind, and under AddressSanitizer and
+UndefinedBehaviorSanitizer. Undefined behaviour they found in
+&lt;code class="docutils literal"&gt;ASH&lt;/code&gt;, &lt;code class="docutils literal"&gt;SYSTEM.ROT&lt;/code&gt;, empty open arrays and the hash functions is
+fixed.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Threads&lt;/strong&gt; (&lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;--enable-threads=pthreads&lt;/span&gt;&lt;/code&gt;) work on Linux and the
+three BSDs.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;The build&lt;/strong&gt; works with autoconf 2.72 and libtool 2.5, and &lt;code class="docutils literal"&gt;make
+dist&lt;/code&gt; and &lt;code class="docutils literal"&gt;make dist32&lt;/code&gt; work again.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://github.com/tkurtbond/oo2c/blob/master/NEWS"&gt;NEWS&lt;/a&gt; lists every change, release by release, and &lt;a class="reference external" href="https://github.com/tkurtbond/oo2c/blob/master/INSTALL"&gt;INSTALL&lt;/a&gt; the
+packages and &lt;code class="docutils literal"&gt;configure&lt;/code&gt; settings for each system.&lt;/p&gt;
+&lt;p&gt;oo2c is licensed as upstream: the compiler under the GNU GPL version 2,
+the library under the GNU LGPL.&lt;/p&gt;
+&lt;p&gt;oo2c sits beside my own Oberon-2 compiler, &lt;a class="reference external" href="https://github.com/tkurtbond/peaseblossom"&gt;Peaseblossom&lt;/a&gt;, which I
+announced earlier today.&lt;/p&gt;
+&lt;p&gt;Releases, bug reports and the source are on &lt;a class="reference external" href="https://github.com/tkurtbond/oo2c/releases"&gt;GitHub&lt;/a&gt;. Comments, bug
+reports and patches are welcome.&lt;/p&gt;
+&lt;/section&gt;</summary>
+    <category term="32-bit" label="32 bit"/>
+    <category term="64-bit" label="64 bit"/>
+    <category term="fedora" label="fedora"/>
+    <category term="fork" label="fork"/>
+    <category term="freebsd" label="freebsd"/>
+    <category term="linux" label="linux"/>
+    <category term="netbsd" label="netbsd"/>
+    <category term="oberon" label="oberon"/>
+    <category term="oberon-2" label="oberon-2"/>
+    <category term="oo2c" label="oo2c"/>
+    <category term="openbsd" label="openbsd"/>
+    <category term="ubuntu" label="ubuntu"/>
+  </entry>
   <entry>
     <title>Why is /etc/X11/rgb.txt missing on Ubuntu?</title>
     <id>https://tkurtbond.github.io/posts/2009/09/09/why-is-etcx11rgbtxt-missing-on-ubuntu/</id>

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Announcing oo2c 2.2.4: a revived fork of the Optimizing Oberon-2 Compiler | Lacking Natural Simplicity</title>
+<link href="../../../../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../../../../rss.xml">
+<link rel="alternate" type="application/atom+xml" title="Atom" href="../../../../../feed.atom">
+<link rel="canonical" href="https://tkurtbond.github.io/posts/2026/11/17/announcing-oo2c-224-a-revived-fork-of-the-optimizing-oberon-2-compiler/">
+<!--[if lt IE 9]><script src="../../../../../assets/js/html5.js"></script><![endif]--><meta name="author" content="T. Kurt Bond">
+<link rel="prev" href="../announcing-peaseblossom-an-oberon-2-compiler-and-libraries-and-programs-for-it-and-for-voc/" title="Announcing Peaseblossom: an Oberon-2 compiler, and libraries and programs for it and for voc" type="text/html">
+<meta property="og:site_name" content="Lacking Natural Simplicity">
+<meta property="og:title" content="Announcing oo2c 2.2.4: a revived fork of the Optimizing Oberon-2 Compi">
+<meta property="og:url" content="https://tkurtbond.github.io/posts/2026/11/17/announcing-oo2c-224-a-revived-fork-of-the-optimizing-oberon-2-compiler/">
+<meta property="og:description" content="This software was developed with the aid of AI.
+oo2c is the Optimizing Oberon-2 Compiler from the OOC project: an
+Oberon-2 to C translator with an optimizer built on GSA (guarded
+single-assignment for">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-11-17T18:11:11-05:00">
+<meta property="article:tag" content="32 bit">
+<meta property="article:tag" content="64 bit">
+<meta property="article:tag" content="fedora">
+<meta property="article:tag" content="fork">
+<meta property="article:tag" content="freebsd">
+<meta property="article:tag" content="linux">
+<meta property="article:tag" content="netbsd">
+<meta property="article:tag" content="oberon">
+<meta property="article:tag" content="oberon-2">
+<meta property="article:tag" content="oo2c">
+<meta property="article:tag" content="openbsd">
+<meta property="article:tag" content="ubuntu">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Text&amp;family=Lato&amp;family=IBM+Plex+Mono" rel="stylesheet">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<div class="blog-masthead">
+    <div class="container">
+<!-- This keeps the margins nice -->
+        <nav class="blog-nav" role="navigation"><a href="../../../../../index.html" class="blog-nav-item">Home</a>
+            <a href="../../../../../archive.html" class="blog-nav-item">Archives</a>
+            <a href="../../../../../categories/index.html" class="blog-nav-item">Tags &amp; Categories</a>
+            <a href="../../../../../rss.xml" class="blog-nav-item">RSS feed</a>
+            <a href="../../../../../feed.atom" class="blog-nav-item">Atom feed</a>
+
+            
+
+    <a href="index.rst" class="blog-nav-item blog-nav-item-aside" id="sourcelink">Source</a>
+                
+            
+        </nav>
+</div>
+<!-- /.container -->
+</div>
+<!-- End of Menubar -->
+
+<div class="container" id="content" role="main">
+    <div class="body-content">
+        <div class="blog-header">
+            <h1 class="blog-title">
+                <a href="https://tkurtbond.github.io/">
+
+                    <span id="blog-title">Lacking Natural Simplicity</span>
+                </a>
+            </h1>
+            <p class="lead blog-description">Random musings on books, code, and tabletop games.</p>
+            
+        </div>
+        <!--Body content-->
+        <div class="row">
+            <div class="col-sm-8 blog-main">
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h2 class="p-name entry-title blog-post-title" itemprop="headline name"><a href="." class="u-url">Announcing oo2c 2.2.4: a revived fork of the Optimizing Oberon-2 Compiler</a></h2>
+
+        <div class="metadata blog-post-meta">
+            <p class="byline author vcard"><span class="byline-name fn">T. Kurt Bond</span></p>
+            <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2026-11-17T18:11:11-05:00" itemprop="datePublished" title="2026-11-17 18:11">2026-11-17 18:11</time></a></p>
+                <p class="commentline">        <a href="#disqus_thread" data-disqus-identifier="cache/posts/2026/11/17/announcing-oo2c-224-a-revived-fork-of-the-optimizing-oberon-2-compiler.html">Comments</a>
+
+
+                    </p>
+<p class="sourceline"><a href="index.rst" id="sourcelink">Source</a></p>
+
+        </div>
+        
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <p>This software was developed with the aid of AI.</p>
+<p><a class="reference external" href="https://github.com/tkurtbond/oo2c">oo2c</a> is the Optimizing Oberon-2 Compiler from the OOC project: an
+Oberon-2 to C translator with an optimizer built on GSA (guarded
+single-assignment form), a large standard library, and tools such as
+the <code class="docutils literal">oocdoc</code> documentation generator. Its development stopped with
+release 2.1.11 in 2011, and that release no longer builds on current
+systems.</p>
+<p>My fork brings it back. Version 2.2.4 builds, runs and passes its tests
+on:</p>
+<ul class="simple">
+<li><p>Linux with current gcc and Boehm gc: Fedora 44 and 45 and Ubuntu
+26.04, on x86-64, aarch64 and i386;</p></li>
+<li><p>FreeBSD 15.1 (x86-64 and aarch64);</p></li>
+<li><p>OpenBSD 7.9 and NetBSD 11.0, both 64-bit (amd64) and 32-bit (i386),
+and NetBSD 11.1.</p></li>
+</ul>
+<p>GitHub's CI builds, self-hosts and tests it on Linux and in FreeBSD,
+OpenBSD and NetBSD virtual machines. A release tarball bootstraps with
+no oo2c installed: <code class="docutils literal">./configure &amp;&amp; make &amp;&amp; make install</code>. There is
+<code class="docutils literal">oo2c_64</code> for 64-bit systems and <code class="docutils literal">oo2c_32</code> for 32-bit ones, signed,
+with SHA-256 sums.</p>
+<section id="what-changed-since-2-1-11"><h2>What changed since 2.1.11</h2>
+<ul class="simple">
+<li><p><strong>The language.</strong> Using a nested procedure as a procedure value is
+now an error, as the Oberon-2 report requires; the generated C would
+have needed an executable stack. Programs that did this must be
+changed. A <code class="docutils literal">POINTER [CSTRING] TO ARRAY OF CHAR</code> no longer allows
+<code class="docutils literal">LEN(p^)</code>, which read memory before the string.</p></li>
+<li><p><strong>The generated C</strong> compiles with gcc 16 with no warnings, and the
+compiler and library build with no warnings.</p></li>
+<li><p><strong>Checking.</strong> <code class="docutils literal">make <span class="pre">test-valgrind</span></code> and <code class="docutils literal">make <span class="pre">test-asan</span></code> run the
+test programs under valgrind, and under AddressSanitizer and
+UndefinedBehaviorSanitizer. Undefined behaviour they found in
+<code class="docutils literal">ASH</code>, <code class="docutils literal">SYSTEM.ROT</code>, empty open arrays and the hash functions is
+fixed.</p></li>
+<li><p><strong>Threads</strong> (<code class="docutils literal"><span class="pre">--enable-threads=pthreads</span></code>) work on Linux and the
+three BSDs.</p></li>
+<li><p><strong>The build</strong> works with autoconf 2.72 and libtool 2.5, and <code class="docutils literal">make
+dist</code> and <code class="docutils literal">make dist32</code> work again.</p></li>
+</ul>
+<p><a class="reference external" href="https://github.com/tkurtbond/oo2c/blob/master/NEWS">NEWS</a> lists every change, release by release, and <a class="reference external" href="https://github.com/tkurtbond/oo2c/blob/master/INSTALL">INSTALL</a> the
+packages and <code class="docutils literal">configure</code> settings for each system.</p>
+<p>oo2c is licensed as upstream: the compiler under the GNU GPL version 2,
+the library under the GNU LGPL.</p>
+<p>oo2c sits beside my own Oberon-2 compiler, <a class="reference external" href="https://github.com/tkurtbond/peaseblossom">Peaseblossom</a>, which I
+announced earlier today.</p>
+<p>Releases, bug reports and the source are on <a class="reference external" href="https://github.com/tkurtbond/oo2c/releases">GitHub</a>. Comments, bug
+reports and patches are welcome.</p>
+</section>
+</div>
+    <script>var pfHeaderImgUrl = '';var pfHeaderTagline = '';var pfdisableClickToDel = 0;var pfHideImages = 0;var pfImageDisplayStyle = 'right';var pfDisablePDF = 0;var pfDisableEmail = 0;var pfDisablePrint = 0;var pfCustomCSS = '';var pfBtVersion='2';(function(){var js,pf;pf=document.createElement('script');pf.type='text/javascript';pf.src='//cdn.printfriendly.com/printfriendly.js';document.getElementsByTagName('head')[0].appendChild(pf)})();</script><a href="https://www.printfriendly.com" style="color:#6D9F00;text-decoration:none;" class="printfriendly" onclick="window.print();return false;" title="Printer Friendly and PDF"><img style="border:none;-webkit-box-shadow:none;box-shadow:none;" src="//cdn.printfriendly.com/buttons/printfriendly-pdf-button.png" alt="Print Friendly and PDF"></a>    
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../../../../../categories/32-bit/" rel="tag">32 bit</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/64-bit/" rel="tag">64 bit</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/fedora/" rel="tag">fedora</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/fork/" rel="tag">fork</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/freebsd/" rel="tag">freebsd</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/linux/" rel="tag">linux</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/netbsd/" rel="tag">netbsd</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/oberon/" rel="tag">oberon</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/oberon-2/" rel="tag">oberon-2</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/oo2c/" rel="tag">oo2c</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/openbsd/" rel="tag">openbsd</a></li>
+            <li><a class="tag p-category" href="../../../../../categories/ubuntu/" rel="tag">ubuntu</a></li>
+        </ul>
+<ul class="pager hidden-print">
+<li class="previous">
+                <a href="../announcing-peaseblossom-an-oberon-2-compiler-and-libraries-and-programs-for-it-and-for-voc/" rel="prev" title="Announcing Peaseblossom: an Oberon-2 compiler, and libraries and programs for it and for voc">Previous post</a>
+            </li>
+        </ul></nav></aside><section class="comments hidden-print"><h2>Comments</h2>
+                    <div id="disqus_thread"></div>
+        <script>
+        var disqus_shortname ="lacking-natural-simplicity",
+            disqus_url="https://tkurtbond.github.io/posts/2026/11/17/announcing-oo2c-224-a-revived-fork-of-the-optimizing-oberon-2-compiler/",
+        disqus_title="Announcing oo2c 2.2.4: a revived fork of the Optimizing Oberon-2 Compiler",
+        disqus_identifier="cache/posts/2026/11/17/announcing-oo2c-224-a-revived-fork-of-the-optimizing-oberon-2-compiler.html",
+        disqus_config = function () {
+            this.language = "en";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.async = true;
+            dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script><noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+    <a href="https://disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+        </section></article><script>var disqus_shortname="lacking-natural-simplicity";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
+</div>
+            <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+                    <div class="sidebar-module sidebar-module-inset">
+      <h4>About</h4>
+      <p>Lacking Natural Simplicity is one, not particularly flattering, 
+         definition of sophisticated.  
+         This blog chronicles my journey through our at times too complicated 
+         and sophisticated world. </p>
+    </div>
+    <div class="sidebar-module">
+      <p>My <a href="../../../../../tkurtbond-at-gmail-com.pub">PGP/GPG Key</a>.
+      </p>
+<p>This site uses no cookies directly, but I expect the <a href="https://disqus.com/">Disqus</a> comments use cookies at disqus.com.</p>
+      <h4>Links</h4>
+      <ol class="list-unstyled">
+<li><a href="../../../../../pages/about-the-blog/index.html">About the Blog</a></li>
+        <li><a href="../../../../../pages/colophon/index.html">Colophon</a></li>
+        <li><a href="../../../../../pages/typographical-conventions/index.html">Typographical Conventions</a></li>
+        <li><a href="../../../../../pages/static-pages-index/index.html">Pages</a></li>
+        <li>
+<a href="http://tkb.tx0.org/">My tx0.org web page</a>
+            <br>    Mostly empty
+        </li>
+        <li>
+<a href="http://consp.org/">consp.org</a>
+            <br>    Rises from the dead!
+            <br>    <a href="http://consp.org/blog/blog.html">microblog</a>
+        </li>
+      </ol>
+</div>
+    
+            </div>
+        <!--End of body content-->
+        </div>
+    </div>
+</div>
+
+<footer class="blog-footer" id="footer">
+    Contents © 2026         <a href="mailto:tkurtbond@gmail.com">T. Kurt Bond</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+    
+</footer><script src="../../../../../assets/js/all-nocdn.js"></script><!-- fancy dates --><script>
+    moment.locale("en");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates --><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element) {
+            return element.getElementsByTagName('img')[0].alt;
+    }});
+    </script>
+</body>
+</html>
